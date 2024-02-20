@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 		<AnalysisLevel>latest-recommended</AnalysisLevel>
-		<AssemblyVersion>2023.8.12.27</AssemblyVersion>
+		<AssemblyVersion>2024.8.3.1</AssemblyVersion>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
 		<Authors>David McCarter</Authors>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -20,7 +20,7 @@
 		<EnablePackageValidation>false</EnablePackageValidation>
 		<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-		<FileVersion>2023.8.12.27</FileVersion>
+		<FileVersion>2024.8.3.1</FileVersion>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
@@ -46,7 +46,7 @@
 		<SignAssembly>True</SignAssembly>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
-		<Version>2023.8.12.27</Version>
+		<Version>2024.8.3.1</Version>
 		<Title>DotNetTips.Spargine.8.Tester</Title>
 		<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
 	</PropertyGroup>
