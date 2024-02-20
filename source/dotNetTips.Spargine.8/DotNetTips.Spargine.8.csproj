@@ -30,14 +30,14 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<LangVersion>latest</LangVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine/tree/main/source/6</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine/tree/main/source/6</RepositoryUrl>
+		<RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</RepositoryUrl>
 		<RootNamespace>DotNetTips.Spargine</RootNamespace>
 		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
 		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
