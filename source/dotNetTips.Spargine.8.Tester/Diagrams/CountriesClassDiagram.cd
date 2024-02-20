@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="NameAndType">
+  <Class Name="DotNetTips.Spargine.Tester.Data.Country">
+    <Position X="4.25" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIACABAAmUAAAAACoAAIIBSACAAAAAgABAAABAQAACA=</HashCode>
+      <FileName>Data\Countries.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNetTips.Spargine.Tester.Data.State">
+    <Position X="7.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAEAAAAAACAAIAAQAAAIAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Data\Countries.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Country" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DotNetTips.Spargine.Tester.Data.Timezone">
+    <Position X="9.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAABAAAAABAAAAAAAAAAAAAIAAAAAAAAgABAAAAA=</HashCode>
+      <FileName>Data\Countries.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Country" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DotNetTips.Spargine.Tester.Data.Translations">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAgAAIAACAAAAAAAAAQIIQAEQAEwEAAAAAAAA=</HashCode>
+      <FileName>Data\Countries.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Country" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DotNetTips.Spargine.Tester.Data.City">
+    <Position X="12" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEAAAAAAAAAIAAQAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Data\Countries.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="State" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="DotNetTips.Spargine.Tester.Data.Region">
+    <Position X="6.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAQAAAIAAAAgAAAAgBgAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Countries.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

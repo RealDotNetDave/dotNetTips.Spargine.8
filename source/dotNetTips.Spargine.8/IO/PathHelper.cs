@@ -1,0 +1,204 @@
+// ***********************************************************************
+// Assembly         : DotNetTips.Spargine.8
+// Author           : David McCarter
+// Created          : 03-02-2021
+//
+// Last Modified By : David McCarter
+// Last Modified On : 02-15-2024
+// ***********************************************************************
+// <copyright file="PathHelper.cs" company="David McCarter - dotNetTips.com">
+//     McCarter Consulting (David McCarter)
+// </copyright>
+// <summary>
+// Common methods for path manipulation, including providing invalid
+// filter characters, invalid path names, and path separators.
+// </summary>
+// ***********************************************************************
+using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
+using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Extensions;
+
+//`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
+namespace DotNetTips.Spargine.IO;
+
+/// <summary>
+/// Class PathHelper.
+/// </summary>
+public static class PathHelper
+{
+
+	/// <summary>
+	/// The invalid file name chars
+	/// </summary>
+	private static readonly char[] InvalidFileNameChars = FileHelper.InvalidFileNameChars.Where(c => c is not '*' and not '|' and not '?').ToArray();
+
+	/// <summary>
+	/// The invalid path chars
+	/// </summary>
+	private static readonly char[] InvalidPathChars = Path.GetInvalidPathChars().Where(c => c != Path.DirectorySeparatorChar && c != Path.AltDirectorySeparatorChar).ToArray();
+
+	/// <summary>
+	/// Combines the paths collection.
+	/// </summary>
+	/// <param name="createIfNotExists">if set to <c>true</c> [create path if it does not exists].</param>
+	/// <param name="paths">The paths.</param>
+	/// <returns>DirectoryInfo.</returns>
+	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] params string[] paths)
+	{
+		paths = paths.ArgumentItemsExists(nameof(paths));
+
+		for (var paramCount = 0; paramCount < paths.Length; paramCount++)
+		{
+			paths[paramCount] = paths[paramCount].ToTrimmed();
+		}
+
+		var pathString = Path.Join(paths);
+
+		var di = new DirectoryInfo(pathString);
+
+		if (createIfNotExists && di.Exists is false)
+		{
+			di.Create();
+		}
+
+		return di;
+	}
+
+	/// <summary>
+	/// Combines the specified path strings.
+	/// </summary>
+	/// <param name="createIfNotExists">if set to <c>true</c> [create path if it does not exists].</param>
+	/// <param name="path1">The path1.</param>
+	/// <param name="path2">The path2.</param>
+	/// <returns>DirectoryInfo.</returns>
+	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] string path1, [NotNull] string path2)
+	{
+		path1 = path1.ArgumentNotNullOrEmpty();
+		path2 = path2.ArgumentNotNullOrEmpty();
+
+		return CombinePaths(createIfNotExists, [path1, path2]);
+	}
+
+	/// <summary>
+	/// Combines the paths.
+	/// </summary>
+	/// <param name="createIfNotExists">if set to <c>true</c> [create path if it does not exists].</param>
+	/// <param name="path1">The path1.</param>
+	/// <param name="path2">The path2.</param>
+	/// <param name="path3">The path3.</param>
+	/// <returns>DirectoryInfo.</returns>
+	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] string path1, [NotNull] string path2, [NotNull] string path3)
+	{
+		path1 = path1.ArgumentNotNullOrEmpty();
+		path2 = path2.ArgumentNotNullOrEmpty();
+		path3 = path3.ArgumentNotNullOrEmpty();
+
+		return CombinePaths(createIfNotExists, [path1, path2, path3]);
+	}
+
+	/// <summary>
+	/// Combines the paths.
+	/// </summary>
+	/// <param name="createIfNotExists">if set to <c>true</c> [create path if it does not exists].</param>
+	/// <param name="path1">The path1.</param>
+	/// <param name="path2">The path2.</param>
+	/// <param name="path3">The path3.</param>
+	/// <param name="path4">The path4.</param>
+	/// <returns>DirectoryInfo.</returns>
+	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] string path1, [NotNull] string path2, [NotNull] string path3, [NotNull] string path4)
+	{
+		path1 = path1.ArgumentNotNullOrEmpty();
+		path2 = path2.ArgumentNotNullOrEmpty();
+		path3 = path3.ArgumentNotNullOrEmpty();
+		path4 = path4.ArgumentNotNullOrEmpty();
+
+		var paths = new string[] { path1, path2, path3, path4 };
+
+		return CombinePaths(createIfNotExists, paths);
+	}
+
+	/// <summary>
+	/// Ensures the trailing slash.
+	/// </summary>
+	/// <param name="path">The path.</param>
+	/// <returns>System.String.</returns>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	public static string EnsureTrailingSlash([NotNull] string path)
+	{
+		path = path.ArgumentNotNullOrEmpty();
+
+		return path[^1] != Path.DirectorySeparatorChar ? $"{path}{Path.DirectorySeparatorChar}" : path;
+	}
+
+	/// <summary>
+	/// Determines whether [has invalid filter chars] [the specified path].
+	/// </summary>
+	/// <param name="filter">The filter.</param>
+	/// <returns><c>true</c> if [has invalid filter chars] [the specified path]; otherwise, <c>false</c>.</returns>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	public static bool HasInvalidFilterChars([NotNull] string filter)
+	{
+		filter = filter.ArgumentNotNullOrEmpty();
+
+		return filter.IndexOfAny([.. InvalidFilterChars()]) != -1;
+	}
+
+	/// <summary>
+	/// Gets the invalid filter chars.
+	/// </summary>
+	/// <returns>ReadOnlyCollection&lt;System.Char&gt;.</returns>
+	/// <value>The invalid filter chars.</value>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	public static ReadOnlyCollection<char> InvalidFilterChars() => InvalidFileNameChars.ToReadOnlyCollection();
+
+	/// <summary>
+	/// Gets the invalid path name chars.
+	/// </summary>
+	/// <returns>IEnumerable&lt;System.Char&gt;.</returns>
+	/// <example>
+	/// Output: "|,\0,\u0001,\u0002,\u0003,\u0004,\u0005,\u0006,\a,\b,\t,\n,\v,\f,\r,\u000e,\u000f,\u0010,\u0011,\u0012,\u0013,\u0014,\u0015,\u0016,\u0017,\u0018,\u0019,\u001a,\u001b,\u001c,\u001d,\u001e,\u001f"
+	/// </example>
+	/// <value>The invalid path name chars.</value>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	public static ReadOnlyCollection<char> InvalidPathNameChars() => InvalidPathChars.ToReadOnlyCollection();
+
+	/// <summary>
+	/// Checks to see if path contains any wild cards.
+	/// </summary>
+	/// <param name="path">The path.</param>
+	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	[Information(nameof(PathContainsWildcard), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	public static bool PathContainsWildcard([NotNull] string path)
+	{
+		path = path.ArgumentNotNullOrEmpty();
+
+		return (path?.IndexOf('*', StringComparison.Ordinal) != -1) || (path?.IndexOf('?', StringComparison.Ordinal) != -1);
+	}
+
+	/// <summary>
+	/// Determines if the path has invalid chars.
+	/// </summary>
+	/// <param name="path">The path.</param>
+	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	public static bool PathHasInvalidChars([NotNull] string path)
+	{
+		path = path.ArgumentNotNullOrEmpty();
+
+		return path.IndexOfAny([.. InvalidPathNameChars()]) != -1;
+	}
+
+	/// <summary>
+	/// Gets the path separators.
+	/// </summary>
+	/// <value>The path separators.</value>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	public static ReadOnlyCollection<char> PathSeparators => new[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar }.ToReadOnlyCollection();
+
+}

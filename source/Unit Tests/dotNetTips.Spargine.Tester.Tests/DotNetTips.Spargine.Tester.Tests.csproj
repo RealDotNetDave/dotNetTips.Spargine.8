@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AnalysisLevel>none</AnalysisLevel>
+		<AssemblyVersion>2023.8.12.27</AssemblyVersion>
+		<BaseOutputPath>..\..\appbin</BaseOutputPath>
+		<EnableNETAnalyzers>false</EnableNETAnalyzers>
+		<FileVersion>2023.8.12.27</FileVersion>
+		<IsPackable>false</IsPackable>
+		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+		<RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+		<RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+		<TargetFramework>net8.0</TargetFramework>
+		<Version>2023.8.12.27</Version>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\appbin</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\appbin</OutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Data\CountriesTests.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="3.2.1" />
+		<PackageReference Include="MSTest.TestFramework" Version="3.2.1" />
+		<PackageReference Include="coverlet.collector" Version="6.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.ServiceModel.Primitives" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Data\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\dotNetTips.Spargine.8.Core\DotNetTips.Spargine.8.Core.csproj" />
+	  <ProjectReference Include="..\..\dotNetTips.Spargine.8.Extensions\DotNetTips.Spargine.8.Extensions.csproj" />
+	  <ProjectReference Include="..\..\dotNetTips.Spargine.8.Tester\DotNetTips.Spargine.8.Tester.csproj" />
+	</ItemGroup>
+
+</Project>

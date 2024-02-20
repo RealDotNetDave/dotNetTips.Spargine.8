@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{003FCAA2-01D0-482C-B292-705C57CE0F3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{09354638-5FA5-4847-8679-F62A73A8CBEC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		..\..\docs\graphics\dotNetTips-Spargine-Logo@0.25x.jpg = ..\..\docs\graphics\dotNetTips-Spargine-Logo@0.25x.jpg
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.8", "source\dotNetTips.Spargine.8\DotNetTips.Spargine.8.csproj", "{C7A1E872-C2DC-4E12-8B15-91E48DCA87EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.8.Core", "source\dotNetTips.Spargine.8.Core\DotNetTips.Spargine.8.Core.csproj", "{7E25D478-505B-437E-BC9B-1E1046EE1FBD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.8.Extensions", "source\dotNetTips.Spargine.8.Extensions\DotNetTips.Spargine.8.Extensions.csproj", "{C5D4B947-2990-4E46-9AD5-121DF771210C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.8.Tester", "source\dotNetTips.Spargine.8.Tester\DotNetTips.Spargine.8.Tester.csproj", "{7E430531-9440-4864-B0E8-F53751B898FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppTester", "c:\temp\src\ConsoleAppTester\ConsoleAppTester.csproj", "{E1D72147-6E00-4AD3-A0E7-56D8DAE52AF3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.Tester.Tests", "source\Unit Tests\dotNetTips.Spargine.Tester.Tests\DotNetTips.Spargine.Tester.Tests.csproj", "{C90B2323-9AC6-4233-9318-F8344E6C51F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.Tests", "source\Unit Tests\dotNetTips.Spargine.Tests\DotNetTips.Spargine.Tests.csproj", "{3F109299-BE26-4738-948B-09CAFD828299}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.Core.Tests", "source\Unit Tests\dotNetTips.Spargine.Core.Tests\DotNetTips.Spargine.Core.Tests.csproj", "{D7452252-BA9C-4946-8245-ECDC5BECE76F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.Extensions.Tests", "source\Unit Tests\dotNetTips.Spargine.Extensions.Tests\DotNetTips.Spargine.Extensions.Tests.csproj", "{1875EA14-F8B0-45A0-995C-856758412FFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7A1E872-C2DC-4E12-8B15-91E48DCA87EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7A1E872-C2DC-4E12-8B15-91E48DCA87EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7A1E872-C2DC-4E12-8B15-91E48DCA87EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7A1E872-C2DC-4E12-8B15-91E48DCA87EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E25D478-505B-437E-BC9B-1E1046EE1FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E25D478-505B-437E-BC9B-1E1046EE1FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E25D478-505B-437E-BC9B-1E1046EE1FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E25D478-505B-437E-BC9B-1E1046EE1FBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5D4B947-2990-4E46-9AD5-121DF771210C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5D4B947-2990-4E46-9AD5-121DF771210C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5D4B947-2990-4E46-9AD5-121DF771210C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5D4B947-2990-4E46-9AD5-121DF771210C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E430531-9440-4864-B0E8-F53751B898FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E430531-9440-4864-B0E8-F53751B898FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E430531-9440-4864-B0E8-F53751B898FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E430531-9440-4864-B0E8-F53751B898FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D72147-6E00-4AD3-A0E7-56D8DAE52AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D72147-6E00-4AD3-A0E7-56D8DAE52AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D72147-6E00-4AD3-A0E7-56D8DAE52AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D72147-6E00-4AD3-A0E7-56D8DAE52AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C90B2323-9AC6-4233-9318-F8344E6C51F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C90B2323-9AC6-4233-9318-F8344E6C51F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C90B2323-9AC6-4233-9318-F8344E6C51F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C90B2323-9AC6-4233-9318-F8344E6C51F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F109299-BE26-4738-948B-09CAFD828299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F109299-BE26-4738-948B-09CAFD828299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F109299-BE26-4738-948B-09CAFD828299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F109299-BE26-4738-948B-09CAFD828299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7452252-BA9C-4946-8245-ECDC5BECE76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7452252-BA9C-4946-8245-ECDC5BECE76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7452252-BA9C-4946-8245-ECDC5BECE76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7452252-BA9C-4946-8245-ECDC5BECE76F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1875EA14-F8B0-45A0-995C-856758412FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1875EA14-F8B0-45A0-995C-856758412FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1875EA14-F8B0-45A0-995C-856758412FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1875EA14-F8B0-45A0-995C-856758412FFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C90B2323-9AC6-4233-9318-F8344E6C51F8} = {003FCAA2-01D0-482C-B292-705C57CE0F3C}
+		{3F109299-BE26-4738-948B-09CAFD828299} = {003FCAA2-01D0-482C-B292-705C57CE0F3C}
+		{D7452252-BA9C-4946-8245-ECDC5BECE76F} = {003FCAA2-01D0-482C-B292-705C57CE0F3C}
+		{1875EA14-F8B0-45A0-995C-856758412FFF} = {003FCAA2-01D0-482C-B292-705C57CE0F3C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11B107D5-B33F-464D-B1F8-2D902C32F654}
+	EndGlobalSection
+EndGlobal

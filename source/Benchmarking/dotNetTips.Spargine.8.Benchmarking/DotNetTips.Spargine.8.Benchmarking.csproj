@@ -1,0 +1,112 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<AnalysisLevel>latest-recommended</AnalysisLevel>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+		<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<AssemblyVersion>2023.8.12.28</AssemblyVersion>
+		<Authors>David McCarter</Authors>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
+		<BaseOutputPath>..\..\..\appbin\</BaseOutputPath>
+		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+		<Company>David McCarter - dotNetTips.com</Company>
+		<Configurations>Debug;Release</Configurations>
+		<Copyright>McCarter Consulting (David McCarter)</Copyright>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>embedded</DebugType>
+		<Description>Common classes from dotNetTips.com that can be used with BenchmarkDotNet.</Description>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<EnablePackageValidation>false</EnablePackageValidation>
+		<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<FileVersion>2023.8.12.28</FileVersion>
+		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<IncludeSymbols>true</IncludeSymbols>
+		<LangVersion>latest</LangVersion>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<PackageIcon>dotNetTips-Spargine-6-Logo.png</PackageIcon>
+		<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine/tree/main/source/6</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageReleaseNotes>
+		</PackageReleaseNotes>
+		<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine/tree/main/source/6/Benchmarking</RepositoryUrl>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<RootNamespace>DotNetTips.Spargine.Benchmarking</RootNamespace>
+		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<TargetFramework>net8.0</TargetFramework>
+		<Title>DotNetTips.Spargine.Benchmarking</Title>
+		<Version>2023.8.12.28</Version>
+		<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
+		<RootNamespace>DotNetTips.Spargine.Benchmarking</RootNamespace>
+		<DocumentationFile>..\..\..\appbin\DotNetTips.Spargine.8.Benchmarking.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="dotNetTips-Spargine-Logo.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\..\docs\graphics\dotNetTips-Spargine-6-Logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\..\appbin\</OutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
+	  <PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.13.12" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\dotNetTips.Spargine.8.Core\DotNetTips.Spargine.8.Core.csproj" />
+	  <ProjectReference Include="..\..\dotNetTips.Spargine.8.Extensions\DotNetTips.Spargine.8.Extensions.csproj" />
+	  <ProjectReference Include="..\..\dotNetTips.Spargine.8.Tester\DotNetTips.Spargine.8.Tester.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net60'">
+		<PackageReference Include="dotNetTips.Spargine.6.Core">
+			<Version>2022.6.4</Version>
+		</PackageReference>
+		<PackageReference Include="dotNetTips.Spargine.6.Extensions">
+			<Version>2022.6.4</Version>
+		</PackageReference>
+		<PackageReference Include="dotNetTips.Spargine.6.Tester">
+			<Version>2022.6.4</Version>
+		</PackageReference>
+	</ItemGroup>
+</Project>

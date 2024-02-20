@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="JsonTestDataPerson" xml:space="preserve">
+    <value>{"addresses":[{"address1":"ywkcacjxaighwnakwlfqxbwjb","address2":"cskhlryygbivwphdihtcpwkmu","city":"Greenville","country":"Liberia","countryProvince":"oybmajkaujhincoccfcu","id":"88d6572c01b44721a5cce8d1d971e903","phone":"1423464","postalCode":"2560","state":"Sinoe County"},{"address1":"uieboehfplddpntoxottligjx","address2":"ugjsqhqplbwymomkwxggceocp","city":"Harper","country":"Liberia","countryProvince":"cfpupwjxscjxbogvwpue","id":"3ebb8554231a4754a205008027572fc9","phone":"5436357","postalCode":"1272","state":"Maryland County"}],"bornOn":"2001-01-07T12:32:14.9296533-08:00","cellPhone":"8615682","email":"Trenton.Mercer@herrxkp.song","firstName":"Trenton","id":"e5a5747b85564e7bb1eaee600c3b82d1","lastName":"Mercer","homePhone":"6802577"}</value>
+  </data>
+  <data name="JsonTestDataPersonRecord" xml:space="preserve">
+    <value>{"addresses":[{"address1":"skufdwvagcmqfuqnlmhfpubyy","address2":"apuheknwqxmujnbimntycswbu","city":"","country":"Bonaire, Sint Eustatius and Saba","countryProvince":"niunvegpdbobuuguslyv","id":"509dae9f680845b49482ffd91a79a4b9","phone":"4076223676","postalCode":"","state":"Saba"},{"address1":"grfsparpcdxmljwxidukhsvqs","address2":"ilfmpbpiuunccdxbvuaewklfv","city":"Rincon","country":"Bonaire, Sint Eustatius and Saba","countryProvince":"hrtutinrnalckwrndyyo","id":"23abab9b7daf4e59877fadfd03b5508e","phone":"7084788741","postalCode":"","state":"Bonaire"}],"bornOn":"2022-01-02T12:36:13.1195221-08:00","cellPhone":"8723372478","email":"Daryl.Voss@bfqhqixrcosoxb.men","firstName":"Daryl","homePhone":"7363186117","id":"5d8cb1a5c5224e45855fece8e2ff8428","lastName":"Voss"}</value>
+  </data>
+  <data name="XmlTestDataPerson" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;Person xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://dotNetTips.Spargine.Tester.Models.RefTypes"&gt;&lt;Addresses&gt;&lt;Address1 xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;kxjiphqhlkgjrfokqdxgvbtfn&lt;/Address1&gt;&lt;Address2 xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;bahenxmcnhmjerwstyfehdshj&lt;/Address2&gt;&lt;City xmlns="http://dotNetTips.Spargine.Tester.Models.Ref" /&gt;&lt;Country xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;Vatican City State (Holy See)&lt;/Country&gt;&lt;CountyProvince xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;cvkroirlieefckfdyvco&lt;/CountyProvince&gt;&lt;Id xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;a2452352413c4efa99a7eef1e97fa3ef&lt;/Id&gt;&lt;Phone xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;4444283855&lt;/Phone&gt;&lt;PostalCode xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;120&lt;/PostalCode&gt;&lt;State xmlns="http://dotNetTips.Spargine.Tester.Models.Ref" /&gt;&lt;/Addresses&gt;&lt;Addresses&gt;&lt;Address1 xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;ihmwsvudtvqmxaijdwdkqnthg&lt;/Address1&gt;&lt;Address2 xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;ooewdbspvqdtsakgrktundnng&lt;/Address2&gt;&lt;City xmlns="http://dotNetTips.Spargine.Tester.Models.Ref" /&gt;&lt;Country xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;Vatican City State (Holy See)&lt;/Country&gt;&lt;CountyProvince xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;umbmgkrfqvwbkotjjrpx&lt;/CountyProvince&gt;&lt;Id xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;82db1166f8314260bc989bb1e598d255&lt;/Id&gt;&lt;Phone xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;0415032028&lt;/Phone&gt;&lt;PostalCode xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;120&lt;/PostalCode&gt;&lt;State xmlns="http://dotNetTips.Spargine.Tester.Models.Ref" /&gt;&lt;/Addresses&gt;&lt;BornOn&gt;2002-01-07T12:31:51.9774196-08:00&lt;/BornOn&gt;&lt;CellPhone&gt;7182581072&lt;/CellPhone&gt;&lt;Email&gt;Marcelino.Grant@hcpawsh.americanexpress&lt;/Email&gt;&lt;FirstName&gt;Marcelino&lt;/FirstName&gt;&lt;Id&gt;031c8877f14e4adba29b324a5a3bf585&lt;/Id&gt;&lt;LastName&gt;Grant&lt;/LastName&gt;&lt;Phone&gt;5670678505&lt;/Phone&gt;&lt;/Person&gt;</value>
+  </data>
+  <data name="XmlTestDataPersonRecord" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;PersonRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://dotNetTips.Spargine.Tester.Models.RefTypes"&gt;&lt;Addresses&gt;&lt;Address1 xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;bshcfycetthlbpjykrfwlluyj&lt;/Address1&gt;&lt;Address2 xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;qnqcwccfyogsbatnduwdpalck&lt;/Address2&gt;&lt;City xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;Vasilikí&lt;/City&gt;&lt;Country xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;Greece&lt;/Country&gt;&lt;CountyProvince xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;qymsuydgisxkqgrdqxam&lt;/CountyProvince&gt;&lt;Id xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;879c4e1883d34f17adbbeedd5a1f8465&lt;/Id&gt;&lt;Phone xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;7856234266&lt;/Phone&gt;&lt;PostalCode xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;534 85&lt;/PostalCode&gt;&lt;State xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;Corfu Prefecture&lt;/State&gt;&lt;/Addresses&gt;&lt;Addresses&gt;&lt;Address1 xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;dgeajkwfsednyrohmdnuequxl&lt;/Address1&gt;&lt;Address2 xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;eqcfholsojjxpxicwgxoybaqb&lt;/Address2&gt;&lt;City xmlns="http://dotNetTips.Spargine.Tester.Models.Ref" /&gt;&lt;Country xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;Greece&lt;/Country&gt;&lt;CountyProvince xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;irbodumdivsiklqmbqkf&lt;/CountyProvince&gt;&lt;Id xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;357d196363954eec9d909a41da2293de&lt;/Id&gt;&lt;Phone xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;0152526581&lt;/Phone&gt;&lt;PostalCode xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;636 83&lt;/PostalCode&gt;&lt;State xmlns="http://dotNetTips.Spargine.Tester.Models.Ref"&gt;Kastoria Regional Unit&lt;/State&gt;&lt;/Addresses&gt;&lt;BornOn&gt;1977-01-13T12:37:20.0339701-08:00&lt;/BornOn&gt;&lt;CellPhone&gt;6808303375&lt;/CellPhone&gt;&lt;Email&gt;Elias.Do@qibcciceqdrm.foundation&lt;/Email&gt;&lt;FirstName&gt;Elias&lt;/FirstName&gt;&lt;HomePhone&gt;0604175585&lt;/HomePhone&gt;&lt;Id&gt;ab1ba37285f8467f92f2650f560b7fb3&lt;/Id&gt;&lt;LastName&gt;Do&lt;/LastName&gt;&lt;/PersonRecord&gt;</value>
+  </data>
+</root>

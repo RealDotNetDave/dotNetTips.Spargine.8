@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!--<TargetFrameworks>net6.0; net7.0</TargetFrameworks>-->
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<AssemblyVersion>2023.10.11.1</AssemblyVersion>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<BaseOutputPath>..\..\..\appbin\</BaseOutputPath>
+		<Company>dotNetTips.com - McCarter Consulting</Company>
+		<Configurations>Release</Configurations>
+		<Copyright>2021: David McCarter - McCarter Consulting</Copyright>
+		<Copyright>David McCarter</Copyright>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>none</DebugType>
+		<Description>DotNetTips.Spargine.BenchmarkTests</Description>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<FileVersion>2023.10.11.1</FileVersion>
+		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<IsPublishable>False</IsPublishable>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Nullable>annotations</Nullable>
+		<NullableContextOptions>enable</NullableContextOptions>
+		<OldToolsVersion>2.0</OldToolsVersion>
+		<OutputType>Exe</OutputType>
+		<Platforms>AnyCPU</Platforms>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<ServerGarbageCollection>true</ServerGarbageCollection>
+		<SignAssembly>False</SignAssembly>
+		<TargetFrameworks>net60;net7.0</TargetFrameworks>
+		<Version>2023.10.11.1</Version>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\..\appbin\/OutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BenchmarkDotNet" Version="0.13.9" />
+		<PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.13.9" />
+		<PackageReference Include="dotNetTips.Spargine.6" Version="2023.10.11.1" />
+		<PackageReference Include="dotNetTips.Spargine.6.Core" Version="2023.10.11.1" />
+		<PackageReference Include="dotNetTips.Spargine.6.Extensions" Version="2023.10.11.1" />
+		<PackageReference Include="dotNetTips.Spargine.6.Tester" Version="2023.10.11.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\dotNetTips.Spargine.6.Benchmarking\DotNetTips.Spargine.6.Benchmarking.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+
+</Project>

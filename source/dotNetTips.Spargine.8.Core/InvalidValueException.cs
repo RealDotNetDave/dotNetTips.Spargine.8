@@ -1,0 +1,103 @@
+// ***********************************************************************
+// Assembly         : DotNetTips.Spargine.8.Core
+// Author           : David McCarter
+// Created          : 02-10-2021
+//
+// Last Modified By : David McCarter
+// Last Modified On : 10-22-2023
+// ***********************************************************************
+// <copyright file="InvalidValueException.cs" company="David McCarter - dotNetTips.com">
+//     McCarter Consulting (David McCarter)
+// </copyright>
+// <summary>Custom Exception to be used when a value is invalid.</summary>
+// ***********************************************************************
+using System.Runtime.Serialization;
+using DotNetTips.Spargine.Core.Internal;
+using DotNetTips.Spargine.Core.Properties;
+
+//`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
+namespace DotNetTips.Spargine.Core;
+
+/// <summary>
+/// Class InvalidValueException. This class cannot be inherited.
+/// </summary>
+/// <typeparam name="TValue">The type of the t value.</typeparam>
+[Serializable]
+public sealed class InvalidValueException<TValue> : Exception
+{
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// </summary>
+	public InvalidValueException() : base(Resources.MessageGoToDotNetTipsComForHelp)
+	{
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// </summary>
+	/// <param name="value">The value.</param>
+	public InvalidValueException(TValue value) : base(Resources.MessageGoToDotNetTipsComForHelp) => this.Value = value;
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// </summary>
+	/// <param name="message">The message.</param>
+	public InvalidValueException(string message) : base(message)
+	{
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// </summary>
+	/// <param name="message">The message.</param>
+	/// <param name="value">The value.</param>
+	public InvalidValueException(string message, TValue value) : base(message) => this.Value = value;
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// </summary>
+	/// <param name="message">The message.</param>
+	/// <param name="innerException">The inner exception.</param>
+	public InvalidValueException(string message, Exception innerException) : base(message, innerException)
+	{
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// </summary>
+	/// <param name="message">The message.</param>
+	/// <param name="value">The value.</param>
+	/// <param name="innerException">The inner exception.</param>
+	public InvalidValueException(string message, TValue value, Exception innerException) : base(message, innerException) => this.Value = value;
+
+	/// <summary>
+	/// Converts to string.
+	/// </summary>
+	/// <returns>string.</returns>
+	public override string ToString()
+	{
+		var valueProperties = string.Empty;
+		var innerException = string.Empty;
+
+		if (this.Value is not null)
+		{
+			valueProperties = this.Value.PropertiesToString();
+		}
+
+		if (this.InnerException is not null)
+		{
+			innerException = this.InnerException.PropertiesToString();
+		}
+
+		return $"{this.Message} InnerException: {innerException} Value: {valueProperties}.";
+	}
+
+	/// <summary>
+	/// Gets the value.
+	/// </summary>
+	/// <value>The value.</value>
+	public TValue Value { get; private set; }
+
+}
