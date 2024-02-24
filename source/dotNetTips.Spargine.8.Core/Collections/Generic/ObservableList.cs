@@ -4,15 +4,12 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="ObservableList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>
-// Custom Observeable Collection Class of <T>. Features the events:
-// CollectionChanged, PropertyChanged, PropertyChanging.
-// </summary>
+// <summary>Custom Observable Collection Class for `<T>`. Includes the following events: CollectionChanged, PropertyChanged, PropertyChanging.</summary>
 // ***********************************************************************
 using System.Collections;
 using System.Collections.Specialized;

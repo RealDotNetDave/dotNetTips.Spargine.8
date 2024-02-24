@@ -4,12 +4,12 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-20-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="ComputerInfo.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Type used to return computer information.</summary>
+// <summary>Used to retrieve common computer information.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Globalization;

@@ -4,13 +4,15 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="ApiLibraries.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>List of common Windows API libraries.</summary>
 // ***********************************************************************
+
+
 
 namespace DotNetTips.Spargine.Core;
 

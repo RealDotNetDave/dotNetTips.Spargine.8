@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -68,7 +68,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 	}
 
 	[Benchmark(Description = "Any: With Predicate")]
-	[BenchmarkCategory(Categories.LINQ)]
+	[BenchmarkCategory(Categories.LINQ, Categories.ForComparison)]
 	public void AnyWithPredicate()
 	{
 		var result = AnyWithPredicate(this._personRefEnumerable, p => p.LastName.Contains('a', StringComparison.CurrentCulture));
@@ -105,6 +105,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 	}
 
 	[Benchmark(Description = nameof(EnumerableExtensions.Count) + ": With Predicate")]
+	[BenchmarkCategory(Categories.ForComparison)]
 	public void CountWithPredicate()
 	{
 		var result = CountWithPredicate(this._personRefEnumerable, p => p.LastName.Contains('a', StringComparison.CurrentCulture));
@@ -249,13 +250,13 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(EnumerableExtensions.OrderBy) + ": With Sort Expression")]
-	public void OrderBy()
-	{
-		var result = this._personRefEnumerable.OrderBy("City desc");
+	//[Benchmark(Description = nameof(EnumerableExtensions.OrderBy) + ": With Sort Expression")]
+	//public void OrderBy()
+	//{
+	//	var result = this._personRefEnumerable.OrderBy("City desc");
 
-		this.Consume(result);
-	}
+	//	this.Consume(result);
+	//}
 
 	[Benchmark(Description = nameof(EnumerableExtensions.OrderByOrdinal))]
 	public void OrderByOrdinal()
@@ -338,7 +339,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(EnumerableExtensions.Partition))]
+	[Benchmark(Description = nameof(EnumerableExtensions.Split))]
 	public void Split()
 	{
 		var people = this._personRefEnumerable;

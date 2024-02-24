@@ -4,13 +4,13 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>
-// Custom collection type for improved performance during iteration.
+// Custom collection type for enhanced performance during iteration.
 // Original code by: Gérald Barré
 // https:www.meziantou.net/caching-an-ienumerable-t-instance.htm
 // </summary>

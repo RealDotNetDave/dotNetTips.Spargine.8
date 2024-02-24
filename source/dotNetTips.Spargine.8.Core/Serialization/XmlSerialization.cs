@@ -4,15 +4,12 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-11-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="XmlSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// This class facilitates easy serialization and deserialization of
-// strings to and from the XML format.
-// </summary>
+// <summary>Facilitates seamless serialization and deserialization of strings to and from the XML format.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;

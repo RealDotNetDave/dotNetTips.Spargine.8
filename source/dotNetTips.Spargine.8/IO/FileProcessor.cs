@@ -4,15 +4,12 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Performs file copying and deletion operations, with event handling
-// for files, and also includes the ability to delete folders.
-// </summary>
+// <summary>Facilitates file copying and deletion operations, incorporating event handling for files. Additionally, it offers the capability to delete folders.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Security;

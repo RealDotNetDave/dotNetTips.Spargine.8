@@ -4,16 +4,12 @@
 // Created          : 05-01-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="EasyLogger.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// This class logs to any ILogger object in the fastest way possible.
-// Logs Critical, Debug, Error, Exception, Information, Trace and
-// Warning messages.
-// </summary>
+// <summary>This class efficiently logs to any ILogger object, providing rapid logging for Critical, Debug, Error, Exception, Information, Trace, and Warning messages.</summary>
 // ***********************************************************************
 
 //`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )

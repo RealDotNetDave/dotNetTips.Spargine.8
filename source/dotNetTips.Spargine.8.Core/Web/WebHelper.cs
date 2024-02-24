@@ -4,20 +4,12 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="WebHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Helper methods for website calls, featuring the following methods:
-// DownloadStringAsync(): Allows asynchronous downloading of a string
-// from a website. HttpHeaderNames(): Provides a collection of common
-// HTTP header names for reference and use in web requests. IsLocalUri():
-// Determines if a given URI is a local resource or points to an external
-// website. These methods aid in simplifying website interactions and
-// handling HTTP-related tasks efficiently.
-// </summary>
+// <summary>Utility methods for website calls. These functions streamline website interactions and efficiently manage HTTP-related tasks.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;

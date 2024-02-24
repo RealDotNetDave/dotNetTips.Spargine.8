@@ -4,12 +4,12 @@
 // Created          : 05-30-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="KeyGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Generates unique keys by using a GUID with no dashes.</summary>
+// <summary>Generates unique keys using a GUID without dashes.</summary>
 // ***********************************************************************
 using System.Globalization;
 

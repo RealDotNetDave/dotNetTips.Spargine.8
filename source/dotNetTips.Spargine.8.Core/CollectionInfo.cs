@@ -4,7 +4,7 @@
 // Created          : 06-24-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 11-06-2023
 // ***********************************************************************
 // <copyright file="CollectionInfo.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 //`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
 
 namespace DotNetTips.Spargine.Core;
 

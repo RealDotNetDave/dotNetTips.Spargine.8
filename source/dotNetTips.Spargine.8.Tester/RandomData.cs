@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-20-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="dotNetTips.Spargine.8.Tester">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -771,7 +771,6 @@ public static partial class RandomData
 
 		//Lookup Country
 		var country = Countries.GetCountry(countryName);
-
 
 		return includeCountryCode ? $"{country.PhoneCode}-{GenerateNumber(country.PhoneNumberLength)}" : GenerateNumber(country.PhoneNumberLength);
 	}

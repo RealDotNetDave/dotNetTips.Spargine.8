@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-24-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="LoggableException.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -17,8 +17,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
 using System.Security;
+using System.Text;
 using System.Xml.Serialization;
 using DotNetTips.Spargine.Core.Logging;
 using Microsoft.Extensions.ObjectPool;
@@ -39,7 +39,7 @@ public class LoggableException : Exception
 	/// <summary>
 	/// The string builder pool
 	/// </summary>
-	private static readonly ObjectPool<System.Text.StringBuilder> _stringBuilderPool =
+	private static readonly ObjectPool<StringBuilder> _stringBuilderPool =
 	new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	/// <summary>

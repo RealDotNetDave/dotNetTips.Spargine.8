@@ -4,12 +4,12 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-20-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="RegexProcessor.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Methods for common string regular expressions. Methods included: ContainsWord, IsCreditCardNumber, IsEmailAddress, IsUrl, IsISBN and more.</summary>
+// <summary>Utility methods for common string regular expressions. Included methods: ContainsWord, IsCreditCardNumber, IsEmailAddress, IsUrl, IsISBN, and more.</summary>
 // ***********************************************************************
 
 

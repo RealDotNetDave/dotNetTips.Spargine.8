@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Core.BenchmarkTests.TypeHelperBenchmark-20240222-173841</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 10 (10.0.19045.4046/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 8.0.200
+  [Host]     : .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+  Job-YSGQDR : .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Core.BenchmarkTests  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                              </th><th>Categories</th><th>Mean  </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min   </th><th>Q1    </th><th>Median</th><th>Q3    </th><th>Max   </th><th>Op/s</th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Gen0</th><th>Exceptions</th><th>Code Size</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;Looping Collection: Normal StringBuilder&#39;</td><td>Strings</td><td>4,034.8 ns</td><td>19.64 ns</td><td>18.37 ns</td><td>4.74 ns</td><td>4,004.6 ns</td><td>4,021.6 ns</td><td>4,039.2 ns</td><td>4,049.1 ns</td><td>4,065.5 ns</td><td>247,845.7</td><td>19.64 ns</td><td>15.00</td><td>1.610</td><td>2.000</td><td>-0.0551</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>0.1602</td><td>-</td><td>2,614 B</td><td>14.68 KB</td>
+</tr><tr><td>GetPropertyValues</td><td>Reflection</td><td>372,656.7 ns</td><td>1,452.55 ns</td><td>1,287.65 ns</td><td>344.14 ns</td><td>370,239.3 ns</td><td>371,968.7 ns</td><td>372,804.6 ns</td><td>373,092.2 ns</td><td>375,157.4 ns</td><td>2,683.4</td><td>1,452.55 ns</td><td>14.00</td><td>2.494</td><td>2.000</td><td>0.2161</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>4,065 B</td><td>6.69 KB</td>
+</tr></tbody></table>
+</body>
+</html>

@@ -4,15 +4,14 @@
 // Created          : 03-05-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="NetworkConnectionException.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Custom Exception to be used when there is a network connection error.</summary>
+// <summary>Custom exception to be used when there is a network connection error.</summary>
 // ***********************************************************************
 
-using System.Runtime.Serialization;
 using DotNetTips.Spargine.Core.Network;
 using DotNetTips.Spargine.Core.Properties;
 

@@ -4,17 +4,12 @@
 // Created          : 02-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-04-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="IDataRecord.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// This is an interface tailored for model records, obligating the
-// implementation of the "Id" property, which is mandatory. Additionally,
-// it provides functionality to convert all the properties and their data
-// to a string representation.
-// </summary>
+// <summary>Interface tailored for model records, mandating the implementation of the "Id" property. Additionally, it provides functionality to convert all the properties and their data to a string representation.</summary>
 // ***********************************************************************
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;

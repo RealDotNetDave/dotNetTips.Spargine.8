@@ -4,16 +4,12 @@
 // Created          : 03-15-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="Services.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Convenient helper methods for seamless management of Windows services.
-// Key features include loading a service, checking its running status,
-// starting and stopping services, and more.
-// </summary>
+// <summary>Convenient helper methods for seamless management of Windows services, offering key features such as loading a service, checking its running status, starting and stopping services, and more.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -103,7 +99,7 @@ public static class Services
 	/// </summary>
 	/// <param name="serviceName">Name of the service.</param>
 	/// <returns>ServiceControllerStatus.</returns>
-	/// <exception cref="InvalidOperationException"></exception>
+	/// <exception cref="System.InvalidOperationException"></exception>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(ServiceStatus), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ServiceControllerStatus ServiceStatus(string serviceName)

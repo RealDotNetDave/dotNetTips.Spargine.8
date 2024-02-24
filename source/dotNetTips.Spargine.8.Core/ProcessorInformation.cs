@@ -4,12 +4,12 @@
 // Created          : 03-20-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="ProcessorInformation.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Utility to retrieve information about the computer processor.</summary>
 // ***********************************************************************
 using System.Runtime.InteropServices;
 

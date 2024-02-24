@@ -4,14 +4,13 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="InvalidValueException.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Custom Exception to be used when a value is invalid.</summary>
+// <summary>Custom exception to be used when an invalid value is encountered.</summary>
 // ***********************************************************************
-using System.Runtime.Serialization;
 using DotNetTips.Spargine.Core.Internal;
 using DotNetTips.Spargine.Core.Properties;
 

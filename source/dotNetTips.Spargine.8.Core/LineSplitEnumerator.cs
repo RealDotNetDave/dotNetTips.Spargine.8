@@ -16,6 +16,7 @@
 
 
 
+
 namespace DotNetTips.Spargine.Core;
 
 // Must be a ref struct as it contains a ReadOnlySpan<char>

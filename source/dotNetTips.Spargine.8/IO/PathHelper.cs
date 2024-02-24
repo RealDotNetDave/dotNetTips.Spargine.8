@@ -4,15 +4,12 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="PathHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Common methods for path manipulation, including providing invalid
-// filter characters, invalid path names, and path separators.
-// </summary>
+// <summary>Common methods for path manipulation, encompassing handling invalid filter characters, invalid path names, and path separators.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;

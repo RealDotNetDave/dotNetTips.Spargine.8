@@ -4,17 +4,12 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="Clock.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>
-// Time Utility Class for common tasks related to clocks and
-// time. It includes functionalities to retrieve the current time and
-// tick count, as well as a method to determine the number of days in
-// the current month (DaysInCurrentMonth).
-// </summary>
+// <summary>Time Utility Class for common tasks related to clocks and time. It includes functionalities to retrieve the current time and tick count, along with a method to determine the number of days in the current month (DaysInCurrentMonth).</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 

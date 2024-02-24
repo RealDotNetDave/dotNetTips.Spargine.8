@@ -46,13 +46,13 @@ public static class Program
 
 			config = config?.WithOption(ConfigOptions.DisableOptimizationsValidator, true);
 
-			_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
+			//_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
-			//_ = BenchmarkRunner.Run<ArrayExtensionsCollectionBenchmark>(config);
+			_ = BenchmarkRunner.Run<ArrayExtensionsCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<AssemblyExtensionsBenchmark>(config);
 			//_ = BenchmarkRunner.Run<CollectionExtensionsCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<DictionaryExtensionsCollectionBenchmark>(config);
-			//_ = BenchmarkRunner.Run<EnumerableExtensionsCollectionBenchmark>(config);
+			_ = BenchmarkRunner.Run<EnumerableExtensionsCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<ExceptionExtensionsBenchmark>(config);
 			//_ = BenchmarkRunner.Run<GeneralBenchmark>(config);
 			//_ = BenchmarkRunner.Run<ImmutableArrayExtensionsBenchmark>(config);

@@ -4,7 +4,7 @@
 // Created          : 06-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-13-2022
+// Last Modified On : 10-22-2023
 // ***********************************************************************
 // <copyright file="NetworkConnection.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -14,6 +14,7 @@
 
 //`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
+
 namespace DotNetTips.Spargine.Core.Network;
 
 /// <summary>
@@ -21,6 +22,7 @@ namespace DotNetTips.Spargine.Core.Network;
 /// </summary>
 public record NetworkConnection
 {
+
 	/// <summary>
 	/// Initializes a new instance of the <see cref="NetworkConnection" /> class.
 	/// </summary>
@@ -67,4 +69,5 @@ public record NetworkConnection
 	/// </summary>
 	/// <value><c>true</c> if wifi; otherwise, <c>false</c>.</value>
 	public bool WiFi { get; }
+
 }

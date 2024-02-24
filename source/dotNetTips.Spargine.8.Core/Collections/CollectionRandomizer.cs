@@ -4,15 +4,12 @@
 // Created          : 11-06-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-17-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="CollectionRandomizer.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Designed to shuffle a collection either once or endlessly. Allows
-// users to retrieve items by using the GetNext() method.
-// </summary>
+// <summary>Designed to shuffle a collection either once or endlessly. Enables users to retrieve items using the GetNext() method.</summary>
 // ***********************************************************************
 
 using System.Collections.Immutable;

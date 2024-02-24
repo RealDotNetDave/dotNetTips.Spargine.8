@@ -4,15 +4,13 @@
 // Created          : 07-11-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="HttpEventListener.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
-// Listens and logs messages from HTTP events, including request start
-// and stop. This functionality allows for comprehensive monitoring and
-// logging of HTTP-related activities.
+// Listens and logs messages from HTTP events, capturing events such as request start and stop. This functionality facilitates comprehensive monitoring and logging of HTTP-related activities.
 // Orginal code by:
 // https:www.meziantou.net/observing-all-http-requests-in-a-dotnet-application.htm
 // </summary>

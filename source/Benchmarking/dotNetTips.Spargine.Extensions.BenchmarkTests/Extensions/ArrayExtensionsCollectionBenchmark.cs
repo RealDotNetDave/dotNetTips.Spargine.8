@@ -100,20 +100,20 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(ArrayExtensions.Clone) + ": Array as Reference")]
+	[BenchmarkCategory(Categories.ReferenceType)]
+	public void ClonePerson_Ref()
+	{
+		var result = this._personRefArray.Clone<Person<Address>[]>();
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(ArrayExtensions.Clone) + ": Array as Value")]
 	[BenchmarkCategory(Categories.ValueType)]
 	public void ClonePerson_Val()
 	{
 		var result = this._personValArray.Clone<Spargine.Tester.Models.ValueTypes.Person<Spargine.Tester.Models.ValueTypes.Address>>();
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = nameof(ArrayExtensions.Clone) + ": Array as Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
-	public void ClonePersonProper_Ref()
-	{
-		var result = this._personRefArray.Clone<Person<Address>[]>();
 
 		this.Consume(result);
 	}
@@ -163,17 +163,29 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(ArrayExtensions.FastProcessor) + " : Reference")]
+	[Benchmark(Description = "Process Collection: foreach()")]
+	[BenchmarkCategory(Categories.ReferenceType, Categories.ForComparison)]
+	public void FastProcessor_Normal_Ref()
+	{
+		var people = this._personRefArray;
+
+		for (var index = 0; index < people.Length; index++)
+		{
+			people[index].Phone = "5555555555";
+		}
+
+
+		this.Consume(people);
+	}
+
+	[Benchmark(Description = "Process Collection: FastProcessor()")]
 	[BenchmarkCategory(Categories.ReferenceType)]
 	public void FastProcessor_Ref()
 	{
 		var people = this._personRefArray;
 
 		people.FastProcessor(
-			(Person<Address> person) =>
-			{
-				person.Phone = "5555555555";
-			});
+			(Person<Address> person) => person.Phone = "5555555555");
 
 		this.Consume(people);
 	}

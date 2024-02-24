@@ -33,13 +33,13 @@ public class RandomDataCollectionsBenchmark : LargeCollectionsBenchmark
 
 	private const CountryName DefaultCountry = CountryName.UnitedStates;
 
-	private Collection<Coordinate> _coordinateProperCollection;
+	private Collection<Coordinate> _coordinateCollection;
 	private Collection<PersonRecord> _personRecordCollection;
 	private Collection<Models.RefTypes.Person<Models.RefTypes.Address>> _personRefCollection;
 
 	[Benchmark(Description = nameof(Coordinate) + ":OrderBy()")]
 	[BenchmarkCategory(Categories.New, Categories.ValueType)]
-	public void CoordinateProperOrderByBenchmark()
+	public void CoordinateOrderByBenchmark()
 	{
 		var result = this._personRecordCollection.OrderBy(p => p.Id);
 
@@ -64,23 +64,6 @@ public class RandomDataCollectionsBenchmark : LargeCollectionsBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(RandomData.GenerateCoordinateCollection) + ": CoordinateProper")]
-	[BenchmarkCategory(Categories.New)]
-	public void GenerateCoordinateProperCollection()
-	{
-		var result = RandomData.GenerateCoordinateCollection<Coordinate>(this.Count);
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = nameof(RandomData.GeneratePersonRefCollection) + ": PersonProper")]
-	[BenchmarkCategory(Categories.New)]
-	public void GeneratePersonProperRefCollection()
-	{
-		var result = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(this.Count);
-
-		this.Consume(result);
-	}
 
 	[Benchmark(Description = nameof(RandomData.GeneratePersonRecordCollection))]
 	[BenchmarkCategory(Categories.New)]
@@ -118,15 +101,6 @@ public class RandomDataCollectionsBenchmark : LargeCollectionsBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Person" + ":OrderBy()")]
-	[BenchmarkCategory(Categories.New)]
-	public void PersonProperOrderByBenchmark()
-	{
-		var result = this._personRefCollection.OrderBy(p => p.Id);
-
-		this.Consume(result);
-	}
-
 	[Benchmark(Description = nameof(PersonRecord) + ":OrderBy()")]
 	[BenchmarkCategory(Categories.New)]
 	public void PersonValOrderByBenchmark()
@@ -140,7 +114,7 @@ public class RandomDataCollectionsBenchmark : LargeCollectionsBenchmark
 	{
 		base.Setup();
 
-		this._coordinateProperCollection = RandomData.GenerateCoordinateCollection<Coordinate>(this.Count).ToCollection();
+		this._coordinateCollection = RandomData.GenerateCoordinateCollection<Coordinate>(this.Count).ToCollection();
 		this._personRecordCollection = RandomData.GeneratePersonRecordCollection(this.Count).ToCollection();
 		this._personRefCollection = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(this.Count).ToCollection();
 

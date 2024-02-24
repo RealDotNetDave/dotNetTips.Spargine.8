@@ -34,9 +34,9 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// <param name="y">The y.</param>
 /// <param name="z">The z.</param>
 /// <remarks>Initializes a new instance of the <see cref="Coordinate" /> struct.</remarks>
-[DataContract(Name = "coordinateProper")]
+[DataContract(Name = "coordinate")]
 [Serializable]
-[XmlRoot(ElementName = "CoordinateProper")]
+[XmlRoot(ElementName = "Coordinate")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coordinate>, IComparable, IComparable<Coordinate>
 {

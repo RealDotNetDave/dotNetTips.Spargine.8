@@ -95,6 +95,32 @@ public class FastStringBuilderCounterBenchmark : SmallCollectionsBenchmark
 		base.Consume(sb.ToString());
 	}
 
+	[Benchmark(Description = nameof(FastStringBuilder.ConcatStrings))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void ConcatStrings()
+	{
+		var result = FastStringBuilder.ConcatStrings(ControlChars.Plus, true, this._words);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(FastStringBuilder.ConcatStrings) + ": Comparison")]
+	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
+	public void ConcatStrings_Comparison()
+	{
+		var sb = new StringBuilder();
+
+		for (var argumentIndex = 0; argumentIndex < _words.Length; argumentIndex++)
+		{
+			var line = _words[argumentIndex];
+
+			sb.AppendLine(line + ControlChars.Plus);
+		}
+
+
+		this.Consume(sb.ToString());
+	}
+
 	[Benchmark(Description = nameof(FastStringBuilder.PerformAction))]
 	[BenchmarkCategory(Categories.Collections)]
 	public void PerformAction()
@@ -136,32 +162,32 @@ public class FastStringBuilderCounterBenchmark : SmallCollectionsBenchmark
 		this._wordDictionary = RandomData.GenerateWords(this.Count, 10, 10).ToDictionary(x => RandomData.GenerateKey(), y => y);
 	}
 
-	//[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString))]
-	//[BenchmarkCategory(Categories.Collections)]
-	//public void ToDelimitedString()
-	//{
-	//	var result = FastStringBuilder.ToDelimitedString(this._wordDictionary);
+	[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void ToDelimitedString()
+	{
+		var result = FastStringBuilder.ToDelimitedString(this._wordDictionary);
 
-	//	base.Consume(result);
-	//}
+		this.Consume(result);
+	}
 
-	//[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString) + ": Comparison")]
-	//[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
-	//public void ToDelimitedString_Comparison()
-	//{
-	//	var sb = new StringBuilder();
+	[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString) + ": Comparison")]
+	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
+	public void ToDelimitedString_Comparison()
+	{
+		var sb = new StringBuilder();
 
-	//	foreach (var item in this._wordDictionary)
-	//	{
-	//		if (sb.Length > 0)
-	//		{
-	//			_ = sb.Append(ControlChars.Comma);
-	//		}
+		foreach (var item in this._wordDictionary)
+		{
+			if (sb.Length > 0)
+			{
+				_ = sb.Append(ControlChars.Comma);
+			}
 
-	//		_ = sb.Append($"{item.Key}: {item.Value}".ToString(CultureInfo.CurrentCulture));
-	//	}
+			_ = sb.Append($"{item.Key}: {item.Value}".ToString(CultureInfo.CurrentCulture));
+		}
 
-	//	base.Consume(sb.ToString(startIndex: 0, length: sb.Length - 1));
-	//}
+		base.Consume(sb.ToString());
+	}
 
 }

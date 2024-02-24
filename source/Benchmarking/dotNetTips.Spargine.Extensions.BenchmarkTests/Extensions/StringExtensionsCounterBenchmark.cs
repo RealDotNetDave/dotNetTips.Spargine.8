@@ -39,7 +39,7 @@ public class StringExtensionsCounterBenchmark : SmallCollectionsBenchmark
 	private string _crlfString;
 	private string _gzipString;
 
-	[Benchmark(Description = nameof(StringExtensions.ComputeHash))]
+	[Benchmark(Description = nameof(StringExtensions.ComputeHash) + ": SHA256")]
 	[BenchmarkCategory(Categories.Strings)]
 	public void ComputeHash()
 	{
@@ -118,17 +118,6 @@ public class StringExtensionsCounterBenchmark : SmallCollectionsBenchmark
 		var result = await this._gzipString.FromGZipStringAsync().ConfigureAwait(false);
 
 		await this.ConsumeAsync(result).ConfigureAwait(false);
-	}
-
-	[Benchmark(Description = nameof(StringExtensions.GetHashCode))]
-	[BenchmarkCategory(Categories.New, Categories.Strings)]
-#pragma warning disable CS0114 // Member hides inherited member; missing override keyword
-	public void GetHashCode()
-#pragma warning restore CS0114 // Member hides inherited member; missing override keyword
-	{
-		var result = this._crlfString.GetHashCode();
-
-		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(StringExtensions.RemoveCRLF))]

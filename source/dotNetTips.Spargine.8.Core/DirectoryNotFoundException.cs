@@ -4,16 +4,14 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="DirectoryNotFoundException.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>Custom Exception to be used when a directory cannot be found.</summary>
+// <summary>Custom exception to be utilized when a directory cannot be found.</summary>
 // ***********************************************************************
-using System.Globalization;
 using System.Runtime.Serialization;
-using DotNetTips.Spargine.Core.Properties;
 
 //`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -46,7 +44,7 @@ public class DirectoryNotFoundException : LoggableException, ISerializable
 	/// Initializes a new instance of the <see cref="DirectoryNotFoundException" /> class.
 	/// </summary>
 	/// <param name="directory">The directory.</param>
-	/// <exception cref="ArgumentNullException">The directory cannot be null.</exception>
+	/// <exception cref="ArgumentNullException">directory</exception>
 	public DirectoryNotFoundException(DirectoryInfo directory) => this.Directory = directory ?? throw new ArgumentNullException(nameof(directory));
 
 	/// <summary>

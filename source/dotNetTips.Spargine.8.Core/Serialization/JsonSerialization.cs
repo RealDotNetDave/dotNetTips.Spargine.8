@@ -4,17 +4,12 @@
 // Created          : 02-21-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// This class facilitates easy serialization and deserialization of
-// strings to and from JSON format using the JsonSerializer. JSON
-// serialization is a common and efficient way to store and exchange
-// data in various applications and APIs.
-// </summary>
+// <summary>This class simplifies the process of serializing and deserializing strings to and from JSON format using the JsonSerializer. JSON serialization is a widely adopted and efficient method for storing and exchanging data in various applications and APIs.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;

@@ -4,19 +4,18 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-07-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="PreserveAttribute.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>
-// Attribute to make it easier to look at code and know that
-// the code needs to be preserved due to one of the
-// reasons in PreserveReason.
-// </summary>
+// <summary>Attribute to make it easier to look at code and know that the code needs to be preserved due to one of the reasons in PreserveReason.</summary>
 // ***********************************************************************
 
 //`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
+
+
 
 namespace DotNetTips.Spargine.Core;
 
@@ -29,6 +28,28 @@ namespace DotNetTips.Spargine.Core;
 [Information(nameof(PreserveAttribute), "David McCarter", "2/7/2023", Status = Status.Available, Documentation = "ADD URL")]
 public sealed class PreserveAttribute : Attribute
 {
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="PreserveAttribute" /> class.
+	/// </summary>
+	/// <param name="reason">The reason to keep this code description.</param>
+	public PreserveAttribute(string reason)
+	: this(PreserveReason.None, reason, string.Empty, string.Empty)
+	{
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="PreserveAttribute" /> class.
+	/// </summary>
+	/// <param name="reason">The reason to keep this code description.</param>
+	/// <param name="createdOn">Reason created on date.</param>
+	/// <param name="createdBy">Reason created by.</param>
+	/// <exception cref="ArgumentNullException">createdBy</exception>
+	/// <exception cref="ArgumentNullException">reason</exception>
+	public PreserveAttribute(string reason, string createdOn, string createdBy)
+		: this(PreserveReason.None, reason, createdOn, createdBy)
+	{
+	}
 	/// <summary>
 	/// Initializes a new instance of the <see cref="PreserveAttribute" /> class.
 	/// </summary>
@@ -48,28 +69,6 @@ public sealed class PreserveAttribute : Attribute
 		{
 			this.CreatedOn = createdDate;
 		}
-	}
-
-	/// <summary>
-	/// Initializes a new instance of the <see cref="PreserveAttribute" /> class.
-	/// </summary>
-	/// <param name="reason">The reason to keep this code description.</param>
-	/// <param name="createdOn">Reason created on date.</param>
-	/// <param name="createdBy">Reason created by.</param>
-	/// <exception cref="ArgumentNullException">createdBy</exception>
-	/// <exception cref="ArgumentNullException">reason</exception>
-	public PreserveAttribute(string reason, string createdOn, string createdBy)
-		: this(PreserveReason.None, reason, createdOn, createdBy)
-	{
-	}
-
-	/// <summary>
-	/// Initializes a new instance of the <see cref="PreserveAttribute" /> class.
-	/// </summary>
-	/// <param name="reason">The reason to keep this code description.</param>
-	public PreserveAttribute(string reason)
-	: this(PreserveReason.None, reason, string.Empty, string.Empty)
-	{
 	}
 
 	/// <summary>
@@ -95,4 +94,5 @@ public sealed class PreserveAttribute : Attribute
 	/// </summary>
 	/// <value>The reason description.</value>
 	public string Reason { get; }
+
 }

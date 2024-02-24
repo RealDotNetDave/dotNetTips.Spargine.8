@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark-20240222-172850</title>
+
+<style type="text/css">
+    table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+    td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: left; }
+    tr { background-color: #fff; border-top: 1px solid #ccc; }
+    tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<table>
+<thead>
+<tr><th colspan="8">TestingBenchmark.'AddIf() Ref'</th></tr>
+<tr>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf01()
+push      rsi
+push      rbx
+sub       rsp,28
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rcx,[rbx+188]
+mov       rdx,rcx
+mov       r8,[rbx+40]
+xor       esi,esi
+cmp       dword ptr [rcx+8],1
+setg      sil
+test      r8,r8
+jne       short 00007FFC1FE0F052
+mov       [rsp+20],rdx
+mov       rsi,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[rsi+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       r8d,r8d
+mov       [rsi+8],r8
+add       rsp,28
+pop       rbx
+pop       rsi
+ret
+test      esi,esi
+je        short 00007FFC1FE0F02D
+mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
+call      qword ptr [7FFC204B7B88]
+mov       rdx,rax
+jmp       short 00007FFC1FE0F02D
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf01()
+push      rsi
+push      rbx
+sub       rsp,28
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rcx,[rbx+188]
+mov       rdx,rcx
+mov       r8,[rbx+40]
+xor       esi,esi
+cmp       dword ptr [rcx+8],1
+setg      sil
+test      r8,r8
+jne       short 00007FFC1FE20842
+mov       [rsp+20],rdx
+mov       rsi,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[rsi+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       r8d,r8d
+mov       [rsi+8],r8
+add       rsp,28
+pop       rbx
+pop       rsi
+ret
+test      esi,esi
+je        short 00007FFC1FE2081D
+mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
+call      qword ptr [7FFC204C7EB8]
+mov       rdx,rax
+jmp       short 00007FFC1FE2081D
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf01()
+push      rsi
+push      rbx
+sub       rsp,28
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rcx,[rbx+188]
+mov       rdx,rcx
+mov       r8,[rbx+40]
+xor       esi,esi
+cmp       dword ptr [rcx+8],1
+setg      sil
+test      r8,r8
+jne       short 00007FFC1FE21412
+mov       [rsp+20],rdx
+mov       rsi,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[rsi+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       r8d,r8d
+mov       [rsi+8],r8
+add       rsp,28
+pop       rbx
+pop       rsi
+ret
+test      esi,esi
+je        short 00007FFC1FE213ED
+mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
+call      qword ptr [7FFC204C7B88]
+mov       rdx,rax
+jmp       short 00007FFC1FE213ED
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf01()
+push      rsi
+push      rbx
+sub       rsp,28
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rcx,[rbx+188]
+mov       rdx,rcx
+mov       r8,[rbx+40]
+xor       esi,esi
+cmp       dword ptr [rcx+8],1
+setg      sil
+test      r8,r8
+jne       short 00007FFC1FE40952
+mov       [rsp+20],rdx
+mov       rsi,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[rsi+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       r8d,r8d
+mov       [rsi+8],r8
+add       rsp,28
+pop       rbx
+pop       rsi
+ret
+test      esi,esi
+je        short 00007FFC1FE4092D
+mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
+call      qword ptr [7FFC204E7EB8]
+mov       rdx,rax
+jmp       short 00007FFC1FE4092D
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf01()
+push      rsi
+push      rbx
+sub       rsp,28
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rcx,[rbx+188]
+mov       rdx,rcx
+mov       r8,[rbx+40]
+xor       esi,esi
+cmp       dword ptr [rcx+8],1
+setg      sil
+test      r8,r8
+jne       short 00007FFC1FE5BD42
+mov       [rsp+20],rdx
+mov       rsi,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[rsi+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       r8d,r8d
+mov       [rsi+8],r8
+add       rsp,28
+pop       rbx
+pop       rsi
+ret
+test      esi,esi
+je        short 00007FFC1FE5BD1D
+mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
+call      qword ptr [7FFC2050EAC0]
+mov       rdx,rax
+jmp       short 00007FFC1FE5BD1D
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf01()
+push      rsi
+push      rbx
+sub       rsp,28
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rcx,[rbx+188]
+mov       rdx,rcx
+mov       r8,[rbx+40]
+xor       esi,esi
+cmp       dword ptr [rcx+8],1
+setg      sil
+test      r8,r8
+jne       short 00007FFC1FE1AFA2
+mov       [rsp+20],rdx
+mov       rsi,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[rsi+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       r8d,r8d
+mov       [rsi+8],r8
+add       rsp,28
+pop       rbx
+pop       rsi
+ret
+test      esi,esi
+je        short 00007FFC1FE1AF7D
+mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
+call      qword ptr [7FFC20504918]
+mov       rdx,rax
+jmp       short 00007FFC1FE1AF7D
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf01()
+push      rsi
+push      rbx
+sub       rsp,28
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rcx,[rbx+188]
+mov       rdx,rcx
+mov       r8,[rbx+40]
+xor       esi,esi
+cmp       dword ptr [rcx+8],1
+setg      sil
+test      r8,r8
+jne       short 00007FFC20554492
+mov       [rsp+20],rdx
+mov       rsi,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[rsi+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       r8d,r8d
+mov       [rsi+8],r8
+add       rsp,28
+pop       rbx
+pop       rsi
+ret
+test      esi,esi
+je        short 00007FFC2055446D
+mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
+call      qword ptr [7FFC20625FC8]
+mov       rdx,rax
+jmp       short 00007FFC2055446D
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf01()
+push      rsi
+push      rbx
+sub       rsp,28
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rcx,[rbx+188]
+mov       rdx,rcx
+mov       r8,[rbx+40]
+xor       esi,esi
+cmp       dword ptr [rcx+8],1
+setg      sil
+test      r8,r8
+jne       short 00007FFC20546E72
+mov       [rsp+20],rdx
+mov       rsi,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[rsi+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       r8d,r8d
+mov       [rsi+8],r8
+add       rsp,28
+pop       rbx
+pop       rsi
+ret
+test      esi,esi
+je        short 00007FFC20546E4D
+mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
+call      qword ptr [7FFC20615A10]
+mov       rdx,rax
+jmp       short 00007FFC20546E4D
+
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr><th colspan="8">TestingBenchmark.'AddIf() Val'</th></tr>
+<tr>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+<th>.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf02()
+push      r14
+push      rdi
+push      rsi
+push      rbp
+push      rbx
+sub       rsp,70
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rbp,[rbx+190]
+mov       r14,rbp
+lea       rsi,[rbx+88]
+lea       rdi,[rsp+28]
+mov       ecx,9
+rep movsq
+xor       edx,edx
+cmp       dword ptr [rbp+8],1
+setg      dl
+test      edx,edx
+je        near ptr 00007FFC1FE30783
+mov       esi,[r14+8]
+mov       edi,esi
+add       edi,1
+jo        near ptr 00007FFC1FE3077E
+test      edi,edi
+jl        near ptr 00007FFC1FE30785
+mov       rbp,r14
+cmp       esi,edi
+je        short 00007FFC1FE30710
+movsxd    rdx,edi
+mov       rcx,offset MT_DotNetTips.Spargine.Tester.Models.ValueTypes.Person`1[[DotNetTips.Spargine.Tester.Models.ValueTypes.Address, DotNetTips.Spargine.8.Tester]][]
+call      CORINFO_HELP_NEWARR_1_VC
+mov       r14,rax
+lea       rcx,[r14+10]
+lea       rdx,[rbp+10]
+cmp       edi,esi
+cmovg     edi,esi
+mov       r8d,edi
+lea       r8,[r8+r8*8]
+shl       r8,3
+cmp       r8,4000
+ja        near ptr 00007FFC1FE30796
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+mov       eax,[r14+8]
+lea       ecx,[rax-1]
+cmp       ecx,eax
+jae       near ptr 00007FFC1FE307A1
+mov       eax,ecx
+lea       rax,[rax+rax*8]
+lea       rdi,[r14+rax*8+10]
+lea       rsi,[rsp+28]
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+movsq
+movsq
+mov       [rsp+20],r14
+mov       r14,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[r14+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       ecx,ecx
+mov       [r14+8],rcx
+add       rsp,70
+pop       rbx
+pop       rbp
+pop       rsi
+pop       rdi
+pop       r14
+ret
+call      CORINFO_HELP_OVERFLOW
+jmp       short 00007FFC1FE30756
+mov       ecx,47
+mov       edx,0D
+call      qword ptr [7FFC1FF6ED18]
+int       3
+call      qword ptr [7FFC1FE75BD8]
+jmp       near ptr 00007FFC1FE30710
+call      CORINFO_HELP_RNGCHKFAIL
+int       3
+
+System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+push      rdi
+push      rsi
+push      rbx
+sub       rsp,20
+mov       rbx,rcx
+mov       rsi,rdx
+mov       rdi,r8
+cmp       rsi,rbx
+je        short 00007FFC7ED77298
+mov       rcx,rbx
+sub       rcx,rsi
+cmp       rcx,rdi
+jb        short 00007FFC7ED772A0
+add       rdi,0FFFFFFFFFFFFC000
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8d,4000
+call      qword ptr [7FFC7F75FCF0]
+add       rbx,4000
+add       rsi,4000
+cmp       rdi,4000
+ja        short 00007FFC7ED77250
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8,rdi
+call      qword ptr [7FFC7F75FCF0]
+nop
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rdi,0FFFFFFFFFFFFC000
+lea       rcx,[rbx+rdi]
+lea       rdx,[rsi+rdi]
+mov       r8d,4000
+call      qword ptr [7FFC7F75FCF0]
+cmp       rdi,4000
+ja        short 00007FFC7ED772A0
+jmp       short 00007FFC7ED77280
+
+Extern method
+System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf02()
+push      r14
+push      rdi
+push      rsi
+push      rbp
+push      rbx
+sub       rsp,70
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rbp,[rbx+190]
+mov       r14,rbp
+lea       rsi,[rbx+88]
+lea       rdi,[rsp+28]
+mov       ecx,9
+rep movsq
+xor       edx,edx
+cmp       dword ptr [rbp+8],1
+setg      dl
+test      edx,edx
+je        near ptr 00007FFC1FE1DF23
+mov       esi,[r14+8]
+mov       edi,esi
+add       edi,1
+jo        near ptr 00007FFC1FE1DF1E
+test      edi,edi
+jl        near ptr 00007FFC1FE1DF25
+mov       rbp,r14
+cmp       esi,edi
+je        short 00007FFC1FE1DEB0
+movsxd    rdx,edi
+mov       rcx,offset MT_DotNetTips.Spargine.Tester.Models.ValueTypes.Person`1[[DotNetTips.Spargine.Tester.Models.ValueTypes.Address, DotNetTips.Spargine.8.Tester]][]
+call      CORINFO_HELP_NEWARR_1_VC
+mov       r14,rax
+lea       rcx,[r14+10]
+lea       rdx,[rbp+10]
+cmp       edi,esi
+cmovg     edi,esi
+mov       r8d,edi
+lea       r8,[r8+r8*8]
+shl       r8,3
+cmp       r8,4000
+ja        near ptr 00007FFC1FE1DF36
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+mov       eax,[r14+8]
+lea       ecx,[rax-1]
+cmp       ecx,eax
+jae       near ptr 00007FFC1FE1DF41
+mov       eax,ecx
+lea       rax,[rax+rax*8]
+lea       rdi,[r14+rax*8+10]
+lea       rsi,[rsp+28]
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+movsq
+movsq
+mov       [rsp+20],r14
+mov       r14,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[r14+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       ecx,ecx
+mov       [r14+8],rcx
+add       rsp,70
+pop       rbx
+pop       rbp
+pop       rsi
+pop       rdi
+pop       r14
+ret
+call      CORINFO_HELP_OVERFLOW
+jmp       short 00007FFC1FE1DEF6
+mov       ecx,47
+mov       edx,0D
+call      qword ptr [7FFC1FF5ED18]
+int       3
+call      qword ptr [7FFC1FE65BD8]
+jmp       near ptr 00007FFC1FE1DEB0
+call      CORINFO_HELP_RNGCHKFAIL
+int       3
+
+System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+push      rdi
+push      rsi
+push      rbx
+sub       rsp,20
+mov       rbx,rcx
+mov       rsi,rdx
+mov       rdi,r8
+cmp       rsi,rbx
+je        short 00007FFC7ED77298
+mov       rcx,rbx
+sub       rcx,rsi
+cmp       rcx,rdi
+jb        short 00007FFC7ED772A0
+add       rdi,0FFFFFFFFFFFFC000
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8d,4000
+call      qword ptr [7FFC7F75FCF0]
+add       rbx,4000
+add       rsi,4000
+cmp       rdi,4000
+ja        short 00007FFC7ED77250
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8,rdi
+call      qword ptr [7FFC7F75FCF0]
+nop
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rdi,0FFFFFFFFFFFFC000
+lea       rcx,[rbx+rdi]
+lea       rdx,[rsi+rdi]
+mov       r8d,4000
+call      qword ptr [7FFC7F75FCF0]
+cmp       rdi,4000
+ja        short 00007FFC7ED772A0
+jmp       short 00007FFC7ED77280
+
+Extern method
+System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf02()
+push      r14
+push      rdi
+push      rsi
+push      rbp
+push      rbx
+sub       rsp,70
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rbp,[rbx+190]
+mov       r14,rbp
+lea       rsi,[rbx+88]
+lea       rdi,[rsp+28]
+mov       ecx,9
+rep movsq
+xor       edx,edx
+cmp       dword ptr [rbp+8],1
+setg      dl
+test      edx,edx
+je        near ptr 00007FFC1FE0DA93
+mov       esi,[r14+8]
+mov       edi,esi
+add       edi,1
+jo        near ptr 00007FFC1FE0DA8E
+test      edi,edi
+jl        near ptr 00007FFC1FE0DA95
+mov       rbp,r14
+cmp       esi,edi
+je        short 00007FFC1FE0DA20
+movsxd    rdx,edi
+mov       rcx,offset MT_DotNetTips.Spargine.Tester.Models.ValueTypes.Person`1[[DotNetTips.Spargine.Tester.Models.ValueTypes.Address, DotNetTips.Spargine.8.Tester]][]
+call      CORINFO_HELP_NEWARR_1_VC
+mov       r14,rax
+lea       rcx,[r14+10]
+lea       rdx,[rbp+10]
+cmp       edi,esi
+cmovg     edi,esi
+mov       r8d,edi
+lea       r8,[r8+r8*8]
+shl       r8,3
+cmp       r8,4000
+ja        near ptr 00007FFC1FE0DAA6
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+mov       eax,[r14+8]
+lea       ecx,[rax-1]
+cmp       ecx,eax
+jae       near ptr 00007FFC1FE0DAB1
+mov       eax,ecx
+lea       rax,[rax+rax*8]
+lea       rdi,[r14+rax*8+10]
+lea       rsi,[rsp+28]
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+movsq
+movsq
+mov       [rsp+20],r14
+mov       r14,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[r14+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       ecx,ecx
+mov       [r14+8],rcx
+add       rsp,70
+pop       rbx
+pop       rbp
+pop       rsi
+pop       rdi
+pop       r14
+ret
+call      CORINFO_HELP_OVERFLOW
+jmp       short 00007FFC1FE0DA66
+mov       ecx,47
+mov       edx,0D
+call      qword ptr [7FFC1FF4ED18]
+int       3
+call      qword ptr [7FFC1FE55BD8]
+jmp       near ptr 00007FFC1FE0DA20
+call      CORINFO_HELP_RNGCHKFAIL
+int       3
+
+System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+push      rdi
+push      rsi
+push      rbx
+sub       rsp,20
+mov       rbx,rcx
+mov       rsi,rdx
+mov       rdi,r8
+cmp       rsi,rbx
+je        short 00007FFC7ED77298
+mov       rcx,rbx
+sub       rcx,rsi
+cmp       rcx,rdi
+jb        short 00007FFC7ED772A0
+add       rdi,0FFFFFFFFFFFFC000
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8d,4000
+call      qword ptr [7FFC7F75FCF0]
+add       rbx,4000
+add       rsi,4000
+cmp       rdi,4000
+ja        short 00007FFC7ED77250
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8,rdi
+call      qword ptr [7FFC7F75FCF0]
+nop
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rdi,0FFFFFFFFFFFFC000
+lea       rcx,[rbx+rdi]
+lea       rdx,[rsi+rdi]
+mov       r8d,4000
+call      qword ptr [7FFC7F75FCF0]
+cmp       rdi,4000
+ja        short 00007FFC7ED772A0
+jmp       short 00007FFC7ED77280
+
+Extern method
+System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf02()
+push      r14
+push      rdi
+push      rsi
+push      rbp
+push      rbx
+sub       rsp,70
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rbp,[rbx+190]
+mov       r14,rbp
+lea       rsi,[rbx+88]
+lea       rdi,[rsp+28]
+mov       ecx,9
+rep movsq
+xor       edx,edx
+cmp       dword ptr [rbp+8],1
+setg      dl
+test      edx,edx
+je        near ptr 00007FFC1FE0CA93
+mov       esi,[r14+8]
+mov       edi,esi
+add       edi,1
+jo        near ptr 00007FFC1FE0CA8E
+test      edi,edi
+jl        near ptr 00007FFC1FE0CA95
+mov       rbp,r14
+cmp       esi,edi
+je        short 00007FFC1FE0CA20
+movsxd    rdx,edi
+mov       rcx,offset MT_DotNetTips.Spargine.Tester.Models.ValueTypes.Person`1[[DotNetTips.Spargine.Tester.Models.ValueTypes.Address, DotNetTips.Spargine.8.Tester]][]
+call      CORINFO_HELP_NEWARR_1_VC
+mov       r14,rax
+lea       rcx,[r14+10]
+lea       rdx,[rbp+10]
+cmp       edi,esi
+cmovg     edi,esi
+mov       r8d,edi
+lea       r8,[r8+r8*8]
+shl       r8,3
+cmp       r8,4000
+ja        near ptr 00007FFC1FE0CAA6
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+mov       eax,[r14+8]
+lea       ecx,[rax-1]
+cmp       ecx,eax
+jae       near ptr 00007FFC1FE0CAB1
+mov       eax,ecx
+lea       rax,[rax+rax*8]
+lea       rdi,[r14+rax*8+10]
+lea       rsi,[rsp+28]
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+movsq
+movsq
+mov       [rsp+20],r14
+mov       r14,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[r14+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       ecx,ecx
+mov       [r14+8],rcx
+add       rsp,70
+pop       rbx
+pop       rbp
+pop       rsi
+pop       rdi
+pop       r14
+ret
+call      CORINFO_HELP_OVERFLOW
+jmp       short 00007FFC1FE0CA66
+mov       ecx,47
+mov       edx,0D
+call      qword ptr [7FFC1FF4ED18]
+int       3
+call      qword ptr [7FFC1FE55BD8]
+jmp       near ptr 00007FFC1FE0CA20
+call      CORINFO_HELP_RNGCHKFAIL
+int       3
+
+System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+push      rdi
+push      rsi
+push      rbx
+sub       rsp,20
+mov       rbx,rcx
+mov       rsi,rdx
+mov       rdi,r8
+cmp       rsi,rbx
+je        short 00007FFC7ED77298
+mov       rcx,rbx
+sub       rcx,rsi
+cmp       rcx,rdi
+jb        short 00007FFC7ED772A0
+add       rdi,0FFFFFFFFFFFFC000
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8d,4000
+call      qword ptr [7FFC7F75FCF0]
+add       rbx,4000
+add       rsi,4000
+cmp       rdi,4000
+ja        short 00007FFC7ED77250
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8,rdi
+call      qword ptr [7FFC7F75FCF0]
+nop
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rdi,0FFFFFFFFFFFFC000
+lea       rcx,[rbx+rdi]
+lea       rdx,[rsi+rdi]
+mov       r8d,4000
+call      qword ptr [7FFC7F75FCF0]
+cmp       rdi,4000
+ja        short 00007FFC7ED772A0
+jmp       short 00007FFC7ED77280
+
+Extern method
+System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf02()
+push      r14
+push      rdi
+push      rsi
+push      rbp
+push      rbx
+sub       rsp,70
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rbp,[rbx+190]
+mov       r14,rbp
+lea       rsi,[rbx+88]
+lea       rdi,[rsp+28]
+mov       ecx,9
+rep movsq
+xor       edx,edx
+cmp       dword ptr [rbp+8],1
+setg      dl
+test      edx,edx
+je        near ptr 00007FFC1FE2C7D4
+mov       esi,[r14+8]
+mov       edi,esi
+add       edi,1
+jo        near ptr 00007FFC1FE2C7CF
+test      edi,edi
+jl        near ptr 00007FFC1FE2C7D6
+mov       rbp,r14
+cmp       esi,edi
+je        short 00007FFC1FE2C761
+movsxd    rdx,edi
+mov       rcx,offset MT_DotNetTips.Spargine.Tester.Models.ValueTypes.Person`1[[DotNetTips.Spargine.Tester.Models.ValueTypes.Address, DotNetTips.Spargine.8.Tester]][]
+call      CORINFO_HELP_NEWARR_1_VC
+mov       r14,rax
+lea       rcx,[r14+10]
+lea       rdx,[rbp+10]
+cmp       edi,esi
+cmovg     edi,esi
+mov       r8d,edi
+lea       r8,[r8+r8*8]
+shl       r8,3
+cmp       r8,4000
+jbe       near ptr 00007FFC1FE2C7E7
+call      qword ptr [7FFC1FE75BD8]
+mov       eax,[r14+8]
+lea       ecx,[rax-1]
+cmp       ecx,eax
+jae       near ptr 00007FFC1FE2C7F1
+mov       eax,ecx
+lea       rax,[rax+rax*8]
+lea       rdi,[r14+rax*8+10]
+lea       rsi,[rsp+28]
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+movsq
+movsq
+mov       [rsp+20],r14
+mov       r14,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[r14+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       ecx,ecx
+mov       [r14+8],rcx
+add       rsp,70
+pop       rbx
+pop       rbp
+pop       rsi
+pop       rdi
+pop       r14
+ret
+call      CORINFO_HELP_OVERFLOW
+jmp       short 00007FFC1FE2C7A7
+mov       ecx,47
+mov       edx,0D
+call      qword ptr [7FFC1FF6ED18]
+int       3
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+jmp       near ptr 00007FFC1FE2C761
+call      CORINFO_HELP_RNGCHKFAIL
+int       3
+
+System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+push      rdi
+push      rsi
+push      rbx
+sub       rsp,20
+mov       rbx,rcx
+mov       rsi,rdx
+mov       rdi,r8
+cmp       rsi,rbx
+je        short 00007FFC1FE2C606
+mov       rcx,rbx
+sub       rcx,rsi
+cmp       rcx,rdi
+jb        short 00007FFC1FE2C60E
+add       rdi,0FFFFFFFFFFFFC000
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8d,4000
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+add       rbx,4000
+add       rsi,4000
+cmp       rdi,4000
+ja        short 00007FFC1FE2C5C0
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8,rdi
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+nop
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rdi,0FFFFFFFFFFFFC000
+lea       rcx,[rbx+rdi]
+lea       rdx,[rsi+rdi]
+mov       r8d,4000
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+cmp       rdi,4000
+ja        short 00007FFC1FE2C60E
+jmp       short 00007FFC1FE2C5EF
+
+Extern method
+System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf02()
+push      r14
+push      rdi
+push      rsi
+push      rbp
+push      rbx
+sub       rsp,70
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rbp,[rbx+190]
+mov       r14,rbp
+lea       rsi,[rbx+88]
+lea       rdi,[rsp+28]
+mov       ecx,9
+rep movsq
+xor       edx,edx
+cmp       dword ptr [rbp+8],1
+setg      dl
+test      edx,edx
+je        near ptr 00007FFC1FE381B4
+mov       esi,[r14+8]
+mov       edi,esi
+add       edi,1
+jo        near ptr 00007FFC1FE381AF
+test      edi,edi
+jl        near ptr 00007FFC1FE381B6
+mov       rbp,r14
+cmp       esi,edi
+je        short 00007FFC1FE38141
+movsxd    rdx,edi
+mov       rcx,offset MT_DotNetTips.Spargine.Tester.Models.ValueTypes.Person`1[[DotNetTips.Spargine.Tester.Models.ValueTypes.Address, DotNetTips.Spargine.8.Tester]][]
+call      CORINFO_HELP_NEWARR_1_VC
+mov       r14,rax
+lea       rcx,[r14+10]
+lea       rdx,[rbp+10]
+cmp       edi,esi
+cmovg     edi,esi
+mov       r8d,edi
+lea       r8,[r8+r8*8]
+shl       r8,3
+cmp       r8,4000
+jbe       near ptr 00007FFC1FE381C7
+call      qword ptr [7FFC1FE75BD8]
+mov       eax,[r14+8]
+lea       ecx,[rax-1]
+cmp       ecx,eax
+jae       near ptr 00007FFC1FE381D1
+mov       eax,ecx
+lea       rax,[rax+rax*8]
+lea       rdi,[r14+rax*8+10]
+lea       rsi,[rsp+28]
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+movsq
+movsq
+mov       [rsp+20],r14
+mov       r14,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[r14+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       ecx,ecx
+mov       [r14+8],rcx
+add       rsp,70
+pop       rbx
+pop       rbp
+pop       rsi
+pop       rdi
+pop       r14
+ret
+call      CORINFO_HELP_OVERFLOW
+jmp       short 00007FFC1FE38187
+mov       ecx,47
+mov       edx,0D
+call      qword ptr [7FFC1FF6ED18]
+int       3
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+jmp       near ptr 00007FFC1FE38141
+call      CORINFO_HELP_RNGCHKFAIL
+int       3
+
+System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+push      rdi
+push      rsi
+push      rbx
+sub       rsp,20
+mov       rbx,rcx
+mov       rsi,rdx
+mov       rdi,r8
+cmp       rsi,rbx
+je        short 00007FFC1FE37FE6
+mov       rcx,rbx
+sub       rcx,rsi
+cmp       rcx,rdi
+jb        short 00007FFC1FE37FEE
+add       rdi,0FFFFFFFFFFFFC000
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8d,4000
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+add       rbx,4000
+add       rsi,4000
+cmp       rdi,4000
+ja        short 00007FFC1FE37FA0
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8,rdi
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+nop
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rdi,0FFFFFFFFFFFFC000
+lea       rcx,[rbx+rdi]
+lea       rdx,[rsi+rdi]
+mov       r8d,4000
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+cmp       rdi,4000
+ja        short 00007FFC1FE37FEE
+jmp       short 00007FFC1FE37FCF
+
+Extern method
+System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf02()
+push      r14
+push      rdi
+push      rsi
+push      rbp
+push      rbx
+sub       rsp,70
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rbp,[rbx+190]
+mov       r14,rbp
+lea       rsi,[rbx+88]
+lea       rdi,[rsp+28]
+mov       ecx,9
+rep movsq
+xor       edx,edx
+cmp       dword ptr [rbp+8],1
+setg      dl
+test      edx,edx
+je        near ptr 00007FFC20541CD3
+mov       esi,[r14+8]
+mov       edi,esi
+add       edi,1
+jo        near ptr 00007FFC20541CCE
+test      edi,edi
+jl        near ptr 00007FFC20541CD5
+mov       rbp,r14
+cmp       esi,edi
+je        short 00007FFC20541C61
+movsxd    rdx,edi
+mov       rcx,offset MT_DotNetTips.Spargine.Tester.Models.ValueTypes.Person`1[[DotNetTips.Spargine.Tester.Models.ValueTypes.Address, DotNetTips.Spargine.8.Tester]][]
+call      CORINFO_HELP_NEWARR_1_VC
+mov       r14,rax
+lea       rcx,[r14+10]
+lea       rdx,[rbp+10]
+cmp       edi,esi
+cmovg     edi,esi
+mov       r8d,edi
+lea       r8,[r8+r8*8]
+shl       r8,3
+cmp       r8,4000
+jbe       near ptr 00007FFC20541CE6
+call      qword ptr [7FFC1FE75BD8]
+mov       eax,[r14+8]
+dec       eax
+cmp       eax,[r14+8]
+jae       near ptr 00007FFC20541CF0
+lea       rax,[rax+rax*8]
+lea       rdi,[r14+rax*8+10]
+lea       rsi,[rsp+28]
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+movsq
+movsq
+mov       [rsp+20],r14
+mov       r14,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[r14+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       ecx,ecx
+mov       [r14+8],rcx
+add       rsp,70
+pop       rbx
+pop       rbp
+pop       rsi
+pop       rdi
+pop       r14
+ret
+call      CORINFO_HELP_OVERFLOW
+jmp       short 00007FFC20541CA6
+mov       ecx,47
+mov       edx,0D
+call      qword ptr [7FFC1FF6ED18]
+int       3
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+jmp       near ptr 00007FFC20541C61
+call      CORINFO_HELP_RNGCHKFAIL
+int       3
+
+System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+push      rdi
+push      rsi
+push      rbx
+sub       rsp,20
+mov       rbx,rcx
+mov       rsi,rdx
+mov       rdi,r8
+cmp       rsi,rbx
+je        short 00007FFC20541B06
+mov       rcx,rbx
+sub       rcx,rsi
+cmp       rcx,rdi
+jb        short 00007FFC20541B0E
+add       rdi,0FFFFFFFFFFFFC000
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8d,4000
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+add       rbx,4000
+add       rsi,4000
+cmp       rdi,4000
+ja        short 00007FFC20541AC0
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8,rdi
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+nop
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rdi,0FFFFFFFFFFFFC000
+lea       rcx,[rbx+rdi]
+lea       rdx,[rsi+rdi]
+mov       r8d,4000
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+cmp       rdi,4000
+ja        short 00007FFC20541B0E
+jmp       short 00007FFC20541AEF
+
+Extern method
+System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark.AddIf02()
+push      r14
+push      rdi
+push      rsi
+push      rbp
+push      rbx
+sub       rsp,70
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rbp,[rbx+190]
+mov       r14,rbp
+lea       rsi,[rbx+88]
+lea       rdi,[rsp+28]
+mov       ecx,9
+rep movsq
+xor       edx,edx
+cmp       dword ptr [rbp+8],1
+setg      dl
+test      edx,edx
+je        near ptr 00007FFC20521C74
+mov       esi,[r14+8]
+mov       edi,esi
+add       edi,1
+jo        near ptr 00007FFC20521C6F
+test      edi,edi
+jl        near ptr 00007FFC20521C76
+mov       rbp,r14
+cmp       esi,edi
+je        short 00007FFC20521C01
+movsxd    rdx,edi
+mov       rcx,offset MT_DotNetTips.Spargine.Tester.Models.ValueTypes.Person`1[[DotNetTips.Spargine.Tester.Models.ValueTypes.Address, DotNetTips.Spargine.8.Tester]][]
+call      CORINFO_HELP_NEWARR_1_VC
+mov       r14,rax
+lea       rcx,[r14+10]
+lea       rdx,[rbp+10]
+cmp       edi,esi
+cmovg     edi,esi
+mov       r8d,edi
+lea       r8,[r8+r8*8]
+shl       r8,3
+cmp       r8,4000
+jbe       near ptr 00007FFC20521C87
+call      qword ptr [7FFC1FE65BD8]
+mov       eax,[r14+8]
+lea       ecx,[rax-1]
+cmp       ecx,eax
+jae       near ptr 00007FFC20521C91
+mov       eax,ecx
+lea       rax,[rax+rax*8]
+lea       rdi,[r14+rax*8+10]
+lea       rsi,[rsp+28]
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+call      CORINFO_HELP_ASSIGN_BYREF
+movsq
+movsq
+mov       [rsp+20],r14
+mov       r14,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[r14+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       ecx,ecx
+mov       [r14+8],rcx
+add       rsp,70
+pop       rbx
+pop       rbp
+pop       rsi
+pop       rdi
+pop       r14
+ret
+call      CORINFO_HELP_OVERFLOW
+jmp       short 00007FFC20521C47
+mov       ecx,47
+mov       edx,0D
+call      qword ptr [7FFC1FF5ED18]
+int       3
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+jmp       near ptr 00007FFC20521C01
+call      CORINFO_HELP_RNGCHKFAIL
+int       3
+
+System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+push      rdi
+push      rsi
+push      rbx
+sub       rsp,20
+mov       rbx,rcx
+mov       rsi,rdx
+mov       rdi,r8
+cmp       rsi,rbx
+je        short 00007FFC20521AA6
+mov       rcx,rbx
+sub       rcx,rsi
+cmp       rcx,rdi
+jb        short 00007FFC20521AAE
+add       rdi,0FFFFFFFFFFFFC000
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8d,4000
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+add       rbx,4000
+add       rsi,4000
+cmp       rdi,4000
+ja        short 00007FFC20521A60
+mov       rcx,rbx
+mov       rdx,rsi
+mov       r8,rdi
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+nop
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rsp,20
+pop       rbx
+pop       rsi
+pop       rdi
+ret
+add       rdi,0FFFFFFFFFFFFC000
+lea       rcx,[rbx+rdi]
+lea       rdx,[rsi+rdi]
+mov       r8d,4000
+call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+cmp       rdi,4000
+ja        short 00007FFC20521AAE
+jmp       short 00007FFC20521A8F
+
+Extern method
+System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

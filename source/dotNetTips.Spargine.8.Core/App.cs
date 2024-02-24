@@ -4,16 +4,12 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-20-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>
-// Application Information and Helper Methods: Process
-// Management, Environment Variables, Processor Information,
-// and More.
-// </summary>
+// <summary>Application Information and Utility Methods.</summary>
 // ***********************************************************************
 using System.Collections;
 using System.Collections.Immutable;
@@ -34,6 +30,7 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 public static class App
 {
+	//TODO: ADD METHOD TO REBOOT COMPUTER.
 
 	/// <summary>
 	/// The temporary ASP files location.

@@ -1,0 +1,23 @@
+Method,Runtime,Count,Mean,Allocated
+'Count: With Predicate',.NET 8.0,16,345.614,40 B
+'FastAny: With Predicate',.NET 8.0,16,66.74,40 B
+'FastCount: With Predicate',.NET 8.0,16,341.146,40 B
+'FirstOrDefault: Alternate',.NET 8.0,16,44.579,96 B
+"'FirstOrDefault: Predicate, Alternate'",.NET 8.0,16,205.329,160 B
+'HasItems: With Count',.NET 8.0,16,50.098,40 B
+'IndexOf: Comparer',.NET 8.0,16,691.918,504 B
+'OrderBy: With Sort Expression',.NET 8.0,16,NA,NA
+AddDistinct,.NET 8.0,16,670.457,656 B
+AddIf,.NET 8.0,16,17.132,64 B
+ContainsAny,.NET 8.0,16,453.846,720 B
+Count,.NET 8.0,16,50.165,40 B
+CountAsync,.NET 8.0,16,947.604,408 B
+DoesNotHaveItems,.NET 8.0,16,7.549,32 B
+EnsureUnique,.NET 8.0,16,"2,822.86",1112 B
+FastCount,.NET 8.0,16,49.447,40 B
+FirstOrNull,.NET 8.0,16,819.876,1152 B
+HasDuplicates,.NET 8.0,16,"3,592.56",1032 B
+HasItems,.NET 8.0,16,48.217,40 B
+IndexOf,.NET 8.0,16,668.77,480 B
+IsNullOrEmpty,.NET 8.0,16,13.53,32 B
+Join,.NET 8.0,16,"849,405.25",1339602 B

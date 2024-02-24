@@ -4,15 +4,12 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-06-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>
-// Inherits ConcurrentBag<T> and makes sure all items in the bag are
-// unique.
-// </summary>
+// <summary>Inherits from ConcurrentBag<T> and ensures that all items in the bag are unique.</summary>
 // ***********************************************************************
 using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;

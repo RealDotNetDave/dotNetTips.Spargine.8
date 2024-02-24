@@ -4,17 +4,15 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Improves the performance when using a StringBuilder by using an
-// ObjectPool.
-// </summary>
+// <summary>Enhances performance when using a StringBuilder by employing an ObjectPool.</summary>
 // ***********************************************************************
 
+using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -42,10 +40,10 @@ public static class FastStringBuilder
 	/// <param name="bytes">The bytes.</param>
 	/// <returns>System.String.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Updated, Documentation = "ADD URL")]
 	public static string BytesToString([NotNull] byte[] bytes)
 	{
-		if (bytes is null)
+		if (bytes == null)
 		{
 			return ControlChars.EmptyString;
 		}
@@ -54,12 +52,17 @@ public static class FastStringBuilder
 
 		try
 		{
+			var rangePartitioner = Partitioner.Create(0, bytes.Length);
+
 			_ = sb.Append("'0x");
 
-			for (var byteCount = 0; byteCount < bytes.LongLength; byteCount++)
+			_ = Parallel.ForEach(rangePartitioner, (range, loopState) =>
 			{
-				_ = sb.Append(bytes[byteCount].ToString("X2", CultureInfo.InvariantCulture));
-			}
+				for (var index = range.Item1; index < range.Item2; index++)
+				{
+					_ = sb.Append(bytes[index].ToString("X2", CultureInfo.InvariantCulture));
+				}
+			});
 
 			_ = sb.Append('\'');
 
@@ -138,17 +141,24 @@ public static class FastStringBuilder
 		{
 			if (args?.Length > 0)
 			{
-				for (var argumentIndex = 0; argumentIndex < args.Length; argumentIndex++)
+				var rangePartitioner = Partitioner.Create(0, args.Length);
+
+				_ = sb.Append("'0x");
+
+				_ = Parallel.ForEach(rangePartitioner, (range, loopState) =>
 				{
-					var line = args[argumentIndex];
-
-					if (argumentIndex < args.Length - 1 && delimiter.Length > 0)
+					for (var index = range.Item1; index < range.Item2; index++)
 					{
-						line = CombineStrings(false, line, delimiter);
-					}
+						var line = args[index];
 
-					_ = addLineFeed is true ? sb.AppendLine(line) : sb.Append(line);
-				}
+						if (index < args.Length - 1 && delimiter.Length > 0)
+						{
+							line = CombineStrings(false, line, delimiter);
+						}
+
+						_ = addLineFeed is true ? sb.AppendLine(line) : sb.Append(line);
+					}
+				});
 			}
 
 			return sb.ToString();

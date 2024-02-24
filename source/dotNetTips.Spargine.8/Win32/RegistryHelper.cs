@@ -4,15 +4,12 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="RegistryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Convenient methods for interacting with the Windows registration
-// database, facilitating easy access and manipulation.
-// </summary>
+// <summary>Convenient methods for interacting with the Windows registration database, streamlining access and manipulation tasks.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
@@ -52,7 +49,7 @@ public static class RegistryHelper
 	/// <param name="keyName">The name.</param>
 	/// <param name="registryKeyType">Type of the registry key.</param>
 	/// <returns>RegistryKey.</returns>
-	/// <exception cref="PlatformNotSupportedException"></exception>
+	/// <exception cref="System.PlatformNotSupportedException"></exception>
 	[Information(nameof(GetRegistryKey), "David McCarter", "9/10/2020", "9/10/2020", Status = Status.Available, UnitTestCoverage = 90, BenchMarkStatus = BenchMarkStatus.None)]
 	public static RegistryKey GetRegistryKey([NotNull] string keyName, [NotNull] RegistryHive registryKeyType)
 	{

@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core.Serialization;
@@ -34,37 +35,38 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Serialization;
 public class SerializationBenchmark : Benchmark
 {
 
-	private string _jsonPersonProperRefList;
 	private string _jsonPersonRecord;
 	private string _jsonPersonRef;
-	private List<Person<Address>> _personProperRefList;
+
+	private string _jsonPersonRefList;
+	private List<Person<Address>> _personRefList;
 	private string _xmlPersonRecord;
 	private string _xmlPersonRef;
 
-	[Benchmark(Description = "Deserialize JSON: JsonSerializer + Generator - PersonProper")]
+	[Benchmark(Description = "Deserialize JSON: JsonSerializer + Generator - Person")]
 	[BenchmarkCategory(Categories.JSON, Categories.New, "JsonSerializer")]
-	public void Deserialize_Json_JsonSerializer_Generator_PersonProper()
+	public void Deserialize_Json_JsonSerializer_Generator_Person()
 	{
-		var result = System.Text.Json.JsonSerializer.Deserialize(this._jsonPersonRef, typeof(Person<Address>), PersonJsonSerializerContext.Default) as Person<Address>;
+		var result = JsonSerializer.Deserialize(this._jsonPersonRef, typeof(Person<Address>), PersonJsonSerializerContext.Default) as Person<Address>;
 		base.Consume(result);
 	}
 
-	[Benchmark(Description = "Deserialize JSON: JsonSerializer + Generator - List<PersonProper>")]
+	[Benchmark(Description = "Deserialize JSON: JsonSerializer + Generator - List<Person>")]
 	[BenchmarkCategory(Categories.JSON, Categories.New, "JsonSerializer")]
-	public void Deserialize_Json_JsonSerializer_Generator_PersonProper_List()
+	public void Deserialize_Json_JsonSerializer_Generator_Person_List()
 	{
-		var result = System.Text.Json.JsonSerializer.Deserialize(this._jsonPersonProperRefList, typeof(List<Person<Address>>), PersonJsonSerializerContext.Default) as List<Person<Address>>;
+		var result = JsonSerializer.Deserialize(this._jsonPersonRefList, typeof(List<Person<Address>>), PersonJsonSerializerContext.Default) as List<Person<Address>>;
 		base.Consume(result);
 	}
 
 	/// <summary>
 	/// Deserializes the json record.
 	/// </summary>
-	[Benchmark(Description = nameof(JsonSerialization.Deserialize) + ": List<PersonProper>")]
+	[Benchmark(Description = nameof(JsonSerialization.Deserialize) + ": List<Person>")]
 	[BenchmarkCategory(Categories.JSON)]
-	public void Deserialize_Json_PersonProper_List()
+	public void Deserialize_Json_Person_List()
 	{
-		var result = JsonSerialization.Deserialize<List<Person<Address>>>(this._jsonPersonProperRefList);
+		var result = JsonSerialization.Deserialize<List<Person<Address>>>(this._jsonPersonRefList);
 
 		this.Consume(result);
 	}
@@ -95,40 +97,40 @@ public class SerializationBenchmark : Benchmark
 	/// <summary>
 	/// Deserializes the XML reference.
 	/// </summary>
-	[Benchmark(Description = nameof(XmlSerialization.Deserialize) + ": XML=PersonProper")]
+	[Benchmark(Description = nameof(XmlSerialization.Deserialize) + ": XML=Person")]
 	[BenchmarkCategory(Categories.XML)]
-	public void Deserialize_Xml_Ref_PersonProper()
+	public void Deserialize_Xml_Ref_Person()
 	{
 		var result = XmlSerialization.Deserialize<Person<Address>>(this._xmlPersonRef);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Serialize JSON: JsonSerializer + Generator - PersonProper")]
+	[Benchmark(Description = "Serialize JSON: JsonSerializer + Generator - Person")]
 	[BenchmarkCategory(Categories.JSON, Categories.New, "JsonSerializer")]
-	public void Serialize_Json_JsonSerializer_Generator_PersonProper()
+	public void Serialize_Json_JsonSerializer_Generator_Person()
 	{
-		var result = System.Text.Json.JsonSerializer.Serialize(base.PersonRef01, typeof(Person<Address>), PersonJsonSerializerContext.Default);
+		var result = JsonSerializer.Serialize(base.PersonRef01, typeof(Person<Address>), PersonJsonSerializerContext.Default);
 
 		base.Consume(result);
 	}
 
-	[Benchmark(Description = "Serialize JSON: JsonSerializer + Generator - List<PersonProper>")]
+	[Benchmark(Description = "Serialize JSON: JsonSerializer + Generator - List<Person>")]
 	[BenchmarkCategory(Categories.JSON, Categories.New, "JsonSerializer")]
-	public void Serialize_Json_JsonSerializer_Generator_PersonProper_List()
+	public void Serialize_Json_JsonSerializer_Generator_Person_List()
 	{
-		var result = System.Text.Json.JsonSerializer.Serialize(this._personProperRefList, typeof(List<Person<Address>>), PersonJsonSerializerContext.Default);
+		var result = JsonSerializer.Serialize(this._personRefList, typeof(List<Person<Address>>), PersonJsonSerializerContext.Default);
 		base.Consume(result);
 	}
 
 	/// <summary>
 	/// Serializes the json record.
 	/// </summary>
-	[Benchmark(Description = nameof(JsonSerialization.Serialize) + ": List<PersonProper>")]
+	[Benchmark(Description = nameof(JsonSerialization.Serialize) + ": List<Person>")]
 	[BenchmarkCategory(Categories.JSON)]
-	public void Serialize_Json_PersonProper_List()
+	public void Serialize_Json_Person_List()
 	{
-		var result = JsonSerialization.Serialize(this._personProperRefList);
+		var result = JsonSerialization.Serialize(this._personRefList);
 
 		this.Consume(result);
 	}
@@ -148,9 +150,9 @@ public class SerializationBenchmark : Benchmark
 	/// <summary>
 	/// Serializes the json reference.
 	/// </summary>
-	[Benchmark(Description = nameof(JsonSerialization.Serialize) + ": JSON=PersonProper")]
+	[Benchmark(Description = nameof(JsonSerialization.Serialize) + ": JSON=Person")]
 	[BenchmarkCategory(Categories.JSON)]
-	public void Serialize_Json_Ref_PersonProper()
+	public void Serialize_Json_Ref_Person()
 	{
 		var result = JsonSerialization.Serialize(this.PersonRef01);
 
@@ -160,9 +162,9 @@ public class SerializationBenchmark : Benchmark
 	/// <summary>
 	/// Serializes the XML reference.
 	/// </summary>
-	[Benchmark(Description = nameof(XmlSerialization.Serialize) + ": XML=PersonProper")]
+	[Benchmark(Description = nameof(XmlSerialization.Serialize) + ": XML=Person")]
 	[BenchmarkCategory(Categories.XML)]
-	public void Serialize_XML_Ref_PersonProper()
+	public void Serialize_XML_Ref_Person()
 	{
 		var result = XmlSerialization.Serialize(this.PersonRef01);
 
@@ -179,8 +181,8 @@ public class SerializationBenchmark : Benchmark
 		this._jsonPersonRecord = JsonSerialization.Serialize(base.PersonRecord01);
 		this._xmlPersonRef = XmlSerialization.Serialize(base.PersonRef01);
 		this._xmlPersonRecord = XmlSerialization.Serialize(base.PersonRecord01);
-		this._jsonPersonProperRefList = RandomData.GeneratePersonRefCollection<Address>(100).ToJson();
-		this._personProperRefList = RandomData.GeneratePersonRefCollection<Address>(100).ToList();
+		this._jsonPersonRefList = RandomData.GeneratePersonRefCollection<Address>(100).ToJson();
+		this._personRefList = RandomData.GeneratePersonRefCollection<Address>(100).ToList();
 	}
 
 }

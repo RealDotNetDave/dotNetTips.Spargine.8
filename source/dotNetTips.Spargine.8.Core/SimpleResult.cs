@@ -4,16 +4,12 @@
 // Created          : 06-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="SimpleResult.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Enables methods to return a value, a status, and Exception information
-// as needed. This comprehensive approach provides flexibility in
-// handling various outcomes.
-// </summary>
+// <summary>Enables methods to return a value, a status, and exception information as needed. This comprehensive approach provides flexibility in handling various outcomes.</summary>
 // ***********************************************************************
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;

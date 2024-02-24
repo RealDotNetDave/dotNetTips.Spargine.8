@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-19-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -161,7 +161,6 @@ public static partial class FileHelper
 
 		return allow && !deny;
 	}
-
 
 	/// <summary>
 	/// Copies the file to a new directory. If the file already exists, it
@@ -372,7 +371,7 @@ public static partial class FileHelper
 	/// <param name="file">The file.</param>
 	/// <returns><c>true</c> if [has invalid file chars] [the specified file name]; otherwise, <c>false</c>.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "ADD URL")]
-	public static bool FileHasInvalidChars([NotNull] FileInfo file) => file.CheckExists() && file.ArgumentNotNull().FullName.IndexOfAny(InvalidFileNameChars.ToArray()) != -1;
+	public static bool FileHasInvalidChars([NotNull] FileInfo file) => file.CheckExists() && file.ArgumentNotNull().FullName.IndexOfAny([.. InvalidFileNameChars]) != -1;
 
 	/// <summary>
 	/// Moves the file with options.
@@ -502,12 +501,11 @@ public static partial class FileHelper
 		}
 	}
 
-	//TODO: CHANGE TO READONLYCOLLECTION
 	/// <summary>
 	/// Gets the invalid file name chars.
 	/// </summary>
 	/// <value>The invalid file name chars.</value>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
-	public static IEnumerable<char> InvalidFileNameChars { get; } = Path.GetInvalidFileNameChars().Where(c => c != Path.DirectorySeparatorChar && c != Path.AltDirectorySeparatorChar).ToArray();
+	public static ReadOnlyCollection<char> InvalidFileNameChars { get; } = Path.GetInvalidFileNameChars().Where(c => c != Path.DirectorySeparatorChar && c != Path.AltDirectorySeparatorChar).ToReadOnlyCollection();
 
 }

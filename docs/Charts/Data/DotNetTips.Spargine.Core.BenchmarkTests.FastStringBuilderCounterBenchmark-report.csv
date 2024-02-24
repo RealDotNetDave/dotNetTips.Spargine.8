@@ -1,0 +1,49 @@
+Method,Runtime,Count,Mean,Allocated
+'BytesToString: Comparison',.NET 8.0,16,"304,018.60",671593 B
+'BytesToString: Comparison',.NET 8.0,32,"811,768.60",1326979 B
+'BytesToString: Comparison',.NET 8.0,64,"1,559,664.80",2637711 B
+'BytesToString: Comparison',.NET 8.0,128,"3,057,487.70",5259186 B
+'BytesToString: Comparison',.NET 8.0,256,"5,615,769.20",10502261 B
+'BytesToString: Comparison',.NET 8.0,512,"10,655,062.90",20988098 B
+'BytesToString: Comparison',.NET 8.0,1024,"22,197,140.60",41959713 B
+'BytesToString: Comparison',.NET 8.0,2048,"46,436,018.80",83905634 B
+'CombineStrings: Comparison',.NET 8.0,16,259.9,1216 B
+'CombineStrings: Comparison',.NET 8.0,32,420,2120 B
+'CombineStrings: Comparison',.NET 8.0,64,721.1,3856 B
+'CombineStrings: Comparison',.NET 8.0,128,"1,350.90",7256 B
+'CombineStrings: Comparison',.NET 8.0,256,"2,618.40",13984 B
+'CombineStrings: Comparison',.NET 8.0,512,"5,250.80",27368 B
+'CombineStrings: Comparison',.NET 8.0,1024,"9,342.10",53680 B
+'CombineStrings: Comparison',.NET 8.0,2048,"15,599.60",90232 B
+'PerformAction: Comparison',.NET 8.0,16,264.1,1216 B
+'PerformAction: Comparison',.NET 8.0,32,426.6,2120 B
+'PerformAction: Comparison',.NET 8.0,64,742.1,3856 B
+'PerformAction: Comparison',.NET 8.0,128,"1,384.30",7256 B
+'PerformAction: Comparison',.NET 8.0,256,"2,710.40",13984 B
+'PerformAction: Comparison',.NET 8.0,512,"5,290.10",27368 B
+'PerformAction: Comparison',.NET 8.0,1024,"9,416.50",53680 B
+'PerformAction: Comparison',.NET 8.0,2048,"15,507.40",90232 B
+BytesToString,.NET 8.0,16,"292,898.40",664249 B
+BytesToString,.NET 8.0,32,"696,886.80",1318368 B
+BytesToString,.NET 8.0,64,"1,455,320.00",2626601 B
+BytesToString,.NET 8.0,128,"2,818,067.80",5259127 B
+BytesToString,.NET 8.0,256,"5,065,346.30",10492039 B
+BytesToString,.NET 8.0,512,"10,453,865.70",20990065 B
+BytesToString,.NET 8.0,1024,"22,358,445.80",41970229 B
+BytesToString,.NET 8.0,2048,"44,825,757.00",83929990 B
+CombineStrings,.NET 8.0,16,116.8,344 B
+CombineStrings,.NET 8.0,32,206.4,664 B
+CombineStrings,.NET 8.0,64,379.9,1304 B
+CombineStrings,.NET 8.0,128,759.5,2584 B
+CombineStrings,.NET 8.0,256,"1,572.30",5144 B
+CombineStrings,.NET 8.0,512,"4,544.60",23568 B
+CombineStrings,.NET 8.0,1024,"8,793.80",46680 B
+CombineStrings,.NET 8.0,2048,"15,145.50",83232 B
+PerformAction,.NET 8.0,16,134.9,408 B
+PerformAction,.NET 8.0,32,217.7,728 B
+PerformAction,.NET 8.0,64,392.3,1368 B
+PerformAction,.NET 8.0,128,768.1,2648 B
+PerformAction,.NET 8.0,256,"1,570.30",5208 B
+PerformAction,.NET 8.0,512,"4,383.90",23632 B
+PerformAction,.NET 8.0,1024,"8,930.10",46744 B
+PerformAction,.NET 8.0,2048,"14,705.70",83296 B

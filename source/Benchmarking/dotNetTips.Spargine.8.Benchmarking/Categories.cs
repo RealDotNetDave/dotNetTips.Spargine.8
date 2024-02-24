@@ -14,6 +14,7 @@
 
 //`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
+
 namespace DotNetTips.Spargine.Benchmarking;
 
 /// <summary>
@@ -136,6 +137,9 @@ public static class Categories
 	/// Code for threading
 	/// </summary>
 	public const string Threading = "Threading";
+
+	/// <summary>The method has been updated</summary>
+	public const string Updated = "Updated";
 
 	/// <summary>
 	/// Method Validation Benchmarks

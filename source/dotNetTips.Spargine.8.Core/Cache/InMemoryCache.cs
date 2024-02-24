@@ -4,12 +4,12 @@
 // Created          : 01-13-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>MemoryCache with a default duration of 20 minutes for storing objects in memory.</summary>
 // ***********************************************************************
 
 using System.Diagnostics.CodeAnalysis;

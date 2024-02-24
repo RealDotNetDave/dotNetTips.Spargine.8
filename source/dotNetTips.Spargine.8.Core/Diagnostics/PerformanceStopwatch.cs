@@ -4,18 +4,13 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>
-// Enhances Stopwatch with helpful methods: StartNew() and StopReset().
-// Add the ability to add messages that can be retrieved when the
-// StopWatch stops.
-// </summary>
+// <summary>Enhances Stopwatch with helpful methods: StartNew() and StopReset(). Additionally, it possesses the ability to add messages that can be retrieved when the Stopwatch stops.</summary>
 // ***********************************************************************
-using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;

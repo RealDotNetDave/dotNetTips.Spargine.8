@@ -4,12 +4,12 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Common methods for use with file directories.</summary>
+// <summary>Common methods for working with file directories.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
@@ -227,7 +227,7 @@ public static class DirectoryHelper
 	/// Loads the one drive folders.
 	/// </summary>
 	/// <returns>ReadOnlyCollection&lt;OneDriveFolder&gt;.</returns>
-	/// <exception cref="PlatformNotSupportedException"></exception>
+	/// <exception cref="System.PlatformNotSupportedException"></exception>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(LoadOneDriveFolders), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100)]
 	public static ReadOnlyCollection<OneDriveFolder> LoadOneDriveFolders()

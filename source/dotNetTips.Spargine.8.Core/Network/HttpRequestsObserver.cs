@@ -4,13 +4,13 @@
 // Created          : 07-11-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="HttpRequestsObserver.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
-// Logs messages from HttpRequests.
+// Observes the HttpRequestMessage/HttpResponseMessage instances, offering a valuable method to retrieve information such as request headers or the response status code.
 // Original code by:
 // https:www.meziantou.net/observing-all-http-requests-in-a-dotnet-application.htm
 // </summary>

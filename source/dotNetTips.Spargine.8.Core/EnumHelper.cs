@@ -4,15 +4,12 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-20-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="EnumHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Facilitates the usage of Enum's by providing convenient methods such
-// as: AdjustCamelCase(), AdjustName(), GetNames(), and GetValues().
-// </summary>
+// <summary>Facilitates the usage of Enums by providing convenient methods such as AdjustCamelCase(), AdjustName(), GetNames(), and more.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.ComponentModel;
