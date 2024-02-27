@@ -1,9 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 		<AnalysisLevel>latest-recommended</AnalysisLevel>
-		<AssemblyVersion>2024.8.3.1</AssemblyVersion>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+		<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<AssemblyVersion>2024.8.3.1</AssemblyVersion>
 		<Authors>David McCarter</Authors>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
@@ -28,6 +29,7 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<LangVersion>latest</LangVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
+		<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 		<PackageLicenseUrl></PackageLicenseUrl>
 		<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -46,9 +48,8 @@
 		<SignAssembly>True</SignAssembly>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
-		<Version>2024.8.3.1</Version>
 		<Title>DotNetTips.Spargine.8.Tester</Title>
-		<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
+		<Version>2024.8.3.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

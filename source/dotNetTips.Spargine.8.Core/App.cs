@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 using System.Security.Principal;
 using static DotNetTips.Spargine.Core.SourceGenerators;
 
-//`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 namespace DotNetTips.Spargine.Core;
 
@@ -215,7 +215,7 @@ public static class App
 	/// Determines whether user is administrator.
 	/// </summary>
 	/// <returns><c>true</c> if [is user administrator]; otherwise, <c>false</c>.</returns>
-	/// <exception cref="System.PlatformNotSupportedException"></exception>
+	/// <exception cref="PlatformNotSupportedException"></exception>
 	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static bool IsUserAdministrator()
 	{

@@ -17,7 +17,7 @@ using System.Runtime.Versioning;
 using DotNetTips.Spargine.Core;
 using Microsoft.Win32;
 
-//`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 namespace DotNetTips.Spargine.Win32;
 

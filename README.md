@@ -4,12 +4,11 @@ Open-source .NET assemblies from dotNetTips.com and David (dotNetDave) McCarter.
 This repository is for the dotNetTips.Spargine code for .NET 8. Please support this project by <a href="https://github.com/sponsors/RealDotNetDave" target="_blank">**clicking here**</a>. 
 <a href="https://dotnettips.wordpress.com/spargine/" target="_blank">Click here</a> to visit the Spargine page on dotNetTips.com. Much of this code is also documented on <a href="https://dotnettips.wordpress.com/category/open-source/spargine/" target="_blank">dotNetTips.com</a>.
 
-## NuGet
+# NuGet
 All of the assemblies listed below can be found on NuGet by <a href="https://www.nuget.org/profiles/davidmccarter" target="_blank">clicking here</a>.
 
-## Projects
+# Projects
 Below is the list of current projects in this repository
-### .NET 6
 *  	**DotNetTips.Spargine:** Windows and File I/O Targeting Library.
     * **IO**
         * **DirectoryHelper**: Common methods for working with file directories.
@@ -114,7 +113,7 @@ Below is the list of current projects in this repository
         * **GenerateAddressCollection<T>**: Generate a collection of Address types that implement the IAddress interface.
         * **GenerateAddressRecordCollection**: Generate a collection of AddressRecord instances.
         * **GenerateByteArray**: Generates a random byte array.
-        * **GenerateCharacter**: Generates a radom character. 
+        * **GenerateCharacter**: Generates a random character. 
         * **GenerateCoordinate**: Create a Coordinate object that implements the  ICoordinate interface with random values.
         * **GenerateCoordinateCollection**: Create a collection of objects that implement the ICoordinate interface.
         * **GenerateCreditCardNumber**: Generate a random credit card number. Supported credit cards include: American Express, Diners Club, Discover, EnRoute, JCB, MasterCard, Visa, and Voyager.
@@ -204,40 +203,7 @@ Below is the list of current projects in this repository
         * **Count**: Gets or sets the collection count.
     * **TinyCollectionBenchmark**: Class for performing benchmark tests on very small collections with count values set to 2, 4, 8, 16, 32, 64, 128, and 256.
          * **Count**: Gets or sets the collection count.
-### Benchmark Tests
-Below are the current benchmark results for these projects. *Currently it takes 4.5 hours to run all the benchmark tests.*
-#### dotNetTips.Spargine
-1. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.BenchmarkTests.IO.DirectoryHelperBenchmark-report-stackoverflow.md" target="_blank">DirectoryHelper</a>
-#### dotNetTips.Spargine.Core
-1. CachedEnumerable 
-2. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Core.BenchmarkTests.Collections.Threading.ChannelQueueCollectionBenchmark-report-stackoverflow.md" target="_blank">ChannelQueueCollection</a>
-2. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Core.BenchmarkTests.Collections.CollectionCollectionBenchmark-report-stackoverflow.md" target="_blank">Collection</a>
-2. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark-report-stackoverflow.md" target="_blank">LoggingHelper</a>
-3. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark-report-stackoverflow.md" target="_blank">EncryptionHelper</a>
-3. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Core.BenchmarkTests.Serialization.SerializationBenchmark-report-stackoverflow.md" target="_blank">Serialization</a>
-3. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Core.BenchmarkTests.StringBuilderHelperCounterBenchmark-report-stackoverflow.md" target="_blank">StringBuilderHelper</a>
-4. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Core.BenchmarkTests.TypeHelperBenchmark-report-stackoverflow.md" target="_blank">TypeHelper</a>
-
-#### dotNetTips.Spargine.Extensions
-1. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.ArrayExtensionsCollectionBenchmark-report-stackoverflow.md" target="_blank">Array</a>
-1. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.Extensions.AssemblyExtensionsBenchmark-report-stackoverflow.md" target="_blank">Assembly</a>
-3. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenchmark-report-stackoverflow.md" target="_blank">Collection</a>
-4. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.DictionaryExtensionsCollectionBenchmark-report-stackoverflow.md" target="_blank">Dictionary</a>
-5. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.EnumExtensionsBenchmark-report-stackoverflow.md" target="_blank">Enum</a>
-7. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.ExceptionExtensionsBenchmark-report-stackoverflow.md" target="_blank">Exception</a>
-7. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-report-stackoverflow.md" target="_blank">General</a>
-6. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.EnumerableExtensionsCollectionBenchmark-report-stackoverflow.md" target="_blank">Enumerable</a>
-6. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark-report-stackoverflow.md" target="_blank">ImmutableArray</a>
-8. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.ListExtensionsCollectionBenchmark-report-stackoverflow.md" target="_blank">List</a>
-9. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.ObjectExtensionsBenchmark-report-stackoverflow.md" target="_blank">Object</a>
-9. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.ObservableCollectionExtensionsCollectionBenchmark-report-stackoverflow.md" target="_blank">ObservableCollection</a>
-9. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.ReadOnlyCollectionBenchmark-report-stackoverflow.md" target="_blank">ReadOnlyCollection</a>
-9. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark-report-stackoverflow.md" target="_blank">SortedDictionary</a>
-9. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.SortedSetCollectionBenchmark-report-stackoverflow.md" target="_blank">SortedSet</a>
-10. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.StringBuilderExtensionsCounterBenchmark-report-stackoverflow.md" target="_blank">StringBuilder</a>
-11. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.StringExtensionsCounterBenchmark-report-stackoverflow.md" target="_blank">String (mutiple string tests)</a>
-12. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.StringExtensionsBenchmark-report-stackoverflow.md" target="_blank">String (single string tests)</a>
-#### dotNetTips.Spargine.Tester
-1. <a href="https://github.com/RealDotNetDave/dotNetTips.Spargine/blob/main/docs/Benchmark%20Results/6/DotNetTips.Spargine.Extensions.BenchmarkTests.Tester.RandomDataBenchmark-report-stackoverflow.md" target="_blank">RandomData</a>
+# Benchmark Tests
+**<a href="https://github.com/RealDotNetDave/dotNetTips.Spargine.8/tree/master/docs/Benchmark%20Results" target="_blank">Click here</a>** to view current benchmark results for these projects.
 # Your Support Is Appreciated!
 Do you have code you would like to submit to these repositories? Submit a pull request or submit an issue. I promise to take a look and include it if I like it! **I might just send you some cool geeky swag that includes one of my books (as supplies last).** You can also support this via GitHub Sponsors: <a href="https://github.com/sponsors/RealDotNetDave" target="_blank">https://github.com/sponsors/RealDotNetDave</a>
