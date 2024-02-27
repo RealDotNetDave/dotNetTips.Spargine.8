@@ -4,12 +4,12 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2024
+// Last Modified On : 02-26-2024
 // ***********************************************************************
 // <copyright file="Benchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Abstract base class featuring common benchmarking methods, supplemented with default attributes.</summary>
 // ***********************************************************************
 
 using System.Diagnostics;
@@ -89,57 +89,56 @@ public abstract class Benchmark
 	protected const string SuccessText = "success";
 
 	/// <summary>
-	/// The lower case string
+	/// A lowercase string for testing purposes.
 	/// </summary>
 	/// <value>The lower case string.</value>
 	public const string LowerCaseString = "john doe";
 
 	/// <summary>
-	/// The proper case string
+	/// A proper case string for testing purposes.
 	/// </summary>
 	/// <value>The proper case string.</value>
 	public const string ProperCaseString = "John Doe";
 
 	/// <summary>
-	/// Gets the string10 characters.
+	/// A 10-character string for testing purposes.
 	/// </summary>
 	/// <value>The string10 characters.</value>
 	public const string String10Characters01 = "2ds9JiOtNF";
 
 	/// <summary>
-	/// Gets the string10 characters02.
+	/// A 10-character string for testing purposes.
 	/// </summary>
 	/// <value>The string10 characters02.</value>
 	public const string String10Characters02 = "ndA5nJSHnU";
 
 	/// <summary>
-	/// Gets the string15 characters.
+	/// A 15-character string for testing purposes.
 	/// </summary>
 	/// <value>The string15 characters.</value>
 	public const string String15Characters01 = "C8IIVjaUi0owZh6";
 
 	/// <summary>
-	/// Gets the string15 characters02.
+	/// A 15-character string for testing purposes.
 	/// </summary>
 	/// <value>The string15 characters02.</value>
 	public const string String15Characters02 = "Q7sXguwS9vZpOo6";
 
 	/// <summary>
-	/// The test email lower case
+	/// A test email address in lowercase.
 	/// </summary>
 	/// <value>The test email lower case.</value>
 	public const string TestEmailLowerCase = "fake@fakelive.com";
 
 	/// <summary>
-	/// The test email mixed case
+	/// A test email address in mixed case.
 	/// </summary>
 	/// <value>The test email mixed case.</value>
 	public const string TestEmailMixedCase = "Fake@FakeLive.com";
 
 	/// <summary>
-	/// The upper case string
+	/// A upper case string for testing purposes.
 	/// </summary>
-	/// <value>The upper case string.</value>
 	public const string UpperCaseString = "JOHN DOE";
 
 	/// <summary>
@@ -159,12 +158,12 @@ public abstract class Benchmark
 	private Consumer Consumer { get; } = new();
 
 	/// <summary>
-	/// Cleanups this instance.
+	/// Clean up this instance. Make sure to invoke this method virtually in a [GlobalCleanup] routine.
 	/// </summary>
 	public virtual void Cleanup() => ConsoleLogger.Default.WriteLine(LogKind.Info, $"Cleanup(): {nameof(Benchmark)}.");
 
 	/// <summary>
-	/// Consumes the specified object.
+	/// Consume the specified object using the Benchmark.Consumer property.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="obj">The object.</param>
@@ -172,7 +171,7 @@ public abstract class Benchmark
 	public void Consume<T>(T obj) => this.Consumer.Consume(obj);
 
 	/// <summary>
-	/// Consume as an asynchronous operation.
+	/// Consume an object as an asynchronous operation using the Benchmark.Consumer property.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="obj">The object.</param>
@@ -181,7 +180,7 @@ public abstract class Benchmark
 	public async Task ConsumeAsync<T>(T obj) => await Task.Run(() => this.Consumer.Consume(obj)).ConfigureAwait(false);
 
 	/// <summary>
-	/// Gets the byte array.
+	/// Generates a random byte array for a given size in kilobytes. Cache results for subsequent calls.
 	/// </summary>
 	/// <param name="sizeInKb">The size in kb. Default value is 1.</param>
 	/// <returns>System.Byte[].</returns>
@@ -198,7 +197,7 @@ public abstract class Benchmark
 	}
 
 	/// <summary>
-	/// Gets the string array.
+	/// Generates a random string array and cache the results for subsequent calls.
 	/// </summary>
 	/// <param name="count">The count.</param>
 	/// <param name="wordMinLength">The minimum string length for the generated word.</param>
@@ -221,13 +220,13 @@ public abstract class Benchmark
 	}
 
 	/// <summary>
-	/// Globals the cleanup.
+	/// BenchmarkDotNet GlobalCleanup method utilizing the [GlobalCleanup] attribute.
 	/// </summary>
 	[GlobalCleanup]
 	public void GlobalCleanup() => this.Cleanup();
 
 	/// <summary>
-	/// Globals the setup.
+	/// BenchmarkDotNet GlobalSetup method utilizing the [GlobalSetup] attribute.
 	/// </summary>
 	[GlobalSetup]
 	public void GlobalSetup()
@@ -242,7 +241,7 @@ public abstract class Benchmark
 	}
 
 	/// <summary>
-	/// Setups this instance.
+	/// Generates and stores random data for use in benchmark tests. Call this method first if overridden.
 	/// </summary>
 	public virtual void Setup()
 	{
@@ -262,7 +261,7 @@ public abstract class Benchmark
 	}
 
 	/// <summary>
-	/// Updates the coord's email address.
+	/// Update the Email property in an object that implements <see cref="IPerson{TAddress}" /> with a random email address.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of the t address.</typeparam>
 	/// <param name="person">The coord.</param>
@@ -276,7 +275,7 @@ public abstract class Benchmark
 	}
 
 	/// <summary>
-	/// Updates the coord's email address.
+	/// Update the Email property in an <see cref="PersonRecord" /> with a random email address.
 	/// </summary>
 	/// <param name="person">The coord.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -289,7 +288,7 @@ public abstract class Benchmark
 	}
 
 	/// <summary>
-	/// Updates the coord's email address.
+	/// Updates the coord's values address.
 	/// </summary>
 	/// <param name="coord">The coord.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -299,145 +298,122 @@ public abstract class Benchmark
 		{
 			coord.X = 100;
 			coord.Y = 200;
+			coord.Z = 300;
 		}
 	}
 
 	/// <summary>
-	/// Gets the base64 string.
+	/// Retrieves a random Base64 string generated during startup for use in testing.
 	/// </summary>
 	/// <value>The base64 string.</value>
 	public string Base64String { get; internal set; }
 
 	/// <summary>
-	/// Gets the coordinate01.
+	/// Retrieves a random coordinate generated during startup for use in testing.
 	/// </summary>
 	/// <value>The coordinate01.</value>
 	public Coordinate Coordinate01 { get; private set; }
 
 	/// <summary>
-	/// Gets the coordinate02.
+	/// Retrieves a random coordinate generated during startup.
 	/// </summary>
 	/// <value>The coordinate02.</value>
 	public Coordinate Coordinate02 { get; private set; }
 
 	/// <summary>
-	/// Gets the json test data coord proper.
+	/// Retrieve JSON from resources for a <see cref="IPerson{TAddress}" /> object.
 	/// </summary>
 	/// <value>The json test data coord proper.</value>
 	public static string JsonTestDataPerson => Resources.JsonTestDataPerson;
 
 	/// <summary>
-	/// Gets the json test data coord record.
+	/// Retrieve JSON from resources for a <see cref="PersonRecord" /> object.
 	/// </summary>
 	/// <value>The json test data coord record.</value>
 	public static string JsonTestDataPersonRecord => Resources.JsonTestDataPersonRecord;
 
 	/// <summary>
-	/// Gets or sets a value indicating whether to [launch the debugger].
+	/// Get or set a value indicating whether to launch the BenchmarkDotNet debugger.:
 	/// </summary>
 	/// <value><c>true</c> if [launch debugger]; otherwise, <c>false</c>.</value>
 	public bool LaunchDebugger { get; set; }
 
 	/// <summary>
-	/// The long test string
+	/// Retrieve a long test string with a length of 969 characters, including spaces.
 	/// </summary>
 	/// <value>The long test string.</value>
 	public string LongTestString { get; } = "Parsing and formatting are the lifeblood of any modern web app or service: take data off the wire, parse it, manipulate it, format it back out. As such, in .NET Core 2.1 along with bringing up Span<T>, we invested in the formatting and parsing of primitives, from Int32 to DateTime. Many of those changes can be read about in my previous blog posts, but one of the key factors in enabling those performance improvements was in moving a lot of native code to managed. That may be counter-intuitive, in that it’s “common knowledge” that C code is faster than C# code. However, in addition to the gap between them narrowing, having (mostly) safe C# code has made the code base easier to experiment in, so whereas we may have been skittish about tweaking the native implementations, the community-at-large has dived head first into optimizing these implementations wherever possible. That effort continues in full force in .NET Core 3.0, with some very nice rewards reaped.";
 
 	/// <summary>
-	/// Gets the person json.
+	/// Retrieve the JSON representation of a <see cref="IPerson{TAddress}" /> object from the resources.
 	/// </summary>
 	/// <value>The person json.</value>
 	public static string PersonJson => Resources.JsonTestDataPerson;
 
 	/// <summary>
-	/// Gets the coord record01.
+	/// Retrieve a randomly generated PersonRecord during startup for testing purposes.
 	/// </summary>
 	/// <value>The coord record01.</value>
 	public PersonRecord PersonRecord01 { get; private set; }
 
 	/// <summary>
-	/// Gets the coord record02.
+	/// Retrieve a randomly generated PersonRecord during startup for testing purposes.
 	/// </summary>
 	/// <value>The coord record02.</value>
 	public PersonRecord PersonRecord02 { get; private set; }
 
 	/// <summary>
-	/// Gets the person record json.
+	/// Retrieve the JSON representation of a <see cref="PersonRecord" /> object from the resources.
 	/// </summary>
 	/// <value>The person record json.</value>
 	public static string PersonRecordJson => Resources.JsonTestDataPersonRecord;
 
 	/// <summary>
-	/// Gets the person record XML.
+	/// Retrieve the XML representation of a <see cref="PersonRecord" /> object from the resources.
 	/// </summary>
 	/// <value>The person record XML.</value>
 	public static string PersonRecordXml => Resources.XmlTestDataPersonRecord;
 
 	/// <summary>
-	/// Gets the coord ref01.
+	/// Retrieves a <see cref="IPerson{TAddress}" /> reference type object for testing generated during startup.
 	/// </summary>
 	/// <value>The coord ref01.</value>
 	public Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> PersonRef01 { get; private set; }
 
 	/// <summary>
-	/// Gets the coord ref02.
+	/// Retrieves a <see cref="IPerson{TAddress}" /> reference type object for testing generated during startup.
 	/// </summary>
 	/// <value>The coord ref02.</value>
 	public Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> PersonRef02 { get; private set; }
 
 	/// <summary>
-	/// Gets the coord value01.
+	/// Retrieves a <see cref="IPerson{TAddress}" /> value type object for testing generated during startup.
 	/// </summary>
 	/// <value>The coord value01.</value>
 	public Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address> PersonVal01 { get; private set; }
 
 	/// <summary>
-	/// Gets the coord value02.
+	/// Retrieves a <see cref="IPerson{TAddress}" /> value type object for testing generated during startup.
 	/// </summary>
 	/// <value>The coord value02.</value>
 	public Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address> PersonVal02 { get; private set; }
 
 	/// <summary>
-	/// Gets the person XML.
+	/// Retrieve the XML representation of a <see cref="IPerson{TAddress}" /> object from the resources.
 	/// </summary>
 	/// <value>The person XML.</value>
 	public static string PersonXml => Resources.XmlTestDataPerson;
 
 	/// <summary>
-	/// Gets the string1 empty.
-	/// </summary>
-	/// <value>The string1 empty.</value>
-	public string StringEmpty { get; private set; } = string.Empty;
-
-	/// <summary>
-	/// Gets the string1 null.
-	/// </summary>
-	/// <value>The string1 null.</value>
-	public string StringNull { get; private set; }
-
-	/// <summary>
-	/// Gets the string to trim.
+	/// Retrieve a string with spaces on both sides for testing purposes.
 	/// </summary>
 	/// <value>The string to trim.</value>
 	public virtual string StringToTrim { get; private set; }
 
 	/// <summary>
-	/// Gets the test unique identifier.
+	/// Retrieve a Guid generated at startup for testing purposes.
 	/// </summary>
 	/// <value>The test unique identifier.</value>
 	public Guid TestGuid { get; internal set; }
-
-	/// <summary>
-	/// Gets the XML test data.
-	/// </summary>
-	/// <value>The XML test data.</value>
-	public static string XmlTestDataPerson => Resources.XmlTestDataPerson;
-
-	/// <summary>
-	/// Gets the XML test data coord record.
-	/// </summary>
-	/// <value>The XML test data coord record.</value>
-	public static string XmlTestDataPersonRecord => Resources.XmlTestDataPersonRecord;
 
 }

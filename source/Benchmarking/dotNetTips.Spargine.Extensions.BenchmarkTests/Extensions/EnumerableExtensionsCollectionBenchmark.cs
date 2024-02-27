@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -29,11 +29,11 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 /// <summary>
 /// EnumerableExtensions PerfTestRunner.
-/// Implements the <see cref="SmallCollectionsBenchmark" />
+/// Implements the <see cref="SmallCollectionBenchmark" />
 /// </summary>
-/// <seealso cref="SmallCollectionsBenchmark" />
+/// <seealso cref="SmallCollectionBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class EnumerableExtensionsCollectionBenchmark : SmallCollectionsBenchmark
+public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 {
 
 	private IEnumerable<Coordinate> _coordinateValEnumerable;
@@ -88,27 +88,43 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(EnumerableExtensions.Count))]
-	public void Count_Default()
+	[Benchmark(Description = "Counting: Count With Predicate")]
+	[BenchmarkCategory(Categories.ForComparison)]
+	public void Count_Count_WithPredicate()
 	{
-		var result = this._personRefEnumerable.Count();
+		var result = CountWithPredicate(this._personRefEnumerable, p => p.LastName.Contains('a', StringComparison.CurrentCulture));
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(EnumerableExtensions.CountAsync))]
-	public async Task CountAsync()
+	[Benchmark(Description = "Counting: CountAsync()")]
+	public async Task Count_CountAsync()
 	{
 		var result = await this._personRefEnumerable.CountAsync(CancellationToken.None).ConfigureAwait(false);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(EnumerableExtensions.Count) + ": With Predicate")]
-	[BenchmarkCategory(Categories.ForComparison)]
-	public void CountWithPredicate()
+	[Benchmark(Description = "Counting: EnumerableExtensions.Count()")]
+	public void Count_EnumerableExtensions_Count()
 	{
-		var result = CountWithPredicate(this._personRefEnumerable, p => p.LastName.Contains('a', StringComparison.CurrentCulture));
+		var result = this._personRefEnumerable.Count();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = "Counting: FastCount() With Predicate")]
+	public void Count_FastCount_WithPredicate()
+	{
+		var result = this._personRefEnumerable.FastCount(p => p.LastName.Contains('a', StringComparison.CurrentCulture));
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = "Counting: FastCount()")]
+	public void Counting_FastCount()
+	{
+		var result = this._personRefEnumerable.FastCount();
 
 		this.Consume(result);
 	}
@@ -139,22 +155,6 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 	public void FastAnyWithPredicate()
 	{
 		var result = this._personRefEnumerable.FastAny(p => p.LastName.Contains('a', StringComparison.CurrentCulture));
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = nameof(EnumerableExtensions.FastCount))]
-	public void FastCount()
-	{
-		var result = this._personRefEnumerable.FastCount();
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = nameof(EnumerableExtensions.FastCount) + ": With Predicate")]
-	public void FastCountWithPredicate()
-	{
-		var result = this._personRefEnumerable.FastCount(p => p.LastName.Contains('a', StringComparison.CurrentCulture));
 
 		this.Consume(result);
 	}

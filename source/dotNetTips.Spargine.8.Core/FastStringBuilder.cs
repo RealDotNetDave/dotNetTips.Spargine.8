@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -12,7 +12,6 @@
 // <summary>Enhances performance when using a StringBuilder by employing an ObjectPool.</summary>
 // ***********************************************************************
 
-using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -52,17 +51,12 @@ public static class FastStringBuilder
 
 		try
 		{
-			var rangePartitioner = Partitioner.Create(0, bytes.Length);
-
 			_ = sb.Append("'0x");
 
-			_ = Parallel.ForEach(rangePartitioner, (range, loopState) =>
+			foreach (var byteItem in bytes.AsSpan())
 			{
-				for (var index = range.Item1; index < range.Item2; index++)
-				{
-					_ = sb.Append(bytes[index].ToString("X2", CultureInfo.InvariantCulture));
-				}
-			});
+				_ = sb.Append(byteItem.ToString("X2", CultureInfo.InvariantCulture));
+			}
 
 			_ = sb.Append('\'');
 
@@ -86,15 +80,18 @@ public static class FastStringBuilder
 	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string CombineStrings(bool addLineFeed = false, [NotNull] params string[] args)
 	{
+		if (args == null || args.Length == 0)
+		{
+			return string.Empty;
+		}
+
 		var sb = _stringBuilderPool.Get();
+
 		try
 		{
-			if (args?.Length > 0)
+			foreach (var argItem in args)
 			{
-				foreach (var arg in args)
-				{
-					_ = addLineFeed ? sb.AppendLine(arg) : sb.Append(arg);
-				}
+				_ = addLineFeed ? sb.AppendLine(argItem) : sb.Append(argItem);
 			}
 
 			return sb.ToString();
@@ -127,7 +124,7 @@ public static class FastStringBuilder
 	/// <exception cref="ArgumentInvalidException">input cannot be null.</exception>
 	/// <remarks>Example output: <code>r^wQTNvT, HcETQ, COtc\\G[U, loUR_SbL, o_HYYskfM"</code></remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Updated, Documentation = "ADD URL")]
 	public static string ConcatStrings(string delimiter = ",", bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (delimiter == null)
@@ -141,24 +138,22 @@ public static class FastStringBuilder
 		{
 			if (args?.Length > 0)
 			{
-				var rangePartitioner = Partitioner.Create(0, args.Length);
-
 				_ = sb.Append("'0x");
+				var index = 0;
 
-				_ = Parallel.ForEach(rangePartitioner, (range, loopState) =>
+				foreach (var arg in args.AsSpan())
 				{
-					for (var index = range.Item1; index < range.Item2; index++)
+					var newLine = arg;
+
+					if (index < args.Length - 1 && delimiter.Length > 0)
 					{
-						var line = args[index];
-
-						if (index < args.Length - 1 && delimiter.Length > 0)
-						{
-							line = CombineStrings(false, line, delimiter);
-						}
-
-						_ = addLineFeed is true ? sb.AppendLine(line) : sb.Append(line);
+						newLine = CombineStrings(false, newLine, delimiter);
 					}
-				});
+
+					_ = addLineFeed is true ? sb.AppendLine(newLine) : sb.Append(newLine);
+
+					index++;
+				}
 			}
 
 			return sb.ToString();
@@ -220,19 +215,18 @@ public static class FastStringBuilder
 
 		try
 		{
-			_ = Parallel.For(0, collection.Count, (index) =>
+			foreach (var item in collection.ToArray().AsSpan())
 			{
-				var item = collection.ElementAt(index);
 
 				if (sb.Length > 0)
 				{
-					_ = sb.Append(delimiter.ToString(CultureInfo.CurrentCulture));
+					_ = sb.Append(delimiter);
 				}
 
-				_ = sb.Append($"{item.Key}:{item.Value}".ToString(CultureInfo.CurrentCulture));
-			});
+				_ = sb.Append($"{item.Key}:{item.Value}");
+			}
 
-			return sb.Length > 0 ? sb.ToString(startIndex: 0, length: sb.Length) : string.Empty;
+			return sb.ToString();
 		}
 		finally
 		{

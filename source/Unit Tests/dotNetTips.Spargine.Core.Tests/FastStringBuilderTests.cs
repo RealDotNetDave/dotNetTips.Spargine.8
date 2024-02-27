@@ -59,7 +59,7 @@ public class FastStringBuilderTests
 
 		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
 
-		Assert.IsTrue(FastStringBuilder.ConcatStrings(null) == ControlChars.EmptyString);
+		Assert.IsTrue(FastStringBuilder.CombineStrings(false, null) == ControlChars.EmptyString);
 	}
 
 	[TestMethod]

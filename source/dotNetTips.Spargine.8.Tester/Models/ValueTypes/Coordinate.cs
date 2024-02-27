@@ -4,12 +4,12 @@
 // Created          : 06-04-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-14-2023
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="Coordinate.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>A practical value type designed for testing and benchmarking, named "Coordinate," featuring properties X, Y, and Z. It inherits from the interface ICoordinate.</summary>
 // ***********************************************************************
 using System.Globalization;
 using System.Runtime.Serialization;

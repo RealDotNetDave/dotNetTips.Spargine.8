@@ -4,12 +4,12 @@
 // Created          : 12-29-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-27-2021
+// Last Modified On : 02-24-2024
 // ***********************************************************************
 // <copyright file="ICoordinate.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>An interface named "ICoordinate" with properties X, Y, and Z for coordinating values.</summary>
 // ***********************************************************************
 
 //`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )

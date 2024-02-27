@@ -9,10 +9,11 @@
 // <copyright file="UnhandledExceptionEventInformation.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>Custom Exception to be used when throwing an unhandled Exception.</summary>
+// <summary>A custom exception designed for scenarios where an unhandled exception needs to be thrown</summary>
 // ***********************************************************************
 
 //`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
 
 namespace DotNetTips.Spargine.Core;
 

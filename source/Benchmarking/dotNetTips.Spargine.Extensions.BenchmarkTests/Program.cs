@@ -48,11 +48,11 @@ public static class Program
 
 			//_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
-			_ = BenchmarkRunner.Run<ArrayExtensionsCollectionBenchmark>(config);
+			//_ = BenchmarkRunner.Run<ArrayExtensionsCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<AssemblyExtensionsBenchmark>(config);
 			//_ = BenchmarkRunner.Run<CollectionExtensionsCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<DictionaryExtensionsCollectionBenchmark>(config);
-			_ = BenchmarkRunner.Run<EnumerableExtensionsCollectionBenchmark>(config);
+			//_ = BenchmarkRunner.Run<EnumerableExtensionsCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<ExceptionExtensionsBenchmark>(config);
 			//_ = BenchmarkRunner.Run<GeneralBenchmark>(config);
 			//_ = BenchmarkRunner.Run<ImmutableArrayExtensionsBenchmark>(config);
@@ -64,7 +64,7 @@ public static class Program
 			//_ = BenchmarkRunner.Run<SortedSetCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<StringBuilderExtensionsCounterBenchmark>(config);
 			//_ = BenchmarkRunner.Run<StringBuilderExtensionsCounterBenchmark>(config);
-			//_ = BenchmarkRunner.Run<StringExtensionsBenchmark>(config);
+			_ = BenchmarkRunner.Run<StringExtensionsBenchmark>(config);
 			_ = BenchmarkRunner.Run<StringExtensionsCounterBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine(CompleteMessage);

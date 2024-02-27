@@ -6,42 +6,32 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>gACAIAkISAQIkQAAAIgQCAAgEIhIAAgeASCCU0A4QCA=</HashCode>
+      <HashCode>gASAIAgJSAQAEQAAAEAQCAAgEAhIAAgXAQSCU0A4UCA=</HashCode>
       <FileName>Benchmark.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DotNetTips.Spargine.Benchmarking.CollectionsBenchmark">
-    <Position X="5.5" Y="0.5" Width="2.5" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>IQSAg0IEqgoABWgBAEASgiARAXIBAAaAAACAEAQABDA=</HashCode>
-      <FileName>CollectionsBenchmark.Coordinate.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DotNetTips.Spargine.Benchmarking.CounterBenchmark">
-    <Position X="8.5" Y="0.5" Width="1.75" />
+    <Position X="8.75" Y="0.5" Width="1.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AQAAAAAACAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CounterBenchmark.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DotNetTips.Spargine.Benchmarking.LargeCollectionsBenchmark">
+  <Class Name="DotNetTips.Spargine.Benchmarking.LargeCollectionBenchmark">
     <Position X="8.5" Y="3.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>LargeCollectionsBenchmark.cs</FileName>
+      <FileName>LargeCollectionBenchmark.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DotNetTips.Spargine.Benchmarking.SmallCollectionsBenchmark">
+  <Class Name="DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark">
     <Position X="8.5" Y="5.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAACAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SmallCollectionsBenchmark.cs</FileName>
+      <FileName>SmallCollectionBenchmark.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

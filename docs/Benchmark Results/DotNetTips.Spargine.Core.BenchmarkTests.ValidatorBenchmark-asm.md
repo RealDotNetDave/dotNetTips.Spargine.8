@@ -30,7 +30,7 @@
        test      rsi,rsi
        je        short M00_L00
        mov       rcx,rsi
-       call      qword ptr [7FFC2032DEF0]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
+       call      qword ptr [7FFF204FDEF0]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
 M00_L00:
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
@@ -53,7 +53,7 @@ M00_L00:
        mov       rbx,rcx
        mov       rdx,rbx
        mov       rcx,offset MT_System.Collections.ICollection
-       call      qword ptr [7FFC1FDC4348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
+       call      qword ptr [7FFF1FF84348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
        mov       rcx,rax
        test      rcx,rcx
        je        short M01_L00
@@ -68,7 +68,7 @@ M00_L00:
 M01_L00:
        xor       esi,esi
        mov       rcx,rbx
-       mov       r11,7FFC1FC807F8
+       mov       r11,7FFF1FE407F8
        call      qword ptr [r11]
        mov       rbx,rax
        jmp       short M01_L02
@@ -77,7 +77,7 @@ M01_L01:
        jo        short M01_L03
 M01_L02:
        mov       rcx,rbx
-       mov       r11,7FFC1FC80800
+       mov       r11,7FFF1FE40800
        call      qword ptr [r11]
        test      eax,eax
        jne       short M01_L01
@@ -89,7 +89,7 @@ M01_L02:
 M01_L03:
        call      CORINFO_HELP_OVERFLOW
 M01_L04:
-       mov       r11,7FFC1FC80808
+       mov       r11,7FFF1FE40808
        add       rsp,28
        pop       rbx
        pop       rsi
@@ -110,7 +110,7 @@ M01_L04:
        test      rsi,rsi
        je        short M00_L00
        mov       rcx,rsi
-       call      qword ptr [7FFC2033DEF0]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
+       call      qword ptr [7FFF20596B38]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
 M00_L00:
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
@@ -133,7 +133,7 @@ M00_L00:
        mov       rbx,rcx
        mov       rdx,rbx
        mov       rcx,offset MT_System.Collections.ICollection
-       call      qword ptr [7FFC1FDD4348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
+       call      qword ptr [7FFF1FFB4348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
        mov       rcx,rax
        test      rcx,rcx
        je        short M01_L00
@@ -148,7 +148,7 @@ M00_L00:
 M01_L00:
        xor       esi,esi
        mov       rcx,rbx
-       mov       r11,7FFC1FC90810
+       mov       r11,7FFF1FE70978
        call      qword ptr [r11]
        mov       rbx,rax
        jmp       short M01_L02
@@ -157,7 +157,7 @@ M01_L01:
        jo        short M01_L03
 M01_L02:
        mov       rcx,rbx
-       mov       r11,7FFC1FC90818
+       mov       r11,7FFF1FE70980
        call      qword ptr [r11]
        test      eax,eax
        jne       short M01_L01
@@ -169,7 +169,7 @@ M01_L02:
 M01_L03:
        call      CORINFO_HELP_OVERFLOW
 M01_L04:
-       mov       r11,7FFC1FC90820
+       mov       r11,7FFF1FE70988
        add       rsp,28
        pop       rbx
        pop       rsi
@@ -182,7 +182,7 @@ M01_L04:
 ; DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark.ArgumentNotNullOrEmpty_NoValidation()
        push      rbx
        sub       rsp,10
-       mov       rdx,2F3DC392EB8
+       mov       rdx,269B6062EB8
        mov       [rsp+8],rdx
        mov       rbx,[rcx+18]
        mov       rdx,[rsp+8]
@@ -205,10 +205,10 @@ M01_L04:
        xor       eax,eax
        mov       [rsp+20],rax
        mov       rbx,rcx
-       mov       rsi,25E6E592EB8
-       mov       rcx,25E6E592EB8
+       mov       rsi,22387B32EB8
+       mov       rcx,22387B32EB8
        cmp       [rcx],ecx
-       call      qword ptr [7FFC1FDB7318]; System.String.Trim()
+       call      qword ptr [7FFF1FF97318]; System.String.Trim()
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -234,12 +234,13 @@ M01_L04:
        movzx     ecx,word ptr [rbx+0C]
        cmp       ecx,100
        jae       short M01_L00
-       mov       rax,7FFC7ED02BD0
+       mov       ecx,ecx
+       mov       rax,7FFF7E9F2BD0
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L01
 M01_L00:
-       call      qword ptr [7FFC2048CA20]
+       call      qword ptr [7FFF20677CD8]
        test      eax,eax
        jne       short M01_L04
 M01_L01:
@@ -248,12 +249,13 @@ M01_L01:
        movzx     ecx,word ptr [rbx+rcx*2+0C]
        cmp       ecx,100
        jae       short M01_L02
-       mov       rax,7FFC7ED02BD0
+       mov       ecx,ecx
+       mov       rax,7FFF7E9F2BD0
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L03
 M01_L02:
-       call      qword ptr [7FFC2048CA20]
+       call      qword ptr [7FFF20677CD8]
        test      eax,eax
        jne       short M01_L04
 M01_L03:
@@ -265,13 +267,13 @@ M01_L03:
 M01_L04:
        mov       rcx,rbx
        mov       edx,3
-       call      qword ptr [7FFC1FDB73F0]; System.String.TrimWhiteSpaceHelper(System.Text.TrimType)
+       call      qword ptr [7FFF1FF973F0]; System.String.TrimWhiteSpaceHelper(System.Text.TrimType)
        nop
        add       rsp,28
        pop       rbx
        pop       rsi
        ret
-; Total bytes of code 133
+; Total bytes of code 137
 ```
 
 ## .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
@@ -283,10 +285,10 @@ M01_L04:
        xor       eax,eax
        mov       [rsp+20],rax
        mov       rbx,rcx
-       mov       rsi,224511B2EB8
-       mov       rcx,224511B2EB8
+       mov       rsi,1FAAAAE2EB8
+       mov       rcx,1FAAAAE2EB8
        cmp       [rcx],ecx
-       call      qword ptr [7FFC1FDA7318]; System.String.Trim()
+       call      qword ptr [7FFF1FFA7318]; System.String.Trim()
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -312,12 +314,12 @@ M01_L04:
        movzx     ecx,word ptr [rbx+0C]
        cmp       ecx,100
        jae       short M01_L00
-       mov       rax,7FFC7ED02BD0
+       mov       rax,7FFF7E9F2BD0
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L01
 M01_L00:
-       call      qword ptr [7FFC2047C0F0]
+       call      qword ptr [7FFF2068C0F0]
        test      eax,eax
        jne       short M01_L04
 M01_L01:
@@ -326,12 +328,12 @@ M01_L01:
        movzx     ecx,word ptr [rbx+rcx*2+0C]
        cmp       ecx,100
        jae       short M01_L02
-       mov       rax,7FFC7ED02BD0
+       mov       rax,7FFF7E9F2BD0
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L03
 M01_L02:
-       call      qword ptr [7FFC2047C0F0]
+       call      qword ptr [7FFF2068C0F0]
        test      eax,eax
        jne       short M01_L04
 M01_L03:
@@ -343,7 +345,7 @@ M01_L03:
 M01_L04:
        mov       rcx,rbx
        mov       edx,3
-       call      qword ptr [7FFC1FDA73F0]; System.String.TrimWhiteSpaceHelper(System.Text.TrimType)
+       call      qword ptr [7FFF1FFA73F0]; System.String.TrimWhiteSpaceHelper(System.Text.TrimType)
        nop
        add       rsp,28
        pop       rbx

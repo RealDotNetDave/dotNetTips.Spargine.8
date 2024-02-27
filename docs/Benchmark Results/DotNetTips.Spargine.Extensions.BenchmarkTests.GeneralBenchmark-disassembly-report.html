@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-20240225-024928</title>
+
+<style type="text/css">
+    table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+    td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: left; }
+    tr { background-color: #fff; border-top: 1px solid #ccc; }
+    tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<table>
+<thead>
+<tr><th colspan="1">DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-20240225-024928</th></tr>
+<tr>
+<th>GuidEqualsTest .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark.GuidEqualsTest()
+sub       rsp,28
+vzeroupper
+vmovups   xmm0,[rcx+128]
+vpcmpeqb  xmm0,xmm0,[rcx+138]
+vpmovmskb edx,xmm0
+cmp       edx,0FFFF
+sete      dl
+movzx     edx,dl
+call      qword ptr [7FF815265ED8]
+nop
+add       rsp,28
+ret
+
+DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
+push      rbp
+push      rdi
+sub       rsp,28
+lea       rbp,[rsp+30]
+xor       eax,eax
+mov       [rbp-10],rax
+mov       [rbp+10],rcx
+mov       [rbp+18],edx
+cmp       dword ptr [7FF814E1F390],0
+je        short 00007FF814B1AA86
+call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+mov       rcx,[rbp+10]
+call      qword ptr [7FF814E54A38]
+mov       [rbp-10],rax
+lea       rdx,[rbp+18]
+mov       rcx,[rbp-10]
+cmp       [rcx],ecx
+call      qword ptr [7FF815265EF0]
+nop
+nop
+add       rsp,28
+pop       rdi
+pop       rbp
+ret
+
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

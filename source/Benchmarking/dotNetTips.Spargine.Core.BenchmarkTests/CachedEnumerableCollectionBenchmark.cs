@@ -25,6 +25,6 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests;
 /// </summary>
 /// <seealso cref="CounterBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class CachedEnumerableCollectionBenchmark : SmallCollectionsBenchmark
+public class CachedEnumerableCollectionBenchmark : SmallCollectionBenchmark
 {
 }

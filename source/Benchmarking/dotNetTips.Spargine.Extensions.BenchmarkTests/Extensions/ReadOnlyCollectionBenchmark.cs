@@ -22,7 +22,7 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 [BenchmarkCategory(Categories.Collections)]
-public class ReadOnlyCollectionBenchmark : SmallCollectionsBenchmark
+public class ReadOnlyCollectionBenchmark : SmallCollectionBenchmark
 {
 
 	private ReadOnlyCollection<Person<Address>> _personRefReadOnlyCollection;

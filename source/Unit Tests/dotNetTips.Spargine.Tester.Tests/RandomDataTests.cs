@@ -577,6 +577,14 @@ public class RandomDataTests
 	}
 
 	[TestMethod]
+	public void GenerateUrlFragmentTest()
+	{
+		var stringValue = RandomData.GenerateUrlFragment();
+
+		Assert.IsNotNull(stringValue);
+	}
+
+	[TestMethod]
 	public void GenerateUrlHostNameNoProtocolTest()
 	{
 		var stringValue = RandomData.GenerateUrlHostNameNoProtocol();
@@ -588,14 +596,6 @@ public class RandomDataTests
 	public void GenerateUrlHostNameNoSubDomainTest()
 	{
 		var stringValue = RandomData.GenerateUrlHostNameNoSubDomain();
-
-		Assert.IsNotNull(stringValue);
-	}
-
-	[TestMethod]
-	public void GenerateUrlPartTest()
-	{
-		var stringValue = RandomData.GenerateUrlPart();
 
 		Assert.IsNotNull(stringValue);
 	}

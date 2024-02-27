@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -26,16 +26,15 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 /// <summary>
 /// Class ArrayExtensionsCollectionBenchmark.
-/// Implements the <see cref="SmallCollectionsBenchmark" />
+/// Implements the <see cref="SmallCollectionBenchmark" />
 /// </summary>
-/// <seealso cref="SmallCollectionsBenchmark" />
+/// <seealso cref="SmallCollectionBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class ArrayExtensionsCollectionBenchmark : SmallCollectionsBenchmark
+public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 {
 
 	private PersonRecord[] _personRecordArray;
 	private Person<Address>[] _personRefArray;
-	private Person<Address>[] _personRefArrayToAdd;
 	private Spargine.Tester.Models.ValueTypes.Person<Spargine.Tester.Models.ValueTypes.Address>[] _personValArray;
 
 
@@ -358,10 +357,6 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 		this._personRecordArray = this.GetPersonRecordArray();
 		this._personRefArray = this.GetPersonRefArray();
 		this._personValArray = this.GetPersonValArray();
-
-		var peopleToAdd = this._personRefArray.ToList();
-		peopleToAdd.AddRange(this.GetPeopleRefToInsert());
-		this._personRefArrayToAdd = peopleToAdd.ToArray();
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.ToDistinct) + " : Reference")]

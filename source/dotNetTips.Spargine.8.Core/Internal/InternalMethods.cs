@@ -94,7 +94,7 @@ internal static class InternalMethods
 	/// <param name="message">The message.</param>
 	/// <param name="ex">The ex.</param>
 	/// <param name="method">The method.</param>
-	internal static void LogCriticalMessage(this ILogger logger, string message, Exception ex, [CallerMemberName] string method = "") => EasyLogger.LogCritical(logger, $"{method}: {message}", ex);
+	internal static void LogCriticalMessage(this ILogger logger, string message, Exception ex, [CallerMemberName] string method = "") => FastLogger.LogCritical(logger, $"{method}: {message}", ex);
 
 	/// <summary>
 	/// Converts object properties to a <see cref="IDictionary" />.
@@ -211,7 +211,7 @@ internal static class InternalMethods
 	/// <param name="logger">The logger.</param>
 	/// <param name="message">The message.</param>
 	/// <param name="method">The method.</param>
-	internal static void WriteDebugMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => EasyLogger.LogDebug(logger, $"{method}: {message}");
+	internal static void WriteDebugMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => FastLogger.LogDebug(logger, $"{method}: {message}");
 
 	/// <summary>
 	/// Logs error message. Adds method name to message.
@@ -219,7 +219,7 @@ internal static class InternalMethods
 	/// <param name="logger">The logger.</param>
 	/// <param name="message">The message.</param>
 	/// <param name="method">The method.</param>
-	internal static void WriteErrorMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => EasyLogger.LogError(logger, $"{method}: {message}");
+	internal static void WriteErrorMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => FastLogger.LogError(logger, $"{method}: {message}");
 
 	/// <summary>
 	/// Logs the information. Adds method name to message.
@@ -227,7 +227,7 @@ internal static class InternalMethods
 	/// <param name="logger">The logger.</param>
 	/// <param name="message">The message.</param>
 	/// <param name="method">The method.</param>
-	internal static void WriteInformationMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => EasyLogger.LogInformation(logger, $"{method}: {message}");
+	internal static void WriteInformationMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => FastLogger.LogInformation(logger, $"{method}: {message}");
 
 	/// <summary>
 	/// Logs trace message. Adds method name to message.
@@ -235,7 +235,7 @@ internal static class InternalMethods
 	/// <param name="logger">The logger.</param>
 	/// <param name="message">The message.</param>
 	/// <param name="method">The method.</param>
-	internal static void WriteTraceMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => EasyLogger.LogTrace(logger, $"{method}: {message}");
+	internal static void WriteTraceMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => FastLogger.LogTrace(logger, $"{method}: {message}");
 
 	/// <summary>
 	/// Logs a warning message. Adds method name to message.
@@ -243,6 +243,6 @@ internal static class InternalMethods
 	/// <param name="logger">The logger.</param>
 	/// <param name="message">The message.</param>
 	/// <param name="method">The method.</param>
-	internal static void WriteWarningMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => EasyLogger.LogWarning(logger, $"{method}: {message}");
+	internal static void WriteWarningMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => FastLogger.LogWarning(logger, $"{method}: {message}");
 
 }

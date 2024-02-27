@@ -4,7 +4,7 @@
 // Created          : 02-20-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-28-2023
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="TestingBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests;
 /// </summary>
 /// <seealso cref="Benchmark" />
 [BenchmarkCategory("Work in Progress")]
-public class TestingBenchmark : SmallCollectionsBenchmark
+public class TestingBenchmark : TinyCollectionBenchmark
 {
 
 	private Person<Address>[] _peopleRef;

@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-06-2023
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="StringBuilderExtensionsCounterBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -29,11 +29,12 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 /// </summary>
 /// <seealso cref="CounterBenchmark" />
 [BenchmarkCategory(Categories.Strings)]
-public class StringBuilderExtensionsCounterBenchmark : SmallCollectionsBenchmark
+public class StringBuilderExtensionsCounterBenchmark : TinyCollectionBenchmark
 {
+
+	private byte[] _byteArray;
 	private string[] _stringArray;
 	private IEnumerable<string> _stringEnumerable;
-	private byte[] _byteArray;
 
 	[Benchmark(Description = nameof(StringBuilderExtensions.AppendBytes) + ": 01*")]
 	public void AppendBytes01()

@@ -9,7 +9,7 @@
 // <copyright file="Person.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>A real-world type of Person for testing and benchmarking.</summary>
+// <summary>A real-world type for testing and benchmarking named "Person" with the following properties: Addresses, Age, BornOn, CellPhone, Email, FirstName, FullName, LastName, and Phone. This type also includes methods to convert from PersonRecord and Person value types to Person.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.ComponentModel;

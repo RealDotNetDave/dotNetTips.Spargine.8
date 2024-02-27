@@ -1,49 +1,81 @@
 Method,Runtime,Count,Mean,Allocated
-'BytesToString: Comparison',.NET 8.0,16,"304,018.60",671593 B
-'BytesToString: Comparison',.NET 8.0,32,"811,768.60",1326979 B
-'BytesToString: Comparison',.NET 8.0,64,"1,559,664.80",2637711 B
-'BytesToString: Comparison',.NET 8.0,128,"3,057,487.70",5259186 B
-'BytesToString: Comparison',.NET 8.0,256,"5,615,769.20",10502261 B
-'BytesToString: Comparison',.NET 8.0,512,"10,655,062.90",20988098 B
-'BytesToString: Comparison',.NET 8.0,1024,"22,197,140.60",41959713 B
-'BytesToString: Comparison',.NET 8.0,2048,"46,436,018.80",83905634 B
-'CombineStrings: Comparison',.NET 8.0,16,259.9,1216 B
-'CombineStrings: Comparison',.NET 8.0,32,420,2120 B
-'CombineStrings: Comparison',.NET 8.0,64,721.1,3856 B
-'CombineStrings: Comparison',.NET 8.0,128,"1,350.90",7256 B
-'CombineStrings: Comparison',.NET 8.0,256,"2,618.40",13984 B
-'CombineStrings: Comparison',.NET 8.0,512,"5,250.80",27368 B
-'CombineStrings: Comparison',.NET 8.0,1024,"9,342.10",53680 B
-'CombineStrings: Comparison',.NET 8.0,2048,"15,599.60",90232 B
-'PerformAction: Comparison',.NET 8.0,16,264.1,1216 B
-'PerformAction: Comparison',.NET 8.0,32,426.6,2120 B
-'PerformAction: Comparison',.NET 8.0,64,742.1,3856 B
-'PerformAction: Comparison',.NET 8.0,128,"1,384.30",7256 B
-'PerformAction: Comparison',.NET 8.0,256,"2,710.40",13984 B
-'PerformAction: Comparison',.NET 8.0,512,"5,290.10",27368 B
-'PerformAction: Comparison',.NET 8.0,1024,"9,416.50",53680 B
-'PerformAction: Comparison',.NET 8.0,2048,"15,507.40",90232 B
-BytesToString,.NET 8.0,16,"292,898.40",664249 B
-BytesToString,.NET 8.0,32,"696,886.80",1318368 B
-BytesToString,.NET 8.0,64,"1,455,320.00",2626601 B
-BytesToString,.NET 8.0,128,"2,818,067.80",5259127 B
-BytesToString,.NET 8.0,256,"5,065,346.30",10492039 B
-BytesToString,.NET 8.0,512,"10,453,865.70",20990065 B
-BytesToString,.NET 8.0,1024,"22,358,445.80",41970229 B
-BytesToString,.NET 8.0,2048,"44,825,757.00",83929990 B
-CombineStrings,.NET 8.0,16,116.8,344 B
-CombineStrings,.NET 8.0,32,206.4,664 B
-CombineStrings,.NET 8.0,64,379.9,1304 B
-CombineStrings,.NET 8.0,128,759.5,2584 B
-CombineStrings,.NET 8.0,256,"1,572.30",5144 B
-CombineStrings,.NET 8.0,512,"4,544.60",23568 B
-CombineStrings,.NET 8.0,1024,"8,793.80",46680 B
-CombineStrings,.NET 8.0,2048,"15,145.50",83232 B
-PerformAction,.NET 8.0,16,134.9,408 B
-PerformAction,.NET 8.0,32,217.7,728 B
-PerformAction,.NET 8.0,64,392.3,1368 B
-PerformAction,.NET 8.0,128,768.1,2648 B
-PerformAction,.NET 8.0,256,"1,570.30",5208 B
-PerformAction,.NET 8.0,512,"4,383.90",23632 B
-PerformAction,.NET 8.0,1024,"8,930.10",46744 B
-PerformAction,.NET 8.0,2048,"14,705.70",83296 B
+'BytesToString: Comparison',.NET 8.0,16,"295,800.70",671593 B
+'BytesToString: Comparison',.NET 8.0,32,"805,687.50",1326973 B
+'BytesToString: Comparison',.NET 8.0,64,"1,571,607.50",2637693 B
+'BytesToString: Comparison',.NET 8.0,128,"3,029,396.90",5259184 B
+'BytesToString: Comparison',.NET 8.0,256,"5,766,458.30",10502117 B
+'BytesToString: Comparison',.NET 8.0,512,"10,899,578.90",20987869 B
+'BytesToString: Comparison',.NET 8.0,1024,"21,967,776.70",41960007 B
+'BytesToString: Comparison',.NET 8.0,2048,"45,572,243.10",83903135 B
+'Combine Strings: ConcatStrings',.NET 8.0,16,141.6,416 B
+'Combine Strings: ConcatStrings',.NET 8.0,32,257.6,800 B
+'Combine Strings: ConcatStrings',.NET 8.0,64,481.1,1568 B
+'Combine Strings: ConcatStrings',.NET 8.0,128,957,3104 B
+'Combine Strings: ConcatStrings',.NET 8.0,256,"1,862.40",6176 B
+'Combine Strings: ConcatStrings',.NET 8.0,512,"5,268.70",25624 B
+'Combine Strings: ConcatStrings',.NET 8.0,1024,"10,618.40",50784 B
+'Combine Strings: ConcatStrings',.NET 8.0,2048,"19,058.20",107504 B
+'Combine Strings: SB.Append() + foreach()',.NET 8.0,16,265.2,1216 B
+'Combine Strings: SB.Append() + foreach()',.NET 8.0,32,417.9,2120 B
+'Combine Strings: SB.Append() + foreach()',.NET 8.0,64,725.3,3856 B
+'Combine Strings: SB.Append() + foreach()',.NET 8.0,128,"1,344.70",7256 B
+'Combine Strings: SB.Append() + foreach()',.NET 8.0,256,"2,596.90",13984 B
+'Combine Strings: SB.Append() + foreach()',.NET 8.0,512,"5,096.10",27368 B
+'Combine Strings: SB.Append() + foreach()',.NET 8.0,1024,"9,822.30",53680 B
+'Combine Strings: SB.Append() + foreach()',.NET 8.0,2048,"15,061.20",90232 B
+'Combine Strings: SB.AppendLine() + for()',.NET 8.0,16,298.2,1280 B
+'Combine Strings: SB.AppendLine() + for()',.NET 8.0,32,461.8,2248 B
+'Combine Strings: SB.AppendLine() + for()',.NET 8.0,64,838,4112 B
+'Combine Strings: SB.AppendLine() + for()',.NET 8.0,128,"1,588.00",7768 B
+'Combine Strings: SB.AppendLine() + for()',.NET 8.0,256,"3,056.70",15008 B
+'Combine Strings: SB.AppendLine() + for()',.NET 8.0,512,"5,872.70",29416 B
+'Combine Strings: SB.AppendLine() + for()',.NET 8.0,1024,"10,995.80",57776 B
+'Combine Strings: SB.AppendLine() + for()',.NET 8.0,2048,"19,685.30",114496 B
+'Creating Delimited String: Normal',.NET 8.0,16,"1,463.90",8480 B
+'Creating Delimited String: Normal',.NET 8.0,32,"2,791.60",16488 B
+'Creating Delimited String: Normal',.NET 8.0,64,"5,177.40",32432 B
+'Creating Delimited String: Normal',.NET 8.0,128,"10,082.90",64248 B
+'Creating Delimited String: Normal',.NET 8.0,256,"19,155.70",120768 B
+'Creating Delimited String: Normal',.NET 8.0,512,"34,919.30",217736 B
+'Creating Delimited String: Normal',.NET 8.0,1024,"150,158.10",427750 B
+'Creating Delimited String: Normal',.NET 8.0,2048,"272,958.70",847768 B
+'Creating Delimited String: ToDelimitedString()',.NET 8.0,16,562.6,1432 B
+'Creating Delimited String: ToDelimitedString()',.NET 8.0,32,"1,075.50",2840 B
+'Creating Delimited String: ToDelimitedString()',.NET 8.0,64,"2,181.00",5656 B
+'Creating Delimited String: ToDelimitedString()',.NET 8.0,128,"5,748.10",24592 B
+'Creating Delimited String: ToDelimitedString()',.NET 8.0,256,"11,214.10",48728 B
+'Creating Delimited String: ToDelimitedString()',.NET 8.0,512,"21,398.20",103400 B
+'Creating Delimited String: ToDelimitedString()',.NET 8.0,1024,"98,940.90",196689 B
+'Creating Delimited String: ToDelimitedString()',.NET 8.0,2048,"188,002.80",367174 B
+'PerformAction: Comparison',.NET 8.0,16,259.1,1216 B
+'PerformAction: Comparison',.NET 8.0,32,420.3,2120 B
+'PerformAction: Comparison',.NET 8.0,64,733.5,3856 B
+'PerformAction: Comparison',.NET 8.0,128,"1,365.20",7256 B
+'PerformAction: Comparison',.NET 8.0,256,"2,664.10",13984 B
+'PerformAction: Comparison',.NET 8.0,512,"5,113.90",27368 B
+'PerformAction: Comparison',.NET 8.0,1024,"9,444.90",53680 B
+'PerformAction: Comparison',.NET 8.0,2048,"15,923.50",90232 B
+BytesToString,.NET 8.0,16,"285,164.30",664249 B
+BytesToString,.NET 8.0,32,"700,140.20",1318372 B
+BytesToString,.NET 8.0,64,"1,417,398.80",2626597 B
+BytesToString,.NET 8.0,128,"2,812,678.70",5259127 B
+BytesToString,.NET 8.0,256,"5,273,106.60",10492053 B
+BytesToString,.NET 8.0,512,"10,365,145.50",20990126 B
+BytesToString,.NET 8.0,1024,"22,014,584.80",41970426 B
+BytesToString,.NET 8.0,2048,"44,979,129.70",83930080 B
+CombineStrings,.NET 8.0,16,128.3,344 B
+CombineStrings,.NET 8.0,32,209.1,664 B
+CombineStrings,.NET 8.0,64,376.7,1304 B
+CombineStrings,.NET 8.0,128,763.9,2584 B
+CombineStrings,.NET 8.0,256,"1,495.10",5144 B
+CombineStrings,.NET 8.0,512,"4,430.50",23568 B
+CombineStrings,.NET 8.0,1024,"9,078.50",46680 B
+CombineStrings,.NET 8.0,2048,"15,319.10",83232 B
+PerformAction,.NET 8.0,16,121.7,408 B
+PerformAction,.NET 8.0,32,205.1,728 B
+PerformAction,.NET 8.0,64,390.4,1368 B
+PerformAction,.NET 8.0,128,773.7,2648 B
+PerformAction,.NET 8.0,256,"1,620.00",5208 B
+PerformAction,.NET 8.0,512,"4,310.20",23632 B
+PerformAction,.NET 8.0,1024,"8,702.00",46744 B
+PerformAction,.NET 8.0,2048,"14,933.30",83296 B

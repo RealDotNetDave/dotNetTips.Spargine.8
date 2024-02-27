@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 02-25-2024
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -36,7 +36,7 @@ public static class LoggingHelper
 	/// </summary>
 	/// <param name="sender">The source of the event.</param>
 	/// <param name="e">The <see cref="FirstChanceExceptionEventArgs" /> instance containing the event data.</param>
-	private static void CurrentDomain_FirstChanceException(object sender, FirstChanceExceptionEventArgs e) => EasyLogger.LogException(_appDomainExceptionLogger, e.Exception.GetAllMessages(), e.Exception);
+	private static void CurrentDomain_FirstChanceException(object sender, FirstChanceExceptionEventArgs e) => FastLogger.LogException(_appDomainExceptionLogger, e.Exception.GetAllMessages(), e.Exception);
 
 	/// <summary>
 	/// Logs the application domain exceptions.
@@ -53,7 +53,7 @@ public static class LoggingHelper
 			_appDomainExceptionLogger = logger;
 			AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
 
-			EasyLogger.LogInformation(logger, $"Starting to capture all exceptions on {DateTime.UtcNow} UTC");
+			FastLogger.LogInformation(logger, $"Starting to capture all exceptions on {DateTime.UtcNow} UTC");
 		}
 	}
 	/// <summary>
@@ -83,7 +83,7 @@ public static class LoggingHelper
 		{
 			foreach (var item in values.OrderBy(p => p.Key))
 			{
-				EasyLogger.LogInformation(logger, $"{nameof(AppInfo)}:{item.Key} - {item.Value}");
+				FastLogger.LogInformation(logger, $"{nameof(AppInfo)}:{item.Key} - {item.Value}");
 			}
 		}
 	}

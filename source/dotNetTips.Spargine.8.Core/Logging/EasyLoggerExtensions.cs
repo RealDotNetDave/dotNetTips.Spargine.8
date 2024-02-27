@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 11-06-2023
 // ***********************************************************************
-// <copyright file="EasyLoggerExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="FastLoggerExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
@@ -18,9 +18,9 @@ using Microsoft.Extensions.Logging;
 namespace DotNetTips.Spargine.Core.Logging;
 
 /// <summary>
-/// Class EasyLogger Extensions.
+/// Class FastLogger Extensions.
 /// </summary>
-public static partial class EasyLoggerExtensions
+public static partial class FastLoggerExtensions
 {
 
 	/// <summary>

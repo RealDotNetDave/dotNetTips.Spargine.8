@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilderCounterBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -31,7 +31,7 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests;
 /// </summary>
 /// <seealso cref="CounterBenchmark" />
 [BenchmarkCategory(Categories.Strings)]
-public class FastStringBuilderCounterBenchmark : SmallCollectionsBenchmark
+public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 {
 
 	private byte[] _byteArray;
@@ -81,7 +81,7 @@ public class FastStringBuilderCounterBenchmark : SmallCollectionsBenchmark
 		base.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.CombineStrings) + ": Comparison")]
+	[Benchmark(Description = "Combine Strings: SB.Append() + foreach()")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
 	public void CombineStrings_Comparison()
 	{
@@ -89,22 +89,22 @@ public class FastStringBuilderCounterBenchmark : SmallCollectionsBenchmark
 
 		foreach (var arg in this._words)
 		{
-			_ = sb.Append(arg);
+			_ = sb.Append(arg + ControlChars.EmptyString);
 		}
 
 		base.Consume(sb.ToString());
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.ConcatStrings))]
+	[Benchmark(Description = "Combine Strings: ConcatStrings")]
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void ConcatStrings()
 	{
-		var result = FastStringBuilder.ConcatStrings(ControlChars.Plus, true, this._words);
+		var result = FastStringBuilder.ConcatStrings(delimiter: ControlChars.EmptyString, addLineFeed: true, args: this._words);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.ConcatStrings) + ": Comparison")]
+	[Benchmark(Description = "Combine Strings: SB.AppendLine() + for()")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
 	public void ConcatStrings_Comparison()
 	{
@@ -114,7 +114,7 @@ public class FastStringBuilderCounterBenchmark : SmallCollectionsBenchmark
 		{
 			var line = _words[argumentIndex];
 
-			sb.AppendLine(line + ControlChars.Plus);
+			sb.AppendLine(line + ControlChars.EmptyString);
 		}
 
 
@@ -162,16 +162,16 @@ public class FastStringBuilderCounterBenchmark : SmallCollectionsBenchmark
 		this._wordDictionary = RandomData.GenerateWords(this.Count, 10, 10).ToDictionary(x => RandomData.GenerateKey(), y => y);
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString))]
+	[Benchmark(Description = "Creating Delimited String: ToDelimitedString()")]
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void ToDelimitedString()
 	{
-		var result = FastStringBuilder.ToDelimitedString(this._wordDictionary);
+		var result = FastStringBuilder.ToDelimitedString(this._wordDictionary, ControlChars.Colon);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString) + ": Comparison")]
+	[Benchmark(Description = "Creating Delimited String: Normal")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
 	public void ToDelimitedString_Comparison()
 	{
@@ -184,7 +184,7 @@ public class FastStringBuilderCounterBenchmark : SmallCollectionsBenchmark
 				_ = sb.Append(ControlChars.Comma);
 			}
 
-			_ = sb.Append($"{item.Key}: {item.Value}".ToString(CultureInfo.CurrentCulture));
+			_ = sb.Append($"{item.Key}: {item.Value}".ToString(CultureInfo.CurrentCulture) + ControlChars.Colon);
 		}
 
 		base.Consume(sb.ToString());

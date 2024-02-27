@@ -15,6 +15,7 @@
 using System.Collections.Immutable;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
+using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 //`![Spargine 6 Rocks Your Code](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -23,11 +24,11 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 /// <summary>
 /// Class ImmutableArrayExtensionsBenchmark.
-/// Implements the <see cref="SmallCollectionsBenchmark" />
+/// Implements the <see cref="SmallCollectionBenchmark" />
 /// </summary>
-/// <seealso cref="SmallCollectionsBenchmark" />
+/// <seealso cref="SmallCollectionBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class ImmutableArrayExtensionsBenchmark : SmallCollectionsBenchmark
+public class ImmutableArrayExtensionsBenchmark : SmallCollectionBenchmark
 {
 
 	private ImmutableArray<Person<Address>> _personRefImmutableArray;

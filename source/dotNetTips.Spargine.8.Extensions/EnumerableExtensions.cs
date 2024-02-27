@@ -19,6 +19,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using DotNetTips.Spargine.Core;
@@ -263,7 +264,7 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
 	/// <exception cref="ArgumentNullException">Predicate cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastAny), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(FastAny), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static bool FastAny<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate) => collection.ArgumentNotNull().Any(predicate.ArgumentNotNull());
 
 	/// <summary>
@@ -304,7 +305,7 @@ public static class EnumerableExtensions
 		collection = collection.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		var processedCollection = new ReadOnlySpan<T>(collection.ToArray());
+		var processedCollection = CollectionsMarshal.AsSpan(collection.ToList());
 
 		for (var itemCount = 0; itemCount < processedCollection.Length; itemCount++)
 		{

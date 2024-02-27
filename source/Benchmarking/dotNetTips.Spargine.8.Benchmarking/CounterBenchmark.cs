@@ -4,12 +4,12 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-28-2023
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="CounterBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Abstract class designed for benchmark tests that involve a counter.</summary>
 // ***********************************************************************
 using BenchmarkDotNet.Loggers;
 
@@ -26,7 +26,7 @@ public abstract class CounterBenchmark : Benchmark
 	/// <summary>
 	/// Initializes a new instance of the <see cref="CounterBenchmark" /> class.
 	/// </summary>
-	/// <param name="maxCount">The maximum collection count.</param>
+	/// <param name="maxCount">The maximum count.</param>
 	protected CounterBenchmark(int maxCount)
 	{
 		this.MaxCount = Math.Max(2, maxCount);
@@ -36,7 +36,7 @@ public abstract class CounterBenchmark : Benchmark
 	}
 
 	/// <summary>
-	/// Gets the maximum collection count.
+	/// Gets the maximum count.
 	/// </summary>
 	/// <value>The maximum count.</value>
 

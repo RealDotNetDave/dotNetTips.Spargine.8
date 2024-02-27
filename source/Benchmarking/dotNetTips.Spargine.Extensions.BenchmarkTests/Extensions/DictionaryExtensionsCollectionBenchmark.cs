@@ -23,11 +23,11 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 /// <summary>
 /// Class DictionaryExtensionsCollectionBenchmark.
-/// Implements the <see cref="SmallCollectionsBenchmark" />
+/// Implements the <see cref="SmallCollectionBenchmark" />
 /// </summary>
-/// <seealso cref="SmallCollectionsBenchmark" />
+/// <seealso cref="SmallCollectionBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class DictionaryExtensionsCollectionBenchmark : SmallCollectionsBenchmark
+public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 {
 
 	private Dictionary<string, Person<Address>> _personRefDictionary;

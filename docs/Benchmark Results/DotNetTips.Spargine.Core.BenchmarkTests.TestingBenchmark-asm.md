@@ -31,7 +31,7 @@ M00_L01:
        test      esi,esi
        je        short M00_L00
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
-       call      qword ptr [7FFC204B7B88]
+       call      qword ptr [7FFF206C7EB8]
        mov       rdx,rax
        jmp       short M00_L00
 ; Total bytes of code 107
@@ -70,7 +70,7 @@ M00_L01:
        test      esi,esi
        je        short M00_L00
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
-       call      qword ptr [7FFC204C7EB8]
+       call      qword ptr [7FFF206B7B88]
        mov       rdx,rax
        jmp       short M00_L00
 ; Total bytes of code 107
@@ -109,7 +109,7 @@ M00_L01:
        test      esi,esi
        je        short M00_L00
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
-       call      qword ptr [7FFC204C7B88]
+       call      qword ptr [7FFF20696070]
        mov       rdx,rax
        jmp       short M00_L00
 ; Total bytes of code 107
@@ -148,7 +148,7 @@ M00_L01:
        test      esi,esi
        je        short M00_L00
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
-       call      qword ptr [7FFC204E7EB8]
+       call      qword ptr [7FFF206C6070]
        mov       rdx,rax
        jmp       short M00_L00
 ; Total bytes of code 107
@@ -187,7 +187,7 @@ M00_L01:
        test      esi,esi
        je        short M00_L00
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
-       call      qword ptr [7FFC2050EAC0]
+       call      qword ptr [7FFF206D7B88]
        mov       rdx,rax
        jmp       short M00_L00
 ; Total bytes of code 107
@@ -226,7 +226,7 @@ M00_L01:
        test      esi,esi
        je        short M00_L00
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
-       call      qword ptr [7FFC20504918]
+       call      qword ptr [7FFF207F5470]
        mov       rdx,rax
        jmp       short M00_L00
 ; Total bytes of code 107
@@ -265,7 +265,7 @@ M00_L01:
        test      esi,esi
        je        short M00_L00
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
-       call      qword ptr [7FFC20625FC8]
+       call      qword ptr [7FFF207CF798]
        mov       rdx,rax
        jmp       short M00_L00
 ; Total bytes of code 107
@@ -304,7 +304,7 @@ M00_L01:
        test      esi,esi
        je        short M00_L00
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ArrayExtensions.AddLast[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>[], DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>)
-       call      qword ptr [7FFC20615A10]
+       call      qword ptr [7FFF207E5FC8]
        mov       rdx,rax
        jmp       short M00_L00
 ; Total bytes of code 107
@@ -396,10 +396,10 @@ M00_L03:
 M00_L04:
        mov       ecx,47
        mov       edx,0D
-       call      qword ptr [7FFC1FF6ED18]
+       call      qword ptr [7FFF2015ED18]
        int       3
 M00_L05:
-       call      qword ptr [7FFC1FE75BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF20055BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        jmp       near ptr M00_L00
 M00_L06:
        call      CORINFO_HELP_RNGCHKFAIL
@@ -426,7 +426,7 @@ M01_L00:
        mov       rcx,rbx
        mov       rdx,rsi
        mov       r8d,4000
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        add       rbx,4000
        add       rsi,4000
        cmp       rdi,4000
@@ -435,7 +435,7 @@ M01_L01:
        mov       rcx,rbx
        mov       rdx,rsi
        mov       r8,rdi
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        nop
        add       rsp,20
        pop       rbx
@@ -453,7 +453,7 @@ M01_L03:
        lea       rcx,[rbx+rdi]
        lea       rdx,[rsi+rdi]
        mov       r8d,4000
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        cmp       rdi,4000
        ja        short M01_L03
        jmp       short M01_L01
@@ -548,10 +548,10 @@ M00_L03:
 M00_L04:
        mov       ecx,47
        mov       edx,0D
-       call      qword ptr [7FFC1FF5ED18]
+       call      qword ptr [7FFF2016ED18]
        int       3
 M00_L05:
-       call      qword ptr [7FFC1FE65BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF20065BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        jmp       near ptr M00_L00
 M00_L06:
        call      CORINFO_HELP_RNGCHKFAIL
@@ -578,7 +578,7 @@ M01_L00:
        mov       rcx,rbx
        mov       rdx,rsi
        mov       r8d,4000
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        add       rbx,4000
        add       rsi,4000
        cmp       rdi,4000
@@ -587,7 +587,7 @@ M01_L01:
        mov       rcx,rbx
        mov       rdx,rsi
        mov       r8,rdi
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        nop
        add       rsp,20
        pop       rbx
@@ -605,7 +605,7 @@ M01_L03:
        lea       rcx,[rbx+rdi]
        lea       rdx,[rsi+rdi]
        mov       r8d,4000
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        cmp       rdi,4000
        ja        short M01_L03
        jmp       short M01_L01
@@ -700,10 +700,10 @@ M00_L03:
 M00_L04:
        mov       ecx,47
        mov       edx,0D
-       call      qword ptr [7FFC1FF4ED18]
+       call      qword ptr [7FFF2015ED18]
        int       3
 M00_L05:
-       call      qword ptr [7FFC1FE55BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF20055BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        jmp       near ptr M00_L00
 M00_L06:
        call      CORINFO_HELP_RNGCHKFAIL
@@ -730,7 +730,7 @@ M01_L00:
        mov       rcx,rbx
        mov       rdx,rsi
        mov       r8d,4000
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        add       rbx,4000
        add       rsi,4000
        cmp       rdi,4000
@@ -739,7 +739,7 @@ M01_L01:
        mov       rcx,rbx
        mov       rdx,rsi
        mov       r8,rdi
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        nop
        add       rsp,20
        pop       rbx
@@ -757,7 +757,7 @@ M01_L03:
        lea       rcx,[rbx+rdi]
        lea       rdx,[rsi+rdi]
        mov       r8d,4000
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        cmp       rdi,4000
        ja        short M01_L03
        jmp       short M01_L01
@@ -852,10 +852,10 @@ M00_L03:
 M00_L04:
        mov       ecx,47
        mov       edx,0D
-       call      qword ptr [7FFC1FF4ED18]
+       call      qword ptr [7FFF2015ED18]
        int       3
 M00_L05:
-       call      qword ptr [7FFC1FE55BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF20055BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        jmp       near ptr M00_L00
 M00_L06:
        call      CORINFO_HELP_RNGCHKFAIL
@@ -882,7 +882,7 @@ M01_L00:
        mov       rcx,rbx
        mov       rdx,rsi
        mov       r8d,4000
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        add       rbx,4000
        add       rsi,4000
        cmp       rdi,4000
@@ -891,7 +891,7 @@ M01_L01:
        mov       rcx,rbx
        mov       rdx,rsi
        mov       r8,rdi
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        nop
        add       rsp,20
        pop       rbx
@@ -909,7 +909,7 @@ M01_L03:
        lea       rcx,[rbx+rdi]
        lea       rdx,[rsi+rdi]
        mov       r8d,4000
-       call      qword ptr [7FFC7F75FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF7F44FCF0]; System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        cmp       rdi,4000
        ja        short M01_L03
        jmp       short M01_L01
@@ -963,7 +963,7 @@ System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        shl       r8,3
        cmp       r8,4000
        jbe       near ptr M00_L05
-       call      qword ptr [7FFC1FE75BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF20045BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
 M00_L00:
        mov       eax,[r14+8]
        lea       ecx,[rax-1]
@@ -1004,7 +1004,7 @@ M00_L03:
 M00_L04:
        mov       ecx,47
        mov       edx,0D
-       call      qword ptr [7FFC1FF6ED18]
+       call      qword ptr [7FFF2014ED18]
        int       3
 M00_L05:
        call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
@@ -1115,7 +1115,7 @@ System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        shl       r8,3
        cmp       r8,4000
        jbe       near ptr M00_L05
-       call      qword ptr [7FFC1FE75BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF20055BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
 M00_L00:
        mov       eax,[r14+8]
        lea       ecx,[rax-1]
@@ -1156,7 +1156,7 @@ M00_L03:
 M00_L04:
        mov       ecx,47
        mov       edx,0D
-       call      qword ptr [7FFC1FF6ED18]
+       call      qword ptr [7FFF2015ED18]
        int       3
 M00_L05:
        call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
@@ -1267,12 +1267,13 @@ System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        shl       r8,3
        cmp       r8,4000
        jbe       near ptr M00_L05
-       call      qword ptr [7FFC1FE75BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF20065BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
 M00_L00:
        mov       eax,[r14+8]
-       dec       eax
-       cmp       eax,[r14+8]
+       lea       ecx,[rax-1]
+       cmp       ecx,eax
        jae       near ptr M00_L06
+       mov       eax,ecx
        lea       rax,[rax+rax*8]
        lea       rdi,[r14+rax*8+10]
        lea       rsi,[rsp+28]
@@ -1307,7 +1308,7 @@ M00_L03:
 M00_L04:
        mov       ecx,47
        mov       edx,0D
-       call      qword ptr [7FFC1FF6ED18]
+       call      qword ptr [7FFF2016ED18]
        int       3
 M00_L05:
        call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
@@ -1315,7 +1316,7 @@ M00_L05:
 M00_L06:
        call      CORINFO_HELP_RNGCHKFAIL
        int       3
-; Total bytes of code 310
+; Total bytes of code 311
 ```
 ```assembly
 ; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
@@ -1418,7 +1419,7 @@ System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
        shl       r8,3
        cmp       r8,4000
        jbe       near ptr M00_L05
-       call      qword ptr [7FFC1FE65BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF20045BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)
 M00_L00:
        mov       eax,[r14+8]
        lea       ecx,[rax-1]
@@ -1459,7 +1460,7 @@ M00_L03:
 M00_L04:
        mov       ecx,47
        mov       edx,0D
-       call      qword ptr [7FFC1FF5ED18]
+       call      qword ptr [7FFF2014ED18]
        int       3
 M00_L05:
        call      System.Buffer.__BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)

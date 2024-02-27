@@ -9,7 +9,7 @@
 // <copyright file="Countries.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Methods for retrieving comprehensive data encompassing all countries worldwide, including their respective regions, states and cities.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Text.Json;

@@ -4,7 +4,7 @@
 // Created          : 08-02-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-28-2023
+// Last Modified On : 02-26-2024
 // ***********************************************************************
 // <copyright file="RandomDataBenchmark.cs" company="dotNetTips.Spargine.Tester.Benchmarking">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -193,6 +193,15 @@ public class RandomDataBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(RandomData.GenerateUrlFragment))]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateUrlFragment()
+	{
+		var fileName = RandomData.GenerateUrlFragment();
+
+		this.Consume(fileName);
+	}
+
 	[Benchmark(Description = nameof(RandomData.GenerateUrlHostName))]
 	[BenchmarkCategory(Categories.New)]
 	public void GenerateUrlHostName()
@@ -216,15 +225,6 @@ public class RandomDataBenchmark : Benchmark
 	public void GenerateUrlHostNameNoSubDomain()
 	{
 		var fileName = RandomData.GenerateUrlHostNameNoSubDomain();
-
-		this.Consume(fileName);
-	}
-
-	[Benchmark(Description = nameof(RandomData.GenerateUrlPart))]
-	[BenchmarkCategory(Categories.New)]
-	public void GenerateUrlPart()
-	{
-		var fileName = RandomData.GenerateUrlPart();
 
 		this.Consume(fileName);
 	}

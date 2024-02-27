@@ -9,7 +9,7 @@
 // <copyright file="RandomData.cs" company="dotNetTips.Spargine.8.Tester">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>Ways to Generate Random Data for Unit and Benchmark Testing.</summary>
+// <summary>Create random data for unit and benchmark testing.</summary>
 // ***********************************************************************
 
 using System.Collections.ObjectModel;
@@ -233,7 +233,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates an collection of Address that implements <see cref="IAddress" />.
+	/// Generate a collection of Address types that implement the <see cref="IAddress"/> interface.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="country">The countryName.</param>
@@ -274,7 +274,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates the <see cref="AddressRecord" /> collection.
+	/// Generate a collection of <see cref="AddressRecord" /> instances.
 	/// </summary>
 	/// <param name="country">The countryName.</param>
 	/// <param name="count">The address count. Count must be 0 or higher. Defaults to 2.</param>
@@ -301,11 +301,11 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a <see cref="byte" /> array.
+	/// Generates a random <see cref="byte"/> array.
 	/// </summary>
-	/// <param name="sizeInKb">The size in kb. Size must be <see cref="double.Epsilon" /> or greater.</param>
-	/// <returns>System.Byte[].</returns>
-	/// <remarks>Uses _randomNumberGenerator due to performance increase [CA5394]. Uses Span.</remarks>
+	/// <param name="sizeInKb">The size in kb.</param>
+	/// <returns>byte[].</returns>
+	/// <font color="red">Badly formed XML comment.</font>
 	[Information(nameof(GenerateByteArray), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Available)]
 	public static byte[] GenerateByteArray(double sizeInKb)
 	{
@@ -320,7 +320,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Creates a random <see cref="char" />.
+	/// Generates a random <see cref="char" />.
 	/// </summary>
 	/// <returns>System.Char.</returns>
 	/// <example>Output: 82 'R'</example>
@@ -338,7 +338,7 @@ public static partial class RandomData
 	public static char GenerateCharacter(char minValue, char maxValue) => (char)GenerateInteger(minValue, maxValue);
 
 	/// <summary>
-	/// Creates a <see cref="ICoordinate" /> object with random values.
+	/// Create a Coordinate object that implements the  <see cref="ICoordinate"/> interface with random values.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <returns>T.</returns>
@@ -347,7 +347,7 @@ public static partial class RandomData
 	public static T GenerateCoordinate<T>() where T : ICoordinate, new() => new() { X = GenerateInteger(), Y = GenerateInteger(), Z = GenerateInteger() };
 
 	/// <summary>
-	/// Creates collection of  <see cref="ICoordinate" />.
+	/// Create a collection of objects that implement the <see cref="ICoordinate"/> interface.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="count">The number of items to create. Minimum value is 1.</param>
@@ -369,7 +369,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a random credit card number.
+	/// Generates a random credit card number based on a random credit card formats .
 	/// </summary>
 	/// <returns>System.String.</returns>
 	[Information(nameof(GenerateCreditCard), "David McCarter", "3/13/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
@@ -390,7 +390,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Creates a random <see cref="decimal" /> value.
+	/// Generates a random <see cref="decimal"/> value.
 	/// </summary>
 	/// <param name="minValue">The minimum value.</param>
 	/// <param name="maxValue">The maximum value.</param>
@@ -408,15 +408,15 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Returns a random domain extension.
+	/// Generates a random domain extension.
 	/// </summary>
 	/// <returns>System.String.</returns>
-	/// <example>Output: ".co.uk"</example>
+	/// <example>Output: creditunion</example>
 	[Information(nameof(GenerateDomainExtension), "David McCarter", "1/19/2019", UnitTestCoverage = 0, Status = Status.Available)]
 	public static string GenerateDomainExtension() => Of(_domainExtensions.Value);
 
 	/// <summary>
-	/// Creates a random email address.
+	/// Create a random email address with a random domain.
 	/// </summary>
 	/// <returns>System.String.</returns>
 	/// <example>Output: fbxpfvtanqysqmuqfh@kiuvf.fr</example>
@@ -424,12 +424,12 @@ public static partial class RandomData
 	public static string GenerateEmailAddress() => $"{GenerateWord(5, 25, 'a', 'z')}@{GenerateWord(5, 15, 'a', 'z')}.{GenerateDomainExtension()}";
 
 	/// <summary>
-	/// Generates a file.
+	/// Generate a random file with a default length of 1,024 and save it to the user's AppData\Roaming folder.
 	/// </summary>
 	/// <param name="fileName">Name of the file.</param>
 	/// <param name="fileLength">Byte length of the file. Minimum length = 1</param>
 	/// <returns>Name of the file generated.</returns>
-	/// <example>Output: c:\\temp\\UnitTest.test</example>
+	/// <example>Output: C:\\Users\\user folder\\AppData\\Roaming\\UnitTest.test</example>
 	[Information(nameof(GenerateFile), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Available)]
 	public static string GenerateFile(string fileName, int fileLength = DefaultFileLength)
 	{
@@ -442,13 +442,12 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates random files in temporary path.
+	/// Generate random files with a default length of 1,024 and save them to the user's AppData\Roaming folder.
 	/// </summary>
 	/// <param name="count">The number of files to create. Minimum value = 1.</param>
 	/// <param name="fileLength">Length of the file. Minimum value = 1.</param>
 	/// <param name="fileExtension">The file extension.</param>
 	/// <returns>System.ValueTuple&lt;System.String, ReadOnlyCollection&lt;System.String&gt;&gt;.</returns>
-	/// <example>Output: Path: "C:\\Users\\dotNetDave\\AppData\\Local\\Temp\\" Files: Count = 100</example>
 	[Information(nameof(GenerateFiles), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Available)]
 	public static (string Path, ReadOnlyCollection<string> Files) GenerateFiles(int count = 100, int fileLength = DefaultFileLength, string fileExtension = DefaultFileExtension)
 	{
@@ -498,7 +497,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a male or famale first name.
+	/// Randomly generate a male or female first name.
 	/// </summary>
 	/// <returns>System.String.</returns>
 	[Information(nameof(GenerateFirstName), "David McCarter", "3/11/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
@@ -515,7 +514,6 @@ public static partial class RandomData
 	public static int GenerateInteger(int min = int.MinValue, int max = int.MaxValue)
 	{
 		//Ensure maxLength is +1 of minLength so the _randomNumberGenerator does not cause an exception.
-		min = min.EnsureMinimum(1);
 		max = max.EnsureMinimum(min + 1);
 
 		lock (Lock)
@@ -525,7 +523,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Creates a random key from a GUID.
+	/// Create a random key using a GUID and remove any dashes.
 	/// </summary>
 	/// <returns>System.String.</returns>
 	/// <example>Output: f7f0af78003d4ab194b5a4024d02112a</example>
@@ -533,14 +531,14 @@ public static partial class RandomData
 	public static string GenerateKey() => KeyGenerator.GenerateKey();
 
 	/// <summary>
-	/// Generates a last name.
+	/// Randomly generate a person's last name.
 	/// </summary>
 	/// <returns>System.String.</returns>
 	[Information(nameof(GenerateLastName), "David McCarter", "3/11/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
 	public static string GenerateLastName() => _lastNames.Value.PickRandom();
 
 	/// <summary>
-	/// Creates a random number as a <see cref="string" /> using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
+	/// Creates a random number as a <see cref="string" />.
 	/// </summary>
 	/// <param name="length">The length of the number. Minimum value = 1.</param>
 	/// <returns>System.String.</returns>
@@ -572,7 +570,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates random person names.
+	/// Generates random male and female names, and provides outputs for FirstName, LastName, and FullName.
 	/// </summary>
 	/// <param name="count">The count. Minimnum value is 1.</param>
 	/// <returns>System.Collections.ObjectModel.ReadOnlyCollection&lt;string&gt;.</returns>
@@ -598,7 +596,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a <see cref="PersonRecord" />.
+	/// Generates a <see cref="PersonRecord" /> with random values.
 	/// </summary>
 	/// <param name="addressCount">The address count. Count must be 0 - 100. Defaults to 2.</param>
 	/// <param name="addressLength">Length of the address. Length must be between 5 - 100. Defaults to 25.</param>
@@ -637,7 +635,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a Person reference type with default values.
+	/// Generates a Person reference type that implements <see cref="IAddress"/> with default values.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of the t address.</typeparam>
 	/// <param name="addressCount">The address count. Count must be 0 or higher. Defaults to 2.</param>
@@ -669,7 +667,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates the person reference collection.
+	/// Generates a <see cref="Models.RefTypes.Person{TAddress}"/> reference collection that implements <see cref="IAddress"/>.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of the t address.</typeparam>
 	/// <param name="count">The number of items to create. Minimum value = 1.</param>
@@ -690,7 +688,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates the person value.
+	/// Generates a <see cref="Models.ValueTypes.Person{TAddress}"/> value type that implements <see cref="IAddress"/> with random values.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of the t address.</typeparam>
 	/// <param name="addressCount">The address count. Count must be 0 or higher. Defaults to 2.</param>
@@ -722,7 +720,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates the person value collection.
+	/// Generates a <see cref="Models.ValueTypes.Person{TAddress}"/> value collection that implements <see cref="IAddress"/>.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of the t address.</typeparam>
 	/// <param name="count">The count.</param>
@@ -743,7 +741,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Creates a phone number based on a <see cref="Country" />.
+	/// Creates a phone number based on a specified <see cref="Country"/>, with the option to include the country code.
 	/// </summary>
 	/// <param name="country">The countryName.</param>
 	/// <param name="includeCountryCode">The include countryName code.</param>
@@ -758,7 +756,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates the phone number based on <see cref="CountryName" />.
+	/// Creates a phone number based on a specified <see cref="CountryName"/>, with the option to include the country code.
 	/// </summary>
 	/// <param name="countryName">Name of the country.</param>
 	/// <param name="includeCountryCode">The include country code.</param>
@@ -776,12 +774,12 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates random file name.
+	/// Generates a random file name in the temporary folder.
 	/// </summary>
 	/// <param name="fileNameLength">Length of the file name. Minimum value = 1. Maximim value = 256.</param>
 	/// <param name="extension">The extension.</param>
 	/// <returns>System.String.</returns>
-	/// <example>Output: C:\\Users\\dotNetDave\\AppData\\Local\\Temp\\FOGWYNDRBM.dotnettips</example>
+	/// <example>Output: C:\\Users\\user folder Ex\\AppData\\Local\\Temp\\MSPRINYRBU.dotnettips.temp</example>
 	[Information(nameof(GenerateRandomFileName), "David McCarter", "1/19/2019", UnitTestCoverage = 0, Status = Status.Available)]
 	public static string GenerateRandomFileName(int fileNameLength = 10, string extension = DefaultFileExtension)
 	{
@@ -836,9 +834,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generate random personal data that includes values for date
-	/// of birth, cell phone number, countryName, email address, first
-	/// name, last name, and phone number.
+	/// Generates random person data, including values for date of birth, cell phone number, <see cref="Country"/>, email address, first name, last name, and phone number.
 	/// </summary>
 	/// <returns>DotNetTips.Spargine.Tester.PersonData.</returns>
 	public static PersonData GenerateRandomPersonData()
@@ -861,13 +857,13 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates the random name of the person.
+	/// Generates random first and last names for a person.
 	/// </summary>
 	/// <returns>(string firstName, string lastName).</returns>
 	public static (string firstName, string lastName) GenerateRandomPersonName() => (GenerateFirstName(), GenerateLastName());
 
 	/// <summary>
-	/// Creates a random relative url using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
+	/// Creates a random relative URL.
 	/// </summary>
 	/// <returns>System.String.</returns>
 	/// <example>Output:"/ljsylu/rsglcurkiylqld/wejdbuainlgjofnv/uwbrjftyt/"</example>
@@ -880,7 +876,7 @@ public static partial class RandomData
 		{
 			for (var lengthIndex = 0; lengthIndex < GenerateInteger(1, 10); lengthIndex++)
 			{
-				_ = sb.Append(GenerateUrlPart());
+				_ = sb.Append(GenerateUrlFragment());
 			}
 
 			sb = sb.Append('/');
@@ -894,11 +890,11 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a random file.
+	/// Generates a random file in the user's local temporary folder.
 	/// </summary>
 	/// <param name="fileLength">The length. Minimum value = 1.</param>
 	/// <returns>System.String.</returns>
-	/// <example>Output: C:\\Users\\dotNetDave\\AppData\\Local\\Temp\\klxpckpo.24h</example>
+	/// <example>Output: C:\\Users\\user folder\\AppData\\Local\\Temp\\OFQCKBRAKQ.dotnettips.temp</example>
 	[Information(nameof(GenerateTempFile), "David McCarter", "1/19/2019", UnitTestCoverage = 0, Status = Status.Available)]
 	public static string GenerateTempFile(int fileLength = DefaultFileLength)
 	{
@@ -913,44 +909,44 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Creates a random url.
+	/// Creates a completely random URL.
 	/// </summary>
 	/// <returns>System.String.</returns>
-	/// <example>Output: https://www.agngbgluhawxhnmoxvdogla.hdtmdjmiagwlx.com/r/ulhekwhqnicq/bxxmyq/owaqaqxvdvtae/</example>
+	/// <example>Output: https://www.rp.red/wyfkxbfft/pqypmdstoydnootvdvnsqkn/</example>
 	[Information(nameof(GenerateUrl), "David McCarter", "1/19/2019", UnitTestCoverage = 0, Status = Status.Available)]
 	public static string GenerateUrl() => $"{GenerateUrlHostName()}{GenerateRelativeUrl()}";
 
 	/// <summary>
-	/// Creates a random url host name.
+	/// Generate a random URL fragment.
 	/// </summary>
 	/// <returns>System.String.</returns>
-	/// <example>Output: https://www.ehvjnbhcpcivgiccugim.lfa.net</example>
+	/// <example>Output: /rregyyjxpjiats</example>
+	[Information(nameof(GenerateUrlFragment), "David McCarter", "1/19/2019", UnitTestCoverage = 0, Status = Status.Available)]
+	public static string GenerateUrlFragment() => $"/{GenerateWord(1, 25, 'a', 'z')}";
+
+	/// <summary>
+	/// Generates a random URL host name.
+	/// </summary>
+	/// <returns>System.String.</returns>
+	/// <example>Output: https://www.ukrsusbrtjijfktfj.shouji</example>
 	[Information(nameof(GenerateUrlHostName), "David McCarter", "1/19/2019", UnitTestCoverage = 0, Status = Status.Available)]
 	public static string GenerateUrlHostName() => $"https://{GenerateUrlHostNameNoProtocol()}";
 
 	/// <summary>
-	/// Creates a url without a protocol.
+	/// Creates a URL without a subdomain.
 	/// </summary>
 	/// <returns>System.String.</returns>
-	/// <example>Output: www.wucqcapnybi.kejdwudpbstekhxic.co.uk</example>
+	/// <example>Output: www.txtkixvsxgryixbwrtje.shangrila</example>
 	[Information(nameof(GenerateUrlHostNameNoProtocol), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Available)]
 	public static string GenerateUrlHostNameNoProtocol() => $"www.{GenerateWord(1, 25, 'a', 'z')}.{GenerateUrlHostNameNoSubDomain()}";
 
 	/// <summary>
-	/// Creates host name without a sub domain.
+	///Creates a hostname without a subdomain.
 	/// </summary>
 	/// <returns>System.String.</returns>
-	/// <example>Output: elqqcw.org.uk</example>
+	/// <example>Output: dz</example>
 	[Information(nameof(GenerateUrlHostNameNoSubDomain), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Available)]
 	public static string GenerateUrlHostNameNoSubDomain() => GenerateDomainExtension();
-
-	/// <summary>
-	/// Create a random url part.
-	/// </summary>
-	/// <returns>System.String.</returns>
-	/// <remarks>/rregyyjxpjiats</remarks>
-	[Information(nameof(GenerateUrlPart), "David McCarter", "1/19/2019", UnitTestCoverage = 0, Status = Status.Available)]
-	public static string GenerateUrlPart() => $"/{GenerateWord(1, 25, 'a', 'z')}";
 
 	/// <summary>
 	/// Creates a random word.
@@ -969,12 +965,12 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Creates a random word.
+	/// Generates a random word within a specified minimum and maximum length.
 	/// </summary>
 	/// <param name="minLength">The minimum length. Minimum value = 1.</param>
 	/// <param name="maxLength">The maximum length. Minimum value = 1.</param>
 	/// <returns>System.String.</returns>
-	/// <example>Output: oMOYxlFvqclVQK</example>
+	/// <example>Output: anvpwufadtxpfysguavguwm</example>
 	[Information(nameof(GenerateWord), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Available)]
 	public static string GenerateWord(int minLength = 1, int maxLength = 1)
 	{
@@ -1033,7 +1029,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a list of words.
+	/// Generates a set of words with lengths falling within a specified minimum and maximum range.
 	/// </summary>
 	/// <param name="count">The word count. Minimum value = 1.</param>
 	/// <param name="minLength">The minimum length. Minimum value = 1.</param>
@@ -1063,8 +1059,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates an extensive string designed for testing purposes.
-	/// The string's length is 969 characters, including spaces.
+	/// Provides an extensive string for testing purposes, with a length of 969 characters, including spaces.
 	/// </summary>
 	/// <value>The long test string.</value>
 	[Information(nameof(GenerateWords), "David McCarter", "1/19/2019", Status = Status.Available)]

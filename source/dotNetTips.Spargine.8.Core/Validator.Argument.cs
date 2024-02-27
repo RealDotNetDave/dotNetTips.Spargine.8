@@ -10,10 +10,7 @@
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
-// Methods that facilitate the validation of arguments and values,
-// ensuring simplicity and accuracy. When invalid data is encountered,
-// an Exception will be thrown, providing an appropriate error message,
-// either custom or default.
+// Methods facilitating the validation of arguments and values, ensuring both simplicity and accuracy. In the event of encountering invalid data, an Exception will be thrown, accompanied by an appropriate error message, which can be either custom or default.
 // </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;

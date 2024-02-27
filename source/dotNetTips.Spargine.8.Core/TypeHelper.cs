@@ -10,12 +10,7 @@
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>
-// Offers useful methods for handling types, including loading derived
-// types, creating a new type, finding derived types, converting JSON to
-// an object, converting a JSON file to an object, generating an instance
-// hash code, and listing built-in types, among other functionalities.
-// These features empower developers to efficiently work with types in
-// various scenarios.
+// Provides valuable methods for type management, encompassing tasks such as loading derived types, creating new types, discovering derived types, converting JSON to objects, transforming JSON files into objects, generating instance hash codes, and listing built-in types. These functionalities empower developers to handle types effectively in diverse scenarios.
 // </summary>
 // ***********************************************************************
 

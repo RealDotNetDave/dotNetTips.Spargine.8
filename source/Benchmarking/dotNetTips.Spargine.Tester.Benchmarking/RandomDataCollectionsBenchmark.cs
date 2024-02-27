@@ -4,7 +4,7 @@
 // Created          : 08-02-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 02-23-2024
 // ***********************************************************************
 // <copyright file="RandomDataCollectionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Tester.BenchmarkTests;
 /// <summary>
 /// Class RandomDataCollectionsBenchmark.
 /// </summary>
-public class RandomDataCollectionsBenchmark : LargeCollectionsBenchmark
+public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 {
 
 	private const CountryName DefaultCountry = CountryName.UnitedStates;

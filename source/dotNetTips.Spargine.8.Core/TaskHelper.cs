@@ -10,9 +10,7 @@
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
-// Methods for synchronous execution of Tasks. These methods allow you
-// to run Tasks without the need for explicit asynchronous handling,
-// making the code easier to read and manage.
+// Synchronous execution methods for Tasks streamline the process of running asynchronous operations without requiring explicit asynchronous handling. This simplifies code readability and management.
 // </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;

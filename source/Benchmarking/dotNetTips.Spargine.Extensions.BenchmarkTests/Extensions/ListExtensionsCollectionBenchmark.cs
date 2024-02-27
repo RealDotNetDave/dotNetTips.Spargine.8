@@ -4,7 +4,7 @@
 // Created          : 01-09-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="ListExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -27,7 +27,7 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 [BenchmarkCategory(Categories.Collections)]
-public class ListExtensionsCollectionBenchmark : SmallCollectionsBenchmark
+public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 {
 
 	private List<Person<Address>> _peopleRefList;
@@ -65,7 +65,7 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 
 	[Benchmark(Description = "Count")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
-	public void CountCount()
+	public void Count_Count()
 	{
 		var people = this._peopleRefList;
 
@@ -74,7 +74,7 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionsBenchmark
 
 	[Benchmark(Description = nameof(EnumerableExtensions.FastCount))]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
-	public void CountFastCount()
+	public void Count_FastCount()
 	{
 		var people = this._peopleRefList;
 

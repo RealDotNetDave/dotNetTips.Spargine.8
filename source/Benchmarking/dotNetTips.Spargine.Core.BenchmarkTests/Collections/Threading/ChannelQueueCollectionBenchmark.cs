@@ -31,7 +31,7 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Collections.Threading;
 /// </summary>
 /// <seealso cref="CounterBenchmark" />
 [BenchmarkCategory(Categories.Async)]
-public class ChannelQueueCollectionBenchmark : SmallCollectionsBenchmark
+public class ChannelQueueCollectionBenchmark : SmallCollectionBenchmark
 {
 
 	/// <summary>

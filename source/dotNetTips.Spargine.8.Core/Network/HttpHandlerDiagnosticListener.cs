@@ -69,7 +69,7 @@ public sealed class HttpHandlerDiagnosticListener(ILogger logger) : IObserver<Ke
 	{
 		if (logger is not null)
 		{
-			EasyLogger.LogInformation(logger, message);
+			FastLogger.LogInformation(logger, message);
 		}
 
 		Trace.WriteLine(message);
