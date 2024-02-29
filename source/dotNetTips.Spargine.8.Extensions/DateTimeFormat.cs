@@ -9,7 +9,7 @@
 // <copyright file="DateTimeFormat.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary></summary>
+// <summary>Class that offers common date and time formats.</summary>
 // ***********************************************************************
 using DotNetTips.Spargine.Core;
 

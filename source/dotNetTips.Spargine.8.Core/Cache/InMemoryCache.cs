@@ -9,7 +9,10 @@
 // <copyright file="InMemoryCache.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>MemoryCache with a default duration of 20 minutes for storing objects in memory.</summary>
+// <summary>
+// MemoryCache with a default duration of 20 minutes for storing objects
+// in memory.
+// </summary>
 // ***********************************************************************
 
 using System.Diagnostics.CodeAnalysis;

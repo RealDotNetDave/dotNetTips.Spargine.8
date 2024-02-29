@@ -9,7 +9,10 @@
 // <copyright file="PersonData.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>
+// Class that represents person data, including properties BornOn,
+// CellPhone, Country, Email, FirstName, LastName, and Phone.
+// </summary>
 // ***********************************************************************
 
 using DotNetTips.Spargine.Tester.Data;

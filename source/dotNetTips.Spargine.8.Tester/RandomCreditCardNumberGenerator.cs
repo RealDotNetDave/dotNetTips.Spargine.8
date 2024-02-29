@@ -9,7 +9,7 @@
 // <copyright file="RandomCreditCardNumberGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Generates random credit card numbers.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Globalization;

@@ -9,7 +9,10 @@
 // <copyright file="WebHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Utility methods for website calls. These functions streamline website interactions and efficiently manage HTTP-related tasks.</summary>
+// <summary>
+// Utility methods for website calls. These functions streamline website
+// interactions and efficiently manage HTTP-related tasks.
+// </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;

@@ -9,7 +9,10 @@
 // <copyright file="IPerson.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Interface "IPerson" that defines properties for Addresses, BornOn, CellPhone, Email, FirstName, LastName, and Phone.</summary>
+// <summary>
+// Interface "IPerson" that defines properties for Addresses, BornOn,
+// CellPhone, Email, FirstName, LastName, and Phone.
+// </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using DotNetTips.Spargine.Core;

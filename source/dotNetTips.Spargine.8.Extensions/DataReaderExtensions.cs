@@ -9,7 +9,7 @@
 // <copyright file="DataReaderExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods designed for DataReader.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Data;

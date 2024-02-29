@@ -9,7 +9,7 @@
 // <copyright file="RegionConverter.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Converter tailored for Region.</summary>
 // ***********************************************************************
 
 using System.Text.Json;

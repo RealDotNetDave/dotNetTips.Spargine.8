@@ -9,7 +9,7 @@
 // <copyright file="PrefixAndLength.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Class for representing a prefix and length.</summary>
 // ***********************************************************************
 
 using System.Diagnostics;

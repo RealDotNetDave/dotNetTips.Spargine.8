@@ -9,7 +9,11 @@
 // <copyright file="Coordinate.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>A practical value type designed for testing and benchmarking, named "Coordinate," featuring properties X, Y, and Z. It inherits from the interface ICoordinate.</summary>
+// <summary>
+// A practical value type designed for testing and benchmarking,
+// named "Coordinate," featuring properties X, Y, and Z.
+// It inherits from the interface ICoordinate.
+// </summary>
 // ***********************************************************************
 using System.Globalization;
 using System.Runtime.Serialization;

@@ -9,7 +9,10 @@
 // <copyright file="EnumHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Facilitates the usage of Enums by providing convenient methods such as AdjustCamelCase(), AdjustName(), GetNames(), and more.</summary>
+// <summary>
+// Facilitates the usage of Enums by providing convenient methods such as
+// AdjustCamelCase(), AdjustName(), GetNames(), and more.
+// </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.ComponentModel;

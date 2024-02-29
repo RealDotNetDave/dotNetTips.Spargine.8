@@ -9,7 +9,7 @@
 // <copyright file="HttpContextExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods designed for HttpContext.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core;

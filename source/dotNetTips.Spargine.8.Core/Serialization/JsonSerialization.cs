@@ -9,7 +9,12 @@
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>This class simplifies the process of serializing and deserializing strings to and from JSON format using the JsonSerializer. JSON serialization is a widely adopted and efficient method for storing and exchanging data in various applications and APIs.</summary>
+// <summary>
+// This class simplifies the process of serializing and deserializing
+// strings to and from JSON format using the JsonSerializer. JSON
+// serialization is a widely adopted and efficient method for storing
+// and exchanging data in various applications and APIs.
+// </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;

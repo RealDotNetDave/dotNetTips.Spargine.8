@@ -1,16 +1,3 @@
-// ***********************************************************************
-// Assembly         : DotNetTips.Spargine.8.Extensions
-// Author           : David McCarter
-// Created          : 12-17-2020
-//
-// Last Modified By : David McCarter
-// Last Modified On : 07-03-2023
-// ***********************************************************************
-// <copyright file="GlobalSuppressions.cs" company="David McCarter - dotNetTips.com">
-//     McCarter Consulting (David McCarter)
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Performance", "CA1829:Use Length/Count property instead of Count() when available", Justification = "<Pending>", Scope = "member", Target = "~M:DotNetTips.Spargine.Extensions.ListExtensions.HasItems``1(System.Collections.Generic.List{``0})~System.Boolean")]

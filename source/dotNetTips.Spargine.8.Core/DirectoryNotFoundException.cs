@@ -9,7 +9,9 @@
 // <copyright file="DirectoryNotFoundException.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>Custom exception to be utilized when a directory cannot be found.</summary>
+// <summary>
+// Custom exception to be utilized when a directory cannot be found.
+// </summary>
 // ***********************************************************************
 using System.Runtime.Serialization;
 

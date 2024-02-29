@@ -9,7 +9,9 @@
 // <copyright file="CountryName.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>
+// Enumeration that represents all the countries in the world.
+// </summary>
 // ***********************************************************************
 
 using System.Runtime.Serialization;

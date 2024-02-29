@@ -9,7 +9,7 @@
 // <copyright file="ListExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Extensions for different List collection types.</summary>
+// <summary>Extension methods for different List collection types.</summary>
 // ***********************************************************************
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
@@ -66,7 +66,7 @@ public static class ListExtensions
 			return collection;
 		}
 
-		return collection.ArgumentNotNull().ArgumentNotReadOnly().Append(item).ToList();
+		return [.. collection.ArgumentNotNull().ArgumentNotReadOnly(), item];
 
 	}
 

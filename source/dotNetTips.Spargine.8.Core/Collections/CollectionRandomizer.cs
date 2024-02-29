@@ -9,7 +9,10 @@
 // <copyright file="CollectionRandomizer.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Designed to shuffle a collection either once or endlessly. Enables users to retrieve items using the GetNext() method.</summary>
+// <summary>
+// Designed to shuffle a collection either once or endlessly. Enables
+// users to retrieve items using the GetNext() method.
+// </summary>
 // ***********************************************************************
 
 using System.Collections.Immutable;

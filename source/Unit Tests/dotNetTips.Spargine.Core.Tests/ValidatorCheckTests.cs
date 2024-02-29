@@ -55,7 +55,6 @@ public class ValidatorCheckTests
 		// Good Test
 		Assert.IsTrue(typeof(Person<Address>).CheckEquals(typeof(Person<Address>)));
 
-
 		// Test Exception throwing.
 		_ = Assert.ThrowsException<InvalidValueException<Type>>(() => typeof(Person<Address>).CheckEquals(typeof(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<DotNetTips.Spargine.Tester.Models.ValueTypes.Address>), true));
 	}

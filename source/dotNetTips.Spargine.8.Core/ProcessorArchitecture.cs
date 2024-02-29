@@ -9,9 +9,10 @@
 // <copyright file="ProcessorArchitecture.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Enumeration to indicate the type of processor being used
+// by the computer.
+// </summary>
 // ***********************************************************************
-
 
 
 namespace DotNetTips.Spargine.Core;

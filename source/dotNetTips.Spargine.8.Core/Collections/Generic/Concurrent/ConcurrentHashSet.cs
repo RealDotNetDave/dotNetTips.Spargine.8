@@ -9,7 +9,9 @@
 // <copyright file="ConcurrentHashSet.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Represents a thread-safe, hash-based unique collection.</summary>
+// <summary>
+// Represents a thread-safe, hash-based unique collection.
+// </summary>
 // ***********************************************************************
 using System.Collections;
 using System.Diagnostics;

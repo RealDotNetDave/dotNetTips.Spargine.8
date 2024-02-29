@@ -9,7 +9,10 @@
 // <copyright file="ObservableList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>Custom Observable Collection Class for `<T>`. Includes the following events: CollectionChanged, PropertyChanged, PropertyChanging.</summary>
+// <summary>
+// Custom Observable Collection Class for `<T>`. Includes the following
+// events: CollectionChanged, PropertyChanged, PropertyChanging.
+// </summary>
 // ***********************************************************************
 using System.Collections;
 using System.Collections.Specialized;

@@ -72,6 +72,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="dotNetTips-Spargine-8-Logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="IDisposableAnalyzers" Version="4.0.7">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

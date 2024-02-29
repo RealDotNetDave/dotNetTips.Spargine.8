@@ -9,7 +9,10 @@
 // <copyright file="ArgumentReadOnlyException.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>Custom exception type for read-only argument values, such as collections.</summary>
+// <summary>
+// Custom exception type for read-only argument values, such as
+// collections.
+// </summary>
 // ***********************************************************************
 using DotNetTips.Spargine.Core.Properties;
 

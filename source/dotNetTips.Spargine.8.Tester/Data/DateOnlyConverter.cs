@@ -9,7 +9,7 @@
 // <copyright file="DateOnlyConverter.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Converter tailored for DateOnly.</summary>
 // ***********************************************************************
 
 using System.Text.Json;

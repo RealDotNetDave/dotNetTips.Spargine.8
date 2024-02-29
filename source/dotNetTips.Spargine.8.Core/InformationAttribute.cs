@@ -9,7 +9,11 @@
 // <copyright file="InformationAttribute.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>Attribute that enables the addition of informational data to methods. Properties include Author, BenchMarkStatus, CreatedOn, Description, Documentation, ModifiedBy, ModifiedOn, Status, UnitTestCoverage.</summary>
+// <summary>
+// Attribute that enables the addition of informational data to methods.
+// Properties include Author, BenchMarkStatus, CreatedOn, Description,
+// Documentation, ModifiedBy, ModifiedOn, Status, UnitTestCoverage.
+// </summary>
 // ***********************************************************************
 using DotNetTips.Spargine.Core.Properties;
 

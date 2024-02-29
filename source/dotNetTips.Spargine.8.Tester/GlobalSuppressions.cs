@@ -1,16 +1,3 @@
-// ***********************************************************************
-// Assembly         : dotNetTips.Spargine.8.Tester
-// Author           : David McCarter
-// Created          : 01-03-2021
-//
-// Last Modified By : David McCarter
-// Last Modified On : 10-25-2021
-// ***********************************************************************
-// <copyright file="GlobalSuppressions.cs" company="David McCarter - dotNetTips.com">
-//     McCarter Consulting (David McCarter)
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 using System.Diagnostics.CodeAnalysis;
 
@@ -37,3 +24,5 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "<Pending>", Scope = "member", Target = "~P:DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord.AddressesSerilization")]
 [assembly: SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "<Pending>", Scope = "member", Target = "~P:DotNetTips.Spargine.Tester.Models.ValueTypes.Person`1.AddressesSerilization")]
 [assembly: SuppressMessage("Design", "CA1055:URI-like return values should not be strings", Justification = "<Pending>", Scope = "member", Target = "~M:DotNetTips.Spargine.Tester.RandomData.GenerateUrlFragment~System.String")]
+[assembly: SuppressMessage("Design", "CA1000:Do not declare static members on generic types", Justification = "<Pending>", Scope = "member", Target = "~M:DotNetTips.Spargine.Tester.Models.RefTypes.Person`1.ToPerson(DotNetTips.Spargine.Tester.Models.ValueTypes.Person{DotNetTips.Spargine.Tester.Models.ValueTypes.Address})~DotNetTips.Spargine.Tester.Models.RefTypes.Person{DotNetTips.Spargine.Tester.Models.RefTypes.Address}")]
+[assembly: SuppressMessage("Design", "CA1000:Do not declare static members on generic types", Justification = "<Pending>", Scope = "member", Target = "~M:DotNetTips.Spargine.Tester.Models.RefTypes.Person`1.ToPerson(DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord)~DotNetTips.Spargine.Tester.Models.RefTypes.Person{DotNetTips.Spargine.Tester.Models.RefTypes.Address}")]

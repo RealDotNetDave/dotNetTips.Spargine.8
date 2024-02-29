@@ -9,7 +9,7 @@
 // <copyright file="HttpClientExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods tailored for HttpClient.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;

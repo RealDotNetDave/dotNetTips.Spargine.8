@@ -9,7 +9,10 @@
 // <copyright file="DistinctBlockingCollection.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>A custom thread-safe collection type designed for multi-threading tasks, ensuring uniqueness for all items in the collection.</summary>
+// <summary>
+// A custom thread-safe collection type designed for multi-threading
+// tasks, ensuring uniqueness for all items in the collection.
+// </summary>
 // ***********************************************************************
 using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;

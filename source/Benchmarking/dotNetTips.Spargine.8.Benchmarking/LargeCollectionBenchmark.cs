@@ -9,7 +9,10 @@
 // <copyright file="LargeCollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Class for performing benchmark tests on large collections with count values set to 64, 128, 256, 512, 1024, 2048, 4096, and 8192.</summary>
+// <summary>
+// Class for performing benchmark tests on large collections with count
+// values set to 64, 128, 256, 512, 1024, 2048, 4096, and 8192.
+// </summary>
 // ***********************************************************************
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Loggers;

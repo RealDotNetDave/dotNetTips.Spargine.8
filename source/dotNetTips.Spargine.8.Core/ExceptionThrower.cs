@@ -9,7 +9,12 @@
 // <copyright file="ExceptionThrower.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>Inspired by the .NET ExceptionThrower, this tool streamlines the process of throwing exceptions effortlessly. All exceptions thrown utilize default messages, and if necessary, custom messages can also be provided.</summary>
+// <summary>
+// Inspired by the .NET ExceptionThrower,
+// this tool streamlines the process of throwing exceptions effortlessly.
+// All exceptions thrown utilize default messages, and if necessary,
+// custom messages can also be provided.
+// </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;

@@ -9,7 +9,7 @@
 // <copyright file="FastLoggerExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods designed for FastLogger.</summary>
 // ***********************************************************************
 
 using System.Runtime.CompilerServices;

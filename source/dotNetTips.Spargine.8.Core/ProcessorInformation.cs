@@ -9,7 +9,9 @@
 // <copyright file="ProcessorInformation.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Utility to retrieve information about the computer processor.</summary>
+// <summary>
+// Utility to retrieve information about the computer processor.
+// </summary>
 // ***********************************************************************
 using System.Runtime.InteropServices;
 

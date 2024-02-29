@@ -9,7 +9,11 @@
 // <copyright file="PerformanceStopwatch.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>Enhances Stopwatch with helpful methods: StartNew() and StopReset(). Additionally, it possesses the ability to add messages that can be retrieved when the Stopwatch stops.</summary>
+// <summary>
+// Enhances Stopwatch with helpful methods: StartNew() and StopReset().
+// Additionally, it possesses the ability to add messages that can be
+// retrieved when the Stopwatch stops.
+// </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics;

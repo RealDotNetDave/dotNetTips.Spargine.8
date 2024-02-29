@@ -9,7 +9,10 @@
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Reference type with properties for Address1 and Address2, City, Country, CountryProvince, Phone, PostalCode, and State. This type inherits from the interface IAddress.
+// <summary>
+// Reference type with properties for Address1 and Address2, City,
+// Country, CountryProvince, Phone, PostalCode, and State. This type
+// inherits from the interface IAddress.
 // </summary>
 // ***********************************************************************
 using System.ComponentModel;

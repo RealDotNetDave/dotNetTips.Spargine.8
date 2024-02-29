@@ -9,7 +9,7 @@
 // <copyright file="DataRecordComparer.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Comparer to be used in DataRecord.</summary>
 // ***********************************************************************
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;

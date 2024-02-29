@@ -9,7 +9,7 @@
 // <copyright file="NumericExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods designed for numbers.</summary>
 // ***********************************************************************
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -735,8 +735,8 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 		try
 		{
-			string[] romanLetters = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
-			int[] numbers = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+			string[] romanLetters = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+			int[] numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
 
 			var index = 0;
 

@@ -9,7 +9,10 @@
 // <copyright file="TinyCollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Class for performing benchmark tests on very small collections with count values set to 2, 4, 8, 16, 32, 64, 128, and 256.</summary>
+// <summary>
+// Class for performing benchmark tests on very small collections with
+// count values set to 2, 4, 8, 16, 32, 64, 128, and 256.
+// </summary>
 // ***********************************************************************
 
 using BenchmarkDotNet.Attributes;

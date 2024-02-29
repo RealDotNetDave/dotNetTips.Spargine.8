@@ -9,7 +9,7 @@
 // <copyright file="NumericFormat.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary></summary>
+// <summary>Class that provides common formats for numbers.</summary>
 // ***********************************************************************
 using DotNetTips.Spargine.Core;
 

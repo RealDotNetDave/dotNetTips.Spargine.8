@@ -9,7 +9,10 @@
 // <copyright file="XmlSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Facilitates seamless serialization and deserialization of strings to and from the XML format.</summary>
+// <summary>
+// Facilitates seamless serialization and deserialization of strings to
+// and from the XML format.
+// </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;

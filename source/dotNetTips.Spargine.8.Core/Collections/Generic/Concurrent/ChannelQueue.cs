@@ -9,7 +9,10 @@
 // <copyright file="ChannelQueue.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>QueueManager class featuring the ListenAsync method for common queuing of items.</summary>
+// <summary>
+// QueueManager class featuring the ListenAsync method for common queuing
+// of items.
+// </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;

@@ -9,7 +9,7 @@
 // <copyright file="LinqExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods tailored for LINQ.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core;

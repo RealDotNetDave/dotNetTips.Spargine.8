@@ -9,7 +9,7 @@
 // <copyright file="City.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Class that encapsulates data for a City.</summary>
 // ***********************************************************************
 
 using System.Text.Json.Serialization;

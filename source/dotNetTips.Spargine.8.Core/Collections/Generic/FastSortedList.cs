@@ -9,7 +9,10 @@
 // <copyright file="FastSortedList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>Custom Collection Class for `<T>`. Items within this collection are sorted only upon request.</summary>
+// <summary>
+// Custom Collection Class for `<T>`. Items within this collection are
+// sorted only upon request.
+// </summary>
 // ***********************************************************************
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;

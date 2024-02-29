@@ -9,7 +9,11 @@
 // <copyright file="FastLogger.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>This class efficiently logs to any ILogger object, providing rapid logging for Critical, Debug, Error, Exception, Information, Trace, and Warning messages.</summary>
+// <summary>
+// This class efficiently logs to any ILogger object, providing rapid
+// logging for Critical, Debug, Error, Exception, Information, Trace,
+// and Warning messages.
+// </summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )

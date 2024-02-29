@@ -9,7 +9,7 @@
 // <copyright file="StreamExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods designed for Stream.</summary>
 // ***********************************************************************
 using System.Buffers;
 using System.Diagnostics.CodeAnalysis;

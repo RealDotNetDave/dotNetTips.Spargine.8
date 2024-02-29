@@ -10,7 +10,10 @@
 // <copyright file="PersonName.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>
+// Class that contains the first name, last name, and full name for
+// a person.
+// </summary>
 // ***********************************************************************
 
 using DotNetTips.Spargine.Core;

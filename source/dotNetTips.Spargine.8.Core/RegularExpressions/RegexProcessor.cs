@@ -9,9 +9,14 @@
 // <copyright file="RegexProcessor.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Utility methods for common string regular expressions. Included methods: ContainsWord, IsCreditCardNumber, IsEmailAddress, IsUrl, IsISBN, and more.</summary>
+// <summary>
+// Utility methods for common string regular expressions. Included
+// methods: ContainsWord, IsCreditCardNumber, IsEmailAddress, IsUrl,
+// IsISBN, and more.
+// </summary>
 // ***********************************************************************
 
+//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 using System.Text.RegularExpressions;
 
@@ -153,10 +158,8 @@ public static partial class RegexProcessor
 	[GeneratedRegex(MACAddressPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
 	private static partial Regex MACAddressSingleLine();
 
-
 	[GeneratedRegex(OneTo7AlphaPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
 	private static partial Regex OneTo7AlphaRegexSingleLine();
-
 
 	/// <summary>
 	/// Removes the cr/lf regex.
@@ -199,7 +202,6 @@ public static partial class RegexProcessor
 	/// <returns>Regex.</returns>
 	[GeneratedRegex(UrlPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
 	private static partial Regex UrlRegexSingleLine();
-
 
 	/// <summary>
 	/// Determines whether [contains word regex].
@@ -359,7 +361,6 @@ public static partial class RegexProcessor
 
 		return MACAddressSingleLine().IsMatch(input);
 	}
-
 
 	/// <summary>
 	/// Determines whether [is SHA1 hash] [the specified input].

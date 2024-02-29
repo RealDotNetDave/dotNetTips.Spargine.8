@@ -9,12 +9,14 @@
 // <copyright file="ControlChars.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>Contains frequently used strings and characters, including backslash, comma, dash, double quote, empty string, forward slash, quote, space, tab, underscore, and more.</summary>
+// <summary>
+// Contains frequently used strings and characters, including backslash,
+// comma, dash, double quote, empty string, forward slash, quote, space,
+// tab, underscore, and more.
+// </summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
-
-
 
 
 namespace DotNetTips.Spargine.Core;

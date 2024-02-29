@@ -9,7 +9,10 @@
 // <copyright file="ServiceProxy.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Generates a service proxy for types that implement ICommunicationObject, enabling communication with such objects.</summary>
+// <summary>
+// Generates a service proxy for types that implement
+// ICommunicationObject, enabling communication with such objects.
+// </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.ServiceModel;

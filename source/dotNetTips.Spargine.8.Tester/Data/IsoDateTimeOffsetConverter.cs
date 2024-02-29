@@ -9,7 +9,7 @@
 // <copyright file="IsoDateTimeOffsetConverter.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Converter tailored for IsoDateTimeOffset.</summary>
 // ***********************************************************************
 
 using System.Globalization;

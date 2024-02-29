@@ -9,7 +9,7 @@
 // <copyright file="State.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Class that encapsulates information for a State.</summary>
 // ***********************************************************************
 
 using System.Text.Json.Serialization;

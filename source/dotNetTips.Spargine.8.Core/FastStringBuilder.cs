@@ -9,7 +9,10 @@
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Enhances performance when using a StringBuilder by employing an ObjectPool.</summary>
+// <summary>
+// Enhances performance when using a StringBuilder by employing an
+// ObjectPool.
+// </summary>
 // ***********************************************************************
 
 using System.Diagnostics.CodeAnalysis;
@@ -141,7 +144,7 @@ public static class FastStringBuilder
 				_ = sb.Append("'0x");
 				var index = 0;
 
-				foreach (var arg in args.AsSpan())
+				foreach (var arg in args)
 				{
 					var newLine = arg;
 
@@ -215,7 +218,7 @@ public static class FastStringBuilder
 
 		try
 		{
-			foreach (var item in collection.ToArray().AsSpan())
+			foreach (var item in collection)
 			{
 
 				if (sb.Length > 0)

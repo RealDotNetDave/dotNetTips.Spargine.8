@@ -9,7 +9,7 @@
 // <copyright file="HttpResponseHeaderExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods designed for HttpResponseHeader.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
@@ -29,7 +29,7 @@ public static class HttpResponseHeaderExtensions
 	/// <summary>
 	/// The header names
 	/// </summary>
-	private static readonly string[] _headerNames = {
+	private static readonly string[] _headerNames = [
 		"Cache-Control",
 		"Connection",
 		"Date",
@@ -60,7 +60,7 @@ public static class HttpResponseHeaderExtensions
 		"Set-Cookie",
 		"Vary",
 		"WWW-Authenticate",
-	};
+	];
 
 	/// <summary>
 	/// Gets the <see cref="HttpRequestHeader" /> name.

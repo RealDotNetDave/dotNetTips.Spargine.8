@@ -9,7 +9,10 @@
 // <copyright file="DistinctConcurrentBag.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>Inherits from ConcurrentBag<T> and ensures that all items in the bag are unique.</summary>
+// <summary>
+// Inherits from ConcurrentBag<T> and ensures that all items in the bag
+// are unique.
+// </summary>
 // ***********************************************************************
 using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;

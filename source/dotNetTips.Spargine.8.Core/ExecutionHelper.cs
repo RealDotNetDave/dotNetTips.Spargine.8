@@ -9,7 +9,12 @@
 // <copyright file="ExecutionHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>When making calls to code that might be interrupted by network issues, the ProgressiveRetry() method proves beneficial. It automatically retries the code multiple times (default is 3) when encountering connection problems or other internet-related interruptions.</summary>
+// <summary>
+// When making calls to code that might be interrupted by network issues,
+// the ProgressiveRetry() method proves beneficial. It automatically
+// retries the code multiple times (default is 3) when encountering
+// connection problems or other internet-related interruptions.
+// </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 

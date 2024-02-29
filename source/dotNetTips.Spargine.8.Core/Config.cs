@@ -9,7 +9,11 @@
 // <copyright file="Config.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Adaptable type designed to simplify the creation of custom configuration objects, with a focus on easy disk saving in applications.</summary>
+// <summary>
+// Adaptable type designed to simplify the creation of custom
+// configuration objects, with a focus on easy disk saving in
+// applications.
+// </summary>
 // ***********************************************************************
 using System.Xml.Serialization;
 using DotNetTips.Spargine.Core.Serialization;

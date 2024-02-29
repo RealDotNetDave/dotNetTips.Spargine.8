@@ -9,7 +9,10 @@
 // <copyright file="Benchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Abstract base class featuring common benchmarking methods, supplemented with default attributes.</summary>
+// <summary>
+// Abstract base class featuring common benchmarking methods,
+// supplemented with default attributes.
+// </summary>
 // ***********************************************************************
 
 using System.Diagnostics;
@@ -266,7 +269,7 @@ public abstract class Benchmark
 	/// <typeparam name="TAddress">The type of the t address.</typeparam>
 	/// <param name="person">The coord.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static void Update<TAddress>(IPerson<TAddress> person) where TAddress : IAddress, new()
+	public virtual void Update<TAddress>(IPerson<TAddress> person) where TAddress : IAddress, new()
 	{
 		if (person is not null)
 		{
@@ -279,7 +282,7 @@ public abstract class Benchmark
 	/// </summary>
 	/// <param name="person">The coord.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static void Update(PersonRecord person)
+	public virtual void Update(PersonRecord person)
 	{
 		if (person is not null)
 		{
@@ -292,7 +295,7 @@ public abstract class Benchmark
 	/// </summary>
 	/// <param name="coord">The coord.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static void Update(ICoordinate coord)
+	public virtual void Update(ICoordinate coord)
 	{
 		if (coord is not null)
 		{

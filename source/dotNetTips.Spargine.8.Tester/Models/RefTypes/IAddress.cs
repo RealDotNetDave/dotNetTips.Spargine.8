@@ -9,7 +9,12 @@
 // <copyright file="IAddress.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Interface "IAddress" that defines properties for Address1 and Address2, City, Country, CountryProvince, Phone, PostalCode, and State. This interface inherits from another interface named IAddress.</summary>
+// <summary>
+// Interface "IAddress" that defines properties for Address1 and
+// Address2, City, Country, CountryProvince, Phone, PostalCode,
+// and State. This interface inherits from another interface named
+// IAddress.
+// </summary>
 // ***********************************************************************
 
 using DotNetTips.Spargine.Core;

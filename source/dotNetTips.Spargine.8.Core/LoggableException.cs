@@ -9,7 +9,10 @@
 // <copyright file="LoggableException.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary></summary>
+// <summary>
+// Exception type that includes the property HasBeenLogged, providing
+// the ability to log the exception once.
+// </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -117,7 +120,7 @@ public class LoggableException : Exception
 						_ = sb.AppendFormat(
 							CultureInfo.CurrentCulture,
 							"{0}: {1}",
-							new object[] { current.Name, RuntimeHelpers.GetObjectValue(current) })
+							[current.Name, RuntimeHelpers.GetObjectValue(current)])
 							.AppendLine();
 					}
 				});

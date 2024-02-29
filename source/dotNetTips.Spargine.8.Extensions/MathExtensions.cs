@@ -9,7 +9,7 @@
 // <copyright file="MathExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods tailored for Math.</summary>
 // ***********************************************************************
 using System.Runtime.CompilerServices;
 using DotNetTips.Spargine.Core;

@@ -9,7 +9,9 @@
 // <copyright file="InvalidValueException.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Custom exception to be used when an invalid value is encountered.</summary>
+// <summary>
+// Custom exception to be used when an invalid value is encountered.
+// </summary>
 // ***********************************************************************
 using DotNetTips.Spargine.Core.Internal;
 using DotNetTips.Spargine.Core.Properties;
@@ -23,7 +25,7 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 /// <typeparam name="TValue">The type of the t value.</typeparam>
 [Serializable]
-public sealed class InvalidValueException<TValue> : Exception
+public sealed class InvalidValueException<TValue> : LoggableException
 {
 
 	/// <summary>

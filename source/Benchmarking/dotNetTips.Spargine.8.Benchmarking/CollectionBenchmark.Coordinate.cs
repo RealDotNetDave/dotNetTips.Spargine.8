@@ -9,7 +9,10 @@
 // <copyright file="CollectionBenchmark.Coordinate.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>
+//Base class for tests that leverage collections, with added functionality
+//for preloading Coordinate collections to improve benchmark test speed.
+//</summary>
 // ***********************************************************************
 
 using System.Collections.ObjectModel;
@@ -44,26 +47,20 @@ public partial class CollectionBenchmark
 	/// </summary>
 	protected void LoadCoordinateCollections()
 	{
-		this._coordinateList = RandomData.GenerateCoordinateCollection<Coordinate>(this.MaxCount).ToList();
-		this._coordinateArray = RandomData.GenerateCoordinateCollection<Coordinate>(this.MaxCount).ToArray();
+		this._coordinateList = [.. RandomData.GenerateCoordinateCollection<Coordinate>(this.MaxCount)];
+		this._coordinateArray = [.. RandomData.GenerateCoordinateCollection<Coordinate>(this.MaxCount)];
 	}
 
 	/// <summary>
-	/// Gets <see cref="Tester.Models.ValueTypes.Coordinate" /> array.
+	/// Gets <see cref="Coordinate" /> array.
 	/// </summary>
 	/// <returns>Tester.Models.ValueTypes.Coordinate[].</returns>
-	public Coordinate[] GetCoordinateValArray()
-	{
-		return this._coordinateArray.Clone<Coordinate[]>();
-	}
+	public Coordinate[] GetCoordinateValArray() => this._coordinateArray.Clone<Coordinate[]>();
 
 	/// <summary>
 	/// Gets the coordinate list.
 	/// </summary>
 	/// <returns>Collection&lt;Tester.Models.ValueTypes.Coordinate&gt;.</returns>
-	public Collection<Coordinate> GetCoordinateValCollection()
-	{
-		return this._coordinateArray.Clone<Coordinate[]>().ToCollection();
-	}
+	public Collection<Coordinate> GetCoordinateValCollection() => this._coordinateArray.Clone<Coordinate[]>().ToCollection();
 
 }

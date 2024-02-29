@@ -9,12 +9,10 @@
 // <copyright file="Status.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Enumeration used in InformationAttribute.</summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
-
-
 
 
 namespace DotNetTips.Spargine.Core;

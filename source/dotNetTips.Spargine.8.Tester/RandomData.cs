@@ -30,8 +30,6 @@ using Address = DotNetTips.Spargine.Tester.Models.RefTypes.Address;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
-
-
 namespace DotNetTips.Spargine.Tester;
 
 /// <summary>

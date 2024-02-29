@@ -9,7 +9,9 @@
 // <copyright file="MessageNotQueuedException.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>Custom exception to be employed when a message could not be queued.</summary>
+// <summary>
+// Custom exception to be employed when a message could not be queued.
+// </summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )

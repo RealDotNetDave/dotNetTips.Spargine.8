@@ -9,7 +9,10 @@
 // <copyright file="CollectionBenchmark.PersonRecord.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Base class for tests that leverage collections, with added
+// functionality for preloading PersonRecord collections to improve
+// benchmark test speed.
+// </summary>
 // ***********************************************************************
 
 using System.Collections.ObjectModel;

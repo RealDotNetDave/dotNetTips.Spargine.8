@@ -9,7 +9,13 @@
 // <copyright file="EncryptionHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Provides secure encryption for strings using AES (Advanced Encryption Standard) and includes a method to validate encrypted strings. The AES encryption ensures the confidentiality and integrity of sensitive information, making it suitable for securely handling data.</summary>
+// <summary>
+// Provides secure encryption for strings using AES
+// (Advanced Encryption Standard) and includes a method to validate
+// encrypted strings. The AES encryption ensures the confidentiality
+// and integrity of sensitive information, making it suitable for securely
+// handling data.
+// </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;

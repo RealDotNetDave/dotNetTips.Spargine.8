@@ -9,7 +9,7 @@
 // <copyright file="ContryConverters.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Converters tailored for Country.</summary>
 // ***********************************************************************
 
 using System.Text.Json;

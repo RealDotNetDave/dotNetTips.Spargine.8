@@ -9,7 +9,13 @@
 // <copyright file="LoggingHelper.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>Utility methods designed for logging purposes. Includes functionality to log computer information and application details. Additionally, it can capture and log all domain exceptions, even if the exception originates from a different assembly, covering exceptions from the .NET framework.</summary>
+// <summary>
+// Utility methods designed for logging purposes. Includes functionality
+// to log computer information and application details. Additionally,
+// it can capture and log all domain exceptions, even if the exception
+// originates from a different assembly, covering exceptions from the
+// .NET framework.
+// </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;

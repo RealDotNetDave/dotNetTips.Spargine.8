@@ -9,7 +9,11 @@
 // <copyright file="CollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Base class for tests utilizing collections, with additional functionality to preload collections for enhanced benchmark test speed.</summary>
+// <summary>
+// Base class for tests utilizing collections, with additional
+// functionality to preload collections for enhanced benchmark test
+// speed.
+// </summary>
 // ***********************************************************************
 
 using BenchmarkDotNet.Loggers;

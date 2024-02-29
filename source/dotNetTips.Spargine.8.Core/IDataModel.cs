@@ -9,7 +9,10 @@
 // <copyright file="IDataModel.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Interface designed for model classes, enforcing the implementation of the "Id" property, which is mandatory.</summary>
+// <summary>
+// Interface designed for model classes, enforcing the implementation of
+// the "Id" property, which is mandatory.
+// </summary>
 // ***********************************************************************
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;

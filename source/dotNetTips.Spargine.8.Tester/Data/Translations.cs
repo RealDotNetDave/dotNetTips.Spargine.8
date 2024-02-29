@@ -9,7 +9,9 @@
 // <copyright file="Translations.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>
+// Class that encapsulates information for a translation.
+// </summary>
 // ***********************************************************************
 
 using System.Text.Json.Serialization;
@@ -21,6 +23,7 @@ namespace DotNetTips.Spargine.Tester.Data;
 /// <summary>
 /// Class Translations.
 /// </summary>
+[Serializable]
 public sealed class Translations
 {
 

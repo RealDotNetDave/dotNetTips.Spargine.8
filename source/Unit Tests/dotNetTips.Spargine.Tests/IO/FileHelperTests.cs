@@ -55,7 +55,6 @@ public class FileHelperTests
 		return CopyProgressResult.Continue;
 	}
 
-
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
 	public void CheckPermissionTest()
@@ -74,7 +73,6 @@ public class FileHelperTests
 		var file = new FileInfo(RandomData.GenerateTempFile(FileLength));
 		var directory = new DirectoryInfo(App.ExecutingFolder());
 
-
 		CopyProgressRoutine callback = new CopyProgressRoutine(CopyProgressCallback);
 
 		var result = FileHelper.CopyFile(file: file, destination: directory, progressCallback: callback);
@@ -82,7 +80,6 @@ public class FileHelperTests
 		Assert.IsTrue(result);
 
 	}
-
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
@@ -165,6 +162,4 @@ public class FileHelperTests
 
 		_ = FileHelper.DeleteFiles(files.Files);
 	}
-
-
 }

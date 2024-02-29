@@ -77,14 +77,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\..\docs\graphics\dotNetTips-Spargine-Logo.jpg">
-		  <Pack>True</Pack>
-		  <PackagePath>\</PackagePath>
-		</None>
+		<Content Include="dotNetTips-Spargine-Logo.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="dotNetTips-Spargine-Logo.ico" />
+	  <None Include="..\..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="dotNetTips-Spargine-8-Logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>

@@ -9,7 +9,11 @@
 // <copyright file="PersonJsonSerializerContext.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>JSON context designed to optimize the serialization and deserialization processes for the "Person" type and collections of "Person."</summary>
+// <summary>
+// JSON context designed to optimize the serialization and
+// deserialization processes for the "Person" type and collections of
+// "Person."
+// </summary>
 // ***********************************************************************
 
 using System.Text.Json.Serialization;

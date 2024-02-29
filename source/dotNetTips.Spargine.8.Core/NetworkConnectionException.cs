@@ -9,7 +9,9 @@
 // <copyright file="NetworkConnectionException.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Custom exception to be used when there is a network connection error.</summary>
+// <summary>
+// Custom exception to be used when there is a network connection error.
+// </summary>
 // ***********************************************************************
 
 using DotNetTips.Spargine.Core.Network;
@@ -26,7 +28,7 @@ namespace DotNetTips.Spargine.Core;
 /// <seealso cref="Exception" />
 [Serializable]
 [Information(nameof(NetworkConnectionException), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available)]
-public sealed class NetworkConnectionException : Exception
+public sealed class NetworkConnectionException : LoggableException
 {
 
 	/// <summary>

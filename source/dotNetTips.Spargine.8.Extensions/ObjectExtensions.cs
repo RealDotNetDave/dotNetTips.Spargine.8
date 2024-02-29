@@ -9,7 +9,7 @@
 // <copyright file="ObjectExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods designed for Object.</summary>
 // ***********************************************************************
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;

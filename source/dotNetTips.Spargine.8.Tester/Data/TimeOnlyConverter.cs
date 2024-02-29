@@ -9,7 +9,7 @@
 // <copyright file="TimeOnlyConverter.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Converter tailored for TimeOnly.</summary>
 // ***********************************************************************
 
 using System.Text.Json;

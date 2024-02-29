@@ -9,12 +9,12 @@
 // <copyright file="InvalidEnumTypeException.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Custom exception to be utilized when a value for an Enum is invalid.</summary>
+// <summary>
+// Custom exception to be utilized when a value for an Enum is invalid.
+// </summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
-
-
 
 
 namespace DotNetTips.Spargine.Core;
@@ -25,7 +25,7 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 /// <seealso cref="Exception" />
 [Serializable]
-public class InvalidEnumTypeException : Exception
+public class InvalidEnumTypeException : LoggableException
 {
 
 	/// <summary>

@@ -9,7 +9,7 @@
 // <copyright file="SocketExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Extension methods designed for Socket.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Net;

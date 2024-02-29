@@ -9,14 +9,13 @@
 // <copyright file="PreserveAttribute.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
-// <summary>Attribute to make it easier to look at code and know that the code needs to be preserved due to one of the reasons in PreserveReason.</summary>
+// <summary>
+// Attribute to make it easier to look at code and know that the code
+// needs to be preserved due to one of the reasons in PreserveReason.
+// </summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
-
-
-
-
 
 
 namespace DotNetTips.Spargine.Core;
