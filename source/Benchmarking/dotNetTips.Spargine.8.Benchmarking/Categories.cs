@@ -4,19 +4,15 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-28-2023
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="Categories.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Common values to be used in the BenchmarkCategory attribute.
-// </summary>
+// <summary>Common values to be used in the BenchmarkCategory attribute.</summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
-
-
 
 
 namespace DotNetTips.Spargine.Benchmarking;
@@ -142,7 +138,9 @@ public static class Categories
 	/// </summary>
 	public const string Threading = "Threading";
 
-	/// <summary>The method has been updated</summary>
+	/// <summary>
+	/// The method has been updated
+	/// </summary>
 	public const string Updated = "Updated";
 
 	/// <summary>

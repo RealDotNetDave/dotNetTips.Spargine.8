@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 02-28-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)

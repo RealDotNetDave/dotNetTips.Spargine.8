@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 02-29-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilderCounterBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -110,13 +110,12 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	{
 		var sb = new StringBuilder();
 
-		for (var argumentIndex = 0; argumentIndex < _words.Length; argumentIndex++)
+		for (var argumentIndex = 0; argumentIndex < this._words.Length; argumentIndex++)
 		{
-			var line = _words[argumentIndex];
+			var line = this._words[argumentIndex];
 
-			sb.AppendLine(line + ControlChars.EmptyString);
+			_ = sb.AppendLine(line + ControlChars.EmptyString);
 		}
-
 
 		this.Consume(sb.ToString());
 	}
@@ -158,7 +157,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 
 		this._bytes1Kb = this.GetByteArray(this.Count).AsEnumerable();
 		this._byteArray = this.GetByteArray(this.Count);
-		this._words = RandomData.GenerateWords(this.Count, 10, 10).ToArray();
+		this._words = [.. RandomData.GenerateWords(this.Count, 10, 10)];
 		this._wordDictionary = RandomData.GenerateWords(this.Count, 10, 10).ToDictionary(x => RandomData.GenerateKey(), y => y);
 	}
 

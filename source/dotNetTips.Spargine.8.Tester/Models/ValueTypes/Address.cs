@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-14-2023
+// Last Modified On : 02-29-2024
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -152,12 +152,44 @@ public struct Address : IAddress, IEquatable<Address>
 	public static bool operator !=(Address left, Address right) => !(left == right);
 
 	/// <summary>
+	/// Implements the &lt; operator.
+	/// </summary>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
+	public static bool operator <(Address left, Address right) => left.CompareTo(right) < 0;
+
+	/// <summary>
+	/// Implements the &lt;= operator.
+	/// </summary>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
+	public static bool operator <=(Address left, Address right) => left.CompareTo(right) <= 0;
+
+	/// <summary>
 	/// Implements the == operator.
 	/// </summary>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
 	public static bool operator ==(Address left, Address right) => left.Equals(right);
+
+	/// <summary>
+	/// Implements the &gt; operator.
+	/// </summary>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
+	public static bool operator >(Address left, Address right) => left.CompareTo(right) > 0;
+
+	/// <summary>
+	/// Implements the &gt;= operator.
+	/// </summary>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
+	public static bool operator >=(Address left, Address right) => left.CompareTo(right) >= 0;
 
 	/// <summary>
 	/// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
@@ -174,6 +206,13 @@ public struct Address : IAddress, IEquatable<Address>
 
 		return string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
 	}
+
+	/// <summary>
+	/// Compares current object.
+	/// </summary>
+	/// <param name="address">The address.</param>
+	/// <returns>System.Int32.</returns>
+	public readonly int CompareTo(Address address) => this.CompareTo(address);
 
 	/// <summary>
 	/// Determines whether the specified <see cref="object" /> is equal to this instance.
@@ -216,7 +255,7 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Converts to <see cref=" AddressRecord"/> to <see cref=" Address"/>.
+	/// Converts to <see cref=" AddressRecord" /> to <see cref=" Address" />.
 	/// </summary>
 	/// <param name="address">The address.</param>
 	/// <returns>Address.</returns>
@@ -244,7 +283,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the Address1.
 	/// </summary>
 	/// <value>The Address1.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Address1</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">Address1</exception>
 	/// <remarks>Address1 is limited to 100 characters.</remarks>
 	[DataMember(Name = "address1", IsRequired = false)]
 	[JsonPropertyName("address1")]
@@ -271,7 +310,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the Address2.
 	/// </summary>
 	/// <value>The Address2.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Address2</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">Address2</exception>
 	/// <remarks>Address2 is limited to 100 characters.</remarks>
 	[DataMember(Name = "address2", IsRequired = false)]
 	[JsonPropertyName("address2")]
@@ -298,7 +337,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the city.
 	/// </summary>
 	/// <value>The city name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">City</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">City</exception>
 	/// <remarks>City is limted to 150 characters.</remarks>
 	[DataMember(Name = "city", IsRequired = false)]
 	[JsonPropertyName("city")]
@@ -325,7 +364,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the country.
 	/// </summary>
 	/// <value>The country name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Country</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">Country</exception>
 	/// <remarks>Country is limited to 50 characters.</remarks>
 	[DataMember(Name = "country", IsRequired = false)]
 	[JsonPropertyName("country")]
@@ -352,7 +391,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the county province.
 	/// </summary>
 	/// <value>The county province.</value>
-	/// <exception cref="ArgumentOutOfRangeException">CountyProvince</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">CountyProvince</exception>
 	/// <remarks>CountyProvince is limited to 50 characters.</remarks>
 	[DataMember(Name = "countryProvince", IsRequired = false)]
 	[JsonPropertyName("countryProvince")]
@@ -375,7 +414,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the identifier.
 	/// </summary>
 	/// <value>The identifier.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Id</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">Id</exception>
 	/// <remarks>Id is limited to 50 characters.</remarks>
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
@@ -401,7 +440,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the phone.
 	/// </summary>
 	/// <value>The phone.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Phone</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">Phone</exception>
 	/// <remarks>Phone number is limited to 50 characters.</remarks>
 	[DataMember(Name = "phone", IsRequired = false)]
 	[JsonPropertyName("phone")]
@@ -428,7 +467,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the postal code.
 	/// </summary>
 	/// <value>The postal code.</value>
-	/// <exception cref="ArgumentOutOfRangeException">PostalCode</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">PostalCode</exception>
 	/// <remarks>Postal code is limited to 40 characters.</remarks>
 	[DataMember(Name = "postalCode", IsRequired = false)]
 	[JsonPropertyName("postalCode")]
@@ -455,7 +494,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the state.
 	/// </summary>
 	/// <value>The state.</value>
-	/// <exception cref="ArgumentOutOfRangeException">State</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">State</exception>
 	/// <remarks>State is limited to 60 characters.</remarks>
 	[DataMember(Name = "state", IsRequired = false)]
 	[JsonPropertyName("state")]

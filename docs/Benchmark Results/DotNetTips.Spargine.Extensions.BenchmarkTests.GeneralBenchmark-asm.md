@@ -3,13 +3,13 @@
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark.GuidEqualsTest()
        sub       rsp,28
        vzeroupper
-       vmovups   xmm0,[rcx+128]
-       vpcmpeqb  xmm0,xmm0,[rcx+138]
+       vmovups   xmm0,[rcx+118]
+       vpcmpeqb  xmm0,xmm0,[rcx+128]
        vpmovmskb edx,xmm0
        cmp       edx,0FFFF
        sete      dl
        movzx     edx,dl
-       call      qword ptr [7FF815265ED8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
+       call      qword ptr [7FFE387C5ED8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
        nop
        add       rsp,28
        ret
@@ -25,17 +25,17 @@
        mov       [rbp-10],rax
        mov       [rbp+10],rcx
        mov       [rbp+18],edx
-       cmp       dword ptr [7FF814E1F390],0
+       cmp       dword ptr [7FFE3837F390],0
        je        short M01_L00
        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 M01_L00:
        mov       rcx,[rbp+10]
-       call      qword ptr [7FF814E54A38]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
+       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
        mov       [rbp-10],rax
        lea       rdx,[rbp+18]
        mov       rcx,[rbp-10]
        cmp       [rcx],ecx
-       call      qword ptr [7FF815265EF0]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
+       call      qword ptr [7FFE387C5EF0]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
        nop
        nop
        add       rsp,28

@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 02-15-2024
+// Last Modified On : 02-29-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -127,12 +127,44 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	public static bool operator !=(Person<TAddress> left, Person<TAddress> right) => !(left == right);
 
 	/// <summary>
+	/// Implements the op_LessThan operator.
+	/// </summary>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
+	public static bool operator <(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) < 0;
+
+	/// <summary>
+	/// Implements the op_LessThanOrEqual operator.
+	/// </summary>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
+	public static bool operator <=(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) <= 0;
+
+	/// <summary>
 	/// Implements the == operator.
 	/// </summary>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
 	public static bool operator ==(Person<TAddress> left, Person<TAddress> right) => left.Equals(right);
+
+	/// <summary>
+	/// Implements the op_GreaterThan operator.
+	/// </summary>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
+	public static bool operator >(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) > 0;
+
+	/// <summary>
+	/// Implements the op_GreaterThanOrEqual operator.
+	/// </summary>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
+	public static bool operator >=(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) >= 0;
 
 	/// <summary>
 	/// Calculates the person's age.

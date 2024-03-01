@@ -32,6 +32,9 @@ namespace DotNetTips.Spargine.Benchmarking;
 public partial class CollectionBenchmark : Benchmark
 {
 
+	/// <summary>
+	/// The people record to insert
+	/// </summary>
 	private PersonRecord[] _peopleRecordToInsert;
 
 	/// <summary>

@@ -4,12 +4,13 @@
 // Created          : 04-19-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 02-29-2024
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.PersonRecord.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Base class for tests that leverage collections, with added
+// <summary>
+// Base class for tests that leverage collections, with added
 // functionality for preloading PersonRecord collections to improve
 // benchmark test speed.
 // </summary>
@@ -48,29 +49,23 @@ public partial class CollectionBenchmark
 	/// </summary>
 	protected void LoadPersonRecordCollections()
 	{
-		this._personRecordList = RandomData.GeneratePersonRecordCollection(this.MaxCount).ToList();
-		this._personRecordArray = RandomData.GeneratePersonRecordCollection(this.MaxCount).ToArray();
+		this._personRecordList = [.. RandomData.GeneratePersonRecordCollection(this.MaxCount)];
+		this._personRecordArray = [.. RandomData.GeneratePersonRecordCollection(this.MaxCount)];
 
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Record List Count = {_personRecordList.Count}: {nameof(CollectionBenchmark)}.");
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Record Array Count = {_personRecordArray.Length}: {nameof(CollectionBenchmark)}.");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Record List Count = {this._personRecordList.Count}: {nameof(CollectionBenchmark)}.");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Record Array Count = {this._personRecordArray.Length}: {nameof(CollectionBenchmark)}.");
 	}
 
 	/// <summary>
 	/// Gets <see cref="PersonRecord" /> as an array.
 	/// </summary>
 	/// <returns>PersonRecord[].</returns>
-	public PersonRecord[] GetPersonRecordArray()
-	{
-		return this._personRecordArray.Clone<PersonRecord[]>();
-	}
+	public PersonRecord[] GetPersonRecordArray() => this._personRecordArray.Clone<PersonRecord[]>();
 
 	/// <summary>
 	/// Gets <see cref="PersonRecord" /> as an <see cref="Collection{T}" />.
 	/// </summary>
 	/// <returns>Collection&lt;PersonRecord&gt;.</returns>
-	public Collection<PersonRecord> GetPersonRecordCollection()
-	{
-		return this._personRecordList.Clone<List<PersonRecord>>().ToCollection();
-	}
+	public Collection<PersonRecord> GetPersonRecordCollection() => this._personRecordList.Clone<List<PersonRecord>>().ToCollection();
 
 }

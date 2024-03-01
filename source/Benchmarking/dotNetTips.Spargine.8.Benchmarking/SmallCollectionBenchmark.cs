@@ -33,10 +33,7 @@ public class SmallCollectionBenchmark : CollectionBenchmark
 	/// <summary>
 	/// Initializes a new instance of the <see cref="SmallCollectionBenchmark" /> class.
 	/// </summary>
-	public SmallCollectionBenchmark() : base(2048)
-	{
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Max Count={this.MaxCount}: {nameof(SmallCollectionBenchmark)}.");
-	}
+	public SmallCollectionBenchmark() : base(2048) => ConsoleLogger.Default.WriteLine(LogKind.Info, $"Max Count={this.MaxCount}: {nameof(SmallCollectionBenchmark)}.");
 
 	/// <summary>
 	/// Setups this instance.

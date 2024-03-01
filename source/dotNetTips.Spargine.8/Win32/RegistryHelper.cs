@@ -49,7 +49,7 @@ public static class RegistryHelper
 	/// <param name="keyName">The name.</param>
 	/// <param name="registryKeyType">Type of the registry key.</param>
 	/// <returns>RegistryKey.</returns>
-	/// <exception cref="System.PlatformNotSupportedException"></exception>
+	/// <exception cref="PlatformNotSupportedException"></exception>
 	[Information(nameof(GetRegistryKey), "David McCarter", "9/10/2020", "9/10/2020", Status = Status.Available, UnitTestCoverage = 90, BenchMarkStatus = BenchMarkStatus.None)]
 	public static RegistryKey GetRegistryKey([NotNull] string keyName, [NotNull] RegistryHive registryKeyType)
 	{

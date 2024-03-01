@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenchmark-20240224-225454</title>
+<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenchmark-20240229-202539</title>
 
 <style type="text/css">
     table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -34,23 +34,23 @@ push      rsi
 push      rbx
 sub       rsp,28
 mov       rbx,rcx
-mov       rsi,[rbx+190]
+mov       rsi,[rbx+188]
 mov       rcx,rbx
 mov       rax,[rbx]
-mov       rax,[rax+40]
-call      qword ptr [rax+38]
+mov       rax,[rax+48]
+call      qword ptr [rax+18]
 mov       r8,rax
 mov       rdx,rsi
 mov       rcx,offset MD_DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.ICollection`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, System.Collections.Generic.IEnumerable`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Boolean)
 mov       r9d,1
-call      qword ptr [7FF814FC5BC0]
+call      qword ptr [7FFE38535BC0]
 mov       rcx,rbx
 mov       r8,rsi
 mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.List`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
 add       rsp,28
 pop       rbx
 pop       rsi
-jmp       qword ptr [7FF81536F1E0]
+jmp       qword ptr [7FFE38904840]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.ICollection`1<System.__Canon>, System.Collections.Generic.IEnumerable`1<System.__Canon>, Boolean)
 push      rbp
@@ -66,7 +66,7 @@ vmovdqa   xmmword ptr [rbp+rax-10],xmm4
 vmovdqa   xmmword ptr [rax+rbp],xmm4
 vmovdqa   xmmword ptr [rbp+rax+10],xmm4
 add       rax,30
-jne       short 00007FF814B0E3E7
+jne       short 00007FFE3807E4B7
 mov       [rbp-10],rax
 mov       [rbp-1B8],rsp
 mov       [rbp-8],rcx
@@ -74,27 +74,27 @@ mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
 mov       [rbp+28],r9d
-cmp       dword ptr [7FF814F7D648],0
-je        short 00007FF814B0E42B
+cmp       dword ptr [7FFE384ED6F0],0
+je        short 00007FFE3807E4FB
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF814B0E44C
+je        short 00007FFE3807E51C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+10]
 mov       [rbp-58],rcx
-jmp       short 00007FF814B0E463
+jmp       short 00007FFE3807E533
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011310
+mov       rdx,7FFE38581310
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-58],rax
 mov       rcx,[rbp-58]
 call      CORINFO_HELP_NEWSFAST
 mov       [rbp-50],rax
 mov       rcx,[rbp-50]
-call      qword ptr [7FF814FCC8E8]
+call      qword ptr [7FFE3853C8E8]
 mov       rcx,[rbp-50]
 mov       [rbp-10],rcx
 mov       rcx,[rbp-10]
@@ -105,68 +105,68 @@ nop
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+18],0
-je        short 00007FF814B0E4B5
+je        short 00007FFE3807E585
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+18]
 mov       [rbp-60],rcx
-jmp       short 00007FF814B0E4CC
+jmp       short 00007FFE3807E59C
 mov       rcx,[rbp+10]
-mov       rdx,7FF8150118E0
+mov       rdx,7FFE385818E0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-60],rax
-mov       rcx,2722B04B6C8
+mov       rcx,2B8E2E6B6C8
 mov       [rsp+20],rcx
 mov       rcx,[rbp-60]
 mov       rdx,[rbp+20]
 xor       r8d,r8d
-mov       r9,2722B040008
-call      qword ptr [7FF814FCCDF8]
+mov       r9,2B8E2E60008
+call      qword ptr [7FFE3853CDF8]
 mov       [rbp-68],rax
 mov       rcx,[rbp-68]
 mov       [rbp+20],rcx
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+20],0
-je        short 00007FF814B0E523
+je        short 00007FFE3807E5F3
 mov       rdx,[rbp+10]
 mov       rdx,[rdx+10]
 mov       rdx,[rdx+20]
 mov       [rbp-70],rdx
-jmp       short 00007FF814B0E53A
+jmp       short 00007FFE3807E60A
 mov       rcx,[rbp+10]
-mov       rdx,7FF8150119C8
+mov       rdx,7FFE385819C8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-70],rax
 mov       rdx,[rbp-10]
 mov       [rbp-78],rdx
-mov       rdx,2722B04B6E8
+mov       rdx,2B8E2E6B6E8
 mov       [rsp+20],rdx
 mov       rdx,[rbp-10]
 mov       rdx,[rdx+8]
 mov       rcx,[rbp-70]
 xor       r8d,r8d
-mov       r9,2722B040008
-call      qword ptr [7FF814FCCDF8]
+mov       r9,2B8E2E60008
+call      qword ptr [7FFE3853CDF8]
 mov       [rbp-80],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+28],0
-je        short 00007FF814B0E598
+je        short 00007FFE3807E668
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+28]
 mov       [rbp-88],rcx
-jmp       short 00007FF814B0E5B2
+jmp       short 00007FFE3807E682
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011A80
+mov       rdx,7FFE38581A80
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-88],rax
 mov       rcx,[rbp-88]
 mov       rdx,[rbp-80]
-mov       r8,2722B040008
-mov       r9,2722B04B718
-call      qword ptr [7FF814FCCE70]
+mov       r8,2B8E2E60008
+mov       r9,2B8E2E6B718
+call      qword ptr [7FFE3853CE70]
 mov       [rbp-90],rax
 mov       rcx,[rbp-78]
 lea       rcx,[rcx+8]
@@ -179,7 +179,7 @@ sete      cl
 movzx     ecx,cl
 mov       [rbp-18],ecx
 cmp       dword ptr [rbp-18],0
-je        near ptr 00007FF814B0E7F0
+je        near ptr 00007FFE3807E8C0
 nop
 nop
 mov       rcx,[rbp+10]
@@ -187,16 +187,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-170],rcx
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814B0E64E
+jle       short 00007FFE3807E71E
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814B0E64E
+je        short 00007FFE3807E71E
 mov       rcx,[rbp-170]
 mov       rcx,[rcx+40]
 mov       [rbp-128],rcx
-jmp       short 00007FF814B0E668
+jmp       short 00007FFE3807E738
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011BC8
+mov       rdx,7FFE38581BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-128],rax
 mov       rcx,[rbp-128]
@@ -209,22 +209,22 @@ mov       [rbp-138],rax
 mov       rcx,[rbp-138]
 mov       [rbp-20],rcx
 nop
-jmp       near ptr 00007FF814B0E7B5
+jmp       near ptr 00007FFE3807E885
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-178],rcx
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814B0E6E1
+jle       short 00007FFE3807E7B1
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814B0E6E1
+je        short 00007FFE3807E7B1
 mov       rcx,[rbp-178]
 mov       rcx,[rcx+48]
 mov       [rbp-148],rcx
-jmp       short 00007FF814B0E6FB
+jmp       short 00007FFE3807E7CB
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011BE0
+mov       rdx,7FFE38581BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-148],rax
 mov       rcx,[rbp-148]
@@ -242,16 +242,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-180],rcx
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814B0E76F
+jle       short 00007FFE3807E83F
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814B0E76F
+je        short 00007FFE3807E83F
 mov       rcx,[rbp-180]
 mov       rcx,[rcx+50]
 mov       [rbp-160],rcx
-jmp       short 00007FF814B0E789
+jmp       short 00007FFE3807E859
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011DC0
+mov       rdx,7FFE38581DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-160],rax
 mov       rcx,[rbp-160]
@@ -265,18 +265,18 @@ call      qword ptr [rax]
 nop
 nop
 mov       rcx,[rbp-20]
-mov       r11,7FF8149A0360
+mov       r11,7FFE37F10360
 call      qword ptr [r11]
 mov       [rbp-13C],eax
 cmp       dword ptr [rbp-13C],0
-jne       near ptr 00007FF814B0E6A2
+jne       near ptr 00007FFE3807E772
 nop
 mov       rcx,rsp
-call      00007FF814B0EBBD
+call      00007FFE3807EC8D
 nop
 mov       dword ptr [rbp-2C],1
 nop
-jmp       near ptr 00007FF814B0EBB1
+jmp       near ptr 00007FFE3807EC81
 xor       ecx,ecx
 mov       [rbp-14],ecx
 nop
@@ -285,21 +285,21 @@ mov       rcx,[rcx+10]
 mov       [rbp-188],rcx
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+8],30
-jle       short 00007FF814B0E835
+jle       short 00007FFE3807E905
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+30],0
-je        short 00007FF814B0E835
+je        short 00007FFE3807E905
 mov       rcx,[rbp-188]
 mov       rcx,[rcx+30]
 mov       [rbp-98],rcx
-jmp       short 00007FF814B0E84F
+jmp       short 00007FFE3807E91F
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011B58
+mov       rdx,7FFE38581B58
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-98],rax
 mov       rcx,[rbp-98]
 mov       rdx,[rbp+20]
-call      qword ptr [7FF814F4D200]
+call      qword ptr [7FFE384BD200]
 mov       [rbp-0A0],rax
 mov       rcx,[rbp-10]
 mov       rcx,[rcx+10]
@@ -309,22 +309,22 @@ mov       [rbp-0B0],rcx
 mov       rcx,[rbp-0A8]
 mov       [rbp-0B8],rcx
 cmp       qword ptr [rbp-0A8],0
-jne       near ptr 00007FF814B0E951
+jne       near ptr 00007FFE3807EA21
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-190],rcx
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+8],58
-jle       short 00007FF814B0E8DF
+jle       short 00007FFE3807E9AF
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+58],0
-je        short 00007FF814B0E8DF
+je        short 00007FFE3807E9AF
 mov       rcx,[rbp-190]
 mov       rcx,[rcx+58]
 mov       [rbp-120],rcx
-jmp       short 00007FF814B0E8F9
+jmp       short 00007FFE3807E9C9
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011EE8
+mov       rdx,7FFE38581EE8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-120],rax
 mov       rcx,[rbp-120]
@@ -332,8 +332,8 @@ call      CORINFO_HELP_NEWSFAST
 mov       [rbp-118],rax
 mov       rcx,[rbp-118]
 mov       rdx,[rbp-10]
-mov       r8,7FF814FC8900
-call      qword ptr [7FF814AE4210]
+mov       r8,7FFE38538900
+call      qword ptr [7FFE38054210]
 mov       rcx,[rbp-118]
 mov       [rbp-40],rcx
 mov       rcx,[rbp-10]
@@ -347,38 +347,38 @@ mov       rcx,[rcx+10]
 mov       [rbp-198],rcx
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+8],38
-jle       short 00007FF814B0E990
+jle       short 00007FFE3807EA60
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+38],0
-je        short 00007FF814B0E990
+je        short 00007FFE3807EA60
 mov       rcx,[rbp-198]
 mov       rcx,[rcx+38]
 mov       [rbp-0C0],rcx
-jmp       short 00007FF814B0E9AA
+jmp       short 00007FFE3807EA7A
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011BA8
+mov       rdx,7FFE38581BA8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0C0],rax
 mov       rcx,[rbp-0C0]
 mov       rdx,[rbp-0B0]
 mov       r8,[rbp-0B8]
-call      qword ptr [7FF814F2F930]
+call      qword ptr [7FFE3849F930]
 mov       [rbp-0C8],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A0],rcx
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814B0EA0B
+jle       short 00007FFE3807EADB
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814B0EA0B
+je        short 00007FFE3807EADB
 mov       rcx,[rbp-1A0]
 mov       rcx,[rcx+40]
 mov       [rbp-0D0],rcx
-jmp       short 00007FF814B0EA25
+jmp       short 00007FFE3807EAF5
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011BC8
+mov       rdx,7FFE38581BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0D0],rax
 mov       rcx,[rbp-0D0]
@@ -391,22 +391,22 @@ mov       [rbp-0E0],rax
 mov       rcx,[rbp-0E0]
 mov       [rbp-38],rcx
 nop
-jmp       near ptr 00007FF814B0EB7C
+jmp       near ptr 00007FFE3807EC4C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A8],rcx
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814B0EAA1
+jle       short 00007FFE3807EB71
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814B0EAA1
+je        short 00007FFE3807EB71
 mov       rcx,[rbp-1A8]
 mov       rcx,[rcx+48]
 mov       [rbp-0F0],rcx
-jmp       short 00007FF814B0EABB
+jmp       short 00007FFE3807EB8B
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011BE0
+mov       rdx,7FFE38581BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0F0],rax
 mov       rcx,[rbp-0F0]
@@ -424,16 +424,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-1B0],rcx
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814B0EB2F
+jle       short 00007FFE3807EBFF
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814B0EB2F
+je        short 00007FFE3807EBFF
 mov       rcx,[rbp-1B0]
 mov       rcx,[rcx+50]
 mov       [rbp-108],rcx
-jmp       short 00007FF814B0EB49
+jmp       short 00007FFE3807EC19
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011DC0
+mov       rdx,7FFE38581DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-108],rax
 mov       rcx,[rbp-108]
@@ -448,14 +448,14 @@ nop
 mov       dword ptr [rbp-14],1
 nop
 mov       rcx,[rbp-38]
-mov       r11,7FF8149A0350
+mov       r11,7FFE37F10350
 call      qword ptr [r11]
 mov       [rbp-0E4],eax
 cmp       dword ptr [rbp-0E4],0
-jne       near ptr 00007FF814B0EA62
+jne       near ptr 00007FFE3807EB32
 nop
 mov       rcx,rsp
-call      00007FF814B0EBF2
+call      00007FFE3807ECC2
 nop
 mov       ecx,[rbp-14]
 mov       [rbp-2C],ecx
@@ -470,9 +470,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-20],0
-je        short 00007FF814B0EBEB
+je        short 00007FFE3807ECBB
 mov       rcx,[rbp-20]
-mov       r11,7FF8149A0368
+mov       r11,7FFE37F10368
 call      qword ptr [r11]
 nop
 nop
@@ -485,9 +485,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-38],0
-je        short 00007FF814B0EC20
+je        short 00007FFE3807ECF0
 mov       rcx,[rbp-38]
-mov       r11,7FF8149A0358
+mov       r11,7FFE37F10358
 call      qword ptr [r11]
 nop
 nop
@@ -506,30 +506,30 @@ mov       [rbp-10],rdx
 mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
-cmp       dword ptr [7FF814E3F390],0
-je        short 00007FF814B502FF
+cmp       dword ptr [7FFE383AF390],0
+je        short 00007FFE380C204F
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E74A38]
+call      qword ptr [7FFE383E4B10]
 mov       [rbp-18],rax
 mov       rcx,[rbp+18]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF814B5032E
+je        short 00007FFE380C207E
 mov       r8,[rbp+18]
 mov       r8,[r8+10]
 mov       r8,[r8+10]
 mov       [rbp-20],r8
-jmp       short 00007FF814B50345
+jmp       short 00007FFE380C2095
 mov       rcx,[rbp+18]
-mov       rdx,7FF815378CD8
+mov       rdx,7FFE388EBA80
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-20],rax
 lea       r8,[rbp+20]
 mov       rcx,[rbp-18]
 mov       rdx,[rbp-20]
 cmp       [rcx],ecx
-call      qword ptr [7FF81536F678]
+call      qword ptr [7FFE38904CD8]
 nop
 nop
 add       rsp,38
@@ -544,23 +544,23 @@ push      rsi
 push      rbx
 sub       rsp,28
 mov       rbx,rcx
-mov       rsi,[rbx+190]
+mov       rsi,[rbx+188]
 mov       rcx,rbx
 mov       rax,[rbx]
-mov       rax,[rax+40]
-call      qword ptr [rax+38]
+mov       rax,[rax+48]
+call      qword ptr [rax+18]
 mov       r8,rax
 mov       rdx,rsi
 mov       rcx,offset MD_DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.ICollection`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, System.Collections.Generic.IEnumerable`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Boolean)
 mov       r9d,1
-call      qword ptr [7FF814FC5BC0]
+call      qword ptr [7FFE38505BC0]
 mov       rcx,rbx
 mov       r8,rsi
 mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.List`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
 add       rsp,28
 pop       rbx
 pop       rsi
-jmp       qword ptr [7FF81536F390]
+jmp       qword ptr [7FFE388D4840]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.ICollection`1<System.__Canon>, System.Collections.Generic.IEnumerable`1<System.__Canon>, Boolean)
 push      rbp
@@ -576,7 +576,7 @@ vmovdqa   xmmword ptr [rbp+rax-10],xmm4
 vmovdqa   xmmword ptr [rax+rbp],xmm4
 vmovdqa   xmmword ptr [rbp+rax+10],xmm4
 add       rax,30
-jne       short 00007FF814B0E3F7
+jne       short 00007FFE3804E4B7
 mov       [rbp-10],rax
 mov       [rbp-1B8],rsp
 mov       [rbp-8],rcx
@@ -584,27 +584,27 @@ mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
 mov       [rbp+28],r9d
-cmp       dword ptr [7FF814F7D648],0
-je        short 00007FF814B0E43B
+cmp       dword ptr [7FFE384BD6F0],0
+je        short 00007FFE3804E4FB
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF814B0E45C
+je        short 00007FFE3804E51C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+10]
 mov       [rbp-58],rcx
-jmp       short 00007FF814B0E473
+jmp       short 00007FFE3804E533
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011310
+mov       rdx,7FFE38551310
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-58],rax
 mov       rcx,[rbp-58]
 call      CORINFO_HELP_NEWSFAST
 mov       [rbp-50],rax
 mov       rcx,[rbp-50]
-call      qword ptr [7FF814FCC8E8]
+call      qword ptr [7FFE3850C8E8]
 mov       rcx,[rbp-50]
 mov       [rbp-10],rcx
 mov       rcx,[rbp-10]
@@ -615,68 +615,68 @@ nop
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+18],0
-je        short 00007FF814B0E4C5
+je        short 00007FFE3804E585
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+18]
 mov       [rbp-60],rcx
-jmp       short 00007FF814B0E4DC
+jmp       short 00007FFE3804E59C
 mov       rcx,[rbp+10]
-mov       rdx,7FF8150118E0
+mov       rdx,7FFE385518E0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-60],rax
-mov       rcx,1F970A1B6C8
+mov       rcx,225B54CB6C8
 mov       [rsp+20],rcx
 mov       rcx,[rbp-60]
 mov       rdx,[rbp+20]
 xor       r8d,r8d
-mov       r9,1F970A10008
-call      qword ptr [7FF814FCCDF8]
+mov       r9,225B54C0008
+call      qword ptr [7FFE3850CDF8]
 mov       [rbp-68],rax
 mov       rcx,[rbp-68]
 mov       [rbp+20],rcx
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+20],0
-je        short 00007FF814B0E533
+je        short 00007FFE3804E5F3
 mov       rdx,[rbp+10]
 mov       rdx,[rdx+10]
 mov       rdx,[rdx+20]
 mov       [rbp-70],rdx
-jmp       short 00007FF814B0E54A
+jmp       short 00007FFE3804E60A
 mov       rcx,[rbp+10]
-mov       rdx,7FF8150119C8
+mov       rdx,7FFE385519C8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-70],rax
 mov       rdx,[rbp-10]
 mov       [rbp-78],rdx
-mov       rdx,1F970A1B6E8
+mov       rdx,225B54CB6E8
 mov       [rsp+20],rdx
 mov       rdx,[rbp-10]
 mov       rdx,[rdx+8]
 mov       rcx,[rbp-70]
 xor       r8d,r8d
-mov       r9,1F970A10008
-call      qword ptr [7FF814FCCDF8]
+mov       r9,225B54C0008
+call      qword ptr [7FFE3850CDF8]
 mov       [rbp-80],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+28],0
-je        short 00007FF814B0E5A8
+je        short 00007FFE3804E668
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+28]
 mov       [rbp-88],rcx
-jmp       short 00007FF814B0E5C2
+jmp       short 00007FFE3804E682
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011A80
+mov       rdx,7FFE38551A80
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-88],rax
 mov       rcx,[rbp-88]
 mov       rdx,[rbp-80]
-mov       r8,1F970A10008
-mov       r9,1F970A1B718
-call      qword ptr [7FF814FCCE70]
+mov       r8,225B54C0008
+mov       r9,225B54CB718
+call      qword ptr [7FFE3850CE70]
 mov       [rbp-90],rax
 mov       rcx,[rbp-78]
 lea       rcx,[rcx+8]
@@ -689,7 +689,7 @@ sete      cl
 movzx     ecx,cl
 mov       [rbp-18],ecx
 cmp       dword ptr [rbp-18],0
-je        near ptr 00007FF814B0E800
+je        near ptr 00007FFE3804E8C0
 nop
 nop
 mov       rcx,[rbp+10]
@@ -697,16 +697,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-170],rcx
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814B0E65E
+jle       short 00007FFE3804E71E
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814B0E65E
+je        short 00007FFE3804E71E
 mov       rcx,[rbp-170]
 mov       rcx,[rcx+40]
 mov       [rbp-128],rcx
-jmp       short 00007FF814B0E678
+jmp       short 00007FFE3804E738
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011BC8
+mov       rdx,7FFE38551BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-128],rax
 mov       rcx,[rbp-128]
@@ -719,22 +719,22 @@ mov       [rbp-138],rax
 mov       rcx,[rbp-138]
 mov       [rbp-20],rcx
 nop
-jmp       near ptr 00007FF814B0E7C5
+jmp       near ptr 00007FFE3804E885
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-178],rcx
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814B0E6F1
+jle       short 00007FFE3804E7B1
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814B0E6F1
+je        short 00007FFE3804E7B1
 mov       rcx,[rbp-178]
 mov       rcx,[rcx+48]
 mov       [rbp-148],rcx
-jmp       short 00007FF814B0E70B
+jmp       short 00007FFE3804E7CB
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011BE0
+mov       rdx,7FFE38551BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-148],rax
 mov       rcx,[rbp-148]
@@ -752,16 +752,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-180],rcx
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814B0E77F
+jle       short 00007FFE3804E83F
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814B0E77F
+je        short 00007FFE3804E83F
 mov       rcx,[rbp-180]
 mov       rcx,[rcx+50]
 mov       [rbp-160],rcx
-jmp       short 00007FF814B0E799
+jmp       short 00007FFE3804E859
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011DC0
+mov       rdx,7FFE38551DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-160],rax
 mov       rcx,[rbp-160]
@@ -775,18 +775,18 @@ call      qword ptr [rax]
 nop
 nop
 mov       rcx,[rbp-20]
-mov       r11,7FF8149A0360
+mov       r11,7FFE37EE0360
 call      qword ptr [r11]
 mov       [rbp-13C],eax
 cmp       dword ptr [rbp-13C],0
-jne       near ptr 00007FF814B0E6B2
+jne       near ptr 00007FFE3804E772
 nop
 mov       rcx,rsp
-call      00007FF814B0EBCD
+call      00007FFE3804EC8D
 nop
 mov       dword ptr [rbp-2C],1
 nop
-jmp       near ptr 00007FF814B0EBC1
+jmp       near ptr 00007FFE3804EC81
 xor       ecx,ecx
 mov       [rbp-14],ecx
 nop
@@ -795,21 +795,21 @@ mov       rcx,[rcx+10]
 mov       [rbp-188],rcx
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+8],30
-jle       short 00007FF814B0E845
+jle       short 00007FFE3804E905
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+30],0
-je        short 00007FF814B0E845
+je        short 00007FFE3804E905
 mov       rcx,[rbp-188]
 mov       rcx,[rcx+30]
 mov       [rbp-98],rcx
-jmp       short 00007FF814B0E85F
+jmp       short 00007FFE3804E91F
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011B58
+mov       rdx,7FFE38551B58
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-98],rax
 mov       rcx,[rbp-98]
 mov       rdx,[rbp+20]
-call      qword ptr [7FF814F4D200]
+call      qword ptr [7FFE3848D200]
 mov       [rbp-0A0],rax
 mov       rcx,[rbp-10]
 mov       rcx,[rcx+10]
@@ -819,22 +819,22 @@ mov       [rbp-0B0],rcx
 mov       rcx,[rbp-0A8]
 mov       [rbp-0B8],rcx
 cmp       qword ptr [rbp-0A8],0
-jne       near ptr 00007FF814B0E961
+jne       near ptr 00007FFE3804EA21
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-190],rcx
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+8],58
-jle       short 00007FF814B0E8EF
+jle       short 00007FFE3804E9AF
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+58],0
-je        short 00007FF814B0E8EF
+je        short 00007FFE3804E9AF
 mov       rcx,[rbp-190]
 mov       rcx,[rcx+58]
 mov       [rbp-120],rcx
-jmp       short 00007FF814B0E909
+jmp       short 00007FFE3804E9C9
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011EE8
+mov       rdx,7FFE38551EE8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-120],rax
 mov       rcx,[rbp-120]
@@ -842,8 +842,8 @@ call      CORINFO_HELP_NEWSFAST
 mov       [rbp-118],rax
 mov       rcx,[rbp-118]
 mov       rdx,[rbp-10]
-mov       r8,7FF814FC8900
-call      qword ptr [7FF814AE4210]
+mov       r8,7FFE38508900
+call      qword ptr [7FFE38024210]
 mov       rcx,[rbp-118]
 mov       [rbp-40],rcx
 mov       rcx,[rbp-10]
@@ -857,38 +857,38 @@ mov       rcx,[rcx+10]
 mov       [rbp-198],rcx
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+8],38
-jle       short 00007FF814B0E9A0
+jle       short 00007FFE3804EA60
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+38],0
-je        short 00007FF814B0E9A0
+je        short 00007FFE3804EA60
 mov       rcx,[rbp-198]
 mov       rcx,[rcx+38]
 mov       [rbp-0C0],rcx
-jmp       short 00007FF814B0E9BA
+jmp       short 00007FFE3804EA7A
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011BA8
+mov       rdx,7FFE38551BA8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0C0],rax
 mov       rcx,[rbp-0C0]
 mov       rdx,[rbp-0B0]
 mov       r8,[rbp-0B8]
-call      qword ptr [7FF814F2F930]
+call      qword ptr [7FFE3846F930]
 mov       [rbp-0C8],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A0],rcx
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814B0EA1B
+jle       short 00007FFE3804EADB
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814B0EA1B
+je        short 00007FFE3804EADB
 mov       rcx,[rbp-1A0]
 mov       rcx,[rcx+40]
 mov       [rbp-0D0],rcx
-jmp       short 00007FF814B0EA35
+jmp       short 00007FFE3804EAF5
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011BC8
+mov       rdx,7FFE38551BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0D0],rax
 mov       rcx,[rbp-0D0]
@@ -901,22 +901,22 @@ mov       [rbp-0E0],rax
 mov       rcx,[rbp-0E0]
 mov       [rbp-38],rcx
 nop
-jmp       near ptr 00007FF814B0EB8C
+jmp       near ptr 00007FFE3804EC4C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A8],rcx
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814B0EAB1
+jle       short 00007FFE3804EB71
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814B0EAB1
+je        short 00007FFE3804EB71
 mov       rcx,[rbp-1A8]
 mov       rcx,[rcx+48]
 mov       [rbp-0F0],rcx
-jmp       short 00007FF814B0EACB
+jmp       short 00007FFE3804EB8B
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011BE0
+mov       rdx,7FFE38551BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0F0],rax
 mov       rcx,[rbp-0F0]
@@ -934,16 +934,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-1B0],rcx
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814B0EB3F
+jle       short 00007FFE3804EBFF
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814B0EB3F
+je        short 00007FFE3804EBFF
 mov       rcx,[rbp-1B0]
 mov       rcx,[rcx+50]
 mov       [rbp-108],rcx
-jmp       short 00007FF814B0EB59
+jmp       short 00007FFE3804EC19
 mov       rcx,[rbp+10]
-mov       rdx,7FF815011DC0
+mov       rdx,7FFE38551DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-108],rax
 mov       rcx,[rbp-108]
@@ -958,14 +958,14 @@ nop
 mov       dword ptr [rbp-14],1
 nop
 mov       rcx,[rbp-38]
-mov       r11,7FF8149A0350
+mov       r11,7FFE37EE0350
 call      qword ptr [r11]
 mov       [rbp-0E4],eax
 cmp       dword ptr [rbp-0E4],0
-jne       near ptr 00007FF814B0EA72
+jne       near ptr 00007FFE3804EB32
 nop
 mov       rcx,rsp
-call      00007FF814B0EC02
+call      00007FFE3804ECC2
 nop
 mov       ecx,[rbp-14]
 mov       [rbp-2C],ecx
@@ -980,9 +980,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-20],0
-je        short 00007FF814B0EBFB
+je        short 00007FFE3804ECBB
 mov       rcx,[rbp-20]
-mov       r11,7FF8149A0368
+mov       r11,7FFE37EE0368
 call      qword ptr [r11]
 nop
 nop
@@ -995,9 +995,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-38],0
-je        short 00007FF814B0EC30
+je        short 00007FFE3804ECF0
 mov       rcx,[rbp-38]
-mov       r11,7FF8149A0358
+mov       r11,7FFE37EE0358
 call      qword ptr [r11]
 nop
 nop
@@ -1016,30 +1016,30 @@ mov       [rbp-10],rdx
 mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
-cmp       dword ptr [7FF814E2F4B8],0
-je        short 00007FF814B502FF
+cmp       dword ptr [7FFE3837F390],0
+je        short 00007FFE3809204F
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E74A38]
+call      qword ptr [7FFE383B4B10]
 mov       [rbp-18],rax
 mov       rcx,[rbp+18]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF814B5032E
+je        short 00007FFE3809207E
 mov       r8,[rbp+18]
 mov       r8,[r8+10]
 mov       r8,[r8+10]
 mov       [rbp-20],r8
-jmp       short 00007FF814B50345
+jmp       short 00007FFE38092095
 mov       rcx,[rbp+18]
-mov       rdx,7FF815378EE0
+mov       rdx,7FFE388BBA80
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-20],rax
 lea       r8,[rbp+20]
 mov       rcx,[rbp-18]
 mov       rdx,[rbp-20]
 cmp       [rcx],ecx
-call      qword ptr [7FF81536F828]
+call      qword ptr [7FFE388D4CD8]
 nop
 nop
 add       rsp,38
@@ -1054,23 +1054,23 @@ push      rsi
 push      rbx
 sub       rsp,28
 mov       rbx,rcx
-mov       rsi,[rbx+190]
+mov       rsi,[rbx+188]
 mov       rcx,rbx
 mov       rax,[rbx]
-mov       rax,[rax+40]
-call      qword ptr [rax+38]
+mov       rax,[rax+48]
+call      qword ptr [rax+18]
 mov       r8,rax
 mov       rdx,rsi
 mov       rcx,offset MD_DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.ICollection`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, System.Collections.Generic.IEnumerable`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Boolean)
 mov       r9d,1
-call      qword ptr [7FF814FA5BC0]
+call      qword ptr [7FFE38515BC0]
 mov       rcx,rbx
 mov       r8,rsi
 mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.List`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
 add       rsp,28
 pop       rbx
 pop       rsi
-jmp       qword ptr [7FF81534EC40]
+jmp       qword ptr [7FFE388E4990]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.ICollection`1<System.__Canon>, System.Collections.Generic.IEnumerable`1<System.__Canon>, Boolean)
 push      rbp
@@ -1086,7 +1086,7 @@ vmovdqa   xmmword ptr [rbp+rax-10],xmm4
 vmovdqa   xmmword ptr [rax+rbp],xmm4
 vmovdqa   xmmword ptr [rbp+rax+10],xmm4
 add       rax,30
-jne       short 00007FF814AEE3E7
+jne       short 00007FFE3805E4B7
 mov       [rbp-10],rax
 mov       [rbp-1B8],rsp
 mov       [rbp-8],rcx
@@ -1094,27 +1094,27 @@ mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
 mov       [rbp+28],r9d
-cmp       dword ptr [7FF814F5D648],0
-je        short 00007FF814AEE42B
+cmp       dword ptr [7FFE384CD6F0],0
+je        short 00007FFE3805E4FB
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF814AEE44C
+je        short 00007FFE3805E51C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+10]
 mov       [rbp-58],rcx
-jmp       short 00007FF814AEE463
+jmp       short 00007FFE3805E533
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1310
+mov       rdx,7FFE38561310
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-58],rax
 mov       rcx,[rbp-58]
 call      CORINFO_HELP_NEWSFAST
 mov       [rbp-50],rax
 mov       rcx,[rbp-50]
-call      qword ptr [7FF814FAC8E8]
+call      qword ptr [7FFE3851C8E8]
 mov       rcx,[rbp-50]
 mov       [rbp-10],rcx
 mov       rcx,[rbp-10]
@@ -1125,68 +1125,68 @@ nop
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+18],0
-je        short 00007FF814AEE4B5
+je        short 00007FFE3805E585
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+18]
 mov       [rbp-60],rcx
-jmp       short 00007FF814AEE4CC
+jmp       short 00007FFE3805E59C
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF18E0
+mov       rdx,7FFE385618E0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-60],rax
-mov       rcx,29AB1C0B6C8
+mov       rcx,2D75CDAB6C8
 mov       [rsp+20],rcx
 mov       rcx,[rbp-60]
 mov       rdx,[rbp+20]
 xor       r8d,r8d
-mov       r9,29AB1C00008
-call      qword ptr [7FF814FACDF8]
+mov       r9,2D75CDA0008
+call      qword ptr [7FFE3851CDF8]
 mov       [rbp-68],rax
 mov       rcx,[rbp-68]
 mov       [rbp+20],rcx
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+20],0
-je        short 00007FF814AEE523
+je        short 00007FFE3805E5F3
 mov       rdx,[rbp+10]
 mov       rdx,[rdx+10]
 mov       rdx,[rdx+20]
 mov       [rbp-70],rdx
-jmp       short 00007FF814AEE53A
+jmp       short 00007FFE3805E60A
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF19C8
+mov       rdx,7FFE385619C8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-70],rax
 mov       rdx,[rbp-10]
 mov       [rbp-78],rdx
-mov       rdx,29AB1C0B6E8
+mov       rdx,2D75CDAB6E8
 mov       [rsp+20],rdx
 mov       rdx,[rbp-10]
 mov       rdx,[rdx+8]
 mov       rcx,[rbp-70]
 xor       r8d,r8d
-mov       r9,29AB1C00008
-call      qword ptr [7FF814FACDF8]
+mov       r9,2D75CDA0008
+call      qword ptr [7FFE3851CDF8]
 mov       [rbp-80],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+28],0
-je        short 00007FF814AEE598
+je        short 00007FFE3805E668
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+28]
 mov       [rbp-88],rcx
-jmp       short 00007FF814AEE5B2
+jmp       short 00007FFE3805E682
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1A80
+mov       rdx,7FFE38561A80
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-88],rax
 mov       rcx,[rbp-88]
 mov       rdx,[rbp-80]
-mov       r8,29AB1C00008
-mov       r9,29AB1C0B718
-call      qword ptr [7FF814FACE70]
+mov       r8,2D75CDA0008
+mov       r9,2D75CDAB718
+call      qword ptr [7FFE3851CE70]
 mov       [rbp-90],rax
 mov       rcx,[rbp-78]
 lea       rcx,[rcx+8]
@@ -1199,7 +1199,7 @@ sete      cl
 movzx     ecx,cl
 mov       [rbp-18],ecx
 cmp       dword ptr [rbp-18],0
-je        near ptr 00007FF814AEE7F0
+je        near ptr 00007FFE3805E8C0
 nop
 nop
 mov       rcx,[rbp+10]
@@ -1207,16 +1207,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-170],rcx
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AEE64E
+jle       short 00007FFE3805E71E
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814AEE64E
+je        short 00007FFE3805E71E
 mov       rcx,[rbp-170]
 mov       rcx,[rcx+40]
 mov       [rbp-128],rcx
-jmp       short 00007FF814AEE668
+jmp       short 00007FFE3805E738
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BC8
+mov       rdx,7FFE38561BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-128],rax
 mov       rcx,[rbp-128]
@@ -1229,22 +1229,22 @@ mov       [rbp-138],rax
 mov       rcx,[rbp-138]
 mov       [rbp-20],rcx
 nop
-jmp       near ptr 00007FF814AEE7B5
+jmp       near ptr 00007FFE3805E885
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-178],rcx
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AEE6E1
+jle       short 00007FFE3805E7B1
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814AEE6E1
+je        short 00007FFE3805E7B1
 mov       rcx,[rbp-178]
 mov       rcx,[rcx+48]
 mov       [rbp-148],rcx
-jmp       short 00007FF814AEE6FB
+jmp       short 00007FFE3805E7CB
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BE0
+mov       rdx,7FFE38561BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-148],rax
 mov       rcx,[rbp-148]
@@ -1262,16 +1262,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-180],rcx
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AEE76F
+jle       short 00007FFE3805E83F
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814AEE76F
+je        short 00007FFE3805E83F
 mov       rcx,[rbp-180]
 mov       rcx,[rcx+50]
 mov       [rbp-160],rcx
-jmp       short 00007FF814AEE789
+jmp       short 00007FFE3805E859
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1DC0
+mov       rdx,7FFE38561DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-160],rax
 mov       rcx,[rbp-160]
@@ -1285,18 +1285,18 @@ call      qword ptr [rax]
 nop
 nop
 mov       rcx,[rbp-20]
-mov       r11,7FF814980360
+mov       r11,7FFE37EF0360
 call      qword ptr [r11]
 mov       [rbp-13C],eax
 cmp       dword ptr [rbp-13C],0
-jne       near ptr 00007FF814AEE6A2
+jne       near ptr 00007FFE3805E772
 nop
 mov       rcx,rsp
-call      00007FF814AEEBBD
+call      00007FFE3805EC8D
 nop
 mov       dword ptr [rbp-2C],1
 nop
-jmp       near ptr 00007FF814AEEBB1
+jmp       near ptr 00007FFE3805EC81
 xor       ecx,ecx
 mov       [rbp-14],ecx
 nop
@@ -1305,21 +1305,21 @@ mov       rcx,[rcx+10]
 mov       [rbp-188],rcx
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+8],30
-jle       short 00007FF814AEE835
+jle       short 00007FFE3805E905
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+30],0
-je        short 00007FF814AEE835
+je        short 00007FFE3805E905
 mov       rcx,[rbp-188]
 mov       rcx,[rcx+30]
 mov       [rbp-98],rcx
-jmp       short 00007FF814AEE84F
+jmp       short 00007FFE3805E91F
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1B58
+mov       rdx,7FFE38561B58
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-98],rax
 mov       rcx,[rbp-98]
 mov       rdx,[rbp+20]
-call      qword ptr [7FF814F2D200]
+call      qword ptr [7FFE3849D200]
 mov       [rbp-0A0],rax
 mov       rcx,[rbp-10]
 mov       rcx,[rcx+10]
@@ -1329,22 +1329,22 @@ mov       [rbp-0B0],rcx
 mov       rcx,[rbp-0A8]
 mov       [rbp-0B8],rcx
 cmp       qword ptr [rbp-0A8],0
-jne       near ptr 00007FF814AEE951
+jne       near ptr 00007FFE3805EA21
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-190],rcx
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+8],58
-jle       short 00007FF814AEE8DF
+jle       short 00007FFE3805E9AF
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+58],0
-je        short 00007FF814AEE8DF
+je        short 00007FFE3805E9AF
 mov       rcx,[rbp-190]
 mov       rcx,[rcx+58]
 mov       [rbp-120],rcx
-jmp       short 00007FF814AEE8F9
+jmp       short 00007FFE3805E9C9
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1EE8
+mov       rdx,7FFE38561EE8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-120],rax
 mov       rcx,[rbp-120]
@@ -1352,8 +1352,8 @@ call      CORINFO_HELP_NEWSFAST
 mov       [rbp-118],rax
 mov       rcx,[rbp-118]
 mov       rdx,[rbp-10]
-mov       r8,7FF814FA8900
-call      qword ptr [7FF814AC4210]
+mov       r8,7FFE38518900
+call      qword ptr [7FFE38034210]
 mov       rcx,[rbp-118]
 mov       [rbp-40],rcx
 mov       rcx,[rbp-10]
@@ -1367,38 +1367,38 @@ mov       rcx,[rcx+10]
 mov       [rbp-198],rcx
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+8],38
-jle       short 00007FF814AEE990
+jle       short 00007FFE3805EA60
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+38],0
-je        short 00007FF814AEE990
+je        short 00007FFE3805EA60
 mov       rcx,[rbp-198]
 mov       rcx,[rcx+38]
 mov       [rbp-0C0],rcx
-jmp       short 00007FF814AEE9AA
+jmp       short 00007FFE3805EA7A
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BA8
+mov       rdx,7FFE38561BA8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0C0],rax
 mov       rcx,[rbp-0C0]
 mov       rdx,[rbp-0B0]
 mov       r8,[rbp-0B8]
-call      qword ptr [7FF814F0F930]
+call      qword ptr [7FFE3847F930]
 mov       [rbp-0C8],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A0],rcx
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AEEA0B
+jle       short 00007FFE3805EADB
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814AEEA0B
+je        short 00007FFE3805EADB
 mov       rcx,[rbp-1A0]
 mov       rcx,[rcx+40]
 mov       [rbp-0D0],rcx
-jmp       short 00007FF814AEEA25
+jmp       short 00007FFE3805EAF5
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BC8
+mov       rdx,7FFE38561BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0D0],rax
 mov       rcx,[rbp-0D0]
@@ -1411,22 +1411,22 @@ mov       [rbp-0E0],rax
 mov       rcx,[rbp-0E0]
 mov       [rbp-38],rcx
 nop
-jmp       near ptr 00007FF814AEEB7C
+jmp       near ptr 00007FFE3805EC4C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A8],rcx
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AEEAA1
+jle       short 00007FFE3805EB71
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814AEEAA1
+je        short 00007FFE3805EB71
 mov       rcx,[rbp-1A8]
 mov       rcx,[rcx+48]
 mov       [rbp-0F0],rcx
-jmp       short 00007FF814AEEABB
+jmp       short 00007FFE3805EB8B
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BE0
+mov       rdx,7FFE38561BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0F0],rax
 mov       rcx,[rbp-0F0]
@@ -1444,16 +1444,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-1B0],rcx
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AEEB2F
+jle       short 00007FFE3805EBFF
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814AEEB2F
+je        short 00007FFE3805EBFF
 mov       rcx,[rbp-1B0]
 mov       rcx,[rcx+50]
 mov       [rbp-108],rcx
-jmp       short 00007FF814AEEB49
+jmp       short 00007FFE3805EC19
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1DC0
+mov       rdx,7FFE38561DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-108],rax
 mov       rcx,[rbp-108]
@@ -1468,14 +1468,14 @@ nop
 mov       dword ptr [rbp-14],1
 nop
 mov       rcx,[rbp-38]
-mov       r11,7FF814980350
+mov       r11,7FFE37EF0350
 call      qword ptr [r11]
 mov       [rbp-0E4],eax
 cmp       dword ptr [rbp-0E4],0
-jne       near ptr 00007FF814AEEA62
+jne       near ptr 00007FFE3805EB32
 nop
 mov       rcx,rsp
-call      00007FF814AEEBF2
+call      00007FFE3805ECC2
 nop
 mov       ecx,[rbp-14]
 mov       [rbp-2C],ecx
@@ -1490,9 +1490,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-20],0
-je        short 00007FF814AEEBEB
+je        short 00007FFE3805ECBB
 mov       rcx,[rbp-20]
-mov       r11,7FF814980368
+mov       r11,7FFE37EF0368
 call      qword ptr [r11]
 nop
 nop
@@ -1505,9 +1505,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-38],0
-je        short 00007FF814AEEC20
+je        short 00007FFE3805ECF0
 mov       rcx,[rbp-38]
-mov       r11,7FF814980358
+mov       r11,7FFE37EF0358
 call      qword ptr [r11]
 nop
 nop
@@ -1526,30 +1526,30 @@ mov       [rbp-10],rdx
 mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
-cmp       dword ptr [7FF814E1F390],0
-je        short 00007FF814B302FF
+cmp       dword ptr [7FFE3838F390],0
+je        short 00007FFE380A204F
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E54A38]
+call      qword ptr [7FFE383C4B10]
 mov       [rbp-18],rax
 mov       rcx,[rbp+18]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF814B3032E
+je        short 00007FFE380A207E
 mov       r8,[rbp+18]
 mov       r8,[r8+10]
 mov       r8,[r8+10]
 mov       [rbp-20],r8
-jmp       short 00007FF814B30345
+jmp       short 00007FFE380A2095
 mov       rcx,[rbp+18]
-mov       rdx,7FF815358EE0
+mov       rdx,7FFE388CBA80
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-20],rax
 lea       r8,[rbp+20]
 mov       rcx,[rbp-18]
 mov       rdx,[rbp-20]
 cmp       [rcx],ecx
-call      qword ptr [7FF81534F0D8]
+call      qword ptr [7FFE388E4E28]
 nop
 nop
 add       rsp,38
@@ -1564,23 +1564,23 @@ push      rsi
 push      rbx
 sub       rsp,28
 mov       rbx,rcx
-mov       rsi,[rbx+190]
+mov       rsi,[rbx+188]
 mov       rcx,rbx
 mov       rax,[rbx]
-mov       rax,[rax+40]
-call      qword ptr [rax+38]
+mov       rax,[rax+48]
+call      qword ptr [rax+18]
 mov       r8,rax
 mov       rdx,rsi
 mov       rcx,offset MD_DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.ICollection`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, System.Collections.Generic.IEnumerable`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Boolean)
 mov       r9d,1
-call      qword ptr [7FF814FA53F8]
+call      qword ptr [7FFE38525BC0]
 mov       rcx,rbx
 mov       r8,rsi
 mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.List`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
 add       rsp,28
 pop       rbx
 pop       rsi
-jmp       qword ptr [7FF81535FAB0]
+jmp       qword ptr [7FFE389AC0C0]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.ICollection`1<System.__Canon>, System.Collections.Generic.IEnumerable`1<System.__Canon>, Boolean)
 push      rbp
@@ -1596,7 +1596,7 @@ vmovdqa   xmmword ptr [rbp+rax-10],xmm4
 vmovdqa   xmmword ptr [rax+rbp],xmm4
 vmovdqa   xmmword ptr [rbp+rax+10],xmm4
 add       rax,30
-jne       short 00007FF814AEE3E7
+jne       short 00007FFE3806E4B7
 mov       [rbp-10],rax
 mov       [rbp-1B8],rsp
 mov       [rbp-8],rcx
@@ -1604,27 +1604,27 @@ mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
 mov       [rbp+28],r9d
-cmp       dword ptr [7FF814F5D648],0
-je        short 00007FF814AEE42B
+cmp       dword ptr [7FFE384DD6F0],0
+je        short 00007FFE3806E4FB
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF814AEE44C
+je        short 00007FFE3806E51C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+10]
 mov       [rbp-58],rcx
-jmp       short 00007FF814AEE463
+jmp       short 00007FFE3806E533
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1310
+mov       rdx,7FFE38571310
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-58],rax
 mov       rcx,[rbp-58]
 call      CORINFO_HELP_NEWSFAST
 mov       [rbp-50],rax
 mov       rcx,[rbp-50]
-call      qword ptr [7FF814FA7D80]
+call      qword ptr [7FFE3852C8E8]
 mov       rcx,[rbp-50]
 mov       [rbp-10],rcx
 mov       rcx,[rbp-10]
@@ -1635,68 +1635,68 @@ nop
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+18],0
-je        short 00007FF814AEE4B5
+je        short 00007FFE3806E585
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+18]
 mov       [rbp-60],rcx
-jmp       short 00007FF814AEE4CC
+jmp       short 00007FFE3806E59C
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF18E0
+mov       rdx,7FFE385718E0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-60],rax
-mov       rcx,284EA25B6C8
+mov       rcx,220E4ACB6C8
 mov       [rsp+20],rcx
 mov       rcx,[rbp-60]
 mov       rdx,[rbp+20]
 xor       r8d,r8d
-mov       r9,284EA250008
-call      qword ptr [7FF814FAC4B0]
+mov       r9,220E4AC0008
+call      qword ptr [7FFE3852CDF8]
 mov       [rbp-68],rax
 mov       rcx,[rbp-68]
 mov       [rbp+20],rcx
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+20],0
-je        short 00007FF814AEE523
+je        short 00007FFE3806E5F3
 mov       rdx,[rbp+10]
 mov       rdx,[rdx+10]
 mov       rdx,[rdx+20]
 mov       [rbp-70],rdx
-jmp       short 00007FF814AEE53A
+jmp       short 00007FFE3806E60A
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF19C8
+mov       rdx,7FFE385719C8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-70],rax
 mov       rdx,[rbp-10]
 mov       [rbp-78],rdx
-mov       rdx,284EA25B6E8
+mov       rdx,220E4ACB6E8
 mov       [rsp+20],rdx
 mov       rdx,[rbp-10]
 mov       rdx,[rdx+8]
 mov       rcx,[rbp-70]
 xor       r8d,r8d
-mov       r9,284EA250008
-call      qword ptr [7FF814FAC4B0]
+mov       r9,220E4AC0008
+call      qword ptr [7FFE3852CDF8]
 mov       [rbp-80],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+28],0
-je        short 00007FF814AEE598
+je        short 00007FFE3806E668
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+28]
 mov       [rbp-88],rcx
-jmp       short 00007FF814AEE5B2
+jmp       short 00007FFE3806E682
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1A80
+mov       rdx,7FFE38571A80
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-88],rax
 mov       rcx,[rbp-88]
 mov       rdx,[rbp-80]
-mov       r8,284EA250008
-mov       r9,284EA25B718
-call      qword ptr [7FF814FAC528]
+mov       r8,220E4AC0008
+mov       r9,220E4ACB718
+call      qword ptr [7FFE3852CE70]
 mov       [rbp-90],rax
 mov       rcx,[rbp-78]
 lea       rcx,[rcx+8]
@@ -1709,7 +1709,7 @@ sete      cl
 movzx     ecx,cl
 mov       [rbp-18],ecx
 cmp       dword ptr [rbp-18],0
-je        near ptr 00007FF814AEE7F0
+je        near ptr 00007FFE3806E8C0
 nop
 nop
 mov       rcx,[rbp+10]
@@ -1717,16 +1717,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-170],rcx
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AEE64E
+jle       short 00007FFE3806E71E
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814AEE64E
+je        short 00007FFE3806E71E
 mov       rcx,[rbp-170]
 mov       rcx,[rcx+40]
 mov       [rbp-128],rcx
-jmp       short 00007FF814AEE668
+jmp       short 00007FFE3806E738
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BC8
+mov       rdx,7FFE38571BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-128],rax
 mov       rcx,[rbp-128]
@@ -1739,22 +1739,22 @@ mov       [rbp-138],rax
 mov       rcx,[rbp-138]
 mov       [rbp-20],rcx
 nop
-jmp       near ptr 00007FF814AEE7B5
+jmp       near ptr 00007FFE3806E885
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-178],rcx
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AEE6E1
+jle       short 00007FFE3806E7B1
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814AEE6E1
+je        short 00007FFE3806E7B1
 mov       rcx,[rbp-178]
 mov       rcx,[rcx+48]
 mov       [rbp-148],rcx
-jmp       short 00007FF814AEE6FB
+jmp       short 00007FFE3806E7CB
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BE0
+mov       rdx,7FFE38571BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-148],rax
 mov       rcx,[rbp-148]
@@ -1772,16 +1772,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-180],rcx
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AEE76F
+jle       short 00007FFE3806E83F
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814AEE76F
+je        short 00007FFE3806E83F
 mov       rcx,[rbp-180]
 mov       rcx,[rcx+50]
 mov       [rbp-160],rcx
-jmp       short 00007FF814AEE789
+jmp       short 00007FFE3806E859
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1DC0
+mov       rdx,7FFE38571DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-160],rax
 mov       rcx,[rbp-160]
@@ -1795,18 +1795,18 @@ call      qword ptr [rax]
 nop
 nop
 mov       rcx,[rbp-20]
-mov       r11,7FF814980360
+mov       r11,7FFE37F00360
 call      qword ptr [r11]
 mov       [rbp-13C],eax
 cmp       dword ptr [rbp-13C],0
-jne       near ptr 00007FF814AEE6A2
+jne       near ptr 00007FFE3806E772
 nop
 mov       rcx,rsp
-call      00007FF814AEEBBD
+call      00007FFE3806EC8D
 nop
 mov       dword ptr [rbp-2C],1
 nop
-jmp       near ptr 00007FF814AEEBB1
+jmp       near ptr 00007FFE3806EC81
 xor       ecx,ecx
 mov       [rbp-14],ecx
 nop
@@ -1815,21 +1815,21 @@ mov       rcx,[rcx+10]
 mov       [rbp-188],rcx
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+8],30
-jle       short 00007FF814AEE835
+jle       short 00007FFE3806E905
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+30],0
-je        short 00007FF814AEE835
+je        short 00007FFE3806E905
 mov       rcx,[rbp-188]
 mov       rcx,[rcx+30]
 mov       [rbp-98],rcx
-jmp       short 00007FF814AEE84F
+jmp       short 00007FFE3806E91F
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1B58
+mov       rdx,7FFE38571B58
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-98],rax
 mov       rcx,[rbp-98]
 mov       rdx,[rbp+20]
-call      qword ptr [7FF814F2CA20]
+call      qword ptr [7FFE384AD200]
 mov       [rbp-0A0],rax
 mov       rcx,[rbp-10]
 mov       rcx,[rcx+10]
@@ -1839,532 +1839,22 @@ mov       [rbp-0B0],rcx
 mov       rcx,[rbp-0A8]
 mov       [rbp-0B8],rcx
 cmp       qword ptr [rbp-0A8],0
-jne       near ptr 00007FF814AEE951
+jne       near ptr 00007FFE3806EA21
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-190],rcx
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+8],58
-jle       short 00007FF814AEE8DF
+jle       short 00007FFE3806E9AF
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+58],0
-je        short 00007FF814AEE8DF
+je        short 00007FFE3806E9AF
 mov       rcx,[rbp-190]
 mov       rcx,[rcx+58]
 mov       [rbp-120],rcx
-jmp       short 00007FF814AEE8F9
+jmp       short 00007FFE3806E9C9
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1EE8
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-120],rax
-mov       rcx,[rbp-120]
-call      CORINFO_HELP_NEWSFAST
-mov       [rbp-118],rax
-mov       rcx,[rbp-118]
-mov       rdx,[rbp-10]
-mov       r8,7FF814FA3D98
-call      qword ptr [7FF814AC4210]
-mov       rcx,[rbp-118]
-mov       [rbp-40],rcx
-mov       rcx,[rbp-10]
-lea       rcx,[rcx+10]
-mov       rdx,[rbp-118]
-call      CORINFO_HELP_ASSIGN_REF
-mov       rcx,[rbp-40]
-mov       [rbp-0B8],rcx
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       [rbp-198],rcx
-mov       rcx,[rbp-198]
-cmp       qword ptr [rcx+8],38
-jle       short 00007FF814AEE990
-mov       rcx,[rbp-198]
-cmp       qword ptr [rcx+38],0
-je        short 00007FF814AEE990
-mov       rcx,[rbp-198]
-mov       rcx,[rcx+38]
-mov       [rbp-0C0],rcx
-jmp       short 00007FF814AEE9AA
-mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BA8
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-0C0],rax
-mov       rcx,[rbp-0C0]
-mov       rdx,[rbp-0B0]
-mov       r8,[rbp-0B8]
-call      qword ptr [7FF814F0EBF8]
-mov       [rbp-0C8],rax
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       [rbp-1A0],rcx
-mov       rcx,[rbp-1A0]
-cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AEEA0B
-mov       rcx,[rbp-1A0]
-cmp       qword ptr [rcx+40],0
-je        short 00007FF814AEEA0B
-mov       rcx,[rbp-1A0]
-mov       rcx,[rcx+40]
-mov       [rbp-0D0],rcx
-jmp       short 00007FF814AEEA25
-mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BC8
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-0D0],rax
-mov       rcx,[rbp-0D0]
-mov       [rbp-0D8],rcx
-mov       rcx,[rbp-0C8]
-mov       r11,[rbp-0D8]
-mov       rax,[rbp-0D8]
-call      qword ptr [rax]
-mov       [rbp-0E0],rax
-mov       rcx,[rbp-0E0]
-mov       [rbp-38],rcx
-nop
-jmp       near ptr 00007FF814AEEB7C
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       [rbp-1A8],rcx
-mov       rcx,[rbp-1A8]
-cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AEEAA1
-mov       rcx,[rbp-1A8]
-cmp       qword ptr [rcx+48],0
-je        short 00007FF814AEEAA1
-mov       rcx,[rbp-1A8]
-mov       rcx,[rcx+48]
-mov       [rbp-0F0],rcx
-jmp       short 00007FF814AEEABB
-mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BE0
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-0F0],rax
-mov       rcx,[rbp-0F0]
-mov       [rbp-0F8],rcx
-mov       rcx,[rbp-38]
-mov       r11,[rbp-0F8]
-mov       rax,[rbp-0F8]
-call      qword ptr [rax]
-mov       [rbp-100],rax
-mov       rcx,[rbp-100]
-mov       [rbp-48],rcx
-nop
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       [rbp-1B0],rcx
-mov       rcx,[rbp-1B0]
-cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AEEB2F
-mov       rcx,[rbp-1B0]
-cmp       qword ptr [rcx+50],0
-je        short 00007FF814AEEB2F
-mov       rcx,[rbp-1B0]
-mov       rcx,[rcx+50]
-mov       [rbp-108],rcx
-jmp       short 00007FF814AEEB49
-mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1DC0
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-108],rax
-mov       rcx,[rbp-108]
-mov       [rbp-110],rcx
-mov       rcx,[rbp-10]
-mov       rcx,[rcx+8]
-mov       r11,[rbp-110]
-mov       rdx,[rbp-48]
-mov       rax,[rbp-110]
-call      qword ptr [rax]
-nop
-mov       dword ptr [rbp-14],1
-nop
-mov       rcx,[rbp-38]
-mov       r11,7FF814980350
-call      qword ptr [r11]
-mov       [rbp-0E4],eax
-cmp       dword ptr [rbp-0E4],0
-jne       near ptr 00007FF814AEEA62
-nop
-mov       rcx,rsp
-call      00007FF814AEEBF2
-nop
-mov       ecx,[rbp-14]
-mov       [rbp-2C],ecx
-nop
-mov       eax,[rbp-2C]
-add       rsp,1E0
-pop       rbp
-ret
-push      rbp
-sub       rsp,30
-mov       rbp,[rcx+28]
-mov       [rsp+28],rbp
-lea       rbp,[rbp+1E0]
-cmp       qword ptr [rbp-20],0
-je        short 00007FF814AEEBEB
-mov       rcx,[rbp-20]
-mov       r11,7FF814980368
-call      qword ptr [r11]
-nop
-nop
-add       rsp,30
-pop       rbp
-ret
-push      rbp
-sub       rsp,30
-mov       rbp,[rcx+28]
-mov       [rsp+28],rbp
-lea       rbp,[rbp+1E0]
-cmp       qword ptr [rbp-38],0
-je        short 00007FF814AEEC20
-mov       rcx,[rbp-38]
-mov       r11,7FF814980358
-call      qword ptr [r11]
-nop
-nop
-add       rsp,30
-pop       rbp
-ret
-
-DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon)
-push      rbp
-push      rdi
-sub       rsp,38
-lea       rbp,[rsp+40]
-xor       eax,eax
-mov       [rbp-18],rax
-mov       [rbp-10],rdx
-mov       [rbp+10],rcx
-mov       [rbp+18],rdx
-mov       [rbp+20],r8
-cmp       dword ptr [7FF814E1F390],0
-je        short 00007FF814B3143F
-call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
-mov       rcx,[rbp+10]
-call      qword ptr [7FF814E54528]
-mov       [rbp-18],rax
-mov       rcx,[rbp+18]
-mov       rcx,[rcx+10]
-cmp       qword ptr [rcx+10],0
-je        short 00007FF814B3146E
-mov       r8,[rbp+18]
-mov       r8,[r8+10]
-mov       r8,[r8+10]
-mov       [rbp-20],r8
-jmp       short 00007FF814B31485
-mov       rcx,[rbp+18]
-mov       rdx,7FF815368EE0
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-20],rax
-lea       r8,[rbp+20]
-mov       rcx,[rbp-18]
-mov       rdx,[rbp-20]
-cmp       [rcx],ecx
-call      qword ptr [7FF81535FF48]
-nop
-nop
-add       rsp,38
-pop       rdi
-pop       rbp
-ret
-
-</code></pre></td>
-<td style="vertical-align:top;"><pre><code>
-DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenchmark.AddRange01()
-push      rsi
-push      rbx
-sub       rsp,28
-mov       rbx,rcx
-mov       rsi,[rbx+190]
-mov       rcx,rbx
-mov       rax,[rbx]
-mov       rax,[rax+40]
-call      qword ptr [rax+38]
-mov       r8,rax
-mov       rdx,rsi
-mov       rcx,offset MD_DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.ICollection`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, System.Collections.Generic.IEnumerable`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Boolean)
-mov       r9d,1
-call      qword ptr [7FF814FB53F8]
-mov       rcx,rbx
-mov       r8,rsi
-mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.List`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-add       rsp,28
-pop       rbx
-pop       rsi
-jmp       qword ptr [7FF81541E9E8]
-
-DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.ICollection`1<System.__Canon>, System.Collections.Generic.IEnumerable`1<System.__Canon>, Boolean)
-push      rbp
-sub       rsp,1E0
-lea       rbp,[rsp+1E0]
-xor       eax,eax
-mov       [rbp-158],rax
-vxorps    xmm4,xmm4,xmm4
-vmovdqa   xmmword ptr [rbp-150],xmm4
-vmovdqa   xmmword ptr [rbp-140],xmm4
-mov       rax,0FFFFFFFFFFFFFEE0
-vmovdqa   xmmword ptr [rbp+rax-10],xmm4
-vmovdqa   xmmword ptr [rax+rbp],xmm4
-vmovdqa   xmmword ptr [rbp+rax+10],xmm4
-add       rax,30
-jne       short 00007FF814AFE3E7
-mov       [rbp-10],rax
-mov       [rbp-1B8],rsp
-mov       [rbp-8],rcx
-mov       [rbp+10],rcx
-mov       [rbp+18],rdx
-mov       [rbp+20],r8
-mov       [rbp+28],r9d
-cmp       dword ptr [7FF814F6D648],0
-je        short 00007FF814AFE42B
-call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-cmp       qword ptr [rcx+10],0
-je        short 00007FF814AFE44C
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       rcx,[rcx+10]
-mov       [rbp-58],rcx
-jmp       short 00007FF814AFE463
-mov       rcx,[rbp+10]
-mov       rdx,7FF815001310
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-58],rax
-mov       rcx,[rbp-58]
-call      CORINFO_HELP_NEWSFAST
-mov       [rbp-50],rax
-mov       rcx,[rbp-50]
-call      qword ptr [7FF814FB7D80]
-mov       rcx,[rbp-50]
-mov       [rbp-10],rcx
-mov       rcx,[rbp-10]
-lea       rcx,[rcx+8]
-mov       rdx,[rbp+18]
-call      CORINFO_HELP_ASSIGN_REF
-nop
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-cmp       qword ptr [rcx+18],0
-je        short 00007FF814AFE4B5
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       rcx,[rcx+18]
-mov       [rbp-60],rcx
-jmp       short 00007FF814AFE4CC
-mov       rcx,[rbp+10]
-mov       rdx,7FF8150018E0
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-60],rax
-mov       rcx,1FDFB4CB6C8
-mov       [rsp+20],rcx
-mov       rcx,[rbp-60]
-mov       rdx,[rbp+20]
-xor       r8d,r8d
-mov       r9,1FDFB4C0008
-call      qword ptr [7FF814FBC4B0]
-mov       [rbp-68],rax
-mov       rcx,[rbp-68]
-mov       [rbp+20],rcx
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-cmp       qword ptr [rcx+20],0
-je        short 00007FF814AFE523
-mov       rdx,[rbp+10]
-mov       rdx,[rdx+10]
-mov       rdx,[rdx+20]
-mov       [rbp-70],rdx
-jmp       short 00007FF814AFE53A
-mov       rcx,[rbp+10]
-mov       rdx,7FF8150019C8
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-70],rax
-mov       rdx,[rbp-10]
-mov       [rbp-78],rdx
-mov       rdx,1FDFB4CB6E8
-mov       [rsp+20],rdx
-mov       rdx,[rbp-10]
-mov       rdx,[rdx+8]
-mov       rcx,[rbp-70]
-xor       r8d,r8d
-mov       r9,1FDFB4C0008
-call      qword ptr [7FF814FBC4B0]
-mov       [rbp-80],rax
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-cmp       qword ptr [rcx+28],0
-je        short 00007FF814AFE598
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       rcx,[rcx+28]
-mov       [rbp-88],rcx
-jmp       short 00007FF814AFE5B2
-mov       rcx,[rbp+10]
-mov       rdx,7FF815001A80
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-88],rax
-mov       rcx,[rbp-88]
-mov       rdx,[rbp-80]
-mov       r8,1FDFB4C0008
-mov       r9,1FDFB4CB718
-call      qword ptr [7FF814FBC528]
-mov       [rbp-90],rax
-mov       rcx,[rbp-78]
-lea       rcx,[rcx+8]
-mov       rdx,[rbp-90]
-call      CORINFO_HELP_ASSIGN_REF
-mov       ecx,[rbp+28]
-movzx     ecx,cl
-test      ecx,ecx
-sete      cl
-movzx     ecx,cl
-mov       [rbp-18],ecx
-cmp       dword ptr [rbp-18],0
-je        near ptr 00007FF814AFE7F0
-nop
-nop
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       [rbp-170],rcx
-mov       rcx,[rbp-170]
-cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AFE64E
-mov       rcx,[rbp-170]
-cmp       qword ptr [rcx+40],0
-je        short 00007FF814AFE64E
-mov       rcx,[rbp-170]
-mov       rcx,[rcx+40]
-mov       [rbp-128],rcx
-jmp       short 00007FF814AFE668
-mov       rcx,[rbp+10]
-mov       rdx,7FF815001BC8
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-128],rax
-mov       rcx,[rbp-128]
-mov       [rbp-130],rcx
-mov       rcx,[rbp+20]
-mov       r11,[rbp-130]
-mov       rax,[rbp-130]
-call      qword ptr [rax]
-mov       [rbp-138],rax
-mov       rcx,[rbp-138]
-mov       [rbp-20],rcx
-nop
-jmp       near ptr 00007FF814AFE7B5
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       [rbp-178],rcx
-mov       rcx,[rbp-178]
-cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AFE6E1
-mov       rcx,[rbp-178]
-cmp       qword ptr [rcx+48],0
-je        short 00007FF814AFE6E1
-mov       rcx,[rbp-178]
-mov       rcx,[rcx+48]
-mov       [rbp-148],rcx
-jmp       short 00007FF814AFE6FB
-mov       rcx,[rbp+10]
-mov       rdx,7FF815001BE0
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-148],rax
-mov       rcx,[rbp-148]
-mov       [rbp-150],rcx
-mov       rcx,[rbp-20]
-mov       r11,[rbp-150]
-mov       rax,[rbp-150]
-call      qword ptr [rax]
-mov       [rbp-158],rax
-mov       rcx,[rbp-158]
-mov       [rbp-28],rcx
-nop
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       [rbp-180],rcx
-mov       rcx,[rbp-180]
-cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AFE76F
-mov       rcx,[rbp-180]
-cmp       qword ptr [rcx+50],0
-je        short 00007FF814AFE76F
-mov       rcx,[rbp-180]
-mov       rcx,[rcx+50]
-mov       [rbp-160],rcx
-jmp       short 00007FF814AFE789
-mov       rcx,[rbp+10]
-mov       rdx,7FF815001DC0
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-160],rax
-mov       rcx,[rbp-160]
-mov       [rbp-168],rcx
-mov       rcx,[rbp-10]
-mov       rcx,[rcx+8]
-mov       r11,[rbp-168]
-mov       rdx,[rbp-28]
-mov       rax,[rbp-168]
-call      qword ptr [rax]
-nop
-nop
-mov       rcx,[rbp-20]
-mov       r11,7FF814990360
-call      qword ptr [r11]
-mov       [rbp-13C],eax
-cmp       dword ptr [rbp-13C],0
-jne       near ptr 00007FF814AFE6A2
-nop
-mov       rcx,rsp
-call      00007FF814AFEBBD
-nop
-mov       dword ptr [rbp-2C],1
-nop
-jmp       near ptr 00007FF814AFEBB1
-xor       ecx,ecx
-mov       [rbp-14],ecx
-nop
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       [rbp-188],rcx
-mov       rcx,[rbp-188]
-cmp       qword ptr [rcx+8],30
-jle       short 00007FF814AFE835
-mov       rcx,[rbp-188]
-cmp       qword ptr [rcx+30],0
-je        short 00007FF814AFE835
-mov       rcx,[rbp-188]
-mov       rcx,[rcx+30]
-mov       [rbp-98],rcx
-jmp       short 00007FF814AFE84F
-mov       rcx,[rbp+10]
-mov       rdx,7FF815001B58
-call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-mov       [rbp-98],rax
-mov       rcx,[rbp-98]
-mov       rdx,[rbp+20]
-call      qword ptr [7FF814F3CA20]
-mov       [rbp-0A0],rax
-mov       rcx,[rbp-10]
-mov       rcx,[rcx+10]
-mov       [rbp-0A8],rcx
-mov       rcx,[rbp-0A0]
-mov       [rbp-0B0],rcx
-mov       rcx,[rbp-0A8]
-mov       [rbp-0B8],rcx
-cmp       qword ptr [rbp-0A8],0
-jne       near ptr 00007FF814AFE951
-mov       rcx,[rbp+10]
-mov       rcx,[rcx+10]
-mov       [rbp-190],rcx
-mov       rcx,[rbp-190]
-cmp       qword ptr [rcx+8],58
-jle       short 00007FF814AFE8DF
-mov       rcx,[rbp-190]
-cmp       qword ptr [rcx+58],0
-je        short 00007FF814AFE8DF
-mov       rcx,[rbp-190]
-mov       rcx,[rcx+58]
-mov       [rbp-120],rcx
-jmp       short 00007FF814AFE8F9
-mov       rcx,[rbp+10]
-mov       rdx,7FF815001EE8
+mov       rdx,7FFE38571EE8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-120],rax
 mov       rcx,[rbp-120]
@@ -2373,7 +1863,7 @@ mov       [rbp-118],rax
 mov       rcx,[rbp-118]
 mov       rdx,[rbp-10]
 mov       r8,offset DotNetTips.Spargine.Extensions.CollectionExtensions+<>c__DisplayClass3_0`1[[System.__Canon, System.Private.CoreLib]].<AddRange>b__0(System.__Canon)
-call      qword ptr [7FF814AD4210]
+call      qword ptr [7FFE38044210]
 mov       rcx,[rbp-118]
 mov       [rbp-40],rcx
 mov       rcx,[rbp-10]
@@ -2387,38 +1877,38 @@ mov       rcx,[rcx+10]
 mov       [rbp-198],rcx
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+8],38
-jle       short 00007FF814AFE990
+jle       short 00007FFE3806EA60
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+38],0
-je        short 00007FF814AFE990
+je        short 00007FFE3806EA60
 mov       rcx,[rbp-198]
 mov       rcx,[rcx+38]
 mov       [rbp-0C0],rcx
-jmp       short 00007FF814AFE9AA
+jmp       short 00007FFE3806EA7A
 mov       rcx,[rbp+10]
-mov       rdx,7FF815001BA8
+mov       rdx,7FFE38571BA8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0C0],rax
 mov       rcx,[rbp-0C0]
 mov       rdx,[rbp-0B0]
 mov       r8,[rbp-0B8]
-call      qword ptr [7FF814F1EBF8]
+call      qword ptr [7FFE3848F930]
 mov       [rbp-0C8],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A0],rcx
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AFEA0B
+jle       short 00007FFE3806EADB
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814AFEA0B
+je        short 00007FFE3806EADB
 mov       rcx,[rbp-1A0]
 mov       rcx,[rcx+40]
 mov       [rbp-0D0],rcx
-jmp       short 00007FF814AFEA25
+jmp       short 00007FFE3806EAF5
 mov       rcx,[rbp+10]
-mov       rdx,7FF815001BC8
+mov       rdx,7FFE38571BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0D0],rax
 mov       rcx,[rbp-0D0]
@@ -2431,22 +1921,22 @@ mov       [rbp-0E0],rax
 mov       rcx,[rbp-0E0]
 mov       [rbp-38],rcx
 nop
-jmp       near ptr 00007FF814AFEB7C
+jmp       near ptr 00007FFE3806EC4C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A8],rcx
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AFEAA1
+jle       short 00007FFE3806EB71
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814AFEAA1
+je        short 00007FFE3806EB71
 mov       rcx,[rbp-1A8]
 mov       rcx,[rcx+48]
 mov       [rbp-0F0],rcx
-jmp       short 00007FF814AFEABB
+jmp       short 00007FFE3806EB8B
 mov       rcx,[rbp+10]
-mov       rdx,7FF815001BE0
+mov       rdx,7FFE38571BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0F0],rax
 mov       rcx,[rbp-0F0]
@@ -2464,16 +1954,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-1B0],rcx
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AFEB2F
+jle       short 00007FFE3806EBFF
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814AFEB2F
+je        short 00007FFE3806EBFF
 mov       rcx,[rbp-1B0]
 mov       rcx,[rcx+50]
 mov       [rbp-108],rcx
-jmp       short 00007FF814AFEB49
+jmp       short 00007FFE3806EC19
 mov       rcx,[rbp+10]
-mov       rdx,7FF815001DC0
+mov       rdx,7FFE38571DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-108],rax
 mov       rcx,[rbp-108]
@@ -2488,14 +1978,14 @@ nop
 mov       dword ptr [rbp-14],1
 nop
 mov       rcx,[rbp-38]
-mov       r11,7FF814990350
+mov       r11,7FFE37F00350
 call      qword ptr [r11]
 mov       [rbp-0E4],eax
 cmp       dword ptr [rbp-0E4],0
-jne       near ptr 00007FF814AFEA62
+jne       near ptr 00007FFE3806EB32
 nop
 mov       rcx,rsp
-call      00007FF814AFEBF2
+call      00007FFE3806ECC2
 nop
 mov       ecx,[rbp-14]
 mov       [rbp-2C],ecx
@@ -2510,9 +2000,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-20],0
-je        short 00007FF814AFEBEB
+je        short 00007FFE3806ECBB
 mov       rcx,[rbp-20]
-mov       r11,7FF814990368
+mov       r11,7FFE37F00368
 call      qword ptr [r11]
 nop
 nop
@@ -2525,9 +2015,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-38],0
-je        short 00007FF814AFEC20
+je        short 00007FFE3806ECF0
 mov       rcx,[rbp-38]
-mov       r11,7FF814990358
+mov       r11,7FFE37F00358
 call      qword ptr [r11]
 nop
 nop
@@ -2546,30 +2036,30 @@ mov       [rbp-10],rdx
 mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
-cmp       dword ptr [7FF814E2F528],0
-je        short 00007FF81539257F
+cmp       dword ptr [7FFE3839F390],0
+je        short 00007FFE388D502F
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E64528]
+call      qword ptr [7FFE383D4B10]
 mov       [rbp-18],rax
 mov       rcx,[rbp+18]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF8153925AE
+je        short 00007FFE388D505E
 mov       r8,[rbp+18]
 mov       r8,[r8+10]
 mov       r8,[r8+10]
 mov       [rbp-20],r8
-jmp       short 00007FF8153925C5
+jmp       short 00007FFE388D5075
 mov       rcx,[rbp+18]
-mov       rdx,7FF8154373B0
+mov       rdx,7FFE3898A3B0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-20],rax
 lea       r8,[rbp+20]
 mov       rcx,[rbp-18]
 mov       rdx,[rbp-20]
 cmp       [rcx],ecx
-call      qword ptr [7FF81541EE80]
+call      qword ptr [7FFE389AC558]
 nop
 nop
 add       rsp,38
@@ -2584,23 +2074,23 @@ push      rsi
 push      rbx
 sub       rsp,28
 mov       rbx,rcx
-mov       rsi,[rbx+190]
+mov       rsi,[rbx+188]
 mov       rcx,rbx
 mov       rax,[rbx]
-mov       rax,[rax+40]
-call      qword ptr [rax+38]
+mov       rax,[rax+48]
+call      qword ptr [rax+18]
 mov       r8,rax
 mov       rdx,rsi
 mov       rcx,offset MD_DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.ICollection`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, System.Collections.Generic.IEnumerable`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Boolean)
 mov       r9d,1
-call      qword ptr [7FF814FA5BC0]
+call      qword ptr [7FFE385253F8]
 mov       rcx,rbx
 mov       r8,rsi
 mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.List`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
 add       rsp,28
 pop       rbx
 pop       rsi
-jmp       qword ptr [7FF815475398]
+jmp       qword ptr [7FFE389CFAB0]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.ICollection`1<System.__Canon>, System.Collections.Generic.IEnumerable`1<System.__Canon>, Boolean)
 push      rbp
@@ -2616,7 +2106,7 @@ vmovdqa   xmmword ptr [rbp+rax-10],xmm4
 vmovdqa   xmmword ptr [rax+rbp],xmm4
 vmovdqa   xmmword ptr [rbp+rax+10],xmm4
 add       rax,30
-jne       short 00007FF814AEE3E7
+jne       short 00007FFE3806E4C7
 mov       [rbp-10],rax
 mov       [rbp-1B8],rsp
 mov       [rbp-8],rcx
@@ -2624,27 +2114,27 @@ mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
 mov       [rbp+28],r9d
-cmp       dword ptr [7FF814F5D648],0
-je        short 00007FF814AEE42B
+cmp       dword ptr [7FFE384DD6F0],0
+je        short 00007FFE3806E50B
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF814AEE44C
+je        short 00007FFE3806E52C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+10]
 mov       [rbp-58],rcx
-jmp       short 00007FF814AEE463
+jmp       short 00007FFE3806E543
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1310
+mov       rdx,7FFE38571310
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-58],rax
 mov       rcx,[rbp-58]
 call      CORINFO_HELP_NEWSFAST
 mov       [rbp-50],rax
 mov       rcx,[rbp-50]
-call      qword ptr [7FF814FAC8E8]
+call      qword ptr [7FFE38527D80]
 mov       rcx,[rbp-50]
 mov       [rbp-10],rcx
 mov       rcx,[rbp-10]
@@ -2655,68 +2145,68 @@ nop
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+18],0
-je        short 00007FF814AEE4B5
+je        short 00007FFE3806E595
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+18]
 mov       [rbp-60],rcx
-jmp       short 00007FF814AEE4CC
+jmp       short 00007FFE3806E5AC
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF18E0
+mov       rdx,7FFE385718E0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-60],rax
-mov       rcx,23CD41EB6C8
+mov       rcx,24A2A08B6C8
 mov       [rsp+20],rcx
 mov       rcx,[rbp-60]
 mov       rdx,[rbp+20]
 xor       r8d,r8d
-mov       r9,23CD41E0008
-call      qword ptr [7FF814FACDF8]
+mov       r9,24A2A080008
+call      qword ptr [7FFE3852C4B0]
 mov       [rbp-68],rax
 mov       rcx,[rbp-68]
 mov       [rbp+20],rcx
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+20],0
-je        short 00007FF814AEE523
+je        short 00007FFE3806E603
 mov       rdx,[rbp+10]
 mov       rdx,[rdx+10]
 mov       rdx,[rdx+20]
 mov       [rbp-70],rdx
-jmp       short 00007FF814AEE53A
+jmp       short 00007FFE3806E61A
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF19C8
+mov       rdx,7FFE385719C8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-70],rax
 mov       rdx,[rbp-10]
 mov       [rbp-78],rdx
-mov       rdx,23CD41EB6E8
+mov       rdx,24A2A08B6E8
 mov       [rsp+20],rdx
 mov       rdx,[rbp-10]
 mov       rdx,[rdx+8]
 mov       rcx,[rbp-70]
 xor       r8d,r8d
-mov       r9,23CD41E0008
-call      qword ptr [7FF814FACDF8]
+mov       r9,24A2A080008
+call      qword ptr [7FFE3852C4B0]
 mov       [rbp-80],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+28],0
-je        short 00007FF814AEE598
+je        short 00007FFE3806E678
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+28]
 mov       [rbp-88],rcx
-jmp       short 00007FF814AEE5B2
+jmp       short 00007FFE3806E692
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1A80
+mov       rdx,7FFE38571A80
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-88],rax
 mov       rcx,[rbp-88]
 mov       rdx,[rbp-80]
-mov       r8,23CD41E0008
-mov       r9,23CD41EB718
-call      qword ptr [7FF814FACE70]
+mov       r8,24A2A080008
+mov       r9,24A2A08B718
+call      qword ptr [7FFE3852C528]
 mov       [rbp-90],rax
 mov       rcx,[rbp-78]
 lea       rcx,[rcx+8]
@@ -2729,7 +2219,7 @@ sete      cl
 movzx     ecx,cl
 mov       [rbp-18],ecx
 cmp       dword ptr [rbp-18],0
-je        near ptr 00007FF814AEE7F0
+je        near ptr 00007FFE3806E8D0
 nop
 nop
 mov       rcx,[rbp+10]
@@ -2737,16 +2227,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-170],rcx
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AEE64E
+jle       short 00007FFE3806E72E
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814AEE64E
+je        short 00007FFE3806E72E
 mov       rcx,[rbp-170]
 mov       rcx,[rcx+40]
 mov       [rbp-128],rcx
-jmp       short 00007FF814AEE668
+jmp       short 00007FFE3806E748
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BC8
+mov       rdx,7FFE38571BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-128],rax
 mov       rcx,[rbp-128]
@@ -2759,22 +2249,22 @@ mov       [rbp-138],rax
 mov       rcx,[rbp-138]
 mov       [rbp-20],rcx
 nop
-jmp       near ptr 00007FF814AEE7B5
+jmp       near ptr 00007FFE3806E895
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-178],rcx
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AEE6E1
+jle       short 00007FFE3806E7C1
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814AEE6E1
+je        short 00007FFE3806E7C1
 mov       rcx,[rbp-178]
 mov       rcx,[rcx+48]
 mov       [rbp-148],rcx
-jmp       short 00007FF814AEE6FB
+jmp       short 00007FFE3806E7DB
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BE0
+mov       rdx,7FFE38571BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-148],rax
 mov       rcx,[rbp-148]
@@ -2792,16 +2282,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-180],rcx
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AEE76F
+jle       short 00007FFE3806E84F
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814AEE76F
+je        short 00007FFE3806E84F
 mov       rcx,[rbp-180]
 mov       rcx,[rcx+50]
 mov       [rbp-160],rcx
-jmp       short 00007FF814AEE789
+jmp       short 00007FFE3806E869
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1DC0
+mov       rdx,7FFE38571DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-160],rax
 mov       rcx,[rbp-160]
@@ -2815,18 +2305,18 @@ call      qword ptr [rax]
 nop
 nop
 mov       rcx,[rbp-20]
-mov       r11,7FF814980360
+mov       r11,7FFE37F00360
 call      qword ptr [r11]
 mov       [rbp-13C],eax
 cmp       dword ptr [rbp-13C],0
-jne       near ptr 00007FF814AEE6A2
+jne       near ptr 00007FFE3806E782
 nop
 mov       rcx,rsp
-call      00007FF814AEEBBD
+call      00007FFE3806EC9D
 nop
 mov       dword ptr [rbp-2C],1
 nop
-jmp       near ptr 00007FF814AEEBB1
+jmp       near ptr 00007FFE3806EC91
 xor       ecx,ecx
 mov       [rbp-14],ecx
 nop
@@ -2835,21 +2325,21 @@ mov       rcx,[rcx+10]
 mov       [rbp-188],rcx
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+8],30
-jle       short 00007FF814AEE835
+jle       short 00007FFE3806E915
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+30],0
-je        short 00007FF814AEE835
+je        short 00007FFE3806E915
 mov       rcx,[rbp-188]
 mov       rcx,[rcx+30]
 mov       [rbp-98],rcx
-jmp       short 00007FF814AEE84F
+jmp       short 00007FFE3806E92F
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1B58
+mov       rdx,7FFE38571B58
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-98],rax
 mov       rcx,[rbp-98]
 mov       rdx,[rbp+20]
-call      qword ptr [7FF814F2D200]
+call      qword ptr [7FFE384ACA20]
 mov       [rbp-0A0],rax
 mov       rcx,[rbp-10]
 mov       rcx,[rcx+10]
@@ -2859,22 +2349,22 @@ mov       [rbp-0B0],rcx
 mov       rcx,[rbp-0A8]
 mov       [rbp-0B8],rcx
 cmp       qword ptr [rbp-0A8],0
-jne       near ptr 00007FF814AEE951
+jne       near ptr 00007FFE3806EA31
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-190],rcx
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+8],58
-jle       short 00007FF814AEE8DF
+jle       short 00007FFE3806E9BF
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+58],0
-je        short 00007FF814AEE8DF
+je        short 00007FFE3806E9BF
 mov       rcx,[rbp-190]
 mov       rcx,[rcx+58]
 mov       [rbp-120],rcx
-jmp       short 00007FF814AEE8F9
+jmp       short 00007FFE3806E9D9
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1EE8
+mov       rdx,7FFE38571EE8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-120],rax
 mov       rcx,[rbp-120]
@@ -2883,7 +2373,7 @@ mov       [rbp-118],rax
 mov       rcx,[rbp-118]
 mov       rdx,[rbp-10]
 mov       r8,offset DotNetTips.Spargine.Extensions.CollectionExtensions+<>c__DisplayClass3_0`1[[System.__Canon, System.Private.CoreLib]].<AddRange>b__0(System.__Canon)
-call      qword ptr [7FF814AC4210]
+call      qword ptr [7FFE38044210]
 mov       rcx,[rbp-118]
 mov       [rbp-40],rcx
 mov       rcx,[rbp-10]
@@ -2897,38 +2387,38 @@ mov       rcx,[rcx+10]
 mov       [rbp-198],rcx
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+8],38
-jle       short 00007FF814AEE990
+jle       short 00007FFE3806EA70
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+38],0
-je        short 00007FF814AEE990
+je        short 00007FFE3806EA70
 mov       rcx,[rbp-198]
 mov       rcx,[rcx+38]
 mov       [rbp-0C0],rcx
-jmp       short 00007FF814AEE9AA
+jmp       short 00007FFE3806EA8A
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BA8
+mov       rdx,7FFE38571BA8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0C0],rax
 mov       rcx,[rbp-0C0]
 mov       rdx,[rbp-0B0]
 mov       r8,[rbp-0B8]
-call      qword ptr [7FF814F0F930]
+call      qword ptr [7FFE3848EBF8]
 mov       [rbp-0C8],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A0],rcx
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AEEA0B
+jle       short 00007FFE3806EAEB
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814AEEA0B
+je        short 00007FFE3806EAEB
 mov       rcx,[rbp-1A0]
 mov       rcx,[rcx+40]
 mov       [rbp-0D0],rcx
-jmp       short 00007FF814AEEA25
+jmp       short 00007FFE3806EB05
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BC8
+mov       rdx,7FFE38571BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0D0],rax
 mov       rcx,[rbp-0D0]
@@ -2941,22 +2431,22 @@ mov       [rbp-0E0],rax
 mov       rcx,[rbp-0E0]
 mov       [rbp-38],rcx
 nop
-jmp       near ptr 00007FF814AEEB7C
+jmp       near ptr 00007FFE3806EC5C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A8],rcx
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AEEAA1
+jle       short 00007FFE3806EB81
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814AEEAA1
+je        short 00007FFE3806EB81
 mov       rcx,[rbp-1A8]
 mov       rcx,[rcx+48]
 mov       [rbp-0F0],rcx
-jmp       short 00007FF814AEEABB
+jmp       short 00007FFE3806EB9B
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BE0
+mov       rdx,7FFE38571BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0F0],rax
 mov       rcx,[rbp-0F0]
@@ -2974,16 +2464,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-1B0],rcx
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AEEB2F
+jle       short 00007FFE3806EC0F
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814AEEB2F
+je        short 00007FFE3806EC0F
 mov       rcx,[rbp-1B0]
 mov       rcx,[rcx+50]
 mov       [rbp-108],rcx
-jmp       short 00007FF814AEEB49
+jmp       short 00007FFE3806EC29
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1DC0
+mov       rdx,7FFE38571DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-108],rax
 mov       rcx,[rbp-108]
@@ -2998,14 +2488,14 @@ nop
 mov       dword ptr [rbp-14],1
 nop
 mov       rcx,[rbp-38]
-mov       r11,7FF814980350
+mov       r11,7FFE37F00350
 call      qword ptr [r11]
 mov       [rbp-0E4],eax
 cmp       dword ptr [rbp-0E4],0
-jne       near ptr 00007FF814AEEA62
+jne       near ptr 00007FFE3806EB42
 nop
 mov       rcx,rsp
-call      00007FF814AEEBF2
+call      00007FFE3806ECD2
 nop
 mov       ecx,[rbp-14]
 mov       [rbp-2C],ecx
@@ -3020,9 +2510,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-20],0
-je        short 00007FF814AEEBEB
+je        short 00007FFE3806ECCB
 mov       rcx,[rbp-20]
-mov       r11,7FF814980368
+mov       r11,7FFE37F00368
 call      qword ptr [r11]
 nop
 nop
@@ -3035,9 +2525,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-38],0
-je        short 00007FF814AEEC20
+je        short 00007FFE3806ED00
 mov       rcx,[rbp-38]
-mov       r11,7FF814980358
+mov       r11,7FFE37F00358
 call      qword ptr [r11]
 nop
 nop
@@ -3056,30 +2546,30 @@ mov       [rbp-10],rdx
 mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
-cmp       dword ptr [7FF814E1F390],0
-je        short 00007FF815396DBF
+cmp       dword ptr [7FFE3839F390],0
+je        short 00007FFE3893842F
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E54A38]
+call      qword ptr [7FFE383D4588]
 mov       [rbp-18],rax
 mov       rcx,[rbp+18]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF815396DEE
+je        short 00007FFE3893845E
 mov       r8,[rbp+18]
 mov       r8,[r8+10]
 mov       r8,[r8+10]
 mov       [rbp-20],r8
-jmp       short 00007FF815396E05
+jmp       short 00007FFE38938475
 mov       rcx,[rbp+18]
-mov       rdx,7FF8154668C8
+mov       rdx,7FFE389D8DB0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-20],rax
 lea       r8,[rbp+20]
 mov       rcx,[rbp-18]
 mov       rdx,[rbp-20]
 cmp       [rcx],ecx
-call      qword ptr [7FF815475830]
+call      qword ptr [7FFE389CFF48]
 nop
 nop
 add       rsp,38
@@ -3094,23 +2584,23 @@ push      rsi
 push      rbx
 sub       rsp,28
 mov       rbx,rcx
-mov       rsi,[rbx+190]
+mov       rsi,[rbx+188]
 mov       rcx,rbx
 mov       rax,[rbx]
-mov       rax,[rax+40]
-call      qword ptr [rax+38]
+mov       rax,[rax+48]
+call      qword ptr [rax+18]
 mov       r8,rax
 mov       rdx,rsi
 mov       rcx,offset MD_DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.ICollection`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, System.Collections.Generic.IEnumerable`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Boolean)
 mov       r9d,1
-call      qword ptr [7FF814FA5BC0]
+call      qword ptr [7FFE38515BC0]
 mov       rcx,rbx
 mov       r8,rsi
 mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.List`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
 add       rsp,28
 pop       rbx
 pop       rsi
-jmp       qword ptr [7FF815475938]
+jmp       qword ptr [7FFE389F6C40]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.ICollection`1<System.__Canon>, System.Collections.Generic.IEnumerable`1<System.__Canon>, Boolean)
 push      rbp
@@ -3126,7 +2616,7 @@ vmovdqa   xmmword ptr [rbp+rax-10],xmm4
 vmovdqa   xmmword ptr [rax+rbp],xmm4
 vmovdqa   xmmword ptr [rbp+rax+10],xmm4
 add       rax,30
-jne       short 00007FF814AEE3E7
+jne       short 00007FFE3805E4B7
 mov       [rbp-10],rax
 mov       [rbp-1B8],rsp
 mov       [rbp-8],rcx
@@ -3134,27 +2624,27 @@ mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
 mov       [rbp+28],r9d
-cmp       dword ptr [7FF814F5D648],0
-je        short 00007FF814AEE42B
+cmp       dword ptr [7FFE384CD6F0],0
+je        short 00007FFE3805E4FB
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF814AEE44C
+je        short 00007FFE3805E51C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+10]
 mov       [rbp-58],rcx
-jmp       short 00007FF814AEE463
+jmp       short 00007FFE3805E533
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1310
+mov       rdx,7FFE38561310
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-58],rax
 mov       rcx,[rbp-58]
 call      CORINFO_HELP_NEWSFAST
 mov       [rbp-50],rax
 mov       rcx,[rbp-50]
-call      qword ptr [7FF814FAC8E8]
+call      qword ptr [7FFE3851C8E8]
 mov       rcx,[rbp-50]
 mov       [rbp-10],rcx
 mov       rcx,[rbp-10]
@@ -3165,68 +2655,68 @@ nop
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+18],0
-je        short 00007FF814AEE4B5
+je        short 00007FFE3805E585
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+18]
 mov       [rbp-60],rcx
-jmp       short 00007FF814AEE4CC
+jmp       short 00007FFE3805E59C
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF18E0
+mov       rdx,7FFE385618E0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-60],rax
-mov       rcx,1B9FA75B6C8
+mov       rcx,29015F9B6C8
 mov       [rsp+20],rcx
 mov       rcx,[rbp-60]
 mov       rdx,[rbp+20]
 xor       r8d,r8d
-mov       r9,1B9FA750008
-call      qword ptr [7FF814FACDF8]
+mov       r9,29015F90008
+call      qword ptr [7FFE3851CDF8]
 mov       [rbp-68],rax
 mov       rcx,[rbp-68]
 mov       [rbp+20],rcx
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+20],0
-je        short 00007FF814AEE523
+je        short 00007FFE3805E5F3
 mov       rdx,[rbp+10]
 mov       rdx,[rdx+10]
 mov       rdx,[rdx+20]
 mov       [rbp-70],rdx
-jmp       short 00007FF814AEE53A
+jmp       short 00007FFE3805E60A
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF19C8
+mov       rdx,7FFE385619C8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-70],rax
 mov       rdx,[rbp-10]
 mov       [rbp-78],rdx
-mov       rdx,1B9FA75B6E8
+mov       rdx,29015F9B6E8
 mov       [rsp+20],rdx
 mov       rdx,[rbp-10]
 mov       rdx,[rdx+8]
 mov       rcx,[rbp-70]
 xor       r8d,r8d
-mov       r9,1B9FA750008
-call      qword ptr [7FF814FACDF8]
+mov       r9,29015F90008
+call      qword ptr [7FFE3851CDF8]
 mov       [rbp-80],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+28],0
-je        short 00007FF814AEE598
+je        short 00007FFE3805E668
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+28]
 mov       [rbp-88],rcx
-jmp       short 00007FF814AEE5B2
+jmp       short 00007FFE3805E682
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1A80
+mov       rdx,7FFE38561A80
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-88],rax
 mov       rcx,[rbp-88]
 mov       rdx,[rbp-80]
-mov       r8,1B9FA750008
-mov       r9,1B9FA75B718
-call      qword ptr [7FF814FACE70]
+mov       r8,29015F90008
+mov       r9,29015F9B718
+call      qword ptr [7FFE3851CE70]
 mov       [rbp-90],rax
 mov       rcx,[rbp-78]
 lea       rcx,[rcx+8]
@@ -3239,7 +2729,7 @@ sete      cl
 movzx     ecx,cl
 mov       [rbp-18],ecx
 cmp       dword ptr [rbp-18],0
-je        near ptr 00007FF814AEE7F0
+je        near ptr 00007FFE3805E8C0
 nop
 nop
 mov       rcx,[rbp+10]
@@ -3247,16 +2737,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-170],rcx
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AEE64E
+jle       short 00007FFE3805E71E
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814AEE64E
+je        short 00007FFE3805E71E
 mov       rcx,[rbp-170]
 mov       rcx,[rcx+40]
 mov       [rbp-128],rcx
-jmp       short 00007FF814AEE668
+jmp       short 00007FFE3805E738
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BC8
+mov       rdx,7FFE38561BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-128],rax
 mov       rcx,[rbp-128]
@@ -3269,22 +2759,22 @@ mov       [rbp-138],rax
 mov       rcx,[rbp-138]
 mov       [rbp-20],rcx
 nop
-jmp       near ptr 00007FF814AEE7B5
+jmp       near ptr 00007FFE3805E885
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-178],rcx
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AEE6E1
+jle       short 00007FFE3805E7B1
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814AEE6E1
+je        short 00007FFE3805E7B1
 mov       rcx,[rbp-178]
 mov       rcx,[rcx+48]
 mov       [rbp-148],rcx
-jmp       short 00007FF814AEE6FB
+jmp       short 00007FFE3805E7CB
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BE0
+mov       rdx,7FFE38561BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-148],rax
 mov       rcx,[rbp-148]
@@ -3302,16 +2792,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-180],rcx
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AEE76F
+jle       short 00007FFE3805E83F
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814AEE76F
+je        short 00007FFE3805E83F
 mov       rcx,[rbp-180]
 mov       rcx,[rcx+50]
 mov       [rbp-160],rcx
-jmp       short 00007FF814AEE789
+jmp       short 00007FFE3805E859
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1DC0
+mov       rdx,7FFE38561DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-160],rax
 mov       rcx,[rbp-160]
@@ -3325,18 +2815,18 @@ call      qword ptr [rax]
 nop
 nop
 mov       rcx,[rbp-20]
-mov       r11,7FF814980360
+mov       r11,7FFE37EF0360
 call      qword ptr [r11]
 mov       [rbp-13C],eax
 cmp       dword ptr [rbp-13C],0
-jne       near ptr 00007FF814AEE6A2
+jne       near ptr 00007FFE3805E772
 nop
 mov       rcx,rsp
-call      00007FF814AEEBBD
+call      00007FFE3805EC8D
 nop
 mov       dword ptr [rbp-2C],1
 nop
-jmp       near ptr 00007FF814AEEBB1
+jmp       near ptr 00007FFE3805EC81
 xor       ecx,ecx
 mov       [rbp-14],ecx
 nop
@@ -3345,21 +2835,21 @@ mov       rcx,[rcx+10]
 mov       [rbp-188],rcx
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+8],30
-jle       short 00007FF814AEE835
+jle       short 00007FFE3805E905
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+30],0
-je        short 00007FF814AEE835
+je        short 00007FFE3805E905
 mov       rcx,[rbp-188]
 mov       rcx,[rcx+30]
 mov       [rbp-98],rcx
-jmp       short 00007FF814AEE84F
+jmp       short 00007FFE3805E91F
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1B58
+mov       rdx,7FFE38561B58
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-98],rax
 mov       rcx,[rbp-98]
 mov       rdx,[rbp+20]
-call      qword ptr [7FF814F2D200]
+call      qword ptr [7FFE3849D200]
 mov       [rbp-0A0],rax
 mov       rcx,[rbp-10]
 mov       rcx,[rcx+10]
@@ -3369,22 +2859,22 @@ mov       [rbp-0B0],rcx
 mov       rcx,[rbp-0A8]
 mov       [rbp-0B8],rcx
 cmp       qword ptr [rbp-0A8],0
-jne       near ptr 00007FF814AEE951
+jne       near ptr 00007FFE3805EA21
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-190],rcx
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+8],58
-jle       short 00007FF814AEE8DF
+jle       short 00007FFE3805E9AF
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+58],0
-je        short 00007FF814AEE8DF
+je        short 00007FFE3805E9AF
 mov       rcx,[rbp-190]
 mov       rcx,[rcx+58]
 mov       [rbp-120],rcx
-jmp       short 00007FF814AEE8F9
+jmp       short 00007FFE3805E9C9
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1EE8
+mov       rdx,7FFE38561EE8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-120],rax
 mov       rcx,[rbp-120]
@@ -3393,7 +2883,7 @@ mov       [rbp-118],rax
 mov       rcx,[rbp-118]
 mov       rdx,[rbp-10]
 mov       r8,offset DotNetTips.Spargine.Extensions.CollectionExtensions+<>c__DisplayClass3_0`1[[System.__Canon, System.Private.CoreLib]].<AddRange>b__0(System.__Canon)
-call      qword ptr [7FF814AC4210]
+call      qword ptr [7FFE38034210]
 mov       rcx,[rbp-118]
 mov       [rbp-40],rcx
 mov       rcx,[rbp-10]
@@ -3407,38 +2897,38 @@ mov       rcx,[rcx+10]
 mov       [rbp-198],rcx
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+8],38
-jle       short 00007FF814AEE990
+jle       short 00007FFE3805EA60
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+38],0
-je        short 00007FF814AEE990
+je        short 00007FFE3805EA60
 mov       rcx,[rbp-198]
 mov       rcx,[rcx+38]
 mov       [rbp-0C0],rcx
-jmp       short 00007FF814AEE9AA
+jmp       short 00007FFE3805EA7A
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BA8
+mov       rdx,7FFE38561BA8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0C0],rax
 mov       rcx,[rbp-0C0]
 mov       rdx,[rbp-0B0]
 mov       r8,[rbp-0B8]
-call      qword ptr [7FF814F0F930]
+call      qword ptr [7FFE3847F930]
 mov       [rbp-0C8],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A0],rcx
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AEEA0B
+jle       short 00007FFE3805EADB
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814AEEA0B
+je        short 00007FFE3805EADB
 mov       rcx,[rbp-1A0]
 mov       rcx,[rcx+40]
 mov       [rbp-0D0],rcx
-jmp       short 00007FF814AEEA25
+jmp       short 00007FFE3805EAF5
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BC8
+mov       rdx,7FFE38561BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0D0],rax
 mov       rcx,[rbp-0D0]
@@ -3451,22 +2941,22 @@ mov       [rbp-0E0],rax
 mov       rcx,[rbp-0E0]
 mov       [rbp-38],rcx
 nop
-jmp       near ptr 00007FF814AEEB7C
+jmp       near ptr 00007FFE3805EC4C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A8],rcx
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AEEAA1
+jle       short 00007FFE3805EB71
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814AEEAA1
+je        short 00007FFE3805EB71
 mov       rcx,[rbp-1A8]
 mov       rcx,[rcx+48]
 mov       [rbp-0F0],rcx
-jmp       short 00007FF814AEEABB
+jmp       short 00007FFE3805EB8B
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BE0
+mov       rdx,7FFE38561BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0F0],rax
 mov       rcx,[rbp-0F0]
@@ -3484,16 +2974,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-1B0],rcx
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AEEB2F
+jle       short 00007FFE3805EBFF
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814AEEB2F
+je        short 00007FFE3805EBFF
 mov       rcx,[rbp-1B0]
 mov       rcx,[rcx+50]
 mov       [rbp-108],rcx
-jmp       short 00007FF814AEEB49
+jmp       short 00007FFE3805EC19
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1DC0
+mov       rdx,7FFE38561DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-108],rax
 mov       rcx,[rbp-108]
@@ -3508,14 +2998,14 @@ nop
 mov       dword ptr [rbp-14],1
 nop
 mov       rcx,[rbp-38]
-mov       r11,7FF814980350
+mov       r11,7FFE37EF0350
 call      qword ptr [r11]
 mov       [rbp-0E4],eax
 cmp       dword ptr [rbp-0E4],0
-jne       near ptr 00007FF814AEEA62
+jne       near ptr 00007FFE3805EB32
 nop
 mov       rcx,rsp
-call      00007FF814AEEBF2
+call      00007FFE3805ECC2
 nop
 mov       ecx,[rbp-14]
 mov       [rbp-2C],ecx
@@ -3530,9 +3020,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-20],0
-je        short 00007FF814AEEBEB
+je        short 00007FFE3805ECBB
 mov       rcx,[rbp-20]
-mov       r11,7FF814980368
+mov       r11,7FFE37EF0368
 call      qword ptr [r11]
 nop
 nop
@@ -3545,9 +3035,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-38],0
-je        short 00007FF814AEEC20
+je        short 00007FFE3805ECF0
 mov       rcx,[rbp-38]
-mov       r11,7FF814980358
+mov       r11,7FFE37EF0358
 call      qword ptr [r11]
 nop
 nop
@@ -3566,30 +3056,30 @@ mov       [rbp-10],rdx
 mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
-cmp       dword ptr [7FF814E1F390],0
-je        short 00007FF815396DBF
+cmp       dword ptr [7FFE3838F390],0
+je        short 00007FFE388F9EAF
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E54A38]
+call      qword ptr [7FFE383C4B10]
 mov       [rbp-18],rax
 mov       rcx,[rbp+18]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF815396DEE
+je        short 00007FFE388F9EDE
 mov       r8,[rbp+18]
 mov       r8,[r8+10]
 mov       r8,[r8+10]
 mov       [rbp-20],r8
-jmp       short 00007FF815396E05
+jmp       short 00007FFE388F9EF5
 mov       rcx,[rbp+18]
-mov       rdx,7FF815466958
+mov       rdx,7FFE389E99C0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-20],rax
 lea       r8,[rbp+20]
 mov       rcx,[rbp-18]
 mov       rdx,[rbp-20]
 cmp       [rcx],ecx
-call      qword ptr [7FF815475DD0]
+call      qword ptr [7FFE389F70D8]
 nop
 nop
 add       rsp,38
@@ -3604,23 +3094,23 @@ push      rsi
 push      rbx
 sub       rsp,28
 mov       rbx,rcx
-mov       rsi,[rbx+190]
+mov       rsi,[rbx+188]
 mov       rcx,rbx
 mov       rax,[rbx]
-mov       rax,[rax+40]
-call      qword ptr [rax+38]
+mov       rax,[rax+48]
+call      qword ptr [rax+18]
 mov       r8,rax
 mov       rdx,rsi
 mov       rcx,offset MD_DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.ICollection`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, System.Collections.Generic.IEnumerable`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Boolean)
 mov       r9d,1
-call      qword ptr [7FF814FA5BC0]
+call      qword ptr [7FFE38515BC0]
 mov       rcx,rbx
 mov       r8,rsi
 mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.List`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
 add       rsp,28
 pop       rbx
 pop       rsi
-jmp       qword ptr [7FF8154851E8]
+jmp       qword ptr [7FFE389F6C40]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.ICollection`1<System.__Canon>, System.Collections.Generic.IEnumerable`1<System.__Canon>, Boolean)
 push      rbp
@@ -3636,7 +3126,7 @@ vmovdqa   xmmword ptr [rbp+rax-10],xmm4
 vmovdqa   xmmword ptr [rax+rbp],xmm4
 vmovdqa   xmmword ptr [rbp+rax+10],xmm4
 add       rax,30
-jne       short 00007FF814AEE3E7
+jne       short 00007FFE3805E4B7
 mov       [rbp-10],rax
 mov       [rbp-1B8],rsp
 mov       [rbp-8],rcx
@@ -3644,27 +3134,27 @@ mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
 mov       [rbp+28],r9d
-cmp       dword ptr [7FF814F5D648],0
-je        short 00007FF814AEE42B
+cmp       dword ptr [7FFE384CD6F0],0
+je        short 00007FFE3805E4FB
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF814AEE44C
+je        short 00007FFE3805E51C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+10]
 mov       [rbp-58],rcx
-jmp       short 00007FF814AEE463
+jmp       short 00007FFE3805E533
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1310
+mov       rdx,7FFE38561310
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-58],rax
 mov       rcx,[rbp-58]
 call      CORINFO_HELP_NEWSFAST
 mov       [rbp-50],rax
 mov       rcx,[rbp-50]
-call      qword ptr [7FF814FAC8E8]
+call      qword ptr [7FFE3851C8E8]
 mov       rcx,[rbp-50]
 mov       [rbp-10],rcx
 mov       rcx,[rbp-10]
@@ -3675,68 +3165,68 @@ nop
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+18],0
-je        short 00007FF814AEE4B5
+je        short 00007FFE3805E585
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+18]
 mov       [rbp-60],rcx
-jmp       short 00007FF814AEE4CC
+jmp       short 00007FFE3805E59C
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF18E0
+mov       rdx,7FFE385618E0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-60],rax
-mov       rcx,26512C5B6C8
+mov       rcx,2531D74B6C8
 mov       [rsp+20],rcx
 mov       rcx,[rbp-60]
 mov       rdx,[rbp+20]
 xor       r8d,r8d
-mov       r9,26512C50008
-call      qword ptr [7FF814FACDF8]
+mov       r9,2531D740008
+call      qword ptr [7FFE3851CDF8]
 mov       [rbp-68],rax
 mov       rcx,[rbp-68]
 mov       [rbp+20],rcx
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+20],0
-je        short 00007FF814AEE523
+je        short 00007FFE3805E5F3
 mov       rdx,[rbp+10]
 mov       rdx,[rdx+10]
 mov       rdx,[rdx+20]
 mov       [rbp-70],rdx
-jmp       short 00007FF814AEE53A
+jmp       short 00007FFE3805E60A
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF19C8
+mov       rdx,7FFE385619C8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-70],rax
 mov       rdx,[rbp-10]
 mov       [rbp-78],rdx
-mov       rdx,26512C5B6E8
+mov       rdx,2531D74B6E8
 mov       [rsp+20],rdx
 mov       rdx,[rbp-10]
 mov       rdx,[rdx+8]
 mov       rcx,[rbp-70]
 xor       r8d,r8d
-mov       r9,26512C50008
-call      qword ptr [7FF814FACDF8]
+mov       r9,2531D740008
+call      qword ptr [7FFE3851CDF8]
 mov       [rbp-80],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+28],0
-je        short 00007FF814AEE598
+je        short 00007FFE3805E668
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       rcx,[rcx+28]
 mov       [rbp-88],rcx
-jmp       short 00007FF814AEE5B2
+jmp       short 00007FFE3805E682
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1A80
+mov       rdx,7FFE38561A80
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-88],rax
 mov       rcx,[rbp-88]
 mov       rdx,[rbp-80]
-mov       r8,26512C50008
-mov       r9,26512C5B718
-call      qword ptr [7FF814FACE70]
+mov       r8,2531D740008
+mov       r9,2531D74B718
+call      qword ptr [7FFE3851CE70]
 mov       [rbp-90],rax
 mov       rcx,[rbp-78]
 lea       rcx,[rcx+8]
@@ -3749,7 +3239,7 @@ sete      cl
 movzx     ecx,cl
 mov       [rbp-18],ecx
 cmp       dword ptr [rbp-18],0
-je        near ptr 00007FF814AEE7F0
+je        near ptr 00007FFE3805E8C0
 nop
 nop
 mov       rcx,[rbp+10]
@@ -3757,16 +3247,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-170],rcx
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AEE64E
+jle       short 00007FFE3805E71E
 mov       rcx,[rbp-170]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814AEE64E
+je        short 00007FFE3805E71E
 mov       rcx,[rbp-170]
 mov       rcx,[rcx+40]
 mov       [rbp-128],rcx
-jmp       short 00007FF814AEE668
+jmp       short 00007FFE3805E738
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BC8
+mov       rdx,7FFE38561BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-128],rax
 mov       rcx,[rbp-128]
@@ -3779,22 +3269,22 @@ mov       [rbp-138],rax
 mov       rcx,[rbp-138]
 mov       [rbp-20],rcx
 nop
-jmp       near ptr 00007FF814AEE7B5
+jmp       near ptr 00007FFE3805E885
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-178],rcx
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AEE6E1
+jle       short 00007FFE3805E7B1
 mov       rcx,[rbp-178]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814AEE6E1
+je        short 00007FFE3805E7B1
 mov       rcx,[rbp-178]
 mov       rcx,[rcx+48]
 mov       [rbp-148],rcx
-jmp       short 00007FF814AEE6FB
+jmp       short 00007FFE3805E7CB
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BE0
+mov       rdx,7FFE38561BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-148],rax
 mov       rcx,[rbp-148]
@@ -3812,16 +3302,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-180],rcx
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AEE76F
+jle       short 00007FFE3805E83F
 mov       rcx,[rbp-180]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814AEE76F
+je        short 00007FFE3805E83F
 mov       rcx,[rbp-180]
 mov       rcx,[rcx+50]
 mov       [rbp-160],rcx
-jmp       short 00007FF814AEE789
+jmp       short 00007FFE3805E859
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1DC0
+mov       rdx,7FFE38561DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-160],rax
 mov       rcx,[rbp-160]
@@ -3835,18 +3325,18 @@ call      qword ptr [rax]
 nop
 nop
 mov       rcx,[rbp-20]
-mov       r11,7FF814980360
+mov       r11,7FFE37EF0360
 call      qword ptr [r11]
 mov       [rbp-13C],eax
 cmp       dword ptr [rbp-13C],0
-jne       near ptr 00007FF814AEE6A2
+jne       near ptr 00007FFE3805E772
 nop
 mov       rcx,rsp
-call      00007FF814AEEBBD
+call      00007FFE3805EC8D
 nop
 mov       dword ptr [rbp-2C],1
 nop
-jmp       near ptr 00007FF814AEEBB1
+jmp       near ptr 00007FFE3805EC81
 xor       ecx,ecx
 mov       [rbp-14],ecx
 nop
@@ -3855,21 +3345,21 @@ mov       rcx,[rcx+10]
 mov       [rbp-188],rcx
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+8],30
-jle       short 00007FF814AEE835
+jle       short 00007FFE3805E905
 mov       rcx,[rbp-188]
 cmp       qword ptr [rcx+30],0
-je        short 00007FF814AEE835
+je        short 00007FFE3805E905
 mov       rcx,[rbp-188]
 mov       rcx,[rcx+30]
 mov       [rbp-98],rcx
-jmp       short 00007FF814AEE84F
+jmp       short 00007FFE3805E91F
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1B58
+mov       rdx,7FFE38561B58
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-98],rax
 mov       rcx,[rbp-98]
 mov       rdx,[rbp+20]
-call      qword ptr [7FF814F2D200]
+call      qword ptr [7FFE3849D200]
 mov       [rbp-0A0],rax
 mov       rcx,[rbp-10]
 mov       rcx,[rcx+10]
@@ -3879,22 +3369,22 @@ mov       [rbp-0B0],rcx
 mov       rcx,[rbp-0A8]
 mov       [rbp-0B8],rcx
 cmp       qword ptr [rbp-0A8],0
-jne       near ptr 00007FF814AEE951
+jne       near ptr 00007FFE3805EA21
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-190],rcx
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+8],58
-jle       short 00007FF814AEE8DF
+jle       short 00007FFE3805E9AF
 mov       rcx,[rbp-190]
 cmp       qword ptr [rcx+58],0
-je        short 00007FF814AEE8DF
+je        short 00007FFE3805E9AF
 mov       rcx,[rbp-190]
 mov       rcx,[rcx+58]
 mov       [rbp-120],rcx
-jmp       short 00007FF814AEE8F9
+jmp       short 00007FFE3805E9C9
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1EE8
+mov       rdx,7FFE38561EE8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-120],rax
 mov       rcx,[rbp-120]
@@ -3903,7 +3393,7 @@ mov       [rbp-118],rax
 mov       rcx,[rbp-118]
 mov       rdx,[rbp-10]
 mov       r8,offset DotNetTips.Spargine.Extensions.CollectionExtensions+<>c__DisplayClass3_0`1[[System.__Canon, System.Private.CoreLib]].<AddRange>b__0(System.__Canon)
-call      qword ptr [7FF814AC4210]
+call      qword ptr [7FFE38034210]
 mov       rcx,[rbp-118]
 mov       [rbp-40],rcx
 mov       rcx,[rbp-10]
@@ -3917,38 +3407,38 @@ mov       rcx,[rcx+10]
 mov       [rbp-198],rcx
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+8],38
-jle       short 00007FF814AEE990
+jle       short 00007FFE3805EA60
 mov       rcx,[rbp-198]
 cmp       qword ptr [rcx+38],0
-je        short 00007FF814AEE990
+je        short 00007FFE3805EA60
 mov       rcx,[rbp-198]
 mov       rcx,[rcx+38]
 mov       [rbp-0C0],rcx
-jmp       short 00007FF814AEE9AA
+jmp       short 00007FFE3805EA7A
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BA8
+mov       rdx,7FFE38561BA8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0C0],rax
 mov       rcx,[rbp-0C0]
 mov       rdx,[rbp-0B0]
 mov       r8,[rbp-0B8]
-call      qword ptr [7FF814F0F930]
+call      qword ptr [7FFE3847F930]
 mov       [rbp-0C8],rax
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A0],rcx
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+8],40
-jle       short 00007FF814AEEA0B
+jle       short 00007FFE3805EADB
 mov       rcx,[rbp-1A0]
 cmp       qword ptr [rcx+40],0
-je        short 00007FF814AEEA0B
+je        short 00007FFE3805EADB
 mov       rcx,[rbp-1A0]
 mov       rcx,[rcx+40]
 mov       [rbp-0D0],rcx
-jmp       short 00007FF814AEEA25
+jmp       short 00007FFE3805EAF5
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BC8
+mov       rdx,7FFE38561BC8
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0D0],rax
 mov       rcx,[rbp-0D0]
@@ -3961,22 +3451,22 @@ mov       [rbp-0E0],rax
 mov       rcx,[rbp-0E0]
 mov       [rbp-38],rcx
 nop
-jmp       near ptr 00007FF814AEEB7C
+jmp       near ptr 00007FFE3805EC4C
 mov       rcx,[rbp+10]
 mov       rcx,[rcx+10]
 mov       [rbp-1A8],rcx
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+8],48
-jle       short 00007FF814AEEAA1
+jle       short 00007FFE3805EB71
 mov       rcx,[rbp-1A8]
 cmp       qword ptr [rcx+48],0
-je        short 00007FF814AEEAA1
+je        short 00007FFE3805EB71
 mov       rcx,[rbp-1A8]
 mov       rcx,[rcx+48]
 mov       [rbp-0F0],rcx
-jmp       short 00007FF814AEEABB
+jmp       short 00007FFE3805EB8B
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1BE0
+mov       rdx,7FFE38561BE0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-0F0],rax
 mov       rcx,[rbp-0F0]
@@ -3994,16 +3484,16 @@ mov       rcx,[rcx+10]
 mov       [rbp-1B0],rcx
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+8],50
-jle       short 00007FF814AEEB2F
+jle       short 00007FFE3805EBFF
 mov       rcx,[rbp-1B0]
 cmp       qword ptr [rcx+50],0
-je        short 00007FF814AEEB2F
+je        short 00007FFE3805EBFF
 mov       rcx,[rbp-1B0]
 mov       rcx,[rcx+50]
 mov       [rbp-108],rcx
-jmp       short 00007FF814AEEB49
+jmp       short 00007FFE3805EC19
 mov       rcx,[rbp+10]
-mov       rdx,7FF814FF1DC0
+mov       rdx,7FFE38561DC0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-108],rax
 mov       rcx,[rbp-108]
@@ -4018,14 +3508,14 @@ nop
 mov       dword ptr [rbp-14],1
 nop
 mov       rcx,[rbp-38]
-mov       r11,7FF814980350
+mov       r11,7FFE37EF0350
 call      qword ptr [r11]
 mov       [rbp-0E4],eax
 cmp       dword ptr [rbp-0E4],0
-jne       near ptr 00007FF814AEEA62
+jne       near ptr 00007FFE3805EB32
 nop
 mov       rcx,rsp
-call      00007FF814AEEBF2
+call      00007FFE3805ECC2
 nop
 mov       ecx,[rbp-14]
 mov       [rbp-2C],ecx
@@ -4040,9 +3530,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-20],0
-je        short 00007FF814AEEBEB
+je        short 00007FFE3805ECBB
 mov       rcx,[rbp-20]
-mov       r11,7FF814980368
+mov       r11,7FFE37EF0368
 call      qword ptr [r11]
 nop
 nop
@@ -4055,9 +3545,9 @@ mov       rbp,[rcx+28]
 mov       [rsp+28],rbp
 lea       rbp,[rbp+1E0]
 cmp       qword ptr [rbp-38],0
-je        short 00007FF814AEEC20
+je        short 00007FFE3805ECF0
 mov       rcx,[rbp-38]
-mov       r11,7FF814980358
+mov       r11,7FFE37EF0358
 call      qword ptr [r11]
 nop
 nop
@@ -4076,30 +3566,540 @@ mov       [rbp-10],rdx
 mov       [rbp+10],rcx
 mov       [rbp+18],rdx
 mov       [rbp+20],r8
-cmp       dword ptr [7FF814E1F390],0
-je        short 00007FF815388D1F
+cmp       dword ptr [7FFE3838F390],0
+je        short 00007FFE388FA58F
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E54A38]
+call      qword ptr [7FFE383C4B10]
 mov       [rbp-18],rax
 mov       rcx,[rbp+18]
 mov       rcx,[rcx+10]
 cmp       qword ptr [rcx+10],0
-je        short 00007FF815388D4E
+je        short 00007FFE388FA5BE
 mov       r8,[rbp+18]
 mov       r8,[r8+10]
 mov       r8,[r8+10]
 mov       [rbp-20],r8
-jmp       short 00007FF815388D65
+jmp       short 00007FFE388FA5D5
 mov       rcx,[rbp+18]
-mov       rdx,7FF815467FF8
+mov       rdx,7FFE389E80E0
 call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
 mov       [rbp-20],rax
 lea       r8,[rbp+20]
 mov       rcx,[rbp-18]
 mov       rdx,[rbp-20]
 cmp       [rcx],ecx
-call      qword ptr [7FF815485680]
+call      qword ptr [7FFE389F70D8]
+nop
+nop
+add       rsp,38
+pop       rdi
+pop       rbp
+ret
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenchmark.AddRange01()
+push      rsi
+push      rbx
+sub       rsp,28
+mov       rbx,rcx
+mov       rsi,[rbx+188]
+mov       rcx,rbx
+mov       rax,[rbx]
+mov       rax,[rax+48]
+call      qword ptr [rax+18]
+mov       r8,rax
+mov       rdx,rsi
+mov       rcx,offset MD_DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.ICollection`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, System.Collections.Generic.IEnumerable`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Boolean)
+mov       r9d,1
+call      qword ptr [7FFE385053F8]
+mov       rcx,rbx
+mov       r8,rsi
+mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.List`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+add       rsp,28
+pop       rbx
+pop       rsi
+jmp       qword ptr [7FFE389E5EF0]
+
+DotNetTips.Spargine.Extensions.CollectionExtensions.AddRange[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.ICollection`1<System.__Canon>, System.Collections.Generic.IEnumerable`1<System.__Canon>, Boolean)
+push      rbp
+sub       rsp,1E0
+lea       rbp,[rsp+1E0]
+xor       eax,eax
+mov       [rbp-158],rax
+vxorps    xmm4,xmm4,xmm4
+vmovdqa   xmmword ptr [rbp-150],xmm4
+vmovdqa   xmmword ptr [rbp-140],xmm4
+mov       rax,0FFFFFFFFFFFFFEE0
+vmovdqa   xmmword ptr [rbp+rax-10],xmm4
+vmovdqa   xmmword ptr [rax+rbp],xmm4
+vmovdqa   xmmword ptr [rbp+rax+10],xmm4
+add       rax,30
+jne       short 00007FFE3804E4C7
+mov       [rbp-10],rax
+mov       [rbp-1B8],rsp
+mov       [rbp-8],rcx
+mov       [rbp+10],rcx
+mov       [rbp+18],rdx
+mov       [rbp+20],r8
+mov       [rbp+28],r9d
+cmp       dword ptr [7FFE384BD6F0],0
+je        short 00007FFE3804E50B
+call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+cmp       qword ptr [rcx+10],0
+je        short 00007FFE3804E52C
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       rcx,[rcx+10]
+mov       [rbp-58],rcx
+jmp       short 00007FFE3804E543
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551310
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-58],rax
+mov       rcx,[rbp-58]
+call      CORINFO_HELP_NEWSFAST
+mov       [rbp-50],rax
+mov       rcx,[rbp-50]
+call      qword ptr [7FFE38507D80]
+mov       rcx,[rbp-50]
+mov       [rbp-10],rcx
+mov       rcx,[rbp-10]
+lea       rcx,[rcx+8]
+mov       rdx,[rbp+18]
+call      CORINFO_HELP_ASSIGN_REF
+nop
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+cmp       qword ptr [rcx+18],0
+je        short 00007FFE3804E595
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       rcx,[rcx+18]
+mov       [rbp-60],rcx
+jmp       short 00007FFE3804E5AC
+mov       rcx,[rbp+10]
+mov       rdx,7FFE385518E0
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-60],rax
+mov       rcx,21A3E14B6C8
+mov       [rsp+20],rcx
+mov       rcx,[rbp-60]
+mov       rdx,[rbp+20]
+xor       r8d,r8d
+mov       r9,21A3E140008
+call      qword ptr [7FFE3850C4B0]
+mov       [rbp-68],rax
+mov       rcx,[rbp-68]
+mov       [rbp+20],rcx
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+cmp       qword ptr [rcx+20],0
+je        short 00007FFE3804E603
+mov       rdx,[rbp+10]
+mov       rdx,[rdx+10]
+mov       rdx,[rdx+20]
+mov       [rbp-70],rdx
+jmp       short 00007FFE3804E61A
+mov       rcx,[rbp+10]
+mov       rdx,7FFE385519C8
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-70],rax
+mov       rdx,[rbp-10]
+mov       [rbp-78],rdx
+mov       rdx,21A3E14B6E8
+mov       [rsp+20],rdx
+mov       rdx,[rbp-10]
+mov       rdx,[rdx+8]
+mov       rcx,[rbp-70]
+xor       r8d,r8d
+mov       r9,21A3E140008
+call      qword ptr [7FFE3850C4B0]
+mov       [rbp-80],rax
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+cmp       qword ptr [rcx+28],0
+je        short 00007FFE3804E678
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       rcx,[rcx+28]
+mov       [rbp-88],rcx
+jmp       short 00007FFE3804E692
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551A80
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-88],rax
+mov       rcx,[rbp-88]
+mov       rdx,[rbp-80]
+mov       r8,21A3E140008
+mov       r9,21A3E14B718
+call      qword ptr [7FFE3850C528]
+mov       [rbp-90],rax
+mov       rcx,[rbp-78]
+lea       rcx,[rcx+8]
+mov       rdx,[rbp-90]
+call      CORINFO_HELP_ASSIGN_REF
+mov       ecx,[rbp+28]
+movzx     ecx,cl
+test      ecx,ecx
+sete      cl
+movzx     ecx,cl
+mov       [rbp-18],ecx
+cmp       dword ptr [rbp-18],0
+je        near ptr 00007FFE3804E8D0
+nop
+nop
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       [rbp-170],rcx
+mov       rcx,[rbp-170]
+cmp       qword ptr [rcx+8],40
+jle       short 00007FFE3804E72E
+mov       rcx,[rbp-170]
+cmp       qword ptr [rcx+40],0
+je        short 00007FFE3804E72E
+mov       rcx,[rbp-170]
+mov       rcx,[rcx+40]
+mov       [rbp-128],rcx
+jmp       short 00007FFE3804E748
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551BC8
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-128],rax
+mov       rcx,[rbp-128]
+mov       [rbp-130],rcx
+mov       rcx,[rbp+20]
+mov       r11,[rbp-130]
+mov       rax,[rbp-130]
+call      qword ptr [rax]
+mov       [rbp-138],rax
+mov       rcx,[rbp-138]
+mov       [rbp-20],rcx
+nop
+jmp       near ptr 00007FFE3804E895
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       [rbp-178],rcx
+mov       rcx,[rbp-178]
+cmp       qword ptr [rcx+8],48
+jle       short 00007FFE3804E7C1
+mov       rcx,[rbp-178]
+cmp       qword ptr [rcx+48],0
+je        short 00007FFE3804E7C1
+mov       rcx,[rbp-178]
+mov       rcx,[rcx+48]
+mov       [rbp-148],rcx
+jmp       short 00007FFE3804E7DB
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551BE0
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-148],rax
+mov       rcx,[rbp-148]
+mov       [rbp-150],rcx
+mov       rcx,[rbp-20]
+mov       r11,[rbp-150]
+mov       rax,[rbp-150]
+call      qword ptr [rax]
+mov       [rbp-158],rax
+mov       rcx,[rbp-158]
+mov       [rbp-28],rcx
+nop
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       [rbp-180],rcx
+mov       rcx,[rbp-180]
+cmp       qword ptr [rcx+8],50
+jle       short 00007FFE3804E84F
+mov       rcx,[rbp-180]
+cmp       qword ptr [rcx+50],0
+je        short 00007FFE3804E84F
+mov       rcx,[rbp-180]
+mov       rcx,[rcx+50]
+mov       [rbp-160],rcx
+jmp       short 00007FFE3804E869
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551DC0
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-160],rax
+mov       rcx,[rbp-160]
+mov       [rbp-168],rcx
+mov       rcx,[rbp-10]
+mov       rcx,[rcx+8]
+mov       r11,[rbp-168]
+mov       rdx,[rbp-28]
+mov       rax,[rbp-168]
+call      qword ptr [rax]
+nop
+nop
+mov       rcx,[rbp-20]
+mov       r11,7FFE37EE0360
+call      qword ptr [r11]
+mov       [rbp-13C],eax
+cmp       dword ptr [rbp-13C],0
+jne       near ptr 00007FFE3804E782
+nop
+mov       rcx,rsp
+call      00007FFE3804EC9D
+nop
+mov       dword ptr [rbp-2C],1
+nop
+jmp       near ptr 00007FFE3804EC91
+xor       ecx,ecx
+mov       [rbp-14],ecx
+nop
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       [rbp-188],rcx
+mov       rcx,[rbp-188]
+cmp       qword ptr [rcx+8],30
+jle       short 00007FFE3804E915
+mov       rcx,[rbp-188]
+cmp       qword ptr [rcx+30],0
+je        short 00007FFE3804E915
+mov       rcx,[rbp-188]
+mov       rcx,[rcx+30]
+mov       [rbp-98],rcx
+jmp       short 00007FFE3804E92F
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551B58
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-98],rax
+mov       rcx,[rbp-98]
+mov       rdx,[rbp+20]
+call      qword ptr [7FFE3848CA20]
+mov       [rbp-0A0],rax
+mov       rcx,[rbp-10]
+mov       rcx,[rcx+10]
+mov       [rbp-0A8],rcx
+mov       rcx,[rbp-0A0]
+mov       [rbp-0B0],rcx
+mov       rcx,[rbp-0A8]
+mov       [rbp-0B8],rcx
+cmp       qword ptr [rbp-0A8],0
+jne       near ptr 00007FFE3804EA31
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       [rbp-190],rcx
+mov       rcx,[rbp-190]
+cmp       qword ptr [rcx+8],58
+jle       short 00007FFE3804E9BF
+mov       rcx,[rbp-190]
+cmp       qword ptr [rcx+58],0
+je        short 00007FFE3804E9BF
+mov       rcx,[rbp-190]
+mov       rcx,[rcx+58]
+mov       [rbp-120],rcx
+jmp       short 00007FFE3804E9D9
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551EE8
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-120],rax
+mov       rcx,[rbp-120]
+call      CORINFO_HELP_NEWSFAST
+mov       [rbp-118],rax
+mov       rcx,[rbp-118]
+mov       rdx,[rbp-10]
+mov       r8,offset DotNetTips.Spargine.Extensions.CollectionExtensions+<>c__DisplayClass3_0`1[[System.__Canon, System.Private.CoreLib]].<AddRange>b__0(System.__Canon)
+call      qword ptr [7FFE38024210]
+mov       rcx,[rbp-118]
+mov       [rbp-40],rcx
+mov       rcx,[rbp-10]
+lea       rcx,[rcx+10]
+mov       rdx,[rbp-118]
+call      CORINFO_HELP_ASSIGN_REF
+mov       rcx,[rbp-40]
+mov       [rbp-0B8],rcx
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       [rbp-198],rcx
+mov       rcx,[rbp-198]
+cmp       qword ptr [rcx+8],38
+jle       short 00007FFE3804EA70
+mov       rcx,[rbp-198]
+cmp       qword ptr [rcx+38],0
+je        short 00007FFE3804EA70
+mov       rcx,[rbp-198]
+mov       rcx,[rcx+38]
+mov       [rbp-0C0],rcx
+jmp       short 00007FFE3804EA8A
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551BA8
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-0C0],rax
+mov       rcx,[rbp-0C0]
+mov       rdx,[rbp-0B0]
+mov       r8,[rbp-0B8]
+call      qword ptr [7FFE3846EBF8]
+mov       [rbp-0C8],rax
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       [rbp-1A0],rcx
+mov       rcx,[rbp-1A0]
+cmp       qword ptr [rcx+8],40
+jle       short 00007FFE3804EAEB
+mov       rcx,[rbp-1A0]
+cmp       qword ptr [rcx+40],0
+je        short 00007FFE3804EAEB
+mov       rcx,[rbp-1A0]
+mov       rcx,[rcx+40]
+mov       [rbp-0D0],rcx
+jmp       short 00007FFE3804EB05
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551BC8
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-0D0],rax
+mov       rcx,[rbp-0D0]
+mov       [rbp-0D8],rcx
+mov       rcx,[rbp-0C8]
+mov       r11,[rbp-0D8]
+mov       rax,[rbp-0D8]
+call      qword ptr [rax]
+mov       [rbp-0E0],rax
+mov       rcx,[rbp-0E0]
+mov       [rbp-38],rcx
+nop
+jmp       near ptr 00007FFE3804EC5C
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       [rbp-1A8],rcx
+mov       rcx,[rbp-1A8]
+cmp       qword ptr [rcx+8],48
+jle       short 00007FFE3804EB81
+mov       rcx,[rbp-1A8]
+cmp       qword ptr [rcx+48],0
+je        short 00007FFE3804EB81
+mov       rcx,[rbp-1A8]
+mov       rcx,[rcx+48]
+mov       [rbp-0F0],rcx
+jmp       short 00007FFE3804EB9B
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551BE0
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-0F0],rax
+mov       rcx,[rbp-0F0]
+mov       [rbp-0F8],rcx
+mov       rcx,[rbp-38]
+mov       r11,[rbp-0F8]
+mov       rax,[rbp-0F8]
+call      qword ptr [rax]
+mov       [rbp-100],rax
+mov       rcx,[rbp-100]
+mov       [rbp-48],rcx
+nop
+mov       rcx,[rbp+10]
+mov       rcx,[rcx+10]
+mov       [rbp-1B0],rcx
+mov       rcx,[rbp-1B0]
+cmp       qword ptr [rcx+8],50
+jle       short 00007FFE3804EC0F
+mov       rcx,[rbp-1B0]
+cmp       qword ptr [rcx+50],0
+je        short 00007FFE3804EC0F
+mov       rcx,[rbp-1B0]
+mov       rcx,[rcx+50]
+mov       [rbp-108],rcx
+jmp       short 00007FFE3804EC29
+mov       rcx,[rbp+10]
+mov       rdx,7FFE38551DC0
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-108],rax
+mov       rcx,[rbp-108]
+mov       [rbp-110],rcx
+mov       rcx,[rbp-10]
+mov       rcx,[rcx+8]
+mov       r11,[rbp-110]
+mov       rdx,[rbp-48]
+mov       rax,[rbp-110]
+call      qword ptr [rax]
+nop
+mov       dword ptr [rbp-14],1
+nop
+mov       rcx,[rbp-38]
+mov       r11,7FFE37EE0350
+call      qword ptr [r11]
+mov       [rbp-0E4],eax
+cmp       dword ptr [rbp-0E4],0
+jne       near ptr 00007FFE3804EB42
+nop
+mov       rcx,rsp
+call      00007FFE3804ECD2
+nop
+mov       ecx,[rbp-14]
+mov       [rbp-2C],ecx
+nop
+mov       eax,[rbp-2C]
+add       rsp,1E0
+pop       rbp
+ret
+push      rbp
+sub       rsp,30
+mov       rbp,[rcx+28]
+mov       [rsp+28],rbp
+lea       rbp,[rbp+1E0]
+cmp       qword ptr [rbp-20],0
+je        short 00007FFE3804ECCB
+mov       rcx,[rbp-20]
+mov       r11,7FFE37EE0368
+call      qword ptr [r11]
+nop
+nop
+add       rsp,30
+pop       rbp
+ret
+push      rbp
+sub       rsp,30
+mov       rbp,[rcx+28]
+mov       [rsp+28],rbp
+lea       rbp,[rbp+1E0]
+cmp       qword ptr [rbp-38],0
+je        short 00007FFE3804ED00
+mov       rcx,[rbp-38]
+mov       r11,7FFE37EE0358
+call      qword ptr [r11]
+nop
+nop
+add       rsp,30
+pop       rbp
+ret
+
+DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon)
+push      rbp
+push      rdi
+sub       rsp,38
+lea       rbp,[rsp+40]
+xor       eax,eax
+mov       [rbp-18],rax
+mov       [rbp-10],rdx
+mov       [rbp+10],rcx
+mov       [rbp+18],rdx
+mov       [rbp+20],r8
+cmp       dword ptr [7FFE3837F390],0
+je        short 00007FFE388F9BEF
+call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+mov       rcx,[rbp+10]
+call      qword ptr [7FFE383B4588]
+mov       [rbp-18],rax
+mov       rcx,[rbp+18]
+mov       rcx,[rcx+10]
+cmp       qword ptr [rcx+10],0
+je        short 00007FFE388F9C1E
+mov       r8,[rbp+18]
+mov       r8,[r8+10]
+mov       r8,[r8+10]
+mov       [rbp-20],r8
+jmp       short 00007FFE388F9C35
+mov       rcx,[rbp+18]
+mov       rdx,7FFE389C87E0
+call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+mov       [rbp-20],rax
+lea       r8,[rbp+20]
+mov       rcx,[rbp-18]
+mov       rdx,[rbp-20]
+cmp       [rcx],ecx
+call      qword ptr [7FFE389E6388]
 nop
 nop
 add       rsp,38
@@ -4132,14 +4132,14 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
+mov       rcx,[rbx+180]
 mov       edx,5
-call      qword ptr [7FF814FC5B18]
+call      qword ptr [7FFE38505350]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF81536F378]
+jmp       qword ptr [7FFE388D4978]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection, Int32)
 push      rbp
@@ -4150,8 +4150,8 @@ mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814F7D648],0
-je        short 00007FF814B4F617
+cmp       dword ptr [7FFE384BD6F0],0
+je        short 00007FFE38091377
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4159,15 +4159,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B4F634
+je        short 00007FFE38091394
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B4F659
+jmp       short 00007FFE380913B9
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF8149A09F8
+mov       r11,7FFE37EE0A88
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 mov       eax,[rbp-0C]
@@ -4190,16 +4190,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E3F390],0
-je        short 00007FF814B4F6A6
+cmp       dword ptr [7FFE3837F390],0
+je        short 00007FFE38091406
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E74A38]
+call      qword ptr [7FFE383B4588]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF81536F390]
+call      qword ptr [7FFE388D4990]
 nop
 nop
 add       rsp,28
@@ -4213,14 +4213,14 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
+mov       rcx,[rbx+180]
 mov       edx,5
-call      qword ptr [7FF814F95350]
+call      qword ptr [7FFE38515350]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF81533E9D0]
+jmp       qword ptr [7FFE388E4678]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection, Int32)
 push      rbp
@@ -4231,8 +4231,8 @@ mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814F4D648],0
-je        short 00007FF814B1F617
+cmp       dword ptr [7FFE384CD6F0],0
+je        short 00007FFE380A1397
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4240,15 +4240,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B1F634
+je        short 00007FFE380A13B4
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B1F659
+jmp       short 00007FFE380A13D9
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF8149709F8
+mov       r11,7FFE37EF0A88
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 mov       eax,[rbp-0C]
@@ -4271,16 +4271,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E0F3E0],0
-je        short 00007FF814B1F6A6
+cmp       dword ptr [7FFE3837F438],0
+je        short 00007FFE380A1426
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E44528]
+call      qword ptr [7FFE383C4588]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF81533E9E8]
+call      qword ptr [7FFE388E4690]
 nop
 nop
 add       rsp,28
@@ -4294,14 +4294,14 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
+mov       rcx,[rbx+180]
 mov       edx,5
-call      qword ptr [7FF814FB5B18]
+call      qword ptr [7FFE38525B18]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF81535E9D0]
+jmp       qword ptr [7FFE388F4828]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection, Int32)
 push      rbp
@@ -4312,8 +4312,8 @@ mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814F6D648],0
-je        short 00007FF814B3F617
+cmp       dword ptr [7FFE384DD6F0],0
+je        short 00007FFE380B1377
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4321,15 +4321,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B3F634
+je        short 00007FFE380B1394
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B3F659
+jmp       short 00007FFE380B13B9
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF8149909F8
+mov       r11,7FFE37F00A88
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 mov       eax,[rbp-0C]
@@ -4352,16 +4352,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E2F390],0
-je        short 00007FF814B3F6A6
+cmp       dword ptr [7FFE3839F390],0
+je        short 00007FFE380B1406
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E64A38]
+call      qword ptr [7FFE383D4B10]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF81535E9E8]
+call      qword ptr [7FFE388F4840]
 nop
 nop
 add       rsp,28
@@ -4375,14 +4375,14 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
+mov       rcx,[rbx+180]
 mov       edx,5
-call      qword ptr [7FF814FD5B18]
+call      qword ptr [7FFE38505B18]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF8153C6F58]
+jmp       qword ptr [7FFE38987FA8]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection, Int32)
 push      rbp
@@ -4393,8 +4393,8 @@ mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814F8D648],0
-je        short 00007FF814B69FF7
+cmp       dword ptr [7FFE384BD6F0],0
+je        short 00007FFE388B4357
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4402,15 +4402,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B6A014
+je        short 00007FFE388B4374
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B6A039
+jmp       short 00007FFE388B4399
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF8149B09F8
+mov       r11,7FFE37EE0AB8
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 mov       eax,[rbp-0C]
@@ -4433,16 +4433,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E4F390],0
-je        short 00007FF814B6A086
+cmp       dword ptr [7FFE3837F390],0
+je        short 00007FFE388B43E6
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E84A38]
+call      qword ptr [7FFE383B4B10]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF8153C6F70]
+call      qword ptr [7FFE38987FC0]
 nop
 nop
 add       rsp,28
@@ -4456,14 +4456,14 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
+mov       rcx,[rbx+180]
 mov       edx,5
-call      qword ptr [7FF814FA5B18]
+call      qword ptr [7FFE38515B18]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF81543FDC8]
+jmp       qword ptr [7FFE389E7378]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection, Int32)
 push      rbp
@@ -4474,8 +4474,8 @@ mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814F5D648],0
-je        short 00007FF815398197
+cmp       dword ptr [7FFE384CE0E8],0
+je        short 00007FFE38911277
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4483,15 +4483,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF8153981B4
+je        short 00007FFE38911294
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF8153981D9
+jmp       short 00007FFE389112B9
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF814980B10
+mov       r11,7FFE37EF0C10
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 mov       eax,[rbp-0C]
@@ -4514,16 +4514,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E1F390],0
-je        short 00007FF815398226
+cmp       dword ptr [7FFE3837F9A8],0
+je        short 00007FFE38911306
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E54A38]
+call      qword ptr [7FFE383C4B10]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF81543FDE0]
+call      qword ptr [7FFE389E7390]
 nop
 nop
 add       rsp,28
@@ -4537,14 +4537,14 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
+mov       rcx,[rbx+180]
 mov       edx,5
-call      qword ptr [7FF814FB5350]
+call      qword ptr [7FFE38515B18]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF815484CF0]
+jmp       qword ptr [7FFE389F6C28]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection, Int32)
 push      rbp
@@ -4555,8 +4555,8 @@ mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814F6D648],0
-je        short 00007FF8153A5D17
+cmp       dword ptr [7FFE384CD6F0],0
+je        short 00007FFE388E9097
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4564,15 +4564,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF8153A5D34
+je        short 00007FFE388E90B4
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF8153A5D59
+jmp       short 00007FFE388E90D9
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF814990C10
+mov       r11,7FFE37EF0C98
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 mov       eax,[rbp-0C]
@@ -4595,16 +4595,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E2F3E8],0
-je        short 00007FF8153A5DA6
+cmp       dword ptr [7FFE3838F390],0
+je        short 00007FFE388E9126
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E64528]
+call      qword ptr [7FFE383C4B10]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF815484D08]
+call      qword ptr [7FFE389F6C40]
 nop
 nop
 add       rsp,28
@@ -4618,14 +4618,14 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
+mov       rcx,[rbx+180]
 mov       edx,5
-call      qword ptr [7FF814FA5350]
+call      qword ptr [7FFE38515B18]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF815475380]
+jmp       qword ptr [7FFE389F6C28]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection, Int32)
 push      rbp
@@ -4636,8 +4636,8 @@ mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814F5D648],0
-je        short 00007FF815395A37
+cmp       dword ptr [7FFE384CD6F0],0
+je        short 00007FFE388F98B7
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4645,15 +4645,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF815395A54
+je        short 00007FFE388F98D4
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF815395A79
+jmp       short 00007FFE388F98F9
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF814980C08
+mov       r11,7FFE37EF0C98
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 mov       eax,[rbp-0C]
@@ -4676,16 +4676,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E1F390],0
-je        short 00007FF815395AC6
+cmp       dword ptr [7FFE3838F390],0
+je        short 00007FFE388F9946
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E54528]
+call      qword ptr [7FFE383C4B10]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF815475398]
+call      qword ptr [7FFE389F6C40]
 nop
 nop
 add       rsp,28
@@ -4699,14 +4699,14 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
+mov       rcx,[rbx+180]
 mov       edx,5
-call      qword ptr [7FF814F95350]
+call      qword ptr [7FFE38535350]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF815465ED8]
+jmp       qword ptr [7FFE38A15ED8]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection, Int32)
 push      rbp
@@ -4717,8 +4717,8 @@ mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814F4D648],0
-je        short 00007FF815385A37
+cmp       dword ptr [7FFE384ED6F0],0
+je        short 00007FFE3891A737
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4726,15 +4726,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF815385A54
+je        short 00007FFE3891A754
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF815385A79
+jmp       short 00007FFE3891A779
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF814970C08
+mov       r11,7FFE37F10CD8
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 mov       eax,[rbp-0C]
@@ -4757,16 +4757,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E0F390],0
-je        short 00007FF815385AC6
+cmp       dword ptr [7FFE383AF390],0
+je        short 00007FFE3891A7C6
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E44528]
+call      qword ptr [7FFE383E4588]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF815465EF0]
+call      qword ptr [7FFE38A15EF0]
 nop
 nop
 add       rsp,28
@@ -4799,13 +4799,13 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
-call      qword ptr [7FF814FA5B00]
+mov       rcx,[rbx+180]
+call      qword ptr [7FFE38525B00]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF81534EC28]
+jmp       qword ptr [7FFE388F4678]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection)
 push      rbp
@@ -4815,8 +4815,8 @@ xor       eax,eax
 mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
-cmp       dword ptr [7FF814F5D648],0
-je        short 00007FF814B09EA4
+cmp       dword ptr [7FFE384DD6F0],0
+je        short 00007FFE38089F44
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4824,15 +4824,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B09EC1
+je        short 00007FFE38089F61
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B09EE3
+jmp       short 00007FFE38089F83
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF814980558
+mov       r11,7FFE37F00558
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 xor       eax,eax
@@ -4854,16 +4854,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E1F390],0
-je        short 00007FF814B2F606
+cmp       dword ptr [7FFE3839F390],0
+je        short 00007FFE380B1366
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E54A38]
+call      qword ptr [7FFE383D4B10]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF81534EC40]
+call      qword ptr [7FFE388F4690]
 nop
 nop
 add       rsp,28
@@ -4877,13 +4877,13 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
-call      qword ptr [7FF814FB5B00]
+mov       rcx,[rbx+180]
+call      qword ptr [7FFE38505B00]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF81535EDA8]
+jmp       qword ptr [7FFE388BF378]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection)
 push      rbp
@@ -4893,8 +4893,8 @@ xor       eax,eax
 mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
-cmp       dword ptr [7FF814F6D648],0
-je        short 00007FF814B1A714
+cmp       dword ptr [7FFE384BD6F0],0
+je        short 00007FFE3806A7B4
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4902,15 +4902,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B1A731
+je        short 00007FFE3806A7D1
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B1A753
+jmp       short 00007FFE3806A7F3
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF814990578
+mov       r11,7FFE37EE0578
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 xor       eax,eax
@@ -4932,16 +4932,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E2F390],0
-je        short 00007FF814B3F606
+cmp       dword ptr [7FFE3837F390],0
+je        short 00007FFE38091366
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E64A38]
+call      qword ptr [7FFE383B4B10]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF81535EDC0]
+call      qword ptr [7FFE388BF390]
 nop
 nop
 add       rsp,28
@@ -4955,13 +4955,13 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
-call      qword ptr [7FF814FA5B00]
+mov       rcx,[rbx+180]
+call      qword ptr [7FFE38505338]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF81534EC28]
+jmp       qword ptr [7FFE388D4828]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection)
 push      rbp
@@ -4971,8 +4971,8 @@ xor       eax,eax
 mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
-cmp       dword ptr [7FF814F5D648],0
-je        short 00007FF814B09E54
+cmp       dword ptr [7FFE384BD6F0],0
+je        short 00007FFE38069EA4
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -4980,15 +4980,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B09E71
+je        short 00007FFE38069EC1
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B09E93
+jmp       short 00007FFE38069EE3
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF814980548
+mov       r11,7FFE37EE0538
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 xor       eax,eax
@@ -5010,16 +5010,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E1F390],0
-je        short 00007FF814B2F606
+cmp       dword ptr [7FFE3837F390],0
+je        short 00007FFE38091366
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E54A38]
+call      qword ptr [7FFE383B4588]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF81534EC40]
+call      qword ptr [7FFE388D4840]
 nop
 nop
 add       rsp,28
@@ -5033,13 +5033,13 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
-call      qword ptr [7FF814FB5B00]
+mov       rcx,[rbx+180]
+call      qword ptr [7FFE38515338]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF81535E9D0]
+jmp       qword ptr [7FFE38997FA8]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection)
 push      rbp
@@ -5049,8 +5049,8 @@ xor       eax,eax
 mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
-cmp       dword ptr [7FF814F6D648],0
-je        short 00007FF814B1A2B4
+cmp       dword ptr [7FFE384CD6F0],0
+je        short 00007FFE3807A7B4
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -5058,15 +5058,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B1A2D1
+je        short 00007FFE3807A7D1
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B1A2F3
+jmp       short 00007FFE3807A7F3
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF814990568
+mov       r11,7FFE37EF0578
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 xor       eax,eax
@@ -5088,16 +5088,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E2F390],0
-je        short 00007FF814B3F606
+cmp       dword ptr [7FFE3838F380],0
+je        short 00007FFE388C3E06
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E64A38]
+call      qword ptr [7FFE383C4588]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF81535E9E8]
+call      qword ptr [7FFE38997FC0]
 nop
 nop
 add       rsp,28
@@ -5111,13 +5111,13 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
-call      qword ptr [7FF814FC5B00]
+mov       rcx,[rbx+180]
+call      qword ptr [7FFE38505338]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF815484CF0]
+jmp       qword ptr [7FFE389E6C28]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection)
 push      rbp
@@ -5127,8 +5127,8 @@ xor       eax,eax
 mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
-cmp       dword ptr [7FF814F7D648],0
-je        short 00007FF814B2A714
+cmp       dword ptr [7FFE384BD6F0],0
+je        short 00007FFE3806A374
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -5136,15 +5136,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B2A731
+je        short 00007FFE3806A391
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B2A753
+jmp       short 00007FFE3806A3B3
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF8149A0578
+mov       r11,7FFE37EE0568
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 xor       eax,eax
@@ -5166,16 +5166,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E3F390],0
-je        short 00007FF8153B8BE6
+cmp       dword ptr [7FFE3837F390],0
+je        short 00007FFE388F6BC6
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E74A38]
+call      qword ptr [7FFE383B4588]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF815484D08]
+call      qword ptr [7FFE389E6C40]
 nop
 nop
 add       rsp,28
@@ -5189,13 +5189,13 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
-call      qword ptr [7FF814FC5B00]
+mov       rcx,[rbx+180]
+call      qword ptr [7FFE38525338]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF8154A5ED8]
+jmp       qword ptr [7FFE38A05ED8]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection)
 push      rbp
@@ -5205,8 +5205,8 @@ xor       eax,eax
 mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
-cmp       dword ptr [7FF814F7D648],0
-je        short 00007FF814B2A2B4
+cmp       dword ptr [7FFE384DD6F0],0
+je        short 00007FFE3808A7D4
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -5214,15 +5214,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B2A2D1
+je        short 00007FFE3808A7F1
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B2A2F3
+jmp       short 00007FFE3808A813
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF8149A0568
+mov       r11,7FFE37F00578
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 xor       eax,eax
@@ -5244,16 +5244,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E3F390],0
-je        short 00007FF8153A7B46
+cmp       dword ptr [7FFE3838F500],0
+je        short 00007FFE38917266
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E74A38]
+call      qword ptr [7FFE383D4588]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF8154A5EF0]
+call      qword ptr [7FFE38A05EF0]
 nop
 nop
 add       rsp,28
@@ -5267,13 +5267,13 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
-call      qword ptr [7FF814FA5338]
+mov       rcx,[rbx+180]
+call      qword ptr [7FFE38525B00]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF815474CF0]
+jmp       qword ptr [7FFE38A069D0]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection)
 push      rbp
@@ -5283,8 +5283,8 @@ xor       eax,eax
 mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
-cmp       dword ptr [7FF814F5D648],0
-je        short 00007FF814B0A2B4
+cmp       dword ptr [7FFE384DE0E8],0
+je        short 00007FFE3808A7D4
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -5292,15 +5292,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B0A2D1
+je        short 00007FFE3808A7F1
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B0A2F3
+jmp       short 00007FFE3808A813
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF814980568
+mov       r11,7FFE37F00578
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 xor       eax,eax
@@ -5322,16 +5322,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E0F388],0
-je        short 00007FF815395A26
+cmp       dword ptr [7FFE3838F9A8],0
+je        short 00007FFE388F9D26
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E54528]
+call      qword ptr [7FFE383D4B10]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF815474D08]
+call      qword ptr [7FFE38A069E8]
 nop
 nop
 add       rsp,28
@@ -5345,13 +5345,13 @@ DotNetTips.Spargine.Extensions.BenchmarkTests.CollectionExtensionsCollectionBenc
 push      rbx
 sub       rsp,20
 mov       rbx,rcx
-mov       rcx,[rbx+188]
-call      qword ptr [7FF814FC5B00]
+mov       rcx,[rbx+180]
+call      qword ptr [7FFE38505B00]
 mov       edx,eax
 mov       rcx,rbx
 add       rsp,20
 pop       rbx
-jmp       qword ptr [7FF8154A5920]
+jmp       qword ptr [7FFE389E6A78]
 
 DotNetTips.Spargine.Extensions.CollectionExtensions.HasItems(System.Collections.ICollection)
 push      rbp
@@ -5361,8 +5361,8 @@ xor       eax,eax
 mov       [rbp-4],eax
 mov       [rbp-8],eax
 mov       [rbp+10],rcx
-cmp       dword ptr [7FF814F7D648],0
-je        short 00007FF814B2A714
+cmp       dword ptr [7FFE384BD6F0],0
+je        short 00007FFE38069EA4
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 nop
 xor       ecx,ecx
@@ -5370,15 +5370,15 @@ cmp       qword ptr [rbp+10],0
 sete      cl
 mov       [rbp-4],ecx
 cmp       dword ptr [rbp-4],0
-je        short 00007FF814B2A731
+je        short 00007FFE38069EC1
 nop
 xor       ecx,ecx
 mov       [rbp-8],ecx
 nop
-jmp       short 00007FF814B2A753
+jmp       short 00007FFE38069EE3
 nop
 mov       rcx,[rbp+10]
-mov       r11,7FF8149A0578
+mov       r11,7FFE37EE0538
 call      qword ptr [r11]
 mov       [rbp-0C],eax
 xor       eax,eax
@@ -5400,16 +5400,16 @@ xor       eax,eax
 mov       [rbp-10],rax
 mov       [rbp+10],rcx
 mov       [rbp+18],edx
-cmp       dword ptr [7FF814E3F390],0
-je        short 00007FF8153A8706
+cmp       dword ptr [7FFE3837F390],0
+je        short 00007FFE388D9C86
 call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 mov       rcx,[rbp+10]
-call      qword ptr [7FF814E74A38]
+call      qword ptr [7FFE383B4B10]
 mov       [rbp-10],rax
 lea       rdx,[rbp+18]
 mov       rcx,[rbp-10]
 cmp       [rcx],ecx
-call      qword ptr [7FF8154A5938]
+call      qword ptr [7FFE389E6A90]
 nop
 nop
 add       rsp,28

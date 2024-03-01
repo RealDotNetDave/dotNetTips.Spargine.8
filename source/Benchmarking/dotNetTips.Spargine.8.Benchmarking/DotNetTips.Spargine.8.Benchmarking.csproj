@@ -54,6 +54,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Update="dotNetTips-Spargine-8-Logo.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>

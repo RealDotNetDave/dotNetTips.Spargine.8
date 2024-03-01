@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="dotNetTips.Spargine.8.Tester">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -233,7 +233,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generate a collection of Address types that implement the <see cref="IAddress"/> interface.
+	/// Generate a collection of Address types that implement the <see cref="IAddress" /> interface.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="country">The countryName.</param>
@@ -301,7 +301,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a random <see cref="byte"/> array.
+	/// Generates a random <see cref="byte" /> array.
 	/// </summary>
 	/// <param name="sizeInKb">The size in kb.</param>
 	/// <returns>byte[].</returns>
@@ -338,7 +338,7 @@ public static partial class RandomData
 	public static char GenerateCharacter(char minValue, char maxValue) => (char)GenerateInteger(minValue, maxValue);
 
 	/// <summary>
-	/// Create a Coordinate object that implements the  <see cref="ICoordinate"/> interface with random values.
+	/// Create a Coordinate object that implements the  <see cref="ICoordinate" /> interface with random values.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <returns>T.</returns>
@@ -347,7 +347,7 @@ public static partial class RandomData
 	public static T GenerateCoordinate<T>() where T : ICoordinate, new() => new() { X = GenerateInteger(), Y = GenerateInteger(), Z = GenerateInteger() };
 
 	/// <summary>
-	/// Create a collection of objects that implement the <see cref="ICoordinate"/> interface.
+	/// Create a collection of objects that implement the <see cref="ICoordinate" /> interface.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="count">The number of items to create. Minimum value is 1.</param>
@@ -390,7 +390,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a random <see cref="decimal"/> value.
+	/// Generates a random <see cref="decimal" /> value.
 	/// </summary>
 	/// <param name="minValue">The minimum value.</param>
 	/// <param name="maxValue">The maximum value.</param>
@@ -635,7 +635,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a Person reference type that implements <see cref="IAddress"/> with default values.
+	/// Generates a Person reference type that implements <see cref="IAddress" /> with default values.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of the t address.</typeparam>
 	/// <param name="addressCount">The address count. Count must be 0 or higher. Defaults to 2.</param>
@@ -667,7 +667,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a <see cref="Models.RefTypes.Person{TAddress}"/> reference collection that implements <see cref="IAddress"/>.
+	/// Generates a <see cref="Models.RefTypes.Person{TAddress}" /> reference collection that implements <see cref="IAddress" />.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of the t address.</typeparam>
 	/// <param name="count">The number of items to create. Minimum value = 1.</param>
@@ -688,7 +688,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a <see cref="Models.ValueTypes.Person{TAddress}"/> value type that implements <see cref="IAddress"/> with random values.
+	/// Generates a <see cref="Models.ValueTypes.Person{TAddress}" /> value type that implements <see cref="IAddress" /> with random values.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of the t address.</typeparam>
 	/// <param name="addressCount">The address count. Count must be 0 or higher. Defaults to 2.</param>
@@ -720,7 +720,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates a <see cref="Models.ValueTypes.Person{TAddress}"/> value collection that implements <see cref="IAddress"/>.
+	/// Generates a <see cref="Models.ValueTypes.Person{TAddress}" /> value collection that implements <see cref="IAddress" />.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of the t address.</typeparam>
 	/// <param name="count">The count.</param>
@@ -741,7 +741,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Creates a phone number based on a specified <see cref="Country"/>, with the option to include the country code.
+	/// Creates a phone number based on a specified <see cref="Country" />, with the option to include the country code.
 	/// </summary>
 	/// <param name="country">The countryName.</param>
 	/// <param name="includeCountryCode">The include countryName code.</param>
@@ -756,7 +756,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Creates a phone number based on a specified <see cref="CountryName"/>, with the option to include the country code.
+	/// Creates a phone number based on a specified <see cref="CountryName" />, with the option to include the country code.
 	/// </summary>
 	/// <param name="countryName">Name of the country.</param>
 	/// <param name="includeCountryCode">The include country code.</param>
@@ -834,7 +834,7 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Generates random person data, including values for date of birth, cell phone number, <see cref="Country"/>, email address, first name, last name, and phone number.
+	/// Generates random person data, including values for date of birth, cell phone number, <see cref="Country" />, email address, first name, last name, and phone number.
 	/// </summary>
 	/// <returns>DotNetTips.Spargine.Tester.PersonData.</returns>
 	public static PersonData GenerateRandomPersonData()
@@ -941,7 +941,7 @@ public static partial class RandomData
 	public static string GenerateUrlHostNameNoProtocol() => $"www.{GenerateWord(1, 25, 'a', 'z')}.{GenerateUrlHostNameNoSubDomain()}";
 
 	/// <summary>
-	///Creates a hostname without a subdomain.
+	/// Creates a hostname without a subdomain.
 	/// </summary>
 	/// <returns>System.String.</returns>
 	/// <example>Output: dz</example>

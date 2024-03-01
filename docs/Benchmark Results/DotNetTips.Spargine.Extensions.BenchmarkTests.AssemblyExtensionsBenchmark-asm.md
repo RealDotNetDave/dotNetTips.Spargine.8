@@ -4,15 +4,15 @@
        push      rbx
        sub       rsp,20
        mov       rbx,rcx
-       call      qword ptr [7FF814C7C078]; System.Reflection.Assembly.GetExecutingAssembly()
+       call      qword ptr [7FFE381FC078]; System.Reflection.Assembly.GetExecutingAssembly()
        mov       rcx,rax
-       call      qword ptr [7FF81524F378]; DotNetTips.Spargine.Extensions.AssemblyExtensions.GetAllInterfaces(System.Reflection.Assembly)
+       call      qword ptr [7FFE387E5D28]; DotNetTips.Spargine.Extensions.AssemblyExtensions.GetAllInterfaces(System.Reflection.Assembly)
        mov       r8,rax
        mov       rcx,rbx
        mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.ObjectModel.ReadOnlyCollection`1[[System.Type, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.ObjectModel.ReadOnlyCollection`1<System.Type>)
        add       rsp,20
        pop       rbx
-       jmp       qword ptr [7FF81524F3D8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon)
+       jmp       qword ptr [7FFE387E5D88]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon)
 ; Total bytes of code 50
 ```
 ```assembly
@@ -20,7 +20,7 @@
        sub       rsp,28
        mov       dword ptr [rsp+20],1
        lea       rcx,[rsp+20]
-       call      qword ptr [7FF814C7C060]; System.Reflection.Assembly.GetExecutingAssembly(System.Threading.StackCrawlMark ByRef)
+       call      qword ptr [7FFE381FC060]; System.Reflection.Assembly.GetExecutingAssembly(System.Threading.StackCrawlMark ByRef)
        nop
        add       rsp,28
        ret
@@ -40,18 +40,18 @@
        vmovdqa   xmmword ptr [rbp-20],xmm4
        vmovdqa   xmmword ptr [rbp-10],xmm4
        mov       [rbp+10],rcx
-       cmp       dword ptr [7FF814F52150],0
+       cmp       dword ptr [7FFE384D2150],0
        je        short M02_L00
        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 M02_L00:
        nop
-       mov       rdx,28AEAFFB670
+       mov       rdx,1F0118BB670
        mov       [rsp+20],rdx
        mov       rdx,[rbp+10]
        mov       rcx,offset MD_DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Reflection.Assembly, System.Private.CoreLib]](System.Reflection.Assembly, System.Reflection.Assembly, System.String, System.String)
        xor       r8d,r8d
-       mov       r9,28AEAFF0008
-       call      qword ptr [7FF814FD7C60]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.__Canon, System.Private.CoreLib]](System.__Canon, System.__Canon, System.String, System.String)
+       mov       r9,1F0118B0008
+       call      qword ptr [7FFE38557C60]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.__Canon, System.Private.CoreLib]](System.__Canon, System.__Canon, System.String, System.String)
        mov       [rbp-30],rax
        mov       rcx,[rbp-30]
        mov       [rbp+10],rcx
@@ -59,7 +59,7 @@ M02_L00:
        call      CORINFO_HELP_NEWSFAST
        mov       [rbp-38],rax
        mov       rcx,[rbp-38]
-       call      qword ptr [7FF814B7DF98]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]]..ctor()
+       call      qword ptr [7FFE380FDF98]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]]..ctor()
        mov       rcx,[rbp-38]
        mov       [rbp-8],rcx
        nop
@@ -98,7 +98,7 @@ M02_L02:
        mov       rcx,[rbp-48]
        mov       rdx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FF814B7E160]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.__Canon>)
+       call      qword ptr [7FFE380FE160]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.__Canon>)
        nop
        nop
        mov       ecx,[rbp-14]
@@ -111,7 +111,7 @@ M02_L03:
        jl        short M02_L01
        mov       rcx,[rbp-8]
        cmp       [rcx],ecx
-       call      qword ptr [7FF814B7E178]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]].AsReadOnly()
+       call      qword ptr [7FFE380FE178]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]].AsReadOnly()
        mov       [rbp-58],rax
        mov       rax,[rbp-58]
        mov       [rbp-28],rax
@@ -134,12 +134,12 @@ M02_L03:
        mov       [rbp+10],rcx
        mov       [rbp+18],rdx
        mov       [rbp+20],r8
-       cmp       dword ptr [7FF814E1F390],0
+       cmp       dword ptr [7FFE3839F390],0
        je        short M03_L00
        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 M03_L00:
        mov       rcx,[rbp+10]
-       call      qword ptr [7FF814E54A38]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
        mov       [rbp-18],rax
        mov       rcx,[rbp+18]
        mov       rcx,[rcx+10]
@@ -152,7 +152,7 @@ M03_L00:
        jmp       short M03_L02
 M03_L01:
        mov       rcx,[rbp+18]
-       mov       rdx,7FF81528CCA0
+       mov       rdx,7FFE387FCD18
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       [rbp-20],rax
 M03_L02:
@@ -160,7 +160,7 @@ M03_L02:
        mov       rcx,[rbp-18]
        mov       rdx,[rbp-20]
        cmp       [rcx],ecx
-       call      qword ptr [7FF815297D98]; BenchmarkDotNet.Engines.Consumer.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef)
+       call      qword ptr [7FFE387EED78]; BenchmarkDotNet.Engines.Consumer.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef)
        nop
        nop
        add       rsp,38
@@ -176,15 +176,15 @@ M03_L02:
        push      rbx
        sub       rsp,20
        mov       rbx,rcx
-       call      qword ptr [7FF814C9C078]; System.Reflection.Assembly.GetExecutingAssembly()
+       call      qword ptr [7FFE3820C078]; System.Reflection.Assembly.GetExecutingAssembly()
        mov       rcx,rax
-       call      qword ptr [7FF815285F98]; DotNetTips.Spargine.Extensions.AssemblyExtensions.GetAllTypes(System.Reflection.Assembly)
+       call      qword ptr [7FFE387F5EF0]; DotNetTips.Spargine.Extensions.AssemblyExtensions.GetAllTypes(System.Reflection.Assembly)
        mov       r8,rax
        mov       rcx,rbx
        mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.ObjectModel.ReadOnlyCollection`1[[System.Type, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.ObjectModel.ReadOnlyCollection`1<System.Type>)
        add       rsp,20
        pop       rbx
-       jmp       qword ptr [7FF815285FE0]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon)
+       jmp       qword ptr [7FFE387F5F38]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon)
 ; Total bytes of code 50
 ```
 ```assembly
@@ -192,7 +192,7 @@ M03_L02:
        sub       rsp,28
        mov       dword ptr [rsp+20],1
        lea       rcx,[rsp+20]
-       call      qword ptr [7FF814C9C060]; System.Reflection.Assembly.GetExecutingAssembly(System.Threading.StackCrawlMark ByRef)
+       call      qword ptr [7FFE3820C060]; System.Reflection.Assembly.GetExecutingAssembly(System.Threading.StackCrawlMark ByRef)
        nop
        add       rsp,28
        ret
@@ -212,18 +212,18 @@ M03_L02:
        vmovdqa   xmmword ptr [rbp-20],xmm4
        vmovdqa   xmmword ptr [rbp-10],xmm4
        mov       [rbp+10],rcx
-       cmp       dword ptr [7FF814F72150],0
+       cmp       dword ptr [7FFE384E2150],0
        je        short M02_L00
        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 M02_L00:
        nop
-       mov       rdx,288E11CB670
+       mov       rdx,2453C55B670
        mov       [rsp+20],rdx
        mov       rdx,[rbp+10]
        mov       rcx,offset MD_DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Reflection.Assembly, System.Private.CoreLib]](System.Reflection.Assembly, System.Reflection.Assembly, System.String, System.String)
        xor       r8d,r8d
-       mov       r9,288E11C0008
-       call      qword ptr [7FF814FF7C60]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.__Canon, System.Private.CoreLib]](System.__Canon, System.__Canon, System.String, System.String)
+       mov       r9,2453C550008
+       call      qword ptr [7FFE38567C60]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.__Canon, System.Private.CoreLib]](System.__Canon, System.__Canon, System.String, System.String)
        mov       [rbp-10],rax
        mov       rcx,[rbp-10]
        mov       [rbp+10],rcx
@@ -233,10 +233,10 @@ M02_L00:
        mov       rax,[rax+40]
        call      qword ptr [rax+28]
        mov       [rbp-18],rax
-       mov       rcx,7FF814F72638
+       mov       rcx,7FFE384E2638
        mov       edx,33
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-       mov       rcx,24857409B60
+       mov       rcx,204AA40BB58
        mov       rcx,[rcx]
        mov       [rbp-20],rcx
        mov       rcx,[rbp-18]
@@ -248,21 +248,21 @@ M02_L00:
        mov       rcx,offset MT_System.Func`2[[System.Type, System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
        call      CORINFO_HELP_NEWSFAST
        mov       [rbp-50],rax
-       mov       rcx,7FF814F72638
+       mov       rcx,7FFE384E2638
        mov       edx,33
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-       mov       rdx,24857409B58
+       mov       rdx,204AA40BB50
        mov       rdx,[rdx]
        mov       [rbp-58],rdx
        mov       rdx,[rbp-58]
        mov       rcx,[rbp-50]
-       mov       r8,7FF815282058
-       call      qword ptr [7FF814AE4210]
-       mov       rcx,7FF814F72638
+       mov       r8,7FFE387F1FB0
+       call      qword ptr [7FFE38054210]
+       mov       rcx,7FFE384E2638
        mov       edx,33
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
        mov       rdx,[rbp-50]
-       mov       rcx,24857409B60
+       mov       rcx,204AA40BB58
        call      CORINFO_HELP_ASSIGN_REF
        mov       r8,[rbp-50]
        mov       [rbp-30],r8
@@ -270,15 +270,15 @@ M02_L01:
        mov       r8,[rbp-30]
        mov       rdx,[rbp-28]
        mov       rcx,offset MD_System.Linq.Enumerable.Where[[System.Type, System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Type>, System.Func`2<System.Type,Boolean>)
-       call      qword ptr [7FF814F16928]; System.Linq.Enumerable.Where[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.__Canon>, System.Func`2<System.__Canon,Boolean>)
+       call      qword ptr [7FFE38486928]; System.Linq.Enumerable.Where[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.__Canon>, System.Func`2<System.__Canon,Boolean>)
        mov       [rbp-38],rax
        mov       rdx,[rbp-38]
        mov       rcx,offset MD_System.Linq.Enumerable.ToList[[System.Type, System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Type>)
-       call      qword ptr [7FF8151E4150]; System.Linq.Enumerable.ToList[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.__Canon>)
+       call      qword ptr [7FFE38754150]; System.Linq.Enumerable.ToList[[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.__Canon>)
        mov       [rbp-40],rax
        mov       rcx,[rbp-40]
        cmp       [rcx],ecx
-       call      qword ptr [7FF814B9E178]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]].AsReadOnly()
+       call      qword ptr [7FFE3810E178]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]].AsReadOnly()
        mov       [rbp-48],rax
        mov       rax,[rbp-48]
        mov       [rbp-8],rax
@@ -301,12 +301,12 @@ M02_L01:
        mov       [rbp+10],rcx
        mov       [rbp+18],rdx
        mov       [rbp+20],r8
-       cmp       dword ptr [7FF814E3F390],0
+       cmp       dword ptr [7FFE383AF390],0
        je        short M03_L00
        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 M03_L00:
        mov       rcx,[rbp+10]
-       call      qword ptr [7FF814E74A38]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
+       call      qword ptr [7FFE383E4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
        mov       [rbp-18],rax
        mov       rcx,[rbp+18]
        mov       rcx,[rcx+10]
@@ -319,7 +319,7 @@ M03_L00:
        jmp       short M03_L02
 M03_L01:
        mov       rcx,[rbp+18]
-       mov       rdx,7FF81529CE10
+       mov       rdx,7FFE3880CE88
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       [rbp-20],rax
 M03_L02:
@@ -327,7 +327,7 @@ M03_L02:
        mov       rcx,[rbp-18]
        mov       rdx,[rbp-20]
        cmp       [rcx],ecx
-       call      qword ptr [7FF81528ED18]; BenchmarkDotNet.Engines.Consumer.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef)
+       call      qword ptr [7FFE387FED78]; BenchmarkDotNet.Engines.Consumer.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef)
        nop
        nop
        add       rsp,38
@@ -343,16 +343,16 @@ M03_L02:
        push      rbx
        sub       rsp,20
        mov       rbx,rcx
-       call      qword ptr [7FF814C8C078]; System.Reflection.Assembly.GetExecutingAssembly()
+       call      qword ptr [7FFE3820C078]; System.Reflection.Assembly.GetExecutingAssembly()
        mov       rdx,rax
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.AssemblyExtensions.GetInstances[[DotNetTips.Spargine.Extensions.BenchmarkTests.AssemblyExtensionsBenchmark, DotNetTips.Spargine.Extensions.BenchmarkTests]](System.Reflection.Assembly)
-       call      qword ptr [7FF815275F38]; DotNetTips.Spargine.Extensions.AssemblyExtensions.GetInstances[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)
+       call      qword ptr [7FFE387F5FE0]; DotNetTips.Spargine.Extensions.AssemblyExtensions.GetInstances[[System.__Canon, System.Private.CoreLib]](System.Reflection.Assembly)
        mov       r8,rax
        mov       rcx,rbx
        mov       rdx,offset MD_DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Collections.Generic.IEnumerable`1[[DotNetTips.Spargine.Extensions.BenchmarkTests.AssemblyExtensionsBenchmark, DotNetTips.Spargine.Extensions.BenchmarkTests]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<DotNetTips.Spargine.Extensions.BenchmarkTests.AssemblyExtensionsBenchmark>)
        add       rsp,20
        pop       rbx
-       jmp       qword ptr [7FF815275F68]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon)
+       jmp       qword ptr [7FFE387F6010]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon)
 ; Total bytes of code 60
 ```
 ```assembly
@@ -360,7 +360,7 @@ M03_L02:
        sub       rsp,28
        mov       dword ptr [rsp+20],1
        lea       rcx,[rsp+20]
-       call      qword ptr [7FF814C8C060]; System.Reflection.Assembly.GetExecutingAssembly(System.Threading.StackCrawlMark ByRef)
+       call      qword ptr [7FFE3820C060]; System.Reflection.Assembly.GetExecutingAssembly(System.Threading.StackCrawlMark ByRef)
        nop
        add       rsp,28
        ret
@@ -377,7 +377,7 @@ M03_L02:
        mov       [rbp-10],rcx
        mov       [rbp+10],rcx
        mov       [rbp+18],rdx
-       cmp       dword ptr [7FF814F62150],0
+       cmp       dword ptr [7FFE384E2150],0
        je        short M02_L00
        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 M02_L00:
@@ -392,7 +392,7 @@ M02_L00:
        jmp       short M02_L02
 M02_L01:
        mov       rcx,[rbp+10]
-       mov       rdx,7FF81523DFE0
+       mov       rdx,7FFE387BDFE0
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       [rbp-20],rax
 M02_L02:
@@ -401,7 +401,7 @@ M02_L02:
        mov       [rbp-18],rax
        mov       rcx,[rbp-18]
        mov       edx,0FFFFFFFE
-       call      qword ptr [7FF815276070]; DotNetTips.Spargine.Extensions.AssemblyExtensions+<GetInstances>d__2`1[[System.__Canon, System.Private.CoreLib]]..ctor(Int32)
+       call      qword ptr [7FFE387F6118]; DotNetTips.Spargine.Extensions.AssemblyExtensions+<GetInstances>d__2`1[[System.__Canon, System.Private.CoreLib]]..ctor(Int32)
        mov       rcx,[rbp-18]
        lea       rcx,[rcx+18]
        mov       rdx,[rbp+18]
@@ -425,12 +425,12 @@ M02_L02:
        mov       [rbp+10],rcx
        mov       [rbp+18],rdx
        mov       [rbp+20],r8
-       cmp       dword ptr [7FF814E2F390],0
+       cmp       dword ptr [7FFE383AF390],0
        je        short M03_L00
        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
 M03_L00:
        mov       rcx,[rbp+10]
-       call      qword ptr [7FF814E64A38]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
+       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
        mov       [rbp-18],rax
        mov       rcx,[rbp+18]
        mov       rcx,[rcx+10]
@@ -443,7 +443,7 @@ M03_L00:
        jmp       short M03_L02
 M03_L01:
        mov       rcx,[rbp+18]
-       mov       rdx,7FF81523E1A8
+       mov       rdx,7FFE387BE1A8
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       [rbp-20],rax
 M03_L02:
@@ -451,7 +451,7 @@ M03_L02:
        mov       rcx,[rbp-18]
        mov       rdx,[rbp-20]
        cmp       [rcx],ecx
-       call      qword ptr [7FF815276220]; BenchmarkDotNet.Engines.Consumer.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef)
+       call      qword ptr [7FFE387F62C8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef)
        nop
        nop
        add       rsp,38

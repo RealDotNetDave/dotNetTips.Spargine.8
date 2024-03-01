@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 02-29-2024
 // ***********************************************************************
 // <copyright file="PreserveAttribute.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -16,6 +16,7 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
 
 
 namespace DotNetTips.Spargine.Core;
@@ -58,8 +59,8 @@ public sealed class PreserveAttribute : Attribute
 	/// <param name="reason">The reason to keep this code description.</param>
 	/// <param name="createdOn">Reason created on date.</param>
 	/// <param name="createdBy">Reason created by.</param>
-	/// <exception cref="ArgumentNullException">createdBy</exception>
-	/// <exception cref="ArgumentNullException">reason</exception>
+	/// <exception cref="System.ArgumentNullException">createdBy</exception>
+	/// <exception cref="System.ArgumentNullException">reason</exception>
 	public PreserveAttribute(PreserveReason preserveReason, string reason, string createdOn, string createdBy)
 	{
 		this.CreatedBy = createdBy ?? throw new ArgumentNullException(nameof(createdBy));

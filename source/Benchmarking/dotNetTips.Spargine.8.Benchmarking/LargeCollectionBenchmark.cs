@@ -32,10 +32,7 @@ public class LargeCollectionBenchmark : CollectionBenchmark
 	/// <summary>
 	/// Initializes a new instance of the <see cref="LargeCollectionBenchmark" /> class.
 	/// </summary>
-	public LargeCollectionBenchmark() : base(8192)
-	{
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Max Count={this.MaxCount}: {nameof(LargeCollectionBenchmark)}.");
-	}
+	public LargeCollectionBenchmark() : base(8192) => ConsoleLogger.Default.WriteLine(LogKind.Info, $"Max Count={this.MaxCount}: {nameof(LargeCollectionBenchmark)}.");
 
 	/// <summary>
 	/// Setups this instance.
