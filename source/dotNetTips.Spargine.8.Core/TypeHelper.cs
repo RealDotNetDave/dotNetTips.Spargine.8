@@ -4,14 +4,12 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-20-2024
+// Last Modified On : 03-06-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>
-// Provides valuable methods for type management, encompassing tasks such as loading derived types, creating new types, discovering derived types, converting JSON to objects, transforming JSON files into objects, generating instance hash codes, and listing built-in types. These functionalities empower developers to handle types effectively in diverse scenarios.
-// </summary>
+// <summary>Provides valuable methods for type management, encompassing tasks such as loading derived types, creating new types, discovering derived types, converting JSON to objects, transforming JSON files into objects, generating instance hash codes, and listing built-in types. These functionalities empower developers to handle types effectively in diverse scenarios.</summary>
 // ***********************************************************************
 
 using System.Collections;
@@ -452,9 +450,9 @@ public static class TypeHelper
 	/// [PostalCode, 86560656].
 	/// </example>
 	[Information(nameof(GetPropertyValues), author: "David McCarter", createdOn: "11/03/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineMarch2021")]
-	public static ReadOnlyCollection<KeyValuePair<string, string>> GetPropertyValues<T>([NotNull] T input)
+	public static ReadOnlyCollection<KeyValuePair<string, string>> GetPropertyValues<T>([NotNull] in T input)
 	{
-		input = input.ArgumentNotNull();
+		_ = input.ArgumentNotNull();
 
 		var returnValue = new Dictionary<string, string>();
 

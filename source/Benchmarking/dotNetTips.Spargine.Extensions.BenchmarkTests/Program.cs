@@ -41,10 +41,9 @@ public static class Program
 	{
 		try
 		{
-			var config = DefaultConfig.Instance
-			.AddJob(Job.Default.WithRuntime(CoreRuntime.Core80)).WithSummaryStyle(SummaryStyle.Default.WithTimeUnit(TimeUnit.Nanosecond));
+			var config = DefaultConfig.Instance.AddJob(Job.Default.WithRuntime(CoreRuntime.Core80)).WithSummaryStyle(SummaryStyle.Default.WithTimeUnit(TimeUnit.Nanosecond));
 
-			config = config?.WithOption(ConfigOptions.DisableOptimizationsValidator, true);
+			config = config.WithOption(ConfigOptions.DisableOptimizationsValidator, true);
 
 			_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 

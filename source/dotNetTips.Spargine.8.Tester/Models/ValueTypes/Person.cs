@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 02-29-2024
+// Last Modified On : 03-18-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -104,8 +104,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public Person()
-	{
-	}
+	{ }
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Person{TAddress}" /> struct.
@@ -405,6 +404,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	public string Id
 	{
 		readonly get => this._id;
+
 		init
 		{
 			if (string.Equals(this._id, value, StringComparison.Ordinal))

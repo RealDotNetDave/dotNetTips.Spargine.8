@@ -4,14 +4,12 @@
 // Created          : 07-25-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="TaskHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Synchronous execution methods for Tasks streamline the process of running asynchronous operations without requiring explicit asynchronous handling. This simplifies code readability and management.
-// </summary>
+// <summary>Synchronous execution methods for Tasks streamline the process of running asynchronous operations without requiring explicit asynchronous handling. This simplifies code readability and management.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 

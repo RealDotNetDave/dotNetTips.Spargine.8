@@ -10,7 +10,7 @@
 		<Authors>David McCarter</Authors>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
-		<BaseOutputPath>..\..\appbin</BaseOutputPath>
+		<BaseOutputPath>..\..\AppBin</BaseOutputPath>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
 		<Company>David McCarter - dotNetTips.com</Company>
@@ -51,16 +51,16 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>..\..\appbin\</OutputPath>
-		<DocumentationFile>..\..\appbin\dotNetTips.Spargine.8.xml</DocumentationFile>
+		<OutputPath>..\..\AppBin\</OutputPath>
+		<DocumentationFile>..\..\AppBin\dotNetTips.Spargine.8.xml</DocumentationFile>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>..\..\appbin\</OutputPath>
-		<DocumentationFile>..\..\appbin\dotNetTips.Spargine.8.xml</DocumentationFile>
+		<OutputPath>..\..\AppBin\</OutputPath>
+		<DocumentationFile>..\..\AppBin\dotNetTips.Spargine.8.xml</DocumentationFile>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />

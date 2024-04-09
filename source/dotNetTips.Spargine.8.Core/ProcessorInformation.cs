@@ -4,14 +4,12 @@
 // Created          : 03-20-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 04-05-2024
 // ***********************************************************************
 // <copyright file="ProcessorInformation.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Utility to retrieve information about the computer processor.
-// </summary>
+// <summary>Utility to retrieve information about the computer processor.</summary>
 // ***********************************************************************
 using System.Runtime.InteropServices;
 
@@ -53,7 +51,10 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
-	public readonly bool Equals(ProcessorInformation other) => this.PageSize == other.PageSize && this.MinimumApplicationAddress.Equals(other.MinimumApplicationAddress) && this.MaximumApplicationAddress.Equals(other.MaximumApplicationAddress) && this.ActiveProcessorMask.Equals(other.ActiveProcessorMask) && this.NumberOfProcessors == other.NumberOfProcessors && this.ProcessorArchitecture == other.ProcessorArchitecture && this.AllocationGranularity == other.AllocationGranularity && this.ProcessorLevel == other.ProcessorLevel && this.ProcessorRevision == other.ProcessorRevision && this.PageSize == other.PageSize && this.MinimumApplicationAddress.Equals(other.MinimumApplicationAddress) && this.MaximumApplicationAddress.Equals(other.MaximumApplicationAddress) && this.ActiveProcessorMask.Equals(other.ActiveProcessorMask) && this.NumberOfProcessors == other.NumberOfProcessors && this.ProcessorArchitecture == other.ProcessorArchitecture && this.AllocationGranularity == other.AllocationGranularity && this.ProcessorLevel == other.ProcessorLevel && this.ProcessorRevision == other.ProcessorRevision;
+	public readonly bool Equals(ProcessorInformation other)
+	{
+		return this.PageSize == other.PageSize && this.MinimumApplicationAddress.Equals(other.MinimumApplicationAddress) && this.MaximumApplicationAddress.Equals(other.MaximumApplicationAddress) && this.ActiveProcessorMask.Equals(other.ActiveProcessorMask) && this.NumberOfProcessors == other.NumberOfProcessors && this.ProcessorArchitecture == other.ProcessorArchitecture && this.AllocationGranularity == other.AllocationGranularity && this.ProcessorLevel == other.ProcessorLevel && this.ProcessorRevision == other.ProcessorRevision && this.PageSize == other.PageSize && this.MinimumApplicationAddress.Equals(other.MinimumApplicationAddress) && this.MaximumApplicationAddress.Equals(other.MaximumApplicationAddress) && this.ActiveProcessorMask.Equals(other.ActiveProcessorMask) && this.NumberOfProcessors == other.NumberOfProcessors && this.ProcessorArchitecture == other.ProcessorArchitecture && this.AllocationGranularity == other.AllocationGranularity && this.ProcessorLevel == other.ProcessorLevel && this.ProcessorRevision == other.ProcessorRevision;
+	}
 
 	/// <summary>
 	/// Returns a hash code for this instance.

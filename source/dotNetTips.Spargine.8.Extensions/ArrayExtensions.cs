@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-25-2024
+// Last Modified On : 04-06-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -14,14 +14,13 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using DotNetTips.Spargine.Core;
 using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
-
 namespace DotNetTips.Spargine.Extensions;
-
 /// <summary>
 /// Extensions methods for the Array type.
 /// </summary>
@@ -56,7 +55,6 @@ public static class ArrayExtensions
 
 		return [.. result.AddFirst(item)];
 	}
-
 	/// <summary>
 	/// Adds item to the array if the condition is meet.
 	/// Validates that <paramref name="array" /> and <paramref name="item" /> is not null.
@@ -79,7 +77,6 @@ public static class ArrayExtensions
 
 		return condition ? array.AddLast(item) : array;
 	}
-
 	/// <summary>
 	/// Adds item to the end of the array.
 	/// Validates that <paramref name="array" /> and <paramref name="item" /> is not null.
@@ -105,7 +102,6 @@ public static class ArrayExtensions
 
 		return array;
 	}
-
 	/// <summary>
 	/// Checks if the two arrays are equal.
 	/// </summary>
@@ -122,14 +118,13 @@ public static class ArrayExtensions
 			return false;
 		}
 
-		if (array.Length != arrayToCheck.Length)
+		if (array.LongLength != arrayToCheck.LongLength)
 		{
 			return false;
 		}
 
 		return array.AsSpan().SequenceEqual(arrayToCheck);
 	}
-
 	/// <summary>
 	/// Returns a <see cref="string" /> that represents this instance. Uses <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
 	/// Validates that <paramref name="array" /> is not null.
@@ -149,7 +144,7 @@ public static class ArrayExtensions
 
 		try
 		{
-			for (var byteIndex = 0; byteIndex < array.Length; byteIndex++)
+			for (var byteIndex = 0; byteIndex < array.LongLength; byteIndex++)
 			{
 				_ = sb.Append(array[byteIndex].ToString("x2", CultureInfo.InvariantCulture));
 			}
@@ -161,7 +156,6 @@ public static class ArrayExtensions
 			_stringBuilderPool.Return(sb);
 		}
 	}
-
 	/// <summary>
 	/// Converts byte array to a string using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
 	/// Validates that <paramref name="array" /> is not null.
@@ -190,7 +184,6 @@ public static class ArrayExtensions
 			_stringBuilderPool.Return(sb);
 		}
 	}
-
 	/// <summary>
 	/// Clones the specified array.
 	/// Validates that <paramref name="array" /> is not null.
@@ -206,7 +199,6 @@ public static class ArrayExtensions
 
 		return [.. array];
 	}
-
 	/// <summary>
 	/// Determines whether the specified array has items specified.
 	/// Validates that <paramref name="array" /> and <paramref name="items" /> is not null.
@@ -233,7 +225,6 @@ public static class ArrayExtensions
 
 		return itemsList.HasItems() && array.ToReadOnlyCollection().Any(itemsList.Contains);
 	}
-
 	/// <summary>
 	/// Ensures there are items no items in the array.
 	/// </summary>
@@ -252,7 +243,6 @@ public static class ArrayExtensions
 			return array.Count() <= 0;
 		}
 	}
-
 	/// <summary>
 	/// Counts items in the array.
 	/// Validates that <paramref name="array" /> is not null.
@@ -264,7 +254,22 @@ public static class ArrayExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(FastCount), "David McCarter", "1/9/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static long FastCount<T>([NotNull] this T[] array) => array.ArgumentNotNull().LongLength;
+	/// <summary>
+	/// Hashes data using SHA256.
+	/// </summary>
+	/// <param name="data">The data.</param>
+	/// <returns>byte[].</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(FastHashData), author: "David McCarter", createdOn: "3/11/2024", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	public static byte[] FastHashData([NotNull] this byte[] data)
+	{
+		if (data.DoesNotHaveItems())
+		{
+			return [];
+		}
 
+		return SHA256.HashData(data);
+	}
 	/// <summary>
 	/// Processes the array with the specified values.
 	/// Validates that <paramref name="array" /> and <paramref name="action" /> is not null.
@@ -288,7 +293,6 @@ public static class ArrayExtensions
 			action(collection[itemCount]);
 		}
 	}
-
 	/// <summary>
 	/// Generates hash code for the array.
 	/// Validates that <paramref name="array" /> is not null.
@@ -299,7 +303,6 @@ public static class ArrayExtensions
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static int GenerateHashCode<T>([NotNull] this T[] array) => array.ArgumentNotNull().Where(t => t is not null).Aggregate(6551, (accumulator, t) => accumulator ^= (accumulator << 5) ^ EqualityComparer<T>.Default.GetHashCode(t));
-
 	/// <summary>
 	/// Determines whether the specified array has items.
 	/// </summary>
@@ -319,7 +322,6 @@ public static class ArrayExtensions
 			return array.Count() > 0;
 		}
 	}
-
 	/// <summary>
 	/// Determines whether the specified values has items.
 	/// </summary>
@@ -340,7 +342,6 @@ public static class ArrayExtensions
 			return array.Any(action);
 		}
 	}
-
 	/// <summary>
 	/// Determines whether the specified count has items.
 	/// </summary>
@@ -361,7 +362,6 @@ public static class ArrayExtensions
 			return array.Count() == count;
 		}
 	}
-
 	/// <summary>
 	/// Performs the action for the items in the array.
 	/// </summary>
@@ -380,11 +380,11 @@ public static class ArrayExtensions
 			return;
 		}
 
-		var typeOfType = values.First().GetTypeOfType();
+		var typeOfType = values[0].GetTypeOfType();
 
 		if (typeOfType == TypeExtensions.TypeOfType.Record)
 		{
-			_ = Parallel.For(0, values.Length, (index) => action(values[index]));
+			_ = Parallel.For(0, values.LongLength, (index) => action(values[index]));
 		}
 		else
 		{
@@ -393,8 +393,8 @@ public static class ArrayExtensions
 				action(values[index]);
 			}
 		}
-	}
 
+	}
 	/// <summary>
 	/// Removes the first item in the array.
 	/// Validates that <paramref name="array" /> is not null and contains items.
@@ -410,7 +410,6 @@ public static class ArrayExtensions
 
 		return array.Skip(1).ToArray();
 	}
-
 	/// <summary>
 	/// Removes the last.
 	/// Validates that <paramref name="array" /> is not null and has items.
@@ -426,7 +425,6 @@ public static class ArrayExtensions
 
 		return array.SkipLast(1).ToArray();
 	}
-
 	/// <summary>
 	/// Returns the array without duplicates.
 	/// Validates that <paramref name="array" /> is not null.
@@ -437,7 +435,6 @@ public static class ArrayExtensions
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
 	[Information(nameof(ToDistinct), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static T[] ToDistinct<T>([NotNull] this T[] array) => array.ArgumentNotNull().Distinct().ToArray();
-
 	/// <summary>
 	/// Upserts (add or insert) the specified item.
 	/// Validates that <paramref name="array" /> and <paramref name="item" /> is not null.
@@ -468,7 +465,6 @@ public static class ArrayExtensions
 			return array.AddLast(item);
 		}
 	}
-
 	/// <summary>
 	/// Upserts the specified array.
 	/// Validates that <paramref name="array" /> and <paramref name="item" /> is not null.

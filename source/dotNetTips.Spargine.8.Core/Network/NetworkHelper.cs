@@ -4,13 +4,14 @@
 // Created          : 06-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="NetworkHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>https:docs.microsoft.com/en-us/dotnet/api/xamarin.essentials.connectivity</summary>
 // ***********************************************************************
+
 
 
 namespace DotNetTips.Spargine.Core.Network;

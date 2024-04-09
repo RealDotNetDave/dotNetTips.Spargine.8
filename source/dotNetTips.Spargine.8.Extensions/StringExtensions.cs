@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 04-01-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -141,7 +141,7 @@ public static class StringExtensions
 				break;
 		}
 
-		return Array.Empty<byte>();
+		return [];
 	}
 
 	/// <summary>
@@ -174,7 +174,7 @@ public static class StringExtensions
 
 		try
 		{
-			for (var charIndex = 0; charIndex < hash.Length; charIndex++)
+			for (var charIndex = 0; charIndex < hash.LongLength; charIndex++)
 			{
 				_ = sb.Append(hash[charIndex].ToString("x2", CultureInfo.InvariantCulture));
 			}
@@ -244,7 +244,7 @@ public static class StringExtensions
 
 			if (args.HasItems())
 			{
-				for (var argIndex = 0; argIndex < args.Length; argIndex++)
+				for (var argIndex = 0; argIndex < args.LongLength; argIndex++)
 				{
 					var value = args[argIndex];
 
@@ -280,7 +280,7 @@ public static class StringExtensions
 
 		stringComparison = stringComparison.ArgumentDefined();
 
-		return characters.Length != 0 && characters.FastAny(character => input.Contains(character, stringComparison));
+		return characters.LongLength != 0 && characters.FastAny(character => input.Contains(character, stringComparison));
 	}
 
 	/// <summary>

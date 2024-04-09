@@ -9,9 +9,7 @@
 // <copyright file="CounterBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Abstract class designed for benchmark tests that involve a counter.
-// </summary>
+// <summary>Abstract class designed for benchmark tests that involve a counter.</summary>
 // ***********************************************************************
 using BenchmarkDotNet.Loggers;
 

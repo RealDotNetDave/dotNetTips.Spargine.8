@@ -19,6 +19,7 @@
 
 
 
+
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
@@ -59,8 +60,8 @@ public sealed class PreserveAttribute : Attribute
 	/// <param name="reason">The reason to keep this code description.</param>
 	/// <param name="createdOn">Reason created on date.</param>
 	/// <param name="createdBy">Reason created by.</param>
-	/// <exception cref="System.ArgumentNullException">createdBy</exception>
-	/// <exception cref="System.ArgumentNullException">reason</exception>
+	/// <exception cref="ArgumentNullException">createdBy</exception>
+	/// <exception cref="ArgumentNullException">reason</exception>
 	public PreserveAttribute(PreserveReason preserveReason, string reason, string createdOn, string createdBy)
 	{
 		this.CreatedBy = createdBy ?? throw new ArgumentNullException(nameof(createdBy));

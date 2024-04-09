@@ -4,7 +4,7 @@
 // Created          : 04-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-29-2024
+// Last Modified On : 04-05-2024
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -17,6 +17,7 @@
 // ***********************************************************************
 
 using System.Collections.ObjectModel;
+using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -32,6 +33,11 @@ namespace DotNetTips.Spargine.Benchmarking;
 /// <seealso cref="Benchmark" />
 public partial class CollectionBenchmark
 {
+
+	/// <summary>
+	/// The person record dictionary
+	/// </summary>
+	private Dictionary<string, PersonRecord> _personRecordDictionary;
 
 	/// <summary>
 	/// The person reference array
@@ -54,6 +60,11 @@ public partial class CollectionBenchmark
 	private Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] _personValArray;
 
 	/// <summary>
+	/// The person value dictionary
+	/// </summary>
+	private Dictionary<string, Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> _personValDictionary;
+
+	/// <summary>
 	/// The person value list
 	/// </summary>
 	private List<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> _personValList;
@@ -63,12 +74,27 @@ public partial class CollectionBenchmark
 	/// </summary>
 	protected void LoadPersonCollections()
 	{
-		this._personRefArray = [.. RandomData.GeneratePersonRefCollection<Address>(this.MaxCount)];
-		this._personRefDictionary = RandomData.GeneratePersonRefCollection<Address>(this.MaxCount).ToDictionary(p => p.Id);
-		this._personRefList = [.. RandomData.GeneratePersonRefCollection<Address>(this.MaxCount)];
-		this._personValArray = [.. RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(this.MaxCount)];
-		this._personValList = [.. RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(this.MaxCount)];
+		this._personRecordArray = RandomData.GeneratePersonRecordCollection(this.MaxCount).ToArray();
+		this._personRefArray = RandomData.GeneratePersonRefCollection<Address>(this.MaxCount).ToArray();
+		this._personValArray = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(this.MaxCount).ToArray();
+		this._personRecordList = this._personRecordArray.ToList();
+		this._personRefList = this._personRefArray.ToList();
+		this._personValList = this._personValArray.ToList();
+		this._personRecordDictionary = this._personRecordArray.ToDictionary(p => p.Id);
+		this._personRefDictionary = this._personRefArray.ToDictionary(p => p.Id);
+		this._personValDictionary = this._personValArray.ToDictionary(p => p.Id);
+
+		//Display collection counts
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Records Array Count={_personRecordArray.Length}");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Ref Array Count={_personRefArray.Length}");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Val Array Count={_personValArray.Length}");
 	}
+
+	/// <summary>
+	/// Gets a <see cref="Dictionary{TKey, TValue}" /> for <see cref="PersonRecord" />.
+	/// </summary>
+	/// <returns>System.Collections.Generic.Dictionary&lt;string, DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord&gt;.</returns>
+	public Dictionary<string, PersonRecord> GetPersonRecordDictionary() => this._personRecordDictionary.Clone<Dictionary<string, PersonRecord>>();
 
 	/// <summary>
 	/// Gets <see cref="Person{TAddress}" /> reference array.
@@ -99,5 +125,11 @@ public partial class CollectionBenchmark
 	/// </summary>
 	/// <returns>Collection&lt;Tester.Models.ValueTypes.Person&lt;Tester.Models.ValueTypes.Address&gt;&gt;.</returns>
 	public Collection<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> GetPersonValCollection() => this._personValList.Clone<List<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>>().ToCollection();
+
+	/// <summary>
+	/// Gets the person reference dictionary.
+	/// </summary>
+	/// <returns>System.Collections.Generic.Dictionary&lt;string, DotNetTips.Spargine.Tester.Models.ValueTypes.Person&lt;DotNetTips.Spargine.Tester.Models.ValueTypes.Address&gt;[]&gt;.</returns>
+	public Dictionary<string, Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> GetPersonValDictionary() => this._personValDictionary.Clone<Dictionary<string, Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>>();
 
 }

@@ -39,6 +39,6 @@ internal static class ObservableHashSetSingletons
 	/// Gets the no items.
 	/// </summary>
 	/// <value>The no items.</value>
-	internal static object[] NoItems { get; } = Array.Empty<object>();
+	internal static object[] NoItems { get; } = [];
 
 }

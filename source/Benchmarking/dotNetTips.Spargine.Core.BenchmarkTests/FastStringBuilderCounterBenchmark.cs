@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-29-2024
+// Last Modified On : 03-04-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilderCounterBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -20,6 +20,7 @@ using System.Text;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Tester;
+using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -33,6 +34,8 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests;
 [BenchmarkCategory(Categories.Strings)]
 public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 {
+
+	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	private byte[] _byteArray;
 	private IEnumerable<byte> _bytes1Kb;
@@ -99,7 +102,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void ConcatStrings()
 	{
-		var result = FastStringBuilder.ConcatStrings(delimiter: ControlChars.EmptyString, addLineFeed: true, args: this._words);
+		var result = FastStringBuilder.ConcatStrings(delimiter: ControlChars.Comma, addLineFeed: true, args: this._words);
 
 		this.Consume(result);
 	}
@@ -114,7 +117,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		{
 			var line = this._words[argumentIndex];
 
-			_ = sb.AppendLine(line + ControlChars.EmptyString);
+			_ = sb.AppendLine(line + ControlChars.Comma);
 		}
 
 		this.Consume(sb.ToString());
@@ -134,6 +137,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 
 		var result = FastStringBuilder.PerformAction(action);
 
+
 		base.Consume(result);
 	}
 
@@ -149,6 +153,28 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		}
 
 		base.Consume(sb.ToString());
+	}
+
+	[Benchmark(Description = nameof(FastStringBuilder.PerformAction) + ": Using Object Pool")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void PerformAction_StringBuilderPool()
+	{
+		var sb = _stringBuilderPool.Get();
+
+		Action<StringBuilder> action = (sb) =>
+		{
+			for (var index = 0; index < this._words.Length; index++)
+			{
+				_ = sb.Append(this._words[index]);
+			}
+		};
+
+		var result = FastStringBuilder.PerformAction(action);
+
+		_stringBuilderPool.Return(sb);
+
+
+		base.Consume(result);
 	}
 
 	public override void Setup()
@@ -183,7 +209,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 				_ = sb.Append(ControlChars.Comma);
 			}
 
-			_ = sb.Append($"{item.Key}: {item.Value}".ToString(CultureInfo.CurrentCulture) + ControlChars.Colon);
+			_ = sb.Append($"{item.Key}: {item.Value}".ToString(CultureInfo.CurrentCulture));
 		}
 
 		base.Consume(sb.ToString());

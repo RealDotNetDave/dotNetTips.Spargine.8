@@ -4,14 +4,12 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 04-03-2024
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Represents a thread-safe, hash-based unique collection.
-// </summary>
+// <summary>Represents a thread-safe, hash-based unique collection.</summary>
 // ***********************************************************************
 using System.Collections;
 using System.Diagnostics;

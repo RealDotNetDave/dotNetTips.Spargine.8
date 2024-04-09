@@ -10,7 +10,7 @@
 		<Authors>David McCarter</Authors>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
-		<BaseOutputPath>..\..\..\appbin\</BaseOutputPath>
+		<BaseOutputPath>..\..\..\AppBin\</BaseOutputPath>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
 		<Company>David McCarter - dotNetTips.com</Company>
@@ -19,7 +19,7 @@
 		<DebugSymbols>true</DebugSymbols>
 		<DebugType>embedded</DebugType>
 		<Description>Common classes from dotNetTips.com that can be used with BenchmarkDotNet.</Description>
-		<DocumentationFile>..\..\..\appbin\DotNetTips.Spargine.8.Benchmarking.xml</DocumentationFile>
+		<DocumentationFile>..\..\..\AppBin\DotNetTips.Spargine.8.Benchmarking.xml</DocumentationFile>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<EnablePackageValidation>false</EnablePackageValidation>
 		<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
@@ -61,6 +61,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
+	  <PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.13.12" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Update="dotNetTips-Spargine-8-Logo.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
@@ -68,13 +73,8 @@
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>..\..\..\appbin\</OutputPath>
+		<OutputPath>..\..\..\AppBin\</OutputPath>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
-	  <PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.13.12" />
-	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\dotNetTips.Spargine.8.Core\DotNetTips.Spargine.8.Core.csproj" />

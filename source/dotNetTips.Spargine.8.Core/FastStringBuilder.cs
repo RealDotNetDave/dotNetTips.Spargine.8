@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-28-2024
+// Last Modified On : 04-05-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -52,13 +52,16 @@ public static class FastStringBuilder
 
 		var sb = _stringBuilderPool.Get();
 
+		//Set capacity to increace performance
+		sb.Capacity = bytes.Length * 2;
+
 		try
 		{
 			_ = sb.Append("'0x");
 
-			foreach (var byteItem in bytes.AsSpan())
+			for (var index = 0; index < bytes.AsSpan().Length; index++)
 			{
-				_ = sb.Append(byteItem.ToString("X2", CultureInfo.InvariantCulture));
+				_ = sb.Append(bytes.AsSpan()[index].ToString("X2", CultureInfo.InvariantCulture));
 			}
 
 			_ = sb.Append('\'');
@@ -142,11 +145,10 @@ public static class FastStringBuilder
 			if (args?.Length > 0)
 			{
 				_ = sb.Append("'0x");
-				var index = 0;
 
-				foreach (var arg in args)
+				for (var index = 0; index < args.Length; index++)
 				{
-					var newLine = arg;
+					var newLine = args[index];
 
 					if (index < args.Length - 1 && delimiter.Length > 0)
 					{

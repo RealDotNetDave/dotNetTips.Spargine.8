@@ -4,7 +4,7 @@
 // Created          : 04-19-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-29-2024
+// Last Modified On : 04-03-2024
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.PersonRecord.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -49,8 +49,8 @@ public partial class CollectionBenchmark
 	/// </summary>
 	protected void LoadPersonRecordCollections()
 	{
-		this._personRecordList = [.. RandomData.GeneratePersonRecordCollection(this.MaxCount)];
-		this._personRecordArray = [.. RandomData.GeneratePersonRecordCollection(this.MaxCount)];
+		this._personRecordList = RandomData.GeneratePersonRecordCollection(this.MaxCount).ToList();
+		this._personRecordArray = this._personRecordList.ToArray();
 
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Record List Count = {this._personRecordList.Count}: {nameof(CollectionBenchmark)}.");
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Record Array Count = {this._personRecordArray.Length}: {nameof(CollectionBenchmark)}.");

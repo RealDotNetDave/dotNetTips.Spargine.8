@@ -4,7 +4,7 @@
 // Created          : 05-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-07-2023
+// Last Modified On : 03-31-2024
 // ***********************************************************************
 // <copyright file="StringBuilderExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -72,7 +72,7 @@ public static class StringBuilderExtensions
 
 		sb = sb.ArgumentNotNull().Append("'0x");
 
-		for (var byteIndex = 0; byteIndex < bytes.Length; byteIndex++)
+		for (var byteIndex = 0; byteIndex < bytes.LongLength; byteIndex++)
 		{
 			_ = sb.Append(bytes[byteIndex].ToString("X2", CultureInfo.InvariantCulture));
 		}

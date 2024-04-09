@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 04-06-2024
 // ***********************************************************************
 // <copyright file="CollectionExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -40,7 +40,7 @@ public class CollectionExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		var people = this._peopleRefList;
 
-		_ = people.AddRange<Person<Address>>(this.GetPeopleRefToInsert(), true);
+		_ = people.AddRange<Person<Address>>(this.GetPersonRefCollectionToInsert(), true);
 
 		this.Consume(people);
 	}

@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-25-2024
+// Last Modified On : 03-06-2024
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -83,7 +83,7 @@ public static class LoggingHelper
 
 		var appInfo = App.AppInfo;
 
-		var values = TypeHelper.GetPropertyValues(appInfo);
+		var values = TypeHelper.GetPropertyValues(input: appInfo);
 
 		if (values?.FastCount() > 0)
 		{

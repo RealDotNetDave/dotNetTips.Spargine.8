@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 04-02-2024
 // ***********************************************************************
 // <copyright file="TypeExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -60,7 +60,7 @@ public static partial class TypeExtensions
 							BindingFlags.Public |
 							BindingFlags.NonPublic |
 							BindingFlags.DeclaredOnly)
-							.Length; fieldIndex++)
+							.LongLength; fieldIndex++)
 		{
 			yield return type.GetFields(BindingFlags.Instance |
 				BindingFlags.Static |
@@ -94,7 +94,7 @@ public static partial class TypeExtensions
 				BindingFlags.Public |
 				BindingFlags.NonPublic |
 				BindingFlags.DeclaredOnly)
-				.Length; methodIndex++)
+				.LongLength; methodIndex++)
 		{
 			yield return type.GetMethods(BindingFlags.Instance |
 				BindingFlags.Static |
@@ -327,9 +327,7 @@ public static partial class TypeExtensions
 
 			if (members != null)
 			{
-				var member = members.First();
-
-				return member.GetCustomAttribute<CompilerGeneratedAttribute>() != null ? TypeOfType.Record : TypeOfType.Reference;
+				return members[0].GetCustomAttribute<CompilerGeneratedAttribute>() != null ? TypeOfType.Record : TypeOfType.Reference;
 			}
 		}
 

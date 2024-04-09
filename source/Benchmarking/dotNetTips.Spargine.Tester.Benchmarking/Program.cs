@@ -4,7 +4,7 @@
 // Created          : 08-02-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-24-2023
+// Last Modified On : 03-22-2024
 // ***********************************************************************
 // <copyright file="Program.cs" company="dotNetTips.Spargine.Tester.Benchmarking">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -44,7 +44,8 @@ public static class Program
 
 			_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
-			//_ = BenchmarkRunner.Run<RandomDataCollectionsBenchmark>(config);
+			//_ = BenchmarkRunner.Run<EnumerableExtensionsCollectionBenchmark>(config);
+			//_ = BenchmarkRunner.Run<ListExtensionsCollectionBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine("COMPLETE!");
 			Console.Beep();

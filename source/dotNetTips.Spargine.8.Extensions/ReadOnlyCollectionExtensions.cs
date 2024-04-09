@@ -4,7 +4,7 @@
 // Created          : 04-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-07-2023
+// Last Modified On : 04-02-2024
 // ***********************************************************************
 // <copyright file="ReadOnlyCollectionExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -41,7 +41,7 @@ public static class ReadOnlyCollectionExtensions
 		}
 		else
 		{
-			return collection.Count() <= 0;
+			return collection.Count <= 0;
 		}
 	}
 

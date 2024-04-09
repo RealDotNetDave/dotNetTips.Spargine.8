@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 04-02-2024
 // ***********************************************************************
 // <copyright file="SortedDictionaryExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -42,7 +42,7 @@ public static class SortedDictionaryExtensions
 		}
 		else
 		{
-			return collection.Count() <= 0;
+			return collection.Count <= 0;
 		}
 	}
 
@@ -63,7 +63,7 @@ public static class SortedDictionaryExtensions
 		}
 		else
 		{
-			return collection.Count() > 0;
+			return collection.Count > 0;
 		}
 	}
 
@@ -107,7 +107,7 @@ public static class SortedDictionaryExtensions
 		}
 		else
 		{
-			return collection.Count() == count;
+			return collection.Count == count;
 		}
 	}
 

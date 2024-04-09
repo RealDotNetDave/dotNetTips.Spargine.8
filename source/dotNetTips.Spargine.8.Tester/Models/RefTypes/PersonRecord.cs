@@ -104,7 +104,8 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// Prevents a default instance of the <see cref="PersonRecord" /> class from being created.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public PersonRecord() => this.Id = RandomData.GenerateKey();
+	public PersonRecord()
+	{ }
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="PersonRecord" /> class.
@@ -457,6 +458,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	public string Id
 	{
 		get => this._id;
+
 		init
 		{
 			if (string.Equals(this._id, value, StringComparison.Ordinal))

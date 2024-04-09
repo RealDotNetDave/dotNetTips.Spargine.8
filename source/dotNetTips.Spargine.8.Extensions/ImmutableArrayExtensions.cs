@@ -4,7 +4,7 @@
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 04-02-2024
 // ***********************************************************************
 // <copyright file="ImmutableArrayExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)

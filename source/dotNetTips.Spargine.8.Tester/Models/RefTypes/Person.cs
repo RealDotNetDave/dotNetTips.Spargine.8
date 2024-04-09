@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 03-18-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -104,7 +104,8 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// Initializes a new instance of the <see cref="Person{TAddress}" /> class.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public Person() => this.Id = RandomData.GenerateKey();
+	public Person()
+	{ }
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Person{TAddress}" /> class.
@@ -510,6 +511,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	public string Id
 	{
 		get => this._id;
+
 		init
 		{
 			if (string.Equals(this._id, value, StringComparison.Ordinal))

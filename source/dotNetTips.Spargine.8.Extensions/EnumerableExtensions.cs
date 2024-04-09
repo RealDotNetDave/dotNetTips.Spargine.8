@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-20-2024
+// Last Modified On : 04-06-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -19,7 +19,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using DotNetTips.Spargine.Core;
@@ -53,7 +52,7 @@ public static class EnumerableExtensions
 	/// <param name="source">The source.</param>
 	/// <param name="items">The items.</param>
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
-	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Updated)]
 	public static IEnumerable<T> AddDistinct<T>([NotNull] this IEnumerable<T> source, [NotNull] params T[] items)
 	{
 		source ??= [];
@@ -65,8 +64,9 @@ public static class EnumerableExtensions
 
 		var result = source.ToList();
 
-		foreach (var item in items)
+		for (var index = 0; index < items.LongLength; index++)
 		{
+			var item = items[index];
 			if (!result.Contains(item))
 			{
 				result.Add(item);
@@ -264,8 +264,25 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
 	/// <exception cref="ArgumentNullException">Predicate cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastAny), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
-	public static bool FastAny<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate) => collection.ArgumentNotNull().Any(predicate.ArgumentNotNull());
+	[Information(nameof(FastAny), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Updated, Documentation = "ADD URL")]
+	public static bool FastAny<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate)
+	{
+		//return collection.ArgumentNotNull().Any(predicate.ArgumentNotNull());
+
+		collection = collection.ArgumentNotNull();
+		predicate = predicate.ArgumentNotNull();
+
+		foreach (var item in collection)
+		{
+			if (predicate.Invoke(item) == false)
+			{
+				return false;
+
+			}
+		}
+
+		return true;
+	}
 
 	/// <summary>
 	/// Counts items in the <see cref="IEnumerable{T}" />.
@@ -305,7 +322,7 @@ public static class EnumerableExtensions
 		collection = collection.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		var processedCollection = CollectionsMarshal.AsSpan(collection.ToList());
+		var processedCollection = collection.ToList().AsSpan();
 
 		for (var itemCount = 0; itemCount < processedCollection.Length; itemCount++)
 		{
@@ -530,11 +547,11 @@ public static class EnumerableExtensions
 		var descending = false;
 		var property = string.Empty;
 
-		if (parts.Length > 0 && !string.IsNullOrEmpty(parts[0]))
+		if (parts.LongLength > 0 && !string.IsNullOrEmpty(parts[0]))
 		{
 			property = parts[0];
 
-			if (parts.Length > 1)
+			if (parts.LongLength > 1)
 			{
 				@descending = CultureInfo.InvariantCulture.TextInfo.ToLower(parts[1]).Contains("esc", StringComparison.OrdinalIgnoreCase);
 			}

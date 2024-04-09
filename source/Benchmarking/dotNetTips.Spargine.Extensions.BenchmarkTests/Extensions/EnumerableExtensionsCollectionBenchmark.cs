@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 04-06-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -313,7 +313,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this._coordinateValEnumerable = this.GetCoordinateValArray().AsEnumerable();
 
 		var peopleToAdd = this._personRefEnumerable.ToList();
-		peopleToAdd.AddRange(this.GetPeopleRefToInsert().Take(this.Count / 10));
+		peopleToAdd.AddRange(this.GetPersonRefCollectionToInsert().Take(this.Count / 10));
 		this._personRefEnumerableToAdd = peopleToAdd.AsEnumerable();
 
 		// Create collection with duplicates

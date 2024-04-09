@@ -4,14 +4,12 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-20-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Methods facilitating the validation of arguments and values, ensuring both simplicity and accuracy. In the event of encountering invalid data, an Exception will be thrown, accompanied by an appropriate error message, which can be either custom or default.
-// </summary>
+// <summary>Methods facilitating the validation of arguments and values, ensuring both simplicity and accuracy. In the event of encountering invalid data, an Exception will be thrown, accompanied by an appropriate error message, which can be either custom or default.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;

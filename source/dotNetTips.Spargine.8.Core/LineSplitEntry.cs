@@ -4,7 +4,7 @@
 // Created          : 07-05-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="LineSplitEntry.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)

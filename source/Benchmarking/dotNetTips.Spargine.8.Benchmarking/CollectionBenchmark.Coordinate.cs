@@ -4,18 +4,19 @@
 // Created          : 04-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 04-03-2024
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.Coordinate.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
-//Base class for tests that leverage collections, with added functionality
-//for preloading Coordinate collections to improve benchmark test speed.
-//</summary>
+// Base class for tests that leverage collections, with added functionality
+// for preloading Coordinate collections to improve benchmark test speed.
+// </summary>
 // ***********************************************************************
 
 using System.Collections.ObjectModel;
+using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
@@ -47,8 +48,11 @@ public partial class CollectionBenchmark
 	/// </summary>
 	protected void LoadCoordinateCollections()
 	{
-		this._coordinateList = [.. RandomData.GenerateCoordinateCollection<Coordinate>(this.MaxCount)];
-		this._coordinateArray = [.. RandomData.GenerateCoordinateCollection<Coordinate>(this.MaxCount)];
+		this._coordinateArray = RandomData.GenerateCoordinateCollection<Coordinate>(this.MaxCount).ToArray();
+		this._coordinateList = this._coordinateArray.ToList();
+
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Coordinate Array Count = {this._coordinateArray.Length}: {nameof(CollectionBenchmark)}.");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Coordinate List Count = {this._coordinateList.Count}: {nameof(CollectionBenchmark)}.");
 	}
 
 	/// <summary>

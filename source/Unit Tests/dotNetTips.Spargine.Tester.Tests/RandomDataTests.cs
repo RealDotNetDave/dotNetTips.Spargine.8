@@ -4,7 +4,7 @@
 // Created          : 01-05-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 03-06-2024
 // ***********************************************************************
 // <copyright file="RandomDataTests.cs" company="dotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -107,6 +107,9 @@ public class RandomDataTests
 			}
 
 			Assert.IsTrue(newPeople.FastCount() == Count);
+
+			var test = RandomData.GeneratePersonRefCollection<Address>(Count).ToDictionary(p => p.Id);
+
 		}
 		catch (Exception ex)
 		{
@@ -138,7 +141,7 @@ public class RandomDataTests
 	{
 		var json = RandomData.GeneratePersonRefCollection<Address>(Count).ToJson();
 
-		var result = JsonSerializer.Deserialize(json, PersonJsonSerializerContext.Default.ListPerson);
+		var result = JsonSerializer.Deserialize(json, PersonJsonSerializerContext.Default.PersonList);
 
 		Assert.IsNotNull(result);
 		Assert.IsTrue(result.Count() == Count);

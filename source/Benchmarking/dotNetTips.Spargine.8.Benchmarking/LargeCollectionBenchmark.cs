@@ -4,14 +4,14 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 04-03-2024
 // ***********************************************************************
 // <copyright file="LargeCollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
 // Class for performing benchmark tests on large collections with count
-// values set to 64, 128, 256, 512, 1024, 2048, 4096, and 8192.
+// values set to 64, 128, 256, 512, 1,024, 2,048, 4,096, and 8,192.
 // </summary>
 // ***********************************************************************
 using BenchmarkDotNet.Attributes;

@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 04-03-2024
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -57,19 +57,19 @@ public partial class CollectionBenchmark : Benchmark
 	/// Gets a collection of <see cref="PersonRecord" /> objects for insertion into collections.
 	/// </summary>
 	/// <returns>PersonRecord[].</returns>
-	protected virtual PersonRecord[] GetPeopleRecordToInsert() => this._peopleRecordToInsert;
+	protected virtual PersonRecord[] GetPersonRecordCollectionToInsert() => this._peopleRecordToInsert;
 
 	/// <summary>
 	/// Gets a collection of <see cref="Person{TAddress}" /> reference objects for insertion into collections.
 	/// </summary>
 	/// <returns>Person&lt;Address&gt;[].</returns>
-	protected virtual Person<Address>[] GetPeopleRefToInsert() => this._peopleRefToInsert;
+	protected virtual Person<Address>[] GetPersonRefCollectionToInsert() => this._peopleRefToInsert;
 
 	/// <summary>
 	/// Gets a collection of <see cref="Person{TAddress}" /> value objects for insertion into collections.
 	/// </summary>
 	/// <returns>Tester.Models.ValueTypes.Person[].</returns>
-	protected virtual Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] GetPeopleValToInsert() => this._peopleValToInsert;
+	protected virtual Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] GetPersonValCollectionToInsert() => this._peopleValToInsert;
 
 	/// <summary>
 	/// Setups this instance.

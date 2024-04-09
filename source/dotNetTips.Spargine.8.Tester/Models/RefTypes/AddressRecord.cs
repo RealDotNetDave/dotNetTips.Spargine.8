@@ -109,7 +109,9 @@ public sealed record AddressRecord : IDataRecord
 	/// Prevents a default instance of the <see cref="PersonRecord" /> class from being created.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public AddressRecord() => this.Id = RandomData.GenerateKey();
+	public AddressRecord()
+	{
+	}
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AddressRecord" /> class.

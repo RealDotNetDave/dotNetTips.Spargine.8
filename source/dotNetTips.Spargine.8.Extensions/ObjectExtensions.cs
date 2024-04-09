@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 04-01-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -111,7 +111,7 @@ public static class ObjectExtensions
 
 		try
 		{
-			for (var byteIndex = 0; byteIndex < bytes.Length; byteIndex++)
+			for (var byteIndex = 0; byteIndex < bytes.LongLength; byteIndex++)
 			{
 				_ = sb.Append(bytes[byteIndex].ToString("x2", CultureInfo.InvariantCulture));
 			}
@@ -329,7 +329,7 @@ public static class ObjectExtensions
 			newMemberName = $"{memberName}{ControlChars.Dot}";
 		}
 
-		for (var propertyIndex = 0; propertyIndex < propertyCollection.Length; propertyIndex++)
+		for (var propertyIndex = 0; propertyIndex < propertyCollection.LongLength; propertyIndex++)
 		{
 			var property = propertyCollection[propertyIndex];
 

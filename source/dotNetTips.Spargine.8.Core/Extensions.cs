@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2024
+// Last Modified On : 04-05-2024
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -38,6 +38,15 @@ internal static class Extensions
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool =
 new DefaultObjectPoolProvider().CreateStringBuilderPool();
+
+	/// <summary>
+	/// Hierarchy.
+	/// </summary>
+	/// <typeparam name="TSource">The type of the t source.</typeparam>
+	/// <param name="source">The source.</param>
+	/// <param name="nextItem">The next item.</param>
+	/// <returns>IEnumerable&lt;TSource&gt;.</returns>
+	private static IEnumerable<TSource> FromHierarchy<TSource>([NotNull] this TSource source, [NotNull] Func<TSource, TSource> nextItem) where TSource : Exception => FromHierarchy(source, nextItem, s => s is not null);
 
 	/// <summary>
 	/// Adds the item as the first item in array.
@@ -80,6 +89,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <exception cref="ArgumentNullException">list or item</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	internal static void AddLast<T>(this IList<T> list, [NotNull] T item) => list.ArgumentNotReadOnly().Insert(list.Count, item);
+
 	/// <summary>
 	/// As the specified value.
 	/// </summary>
@@ -165,15 +175,6 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns>System.Int64.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static long FastCount<T>([NotNull] this IEnumerable<T> list) => list.ArgumentNotNull().LongCount();
-
-	/// <summary>
-	/// Hierarchy.
-	/// </summary>
-	/// <typeparam name="TSource">The type of the t source.</typeparam>
-	/// <param name="source">The source.</param>
-	/// <param name="nextItem">The next item.</param>
-	/// <returns>IEnumerable&lt;TSource&gt;.</returns>
-	internal static IEnumerable<TSource> FromHierarchy<TSource>([NotNull] this TSource source, [NotNull] Func<TSource, TSource> nextItem) where TSource : Exception => FromHierarchy(source, nextItem, s => s is not null);
 
 	/// <summary>
 	/// Hierarchy.
@@ -319,7 +320,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 			ExceptionThrower.ThrowArgumentNullException(nameof(delimiter));
 		}
 
-		if (list.Count() == 0)
+		if (list.Count == 0)
 		{
 			return string.Empty;
 		}

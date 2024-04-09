@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<AnalysisLevel>none</AnalysisLevel>
 		<AssemblyVersion>2024.8.3.1</AssemblyVersion>
-		<BaseOutputPath>..\..\appbin</BaseOutputPath>
+		<BaseOutputPath>..\..\AppBin</BaseOutputPath>
 		<EnableNETAnalyzers>false</EnableNETAnalyzers>
 		<FileVersion>2024.8.3.1</FileVersion>
 		<IsPackable>false</IsPackable>
@@ -14,10 +14,10 @@
 		<Version>2024.8.3.1</Version>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>..\..\appbin</OutputPath>
+		<OutputPath>..\..\AppBin</OutputPath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>..\..\appbin</OutputPath>
+		<OutputPath>..\..\AppBin</OutputPath>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.2" />

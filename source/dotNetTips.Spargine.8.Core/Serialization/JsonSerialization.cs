@@ -4,7 +4,7 @@
 // Created          : 02-21-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 04-05-2024
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -40,12 +40,11 @@ public static class JsonSerialization
 	};
 
 	/// <summary>
-	/// Compares two <see cref="JsonElement" />s
+	/// Compares two <see cref="JsonElement" />s.
 	/// </summary>
 	/// <param name="expected">The expected.</param>
 	/// <param name="actual">The actual.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="NotSupportedException">Undefined JsonValueKind: {valueKind}.</exception>
 	/// <exception cref="NotSupportedException">Unexpected JsonValueKind: {valueKind}.</exception>
 	private static bool JsonEqual(JsonElement expected, JsonElement actual)
 	{
@@ -88,24 +87,22 @@ public static class JsonSerialization
 				return true;
 			case JsonValueKind.Array:
 				using (var expectedEnumerator = actual.EnumerateArray())
+				using (var actualEnumerator = expected.EnumerateArray())
 				{
-					using (var actualEnumerator = expected.EnumerateArray())
+					while (expectedEnumerator.MoveNext())
 					{
-						while (expectedEnumerator.MoveNext())
+						if (!actualEnumerator.MoveNext())
 						{
-							if (!actualEnumerator.MoveNext())
-							{
-								return false;
-							}
-
-							if (!JsonEqual(expectedEnumerator.Current, actualEnumerator.Current))
-							{
-								return false;
-							}
+							return false;
 						}
 
-						return !actualEnumerator.MoveNext();
+						if (!JsonEqual(expectedEnumerator.Current, actualEnumerator.Current))
+						{
+							return false;
+						}
 					}
+
+					return !actualEnumerator.MoveNext();
 				}
 
 			case JsonValueKind.String:

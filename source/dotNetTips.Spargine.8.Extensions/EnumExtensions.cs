@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2024
+// Last Modified On : 03-31-2024
 // ***********************************************************************
 // <copyright file="EnumExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -39,7 +39,7 @@ public static class EnumExtensions
 
 		var attributes = (EnumMemberAttribute[])field.GetCustomAttributes(typeof(EnumMemberAttribute), false);
 
-		return attributes.Length > 0 ? attributes[0].Value : input.ToString();
+		return attributes.LongLength > 0 ? attributes[0].Value : input.ToString();
 	}
 
 	/// <summary>

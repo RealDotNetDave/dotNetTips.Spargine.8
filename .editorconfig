@@ -594,7 +594,7 @@ dotnet_code_quality.require_explicit_type_arguments = true
 #### Performance ####
 
 # Use Literals Where Appropriate
-dotnet_diagnostic.CA1802.severity = warning
+dotnet_diagnostic.CA1802.severity = suggestion
 
 # Do not initialize unnecessarily.
 dotnet_diagnostic.CA1805.severity = error
@@ -684,8 +684,8 @@ dotnet_diagnostic.CA1839.severity = error
 # Use Environment.CurrentManagedThreadId instead of Thread.CurrentThread.ManagedThreadId ****!
 dotnet_diagnostic.CA1840.severity = warning
 
-# Prefer Dictionary Contains methods ****!
-dotnet_diagnostic.CA1841.severity = warning
+# Prefer Dictionary Contains methods
+dotnet_diagnostic.CA1841.severity = suggestion
 
 # Do not use 'WhenAll' with a single task ****
 dotnet_diagnostic.CA1842.severity = error
@@ -727,7 +727,7 @@ dotnet_diagnostic.CA1853.severity = error
 dotnet_diagnostic.CA1854.severity = error
 
 # Use Span<T>.Clear() instead of Span<T>.Fill()  ****!
-dotnet_diagnostic.CA1855.severity = error
+dotnet_diagnostic.CA1855.severity = suggestion
 
 # Incorrect usage of ConstantExpected attribute ****!
 dotnet_diagnostic.CA1856.severity = warning

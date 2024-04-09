@@ -4,14 +4,14 @@
 // Created          : 07-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 04-03-2024
 // ***********************************************************************
 // <copyright file="SmallCollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
 // Class for conducting benchmark tests on small collections with count
-// values set to 16, 32, 64, 128, 256, 512, 1024, and 2048.
+// values set to 16, 32, 64, 128, 256, 512, 1,024, and 2,048.
 // </summary>
 // ***********************************************************************
 

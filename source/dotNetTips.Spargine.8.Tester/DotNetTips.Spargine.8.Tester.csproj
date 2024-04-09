@@ -8,7 +8,7 @@
 		<Authors>David McCarter</Authors>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
-		<BaseOutputPath>..\..\appbin</BaseOutputPath>
+		<BaseOutputPath>..\..\AppBin</BaseOutputPath>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
 		<Company>David McCarter - dotNetTips.com</Company>
@@ -53,8 +53,8 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>..\..\appbin\dotNetTips.Spargine.Tester.xml</DocumentationFile>
-		<OutputPath>..\..\appbin\</OutputPath>
+		<DocumentationFile>..\..\AppBin\dotNetTips.Spargine.Tester.xml</DocumentationFile>
+		<OutputPath>..\..\AppBin\</OutputPath>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />
@@ -63,8 +63,8 @@
 
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>..\..\appbin\</OutputPath>
-		<DocumentationFile>..\..\appbin\dotNetTips.Spargine.Tester.xml</DocumentationFile>
+		<OutputPath>..\..\AppBin\</OutputPath>
+		<DocumentationFile>..\..\AppBin\dotNetTips.Spargine.Tester.xml</DocumentationFile>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />
@@ -118,7 +118,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="MSTest.TestFramework" Version="3.2.1" />
-		<PackageReference Include="System.Text.Json" Version="8.0.2" />
+		<PackageReference Include="System.Text.Json" Version="8.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

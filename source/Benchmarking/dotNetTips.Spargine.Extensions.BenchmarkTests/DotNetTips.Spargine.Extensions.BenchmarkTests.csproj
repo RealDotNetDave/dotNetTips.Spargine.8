@@ -5,7 +5,7 @@
 		<AnalysisLevel>latest</AnalysisLevel>
 		<AssemblyVersion>2024.8.3.1</AssemblyVersion>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-		<BaseOutputPath>..\..\..\appbin\</BaseOutputPath>
+		<BaseOutputPath>..\..\..\AppBin\</BaseOutputPath>
 		<Company>dotNetTips.com - McCarter Consulting</Company>
 		<Configurations>Release</Configurations>
 		<Copyright>2021: David McCarter - McCarter Consulting</Copyright>
@@ -31,7 +31,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>..\..\..\appbin\</OutputPath>
+		<OutputPath>..\..\..\AppBin\</OutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>

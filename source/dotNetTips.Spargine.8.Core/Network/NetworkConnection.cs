@@ -4,7 +4,7 @@
 // Created          : 06-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="NetworkConnection.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
 
 
 namespace DotNetTips.Spargine.Core.Network;

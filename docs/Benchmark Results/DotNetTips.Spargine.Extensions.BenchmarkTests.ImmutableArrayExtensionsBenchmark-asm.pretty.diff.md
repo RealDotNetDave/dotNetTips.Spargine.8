@@ -1,7434 +1,4051 @@
-## DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark-20240229-235607
+## DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark-20240305-012918
 **Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
         push      rsi
+        push      rbp
         push      rbx
         sub       rsp,28
         mov       rbx,rcx
         mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383B5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
         mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3838F390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38503688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE388DB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,289AA6F5760
-+       mov       rcx,24E58925760
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,289AA6E0008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,24E58910008
-+       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE388DB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE388DB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
         sete      al
         movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3838F390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383B5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38523688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE388FB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,289AA6F5760
-+       mov       rcx,1D868065760
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,289AA6E0008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1D868050008
-+       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE388FB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE388FB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383B5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3838F390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38503688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE388DB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,289AA6F5760
-+       mov       rcx,23F9E175760
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,289AA6E0008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,23F9E160008
-+       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE388DB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE388DB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3838F390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383B5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383D4BA0]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A0D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A0D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3839F380],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE389F7040
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,289AA6F5760
-+       mov       rcx,23D348F57B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,289AA6E0008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,23D348E0008
-+       call      qword ptr [7FFE38A0D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE389F7068
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE389F7068
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3839F380],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A0E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383B5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383D5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A1CD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1CD80]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A07F48
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,289AA6F5760
-+       mov       rcx,2DC50C257B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,289AA6E0008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2DC50C10008
-+       call      qword ptr [7FFE38A1CD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07F70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07F70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1DFF8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383B5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A2D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A2D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38523688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A170E0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,289AA6F5760
-+       mov       rcx,2A521D557B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,289AA6E0008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2A521D40008
-+       call      qword ptr [7FFE38A2D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A2E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383B5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383F5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A3D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A3D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38533688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A27478
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,289AA6F5760
-+       mov       rcx,1D277D057B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,289AA6E0008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1D277CF0008
-+       call      qword ptr [7FFE38A3D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383F6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE3850E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383F4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A3E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38503688],0
-+       cmp       dword ptr [7FFE38523688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB480
-+       mov       rdx,7FFE388FB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,24E58925760
-+       mov       rcx,1D868065760
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,24E58910008
--       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1D868050008
-+       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE388FB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE388FB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-mov       rcx,[rbp+10]
-        mov       rdx,7FFE388DB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,24E58925760
-+       mov       rcx,23F9E175760
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,24E58910008
-+       mov       r9,23F9E160008
-        call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383D4BA0]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A0D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A0D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE3839F380],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38503688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB480
-+       mov       rdx,7FFE389F7040
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,24E58925760
-+       mov       rcx,23D348F57B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,24E58910008
--       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,23D348E0008
-+       call      qword ptr [7FFE38A0D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE389F7068
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE389F7068
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE3839F380],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A0E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383D5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A1CD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1CD80]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38503688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB480
-+       mov       rdx,7FFE38A07F48
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,24E58925760
-+       mov       rcx,2DC50C257B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,24E58910008
--       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2DC50C10008
-+       call      qword ptr [7FFE38A1CD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A07F70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A07F70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1DFF8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A2D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A2D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38503688],0
-+       cmp       dword ptr [7FFE38523688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB480
-+       mov       rdx,7FFE38A170E0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,24E58925760
-+       mov       rcx,2A521D557B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,24E58910008
--       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2A521D40008
-+       call      qword ptr [7FFE38A2D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A2E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383F5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A3D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A3D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38503688],0
-+       cmp       dword ptr [7FFE38533688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB480
-+       mov       rdx,7FFE38A27478
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,24E58925760
-+       mov       rcx,1D277D057B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,24E58910008
--       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1D277CF0008
-+       call      qword ptr [7FFE38A3D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383F6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE3850E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383F4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A3E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3838F390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE38503688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE388DB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,1D868065760
-+       mov       rcx,23F9E175760
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1D868050008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,23F9E160008
-+       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE388DB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE388DB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3838F390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383D4BA0]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A0D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A0D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3839F380],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE389F7040
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,1D868065760
-+       mov       rcx,23D348F57B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1D868050008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,23D348E0008
-+       call      qword ptr [7FFE38A0D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE389F7068
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE389F7068
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3839F380],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A0E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383D5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A1CD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1CD80]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE38A07F48
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,1D868065760
-+       mov       rcx,2DC50C257B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1D868050008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2DC50C10008
-+       call      qword ptr [7FFE38A1CD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A07F70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A07F70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1DFF8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
-        call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A2D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A2D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
-        cmp       dword ptr [7FFE383AF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE38A170E0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,1D868065760
-+       mov       rcx,2A521D557B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1D868050008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2A521D40008
-+       call      qword ptr [7FFE38A2D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
-        cmp       dword ptr [7FFE383AF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
-        call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A2E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383F5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A3D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A3D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE38533688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE38A27478
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,1D868065760
-+       mov       rcx,1D277D057B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1D868050008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1D277CF0008
-+       call      qword ptr [7FFE38A3D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383F6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE3850E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383F4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A3E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383D4BA0]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A0D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A0D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE3839F380],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38503688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB480
-+       mov       rdx,7FFE389F7040
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,23F9E175760
-+       mov       rcx,23D348F57B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,23F9E160008
--       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,23D348E0008
-+       call      qword ptr [7FFE38A0D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE389F7068
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE389F7068
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE3839F380],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A0E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383D5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A1CD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1CD80]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38503688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB480
-+       mov       rdx,7FFE38A07F48
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,23F9E175760
-+       mov       rcx,2DC50C257B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,23F9E160008
--       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2DC50C10008
-+       call      qword ptr [7FFE38A1CD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A07F70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A07F70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1DFF8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A2D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A2D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38503688],0
-+       cmp       dword ptr [7FFE38523688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB480
-+       mov       rdx,7FFE38A170E0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,23F9E175760
-+       mov       rcx,2A521D557B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,23F9E160008
--       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2A521D40008
-+       call      qword ptr [7FFE38A2D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A2E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383C5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383F5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE388F6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A3D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE388F6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A3D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38503688],0
-+       cmp       dword ptr [7FFE38533688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB480
-+       mov       rdx,7FFE38A27478
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,23F9E175760
-+       mov       rcx,1D277D057B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,23F9E160008
--       call      qword ptr [7FFE388F6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1D277CF0008
-+       call      qword ptr [7FFE38A3D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383C6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383F6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388DB4A8
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384DE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE3850E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383C4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383F4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388F7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A3E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383D4BA0]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383D5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38A0D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A1CD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38A0D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1CD80]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3839F380],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F7040
-+       mov       rdx,7FFE38A07F48
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,23D348F57B0
-+       mov       rcx,2DC50C257B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,23D348E0008
--       call      qword ptr [7FFE38A0D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2DC50C10008
-+       call      qword ptr [7FFE38A1CD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F7068
-+       mov       rdx,7FFE38A07F70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F7068
-+       mov       rdx,7FFE38A07F70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
-        call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3839F380],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A0E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1DFF8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383D4BA0]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38A0D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A2D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38A0D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A2D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3839F380],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38513688],0
-+       cmp       dword ptr [7FFE38523688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F7040
-+       mov       rdx,7FFE38A170E0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,23D348F57B0
-+       mov       rcx,2A521D557B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,23D348E0008
--       call      qword ptr [7FFE38A0D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2A521D40008
-+       call      qword ptr [7FFE38A2D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F7068
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F7068
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3839F380],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A0E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A2E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383D4BA0]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383F5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38A0D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A3D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38A0D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A3D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3839F380],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38513688],0
-+       cmp       dword ptr [7FFE38533688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F7040
-+       mov       rdx,7FFE38A27478
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,23D348F57B0
-+       mov       rcx,1D277D057B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,23D348E0008
--       call      qword ptr [7FFE38A0D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1D277CF0008
-+       call      qword ptr [7FFE38A3D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F7068
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383F6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F7068
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE3850E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3839F380],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383F4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A0E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A3E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383D5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38A1CD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A2D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38A1CD80]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A2D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3839F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38513688],0
-+       cmp       dword ptr [7FFE38523688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07F48
-+       mov       rdx,7FFE38A170E0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,2DC50C257B0
-+       mov       rcx,2A521D557B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2DC50C10008
--       call      qword ptr [7FFE38A1CD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2A521D40008
-+       call      qword ptr [7FFE38A2D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07F70
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07F70
-+       mov       rdx,7FFE38A17108
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3839F390],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A1DFF8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A2E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383D5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383F5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38A1CD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A3D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38A1CD80]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A3D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE3839F390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38513688],0
-+       cmp       dword ptr [7FFE38533688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07F48
-+       mov       rdx,7FFE38A27478
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,2DC50C257B0
-+       mov       rcx,1D277D057B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2DC50C10008
--       call      qword ptr [7FFE38A1CD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1D277CF0008
-+       call      qword ptr [7FFE38A3D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07F70
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383F6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07F70
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE3850E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3839F390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383F4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A1DFF8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A3E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItemsWithCount method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
-        push      rsi
-        push      rbx
-        sub       rsp,28
-        mov       rbx,rcx
-        mov       rsi,[rbx+180]
-        mov       rcx,rbx
--       call      qword ptr [7FFE383E5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-+       call      qword ptr [7FFE383F5128]; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        mov       r8d,eax
-        mov       rdx,rsi
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, Int32)
--       call      qword ptr [7FFE38A2D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-+       call      qword ptr [7FFE38A3D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,28
-        pop       rbx
-        pop       rsi
--       jmp       qword ptr [7FFE38A2D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A3D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 64
- ; DotNetTips.Spargine.Benchmarking.SmallCollectionBenchmark.get_Count()
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        mov       [rbp+10],rcx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        mov       rax,[rbp+10]
-        mov       eax,[rax+17C]
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 46
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, Int32)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        mov       [rbp+20],r8d
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE38533688],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M02_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M02_L02
- M02_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A170E0
-+       mov       rdx,7FFE38A27478
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M02_L02:
--       mov       rcx,2A521D557B0
-+       mov       rcx,1D277D057B0
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2A521D40008
--       call      qword ptr [7FFE38A2D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1D277CF0008
-+       call      qword ptr [7FFE38A3D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M02_L04
- M02_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A17108
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M02_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383F6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M02_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M02_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M02_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M02_L07
- M02_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A17108
-+       mov       rdx,7FFE38A274A0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M02_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE3850E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        mov       eax,[rbp-4C]
-        cmp       eax,[rbp+20]
-        sete      al
-        movzx     eax,al
-        mov       [rbp-1C],eax
-        nop
- M02_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 391
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE383BF390],0
-        je        short M03_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M03_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383F4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A2E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A3E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItems method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38523688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE388FB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,212DDD0B6E8
-+       mov       rcx,182D70BB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,212DDD00008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,182D70B0008
-+       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
+        cmp       rsi,rbp
+        jne       short M01_L03
+        mov       rcx,rdi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L04
+        mov       [rdi+10],r11d
+        jb        short M01_L01
         jmp       short M01_L04
  M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE388FB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383E6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0D18
++       mov       r11,7FFF82390D08
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L01
         xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE388FB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
  M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
+        mov       rcx,offset MT_System.InvalidOperationException
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+-       call      qword ptr [7FFF82F36DF0]
++       call      qword ptr [7FFF82F27228]
+        mov       rdx,rax
+        mov       rcx,rbx
+-       call      qword ptr [7FFF82746718]
++       call      qword ptr [7FFF82736718]
+        mov       rcx,rbx
+        call      CORINFO_HELP_THROW
  M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3836F438],0
-+       cmp       dword ptr [7FFE383AF390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383E4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
+-       mov       rcx,7FFF82854100
++       mov       rcx,7FFF82844100
+        mov       edx,1
+        call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,17CBE001FB8
++       mov       rcx,29477C01FB8
+        mov       rdi,[rcx]
+        jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823A0D10
++       mov       r11,7FFF82390D00
+        call      qword ptr [r11]
+        mov       rdi,rax
+        jmp       near ptr M01_L00
+ ; Total bytes of code 312
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-mov       rcx,[rbp+10]
-        mov       rdx,7FFE388CB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,212DDD0B6E8
-+       mov       rcx,2667E93B6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,212DDD00008
-+       mov       r9,2667E930008
-        call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
-        mov       rcx,[rbp+10]
-        mov       rdx,7FFE388CB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
         movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
-        call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3836F438],0
-+       cmp       dword ptr [7FFE3837F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
-        call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItems method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE388E6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE388E6A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        cmp       dword ptr [7FFE384F3688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
-        mov       rcx,[rbp+10]
-        mov       rdx,7FFE388CB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,212DDD0B6E8
-+       mov       rcx,2736CFBB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,212DDD00008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2736CFB0008
-+       call      qword ptr [7FFE388E6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
+        cmp       rsi,rbp
+        jne       short M01_L03
+        mov       rcx,rdi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L04
+        mov       [rdi+10],r11d
+        jb        short M01_L01
         jmp       short M01_L04
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
-        call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
+ M01_L03:
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0D18
++       mov       r11,7FFF823B0D08
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L01
         xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3836F438],0
-+       cmp       dword ptr [7FFE3837F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
-        call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE388E7CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
         add       rsp,28
-        pop       rdi
+        pop       rbx
         pop       rbp
+        pop       rsi
+        pop       rdi
         ret
- ; Total bytes of code 77
+ M01_L07:
+        mov       rcx,offset MT_System.InvalidOperationException
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+-       call      qword ptr [7FFF82F36DF0]
++       call      qword ptr [7FFF82F4C2A0]
+        mov       rdx,rax
+        mov       rcx,rbx
+-       call      qword ptr [7FFF82746718]
++       call      qword ptr [7FFF82756718]
+        mov       rcx,rbx
+        call      CORINFO_HELP_THROW
+ M01_L08:
+-       mov       rcx,7FFF82854100
++       mov       rcx,7FFF82864100
+        mov       edx,1
+        call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,17CBE001FB8
++       mov       rcx,1861B001FB8
+        mov       rdi,[rcx]
+        jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823A0D10
++       mov       r11,7FFF823B0D00
+        call      qword ptr [r11]
+        mov       rdi,rax
+        jmp       near ptr M01_L00
+ ; Total bytes of code 312
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A0CBA0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A0CBD0]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+cmp       rsi,rbp
+        jne       short M01_L03
+        mov       rcx,rdi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L04
+        mov       [rdi+10],r11d
+        jb        short M01_L01
+        jmp       short M01_L04
+ M01_L03:
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0D18
++       mov       r11,7FFF823A0DE0
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L01
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M01_L07:
+        mov       rcx,offset MT_System.InvalidOperationException
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+-       call      qword ptr [7FFF82F36DF0]
++       call      qword ptr [7FFF82F5E1F0]
+        mov       rdx,rax
+        mov       rcx,rbx
+        call      qword ptr [7FFF82746718]
+        mov       rcx,rbx
+        call      CORINFO_HELP_THROW
+ M01_L08:
+        mov       rcx,7FFF82854100
+        mov       edx,1
+        call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,17CBE001FB8
++       mov       rcx,287DD801FB8
+        mov       rdi,[rcx]
+        jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823A0D10
++       mov       r11,7FFF823A0DD8
+        call      qword ptr [r11]
+        mov       rdi,rax
+        jmp       near ptr M01_L00
+ ; Total bytes of code 312
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8296E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        cmp       rsi,rbp
+        jne       short M01_L03
+        mov       rcx,rdi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L04
+        mov       [rdi+10],r11d
+        jb        short M01_L01
+        jmp       short M01_L04
+ M01_L03:
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0D18
++       mov       r11,7FFF82380DD8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L01
+        xor       eax,eax
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M01_L07:
+        mov       rcx,offset MT_System.InvalidOperationException
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+-       call      qword ptr [7FFF82F36DF0]
++       call      qword ptr [7FFF82F3E5C8]
+        mov       rdx,rax
+        mov       rcx,rbx
+-       call      qword ptr [7FFF82746718]
++       call      qword ptr [7FFF82726718]
+        mov       rcx,rbx
+        call      CORINFO_HELP_THROW
+ M01_L08:
+-       mov       rcx,7FFF82854100
++       mov       rcx,7FFF82834100
+        mov       edx,1
+        call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,17CBE001FB8
++       mov       rcx,2B550C01FB8
+        mov       rdi,[rcx]
+        jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823A0D10
++       mov       r11,7FFF82380DD0
+        call      qword ptr [r11]
+        mov       rdi,rax
+        jmp       near ptr M01_L00
+ ; Total bytes of code 312
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
+        xor       eax,eax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       jne       short M01_L00
++       mov       rdi,offset MT_System.ArrayEnumerator
+        mov       rcx,rdi
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
++       mov       rcx,rbx
++       mov       r11,7FFF82390928
++       call      qword ptr [r11]
++       mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE389F6E48
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       rbx,[rdi]
++       mov       rcx,offset MT_System.ArrayEnumerator
++       mov       rbp,rcx
++       jmp       short M01_L03
  M01_L02:
--       mov       rcx,212DDD0B6E8
-+       mov       rcx,1E9BC8AB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,212DDD00008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1E9BC8A0008
-+       call      qword ptr [7FFE38A0CBE8]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE389F6E70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE389F6E70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3836F438],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A0DE48]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
+-       cmp       rsi,rbp
+-       jne       short M01_L03
++       add       esi,1
++       jo        short M01_L07
++M01_L03:
++       cmp       rbx,rbp
++       jne       short M01_L04
+        mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
++       mov       r11,[rcx+10]
++       inc       r11
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
+-M01_L03:
++       cmp       r11,rcx
++       jae       short M01_L06
++       mov       [rdi+10],r11
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0D18
++       mov       r11,7FFF82390930
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
++       jne       short M01_L02
++M01_L05:
++       mov       eax,esi
         add       rsp,28
-        pop       rdi
+        pop       rbx
         pop       rbp
+        pop       rsi
+        pop       rdi
         ret
- ; Total bytes of code 77
+-M01_L05:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L06:
++       mov       [rdi+10],rcx
++       jmp       short M01_L05
++M01_L07:
++       call      CORINFO_HELP_OVERFLOW
++M01_L08:
+        xor       eax,eax
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F36DF0]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82746718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82854100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,17CBE001FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+-M01_L09:
+-       mov       r11,7FFF823A0D10
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++; Total bytes of code 208
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       sub       rsp,30
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rcx,rdi
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       je        short M01_L01
++       mov       rcx,rbx
++       mov       r11,7FFF823B0898
++       call      qword ptr [r11]
++       mov       rdi,rax
++M01_L00:
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
++M01_L01:
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
+-M01_L00:
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
+-M01_L01:
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L00
+ M01_L02:
+-       cmp       rsi,rbp
+-       jne       short M01_L03
+-       mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
++       add       esi,1
++       jo        near ptr M01_L07
+ M01_L03:
++       cmp       rbx,rbp
++       jne       short M01_L04
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0D18
++       mov       r11,7FFF823B08A0
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
+-       add       rsp,28
++       jne       short M01_L02
++       jmp       short M01_L06
++M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
++       mov       eax,esi
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L05:
++M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+-M01_L06:
++M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F36DF0]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82746718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82854100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,17CBE001FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823A0D10
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
+        xor       eax,eax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       sub       rsp,30
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rcx,rdi
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       jne       short M01_L00
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
++       mov       rcx,rbx
++       mov       r11,7FFF82390888
++       call      qword ptr [r11]
++       mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A07FB0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
  M01_L02:
--       mov       rcx,212DDD0B6E8
-+       mov       rcx,1DAF51FB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,212DDD00008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1DAF51F0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
+-       cmp       rsi,rbp
+-       jne       short M01_L03
+-       mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
++       add       esi,1
++       jo        near ptr M01_L07
  M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07FD8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07FD8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
++       cmp       rbx,rbp
++       jne       short M01_L04
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0D18
++       mov       r11,7FFF82390890
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
+-       add       rsp,28
++       jne       short M01_L02
++       jmp       short M01_L06
++M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
++       mov       eax,esi
++       add       rsp,30
+        pop       rbx
         pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3836F438],0
-+       cmp       dword ptr [7FFE3838F398],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
+        pop       rsi
         pop       rdi
-        pop       rbp
++       pop       r14
         ret
- ; Total bytes of code 77
+-M01_L05:
++M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+-M01_L06:
++M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F36DF0]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82746718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82854100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,17CBE001FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823A0D10
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D260]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        cmp       rsi,rbp
+        jne       short M01_L03
+        mov       rcx,rdi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L04
+        mov       [rdi+10],r11d
+        jb        short M01_L01
+        jmp       short M01_L04
+ M01_L03:
+        mov       rcx,rdi
+-       mov       r11,7FFF82390D08
++       mov       r11,7FFF823B0D08
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L01
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M01_L07:
+        mov       rcx,offset MT_System.InvalidOperationException
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+-       call      qword ptr [7FFF82F27228]
++       call      qword ptr [7FFF82F4C2A0]
+        mov       rdx,rax
+        mov       rcx,rbx
+-       call      qword ptr [7FFF82736718]
++       call      qword ptr [7FFF82756718]
+        mov       rcx,rbx
+        call      CORINFO_HELP_THROW
+ M01_L08:
+-       mov       rcx,7FFF82844100
++       mov       rcx,7FFF82864100
+        mov       edx,1
+        call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,29477C01FB8
++       mov       rcx,1861B001FB8
+        mov       rdi,[rcx]
+        jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF82390D00
++       mov       r11,7FFF823B0D00
+        call      qword ptr [r11]
+        mov       rdi,rax
+        jmp       near ptr M01_L00
+ ; Total bytes of code 312
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        cmp       rsi,rbp
+        jne       short M01_L03
+        mov       rcx,rdi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L04
+        mov       [rdi+10],r11d
+        jb        short M01_L01
+        jmp       short M01_L04
+ M01_L03:
+        mov       rcx,rdi
+-       mov       r11,7FFF82390D08
++       mov       r11,7FFF823A0DE0
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L01
+        xor       eax,eax
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M01_L07:
+        mov       rcx,offset MT_System.InvalidOperationException
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+-       call      qword ptr [7FFF82F27228]
++       call      qword ptr [7FFF82F5E1F0]
+        mov       rdx,rax
+        mov       rcx,rbx
+-       call      qword ptr [7FFF82736718]
++       call      qword ptr [7FFF82746718]
+        mov       rcx,rbx
+        call      CORINFO_HELP_THROW
+ M01_L08:
+-       mov       rcx,7FFF82844100
++       mov       rcx,7FFF82854100
+        mov       edx,1
+        call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,29477C01FB8
++       mov       rcx,287DD801FB8
+        mov       rdi,[rcx]
+        jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF82390D00
++       mov       r11,7FFF823A0DD8
+        call      qword ptr [r11]
+        mov       rdi,rax
+        jmp       near ptr M01_L00
+ ; Total bytes of code 312
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8296E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        cmp       rsi,rbp
+        jne       short M01_L03
+        mov       rcx,rdi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L04
+        mov       [rdi+10],r11d
+        jb        short M01_L01
+        jmp       short M01_L04
+ M01_L03:
+        mov       rcx,rdi
+-       mov       r11,7FFF82390D08
++       mov       r11,7FFF82380DD8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L01
+        xor       eax,eax
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M01_L07:
+        mov       rcx,offset MT_System.InvalidOperationException
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+-       call      qword ptr [7FFF82F27228]
++       call      qword ptr [7FFF82F3E5C8]
+        mov       rdx,rax
+        mov       rcx,rbx
+-       call      qword ptr [7FFF82736718]
++       call      qword ptr [7FFF82726718]
+        mov       rcx,rbx
+        call      CORINFO_HELP_THROW
+ M01_L08:
+-       mov       rcx,7FFF82844100
++       mov       rcx,7FFF82834100
+        mov       edx,1
+        call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,29477C01FB8
++       mov       rcx,2B550C01FB8
+        mov       rdi,[rcx]
+        jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF82390D00
++       mov       r11,7FFF82380DD0
+        call      qword ptr [r11]
+        mov       rdi,rax
+        jmp       near ptr M01_L00
+ ; Total bytes of code 312
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
+        xor       eax,eax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       jne       short M01_L00
++       mov       rdi,offset MT_System.ArrayEnumerator
+        mov       rcx,rdi
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
++       mov       rcx,rbx
++       mov       r11,7FFF82390928
++       call      qword ptr [r11]
++       mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A06EE8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       rbx,[rdi]
++       mov       rcx,offset MT_System.ArrayEnumerator
++       mov       rbp,rcx
++       jmp       short M01_L03
  M01_L02:
--       mov       rcx,212DDD0B6E8
-+       mov       rcx,1948C3DB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,212DDD00008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1948C3D0008
-+       call      qword ptr [7FFE38A1D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A06F10
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A06F10
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3836F438],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E4D8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
+-       cmp       rsi,rbp
+-       jne       short M01_L03
++       add       esi,1
++       jo        short M01_L07
++M01_L03:
++       cmp       rbx,rbp
++       jne       short M01_L04
+        mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
++       mov       r11,[rcx+10]
++       inc       r11
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
+-M01_L03:
++       cmp       r11,rcx
++       jae       short M01_L06
++       mov       [rdi+10],r11
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF82390D08
++       mov       r11,7FFF82390930
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
++       jne       short M01_L02
++M01_L05:
++       mov       eax,esi
         add       rsp,28
-        pop       rdi
+        pop       rbx
         pop       rbp
+        pop       rsi
+        pop       rdi
         ret
- ; Total bytes of code 77
+-M01_L05:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L06:
++       mov       [rdi+10],rcx
++       jmp       short M01_L05
++M01_L07:
++       call      CORINFO_HELP_OVERFLOW
++M01_L08:
+        xor       eax,eax
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F27228]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82736718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82844100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,29477C01FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+-M01_L09:
+-       mov       r11,7FFF82390D00
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++; Total bytes of code 208
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       sub       rsp,30
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rcx,rdi
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       je        short M01_L01
++       mov       rcx,rbx
++       mov       r11,7FFF823B0898
++       call      qword ptr [r11]
++       mov       rdi,rax
++M01_L00:
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
++M01_L01:
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
+-M01_L00:
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
+-M01_L01:
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L00
+ M01_L02:
+-       cmp       rsi,rbp
+-       jne       short M01_L03
+-       mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
++       add       esi,1
++       jo        near ptr M01_L07
+ M01_L03:
++       cmp       rbx,rbp
++       jne       short M01_L04
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF82390D08
++       mov       r11,7FFF823B08A0
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
+-       add       rsp,28
++       jne       short M01_L02
++       jmp       short M01_L06
++M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
++       mov       eax,esi
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L05:
++M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+-M01_L06:
++M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F27228]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82736718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82844100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,29477C01FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF82390D00
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
+        xor       eax,eax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       sub       rsp,30
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rcx,rdi
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       jne       short M01_L00
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
++       mov       rcx,rbx
++       mov       r11,7FFF82390888
++       call      qword ptr [r11]
++       mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A07448
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
  M01_L02:
--       mov       rcx,212DDD0B6E8
-+       mov       rcx,24177ACB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,212DDD00008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,24177AC0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
+-       cmp       rsi,rbp
+-       jne       short M01_L03
+-       mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
++       add       esi,1
++       jo        near ptr M01_L07
  M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
++       cmp       rbx,rbp
++       jne       short M01_L04
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF82390D08
++       mov       r11,7FFF82390890
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
+-       add       rsp,28
++       jne       short M01_L02
++       jmp       short M01_L06
++M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
++       mov       eax,esi
++       add       rsp,30
+        pop       rbx
         pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3836F438],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
+        pop       rsi
         pop       rdi
-        pop       rbp
++       pop       r14
         ret
- ; Total bytes of code 77
+-M01_L05:
++M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+-M01_L06:
++M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F27228]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82736718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82844100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,29477C01FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF82390D00
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        cmp       rsi,rbp
+        jne       short M01_L03
+        mov       rcx,rdi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L04
+        mov       [rdi+10],r11d
+        jb        short M01_L01
+        jmp       short M01_L04
+ M01_L03:
+        mov       rcx,rdi
+-       mov       r11,7FFF823B0D08
++       mov       r11,7FFF823A0DE0
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L01
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE384F3688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M01_L07:
+        mov       rcx,offset MT_System.InvalidOperationException
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+-       call      qword ptr [7FFF82F4C2A0]
++       call      qword ptr [7FFF82F5E1F0]
+        mov       rdx,rax
+        mov       rcx,rbx
+-       call      qword ptr [7FFF82756718]
++       call      qword ptr [7FFF82746718]
+        mov       rcx,rbx
+        call      CORINFO_HELP_THROW
+ M01_L08:
+-       mov       rcx,7FFF82864100
++       mov       rcx,7FFF82854100
+        mov       edx,1
+        call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,1861B001FB8
++       mov       rcx,287DD801FB8
+        mov       rdi,[rcx]
+        jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823B0D00
++       mov       r11,7FFF823A0DD8
+        call      qword ptr [r11]
+        mov       rdi,rax
+        jmp       near ptr M01_L00
+ ; Total bytes of code 312
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8296E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        cmp       rsi,rbp
+        jne       short M01_L03
+        mov       rcx,rdi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L04
+        mov       [rdi+10],r11d
+        jb        short M01_L01
+        jmp       short M01_L04
+ M01_L03:
+        mov       rcx,rdi
+-       mov       r11,7FFF823B0D08
++       mov       r11,7FFF82380DD8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L01
+        xor       eax,eax
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M01_L07:
+        mov       rcx,offset MT_System.InvalidOperationException
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+-       call      qword ptr [7FFF82F4C2A0]
++       call      qword ptr [7FFF82F3E5C8]
+        mov       rdx,rax
+        mov       rcx,rbx
+-       call      qword ptr [7FFF82756718]
++       call      qword ptr [7FFF82726718]
+        mov       rcx,rbx
+        call      CORINFO_HELP_THROW
+ M01_L08:
+-       mov       rcx,7FFF82864100
++       mov       rcx,7FFF82834100
+        mov       edx,1
+        call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,1861B001FB8
++       mov       rcx,2B550C01FB8
+        mov       rdi,[rcx]
+        jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823B0D00
++       mov       r11,7FFF82380DD0
+        call      qword ptr [r11]
+        mov       rdi,rax
+        jmp       near ptr M01_L00
+ ; Total bytes of code 312
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
+        xor       eax,eax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       jne       short M01_L00
++       mov       rdi,offset MT_System.ArrayEnumerator
+        mov       rcx,rdi
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
++       mov       rcx,rbx
++       mov       r11,7FFF82390928
++       call      qword ptr [r11]
++       mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE388CB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       rbx,[rdi]
++       mov       rcx,offset MT_System.ArrayEnumerator
++       mov       rbp,rcx
++       jmp       short M01_L03
  M01_L02:
--       mov       rcx,182D70BB6E8
-+       mov       rcx,2667E93B6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,182D70B0008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2667E930008
-+       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE388CB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE388CB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3837F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
+-       cmp       rsi,rbp
+-       jne       short M01_L03
++       add       esi,1
++       jo        short M01_L07
++M01_L03:
++       cmp       rbx,rbp
++       jne       short M01_L04
+        mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
++       mov       r11,[rcx+10]
++       inc       r11
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
+-M01_L03:
++       cmp       r11,rcx
++       jae       short M01_L06
++       mov       [rdi+10],r11
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF823B0D08
++       mov       r11,7FFF82390930
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
++       jne       short M01_L02
++M01_L05:
++       mov       eax,esi
         add       rsp,28
-        pop       rdi
+        pop       rbx
         pop       rbp
+        pop       rsi
+        pop       rdi
         ret
- ; Total bytes of code 77
+-M01_L05:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L06:
++       mov       [rdi+10],rcx
++       jmp       short M01_L05
++M01_L07:
++       call      CORINFO_HELP_OVERFLOW
++M01_L08:
+        xor       eax,eax
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F4C2A0]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82756718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82864100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,1861B001FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+-M01_L09:
+-       mov       r11,7FFF823B0D00
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++; Total bytes of code 208
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE388E6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
+mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
         pop       rbx
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE388E6A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE384F3688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       sub       rsp,30
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rcx,rdi
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       je        short M01_L01
++       mov       rcx,rbx
++       mov       r11,7FFF823B0898
++       call      qword ptr [r11]
++       mov       rdi,rax
++M01_L00:
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
++M01_L01:
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
+-M01_L00:
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
+-M01_L01:
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L00
+ M01_L02:
+-       cmp       rsi,rbp
+-       jne       short M01_L03
+-       mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
++       add       esi,1
++       jo        near ptr M01_L07
+ M01_L03:
++       cmp       rbx,rbp
++       jne       short M01_L04
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF823B0D08
++       mov       r11,7FFF823B08A0
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
+-       add       rsp,28
++       jne       short M01_L02
++       jmp       short M01_L06
++M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
++       mov       eax,esi
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L05:
++M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+-M01_L06:
++M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F4C2A0]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82756718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82864100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,1861B001FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823B0D00
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
+        xor       eax,eax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       sub       rsp,30
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rcx,rdi
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       jne       short M01_L00
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
++       mov       rcx,rbx
++       mov       r11,7FFF82390888
++       call      qword ptr [r11]
++       mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE388CB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
  M01_L02:
--       mov       rcx,182D70BB6E8
-+       mov       rcx,2736CFBB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,182D70B0008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2736CFB0008
-+       call      qword ptr [7FFE388E6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
+-       cmp       rsi,rbp
+-       jne       short M01_L03
+-       mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
++       add       esi,1
++       jo        near ptr M01_L07
  M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE388CB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE388CB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
++       cmp       rbx,rbp
++       jne       short M01_L04
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF823B0D08
++       mov       r11,7FFF82390890
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
+-       add       rsp,28
++       jne       short M01_L02
++       jmp       short M01_L06
++M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
++       mov       eax,esi
++       add       rsp,30
+        pop       rbx
         pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3837F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE388E7CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
+        pop       rsi
         pop       rdi
-        pop       rbp
++       pop       r14
         ret
- ; Total bytes of code 77
+-M01_L05:
++M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+-M01_L06:
++M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F4C2A0]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82756718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82864100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,1861B001FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823B0D00
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A0CBA0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A0CBD0]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8296E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        cmp       rsi,rbp
+        jne       short M01_L03
+        mov       rcx,rdi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L04
+        mov       [rdi+10],r11d
+        jb        short M01_L01
+        jmp       short M01_L04
+ M01_L03:
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0DE0
++       mov       r11,7FFF82380DD8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L01
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M01_L07:
+        mov       rcx,offset MT_System.InvalidOperationException
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+-       call      qword ptr [7FFF82F5E1F0]
++       call      qword ptr [7FFF82F3E5C8]
+        mov       rdx,rax
+        mov       rcx,rbx
+-       call      qword ptr [7FFF82746718]
++       call      qword ptr [7FFF82726718]
+        mov       rcx,rbx
+        call      CORINFO_HELP_THROW
+ M01_L08:
+-       mov       rcx,7FFF82854100
++       mov       rcx,7FFF82834100
+        mov       edx,1
+        call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,287DD801FB8
++       mov       rcx,2B550C01FB8
+        mov       rdi,[rcx]
+        jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823A0DD8
++       mov       r11,7FFF82380DD0
+        call      qword ptr [r11]
+        mov       rdi,rax
+        jmp       near ptr M01_L00
+ ; Total bytes of code 312
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
+        xor       eax,eax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       jne       short M01_L00
++       mov       rdi,offset MT_System.ArrayEnumerator
+        mov       rcx,rdi
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
++       mov       rcx,rbx
++       mov       r11,7FFF82390928
++       call      qword ptr [r11]
++       mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE389F6E48
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       rbx,[rdi]
++       mov       rcx,offset MT_System.ArrayEnumerator
++       mov       rbp,rcx
++       jmp       short M01_L03
  M01_L02:
--       mov       rcx,182D70BB6E8
-+       mov       rcx,1E9BC8AB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,182D70B0008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1E9BC8A0008
-+       call      qword ptr [7FFE38A0CBE8]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE389F6E70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE389F6E70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A0DE48]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
+-       cmp       rsi,rbp
+-       jne       short M01_L03
++       add       esi,1
++       jo        short M01_L07
++M01_L03:
++       cmp       rbx,rbp
++       jne       short M01_L04
+        mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
++       mov       r11,[rcx+10]
++       inc       r11
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
+-M01_L03:
++       cmp       r11,rcx
++       jae       short M01_L06
++       mov       [rdi+10],r11
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0DE0
++       mov       r11,7FFF82390930
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
++       jne       short M01_L02
++M01_L05:
++       mov       eax,esi
         add       rsp,28
-        pop       rdi
+        pop       rbx
         pop       rbp
+        pop       rsi
+        pop       rdi
         ret
- ; Total bytes of code 77
+-M01_L05:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L06:
++       mov       [rdi+10],rcx
++       jmp       short M01_L05
++M01_L07:
++       call      CORINFO_HELP_OVERFLOW
++M01_L08:
+        xor       eax,eax
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F5E1F0]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82746718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82854100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,287DD801FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+-M01_L09:
+-       mov       r11,7FFF823A0DD8
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++; Total bytes of code 208
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       sub       rsp,30
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rcx,rdi
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       je        short M01_L01
++       mov       rcx,rbx
++       mov       r11,7FFF823B0898
++       call      qword ptr [r11]
++       mov       rdi,rax
++M01_L00:
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
++M01_L01:
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
+-M01_L00:
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
+-M01_L01:
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L00
+ M01_L02:
+-       cmp       rsi,rbp
+-       jne       short M01_L03
+-       mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
++       add       esi,1
++       jo        near ptr M01_L07
+ M01_L03:
++       cmp       rbx,rbp
++       jne       short M01_L04
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0DE0
++       mov       r11,7FFF823B08A0
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
+-       add       rsp,28
++       jne       short M01_L02
++       jmp       short M01_L06
++M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
++       mov       eax,esi
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L05:
++M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+-M01_L06:
++M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F5E1F0]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82746718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82854100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,287DD801FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823A0DD8
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8298E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
+        xor       eax,eax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       sub       rsp,30
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rcx,rdi
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       jne       short M01_L00
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
++       mov       rcx,rbx
++       mov       r11,7FFF82390888
++       call      qword ptr [r11]
++       mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE38A07FB0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
  M01_L02:
--       mov       rcx,182D70BB6E8
-+       mov       rcx,1DAF51FB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,182D70B0008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1DAF51F0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
+-       cmp       rsi,rbp
+-       jne       short M01_L03
+-       mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
++       add       esi,1
++       jo        near ptr M01_L07
  M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A07FD8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A07FD8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
++       cmp       rbx,rbp
++       jne       short M01_L04
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF823A0DE0
++       mov       r11,7FFF82390890
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
+-       add       rsp,28
++       jne       short M01_L02
++       jmp       short M01_L06
++M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
++       mov       eax,esi
++       add       rsp,30
+        pop       rbx
         pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3838F398],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
+        pop       rsi
         pop       rdi
-        pop       rbp
++       pop       r14
         ret
- ; Total bytes of code 77
+-M01_L05:
++M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+-M01_L06:
++M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F5E1F0]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82746718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82854100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,287DD801FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF823A0DD8
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D260]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8296E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       jne       short M01_L00
++       mov       rdi,offset MT_System.ArrayEnumerator
+        mov       rcx,rdi
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
++       mov       rcx,rbx
++       mov       r11,7FFF82390928
++       call      qword ptr [r11]
++       mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE38A06EE8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       rbx,[rdi]
++       mov       rcx,offset MT_System.ArrayEnumerator
++       mov       rbp,rcx
++       jmp       short M01_L03
  M01_L02:
--       mov       rcx,182D70BB6E8
-+       mov       rcx,1948C3DB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,182D70B0008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1948C3D0008
-+       call      qword ptr [7FFE38A1D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A06F10
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A06F10
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E4D8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
+-       cmp       rsi,rbp
+-       jne       short M01_L03
++       add       esi,1
++       jo        short M01_L07
++M01_L03:
++       cmp       rbx,rbp
++       jne       short M01_L04
+        mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
++       mov       r11,[rcx+10]
++       inc       r11
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
+-M01_L03:
++       cmp       r11,rcx
++       jae       short M01_L06
++       mov       [rdi+10],r11
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF82380DD8
++       mov       r11,7FFF82390930
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
++       jne       short M01_L02
++M01_L05:
++       mov       eax,esi
         add       rsp,28
-        pop       rdi
+        pop       rbx
         pop       rbp
+        pop       rsi
+        pop       rdi
         ret
- ; Total bytes of code 77
+-M01_L05:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L06:
++       mov       [rdi+10],rcx
++       jmp       short M01_L05
++M01_L07:
++       call      CORINFO_HELP_OVERFLOW
++M01_L08:
+        xor       eax,eax
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F3E5C8]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82726718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82834100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,2B550C01FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+-M01_L09:
+-       mov       r11,7FFF82380DD0
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++; Total bytes of code 208
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38916A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE38916A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8296E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE38523688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       sub       rsp,30
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rcx,rdi
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       je        short M01_L01
++       mov       rcx,rbx
++       mov       r11,7FFF823B0898
++       call      qword ptr [r11]
++       mov       rdi,rax
++M01_L00:
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
++M01_L01:
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
+-M01_L00:
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
+-M01_L01:
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L00
+ M01_L02:
+-       cmp       rsi,rbp
+-       jne       short M01_L03
+-       mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
++       add       esi,1
++       jo        near ptr M01_L07
+ M01_L03:
++       cmp       rbx,rbp
++       jne       short M01_L04
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF82380DD8
++       mov       r11,7FFF823B08A0
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
+-       add       rsp,28
++       jne       short M01_L02
++       jmp       short M01_L06
++M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
++       mov       eax,esi
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L05:
++M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+-M01_L06:
++M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F3E5C8]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82726718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82834100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,2B550C01FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF82380DD0
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8296E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
+        xor       eax,eax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
+-       test      rcx,rcx
+-       je        near ptr M01_L06
+-       xor       ebx,ebx
+-       mov       rax,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       cmp       [rcx],rax
+-       jne       near ptr M01_L09
+-       add       rcx,8
+-       mov       rsi,[rcx]
+-       test      rsi,rsi
+-       je        near ptr M01_L07
+-       cmp       dword ptr [rsi+8],0
++       sub       rsp,30
++       mov       rbx,rcx
++       test      rbx,rbx
+        je        near ptr M01_L08
+-       mov       rdi,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rcx,rdi
++       xor       esi,esi
++       mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
++       cmp       [rbx],rcx
++       jne       short M01_L00
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+-       mov       dword ptr [rdi+10],0FFFFFFFF
+        lea       rcx,[rdi+8]
+-       mov       rdx,rsi
++       mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
++       mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
++       jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+-       mov       rsi,[rdi]
+-       mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+-       mov       rbp,rcx
+-       jmp       short M01_L02
++       mov       rcx,rbx
++       mov       r11,7FFF82390888
++       call      qword ptr [r11]
++       mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB480
-+       mov       rdx,7FFE38A07448
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+-       add       ebx,1
+-       jo        short M01_L05
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
  M01_L02:
--       mov       rcx,182D70BB6E8
-+       mov       rcx,24177ACB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,182D70B0008
--       call      qword ptr [7FFE38916A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,24177AC0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
+-       cmp       rsi,rbp
+-       jne       short M01_L03
+-       mov       rcx,rdi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L04
+-       mov       [rdi+10],r11d
+-       jb        short M01_L01
+-       jmp       short M01_L04
++       add       esi,1
++       jo        near ptr M01_L07
  M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383E6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388FB4A8
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384FE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
++       cmp       rbx,rbp
++       jne       short M01_L04
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L02
++M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF82380DD8
++       mov       r11,7FFF82390890
+        call      qword ptr [r11]
+        test      eax,eax
+-       jne       short M01_L01
+-M01_L04:
+-       mov       eax,ebx
+-       add       rsp,28
++       jne       short M01_L02
++       jmp       short M01_L06
++M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
++       mov       eax,esi
++       add       rsp,30
+        pop       rbx
         pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE383AF390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383E4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38917CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
+        pop       rsi
         pop       rdi
-        pop       rbp
++       pop       r14
         ret
- ; Total bytes of code 77
+-M01_L05:
++M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+-M01_L06:
++M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-M01_L07:
+-       mov       rcx,offset MT_System.InvalidOperationException
+-       call      CORINFO_HELP_NEWSFAST
+-       mov       rbx,rax
+-       call      qword ptr [7FFF82F3E5C8]
+-       mov       rdx,rax
+-       mov       rcx,rbx
+-       call      qword ptr [7FFF82726718]
+-       mov       rcx,rbx
+-       call      CORINFO_HELP_THROW
+-M01_L08:
+-       mov       rcx,7FFF82834100
+-       mov       edx,1
+-       call      CORINFO_HELP_CLASSINIT_SHARED_DYNAMICCLASS
+-       mov       rcx,2B550C01FB8
+-       mov       rdi,[rcx]
+-       jmp       near ptr M01_L00
+ M01_L09:
+-       mov       r11,7FFF82380DD0
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-       jmp       near ptr M01_L00
+-; Total bytes of code 312
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE388E6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE388E6A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        cmp       dword ptr [7FFE384F3688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
-        mov       rcx,[rbp+10]
-        mov       rdx,7FFE388CB480
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
++       sub       rsp,30
+        mov       rbx,rcx
+        test      rbx,rbx
+        je        near ptr M01_L08
+        xor       esi,esi
+        mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
+        cmp       [rbx],rcx
+-       jne       short M01_L00
+-       mov       rdi,offset MT_System.ArrayEnumerator
+-       mov       rcx,rdi
++       je        short M01_L01
++       mov       rcx,rbx
++       mov       r11,7FFF823B0898
++       call      qword ptr [r11]
++       mov       rdi,rax
++M01_L00:
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
++M01_L01:
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+        lea       rcx,[rdi+8]
+        mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
+-       jmp       short M01_L01
+-M01_L00:
+-       mov       rcx,rbx
+-       mov       r11,7FFF82390928
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-M01_L01:
+-       mov       rbx,[rdi]
+-       mov       rcx,offset MT_System.ArrayEnumerator
+-       mov       rbp,rcx
+-       jmp       short M01_L03
++       jmp       short M01_L00
  M01_L02:
--       mov       rcx,2667E93B6E8
-+       mov       rcx,2736CFBB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2667E930008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,2736CFB0008
-+       call      qword ptr [7FFE388E6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
-        mov       rcx,[rbp+10]
-        mov       rdx,7FFE388CB4A8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
+        add       esi,1
+-       jo        short M01_L07
++       jo        near ptr M01_L07
+ M01_L03:
+        cmp       rbx,rbp
+        jne       short M01_L04
+-       mov       rcx,rdi
+-       mov       r11,[rcx+10]
+-       inc       r11
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11,rcx
+-       jae       short M01_L06
+-       mov       [rdi+10],r11
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
+        jmp       short M01_L02
  M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        mov       eax,[rbp-1C]
-        add       rsp,80
+        mov       rcx,rdi
+-       mov       r11,7FFF82390930
++       mov       r11,7FFF823B08A0
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L02
++       jmp       short M01_L06
+ M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
+        mov       eax,esi
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
         pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
-        cmp       dword ptr [7FFE3837F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE388E7CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
+        pop       rsi
         pop       rdi
-        pop       rbp
++       pop       r14
         ret
- ; Total bytes of code 77
+-M01_L06:
+-       mov       [rdi+10],rcx
+-       jmp       short M01_L05
+ M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+ M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-; Total bytes of code 208
++M01_L09:
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
 ```
-**Diff for ImmutableArrayHasItems method between:**
+**Diff for ImmutableArrayHasItemsWithCount method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
 ```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A0CBA0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
+mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
         pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A0CBD0]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
         xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,28
++       sub       rsp,30
+        mov       rbx,rcx
+        test      rbx,rbx
+        je        near ptr M01_L08
+        xor       esi,esi
+        mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
+        cmp       [rbx],rcx
+        jne       short M01_L00
+-       mov       rdi,offset MT_System.ArrayEnumerator
+-       mov       rcx,rdi
++       mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+        lea       rcx,[rdi+8]
+        mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
+        jmp       short M01_L01
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
+        mov       rcx,rbx
+-       mov       r11,7FFF82390928
++       mov       r11,7FFF82390888
+        call      qword ptr [r11]
+        mov       rdi,rax
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE389F6E48
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
+        mov       rbx,[rdi]
+-       mov       rcx,offset MT_System.ArrayEnumerator
+-       mov       rbp,rcx
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L03
  M01_L02:
--       mov       rcx,2667E93B6E8
-+       mov       rcx,1E9BC8AB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2667E930008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1E9BC8A0008
-+       call      qword ptr [7FFE38A0CBE8]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
+        add       esi,1
+-       jo        short M01_L07
++       jo        near ptr M01_L07
  M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE389F6E70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
+        cmp       rbx,rbp
+        jne       short M01_L04
+-       mov       rcx,rdi
+-       mov       r11,[rcx+10]
+-       inc       r11
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11,rcx
+-       jae       short M01_L06
+-       mov       [rdi+10],r11
++       lea       r14,[rdi+8]
++       mov       rcx,[r14]
++       mov       [rsp+28],rcx
++       mov       edx,[r14+14]
++       cmp       edx,[rcx+14]
++       jne       short M01_L09
++       mov       edx,[r14+10]
++       cmp       edx,[rcx+10]
++       jae       short M01_L05
++       lea       rcx,[r14+8]
++       mov       rax,[rsp+28]
++       mov       rax,[rax+8]
++       cmp       edx,[rax+8]
++       jae       short M01_L10
++       mov       edx,edx
++       mov       rdx,[rax+rdx*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
+        jmp       short M01_L02
  M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE389F6E70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
-        mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
+        mov       rcx,rdi
+-       mov       r11,7FFF82390930
++       mov       r11,7FFF82390890
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L02
++       jmp       short M01_L06
+ M01_L05:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++M01_L06:
+        mov       eax,esi
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
         pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A0DE48]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
+        pop       rsi
         pop       rdi
-        pop       rbp
++       pop       r14
         ret
- ; Total bytes of code 77
+-M01_L06:
+-       mov       [rdi+10],rcx
+-       jmp       short M01_L05
+ M01_L07:
+        call      CORINFO_HELP_OVERFLOW
+ M01_L08:
+        xor       eax,eax
+-       add       rsp,28
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r14
+        ret
+-; Total bytes of code 208
++M01_L09:
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L10:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 277
+```
+**Diff for ImmutableArrayHasItemsWithCount method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItemsWithCount()
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,28
+        mov       rbx,rcx
+        mov       rsi,[rbx+180]
+        mov       edi,[rbx+17C]
+        cmp       dword ptr [rsi+8],0
+        je        short M00_L01
+        mov       rcx,offset MT_System.Collections.Immutable.ImmutableArray`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbp,rax
+        lea       rcx,[rbp+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbp
+-       call      qword ptr [7FFF8299E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
++       call      qword ptr [7FFF8297E088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        cmp       eax,edi
+        sete      al
+        movzx     eax,al
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,28
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        ret
+ M00_L01:
+        xor       eax,eax
+        jmp       short M00_L00
+ ; Total bytes of code 97
+ ; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
+        push      r14
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,30
+        mov       rbx,rcx
+        test      rbx,rbx
+        je        near ptr M01_L08
+        xor       esi,esi
+        mov       rcx,offset MT_DotNetTips.Spargine.Tester.Data.State[]
+        cmp       [rbx],rcx
+-       je        short M01_L01
+-       mov       rcx,rbx
+-       mov       r11,7FFF823B0898
+-       call      qword ptr [r11]
+-       mov       rdi,rax
+-M01_L00:
+-       mov       rbx,[rdi]
+-       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+-       jmp       short M01_L03
+-M01_L01:
++       jne       short M01_L00
+        mov       rcx,offset MT_System.ArrayEnumerator
+        call      CORINFO_HELP_NEWSFAST
+        mov       rdi,rax
+        lea       rcx,[rdi+8]
+        mov       rdx,rbx
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       qword ptr [rdi+10],0FFFFFFFFFFFFFFFF
+-       jmp       short M01_L00
++       jmp       short M01_L01
++M01_L00:
++       mov       rcx,rbx
++       mov       r11,7FFF82390888
++       call      qword ptr [r11]
++       mov       rdi,rax
++M01_L01:
++       mov       rbx,[rdi]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
++       jmp       short M01_L03
+ M01_L02:
+        add       esi,1
+        jo        near ptr M01_L07
+        cmp       rbx,rbp
+        jne       short M01_L04
+        lea       r14,[rdi+8]
+        mov       rcx,[r14]
+        mov       [rsp+28],rcx
+        mov       edx,[r14+14]
+        cmp       edx,[rcx+14]
+        jne       short M01_L09
+        mov       edx,[r14+10]
+        cmp       edx,[rcx+10]
+        jae       short M01_L05
+        lea       rcx,[r14+8]
+        mov       rax,[rsp+28]
+        mov       rax,[rax+8]
+        cmp       edx,[rax+8]
+        jae       short M01_L10
+        mov       edx,edx
+        mov       rdx,[rax+rdx*8+10]
+        call      CORINFO_HELP_CHECKED_ASSIGN_REF
+        inc       dword ptr [r14+10]
+        jmp       short M01_L02
+ M01_L04:
+        mov       rcx,rdi
+-       mov       r11,7FFF823B08A0
++       mov       r11,7FFF82390890
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L02
+        jmp       short M01_L06
+        xor       eax,eax
+        add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
+        pop       r14
+        ret
+ M01_L09:
+-       call      qword ptr [7FFF8272EFB8]
++       call      qword ptr [7FFF8270EFB8]
+        int       3
+ M01_L10:
+        call      CORINFO_HELP_RNGCHKFAIL
 ```
 **Diff for ImmutableArrayHasItems method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
@@ -7440,160 +4057,83 @@ mov       rcx,[rbp+10]
         mov       rbx,rcx
         mov       rdx,[rbx+180]
         mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
+-       call      qword ptr [7FFF82D953E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82D96A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
         add       rsp,20
         pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
+        ret
+ ; Total bytes of code 44
  ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        push      rbx
+        sub       rsp,38
+        mov       [rsp+30],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A07FB0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,2667E93B6E8
-+       mov       rcx,1DAF51FB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2667E930008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1DAF51F0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
+-       mov       rdx,217B523B6E8
++       mov       rdx,2414B93B6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,217B5230008
+-       call      qword ptr [7FFF82D95428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,2414B930008
++       call      qword ptr [7FFF82D96A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L09
+        mov       rcx,[rbx+10]
         mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07FD8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
+        test      rcx,rcx
         je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07FD8
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+        call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774A8
++       mov       rdx,7FFF82D79260
         call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
         mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3838F398],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        mov       rcx,rsi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L07
+        mov       [rsi+10],r11d
+        jb        short M01_L03
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774D0
++       mov       rdx,7FFF82D79288
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
 ```
 **Diff for ImmutableArrayHasItems method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
@@ -7605,160 +4145,92 @@ mov       rcx,[rbp+10]
         mov       rbx,rcx
         mov       rdx,[rbx+180]
         mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
+-       call      qword ptr [7FFF82D953E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82DB6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
         add       rsp,20
         pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D260]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
+        ret
+ ; Total bytes of code 44
  ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        push      rbx
+        sub       rsp,38
+        mov       [rsp+30],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A06EE8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,2667E93B6E8
-+       mov       rcx,1948C3DB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2667E930008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1948C3D0008
-+       call      qword ptr [7FFE38A1D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
+-       mov       rdx,217B523B6E8
++       mov       rdx,2115601B6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,217B5230008
+-       call      qword ptr [7FFF82D95428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,21156010008
++       call      qword ptr [7FFF82DB6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L09
+        mov       rcx,[rbx+10]
         mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A06F10
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
+        test      rcx,rcx
         je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A06F10
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828771F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774A8
++       mov       rdx,7FFF82D99260
         call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
         mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E4D8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        mov       rcx,rsi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L07
+        mov       [rsi+10],r11d
+        jb        short M01_L03
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774D0
++       mov       rdx,7FFF82D99288
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF823A0D08
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
 ```
 **Diff for ImmutableArrayHasItems method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
@@ -7770,160 +4242,92 @@ mov       rcx,[rbp+10]
         mov       rbx,rcx
         mov       rdx,[rbx+180]
         mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
+-       call      qword ptr [7FFF82D953E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82DA6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
         add       rsp,20
         pop       rbx
--       jmp       qword ptr [7FFE388E6CB8]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
+        ret
+ ; Total bytes of code 44
  ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        push      rbx
+        sub       rsp,38
+        mov       [rsp+30],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A07448
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,2667E93B6E8
-+       mov       rcx,24177ACB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2667E930008
--       call      qword ptr [7FFE388E6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,24177AC0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
+-       mov       rdx,217B523B6E8
++       mov       rdx,2C1257BB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,217B5230008
+-       call      qword ptr [7FFF82D95428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,2C1257B0008
++       call      qword ptr [7FFF82DA6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L09
+        mov       rcx,[rbx+10]
         mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
+        test      rcx,rcx
         je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07470
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774A8
++       mov       rdx,7FFF82D89260
         call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
         mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7F30]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        mov       rcx,rsi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L07
+        mov       [rsi+10],r11d
+        jb        short M01_L03
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774D0
++       mov       rdx,7FFF82D89288
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF82390D08
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
 ```
 **Diff for ImmutableArrayHasItems method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
@@ -7935,160 +4339,90 @@ mov       rcx,[rbp+10]
         mov       rbx,rcx
         mov       rdx,[rbx+180]
         mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A0CBA0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
+-       call      qword ptr [7FFF82D953E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82E87948]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
         add       rsp,20
         pop       rbx
--       jmp       qword ptr [7FFE388E6A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A0CBD0]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
+        ret
+ ; Total bytes of code 44
  ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        push      rbx
+        sub       rsp,38
+        mov       [rsp+30],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE389F6E48
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,2736CFBB6E8
-+       mov       rcx,1E9BC8AB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2736CFB0008
--       call      qword ptr [7FFE388E6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1E9BC8A0008
-+       call      qword ptr [7FFE38A0CBE8]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
+-       mov       rdx,217B523B6E8
++       mov       rdx,237E3BFB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,217B5230008
+-       call      qword ptr [7FFF82D95428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,237E3BF0008
++       call      qword ptr [7FFF82E87990]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L09
+        mov       rcx,[rbx+10]
         mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE389F6E70
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
+        test      rcx,rcx
         je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE389F6E70
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+        call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774A8
++       mov       rdx,7FFF82E77500
         call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
         mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A0DE48]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        mov       rcx,rsi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L07
+        mov       [rsi+10],r11d
+        jb        short M01_L03
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774D0
++       mov       rdx,7FFF82E77528
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF82380DC8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
 ```
 **Diff for ImmutableArrayHasItems method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
@@ -8100,160 +4434,171 @@ mov       rcx,[rbp+10]
         mov       rbx,rcx
         mov       rdx,[rbx+180]
         mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
+-       call      qword ptr [7FFF82D953E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EDD3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
         add       rsp,20
         pop       rbx
--       jmp       qword ptr [7FFE388E6A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
+        ret
+ ; Total bytes of code 44
  ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A07FB0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,2736CFBB6E8
-+       mov       rcx,1DAF51FB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2736CFB0008
--       call      qword ptr [7FFE388E6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1DAF51F0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
+-       mov       rdx,217B523B6E8
++       mov       rdx,27AF2B4B6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,217B5230008
+-       call      qword ptr [7FFF82D95428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,27AF2B40008
++       call      qword ptr [7FFF82EDD428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
         mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828971F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
         jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07FD8
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774A8
++       mov       rdx,7FFF82EE4A70
         call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07FD8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
         mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774D0
++       mov       rdx,7FFF82EE4A98
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF823C12F8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
         setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
         pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3838F398],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
+        pop       rsi
         pop       rdi
-        pop       rbp
++       pop       r13
++       pop       r14
++       pop       r15
         ret
- ; Total bytes of code 77
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8273EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
 ```
 **Diff for ImmutableArrayHasItems method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
@@ -8265,160 +4610,171 @@ mov       rcx,[rbp+10]
         mov       rbx,rcx
         mov       rdx,[rbx+180]
         mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
+-       call      qword ptr [7FFF82D953E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82E9D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
         add       rsp,20
         pop       rbx
--       jmp       qword ptr [7FFE388E6A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D260]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
+        ret
+ ; Total bytes of code 44
  ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A06EE8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,2736CFBB6E8
-+       mov       rcx,1948C3DB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2736CFB0008
--       call      qword ptr [7FFE388E6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1948C3D0008
-+       call      qword ptr [7FFE38A1D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
+-       mov       rdx,217B523B6E8
++       mov       rdx,239BC0AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,217B5230008
+-       call      qword ptr [7FFF82D95428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,239BC0A0008
++       call      qword ptr [7FFF82E9D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
         mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
         jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A06F10
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774A8
++       mov       rdx,7FFF82EB4858
         call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A06F10
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
         mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774D0
++       mov       rdx,7FFF82EB4880
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF82391338
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
         setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
         pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E4D8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
+        pop       rsi
         pop       rdi
-        pop       rbp
++       pop       r13
++       pop       r14
++       pop       r15
         ret
- ; Total bytes of code 77
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
 ```
 **Diff for ImmutableArrayHasItems method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
@@ -8430,306 +4786,171 @@ mov       rcx,[rbp+10]
         mov       rbx,rcx
         mov       rdx,[rbx+180]
         mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE388E6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
+-       call      qword ptr [7FFF82D953E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EBCD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
         add       rsp,20
         pop       rbx
--       jmp       qword ptr [7FFE388E6A60]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
+        ret
+ ; Total bytes of code 44
  ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
         push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
--       cmp       dword ptr [7FFE384F3688],0
-+       cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
  M01_L00:
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB480
-+       mov       rdx,7FFE38A07448
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,2736CFBB6E8
-+       mov       rcx,24177ACB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,2736CFB0008
--       call      qword ptr [7FFE388E6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,24177AC0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
+-       mov       rdx,217B523B6E8
++       mov       rdx,1F1184AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,217B5230008
+-       call      qword ptr [7FFF82D95428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,1F1184A0008
++       call      qword ptr [7FFF82EBCD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
         mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828871F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
         jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07470
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774A8
++       mov       rdx,7FFF82ED4D60
         call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383B6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE388CB4A8
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
         mov       rcx,rax
--       call      qword ptr [7FFE384CE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-+       call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3837F390],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383B4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE388E7CD8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItems method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38A0CBA0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE38A0CBD0]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F6E48
-+       mov       rdx,7FFE38A07FB0
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,1E9BC8AB6E8
-+       mov       rcx,1DAF51FB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1E9BC8A0008
--       call      qword ptr [7FFE38A0CBE8]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1DAF51F0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
+        jmp       near ptr M01_L00
  M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F6E70
-+       mov       rdx,7FFE38A07FD8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
  M01_L04:
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
         jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F6E70
-+       mov       rdx,7FFE38A07FD8
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D774D0
++       mov       rdx,7FFF82ED4D88
         call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
         mov       rcx,rax
-        call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF823B12D8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
         setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
         pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3839F390],0
-+       cmp       dword ptr [7FFE3838F398],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
-        call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A0DE48]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
+        pop       rsi
         pop       rdi
-        pop       rbp
++       pop       r13
++       pop       r14
++       pop       r15
         ret
- ; Total bytes of code 77
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
 ```
 **Diff for ImmutableArrayHasItems method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
@@ -8741,585 +4962,92 @@ mov       rcx,[rbp+10]
         mov       rbx,rcx
         mov       rdx,[rbx+180]
         mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38A0CBA0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
+-       call      qword ptr [7FFF82D96A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82DB6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
         add       rsp,20
         pop       rbx
--       jmp       qword ptr [7FFE38A0CBD0]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D260]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F6E48
-+       mov       rdx,7FFE38A06EE8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,1E9BC8AB6E8
-+       mov       rcx,1948C3DB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1E9BC8A0008
--       call      qword ptr [7FFE38A0CBE8]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1948C3D0008
-+       call      qword ptr [7FFE38A1D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F6E70
-+       mov       rdx,7FFE38A06F10
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F6E70
-+       mov       rdx,7FFE38A06F10
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
         ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
         push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
-        cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A0DE48]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E4D8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItems method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rsi
+        push      rbp
         push      rbx
-        sub       rsp,20
+        sub       rsp,38
+        mov       [rsp+30],rcx
         mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38A0CBA0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE38A0CBD0]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
         mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F6E48
-+       mov       rdx,7FFE38A07448
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,1E9BC8AB6E8
-+       mov       rcx,24177ACB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1E9BC8A0008
--       call      qword ptr [7FFE38A0CBE8]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,24177AC0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2414B93B6E8
++       mov       rdx,2115601B6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,2414B930008
+-       call      qword ptr [7FFF82D96A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,21156010008
++       call      qword ptr [7FFF82DB6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L09
+        mov       rcx,[rbx+10]
         mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F6E70
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
+        test      rcx,rcx
         je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE389F6E70
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
-        cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A0DE48]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItems method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
-        push      rbx
-        sub       rsp,20
-        mov       rbx,rcx
-        mov       rdx,[rbx+180]
-        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
-        add       rsp,20
-        pop       rbx
--       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D260]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
- ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
  M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07FB0
-+       mov       rdx,7FFE38A06EE8
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,1DAF51FB6E8
-+       mov       rcx,1948C3DB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1DAF51F0008
--       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,1948C3D0008
-+       call      qword ptr [7FFE38A1D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828771F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
         jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07FD8
-+       mov       rdx,7FFE38A06F10
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79260
++       mov       rdx,7FFF82D99260
         call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07FD8
-+       mov       rdx,7FFE38A06F10
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
         mov       rcx,rax
-        call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F398],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E4D8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
-```
-**Diff for ImmutableArrayHasItems method between:**
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
-```diff
-nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07FB0
-+       mov       rdx,7FFE38A07448
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,1DAF51FB6E8
-+       mov       rcx,24177ACB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1DAF51F0008
-+       mov       r9,24177AC0008
-        call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07FD8
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        lea       rcx,[rbp-18]
-        mov       rdx,[rbp-38]
--       call      qword ptr [7FFE383D6A18]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-+       call      qword ptr [7FFE383D6FA0]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].get_IsEmpty()
-        mov       [rbp-3C],eax
-        mov       eax,[rbp-3C]
-        movzx     eax,al
-        mov       [rbp-0C],eax
-        cmp       dword ptr [rbp-0C],0
-        je        short M01_L05
-        nop
-        xor       eax,eax
-        mov       [rbp-1C],eax
-        nop
-        jmp       short M01_L08
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        mov       rcx,rsi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L07
+        mov       [rsi+10],r11d
+        jb        short M01_L03
         jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A07FD8
-+       mov       rdx,7FFE38A07470
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79288
++       mov       rdx,7FFF82D99288
         call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-48]
-        call      CORINFO_HELP_BOX
         mov       rcx,rax
-        call      qword ptr [7FFE384EE088]; DotNetTips.Spargine.Extensions.EnumerableExtensions.Count(System.Collections.IEnumerable)
-        mov       [rbp-4C],eax
-        xor       eax,eax
-        cmp       dword ptr [rbp-4C],0
-        setg      al
-        mov       [rbp-1C],eax
-        nop
- M01_L08:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
-        push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
--       cmp       dword ptr [7FFE3838F398],0
-+       cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
--       call      qword ptr [7FFE383D4588]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-+       call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
-        call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
-        ret
- ; Total bytes of code 77
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF823A0D08
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
 ```
 **Diff for ImmutableArrayHasItems method between:**
 .NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
@@ -9331,126 +5059,2926 @@ nop
         mov       rbx,rcx
         mov       rdx,[rbx+180]
         mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
--       call      qword ptr [7FFE38A1D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-+       call      qword ptr [7FFE38A1D3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        mov       edx,eax
-        mov       rcx,rbx
+-       call      qword ptr [7FFF82D96A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82DA6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
         add       rsp,20
         pop       rbx
--       jmp       qword ptr [7FFE38A1D260]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-+       jmp       qword ptr [7FFE38A1D410]; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
- ; Total bytes of code 47
+        ret
+ ; Total bytes of code 44
  ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
-        push      rbp
-        sub       rsp,80
-        lea       rbp,[rsp+80]
-        vxorps    xmm4,xmm4,xmm4
-        vmovdqa   xmmword ptr [rbp-30],xmm4
-        vmovdqa   xmmword ptr [rbp-20],xmm4
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp-8],rcx
-        mov       [rbp+10],rcx
-        mov       [rbp+18],rdx
-        cmp       dword ptr [7FFE38513688],0
-        je        short M01_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
-        nop
-        xor       ecx,ecx
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+10],0
-        je        short M01_L01
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+10]
-        mov       [rbp-28],rcx
-        jmp       short M01_L02
- M01_L01:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A06EE8
-+       mov       rdx,7FFE38A07448
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-28],rax
- M01_L02:
--       mov       rcx,1948C3DB6E8
-+       mov       rcx,24177ACB6E8
-        mov       [rsp+20],rcx
-        mov       rcx,[rbp-28]
-        mov       rdx,[rbp+18]
-        mov       r8,[rbp-18]
--       mov       r9,1948C3D0008
--       call      qword ptr [7FFE38A1D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-+       mov       r9,24177AC0008
-+       call      qword ptr [7FFE38A1D428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
-        mov       [rbp-30],rax
-        mov       rcx,[rbp-30]
-        mov       [rbp-18],rcx
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L03
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        mov       rcx,[rcx+18]
-        mov       [rbp-38],rcx
-        jmp       short M01_L04
- M01_L03:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A06F10
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-38],rax
- M01_L04:
-        nop
-        mov       rcx,[rbp+10]
-        mov       rcx,[rcx+10]
-        cmp       qword ptr [rcx+18],0
-        je        short M01_L06
-        mov       rdx,[rbp+10]
-        mov       rdx,[rdx+10]
-        mov       rdx,[rdx+18]
-        mov       [rbp-48],rdx
-        jmp       short M01_L07
- M01_L06:
-        mov       rcx,[rbp+10]
--       mov       rdx,7FFE38A06F10
-+       mov       rdx,7FFE38A07470
-        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-        mov       [rbp-48],rax
- M01_L07:
-        mov       eax,[rbp-1C]
-        add       rsp,80
-        pop       rbp
-        ret
- ; Total bytes of code 384
- ; DotNetTips.Spargine.Benchmarking.Benchmark.Consume[[System.Boolean, System.Private.CoreLib]](Boolean)
-        push      rbp
         push      rdi
-        sub       rsp,28
-        lea       rbp,[rsp+30]
-        xor       eax,eax
-        mov       [rbp-10],rax
-        mov       [rbp+10],rcx
-        mov       [rbp+18],edx
-        cmp       dword ptr [7FFE3839F390],0
-        je        short M02_L00
-        call      CORINFO_HELP_DBG_IS_JUST_MY_CODE
- M02_L00:
-        mov       rcx,[rbp+10]
-        call      qword ptr [7FFE383D4B10]; DotNetTips.Spargine.Benchmarking.Benchmark.get_Consumer()
-        mov       [rbp-10],rax
-        lea       rdx,[rbp+18]
-        mov       rcx,[rbp-10]
-        cmp       [rcx],ecx
--       call      qword ptr [7FFE38A1E4D8]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-+       call      qword ptr [7FFE38A1E688]; BenchmarkDotNet.Engines.Consumer.Consume[[System.Boolean, System.Private.CoreLib]](Boolean ByRef)
-        nop
-        nop
-        add       rsp,28
-        pop       rdi
-        pop       rbp
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,38
+        mov       [rsp+30],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2414B93B6E8
++       mov       rdx,2C1257BB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,2414B930008
+-       call      qword ptr [7FFF82D96A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,2C1257B0008
++       call      qword ptr [7FFF82DA6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L09
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+        je        short M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79260
++       mov       rdx,7FFF82D89260
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        mov       rcx,rsi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L07
+        mov       [rsi+10],r11d
+        jb        short M01_L03
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79288
++       mov       rdx,7FFF82D89288
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF82390D08
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82D96A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82E87948]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
         ret
- ; Total bytes of code 77
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,38
+        mov       [rsp+30],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2414B93B6E8
++       mov       rdx,237E3BFB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,2414B930008
+-       call      qword ptr [7FFF82D96A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,237E3BF0008
++       call      qword ptr [7FFF82E87990]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L09
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+        je        short M01_L05
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+        call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79260
++       mov       rdx,7FFF82E77500
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        mov       rcx,rsi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L07
+        mov       [rsi+10],r11d
+        jb        short M01_L03
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79288
++       mov       rdx,7FFF82E77528
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF82380DC8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82D96A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EDD3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2414B93B6E8
++       mov       rdx,27AF2B4B6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,2414B930008
+-       call      qword ptr [7FFF82D96A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,27AF2B40008
++       call      qword ptr [7FFF82EDD428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828971F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79260
++       mov       rdx,7FFF82EE4A70
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79288
++       mov       rdx,7FFF82EE4A98
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF823C12F8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8273EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82D96A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82E9D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2414B93B6E8
++       mov       rdx,239BC0AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,2414B930008
+-       call      qword ptr [7FFF82D96A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,239BC0A0008
++       call      qword ptr [7FFF82E9D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79260
++       mov       rdx,7FFF82EB4858
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79288
++       mov       rdx,7FFF82EB4880
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF82391338
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82D96A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EBCD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2414B93B6E8
++       mov       rdx,1F1184AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,2414B930008
+-       call      qword ptr [7FFF82D96A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,1F1184A0008
++       call      qword ptr [7FFF82EBCD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828871F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79260
++       mov       rdx,7FFF82ED4D60
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D79288
++       mov       rdx,7FFF82ED4D88
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380D08
++       mov       r11,7FFF823B12D8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82DB6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82DA6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,38
+        mov       [rsp+30],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2115601B6E8
++       mov       rdx,2C1257BB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,21156010008
+-       call      qword ptr [7FFF82DB6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,2C1257B0008
++       call      qword ptr [7FFF82DA6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L09
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+        je        short M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828771F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D99260
++       mov       rdx,7FFF82D89260
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        mov       rcx,rsi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L07
+        mov       [rsi+10],r11d
+        jb        short M01_L03
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D99288
++       mov       rdx,7FFF82D89288
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF823A0D08
++       mov       r11,7FFF82390D08
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82DB6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82E87948]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,38
+        mov       [rsp+30],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2115601B6E8
++       mov       rdx,237E3BFB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,21156010008
+-       call      qword ptr [7FFF82DB6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,237E3BF0008
++       call      qword ptr [7FFF82E87990]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L09
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+        je        short M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828771F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D99260
++       mov       rdx,7FFF82E77500
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        mov       rcx,rsi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L07
+        mov       [rsi+10],r11d
+        jb        short M01_L03
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D99288
++       mov       rdx,7FFF82E77528
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF823A0D08
++       mov       r11,7FFF82380DC8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82DB6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EDD3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2115601B6E8
++       mov       rdx,27AF2B4B6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,21156010008
+-       call      qword ptr [7FFF82DB6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,27AF2B40008
++       call      qword ptr [7FFF82EDD428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828771F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828971F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D99260
++       mov       rdx,7FFF82EE4A70
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D99288
++       mov       rdx,7FFF82EE4A98
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF823A0D08
++       mov       r11,7FFF823C12F8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8273EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82DB6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82E9D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2115601B6E8
++       mov       rdx,239BC0AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,21156010008
+-       call      qword ptr [7FFF82DB6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,239BC0A0008
++       call      qword ptr [7FFF82E9D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828771F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D99260
++       mov       rdx,7FFF82EB4858
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D99288
++       mov       rdx,7FFF82EB4880
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF823A0D08
++       mov       r11,7FFF82391338
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82DB6A30]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EBCD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2115601B6E8
++       mov       rdx,1F1184AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,21156010008
+-       call      qword ptr [7FFF82DB6A78]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,1F1184A0008
++       call      qword ptr [7FFF82EBCD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828771F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828871F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D99260
++       mov       rdx,7FFF82ED4D60
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D99288
++       mov       rdx,7FFF82ED4D88
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF823A0D08
++       mov       r11,7FFF823B12D8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82DA6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82E87948]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,38
+        mov       [rsp+30],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2C1257BB6E8
++       mov       rdx,237E3BFB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,2C1257B0008
+-       call      qword ptr [7FFF82DA6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,237E3BF0008
++       call      qword ptr [7FFF82E87990]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L09
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+        je        short M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D89260
++       mov       rdx,7FFF82E77500
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        mov       rcx,rsi
+        mov       r11d,[rcx+10]
+        inc       r11d
+        mov       rcx,[rcx+8]
+        mov       ecx,[rcx+8]
+        cmp       r11d,ecx
+        ja        short M01_L07
+        mov       [rsi+10],r11d
+        jb        short M01_L03
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D89288
++       mov       rdx,7FFF82E77528
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82390D08
++       mov       r11,7FFF82380DC8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82DA6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EDD3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2C1257BB6E8
++       mov       rdx,27AF2B4B6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,2C1257B0008
+-       call      qword ptr [7FFF82DA6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,27AF2B40008
++       call      qword ptr [7FFF82EDD428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828971F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D89260
++       mov       rdx,7FFF82EE4A70
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D89288
++       mov       rdx,7FFF82EE4A98
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82390D08
++       mov       r11,7FFF823C12F8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8273EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82DA6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82E9D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2C1257BB6E8
++       mov       rdx,239BC0AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,2C1257B0008
+-       call      qword ptr [7FFF82DA6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,239BC0A0008
++       call      qword ptr [7FFF82E9D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+        call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D89260
++       mov       rdx,7FFF82EB4858
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D89288
++       mov       rdx,7FFF82EB4880
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82390D08
++       mov       r11,7FFF82391338
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82DA6C88]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EBCD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,2C1257BB6E8
++       mov       rdx,1F1184AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,2C1257B0008
+-       call      qword ptr [7FFF82DA6CD0]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,1F1184A0008
++       call      qword ptr [7FFF82EBCD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828871F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D89260
++       mov       rdx,7FFF82ED4D60
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82D89288
++       mov       rdx,7FFF82ED4D88
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82390D08
++       mov       r11,7FFF823B12D8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82E87948]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EDD3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,237E3BFB6E8
++       mov       rdx,27AF2B4B6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,237E3BF0008
+-       call      qword ptr [7FFF82E87990]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,27AF2B40008
++       call      qword ptr [7FFF82EDD428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828971F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82E77500
++       mov       rdx,7FFF82EE4A70
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82E77528
++       mov       rdx,7FFF82EE4A98
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380DC8
++       mov       r11,7FFF823C12F8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8273EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82E87948]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82E9D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,237E3BFB6E8
++       mov       rdx,239BC0AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,237E3BF0008
+-       call      qword ptr [7FFF82E87990]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,239BC0A0008
++       call      qword ptr [7FFF82E9D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82E77500
++       mov       rdx,7FFF82EB4858
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82E77528
++       mov       rdx,7FFF82EB4880
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380DC8
++       mov       r11,7FFF82391338
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8270EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82E87948]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EBCD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       push      r15
++       push      r14
++       push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+-       sub       rsp,38
+-       mov       [rsp+30],rcx
++       sub       rsp,30
++       mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,237E3BFB6E8
++       mov       rdx,1F1184AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,237E3BF0008
+-       call      qword ptr [7FFF82E87990]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,1F1184A0008
++       call      qword ptr [7FFF82EBCD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+-       je        near ptr M01_L09
++       je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+-       je        short M01_L05
++       je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828571F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828871F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+-       mov       rbp,offset MT_System.Collections.Immutable.ImmutableArray`1+EnumeratorObject[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
++       mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82E77500
++       mov       rdx,7FFF82ED4D60
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+ M01_L03:
+        add       ebx,1
+-       jo        short M01_L08
++       jo        near ptr M01_L11
+ M01_L04:
+        cmp       rdi,rbp
+        jne       short M01_L06
+-       mov       rcx,rsi
+-       mov       r11d,[rcx+10]
+-       inc       r11d
+-       mov       rcx,[rcx+8]
+-       mov       ecx,[rcx+8]
+-       cmp       r11d,ecx
+-       ja        short M01_L07
+-       mov       [rsi+10],r11d
+-       jb        short M01_L03
++       lea       r14,[rsi+8]
++       mov       r15,[r14]
++       mov       ecx,[r14+14]
++       cmp       ecx,[r15+14]
++       jne       near ptr M01_L10
++       mov       r13d,[r14+10]
++       cmp       r13d,[r15+10]
++       jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82E77528
++       mov       rdx,7FFF82ED4D88
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82380DC8
++       mov       r11,7FFF823B12D8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
++       jmp       short M01_L08
+ M01_L07:
++       lea       rcx,[r14+8]
++       mov       rdx,[r15+8]
++       cmp       r13d,[rdx+8]
++       jae       short M01_L13
++       mov       eax,r13d
++       mov       rdx,[rdx+rax*8+10]
++       call      CORINFO_HELP_CHECKED_ASSIGN_REF
++       inc       dword ptr [r14+10]
++       jmp       short M01_L03
++M01_L08:
+        mov       eax,ebx
+        test      eax,eax
+        setg      al
+        movzx     eax,al
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-M01_L08:
+-       call      CORINFO_HELP_OVERFLOW
+ M01_L09:
++       mov       rcx,[r14]
++       mov       ecx,[rcx+10]
++       inc       ecx
++       mov       [r14+10],ecx
++       xor       ecx,ecx
++       mov       [r14+8],rcx
++       jmp       short M01_L08
++M01_L10:
++       call      qword ptr [7FFF8272EFB8]
++       int       3
++M01_L11:
++       call      CORINFO_HELP_OVERFLOW
++M01_L12:
+        xor       eax,eax
+-       add       rsp,38
++       add       rsp,30
+        pop       rbx
+        pop       rbp
+        pop       rsi
+        pop       rdi
++       pop       r13
++       pop       r14
++       pop       r15
+        ret
+-; Total bytes of code 295
++M01_L13:
++       call      CORINFO_HELP_RNGCHKFAIL
++       int       3
++; Total bytes of code 392
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82EDD3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82E9D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      r15
+        push      r14
+        push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,30
+        mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,27AF2B4B6E8
++       mov       rdx,239BC0AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,27AF2B40008
+-       call      qword ptr [7FFF82EDD428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,239BC0A0008
++       call      qword ptr [7FFF82E9D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+        je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828971F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82EE4A70
++       mov       rdx,7FFF82EB4858
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        lea       r14,[rsi+8]
+        mov       r15,[r14]
+        mov       ecx,[r14+14]
+        cmp       ecx,[r15+14]
+        jne       near ptr M01_L10
+        mov       r13d,[r14+10]
+        cmp       r13d,[r15+10]
+        jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82EE4A98
++       mov       rdx,7FFF82EB4880
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF823C12F8
++       mov       r11,7FFF82391338
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
+        jmp       short M01_L08
+        mov       rcx,[r14]
+        mov       ecx,[rcx+10]
+        inc       ecx
+        mov       [r14+10],ecx
+        xor       ecx,ecx
+        mov       [r14+8],rcx
+        jmp       short M01_L08
+ M01_L10:
+-       call      qword ptr [7FFF8273EFB8]
++       call      qword ptr [7FFF8270EFB8]
+        int       3
+ M01_L11:
+        call      CORINFO_HELP_OVERFLOW
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82EDD3E0]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EBCD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      r15
+        push      r14
+        push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,30
+        mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,27AF2B4B6E8
++       mov       rdx,1F1184AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,27AF2B40008
+-       call      qword ptr [7FFF82EDD428]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,1F1184A0008
++       call      qword ptr [7FFF82EBCD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+        je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828971F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828871F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82EE4A70
++       mov       rdx,7FFF82ED4D60
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        lea       r14,[rsi+8]
+        mov       r15,[r14]
+        mov       ecx,[r14+14]
+        cmp       ecx,[r15+14]
+        jne       near ptr M01_L10
+        mov       r13d,[r14+10]
+        cmp       r13d,[r15+10]
+        jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82EE4A98
++       mov       rdx,7FFF82ED4D88
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF823C12F8
++       mov       r11,7FFF823B12D8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
+        jmp       short M01_L08
+        mov       rcx,[r14]
+        mov       ecx,[rcx+10]
+        inc       ecx
+        mov       [r14+10],ecx
+        xor       ecx,ecx
+        mov       [r14+8],rcx
+        jmp       short M01_L08
+ M01_L10:
+-       call      qword ptr [7FFF8273EFB8]
++       call      qword ptr [7FFF8272EFB8]
+        int       3
+ M01_L11:
+        call      CORINFO_HELP_OVERFLOW
+```
+**Diff for ImmutableArrayHasItems method between:**
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+.NET 8.0.2 (8.0.224.6711), X64 RyuJIT AVX2
+```diff
+; DotNetTips.Spargine.Extensions.BenchmarkTests.ImmutableArrayExtensionsBenchmark.ImmutableArrayHasItems()
+        push      rbx
+        sub       rsp,20
+        mov       rbx,rcx
+        mov       rdx,[rbx+180]
+        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Immutable.ImmutableArray`1<DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+-       call      qword ptr [7FFF82E9D230]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
++       call      qword ptr [7FFF82EBCD50]; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        mov       rcx,[rbx+18]
+        mov       [rcx+4C],al
+        add       rsp,20
+        pop       rbx
+        ret
+ ; Total bytes of code 44
+ ; DotNetTips.Spargine.Extensions.ImmutableArrayExtensions.HasItems[[System.__Canon, System.Private.CoreLib]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>)
+        push      r15
+        push      r14
+        push      r13
+        push      rdi
+        push      rsi
+        push      rbp
+        push      rbx
+        sub       rsp,30
+        mov       [rsp+28],rcx
+        mov       rbx,rcx
+        mov       rsi,rdx
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+10]
+        test      rcx,rcx
+        je        short M01_L02
+ M01_L00:
+-       mov       rdx,239BC0AB6E8
++       mov       rdx,1F1184AB6E8
+        mov       [rsp+20],rdx
+        mov       rdx,rsi
+        xor       r8d,r8d
+-       mov       r9,239BC0A0008
+-       call      qword ptr [7FFF82E9D278]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
++       mov       r9,1F1184A0008
++       call      qword ptr [7FFF82EBCD98]; DotNetTips.Spargine.Core.Validator.ArgumentNotNull[[System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]], System.Collections.Immutable]](System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.Collections.Immutable.ImmutableArray`1<System.__Canon>, System.String, System.String)
+        cmp       dword ptr [rax+8],0
+        je        near ptr M01_L12
+        mov       rcx,[rbx+10]
+        mov       rcx,[rcx+18]
+        test      rcx,rcx
+        je        near ptr M01_L05
+ M01_L01:
+        call      CORINFO_HELP_NEWSFAST
+        mov       rbx,rax
+        lea       rcx,[rbx+8]
+        mov       rdx,rsi
+        call      CORINFO_HELP_ASSIGN_REF
+        mov       rcx,rbx
+        xor       ebx,ebx
+        mov       rdx,[rcx]
+        add       rcx,8
+-       call      qword ptr [7FFF828671F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
++       call      qword ptr [7FFF828871F8]; System.Collections.Immutable.ImmutableArray`1[[System.__Canon, System.Private.CoreLib]].System.Collections.IEnumerable.GetEnumerator()
+        mov       rsi,rax
+        mov       rdi,[rsi]
+        mov       rbp,offset MT_System.Collections.Generic.List`1+Enumerator[[System.String, System.Private.CoreLib]]
+        jmp       short M01_L04
+ M01_L02:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82EB4858
++       mov       rdx,7FFF82ED4D60
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L00
+        cmp       rdi,rbp
+        jne       short M01_L06
+        lea       r14,[rsi+8]
+        mov       r15,[r14]
+        mov       ecx,[r14+14]
+        cmp       ecx,[r15+14]
+        jne       near ptr M01_L10
+        mov       r13d,[r14+10]
+        cmp       r13d,[r15+10]
+        jae       short M01_L09
+        jmp       short M01_L07
+ M01_L05:
+        mov       rcx,rbx
+-       mov       rdx,7FFF82EB4880
++       mov       rdx,7FFF82ED4D88
+        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+        mov       rcx,rax
+        jmp       near ptr M01_L01
+ M01_L06:
+        mov       rcx,rsi
+-       mov       r11,7FFF82391338
++       mov       r11,7FFF823B12D8
+        call      qword ptr [r11]
+        test      eax,eax
+        jne       short M01_L03
+        jmp       short M01_L08
+        mov       rcx,[r14]
+        mov       ecx,[rcx+10]
+        inc       ecx
+        mov       [r14+10],ecx
+        xor       ecx,ecx
+        mov       [r14+8],rcx
+        jmp       short M01_L08
+ M01_L10:
+-       call      qword ptr [7FFF8270EFB8]
++       call      qword ptr [7FFF8272EFB8]
+        int       3
+ M01_L11:
+        call      CORINFO_HELP_OVERFLOW
 ```
