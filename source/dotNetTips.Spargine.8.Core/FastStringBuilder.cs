@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-05-2024
+// Last Modified On : 04-18-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -95,8 +95,9 @@ public static class FastStringBuilder
 
 		try
 		{
-			foreach (var argItem in args)
+			for (var index = 0; index < args.Length; index++)
 			{
+				var argItem = args[index];
 				_ = addLineFeed ? sb.AppendLine(argItem) : sb.Append(argItem);
 			}
 

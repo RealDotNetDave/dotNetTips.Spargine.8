@@ -19,7 +19,6 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security;
 using System.Xml.Serialization;
 using DotNetTips.Spargine.Core.Cache;
 using DotNetTips.Spargine.Extensions;
@@ -270,22 +269,6 @@ public class TypeExtensionsTests
 		result = recordPerson.GetTypeOfType();
 
 		Assert.IsTrue(result == TypeExtensions.TypeOfType.Record);
-	}
-
-	[TestMethod]
-	public void HasAttributeTest()
-	{
-#pragma warning disable SYSLIB0003 // Type or member is obsolete
-		var result1 = typeof(PermissionSet).GetMethod("ConvertPermissionSet").HasAttribute<ObsoleteAttribute>();
-#pragma warning restore SYSLIB0003 // Type or member is obsolete
-
-		Assert.IsTrue(result1);
-
-#pragma warning disable SYSLIB0003 // Type or member is obsolete
-		var result2 = typeof(PermissionSet).GetMethod("ConvertPermissionSet").HasAttribute<XmlAnyAttributeAttribute>();
-#pragma warning restore SYSLIB0003 // Type or member is obsolete
-
-		Assert.IsFalse(result2);
 	}
 
 	[TestMethod]

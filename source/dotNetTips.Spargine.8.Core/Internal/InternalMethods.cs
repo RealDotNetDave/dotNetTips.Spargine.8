@@ -4,7 +4,7 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 04-18-2024
 // ***********************************************************************
 // <copyright file="InternalMethods.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -152,8 +152,9 @@ internal static class InternalMethods
 			newMemberName = $"{memberName}{ControlChars.Dot}";
 		}
 
-		foreach (var property in propertyCollection)
+		for (var index = 0; index < propertyCollection.Length; index++)
 		{
+			var property = propertyCollection[index];
 			var innerObject = property.GetValue(obj, null);
 
 			if (ignoreNulls && innerObject is null)

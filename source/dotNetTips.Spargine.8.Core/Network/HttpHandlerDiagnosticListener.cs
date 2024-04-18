@@ -4,7 +4,7 @@
 // Created          : 07-11-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 04-18-2024
 // ***********************************************************************
 // <copyright file="HttpHandlerDiagnosticListener.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -97,13 +97,13 @@ public sealed class HttpHandlerDiagnosticListener(ILogger logger) : IObserver<Ke
 		value = value.ArgumentNotNull();
 
 		// note: Legacy applications can use "System.Net.Http.HttpRequest" and "System.Net.Http.Response"
-		if (value.Key == "System.Net.Http.HttpRequestOut.Start")
+		if (string.Equals(value.Key, "System.Net.Http.HttpRequestOut.Start", StringComparison.OrdinalIgnoreCase))
 		{
 			// The type is private, so we need to use reflection to access it.
 			var request = _requestAccessor(value.Value);
 			this.LogMessage($"HTTP Diagnostic: {request.Method} {request.RequestUri} {request.Version} UserAgent: {request.Headers.UserAgent}");
 		}
-		else if (value.Key == "System.Net.Http.HttpRequestOut.Stop")
+		else if (value.Key.Equals("System.Net.Http.HttpRequestOut.Stop", StringComparison.OrdinalIgnoreCase))
 		{
 			// The type is private, so we need to use reflection to access it.
 			var response = _responseAccessor(value.Value);

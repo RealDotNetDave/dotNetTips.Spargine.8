@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-31-2024
+// Last Modified On : 04-18-2024
 // ***********************************************************************
 // <copyright file="EnumExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -52,8 +52,9 @@ public static class EnumExtensions
 	{
 		var items = new List<(string Description, int Value)>();
 
-		foreach (var name in Enum.GetNames(input.GetType()))
+		for (var namesIndex = 0; namesIndex < Enum.GetNames(input.GetType()).Length; namesIndex++)
 		{
+			var name = Enum.GetNames(input.GetType())[namesIndex];
 			items.Add((Description: name, Value: (int)Enum.Parse(input.GetType(), name)));
 		}
 

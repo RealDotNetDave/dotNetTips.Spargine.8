@@ -4,7 +4,7 @@
 // Created          : 01-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-24-2023
+// Last Modified On : 04-18-2024
 // ***********************************************************************
 // <copyright file="AssemblyExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -42,8 +42,11 @@ public static class AssemblyExtensions
 
 		var interfaces = new List<Type>();
 
-		foreach (var type in assembly.GetTypes())
+		var array = assembly.GetTypes();
+
+		for (var typeIndex = 0; typeIndex < array.Length; typeIndex++)
 		{
+			var type = array[typeIndex];
 			interfaces.AddRange(type.GetInterfaces());
 		}
 

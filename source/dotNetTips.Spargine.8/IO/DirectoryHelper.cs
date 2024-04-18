@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 04-18-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -362,9 +362,9 @@ public static class DirectoryHelper
 
 		var directories = path.GetDirectories(searchPattern, options);
 
-		foreach (var directory in directories)
+		for (var directoryIndex = 0; directoryIndex < directories.Length; directoryIndex++)
 		{
-			yield return directory;
+			yield return directories[directoryIndex];
 		}
 	}
 
@@ -422,8 +422,9 @@ public static class DirectoryHelper
 
 				if (directoryFiles.HasItems())
 				{
-					foreach (var file in directoryFiles)
+					for (var fileIndex = 0; fileIndex < directoryFiles.Length; fileIndex++)
 					{
+						var file = directoryFiles[fileIndex];
 						yield return file;
 					}
 				}

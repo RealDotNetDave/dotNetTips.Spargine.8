@@ -65,7 +65,7 @@ public sealed class HttpEventListenerAsyncLocal(ILogger logger) : EventListener
 	{
 		eventSource = eventSource.ArgumentNotNull();
 
-		if (eventSource.Name == "System.Net.Http")
+		if (string.Equals(eventSource.Name, "System.Net.Http", StringComparison.Ordinal))
 		{
 			this.EnableEvents(eventSource, EventLevel.Informational, EventKeywords.All);
 		}

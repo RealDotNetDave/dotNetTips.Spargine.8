@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-06-2024
+// Last Modified On : 04-18-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -56,14 +56,15 @@ public static class TypeHelper
 		var builtinTypes = new List<Type>();
 
 		// Loop through each assembly
-		foreach (var assembly in assemblies)
+		for (var assemplyIndex = 0; assemplyIndex < assemblies.Length; assemplyIndex++)
 		{
 			// Get the types defined in the assembly
-			var types = assembly.GetTypes();
+			var types = assemblies[assemplyIndex].GetTypes();
 
 			// Loop through each type
-			foreach (var type in types)
+			for (var typesIndex = 0; typesIndex < types.Length; typesIndex++)
 			{
+				var type = types[typesIndex];
 				// Check if the type is a built-in type
 				if (IsBuiltinType(type))
 				{
