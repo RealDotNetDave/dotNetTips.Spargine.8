@@ -117,7 +117,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="MSTest.TestFramework" Version="3.2.1" />
+		<PackageReference Include="MSTest.TestFramework" Version="3.3.1" />
 		<PackageReference Include="System.Text.Json" Version="8.0.3" />
 	</ItemGroup>
 

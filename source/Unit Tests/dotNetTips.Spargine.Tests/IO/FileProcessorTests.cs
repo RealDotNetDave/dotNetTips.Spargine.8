@@ -30,10 +30,7 @@ public class FileProcessorTests
 {
 
 #nullable enable
-	private void Processor_Processed(object? sender, FileProgressEventArgs e)
-	{
-		Trace.WriteLine(e.Message);
-	}
+	private void Processor_Processed(object? sender, FileProgressEventArgs e) => Trace.WriteLine(e.Message);
 
 #nullable disable
 

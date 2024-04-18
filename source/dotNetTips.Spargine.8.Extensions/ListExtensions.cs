@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-06-2024
+// Last Modified On : 04-12-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -173,7 +173,7 @@ public static class ListExtensions
 			return false;
 		}
 
-		return collection.LongCount() > 0;
+		return collection.Count > 0;
 	}
 	/// <summary>
 	/// Determines whether the specified <see cref="List{T}" /> has items based on the Predicate.
@@ -211,7 +211,7 @@ public static class ListExtensions
 		}
 		else
 		{
-			return collection.LongCount() == count;
+			return collection.Count == count;
 		}
 	}
 

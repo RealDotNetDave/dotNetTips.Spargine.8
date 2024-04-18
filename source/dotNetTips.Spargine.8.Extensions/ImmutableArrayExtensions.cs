@@ -4,7 +4,7 @@
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-02-2024
+// Last Modified On : 04-12-2024
 // ***********************************************************************
 // <copyright file="ImmutableArrayExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -44,7 +44,7 @@ public static class ImmutableArrayExtensions
 		}
 		else
 		{
-			return collection.Count() > 0;
+			return collection.Length > 0;
 		}
 	}
 
@@ -86,7 +86,7 @@ public static class ImmutableArrayExtensions
 		}
 		else
 		{
-			return list.Count() == count;
+			return list.Length == count;
 		}
 	}
 	/// <summary>

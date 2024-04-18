@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-16-2022
+// Last Modified On : 04-12-2024
 // ***********************************************************************
 // <copyright file="ObservableCollectionExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)

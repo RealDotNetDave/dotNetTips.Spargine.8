@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-06-2024
+// Last Modified On : 04-12-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -319,7 +319,7 @@ public static class ArrayExtensions
 		}
 		else
 		{
-			return array.Count() > 0;
+			return array.Length > 0;
 		}
 	}
 	/// <summary>
@@ -359,7 +359,7 @@ public static class ArrayExtensions
 		}
 		else
 		{
-			return array.Count() == count;
+			return array.Length == count;
 		}
 	}
 	/// <summary>

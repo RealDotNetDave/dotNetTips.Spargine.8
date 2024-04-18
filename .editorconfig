@@ -628,7 +628,7 @@ dotnet_diagnostic.CA1820.severity = warning
 dotnet_diagnostic.CA1821.severity = error
 
 # Mark members as static
-dotnet_diagnostic.CA1822.severity = warning
+dotnet_diagnostic.CA1822.severity = suggestion
 
 # Avoid unused private fields
 dotnet_diagnostic.CA1823.severity = error
@@ -1646,7 +1646,7 @@ dotnet_diagnostic.IDE0010.severity = warning
 dotnet_diagnostic.IDE0017.severity = suggestion
 
 # Inline variable declaration
-dotnet_diagnostic.IDE0018.severity = warning
+dotnet_diagnostic.IDE0018.severity = suggestion
 
 # Use collection initializers
 dotnet_diagnostic.IDE0028.severity = suggestion
@@ -1858,7 +1858,7 @@ dotnet_sort_system_directives_first = true
 dotnet_diagnostic.IDE1006.severity = silent
 
 # Use collection expression for empty 
-dotnet_diagnostic.IDE0301.severity = silent
+dotnet_diagnostic.IDE0301.severity = warning
 
 dotnet_naming_rule.public_members_must_be_capitalized.severity = warning
 dotnet_naming_rule.public_members_must_be_capitalized.style = camel_case

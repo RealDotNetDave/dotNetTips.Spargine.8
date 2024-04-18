@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-06-2024
+// Last Modified On : 04-12-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -294,6 +294,38 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(FastCount), "David McCarter", "5/21/2022", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static long FastCount<T>([NotNull] this IEnumerable<T> collection) => collection.ArgumentNotNull().Count();
+
+	/// <summary>
+	/// Counts items in the <see cref="IList{T}" />.
+	/// Validates that <paramref name="collection" /> is not null.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="collection">The collection.</param>
+	/// <returns>long.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(FastCount), "David McCarter", "4/12/2022", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New)]
+	public static long FastCount<T>([NotNull] this IList<T> collection) => collection.ArgumentNotNull().Count;
+
+	/// <summary>
+	/// Counts items in the <see cref="IQueryable{T}" />.
+	/// Validates that <paramref name="collection" /> is not null.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="collection">The collection.</param>
+	/// <returns>long.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(FastCount), "David McCarter", "4/12/2022", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New)]
+	public static long FastCount<T>([NotNull] this IQueryable<T> collection)
+	{
+		if (collection.ArgumentNotNull().TryGetNonEnumeratedCount(out var count))
+		{
+			return count;
+		}
+		else
+		{
+			return 0;
+		}
+	}
 
 	/// <summary>
 	/// Counts items in the <see cref="IEnumerable{T}" />.
