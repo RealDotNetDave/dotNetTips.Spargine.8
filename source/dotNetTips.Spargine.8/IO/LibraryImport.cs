@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="LibraryImport.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -41,15 +41,15 @@ internal static partial class LibraryImport
 	internal static partial bool CopyFileEx(string lpExistingFileName, string lpNewFileName, CopyProgressRoutine lpProgressRoutine, IntPtr lpData, ref int pbCancel, CopyFileMode dwCopyFlags);
 
 	/// <summary>
-	/// Moves the file ex.
+	/// Moves the file.
 	/// </summary>
 	/// <param name="lpExistingFileName">Name of the lp existing file.</param>
 	/// <param name="lpNewFileName">Name of the lp new file.</param>
 	/// <param name="dwFlags">The dw flags.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[LibraryImport("kernel32.dll", EntryPoint = "MoveFileEx", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
+	[LibraryImport("kernel32.dll", EntryPoint = "MoveFileExW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
 	[DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
 	[return: MarshalAs(UnmanagedType.Bool)]
-	internal static partial bool MoveFileEx(string lpExistingFileName, string lpNewFileName, int dwFlags);
+	internal static partial bool MoveFileExW(string lpExistingFileName, string lpNewFileName, int dwFlags);
 
 }

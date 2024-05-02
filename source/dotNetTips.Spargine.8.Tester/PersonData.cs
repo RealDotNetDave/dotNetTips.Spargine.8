@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-18-2023
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="PersonData.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -31,12 +31,12 @@ public sealed record PersonData
 {
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="PersonData"/> class.
+	/// Initializes a new instance of the <see cref="PersonData" /> class.
 	/// </summary>
 	public PersonData() { }
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="PersonData"/> class.
+	/// Initializes a new instance of the <see cref="PersonData" /> class.
 	/// </summary>
 	/// <param name="bornOn">The born on.</param>
 	/// <param name="cellPhone">The cell phone.</param>

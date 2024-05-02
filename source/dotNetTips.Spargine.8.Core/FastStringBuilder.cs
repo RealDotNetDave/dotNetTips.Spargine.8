@@ -37,12 +37,12 @@ public static class FastStringBuilder
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	/// <summary>
-	/// Converts bytes to string  using ObjectPool to improve performance.
+	/// Converts bytes to string using ObjectPool to improve performance.
 	/// </summary>
 	/// <param name="bytes">The bytes.</param>
 	/// <returns>System.String.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Updated, Documentation = "ADD URL")]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Updated, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string BytesToString([NotNull] byte[] bytes)
 	{
 		if (bytes == null)
@@ -131,7 +131,7 @@ public static class FastStringBuilder
 	/// <exception cref="ArgumentInvalidException">input cannot be null.</exception>
 	/// <remarks>Example output: <code>r^wQTNvT, HcETQ, COtc\\G[U, loUR_SbL, o_HYYskfM"</code></remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Updated, Documentation = "ADD URL")]
+	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Updated, Documentation = "https://bit.ly/SpargineStringConcatenation")]
 	public static string ConcatStrings(string delimiter = ",", bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (delimiter == null)

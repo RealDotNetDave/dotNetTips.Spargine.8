@@ -4,14 +4,12 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="AppInfo.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>
-// Class designed to provide common data for an application.
-// </summary>
+// <summary>Class designed to provide common data for an application.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;

@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2024
+// Last Modified On : 04-18-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelperTests.cs" company="dotNetTips.Spargine.Tests">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.

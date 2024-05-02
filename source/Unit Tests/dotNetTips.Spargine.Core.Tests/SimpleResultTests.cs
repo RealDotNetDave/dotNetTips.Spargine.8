@@ -45,7 +45,7 @@ public class SimpleResultTests
 
 		var result = SimpleResult.FromException<string>(ex);
 
-		Assert.IsFalse(result.Status == ResultStatus.Failed);
+		Assert.IsTrue(result.Status == ResultStatus.Failed);
 	}
 
 	[TestMethod]

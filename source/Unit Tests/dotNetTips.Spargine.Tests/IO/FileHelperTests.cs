@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="FileHelperTests.cs" company="dotNetTips.Spargine.Tests">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -162,4 +162,21 @@ public class FileHelperTests
 
 		_ = FileHelper.DeleteFiles(files.Files);
 	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void MoveFile_Test()
+	{
+		//Generate temp file
+		var files = RandomData.GenerateFiles(1, FileLength, $"{nameof(this.DeleteFiles_Full_Test)}.{DateTime.Now.Ticks}");
+
+		var file = new FileInfo(files.Files.First());
+		var destFile = new FileInfo(Path.Combine(App.ExecutingFolder(), file.Name));
+
+		//Move file
+		var result = FileHelper.MoveFile(file, destFile, FileMoveOptions.ReplaceExisting | FileMoveOptions.CopyAllowed, 10);
+
+		Assert.IsTrue(result);
+	}
+
 }

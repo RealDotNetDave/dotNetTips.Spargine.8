@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-18-2024
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -277,7 +277,7 @@ public static class TypeHelper
 	{
 		var path = Path.GetDirectoryName(AppContext.BaseDirectory);
 
-		return FindDerivedTypes(new DirectoryInfo(path), SearchOption.AllDirectories, baseType, classOnly);
+		return FindDerivedTypes(new DirectoryInfo(path), SearchOption.TopDirectoryOnly, baseType, classOnly);
 	}
 
 	/// <summary>
@@ -369,6 +369,10 @@ public static class TypeHelper
 			catch (FileLoadException fileLoadEx)
 			{
 				Trace.WriteLine(fileLoadEx.GetAllMessages());
+			}
+			catch (FileNotFoundException fileNotFoundEx)
+			{
+				Trace.WriteLine(fileNotFoundEx.GetAllMessages());
 			}
 		}
 
@@ -536,7 +540,7 @@ public static class TypeHelper
 	/// </summary>
 	/// <param name="type">The type.</param>
 	/// <returns><c>true</c> if [is built-in type] [the specified type]; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsBuiltinType), author: "David McCarter", createdOn: "11/6/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsBuiltinType), author: "David McCarter", createdOn: "11/6/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsBuiltinType(Type type)
 	{
 		if (type is null)
@@ -604,7 +608,7 @@ public static class TypeHelper
 	/// Gets all of the builtin types for .NET.
 	/// </summary>
 	/// <value>The builtin types.</value>
-	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static ReadOnlyCollection<Type> BuiltinTypes
 	{
 		get

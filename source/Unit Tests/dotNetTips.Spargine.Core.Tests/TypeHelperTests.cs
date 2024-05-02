@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2024
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="TypeHelperTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -91,7 +91,7 @@ public class TypeHelperTests : TestClass
 	[TestMethod]
 	public void FindDerivedTypes01()
 	{
-		var result = TypeHelper.FindDerivedTypes(typeof(object), true);
+		var result = TypeHelper.FindDerivedTypes(typeof(Exception), true);
 
 		Assert.IsTrue(result.HasItems());
 	}

@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 04-30-2024
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -270,7 +270,7 @@ public static partial class FileHelper
 	/// <param name="files">The files.</param>
 	/// <param name="stopOnFirstError">The stop on first error.</param>
 	/// <returns>DotNetTips.Spargine.Core.SimpleResult&lt;System.Collections.ObjectModel.ReadOnlyCollection&lt;string&gt;&gt;.</returns>
-	[Information(nameof(DeleteFiles), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 0, Status = Status.Updated, Documentation = "ADD URL")]
+	[Information(nameof(DeleteFiles), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Updated, Documentation = "ADD URL")]
 	public static SimpleResult<ReadOnlyCollection<string>> DeleteFiles([NotNull] this ReadOnlyCollection<string> files, bool stopOnFirstError = false)
 	{
 		files = files.ArgumentNotNull();
@@ -374,25 +374,25 @@ public static partial class FileHelper
 	public static bool FileHasInvalidChars([NotNull] FileInfo file) => file.CheckExists() && file.ArgumentNotNull().FullName.IndexOfAny([.. InvalidFileNameChars]) != -1;
 
 	/// <summary>
-	/// Moves the file with options.
+	/// Moves the file with retries and options.
 	/// </summary>
 	/// <param name="file">Name of the source file.</param>
 	/// <param name="destinationFile">Name of the destination file.</param>
 	/// <param name="fileMoveOptions">The file move options.</param>
 	/// <param name="retryCount">The retry count.</param>
-	[Information(nameof(MoveFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 0, Status = Status.Updated, Documentation = "ADD URL")]
-	public static void MoveFile([NotNull] FileInfo file, [NotNull] FileInfo destinationFile, FileMoveOptions fileMoveOptions = FileMoveOptions.ReplaceExisting, int retryCount = 1)
+	/// <returns>bool.</returns>
+	[Information(nameof(MoveFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Updated, Documentation = "ADD URL")]
+	public static bool MoveFile([NotNull] FileInfo file, [NotNull] FileInfo destinationFile, FileMoveOptions fileMoveOptions = FileMoveOptions.ReplaceExisting, int retryCount = 1)
 	{
 		var fileName = file.ArgumentExists().FullName;
-		fileMoveOptions = fileMoveOptions.ArgumentDefined();
+		//fileMoveOptions = fileMoveOptions.ArgumentDefined();
 		retryCount = retryCount.EnsureMinimum(1);
 
 		for (var retryIndex = 0; retryIndex < Retries; retryIndex++)
 		{
 			try
 			{
-				_ = LibraryImport.MoveFileEx(fileName, destinationFile.FullName, (int)fileMoveOptions);
-				return;
+				return LibraryImport.MoveFileExW(fileName, destinationFile.FullName, (int)fileMoveOptions);
 			}
 			catch (IOException) when (retryIndex < retryCount - 1)
 			{
@@ -406,6 +406,8 @@ public static partial class FileHelper
 			// If something has a transient lock on the file waiting may resolve the issue
 			Thread.Sleep((retryIndex + 1) * 10);
 		}
+
+		return false;
 	}
 
 	/// <summary>

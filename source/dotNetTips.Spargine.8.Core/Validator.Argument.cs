@@ -4,12 +4,17 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 05-02-2024
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Methods facilitating the validation of arguments and values, ensuring both simplicity and accuracy. In the event of encountering invalid data, an Exception will be thrown, accompanied by an appropriate error message, which can be either custom or default.</summary>
+// <summary>
+// Methods facilitating the validation of arguments and values,
+// ensuring both simplicity and accuracy. In the event of encountering
+// invalid data, an Exception will be thrown, accompanied by an
+// appropriate error message, which can be either custom or default.
+// </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
@@ -486,7 +491,7 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>IReadOnlyList&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Input cannot be empty.</exception>
-	[Information(nameof(ArgumentItemsExists), "David McCarter", "5/25/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Updated)]
+	[Information(nameof(ArgumentItemsExists), "David McCarter", "5/25/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Updated)]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static IReadOnlyList<T> ArgumentItemsExists<T>(this IReadOnlyList<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
@@ -509,7 +514,7 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>IReadOnlyCollection&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Input cannot be empty.</exception>
-	[Information(nameof(ArgumentItemsExists), "David McCarter", "5/27/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Updated)]
+	[Information(nameof(ArgumentItemsExists), "David McCarter", "5/27/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Updated)]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static IReadOnlyCollection<T> ArgumentItemsExists<T>(this IReadOnlyCollection<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
@@ -715,7 +720,7 @@ public static partial class Validator
 	/// <returns>Collections.Generic.Collection&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Input cannot be null.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentNotNull), "David McCarter", "10/24/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(ArgumentNotNull), "David McCarter", "10/24/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Collection<T> ArgumentNotNull<T>([NotNull] this Collection<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{

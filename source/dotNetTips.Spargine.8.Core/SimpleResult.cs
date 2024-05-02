@@ -4,7 +4,7 @@
 // Created          : 06-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-18-2024
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="SimpleResult.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Core;
 /// Use for return results from methods. This type is thread-safe.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", UnitTestCoverage = 0, Documentation = "ADD URL")]
+[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", UnitTestCoverage = 0, Documentation = "https://bit.ly/SpargineAug23")]
 public class SimpleResult<T>
 {
 

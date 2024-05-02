@@ -4,7 +4,7 @@
 // Created          : 11-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2024
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="ValidatorArgumentTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -690,6 +691,27 @@ public class ValidatorArgumentTests
 
 		// Test invalid WordCount
 		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(() => people.ArgumentItemsExists(5));
+	}
+
+	[TestMethod]
+	public void ArgumentItemsExistsReadOnlyCollectionTest()
+	{
+		try
+		{
+			var people = RandomData.GeneratePersonRefCollection<Address>(10).AsReadOnly();
+			var result = people.ArgumentItemsExists();
+
+			Assert.AreEqual(people, result);
+		}
+		catch
+		{
+			Assert.Fail();
+		}
+
+		// Test null collection
+		ReadOnlyCollection<Person<Address>> nullPeople = null;
+		_ = Assert.ThrowsException<ArgumentNullException>(() => nullPeople.ArgumentItemsExists());
+
 	}
 
 	[TestMethod]

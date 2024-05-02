@@ -1,6 +1,6 @@
 # dotNetDave's (David McCarter) Editor Config - dotNetTips.com
 # Updates to this file are posted quarterly at: https://bit.ly/EditorConfig5
-# Updated February 14, 2024
+# Updated May 2, 2024
 # dotNetDave's NEW coding standards book is available at: https://bit.ly/CodingStandards8
 # Rockin' the Code World with dotNetDave (weekly live show): https://bit.ly/RockinCodeWorldShows
 
@@ -603,13 +603,13 @@ dotnet_diagnostic.CA1805.severity = error
 dotnet_diagnostic.CA1806.severity = error
 
 # Initialize reference type static fields inline ****!
-dotnet_diagnostic.CA1810.severity = warning
+dotnet_diagnostic.CA1810.severity = suggestion
 
 # Avoid uninstantiated internal classes
 dotnet_diagnostic.CA1812.severity = warning
 
 # Avoid unsealed attributes ****!
-dotnet_diagnostic.CA1813.severity = error
+dotnet_diagnostic.CA1813.severity = suggestion
 
 # Prefer jagged arrays over multidimensional ****
 dotnet_diagnostic.CA1814.severity = warning
@@ -682,7 +682,7 @@ dotnet_diagnostic.CA1838.severity = warning
 dotnet_diagnostic.CA1839.severity = error
 
 # Use Environment.CurrentManagedThreadId instead of Thread.CurrentThread.ManagedThreadId ****!
-dotnet_diagnostic.CA1840.severity = warning
+dotnet_diagnostic.CA1840.severity = suggestion
 
 # Prefer Dictionary Contains methods
 dotnet_diagnostic.CA1841.severity = suggestion
@@ -1546,7 +1546,7 @@ dotnet_diagnostic.CA2247.severity = warning
 dotnet_diagnostic.CA2248.severity = warning
 
 # Consider using String.Contains instead of String.IndexOf
-dotnet_diagnostic.CA2249.severity = warning
+dotnet_diagnostic.CA2249.severity = error
 
 # Use ThrowIfCancellationRequested
 dotnet_diagnostic.CA2250.severity = warning

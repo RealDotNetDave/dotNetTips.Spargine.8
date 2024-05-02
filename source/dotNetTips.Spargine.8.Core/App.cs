@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-18-2024
+// Last Modified On : 05-02-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -101,7 +101,7 @@ public static class App
 	/// Changes the current culture and UI culture.
 	/// </summary>
 	/// <param name="culture">The culture.</param>
-	[Information(UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void ChangeCulture(CultureInfo culture)
 	{
 		CultureInfo.CurrentCulture = culture.ArgumentNotNull();
@@ -127,7 +127,7 @@ public static class App
 	/// </summary>
 	/// <param name="cultureType">Type of the culture. Defaults to AllCultures.</param>
 	/// <returns>ReadOnlyCollection&lt;System.String&gt;.</returns>
-	[Information(nameof(AppInfo), UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(AppInfo), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<string> GetCultureNames(CultureTypes cultureType = CultureTypes.AllCultures)
 	{
 		if (_cultureNames is null)
@@ -175,7 +175,7 @@ public static class App
 	/// ProcessorLevel: 6
 	/// ProcessorRevision: 42243
 	/// </example>
-	[Information(nameof(GetProcessorInformation), "David McCarter", "3/20/2023", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL")]
+	[Information(nameof(GetProcessorInformation), "David McCarter", "3/20/2023", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static ProcessorInformation GetProcessorInformation()
 	{
 		var info = new SystemInfo();
@@ -329,7 +329,7 @@ public static class App
 	/// Gets a unique identifier for the current managed thread.
 	/// </summary>
 	/// <value>The current thread identifier.</value>
-	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL")]
+	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
 	public static int CurrentThreadId => Environment.CurrentManagedThreadId;
 
 	/// <summary>
@@ -379,14 +379,14 @@ public static class App
 	/// Gets the unique identifier for the current process.
 	/// </summary>
 	/// <value>The process identifier.</value>
-	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL")]
+	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
 	public static int ProcessId => Environment.ProcessId;
 
 	/// <summary>
 	/// Returns the path of the executable that started the currently executing process. Returns null when the path is not available.
 	/// </summary>
 	/// <value>The process path.</value>
-	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL")]
+	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
 	public static string ProcessPath => Environment.ProcessPath;
 
 	/// <summary>

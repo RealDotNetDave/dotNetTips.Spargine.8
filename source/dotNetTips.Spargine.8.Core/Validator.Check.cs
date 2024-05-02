@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-02-2024
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="Validator.Check.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -125,7 +125,7 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
-	[Information(nameof(CheckIsCondition), "David McCarter", "2/10/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(CheckIsCondition), "David McCarter", "2/10/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsCondition<T>(this T input, bool condition, bool throwException = false, string errorMessage = "")
 	{

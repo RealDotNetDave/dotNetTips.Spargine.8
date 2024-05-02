@@ -197,7 +197,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
-	public readonly bool Equals([NotNull] Person<TAddress> other) => ReferenceEquals(this, other);
+	public readonly bool Equals([NotNull] Person<TAddress> other) => Equals(this, other);
 
 	/// <summary>
 	/// Determines whether the specified <see cref="object" /> is equal to this instance.

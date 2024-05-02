@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-18-2024
+// Last Modified On : 05-02-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -51,7 +51,6 @@ public static class DirectoryHelper
 
 		return path;
 	}
-
 
 	/// <summary>
 	/// Checks the permission of a directory.
@@ -376,7 +375,7 @@ public static class DirectoryHelper
 	/// <param name="searchOption">The search options.</param>
 	/// <returns>ReadOnlyCollection&lt;FileInfo&gt;.</returns>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", Status = Status.Updated, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Documentation = "http://bit.ly/SpargineMarch2021")]
+	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", Status = Status.Updated, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "http://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<FileInfo> SafeFileSearch(DirectoryInfo path, string searchPattern, SearchOption searchOption)
 	{
 		var directories = new List<DirectoryInfo>(1)

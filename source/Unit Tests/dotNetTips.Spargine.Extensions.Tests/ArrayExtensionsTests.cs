@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -163,6 +163,15 @@ public class ArrayExtensionsTests
 		Assert.IsFalse(people1.DoesNotHaveItems());
 
 		Assert.IsTrue(nullPeople.DoesNotHaveItems());
+	}
+
+	[TestMethod]
+	public void FastHashDataTest()
+	{
+		var byteArray = RandomData.GenerateByteArray(10);
+		var result = byteArray.FastHashData();
+
+		Assert.IsTrue(result.HasItems());
 	}
 
 	/// <summary>

@@ -3,7 +3,7 @@
   <PropertyGroup>
 		<AnalysisLevel>none</AnalysisLevel>
 		<AssemblyVersion>2024.8.3.1</AssemblyVersion>
-		<BaseOutputPath>..\..\AppBin</BaseOutputPath>
+		<BaseOutputPath>..\..\..\AppBin</BaseOutputPath>
 		<EnableNETAnalyzers>false</EnableNETAnalyzers>
 		<FileVersion>2024.8.3.1</FileVersion>
 		<IsPackable>false</IsPackable>

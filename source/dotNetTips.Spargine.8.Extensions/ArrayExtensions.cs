@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-12-2024
+// Last Modified On : 04-30-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -259,8 +259,9 @@ public static class ArrayExtensions
 	/// </summary>
 	/// <param name="data">The data.</param>
 	/// <returns>byte[].</returns>
+	/// <remarks>Example output (as string): 84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastHashData), author: "David McCarter", createdOn: "3/11/2024", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	[Information(nameof(FastHashData), author: "David McCarter", createdOn: "3/11/2024", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New, Documentation = "ADD URL")]
 	public static byte[] FastHashData([NotNull] this byte[] data)
 	{
 		if (data.DoesNotHaveItems())

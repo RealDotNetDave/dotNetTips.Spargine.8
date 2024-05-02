@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="RegexProcessor.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -212,7 +212,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <returns>Regex.</returns>
 	/// <returns>Regex.</returns>
-	[Information(nameof(ContainsFirstLastName), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(ContainsFirstLastName), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool ContainsFirstLastName(string input)
 	{
 		if (input is null)
@@ -351,7 +351,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input.</param>
 	/// <returns>bool.</returns>
-	[Information(nameof(IsMACAddress), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsMACAddress), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsMACAddress(string input)
 	{
 		if (input is null)
@@ -367,7 +367,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input.</param>
 	/// <returns>bool.</returns>
-	[Information(nameof(IsSHA1Hash), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsSHA1Hash), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsSHA1Hash(string input)
 	{
 		if (input is null)
@@ -399,7 +399,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input.</param>
 	/// <returns>bool.</returns>
-	[Information(nameof(IsUrlDomainAddress), "David McCarter", "9/28/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsUrlDomainAddress), "David McCarter", "9/28/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsUrlDomainAddress(string input)
 	{
 		if (input is null)
@@ -415,7 +415,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input.</param>
 	/// <returns>bool.</returns>
-	[Information(nameof(IsValidString), "David McCarter", "9/28/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsValidString), "David McCarter", "9/28/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsValidString(string input)
 	{
 		if (input is null)
@@ -432,7 +432,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input.</param>
 	/// <param name="replacement">The replacement. (defaults to "")</param>
 	/// <returns>string.</returns>
-	[Information(nameof(ReplaceCrLf), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(ReplaceCrLf), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static string ReplaceCrLf(string input, string replacement = "")
 	{
 		if (input is null || replacement is null)

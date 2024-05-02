@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -35,6 +35,25 @@ public class EnumerableExtensionsTests
 
 	private const int Count = 256;
 	private const string TestData = "TEST DATA";
+
+	[TestMethod]
+	public void AddDistinctTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var person1 = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+
+		people = people.AddDistinct(person1);
+
+		Assert.IsTrue(people.Count() == Count + 1);
+
+		people = people.AddDistinct(person1);
+
+		Assert.IsTrue(people.Count() == Count + 1);
+
+		people = people.AddFirst(null);
+
+		Assert.IsTrue(people.Count() == Count + 1);
+	}
 
 	[TestMethod]
 	public void AddFirstTest()
@@ -98,6 +117,16 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
+	public void CreateCollectionTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+
+		var result = people.Create(true);
+
+		Assert.IsTrue(people.Count() == Count);
+	}
+
+	[TestMethod]
 	public void DoesNotHaveItemsTest()
 	{
 		var people = new List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>().AsEnumerable();
@@ -139,6 +168,16 @@ public class EnumerableExtensionsTests
 
 		//Test Finding City names that contain 'A'.
 		Assert.IsNotNull(people.FastCount(p => p.FirstName.Contains('A', StringComparison.CurrentCultureIgnoreCase)));
+	}
+
+	[TestMethod]
+	public void FastCountQuerableTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsQueryable();
+
+		Assert.IsTrue(people.FastCount() == Count);
+
+		Assert.IsTrue(people.FastCount(p => p.Age.TotalDays > 365) > 0);
 	}
 
 	[TestMethod]
@@ -387,7 +426,7 @@ public class EnumerableExtensionsTests
 
 		var splitEmptyPeople = emptyPeople.Split(10);
 
-		Assert.IsNull(splitEmptyPeople);
+		Assert.IsTrue(splitEmptyPeople.Count() == 0);
 	}
 
 	[TestMethod]

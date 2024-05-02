@@ -4,7 +4,7 @@
 // Created          : 03-12-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-20-2024
+// Last Modified On : 04-29-2024
 // ***********************************************************************
 // <copyright file="Countries.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -62,7 +62,7 @@ public static class Countries
 	/// Gets country data.
 	/// </summary>
 	/// <returns>ReadOnlyCollection&lt;Country&gt;.</returns>
-	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static ReadOnlyCollection<Country> GetCountries()
 	{
 		_countries ??= DeserializeCountires();
@@ -75,7 +75,7 @@ public static class Countries
 	/// </summary>
 	/// <param name="countryName">Name of the country.</param>
 	/// <returns>Country.</returns>
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static Country GetCountry(CountryName countryName)
 	{
 		countryName = countryName.ArgumentNotNull();
@@ -88,7 +88,7 @@ public static class Countries
 	/// </summary>
 	/// <param name="countryId">The country identifier.</param>
 	/// <returns>Country.</returns>
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static Country GetCountry(long countryId) => GetCountries().FirstOrDefault(p => p.Id == countryId);
 
 	/// <summary>

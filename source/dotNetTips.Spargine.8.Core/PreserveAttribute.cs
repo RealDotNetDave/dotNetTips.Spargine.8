@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-18-2024
+// Last Modified On : 04-30-2024
 // ***********************************************************************
 // <copyright file="PreserveAttribute.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -18,8 +18,6 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
-
-
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
@@ -28,7 +26,7 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 /// <seealso cref="Attribute" />
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Delegate, Inherited = false)]
-[Information(nameof(PreserveAttribute), "David McCarter", "2/7/2023", Status = Status.Available, Documentation = "ADD URL")]
+[Information(nameof(PreserveAttribute), "David McCarter", "2/7/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 public sealed class PreserveAttribute : Attribute
 {
 
