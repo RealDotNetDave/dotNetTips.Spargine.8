@@ -141,7 +141,7 @@ public static class JsonSerialization
 	/// <param name="file">File</param>
 	/// <returns>TResult.</returns>
 	/// <exception cref="FileNotFoundException">File not found. Cannot deserialize from JSON.</exception>
-	[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Updated)]
+	[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : class
 	{
 		if (file.Exists is false)
@@ -185,7 +185,7 @@ public static class JsonSerialization
 	/// </summary>
 	/// <param name="obj">The object.</param>
 	/// <param name="file">File</param>
-	[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Updated)]
+	[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static void SerializeToFile([NotNull] object obj, [NotNull] FileInfo file)
 	{
 		obj = obj.ArgumentNotNull();

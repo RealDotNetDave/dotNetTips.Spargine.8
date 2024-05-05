@@ -375,7 +375,7 @@ public static class DirectoryHelper
 	/// <param name="searchOption">The search options.</param>
 	/// <returns>ReadOnlyCollection&lt;FileInfo&gt;.</returns>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", Status = Status.Updated, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "http://bit.ly/SpargineMarch2021")]
+	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "http://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<FileInfo> SafeFileSearch(DirectoryInfo path, string searchPattern, SearchOption searchOption)
 	{
 		var directories = new List<DirectoryInfo>(1)

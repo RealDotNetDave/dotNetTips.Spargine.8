@@ -252,7 +252,7 @@ public static class ArrayExtensions
 	/// <returns>System.Int64.</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastCount), "David McCarter", "1/9/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(FastCount), "David McCarter", "1/9/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static long FastCount<T>([NotNull] this T[] array) => array.ArgumentNotNull().LongLength;
 	/// <summary>
 	/// Hashes data using SHA256.
@@ -261,7 +261,7 @@ public static class ArrayExtensions
 	/// <returns>byte[].</returns>
 	/// <remarks>Example output (as string): 84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastHashData), author: "David McCarter", createdOn: "3/11/2024", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(FastHashData), author: "David McCarter", createdOn: "3/11/2024", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static byte[] FastHashData([NotNull] this byte[] data)
 	{
 		if (data.DoesNotHaveItems())

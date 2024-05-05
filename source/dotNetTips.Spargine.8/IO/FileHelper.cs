@@ -209,7 +209,7 @@ public static partial class FileHelper
 	/// <param name="destination">The destination.</param>
 	/// <param name="progressCallback">The progress callback.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(CopyFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(CopyFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static bool CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, [NotNull] CopyProgressRoutine progressCallback)
 	{
 		file = file.ArgumentNotNull();
@@ -270,7 +270,7 @@ public static partial class FileHelper
 	/// <param name="files">The files.</param>
 	/// <param name="stopOnFirstError">The stop on first error.</param>
 	/// <returns>DotNetTips.Spargine.Core.SimpleResult&lt;System.Collections.ObjectModel.ReadOnlyCollection&lt;string&gt;&gt;.</returns>
-	[Information(nameof(DeleteFiles), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Updated, Documentation = "ADD URL")]
+	[Information(nameof(DeleteFiles), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static SimpleResult<ReadOnlyCollection<string>> DeleteFiles([NotNull] this ReadOnlyCollection<string> files, bool stopOnFirstError = false)
 	{
 		files = files.ArgumentNotNull();
@@ -381,7 +381,7 @@ public static partial class FileHelper
 	/// <param name="fileMoveOptions">The file move options.</param>
 	/// <param name="retryCount">The retry count.</param>
 	/// <returns>bool.</returns>
-	[Information(nameof(MoveFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Updated, Documentation = "ADD URL")]
+	[Information(nameof(MoveFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static bool MoveFile([NotNull] FileInfo file, [NotNull] FileInfo destinationFile, FileMoveOptions fileMoveOptions = FileMoveOptions.ReplaceExisting, int retryCount = 1)
 	{
 		var fileName = file.ArgumentExists().FullName;

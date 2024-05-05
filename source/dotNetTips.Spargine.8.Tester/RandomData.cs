@@ -642,7 +642,7 @@ public static partial class RandomData
 	/// <param name="addressLength">Length of the address. Length must be between 5 - 100. Defaults to 25.</param>
 	/// <param name="countyProvinceLength">Length of the county province. Length must be between 5 - 50. Defaults to 20.</param>
 	/// <returns>T.</returns>
-	[Information(nameof(GeneratePersonRef), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Updated)]
+	[Information(nameof(GeneratePersonRef), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Available)]
 	public static Models.RefTypes.Person<TAddress> GeneratePersonRef<TAddress>(int addressCount = 2, int addressLength = 25, int countyProvinceLength = 20) where TAddress : IAddress, new()
 	{
 		addressCount = addressCount.ArgumentInRange(lower: 0, defaultValue: 2);
