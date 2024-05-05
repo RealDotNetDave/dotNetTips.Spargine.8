@@ -34,7 +34,8 @@
 		<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.</PackageReleaseNotes>
+		<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
+--MAY 2024: Added FastCount to EnumerableExtensions, FastHashData to ArrayExtensions. Performance improvements.</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -125,7 +126,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\dotNetTips.Spargine.8.Core\DotNetTips.Spargine.8.Core.csproj" />
+	  <ProjectReference Include="..\dotNetTips.Spargine.8.Core\DotNetTips.Spargine.8.Core.csproj" />
 	</ItemGroup>
 
 </Project>

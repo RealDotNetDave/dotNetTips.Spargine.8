@@ -33,7 +33,8 @@
 		<PackageLicenseUrl></PackageLicenseUrl>
 		<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.</PackageReleaseNotes>
+		<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
+--MAY 2024: Performance improvements.</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 		<Product>$(AssemblyName)</Product>
@@ -122,8 +123,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\dotNetTips.Spargine.8.Core\DotNetTips.Spargine.8.Core.csproj" />
-		<ProjectReference Include="..\dotNetTips.Spargine.8.Extensions\DotNetTips.Spargine.8.Extensions.csproj" />
+	  <ProjectReference Include="..\dotNetTips.Spargine.8.Core\DotNetTips.Spargine.8.Core.csproj" />
+	  <ProjectReference Include="..\dotNetTips.Spargine.8.Extensions\DotNetTips.Spargine.8.Extensions.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
