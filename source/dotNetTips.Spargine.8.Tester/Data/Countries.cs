@@ -4,7 +4,7 @@
 // Created          : 03-12-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-29-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="Countries.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -15,6 +15,7 @@
 // </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using DotNetTips.Spargine.Core;
@@ -76,7 +77,7 @@ public static class Countries
 	/// <param name="countryName">Name of the country.</param>
 	/// <returns>Country.</returns>
 	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
-	public static Country GetCountry(CountryName countryName)
+	public static Country GetCountry([NotNull] CountryName countryName)
 	{
 		countryName = countryName.ArgumentNotNull();
 

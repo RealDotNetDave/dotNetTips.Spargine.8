@@ -314,9 +314,10 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// </summary>
 	/// <value>The cell phone.</value>
 	/// <exception cref="ArgumentOutOfRangeException">CellPhone</exception>
+	[DefaultValue("")]
 	[JsonPropertyName("cellPhone")]
-	[XmlElement]
 	[MemberNotNull(nameof(_cellPhone))]
+	[XmlElement]
 	public string CellPhone
 	{
 		readonly get => this._cellPhone;
@@ -368,9 +369,10 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// </summary>
 	/// <value>The first name.</value>
 	/// <exception cref="ArgumentOutOfRangeException">FirstName</exception>
+	[DefaultValue("")]
 	[JsonPropertyName("firstName")]
-	[XmlElement]
 	[MemberNotNull(nameof(_firstName))]
+	[XmlElement]
 	public string FirstName
 	{
 		readonly get => this._firstName;
@@ -430,9 +432,10 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// </summary>
 	/// <value>The last name.</value>
 	/// <exception cref="ArgumentOutOfRangeException">LastName</exception>
+	[DefaultValue("")]
 	[JsonPropertyName("lastName")]
-	[XmlElement]
 	[MemberNotNull(nameof(_lastName))]
+	[XmlElement]
 	public string LastName
 	{
 		readonly get => this._lastName;
@@ -456,9 +459,10 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// </summary>
 	/// <value>The home phone.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Phone</exception>
+	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
-	[XmlElement]
 	[MemberNotNull(nameof(_phone))]
+	[XmlElement]
 	public string Phone
 	{
 		readonly get => this._phone;

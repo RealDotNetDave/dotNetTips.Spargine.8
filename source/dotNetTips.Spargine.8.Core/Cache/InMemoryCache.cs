@@ -4,7 +4,7 @@
 // Created          : 01-13-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -64,7 +64,7 @@ public sealed class InMemoryCache
 	/// <exception cref="ArgumentNullException">Key cannot be null or empty.</exception>
 	/// <exception cref="ArgumentNullException">Item cannot be null.</exception>
 	[Information(nameof(AddCacheItem), "David McCarter", "1/16/2021", Status = Status.Available, UnitTestCoverage = 100)]
-	public void AddCacheItem<T>(string key, [NotNull] T item)
+	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item)
 	{
 		key = key.ArgumentNotNullOrEmpty();
 		item = item.ArgumentNotNull();

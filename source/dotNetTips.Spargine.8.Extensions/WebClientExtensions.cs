@@ -4,13 +4,14 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-22-2023
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="WebClientExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
 // </copyright>
 // <summary>Extension methods for WebClient.</summary>
 // ***********************************************************************
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Runtime.Serialization.Json;
@@ -37,6 +38,7 @@ public static class WebClientExtensions
 	/// <returns>T.</returns>
 	/// <exception cref="ArgumentNullException">client</exception>
 	/// <exception cref="ArgumentNullException">URL cannot be empty or null.</exception>
+	[DefaultValue(null)]
 	[Information(nameof(ConvertFrom), UnitTestCoverage = 0, Status = Status.Available)]
 	public static T ConvertFrom<T>([NotNull] this WebClient client, Uri url)
 		where T : class

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-05-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -15,6 +15,7 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
@@ -389,6 +390,7 @@ public static class EnumerableExtensions
 	/// <param name="match">The match.</param>
 	/// <returns>System.Nullable&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Match cannot be null.</exception>
+	[DefaultValue(null)]
 	[Information(nameof(FirstOrNull), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static T? FirstOrNull<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> match)
 		where T : struct

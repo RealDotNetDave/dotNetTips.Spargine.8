@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="DistinctBlockingCollection.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -15,6 +15,7 @@
 // </summary>
 // ***********************************************************************
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core.Properties;
 
@@ -116,6 +117,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// </summary>
 	/// <param name="item">The object to remove from the collection.</param>
 	/// <returns><see langword="true" /> if <paramref name="item" /> was successfully removed from the collection; otherwise, <see langword="false" />. This method also returns <see langword="false" /> if <paramref name="item" /> is not found in the original collection.</returns>
+	[DefaultValue(false)]
 	public bool Remove([NotNull] T item) => this.TryTake(out _);
 
 	/// <summary>

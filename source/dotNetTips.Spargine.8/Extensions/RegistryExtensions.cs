@@ -48,6 +48,7 @@ public static class RegistryExtensions
 	public static T GetValue<T>([NotNull] this RegistryKey key, string name)
 	{
 		name = name.ArgumentNotNullOrEmpty();
+		key = key.ArgumentNotNull();
 
 		var returnValue = default(T);
 

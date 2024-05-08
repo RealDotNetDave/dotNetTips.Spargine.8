@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="RegistryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -59,6 +59,7 @@ public static class RegistryHelper
 		}
 
 		keyName = keyName.ArgumentNotNullOrEmpty();
+		registryKeyType = registryKeyType.ArgumentNotNull();
 
 		return registryKeyType switch
 		{

@@ -4,7 +4,7 @@
 // Created          : 01-11-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="SocketsHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -31,7 +31,7 @@ public static class SocketsHelper
 	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
 	/// <returns>Stream.</returns>
 	/// <remarks>Original code by: Máňa Píchová.</remarks>
-	public static async ValueTask<Stream> ConnectTcpAsync([NotNull] SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+	public static async ValueTask<Stream> ConnectTcpAsync([NotNull] SocketsHttpConnectionContext context, [AllowNull] CancellationToken cancellationToken)
 	{
 		// The following socket constructor will create a dual-mode socket on systems where IPV6 is available.
 		using var socket = new Socket(SocketType.Stream, ProtocolType.Tcp)

@@ -185,9 +185,10 @@ public sealed record AddressRecord : IDataRecord
 	/// <exception cref="ArgumentNullException">Address1</exception>
 	/// <remarks>Address1 is limited to 100 characters.</remarks>
 	[DataMember(Name = "address1", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("address1")]
-	[XmlElement]
 	[MemberNotNull(nameof(_address1))]
+	[XmlElement]
 	public string Address1
 	{
 		get => this._address1;
@@ -213,9 +214,10 @@ public sealed record AddressRecord : IDataRecord
 	/// <exception cref="ArgumentOutOfRangeException">Address2</exception>
 	/// <remarks>Address2 is limited to 100 characters.</remarks>
 	[DataMember(Name = "address2", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("address2")]
-	[XmlElement]
 	[MemberNotNull(nameof(_address2))]
+	[XmlElement]
 	public string Address2
 	{
 		get => this._address2;
@@ -241,9 +243,10 @@ public sealed record AddressRecord : IDataRecord
 	/// <exception cref="ArgumentOutOfRangeException">City</exception>
 	/// <remarks>City is limted to 150 characters.</remarks>
 	[DataMember(Name = "city", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("city")]
-	[XmlElement]
 	[MemberNotNull(nameof(_city))]
+	[XmlElement]
 	public string City
 	{
 		get => this._city;
@@ -269,9 +272,10 @@ public sealed record AddressRecord : IDataRecord
 	/// <exception cref="ArgumentOutOfRangeException">Country</exception>
 	/// <remarks>Country is limited to 50 characters.</remarks>
 	[DataMember(Name = "country", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("country")]
-	[XmlElement]
 	[MemberNotNull(nameof(_country))]
+	[XmlElement]
 	public string Country
 	{
 		get => this._country;
@@ -296,9 +300,10 @@ public sealed record AddressRecord : IDataRecord
 	/// <value>The county province.</value>
 	/// <exception cref="ArgumentOutOfRangeException">CountyProvince</exception>
 	/// <remarks>County is limited to 50 characters.</remarks>
+	[DefaultValue("")]
 	[JsonPropertyName("countryProvince")]
-	[XmlElement]
 	[MemberNotNull(nameof(_countyProvince))]
+	[XmlElement]
 	public string CountyProvince
 	{
 		get => this._countyProvince;
@@ -346,9 +351,10 @@ public sealed record AddressRecord : IDataRecord
 	/// <exception cref="ArgumentOutOfRangeException">Phone</exception>
 	/// <remarks>Phone number is limited to 50 characters.</remarks>
 	[DataMember(Name = "phone", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("phone")]
-	[XmlElement]
 	[MemberNotNull(nameof(_phone))]
+	[XmlElement]
 	public string Phone
 	{
 		get => this._phone;
@@ -374,9 +380,10 @@ public sealed record AddressRecord : IDataRecord
 	/// <exception cref="ArgumentOutOfRangeException">PostalCode</exception>
 	/// <remarks>Postal code is limited to 40 characters.</remarks>
 	[DataMember(Name = "postalCode", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("postalCode")]
-	[XmlElement]
 	[MemberNotNull(nameof(_postalCode))]
+	[XmlElement]
 	public string PostalCode
 	{
 		get => this._postalCode;
@@ -402,9 +409,10 @@ public sealed record AddressRecord : IDataRecord
 	/// <exception cref="ArgumentOutOfRangeException">State</exception>
 	/// <remarks>State is limited to 60 characters.</remarks>
 	[DataMember(Name = "state", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("state")]
-	[XmlElement]
 	[MemberNotNull(nameof(_state))]
+	[XmlElement]
 	public string State
 	{
 		get => this._state;

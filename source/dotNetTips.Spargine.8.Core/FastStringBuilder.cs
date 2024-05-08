@@ -95,10 +95,9 @@ public static class FastStringBuilder
 
 		try
 		{
-			for (var index = 0; index < args.Length; index++)
+			foreach (var arg in args)
 			{
-				var argItem = args[index];
-				_ = addLineFeed ? sb.AppendLine(argItem) : sb.Append(argItem);
+				_ = addLineFeed ? sb.AppendLine(arg) : sb.Append(arg);
 			}
 
 			return sb.ToString();
@@ -177,7 +176,7 @@ public static class FastStringBuilder
 	/// <returns>System.String.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(PerformAction), "David McCarter", "12/23/2022", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
-	public static string PerformAction(Action<StringBuilder> action)
+	public static string PerformAction([NotNull] Action<StringBuilder> action)
 	{
 		if (action is null)
 		{

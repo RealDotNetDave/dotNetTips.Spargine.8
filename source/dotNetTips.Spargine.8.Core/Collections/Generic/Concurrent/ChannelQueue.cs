@@ -4,7 +4,7 @@
 // Created          : 11-12-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-09-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="ChannelQueue.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.

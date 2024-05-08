@@ -412,9 +412,10 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// to 50 characters.</exception>
 	/// <remarks>Cell phone number is limited to 50 characters.</remarks>
 	[DataMember(Name = "cellPhone", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("cellPhone")]
-	[XmlElement]
 	[MemberNotNull(nameof(_cellPhone))]
+	[XmlElement]
 	public string CellPhone
 	{
 		get => this._cellPhone;
@@ -444,8 +445,8 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "email", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("email")]
-	[XmlElement(IsNullable = false)]
 	[MemberNotNull(nameof(_email))]
+	[XmlElement(IsNullable = false)]
 	public string Email
 	{
 		get => this._email;
@@ -473,9 +474,10 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// to 50 characters.</exception>
 	/// <remarks>Firt name is limited to 50 characters.</remarks>
 	[DataMember(Name = "firstName", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("firstName")]
-	[XmlElement]
 	[MemberNotNull(nameof(_firstName))]
+	[XmlElement]
 	public string FirstName
 	{
 		get => this._firstName;
@@ -540,9 +542,10 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// to 50 characters.</exception>
 	/// <remarks>Last name is limited to 50 characters.</remarks>
 	[DataMember(Name = "lastName", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("lastName")]
-	[XmlElement]
 	[MemberNotNull(nameof(_lastName))]
+	[XmlElement]
 	public string LastName
 	{
 		get => this._lastName;
@@ -569,9 +572,10 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// to 50 characters.</exception>
 	/// <remarks>Home phone is limited to 50 characters.</remarks>
 	[DataMember(Name = "homePhone", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
-	[XmlElement]
 	[MemberNotNull(nameof(_homePhone))]
+	[XmlElement]
 	public string Phone
 	{
 		get => this._homePhone;

@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-09-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -12,6 +12,7 @@
 // <summary>Represents a thread-safe, hash-based unique collection.</summary>
 // ***********************************************************************
 using System.Collections;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core.Internal;
@@ -636,6 +637,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// </summary>
 	/// <param name="item">The item to locate in the <see cref="ConcurrentHashSet{T}" />.</param>
 	/// <returns>true if the <see cref="ConcurrentHashSet{T}" /> contains the item; otherwise, false.</returns>
+	[DefaultValue(false)]
 	[Information(nameof(Contains), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public bool Contains([NotNull] T item)
 	{
@@ -690,6 +692,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// </summary>
 	/// <param name="item">The item to remove.</param>
 	/// <returns>true if an item was removed successfully; otherwise, false.</returns>
+	[DefaultValue(true)]
 	[Information(nameof(TryRemove), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public bool TryRemove([NotNull] T item)
 	{
@@ -779,6 +782,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// Gets a value indicating whether this instance is empty...
 	/// </summary>
 	/// <value><c>true</c> if this instance is empty; otherwise, <c>false</c>.</value>
+	[DefaultValue(true)]
 	[Information(nameof(IsEmpty), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public bool IsEmpty
 	{

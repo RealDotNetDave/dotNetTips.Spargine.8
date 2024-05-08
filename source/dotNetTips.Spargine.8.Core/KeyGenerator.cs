@@ -4,13 +4,14 @@
 // Created          : 05-30-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="KeyGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Generates unique keys using a GUID without dashes.</summary>
 // ***********************************************************************
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -38,6 +39,6 @@ public static class KeyGenerator
 	/// <returns>System.String.</returns>
 	/// <example>DataRecordf7f0af78003d4ab194b5a4024d02112a</example>
 	[Information(nameof(GenerateKey), "David McCarter", "5/30/2021", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static string GenerateKey(string prefix) => $"{prefix.ArgumentNotNull()}{Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture)}";
+	public static string GenerateKey([NotNull] string prefix) => $"{prefix.ArgumentNotNull()}{Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture)}";
 
 }

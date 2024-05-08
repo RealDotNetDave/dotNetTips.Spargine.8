@@ -148,7 +148,7 @@ public static partial class RandomData
 	/// <param name="country">The countryName.</param>
 	/// <param name="city">The city.</param>
 	/// <returns>System.String.</returns>
-	private static string GeneratePostalCode(Country country, City city)
+	private static string GeneratePostalCode([NotNull] Country country, [AllowNull] City city)
 	{
 		if (!_postalFormatsCache.TryGetValue(country, out var postalFormats))
 		{
@@ -242,7 +242,8 @@ public static partial class RandomData
 	/// <param name="countyProvinceLength">Length of the county province. Length must be between 5 - 50. Defaults to 20.</param>
 	/// <returns>System.Collections.ObjectModel.Collection&lt;T&gt;.</returns>
 	[Information(nameof(GenerateAddressCollection), "David McCarter", "12/4/2023", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
-	public static Collection<T> GenerateAddressCollection<T>(Country country, int count = 2, int addressLength = 25, int countyProvinceLength = 20) where T : IAddress, new()
+	public static Collection<T> GenerateAddressCollection<T>(
+		[NotNull] Country country, int count = 2, int addressLength = 25, int countyProvinceLength = 20) where T : IAddress, new()
 	{
 		country = country.ArgumentNotNull();
 		count = count.ArgumentInRange(lower: 0, defaultValue: 2);
@@ -282,7 +283,7 @@ public static partial class RandomData
 	/// <param name="countyProvinceLength">Length of the county province. Length must be between 5 - 50. Defaults to 20.</param>
 	/// <returns>System.Collections.ObjectModel.Collection&lt;DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord&gt;.</returns>
 	[Information(nameof(GenerateAddressRecordCollection), "David McCarter", "3/14/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
-	public static Collection<AddressRecord> GenerateAddressRecordCollection(CountryName country, int count = 2, int addressLength = 25, int countyProvinceLength = 20)
+	public static Collection<AddressRecord> GenerateAddressRecordCollection([NotNull] CountryName country, int count = 2, int addressLength = 25, int countyProvinceLength = 20)
 	{
 		count = count.ArgumentInRange(lower: 0, defaultValue: 2);
 		addressLength = addressLength.ArgumentInRange(lower: 5, upper: 100);
@@ -474,7 +475,7 @@ public static partial class RandomData
 	/// <returns>ReadOnlyCollection&lt;System.String&gt;.</returns>
 	/// <example>Output: [0]: "c:\\temp\\dobybcyx.lj"  [1]: "c:\\temp\\zo2ggwub.3ro"</example>
 	[Information(nameof(GenerateFiles), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Available)]
-	public static ReadOnlyCollection<string> GenerateFiles(string path, int count = 100, int fileLength = DefaultFileLength)
+	public static ReadOnlyCollection<string> GenerateFiles([NotNull] string path, int count = 100, int fileLength = DefaultFileLength)
 	{
 		path = path.ArgumentNotNullOrEmpty();
 		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
@@ -748,7 +749,7 @@ public static partial class RandomData
 	/// <returns>System.String.</returns>
 	/// <example>Output for Taiwan: 886-352346002</example>
 	[Information(nameof(GeneratePhoneNumber), "David McCarter", "1/19/2019", UnitTestCoverage = 0, Status = Status.Available)]
-	public static string GeneratePhoneNumber(Country country, bool includeCountryCode = false)
+	public static string GeneratePhoneNumber([NotNull] Country country, bool includeCountryCode = false)
 	{
 		country = country.ArgumentNotNull();
 
@@ -763,7 +764,7 @@ public static partial class RandomData
 	/// <returns>string.</returns>
 	/// <example>Output for Taiwan: 886-352346002</example>
 	[Information(nameof(GeneratePhoneNumber), "David McCarter", "1/19/2019", UnitTestCoverage = 0, Status = Status.Available)]
-	public static string GeneratePhoneNumber(CountryName countryName, bool includeCountryCode = false)
+	public static string GeneratePhoneNumber([NotNull] CountryName countryName, bool includeCountryCode = false)
 	{
 		countryName = countryName.ArgumentDefined();
 

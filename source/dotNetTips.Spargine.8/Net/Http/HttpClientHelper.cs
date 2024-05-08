@@ -11,6 +11,7 @@
 // </copyright>
 // <summary>Utility methods for HttpClient.</summary>
 // ***********************************************************************
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net;
@@ -60,8 +61,9 @@ public static class HttpClientHelper
 	/// <returns>HttpResponseMessage.</returns>
 	/// <exception cref="ArgumentInvalidException">Url cannot be null or empty.</exception>
 	/// <remarks>Original code by: Máňa Píchová.</remarks>
+	[DefaultValue(null)]
 	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
-	public static async Task<HttpResponseMessage> GetHttpResponseAsync(Uri url, [NotNull] CancellationTokenSource cancellationToken)
+	public static async Task<HttpResponseMessage> GetHttpResponseAsync([NotNull] Uri url, [NotNull] CancellationTokenSource cancellationToken)
 	{
 		url = url.ArgumentNotNull<Uri>();
 
@@ -100,6 +102,7 @@ public static class HttpClientHelper
 	/// <param name="url">The URL.</param>
 	/// <returns>Stream.</returns>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	[DefaultValue(null)]
 	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static async Task<Stream> GetStreamAsync(Uri url)
 	{

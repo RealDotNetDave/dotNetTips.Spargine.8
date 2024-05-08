@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -102,7 +102,7 @@ public class PerformanceStopwatch : Stopwatch
 	/// Output: LoadUsers():Call to Database. Time: 1006.3728 ms
 	/// </example>
 	[Information(nameof(StopReset), "David McCarter", "1/18/2023", Status = Status.Available)]
-	public TimeSpan StopReset([NotNull] ILogger logger, string message)
+	public TimeSpan StopReset([NotNull] ILogger logger, [NotNull] string message)
 	{
 		var result = this.StopReset();
 
@@ -135,7 +135,7 @@ public class PerformanceStopwatch : Stopwatch
 	/// Output: LoadUsers():Call to Database. Time: 1006.3728 ms
 	/// </example>
 	[Information(nameof(StopRestart), "David McCarter", "1/18/2023", Status = Status.Available)]
-	public TimeSpan StopRestart([NotNull] ILogger logger, string message)
+	public TimeSpan StopRestart([NotNull] ILogger logger, [NotNull] string message)
 	{
 		var result = this.StopRestart();
 

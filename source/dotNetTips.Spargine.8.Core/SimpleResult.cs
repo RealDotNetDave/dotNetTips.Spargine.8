@@ -17,6 +17,7 @@
 // ***********************************************************************
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 
@@ -85,7 +86,7 @@ public class SimpleResult<T>
 	/// Adds the exception..
 	/// </summary>
 	/// <param name="error">The error.</param>
-	public void AddException(Exception error) => this._exceptions.Add(ExceptionDispatchInfo.Capture(error).SourceException);
+	public void AddException([NotNull] Exception error) => this._exceptions.Add(ExceptionDispatchInfo.Capture(error).SourceException);
 
 	/// <summary>
 	/// Gets exceptions associated with this result.
@@ -98,7 +99,7 @@ public class SimpleResult<T>
 	/// </summary>
 	/// <param name="result">The result object.</param>
 	/// <returns>T.</returns>
-	public static T FromResult(in SimpleResult<T> result) => result.ArgumentNotNull().Value;
+	public static T FromResult([NotNull] in SimpleResult<T> result) => result.ArgumentNotNull().Value;
 
 	/// <summary>
 	/// Returns Exception messages, including the InnerException.
@@ -212,7 +213,7 @@ public static class SimpleResult
 	/// <typeparam name="T">The type of the value.</typeparam>
 	/// <param name="e">The exception to be placed to the container.</param>
 	/// <returns>The exception encapsulated by <see cref="SimpleResult{T}" />.</returns>
-	public static SimpleResult<T> FromException<T>(Exception e) => new(e);
+	public static SimpleResult<T> FromException<T>([NotNull] Exception e) => new(e);
 
 	/// <summary>
 	/// Creates a new instance of <see cref="SimpleResult{T}" /> from the specified value.
@@ -220,7 +221,7 @@ public static class SimpleResult
 	/// <typeparam name="T">The type of the value.</typeparam>
 	/// <param name="value">The value to be placed to the container.</param>
 	/// <returns>The value encapsulated by <see cref="SimpleResult{T}" />.</returns>
-	public static SimpleResult<T> FromValue<T>(T value) => new(value);
+	public static SimpleResult<T> FromValue<T>([NotNull] T value) => new(value);
 
 }
 

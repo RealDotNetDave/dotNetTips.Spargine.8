@@ -286,9 +286,10 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <exception cref="ArgumentOutOfRangeException">Address1</exception>
 	/// <remarks>Address1 is limited to 100 characters.</remarks>
 	[DataMember(Name = "address1", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("address1")]
-	[XmlElement]
 	[MemberNotNull(nameof(_address1))]
+	[XmlElement]
 	public string Address1
 	{
 		readonly get => this._address1;
@@ -314,9 +315,10 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <exception cref="ArgumentOutOfRangeException">Address2</exception>
 	/// <remarks>Address2 is limited to 100 characters.</remarks>
 	[DataMember(Name = "address2", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("address2")]
-	[XmlElement]
 	[MemberNotNull(nameof(_address2))]
+	[XmlElement]
 	public string Address2
 	{
 		readonly get => this._address2;
@@ -342,9 +344,10 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <exception cref="ArgumentOutOfRangeException">City</exception>
 	/// <remarks>City is limted to 150 characters.</remarks>
 	[DataMember(Name = "city", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("city")]
-	[XmlElement]
 	[MemberNotNull(nameof(_city))]
+	[XmlElement]
 	public string City
 	{
 		readonly get => this._city;
@@ -370,6 +373,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <exception cref="ArgumentOutOfRangeException">Country</exception>
 	/// <remarks>Country is limited to 50 characters.</remarks>
 	[DataMember(Name = "country", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("country")]
 	[MemberNotNull(nameof(_country))]
 	[XmlElement]
@@ -398,9 +402,10 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <exception cref="ArgumentOutOfRangeException">CountyProvince</exception>
 	/// <remarks>CountyProvince is limited to 50 characters.</remarks>
 	[DataMember(Name = "countryProvince", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("countryProvince")]
-	[XmlElement]
 	[MemberNotNull(nameof(_countyProvince))]
+	[XmlElement]
 	public string CountyProvince
 	{
 		readonly get => this._countyProvince;
@@ -424,8 +429,8 @@ public struct Address : IAddress, IEquatable<Address>
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("id")]
-	[XmlElement(IsNullable = false)]
 	[MemberNotNull(nameof(_id))]
+	[XmlElement(IsNullable = false)]
 	public string Id
 	{
 		readonly get => this._id;
@@ -450,9 +455,10 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <exception cref="ArgumentOutOfRangeException">Phone</exception>
 	/// <remarks>Phone number is limited to 50 characters.</remarks>
 	[DataMember(Name = "phone", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("phone")]
-	[XmlElement]
 	[MemberNotNull(nameof(_phone))]
+	[XmlElement]
 	public string Phone
 	{
 		readonly get => this._phone;
@@ -478,9 +484,10 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <exception cref="ArgumentOutOfRangeException">PostalCode</exception>
 	/// <remarks>Postal code is limited to 40 characters.</remarks>
 	[DataMember(Name = "postalCode", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("postalCode")]
-	[XmlElement]
 	[MemberNotNull(nameof(_postalCode))]
+	[XmlElement]
 	public string PostalCode
 	{
 		readonly get => this._postalCode;
@@ -506,9 +513,10 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <exception cref="ArgumentOutOfRangeException">State</exception>
 	/// <remarks>State is limited to 60 characters.</remarks>
 	[DataMember(Name = "state", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("state")]
-	[XmlElement]
 	[MemberNotNull(nameof(_state))]
+	[XmlElement]
 	public string State
 	{
 		readonly get => this._state;

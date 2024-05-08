@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="EnumHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -54,19 +54,19 @@ public static class EnumHelper
 	/// <summary>
 	/// Gets the enum names.
 	/// </summary>
-	/// <param name="t">The t.</param>
+	/// <param name="type">The type.</param>
 	/// <param name="fixNames">if set to <c>true</c> [fix names].</param>
 	/// <param name="useXml">if set to <c>true</c> [use XML].</param>
 	/// <returns>List&lt;System.String&gt;.</returns>
-	private static List<string> GetNames([NotNull] Type t, bool fixNames = true, bool useXml = true)
+	private static List<string> GetNames([NotNull] Type type, bool fixNames = true, bool useXml = true)
 	{
 		// Set up result
 		var result = new List<string>();
 
 		// Enum names (text) are defined as fields for the type
-		for (var fieldCount = 0; fieldCount < t.GetFields(BindingFlags.Public | BindingFlags.Static).Length; fieldCount++)
+		for (var fieldCount = 0; fieldCount < type.GetFields(BindingFlags.Public | BindingFlags.Static).Length; fieldCount++)
 		{
-			var enumValue = t.GetFields(BindingFlags.Public | BindingFlags.Static)[fieldCount];
+			var enumValue = type.GetFields(BindingFlags.Public | BindingFlags.Static)[fieldCount];
 
 			// If XML is specified and found, use this name
 			if (useXml)
