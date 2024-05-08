@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-29-2024
+// Last Modified On : 05-05-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.

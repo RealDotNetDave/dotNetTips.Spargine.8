@@ -14,6 +14,7 @@
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
 		<Company>David McCarter - dotNetTips.com</Company>
+		
 		<Configurations>Debug;Release</Configurations>
 		<Copyright>McCarter Consulting (David McCarter)</Copyright>
 		<DebugSymbols>true</DebugSymbols>

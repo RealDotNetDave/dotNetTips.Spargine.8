@@ -4,7 +4,7 @@
 // Created          : 01-05-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-09-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="RandomDataTests.cs" company="dotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -134,6 +134,16 @@ public class RandomDataTests
 			Debug.WriteLine(ex.Message);
 			Assert.Fail();
 		}
+	}
+
+	[TestMethod]
+	public void ConvertPersonValToRefTest()
+	{
+		var personVal = RandomData.GeneratePersonVal<Models.ValueTypes.Address>();
+
+		var personRef = Person<Address>.ToPerson(personVal);
+
+		Assert.IsNotNull(personRef);
 	}
 
 	[TestMethod]
@@ -392,6 +402,31 @@ public class RandomDataTests
 	}
 
 	[TestMethod]
+	public void GeneratePersonRecordTest()
+	{
+		var person = RandomData.GeneratePersonRecord(addressCount: AddressCount);
+
+		Assert.IsNotNull(person);
+		Assert.IsNotNull(person.Addresses);
+		Assert.IsNotNull(person.AddressesSerilization);
+		Assert.IsNotNull(person.BornOn);
+		Assert.IsNotNull(person.CellPhone);
+		Assert.IsNotNull(person.Email);
+		Assert.IsNotNull(person.FirstName);
+		Assert.IsNotNull(person.FullName);
+		Assert.IsNotNull(person.Id);
+		Assert.IsNotNull(person.LastName);
+		Assert.IsNotNull(person.HomePhone);
+		Assert.IsTrue(person.Addresses.Count == 5);
+
+		File.WriteAllText(@"c:\temp\person.txt", person.ToString());
+
+		JsonSerialization.SerializeToFile(person, new FileInfo(@"c:\temp\personrecord.json"));
+
+		Assert.IsTrue(person.Addresses.FastCount() == AddressCount);
+	}
+
+	[TestMethod]
 	public void GeneratePersonRefCollectionTest()
 	{
 		var people = RandomData.GeneratePersonRefCollection<Address>(Count);
@@ -407,42 +442,23 @@ public class RandomDataTests
 		var person = RandomData.GeneratePersonRef<Address>(addressCount: AddressCount);
 
 		Assert.IsNotNull(person);
+		Assert.IsNotNull(person.Addresses);
+		Assert.IsNotNull(person.AddressesSerilization);
+		Assert.IsNotNull(person.BornOn);
+		Assert.IsNotNull(person.CellPhone);
+		Assert.IsNotNull(person.Email);
+		Assert.IsNotNull(person.FirstName);
+		Assert.IsNotNull(person.FullName);
+		Assert.IsNotNull(person.Id);
+		Assert.IsNotNull(person.LastName);
+		Assert.IsNotNull(person.Phone);
+		Assert.IsTrue(person.Addresses.Count == 5);
 
-		File.WriteAllText(@"c:\temp\person.txt", person.ToString());
+		File.WriteAllText(@"c:\temp\personref.txt", person.ToString());
 
-		JsonSerialization.SerializeToFile(person, new FileInfo(@"c:\temp\person.json"));
+		JsonSerialization.SerializeToFile(person, new FileInfo(@"c:\temp\personref.json"));
 
 		Assert.IsTrue(person.Addresses.FastCount() == AddressCount);
-	}
-
-	[TestMethod]
-	public void GeneratePersonTest()
-	{
-		var person = RandomData.GeneratePersonRef<Address>();
-
-		Assert.IsNotNull(person);
-
-		Assert.IsNotNull(person.Addresses);
-
-		Assert.IsTrue(person.BornOn > DateTimeOffset.Parse("1/1/1800"));
-
-		Assert.IsNotNull(person.CellPhone);
-
-		Assert.IsNotNull(person.Email);
-
-		Assert.IsNotNull(person.FirstName);
-
-		Assert.IsNotNull(person.Phone);
-
-		Assert.IsNotNull(person.Id);
-
-		Assert.IsNotNull(person.LastName);
-
-		Assert.IsNotNull(person.FullName);
-
-		Assert.IsTrue(person.Age.TotalMinutes > 0);
-
-		Assert.IsNotNull(person.ToString());
 	}
 
 	[TestMethod]
@@ -454,6 +470,31 @@ public class RandomDataTests
 
 		Assert.IsTrue(result.ToDictionary(item => item.Id).FastCount() == Count);
 
+	}
+
+	[TestMethod]
+	public void GeneratePersonValTest()
+	{
+		var person = RandomData.GeneratePersonVal<Models.ValueTypes.Address>(addressCount: AddressCount);
+
+		Assert.IsNotNull(person);
+		Assert.IsNotNull(person.Addresses);
+		Assert.IsNotNull(person.AddressesSerilization);
+		Assert.IsNotNull(person.BornOn);
+		Assert.IsNotNull(person.CellPhone);
+		Assert.IsNotNull(person.Email);
+		Assert.IsNotNull(person.FirstName);
+		Assert.IsNotNull(person.FullName);
+		Assert.IsNotNull(person.Id);
+		Assert.IsNotNull(person.LastName);
+		Assert.IsNotNull(person.Phone);
+		Assert.IsTrue(person.Addresses.Count == 5);
+
+		File.WriteAllText(@"c:\temp\personval.txt", person.ToString());
+
+		JsonSerialization.SerializeToFile(person, new FileInfo(@"c:\temp\personval.json"));
+
+		Assert.IsTrue(person.Addresses.FastCount() == AddressCount);
 	}
 
 	[TestMethod]
