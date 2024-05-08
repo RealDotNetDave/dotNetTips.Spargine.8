@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-18-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -183,7 +183,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </summary>
 	/// <param name="other">The other.</param>
 	/// <returns>int.</returns>
-	public int CompareTo(Person<TAddress> other)
+	public int CompareTo([NotNull] Person<TAddress> other)
 	{
 		if (other is null)
 		{
@@ -198,7 +198,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </summary>
 	/// <param name="other">The other.</param>
 	/// <returns>int.</returns>
-	public int CompareTo(IPerson<TAddress> other)
+	public int CompareTo([NotNull] IPerson<TAddress> other)
 	{
 		if (other is null)
 		{
@@ -229,7 +229,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </summary>
 	/// <param name="other">The other.</param>
 	/// <returns>bool.</returns>
-	public bool Equals(IPerson<TAddress> other) => ReferenceEquals(this, other);
+	public bool Equals([NotNull] IPerson<TAddress> other) => ReferenceEquals(this, other);
 
 	/// <summary>
 	/// Returns a hash code for this instance.
@@ -255,7 +255,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </summary>
 	/// <param name="person">The person.</param>
 	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.Person.</returns>
-	public static Person<Address> ToPerson(ValueTypes.Person<ValueTypes.Address> person)
+	public static Person<Address> ToPerson([NotNull] ValueTypes.Person<ValueTypes.Address> person)
 	{
 		person = person.ArgumentNotNull();
 
@@ -287,7 +287,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </summary>
 	/// <param name="person">The person.</param>
 	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.Person.</returns>
-	public static Person<Address> ToPerson(PersonRecord person)
+	public static Person<Address> ToPerson([NotNull] PersonRecord person)
 	{
 		person = person.ArgumentNotNull();
 
@@ -325,6 +325,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
 	[XmlIgnore]
+	[MemberNotNull(nameof(_addresses))]
 	public Collection<TAddress> Addresses
 	{
 		get => this._addresses;
@@ -349,6 +350,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[XmlArray("Addresses")]
 	[JsonIgnore]
+	[MemberNotNull(nameof(_addresses))]
 	public Collection<TAddress> AddressesSerilization
 	{
 		get => this._addresses;
@@ -382,6 +384,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
 	[XmlElement]
+	[MemberNotNull(nameof(_bornOn))]
 	public DateTimeOffset BornOn
 	{
 		get => this._bornOn;
@@ -411,6 +414,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "cellPhone", IsRequired = false)]
 	[JsonPropertyName("cellPhone")]
 	[XmlElement]
+	[MemberNotNull(nameof(_cellPhone))]
 	public string CellPhone
 	{
 		get => this._cellPhone;
@@ -441,6 +445,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DisallowNull]
 	[JsonPropertyName("email")]
 	[XmlElement(IsNullable = false)]
+	[MemberNotNull(nameof(_email))]
 	public string Email
 	{
 		get => this._email;
@@ -470,6 +475,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "firstName", IsRequired = false)]
 	[JsonPropertyName("firstName")]
 	[XmlElement]
+	[MemberNotNull(nameof(_firstName))]
 	public string FirstName
 	{
 		get => this._firstName;
@@ -508,6 +514,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DisallowNull]
 	[JsonPropertyName("id")]
 	[XmlElement(IsNullable = false)]
+	[MemberNotNull(nameof(_id))]
 	public string Id
 	{
 		get => this._id;
@@ -535,6 +542,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "lastName", IsRequired = false)]
 	[JsonPropertyName("lastName")]
 	[XmlElement]
+	[MemberNotNull(nameof(_lastName))]
 	public string LastName
 	{
 		get => this._lastName;
@@ -563,6 +571,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "homePhone", IsRequired = false)]
 	[JsonPropertyName("homePhone")]
 	[XmlElement]
+	[MemberNotNull(nameof(_homePhone))]
 	public string Phone
 	{
 		get => this._homePhone;

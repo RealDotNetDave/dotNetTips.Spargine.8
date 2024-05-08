@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -161,7 +161,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// </summary>
 	/// <param name="other">The other.</param>
 	/// <returns>System.Int32.</returns>
-	public int CompareTo(PersonRecord other)
+	public int CompareTo([NotNull] PersonRecord other)
 	{
 		if (other is null)
 		{
@@ -176,7 +176,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// </summary>
 	/// <param name="person">The person.</param>
 	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord.</returns>
-	public static PersonRecord ToPersonRecord(ValueTypes.Person<ValueTypes.Address> person)
+	public static PersonRecord ToPersonRecord([NotNull] ValueTypes.Person<ValueTypes.Address> person)
 	{
 		person = person.ArgumentNotNull();
 
@@ -207,7 +207,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// </summary>
 	/// <param name="person">The person.</param>
 	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord.</returns>
-	public static PersonRecord ToPersonRecord(Person<Address> person)
+	public static PersonRecord ToPersonRecord([NotNull] Person<Address> person)
 	{
 		person = person.ArgumentNotNull();
 
@@ -245,6 +245,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
 	[XmlIgnore]
+	[MemberNotNull(nameof(_addresses))]
 	public Collection<AddressRecord> Addresses
 	{
 		get => this._addresses;
@@ -269,6 +270,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[XmlArray("Addresses")]
 	[JsonIgnore]
+	[MemberNotNull(nameof(_addresses))]
 	public Collection<AddressRecord> AddressesSerilization
 	{
 		get => this._addresses;
@@ -304,6 +306,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
 	[XmlElement]
+	[MemberNotNull(nameof(_bornOn))]
 	public DateTimeOffset BornOn
 	{
 		get => this._bornOn;
@@ -332,6 +335,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DataMember(Name = "cellPhone", IsRequired = false)]
 	[JsonPropertyName("cellPhone")]
 	[XmlElement]
+	[MemberNotNull(nameof(_cellPhone))]
 	public string CellPhone
 	{
 		get => this._cellPhone;
@@ -361,6 +365,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DisallowNull]
 	[JsonPropertyName("email")]
 	[XmlElement(IsNullable = false)]
+	[MemberNotNull(nameof(_email))]
 	public string Email
 	{
 		get => this._email;
@@ -389,6 +394,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DataMember(Name = "firstName", IsRequired = false)]
 	[JsonPropertyName("firstName")]
 	[XmlElement]
+	[MemberNotNull(nameof(_firstName))]
 	public string FirstName
 	{
 		get => this._firstName;
@@ -426,6 +432,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DataMember(Name = "homePhone", IsRequired = false)]
 	[JsonPropertyName("homePhone")]
 	[XmlElement]
+	[MemberNotNull(nameof(_homePhone))]
 	public string HomePhone
 	{
 		get => this._homePhone;
@@ -455,6 +462,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DisallowNull]
 	[JsonPropertyName("id")]
 	[XmlElement(IsNullable = false)]
+	[MemberNotNull(nameof(_id))]
 	public string Id
 	{
 		get => this._id;
@@ -482,6 +490,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DataMember(Name = "lastName", IsRequired = false)]
 	[JsonPropertyName("lastName")]
 	[XmlElement]
+	[MemberNotNull(nameof(_lastName))]
 	public string LastName
 	{
 		get => this._lastName;

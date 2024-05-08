@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-29-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -197,7 +197,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="other">An object to compare with this instance.</param>
 	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
 	/// <list type="table"><listheader><term> Value</term><description> Meaning</description></listheader><item><term> Less than zero</term><description> This instance precedes <paramref name="other" /> in the sort order.</description></item><item><term> Zero</term><description> This instance occurs in the same position in the sort order as <paramref name="other" />.</description></item><item><term> Greater than zero</term><description> This instance follows <paramref name="other" /> in the sort order.</description></item></list></returns>
-	readonly int IComparable<IAddress>.CompareTo(IAddress other)
+	readonly int IComparable<IAddress>.CompareTo([NotNull] IAddress other)
 	{
 		if (other is null)
 		{
@@ -212,7 +212,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// </summary>
 	/// <param name="address">The address.</param>
 	/// <returns>System.Int32.</returns>
-	public readonly int CompareTo(Address address) => this.CompareTo(address);
+	public readonly int CompareTo([NotNull] Address address) => this.CompareTo(address);
 
 	/// <summary>
 	/// Determines whether the specified <see cref="object" /> is equal to this instance.
@@ -259,7 +259,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// </summary>
 	/// <param name="address">The address.</param>
 	/// <returns>Address.</returns>
-	public static Address ToAddress(AddressRecord address)
+	public static Address ToAddress([NotNull] AddressRecord address)
 	{
 		return new(address.ArgumentNotNull().Id)
 		{
@@ -283,11 +283,12 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the Address1.
 	/// </summary>
 	/// <value>The Address1.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Address1</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">Address1</exception>
 	/// <remarks>Address1 is limited to 100 characters.</remarks>
 	[DataMember(Name = "address1", IsRequired = false)]
 	[JsonPropertyName("address1")]
 	[XmlElement]
+	[MemberNotNull(nameof(_address1))]
 	public string Address1
 	{
 		readonly get => this._address1;
@@ -310,11 +311,12 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the Address2.
 	/// </summary>
 	/// <value>The Address2.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Address2</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">Address2</exception>
 	/// <remarks>Address2 is limited to 100 characters.</remarks>
 	[DataMember(Name = "address2", IsRequired = false)]
 	[JsonPropertyName("address2")]
 	[XmlElement]
+	[MemberNotNull(nameof(_address2))]
 	public string Address2
 	{
 		readonly get => this._address2;
@@ -337,11 +339,12 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the city.
 	/// </summary>
 	/// <value>The city name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">City</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">City</exception>
 	/// <remarks>City is limted to 150 characters.</remarks>
 	[DataMember(Name = "city", IsRequired = false)]
 	[JsonPropertyName("city")]
 	[XmlElement]
+	[MemberNotNull(nameof(_city))]
 	public string City
 	{
 		readonly get => this._city;
@@ -364,10 +367,11 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the country.
 	/// </summary>
 	/// <value>The country name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Country</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">Country</exception>
 	/// <remarks>Country is limited to 50 characters.</remarks>
 	[DataMember(Name = "country", IsRequired = false)]
 	[JsonPropertyName("country")]
+	[MemberNotNull(nameof(_country))]
 	[XmlElement]
 	public string Country
 	{
@@ -391,11 +395,12 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the county province.
 	/// </summary>
 	/// <value>The county province.</value>
-	/// <exception cref="ArgumentOutOfRangeException">CountyProvince</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">CountyProvince</exception>
 	/// <remarks>CountyProvince is limited to 50 characters.</remarks>
 	[DataMember(Name = "countryProvince", IsRequired = false)]
 	[JsonPropertyName("countryProvince")]
 	[XmlElement]
+	[MemberNotNull(nameof(_countyProvince))]
 	public string CountyProvince
 	{
 		readonly get => this._countyProvince;
@@ -414,12 +419,13 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the identifier.
 	/// </summary>
 	/// <value>The identifier.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Id</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">Id</exception>
 	/// <remarks>Id is limited to 50 characters.</remarks>
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("id")]
 	[XmlElement(IsNullable = false)]
+	[MemberNotNull(nameof(_id))]
 	public string Id
 	{
 		readonly get => this._id;
@@ -441,11 +447,12 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the phone.
 	/// </summary>
 	/// <value>The phone.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Phone</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">Phone</exception>
 	/// <remarks>Phone number is limited to 50 characters.</remarks>
 	[DataMember(Name = "phone", IsRequired = false)]
 	[JsonPropertyName("phone")]
 	[XmlElement]
+	[MemberNotNull(nameof(_phone))]
 	public string Phone
 	{
 		readonly get => this._phone;
@@ -468,11 +475,12 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the postal code.
 	/// </summary>
 	/// <value>The postal code.</value>
-	/// <exception cref="ArgumentOutOfRangeException">PostalCode</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">PostalCode</exception>
 	/// <remarks>Postal code is limited to 40 characters.</remarks>
 	[DataMember(Name = "postalCode", IsRequired = false)]
 	[JsonPropertyName("postalCode")]
 	[XmlElement]
+	[MemberNotNull(nameof(_postalCode))]
 	public string PostalCode
 	{
 		readonly get => this._postalCode;
@@ -495,11 +503,12 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Gets or sets the state.
 	/// </summary>
 	/// <value>The state.</value>
-	/// <exception cref="ArgumentOutOfRangeException">State</exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">State</exception>
 	/// <remarks>State is limited to 60 characters.</remarks>
 	[DataMember(Name = "state", IsRequired = false)]
 	[JsonPropertyName("state")]
 	[XmlElement]
+	[MemberNotNull(nameof(_state))]
 	public string State
 	{
 		readonly get => this._state;

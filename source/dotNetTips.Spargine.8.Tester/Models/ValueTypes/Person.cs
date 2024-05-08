@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 04-09-2024
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -83,7 +83,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// </summary>
 	[JsonIgnore]
 	[NonSerialized]
-	private string _homePhone = default;
+	private string _phone = default;
 
 	/// <summary>
 	/// The unique identifier.
@@ -111,7 +111,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// </summary>
 	/// <param name="id">The identifier.</param>
 	/// <param name="email">The email.</param>
-	public Person(string id, string email) : this()
+	public Person([NotNull] string id, [NotNull] string email) : this()
 	{
 		this.Id = id;
 		this.Email = email;
@@ -176,14 +176,14 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// </summary>
 	/// <param name="other">The other.</param>
 	/// <returns>int.</returns>
-	public readonly int CompareTo(Person<TAddress> other) => string.Compare(this._id, other._id, StringComparison.OrdinalIgnoreCase);
+	public readonly int CompareTo([NotNull] Person<TAddress> other) => string.Compare(this._id, other._id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Compares to.
 	/// </summary>
 	/// <param name="other">The other.</param>
 	/// <returns>int.</returns>
-	public readonly int CompareTo(IPerson<TAddress> other)
+	public readonly int CompareTo([NotNull] IPerson<TAddress> other)
 	{
 		if (other is null)
 		{
@@ -232,6 +232,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
 	[XmlIgnore]
+	[MemberNotNull(nameof(_addresses))]
 	public Collection<TAddress> Addresses
 	{
 		readonly get => this._addresses;
@@ -256,6 +257,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[XmlArray("Addresses")]
 	[JsonIgnore]
+	[MemberNotNull(nameof(_addresses))]
 	public Collection<TAddress> AddressesSerilization
 	{
 		readonly get => this._addresses;
@@ -288,6 +290,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// <exception cref="ArgumentOutOfRangeException">BornOn</exception>
 	[JsonPropertyName("bornOn")]
 	[XmlElement]
+	[MemberNotNull(nameof(_bornOn))]
 	public DateTimeOffset BornOn
 	{
 		readonly get => this._bornOn;
@@ -313,6 +316,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// <exception cref="ArgumentOutOfRangeException">CellPhone</exception>
 	[JsonPropertyName("cellPhone")]
 	[XmlElement]
+	[MemberNotNull(nameof(_cellPhone))]
 	public string CellPhone
 	{
 		readonly get => this._cellPhone;
@@ -340,6 +344,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	[DisallowNull]
 	[JsonPropertyName("email")]
 	[XmlElement(IsNullable = false)]
+	[MemberNotNull(nameof(_email))]
 	public string Email
 	{
 		readonly get => this._email;
@@ -365,6 +370,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// <exception cref="ArgumentOutOfRangeException">FirstName</exception>
 	[JsonPropertyName("firstName")]
 	[XmlElement]
+	[MemberNotNull(nameof(_firstName))]
 	public string FirstName
 	{
 		readonly get => this._firstName;
@@ -401,6 +407,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	[DisallowNull]
 	[JsonPropertyName("id")]
 	[XmlElement(IsNullable = false)]
+	[MemberNotNull(nameof(_id))]
 	public string Id
 	{
 		readonly get => this._id;
@@ -425,6 +432,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// <exception cref="ArgumentOutOfRangeException">LastName</exception>
 	[JsonPropertyName("lastName")]
 	[XmlElement]
+	[MemberNotNull(nameof(_lastName))]
 	public string LastName
 	{
 		readonly get => this._lastName;
@@ -450,17 +458,18 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// <exception cref="ArgumentOutOfRangeException">Phone</exception>
 	[JsonPropertyName("homePhone")]
 	[XmlElement]
+	[MemberNotNull(nameof(_phone))]
 	public string Phone
 	{
-		readonly get => this._homePhone;
+		readonly get => this._phone;
 		set
 		{
-			if (string.Equals(this._homePhone, value, StringComparison.Ordinal))
+			if (string.Equals(this._phone, value, StringComparison.Ordinal))
 			{
 				return;
 			}
 
-			this._homePhone = value.HasValue(0, 50) is false
+			this._phone = value.HasValue(0, 50) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.Phone),
 					Resources.PhoneNumberIsLimitedTo50Characters)

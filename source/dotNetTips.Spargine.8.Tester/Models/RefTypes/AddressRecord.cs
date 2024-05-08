@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-26-2023
+// Last Modified On : 05-08-2024
 // ***********************************************************************
 // <copyright file="AddressRecord.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -117,7 +117,7 @@ public sealed record AddressRecord : IDataRecord
 	/// Initializes a new instance of the <see cref="AddressRecord" /> class.
 	/// </summary>
 	/// <param name="id">The identifier.</param>
-	public AddressRecord(string id) => this.Id = id;
+	public AddressRecord([NotNull] string id) => this.Id = id;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AddressRecord" /> class.
@@ -131,7 +131,7 @@ public sealed record AddressRecord : IDataRecord
 	/// <param name="country">The country.</param>
 	/// <param name="postalCode">The postal code.</param>
 	/// <param name="phone">The phone.</param>
-	public AddressRecord(string id, string address1, string address2, string city, string state, string countyProvince, string country, string postalCode, string phone) : this(id)
+	public AddressRecord([NotNull] string id, string address1, string address2, string city, string state, string countyProvince, string country, string postalCode, string phone) : this(id)
 	{
 		this.Address1 = address1;
 		this.Address2 = address2;
@@ -148,7 +148,7 @@ public sealed record AddressRecord : IDataRecord
 	/// </summary>
 	/// <param name="address">The address.</param>
 	/// <returns>AddressRecord.</returns>
-	public static AddressRecord ToAddress(Address address) => new(address.ArgumentNotNull().Id)
+	public static AddressRecord ToAddress([NotNull] Address address) => new(address.ArgumentNotNull().Id)
 	{
 		Address1 = address.Address1,
 		Address2 = address.Address2,
@@ -165,7 +165,7 @@ public sealed record AddressRecord : IDataRecord
 	/// </summary>
 	/// <param name="address">The address.</param>
 	/// <returns>AddressRecord.</returns>
-	public static AddressRecord ToAddress(ValueTypes.Address address) => new(address.ArgumentNotNull().Id)
+	public static AddressRecord ToAddress([NotNull] ValueTypes.Address address) => new(address.ArgumentNotNull().Id)
 	{
 		Address1 = address.Address1,
 		Address2 = address.Address2,
@@ -187,6 +187,7 @@ public sealed record AddressRecord : IDataRecord
 	[DataMember(Name = "address1", IsRequired = false)]
 	[JsonPropertyName("address1")]
 	[XmlElement]
+	[MemberNotNull(nameof(_address1))]
 	public string Address1
 	{
 		get => this._address1;
@@ -214,6 +215,7 @@ public sealed record AddressRecord : IDataRecord
 	[DataMember(Name = "address2", IsRequired = false)]
 	[JsonPropertyName("address2")]
 	[XmlElement]
+	[MemberNotNull(nameof(_address2))]
 	public string Address2
 	{
 		get => this._address2;
@@ -241,6 +243,7 @@ public sealed record AddressRecord : IDataRecord
 	[DataMember(Name = "city", IsRequired = false)]
 	[JsonPropertyName("city")]
 	[XmlElement]
+	[MemberNotNull(nameof(_city))]
 	public string City
 	{
 		get => this._city;
@@ -268,6 +271,7 @@ public sealed record AddressRecord : IDataRecord
 	[DataMember(Name = "country", IsRequired = false)]
 	[JsonPropertyName("country")]
 	[XmlElement]
+	[MemberNotNull(nameof(_country))]
 	public string Country
 	{
 		get => this._country;
@@ -294,6 +298,7 @@ public sealed record AddressRecord : IDataRecord
 	/// <remarks>County is limited to 50 characters.</remarks>
 	[JsonPropertyName("countryProvince")]
 	[XmlElement]
+	[MemberNotNull(nameof(_countyProvince))]
 	public string CountyProvince
 	{
 		get => this._countyProvince;
@@ -317,6 +322,7 @@ public sealed record AddressRecord : IDataRecord
 	[JsonPropertyName("id")]
 	[XmlElement(IsNullable = false)]
 	[DisallowNull]
+	[MemberNotNull(nameof(_id))]
 	public string Id
 	{
 		get => this._id;
@@ -342,6 +348,7 @@ public sealed record AddressRecord : IDataRecord
 	[DataMember(Name = "phone", IsRequired = false)]
 	[JsonPropertyName("phone")]
 	[XmlElement]
+	[MemberNotNull(nameof(_phone))]
 	public string Phone
 	{
 		get => this._phone;
@@ -369,6 +376,7 @@ public sealed record AddressRecord : IDataRecord
 	[DataMember(Name = "postalCode", IsRequired = false)]
 	[JsonPropertyName("postalCode")]
 	[XmlElement]
+	[MemberNotNull(nameof(_postalCode))]
 	public string PostalCode
 	{
 		get => this._postalCode;
@@ -396,6 +404,7 @@ public sealed record AddressRecord : IDataRecord
 	[DataMember(Name = "state", IsRequired = false)]
 	[JsonPropertyName("state")]
 	[XmlElement]
+	[MemberNotNull(nameof(_state))]
 	public string State
 	{
 		get => this._state;
