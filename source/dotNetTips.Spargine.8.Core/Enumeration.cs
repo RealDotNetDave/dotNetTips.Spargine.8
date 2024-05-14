@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 05-10-2024
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -84,12 +84,12 @@ public abstract record Enumeration
 	}
 
 	/// <summary>
-	/// Absolutes the difference.
+	/// Returns the difference between the values of two enumeration values.
 	/// </summary>
 	/// <param name="firstValue">The first value.</param>
 	/// <param name="secondValue">The second value.</param>
 	/// <returns>System.Int32.</returns>
-	[Information(nameof(AbsoluteDifference), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(AbsoluteDifference), UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static int AbsoluteDifference([NotNull] Enumeration firstValue, [NotNull] Enumeration secondValue)
 	{
 		firstValue = firstValue.ArgumentNotNull();
@@ -100,12 +100,12 @@ public abstract record Enumeration
 	}
 
 	/// <summary>
-	/// Convert display name to Enumeration.
+	/// Returns an Enumeration based on its display name
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="displayName">The display name.</param>
 	/// <returns>T.</returns>
-	[Information(nameof(FromDisplayName), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(FromDisplayName), UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
 	public static T FromDisplayName<T>([NotNull] string displayName) where T : Enumeration, new()
 	{
 		displayName = displayName.ArgumentNotNullOrEmpty();
@@ -116,12 +116,12 @@ public abstract record Enumeration
 	}
 
 	/// <summary>
-	/// Converts number value to enumeration.
+	/// Returns an Enumeration based on its value.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="value">The value.</param>
 	/// <returns>T.</returns>
-	[Information(nameof(FromValue), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(FromValue), UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
 	public static T FromValue<T>(int value) where T : Enumeration, new()
 	{
 		var matchingItem = Parse<T>("Validating int.", item => item.Value == value);
@@ -134,7 +134,7 @@ public abstract record Enumeration
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
-	[Information(nameof(GetAll), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(GetAll), UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
 	public static IEnumerable<T> GetAll<T>() where T : Enumeration, new()
 	{
 		var type = typeof(T);

@@ -99,13 +99,20 @@ public static class EnumHelper
 	}
 
 	/// <summary>
-	/// Gets the enum values.
+	/// Gets the enum names and values.
 	/// </summary>
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="fixNames">if set to <c>true</c> [fix names].</param>
 	/// <param name="useXmlNames">if set to <c>true</c> [use XML names].</param>
+	/// <example>
+	/// Using this with the RequestCacheLevel will return the following:
+	/// EnumValue { Name = Default, Value = 0 },EnumValue { Name = BypassCache, Value = 1 },
+	/// EnumValue { Name = CacheOnly, Value = 2 },EnumValue { Name = CacheIfAvailable, Value = 3 },
+	/// EnumValue { Name = Revalidate, Value = 4 },EnumValue { Name = Reload, Value = 5 },
+	/// EnumValue { Name = NoCacheNoStore, Value = 6 }
+	/// </example>
 	/// <returns>ReadOnlyCollection&lt;EnumValue&gt;.</returns>
-	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<EnumValue> GetValues<T>(bool fixNames = true, bool useXmlNames = true)
 		where T : Enum
 	{

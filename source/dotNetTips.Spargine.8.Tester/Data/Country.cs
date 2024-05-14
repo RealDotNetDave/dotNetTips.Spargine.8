@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2024
+// Last Modified On : 05-11-2024
 // ***********************************************************************
 // <copyright file="Country.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -12,6 +12,7 @@
 // <summary>Class that encapsulates information for a Country.</summary>
 // ***********************************************************************
 
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -162,6 +163,7 @@ public sealed class Country
 	/// </summary>
 	/// <value>The states.</value>
 	[JsonPropertyName("states")]
+	[MaybeNull]
 	public State[] States { get; set; }
 
 	/// <summary>
@@ -176,6 +178,7 @@ public sealed class Country
 	/// </summary>
 	/// <value>The timezones.</value>
 	[JsonPropertyName("timezones")]
+	[MaybeNull]
 	public Timezone[] Timezones { get; set; }
 
 	/// <summary>
@@ -189,6 +192,7 @@ public sealed class Country
 	/// Gets or sets the translations.
 	/// </summary>
 	/// <value>The translations.</value>
+	[MaybeNull]
 	[JsonPropertyName("translations")]
 	public Translations Translations { get; set; }
 

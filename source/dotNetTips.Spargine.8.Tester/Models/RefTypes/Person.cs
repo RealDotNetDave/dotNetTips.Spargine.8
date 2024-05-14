@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 05-11-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="dotNetTips.com - David McCarter">
 //     McCarter Consulting (David McCarter)
@@ -324,8 +324,8 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <value>The addresses.</value>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
-	[XmlIgnore]
 	[MemberNotNull(nameof(_addresses))]
+	[XmlIgnore]
 	public Collection<TAddress> Addresses
 	{
 		get => this._addresses;
@@ -446,6 +446,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DisallowNull]
 	[JsonPropertyName("email")]
 	[MemberNotNull(nameof(_email))]
+	[ReadOnly(true)]
 	[XmlElement(IsNullable = false)]
 	public string Email
 	{
@@ -515,8 +516,9 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("id")]
-	[XmlElement(IsNullable = false)]
 	[MemberNotNull(nameof(_id))]
+	[ReadOnly(true)]
+	[XmlElement(IsNullable = false)]
 	public string Id
 	{
 		get => this._id;

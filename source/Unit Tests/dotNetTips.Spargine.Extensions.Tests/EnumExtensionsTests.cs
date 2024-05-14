@@ -38,9 +38,7 @@ public class EnumExtensionsTests
 	[TestMethod]
 	public void GetItemsTest()
 	{
-		var enumValue = TaskStatus.Canceled;
-
-		var result = enumValue.GetItems();
+		var result = TaskStatus.Canceled.GetItems();
 
 		Assert.IsTrue(result.FastCount() > 0);
 	}
@@ -48,11 +46,10 @@ public class EnumExtensionsTests
 	[TestMethod]
 	public void ParseTest()
 	{
-		const string EnumName = "Canceled";
 
-		var result = EnumName.Parse<TaskStatus>();
+		var result = "Canceled".Parse<TaskStatus>();
 
-		Assert.IsTrue(string.Compare(result.ToString(), EnumName, StringComparison.Ordinal) == 0);
+		Assert.IsTrue(string.Compare(result.ToString(), "Canceled", StringComparison.Ordinal) == 0);
 
 	}
 

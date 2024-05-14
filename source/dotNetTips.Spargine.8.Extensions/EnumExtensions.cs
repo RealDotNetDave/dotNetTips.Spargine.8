@@ -32,7 +32,7 @@ public static class EnumExtensions
 	/// <param name="input">The value.</param>
 	/// <returns>System.String.</returns>
 	/// <exception cref="ArgumentNullException">val</exception>
-	[Information(nameof(GetDescription), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetDescription), UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static string GetDescription(this Enum input)
 	{
 		var field = input.ArgumentNotNull().GetType().GetField(input.ToString());
@@ -47,7 +47,7 @@ public static class EnumExtensions
 	/// </summary>
 	/// <param name="input">The enumeration.</param>
 	/// <returns>ReadOnlyCollection&lt;System.ValueTuple&lt;System.String, System.Int32&gt;&gt;.</returns>
-	[Information(nameof(GetItems), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetItems), UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<(string Description, int Value)> GetItems(this Enum input)
 	{
 		var items = new List<(string Description, int Value)>();
@@ -70,7 +70,7 @@ public static class EnumExtensions
 	/// <returns>T.</returns>
 	/// <exception cref="ArgumentException">name</exception>
 	/// <exception cref="ArgumentException">The exception.</exception>
-	[Information(nameof(Parse), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(Parse), UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static T Parse<T>([NotNull] this string name)
 		where T : Enum
 	{

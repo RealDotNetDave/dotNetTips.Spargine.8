@@ -76,6 +76,19 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = "Chunk (compare to Page and Partition)")]
+	[BenchmarkCategory(Categories.ForComparison, Categories.New)]
+	public void Chunk()
+	{
+		foreach (var people in this._personRefEnumerable.Chunk(25))
+		{
+			foreach (var person in people)
+			{
+				this.Consume(person);
+			}
+		}
+	}
+
 	[Benchmark(Description = nameof(EnumerableExtensions.ContainsAny))]
 	public void ContainsAny()
 	{

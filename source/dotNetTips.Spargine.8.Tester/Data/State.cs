@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-18-2023
+// Last Modified On : 05-11-2024
 // ***********************************************************************
 // <copyright file="State.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -12,6 +12,7 @@
 // <summary>Class that encapsulates information for a State.</summary>
 // ***********************************************************************
 
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -28,6 +29,7 @@ public sealed class State
 	/// Gets or sets the cities.
 	/// </summary>
 	/// <value>The cities.</value>
+	[MaybeNull]
 	[JsonPropertyName("cities")]
 	public City[] Cities { get; set; }
 

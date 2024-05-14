@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 05-08-2024
+// Last Modified On : 05-11-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -231,8 +231,9 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// <value>The addresses.</value>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
-	[XmlIgnore]
+	[MaybeNull]
 	[MemberNotNull(nameof(_addresses))]
+	[XmlIgnore]
 	public Collection<TAddress> Addresses
 	{
 		readonly get => this._addresses;
@@ -344,6 +345,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	[DataMember(Name = "email", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("email")]
+	[ReadOnly(true)]
 	[XmlElement(IsNullable = false)]
 	[MemberNotNull(nameof(_email))]
 	public string Email
@@ -408,8 +410,9 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("id")]
-	[XmlElement(IsNullable = false)]
 	[MemberNotNull(nameof(_id))]
+	[ReadOnly(true)]
+	[XmlElement(IsNullable = false)]
 	public string Id
 	{
 		readonly get => this._id;

@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 05-11-2024
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -244,8 +244,9 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <value>The addresses.</value>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
-	[XmlIgnore]
+	[MaybeNull]
 	[MemberNotNull(nameof(_addresses))]
+	[XmlIgnore]
 	public Collection<AddressRecord> Addresses
 	{
 		get => this._addresses;
@@ -371,6 +372,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	public string Email
 	{
 		get => this._email;
+
 		init
 		{
 			if (string.Equals(this._email, value, StringComparison.Ordinal))
@@ -465,8 +467,9 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("id")]
-	[XmlElement(IsNullable = false)]
 	[MemberNotNull(nameof(_id))]
+	[ReadOnly(true)]
+	[XmlElement(IsNullable = false)]
 	public string Id
 	{
 		get => this._id;

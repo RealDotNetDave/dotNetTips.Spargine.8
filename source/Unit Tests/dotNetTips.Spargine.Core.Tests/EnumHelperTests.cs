@@ -27,12 +27,12 @@ public class EnumHelperTests
 {
 
 	[TestMethod]
-	public void AddToPersonCollectionTest()
+	public void GetValuesTest()
 	{
 		var result = EnumHelper.GetValues<RequestCacheLevel>(false, false);
 		Assert.IsTrue(result.FastCount() > 0);
 
-		result = EnumHelper.GetValues<HttpCacheAgeControl>(true, false);
+		result = EnumHelper.GetValues<HttpCacheAgeControl>(fixNames: true, useXmlNames: false);
 		Assert.IsTrue(result.FastCount() > 0);
 
 		result = EnumHelper.GetValues<HttpCacheAgeControl>(false, true);
