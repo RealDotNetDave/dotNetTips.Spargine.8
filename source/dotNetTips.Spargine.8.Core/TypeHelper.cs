@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-02-2024
+// Last Modified On : 05-20-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -17,6 +17,8 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using System.Reflection.Metadata;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.Json;
 using DotNetTips.Spargine.Core.Properties;
@@ -75,6 +77,34 @@ public static class TypeHelper
 		}
 
 		_builtinTypes = builtinTypes.AsReadOnly();
+	}
+
+	/// <summary>
+	/// Determines whether [is dot net assembly] [the specified stream].
+	/// </summary>
+	/// <param name="stream">The stream.</param>
+	/// <returns>bool.</returns>
+	[Information(nameof(IsDotNetAssembly), author: "David McCarter", createdOn: "5/20/2024")]
+	private static bool IsDotNetAssembly(Stream stream)
+	{
+		try
+		{
+			using var peReader = new PEReader(stream);
+
+			if (!peReader.HasMetadata)
+			{
+				return false;
+			}
+
+			// If peReader.PEHeaders doesn't throw, it is a valid PEImage
+			_ = peReader.PEHeaders.CorHeader;
+
+			return peReader.GetMetadataReader().IsAssembly;
+		}
+		catch (BadImageFormatException)
+		{
+			return false;
+		}
 	}
 
 	/// <summary>
@@ -575,6 +605,21 @@ public static class TypeHelper
 
 		// Otherwise, the type is not a built-in type
 		return false;
+	}
+
+	/// <summary>Determines whether [is dot net assembly] [the specified file].</summary>
+	/// <param name="file">The file.</param>
+	/// <returns>
+	///   <c>true</c> if [is dot net assembly] [the specified file]; otherwise, <c>false</c>.</returns>
+	/// <exception cref="FileNotFoundException">File not found.</exception>
+	[Information("Orginal code by GÉRALD BARRÉ", author: "David McCarter", createdOn: "5/20/2024", UnitTestCoverage = 0, Status = Status.New)]
+	public static bool IsDotNetAssembly(FileInfo file)
+	{
+		file = file.ArgumentExists();
+
+		using var stream = File.OpenRead(file.FullName);
+
+		return IsDotNetAssembly(stream);
 	}
 
 	/// <summary>

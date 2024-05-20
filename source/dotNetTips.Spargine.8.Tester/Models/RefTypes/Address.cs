@@ -302,7 +302,7 @@ public sealed class Address : IAddress
 	/// Gets or sets the Address1.
 	/// </summary>
 	/// <value>The Address1.</value>
-	/// <exception cref="System.ArgumentOutOfRangeException">Address1</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Address1</exception>
 	/// <remarks>Address1 is limited to 100 characters.</remarks>
 	[DataMember(Name = "address1", IsRequired = false)]
 	[DefaultValue("")]
@@ -331,7 +331,7 @@ public sealed class Address : IAddress
 	/// Gets or sets the Address2.
 	/// </summary>
 	/// <value>The Address2.</value>
-	/// <exception cref="System.ArgumentOutOfRangeException">Address2</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Address2</exception>
 	/// <remarks>Address2 is limited to 100 characters.</remarks>
 	[DataMember(Name = "address2", IsRequired = false)]
 	[DefaultValue("")]
@@ -360,7 +360,7 @@ public sealed class Address : IAddress
 	/// Gets or sets the city.
 	/// </summary>
 	/// <value>The city name.</value>
-	/// <exception cref="System.ArgumentOutOfRangeException">City</exception>
+	/// <exception cref="ArgumentOutOfRangeException">City</exception>
 	/// <remarks>City is limted to 150 characters.</remarks>
 	[DataMember(Name = "city", IsRequired = false)]
 	[DefaultValue("")]
@@ -389,7 +389,7 @@ public sealed class Address : IAddress
 	/// Gets or sets the country.
 	/// </summary>
 	/// <value>The country name.</value>
-	/// <exception cref="System.ArgumentOutOfRangeException">Country</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Country</exception>
 	/// <remarks>Country is limited to 50 characters.</remarks>
 	[DataMember(Name = "country", IsRequired = false)]
 	[DefaultValue("")]
@@ -418,7 +418,7 @@ public sealed class Address : IAddress
 	/// Gets or sets the county province.
 	/// </summary>
 	/// <value>The county province.</value>
-	/// <exception cref="System.ArgumentOutOfRangeException">CountyProvince</exception>
+	/// <exception cref="ArgumentOutOfRangeException">CountyProvince</exception>
 	/// <remarks>CountyProvince is limited to 50 characters.</remarks>
 	[DataMember(Name = "countryProvince", IsRequired = false)]
 	[JsonPropertyName("countryProvince")]
@@ -443,7 +443,7 @@ public sealed class Address : IAddress
 	/// Gets or sets the identifier.
 	/// </summary>
 	/// <value>The identifier.</value>
-	/// <exception cref="System.ArgumentOutOfRangeException">Id</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Id</exception>
 	/// <remarks>Id is limited to 50 characters.</remarks>
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
@@ -471,7 +471,7 @@ public sealed class Address : IAddress
 	/// Gets or sets the phone.
 	/// </summary>
 	/// <value>The phone.</value>
-	/// <exception cref="System.ArgumentOutOfRangeException">Phone</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Phone</exception>
 	/// <remarks>Phone number is limited to 50 characters.</remarks>
 	[DataMember(Name = "phone", IsRequired = false)]
 	[DefaultValue("")]
@@ -500,7 +500,7 @@ public sealed class Address : IAddress
 	/// Gets or sets the postal code.
 	/// </summary>
 	/// <value>The postal code.</value>
-	/// <exception cref="System.ArgumentOutOfRangeException">PostalCode</exception>
+	/// <exception cref="ArgumentOutOfRangeException">PostalCode</exception>
 	/// <remarks>Postal code is limited to 40 characters.</remarks>
 	[DataMember(Name = "postalCode", IsRequired = false)]
 	[DefaultValue("")]
@@ -529,7 +529,7 @@ public sealed class Address : IAddress
 	/// Gets or sets the state.
 	/// </summary>
 	/// <value>The state.</value>
-	/// <exception cref="System.ArgumentOutOfRangeException">State</exception>
+	/// <exception cref="ArgumentOutOfRangeException">State</exception>
 	/// <remarks>State is limited to 60 characters.</remarks>
 	[DataMember(Name = "state", IsRequired = false)]
 	[DefaultValue("")]

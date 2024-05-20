@@ -431,6 +431,8 @@ public class RandomDataTests
 	{
 		var people = RandomData.GeneratePersonRefCollection<Address>(Count);
 
+		//people.ToJsonFile(new FileInfo(@"c:\temp\people.json"));
+
 		Assert.IsNotNull(people);
 
 		Assert.IsTrue(people.FastCount() == Count);
