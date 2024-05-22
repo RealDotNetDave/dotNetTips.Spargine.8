@@ -4,14 +4,12 @@
 // Created          : 03-13-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-08-2023
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="CreditCardInfo.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Class that encapsulates information for a credit card.
-// </summary>
+// <summary>Class that encapsulates information for a credit card.</summary>
 // ***********************************************************************
 
 using System.Text.Json.Serialization;
@@ -23,15 +21,13 @@ namespace DotNetTips.Spargine.Tester.Data;
 /// <summary>
 /// Class CreditCardInfo.
 /// </summary>
-/// <remarks>
-/// Initializes a new instance of the <see cref="CreditCardInfo" /> class.
-/// </remarks>
 /// <param name="number">The number.</param>
 /// <param name="type">The type.</param>
 /// <param name="name">The name.</param>
 /// <param name="expiryDate">The expiry date.</param>
 /// <param name="cvv">The CVV.</param>
 /// <param name="industry">The industry.</param>
+/// <remarks>Initializes a new instance of the <see cref="CreditCardInfo" /> class.</remarks>
 public class CreditCardInfo(
 	string number,
 	string type,

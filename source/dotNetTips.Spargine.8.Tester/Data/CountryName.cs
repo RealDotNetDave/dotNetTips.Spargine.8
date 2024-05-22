@@ -4,14 +4,12 @@
 // Created          : 12-28-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="CountryName.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Enumeration that represents all the countries in the world.
-// </summary>
+// <summary>Enumeration that represents all the countries in the world.</summary>
 // ***********************************************************************
 
 using System.Runtime.Serialization;

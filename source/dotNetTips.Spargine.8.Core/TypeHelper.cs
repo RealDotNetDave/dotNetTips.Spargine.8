@@ -9,7 +9,14 @@
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>Provides valuable methods for type management, encompassing tasks such as loading derived types, creating new types, discovering derived types, converting JSON to objects, transforming JSON files into objects, generating instance hash codes, and listing built-in types. These functionalities empower developers to handle types effectively in diverse scenarios.</summary>
+// <summary>
+// Provides valuable methods for type management, encompassing tasks
+// such as loading derived types, creating new types, discovering derived
+// types, converting JSON to objects, transforming JSON files into
+// objects, generating instance hash codes, and listing built-in types.
+// These functionalities empower developers to handle types effectively
+// in diverse scenarios.
+// </summary>
 // ***********************************************************************
 
 using System.Collections;
