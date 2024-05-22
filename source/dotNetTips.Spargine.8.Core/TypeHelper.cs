@@ -333,12 +333,11 @@ public static class TypeHelper
 		var array = currentDomain.ArgumentNotNull().GetAssemblies();
 		List<Type> types = null;
 
-		for (var assemblyCount = 0; assemblyCount < array.Length; assemblyCount++)
+		foreach (var arrayItem in array)
 		{
 			try
 			{
-				var assembly = array[assemblyCount];
-				var tempTypes = LoadDerivedTypes(assembly.DefinedTypes, baseType, classOnly).ToList();
+				var tempTypes = LoadDerivedTypes(arrayItem.DefinedTypes, baseType, classOnly).ToList();
 
 				if (tempTypes?.FastCount() > 0)
 				{

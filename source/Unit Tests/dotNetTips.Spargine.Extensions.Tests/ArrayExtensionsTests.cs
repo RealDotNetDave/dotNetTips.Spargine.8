@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-29-2024
+// Last Modified On : 05-22-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -166,12 +166,31 @@ public class ArrayExtensionsTests
 	}
 
 	[TestMethod]
-	public void FastHashDataTest()
+	public void FastHashData_EmptyData_ReturnsEmptyHash()
 	{
-		var byteArray = RandomData.GenerateByteArray(10);
-		var result = byteArray.FastHashData();
+		// Arrange
+		var data = new byte[0];
 
-		Assert.IsTrue(result.HasItems());
+		// Act
+		var result = data.FastHashData();
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(0, result.Length);
+	}
+
+	[TestMethod]
+	public void FastHashData_ValidData_ReturnsHash()
+	{
+		// Arrange
+		var data = Encoding.UTF8.GetBytes("Test data");
+
+		// Act
+		var result = data.FastHashData();
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Length > 0);
 	}
 
 	/// <summary>
