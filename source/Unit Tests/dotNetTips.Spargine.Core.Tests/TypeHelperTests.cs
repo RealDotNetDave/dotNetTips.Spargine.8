@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-29-2024
+// Last Modified On : 05-22-2024
 // ***********************************************************************
 // <copyright file="TypeHelperTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -14,6 +14,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using DotNetTips.Spargine.Core;
@@ -193,6 +194,33 @@ public class TypeHelperTests : TestClass
 		var result = TypeHelper.IsBuiltinType(typeof(PersonRecord));
 
 		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void IsDotNetAssembly_InvalidAssembly_ReturnsFalse()
+	{
+		// Arrange
+		var fileInfo = new FileInfo(@"c:\windows\twain_32.dll");
+
+		// Act
+		var result = TypeHelper.IsDotNetAssembly(fileInfo);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void IsDotNetAssembly_ValidAssembly_ReturnsTrue()
+	{
+		// Arrange
+		var assemblyPath = Assembly.GetExecutingAssembly().Location;
+		var fileInfo = new FileInfo(assemblyPath);
+
+		// Act
+		var result = TypeHelper.IsDotNetAssembly(fileInfo);
+
+		// Assert
+		Assert.IsTrue(result);
 	}
 
 }

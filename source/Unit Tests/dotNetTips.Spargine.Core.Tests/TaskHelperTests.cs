@@ -13,8 +13,6 @@
 // ***********************************************************************
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -47,33 +45,6 @@ public class TaskHelperTests
 		await Task.Delay(1).ConfigureAwait(false);
 
 		return input;
-	}
-
-	[TestMethod]
-	public void IsDotNetAssembly_InvalidAssembly_ReturnsFalse()
-	{
-		// Arrange
-		var fileInfo = new FileInfo(@"c:\windows\twain_32.dll");
-
-		// Act
-		var result = TypeHelper.IsDotNetAssembly(fileInfo);
-
-		// Assert
-		Assert.IsFalse(result);
-	}
-
-	[TestMethod]
-	public void IsDotNetAssembly_ValidAssembly_ReturnsTrue()
-	{
-		// Arrange
-		var assemblyPath = Assembly.GetExecutingAssembly().Location;
-		var fileInfo = new FileInfo(assemblyPath);
-
-		// Act
-		var result = TypeHelper.IsDotNetAssembly(fileInfo);
-
-		// Assert
-		Assert.IsTrue(result);
 	}
 
 	[TestMethod]
