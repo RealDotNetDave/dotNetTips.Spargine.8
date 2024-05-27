@@ -38,7 +38,7 @@ public class TaskExtensionsTests
 	/// Fires the specified input.
 	/// </summary>
 	/// <param name="input">The input.</param>
-	private async Task Fire(string input)
+	private async Task FireAsync(string input)
 	{
 		this._fireResult = input;
 
@@ -53,7 +53,7 @@ public class TaskExtensionsTests
 	[TestMethod]
 	public void FireAndForgetTest01()
 	{
-		this.Fire(nameof(this.FireAndForgetTest01)).FireAndForget();
+		this.FireAsync(nameof(this.FireAndForgetTest01)).FireAndForget();
 
 		Assert.AreEqual(this._fireResult, nameof(this.FireAndForgetTest01));
 	}
@@ -68,7 +68,7 @@ public class TaskExtensionsTests
 
 		var p = value;
 
-		this.Fire(nameof(this.FireAndForgetTest01)).FireAndForget(p);
+		this.FireAsync(nameof(this.FireAndForgetTest01)).FireAndForget(p);
 
 		Assert.AreEqual(this._fireResult, nameof(this.FireAndForgetTest01));
 	}

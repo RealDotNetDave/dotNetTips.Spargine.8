@@ -357,7 +357,7 @@ public static class TypeHelper
 			}
 		}
 
-		return types.AsReadOnly();
+		return types is not null ? types.AsReadOnly() : default;
 	}
 
 	/// <summary>

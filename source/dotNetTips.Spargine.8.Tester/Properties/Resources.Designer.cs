@@ -151,36 +151,6 @@ namespace DotNetTips.Spargine.Tester.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [
-        ///  {
-        ///    &quot;number&quot;: &quot;2335188728251690&quot;,
-        ///    &quot;type&quot;: &quot;MasterCard&quot;,
-        ///    &quot;name&quot;: &quot;Mandy Bardach&quot;,
-        ///    &quot;expiryDate&quot;: &quot;8/25&quot;,
-        ///    &quot;cvv&quot;: 810,
-        ///    &quot;industry&quot;: &quot;Airlines and other industry assignments&quot;
-        ///  },
-        ///  {
-        ///    &quot;number&quot;: &quot;4986700064774317387&quot;,
-        ///    &quot;type&quot;: &quot;Visa&quot;,
-        ///    &quot;name&quot;: &quot;Sharice Ohno&quot;,
-        ///    &quot;expiryDate&quot;: &quot;2/26&quot;,
-        ///    &quot;cvv&quot;: 380,
-        ///    &quot;industry&quot;: &quot;Banking &amp; Financial&quot;
-        ///  },
-        ///  {
-        ///    &quot;number&quot;: &quot;2265091312026268&quot;,
-        ///    &quot;type&quot;: &quot;MasterCard&quot;,
-        ///    &quot;name&quot;: &quot;Mirella Fonohema&quot;,
-        ///    &quot;expiryDate&quot;: &quot;9/ [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string JsonCreditCards {
-            get {
-                return ResourceManager.GetString("JsonCreditCards", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Last name length is limited to 50 characters..
         /// </summary>
         internal static string LastNameLengthIsLimitedTo50Characters {

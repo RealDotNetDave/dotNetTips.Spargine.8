@@ -17,7 +17,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Json;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Data;
@@ -192,12 +191,6 @@ public static partial class RandomData
 	}
 
 	/// <summary>
-	/// Loads the credit cards.
-	/// </summary>
-	/// <returns>ImmutableArray&lt;CreditCardInfo&gt;.</returns>
-	private static ReadOnlyCollection<CreditCardInfo> LoadCreditCards() => JsonSerializer.Deserialize<ReadOnlyCollection<CreditCardInfo>>(Resources.JsonCreditCards);
-
-	/// <summary>
 	/// Picks a random string from an array.
 	/// </summary>
 	/// <param name="words">The words.</param>
@@ -242,8 +235,7 @@ public static partial class RandomData
 	/// <param name="countyProvinceLength">Length of the county province. Length must be between 5 - 50. Defaults to 20.</param>
 	/// <returns>System.Collections.ObjectModel.Collection&lt;T&gt;.</returns>
 	[Information(nameof(GenerateAddressCollection), "David McCarter", "12/4/2023", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
-	public static Collection<T> GenerateAddressCollection<T>(
-		[NotNull] Country country, int count = 2, int addressLength = 25, int countyProvinceLength = 20) where T : IAddress, new()
+	public static Collection<T> GenerateAddressCollection<T>([NotNull] Country country, int count = 2, int addressLength = 25, int countyProvinceLength = 20) where T : IAddress, new()
 	{
 		country = country.ArgumentNotNull();
 		count = count.ArgumentInRange(lower: 0, defaultValue: 2);

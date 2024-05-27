@@ -254,6 +254,7 @@ public static class ArrayExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(FastCount), "David McCarter", "1/9/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static long FastCount<T>([NotNull] this T[] array) => array.ArgumentNotNull().LongLength;
+
 	/// <summary>
 	/// Hashes data using SHA256.
 	/// </summary>
