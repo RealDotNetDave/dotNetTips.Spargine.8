@@ -169,7 +169,7 @@ public static class ObjectExtensions
 	/// <param name="json">The json.</param>
 	/// <returns>TResult.</returns>
 	[Information(nameof(FromJson), "David McCarter", "4/21/2022", UnitTestCoverage = 100, Status = Status.Available)]
-	public static TResult FromJson<TResult>([NotNull] this string json) => JsonSerialization.Deserialize<TResult>(json.ArgumentNotNullOrEmpty());
+	public static TResult FromJson<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] this string json) => JsonSerialization.Deserialize<TResult>(json.ArgumentNotNullOrEmpty());
 
 	/// <summary>
 	/// Determines whether the specified object has the property.

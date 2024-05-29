@@ -127,7 +127,7 @@ public static class JsonSerialization
 	/// <param name="json">The json.</param>
 	/// <returns>T.</returns>
 	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
-	public static TResult Deserialize<TResult>([NotNull] string json)
+	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json)
 	{
 		var obj = JsonSerializer.Deserialize<TResult>(json, _options);
 

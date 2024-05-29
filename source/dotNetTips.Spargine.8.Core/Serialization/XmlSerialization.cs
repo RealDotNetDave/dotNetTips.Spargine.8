@@ -38,7 +38,7 @@ public static class XmlSerialization
 	/// <returns>T.</returns>
 	/// <exception cref="ArgumentNullException">xml.</exception>
 	[Information(nameof(Deserialize), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
-	public static TResult Deserialize<TResult>([NotNull] string xml) where TResult : class
+	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Xml)] string xml) where TResult : class
 	{
 		using (var sr = new StringReader(xml.ArgumentNotNullOrEmpty(true)))
 		{

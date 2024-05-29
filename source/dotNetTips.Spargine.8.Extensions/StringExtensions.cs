@@ -578,7 +578,7 @@ public static class StringExtensions
 	/// <param name="options">The options.</param>
 	/// <returns><c>true</c> if the specified expression has value; otherwise, <c>false</c>.</returns>
 	[Information(nameof(HasValue), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static bool HasValue([NotNull] this string input, [NotNull] string expression, [NotNull] RegexOptions options) => input.HasValue() && expression.HasValue() && new Regex(expression, options.ArgumentDefined()).IsMatch(input);
+	public static bool HasValue([NotNull] this string input, [NotNull][StringSyntax(StringSyntaxAttribute.Regex)] string expression, [NotNull] RegexOptions options) => input.HasValue() && expression.HasValue() && new Regex(expression, options.ArgumentDefined()).IsMatch(input);
 
 	/// <summary>
 	/// Determines whether the strings is within the specified minimum and maximum length.
@@ -757,7 +757,7 @@ public static class StringExtensions
 	/// <param name="input">The value.</param>
 	/// <returns><c>true</c> if the specified value is unique identifier; otherwise, <c>false</c>.</returns>
 	[Information(nameof(IsGuid), "David McCarter", "3/24/2017", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static bool IsGuid([NotNull] this string input) => _guidRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsGuid([NotNull][StringSyntax(StringSyntaxAttribute.GuidFormat)] this string input) => _guidRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
 	/// Determines whether the specified input is an ISBN.

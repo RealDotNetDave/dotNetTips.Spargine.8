@@ -143,20 +143,14 @@ public static partial class RandomData
 	/// </summary>
 	/// <param name="addressLength">Length of the address.</param>
 	/// <returns>System.String.</returns>
-	private static string GenerateAddressLineOne(int addressLength)
-	{
-		return $"{GenerateNumber(AddressNumberCount)} {GenerateWord(addressLength - AddressNumberCount - 1)}";
-	}
+	private static string GenerateAddressLineOne(int addressLength) => $"{GenerateNumber(AddressNumberCount)} {GenerateWord(addressLength - AddressNumberCount - 1)}";
 
 	/// <summary>
 	/// Generates the address line two.
 	/// </summary>
 	/// <param name="addressLength">Length of the address.</param>
 	/// <returns>System.String.</returns>
-	private static string GenerateAddressLineTwo(int addressLength)
-	{
-		return $"{GenerateWord(addressLength - AddressNumberCount - 1)} {GenerateNumber(AddressNumberCount)}";
-	}
+	private static string GenerateAddressLineTwo(int addressLength) => $"{GenerateWord(addressLength - AddressNumberCount - 1)} {GenerateNumber(AddressNumberCount)}";
 
 	/// <summary>
 	/// Generates the email address with names.

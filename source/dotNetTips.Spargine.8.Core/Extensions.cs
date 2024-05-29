@@ -271,7 +271,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="expression">The expression.</param>
 	/// <param name="options">The options.</param>
 	/// <returns><c>true</c> if the specified expression has value; otherwise, <c>false</c>.</returns>
-	internal static bool HasValue(this string input, [NotNull] string expression, [NotNull] RegexOptions options) => input.HasValue() && expression.HasValue() && new Regex(expression, options).IsMatch(input);
+	internal static bool HasValue(this string input, [NotNull][StringSyntax(StringSyntaxAttribute.Regex)] string expression, [NotNull] RegexOptions options) => input.HasValue() && expression.HasValue() && new Regex(expression, options).IsMatch(input);
 
 	/// <summary>
 	/// Determines whether the strings is within the specified minimum and maximum length.

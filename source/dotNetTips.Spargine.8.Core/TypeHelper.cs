@@ -422,7 +422,7 @@ public static class TypeHelper
 	/// <param name="json">The json.</param>
 	/// <returns>T.</returns>
 	[Information(nameof(FromJson), UnitTestCoverage = 100, Status = Status.Available)]
-	public static T FromJson<T>([NotNull] string json)
+	public static T FromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json)
 		where T : class => JsonSerializer.Deserialize<T>(json);
 
 	/// <summary>

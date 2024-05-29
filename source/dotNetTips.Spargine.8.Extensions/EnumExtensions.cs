@@ -71,7 +71,7 @@ public static class EnumExtensions
 	/// <exception cref="ArgumentException">name</exception>
 	/// <exception cref="ArgumentException">The exception.</exception>
 	[Information(nameof(Parse), UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
-	public static T Parse<T>([NotNull] this string name)
+	public static T Parse<T>([NotNull][StringSyntax(StringSyntaxAttribute.EnumFormat)] this string name)
 		where T : Enum
 	{
 		name = name.ArgumentNotNullOrEmpty();
