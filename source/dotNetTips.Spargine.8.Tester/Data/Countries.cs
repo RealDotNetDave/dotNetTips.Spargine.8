@@ -54,10 +54,13 @@ public static class Countries
 	}
 
 	/// <summary>
-	/// Deserializes the countires.
+	/// Deserializes collection of <see cref="Country"/>.
 	/// </summary>
 	/// <returns>ReadOnlyCollection&lt;Country&gt;.</returns>
-	private static ReadOnlyCollection<Country> DeserializeCountires() => JsonSerializer.Deserialize<Country[]>(Resources.WorldCities, _options).AsReadOnly();
+	private static ReadOnlyCollection<Country> DeserializeCountires()
+	{
+		return JsonSerializer.Deserialize<Country[]>(Resources.WorldCities, _options).AsReadOnly();
+	}
 
 	/// <summary>
 	/// Gets country data.

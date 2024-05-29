@@ -39,6 +39,11 @@ public static partial class RandomData
 {
 
 	/// <summary>
+	/// The address number count
+	/// </summary>
+	private const int AddressNumberCount = 5;
+
+	/// <summary>
 	/// The default file extension
 	/// </summary>
 	private const string DefaultFileExtension = "dotnettips.temp";
@@ -131,6 +136,26 @@ public static partial class RandomData
 		{
 			yield return Math.Min(chunkSize, input - chunkIndex);
 		}
+	}
+
+	/// <summary>
+	/// Generates the address line one.
+	/// </summary>
+	/// <param name="addressLength">Length of the address.</param>
+	/// <returns>System.String.</returns>
+	private static string GenerateAddressLineOne(int addressLength)
+	{
+		return $"{GenerateNumber(AddressNumberCount)} {GenerateWord(addressLength - AddressNumberCount - 1)}";
+	}
+
+	/// <summary>
+	/// Generates the address line two.
+	/// </summary>
+	/// <param name="addressLength">Length of the address.</param>
+	/// <returns>System.String.</returns>
+	private static string GenerateAddressLineTwo(int addressLength)
+	{
+		return $"{GenerateWord(addressLength - AddressNumberCount - 1)} {GenerateNumber(AddressNumberCount)}";
 	}
 
 	/// <summary>
@@ -252,8 +277,8 @@ public static partial class RandomData
 			addresses.Add(new T()
 			{
 				Id = GenerateKey(),
-				Address1 = GenerateWord(addressLength),
-				Address2 = GenerateWord(addressLength),
+				Address1 = GenerateAddressLineOne(addressLength),
+				Address2 = GenerateAddressLineTwo(addressLength),
 				City = city is null ? string.Empty : city.Name,
 				Country = country.Name,
 				CountyProvince = GenerateWord(countyProvinceLength),
