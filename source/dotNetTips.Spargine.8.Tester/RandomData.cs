@@ -600,7 +600,7 @@ public static partial class RandomData
 
 			var personName = new PersonName(_firstNames.Value.PickRandom(), _lastNames.Value.PickRandom());
 
-			if (names.AddIfNotExists(personName) == false)
+			if (names.AddIfNotExists(personName) is false)
 			{
 				nameIndex--;
 			}

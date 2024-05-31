@@ -90,7 +90,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Extensions.ObjectPool" Version="8.0.5" />
+		<PackageReference Include="Microsoft.Extensions.ObjectPool" Version="8.0.6" />
 		<PackageReference Include="Microsoft.SourceLink.Common" Version="8.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

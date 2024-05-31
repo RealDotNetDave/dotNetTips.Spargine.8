@@ -64,7 +64,7 @@ internal sealed class IsoDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
 	{
 		var dateText = reader.GetString();
 
-		if (string.IsNullOrEmpty(dateText) == false)
+		if (string.IsNullOrEmpty(dateText) is false)
 		{
 			if (!string.IsNullOrEmpty(this._dateTimeFormat))
 			{

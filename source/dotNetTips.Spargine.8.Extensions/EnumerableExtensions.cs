@@ -273,7 +273,7 @@ public static class EnumerableExtensions
 
 		foreach (var item in collection)
 		{
-			if (predicate.Invoke(item) == false)
+			if (predicate.Invoke(item) is false)
 			{
 				return false;
 
@@ -429,7 +429,7 @@ public static class EnumerableExtensions
 
 		foreach (var item in items)
 		{
-			if (elements.Add(item) == false)
+			if (elements.Add(item) is false)
 			{
 				return true;
 			}

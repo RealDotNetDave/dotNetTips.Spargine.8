@@ -783,7 +783,7 @@ public static class StringExtensions
 	/// <returns><c>true</c> if [is not empty] [the specified input]; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsNotEmpty), "David McCarter", "8/18/20", Status = Status.Available, UnitTestCoverage = 100)]
-	public static bool IsNotEmpty([NotNullWhen(false)] this string? input) => input.IsEmpty() == false;
+	public static bool IsNotEmpty([NotNullWhen(false)] this string? input) => input.IsEmpty() is false;
 #nullable disable
 
 	/// <summary>

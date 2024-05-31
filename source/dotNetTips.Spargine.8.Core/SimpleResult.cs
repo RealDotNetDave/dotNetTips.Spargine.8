@@ -161,7 +161,7 @@ public class SimpleResult<T>
 			{
 				return ResultStatus.Succeeded;
 			}
-			else if (this._exceptions.IsEmpty == false && this.Value is not null)
+			else if (this._exceptions.IsEmpty is false && this.Value is not null)
 			{
 				return ResultStatus.PartialSuccess;
 			}

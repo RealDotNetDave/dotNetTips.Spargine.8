@@ -2365,7 +2365,7 @@ dotnet_diagnostic.IDE0080.severity = suggestion
 dotnet_diagnostic.IDE0081.severity = error
 
 # Remove unnecessary equality operator
-#dotnet_diagnostic.IDE0100.severity = warning
+dotnet_diagnostic.IDE0100.severity = warning
 
 # Use conditional delegate call
 dotnet_diagnostic.IDE0105.severity = warning
