@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 05-09-2024
 // ***********************************************************************
 // <copyright file="EnumHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -104,6 +104,7 @@ public static class EnumHelper
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="fixNames">if set to <c>true</c> [fix names].</param>
 	/// <param name="useXmlNames">if set to <c>true</c> [use XML names].</param>
+	/// <returns>ReadOnlyCollection&lt;EnumValue&gt;.</returns>
 	/// <example>
 	/// Using this with the RequestCacheLevel will return the following:
 	/// EnumValue { Name = Default, Value = 0 },EnumValue { Name = BypassCache, Value = 1 },
@@ -111,7 +112,6 @@ public static class EnumHelper
 	/// EnumValue { Name = Revalidate, Value = 4 },EnumValue { Name = Reload, Value = 5 },
 	/// EnumValue { Name = NoCacheNoStore, Value = 6 }
 	/// </example>
-	/// <returns>ReadOnlyCollection&lt;EnumValue&gt;.</returns>
 	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<EnumValue> GetValues<T>(bool fixNames = true, bool useXmlNames = true)
 		where T : Enum

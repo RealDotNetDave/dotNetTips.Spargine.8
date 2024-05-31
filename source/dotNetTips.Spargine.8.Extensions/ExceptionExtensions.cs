@@ -90,7 +90,7 @@ public static class ExceptionExtensions
 	/// </summary>
 	/// <param name="exception">The exception.</param>
 	/// <returns>System.Collections.ObjectModel.ReadOnlyCollection&lt;(string message, string StackTrace)&gt;.</returns>
-	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static ReadOnlyCollection<(string message, string StackTrace)> GetAllMessagesWithStackTrace([NotNull] this Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
@@ -103,9 +103,9 @@ public static class ExceptionExtensions
 			})
 			.AsEnumerable()
 			.Select(c => (c.Message, c.StackTrace))
-			.ToList();
+			.ToReadOnlyCollection();
 
-		return messages.AsReadOnly();
+		return messages;
 	}
 
 	/// <summary>

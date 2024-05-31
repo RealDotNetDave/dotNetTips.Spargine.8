@@ -30,7 +30,7 @@ public static class StringBuilderExtensions
 	/// <summary>
 	/// The special characters
 	/// </summary>
-	private static readonly char[] _specialCharacters = new[] { '"', '\\' };
+	private static readonly char[] _specialCharacters = ['"', '\\'];
 
 	/// <summary>
 	/// Sets the separator.

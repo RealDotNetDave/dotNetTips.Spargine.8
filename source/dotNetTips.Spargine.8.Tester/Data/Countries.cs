@@ -4,7 +4,7 @@
 // Created          : 03-12-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-20-2024
+// Last Modified On : 05-29-2024
 // ***********************************************************************
 // <copyright file="Countries.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -54,13 +54,10 @@ public static class Countries
 	}
 
 	/// <summary>
-	/// Deserializes collection of <see cref="Country"/>.
+	/// Deserializes collection of <see cref="Country" />.
 	/// </summary>
 	/// <returns>ReadOnlyCollection&lt;Country&gt;.</returns>
-	private static ReadOnlyCollection<Country> DeserializeCountires()
-	{
-		return JsonSerializer.Deserialize<Country[]>(Resources.WorldCities, _options).AsReadOnly();
-	}
+	private static ReadOnlyCollection<Country> DeserializeCountires() => JsonSerializer.Deserialize<Country[]>(Resources.WorldCities, _options).AsReadOnly();
 
 	/// <summary>
 	/// Gets country data.

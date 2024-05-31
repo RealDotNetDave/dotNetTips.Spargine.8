@@ -15,11 +15,38 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 namespace DotNetTips.Spargine.Core;
 
-/// <summary>
-/// Availability Status
-/// </summary>
+/// <summary>Availability Status</summary>
 [Information(description: "For use in InformationAttribute.", author: "David McCarter", createdOn: "7/29/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Available)]
 public enum Status
 {
@@ -52,4 +79,7 @@ public enum Status
 	/// The code needs documentation
 	/// </summary>
 	NeedsDocumentation,
+
+	/// <summary>The check performance</summary>
+	CheckPerformance,
 }

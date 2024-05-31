@@ -178,7 +178,7 @@ public static class EncryptionHelper
 	public static string SimpleSHA256Decrypt([NotNull] string cipherText, [NotNull] string key)
 	{
 		cipherText = cipherText.ArgumentNotNullOrEmpty(true);
-		key = key.ArgumentNotNullOrEmpty();
+		key = key.ArgumentNotNullOrEmpty(true);
 
 		var keys = GetSHA256HashKeys(key);
 

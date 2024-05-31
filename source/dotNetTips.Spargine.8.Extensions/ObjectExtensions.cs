@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 05-29-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -97,21 +97,21 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The data.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(ComputeSha256Hash), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(ComputeSha256Hash), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static string ComputeSha256Hash([NotNull] this object obj)
 	{
 		obj = obj.ArgumentNotNull();
 
 		// Create a SHA256
 		// ComputeHash - returns byte array
-		var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(obj.ToJson()));
+		var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(obj.ToJson())).AsReadOnlySpan();
 
 		// Convert byte array to a string
 		var sb = _stringBuilderPool.Get();
 
 		try
 		{
-			for (var byteIndex = 0; byteIndex < bytes.LongLength; byteIndex++)
+			for (var byteIndex = 0; byteIndex < bytes.Length; byteIndex++)
 			{
 				_ = sb.Append(bytes[byteIndex].ToString("x2", CultureInfo.InvariantCulture));
 			}
@@ -199,7 +199,7 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The object.</param>
 	/// <exception cref="ArgumentNullException">Object cannot be null.</exception>
-	[Information(nameof(InitializeFields), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(InitializeFields), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static void InitializeFields([NotNull] this object obj)
 	{
 		if (obj is null)
@@ -207,7 +207,7 @@ public static class ObjectExtensions
 			return;
 		}
 
-		var fieldInfos = obj.GetType().GetRuntimeFields().ToList();
+		var fieldInfos = obj.GetType().GetRuntimeFields().ToReadOnlyCollection();
 
 		if (fieldInfos.DoesNotHaveItems())
 		{
@@ -283,7 +283,7 @@ public static class ObjectExtensions
 	/// [23]: {[PersonRecord.Addresses[1].Phone, 511 - 286 - 7653]}
 	/// [24]: {[PersonRecord.Addresses[1].PostalCode, 33385672]}
 	/// </example>
-	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static IDictionary<string, string> PropertiesToDictionary([NotNull] this object obj, [NotNull] string memberName = ControlChars.EmptyString, bool ignoreNulls = true)
 	{
 		var result = new Dictionary<string, string>();
@@ -310,7 +310,7 @@ public static class ObjectExtensions
 			{
 				var itemId = itemCount++;
 
-				var itemInnerMember = string.Format(CultureInfo.CurrentCulture, "{0}[{1}]", memberName, itemId);
+				var itemInnerMember = string.Format(CultureInfo.CurrentCulture, $"{{0}}[{{1}}]", memberName, itemId);
 
 				result = result.Concat(item.PropertiesToDictionary(itemInnerMember)).ToDictionary(e => e.Key, e => e.Value);
 			}
@@ -320,7 +320,7 @@ public static class ObjectExtensions
 
 		// Otherwise go deeper in the object tree.
 		// And foreach object public property collect each value
-		var propertyCollection = objectType.GetProperties();
+		var propertyCollection = objectType.GetProperties().AsReadOnlySpan();
 
 		var newMemberName = string.Empty;
 
@@ -329,7 +329,7 @@ public static class ObjectExtensions
 			newMemberName = $"{memberName}{ControlChars.Dot}";
 		}
 
-		for (var propertyIndex = 0; propertyIndex < propertyCollection.LongLength; propertyIndex++)
+		for (var propertyIndex = 0; propertyIndex < propertyCollection.Length; propertyIndex++)
 		{
 			var property = propertyCollection[propertyIndex];
 

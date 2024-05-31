@@ -14,7 +14,6 @@
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
 		<Company>David McCarter - dotNetTips.com</Company>
-		
 		<Configurations>Debug;Release</Configurations>
 		<Copyright>McCarter Consulting (David McCarter)</Copyright>
 		<DebugSymbols>true</DebugSymbols>
@@ -50,6 +49,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>DotNetTips.Spargine.8.Core</Title>
 		<Version>2024.8.5.2</Version>
+		<SignAssembly>False</SignAssembly>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

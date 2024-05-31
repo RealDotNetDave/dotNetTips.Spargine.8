@@ -125,6 +125,17 @@ public static class ArrayExtensions
 
 		return array.AsSpan().SequenceEqual(arrayToCheck);
 	}
+
+	/// <summary>
+	/// Converts a <see cref="List{T}"/> to <see cref="ReadOnlySpan{T}"/>.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="list">The list.</param>
+	/// <returns>System.ReadOnlySpan&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "")]
+	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this T[] list) => new(list.ArgumentNotNull());
+
 	/// <summary>
 	/// Returns a <see cref="string" /> that represents this instance. Uses <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
 	/// Validates that <paramref name="array" /> is not null.

@@ -12,6 +12,7 @@
 // <summary>Extension methods for general types.</summary>
 // ***********************************************************************
 using System.Collections;
+using System.Collections.Frozen;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
@@ -111,14 +112,14 @@ public static partial class TypeExtensions
 	/// <param name="type">The type.</param>
 	/// <returns>IEnumerable&lt;FieldInfo&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Type cannot be null.</exception>
-	[Information(nameof(GetAllFields), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(GetAllFields), UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static IEnumerable<FieldInfo> GetAllFields(this Type type)
 	{
 		var typeTypeInfo = type?.GetTypeInfo();
 
 		while (typeTypeInfo != null)
 		{
-			foreach (var fieldInfo in typeTypeInfo.DeclaredFields)
+			foreach (var fieldInfo in typeTypeInfo.DeclaredFields.ToFrozenSet())
 			{
 				yield return fieldInfo;
 			}

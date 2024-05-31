@@ -47,14 +47,13 @@ public static class EnumExtensions
 	/// </summary>
 	/// <param name="input">The enumeration.</param>
 	/// <returns>ReadOnlyCollection&lt;System.ValueTuple&lt;System.String, System.Int32&gt;&gt;.</returns>
-	[Information(nameof(GetItems), UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GetItems), UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<(string Description, int Value)> GetItems(this Enum input)
 	{
 		var items = new List<(string Description, int Value)>();
 
-		for (var namesIndex = 0; namesIndex < Enum.GetNames(input.GetType()).Length; namesIndex++)
+		foreach (var name in Enum.GetNames(input.GetType()).AsSpan())
 		{
-			var name = Enum.GetNames(input.GetType())[namesIndex];
 			items.Add((Description: name, Value: (int)Enum.Parse(input.GetType(), name)));
 		}
 
@@ -71,7 +70,7 @@ public static class EnumExtensions
 	/// <exception cref="ArgumentException">name</exception>
 	/// <exception cref="ArgumentException">The exception.</exception>
 	[Information(nameof(Parse), UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
-	public static T Parse<T>([NotNull][StringSyntax(StringSyntaxAttribute.EnumFormat)] this string name)
+	public static T Parse<T>([NotNull] this string name)
 		where T : Enum
 	{
 		name = name.ArgumentNotNullOrEmpty();

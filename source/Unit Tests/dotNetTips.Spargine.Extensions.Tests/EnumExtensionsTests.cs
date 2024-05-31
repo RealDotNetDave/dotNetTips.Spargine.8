@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-29-2023
+// Last Modified On : 05-29-2024
 // ***********************************************************************
 // <copyright file="EnumExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -44,13 +44,13 @@ public class EnumExtensionsTests
 	}
 
 	[TestMethod]
-	public void ParseTest()
+	public void ParseTest_True()
 	{
-
 		var result = "Canceled".Parse<TaskStatus>();
 
-		Assert.IsTrue(string.Compare(result.ToString(), "Canceled", StringComparison.Ordinal) == 0);
+		Assert.IsNotNull(result);
 
+		Assert.IsTrue(string.Compare(result.ToString(), "Canceled", StringComparison.Ordinal) == 0);
 	}
 
 }

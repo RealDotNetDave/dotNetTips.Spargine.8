@@ -4,7 +4,7 @@
 // Created          : 01-05-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-22-2024
+// Last Modified On : 05-29-2024
 // ***********************************************************************
 // <copyright file="RandomDataTests.cs" company="dotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -198,9 +198,11 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateByteArrayTest()
 	{
-		var byteArray = RandomData.GenerateByteArray(.01);
+		var byteArray = RandomData.GenerateByteArray(1);
 
 		Assert.IsTrue(byteArray.Length > 0);
+
+		Assert.IsTrue(byteArray.First() > 0);
 	}
 
 	[TestMethod]

@@ -71,6 +71,16 @@ public static class ListExtensions
 	}
 
 	/// <summary>
+	/// Converts a <see cref="List{T}"/> to <see cref="ReadOnlySpan{T}"/>.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="list">The list.</param>
+	/// <returns>System.ReadOnlySpan&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "")]
+	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this List<T> list) => new(list.ToArray().ArgumentNotNull());
+
+	/// <summary>
 	/// Creates a new <see cref="Span{T}" /> over an input <see cref="List{T}" /> instance.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the input <see cref="List{T}" /> instance.</typeparam>
