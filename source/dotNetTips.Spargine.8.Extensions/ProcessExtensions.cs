@@ -103,6 +103,7 @@ public static class ProcessExtensions
 		};
 
 		using var process = Process.Start(startInfo);
+
 		if (!process.WaitForExit((int)timeout.TotalMilliseconds))
 		{
 			process.Kill();

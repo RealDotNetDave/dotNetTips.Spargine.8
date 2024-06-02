@@ -4,7 +4,7 @@
 // Created          : 02-27-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 05-30-2024
 // ***********************************************************************
 // <copyright file="Status.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -44,9 +44,12 @@
 
 
 
+
 namespace DotNetTips.Spargine.Core;
 
-/// <summary>Availability Status</summary>
+/// <summary>
+/// Availability Status
+/// </summary>
 [Information(description: "For use in InformationAttribute.", author: "David McCarter", createdOn: "7/29/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Available)]
 public enum Status
 {
@@ -80,6 +83,8 @@ public enum Status
 	/// </summary>
 	NeedsDocumentation,
 
-	/// <summary>The check performance</summary>
+	/// <summary>
+	/// The check performance
+	/// </summary>
 	CheckPerformance,
 }
