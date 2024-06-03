@@ -35,7 +35,7 @@ public static class AssemblyExtensions
 	/// <returns>ReadOnlyCollection&lt;Type&gt;.</returns>
 	/// <exception cref="ArgumentNullException">assembly</exception>
 	/// <remarks>Original code from: oqtane.framework</remarks>
-	[Information(nameof(GetAllInterfaces), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetAllInterfaces), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> GetAllInterfaces([NotNull] this Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
@@ -44,10 +44,9 @@ public static class AssemblyExtensions
 
 		var array = assembly.GetTypes();
 
-		for (var typeIndex = 0; typeIndex < array.Length; typeIndex++)
+		foreach (var arrayItem in array)
 		{
-			var type = array[typeIndex];
-			interfaces.AddRange(type.GetInterfaces());
+			interfaces.AddRange(arrayItem.GetInterfaces());
 		}
 
 		return interfaces.AsReadOnly();

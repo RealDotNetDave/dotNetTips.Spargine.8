@@ -160,7 +160,7 @@ public static class StringExtensions
 	/// <param name="input">The input.</param>
 	/// <param name="hashType">Type of the hash.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(ComputeHash), "David McCarter", "10/8/2020", "1/9/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(ComputeHash), "David McCarter", "10/8/2020", "1/9/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static string ComputeHash([NotNull] this string input, [NotNull] HashType hashType = HashType.SHA256)
 	{
 		if (input.IsNullOrEmpty())
@@ -174,9 +174,9 @@ public static class StringExtensions
 
 		try
 		{
-			for (var charIndex = 0; charIndex < hash.LongLength; charIndex++)
+			foreach (var hashItem in new ReadOnlySpan<byte>(hash))
 			{
-				_ = sb.Append(hash[charIndex].ToString("x2", CultureInfo.InvariantCulture));
+				_ = sb.Append(hashItem.ToString("x2", CultureInfo.InvariantCulture));
 			}
 
 			return sb.ToString().ToTrimmed();
@@ -218,7 +218,7 @@ public static class StringExtensions
 	/// <param name="addLineFeed">The add line feed. If set to true, delimiter will not be used.</param>
 	/// <param name="args">The arguments.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(Concat), "David McCarter", "9/15/2017", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(Concat), "David McCarter", "9/15/2017", UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static string Concat([NotNull] this string input, [NotNull] string delimiter, bool addLineFeed, [NotNull] params string[] args)
 	{
 		if (input.IsNullOrEmpty())
@@ -244,14 +244,12 @@ public static class StringExtensions
 
 			if (args.HasItems())
 			{
-				for (var argIndex = 0; argIndex < args.LongLength; argIndex++)
+				foreach (var arg in new ReadOnlySpan<string>(args))
 				{
-					var value = args[argIndex];
-
 					//TODO: ADD EXTENSION METHOD TO TEST FOR ENUM VALUES
 					_ = addLineFeed
-						? sb.AppendLine(value)
-						: sb.Append(string.Concat(value, delimiter));
+						? sb.AppendLine(arg)
+						: sb.Append(string.Concat(arg, delimiter));
 				}
 			}
 
@@ -605,14 +603,14 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The input.</param>
 	/// <returns><c>true</c> if the specified input is whitespace; otherwise, <c>false</c>.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance)]
 	public static bool HasWhitespace([NotNull] this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 
-		for (var inputIndex = 0; inputIndex < input.Length; inputIndex++)
+		foreach (var inputItem in input.AsSpan())
 		{
-			if (!IsAsciiWhitespace(input[inputIndex]))
+			if (!IsAsciiWhitespace(inputItem))
 			{
 				return false;
 			}

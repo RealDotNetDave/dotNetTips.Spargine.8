@@ -63,11 +63,12 @@ public static class EnumHelper
 		// Set up result
 		var result = new List<string>();
 
-		// Enum names (text) are defined as fields for the type
-		for (var fieldCount = 0; fieldCount < type.GetFields(BindingFlags.Public | BindingFlags.Static).Length; fieldCount++)
-		{
-			var enumValue = type.GetFields(BindingFlags.Public | BindingFlags.Static)[fieldCount];
+		//Load fields
+		var fields = type.GetFields(BindingFlags.Public | BindingFlags.Static);
 
+		// Enum names (text) are defined as fields for the type
+		foreach (var enumValue in fields.AsSpan())
+		{
 			// If XML is specified and found, use this name
 			if (useXml)
 			{
@@ -127,6 +128,7 @@ public static class EnumHelper
 
 		var enumNames = GetNames(enumType, fixNames, useXmlNames);
 
+		//TODO: Refactor to use Span
 		for (var valueCount = 0; valueCount < allValues.Length; valueCount++)
 		{
 			result.Add(new EnumValue(allValues[valueCount], enumNames[valueCount]));

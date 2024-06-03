@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System.Collections;
 using System.Collections.Concurrent;
+using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -53,7 +54,7 @@ public static class EnumerableExtensions
 	/// <param name="source">The source.</param>
 	/// <param name="items">The items.</param>
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
-	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static IEnumerable<T> AddDistinct<T>([NotNull] this IEnumerable<T> source, [NotNull] params T[] items)
 	{
 		source ??= [];
@@ -65,12 +66,11 @@ public static class EnumerableExtensions
 
 		var result = source.ToList();
 
-		for (var index = 0; index < items.LongLength; index++)
+		foreach (var itemItem in items.ToFrozenSet())
 		{
-			var item = items[index];
-			if (!result.Contains(item))
+			if (!result.Contains(itemItem))
 			{
-				result.Add(item);
+				result.Add(itemItem);
 			}
 		}
 
@@ -326,17 +326,17 @@ public static class EnumerableExtensions
 	/// <param name="collection">The collection.</param>
 	/// <param name="action">The action.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "12/9/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "12/9/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static void FastProcessor<T>([NotNull] this IEnumerable<T> collection, [NotNull] Action<T> action)
 	{
 		collection = collection.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		var processedCollection = collection.ToList().AsSpan();
+		var processedCollection = collection.ToFrozenSet();
 
-		for (var itemCount = 0; itemCount < processedCollection.Length; itemCount++)
+		foreach (var item in processedCollection)
 		{
-			action(processedCollection[itemCount]);
+			action(item);
 		}
 	}
 

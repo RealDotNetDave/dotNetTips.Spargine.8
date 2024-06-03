@@ -23,10 +23,11 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 [BenchmarkCategory(Categories.Collections)]
 public class EnumExtensionsBenchmark : Benchmark
 {
+
 	private readonly StringComparison _testEnum = StringComparison.OrdinalIgnoreCase;
 
 	[Benchmark(Description = nameof(EnumExtensions.GetDescription))]
-	public void GetDescription01()
+	public void GetDescription()
 	{
 		var result = this._testEnum.GetDescription();
 
@@ -34,10 +35,11 @@ public class EnumExtensionsBenchmark : Benchmark
 	}
 
 	[Benchmark(Description = nameof(EnumExtensions.GetItems))]
-	public void GetItems01()
+	public void GetItems()
 	{
 		var result = this._testEnum.GetItems();
 
 		this.Consume(result);
 	}
+
 }

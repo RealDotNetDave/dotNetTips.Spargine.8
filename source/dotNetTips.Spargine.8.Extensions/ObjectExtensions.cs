@@ -12,6 +12,7 @@
 // <summary>Extension methods designed for Object.</summary>
 // ***********************************************************************
 using System.Collections;
+using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
@@ -111,9 +112,9 @@ public static class ObjectExtensions
 
 		try
 		{
-			for (var byteIndex = 0; byteIndex < bytes.Length; byteIndex++)
+			foreach (var @byte in bytes)
 			{
-				_ = sb.Append(bytes[byteIndex].ToString("x2", CultureInfo.InvariantCulture));
+				_ = sb.Append(@byte.ToString("x2", CultureInfo.InvariantCulture));
 			}
 
 			return sb.ToString();
@@ -128,7 +129,7 @@ public static class ObjectExtensions
 	/// Disposes the fields in the object.
 	/// </summary>
 	/// <param name="obj">The object.</param>
-	[Information(nameof(DisposeFields), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(DisposeFields), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static void DisposeFields([NotNull] this IDisposable obj)
 	{
 		if (obj is null)
@@ -143,17 +144,15 @@ public static class ObjectExtensions
 			return;
 		}
 
-		for (var fieldCount = 0; fieldCount < list.FastCount(); fieldCount++)
+		foreach (var field in list.AsSpan())
 		{
-			var value = list[fieldCount].GetValue(obj);
-
-			if (value is not null)
+			if (field is not null)
 			{
-				if (value is IDisposable disposableItem)
+				if (field is IDisposable disposableItem)
 				{
 					disposableItem.TryDispose();
 				}
-				else if (value is IEnumerable collection)
+				else if (field is IEnumerable collection)
 				{
 					collection.DisposeCollection();
 				}
@@ -199,7 +198,7 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The object.</param>
 	/// <exception cref="ArgumentNullException">Object cannot be null.</exception>
-	[Information(nameof(InitializeFields), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(InitializeFields), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance)]
 	public static void InitializeFields([NotNull] this object obj)
 	{
 		if (obj is null)
@@ -283,7 +282,7 @@ public static class ObjectExtensions
 	/// [23]: {[PersonRecord.Addresses[1].Phone, 511 - 286 - 7653]}
 	/// [24]: {[PersonRecord.Addresses[1].PostalCode, 33385672]}
 	/// </example>
-	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static IDictionary<string, string> PropertiesToDictionary([NotNull] this object obj, [NotNull] string memberName = ControlChars.EmptyString, bool ignoreNulls = true)
 	{
 		var result = new Dictionary<string, string>();
@@ -320,7 +319,7 @@ public static class ObjectExtensions
 
 		// Otherwise go deeper in the object tree.
 		// And foreach object public property collect each value
-		var propertyCollection = objectType.GetProperties().AsReadOnlySpan();
+		var propertyCollection = objectType.GetProperties();
 
 		var newMemberName = string.Empty;
 
@@ -329,10 +328,8 @@ public static class ObjectExtensions
 			newMemberName = $"{memberName}{ControlChars.Dot}";
 		}
 
-		for (var propertyIndex = 0; propertyIndex < propertyCollection.Length; propertyIndex++)
+		foreach (var property in propertyCollection.ToFrozenSet())
 		{
-			var property = propertyCollection[propertyIndex];
-
 			var ignoreAttribute = property.GetAttribute<JsonIgnoreAttribute>();
 
 			if (ignoreAttribute == null)

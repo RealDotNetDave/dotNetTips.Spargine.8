@@ -113,26 +113,22 @@ public static class DirectoryHelper
 	[Information(nameof(CopyDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100)]
 	public static void CopyDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, bool overwrite = true)
 	{
-		var directories = source.ArgumentExists().GetDirectories();
+		var directories = source.ArgumentExists().GetDirectories().AsSpan();
 
 		_ = destination.ArgumentNotNull().CheckExists();
 
 		var destinationPath = destination.FullName;
 
-		var files = source.GetFiles();
+		var files = source.GetFiles().AsSpan();
 
-		for (var fileIndex = 0; fileIndex < files.Length; fileIndex++)
+		foreach (var fileItem in files)
 		{
-			var file = files[fileIndex];
-
-			_ = file.CopyTo(Path.Combine(destinationPath, file.Name), overwrite);
+			_ = fileItem.CopyTo(Path.Combine(destinationPath, fileItem.Name), overwrite);
 		}
 
-		for (var directoryIndex = 0; directoryIndex < directories.Length; directoryIndex++)
+		foreach (var directory in directories)
 		{
-			var subDirectory = directories[directoryIndex];
-
-			CopyDirectory(subDirectory, new DirectoryInfo(Path.Combine(destinationPath, subDirectory.Name)), overwrite);
+			CopyDirectory(directory, new DirectoryInfo(Path.Combine(destinationPath, directory.Name)), overwrite);
 		}
 	}
 
@@ -361,9 +357,9 @@ public static class DirectoryHelper
 
 		var directories = path.GetDirectories(searchPattern, options);
 
-		for (var directoryIndex = 0; directoryIndex < directories.Length; directoryIndex++)
+		for (var index = 0; index < directories.Length; index++)
 		{
-			yield return directories[directoryIndex];
+			yield return directories[index];
 		}
 	}
 
@@ -421,10 +417,9 @@ public static class DirectoryHelper
 
 				if (directoryFiles.HasItems())
 				{
-					for (var fileIndex = 0; fileIndex < directoryFiles.Length; fileIndex++)
+					foreach (var directoryFile in directoryFiles)
 					{
-						var file = directoryFiles[fileIndex];
-						yield return file;
+						yield return directoryFile;
 					}
 				}
 			}

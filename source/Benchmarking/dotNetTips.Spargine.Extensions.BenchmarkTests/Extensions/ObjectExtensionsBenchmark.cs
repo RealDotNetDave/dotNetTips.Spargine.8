@@ -14,12 +14,15 @@
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
+using System;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
@@ -142,6 +145,16 @@ public class ObjectExtensionsBenchmark : Benchmark
 		var result = this._personRecord.HasProperty("City");
 
 		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ObjectExtensions.InitializeFields))]
+	public void InitializeFields()
+	{
+		using var testObject = new DisposableFields();
+
+		testObject.InitializeFields();
+
+		this.Consume(testObject);
 	}
 
 	[Benchmark(Description = nameof(ObjectExtensions.IsNotNull) + ": Person")]
@@ -336,6 +349,50 @@ public class ObjectExtensionsBenchmark : Benchmark
 		var disposableType = new DataTable("TEST");
 
 		disposableType.TryDispose();
+	}
+
+}
+
+[ExcludeFromCodeCoverage]
+public class DisposableFields : IDisposable
+{
+
+	/// <summary>
+	/// The data set
+	/// </summary>
+	private readonly DataSet _dataSet = new("TEST");
+
+	/// <summary>
+	/// The disposed value
+	/// </summary>
+	private bool _disposedValue;
+
+	/// <summary>
+	/// Disposes the specified disposing.
+	/// </summary>
+	/// <param name="disposing">The disposing.</param>
+	protected virtual void Dispose(bool disposing)
+	{
+		if (!this._disposedValue)
+		{
+			if (disposing)
+			{
+				this._dataSet.Dispose();
+			}
+
+			this._disposedValue = true;
+		}
+	}
+
+	/// <summary>
+	/// Disposes this instance.
+	/// </summary>
+	[Preserve("Part of IDisposable", "4/16/2023", "David McCarter")]
+	public void Dispose()
+	{
+		// Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+		this.Dispose(disposing: true);
+		GC.SuppressFinalize(this);
 	}
 
 }

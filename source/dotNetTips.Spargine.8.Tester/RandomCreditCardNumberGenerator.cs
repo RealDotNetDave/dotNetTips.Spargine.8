@@ -77,9 +77,9 @@ internal static partial class RandomCreditCardNumberGenerator
 	{
 		IEnumerable<PrefixAndLength> enumerable()
 		{
-			for (var prefixIndex = 0; prefixIndex < prefixList.Length; prefixIndex++)
+			foreach (var prefixListItem in prefixList)
 			{
-				yield return new PrefixAndLength(prefixList[prefixIndex], length);
+				yield return new PrefixAndLength(prefixListItem, length);
 			}
 		}
 

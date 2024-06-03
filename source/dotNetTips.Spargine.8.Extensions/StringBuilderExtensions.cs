@@ -11,6 +11,7 @@
 // </copyright>
 // <summary>StringBuilder Extensions.</summary>
 // ***********************************************************************
+using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
@@ -62,7 +63,7 @@ public static class StringBuilderExtensions
 	/// sb.AppendBytes(byteArray)
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub", author: "David McCarter", createdOn: "5/26/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", author: "David McCarter", createdOn: "5/26/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance)]
 	public static void AppendBytes([NotNull] this StringBuilder sb, [NotNull] byte[] bytes)
 	{
 		if (bytes is null)
@@ -72,9 +73,9 @@ public static class StringBuilderExtensions
 
 		sb = sb.ArgumentNotNull().Append("'0x");
 
-		for (var byteIndex = 0; byteIndex < bytes.LongLength; byteIndex++)
+		foreach (var byteItem in bytes.ToFrozenSet())
 		{
-			_ = sb.Append(bytes[byteIndex].ToString("X2", CultureInfo.InvariantCulture));
+			_ = sb.Append(byteItem.ToString("X2", CultureInfo.InvariantCulture));
 		}
 
 		_ = sb.Append('\'');

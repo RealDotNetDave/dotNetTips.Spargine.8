@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
@@ -179,7 +180,7 @@ public class StringExtensionsBenchmark : Benchmark
 	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void HasValueWithRegEx()
 	{
-		var result = TestEmailMixedCase.HasValue(@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+		var result = TestEmailMixedCase.HasValue(@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", RegexOptions.IgnoreCase);
 
 		this.Consume(result);
 	}

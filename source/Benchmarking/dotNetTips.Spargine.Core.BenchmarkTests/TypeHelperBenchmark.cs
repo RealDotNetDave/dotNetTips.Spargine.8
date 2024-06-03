@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -36,9 +37,18 @@ public class TypeHelperBenchmark : Benchmark
 	private readonly int _collectionCount = 50;
 	private List<Person<Address>> _people;
 
+	[Benchmark(Description = nameof(TypeHelper.BuiltinTypes))]
+	[BenchmarkCategory(Categories.Reflection)]
+	public void BuiltinTypes()
+	{
+		var result = TypeHelper.BuiltinTypes;
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = "Looping Collection: Normal StringBuilder")]
 	[BenchmarkCategory(Categories.Strings)]
-	public void CreateStringBuilder01()
+	public void CreateStringBuilder()
 	{
 		var sb = new StringBuilder();
 
@@ -50,9 +60,17 @@ public class TypeHelperBenchmark : Benchmark
 		this.Consume(sb.ToString());
 	}
 
+	[Benchmark(Description = nameof(TypeHelper.FindDerivedTypes))]
+	[BenchmarkCategory(Categories.Reflection)]
+	public void FindDerivedTypes()
+	{
+		var result = TypeHelper.FindDerivedTypes(AppDomain.CurrentDomain, typeof(MulticastDelegate), true);
+		Consume(result);
+	}
+
 	[Benchmark(Description = nameof(TypeHelper.GetPropertyValues))]
 	[BenchmarkCategory(Categories.Reflection)]
-	public void GetPropertyValues01()
+	public void GetPropertyValues()
 	{
 		var person = RandomData.GeneratePersonRef<Address>();
 

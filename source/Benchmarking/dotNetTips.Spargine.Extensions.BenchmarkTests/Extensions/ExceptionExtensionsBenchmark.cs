@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 using System.Security;
-using System.Security.Policy;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 
@@ -22,6 +21,7 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 public class ExceptionExtensionsBenchmark : Benchmark
 {
+
 	private readonly SecurityException _testException = new("Message from SecurityException");
 
 	[Benchmark(Description = nameof(ExceptionExtensions.GetAllMessages))]
@@ -29,4 +29,11 @@ public class ExceptionExtensionsBenchmark : Benchmark
 	{
 		this.Consume(this._testException.GetAllMessages());
 	}
+
+	[Benchmark(Description = nameof(ExceptionExtensions.GetAllMessagesWithStackTrace))]
+	public void GetAllMessagesWithStackTrace()
+	{
+		this.Consume(this._testException.GetAllMessagesWithStackTrace());
+	}
+
 }

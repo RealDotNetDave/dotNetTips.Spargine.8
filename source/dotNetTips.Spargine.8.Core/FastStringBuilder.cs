@@ -15,6 +15,7 @@
 // </summary>
 // ***********************************************************************
 
+using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -42,7 +43,7 @@ public static class FastStringBuilder
 	/// <param name="bytes">The bytes.</param>
 	/// <returns>System.String.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string BytesToString([NotNull] byte[] bytes)
 	{
 		if (bytes == null)
@@ -59,9 +60,9 @@ public static class FastStringBuilder
 		{
 			_ = sb.Append("'0x");
 
-			for (var index = 0; index < bytes.AsSpan().Length; index++)
+			foreach (var @byte in bytes.ToFrozenSet())
 			{
-				_ = sb.Append(bytes.AsSpan()[index].ToString("X2", CultureInfo.InvariantCulture));
+				_ = sb.Append(@byte.ToString("X2", CultureInfo.InvariantCulture));
 			}
 
 			_ = sb.Append('\'');
@@ -83,7 +84,7 @@ public static class FastStringBuilder
 	/// <returns>string.</returns>
 	/// <exception cref="ArgumentNullException">args cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string CombineStrings(bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (args == null || args.Length == 0)
@@ -95,7 +96,7 @@ public static class FastStringBuilder
 
 		try
 		{
-			foreach (var arg in args)
+			foreach (var arg in args.ToFrozenSet())
 			{
 				_ = addLineFeed ? sb.AppendLine(arg) : sb.Append(arg);
 			}

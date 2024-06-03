@@ -90,7 +90,15 @@ public class TypeHelperTests : TestClass
 	}
 
 	[TestMethod]
-	public void FindDerivedTypes01()
+	public void FindDerivedTypes_Directory()
+	{
+		var result = TypeHelper.FindDerivedTypes(new DirectoryInfo(App.ExecutingFolder()), SearchOption.AllDirectories, typeof(MulticastDelegate), true);
+
+		Assert.IsTrue(result.HasItems());
+	}
+
+	[TestMethod]
+	public void FindDerivedTypes_Exception()
 	{
 		var result = TypeHelper.FindDerivedTypes(typeof(Exception), true);
 
@@ -98,7 +106,7 @@ public class TypeHelperTests : TestClass
 	}
 
 	[TestMethod]
-	public void FindDerivedTypes02()
+	public void FindDerivedTypes_MulticastDelegate()
 	{
 		var result = TypeHelper.FindDerivedTypes(AppDomain.CurrentDomain, typeof(MulticastDelegate), true);
 

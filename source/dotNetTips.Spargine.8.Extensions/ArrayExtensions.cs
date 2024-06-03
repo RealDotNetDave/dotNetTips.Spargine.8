@@ -11,6 +11,7 @@
 // </copyright>
 // <summary>Extensions methods for the Array type.</summary>
 // ***********************************************************************
+using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -143,7 +144,7 @@ public static class ArrayExtensions
 	/// <param name="array">The bytes.</param>
 	/// <returns>A <see cref="string" /> that represents this instance.</returns>
 	/// <exception cref="ArgumentNullException">Array cannot be null.</exception>
-	[Information(nameof(BytesToString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(BytesToString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static string BytesToString([NotNull] this byte[] array)
 	{
 		if (array.DoesNotHaveItems())
@@ -155,9 +156,9 @@ public static class ArrayExtensions
 
 		try
 		{
-			for (var byteIndex = 0; byteIndex < array.LongLength; byteIndex++)
+			foreach (var arrayItem in array.ToFrozenSet())
 			{
-				_ = sb.Append(array[byteIndex].ToString("x2", CultureInfo.InvariantCulture));
+				_ = sb.Append(arrayItem.ToString("x2", CultureInfo.InvariantCulture));
 			}
 
 			return sb.ToString();
@@ -293,17 +294,15 @@ public static class ArrayExtensions
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
 	/// <exception cref="ArgumentNullException">action cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "11/8/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "11/8/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static void FastProcessor<T>([NotNull] this T[] array, [NotNull] Action<T> action)
 	{
 		array = array.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		var collection = new ReadOnlySpan<T>(array);
-
-		for (var itemCount = 0; itemCount < collection.Length; itemCount++)
+		foreach (var item in array.AsSpan())
 		{
-			action(collection[itemCount]);
+			action(item);
 		}
 	}
 	/// <summary>
@@ -383,7 +382,7 @@ public static class ArrayExtensions
 	/// <param name="action">The action.</param>
 	/// <exception cref="ArgumentNullException">action cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.CheckPerformance, BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static void PerformAction<T>([NotNull] this T[] values, [NotNull] Action<T> action)
 	{
 		action = action.ArgumentNotNull();
@@ -401,9 +400,9 @@ public static class ArrayExtensions
 		}
 		else
 		{
-			for (var index = 0; index < values.LongLength; index++)
+			foreach (var value in values.ToFrozenSet())
 			{
-				action(values[index]);
+				action(value);
 			}
 		}
 

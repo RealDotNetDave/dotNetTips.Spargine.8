@@ -65,15 +65,14 @@ public static class TypeHelper
 		var builtinTypes = new List<Type>();
 
 		// Loop through each assembly
-		for (var assemplyIndex = 0; assemplyIndex < assemblies.Length; assemplyIndex++)
+		foreach (var assembly in assemblies)
 		{
 			// Get the types defined in the assembly
-			var types = assemblies[assemplyIndex].GetTypes();
+			var types = assembly.GetTypes();
 
 			// Loop through each type
-			for (var typesIndex = 0; typesIndex < types.Length; typesIndex++)
+			foreach (var type in types)
 			{
-				var type = types[typesIndex];
 				// Check if the type is a built-in type
 				if (IsBuiltinType(type))
 				{
@@ -324,7 +323,7 @@ public static class TypeHelper
 	/// <param name="baseType">Type of the base.</param>
 	/// <param name="classOnly">if set to <c>true</c> [class only].</param>
 	/// <returns>IEnumerable&lt;Type&gt;.</returns>
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
 		currentDomain = currentDomain.ArgumentNotNull();
@@ -385,16 +384,21 @@ public static class TypeHelper
 		{
 			try
 			{
-				var assembly = Assembly.LoadFrom(list[fileIndex].FullName);
-				var exportedTypes = assembly.ExportedTypes.Where(p => p.BaseType is not null).ToList();
+				var fileName = list[fileIndex].FullName;
 
-				if (exportedTypes?.FastCount() > 0)
+				if (IsDotNetAssembly(new FileInfo(fileName)))
 				{
-					var containsBaseType = exportedTypes.Any(p => string.Equals(p.BaseType.FullName, baseType.FullName, StringComparison.Ordinal));
+					var assembly = Assembly.LoadFrom(fileName);
+					var exportedTypes = assembly.ExportedTypes.Where(p => p.BaseType is not null).ToList();
 
-					if (containsBaseType)
+					if (exportedTypes?.FastCount() > 0)
 					{
-						foundTypes.AddRange(LoadDerivedTypes(assembly.DefinedTypes, baseType, classOnly));
+						var containsBaseType = exportedTypes.Any(p => string.Equals(p.BaseType.FullName, baseType.FullName, StringComparison.Ordinal));
+
+						if (containsBaseType)
+						{
+							foundTypes.AddRange(LoadDerivedTypes(assembly.DefinedTypes, baseType, classOnly));
+						}
 					}
 				}
 			}
