@@ -9,7 +9,7 @@
 // <copyright file="ArrayExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>Extensions methods for the Array type.</summary>
+// <summary>Extensions methods for the Array type.</summary> 
 // ***********************************************************************
 using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
@@ -128,7 +128,7 @@ public static class ArrayExtensions
 	}
 
 	/// <summary>
-	/// Converts a <see cref="List{T}"/> to <see cref="ReadOnlySpan{T}"/>.
+	/// Converts a array to <see cref="ReadOnlySpan{T}"/>.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="list">The list.</param>
@@ -138,13 +138,23 @@ public static class ArrayExtensions
 	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this T[] list) => new(list.ArgumentNotNull());
 
 	/// <summary>
+	/// Converts a array to <see cref="Span{T}" />.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="list">The list.</param>
+	/// <returns>System.Span&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(AsSpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	public static Span<T> AsSpan<T>([NotNull] this T[] list) => new(list.ArgumentNotNull());
+
+	/// <summary>
 	/// Returns a <see cref="string" /> that represents this instance. Uses <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
 	/// Validates that <paramref name="array" /> is not null.
 	/// </summary>
 	/// <param name="array">The bytes.</param>
 	/// <returns>A <see cref="string" /> that represents this instance.</returns>
 	/// <exception cref="ArgumentNullException">Array cannot be null.</exception>
-	[Information(nameof(BytesToString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(BytesToString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static string BytesToString([NotNull] this byte[] array)
 	{
 		if (array.DoesNotHaveItems())
@@ -156,7 +166,7 @@ public static class ArrayExtensions
 
 		try
 		{
-			foreach (var arrayItem in array.ToFrozenSet())
+			foreach (var arrayItem in FrozenSet.ToFrozenSet(array))
 			{
 				_ = sb.Append(arrayItem.ToString("x2", CultureInfo.InvariantCulture));
 			}
@@ -175,7 +185,7 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>System.String.</returns>
 	/// <exception cref="ArgumentNullException">array cannot be empty.</exception>
-	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static string BytesToString([NotNull] this ReadOnlySpan<byte> array)
 	{
 		array = array.ArgumentNotEmpty();
@@ -274,7 +284,7 @@ public static class ArrayExtensions
 	/// <returns>byte[].</returns>
 	/// <remarks>Example output (as string): 84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastHashData), author: "David McCarter", createdOn: "3/11/2024", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New, Documentation = "https://bit.ly/SpargineMay2024")]
+	[Information(nameof(FastHashData), author: "David McCarter", createdOn: "3/11/2024", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static byte[] FastHashData([NotNull] this byte[] data)
 	{
 		if (data.DoesNotHaveItems())
@@ -313,8 +323,9 @@ public static class ArrayExtensions
 	/// <param name="array">The array to use to generate hash code.</param>
 	/// <returns>Hash code as System.Int32.</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static int GenerateHashCode<T>([NotNull] this T[] array) => array.ArgumentNotNull().Where(t => t is not null).Aggregate(6551, (accumulator, t) => accumulator ^= (accumulator << 5) ^ EqualityComparer<T>.Default.GetHashCode(t));
+
 	/// <summary>
 	/// Determines whether the specified array has items.
 	/// </summary>
@@ -382,7 +393,7 @@ public static class ArrayExtensions
 	/// <param name="action">The action.</param>
 	/// <exception cref="ArgumentNullException">action cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.CheckPerformance, BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.CheckPerformance, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static void PerformAction<T>([NotNull] this T[] values, [NotNull] Action<T> action)
 	{
 		action = action.ArgumentNotNull();
@@ -400,7 +411,7 @@ public static class ArrayExtensions
 		}
 		else
 		{
-			foreach (var value in values.ToFrozenSet())
+			foreach (var value in FrozenSet.ToFrozenSet(values))
 			{
 				action(value);
 			}
@@ -445,8 +456,19 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information(nameof(ToDistinct), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(ToDistinct), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available)]
 	public static T[] ToDistinct<T>([NotNull] this T[] array) => array.ArgumentNotNull().Distinct().ToArray();
+
+	/// <summary>
+	/// Converts a array to <see cref="FrozenSet{T}" />.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="list">The list.</param>
+	/// <returns>System.Collections.Frozen.FrozenSet&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this T[] list) => FrozenSet.ToFrozenSet(list);
+
 	/// <summary>
 	/// Upserts (add or insert) the specified item.
 	/// Validates that <paramref name="array" /> and <paramref name="item" /> is not null.
@@ -456,7 +478,7 @@ public static class ArrayExtensions
 	/// <param name="item">The item.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information(nameof(Upsert), author: "David McCarter", createdOn: "4/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(Upsert), author: "David McCarter", createdOn: "4/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static T[] Upsert<T>([NotNull] this T[] array, [NotNull] T item)
 	{
 		if (item is null)
@@ -485,7 +507,7 @@ public static class ArrayExtensions
 	/// <param name="item">The item.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information(nameof(Upsert), author: "David McCarter", createdOn: "5/2/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(Upsert), author: "David McCarter", createdOn: "5/2/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static IDataRecord[] Upsert([NotNull] this IDataRecord[] array, [NotNull] IDataRecord item)
 	{
 		if (item is null)

@@ -66,7 +66,7 @@ public static class EnumerableExtensions
 
 		var result = source.ToList();
 
-		foreach (var itemItem in items.ToFrozenSet())
+		foreach (var itemItem in FrozenSet.ToFrozenSet(items))
 		{
 			if (!result.Contains(itemItem))
 			{
@@ -105,7 +105,7 @@ public static class EnumerableExtensions
 	/// <param name="item">The item.</param>
 	/// <param name="condition">if set to <c>true</c> [condition].</param>
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
-	[Information(nameof(AddIf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(AddIf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static IEnumerable<T> AddIf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item, bool condition)
 	{
 		if (item is null)
@@ -142,6 +142,7 @@ public static class EnumerableExtensions
 		return collection.ArgumentNotNull().Append(item);
 	}
 
+
 	/// <summary>
 	/// Determines whether the specified  <see cref="IEnumerable{T}" /> has items specified.
 	/// </summary>
@@ -150,7 +151,7 @@ public static class EnumerableExtensions
 	/// <param name="items">The items.</param>
 	/// <returns><c>true</c> if the specified items has items; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">List is null or empty.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
 	public static bool ContainsAny<T>([NotNull] this IEnumerable<T> collection, [NotNull] params T[] items)
 	{
 		if (collection is null || items is null)
@@ -200,7 +201,7 @@ public static class EnumerableExtensions
 	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
 	/// <returns>A Task&lt;System.Int32&gt; representing the asynchronous operation.</returns>
 	/// <remarks>Orginal code from: https://github.com/dncuug/X.PagedList/blob/master/src/X.PagedList/PagedListExtensions.cs</remarks>
-	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static async Task<int> CountAsync<T>([NotNull] this IEnumerable<T> collection, [AllowNull] CancellationToken cancellationToken) => await Task.Run(collection.ArgumentNotNull().Count, cancellationToken).ConfigureAwait(false);
 
 	/// <summary>
@@ -237,7 +238,7 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <param name="collection">The source.</param>
 	/// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
-	[Information(nameof(DoesNotHaveItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(DoesNotHaveItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool DoesNotHaveItems([NotNull] this IEnumerable collection) => collection?.Count() <= 0;
 
 	/// <summary>
@@ -246,7 +247,7 @@ public static class EnumerableExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The processedCollection.</param>
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
-	[Information(nameof(EnsureUnique), "David McCarter", "11/8/2022", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(EnsureUnique), "David McCarter", "11/8/2022", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IEnumerable<T> EnsureUnique<T>([NotNull] this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
@@ -265,13 +266,13 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
 	/// <exception cref="ArgumentNullException">Predicate cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastAny), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(FastAny), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static bool FastAny<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate)
 	{
 		collection = collection.ArgumentNotNull();
 		predicate = predicate.ArgumentNotNull();
 
-		foreach (var item in collection)
+		foreach (var item in collection.ToFrozenSet())
 		{
 			if (predicate.Invoke(item) is false)
 			{
@@ -291,7 +292,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>System.Int64.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastCount), "David McCarter", "5/21/2022", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(FastCount), "David McCarter", "5/21/2022", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static long FastCount<T>([NotNull] this IEnumerable<T> collection) => collection.ArgumentNotNull().Count();
 
 	/// <summary>
@@ -349,7 +350,7 @@ public static class EnumerableExtensions
 	/// <returns>T.</returns>
 	/// <exception cref="ArgumentNullException">Alternate cannot be null.</exception>
 	/// <remarks>Original code from efcore-master on GitHub.</remarks>
-	[Information(nameof(FirstOrDefault), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(FirstOrDefault), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static T FirstOrDefault<T>([NotNull] this IEnumerable<T> collection, [NotNull] T alternate) => collection is null ? alternate.ArgumentNotNull() : collection.DefaultIfEmpty(alternate).First();
 
 	/// <summary>
@@ -417,7 +418,7 @@ public static class EnumerableExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="items">The items.</param>
 	/// <returns><c>true</c> if the specified items has duplicates; otherwise, <c>false</c>.</returns>
-	[Information("Orginal code by Milan Jovanović", author: "David McCarter", createdOn: "7/3/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
+	[Information("Orginal code by Milan Jovanović", author: "David McCarter", createdOn: "7/3/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug23")]
 	public static bool HasDuplicates<T>([NotNull] this IEnumerable<T> items)
 	{
 		if (items.DoesNotHaveItems())
@@ -427,7 +428,7 @@ public static class EnumerableExtensions
 
 		var elements = ImmutableHashSet.CreateBuilder<T>();
 
-		foreach (var item in items)
+		foreach (var item in items.ToFrozenSet())
 		{
 			if (elements.Add(item) is false)
 			{
@@ -484,7 +485,7 @@ public static class EnumerableExtensions
 	/// <param name="item">The item.</param>
 	/// <returns>System.Int32.</returns>
 	/// <remarks>Original code from efcore-master on GitHub.</remarks>
-	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item) => IndexOf(collection.ArgumentItemsExists(), item.ArgumentNotNull(), EqualityComparer<T>.Default);
 
 	/// <summary>
@@ -498,7 +499,7 @@ public static class EnumerableExtensions
 	/// <returns>System.Int32.</returns>
 	/// <exception cref="ArgumentNullException">item or comparer</exception>
 	/// <remarks>Original code from efcore-master on GitHub.</remarks>
-	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item, [NotNull] IEqualityComparer<T> comparer)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -513,7 +514,7 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <param name="collection">The source.</param>
 	/// <returns><c>true</c> if [is null or empty] [the specified source]; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsNullOrEmpty), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(IsNullOrEmpty), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static bool IsNullOrEmpty([AllowNull] this IEnumerable collection) => collection.IsNull() || collection.GetEnumerator().MoveNext() is false;
 
 	/// <summary>
@@ -524,7 +525,7 @@ public static class EnumerableExtensions
 	/// <param name="separator">The separator.</param>
 	/// <returns>System.String.</returns>
 	/// <remarks>Original code from efcore-master on GitHub.</remarks>
-	[Information(nameof(Join), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(Join), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static string Join([NotNull] this IEnumerable<object> collection, [NotNull] string separator = ControlChars.DefaultSeparator)
 	{
 		if (collection.CheckItemsExists() is false)
@@ -589,7 +590,7 @@ public static class EnumerableExtensions
 	/// <param name="keySelector">The key selector.</param>
 	/// <returns>IOrderedEnumerable&lt;T&gt;.</returns>
 	/// <remarks>Original code from efcore-master on GitHub.</remarks>
-	[Information(nameof(OrderByOrdinal), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(OrderByOrdinal), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IOrderedEnumerable<T> OrderByOrdinal<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, string> keySelector) => collection.ArgumentNotNull().OrderBy(keySelector.ArgumentNotNull(), StringComparer.Ordinal);
 
 	/// <summary>
@@ -604,7 +605,7 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">pageCount</exception>
 	/// <exception cref="ArgumentNullException">pageCount</exception>
 	/// <exception cref="ArgumentOutOfRangeException">pageCount</exception>
-	[Information(nameof(Page), "David McCarter", "11/21/2010", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(Page), "David McCarter", "11/21/2010", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IEnumerable<IEnumerable<T>> Page<T>([NotNull] this IEnumerable<T> collection, int pageSize)
 	{
 		collection = collection.ArgumentNotNull();
@@ -635,7 +636,7 @@ public static class EnumerableExtensions
 	/// <param name="pageCount">The page count.</param>
 	/// <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
 	/// <remarks>Original code from: https://github.com/dncuug/X.PagedList/blob/master/src/X.PagedList/PagedListExtensions.cs</remarks>
-	[Information(nameof(Partition), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(Partition), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<IEnumerable<T>> Partition<T>([NotNull] this IEnumerable<T> collection, int pageCount)
 	{
 		collection = collection.ArgumentNotNull();
@@ -666,7 +667,7 @@ public static class EnumerableExtensions
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="collection">The list.</param>
 	/// <returns>T.</returns>
-	[Information(nameof(PickRandom), "David McCarter", "8/26/2020", "9/19/2020", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(PickRandom), "David McCarter", "8/26/2020", "9/19/2020", BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static T PickRandom<T>([NotNull] this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
@@ -688,7 +689,7 @@ public static class EnumerableExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="items">The items.</param>
 	/// <returns>SimpleResult&lt;IEnumerable&lt;T&gt;&gt;.</returns>
-	[Information(nameof(RemoveDuplicates), author: "David McCarter", createdOn: "7/3/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
+	[Information(nameof(RemoveDuplicates), author: "David McCarter", createdOn: "7/3/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug23")]
 	public static SimpleResult<IEnumerable<T>> RemoveDuplicates<T>([NotNull] this IEnumerable<T> items)
 	{
 		items = items.ArgumentNotNull();
@@ -697,7 +698,7 @@ public static class EnumerableExtensions
 		{
 			var uniqueItems = ImmutableHashSet.CreateBuilder<T>();
 
-			foreach (var item in items)
+			foreach (var item in items.ToFrozenSet())
 			{
 				_ = uniqueItems.Add(item);
 			}
@@ -748,7 +749,7 @@ public static class EnumerableExtensions
 	/// <param name="pageCount">The page count.</param>
 	/// <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
 	/// <remarks>Original code from: https://github.com/dncuug/X.PagedList/blob/master/src/X.PagedList/PagedListExtensions.cs</remarks>
-	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<IEnumerable<T>> Split<T>([NotNull] this IEnumerable<T> collection, int pageCount)
 	{
 		collection = collection.ArgumentNotNull();
@@ -816,7 +817,7 @@ public static class EnumerableExtensions
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	/// <exception cref="ArgumentNullException">second</exception>
 	/// <remarks>Original code from efcore-master on GitHub.</remarks>
-	[Information(nameof(StructuralSequenceEqual), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(StructuralSequenceEqual), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static bool StructuralSequenceEqual<T>([NotNull] this IEnumerable<T> first, [NotNull] IEnumerable<T> second)
 	{
 		if (first is null || second is null)
@@ -856,14 +857,14 @@ public static class EnumerableExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>BlockingCollection&lt;T&gt;.</returns>
 	/// <remarks>The resulting collection supports IDisposable. Make sure to properly dispose!</remarks>
-	[Information(nameof(ToBlockingCollection), "David McCarter", "4/13/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineMarch2021")]
+	[Information(nameof(ToBlockingCollection), "David McCarter", "4/13/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineMarch2021")]
 	public static BlockingCollection<T> ToBlockingCollection<T>([NotNull] this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
 
 		var returnValue = new BlockingCollection<T>(collection.Count());
 
-		foreach (var item in collection)
+		foreach (var item in collection.ToFrozenSet())
 		{
 			_ = returnValue.TryAdd(item);
 		}
@@ -878,7 +879,7 @@ public static class EnumerableExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The list.</param>
 	/// <returns>Collection&lt;T&gt;.</returns>
-	[Information(nameof(ToCollection), "David McCarter", "4/13/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(ToCollection), "David McCarter", "4/13/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static Collection<T> ToCollection<T>([NotNull] this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -893,7 +894,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The list.</param>
 	/// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(ToDelimitedString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb21")]
+	[Information(nameof(ToDelimitedString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineFeb21")]
 	public static string ToDelimitedString<T>([NotNull] this IEnumerable<T> collection, char delimiter = ControlChars.Comma)
 	{
 		if (collection is null || collection.FastCount() == 0)
@@ -905,7 +906,7 @@ public static class EnumerableExtensions
 
 		try
 		{
-			foreach (var item in collection)
+			foreach (var item in collection.ToFrozenSet())
 			{
 				if (sb.Length > 0)
 				{
@@ -924,6 +925,16 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
+	/// Converts a <see cref="IEnumerable{T}" /> to <see cref="FrozenSet{T}" />.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="list">The list.</param>
+	/// <returns>FrozenSet&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this IEnumerable<T> list) => FrozenSet.ToFrozenSet(list);
+
+	/// <summary>
 	/// Converts a <see cref="IEnumerable{T}" /> to <see cref="ImmutableList{T}" />.
 	/// Validates that <paramref name="collection" /> is not null.
 	/// </summary>
@@ -931,7 +942,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The values.</param>
 	/// <returns>IImmutableList&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
-	[Information(nameof(ToImmutable), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(ToImmutable), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static ImmutableList<T> ToImmutable<T>([NotNull] this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -947,7 +958,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The values.</param>
 	/// <returns>LinkedList&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
-	[Information(nameof(ToLinkedList), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(ToLinkedList), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static LinkedList<T> ToLinkedList<T>([NotNull] this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -964,7 +975,7 @@ public static class EnumerableExtensions
 	/// <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
 	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
-	[Information(nameof(ToListAsync), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(ToListAsync), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static async Task<List<T>> ToListAsync<T>([NotNull] this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -998,7 +1009,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The list.</param>
 	/// <param name="item">The item.</param>
 	/// <returns>System.Collections.Generic.IEnumerable&lt;T&gt;.</returns>
-	[Information(nameof(Upsert), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(Upsert), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static IEnumerable<T> Upsert<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item)
 	{
 		collection = collection.ArgumentItemsExists();

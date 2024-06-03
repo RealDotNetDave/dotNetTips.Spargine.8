@@ -65,6 +65,7 @@ public static class TypeHelper
 		var builtinTypes = new List<Type>();
 
 		// Loop through each assembly
+		//TODO: ADD ASSPAN
 		foreach (var assembly in assemblies)
 		{
 			// Get the types defined in the assembly
@@ -323,7 +324,7 @@ public static class TypeHelper
 	/// <param name="baseType">Type of the base.</param>
 	/// <param name="classOnly">if set to <c>true</c> [class only].</param>
 	/// <returns>IEnumerable&lt;Type&gt;.</returns>
-	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
 		currentDomain = currentDomain.ArgumentNotNull();
@@ -332,6 +333,7 @@ public static class TypeHelper
 		var array = currentDomain.ArgumentNotNull().GetAssemblies();
 		List<Type> types = null;
 
+		//TODO: ADD TOFROZENSET
 		foreach (var arrayItem in array)
 		{
 			try
@@ -663,7 +665,7 @@ public static class TypeHelper
 	/// Gets all of the builtin types for .NET.
 	/// </summary>
 	/// <value>The builtin types.</value>
-	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static ReadOnlyCollection<Type> BuiltinTypes
 	{
 		get

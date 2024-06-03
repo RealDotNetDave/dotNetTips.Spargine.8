@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-03-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -113,13 +113,13 @@ public static class DirectoryHelper
 	[Information(nameof(CopyDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100)]
 	public static void CopyDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, bool overwrite = true)
 	{
-		var directories = source.ArgumentExists().GetDirectories().AsSpan();
+		var directories = source.ArgumentExists().GetDirectories();
 
 		_ = destination.ArgumentNotNull().CheckExists();
 
 		var destinationPath = destination.FullName;
 
-		var files = source.GetFiles().AsSpan();
+		var files = source.GetFiles();
 
 		foreach (var fileItem in files)
 		{

@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-30-2024
+// Last Modified On : 06-03-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -12,7 +12,6 @@
 // <summary>Extension methods designed for Object.</summary>
 // ***********************************************************************
 using System.Collections;
-using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
@@ -334,7 +333,7 @@ public static class ObjectExtensions
 
 			if (ignoreAttribute == null)
 			{
-				var innerObject = property.GetValue(obj, null);
+				var innerObject = property.GetValue(obj, (object[])null);
 
 				if (ignoreNulls && innerObject is null)
 				{

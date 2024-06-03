@@ -4,7 +4,7 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-03-2024
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -587,7 +587,7 @@ public static partial class Validator
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed due to invalid count.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentItemsExists), "David McCarter", "4/4/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
+	[Information(nameof(ArgumentItemsExists), "David McCarter", "4/4/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static IEnumerable<T> ArgumentItemsExists<T>([NotNull] this IEnumerable<T> input, long count, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{

@@ -9,9 +9,8 @@
 // <copyright file="StringBuilderExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>StringBuilder Extensions.</summary>
+// <summary>StringBuilder Extensions.</summary> 
 // ***********************************************************************
-using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
@@ -219,7 +218,7 @@ public static class StringBuilderExtensions
 	/// <exception cref="ArgumentNullException">joinAction</exception>
 	/// <exception cref="ArgumentNullException">sb</exception>
 	/// <exception cref="ArgumentNullException">values</exception>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static void AppendValues<T>([NotNull] this StringBuilder sb, string separator, IEnumerable<T> values, [NotNull] Action<T> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -234,7 +233,7 @@ public static class StringBuilderExtensions
 
 		var appended = false;
 
-		foreach (var value in values)
+		foreach (var value in values.ToFrozenSet())
 		{
 			joinAction(value);
 			_ = sb.Append(separator);
@@ -260,7 +259,7 @@ public static class StringBuilderExtensions
 	/// <param name="param">The parameter.</param>
 	/// <param name="joinAction">The join action.</param>
 	/// <returns>StringBuilder.</returns>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 0, Status = Status.NotUsed)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 0, Status = Status.CheckPerformance)]
 	public static void AppendValues<T, TParam>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam param, [NotNull] Action<T, TParam> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -276,7 +275,7 @@ public static class StringBuilderExtensions
 
 		var appended = false;
 
-		foreach (var value in values)
+		foreach (var value in values.ToFrozenSet())
 		{
 			joinAction(value, param);
 			_ = sb.Append(separator);
@@ -314,7 +313,7 @@ public static class StringBuilderExtensions
 	/// <exception cref="ArgumentNullException">values</exception>
 	/// <exception cref="ArgumentNullException">param1</exception>
 	/// <exception cref="ArgumentNullException">param2</exception>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 0, Status = Status.NotUsed)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 0, Status = Status.CheckPerformance)]
 	public static void AppendValues<T, TParam1, TParam2>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam1 param1, [NotNull] TParam2 param2, [NotNull] Action<StringBuilder, T, TParam1, TParam2> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -331,7 +330,7 @@ public static class StringBuilderExtensions
 
 		var appended = false;
 
-		foreach (var value in values)
+		foreach (var value in values.ToFrozenSet())
 		{
 			joinAction(sb, value, param1, param2);
 			_ = sb.Append(separator);

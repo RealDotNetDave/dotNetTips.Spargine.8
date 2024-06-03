@@ -11,6 +11,7 @@
 // </copyright>
 // <summary>Extension methods for different List collection types.</summary>
 // ***********************************************************************
+using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
@@ -389,6 +390,16 @@ public static class ListExtensions
 	/// <returns>FastSortedList&lt;T&gt;.</returns>
 	[Information(nameof(ToFastSortedList), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static FastSortedList<T> ToFastSortedList<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
+
+	/// <summary>
+	/// Converts a <see cref="List{T}" /> to <see cref="FrozenSet{T}" />.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="list">The list.</param>
+	/// <returns>FrozenSet&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this List<T> list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>
 	/// Converts <see cref="List{T}" /> to an <see cref="ImmutableArray{T}" />.

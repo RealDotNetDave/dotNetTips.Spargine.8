@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-30-2024
+// Last Modified On : 06-03-2024
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -12,7 +12,9 @@
 // <summary>Extension methods for the ICollection types.</summary>
 // ***********************************************************************
 using System.Collections;
+using System.Collections.Frozen;
 using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using DotNetTips.Spargine.Core;
@@ -128,7 +130,7 @@ public static class CollectionExtensions
 	/// <param name="items">The items.</param>
 	/// <param name="ensureUnique">The ensure unique.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(AddRange), "David McCarter", "11/7/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(AddRange), "David McCarter", "11/7/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static bool AddRange<T>([NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> items, bool ensureUnique = true)
 	{
 		items = items.ArgumentNotNull();
@@ -154,6 +156,26 @@ public static class CollectionExtensions
 
 		return result;
 	}
+
+	/// <summary>
+	/// Converts a <see cref="Collection{T}" /> to <see cref="ReadOnlySpan{T}" />.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="list">The list.</param>
+	/// <returns>ReadOnlySpan&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(AsReadOnlySpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this Collection<T> list) => new(list.ToArray());
+
+	/// <summary>
+	/// Converts a <see cref="Collection{T}" /> to <see cref="Span{T}" />.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="list">The list.</param>
+	/// <returns>Span&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(AsSpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	public static Span<T> AsSpan<T>([NotNull] this Collection<T> list) => new(list.ToArray());
 
 	/// <summary>
 	/// Determines whether the specified <see cref="ICollection{T}" /> does not have items.
@@ -190,7 +212,7 @@ public static class CollectionExtensions
 	/// <param name="count">The specific count.</param>
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems([NotNull] this ICollection collection, int count)
 	{
 		if (collection is null)
@@ -202,6 +224,16 @@ public static class CollectionExtensions
 			return collection.Count == count;
 		}
 	}
+
+	/// <summary>
+	/// Converts a <see cref="Collection{T}" /> to <see cref="FrozenSet{T}" />.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="list">The list.</param>
+	/// <returns>FrozenSet&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this Collection<T> list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>
 	/// Upserts (add or insert) the specified item to a <see cref="ICollection{T}" />.

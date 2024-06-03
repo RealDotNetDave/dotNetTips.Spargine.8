@@ -37,7 +37,7 @@ public static partial class FastLogger
 	/// <summary>
 	/// Logs the critical.
 	/// </summary>
-	[Information(nameof(LogCritical), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(LogCritical), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 911, Level = LogLevel.Critical, EventName = "CRITICAL", Message = "{message}")]
 	public static partial void LogCritical(ILogger logger, string message, Exception exception);
 
@@ -49,7 +49,7 @@ public static partial class FastLogger
 	/// <summary>
 	/// Logs the debug.
 	/// </summary>
-	[Information(nameof(LogDebug), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(LogDebug), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 200, Level = LogLevel.Debug, EventName = "DEBUG", Message = "{message}")]
 	public static partial void LogDebug(ILogger logger, string message);
 
@@ -61,7 +61,7 @@ public static partial class FastLogger
 	/// <summary>
 	/// Logs the error.
 	/// </summary>
-	[Information(nameof(LogError), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(LogError), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 300, Level = LogLevel.Error, EventName = "ERROR", Message = "{message}")]
 	public static partial void LogError(ILogger logger, string message);
 
@@ -74,7 +74,7 @@ public static partial class FastLogger
 	/// <summary>
 	/// Logs the exception.
 	/// </summary>
-	[Information(nameof(LogException), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(LogException), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 500, Level = LogLevel.Error, EventName = "EXCEPTION", Message = "{message}")]
 	public static partial void LogException(ILogger logger, string message, Exception exception);
 
@@ -86,7 +86,7 @@ public static partial class FastLogger
 	/// <summary>
 	/// Logs the information.
 	/// </summary>
-	[Information(nameof(LogInformation), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(LogInformation), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 400, Level = LogLevel.Information, EventName = "INFORMATION", Message = "{message}")]
 	public static partial void LogInformation(ILogger logger, string message);
 
@@ -98,7 +98,7 @@ public static partial class FastLogger
 	/// <summary>
 	/// Logs the trace.
 	/// </summary>
-	[Information(nameof(LogTrace), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(LogTrace), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 100, Level = LogLevel.Trace, EventName = "TRACE", Message = "{message}")]
 	public static partial void LogTrace(ILogger logger, string message);
 
@@ -110,7 +110,7 @@ public static partial class FastLogger
 	/// <summary>
 	/// Logs the warning.
 	/// </summary>
-	[Information(nameof(LogWarning), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(LogWarning), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 600, Level = LogLevel.Warning, EventName = "WARNING", Message = "{message}")]
 	public static partial void LogWarning(ILogger logger, string message);
 

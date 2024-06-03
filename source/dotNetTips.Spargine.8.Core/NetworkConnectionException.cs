@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 /// <seealso cref="Exception" />
 [Serializable]
-[Information(nameof(NetworkConnectionException), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available)]
+[Information(nameof(NetworkConnectionException), UnitTestCoverage = 0, Status = Status.Available)]
 public sealed class NetworkConnectionException : LoggableException
 {
 

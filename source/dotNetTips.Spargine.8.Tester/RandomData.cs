@@ -303,7 +303,7 @@ public static partial class RandomData
 
 		var addresses = new List<AddressRecord>(count);
 
-		var addressCollection = GenerateAddressCollection<Address>(Countries.GetCountry(country).ArgumentNotNull(paramName: country.GetDescription()), count, addressLength, countyProvinceLength).ToFrozenSet();
+		var addressCollection = FrozenSet.ToFrozenSet(GenerateAddressCollection<Address>(Countries.GetCountry(country).ArgumentNotNull(paramName: country.GetDescription()), count, addressLength, countyProvinceLength));
 
 		foreach (var address in addressCollection)
 		{

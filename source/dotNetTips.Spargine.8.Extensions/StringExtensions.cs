@@ -174,7 +174,7 @@ public static class StringExtensions
 
 		try
 		{
-			foreach (var hashItem in new ReadOnlySpan<byte>(hash))
+			foreach (var hashItem in hash.AsReadOnlySpan())
 			{
 				_ = sb.Append(hashItem.ToString("x2", CultureInfo.InvariantCulture));
 			}
@@ -244,7 +244,7 @@ public static class StringExtensions
 
 			if (args.HasItems())
 			{
-				foreach (var arg in new ReadOnlySpan<string>(args))
+				foreach (var arg in args.AsReadOnlySpan())
 				{
 					//TODO: ADD EXTENSION METHOD TO TEST FOR ENUM VALUES
 					_ = addLineFeed

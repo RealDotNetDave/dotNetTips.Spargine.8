@@ -280,7 +280,7 @@ public static partial class TypeExtensions
 	/// <returns>System.ValueTuple&lt;System.String, TAttribute, System.Boolean, System.Boolean, Type&gt;[].</returns>
 	/// <exception cref="InvalidOperationException">Member \"{member.Name}\" must be public if it has the [{typeof(TAttribute).Name}] attribute applied to it</exception>
 	/// <exception cref="ArgumentNullException">Type cannot be null.</exception>
-	[Information("https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information("https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static (string Name, TAttribute Attribute, bool IsPrivate, bool IsStatic, Type ParameterType)[] GetTypeMembersWithAttribute<TAttribute>([NotNull] this Type type)
 		where TAttribute : Attribute
 	{
@@ -299,7 +299,7 @@ public static partial class TypeExtensions
 
 		var joined = allFields.Concat(allProperties).Where(member => member.Attribute is not null).ToArray();
 
-		foreach (var member in joined.Where(m => m.IsPrivate))
+		foreach (var member in joined.Where(m => m.IsPrivate).ToFrozenSet())
 		{
 			ExceptionThrower.ThrowArgumentOutOfRangeException($"Member \"{member.Name}\" must be public if it has the [{typeof(TAttribute).Name}] attribute applied to it", "Member");
 		}

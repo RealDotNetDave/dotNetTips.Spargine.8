@@ -212,7 +212,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <returns>Regex.</returns>
 	/// <returns>Regex.</returns>
-	[Information(nameof(ContainsFirstLastName), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(ContainsFirstLastName), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool ContainsFirstLastName(string input)
 	{
 		if (input is null)
@@ -232,7 +232,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input.</param>
 	/// <returns>Regex.</returns>
-	[Information(nameof(ContainsWord), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ContainsWord), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool ContainsWord(string input)
 	{
 		if (input is null)

@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-22-2024
+// Last Modified On : 06-03-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -176,7 +176,7 @@ public static class FastStringBuilder
 	/// <param name="action">The action to perform.</param>
 	/// <returns>System.String.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PerformAction), "David McCarter", "12/23/2022", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(PerformAction), "David McCarter", "12/23/2022", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string PerformAction([NotNull] Action<StringBuilder> action)
 	{
 		if (action is null)
@@ -209,7 +209,7 @@ public static class FastStringBuilder
 	/// <returns>System.String.</returns>
 	/// <remarks>Example output: <code>CKpPdnfyf: CKpPdnfyf,T\\\\^wwVx: T\\\\^wwVx,S`ikV: S`ikV,uHTR[yy: uHTR[yy,PNmB_h: PNmB_</code></remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToDelimitedString), "David McCarter", "1/1/2021", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(ToDelimitedString), "David McCarter", "1/1/2021", Status = Status.CheckPerformance, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string ToDelimitedString<TKey, TValue>([NotNull] Dictionary<TKey, TValue> collection, char delimiter = ControlChars.Comma)
 	{
 		if (collection.CheckItemsExists() is false)
@@ -221,7 +221,7 @@ public static class FastStringBuilder
 
 		try
 		{
-			foreach (var item in collection)
+			foreach (var item in collection.ToFrozenDictionary())
 			{
 
 				if (sb.Length > 0)
