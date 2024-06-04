@@ -14,6 +14,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
+using System.Text;
 using DotNetTips.Spargine.Core.Security;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
@@ -164,5 +165,5 @@ public class EncryptionHelperTests
 		// Assert
 		Assert.AreEqual(PasswordVerificationResult.Success, result);
 	}
-
 }
+

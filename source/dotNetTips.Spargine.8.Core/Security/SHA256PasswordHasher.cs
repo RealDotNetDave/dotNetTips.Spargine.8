@@ -123,6 +123,7 @@ public static class SHA256PasswordHasher
 	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static PasswordVerificationResult VerifyHashedPassword(string hashedPassword, [NotNull] string password)
 	{
+		hashedPassword = hashedPassword.ArgumentNotNullOrEmpty();
 		password = password.ArgumentNotNullOrEmpty();
 
 		if (string.IsNullOrEmpty(hashedPassword))
