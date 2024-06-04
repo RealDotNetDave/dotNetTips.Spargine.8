@@ -96,7 +96,7 @@ public static class FastStringBuilder
 
 		try
 		{
-			foreach (var arg in args.ToFrozenSet())
+			foreach (var arg in args.AsSpan())
 			{
 				_ = addLineFeed ? sb.AppendLine(arg) : sb.Append(arg);
 			}

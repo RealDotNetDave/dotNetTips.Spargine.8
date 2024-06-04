@@ -64,10 +64,10 @@ public static class TypeHelper
 		// Create a list to store the built-in types
 		var builtinTypes = new List<Type>();
 
-		// Loop through each assembly
+		// Loop through each assemblyCollection
 		foreach (var assembly in assemblies)
 		{
-			// Get the types defined in the assembly
+			// Get the types defined in the assemblyCollection
 			var types = assembly.GetTypes().AsSpan();
 
 			// Loop through each type
@@ -86,7 +86,7 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Determines whether [is dot net assembly] [the specified stream].
+	/// Determines whether [is dot net assemblyCollection] [the specified stream].
 	/// </summary>
 	/// <param name="stream">The stream.</param>
 	/// <returns>bool.</returns>
@@ -275,10 +275,10 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Creates the specified parameter array.
+	/// Creates the specified parameter assemblyCollection.
 	/// </summary>
 	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="paramArray">The parameter array.</param>
+	/// <param name="paramArray">The parameter assemblyCollection.</param>
 	/// <returns>T.</returns>
 	[Information(UnitTestCoverage = 100, Status = Status.Available)]
 	public static T Create<T>([NotNull] params object[] paramArray)
@@ -329,14 +329,15 @@ public static class TypeHelper
 		currentDomain = currentDomain.ArgumentNotNull();
 		baseType = baseType.ArgumentNotNull();
 
-		var array = currentDomain.ArgumentNotNull().GetAssemblies();
+		var assemblyCollection = currentDomain.ArgumentNotNull().GetAssemblies().AsSpan();
+
 		List<Type> types = null;
 
-		foreach (var arrayItem in array.AsSpan())
+		foreach (var assembly in assemblyCollection)
 		{
 			try
 			{
-				var tempTypes = LoadDerivedTypes(arrayItem.DefinedTypes, baseType, classOnly).ToList();
+				var tempTypes = LoadDerivedTypes(assembly.DefinedTypes, baseType, classOnly).ToList();
 
 				if (tempTypes?.FastCount() > 0)
 				{
@@ -617,10 +618,10 @@ public static class TypeHelper
 		return false;
 	}
 
-	/// <summary>Determines whether [is dot net assembly] [the specified file].</summary>
+	/// <summary>Determines whether [is dot net assemblyCollection] [the specified file].</summary>
 	/// <param name="file">The file.</param>
 	/// <returns>
-	///   <c>true</c> if [is dot net assembly] [the specified file]; otherwise, <c>false</c>.</returns>
+	///   <c>true</c> if [is dot net assemblyCollection] [the specified file]; otherwise, <c>false</c>.</returns>
 	/// <exception cref="FileNotFoundException">File not found.</exception>
 	[Information("Orginal code by GÉRALD BARRÉ", author: "David McCarter", createdOn: "5/20/2024", UnitTestCoverage = 0, Status = Status.New)]
 	public static bool IsDotNetAssembly(FileInfo file)

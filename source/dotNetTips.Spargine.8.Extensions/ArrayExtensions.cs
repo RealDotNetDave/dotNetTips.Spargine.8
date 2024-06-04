@@ -166,7 +166,7 @@ public static class ArrayExtensions
 
 		try
 		{
-			foreach (var arrayItem in FrozenSet.ToFrozenSet(array))
+			foreach (var arrayItem in array.AsSpan())
 			{
 				_ = sb.Append(arrayItem.ToString("x2", CultureInfo.InvariantCulture));
 			}
@@ -310,7 +310,7 @@ public static class ArrayExtensions
 		array = array.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		foreach (var item in array.AsReadOnlySpan())
+		foreach (var item in array.AsSpan())
 		{
 			action(item);
 		}
@@ -411,7 +411,7 @@ public static class ArrayExtensions
 		}
 		else
 		{
-			foreach (var value in FrozenSet.ToFrozenSet(values))
+			foreach (var value in values.AsSpan())
 			{
 				action(value);
 			}

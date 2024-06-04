@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-04-2024
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -130,7 +130,7 @@ public static class CollectionExtensions
 	/// <param name="items">The items.</param>
 	/// <param name="ensureUnique">The ensure unique.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(AddRange), "David McCarter", "11/7/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(AddRange), "David McCarter", "11/7/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static bool AddRange<T>([NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> items, bool ensureUnique = true)
 	{
 		items = items.ArgumentNotNull();
@@ -138,7 +138,7 @@ public static class CollectionExtensions
 
 		if (ensureUnique is false)
 		{
-			foreach (var item in items)
+			foreach (var item in items.ToFrozenSet())
 			{
 				collection.Add(item);
 			}
@@ -148,7 +148,7 @@ public static class CollectionExtensions
 
 		var result = false;
 
-		foreach (var item in items.Distinct().Where(item => collection.Contains(item) is false))
+		foreach (var item in items.Distinct().Where(item => collection.Contains(item) is false).ToFrozenSet())
 		{
 			collection.Add(item);
 			result = true;

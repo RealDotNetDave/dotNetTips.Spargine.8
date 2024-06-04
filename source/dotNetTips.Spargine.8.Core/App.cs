@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-04-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -265,14 +265,16 @@ public static class App
 	/// [14]: "System.Runtime.InteropServices.RuntimeInformation, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
 	/// [15]: "System.Linq, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
 	/// </example>
-	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<string> ReferencedAssemblies()
 	{
 		var referencedAssemblies = new List<string>();
 
-		for (var assemblyCount = 0; assemblyCount < Assembly.GetEntryAssembly().GetReferencedAssemblies().Length; assemblyCount++)
+		var assemblies = Assembly.GetEntryAssembly().GetReferencedAssemblies().AsSpan();
+
+		foreach (var item in assemblies)
 		{
-			referencedAssemblies.Add(Assembly.GetEntryAssembly().GetReferencedAssemblies()[assemblyCount].ToString());
+			referencedAssemblies.Add(item.ToString());
 		}
 
 		return referencedAssemblies.AsReadOnly();

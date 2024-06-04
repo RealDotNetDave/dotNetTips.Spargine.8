@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-04-2024
 // ***********************************************************************
 // <copyright file="EnumExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com

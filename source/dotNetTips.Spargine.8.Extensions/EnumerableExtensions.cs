@@ -66,7 +66,7 @@ public static class EnumerableExtensions
 
 		var result = source.ToList();
 
-		foreach (var itemItem in items.ToFrozenSet())
+		foreach (var itemItem in items.AsSpan())
 		{
 			if (!result.Contains(itemItem))
 			{
@@ -211,14 +211,14 @@ public static class EnumerableExtensions
 	/// <param name="items">The items.</param>
 	/// <param name="ensureUnique">if set to <c>true</c> [ensure unique].</param>
 	/// <returns>Collection&lt;T&gt;.</returns>
-	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
+	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static Collection<T> Create<T>([NotNull] this IEnumerable<T> items, bool ensureUnique)
 	{
 		items = items.ArgumentNotNull();
 
 		var newItems = new Collection<T>();
 
-		foreach (var item in items.Where(p => p is not null))
+		foreach (var item in items.Where(p => p is not null).ToFrozenSet())
 		{
 			if (ensureUnique is true)
 			{

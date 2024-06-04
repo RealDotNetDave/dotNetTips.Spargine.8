@@ -244,7 +244,7 @@ public static class StringExtensions
 
 			if (args.HasItems())
 			{
-				foreach (var arg in args.AsReadOnlySpan())
+				foreach (var arg in args.AsSpan())
 				{
 					//TODO: ADD EXTENSION METHOD TO TEST FOR ENUM VALUES
 					_ = addLineFeed

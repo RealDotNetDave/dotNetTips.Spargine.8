@@ -327,7 +327,7 @@ public static class ObjectExtensions
 			newMemberName = $"{memberName}{ControlChars.Dot}";
 		}
 
-		foreach (var property in propertyCollection.ToFrozenSet())
+		foreach (var property in propertyCollection.AsSpan())
 		{
 			var ignoreAttribute = property.GetAttribute<JsonIgnoreAttribute>();
 

@@ -4,7 +4,7 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-18-2024
+// Last Modified On : 05-30-2024
 // ***********************************************************************
 // <copyright file="InternalMethods.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)

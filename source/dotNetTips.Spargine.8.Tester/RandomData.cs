@@ -12,7 +12,6 @@
 // <summary>Create random data for unit and benchmark testing.</summary>
 // ***********************************************************************
 
-using System.Collections.Frozen;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -185,7 +184,7 @@ public static partial class RandomData
 
 		try
 		{
-			foreach (var character in format)
+			foreach (var character in format.AsSpan())
 			{
 				_ = character switch
 				{
@@ -254,7 +253,7 @@ public static partial class RandomData
 	/// <param name="addressLength">Length of the address. Length must be between 5 - 100. Defaults to 25.</param>
 	/// <param name="countyProvinceLength">Length of the county province. Length must be between 5 - 50. Defaults to 20.</param>
 	/// <returns>System.Collections.ObjectModel.Collection&lt;T&gt;.</returns>
-	[Information(nameof(GenerateAddressCollection), "David McCarter", "12/4/2023", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GenerateAddressCollection), "David McCarter", "12/4/2023", UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static Collection<T> GenerateAddressCollection<T>([NotNull] Country country, int count = 2, int addressLength = 25, int countyProvinceLength = 20) where T : IAddress, new()
 	{
 		country = country.ArgumentNotNull();
@@ -303,7 +302,7 @@ public static partial class RandomData
 
 		var addresses = new List<AddressRecord>(count);
 
-		var addressCollection = FrozenSet.ToFrozenSet(GenerateAddressCollection<Address>(Countries.GetCountry(country).ArgumentNotNull(paramName: country.GetDescription()), count, addressLength, countyProvinceLength));
+		var addressCollection = GenerateAddressCollection<Address>(Countries.GetCountry(country).ArgumentNotNull(paramName: country.GetDescription()), count, addressLength, countyProvinceLength).AsSpan();
 
 		foreach (var address in addressCollection)
 		{
