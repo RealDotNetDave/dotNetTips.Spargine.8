@@ -4,7 +4,7 @@
 // Created          : 08-03-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2023
+// Last Modified On : 06-03-2024
 // ***********************************************************************
 // <copyright file="StringExtensionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -53,6 +53,17 @@ public class StringExtensionsBenchmark : Benchmark
 	public void CombineToString()
 	{
 		var result = this.LongTestString.Clone<string>().CombineToString(this.GetStringArray(10, 15, 15));
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.ComputeHash))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void ComputeHash()
+	{
+		var testString = this.LongTestString.Clone<string>();
+
+		var result = testString.ComputeHash();
 
 		this.Consume(result);
 	}
@@ -422,6 +433,15 @@ public class StringExtensionsBenchmark : Benchmark
 	public void SubstringTrim()
 	{
 		var result = this.StringToTrim.SubstringTrim(25, 25);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.ToBase64))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void ToBase64()
+	{
+		var result = this.LongTestString.ToBase64();
 
 		this.Consume(result);
 	}

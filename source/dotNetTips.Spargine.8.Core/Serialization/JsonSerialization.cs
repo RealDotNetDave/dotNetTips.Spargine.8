@@ -126,7 +126,7 @@ public static class JsonSerialization
 	/// <typeparam name="TResult">The type of the t result.</typeparam>
 	/// <param name="json">The json.</param>
 	/// <returns>T.</returns>
-	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json)
 	{
 		var obj = JsonSerializer.Deserialize<TResult>(json, _options);
@@ -177,7 +177,7 @@ public static class JsonSerialization
 	/// </summary>
 	/// <param name="obj">The object.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(Serialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(Serialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string Serialize([NotNull] object obj) => JsonSerializer.Serialize(obj.ArgumentNotNull());
 
 	/// <summary>

@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-04-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -60,7 +60,7 @@ public static class FastStringBuilder
 		{
 			_ = sb.Append("'0x");
 
-			foreach (var @byte in bytes.ToFrozenSet())
+			foreach (var @byte in bytes.AsSpan()) //FrozenSet is slower.
 			{
 				_ = sb.Append(@byte.ToString("X2", CultureInfo.InvariantCulture));
 			}
@@ -131,7 +131,7 @@ public static class FastStringBuilder
 	/// <exception cref="ArgumentInvalidException">input cannot be null.</exception>
 	/// <remarks>Example output: <code>r^wQTNvT, HcETQ, COtc\\G[U, loUR_SbL, o_HYYskfM"</code></remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineStringConcatenation")]
+	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineStringConcatenation")]
 	public static string ConcatStrings(string delimiter = ",", bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (delimiter == null)
@@ -147,16 +147,18 @@ public static class FastStringBuilder
 			{
 				_ = sb.Append("'0x");
 
-				for (var index = 0; index < args.Length; index++)
+				var index = 0;
+
+				foreach (var arg in args.AsSpan())
 				{
-					var newLine = args[index];
+					var newString = arg;
 
 					if (index < args.Length - 1 && delimiter.Length > 0)
 					{
-						newLine = CombineStrings(false, newLine, delimiter);
+						newString = CombineStrings(false, arg, delimiter);
 					}
 
-					_ = addLineFeed is true ? sb.AppendLine(newLine) : sb.Append(newLine);
+					_ = addLineFeed is true ? sb.AppendLine(newString) : sb.Append(newString);
 
 					index++;
 				}

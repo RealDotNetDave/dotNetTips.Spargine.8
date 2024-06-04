@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-04-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -104,7 +104,7 @@ public static class ObjectExtensions
 
 		// Create a SHA256
 		// ComputeHash - returns byte array
-		var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(obj.ToJson())).AsReadOnlySpan();
+		var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(obj.ToJson())).AsSpan();
 
 		// Convert byte array to a string
 		var sb = _stringBuilderPool.Get();
@@ -136,14 +136,14 @@ public static class ObjectExtensions
 			return;
 		}
 
-		var list = obj.GetType().GetRuntimeFields().Where(p => p.IsStatic is false).ToList();
+		var list = obj.GetType().GetRuntimeFields().Where(p => p.IsStatic is false).ToFrozenSet(); //ReadOnlySpan is slower.
 
 		if (list.DoesNotHaveItems())
 		{
 			return;
 		}
 
-		foreach (var field in list.AsSpan())
+		foreach (var field in list)
 		{
 			if (field is not null)
 			{
@@ -197,7 +197,7 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The object.</param>
 	/// <exception cref="ArgumentNullException">Object cannot be null.</exception>
-	[Information(nameof(InitializeFields), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance)]
+	[Information(nameof(InitializeFields), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void InitializeFields([NotNull] this object obj)
 	{
 		if (obj is null)
@@ -205,7 +205,7 @@ public static class ObjectExtensions
 			return;
 		}
 
-		var fieldInfos = obj.GetType().GetRuntimeFields().ToReadOnlyCollection();
+		var fieldInfos = obj.GetType().GetRuntimeFields().ToList();
 
 		if (fieldInfos.DoesNotHaveItems())
 		{
@@ -383,7 +383,7 @@ public static class ObjectExtensions
 	/// PersonRecord.Addresses[1].State:dxeZkn[HyLo\\wUS, PersonRecord.Addresses[1].Phone:511 - 286 - 7653,
 	/// PersonRecord.Addresses[1].PostalCode:33385672
 	/// </example>
-	[Information(nameof(PropertiesToString), author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2021")]
+	[Information(nameof(PropertiesToString), author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2021")]
 	public static string PropertiesToString([NotNull] this object obj, string header = ControlChars.EmptyString, char keyValueSeparator = ControlChars.Colon, [NotNull] string sequenceSeparator = ControlChars.DefaultSeparator, bool ignoreNulls = true, bool includeMemberName = true)
 	{
 		if (obj is null)

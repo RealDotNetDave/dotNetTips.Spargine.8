@@ -4,7 +4,7 @@
 // Created          : 07-17-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2023
+// Last Modified On : 06-03-2024
 // ***********************************************************************
 // <copyright file="ReadOnlyCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -27,10 +27,16 @@ public class ReadOnlyCollectionBenchmark : SmallCollectionBenchmark
 
 	private ReadOnlyCollection<Person<Address>> _personRefReadOnlyCollection;
 
-	[Benchmark(Description = nameof(CollectionExtensions.DoesNotHaveItems))]
+	[Benchmark(Description = nameof(ReadOnlyCollectionExtensions.DoesNotHaveItems))]
 	public void DoesNotHaveItems()
 	{
 		this.Consume(this._personRefReadOnlyCollection.DoesNotHaveItems());
+	}
+
+	[Benchmark(Description = nameof(ReadOnlyCollectionExtensions.GenerateHashCode))]
+	public void GenerateHashCode()
+	{
+		this.Consume(this._personRefReadOnlyCollection.GenerateHashCode());
 	}
 
 	public override void Setup()

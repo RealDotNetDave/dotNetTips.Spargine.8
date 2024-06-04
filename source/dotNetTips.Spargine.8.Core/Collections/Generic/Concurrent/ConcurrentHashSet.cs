@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-03-2024
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -66,7 +66,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="capacity">The capacity. Must be a value of 0 or greater.</param>
 	/// <param name="growLockArray">if set to <c>true</c> [grow lock array].</param>
 	/// <param name="comparer">The comparer.</param>
-	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, Status = Status.Available)]
 	private ConcurrentHashSet(int concurrencyLevel, int capacity, bool growLockArray, IEqualityComparer<T> comparer)
 	{
 		if (concurrencyLevel < 1)
@@ -104,7 +104,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ConcurrentHashSet{T}" /> class.
 	/// </summary>
-	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, Status = Status.Available)]
 	public ConcurrentHashSet()
 		: this(DefaultConcurrencyLevel, DefaultCapacity, true, null)
 	{
@@ -114,7 +114,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// Initializes a new instance of the <see cref="ConcurrentHashSet{T}" /> class.
 	/// </summary>
 	/// <param name="collection">The collection<see cref="IEnumerable{T}" />.</param>
-	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, Status = Status.Available)]
 	public ConcurrentHashSet([NotNull] IEnumerable<T> collection)
 		: this(collection, null)
 	{
@@ -124,7 +124,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// Initializes a new instance of the <see cref="ConcurrentHashSet{T}" /> class.
 	/// </summary>
 	/// <param name="comparer">The comparer<see cref="IEqualityComparer{T}" />.</param>
-	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, Status = Status.Available)]
 	public ConcurrentHashSet([NotNull] IEqualityComparer<T> comparer)
 		: this(concurrencyLevel: DefaultConcurrencyLevel, capacity: DefaultCapacity, growLockArray: true, comparer: comparer)
 	{
@@ -135,7 +135,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// </summary>
 	/// <param name="concurrencyLevel">The concurrency level.</param>
 	/// <param name="capacity">The initial capacity for the collection.</param>
-	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, Status = Status.Available)]
 	public ConcurrentHashSet(int concurrencyLevel, int capacity)
 		: this(concurrencyLevel, capacity, false, null)
 	{
@@ -146,7 +146,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// </summary>
 	/// <param name="collection">The collection to pre load items.</param>
 	/// <param name="comparer">The comparer.</param>
-	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, Status = Status.Available)]
 	public ConcurrentHashSet([NotNull] IEnumerable<T> collection, [NotNull] IEqualityComparer<T> comparer)
 		: this(comparer) => this.InitializeFromCollection(collection);
 
@@ -156,7 +156,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="concurrencyLevel">The concurrencyLevel<see cref="int" />.</param>
 	/// <param name="collection">The collection<see cref="IEnumerable{T}" />.</param>
 	/// <param name="comparer">The comparer<see cref="IEqualityComparer{T}" />.</param>
-	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, Status = Status.Available)]
 	public ConcurrentHashSet(int concurrencyLevel, [NotNull] IEnumerable<T> collection, [NotNull] IEqualityComparer<T> comparer)
 		: this(concurrencyLevel, DefaultCapacity, false, comparer) => this.InitializeFromCollection(collection);
 
@@ -166,7 +166,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="concurrencyLevel">The concurrencyLevel<see cref="int" />.</param>
 	/// <param name="capacity">The capacity<see cref="int" />.</param>
 	/// <param name="comparer">The comparer<see cref="IEqualityComparer{T}" />.</param>
-	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 100, Status = Status.Available)]
 	public ConcurrentHashSet(int concurrencyLevel, int capacity, [NotNull] IEqualityComparer<T> comparer)
 		: this(concurrencyLevel, capacity, false, comparer)
 	{
@@ -176,7 +176,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// Adds an item to the <see cref="ICollection">.</see>.
 	/// </summary>
 	/// <param name="item">The object to add to the <see cref="ICollection"></see>.</param>
-	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	void ICollection<T>.Add([NotNull] T item)
 	{
 		if (item is null)

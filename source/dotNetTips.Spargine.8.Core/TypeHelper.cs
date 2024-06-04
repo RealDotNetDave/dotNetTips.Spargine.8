@@ -59,17 +59,16 @@ public static class TypeHelper
 	private static void ComputeBuiltinTypes()
 	{
 		// Get all the assemblies loaded in the current app domain
-		var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+		var assemblies = AppDomain.CurrentDomain.GetAssemblies().AsSpan();
 
 		// Create a list to store the built-in types
 		var builtinTypes = new List<Type>();
 
 		// Loop through each assembly
-		//TODO: ADD ASSPAN
 		foreach (var assembly in assemblies)
 		{
 			// Get the types defined in the assembly
-			var types = assembly.GetTypes();
+			var types = assembly.GetTypes().AsSpan();
 
 			// Loop through each type
 			foreach (var type in types)
@@ -324,7 +323,7 @@ public static class TypeHelper
 	/// <param name="baseType">Type of the base.</param>
 	/// <param name="classOnly">if set to <c>true</c> [class only].</param>
 	/// <returns>IEnumerable&lt;Type&gt;.</returns>
-	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
 		currentDomain = currentDomain.ArgumentNotNull();
@@ -333,8 +332,7 @@ public static class TypeHelper
 		var array = currentDomain.ArgumentNotNull().GetAssemblies();
 		List<Type> types = null;
 
-		//TODO: ADD TOFROZENSET
-		foreach (var arrayItem in array)
+		foreach (var arrayItem in array.AsSpan())
 		{
 			try
 			{
@@ -539,7 +537,7 @@ public static class TypeHelper
 	/// <param name="item">The item.</param>
 	/// <param name="fullName">if set to <c>true</c> [full name].</param>
 	/// <returns>System.String.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/31/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/31/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static string GetTypeDisplayName([NotNull] object item, bool fullName = true) => item is null ? null : GetTypeDisplayName(item.GetType(), fullName);
 
 	/// <summary>
@@ -665,7 +663,7 @@ public static class TypeHelper
 	/// Gets all of the builtin types for .NET.
 	/// </summary>
 	/// <value>The builtin types.</value>
-	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.CheckPerformance, Documentation = "https://bit.ly/Spargine8")]
 	public static ReadOnlyCollection<Type> BuiltinTypes
 	{
 		get

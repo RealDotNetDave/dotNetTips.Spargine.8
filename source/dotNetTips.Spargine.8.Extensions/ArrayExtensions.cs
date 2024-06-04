@@ -110,7 +110,7 @@ public static class ArrayExtensions
 	/// <param name="array">The input.</param>
 	/// <param name="arrayToCheck">The array to check.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(AreEqual), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(AreEqual), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 	public static bool AreEqual<T>([NotNull] this T[] array, [NotNull] T[] arrayToCheck)
 	{
@@ -310,7 +310,7 @@ public static class ArrayExtensions
 		array = array.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		foreach (var item in array.AsSpan())
+		foreach (var item in array.AsReadOnlySpan())
 		{
 			action(item);
 		}

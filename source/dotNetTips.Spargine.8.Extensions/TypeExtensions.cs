@@ -111,15 +111,14 @@ public static partial class TypeExtensions
 	/// <param name="type">The type.</param>
 	/// <returns>IEnumerable&lt;FieldInfo&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Type cannot be null.</exception>
-	[Information(nameof(GetAllFields), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(GetAllFields), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static IEnumerable<FieldInfo> GetAllFields(this Type type)
 	{
 		var typeTypeInfo = type?.GetTypeInfo();
 
 		while (typeTypeInfo != null)
 		{
-			//TODO: TRY CHANGING TO FROZEN SET AFTER CREATING BENCHMARK.
-			foreach (var fieldInfo in typeTypeInfo.DeclaredFields)
+			foreach (var fieldInfo in typeTypeInfo.DeclaredFields.ToFrozenSet())
 			{
 				yield return fieldInfo;
 			}

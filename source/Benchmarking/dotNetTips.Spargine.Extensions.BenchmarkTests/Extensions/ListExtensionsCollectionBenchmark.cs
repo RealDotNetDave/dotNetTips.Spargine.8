@@ -4,7 +4,7 @@
 // Created          : 01-09-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-04-2024
+// Last Modified On : 06-03-2024
 // ***********************************************************************
 // <copyright file="ListExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -127,6 +127,15 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		var people = this._peopleRefList;
 
 		this.Consume(people.DoesNotHaveItems());
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.GenerateHashCode))]
+	[BenchmarkCategory(Categories.Collections)]
+	public void GenerateHashCode()
+	{
+		var people = this._peopleRefList;
+
+		this.Consume(people.GenerateHashCode());
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.HasItems))]

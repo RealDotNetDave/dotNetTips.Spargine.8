@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-29-2024
+// Last Modified On : 06-03-2024
 // ***********************************************************************
 // <copyright file="XmlSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -37,7 +37,7 @@ public static class XmlSerialization
 	/// <param name="xml">The XML.</param>
 	/// <returns>T.</returns>
 	/// <exception cref="ArgumentNullException">xml.</exception>
-	[Information(nameof(Deserialize), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(Deserialize), BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Xml)] string xml) where TResult : class
 	{
 		using (var sr = new StringReader(xml.ArgumentNotNullOrEmpty(true)))
@@ -72,7 +72,7 @@ public static class XmlSerialization
 	/// <param name="obj">The obj.</param>
 	/// <returns>System.String.</returns>
 	/// <exception cref="ArgumentNullException">obj.</exception>
-	[Information(nameof(Serialize), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(Serialize), BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static string Serialize([NotNull] object obj)
 	{
 		obj = obj.ArgumentNotNull();

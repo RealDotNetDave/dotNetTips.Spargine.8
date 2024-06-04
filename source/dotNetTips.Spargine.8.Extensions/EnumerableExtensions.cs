@@ -66,7 +66,7 @@ public static class EnumerableExtensions
 
 		var result = source.ToList();
 
-		foreach (var itemItem in FrozenSet.ToFrozenSet(items))
+		foreach (var itemItem in items.ToFrozenSet())
 		{
 			if (!result.Contains(itemItem))
 			{

@@ -161,13 +161,9 @@ public class SimpleResult<T>
 			{
 				return ResultStatus.Succeeded;
 			}
-			else if (this._exceptions.IsEmpty is false && this.Value is not null)
-			{
-				return ResultStatus.PartialSuccess;
-			}
 			else
 			{
-				return ResultStatus.Failed;
+				return this._exceptions.IsEmpty is false && this.Value is not null ? ResultStatus.PartialSuccess : ResultStatus.Failed;
 			}
 		}
 	}

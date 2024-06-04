@@ -62,7 +62,7 @@ public static class StringBuilderExtensions
 	/// sb.AppendBytes(byteArray)
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub", author: "David McCarter", createdOn: "5/26/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance)]
+	[Information("Original code from efcore-master on GitHub", author: "David McCarter", createdOn: "5/26/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static void AppendBytes([NotNull] this StringBuilder sb, [NotNull] byte[] bytes)
 	{
 		if (bytes is null)
@@ -72,7 +72,7 @@ public static class StringBuilderExtensions
 
 		sb = sb.ArgumentNotNull().Append("'0x");
 
-		foreach (var byteItem in bytes.ToFrozenSet())
+		foreach (var byteItem in bytes.AsSpan()) //FrozenSet is slower.
 		{
 			_ = sb.Append(byteItem.ToString("X2", CultureInfo.InvariantCulture));
 		}
