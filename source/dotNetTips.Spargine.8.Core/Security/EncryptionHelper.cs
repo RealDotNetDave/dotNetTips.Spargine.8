@@ -214,6 +214,6 @@ public static class EncryptionHelper
 	/// <param name="password">The password.</param>
 	/// <returns>PasswordVerificationResult.</returns>
 	[Information(nameof(VerifySHA256HashedPassword), "David McCarter", "10/13/2021", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022", BenchMarkStatus = BenchMarkStatus.Completed)]
-	public static PasswordVerificationResult VerifySHA256HashedPassword(string hashedPassword, [NotNull] string password) => SHA256PasswordHasher.VerifyHashedPassword(hashedPassword, password.ArgumentNotNullOrEmpty());
+	public static PasswordVerificationResult VerifySHA256HashedPassword(string hashedPassword, [NotNull] string password) => SHA256PasswordHasher.VerifyHashedPassword(hashedPassword.ArgumentNotNullOrEmpty(), password.ArgumentNotNullOrEmpty());
 
 }
