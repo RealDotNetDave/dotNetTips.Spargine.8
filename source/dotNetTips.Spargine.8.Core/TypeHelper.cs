@@ -20,6 +20,7 @@
 // ***********************************************************************
 
 using System.Collections;
+using System.Collections.Frozen;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -59,16 +60,16 @@ public static class TypeHelper
 	private static void ComputeBuiltinTypes()
 	{
 		// Get all the assemblies loaded in the current app domain
-		var assemblies = AppDomain.CurrentDomain.GetAssemblies().AsSpan();
+		var assemblies = AppDomain.CurrentDomain.GetAssemblies().ToFrozenSet();
 
 		// Create a list to store the built-in types
 		var builtinTypes = new List<Type>();
 
 		// Loop through each assemblyCollection
-		foreach (var assembly in assemblies)
+		foreach (var assembly in assemblies.ToFrozenSet())
 		{
 			// Get the types defined in the assemblyCollection
-			var types = assembly.GetTypes().AsSpan();
+			var types = assembly.GetTypes();
 
 			// Loop through each type
 			foreach (var type in types)
@@ -329,7 +330,7 @@ public static class TypeHelper
 		currentDomain = currentDomain.ArgumentNotNull();
 		baseType = baseType.ArgumentNotNull();
 
-		var assemblyCollection = currentDomain.ArgumentNotNull().GetAssemblies().AsSpan();
+		var assemblyCollection = currentDomain.ArgumentNotNull().GetAssemblies().ToFrozenSet(); //USING SPAN CAUSES ISSUES
 
 		List<Type> types = null;
 

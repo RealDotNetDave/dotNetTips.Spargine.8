@@ -42,7 +42,7 @@ public static class AssemblyExtensions
 
 		var interfaces = new List<Type>();
 
-		var array = assembly.GetTypes().AsSpan();
+		var array = assembly.GetTypes().ToFrozenSet(); // USING SPAN CAUSES ISSUES
 
 		foreach (var arrayItem in array)
 		{
