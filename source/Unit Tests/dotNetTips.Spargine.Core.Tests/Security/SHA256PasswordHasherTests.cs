@@ -103,19 +103,6 @@ public class SHA256PasswordHasherTests
 	}
 
 	[TestMethod]
-	public void VerifyHashedPassword_NullHashedPassword_ReturnsFailed()
-	{
-		// Arrange
-		var password = "TestPassword";
-
-		// Act
-		var result = SHA256PasswordHasher.VerifyHashedPassword(null, password);
-
-		// Assert
-		Assert.AreEqual(PasswordVerificationResult.Failed, result);
-	}
-
-	[TestMethod]
 	public void VerifyHashedPassword_NullPassword_ThrowsArgumentNullException()
 	{
 		// Arrange

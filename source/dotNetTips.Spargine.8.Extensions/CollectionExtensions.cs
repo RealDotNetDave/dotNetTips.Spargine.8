@@ -166,7 +166,7 @@ public static class CollectionExtensions
 	/// <returns>ReadOnlySpan&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(AsReadOnlySpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
-	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this Collection<T> list) => new(list.ToArray());
+	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this Collection<T> list) => new([.. list]);
 
 	/// <summary>
 	/// Converts a <see cref="Collection{T}" /> to <see cref="Span{T}" />.
@@ -176,7 +176,7 @@ public static class CollectionExtensions
 	/// <returns>Span&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(AsSpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
-	public static Span<T> AsSpan<T>([NotNull] this Collection<T> list) => new(list.ToArray());
+	public static Span<T> AsSpan<T>([NotNull] this Collection<T> list) => new([.. list]);
 
 	/// <summary>
 	/// Determines whether the specified <see cref="ICollection{T}" /> does not have items.

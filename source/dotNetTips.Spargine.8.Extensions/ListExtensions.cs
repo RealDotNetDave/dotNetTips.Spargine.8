@@ -79,7 +79,8 @@ public static class ListExtensions
 	/// <returns>System.ReadOnlySpan&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "")]
-	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this List<T> list) => new(list.ToArray().ArgumentNotNull());
+	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this List<T> list) => new([.. list.ArgumentNotNull()]);
+
 
 	/// <summary>
 	/// Creates a new <see cref="Span{T}" /> over an input <see cref="List{T}" /> instance.
@@ -409,7 +410,7 @@ public static class ListExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>ImmutableArray&lt;T&gt;.</returns>
 	[Information(nameof(ToCollection), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this List<T> collection) => ImmutableArray.Create(collection.ArgumentNotNull().ToArray());
+	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this List<T> collection) => ImmutableArray.Create([.. collection.ArgumentNotNull()]);
 
 	/// <summary>
 	/// Converts the <see cref="IAsyncEnumerable{T}" /> to a <see cref="List{T}" /> in an asynchronous operation.
