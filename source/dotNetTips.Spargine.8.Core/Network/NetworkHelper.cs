@@ -4,13 +4,14 @@
 // Created          : 06-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-06-2024
+// Last Modified On : 04-18-2024
 // ***********************************************************************
 // <copyright file="NetworkHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>https:docs.microsoft.com/en-us/dotnet/api/xamarin.essentials.connectivity</summary>
 // ***********************************************************************
+
 
 
 

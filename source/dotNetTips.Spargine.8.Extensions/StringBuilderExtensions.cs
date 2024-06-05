@@ -62,7 +62,7 @@ public static class StringBuilderExtensions
 	/// sb.AppendBytes(byteArray)
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub", author: "David McCarter", createdOn: "5/26/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
+	[Information("Original code from efcore-master on GitHub", author: "David McCarter", createdOn: "5/26/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void AppendBytes([NotNull] this StringBuilder sb, [NotNull] byte[] bytes)
 	{
 		if (bytes is null)
@@ -72,7 +72,7 @@ public static class StringBuilderExtensions
 
 		sb = sb.ArgumentNotNull().Append("'0x");
 
-		foreach (var byteItem in bytes.AsSpan()) //FrozenSet is slower.
+		foreach (var byteItem in bytes) //FrozenSet and Span is slower.
 		{
 			_ = sb.Append(byteItem.ToString("X2", CultureInfo.InvariantCulture));
 		}
@@ -218,7 +218,7 @@ public static class StringBuilderExtensions
 	/// <exception cref="ArgumentNullException">joinAction</exception>
 	/// <exception cref="ArgumentNullException">sb</exception>
 	/// <exception cref="ArgumentNullException">values</exception>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static void AppendValues<T>([NotNull] this StringBuilder sb, string separator, IEnumerable<T> values, [NotNull] Action<T> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -233,7 +233,8 @@ public static class StringBuilderExtensions
 
 		var appended = false;
 
-		foreach (var value in values.ToFrozenSet())
+		//FrozenSet is slower.
+		foreach (var value in values)
 		{
 			joinAction(value);
 			_ = sb.Append(separator);
@@ -259,7 +260,7 @@ public static class StringBuilderExtensions
 	/// <param name="param">The parameter.</param>
 	/// <param name="joinAction">The join action.</param>
 	/// <returns>StringBuilder.</returns>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 0, Status = Status.CheckPerformance)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static void AppendValues<T, TParam>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam param, [NotNull] Action<T, TParam> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -275,7 +276,8 @@ public static class StringBuilderExtensions
 
 		var appended = false;
 
-		foreach (var value in values.ToFrozenSet())
+		//Frozenset is slower.
+		foreach (var value in values)
 		{
 			joinAction(value, param);
 			_ = sb.Append(separator);
@@ -313,7 +315,7 @@ public static class StringBuilderExtensions
 	/// <exception cref="ArgumentNullException">values</exception>
 	/// <exception cref="ArgumentNullException">param1</exception>
 	/// <exception cref="ArgumentNullException">param2</exception>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 0, Status = Status.CheckPerformance)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static void AppendValues<T, TParam1, TParam2>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam1 param1, [NotNull] TParam2 param2, [NotNull] Action<StringBuilder, T, TParam1, TParam2> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -330,7 +332,8 @@ public static class StringBuilderExtensions
 
 		var appended = false;
 
-		foreach (var value in values.ToFrozenSet())
+		//FrozenSet is slower.
+		foreach (var value in values)
 		{
 			joinAction(sb, value, param1, param2);
 			_ = sb.Append(separator);

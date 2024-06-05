@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2024
+// Last Modified On : 06-05-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -19,6 +19,7 @@ using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.Extensions.ObjectPool;
 
@@ -60,7 +61,8 @@ public static class FastStringBuilder
 		{
 			_ = sb.Append("'0x");
 
-			foreach (var @byte in bytes.AsSpan()) //FrozenSet is slower.
+			//FrozenSet and Span is slower.
+			foreach (var @byte in CollectionsMarshal.AsSpan(bytes.ToList()))
 			{
 				_ = sb.Append(@byte.ToString("X2", CultureInfo.InvariantCulture));
 			}
@@ -149,7 +151,8 @@ public static class FastStringBuilder
 
 				var index = 0;
 
-				foreach (var arg in args.AsSpan())
+				//Span is slower
+				foreach (var arg in args.ToFrozenSet())
 				{
 					var newString = arg;
 
@@ -223,7 +226,8 @@ public static class FastStringBuilder
 
 		try
 		{
-			foreach (var item in collection.ToFrozenDictionary())
+			//FrozenDictionary is slower.
+			foreach (var item in collection.ToFrozenSet())
 			{
 
 				if (sb.Length > 0)

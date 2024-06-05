@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2024
+// Last Modified On : 06-05-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -97,7 +97,7 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The data.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(ComputeSha256Hash), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(ComputeSha256Hash), UnitTestCoverage = 100, Status = Status.Available)]
 	public static string ComputeSha256Hash([NotNull] this object obj)
 	{
 		obj = obj.ArgumentNotNull();
@@ -128,7 +128,7 @@ public static class ObjectExtensions
 	/// Disposes the fields in the object.
 	/// </summary>
 	/// <param name="obj">The object.</param>
-	[Information(nameof(DisposeFields), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(DisposeFields), UnitTestCoverage = 100, Status = Status.Available)]
 	public static void DisposeFields([NotNull] this IDisposable obj)
 	{
 		if (obj is null)
@@ -136,7 +136,8 @@ public static class ObjectExtensions
 			return;
 		}
 
-		var list = obj.GetType().GetRuntimeFields().Where(p => p.IsStatic is false).ToFrozenSet(); //ReadOnlySpan is slower.
+		//ReadOnlySpan and FrozenSet is slower.
+		var list = obj.GetType().GetRuntimeFields().Where(p => p.IsStatic is false).ToFrozenSet();
 
 		if (list.DoesNotHaveItems())
 		{
@@ -281,7 +282,7 @@ public static class ObjectExtensions
 	/// [23]: {[PersonRecord.Addresses[1].Phone, 511 - 286 - 7653]}
 	/// [24]: {[PersonRecord.Addresses[1].PostalCode, 33385672]}
 	/// </example>
-	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static IDictionary<string, string> PropertiesToDictionary([NotNull] this object obj, [NotNull] string memberName = ControlChars.EmptyString, bool ignoreNulls = true)
 	{
 		var result = new Dictionary<string, string>();
@@ -327,7 +328,8 @@ public static class ObjectExtensions
 			newMemberName = $"{memberName}{ControlChars.Dot}";
 		}
 
-		foreach (var property in propertyCollection.AsSpan())
+		//Span is slower
+		foreach (var property in propertyCollection)
 		{
 			var ignoreAttribute = property.GetAttribute<JsonIgnoreAttribute>();
 

@@ -211,14 +211,15 @@ public static class EnumerableExtensions
 	/// <param name="items">The items.</param>
 	/// <param name="ensureUnique">if set to <c>true</c> [ensure unique].</param>
 	/// <returns>Collection&lt;T&gt;.</returns>
-	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineMay2024")]
+	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static Collection<T> Create<T>([NotNull] this IEnumerable<T> items, bool ensureUnique)
 	{
 		items = items.ArgumentNotNull();
 
 		var newItems = new Collection<T>();
 
-		foreach (var item in items.Where(p => p is not null).ToFrozenSet())
+		//TODO: TRY CHANING TO FROZENSET
+		foreach (var item in items.Where(p => p is not null))
 		{
 			if (ensureUnique is true)
 			{
@@ -266,13 +267,14 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
 	/// <exception cref="ArgumentNullException">Predicate cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastAny), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(FastAny), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static bool FastAny<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate)
 	{
 		collection = collection.ArgumentNotNull();
 		predicate = predicate.ArgumentNotNull();
 
-		foreach (var item in collection.ToFrozenSet())
+		//FrozenSet is slower.
+		foreach (var item in collection)
 		{
 			if (predicate.Invoke(item) is false)
 			{
@@ -418,7 +420,7 @@ public static class EnumerableExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="items">The items.</param>
 	/// <returns><c>true</c> if the specified items has duplicates; otherwise, <c>false</c>.</returns>
-	[Information("Orginal code by Milan Jovanović", author: "David McCarter", createdOn: "7/3/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug23")]
+	[Information("Orginal code by Milan Jovanović", author: "David McCarter", createdOn: "7/3/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 	public static bool HasDuplicates<T>([NotNull] this IEnumerable<T> items)
 	{
 		if (items.DoesNotHaveItems())
@@ -428,7 +430,8 @@ public static class EnumerableExtensions
 
 		var elements = ImmutableHashSet.CreateBuilder<T>();
 
-		foreach (var item in items.ToFrozenSet())
+		//FrozenSet is slower.
+		foreach (var item in items)
 		{
 			if (elements.Add(item) is false)
 			{
@@ -689,7 +692,7 @@ public static class EnumerableExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="items">The items.</param>
 	/// <returns>SimpleResult&lt;IEnumerable&lt;T&gt;&gt;.</returns>
-	[Information(nameof(RemoveDuplicates), author: "David McCarter", createdOn: "7/3/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug23")]
+	[Information(nameof(RemoveDuplicates), author: "David McCarter", createdOn: "7/3/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 	public static SimpleResult<IEnumerable<T>> RemoveDuplicates<T>([NotNull] this IEnumerable<T> items)
 	{
 		items = items.ArgumentNotNull();
@@ -698,7 +701,8 @@ public static class EnumerableExtensions
 		{
 			var uniqueItems = ImmutableHashSet.CreateBuilder<T>();
 
-			foreach (var item in items.ToFrozenSet())
+			//FrozenSet is slower.
+			foreach (var item in items)
 			{
 				_ = uniqueItems.Add(item);
 			}
@@ -857,14 +861,15 @@ public static class EnumerableExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>BlockingCollection&lt;T&gt;.</returns>
 	/// <remarks>The resulting collection supports IDisposable. Make sure to properly dispose!</remarks>
-	[Information(nameof(ToBlockingCollection), "David McCarter", "4/13/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineMarch2021")]
+	[Information(nameof(ToBlockingCollection), "David McCarter", "4/13/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineMarch2021")]
 	public static BlockingCollection<T> ToBlockingCollection<T>([NotNull] this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
 
 		var returnValue = new BlockingCollection<T>(collection.Count());
 
-		foreach (var item in collection.ToFrozenSet())
+		//FrozenSet is slower
+		foreach (var item in collection)
 		{
 			_ = returnValue.TryAdd(item);
 		}
@@ -894,7 +899,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The list.</param>
 	/// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(ToDelimitedString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineFeb21")]
+	[Information(nameof(ToDelimitedString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb21")]
 	public static string ToDelimitedString<T>([NotNull] this IEnumerable<T> collection, char delimiter = ControlChars.Comma)
 	{
 		if (collection is null || collection.FastCount() == 0)
@@ -906,7 +911,8 @@ public static class EnumerableExtensions
 
 		try
 		{
-			foreach (var item in collection.ToFrozenSet())
+			//FrozenSet is slower.
+			foreach (var item in collection)
 			{
 				if (sb.Length > 0)
 				{

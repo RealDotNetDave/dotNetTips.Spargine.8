@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2024
+// Last Modified On : 06-05-2024
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -17,7 +17,6 @@
 // .NET framework.
 // </summary>
 // ***********************************************************************
-using System.Collections.Frozen;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.ExceptionServices;
@@ -77,7 +76,7 @@ public static class LoggingHelper
 	/// AppInfo:FileVersion - 15.0.0
 	/// AppInfo:Title - dotNetTips.Spargine
 	/// </example>
-	[Information(nameof(LogApplicationInformation), author: "David McCarter", createdOn: "11/03/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(LogApplicationInformation), author: "David McCarter", createdOn: "11/03/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static void LogApplicationInformation([NotNull] ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
@@ -88,7 +87,8 @@ public static class LoggingHelper
 
 		if (values?.FastCount() > 0)
 		{
-			foreach (var item in values.OrderBy(p => p.Key).ToFrozenSet())
+			//FrozenSet is slower.
+			foreach (var item in values.OrderBy(p => p.Key))
 			{
 				FastLogger.LogInformation(logger, $"{nameof(AppInfo)}:{item.Key} - {item.Value}");
 			}
@@ -126,7 +126,7 @@ public static class LoggingHelper
 	/// AppInfo:SystemDirectory - C:\\WINDOWS\\system32
 	/// AppInfo:HasShutdownStarted - False
 	/// </example>
-	[Information(nameof(LogComputerInformation), author: "David McCarter", createdOn: "11/04/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(LogComputerInformation), author: "David McCarter", createdOn: "11/04/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static void LogComputerInformation([NotNull] ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
@@ -137,7 +137,8 @@ public static class LoggingHelper
 
 		if (values?.FastCount() > 0)
 		{
-			foreach (var item in values.OrderBy(p => p.Key).ToFrozenSet())
+			//FrozenSet is slower.
+			foreach (var item in values.OrderBy(p => p.Key))
 			{
 				logger.LogDebugMessage($"{nameof(ComputerInfo)}:{item.Key} - {item.Value}");
 			}

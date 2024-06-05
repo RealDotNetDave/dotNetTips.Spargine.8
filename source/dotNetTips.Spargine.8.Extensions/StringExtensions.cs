@@ -160,7 +160,7 @@ public static class StringExtensions
 	/// <param name="input">The input.</param>
 	/// <param name="hashType">Type of the hash.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(ComputeHash), "David McCarter", "10/8/2020", "1/9/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(ComputeHash), "David McCarter", "10/8/2020", "1/9/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static string ComputeHash([NotNull] this string input, [NotNull] HashType hashType = HashType.SHA256)
 	{
 		if (input.IsNullOrEmpty())
@@ -218,7 +218,7 @@ public static class StringExtensions
 	/// <param name="addLineFeed">The add line feed. If set to true, delimiter will not be used.</param>
 	/// <param name="args">The arguments.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(Concat), "David McCarter", "9/15/2017", UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(Concat), "David McCarter", "9/15/2017", UnitTestCoverage = 100, Status = Status.Available)]
 	public static string Concat([NotNull] this string input, [NotNull] string delimiter, bool addLineFeed, [NotNull] params string[] args)
 	{
 		if (input.IsNullOrEmpty())
@@ -603,12 +603,13 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The input.</param>
 	/// <returns><c>true</c> if the specified input is whitespace; otherwise, <c>false</c>.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static bool HasWhitespace([NotNull] this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 
-		foreach (var inputItem in input.AsSpan())
+		//Span is slower
+		foreach (var inputItem in input)
 		{
 			if (!IsAsciiWhitespace(inputItem))
 			{

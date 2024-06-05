@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2024
+// Last Modified On : 06-05-2024
 // ***********************************************************************
 // <copyright file="EnumExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -47,7 +47,7 @@ public static class EnumExtensions
 	/// </summary>
 	/// <param name="input">The enumeration.</param>
 	/// <returns>ReadOnlyCollection&lt;System.ValueTuple&lt;System.String, System.Int32&gt;&gt;.</returns>
-	[Information(nameof(GetItems), UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
+	[Information(nameof(GetItems), UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<(string Description, int Value)> GetItems(this Enum input)
 	{
 		var items = new List<(string Description, int Value)>();

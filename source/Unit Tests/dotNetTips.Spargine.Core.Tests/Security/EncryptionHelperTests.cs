@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-29-2023
+// Last Modified On : 06-04-2024
 // ***********************************************************************
 // <copyright file="EncryptionHelperTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -14,7 +14,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
-using System.Text;
 using DotNetTips.Spargine.Core.Security;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
@@ -165,5 +164,6 @@ public class EncryptionHelperTests
 		// Assert
 		Assert.AreEqual(PasswordVerificationResult.Success, result);
 	}
+
 }
 

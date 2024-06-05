@@ -142,6 +142,18 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(EnumerableExtensions.Create))]
+	public void Create()
+	{
+		var people = this._personRefEnumerable;
+
+		people = people.Create(true);
+
+		var result = people.ContainsAny(people.Take(10).ToArray());
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(EnumerableExtensions.DoesNotHaveItems))]
 	public void DoesNotHaveItems()
 	{

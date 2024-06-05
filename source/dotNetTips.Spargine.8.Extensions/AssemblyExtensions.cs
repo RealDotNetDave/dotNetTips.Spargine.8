@@ -4,7 +4,7 @@
 // Created          : 01-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2024
+// Last Modified On : 06-05-2024
 // ***********************************************************************
 // <copyright file="AssemblyExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -35,14 +35,15 @@ public static class AssemblyExtensions
 	/// <returns>ReadOnlyCollection&lt;Type&gt;.</returns>
 	/// <exception cref="ArgumentNullException">assembly</exception>
 	/// <remarks>Original code from: oqtane.framework</remarks>
-	[Information(nameof(GetAllInterfaces), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(GetAllInterfaces), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> GetAllInterfaces([NotNull] this Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
 
 		var interfaces = new List<Type>();
 
-		var array = assembly.GetTypes().ToFrozenSet(); // USING SPAN CAUSES ISSUES
+		// USING SPAN CAUSES ISSUES. FrozenSet is slower.
+		var array = assembly.GetTypes().ToFrozenSet();
 
 		foreach (var arrayItem in array)
 		{
@@ -75,7 +76,7 @@ public static class AssemblyExtensions
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">assembly</exception>
 	/// <remarks>Original code from: oqtane.framework</remarks>
-	[Information(nameof(GetInstances), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(GetInstances), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static IEnumerable<T> GetInstances<T>([NotNull] this Assembly assembly) where T : class
 	{
 		assembly = assembly.ArgumentNotNull();
@@ -85,7 +86,8 @@ public static class AssemblyExtensions
 			&& !x.IsAbstract && !x.IsGenericType
 			&& typeof(T).IsAssignableFrom(x));
 
-		foreach (var type in types.ToFrozenSet())
+		//FrozenSet is slower.
+		foreach (var type in types)
 		{
 			if (Activator.CreateInstance(type) is T instance)
 			{

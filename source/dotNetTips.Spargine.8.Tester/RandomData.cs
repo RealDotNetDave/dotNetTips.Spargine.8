@@ -293,7 +293,7 @@ public static partial class RandomData
 	/// <param name="addressLength">Length of the address. Length must be between 5 - 100. Defaults to 25.</param>
 	/// <param name="countyProvinceLength">Length of the county province. Length must be between 5 - 50. Defaults to 20.</param>
 	/// <returns>System.Collections.ObjectModel.Collection&lt;DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord&gt;.</returns>
-	[Information(nameof(GenerateAddressRecordCollection), "David McCarter", "3/14/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "ADD URL")]
+	[Information(nameof(GenerateAddressRecordCollection), "David McCarter", "3/14/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
 	public static Collection<AddressRecord> GenerateAddressRecordCollection([NotNull] CountryName country, int count = 2, int addressLength = 25, int countyProvinceLength = 20)
 	{
 		count = count.ArgumentInRange(lower: 0, defaultValue: 2);
@@ -302,7 +302,8 @@ public static partial class RandomData
 
 		var addresses = new List<AddressRecord>(count);
 
-		var addressCollection = GenerateAddressCollection<Address>(Countries.GetCountry(country).ArgumentNotNull(paramName: country.GetDescription()), count, addressLength, countyProvinceLength).AsSpan();
+		//Span is slower.
+		var addressCollection = GenerateAddressCollection<Address>(Countries.GetCountry(country).ArgumentNotNull(paramName: country.GetDescription()), count, addressLength, countyProvinceLength);
 
 		foreach (var address in addressCollection)
 		{

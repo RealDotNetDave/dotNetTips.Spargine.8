@@ -65,8 +65,8 @@ public static class TypeHelper
 		// Create a list to store the built-in types
 		var builtinTypes = new List<Type>();
 
-		// Loop through each assemblyCollection
-		foreach (var assembly in assemblies.ToFrozenSet())
+		// Loop through each assemblyCollection. No improvement using FrozenSet.
+		foreach (var assembly in assemblies)
 		{
 			// Get the types defined in the assemblyCollection
 			var types = assembly.GetTypes();
@@ -324,13 +324,14 @@ public static class TypeHelper
 	/// <param name="baseType">Type of the base.</param>
 	/// <param name="classOnly">if set to <c>true</c> [class only].</param>
 	/// <returns>IEnumerable&lt;Type&gt;.</returns>
-	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "ADD URL")]
+	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
 		currentDomain = currentDomain.ArgumentNotNull();
 		baseType = baseType.ArgumentNotNull();
 
-		var assemblyCollection = currentDomain.ArgumentNotNull().GetAssemblies().ToFrozenSet(); //USING SPAN CAUSES ISSUES
+		//USING SPAN CAUSES ISSUES, FrozenSet is slower.
+		var assemblyCollection = currentDomain.ArgumentNotNull().GetAssemblies().ToFrozenSet();
 
 		List<Type> types = null;
 
@@ -665,7 +666,7 @@ public static class TypeHelper
 	/// Gets all of the builtin types for .NET.
 	/// </summary>
 	/// <value>The builtin types.</value>
-	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.CheckPerformance, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static ReadOnlyCollection<Type> BuiltinTypes
 	{
 		get
