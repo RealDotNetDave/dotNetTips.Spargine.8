@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-06-2024
 // ***********************************************************************
 // <copyright file="RegexProcessor.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -48,9 +48,11 @@ public static partial class RegexProcessor
 	private const string CurrencyCodePattern = @"^[a-zA-Z]{3}$";
 
 	/// <summary>
-	/// Email pattern
+	/// Email pattern.
+	/// General Email Regex (RFC 5322 Official Standard) from https://emailregex.com.
 	/// </summary>
-	private const string EmailPattern = @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+	//private const string EmailPattern = @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+	private const string EmailPattern = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
 
 	/// <summary>
 	/// Guid Pattern

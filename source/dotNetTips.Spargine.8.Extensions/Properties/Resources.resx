@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -367,5 +367,14 @@
   </data>
   <data name="HttpRequestHasNoBody" xml:space="preserve">
     <value>HttpRequest has no body.</value>
+  </data>
+  <data name="EB" xml:space="preserve">
+    <value>EB</value>
+  </data>
+  <data name="PB" xml:space="preserve">
+    <value>PB</value>
+  </data>
+  <data name="TB" xml:space="preserve">
+    <value>TB</value>
   </data>
 </root>

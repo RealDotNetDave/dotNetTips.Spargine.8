@@ -43,7 +43,7 @@ public static class AssemblyExtensions
 		var interfaces = new List<Type>();
 
 		// USING SPAN CAUSES ISSUES. FrozenSet is slower.
-		var array = assembly.GetTypes().ToFrozenSet();
+		var array = assembly.GetTypes();
 
 		foreach (var arrayItem in array)
 		{

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2024
+// Last Modified On : 06-05-2024
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -184,14 +184,14 @@ public static class DictionaryExtensions
 	public static bool HasItems<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection, [NotNull] Func<KeyValuePair<TKey, TValue>, bool> action) => collection is not null && action is not null && collection.Any(action);
 
 	/// <summary>
-	/// Converts to a <see cref="Dictionary{TKey, TValue}" /> to a <see cref="ConcurrentDictionary{TKey, TValue}" />.
+	/// Converts to a <see cref="IDictionary{TKey, TValue}" /> to a <see cref="ConcurrentDictionary{TKey, TValue}" />.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the t key.</typeparam>
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
 	/// <param name="collection">The collection.</param>
 	/// <returns>ConcurrentDictionary&lt;TKey, TValue&gt;.</returns>
 	[Information(nameof(ToSortedDictionary), "David McCarter", "7/23/2022", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static ConcurrentDictionary<TKey, TValue> ToConcurrentDictionary<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
+	public static ConcurrentDictionary<TKey, TValue> ToConcurrentDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
 	/// Converts <see cref="IDictionary" /> to delimited string using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
@@ -234,7 +234,7 @@ public static class DictionaryExtensions
 	}
 
 	/// <summary>
-	/// Converts a <see cref="Dictionary{TKey, TValue}" /> to <see cref="FrozenDictionary{TKey, TValue}" />.
+	/// Converts a <see cref="IDictionary{TKey, TValue}" /> to <see cref="FrozenDictionary{TKey, TValue}" />.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the t key.</typeparam>
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
@@ -242,7 +242,7 @@ public static class DictionaryExtensions
 	/// <returns>FrozenDictionary&lt;TKey, TValue&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToFrozenDictionary), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
-	public static FrozenDictionary<TKey, TValue> ToFrozenDictionary<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> list) => FrozenDictionary.ToFrozenDictionary(list);
+	public static FrozenDictionary<TKey, TValue> ToFrozenDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> list) => FrozenDictionary.ToFrozenDictionary(list);
 
 	/// <summary>
 	/// Converts <see cref="IDictionary{TKey, TValue}" /> to <see cref="ImmutableDictionary{TKey, TValue}" />.
@@ -253,7 +253,7 @@ public static class DictionaryExtensions
 	/// <param name="collection">The values.</param>
 	/// <returns>IImmutableDictionary&lt;TKey, TValue&gt;.</returns>
 	[Information(nameof(ToImmutableDictionary), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
-	public static ImmutableDictionary<TKey, TValue> ToImmutableDictionary<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> collection) => ImmutableDictionary.CreateRange(collection.ArgumentNotNull());
+	public static ImmutableDictionary<TKey, TValue> ToImmutableDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection) => ImmutableDictionary.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>
 	/// Converts <see cref="IDictionary{TKey, TValue}" /> to <see cref="ImmutableSortedDictionary{TKey, TValue}" />.
@@ -264,17 +264,17 @@ public static class DictionaryExtensions
 	/// <param name="collection">The values.</param>
 	/// <returns>ImmutableSortedDictionary&lt;TKey, TValue&gt;.</returns>
 	[Information(nameof(ToImmutableSortedDictionary), "David McCarter", "7/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
-	public static ImmutableSortedDictionary<TKey, TValue> ToImmutableSortedDictionary<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> collection) => ImmutableSortedDictionary.CreateRange(collection.ArgumentNotNull());
+	public static ImmutableSortedDictionary<TKey, TValue> ToImmutableSortedDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection) => ImmutableSortedDictionary.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>
-	/// Converts to a <see cref="Dictionary{TKey, TValue}" /> to a <see cref="ReadOnlyCollection{KeyValuePair}" />.
+	/// Converts to a <see cref="IDictionary{TKey, TValue}" /> to a <see cref="ReadOnlyCollection{KeyValuePair}" />.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the key.</typeparam>
 	/// <typeparam name="TValue">The type of the value.</typeparam>
 	/// <param name="dictionary">The dictionary.</param>
 	/// <returns>ReadOnlyCollection&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;.</returns>
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
-	public static ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> dictionary)
+	public static ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary)
 	{
 		// Convert the dictionary to a list of KeyValuePair
 		var list = new List<KeyValuePair<TKey, TValue>>(dictionary.ArgumentNotNull());
@@ -294,11 +294,11 @@ public static class DictionaryExtensions
 	/// <param name="collection">The values.</param>
 	/// <returns>ReadOnlyDictionary&lt;TKey, TValue&gt;.</returns>
 	[Information(nameof(ToReadOnlyDictionary), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
-	public static ReadOnlyDictionary<TKey, TValue> ToReadOnlyDictionary<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
+	public static ReadOnlyDictionary<TKey, TValue> ToReadOnlyDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
 
 
 	/// <summary>
-	/// Converts a <see cref="Dictionary{TKey, TValue}" /> to a <see cref="SortedDictionary{TKey, TValue}" />./&gt;
+	/// Converts a <see cref="IDictionary{TKey, TValue}" /> to a <see cref="SortedDictionary{TKey, TValue}" />./&gt;
 	/// Validates that <paramref name="collection" /> is not null.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the t key.</typeparam>
@@ -306,7 +306,7 @@ public static class DictionaryExtensions
 	/// <param name="collection">The dictionary.</param>
 	/// <returns>SortedDictionary&lt;TKey, TValue&gt;.</returns>
 	[Information(nameof(ToSortedDictionary), "David McCarter", "6/27/2022", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static SortedDictionary<TKey, TValue> ToSortedDictionary<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
+	public static SortedDictionary<TKey, TValue> ToSortedDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
 	/// Upserts the specified item into the <see cref="IDictionary{TKey, TValue}" />.

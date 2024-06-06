@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-02-2024
+// Last Modified On : 06-06-2024
 // ***********************************************************************
 // <copyright file="NumericExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -108,15 +108,36 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	[Information(nameof(FormatSize), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string FormatSize(this long fileSize)
 	{
-		long size = 0;
-
-		while (fileSize > 1024 && size < 4)
+		switch (fileSize)
 		{
-			fileSize = Convert.ToInt64(fileSize / 1024);
-			size++;
+			case < 1024:
+				return fileSize.ToString("F0", CultureInfo.CurrentCulture) + $" {Resources.Bytes}";
+			default:
+				if (fileSize >> 10 < 1024)
+				{
+					return (fileSize / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.KB}";
+				}
+				else if (fileSize >> 20 < 1024)
+				{
+					return ((fileSize >> 10) / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.MB}";
+				}
+				else if (fileSize >> 30 < 1024)
+				{
+					return ((fileSize >> 20) / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.GB}";
+				}
+				else if (fileSize >> 40 < 1024)
+				{
+					return ((fileSize >> 30) / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.TB}";
+				}
+				else if (fileSize >> 50 < 1024)
+				{
+					return ((fileSize >> 40) / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.PB}";
+				}
+				else
+				{
+					return ((fileSize >> 50) / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.EB}";
+				}
 		}
-
-		return $"{fileSize.ToString(CultureInfo.CurrentCulture)} {(new string[] { Resources.Bytes, Resources.KB, Resources.MB, Resources.GB })[Convert.ToInt64(size)]}";
 	}
 
 	/// <summary>

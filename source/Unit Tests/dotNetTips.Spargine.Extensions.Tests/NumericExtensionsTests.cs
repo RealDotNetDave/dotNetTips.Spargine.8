@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-28-2023
+// Last Modified On : 06-06-2024
 // ***********************************************************************
 // <copyright file="NumericExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -76,6 +76,87 @@ public class NumericExtensionsTests : TestClass
 		var result = testValue.EnsureMinimum(100);
 
 		Assert.IsTrue(result == 100);
+	}
+
+
+	[TestMethod]
+	public void FormatSize_Exabytes_ReturnsEB()
+	{
+		// Act
+		var result = NumericExtensions.FormatSize(1L * 1024 * 1024 * 1024 * 1024 * 1024 * 1024);
+
+		// Assert
+		Assert.AreEqual("1.0 EB", result);
+	}
+
+	[TestMethod]
+	public void FormatSize_GreaterThanOrEqualTo1073741824_ReturnsGB()
+	{
+		// Act
+		var result = NumericExtensions.FormatSize(5000000000);
+
+		// Assert
+		Assert.AreEqual("4.7 GB", result);
+	}
+
+	[TestMethod]
+	public void FormatSize_LessThan1024_ReturnsBytes()
+	{
+		// Act
+		var result = NumericExtensions.FormatSize(500);
+
+		// Assert
+		Assert.AreEqual("500 Bytes", result);
+	}
+
+	[TestMethod]
+	public void FormatSize_LessThan1048576_ReturnsKB()
+	{
+		// Act
+		var result = NumericExtensions.FormatSize(5000);
+
+		// Assert
+		Assert.AreEqual("4.9 KB", result);
+	}
+
+	[TestMethod]
+	public void FormatSize_LessThan1073741824_ReturnsMB()
+	{
+		// Act
+		var result = NumericExtensions.FormatSize(5000000);
+
+		// Assert
+		Assert.AreEqual("4.8 MB", result);
+	}
+
+	[TestMethod]
+	public void FormatSize_Petabytes_ReturnsPB()
+	{
+		// Act
+		var result = NumericExtensions.FormatSize(1L * 1024 * 1024 * 1024 * 1024 * 1024);
+
+		// Assert
+		Assert.AreEqual("1.0 PB", result);
+	}
+
+	[TestMethod]
+	public void FormatSize_Terabytes_ReturnsTB()
+	{
+		// Act
+		var result = NumericExtensions.FormatSize(1L * 1024 * 1024 * 1024 * 1024);
+
+		// Assert
+		Assert.AreEqual("1.0 TB", result);
+	}
+
+	[TestMethod]
+	public void FormatSize_Zero_ReturnsZeroBytes()
+	{
+		// Act
+		var result = NumericExtensions.FormatSize(0);
+
+		// Assert
+		Assert.AreEqual("0 Bytes", result);
 	}
 
 	[TestMethod]
@@ -164,6 +245,8 @@ public class NumericExtensionsTests : TestClass
 
 		Assert.IsFalse(testValue.IsEven());
 	}
+
+
 
 	[TestMethod]
 	public void IsEvenFloatTest()

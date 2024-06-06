@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-06-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -83,7 +83,7 @@ public static class ListExtensions
 
 
 	/// <summary>
-	/// Creates a new <see cref="Span{T}" /> over an input <see cref="List{T}" /> instance.
+	/// Creates a new <see cref="Span{T}" /> using CollectionsMarshal over an input <see cref="List{T}" /> instance.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the input <see cref="List{T}" /> instance.</typeparam>
 	/// <param name="list">The input <see cref="List{T}" /> instance.</param>

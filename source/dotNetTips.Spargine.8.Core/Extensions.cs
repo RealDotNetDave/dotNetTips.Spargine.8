@@ -390,17 +390,17 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
 	/// <param name="values">The values.</param>
 	/// <returns>IImmutableDictionary&lt;TKey, TValue&gt;.</returns>
-	internal static ImmutableDictionary<TKey, TValue> ToImmutable<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> values) => ImmutableDictionary.CreateRange(values);
+	internal static ImmutableDictionary<TKey, TValue> ToImmutable<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> values) => ImmutableDictionary.CreateRange(values);
 
 	/// <summary>
-	/// Converts to a <see cref="Dictionary{TKey, TValue}" /> to a <see cref="ReadOnlyCollection{KeyValuePair}" />.
+	/// Converts to a <see cref="IDictionary{TKey, TValue}" /> to a <see cref="ReadOnlyCollection{KeyValuePair}" />.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the key.</typeparam>
 	/// <typeparam name="TValue">The type of the value.</typeparam>
 	/// <param name="dictionary">The dictionary.</param>
 	/// <returns>ReadOnlyCollection&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;.</returns>
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.None)]
-	internal static ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection<TKey, TValue>([NotNull] this Dictionary<TKey, TValue> dictionary)
+	internal static ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary)
 	{
 		// Convert the dictionary to a list of KeyValuePair
 		var list = new List<KeyValuePair<TKey, TValue>>(dictionary.ArgumentNotNull());

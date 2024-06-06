@@ -88,6 +88,15 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EB.
+        /// </summary>
+        internal static string EB {
+            get {
+                return ResourceManager.GetString("EB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Eight.
         /// </summary>
         internal static string Eight {
@@ -493,6 +502,15 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PB.
+        /// </summary>
+        internal static string PB {
+            get {
+                return ResourceManager.GetString("PB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$.
         /// </summary>
         internal static string RegexCreditCard {
@@ -687,6 +705,15 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         internal static string StartIndexMustBeLessThanInputLength {
             get {
                 return ResourceManager.GetString("StartIndexMustBeLessThanInputLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TB.
+        /// </summary>
+        internal static string TB {
+            get {
+                return ResourceManager.GetString("TB", resourceCulture);
             }
         }
         
