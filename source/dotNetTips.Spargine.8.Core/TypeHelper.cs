@@ -641,12 +641,11 @@ public static class TypeHelper
 	/// <value>The built in type names.</value>
 	public static Dictionary<Type, string> BuiltInTypeNames { get; } = new()
 	{
-		{ typeof(DateTime), "datetime" },
-		{ typeof(DateTimeOffset), "datetimeoffset" },
-		{ typeof(TimeSpan), "timespan" },
 		{ typeof(bool), "bool" },
 		{ typeof(byte), "byte" },
 		{ typeof(char), "char" },
+		{ typeof(DateTime), "datetime" },
+		{ typeof(DateTimeOffset), "datetimeoffset" },
 		{ typeof(decimal), "decimal" },
 		{ typeof(double), "double" },
 		{ typeof(float), "float" },
@@ -656,6 +655,7 @@ public static class TypeHelper
 		{ typeof(sbyte), "sbyte" },
 		{ typeof(short), "short" },
 		{ typeof(string), "string" },
+		{ typeof(TimeSpan), "timespan" },
 		{ typeof(uint), "uint" },
 		{ typeof(ulong), "ulong" },
 		{ typeof(ushort), "ushort" },
