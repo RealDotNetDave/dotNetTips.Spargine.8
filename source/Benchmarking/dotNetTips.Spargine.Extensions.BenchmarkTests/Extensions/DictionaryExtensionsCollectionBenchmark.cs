@@ -4,7 +4,7 @@
 // Created          : 01-09-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="DictionaryExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -58,6 +58,56 @@ public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		base.Setup();
 
 		this._personRefDictionary = this.GetPersonRefDictionary();
+	}
+
+	[Benchmark(Description = nameof(DictionaryExtensions.ToDelimitedString))]
+	public void ToDelimitedString()
+	{
+		var people = this._personRefDictionary;
+
+		var result = people.ToDelimitedString();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(DictionaryExtensions.ToFrozenDictionary))]
+	public void ToFrozenDictionary()
+	{
+		var people = this._personRefDictionary.ToFrozenDictionary();
+
+		this.Consume(people);
+	}
+
+	[Benchmark(Description = nameof(DictionaryExtensions.ToImmutableDictionary))]
+	public void ToImmutableDictionary()
+	{
+		var people = this._personRefDictionary.ToImmutableDictionary();
+
+		this.Consume(people);
+	}
+
+	[Benchmark(Description = nameof(DictionaryExtensions.ToImmutableSortedDictionary))]
+	public void ToImmutableSortedDictionary()
+	{
+		var people = this._personRefDictionary.ToReadOnlyCollection();
+
+		this.Consume(people);
+	}
+
+	[Benchmark(Description = nameof(DictionaryExtensions.ToReadOnlyCollection))]
+	public void ToReadOnlyCollection()
+	{
+		var people = this._personRefDictionary.ToImmutableSortedDictionary();
+
+		this.Consume(people);
+	}
+
+	[Benchmark(Description = nameof(DictionaryExtensions.ToReadOnlyDictionary))]
+	public void ToReadOnlyDictionary()
+	{
+		var people = this._personRefDictionary.ToReadOnlyDictionary();
+
+		this.Consume(people);
 	}
 
 	[Benchmark(Description = nameof(DictionaryExtensions.ToSortedDictionary))]

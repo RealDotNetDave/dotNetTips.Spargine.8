@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -753,7 +753,7 @@ public static class EnumerableExtensions
 	/// <param name="pageCount">The page count.</param>
 	/// <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
 	/// <remarks>Original code from: https://github.com/dncuug/X.PagedList/blob/master/src/X.PagedList/PagedListExtensions.cs</remarks>
-	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<IEnumerable<T>> Split<T>([NotNull] this IEnumerable<T> collection, int pageCount)
 	{
 		collection = collection.ArgumentNotNull();
@@ -766,7 +766,7 @@ public static class EnumerableExtensions
 
 		for (var pageIndex = 0; pageIndex < pageCount; pageIndex++)
 		{
-			var chunk = collection.Skip(pageIndex * takeCount).Take(takeCount).ToList();
+			var chunk = collection.Skip(pageIndex * takeCount).Take(takeCount).ToImmutableArray();
 
 			if (chunk.HasItems())
 			{
@@ -954,6 +954,24 @@ public static class EnumerableExtensions
 		collection = collection.ArgumentItemsExists();
 
 		return ImmutableList.CreateRange(collection);
+	}
+
+	/// <summary>
+	/// Converts a <see cref="IEnumerable{T}" /> to <see cref="ImmutableArray{T}" />.
+	/// Validates that <paramref name="collection" /> is not null.
+	/// </summary>
+	/// <typeparam name="T">Generic type parameter.</typeparam>
+	/// <param name="collection">The values.</param>
+	/// <returns>System.Collections.Immutable.ImmutableArray&lt;T&gt;.</returns>
+	[Information(nameof(ToImmutable), "David McCarter", "6/7/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this IEnumerable<T> collection)
+	{
+		if (collection.DoesNotHaveItems())
+		{
+			return [];
+		}
+
+		return ImmutableArray.CreateRange(collection);
 	}
 
 	/// <summary>

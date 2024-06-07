@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="EnumHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -14,6 +14,7 @@
 // AdjustCamelCase(), AdjustName(), GetNames(), and more.
 // </summary>
 // ***********************************************************************
+using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
@@ -113,7 +114,7 @@ public static class EnumHelper
 	/// EnumValue { Name = Revalidate, Value = 4 },EnumValue { Name = Reload, Value = 5 },
 	/// EnumValue { Name = NoCacheNoStore, Value = 6 }
 	/// </example>
-	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<EnumValue> GetValues<T>(bool fixNames = true, bool useXmlNames = true)
 		where T : Enum
 	{
@@ -126,7 +127,7 @@ public static class EnumHelper
 		// Add values to result
 		var result = new List<EnumValue>();
 
-		var enumNames = GetNames(enumType, fixNames, useXmlNames);
+		var enumNames = GetNames(enumType, fixNames, useXmlNames).ToImmutableArray();
 
 		//TODO: Refactor to use Span
 		for (var valueCount = 0; valueCount < allValues.Length; valueCount++)

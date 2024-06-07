@@ -318,7 +318,7 @@ public static partial class RandomData
 	/// </summary>
 	/// <param name="sizeInKb">The size in kb.</param>
 	/// <returns>byte[].</returns>
-	[Information(nameof(GenerateByteArray), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Updated)]
+	[Information(nameof(GenerateByteArray), "David McCarter", "1/19/2019", UnitTestCoverage = 100, Status = Status.Available)]
 	public static byte[] GenerateByteArray(double sizeInKb)
 	{
 		sizeInKb = sizeInKb.ArgumentMeetsCondition(sizeInKb >= double.Epsilon, errorMessage: string.Format(CultureInfo.InvariantCulture, Resources.SizeMustBeEpsilon, double.Epsilon));

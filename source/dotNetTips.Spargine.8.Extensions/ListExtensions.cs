@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-06-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -278,7 +278,7 @@ public static class ListExtensions
 	/// <param name="collection">The collection.</param>
 	/// <param name="action">The action.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.CheckPerformance, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static void PerformAction<T>([NotNull] this List<T> collection, [NotNull] Action<T> action)
 	{
 		collection = collection.ArgumentNotNull();
@@ -289,7 +289,7 @@ public static class ListExtensions
 			return;
 		}
 
-		foreach (var item in collection.AsSpan())
+		foreach (var item in collection.ToImmutableArray())
 		{
 			action(item);
 		}
@@ -345,6 +345,7 @@ public static class ListExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The list.</param>
 	/// <returns>Core.Collections.Generic.Collection&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToCollection), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static Collection<T> ToCollection<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
@@ -359,6 +360,7 @@ public static class ListExtensions
 	/// <returns>DistinctBlockingCollection&lt;T&gt;.</returns>
 	/// <remarks>This type implements IDisposable. Make sure to call .Dispose() or use the 'using' statement
 	/// to remove from memory.</remarks>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToDistinctBlockingCollection), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static DistinctBlockingCollection<T> ToDistinctBlockingCollection<T>([NotNull] this List<T> collection, bool completeAdding = false)
 	{
@@ -379,6 +381,7 @@ public static class ListExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The list.</param>
 	/// <returns>DistinctConcurrentBag&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToDistinctConcurrentBag), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static DistinctConcurrentBag<T> ToDistinctConcurrentBag<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
@@ -389,6 +392,7 @@ public static class ListExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The list.</param>
 	/// <returns>FastSortedList&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToFastSortedList), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static FastSortedList<T> ToFastSortedList<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
@@ -409,6 +413,7 @@ public static class ListExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The list.</param>
 	/// <returns>ImmutableArray&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToCollection), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this List<T> collection) => ImmutableArray.Create([.. collection.ArgumentNotNull()]);
 
@@ -421,6 +426,7 @@ public static class ListExtensions
 	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
 	/// <returns>List&lt;T&gt;.</returns>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static async Task<List<TSource>> ToListAsync<TSource>([NotNull] this IAsyncEnumerable<TSource> collection, [AllowNull] CancellationToken cancellationToken = default)
 	{
 		collection = collection.ArgumentNotNull();
@@ -442,6 +448,7 @@ public static class ListExtensions
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="collection">The list.</param>
 	/// <returns>ObservableCollection.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToObservableCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ObservableCollection<T> ToObservableCollection<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
@@ -452,6 +459,7 @@ public static class ListExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The list.</param>
 	/// <returns>ObservableList&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToObservableList), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ObservableList<T> ToObservableList<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
@@ -462,6 +470,7 @@ public static class ListExtensions
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="collection">The <see cref="List{T}" /> to convert.</param>
 	/// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
@@ -472,6 +481,7 @@ public static class ListExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The <see cref="List{T}" /> to convert.</param>
 	/// <returns>IReadOnlyList&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToReadOnlyList), "David McCarter", "4/10/2022", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static IReadOnlyList<T> ToReadOnlyList<T>([NotNull] this List<T> collection) => collection.ArgumentNotNull();
 
@@ -481,6 +491,7 @@ public static class ListExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The collection.</param>
 	/// <returns>ReadOnlyObservableCollection&lt;T&gt;.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToObservableCollection), "David McCarter", "11/26/2022", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static ReadOnlyObservableCollection<T> ToReadOnlyObservableCollection<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull().ToObservableCollection());
 

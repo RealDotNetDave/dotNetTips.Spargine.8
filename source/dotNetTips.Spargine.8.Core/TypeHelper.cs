@@ -21,6 +21,7 @@
 
 using System.Collections;
 using System.Collections.Frozen;
+using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -125,7 +126,7 @@ public static class TypeHelper
 	private static IEnumerable<Type> LoadDerivedTypes(IEnumerable<TypeInfo> types, Type baseType, bool classOnly)
 	{
 		// works out the derived types
-		var list = types.ToList();
+		var list = types.ToImmutableArray();
 
 		for (var typeCount = 0; typeCount < list.FastCount(); typeCount++)
 		{
@@ -324,14 +325,14 @@ public static class TypeHelper
 	/// <param name="baseType">Type of the base.</param>
 	/// <param name="classOnly">if set to <c>true</c> [class only].</param>
 	/// <returns>IEnumerable&lt;Type&gt;.</returns>
-	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
 		currentDomain = currentDomain.ArgumentNotNull();
 		baseType = baseType.ArgumentNotNull();
 
 		//USING SPAN CAUSES ISSUES, FrozenSet is slower.
-		var assemblyCollection = currentDomain.ArgumentNotNull().GetAssemblies().ToFrozenSet();
+		var assemblyCollection = currentDomain.ArgumentNotNull().GetAssemblies().ToImmutableArray();
 
 		List<Type> types = null;
 
@@ -372,15 +373,15 @@ public static class TypeHelper
 	/// <returns>IEnumerable&lt;Type&gt;.</returns>
 	/// <exception cref="DirectoryNotFoundException">Could not find path.</exception>
 	/// <exception cref="ArgumentNullException">Could not find path.</exception>
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] DirectoryInfo path, SearchOption fileSearchType, [NotNull] Type baseType, bool classOnly)
 	{
 		fileSearchType = fileSearchType.ArgumentDefined();
 		baseType = baseType.ArgumentNotNull();
 
-		var files = path.ArgumentExists().EnumerateFiles("*.dll", fileSearchType).ToList();
+		var files = path.ArgumentExists().EnumerateFiles("*.dll", fileSearchType).ToImmutableArray();
 
-		var list = files.ToList();
+		var list = files;
 		var foundTypes = new List<Type>();
 
 		for (var fileIndex = 0; fileIndex < list.FastCount(); fileIndex++)
@@ -392,9 +393,9 @@ public static class TypeHelper
 				if (IsDotNetAssembly(new FileInfo(fileName)))
 				{
 					var assembly = Assembly.LoadFrom(fileName);
-					var exportedTypes = assembly.ExportedTypes.Where(p => p.BaseType is not null).ToList();
+					var exportedTypes = assembly.ExportedTypes.Where(p => p.BaseType is not null).ToImmutableArray();
 
-					if (exportedTypes?.FastCount() > 0)
+					if (exportedTypes.FastCount() > 0)
 					{
 						var containsBaseType = exportedTypes.Any(p => string.Equals(p.BaseType.FullName, baseType.FullName, StringComparison.Ordinal));
 

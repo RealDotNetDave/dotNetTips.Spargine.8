@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="SerializationBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -104,6 +104,19 @@ public class SerializationBenchmark : Benchmark
 		var result = XmlSerialization.Deserialize<Person<Address>>(this._xmlPersonRef);
 
 		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(JsonSerialization.JsonEqual))]
+	[BenchmarkCategory(Categories.JSON, Categories.New)]
+	public void JsonEqual()
+	{
+		var actual = "{\"Name\":\"Test\",\"Value\":1}";
+		var expected = "{\"Name\":\"Test\",\"Value\":2}";
+
+		// Act
+		var result = JsonSerialization.JsonEqual(actual, expected);
+
+		base.Consume(result);
 	}
 
 	[Benchmark(Description = "Serialize JSON: JsonSerializer + Generator - Person")]

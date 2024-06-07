@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-06-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="CollectionExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -45,6 +45,22 @@ public class CollectionExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(people);
 	}
 
+	[Benchmark(Description = nameof(CollectionExtensions.AsReadOnlySpan))]
+	public void AsReadOnlySpan()
+	{
+		var result = this._peopleRefCollection.AsReadOnlySpan();
+
+		this.Consume(result.ToArray());
+	}
+
+	[Benchmark(Description = nameof(CollectionExtensions.AsSpan))]
+	public void AsSpan()
+	{
+		var result = this._peopleRefCollection.AsSpan();
+
+		this.Consume(result.ToArray());
+	}
+
 	[Benchmark(Description = nameof(CollectionExtensions.HasItems))]
 	public void HasItems()
 	{
@@ -70,6 +86,14 @@ public class CollectionExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		this._peopleRefCollection = this.GetPersonRefArray().ToCollection();
 		this._peopleRefList = this.GetPersonRefCollection().ToList();
+	}
+
+	[Benchmark(Description = nameof(CollectionExtensions.ToFrozenSet))]
+	public void ToFrozenSet()
+	{
+		var result = this._peopleRefCollection.ToFrozenSet();
+
+		this.Consume(result);
 	}
 
 }

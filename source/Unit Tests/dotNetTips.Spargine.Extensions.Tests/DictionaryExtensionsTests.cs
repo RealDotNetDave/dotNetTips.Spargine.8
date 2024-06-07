@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -178,7 +177,7 @@ public class DictionaryExtensionsTests
 			dic.Add(item, item);
 		}
 
-		Assert.IsNotNull((dic as IDictionary).ToDelimitedString(','));
+		Assert.IsNotNull((dic as IDictionary<string, string>).ToDelimitedString(','));
 	}
 
 	/// <summary>

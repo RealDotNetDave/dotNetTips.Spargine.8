@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
@@ -49,6 +50,41 @@ public class AssemblyExtensionsTests
 		var result = assembly.GetAllInterfaces().ToList();
 
 		Assert.IsTrue(result.FastCount() > 0);
+	}
+
+	[TestMethod]
+	public void GetTypes_NullAssembly_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var type = typeof(AssemblyExtensionsTests);
+
+		// Act and Assert
+		Assert.ThrowsException<ArgumentNullException>(() => ((Assembly)null).GetTypes(type));
+	}
+
+	[TestMethod]
+	public void GetTypes_NullType_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var assembly = Assembly.GetExecutingAssembly();
+
+		// Act and Assert
+		Assert.ThrowsException<ArgumentNullException>(() => assembly.GetTypes(null));
+	}
+
+	[TestMethod]
+	public void GetTypes_ValidInputs_ReturnsTypes()
+	{
+		// Arrange
+		var assembly = Assembly.GetExecutingAssembly();
+		var type = typeof(AssemblyExtensionsTests);
+
+		// Act
+		var result = assembly.GetTypes(type);
+
+		// Assert
+		Assert.IsTrue(result.Count > 0);
+		Assert.IsTrue(result.Contains(type));
 	}
 
 	[TestMethod]

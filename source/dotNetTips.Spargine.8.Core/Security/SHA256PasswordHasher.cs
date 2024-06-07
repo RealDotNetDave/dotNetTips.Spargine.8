@@ -67,7 +67,7 @@ public static class SHA256PasswordHasher
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 	public static bool FixedTimeEquals([NotNull] byte[] left, [NotNull] byte[] right)
 	{
@@ -96,7 +96,7 @@ public static class SHA256PasswordHasher
 	/// </summary>
 	/// <param name="password">The password.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string HashPassword([NotNull] string password)
 	{
 		password = password.ArgumentNotNullOrEmpty();
@@ -120,7 +120,7 @@ public static class SHA256PasswordHasher
 	/// <param name="hashedPassword">The hashed password.</param>
 	/// <param name="password">The password.</param>
 	/// <returns>PasswordVerificationResult.</returns>
-	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static PasswordVerificationResult VerifyHashedPassword(string hashedPassword, [NotNull] string password)
 	{
 		hashedPassword = hashedPassword.ArgumentNotNullOrEmpty();

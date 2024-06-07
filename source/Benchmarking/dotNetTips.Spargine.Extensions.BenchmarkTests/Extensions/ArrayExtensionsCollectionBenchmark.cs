@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-29-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -69,6 +69,24 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		var result = this._personRefArray;
 
 		this.Consume(result.GetHashCode());
+	}
+
+	[Benchmark(Description = nameof(ArrayExtensions.AsReadOnlySpan) + " : Reference")]
+	[BenchmarkCategory(Categories.ReferenceType)]
+	public void AsReadOnlySpan_Ref()
+	{
+		var result = this._personRefArray.AsReadOnlySpan();
+
+		this.Consume(result.ToArray());
+	}
+
+	[Benchmark(Description = nameof(ArrayExtensions.AsSpan) + " : Reference")]
+	[BenchmarkCategory(Categories.ReferenceType)]
+	public void AsSpan_Ref()
+	{
+		var result = this._personRefArray.AsSpan();
+
+		this.Consume(result.ToArray());
 	}
 
 	//TODO:FIGURE OUT WHY THIS DOES NOT WORK
@@ -364,6 +382,15 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	public void ToDistinct_Ref()
 	{
 		var result = this._personRefArray.ToDistinct();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ArrayExtensions.ToFrozenSet) + " : Reference")]
+	[BenchmarkCategory(Categories.ReferenceType)]
+	public void ToFrozenSet_Ref()
+	{
+		var result = this._personRefArray.ToFrozenSet();
 
 		this.Consume(result);
 	}

@@ -4,12 +4,16 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Facilitates file copying and deletion operations, incorporating event handling for files. Additionally, it offers the capability to delete folders.</summary>
+// <summary>
+// Facilitates file copying and deletion operations,
+// incorporating event handling for files. Additionally, it offers the
+// capability to delete folders.
+// </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Security;
@@ -131,13 +135,10 @@ public class FileProcessor
 		}
 
 		var successCount = 0;
-		var list = files.ToArray();
 
-		for (var fileCount = 0; fileCount < list.Length; fileCount++)
+		foreach (var listItem in files.ToImmutableArray())
 		{
-			var tempFile = list[fileCount];
-
-			if (tempFile.Exists)
+			if (listItem.Exists)
 			{
 				long fileLength = 0;
 
@@ -145,9 +146,8 @@ public class FileProcessor
 				{
 					var psw = PerformanceStopwatch.StartNew();
 
-					fileLength = tempFile.Length;
-
-					tempFile.Delete();
+					fileLength = listItem.Length;
+					listItem.Delete();
 
 					var perf = psw.StopReset();
 
@@ -155,8 +155,8 @@ public class FileProcessor
 
 					this.OnProcessed(e: new FileProgressEventArgs
 					{
-						Name = tempFile.FullName,
-						Message = tempFile.Name,
+						Name = listItem.FullName,
+						Message = listItem.Name,
 						ProgressState = FileProgressState.Deleted,
 						Size = fileLength,
 						SpeedInMilliseconds = perf.TotalMilliseconds,
@@ -166,7 +166,7 @@ public class FileProcessor
 				{
 					this.OnProcessed(new FileProgressEventArgs
 					{
-						Name = tempFile.FullName,
+						Name = listItem.FullName,
 						ProgressState = FileProgressState.Error,
 						Size = fileLength,
 						Message = ex.Message,
@@ -177,7 +177,7 @@ public class FileProcessor
 			{
 				this.OnProcessed(new FileProgressEventArgs
 				{
-					Name = tempFile.FullName,
+					Name = listItem.FullName,
 					ProgressState = FileProgressState.Error,
 					Message = Resources.FileNotFound,
 				});
@@ -201,23 +201,20 @@ public class FileProcessor
 		}
 
 		var successCount = 0;
-		var list = folders.ToArray();
 
-		for (var folderIndex = 0; folderIndex < list.Length; folderIndex++)
+		foreach (var listItem in folders.ToImmutableArray())
 		{
-			var tempFolder = list[folderIndex];
-
-			if (tempFolder.Exists)
+			if (listItem.Exists)
 			{
 				try
 				{
-					tempFolder.Delete(recursive: true);
+					listItem.Delete(recursive: true);
 
 					successCount++;
 
 					this.OnProcessed(new FileProgressEventArgs
 					{
-						Name = tempFolder.FullName,
+						Name = listItem.FullName,
 						ProgressState = FileProgressState.Deleted,
 					});
 				}
@@ -225,7 +222,7 @@ public class FileProcessor
 				{
 					this.OnProcessed(new FileProgressEventArgs
 					{
-						Name = tempFolder.FullName,
+						Name = listItem.FullName,
 						ProgressState = FileProgressState.Error,
 						Message = ex.Message,
 					});
@@ -235,7 +232,7 @@ public class FileProcessor
 			{
 				this.OnProcessed(new FileProgressEventArgs
 				{
-					Name = tempFolder.FullName,
+					Name = listItem.FullName,
 					ProgressState = FileProgressState.Error,
 					Message = Resources.FolderNotFound,
 				});

@@ -4,7 +4,7 @@
 // Created          : 06-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-02-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="SimpleResult.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -220,4 +220,3 @@ public static class SimpleResult
 	public static SimpleResult<T> FromValue<T>([NotNull] T value) => new(value);
 
 }
-

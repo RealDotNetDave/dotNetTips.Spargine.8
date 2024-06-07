@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-05-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -67,7 +67,7 @@ public static class DictionaryExtensions
 	/// <param name="value">The value.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	/// <exception cref="ArgumentNullException">key or value</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static bool AddIfNotExists<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection, [NotNull] TKey key, [NotNull] TValue value)
 	{
 		if (value is null)
@@ -203,8 +203,8 @@ public static class DictionaryExtensions
 	/// pfCfZQFGPWYXBlUvVHNb]ZjBO_LTbQBSCYb: pfCfZQFGPWYXBlUvVHNb]ZjBO_LTbQBSCYb,
 	/// Dnadh[d`FP^SjNeChCvVuBXuEl^yVFUbKXsaacsCpJuxAscU: Dnadh[d`FP^SjNeChCvVuBXuEl^yVFUbKXsaacsCpJuxAscU.
 	/// </example>
-	[Information(nameof(ToDelimitedString), "David McCarter", "11/03/2020", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, UnitTestCoverage = 99, Documentation = "http://bit.ly/SpargineFeb2021")]
-	public static string ToDelimitedString([NotNull] this IDictionary collection, char delimiter = ControlChars.Comma)
+	[Information(nameof(ToDelimitedString), "David McCarter", "11/03/2020", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, UnitTestCoverage = 99, Documentation = "http://bit.ly/SpargineFeb2021")]
+	public static string ToDelimitedString<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection, char delimiter = ControlChars.Comma)
 	{
 		if (collection.DoesNotHaveItems())
 		{
@@ -215,7 +215,7 @@ public static class DictionaryExtensions
 
 		try
 		{
-			foreach (DictionaryEntry item in collection)
+			foreach (var item in collection)
 			{
 				if (sb.Length > 0)
 				{
@@ -241,7 +241,7 @@ public static class DictionaryExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>FrozenDictionary&lt;TKey, TValue&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFrozenDictionary), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToFrozenDictionary), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
 	public static FrozenDictionary<TKey, TValue> ToFrozenDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> list) => FrozenDictionary.ToFrozenDictionary(list);
 
 	/// <summary>
@@ -252,7 +252,7 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
 	/// <param name="collection">The values.</param>
 	/// <returns>IImmutableDictionary&lt;TKey, TValue&gt;.</returns>
-	[Information(nameof(ToImmutableDictionary), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(ToImmutableDictionary), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ImmutableDictionary<TKey, TValue> ToImmutableDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection) => ImmutableDictionary.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -263,7 +263,7 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
 	/// <param name="collection">The values.</param>
 	/// <returns>ImmutableSortedDictionary&lt;TKey, TValue&gt;.</returns>
-	[Information(nameof(ToImmutableSortedDictionary), "David McCarter", "7/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToImmutableSortedDictionary), "David McCarter", "7/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
 	public static ImmutableSortedDictionary<TKey, TValue> ToImmutableSortedDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection) => ImmutableSortedDictionary.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -273,7 +273,7 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the value.</typeparam>
 	/// <param name="dictionary">The dictionary.</param>
 	/// <returns>ReadOnlyCollection&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;.</returns>
-	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary)
 	{
 		// Convert the dictionary to a list of KeyValuePair
@@ -293,7 +293,7 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
 	/// <param name="collection">The values.</param>
 	/// <returns>ReadOnlyDictionary&lt;TKey, TValue&gt;.</returns>
-	[Information(nameof(ToReadOnlyDictionary), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToReadOnlyDictionary), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
 	public static ReadOnlyDictionary<TKey, TValue> ToReadOnlyDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
 
 

@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-05-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -208,7 +208,7 @@ public static class DirectoryHelper
 			options.RecurseSubdirectories = true;
 		}
 
-		var validDirectories = directories.Where(directory => directory.Exists).Select(directory => directory).ToList();
+		var validDirectories = directories.Where(directory => directory.Exists).Select(directory => directory).ToImmutableArray();
 
 		for (var directoryCount = 0; directoryCount < validDirectories.FastCount(); directoryCount++)
 		{

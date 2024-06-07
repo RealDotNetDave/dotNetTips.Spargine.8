@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-30-2022
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="EncryptionHelperBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -22,7 +22,9 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Security;
 [BenchmarkCategory(Categories.Encryption)]
 public class EncryptionHelperBenchmark : Benchmark
 {
+
 	private const string Key = "!&@^@%@$@#!!!";
+
 	private string _aesCypherText;
 	private byte[] _aesIv;
 	private byte[] _aesKey;
@@ -42,6 +44,24 @@ public class EncryptionHelperBenchmark : Benchmark
 	public void AesEncrypt()
 	{
 		var result = EncryptionHelper.AesEncrypt(this.LongTestString, this._aesKey, this._aesIv);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(EncryptionHelper.GenerateAesIV))]
+	[BenchmarkCategory(Categories.Encryption)]
+	public void GenerateAesIV()
+	{
+		var result = EncryptionHelper.GenerateAesIV();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(EncryptionHelper.GenerateAesKey))]
+	[BenchmarkCategory(Categories.Encryption)]
+	public void GenerateAesKey()
+	{
+		var result = EncryptionHelper.GenerateAesKey();
 
 		this.Consume(result);
 	}
@@ -67,10 +87,11 @@ public class EncryptionHelperBenchmark : Benchmark
 
 	[Benchmark(Description = nameof(EncryptionHelper.SimpleSHA256Encrypt))]
 	[BenchmarkCategory(Categories.Encryption)]
-	public void SimpleEncrypt()
+	public void SimpleSHA256Encrypt()
 	{
 		var result = EncryptionHelper.SimpleSHA256Encrypt(this.LongTestString, Key);
 
 		this.Consume(result);
 	}
+
 }

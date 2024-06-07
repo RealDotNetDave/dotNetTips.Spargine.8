@@ -158,7 +158,7 @@ public static class JsonSerialization
 	/// <param name="actual">The actual.</param>
 	/// <param name="expected">The expected.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool JsonEqual([NotNull] string actual, string expected)
 	{
 		actual = actual.ArgumentNotNullOrEmpty();

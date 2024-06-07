@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-05-2024
+// Last Modified On : 06-07-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -128,7 +128,7 @@ public static class ObjectExtensions
 	/// Disposes the fields in the object.
 	/// </summary>
 	/// <param name="obj">The object.</param>
-	[Information(nameof(DisposeFields), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(DisposeFields), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static void DisposeFields([NotNull] this IDisposable obj)
 	{
 		if (obj is null)
@@ -137,7 +137,7 @@ public static class ObjectExtensions
 		}
 
 		//ReadOnlySpan and FrozenSet is slower.
-		var list = obj.GetType().GetRuntimeFields().Where(p => p.IsStatic is false).ToFrozenSet();
+		var list = obj.GetType().GetRuntimeFields().Where(p => p.IsStatic is false).ToImmutableArray();
 
 		if (list.DoesNotHaveItems())
 		{
@@ -198,7 +198,7 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The object.</param>
 	/// <exception cref="ArgumentNullException">Object cannot be null.</exception>
-	[Information(nameof(InitializeFields), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(InitializeFields), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static void InitializeFields([NotNull] this object obj)
 	{
 		if (obj is null)
@@ -206,7 +206,7 @@ public static class ObjectExtensions
 			return;
 		}
 
-		var fieldInfos = obj.GetType().GetRuntimeFields().ToList();
+		var fieldInfos = obj.GetType().GetRuntimeFields().ToImmutableArray();
 
 		if (fieldInfos.DoesNotHaveItems())
 		{

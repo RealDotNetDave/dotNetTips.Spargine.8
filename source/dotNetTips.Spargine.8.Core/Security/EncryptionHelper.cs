@@ -58,7 +58,7 @@ public static class EncryptionHelper
 	/// <param name="iv">The initialization vector.</param>
 	/// <returns>System.String.</returns>
 	/// <remarks>Original code by: Mahesh Chand.</remarks>
-	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string AesDecrypt([NotNull] string cipherText, [NotNull] byte[] key, [NotNull] byte[] iv)
 	{
 		cipherText = cipherText.ArgumentNotNull();
@@ -97,7 +97,7 @@ public static class EncryptionHelper
 	/// <returns>System.Byte[].</returns>
 	/// <remarks>Original code by: Mahesh Chand.</remarks>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(AesEncrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(AesEncrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string AesEncrypt([NotNull] string plainText, [NotNull] byte[] key, [NotNull] byte[] iv)
 	{
 
@@ -134,7 +134,7 @@ public static class EncryptionHelper
 	/// Generates the AES IV.
 	/// </summary>
 	/// <returns>System.Byte[].</returns>
-	[Information(nameof(GenerateAesIV), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GenerateAesIV), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static byte[] GenerateAesIV()
 	{
 		using (var aes = Aes.Create())
@@ -149,7 +149,7 @@ public static class EncryptionHelper
 	/// Generates the AES key.
 	/// </summary>
 	/// <returns>System.Byte[].</returns>
-	[Information(nameof(GenerateAesKey), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GenerateAesKey), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static byte[] GenerateAesKey()
 	{
 		using (var aes = Aes.Create())
@@ -174,7 +174,7 @@ public static class EncryptionHelper
 	/// <param name="cipherText">The encrypted text.</param>
 	/// <param name="key">The key.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(SimpleSHA256Decrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(SimpleSHA256Decrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string SimpleSHA256Decrypt([NotNull] string cipherText, [NotNull] string key)
 	{
 		cipherText = cipherText.ArgumentNotNullOrEmpty(true);

@@ -34,6 +34,44 @@ namespace dotNetTips.Spargine.Core.Tests.Serialization;
 public class JsonSerializationTests
 {
 
+	[TestMethod]
+	public void JsonEqual_DifferentInputs_ReturnsFalse()
+	{
+		// Arrange
+		var actual = "{\"Name\":\"Test\",\"Value\":1}";
+		var expected = "{\"Name\":\"Test\",\"Value\":2}";
+
+		// Act
+		var result = JsonSerialization.JsonEqual(actual, expected);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void JsonEqual_EqualInputs_ReturnsTrue()
+	{
+		// Arrange
+		var actual = "{\"Name\":\"Test\",\"Value\":1}";
+		var expected = "{\"Name\":\"Test\",\"Value\":1}";
+
+		// Act
+		var result = JsonSerialization.JsonEqual(actual, expected);
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void JsonEqual_NullActual_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var expected = "{\"Name\":\"Test\",\"Value\":1}";
+
+		// Act and Assert
+		Assert.ThrowsException<ArgumentNullException>(() => JsonSerialization.JsonEqual(null, expected));
+	}
+
 	/// <summary>
 	/// Defines the test method SerializeDeserializeTestPerson.
 	/// </summary>
