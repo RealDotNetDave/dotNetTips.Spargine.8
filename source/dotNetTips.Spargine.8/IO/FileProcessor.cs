@@ -136,7 +136,7 @@ public class FileProcessor
 
 		var successCount = 0;
 
-		foreach (var listItem in files.ToImmutableArray())
+		foreach (var listItem in files)
 		{
 			if (listItem.Exists)
 			{
@@ -202,7 +202,7 @@ public class FileProcessor
 
 		var successCount = 0;
 
-		foreach (var listItem in folders.ToImmutableArray())
+		foreach (var listItem in folders)
 		{
 			if (listItem.Exists)
 			{

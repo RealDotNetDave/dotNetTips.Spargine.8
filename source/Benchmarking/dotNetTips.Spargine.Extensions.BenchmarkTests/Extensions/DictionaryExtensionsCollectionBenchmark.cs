@@ -4,7 +4,7 @@
 // Created          : 01-09-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-10-2024
 // ***********************************************************************
 // <copyright file="DictionaryExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -31,6 +31,18 @@ public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 {
 
 	private Dictionary<string, Person<Address>> _personRefDictionary;
+	private Dictionary<string, Person<Address>> _personRefDictionaryToInsert;
+
+
+	[Benchmark(Description = nameof(DictionaryExtensions.AddRange))]
+	public void AddRange()
+	{
+		var people = this._personRefDictionary;
+
+		var result = people.AddRange(this._personRefDictionaryToInsert);
+
+		this.Consume(result);
+	}
 
 	[Benchmark(Description = nameof(DictionaryExtensions.GetOrAdd) + ": Dictionary")]
 	[BenchmarkCategory(Categories.Collections)]
@@ -58,6 +70,15 @@ public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		base.Setup();
 
 		this._personRefDictionary = this.GetPersonRefDictionary();
+		this._personRefDictionaryToInsert = this.GetPersonRefDictionary().Take(this.Count / 2).ToDictionary();
+	}
+
+	[Benchmark(Description = nameof(DictionaryExtensions.ToConcurrentDictionary))]
+	public void ToConcurrentDictionary()
+	{
+		var people = this._personRefDictionary.ToConcurrentDictionary();
+
+		this.Consume(people);
 	}
 
 	[Benchmark(Description = nameof(DictionaryExtensions.ToDelimitedString))]

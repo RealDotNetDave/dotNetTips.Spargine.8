@@ -128,7 +128,7 @@ public static class ObjectExtensions
 	/// Disposes the fields in the object.
 	/// </summary>
 	/// <param name="obj">The object.</param>
-	[Information(nameof(DisposeFields), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(DisposeFields), UnitTestCoverage = 100, Status = Status.Available)]
 	public static void DisposeFields([NotNull] this IDisposable obj)
 	{
 		if (obj is null)
@@ -137,7 +137,7 @@ public static class ObjectExtensions
 		}
 
 		//ReadOnlySpan and FrozenSet is slower.
-		var list = obj.GetType().GetRuntimeFields().Where(p => p.IsStatic is false).ToImmutableArray();
+		var list = obj.GetType().GetRuntimeFields().Where(p => p.IsStatic is false);
 
 		if (list.DoesNotHaveItems())
 		{
@@ -198,7 +198,7 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The object.</param>
 	/// <exception cref="ArgumentNullException">Object cannot be null.</exception>
-	[Information(nameof(InitializeFields), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
+	[Information(nameof(InitializeFields), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void InitializeFields([NotNull] this object obj)
 	{
 		if (obj is null)
@@ -206,7 +206,7 @@ public static class ObjectExtensions
 			return;
 		}
 
-		var fieldInfos = obj.GetType().GetRuntimeFields().ToImmutableArray();
+		var fieldInfos = obj.GetType().GetRuntimeFields().ToList();
 
 		if (fieldInfos.DoesNotHaveItems())
 		{

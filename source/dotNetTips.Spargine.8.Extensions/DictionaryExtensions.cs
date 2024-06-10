@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-10-2024
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -102,7 +102,7 @@ public static class DictionaryExtensions
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	/// <exception cref="ArgumentNullException">Dictionary cannot be null. or key - Key cannot be null.</exception>
 	/// <remarks>Code by: Lucas</remarks>
-	[Information(nameof(AddRange), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(AddRange), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available)]
 	public static bool AddRange<T, TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection, IEnumerable<T> items, [NotNull] Func<T, TKey> key, [NotNull] Func<T, TValue> value)
 	{
 		if (value is null)
@@ -190,12 +190,14 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
 	/// <param name="collection">The collection.</param>
 	/// <returns>ConcurrentDictionary&lt;TKey, TValue&gt;.</returns>
-	[Information(nameof(ToSortedDictionary), "David McCarter", "7/23/2022", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(ToSortedDictionary), "David McCarter", "7/23/2022", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static ConcurrentDictionary<TKey, TValue> ToConcurrentDictionary<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
 	/// Converts <see cref="IDictionary" /> to delimited string using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
 	/// </summary>
+	/// <typeparam name="TKey">The type of the t key.</typeparam>
+	/// <typeparam name="TValue">The type of the t value.</typeparam>
 	/// <param name="collection">The list.</param>
 	/// <param name="delimiter">The delimiter.</param>
 	/// <returns>System.String.</returns>

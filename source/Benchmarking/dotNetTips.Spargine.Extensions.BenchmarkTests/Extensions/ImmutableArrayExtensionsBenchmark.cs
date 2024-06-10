@@ -4,7 +4,7 @@
 // Created          : 07-17-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-31-2023
+// Last Modified On : 06-10-2024
 // ***********************************************************************
 // <copyright file="ImmutableArrayExtensionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -34,7 +34,7 @@ public class ImmutableArrayExtensionsBenchmark : SmallCollectionBenchmark
 	private ImmutableArray<Person<Address>> _personRefImmutableArray;
 
 	[Benchmark(Description = nameof(ImmutableArrayExtensions.HasItems))]
-	public void ImmutableArrayHasItems()
+	public void HasItems()
 	{
 		var result = this._personRefImmutableArray.HasItems();
 
@@ -42,7 +42,7 @@ public class ImmutableArrayExtensionsBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ImmutableArrayExtensions.HasItems) + ": With Count")]
-	public void ImmutableArrayHasItemsWithCount()
+	public void HasItemsWithCount()
 	{
 		var result = this._personRefImmutableArray.HasItems(this.Count);
 
@@ -54,6 +54,14 @@ public class ImmutableArrayExtensionsBenchmark : SmallCollectionBenchmark
 		base.Setup();
 
 		this._personRefImmutableArray = this.GetPersonRefArray().ToImmutableArray();
+	}
+
+	[Benchmark(Description = nameof(ImmutableArrayExtensions.Shuffle))]
+	public void Shuffle()
+	{
+		var result = this._personRefImmutableArray.Shuffle();
+
+		this.Consume(result);
 	}
 
 }

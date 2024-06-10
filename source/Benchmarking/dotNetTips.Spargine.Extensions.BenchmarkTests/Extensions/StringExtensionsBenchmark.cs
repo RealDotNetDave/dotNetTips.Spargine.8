@@ -12,11 +12,13 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Tester;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -133,11 +135,38 @@ public class StringExtensionsBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(StringExtensions.EqualsIgnoreCase))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void EqualsIgnoreCase()
+	{
+		var result = String15Characters01.EqualsIgnoreCase(String15Characters02);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.EqualsOrBothNullOrEmpty))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void EqualsOrBothNullOrEmpty()
+	{
+		var result = String15Characters01.EqualsOrBothNullOrEmpty(String15Characters02);
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(StringExtensions.Extract))]
 	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void Extract()
 	{
 		var result = this.LongTestString.Extract("and", "are");
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.FromBase64))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void FromBase64()
+	{
+		var result = this.Base64String.FromBase64();
 
 		this.Consume(result);
 	}
@@ -410,6 +439,24 @@ public class StringExtensionsBenchmark : Benchmark
 
 		this._compressedString = this.LongTestString.ToDeflateStringAsync().Result;
 		this._zlibString = this.LongTestString.ToZLibStringAsync().Result;
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.Split))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void Split()
+	{
+		var result = this.LongTestString.Split(StringSplitOptions.TrimEntries);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.Split) + ": With Count")]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void Split_WithCount()
+	{
+		var result = this.LongTestString.Split(StringSplitOptions.TrimEntries, 2, ControlChars.Comma);
+
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(StringExtensions.StartsWithOrdinal))]

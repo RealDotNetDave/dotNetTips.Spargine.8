@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-29-2024
+// Last Modified On : 06-10-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -344,7 +344,7 @@ public static class StringExtensions
 	/// <param name="inputToCompare">The value to compare.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool EqualsIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare)
 	{
 		if (input is null || inputToCompare is null)
@@ -362,7 +362,7 @@ public static class StringExtensions
 	/// <param name="inputToCompare">The value to compare.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(EqualsOrBothNullOrEmpty), "David McCarter", "7/15/2020", "7/29/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(EqualsOrBothNullOrEmpty), "David McCarter", "7/15/2020", "7/29/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool EqualsOrBothNullOrEmpty([NotNull] this string input, [NotNull] string inputToCompare) => string.Equals(input ?? string.Empty, inputToCompare ?? string.Empty, StringComparison.Ordinal);
 
 	/// <summary>
@@ -393,7 +393,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The value.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string FromBase64([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -401,7 +401,9 @@ public static class StringExtensions
 			return ControlChars.EmptyString;
 		}
 
+		//TODO: MOVE TO FIELD?
 		var encoding = new ASCIIEncoding();
+
 		return encoding.GetString(Convert.FromBase64String(input));
 	}
 
@@ -603,7 +605,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The input.</param>
 	/// <returns><c>true</c> if the specified input is whitespace; otherwise, <c>false</c>.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool HasWhitespace([NotNull] this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -875,7 +877,7 @@ public static class StringExtensions
 	/// <exception cref="ArgumentInvalidException">Input cannot be <see langword="null" />.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Options are invalid.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, [NotNull] char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -920,7 +922,7 @@ public static class StringExtensions
 	/// <exception cref="ArgumentOutOfRangeException">Options are invalid.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Count must be greater than 1.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull] string separator = ControlChars.DefaultSeparator)
 	{
 		input = input.ArgumentNotNullOrEmpty();

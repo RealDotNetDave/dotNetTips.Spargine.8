@@ -4,14 +4,15 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-10-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>Extensions methods for the Array type.</summary> 
+// <summary>Extensions methods for the Array type.</summary>
 // ***********************************************************************
 using System.Collections.Frozen;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -311,8 +312,8 @@ public static class ArrayExtensions
 		array = array.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		//Span is slower.
-		foreach (var item in array.ToFrozenSet())
+		//Span and FrozenSet is slower.
+		foreach (var item in array.ToImmutableArray())
 		{
 			action(item);
 		}
@@ -414,7 +415,7 @@ public static class ArrayExtensions
 		else
 		{
 			//Span is slower.
-			foreach (var value in values.ToFrozenSet())
+			foreach (var value in values.ToImmutableArray())
 			{
 				action(value);
 			}

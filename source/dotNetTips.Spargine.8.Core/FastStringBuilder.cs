@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-10-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -15,7 +15,7 @@
 // </summary>
 // ***********************************************************************
 
-using System.Collections.Frozen;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -98,6 +98,7 @@ public static class FastStringBuilder
 
 		try
 		{
+			//ASSPAN IS FASTER!
 			foreach (var arg in args.AsSpan())
 			{
 				_ = addLineFeed ? sb.AppendLine(arg) : sb.Append(arg);
@@ -151,8 +152,8 @@ public static class FastStringBuilder
 
 				var index = 0;
 
-				//Span is slower
-				foreach (var arg in args.ToFrozenSet())
+				//Span and FrozenSet is slower
+				foreach (var arg in args.ToImmutableArray())
 				{
 					var newString = arg;
 
@@ -226,8 +227,8 @@ public static class FastStringBuilder
 
 		try
 		{
-			//FrozenDictionary is slower.
-			foreach (var item in collection.ToFrozenSet())
+			//FrozenDictionary and FrozenSet is slower.
+			foreach (var item in collection.ToImmutableArray())
 			{
 
 				if (sb.Length > 0)

@@ -4,7 +4,7 @@
 // Created          : 01-09-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-10-2024
 // ***********************************************************************
 // <copyright file="ListExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -15,7 +15,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
+using System.Text;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core;
@@ -41,6 +43,16 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		var result = _peopleRefList.AddFirst(_person);
 
 		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.AsReadOnlySpan))]
+	public void AsReadOnlySpan()
+	{
+		var people = this._peopleRefList;
+
+		var collection = people.AsReadOnlySpan();
+
+		this.Consume(collection.Length);
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.AsSpan))]
@@ -122,7 +134,7 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 	[Benchmark(Description = nameof(ListExtensions.DoesNotHaveItems))]
 	[BenchmarkCategory(Categories.Collections)]
-	public void DoesNotHaveItemsTest()
+	public void DoesNotHaveItems()
 	{
 		var people = this._peopleRefList;
 
@@ -181,12 +193,52 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(ListExtensions.IsEqualTo))]
+	[BenchmarkCategory(Categories.Collections)]
+	public void IsEqualTo()
+	{
+		var people = this._peopleRefList;
+
+		this.Consume(people.IsEqualTo(this._peopleRefList));
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.PerformAction) + " :Ref")]
+	[BenchmarkCategory(Categories.ReferenceType)]
+	public void PerformAction_Ref()
+	{
+		var people = this._peopleRefList;
+		var sb = new StringBuilder();
+
+		people.PerformAction((person) =>
+		{
+			_ = sb.Append(CultureInfo.CurrentCulture, $"{person.ToString()}|");
+		});
+
+		this.Consume(sb.ToString());
+	}
+
 	public override void Setup()
 	{
 		base.Setup();
 
 		this._peopleRefSubSet = this.GetPersonRefCollection().TakeLast(10).Clone<IEnumerable<Person<Address>>>().ToList();
 		this._peopleRefList = this.GetPersonRefCollection().ToList();
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.ToFrozenSet))]
+	public void ToFrozenSet()
+	{
+		var result = this._peopleRefList.ToFrozenSet();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.ToImmutableArray))]
+	public void ToImmutableArray()
+	{
+		var result = this._peopleRefList.ToImmutableArray();
+
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.ToObservableCollection))]
@@ -201,6 +253,14 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	public void ToReadOnlyCollection()
 	{
 		var result = this._peopleRefList.ToReadOnlyCollection();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.ToReadOnlyList))]
+	public void ToReadOnlyList()
+	{
+		var result = this._peopleRefList.ToReadOnlyList();
 
 		this.Consume(result);
 	}

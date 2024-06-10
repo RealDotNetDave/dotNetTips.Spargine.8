@@ -208,7 +208,7 @@ public static class DirectoryHelper
 			options.RecurseSubdirectories = true;
 		}
 
-		var validDirectories = directories.Where(directory => directory.Exists).Select(directory => directory).ToImmutableArray();
+		var validDirectories = directories.Where(directory => directory.Exists).Select(directory => directory).ToArray();
 
 		for (var directoryCount = 0; directoryCount < validDirectories.FastCount(); directoryCount++)
 		{

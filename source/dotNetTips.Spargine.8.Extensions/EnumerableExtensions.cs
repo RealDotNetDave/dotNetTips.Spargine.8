@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-10-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -85,7 +85,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The list.</param>
 	/// <param name="item">The item.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(AddFirst), "David McCarter", "10/24/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(AddFirst), "David McCarter", "10/24/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<T> AddFirst<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item)
 	{
 		if (item is null)
@@ -173,7 +173,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>System.Int32.</returns>
 	/// <exception cref="ArgumentNullException">list</exception>
-	[Information(nameof(Count), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(Count), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static int Count([NotNull] this IEnumerable collection)
 	{
 		if (collection is null)
@@ -211,7 +211,7 @@ public static class EnumerableExtensions
 	/// <param name="items">The items.</param>
 	/// <param name="ensureUnique">if set to <c>true</c> [ensure unique].</param>
 	/// <returns>Collection&lt;T&gt;.</returns>
-	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
+	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static Collection<T> Create<T>([NotNull] this IEnumerable<T> items, bool ensureUnique)
 	{
 		items = items.ArgumentNotNull();
@@ -305,7 +305,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The collection.</param>
 	/// <returns>long.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastCount), "David McCarter", "4/12/2022", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
+	[Information(nameof(FastCount), "David McCarter", "4/12/2022", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static long FastCount<T>([NotNull] this IList<T> collection) => collection.ArgumentNotNull().Count;
 
 	/// <summary>
@@ -551,7 +551,7 @@ public static class EnumerableExtensions
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
 	/// <exception cref="InvalidCastException"></exception>
 	/// <remarks>Original code by: C.F.Meijers</remarks>
-	[Information(nameof(OrderBy), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(OrderBy), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IEnumerable<T> OrderBy<T>([NotNull] this IEnumerable<T> collection, [NotNull] string sortExpression)
 	{
 		collection = collection.ArgumentNotNull();
@@ -753,7 +753,7 @@ public static class EnumerableExtensions
 	/// <param name="pageCount">The page count.</param>
 	/// <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
 	/// <remarks>Original code from: https://github.com/dncuug/X.PagedList/blob/master/src/X.PagedList/PagedListExtensions.cs</remarks>
-	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<IEnumerable<T>> Split<T>([NotNull] this IEnumerable<T> collection, int pageCount)
 	{
 		collection = collection.ArgumentNotNull();
@@ -766,7 +766,8 @@ public static class EnumerableExtensions
 
 		for (var pageIndex = 0; pageIndex < pageCount; pageIndex++)
 		{
-			var chunk = collection.Skip(pageIndex * takeCount).Take(takeCount).ToImmutableArray();
+			//ImmutableArray is slower
+			var chunk = collection.Skip(pageIndex * takeCount).Take(takeCount);
 
 			if (chunk.HasItems())
 			{
@@ -937,7 +938,7 @@ public static class EnumerableExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>FrozenSet&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
 	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this IEnumerable<T> list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>
@@ -956,23 +957,23 @@ public static class EnumerableExtensions
 		return ImmutableList.CreateRange(collection);
 	}
 
-	/// <summary>
-	/// Converts a <see cref="IEnumerable{T}" /> to <see cref="ImmutableArray{T}" />.
-	/// Validates that <paramref name="collection" /> is not null.
-	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The values.</param>
-	/// <returns>System.Collections.Immutable.ImmutableArray&lt;T&gt;.</returns>
-	[Information(nameof(ToImmutable), "David McCarter", "6/7/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
-	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this IEnumerable<T> collection)
-	{
-		if (collection.DoesNotHaveItems())
-		{
-			return [];
-		}
+	///// <summary>
+	///// Converts a <see cref="IEnumerable{T}" /> to <see cref="ImmutableArray{T}" />.
+	///// Validates that <paramref name="collection" /> is not null.
+	///// </summary>
+	///// <typeparam name="T">Generic type parameter.</typeparam>
+	///// <param name="collection">The values.</param>
+	///// <returns>System.Collections.Immutable.ImmutableArray&lt;T&gt;.</returns>
+	//[Information(nameof(ToImmutable), "David McCarter", "6/7/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	//public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this IEnumerable<T> collection)
+	//{
+	//	if (collection.DoesNotHaveItems())
+	//	{
+	//		return [];
+	//	}
 
-		return ImmutableArray.CreateRange(collection);
-	}
+	//	return ImmutableArray.CreateRange(collection);
+	//}
 
 	/// <summary>
 	/// Converts <see cref="IEnumerable{T}" /> to a <see cref="LinkedList{T}" />.
@@ -1013,7 +1014,7 @@ public static class EnumerableExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The collection.</param>
 	/// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
-	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>([NotNull] this IEnumerable<T> collection) => new(collection.ArgumentNotNull().ToList());
 
 	/// <summary>

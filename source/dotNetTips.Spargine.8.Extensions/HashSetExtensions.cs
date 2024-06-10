@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-10-2024
 // ***********************************************************************
 // <copyright file="HashSetExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -34,7 +34,7 @@ public static class HashSetExtensions
 	/// <param name="collection">The list.</param>
 	/// <param name="item">The item.</param>
 	/// <param name="condition">The condition.</param>
-	[Information(nameof(AddIf), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(AddIf), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void AddIf<T>([NotNull] this HashSet<T> collection, [NotNull] T item, bool condition)
 	{
 		collection = collection.ArgumentNotNull();
@@ -53,7 +53,7 @@ public static class HashSetExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The list.</param>
 	/// <returns>ConcurrentHashSet&lt;T&gt;.</returns>
-	[Information(nameof(ToConcurrentHashSet), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToConcurrentHashSet), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ConcurrentHashSet<T> ToConcurrentHashSet<T>([NotNull] this HashSet<T> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -63,7 +63,7 @@ public static class HashSetExtensions
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="collection">The values.</param>
 	/// <returns>ImmutableHashSet<typeparamref name="T" /></returns>
-	[Information(nameof(ToImmutableHashSet), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(ToImmutableHashSet), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ImmutableHashSet<T> ToImmutableHashSet<T>([NotNull] this HashSet<T> collection) => ImmutableHashSet.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -73,7 +73,7 @@ public static class HashSetExtensions
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The list.</param>
 	/// <param name="item">The item.</param>
-	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void Upsert<T>([NotNull] this HashSet<T> collection, [NotNull] T item)
 	{
 		collection = collection.ArgumentNotNull();

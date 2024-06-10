@@ -57,12 +57,32 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(EnumerableExtensions.AddFirst))]
+	public void AddFirst()
+	{
+		var people = this._personRefEnumerable;
+
+		var result = people.AddFirst(this.PersonRef01);
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(EnumerableExtensions.AddIf))]
 	public void AddIf()
 	{
 		var people = this._personRefEnumerable;
 
 		var result = people.AddIf(this.PersonRef01, true);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(EnumerableExtensions.AddLast))]
+	public void AddLast()
+	{
+		var people = this._personRefEnumerable;
+
+		var result = people.AddLast(this.PersonRef01);
 
 		this.Consume(result);
 	}
@@ -275,6 +295,14 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(EnumerableExtensions.OrderBy))]
+	public void OrderBy()
+	{
+		var result = this._personRefEnumerable.OrderBy(p => p.FirstName);
+
+		this.Consume(result);
+	}
+
 	//[Benchmark(Description = nameof(EnumerableExtensions.OrderBy) + ": With Sort Expression")]
 	//public void OrderBy()
 	//{
@@ -416,6 +444,14 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(EnumerableExtensions.ToFrozenSet))]
+	public void ToFrozenSet()
+	{
+		var result = this._personRefEnumerable.ToFrozenSet();
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(EnumerableExtensions.ToImmutable))]
 	public void ToImmutable()
 	{
@@ -440,6 +476,14 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		var result = await people.ToListAsync().ConfigureAwait(false);
 
 		await this.ConsumeAsync(result).ConfigureAwait(false);
+	}
+
+	[Benchmark(Description = nameof(EnumerableExtensions.ToReadOnlyCollection))]
+	public void ToReadOnlyCollection()
+	{
+		var result = this._personRefEnumerable.ToReadOnlyCollection();
+
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(EnumerableExtensions.Upsert))]

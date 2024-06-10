@@ -51,7 +51,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.BytesToString) + ": Comparison")]
+	[Benchmark(Description = "BytesToString: Comparison")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
 	public void BytesToString_Comparison()
 	{
@@ -84,7 +84,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		base.Consume(result);
 	}
 
-	[Benchmark(Description = "Combine Strings: SB.Append() + foreach()")]
+	[Benchmark(Description = "Combine Strings: SB.Append() + foreach(): Comparison")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
 	public void CombineStrings_Comparison()
 	{
@@ -98,7 +98,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		base.Consume(sb.ToString());
 	}
 
-	[Benchmark(Description = "Combine Strings: ConcatStrings")]
+	[Benchmark(Description = nameof(FastStringBuilder.ConcatStrings))]
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void ConcatStrings()
 	{
@@ -107,7 +107,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Combine Strings: SB.AppendLine() + for()")]
+	[Benchmark(Description = "Combine Strings: SB.AppendLine() + for() : Comparison")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
 	public void ConcatStrings_Comparison()
 	{
@@ -187,7 +187,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this._wordDictionary = RandomData.GenerateWords(this.Count, 10, 10).ToDictionary(x => RandomData.GenerateKey(), y => y);
 	}
 
-	[Benchmark(Description = "Creating Delimited String: ToDelimitedString()")]
+	[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString))]
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void ToDelimitedString()
 	{
@@ -196,7 +196,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Creating Delimited String: Normal")]
+	[Benchmark(Description = "Creating Delimited String: Comparison")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
 	public void ToDelimitedString_Comparison()
 	{
