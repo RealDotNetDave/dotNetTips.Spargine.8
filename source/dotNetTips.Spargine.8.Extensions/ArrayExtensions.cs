@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -135,7 +135,7 @@ public static class ArrayExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>System.ReadOnlySpan&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "")]
+	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.New, Documentation = "")]
 	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this T[] list) => new(list.ArgumentNotNull());
 
 	/// <summary>
@@ -145,7 +145,7 @@ public static class ArrayExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>System.Span&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AsSpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(AsSpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.New, Documentation = "ADD URL")]
 	public static Span<T> AsSpan<T>([NotNull] this T[] list) => new(list.ArgumentNotNull());
 
 	/// <summary>
@@ -445,7 +445,7 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null or empty.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static T[] RemoveLast<T>([NotNull] this T[] array)
 	{
 		array = array.ArgumentItemsExists();
@@ -470,7 +470,7 @@ public static class ArrayExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>System.Collections.Frozen.FrozenSet&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.New, Documentation = "ADD URL")]
 	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this T[] list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>

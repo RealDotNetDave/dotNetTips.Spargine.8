@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="DriveHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -34,7 +34,7 @@ public static class DriveHelper
 	/// </summary>
 	/// <param name="drive">The drive.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(GetDriveSerialNumber), author: "David McCarter", createdOn: "9/6/2020", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://dotnettips.wordpress.com/2007/12/14/finding-a-drives-serial-number/")]
+	[Information(nameof(GetDriveSerialNumber), author: "David McCarter", createdOn: "9/6/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://dotnettips.wordpress.com/2007/12/14/finding-a-drives-serial-number/")]
 	public static string GetDriveSerialNumber([NotNull] string drive)
 	{
 		drive = drive.ArgumentNotNullOrEmpty();

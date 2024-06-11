@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -584,7 +584,7 @@ public static class TypeHelper
 	/// </summary>
 	/// <param name="type">The type.</param>
 	/// <returns><c>true</c> if [is built-in type] [the specified type]; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsBuiltinType), author: "David McCarter", createdOn: "11/6/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsBuiltinType), author: "David McCarter", createdOn: "11/6/2023", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsBuiltinType(Type type)
 	{
 		if (type is null)
@@ -626,7 +626,7 @@ public static class TypeHelper
 	/// <returns>
 	///   <c>true</c> if [is dot net assemblyCollection] [the specified file]; otherwise, <c>false</c>.</returns>
 	/// <exception cref="FileNotFoundException">File not found.</exception>
-	[Information("Orginal code by GÉRALD BARRÉ", author: "David McCarter", createdOn: "5/20/2024", UnitTestCoverage = 0, Status = Status.New)]
+	[Information("Orginal code by GÉRALD BARRÉ", author: "David McCarter", createdOn: "5/20/2024", UnitTestCoverage = 100, Status = Status.New)]
 	public static bool IsDotNetAssembly(FileInfo file)
 	{
 		file = file.ArgumentExists();
@@ -667,7 +667,7 @@ public static class TypeHelper
 	/// Gets all of the builtin types for .NET.
 	/// </summary>
 	/// <value>The builtin types.</value>
-	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static ReadOnlyCollection<Type> BuiltinTypes
 	{
 		get

@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-22-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -92,6 +93,27 @@ public class ArrayExtensionsTests
 		Assert.IsFalse(people1.AreEqual(arrayToCheck: null));
 	}
 
+	[TestMethod]
+	public void AsReadOnlySpanTest()
+	{
+		var words = RandomData.GenerateWords(10, 10, 100).ToArray();
+
+		var result = words.AsReadOnlySpan();
+
+		Assert.IsTrue(result.Length == 10);
+	}
+
+	[TestMethod]
+	public void AsReadOnlyTest()
+	{
+		var words = RandomData.GenerateWords(10, 10, 100).ToArray();
+
+		var result = words.AsReadOnly();
+
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == 10);
+	}
+
 	/// <summary>
 	/// Defines the test method BytesToStringTest.
 	/// </summary>
@@ -147,7 +169,7 @@ public class ArrayExtensionsTests
 
 		//Person[] nullPerson = default;
 
-		//Assert.IsFalse(people.ContainsAny(nullPerson));
+		//Assert.IsFalse(words.ContainsAny(nullPerson));
 
 	}
 
@@ -300,20 +322,31 @@ public class ArrayExtensionsTests
 	[TestMethod]
 	public void ToDistinctTest()
 	{
-		var people = RandomData.GenerateWords(10, 10, 100).ToArray();
+		var words = RandomData.GenerateWords(10, 10, 100).ToArray();
 
-		people = people.AddLast(people.First());
+		words = words.AddLast(words.First());
 
-		Assert.IsTrue(people.ToDistinct().FastCount() == 10);
+		Assert.IsTrue(words.ToDistinct().FastCount() == 10);
+	}
+
+	[TestMethod]
+	public void ToFrozenSetTest()
+	{
+		var words = RandomData.GenerateWords(10, 10, 100).ToArray();
+
+		var result = words.ToFrozenSet();
+
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == 10);
 	}
 
 	//[TestMethod]
 	//public void PerformActionTest_Record()
 	//{
-	//	var people = RandomData.GeneratePersonRecordCollection(10).ToArray();
+	//	var words = RandomData.GeneratePersonRecordCollection(10).ToArray();
 	//	var sb = new StringBuilder();
 
-	//	people.PerformAction((person) =>
+	//	words.PerformAction((person) =>
 	//	{
 	//		sb.Append($"{person.ToString()}|");
 	//	});

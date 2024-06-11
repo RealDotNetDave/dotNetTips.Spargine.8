@@ -4,7 +4,7 @@
 // Created          : 01-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-05-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="AssemblyExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -107,7 +107,7 @@ public static class AssemblyExtensions
 	/// <exception cref="ArgumentNullException">assembly</exception>
 	/// <exception cref="ArgumentNullException">interfaceType</exception>
 	/// <remarks>Original code from: oqtane.framework</remarks>
-	[Information(nameof(GetTypes), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(GetTypes), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> GetTypes([NotNull] this Assembly assembly, [NotNull] Type type)
 	{
 		assembly = assembly.ArgumentNotNull();

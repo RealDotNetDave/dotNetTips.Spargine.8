@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-05-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -165,7 +165,7 @@ public static class CollectionExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>ReadOnlySpan&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AsReadOnlySpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(AsReadOnlySpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.New, Documentation = "ADD URL")]
 	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this Collection<T> list) => new([.. list]);
 
 	/// <summary>
@@ -175,7 +175,7 @@ public static class CollectionExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>Span&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AsSpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(AsSpan), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.New, Documentation = "ADD URL")]
 	public static Span<T> AsSpan<T>([NotNull] this Collection<T> list) => new([.. list]);
 
 	/// <summary>
@@ -233,7 +233,7 @@ public static class CollectionExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>FrozenSet&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.New, Documentation = "ADD URL")]
 	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this Collection<T> list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>

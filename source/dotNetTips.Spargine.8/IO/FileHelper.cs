@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -31,7 +31,7 @@ namespace DotNetTips.Spargine.IO;
 /// Helper methods for files.
 /// </summary>
 [Information(nameof(FileHelper), "David McCarter", "2/11/2017", Status = Status.Available)]
-public static partial class FileHelper
+public static class FileHelper
 {
 
 	/// <summary>
@@ -116,7 +116,8 @@ public static partial class FileHelper
 	/// </summary>
 	/// <param name="file">The file.</param>
 	/// <param name="permission">The requested permission.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <returns>
+	///   <c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool CheckPermission([NotNull] FileInfo file, FileSystemRights permission = FileSystemRights.Read)
@@ -208,7 +209,8 @@ public static partial class FileHelper
 	/// <param name="file">The file.</param>
 	/// <param name="destination">The destination.</param>
 	/// <param name="progressCallback">The progress callback.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <returns>
+	///   <c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	[Information(nameof(CopyFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static bool CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, [NotNull] CopyProgressRoutine progressCallback)
 	{
@@ -369,7 +371,8 @@ public static partial class FileHelper
 	/// Validates <paramref name="file" /> to ensure it's not null.
 	/// </summary>
 	/// <param name="file">The file.</param>
-	/// <returns><c>true</c> if [has invalid file chars] [the specified file name]; otherwise, <c>false</c>.</returns>
+	/// <returns>
+	///   <c>true</c> if [has invalid file chars] [the specified file name]; otherwise, <c>false</c>.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "ADD URL")]
 	public static bool FileHasInvalidChars([NotNull] FileInfo file) => file.CheckExists() && file.ArgumentNotNull().FullName.IndexOfAny([.. InvalidFileNameChars]) != -1;
 

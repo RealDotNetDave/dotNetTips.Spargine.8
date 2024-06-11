@@ -4,14 +4,12 @@
 // Created          : 03-05-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="NetworkConnectionException.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Custom exception to be used when there is a network connection error.
-// </summary>
+// <summary>Custom exception to be used when there is a network connection error.</summary>
 // ***********************************************************************
 
 using DotNetTips.Spargine.Core.Network;
@@ -27,7 +25,7 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 /// <seealso cref="Exception" />
 [Serializable]
-[Information(nameof(NetworkConnectionException), UnitTestCoverage = 0, Status = Status.Available)]
+[Information(nameof(NetworkConnectionException), Status = Status.Available)]
 public sealed class NetworkConnectionException : LoggableException
 {
 

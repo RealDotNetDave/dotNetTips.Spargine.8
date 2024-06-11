@@ -4,7 +4,7 @@
 // Created          : 02-05-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-09-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="RegexProcessorTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.

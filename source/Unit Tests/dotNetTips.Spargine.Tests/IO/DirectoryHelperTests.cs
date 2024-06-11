@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-18-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelperTests.cs" company="dotNetTips.Spargine.Tests">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -17,6 +17,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.Versioning;
 using System.Security.AccessControl;
+using System.Threading.Tasks;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -48,6 +49,75 @@ public class DirectoryHelperTests
 
 		Assert.IsNotNull(result);
 		Assert.IsTrue(result.Count > 0);
+	}
+
+	[TestMethod]
+	public async Task LoadFilesAsync_EmptyDirectory_ReturnsNoFiles()
+	{
+		// Arrange
+		var tempDirectory = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), Path.GetRandomFileName()));
+		try
+		{
+			var searchPattern = "*.txt";
+			var searchOption = SearchOption.TopDirectoryOnly;
+			var directories = new List<DirectoryInfo> { new DirectoryInfo(tempDirectory.FullName) };
+
+			// Act
+			var files = new List<FileInfo>();
+			await foreach (var fileSet in DirectoryHelper.LoadFilesAsync(directories, searchPattern, searchOption))
+			{
+				files.AddRange(fileSet);
+			}
+
+			// Assert
+			Assert.AreEqual(0, files.Count);
+		}
+		finally
+		{
+			tempDirectory.Delete(true);
+		}
+	}
+	[TestMethod]
+	public async Task LoadFilesAsync_ValidDirectory_ReturnsFiles()
+	{
+		// Arrange
+		var tempDirectory = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), Path.GetRandomFileName()));
+		try
+		{
+			var searchPattern = "*.txt";
+			var searchOption = SearchOption.TopDirectoryOnly;
+			var directories = new List<DirectoryInfo> { new DirectoryInfo(tempDirectory.FullName) };
+
+			// Create dummy files for testing
+			var expectedFiles = new List<string>
+			{
+				Path.Combine(tempDirectory.FullName, "file1.txt"),
+				Path.Combine(tempDirectory.FullName, "file2.txt")
+			};
+
+			foreach (var filePath in expectedFiles)
+			{
+				File.WriteAllText(filePath, "Test content");
+			}
+
+			// Act
+			var files = new List<FileInfo>();
+			await foreach (var fileSet in DirectoryHelper.LoadFilesAsync(directories, searchPattern, searchOption))
+			{
+				files.AddRange(fileSet);
+			}
+
+			// Assert
+			Assert.AreEqual(expectedFiles.Count, files.Count);
+			foreach (var file in files)
+			{
+				Assert.IsTrue(expectedFiles.Contains(file.FullName));
+			}
+		}
+		finally
+		{
+			tempDirectory.Delete(true);
+		}
 	}
 
 	[SupportedOSPlatform("windows")]
