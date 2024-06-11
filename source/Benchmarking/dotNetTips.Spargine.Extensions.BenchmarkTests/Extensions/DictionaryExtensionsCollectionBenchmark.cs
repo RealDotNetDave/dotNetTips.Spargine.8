@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
+using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -70,7 +71,7 @@ public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		base.Setup();
 
 		this._personRefDictionary = this.GetPersonRefDictionary();
-		this._personRefDictionaryToInsert = this.GetPersonRefDictionary().Take(this.Count / 2).ToDictionary();
+		this._personRefDictionaryToInsert = RandomData.GeneratePersonRefCollection<Address>(Count / 2).ToDictionary(p => p.Id);
 	}
 
 	[Benchmark(Description = nameof(DictionaryExtensions.ToConcurrentDictionary))]
