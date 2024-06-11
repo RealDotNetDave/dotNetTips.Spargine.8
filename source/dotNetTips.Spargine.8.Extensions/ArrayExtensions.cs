@@ -240,7 +240,7 @@ public static class ArrayExtensions
 		}
 		else
 		{
-			return array.Count() <= 0;
+			return array.Length <= 0;
 		}
 	}
 	/// <summary>
