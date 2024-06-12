@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="dotNetTips.Spargine.8.Tester">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -253,7 +253,7 @@ public static partial class RandomData
 	/// <param name="addressLength">Length of the address. Length must be between 5 - 100. Defaults to 25.</param>
 	/// <param name="countyProvinceLength">Length of the county province. Length must be between 5 - 50. Defaults to 20.</param>
 	/// <returns>System.Collections.ObjectModel.Collection&lt;T&gt;.</returns>
-	[Information(nameof(GenerateAddressCollection), "David McCarter", "12/4/2023", UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
+	[Information(nameof(GenerateAddressCollection), "David McCarter", "12/4/2023", UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/Spargine8")]
 	public static Collection<T> GenerateAddressCollection<T>([NotNull] Country country, int count = 2, int addressLength = 25, int countyProvinceLength = 20) where T : IAddress, new()
 	{
 		country = country.ArgumentNotNull();
@@ -293,7 +293,7 @@ public static partial class RandomData
 	/// <param name="addressLength">Length of the address. Length must be between 5 - 100. Defaults to 25.</param>
 	/// <param name="countyProvinceLength">Length of the county province. Length must be between 5 - 50. Defaults to 20.</param>
 	/// <returns>System.Collections.ObjectModel.Collection&lt;DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord&gt;.</returns>
-	[Information(nameof(GenerateAddressRecordCollection), "David McCarter", "3/14/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GenerateAddressRecordCollection), "David McCarter", "3/14/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static Collection<AddressRecord> GenerateAddressRecordCollection([NotNull] CountryName country, int count = 2, int addressLength = 25, int countyProvinceLength = 20)
 	{
 		count = count.ArgumentInRange(lower: 0, defaultValue: 2);
@@ -514,7 +514,7 @@ public static partial class RandomData
 	/// Randomly generate a male or female first name.
 	/// </summary>
 	/// <returns>System.String.</returns>
-	[Information(nameof(GenerateFirstName), "David McCarter", "3/11/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GenerateFirstName), "David McCarter", "3/11/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string GenerateFirstName() => _firstNames.Value.PickRandom();
 
 	/// <summary>
@@ -548,7 +548,7 @@ public static partial class RandomData
 	/// Randomly generate a person's last name.
 	/// </summary>
 	/// <returns>System.String.</returns>
-	[Information(nameof(GenerateLastName), "David McCarter", "3/11/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GenerateLastName), "David McCarter", "3/11/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string GenerateLastName() => _lastNames.Value.PickRandom();
 
 	/// <summary>
@@ -588,7 +588,7 @@ public static partial class RandomData
 	/// </summary>
 	/// <param name="count">The count. Minimnum value is 1.</param>
 	/// <returns>System.Collections.ObjectModel.ReadOnlyCollection&lt;string&gt;.</returns>
-	[Information(nameof(GeneratePersonNames), "David McCarter", "12/15/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GeneratePersonNames), "David McCarter", "12/15/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static ReadOnlyCollection<PersonName> GeneratePersonNames(int count = 1)
 	{
 		count = count.ArgumentInRange(lower: 1, defaultValue: 1);

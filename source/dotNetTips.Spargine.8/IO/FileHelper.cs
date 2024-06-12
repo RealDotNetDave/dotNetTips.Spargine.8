@@ -272,7 +272,7 @@ public static class FileHelper
 	/// <param name="files">The files.</param>
 	/// <param name="stopOnFirstError">The stop on first error.</param>
 	/// <returns>DotNetTips.Spargine.Core.SimpleResult&lt;System.Collections.ObjectModel.ReadOnlyCollection&lt;string&gt;&gt;.</returns>
-	[Information(nameof(DeleteFiles), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(DeleteFiles), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static SimpleResult<ReadOnlyCollection<string>> DeleteFiles([NotNull] this ReadOnlyCollection<string> files, bool stopOnFirstError = false)
 	{
 		files = files.ArgumentNotNull();
@@ -373,7 +373,7 @@ public static class FileHelper
 	/// <param name="file">The file.</param>
 	/// <returns>
 	///   <c>true</c> if [has invalid file chars] [the specified file name]; otherwise, <c>false</c>.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "ADD URL")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool FileHasInvalidChars([NotNull] FileInfo file) => file.CheckExists() && file.ArgumentNotNull().FullName.IndexOfAny([.. InvalidFileNameChars]) != -1;
 
 	/// <summary>

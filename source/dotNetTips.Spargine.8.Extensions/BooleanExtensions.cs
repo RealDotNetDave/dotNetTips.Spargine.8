@@ -4,7 +4,7 @@
 // Created          : 07-15-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="BooleanExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -32,7 +32,7 @@ public static class BooleanExtensions
 	/// <param name="value">if set to <c>true</c> [value].</param>
 	/// <returns>System.String.</returns>
 	[ExcludeFromCodeCoverage]
-	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired)]
+	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL")]
 	public static string ToLowerCase(this bool value) => value ? Resources.TrueLowerCase : Resources.FalseLowerCase;
 
 }

@@ -35,7 +35,7 @@ public static class AssemblyExtensions
 	/// <returns>ReadOnlyCollection&lt;Type&gt;.</returns>
 	/// <exception cref="ArgumentNullException">assembly</exception>
 	/// <remarks>Original code from: oqtane.framework</remarks>
-	[Information(nameof(GetAllInterfaces), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetAllInterfaces), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<Type> GetAllInterfaces([NotNull] this Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
@@ -59,7 +59,7 @@ public static class AssemblyExtensions
 	/// </summary>
 	/// <param name="assembly">The assembly.</param>
 	/// <returns>ReadOnlyCollection&lt;Type&gt;.</returns>
-	[Information(nameof(GetAllTypes), "David McCarter", "221/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetAllTypes), "David McCarter", "221/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<Type> GetAllTypes([NotNull] this Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
@@ -76,7 +76,7 @@ public static class AssemblyExtensions
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">assembly</exception>
 	/// <remarks>Original code from: oqtane.framework</remarks>
-	[Information(nameof(GetInstances), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetInstances), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static IEnumerable<T> GetInstances<T>([NotNull] this Assembly assembly) where T : class
 	{
 		assembly = assembly.ArgumentNotNull();
@@ -107,7 +107,7 @@ public static class AssemblyExtensions
 	/// <exception cref="ArgumentNullException">assembly</exception>
 	/// <exception cref="ArgumentNullException">interfaceType</exception>
 	/// <remarks>Original code from: oqtane.framework</remarks>
-	[Information(nameof(GetTypes), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetTypes), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<Type> GetTypes([NotNull] this Assembly assembly, [NotNull] Type type)
 	{
 		assembly = assembly.ArgumentNotNull();

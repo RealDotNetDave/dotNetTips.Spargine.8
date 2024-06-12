@@ -111,7 +111,7 @@ public static class ArrayExtensions
 	/// <param name="array">The input.</param>
 	/// <param name="arrayToCheck">The array to check.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(AreEqual), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(AreEqual), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 	public static bool AreEqual<T>([NotNull] this T[] array, [NotNull] T[] arrayToCheck)
 	{
@@ -135,7 +135,7 @@ public static class ArrayExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>System.ReadOnlySpan&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.New, Documentation = "")]
+	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.New, Documentation = "ADD URL")]
 	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this T[] list) => new(list.ArgumentNotNull());
 
 	/// <summary>
@@ -155,7 +155,7 @@ public static class ArrayExtensions
 	/// <param name="array">The bytes.</param>
 	/// <returns>A <see cref="string" /> that represents this instance.</returns>
 	/// <exception cref="ArgumentNullException">Array cannot be null.</exception>
-	[Information(nameof(BytesToString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(BytesToString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static string BytesToString([NotNull] this byte[] array)
 	{
 		if (array.DoesNotHaveItems())
@@ -187,7 +187,7 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>System.String.</returns>
 	/// <exception cref="ArgumentNullException">array cannot be empty.</exception>
-	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static string BytesToString([NotNull] this ReadOnlySpan<byte> array)
 	{
 		array = array.ArgumentNotEmpty();
@@ -216,7 +216,7 @@ public static class ArrayExtensions
 	/// <param name="array">The input.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/30/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/30/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static T[] Clone<T>([NotNull] this T[] array)
 	{
 		array = array.ArgumentNotNull();
@@ -232,7 +232,7 @@ public static class ArrayExtensions
 	/// <param name="items">The items.</param>
 	/// <returns><c>true</c> if the specified items has items; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">items cannot be null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
 	public static bool ContainsAny<T>([NotNull] this T[] array, [NotNull] params T[] items)
 	{
 		if (array is null)
@@ -326,7 +326,7 @@ public static class ArrayExtensions
 	/// <param name="array">The array to use to generate hash code.</param>
 	/// <returns>Hash code as System.Int32.</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
 	public static int GenerateHashCode<T>([NotNull] this T[] array) => array.ArgumentNotNull().Where(t => t is not null).Aggregate(6551, (accumulator, t) => accumulator ^= (accumulator << 5) ^ EqualityComparer<T>.Default.GetHashCode(t));
 
 	/// <summary>
@@ -430,7 +430,7 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null or empty.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
 	public static T[] RemoveFirst<T>([NotNull] this T[] array)
 	{
 		array = array.ArgumentItemsExists();
@@ -445,7 +445,7 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null or empty.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
 	public static T[] RemoveLast<T>([NotNull] this T[] array)
 	{
 		array = array.ArgumentItemsExists();
@@ -460,7 +460,7 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information(nameof(ToDistinct), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(ToDistinct), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static T[] ToDistinct<T>([NotNull] this T[] array) => array.ArgumentNotNull().Distinct().ToArray();
 
 	/// <summary>

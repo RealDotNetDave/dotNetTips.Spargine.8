@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-09-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="DateTimeFormat.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -22,6 +22,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Implements the <see cref="Enumeration" />
 /// </summary>
 /// <seealso cref="Enumeration" />
+[Information(nameof(DateTimeFormat), Status = Status.Available, Documentation = "ADD URL")]
 public record DateTimeFormat : Enumeration
 {
 

@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2024
+// Last Modified On : 06-11-2024
 // ***********************************************************************
 // <copyright file="EnumHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -114,7 +114,7 @@ public static class EnumHelper
 	/// EnumValue { Name = Revalidate, Value = 4 },EnumValue { Name = Reload, Value = 5 },
 	/// EnumValue { Name = NoCacheNoStore, Value = 6 }
 	/// </example>
-	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static ReadOnlyCollection<EnumValue> GetValues<T>(bool fixNames = true, bool useXmlNames = true)
 		where T : Enum
 	{

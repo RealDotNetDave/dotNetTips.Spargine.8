@@ -319,13 +319,13 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Finds the derived types.
+	/// Finds the derived types in a <see cref="AppDomain"/>.
 	/// </summary>
 	/// <param name="currentDomain">The current domain.</param>
 	/// <param name="baseType">Type of the base.</param>
 	/// <param name="classOnly">if set to <c>true</c> [class only].</param>
 	/// <returns>IEnumerable&lt;Type&gt;.</returns>
-	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "ADD URL")]
+	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
 		currentDomain = currentDomain.ArgumentNotNull();
