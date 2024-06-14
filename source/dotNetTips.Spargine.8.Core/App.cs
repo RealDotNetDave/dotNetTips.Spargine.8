@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-12-2024
+// Last Modified On : 06-14-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -19,6 +19,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
+using DotNetTips.Spargine.Core.Properties;
 using static DotNetTips.Spargine.Core.SourceGenerators;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -26,11 +27,11 @@ using static DotNetTips.Spargine.Core.SourceGenerators;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Application information and helper methods.
+/// Provides a collection of static methods and properties that provide access to application-level information and utilities.
+/// This includes methods to change culture, manage processes, access environment variables, and retrieve application and system information.
 /// </summary>
 public static class App
 {
-	//TODO: ADD METHOD TO REBOOT COMPUTER.
 
 	/// <summary>
 	/// The temporary ASP files location.
@@ -73,9 +74,14 @@ public static class App
 	}
 
 	/// <summary>
-	/// Kills the process.
+	/// Kills the specified process by name.
 	/// </summary>
-	/// <param name="processName">Name of the process.</param>
+	/// <param name="processName">The name of the process to kill.</param>
+	/// <example>
+	/// Here is how you can use the <see cref="KillProcess" /> method:
+	/// <code>
+	/// App.KillProcess("notepad");
+	/// </code></example>
 	private static void KillProcess(string processName)
 	{
 		processName = processName.ArgumentNotNullOrEmpty();
@@ -94,6 +100,13 @@ public static class App
 	/// Changes the culture.
 	/// </summary>
 	/// <param name="cultureName">Name of the culture.</param>
+	/// <example>
+	/// Here is how you can use the ChangeCulture method:
+	/// <code>
+	/// App.ChangeCulture("en-US");
+	/// </code>
+	/// This will change the current culture to English (United States).
+	/// </example>
 	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void ChangeCulture(string cultureName) => CultureInfo.CurrentCulture = new CultureInfo(cultureName.ArgumentNotNullOrEmpty());
 
@@ -101,6 +114,13 @@ public static class App
 	/// Changes the current culture and UI culture.
 	/// </summary>
 	/// <param name="culture">The culture.</param>
+	/// <example>
+	/// Here is how you can use the ChangeCulture method:
+	/// <code>
+	/// App.ChangeCulture(new CultureInfo("en-US"));
+	/// </code>
+	/// This will change the current culture and UI culture to English (United States).
+	/// </example>
 	[Information(UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void ChangeCulture(CultureInfo culture)
 	{
@@ -112,57 +132,70 @@ public static class App
 	/// Changes the UI culture.
 	/// </summary>
 	/// <param name="cultureName">Name of the culture.</param>
+	/// <example>
+	/// Here is how you can use the ChangeUICulture method:
+	/// <code>
+	/// App.ChangeUICulture("fr-FR");
+	/// </code>
+	/// This will change the current UI culture to French (France).
+	/// </example>
 	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void ChangeUICulture(string cultureName) => CultureInfo.CurrentUICulture = new CultureInfo(cultureName.ArgumentNotNullOrEmpty());
 
 	/// <summary>
 	/// Returns the folder path for the entry assembly.
 	/// </summary>
-	/// <returns>System.String.</returns>
+	/// <returns>The directory name of the process executable in the default application domain. In other application domains, this is the first executable that was executed by AppDomain.ExecuteAssembly.</returns>
+	/// <example>
+	/// Here is how you can use the ExecutingFolder method:
+	/// <code>
+	/// var folderPath = App.ExecutingFolder();
+	/// Console.WriteLine(folderPath);
+	/// </code></example>
 	[Information(nameof(ExecutingFolder), author: "David McCarter", createdOn: "6/26/2017", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static string ExecutingFolder() => Path.GetDirectoryName(Environment.ProcessPath);
 
 	/// <summary>
-	/// Gets the culture names.
+	/// Gets the culture names based on the specified culture type.
 	/// </summary>
 	/// <param name="cultureType">Type of the culture. Defaults to AllCultures.</param>
-	/// <returns>ReadOnlyCollection&lt;System.String&gt;.</returns>
-	[Information(nameof(AppInfo), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	/// <returns>A read-only collection of culture names.</returns>
+	/// <example>
+	/// Here is how you can use the <see cref="GetCultureNames" /> method:
+	/// <code>
+	/// var cultureNames = App.GetCultureNames(CultureTypes.SpecificCultures);
+	/// foreach(var name in cultureNames)
+	/// {
+	/// Console.WriteLine(name);
+	/// }
+	/// </code>
+	/// This will print the names of all specific cultures.
+	/// </example>
+	[Information(nameof(AppInfo), UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<string> GetCultureNames(CultureTypes cultureType = CultureTypes.AllCultures)
 	{
-		if (_cultureNames is null)
-		{
-			var cultures = CultureInfo.GetCultures(cultureType).OrderBy(p => p.Name).Select(c => c.Name);
-
-			_cultureNames = new ReadOnlyCollection<string>(cultures.ToArray());
-		}
-
-		return _cultureNames;
+		return _cultureNames ??= CultureInfo.GetCultures(cultureType)
+											 .OrderBy(p => p.Name)
+											 .Select(c => c.Name)
+											 .ToList()
+											 .AsReadOnly();
 	}
 
 	/// <summary>
-	/// Gets the environment variables.
+	/// Gets the environment variables as an immutable dictionary.
 	/// </summary>
-	/// <returns>IImmutableDictionary&lt;System.String, System.String&gt;.</returns>
-	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	/// <returns>An immutable dictionary containing all environment variables where the key is the variable name and the value is its value.</returns>
+	[Information(UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static IImmutableDictionary<string, string> GetEnvironmentVariables()
 	{
-		var variables = Environment.GetEnvironmentVariables();
-
-		var builder = ImmutableDictionary.CreateBuilder<string, string>();
-
-		foreach (DictionaryEntry variable in variables)
-		{
-			builder.Add(variable.Key.ToString(), variable.Value.ToString());
-		}
-
-		return builder.ToImmutable();
+		return Environment.GetEnvironmentVariables().Cast<DictionaryEntry>()
+			.ToImmutableDictionary(de => de.Key.ToString(), de => de.Value.ToString());
 	}
 
 	/// <summary>
-	/// Gets the current processor information.
+	/// Retrieves detailed information about the processor.
 	/// </summary>
-	/// <returns>ProcessorInformation.</returns>
+	/// <returns>A <see cref="ProcessorInformation" /> object containing various details about the processor such as architecture, speed, and core count.</returns>
 	/// <example>
 	/// Example output:<br />
 	/// ActiveProcessorMask: 0x0000000000000fff
@@ -175,6 +208,7 @@ public static class App
 	/// ProcessorLevel: 6
 	/// ProcessorRevision: 42243
 	/// </example>
+	/// <remarks>This method utilizes system-specific calls to gather comprehensive details about the processor. It's designed to work across different platforms, providing a unified interface for accessing processor information.</remarks>
 	[Information(nameof(GetProcessorInformation), "David McCarter", "3/20/2023", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static ProcessorInformation GetProcessorInformation()
 	{
@@ -198,24 +232,26 @@ public static class App
 	}
 
 	/// <summary>
-	/// Check to see if the current app is already running.
+	/// Checks if the current application is already running.
 	/// </summary>
-	/// <returns><c>true</c> if app is not running, <c>false</c> otherwise.</returns>
+	/// <returns><c>true</c> if the application is already running; otherwise, <c>false</c>.</returns>
+	/// <remarks>This method checks if there are any processes with the same name as the current process. If more than one is found, it indicates that the application is already running.</remarks>
 	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static bool IsRunning() => Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).FastCount() > 0;
 
 	/// <summary>
-	/// Checks to see if the current application is ASP.NET.
+	/// Checks to see if the current application is running from an ASP.NET context.
 	/// </summary>
-	/// <returns>True if running ASP.NET.</returns>
+	/// <returns><c>true</c> if the application is running from an ASP.NET context; otherwise, <c>false</c>.</returns>
+	/// <remarks>This method determines if the application is running within an ASP.NET context by checking the presence of ASP.NET temporary files in the application's dynamic directory.</remarks>
 	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static bool IsRunningFromAspNet() => (!string.IsNullOrEmpty(AppDomain.CurrentDomain.DynamicDirectory)) && AppDomain.CurrentDomain.DynamicDirectory.Contains(TempAspFiles, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
-	/// Determines whether user is administrator.
+	/// Determines whether the current user is an administrator.
 	/// </summary>
-	/// <returns><c>true</c> if [is user administrator]; otherwise, <c>false</c>.</returns>
-	/// <exception cref="PlatformNotSupportedException"></exception>
+	/// <returns><c>true</c> if the current user is an administrator; otherwise, <c>false</c>.</returns>
+	/// <exception cref="PlatformNotSupportedException">Thrown when the operating system is not Windows, as administrator status can only be checked on Windows.</exception>
 	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static bool IsUserAdministrator()
 	{
@@ -223,66 +259,74 @@ public static class App
 		{
 			throw new PlatformNotSupportedException();
 		}
-		else
-		{
-			using var wi = WindowsIdentity.GetCurrent();
 
-			return new WindowsPrincipal(wi).IsInRole(WindowsBuiltInRole.Administrator);
-		}
+		return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
 	}
 
 	/// <summary>
 	/// Kills the current process.
 	/// </summary>
+	/// <remarks>This method retrieves the name of the process that started the currently executing application,
+	/// removes the file extension to get the process name, and then calls <see cref="KillProcess" />
+	/// with that name to terminate the process.</remarks>
 	[Information(UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void Kill() => KillProcess(Path.GetFileNameWithoutExtension(AppContext.BaseDirectory));
 
 	/// <summary>
-	/// Calculates the maximum degree of parallelism.
+	/// Calculates the maximum degree of parallelism based on the number of processors.
 	/// </summary>
-	/// <returns>System.Int32.</returns>
+	/// <returns>The maximum degree of parallelism.</returns>
+	/// <remarks>This method calculates the maximum degree of parallelism by taking 75% of the processor count, doubling it, and rounding up to the nearest whole number.
+	/// It is designed to optimize parallel operations by not overloading the system with too many concurrent tasks.</remarks>
 	public static int MaxDegreeOfParallelism() => Convert.ToInt32(Math.Ceiling(Environment.ProcessorCount * 0.75 * 2.0));
-
 	/// <summary>
-	/// Loads a list of the running assembly referenced assemblies.
+	/// Reboots the computer.
 	/// </summary>
-	/// <returns>IEnumerable(Of System.String).</returns>
-	/// <example>Output example:
-	/// [0]: "System.Runtime, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [1]: "System.Resources.ResourceManager, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [2]: "System.Runtime.InteropServices, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [3]: "Microsoft.TestPlatform.PlatformAbstractions, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [4]: "Microsoft.TestPlatform.CommunicationUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [5]: "Microsoft.TestPlatform.CoreUtilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [6]: "Microsoft.VisualStudio.TestPlatform.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [7]: "Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [8]: "System.Diagnostics.TraceSource, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [9]: "System.Diagnostics.StackTrace, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [10]: "System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [11]: "System.Diagnostics.Debug, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [12]: "Microsoft.TestPlatform.CrossPlatEngine, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [13]: "System.Net.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [14]: "System.Runtime.InteropServices.RuntimeInformation, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// [15]: "System.Linq, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-	/// </example>
-	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static ReadOnlyCollection<string> ReferencedAssemblies()
+	/// <exception cref="PlatformNotSupportedException">Thrown when the operating system is not supported.</exception>
+	[Information(UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	public static void RebootComputer()
 	{
-		var referencedAssemblies = new List<string>();
-
-		var assemblies = Assembly.GetEntryAssembly().GetReferencedAssemblies().AsSpan();
-
-		foreach (var item in assemblies)
+		if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 		{
-			referencedAssemblies.Add(item.ToString());
+			throw new PlatformNotSupportedException(Resources.RebootingIsOnlySupportedOnWindows);
 		}
 
-		return referencedAssemblies.AsReadOnly();
+		var psi = new ProcessStartInfo("shutdown", "/r /t 0")
+		{
+			CreateNoWindow = true,
+			UseShellExecute = false
+		};
+
+		_ = Process.Start(psi);
 	}
 
 	/// <summary>
-	/// Restarts an app as administrator.
+	/// Loads a list of the running assembly's referenced assemblies.
 	/// </summary>
+	/// <returns>A read-only collection of strings representing the full names of all assemblies referenced by the running assembly.</returns>
+	/// <example>Example usage:
+	/// <code>
+	/// var referencedAssemblies = App.ReferencedAssemblies();
+	/// foreach(var assembly in referencedAssemblies)
+	/// {
+	/// Console.WriteLine(assembly);
+	/// }
+	/// </code></example>
+	[Information(UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
+	public static ReadOnlyCollection<string> ReferencedAssemblies()
+	{
+		return Assembly.GetEntryAssembly().GetReferencedAssemblies()
+					   .Select(a => a.ToString())
+					   .ToList()
+					   .AsReadOnly();
+	}
+
+	/// <summary>
+	/// Restarts the application with administrator privileges.
+	/// </summary>
+	/// <remarks>If the current user is not an administrator, this method will attempt to restart the application with administrator privileges.
+	/// It prompts the user for permission to run as an administrator. If granted, the application restarts; otherwise, it exits.
+	/// This method should be used cautiously, as it terminates the current process and starts a new one.</remarks>
 	[Information(UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void RunAsAdministrator()
 	{
@@ -291,39 +335,37 @@ public static class App
 			return;
 		}
 
-		using var process = Process.Start(new ProcessStartInfo(AppContext.BaseDirectory)
+		var processInfo = new ProcessStartInfo
 		{
+			FileName = Environment.ProcessPath,
 			UseShellExecute = true,
 			Verb = "runas",
-		});
+		};
 
-		Process.GetCurrentProcess().Kill();
+		_ = Process.Start(processInfo);
+
+		Environment.Exit(0);
 	}
 
 	/// <summary>
-	/// Gets the assembly information.
+	/// Gets the application information.
 	/// </summary>
-	/// <value>The assembly information.</value>
-	/// <example>Example Output:
-	/// Company: "Microsoft Corporation"
-	/// Copyright: "© Microsoft Corporation. All rights reserved."
-	/// EqualityContract: FullName = "dotNetTips.Spargine.Core.AppInfo", DomainInitialized = Method System.RuntimeType.get_DomainInitialized cannot be called in this context.
-	/// FileVersion: "15.0.0"
-	/// MemoryAllocated: 1720944
-	/// MemoryInfo: { System.GCMemoryInfo}
-	/// Product: "dotNetTips.Spargine"
-	/// ThreadAllocatedBytes: 745384
-	/// Title: "Spargine"
-	/// TotalAllocatedBytes: 3169744
-	/// Version: "16.9.1"
+	/// <value>The application information, including company, configuration, copyright, description, file version, memory allocated, memory info, product, thread allocated bytes, title, total allocated bytes, and version.</value>
+	/// <example>Example usage:
+	/// <code>
+	/// var appInfo = App.AppInfo;
+	/// Console.WriteLine($"Company: {appInfo.Company}");
+	/// </code>
+	/// This will output the company name from the application's assembly information.
 	/// </example>
 	[Information(nameof(AppInfo), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static AppInfo AppInfo => _appInfo.Value;
 
 	/// <summary>
-	/// Gets the culture.
+	/// Gets the current culture of the application.
 	/// </summary>
-	/// <value>The culture.</value>
+	/// <value>The current culture.</value>
+	/// <remarks>This property provides access to the current culture used by the application. It is a wrapper around <see cref="CultureInfo.CurrentCulture" />.</remarks>
 	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static CultureInfo CurrentCulture => CultureInfo.CurrentCulture;
 
@@ -331,13 +373,16 @@ public static class App
 	/// Gets a unique identifier for the current managed thread.
 	/// </summary>
 	/// <value>The current thread identifier.</value>
+	/// <remarks>This property provides the unique identifier of the currently executing thread. It is useful for logging, debugging, or tracking thread-specific operations.</remarks>
 	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
 	public static int CurrentThreadId => Environment.CurrentManagedThreadId;
 
 	/// <summary>
-	/// Gets the UI culture.
+	/// Gets the current UI culture of the application.
 	/// </summary>
-	/// <value>The UI culture.</value>
+	/// <value>The current UI culture.</value>
+	/// <remarks>This property provides access to the current UI culture used by the application. It is a wrapper around <see cref="CultureInfo.CurrentUICulture" />.
+	/// The UI culture is used for string localization, date and number formatting, and other culture-specific operations in the UI.</remarks>
 	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static CultureInfo CurrentUICulture => CultureInfo.CurrentUICulture;
 

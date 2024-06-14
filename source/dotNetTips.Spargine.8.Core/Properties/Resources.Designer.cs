@@ -520,6 +520,15 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rebooting is only supported on Windows..
+        /// </summary>
+        internal static string RebootingIsOnlySupportedOnWindows {
+            get {
+                return ResourceManager.GetString("RebootingIsOnlySupportedOnWindows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to \w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*.
         /// </summary>
         internal static string RegexEmail {
