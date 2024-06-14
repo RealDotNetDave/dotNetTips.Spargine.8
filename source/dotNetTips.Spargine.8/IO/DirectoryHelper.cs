@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-14-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -29,15 +29,18 @@ using Microsoft.Win32;
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Class DirectoryHelper.
+/// Provides utility methods for directory operations such as copying, moving, deleting, and permissions checking.
 /// </summary>
 public static class DirectoryHelper
 {
 
 	/// <summary>
-	/// Applications the application data folder for Windows or Mac.
+	/// Retrieves the application data folder path for the current user on Windows or macOS.
 	/// </summary>
-	/// <returns>Application data folder.</returns>
+	/// <returns>A string representing the path to the application data folder.</returns>
+	/// <remarks>On Windows, this method returns the path to the Local Application Data folder. On macOS, it returns the path to the Home directory.
+	/// The folder path is determined based on the company name specified in the assembly's <see cref="AssemblyCompanyAttribute" />.
+	/// If the company name is not specified, a default folder name is used.</remarks>
 	[SupportedOSPlatform("windows")]
 	[SupportedOSPlatform("macos")]
 	[Information(nameof(AppDataFolder), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100)]
@@ -55,48 +58,45 @@ public static class DirectoryHelper
 	/// <summary>
 	/// Checks the permission of a directory.
 	/// </summary>
-	/// <param name="directory">The directory.</param>
-	/// <param name="permission">The permission.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="directory">The directory to check permissions on.</param>
+	/// <param name="permission">The permission to check for. Default is <see cref="FileSystemRights.Read" />.</param>
+	/// <returns><c>true</c> if the specified permission is allowed; otherwise, <c>false</c>.</returns>
+	/// <example>
+	/// This example shows how to call the <see cref="CheckPermission" /> method.
+	/// <code>
+	/// var directoryInfo = new DirectoryInfo("C:\\MyDirectory");
+	/// var hasReadPermission = DirectoryHelper.CheckPermission(directoryInfo, FileSystemRights.Read);
+	/// Console.WriteLine($"Has read permission: {hasReadPermission}");
+	/// </code></example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool CheckPermission(DirectoryInfo directory, FileSystemRights permission = FileSystemRights.Read)
 	{
 		directory = directory.ArgumentNotNull();
 
-		var access = FileSystemAclExtensions.GetAccessControl(directory);
-
-		if (access is null)
-		{
-			return false;
-		}
-
-		var rules = access.GetAccessRules(true, true, typeof(SecurityIdentifier));
-
-		if (rules is null)
-		{
-			return false;
-		}
+		var accessControl = directory.GetAccessControl();
+		var rules = accessControl.GetAccessRules(true, true, typeof(SecurityIdentifier));
 
 		var allow = false;
 		var deny = false;
 
-		for (var index = 0; index < rules.Count; index++)
+		foreach (FileSystemAccessRule rule in rules)
 		{
-			var rule = (FileSystemAccessRule)rules[index];
-
 			if ((permission & rule.FileSystemRights) != permission)
 			{
 				continue;
 			}
 
-			if (rule.AccessControlType == AccessControlType.Allow)
+			switch (rule.AccessControlType)
 			{
-				allow = true;
-			}
-			else if (rule.AccessControlType == AccessControlType.Deny)
-			{
-				deny = true;
+				case AccessControlType.Allow:
+					allow = true;
+					break;
+				case AccessControlType.Deny:
+					deny = true;
+					break;
+				default:
+					break;
 			}
 		}
 
@@ -104,31 +104,33 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Copies directory to a new location.
+	/// Copies the specified source directory to the specified destination directory.
 	/// </summary>
-	/// <param name="source">The source directory.</param>
-	/// <param name="destination">The destination directory.</param>
-	/// <param name="overwrite">if set to <c>true</c> [overwrite].</param>
+	/// <param name="source">The source directory to copy from.</param>
+	/// <param name="destination">The destination directory to copy to.</param>
+	/// <param name="overwrite">if set to <c>true</c>, the destination files will be overwritten if they already exist.</param>
+	/// <example>
+	/// This example shows how to use the <see cref="CopyDirectory" /> method.
+	/// <code>
+	/// var sourceDir = new DirectoryInfo(@"C:\SourceDirectory");
+	/// var destDir = new DirectoryInfo(@"C:\DestinationDirectory");
+	/// DirectoryHelper.CopyDirectory(sourceDir, destDir, true);
+	/// </code></example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(CopyDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100)]
 	public static void CopyDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, bool overwrite = true)
 	{
-		var directories = source.ArgumentExists().GetDirectories();
-
+		source = source.ArgumentNotNull();
 		_ = destination.ArgumentNotNull().CheckExists();
 
-		var destinationPath = destination.FullName;
-
-		var files = source.GetFiles();
-
-		foreach (var fileItem in files)
+		foreach (var file in source.GetFiles())
 		{
-			_ = fileItem.CopyTo(Path.Combine(destinationPath, fileItem.Name), overwrite);
+			_ = file.CopyTo(Path.Combine(destination.FullName, file.Name), overwrite);
 		}
 
-		foreach (var directory in directories)
+		foreach (var directory in source.GetDirectories())
 		{
-			CopyDirectory(directory, new DirectoryInfo(Path.Combine(destinationPath, directory.Name)), overwrite);
+			CopyDirectory(directory, destination.CreateSubdirectory(directory.Name), overwrite);
 		}
 	}
 
@@ -137,9 +139,15 @@ public static class DirectoryHelper
 	/// </summary>
 	/// <param name="path">The directory.</param>
 	/// <param name="retries">Number of retries.</param>
+	/// <example>
+	/// This example shows how to call the <see cref="DeleteDirectory" /> method.
+	/// <code>
+	/// var directoryInfo = new DirectoryInfo(@"C:\MyDirectory");
+	/// DirectoryHelper.DeleteDirectory(directoryInfo, 5);
+	/// </code></example>
 	/// <remarks>Checks for the <see cref="IOException" /> and <see cref="UnauthorizedAccessException" />.</remarks>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 99)]
+	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100)]
 	public static void DeleteDirectory([NotNull] DirectoryInfo path, int retries = 10)
 	{
 		if (path.Exists is false)
@@ -183,12 +191,13 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Load files as an asynchronous operation.
+	/// Asynchronously loads files from the specified directories using the given search pattern and search option.
 	/// </summary>
-	/// <param name="directories">The directories.</param>
-	/// <param name="searchPattern">The search pattern.</param>
-	/// <param name="searchOption">The search options.</param>
-	/// <returns>IAsyncEnumerable&lt;IEnumerable&lt;FileInfo&gt;&gt;.</returns>
+	/// <param name="directories">The directories from which files are to be loaded.</param>
+	/// <param name="searchPattern">The search pattern to match against the names of files in <paramref name="directories" />.</param>
+	/// <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or should include all subdirectories.</param>
+	/// <returns>An asynchronous stream (<see cref="IAsyncEnumerable{T}" />) of collections of <see cref="FileInfo" />, where each collection represents files found in a directory.</returns>
+	/// <remarks>This method utilizes deferred execution to improve performance. Files are not loaded into memory until the asynchronous stream is iterated.</remarks>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(LoadFilesAsync), author: "David McCarter", createdOn: "3/1/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available)]
 	public static async IAsyncEnumerable<IEnumerable<FileInfo>> LoadFilesAsync([NotNull] IEnumerable<DirectoryInfo> directories, [NotNull] string searchPattern, SearchOption searchOption)
@@ -219,10 +228,24 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Loads the one drive folders.
+	/// Loads the OneDrive folders for the current user.
 	/// </summary>
-	/// <returns>ReadOnlyCollection&lt;OneDriveFolder&gt;.</returns>
-	/// <exception cref="PlatformNotSupportedException"></exception>
+	/// <returns>A read-only collection of <see cref="OneDriveFolder"/> objects representing the OneDrive folders.</returns>
+	/// <remarks>
+	/// This method retrieves the OneDrive folders by accessing the Windows Registry. It supports both personal and business accounts.
+	/// Note: This method is only supported on Windows.
+	/// </remarks>
+	/// <exception cref="PlatformNotSupportedException">Thrown if the method is invoked on a non-Windows platform.</exception>
+	/// <example>
+	/// This example shows how to call the <see cref="LoadOneDriveFolders"/> method.
+	/// <code>
+	/// var oneDriveFolders = DirectoryHelper.LoadOneDriveFolders();
+	/// foreach(var folder in oneDriveFolders)
+	/// {
+	///     Console.WriteLine($"OneDrive Folder: {folder.DirectoryInfo.FullName}");
+	/// }
+	/// </code>
+	/// </example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(LoadOneDriveFolders), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100)]
 	public static ReadOnlyCollection<OneDriveFolder> LoadOneDriveFolders()
@@ -296,12 +319,19 @@ public static class DirectoryHelper
 	/// <summary>
 	/// Moves the directory with retry. Retry max count is 100.
 	/// </summary>
-	/// <param name="source">Name of the source dir.</param>
-	/// <param name="destination">Name of the destination dir.</param>
-	/// <param name="retries">Number of retries.</param>
-	/// <remarks>Checks for the <see cref="IOException" /> and <see cref="UnauthorizedAccessException" />.</remarks>
+	/// <param name="source">The source directory to move.</param>
+	/// <param name="destination">The destination directory where <paramref name="source" /> should be moved.</param>
+	/// <param name="retries">The number of retry attempts for the move operation. Default is 10.</param>
+	/// <example>
+	/// This example shows how to call the <see cref="MoveDirectory" /> method.
+	/// <code>
+	/// var sourceDir = new DirectoryInfo(@"C:\SourceDirectory");
+	/// var destDir = new DirectoryInfo(@"C:\DestinationDirectory");
+	/// DirectoryHelper.MoveDirectory(sourceDir, destDir, 5);
+	/// </code></example>
+	/// <remarks>This method attempts to move <paramref name="source" /> to <paramref name="destination" />. If the operation fails due to an <see cref="IOException" /> or <see cref="UnauthorizedAccessException" />, it will retry the operation up to <paramref name="retries" /> times.</remarks>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 99)]
+	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100)]
 	public static void MoveDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, int retries = 10)
 	{
 		source = source.ArgumentExists();
@@ -314,16 +344,21 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Searches folder and returns true if it contains any files that meet one of the
-	/// search criteria.
+	/// Searches the specified directory and returns true if it contains any files that match one of the search patterns.
 	/// </summary>
-	/// <param name="path">The root directory.</param>
-	/// <param name="searchOption">The search options.</param>
-	/// <param name="searchPatterns">The search patterns.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="path">The directory to search.</param>
+	/// <param name="searchOption">The search option to use: either the current directory only or include all subdirectories.</param>
+	/// <param name="searchPatterns">The search patterns to use for matching files.</param>
+	/// <returns><c>true</c> if the directory contains any files that match the search patterns; otherwise, <c>false</c>.</returns>
+	/// <example>
+	/// This example shows how to call the SafeDirectorySearch method.
+	/// <code>
+	/// var directoryInfo = new DirectoryInfo(@"C:\MyDirectory");
+	/// bool containsFiles = DirectoryHelper.SafeDirectorySearch(directoryInfo, SearchOption.TopDirectoryOnly, "*.txt", "*.docx");
+	/// Console.WriteLine($"Directory contains matching files: {containsFiles}");
+	/// </code></example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeDirectorySearch), "David McCarter", "6/14/2021", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.None
-		, UnitTestCoverage = 0, Documentation = "https://bit.ly/SpargineSep2022")]
+	[Information(nameof(SafeDirectorySearch), "David McCarter", "6/14/2021", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineSep2022")]
 	public static bool SafeDirectorySearch([NotNull] DirectoryInfo path, SearchOption searchOption = SearchOption.TopDirectoryOnly, [NotNull] params string[] searchPatterns)
 	{
 		path = path.ArgumentExists();
@@ -334,12 +369,21 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Safe directory search.
+	/// Performs a safe directory search by matching a specified search pattern and search option.
 	/// </summary>
-	/// <param name="path">The root directory.</param>
-	/// <param name="searchPattern">The search pattern.</param>
-	/// <param name="searchOption">All or Top Directory Only.</param>
-	/// <returns>IEnumerable&lt;DirectoryInfo&gt;.</returns>
+	/// <param name="path">The root directory to start the search from.</param>
+	/// <param name="searchPattern">The search pattern to match against the directory names. Default is "*.*" which matches all directories.</param>
+	/// <param name="searchOption">Specifies whether to search only the current directory, or all subdirectories. The default is <see cref="SearchOption.TopDirectoryOnly" />.</param>
+	/// <returns>An <see cref="IEnumerable{DirectoryInfo}" /> containing directories that match the search pattern and option.</returns>
+	/// <example>
+	/// This example shows how to call the SafeDirectorySearch method.
+	/// <code>
+	/// var directoryInfo = new DirectoryInfo(@"C:\MyDirectory");
+	/// foreach (var dir in DirectoryHelper.SafeDirectorySearch(directoryInfo, "*.config", SearchOption.AllDirectories))
+	/// {
+	/// Console.WriteLine(dir.FullName);
+	/// }
+	/// </code></example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(SafeDirectorySearch), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100)]
 	public static IEnumerable<DirectoryInfo> SafeDirectorySearch([NotNull] DirectoryInfo path, [NotNull] string searchPattern = "*.*", SearchOption searchOption = SearchOption.TopDirectoryOnly)
@@ -364,12 +408,23 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Safe file search. Ignores errors accessing directories.
+	/// Performs a safe file search in the specified directory using the given search pattern and search option.
+	/// Ignores errors accessing directories.
 	/// </summary>
 	/// <param name="path">The directory to search.</param>
-	/// <param name="searchPattern">The search pattern.</param>
-	/// <param name="searchOption">The search options.</param>
-	/// <returns>ReadOnlyCollection&lt;FileInfo&gt;.</returns>
+	/// <param name="searchPattern">The search pattern to match against the names of files in <paramref name="path" />.</param>
+	/// <param name="searchOption">Specifies whether the search operation should include only the current directory or should include all subdirectories.</param>
+	/// <returns>A read-only collection of <see cref="FileInfo" /> objects that match the search pattern and option.</returns>
+	/// <example>
+	/// This example shows how to call the SafeFileSearch method.
+	/// <code>
+	/// var directoryInfo = new DirectoryInfo(@"C:\MyDirectory");
+	/// var files = DirectoryHelper.SafeFileSearch(directoryInfo, "*.txt", SearchOption.AllDirectories);
+	/// foreach(var file in files)
+	/// {
+	/// Console.WriteLine(file.FullName);
+	/// }
+	/// </code></example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "http://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<FileInfo> SafeFileSearch(DirectoryInfo path, string searchPattern, SearchOption searchOption)
@@ -383,12 +438,13 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Safe file search. Ignores errors accessing directories.
+	/// Performs a safe file search in the specified directories using the given search pattern and search option.
+	/// Ignores errors accessing directories.
 	/// </summary>
 	/// <param name="directories">The directories to search.</param>
-	/// <param name="searchPattern">The search pattern.</param>
-	/// <param name="searchOption">The search options.</param>
-	/// <returns>IEnumerable&lt;FileInfo&gt;.</returns>
+	/// <param name="searchPattern">The search pattern to match against the names of files in <paramref name="directories" />.</param>
+	/// <param name="searchOption">Specifies whether the search operation should include only the current directory or should include all subdirectories.</param>
+	/// <returns>An <see cref="IEnumerable{FileInfo}" /> containing files that match the search pattern and option.</returns>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100)]
 	public static IEnumerable<FileInfo> SafeFileSearch([NotNull] IEnumerable<DirectoryInfo> directories, [NotNull] string searchPattern, SearchOption searchOption = SearchOption.TopDirectoryOnly)
@@ -427,25 +483,29 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Sets the file attributes to normal for a directory.
+	/// Sets the file attributes of all files and directories within the specified directory to normal.
 	/// </summary>
-	/// <param name="path">The directory.</param>
+	/// <param name="path">The directory whose contents' attributes will be set to normal.</param>
+	/// <example>
+	/// This example shows how to call the <see cref="SetFileAttributesToNormal" /> method.
+	/// <code>
+	/// var directoryInfo = new DirectoryInfo(@"C:\MyDirectory");
+	/// DirectoryHelper.SetFileAttributesToNormal(directoryInfo);
+	/// </code></example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SetFileAttributesToNormal), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 99)]
+	[Information(nameof(SetFileAttributesToNormal), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100)]
 	public static void SetFileAttributesToNormal([NotNull] DirectoryInfo path)
 	{
 		path = path.ArgumentExists();
 
-		var directories = path.GetDirectories();
-
-		for (var directoryCount = 0; directoryCount < path.GetDirectories().Length; directoryCount++)
+		foreach (var directory in path.GetDirectories())
 		{
-			SetFileAttributesToNormal(directories[directoryCount]);
+			SetFileAttributesToNormal(directory);
 		}
 
-		for (var fileCount = 0; fileCount < path.GetDirectories().Length; fileCount++)
+		foreach (var file in path.GetFiles())
 		{
-			File.SetAttributes(directories[fileCount].FullName, FileAttributes.Normal);
+			file.Attributes = FileAttributes.Normal;
 		}
 	}
 

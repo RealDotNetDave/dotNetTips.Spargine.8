@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-14-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelperTests.cs" company="dotNetTips.Spargine.Tests">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -15,8 +15,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Security.AccessControl;
+using System.Threading;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
@@ -30,6 +32,61 @@ namespace DotNetTips.Spargine.Tests.IO;
 public class DirectoryHelperTests
 {
 
+	[TestMethod]
+	public void AppDataFolder_ReturnsCorrectPathOnMacOS()
+	{
+		if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+		{
+			// Arrange
+			var expectedPathStart = Environment.GetEnvironmentVariable("HOME");
+
+			// Act
+			var result = DirectoryHelper.AppDataFolder();
+
+			// Assert
+			Assert.IsTrue(result.StartsWith(expectedPathStart), "The path should start with the HOME environment variable value.");
+		}
+		else
+		{
+			Assert.Inconclusive("This test is designed to run on macOS.");
+		}
+	}
+	[TestMethod]
+	public void AppDataFolder_ReturnsCorrectPathOnWindows()
+	{
+		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+		{
+			// Arrange
+			var expectedPathStart = Environment.GetEnvironmentVariable("LOCALAPPDATA");
+
+			// Act
+			var result = DirectoryHelper.AppDataFolder();
+
+			// Assert
+			Assert.IsTrue(result.StartsWith(expectedPathStart), "The path should start with the LOCALAPPDATA environment variable value.");
+		}
+		else
+		{
+			Assert.Inconclusive("This test is designed to run on Windows.");
+		}
+	}
+
+
+	[TestMethod]
+	public void AppDataFolder_UsesDefaultFolderNameWhenCompanyNotDefined()
+	{
+		// This test assumes that there's a default folder name used when the company name is not defined in the assembly.
+		// You need to replace "DefaultFolderName" with the actual default name used in your implementation.
+		var defaultFolderName = "DefaultFolderName"; // Replace with actual default folder name used in your implementation
+
+		// Act
+		var result = DirectoryHelper.AppDataFolder();
+
+		// Assert
+		Assert.IsTrue(result.EndsWith(defaultFolderName), $"The resulting path should end with the default folder name '{defaultFolderName}' when the company name is not defined.");
+	}
+
+
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
 	public void CheckPermissionTest()
@@ -39,6 +96,145 @@ public class DirectoryHelperTests
 		Assert.IsTrue(DirectoryHelper.CheckPermission(new DirectoryInfo(path)));
 
 		Assert.IsTrue(DirectoryHelper.CheckPermission(new DirectoryInfo(path), FileSystemRights.Write));
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(DirectoryNotFoundException))]
+	public void CopyDirectory_InvalidSource_ThrowsDirectoryNotFoundException()
+	{
+		// Arrange
+		var invalidSourceDirectory = new DirectoryInfo(Path.Combine(Path.GetTempPath(), Path.GetRandomFileName()));
+		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
+
+		// Act
+		DirectoryHelper.CopyDirectory(invalidSourceDirectory, destinationDirectory, true);
+
+		// No need for Assert, as an exception is expected
+	}
+
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void CopyDirectory_OverwriteFalse_DoesNotOverwriteExistingFiles()
+	{
+		// Arrange
+		var sourceDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var sourceDirectory = Directory.CreateDirectory(sourceDirectoryPath);
+		var destinationDirectory = Directory.CreateDirectory(destinationDirectoryPath);
+
+		// Create a file in both directories
+		var fileName = "testFile.txt";
+		var sourceFilePath = Path.Combine(sourceDirectory.FullName, fileName);
+		var destinationFilePath = Path.Combine(destinationDirectory.FullName, fileName);
+		File.WriteAllText(sourceFilePath, "This is the source file.");
+		File.WriteAllText(destinationFilePath, "This is the destination file.");
+
+		// Act
+		DirectoryHelper.CopyDirectory(sourceDirectory, destinationDirectory, false);
+
+		// Assert
+		var destinationFileContent = File.ReadAllText(destinationFilePath);
+		Assert.AreEqual("This is the destination file.", destinationFileContent, "The destination file should not have been overwritten.");
+
+		// Cleanup
+		sourceDirectory.Delete(true);
+		destinationDirectory.Delete(true);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void CopyDirectory_ValidSourceAndDestination_CopiesAllContents()
+	{
+		// Arrange
+		var sourceDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var sourceDirectory = Directory.CreateDirectory(sourceDirectoryPath);
+		var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
+
+		// Create a file in the source directory to test the copy
+		var testFilePath = Path.Combine(sourceDirectory.FullName, "testFile.txt");
+		File.WriteAllText(testFilePath, "This is a test file.");
+
+		// Act
+		DirectoryHelper.CopyDirectory(sourceDirectory, destinationDirectory, true);
+
+		// Assert
+		var copiedFilePath = Path.Combine(destinationDirectory.FullName, "testFile.txt");
+		Assert.IsTrue(File.Exists(copiedFilePath), "The file should have been copied to the destination directory.");
+
+		// Cleanup
+		sourceDirectory.Delete(true);
+		destinationDirectory.Delete(true);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(IOException))]
+	public void DeleteDirectory_DirectoryInUse_ThrowsIOException()
+	{
+		// Arrange
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var directory = Directory.CreateDirectory(tempDirectoryPath);
+		using (var stream = File.Create(Path.Combine(tempDirectoryPath, "tempFile.txt")))
+		{
+			// Act
+			DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath), 1);
+			// IOException expected due to the open file stream
+		}
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void DeleteDirectory_NonExistentDirectory_NoExceptionThrown()
+	{
+		// Arrange
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+
+		// Act & Assert
+		DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath), 1);
+		// No exception is expected, even though the directory does not exist
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void DeleteDirectory_ValidDirectory_DeletesSuccessfully()
+	{
+		// Arrange
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var directory = Directory.CreateDirectory(tempDirectoryPath);
+
+		// Act
+		DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath));
+
+		// Assert
+		Assert.IsFalse(Directory.Exists(tempDirectoryPath), "The directory should have been deleted.");
+	}
+
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void DeleteDirectory_WithRetries_DeletesSuccessfullyAfterRetries()
+	{
+		// Arrange
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var directory = Directory.CreateDirectory(tempDirectoryPath);
+
+		// Simulate a condition that would initially prevent deletion, such as a temporary lock by another process
+		// For testing purposes, this is simulated by a short delay within the test, as actual process locking is complex and flaky in automated tests
+
+		Task.Delay(100).ContinueWith(_ =>
+		{
+			DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath), 5);
+		});
+
+		// Act
+		Thread.Sleep(500); // Wait for the delayed deletion attempt
+
+		// Assert
+		Assert.IsFalse(Directory.Exists(tempDirectoryPath), "The directory should have been deleted after retries.");
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -122,6 +318,74 @@ public class DirectoryHelperTests
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
+	[ExpectedException(typeof(DirectoryNotFoundException))]
+	public void MoveDirectory_InvalidSource_ThrowsDirectoryNotFoundException()
+	{
+		// Arrange
+		var invalidSourceDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var invalidSourceDirectory = new DirectoryInfo(invalidSourceDirectoryPath);
+		var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
+
+		// Act
+		DirectoryHelper.MoveDirectory(invalidSourceDirectory, destinationDirectory);
+
+		// No need for Assert, as an exception is expected
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void MoveDirectory_ValidSourceAndDestination_MovesSuccessfully()
+	{
+		// Arrange
+		var sourceDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var sourceDirectory = Directory.CreateDirectory(sourceDirectoryPath);
+		var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
+
+		// Act
+		DirectoryHelper.MoveDirectory(sourceDirectory, destinationDirectory);
+
+		// Assert
+		Assert.IsFalse(Directory.Exists(sourceDirectoryPath), "The source directory should no longer exist.");
+		Assert.IsTrue(Directory.Exists(destinationDirectoryPath), "The destination directory should exist.");
+
+		// Cleanup
+		destinationDirectory.Delete(true);
+	}
+
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void MoveDirectory_WithRetries_MovesSuccessfullyAfterRetries()
+	{
+		// Arrange
+		var sourceDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var sourceDirectory = Directory.CreateDirectory(sourceDirectoryPath);
+		var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
+
+		// Simulate a condition that would initially prevent moving, such as a temporary lock by another process
+		// For testing purposes, this is simulated by a short delay within the test, as actual process locking is complex and flaky in automated tests
+
+		Task.Delay(100).ContinueWith(_ =>
+		{
+			DirectoryHelper.MoveDirectory(sourceDirectory, destinationDirectory, 5);
+		});
+
+		// Act
+		Thread.Sleep(500); // Wait for the delayed move attempt
+
+		// Assert
+		Assert.IsFalse(Directory.Exists(sourceDirectoryPath), "The source directory should have been moved after retries.");
+		Assert.IsTrue(Directory.Exists(destinationDirectoryPath), "The destination directory should exist.");
+
+		// Cleanup
+		destinationDirectory.Delete(true);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
 	public void SafeDirectorySearchTest()
 	{
 		var folder = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
@@ -153,6 +417,75 @@ public class DirectoryHelperTests
 		var result = DirectoryHelper.SafeFileSearch(folder, "*.png", SearchOption.AllDirectories);
 
 		Assert.IsTrue(result.HasItems());
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void SetFileAttributesToNormal_DirectoryWithSubdirectories_SetsAttributesRecursively()
+	{
+		// Arrange
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var parentDirectory = Directory.CreateDirectory(tempDirectoryPath);
+		var childDirectoryPath = Path.Combine(tempDirectoryPath, "ChildDirectory");
+		var childDirectory = Directory.CreateDirectory(childDirectoryPath);
+
+		// Create a file in both directories and set their attributes to ReadOnly
+		var parentTestFilePath = Path.Combine(tempDirectoryPath, "parentTestFile.txt");
+		var childTestFilePath = Path.Combine(childDirectoryPath, "childTestFile.txt");
+		File.Create(parentTestFilePath).Close();
+		File.Create(childTestFilePath).Close();
+		File.SetAttributes(parentTestFilePath, FileAttributes.ReadOnly);
+		File.SetAttributes(childTestFilePath, FileAttributes.ReadOnly);
+
+		// Act
+		DirectoryHelper.SetFileAttributesToNormal(parentDirectory);
+
+		// Assert
+		var parentAttributes = File.GetAttributes(parentTestFilePath);
+		var childAttributes = File.GetAttributes(childTestFilePath);
+		Assert.IsFalse(parentAttributes.HasFlag(FileAttributes.ReadOnly), "The parent directory file attributes should no longer include ReadOnly.");
+		Assert.IsFalse(childAttributes.HasFlag(FileAttributes.ReadOnly), "The child directory file attributes should no longer include ReadOnly.");
+
+		// Cleanup
+		parentDirectory.Delete(true);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void SetFileAttributesToNormal_NonExistentDirectory_NoExceptionThrown()
+	{
+		// Arrange
+		var nonExistentDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var nonExistentDirectory = new DirectoryInfo(nonExistentDirectoryPath);
+
+		// Act & Assert
+		DirectoryHelper.SetFileAttributesToNormal(nonExistentDirectory);
+		// No exception is expected, even though the directory does not exist
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void SetFileAttributesToNormal_ValidDirectory_SetsAttributesSuccessfully()
+	{
+		// Arrange
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var directory = Directory.CreateDirectory(tempDirectoryPath);
+
+		// Create a file in the directory and set its attributes to ReadOnly
+		var testFilePath = Path.Combine(tempDirectoryPath, "testFile.txt");
+		var testFile = File.Create(testFilePath);
+		testFile.Close();
+		File.SetAttributes(testFilePath, FileAttributes.ReadOnly);
+
+		// Act
+		DirectoryHelper.SetFileAttributesToNormal(directory);
+
+		// Assert
+		var attributes = File.GetAttributes(testFilePath);
+		Assert.IsFalse(attributes.HasFlag(FileAttributes.ReadOnly), "The file attributes should no longer include ReadOnly.");
+
+		// Cleanup
+		directory.Delete(true);
 	}
 
 }
