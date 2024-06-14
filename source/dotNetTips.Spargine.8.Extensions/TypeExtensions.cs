@@ -252,13 +252,23 @@ public static partial class TypeExtensions
 		where TAttribute : Attribute => fieldInfo?.GetCustomAttributes(typeof(TAttribute), false).FirstOrDefault() as TAttribute;
 
 	/// <summary>
-	/// Does the object implement  any of the interfaces.
-	/// Validates that <paramref name="input" /> and <paramref name="interfaceNames" /> is not null.
+	/// Determines whether the input object implements any of the specified interfaces.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="interfaceNames">The interface names.</param>
-	/// <returns>System.Collections.ObjectModel.ReadOnlyCollection&lt;string&gt;.</returns>
-	/// <exception cref="ArgumentNullException">Input cannot be null.</exception>
+	/// <param name="input">The input object to check.</param>
+	/// <param name="interfaceNames">The names of the interfaces to check against the input object.</param>
+	/// <returns>A read-only collection of interface names that were found on the input object.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="interfaceNames"/> is null.</exception>
+	/// <example>
+	/// This example shows how to use the <see cref="GetImplementedInterfaces"/> method.
+	/// <code>
+	/// var myObject = new MyClass();
+	/// var implementedInterfaces = myObject.GetImplementedInterfaces("IInterface1", "IInterface2");
+	/// foreach(var interfaceName in implementedInterfaces)
+	/// {
+	///     Console.WriteLine(interfaceName);
+	/// }
+	/// </code>
+	/// </example>
 	[Information(nameof(GetImplementedInterfaces), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ReadOnlyCollection<string> GetImplementedInterfaces(this object input, params string[] interfaceNames)
 	{

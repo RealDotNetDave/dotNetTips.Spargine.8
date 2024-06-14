@@ -4,15 +4,17 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="EnumExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
 // </copyright>
 // <summary>Extension methods designed for Enum.</summary>
 // ***********************************************************************
+using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Runtime.Serialization;
 using DotNetTips.Spargine.Core;
 
@@ -21,54 +23,61 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Extension methods for <see cref="Enum" />.
+/// Provides extension methods for the <see cref="Enum"/> type, enhancing enum functionality with additional utilities such as getting descriptions, parsing, and retrieving items.
 /// </summary>
 public static class EnumExtensions
 {
 
+	private static readonly ConcurrentDictionary<Enum, string> _descriptionCache = new();
+
 	/// <summary>
-	/// Gets the <see cref="Enum" /> description.
+	/// Gets the description of the enum value using the <see cref="EnumMemberAttribute"/> if available; otherwise, it returns the enum's name.
 	/// </summary>
-	/// <param name="input">The value.</param>
-	/// <returns>System.String.</returns>
-	/// <exception cref="ArgumentNullException">val</exception>
-	[Information(nameof(GetDescription), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	/// <param name="input">The enum value to get the description for.</param>
+	/// <returns>The description of the enum value.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
+	[Information(nameof(GetDescription), UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static string GetDescription(this Enum input)
 	{
-		var field = input.ArgumentNotNull().GetType().GetField(input.ToString());
+		input = input.ArgumentDefined();
 
-		var attributes = (EnumMemberAttribute[])field.GetCustomAttributes(typeof(EnumMemberAttribute), false);
-
-		return attributes.LongLength > 0 ? attributes[0].Value : input.ToString();
+		return _descriptionCache.GetOrAdd(input, key =>
+		{
+			var field = key.GetType().GetField(key.ToString());
+			var attributes = (EnumMemberAttribute[])field.GetCustomAttributes(typeof(EnumMemberAttribute), false);
+			return attributes.Length > 0 ? attributes[0].Value : key.ToString();
+		});
 	}
 
 	/// <summary>
-	/// Gets the names and values of an <see cref="Enum" />.
+	/// Gets the names and values of an <see cref="Enum"/>.
+	/// This method returns a read-only collection of tuples, where each tuple contains the name (description) and the numeric value of each enum member.
+	/// The description is obtained from the enum member's name itself.
 	/// </summary>
-	/// <param name="input">The enumeration.</param>
-	/// <returns>ReadOnlyCollection&lt;System.ValueTuple&lt;System.String, System.Int32&gt;&gt;.</returns>
-	[Information(nameof(GetItems), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	/// <param name="input">The enumeration to retrieve items from.</param>
+	/// <returns>A <see cref="ReadOnlyCollection{T}"/> where T is a tuple of string and int, representing the description and value of each enum member.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
+	[Information(nameof(GetItems), UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static ReadOnlyCollection<(string Description, int Value)> GetItems(this Enum input)
 	{
-		var items = new List<(string Description, int Value)>();
+		var enumType = input.GetType();
+		var enumValues = Enum.GetValues(enumType).Cast<Enum>();
 
-		foreach (var name in Enum.GetNames(input.GetType()).AsSpan())
-		{
-			items.Add((Description: name, Value: (int)Enum.Parse(input.GetType(), name)));
-		}
+		var items = Array.ConvertAll(enumValues.ToArray(), value =>
+			(Description: Enum.GetName(enumType, value), Value: Convert.ToInt32(value, CultureInfo.InvariantCulture))
+		);
 
-		return items.AsReadOnly();
+		return new ReadOnlyCollection<(string Description, int Value)>(items);
+
 	}
 
 	/// <summary>
-	/// Parses the specified <see cref="Enum" /> name.
-	/// Validates that <paramref name="name" /> contains text.
+	/// Parses the specified string to an enum of type <typeparamref name="T"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="name">The name.</param>
-	/// <returns>T.</returns>
-	/// <exception cref="ArgumentException">name</exception>
-	/// <exception cref="ArgumentException">The exception.</exception>
+	/// <typeparam name="T">The enum type to which the string will be parsed.</typeparam>
+	/// <param name="name">The string representation of the enum value to parse.</param>
+	/// <returns>An enum of type <typeparamref name="T"/> corresponding to the parsed string.</returns>
+	/// <exception cref="ArgumentException">Thrown if <paramref name="name"/> is null or an empty string, or if it does not correspond to any value of <typeparamref name="T"/>.</exception>
 	[Information(nameof(Parse), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static T Parse<T>([NotNull] this string name)
 		where T : Enum

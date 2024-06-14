@@ -4,7 +4,7 @@
 // Created          : 08-18-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="LinqExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -19,46 +19,50 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class LINQExtensions.
+/// Provides extension methods for LINQ to enhance its functionality and usability.
+/// These methods include conditional transformations on <see cref="IQueryable{T}"/> and <see cref="IEnumerable{T}"/>,
+/// allowing for more expressive and dynamic query composition.
 /// </summary>
 [Information(nameof(LinqExtensions), "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available)]
 public static class LinqExtensions
 {
 
 	/// <summary>
-	/// Ifs the input.
-	/// Validates that <paramref name="input" /> and <paramref name="transforms" /> is not null.
+	/// Conditionally applies a series of transformations to the input <see cref="IQueryable{T}"/> based on a boolean condition.
+	/// This allows for dynamic query composition by including or excluding parts of the query based on the specified condition.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="input">The query.</param>
-	/// <param name="should">if set to <c>true</c> [should].</param>
-	/// <param name="transforms">The transforms.</param>
-	/// <returns>IQueryable&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of the elements in the <see cref="IQueryable{T}"/>.</typeparam>
+	/// <param name="input">The input query to transform.</param>
+	/// <param name="should">A boolean value indicating whether the transformations should be applied.</param>
+	/// <param name="transforms">A params array of functions that represent the transformations to apply to the input query.</param>
+	/// <returns>An <see cref="IQueryable{T}"/> that has been conditionally transformed based on the provided functions.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transforms"/> is null.</exception>
 	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available, UnitTestCoverage = 0)]
 	public static IQueryable<T> If<T>([NotNull] this IQueryable<T> input, bool should, [NotNull] params Func<IQueryable<T>, IQueryable<T>>[] transforms)
 	{
 		input = input.ArgumentNotNull();
 		transforms = transforms.ArgumentItemsExists();
 
-		return should ? transforms.Aggregate(input, (current, transform) => transform.Invoke(current)) : input;
+		return should ? transforms.Aggregate(input, (current, transform) => transform(current)) : input;
 	}
 
 	/// <summary>
-	/// Ifs the input.
-	/// Validates that <paramref name="input" /> and <paramref name="transforms" /> is not null.
+	/// Conditionally applies a series of transformations to the input <see cref="IEnumerable{T}"/> based on a boolean condition.
+	/// This allows for dynamic query composition by including or excluding parts of the query based on the specified condition.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="input">The query.</param>
-	/// <param name="should">if set to <c>true</c> [should].</param>
-	/// <param name="transforms">The transforms.</param>
-	/// <returns>IEnumerable&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of the elements in the <see cref="IEnumerable{T}"/>.</typeparam>
+	/// <param name="input">The input sequence to transform.</param>
+	/// <param name="should">A boolean value indicating whether the transformations should be applied.</param>
+	/// <param name="transforms">A params array of functions that represent the transformations to apply to the input sequence.</param>
+	/// <returns>An <see cref="IEnumerable{T}"/> that has been conditionally transformed based on the provided functions.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transforms"/> is null.</exception>
 	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available, UnitTestCoverage = 0)]
 	public static IEnumerable<T> If<T>([NotNull] this IEnumerable<T> input, bool should, [NotNull] params Func<IEnumerable<T>, IEnumerable<T>>[] transforms)
 	{
 		input = input.ArgumentNotNull();
 		transforms = transforms.ArgumentItemsExists();
 
-		return should ? transforms.Aggregate(input, (current, transform) => transform.Invoke(current)) : input;
+		return should ? transforms.Aggregate(input, (current, transform) => transform(current)) : input;
 	}
 
 }

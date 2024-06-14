@@ -808,6 +808,15 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value must be in the range 1 - 3999..
+        /// </summary>
+        internal static string ValueMustBeInTheRange13999 {
+            get {
+                return ResourceManager.GetString("ValueMustBeInTheRange13999", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yesterday.
         /// </summary>
         internal static string Yesterday {

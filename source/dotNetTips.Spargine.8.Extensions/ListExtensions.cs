@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -25,20 +25,20 @@ using DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Extension methods for <see cref="List{T}" />.
+/// Provides a collection of extension methods for <see cref="List{T}"/> to enhance its functionality and usability.
+/// These methods include adding elements to the beginning or end, converting lists to different collection types,
+/// performing actions on each element, checking for item presence, and more, aiming to increase the productivity and maintainability of list operations.
 /// </summary>
 public static class ListExtensions
 {
 
 	/// <summary>
-	/// Adds the item as the first item in the <see cref="List{T}" />.
-	/// Validates that <paramref name="collection" /> is not null and not read-only.
+	/// Adds an item to the beginning of the list.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="item">The item.</param>
-	/// <returns>T[].</returns>
-	/// <exception cref="ArgumentNullException">list or item</exception>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list to which the item will be added.</param>
+	/// <param name="item">The item to add to the beginning of the list.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static List<T> AddFirst<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
@@ -51,14 +51,12 @@ public static class ListExtensions
 	}
 
 	/// <summary>
-	/// Adds item as the last item in the <see cref="List{T}" />.
-	/// Validates that <paramref name="collection" /> and <paramref name="item" /> is not null.
+	/// Adds an item to the end of the list.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="item">The item.</param>
-	/// <returns>T[].</returns>
-	/// <exception cref="ArgumentNullException">list or item</exception>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list to which the item will be added.</param>
+	/// <param name="item">The item to add to the end of the list.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static List<T> AddLast<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
@@ -72,15 +70,15 @@ public static class ListExtensions
 	}
 
 	/// <summary>
-	/// Converts a <see cref="List{T}"/> to <see cref="ReadOnlySpan{T}"/>.
+	/// Creates a <see cref="ReadOnlySpan{T}"/> from the <see cref="List{T}"/>.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="list">The list.</param>
-	/// <returns>System.ReadOnlySpan&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="list">The list to create a read-only span from.</param>
+	/// <returns>A read-only span representing the list.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "")]
 	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this List<T> list) => new([.. list.ArgumentNotNull()]);
-
 
 	/// <summary>
 	/// Creates a new <see cref="Span{T}" /> using CollectionsMarshal over an input <see cref="List{T}" /> instance.
@@ -100,12 +98,12 @@ public static class ListExtensions
 	public static Span<T> AsSpan<T>([NotNull] this List<T> list) => CollectionsMarshal.AsSpan(list.ArgumentNotNull());
 
 	/// <summary>
-	/// Clears the null items from the <see cref="List{T}" />.
-	/// Returns false if <paramref name="collection" /> is null.
+	/// Removes all null elements from the <see cref="List{T}"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The source.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list from which to remove null elements.</param>
+	/// <returns><c>true</c> if any elements were removed; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(ClearNulls), author: "David McCarter", createdOn: "8/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool ClearNulls<T>([NotNull] this List<T> collection)
 	{
@@ -118,13 +116,12 @@ public static class ListExtensions
 	}
 
 	/// <summary>
-	/// Copies the <see cref="List{T}" /> to a <see cref="Collection{T}" />.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Copies the elements of the <see cref="List{T}"/> to a new <see cref="Collection{T}"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The source.</param>
-	/// <returns>List&lt;T&gt;.</returns>
-	/// <exception cref="ArgumentNullException">source</exception>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list whose elements are copied.</param>
+	/// <returns>A new <see cref="Collection{T}"/> containing the elements of the input list.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(CopyToCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static Collection<T> CopyToCollection<T>([NotNull] this List<T> collection)
 	{
@@ -134,12 +131,11 @@ public static class ListExtensions
 	}
 
 	/// <summary>
-	/// Checks list for null and ensures there are items in the list.
-	/// Returns true if <paramref name="collection" /> is null.
+	/// Determines whether the specified <see cref="List{T}"/> does not contain any items.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list to check.</param>
+	/// <returns><c>true</c> if the list is null or contains no elements; otherwise, <c>false</c>.</returns>
 	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool DoesNotHaveItems<T>([NotNull] this List<T> collection)
 	{
@@ -154,29 +150,36 @@ public static class ListExtensions
 	}
 
 	/// <summary>
-	/// Generates hash code for the <see cref="List{T}" />.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Generates a hash code for the entire <see cref="List{T}"/> based on the hash codes of its elements.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The list to use to generate hash code.</param>
-	/// <returns>Hash code as System.Int32.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list for which to generate a hash code.</param>
+	/// <returns>A hash code representing the contents of the list.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static int GenerateHashCode<T>([NotNull] this List<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
 
-		var hash = collection.Where(t => t is not null)
-			.Aggregate(6551, (accumulator, t) => accumulator ^= (accumulator << 5) ^ EqualityComparer<T>.Default.GetHashCode(t));
+		//return hash;
+		var hash = new HashCode();
 
-		return hash;
+		foreach (var item in collection)
+		{
+			hash.Add(item);
+		}
+
+		return hash.ToHashCode();
+
 	}
+
 	/// <summary>
-	/// Determines whether the specified <see cref="List{T}" /> has items.
-	/// Returns false if <paramref name="collection" /> is null.
+	/// Determines whether the specified <see cref="List{T}"/> contains any items.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <returns><c>true</c> if the specified list has items; otherwise, <c>false</c>.</returns>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list to check.</param>
+	/// <returns><c>true</c> if the list contains one or more elements; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this List<T> collection)
 	{
@@ -187,6 +190,7 @@ public static class ListExtensions
 
 		return collection.Count > 0;
 	}
+
 	/// <summary>
 	/// Determines whether the specified <see cref="List{T}" /> has items based on the Predicate.
 	/// Returns false if <paramref name="action" /> or <paramref name="collection" /> is null.

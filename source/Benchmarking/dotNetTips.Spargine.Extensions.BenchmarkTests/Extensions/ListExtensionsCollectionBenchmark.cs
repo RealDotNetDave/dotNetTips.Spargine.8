@@ -40,7 +40,7 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void AddFirst()
 	{
-		var result = _peopleRefList.AddFirst(_person);
+		var result = this._peopleRefList.AddFirst(this._person);
 
 		this.Consume(result);
 	}
@@ -222,7 +222,7 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		base.Setup();
 
 		this._peopleRefSubSet = this.GetPersonRefCollection().TakeLast(10).Clone<IEnumerable<Person<Address>>>().ToList();
-		this._peopleRefList = this.GetPersonRefCollection().ToList();
+		this._peopleRefList = [.. this.GetPersonRefCollection()];
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.ToFrozenSet))]

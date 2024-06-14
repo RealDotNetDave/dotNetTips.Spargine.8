@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -376,5 +376,8 @@
   </data>
   <data name="TB" xml:space="preserve">
     <value>TB</value>
+  </data>
+  <data name="ValueMustBeInTheRange13999" xml:space="preserve">
+    <value>Value must be in the range 1 - 3999.</value>
   </data>
 </root>

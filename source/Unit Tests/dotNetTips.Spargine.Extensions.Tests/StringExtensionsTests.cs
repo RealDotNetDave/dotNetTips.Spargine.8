@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="StringExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -35,9 +35,6 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 public class StringExtensionsTests
 {
 
-	/// <summary>
-	/// Defines the test method BrotliStringCompressionAsyncTest.
-	/// </summary>
 	[TestMethod]
 	public async Task BrotliStringCompressionAsyncTest()
 	{
@@ -69,9 +66,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(result.IsNotEmpty());
 	}
 
-	/// <summary>
-	/// Defines the test method ComputeHashTest.
-	/// </summary>
 	[TestMethod]
 	public void ComputeHashTest()
 	{
@@ -85,9 +79,6 @@ public class StringExtensionsTests
 		}
 	}
 
-	/// <summary>
-	/// Defines the test method ComputeSha256HashTest.
-	/// </summary>
 	[TestMethod]
 	public void ComputeSha256HashTest()
 	{
@@ -96,9 +87,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(string.IsNullOrEmpty(testValue.ComputeSHA256Hash()) is false);
 	}
 
-	/// <summary>
-	/// Defines the test method ConcatTest.
-	/// </summary>
 	[TestMethod]
 	public void ConcatTest()
 	{
@@ -112,9 +100,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(testValue1.Concat("-", false, testValue2).Length == 26);
 	}
 
-	/// <summary>
-	/// Defines the test method ContainsAnyTest.
-	/// </summary>
 	[TestMethod]
 	public void ContainsAnyTest()
 	{
@@ -125,9 +110,6 @@ public class StringExtensionsTests
 		Assert.IsFalse(testValue.ContainsAny(StringComparison.InvariantCulture, "D", "Z"));
 	}
 
-	/// <summary>
-	/// Defines the test method DefaultIfNullOrEmptyTest.
-	/// </summary>
 	[TestMethod]
 	public void DefaultIfNullOrEmptyTest()
 	{
@@ -136,9 +118,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(testValue.DefaultIfNullOrEmpty(RandomData.GenerateWord(5)).Length == 5);
 	}
 
-	/// <summary>
-	/// Defines the test method DefaultIfNullTest.
-	/// </summary>
 	[TestMethod]
 	public void DefaultIfNullTest()
 	{
@@ -172,9 +151,6 @@ public class StringExtensionsTests
 		Assert.IsFalse(string.IsNullOrEmpty(await r4.FromDeflateStringAsync()));
 	}
 
-	/// <summary>
-	/// Defines the test method DelimitedStringToArrayTest.
-	/// </summary>
 	[TestMethod]
 	public void DelimitedStringToArrayTest()
 	{
@@ -187,9 +163,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(result.FastCount() == 3);
 	}
 
-	/// <summary>
-	/// Defines the test method EqualsIgnoreCaseTest.
-	/// </summary>
 	[TestMethod]
 	public void EqualsIgnoreCaseTest()
 	{
@@ -198,9 +171,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(testValue.EqualsIgnoreCase(testValue));
 	}
 
-	/// <summary>
-	/// Defines the test method EqualsOrBothNullOrEmptyTest.
-	/// </summary>
 	[TestMethod]
 	public void EqualsOrBothNullOrEmptyTest()
 	{
@@ -211,9 +181,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(string.Empty.EqualsOrBothNullOrEmpty(null));
 	}
 
-	/// <summary>
-	/// Defines the test method ExtractTest.
-	/// </summary>
 	[TestMethod]
 	public void ExtractTest()
 	{
@@ -224,9 +191,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(result.HasValue());
 	}
 
-	/// <summary>
-	/// Defines the test method FromBase64Test.
-	/// </summary>
 	[TestMethod]
 	public void FromBase64Test()
 	{
@@ -237,9 +201,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(string.Empty.ToBase64().FromBase64().IsEmpty());
 	}
 
-	/// <summary>
-	/// Defines the test method GzipStringCompressionAsyncTest.
-	/// </summary>
 	[TestMethod]
 	public async Task GzipStringCompressionAsyncTest()
 	{
@@ -263,9 +224,6 @@ public class StringExtensionsTests
 		Assert.IsFalse(string.IsNullOrEmpty(await r4.FromGZipStringAsync()));
 	}
 
-	/// <summary>
-	/// Defines the test method HasValueTest.
-	/// </summary>
 	[TestMethod]
 	public void HasValueTest()
 	{
@@ -292,9 +250,6 @@ public class StringExtensionsTests
 		Assert.IsFalse("David".HasValue(string.Empty, RegexOptions.IgnoreCase));
 	}
 
-	/// <summary>
-	/// Defines the test method HasWhiteSpaceTest.
-	/// </summary>
 	[TestMethod]
 	public void HasWhiteSpaceTest()
 	{
@@ -307,9 +262,6 @@ public class StringExtensionsTests
 		Assert.IsFalse('d'.IsAsciiWhitespace());
 	}
 
-	/// <summary>
-	/// Defines the test method IndentTest.
-	/// </summary>
 	[TestMethod]
 	public void IndentTest()
 	{
@@ -317,16 +269,13 @@ public class StringExtensionsTests
 
 		var result = testValue.Indent(2, '>');
 
-		Assert.IsTrue(result.Length > 90);
+		Assert.IsTrue(result.Length > 100);
 
 		result = testValue.Indent(0, '>');
 
-		Assert.IsTrue(result.Length > 90);
+		Assert.IsTrue(result.Length == 0);
 	}
 
-	/// <summary>
-	/// Defines the test method IsAsciiLetterOrDigitTest.
-	/// </summary>
 	[TestMethod]
 	public void IsAsciiLetterOrDigitTest()
 	{
@@ -335,21 +284,12 @@ public class StringExtensionsTests
 		Assert.IsTrue('1'.IsAsciiLetterOrDigit());
 	}
 
-	/// <summary>
-	/// Defines the test method IsAsciiLetterTest.
-	/// </summary>
 	[TestMethod]
 	public void IsAsciiLetterTest() => Assert.IsTrue('A'.IsAsciiLetter());
 
-	/// <summary>
-	/// Defines the test method IsCreditCardTest.
-	/// </summary>
 	[TestMethod]
 	public void IsCreditCardTest() => Assert.IsFalse("123".IsCreditCardNumber());
 
-	/// <summary>
-	/// Defines the test method IsCurrencyCode.
-	/// </summary>
 	[TestMethod]
 	public void IsCurrencyCode()
 	{
@@ -361,9 +301,6 @@ public class StringExtensionsTests
 		Assert.IsFalse(badCode.IsCurrencyCode());
 	}
 
-	/// <summary>
-	/// Defines the test method IsDigitTest.
-	/// </summary>
 	[TestMethod]
 	public void IsDigitTest()
 	{
@@ -372,21 +309,12 @@ public class StringExtensionsTests
 		Assert.IsFalse('A'.IsAsciiDigit());
 	}
 
-	/// <summary>
-	/// Defines the test method IsDomainAddressTest.
-	/// </summary>
 	[TestMethod]
 	public void IsDomainAddressTest() => Assert.IsTrue("dotnettips.com".IsDomainAddress());
 
-	/// <summary>
-	/// Defines the test method IsEmailAddressTest.
-	/// </summary>
 	[TestMethod]
 	public void IsEmailAddressTest() => Assert.IsTrue("dotnetdave@live.com".IsEmailAddress());
 
-	/// <summary>
-	/// Defines the test method IsEmptyTest.
-	/// </summary>
 	[TestMethod]
 	public void IsEmptyTest()
 	{
@@ -395,27 +323,18 @@ public class StringExtensionsTests
 		Assert.IsTrue(string.Empty.IsEmpty());
 	}
 
-	/// <summary>
-	/// Defines the test method IsFirstLastNameTest.
-	/// </summary>
 	[TestMethod]
 	public void IsFirstLastNameTest()
 	{
 		Assert.IsTrue("David McCarter".IsFirstLastName());
 	}
 
-	/// <summary>
-	/// Defines the test method IsISBNTest.
-	/// </summary>
 	[TestMethod]
 	public void IsISBNTest()
 	{
 		Assert.IsTrue("1257561035".IsISBN());
 	}
 
-	/// <summary>
-	/// Defines the test method IsNotEmptyTest.
-	/// </summary>
 	[TestMethod]
 	public void IsNotEmptyTest()
 	{
@@ -424,9 +343,6 @@ public class StringExtensionsTests
 		Assert.IsFalse(string.Empty.IsNotEmpty());
 	}
 
-	/// <summary>
-	/// Defines the test method IsOneToSevenAlphaTest.
-	/// </summary>
 	[TestMethod]
 	public void IsOneToSevenAlphaTest()
 	{
@@ -438,33 +354,21 @@ public class StringExtensionsTests
 		Assert.IsFalse(badCode.IsOneToSevenAlpha());
 	}
 
-	/// <summary>
-	/// Defines the test method IsScientificTest.
-	/// </summary>
 	[TestMethod]
 	public void IsScientificTest()
 	{
 		Assert.IsFalse("6.5 ✕ 10^8".IsScientific());
 	}
 
-	/// <summary>
-	/// Defines the test method IsStringTest.
-	/// </summary>
 	[TestMethod]
 	public void IsStringTest()
 	{
 		Assert.IsTrue("979-8589711707".IsString());
 	}
 
-	/// <summary>
-	/// Defines the test method IsUrlTest.
-	/// </summary>
 	[TestMethod]
 	public void IsUrlTest() => Assert.IsTrue("http://dotnettips.com".IsUrl());
 
-	/// <summary>
-	/// Defines the test method IsWhiteSpaceTest.
-	/// </summary>
 	[TestMethod]
 	public void IsWhiteSpaceTest()
 	{
@@ -475,9 +379,6 @@ public class StringExtensionsTests
 		Assert.IsFalse("David".HasWhitespace());
 	}
 
-	/// <summary>
-	/// Defines the test method RemoveCRLFTest.
-	/// </summary>
 	[TestMethod]
 	public void RemoveCRLFTest()
 	{
@@ -497,9 +398,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(result2.Contains(ControlChars.CR) is false);
 	}
 
-	/// <summary>
-	/// Defines the test method ReplaceEllipsisWithPeriodTest.
-	/// </summary>
 	[TestMethod]
 	public void ReplaceEllipsisWithPeriodTest()
 	{
@@ -529,9 +427,6 @@ public class StringExtensionsTests
 		}
 	}
 
-	/// <summary>
-	/// Defines the test method SplitRemoveEmptyTest.
-	/// </summary>
 	[TestMethod]
 	public void SplitRemoveEmptyTest()
 	{
@@ -540,9 +435,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(testValue.SplitRemoveEmpty().FastCount() > 1);
 	}
 
-	/// <summary>
-	/// Defines the test method SplitTest.
-	/// </summary>
 	[TestMethod]
 	public void SplitTest()
 	{
@@ -553,9 +445,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(testValue.Split(',', count: 2, options: StringSplitOptions.RemoveEmptyEntries).FastCount() == 2);
 	}
 
-	/// <summary>
-	/// Defines the test method SplitWithCharAndCountTest.
-	/// </summary>
 	[TestMethod]
 	public void SplitWithCharAndCountTest()
 	{
@@ -570,9 +459,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(result.FastCount() == 1);
 	}
 
-	/// <summary>
-	/// Defines the test method SplitWithCharTest.
-	/// </summary>
 	[TestMethod]
 	public void SplitWithCharTest()
 	{
@@ -587,9 +473,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(result.FastCount() == 3);
 	}
 
-	/// <summary>
-	/// Defines the test method SplitWithStringAndCountTest.
-	/// </summary>
 	[TestMethod]
 	public void SplitWithStringAndCountTest()
 	{
@@ -604,9 +487,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(result.FastCount() == 1);
 	}
 
-	/// <summary>
-	/// Defines the test method SplitWithStringTest.
-	/// </summary>
 	[TestMethod]
 	public void SplitWithStringTest()
 	{
@@ -621,9 +501,50 @@ public class StringExtensionsTests
 		Assert.IsTrue(result.FastCount() == 3);
 	}
 
-	/// <summary>
-	/// Defines the test method StartsWithOrdinalIgnoreCaseTest.
-	/// </summary>
+	[TestMethod]
+	public void StartsWithOrdinal_EmptyInput_ReturnsFalse()
+	{
+		var input = string.Empty;
+		var startsWith = "Hello";
+
+		var result = input.StartsWithOrdinal(startsWith);
+
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void StartsWithOrdinal_EmptyStartsWith_ReturnsTrue()
+	{
+		var input = "Hello World";
+		var startsWith = string.Empty;
+
+		var result = input.StartsWithOrdinal(startsWith);
+
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void StartsWithOrdinal_InputDoesNotStartWithSpecifiedString_ReturnsFalse()
+	{
+		var input = "Hello World";
+		var startsWith = "World";
+
+		var result = input.StartsWithOrdinal(startsWith);
+
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void StartsWithOrdinal_InputStartsWithSpecifiedString_ReturnsTrue()
+	{
+		var input = "Hello World";
+		var startsWith = "Hello";
+
+		var result = input.StartsWithOrdinal(startsWith);
+
+		Assert.IsTrue(result);
+	}
+
 	[TestMethod]
 	public void StartsWithOrdinalIgnoreCaseTest()
 	{
@@ -632,20 +553,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(testValue.StartsWithOrdinalIgnoreCase(testValue));
 	}
 
-	/// <summary>
-	/// Defines the test method StartsWithOrdinalTest.
-	/// </summary>
-	[TestMethod]
-	public void StartsWithOrdinalTest()
-	{
-		var testValue = RandomData.GenerateWord(10);
-
-		Assert.IsTrue(testValue.StartsWithOrdinal(testValue));
-	}
-
-	/// <summary>
-	/// Defines the test method SubstringTrimTest.
-	/// </summary>
 	[TestMethod]
 	public void SubstringTrimTest()
 	{
@@ -660,9 +567,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(testValue.SubstringTrim(1, 10).HasValue());
 	}
 
-	/// <summary>
-	/// Defines the test method ToBase64Test.
-	/// </summary>
 	[TestMethod]
 	public void ToBase64Test()
 	{
@@ -691,9 +595,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(testValue.ToByteArray(encoding: Encoding.UTF8).Length > 0);
 	}
 
-	/// <summary>
-	/// Defines the test method ToTitleCaseTest.
-	/// </summary>
 	[TestMethod]
 	public void ToTitleCaseTest()
 	{
@@ -704,9 +605,6 @@ public class StringExtensionsTests
 		Assert.IsTrue(testValue.IsNotEmpty());
 	}
 
-	/// <summary>
-	/// Defines the test method TrimTest.
-	/// </summary>
 	[TestMethod]
 	public void TrimTest()
 	{

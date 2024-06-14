@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="HashSetExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -21,19 +21,21 @@ using DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class HashSetExtensions.
+/// Provides extension methods for <see cref="HashSet{T}" /> to enhance its functionality.
+/// These methods include adding items conditionally, converting to concurrent or immutable hash sets, and upserting items.
 /// </summary>
+
 public static class HashSetExtensions
 {
 
 	/// <summary>
-	/// Adds item to the <see cref="HashSet{T}" /> if condition is meet.
-	/// Validates that <paramref name="collection" /> and <paramref name="item" /> is not null.
+	/// Adds an item to the <see cref="HashSet{T}" /> if a specified condition is met.
+	/// This method validates that both the <paramref name="collection" /> and <paramref name="item" /> are not null before attempting to add.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="item">The item.</param>
-	/// <param name="condition">The condition.</param>
+	/// <typeparam name="T">The type of elements in the hash set.</typeparam>
+	/// <param name="collection">The hash set to which the item may be added.</param>
+	/// <param name="item">The item to add to the hash set.</param>
+	/// <param name="condition">The condition that determines whether the item should be added.</param>
 	[Information(nameof(AddIf), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void AddIf<T>([NotNull] this HashSet<T> collection, [NotNull] T item, bool condition)
 	{
@@ -47,32 +49,37 @@ public static class HashSetExtensions
 	}
 
 	/// <summary>
-	/// Converts <see cref="HashSet{T}" /> to <see cref="ConcurrentHashSet{T}" />.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Converts a <see cref="HashSet{T}" /> to a <see cref="ConcurrentHashSet{T}" />.
+	/// This method ensures thread-safe operations on the hash set by creating a concurrent version of it.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <returns>ConcurrentHashSet&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the hash set.</typeparam>
+	/// <param name="collection">The hash set to convert.</param>
+	/// <returns>A new instance of <see cref="ConcurrentHashSet{T}" /> containing all elements from the original hash set.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
 	[Information(nameof(ToConcurrentHashSet), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ConcurrentHashSet<T> ToConcurrentHashSet<T>([NotNull] this HashSet<T> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
-	/// Converts to <see cref="HashSet{T}" /> to <see cref="ImmutableHashSet{T}" />.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Converts a <see cref="HashSet{T}" /> to an <see cref="ImmutableHashSet{T}" />.
+	/// This method creates an immutable hash set containing all the elements of the original hash set,
+	/// providing a snapshot that cannot be modified.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The values.</param>
-	/// <returns>ImmutableHashSet<typeparamref name="T" /></returns>
+	/// <typeparam name="T">The type of elements in the hash set.</typeparam>
+	/// <param name="collection">The hash set to convert.</param>
+	/// <returns>An <see cref="ImmutableHashSet{T}" /> containing all elements from the original hash set.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
 	[Information(nameof(ToImmutableHashSet), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ImmutableHashSet<T> ToImmutableHashSet<T>([NotNull] this HashSet<T> collection) => ImmutableHashSet.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>
-	/// Upserts the specified item into the <see cref="HashSet{T}" />.
-	/// Validates that <paramref name="collection" /> and <paramref name="item" /> is not null.
+	/// Upserts (updates or inserts) an item into the <see cref="HashSet{T}" />.
+	/// If the item already exists in the hash set, it is first removed and then added again to ensure the latest value is stored.
+	/// This method ensures that both the <paramref name="collection" /> and <paramref name="item" /> are not null before performing the upsert operation.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="item">The item.</param>
+	/// <typeparam name="T">The type of elements in the hash set.</typeparam>
+	/// <param name="collection">The hash set where the item will be upserted.</param>
+	/// <param name="item">The item to upsert into the hash set.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> or <paramref name="item" /> is null.</exception>
 	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void Upsert<T>([NotNull] this HashSet<T> collection, [NotNull] T item)
 	{

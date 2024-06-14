@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-12-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -156,13 +156,17 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Processes the type of the generic.
+	/// Processes a generic type and appends its formatted string representation to the provided StringBuilder.
 	/// </summary>
-	/// <param name="builder">The builder.</param>
-	/// <param name="type">The type.</param>
-	/// <param name="genericArguments">The generic arguments.</param>
-	/// <param name="length">The length.</param>
-	/// <param name="options">The options.</param>
+	/// <param name="builder">The StringBuilder to which the type's string representation is appended.</param>
+	/// <param name="type">The generic type to process.</param>
+	/// <param name="genericArguments">An array of Type objects that represent the arguments of the generic type.</param>
+	/// <param name="length">The number of generic arguments to process.</param>
+	/// <param name="options">Display options that specify how the type name is formatted.</param>
+	/// <remarks>
+	/// This method is responsible for generating a human-readable string representation of a generic type,
+	/// including its name and its generic type arguments, according to the specified display options.
+	/// </remarks>
 	[Information(UnitTestCoverage = 99, Status = Status.Available)]
 	private static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, int length, DisplayNameOptions options)
 	{
@@ -262,11 +266,21 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Creates type instance.
+	/// Creates an instance of the specified type <typeparamref name="T"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <returns>T.</returns>
-	/// <remarks>Original code by: Jeremy Clark</remarks>
+	/// <typeparam name="T">The type of object to create.</typeparam>
+	/// <returns>A new instance of the specified type.</returns>
+	/// <exception cref="InvalidOperationException">Thrown when the type cannot 
+	/// be instantiated. This can occur if <typeparamref name="T"/> is an 
+	/// interface, abstract class, or does not have a parameterless 
+	/// constructor.
+	/// </exception>
+	/// <remarks>
+	/// This method uses reflection to create an instance of 
+	/// <typeparamref name="T"/>. It requires <typeparamref name="T"/> 
+	/// to have a parameterless constructor. 
+	/// Original code by: Jeremy Clark
+	/// </remarks>
 	[Information(UnitTestCoverage = 100, Status = Status.Available)]
 	public static T Create<T>()
 		where T : class
@@ -334,7 +348,7 @@ public static class TypeHelper
 		//USING SPAN CAUSES ISSUES, FrozenSet is slower.
 		var assemblyCollection = currentDomain.ArgumentNotNull().GetAssemblies().ToImmutableArray();
 
-		List<Type> types = null;
+		List<Type> types = [];
 
 		foreach (var assembly in assemblyCollection)
 		{
@@ -465,10 +479,15 @@ public static class TypeHelper
 	public static T GetDefault<T>() => default;
 
 	/// <summary>
-	/// Gets the instance hash code.
+	/// Calculates and returns the hash code for the specified instance.
 	/// </summary>
-	/// <param name="instance">The instance.</param>
-	/// <returns>Int32.</returns>
+	/// <param name="instance">The instance for which to calculate the hash code.</param>
+	/// <returns>The hash code of the specified instance.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if
+	/// <paramref name="instance" /> is null.</exception>
+	/// <remarks>This method uses the default hash code provider of the object's
+	/// type to compute the hash code. It is a convenient way to obtain an
+	/// instance's hash code with null-checking.</remarks>
 	[Information(UnitTestCoverage = 100, Status = Status.Available)]
 	public static int GetInstanceHashCode([NotNull] object instance)
 	{
@@ -580,10 +599,13 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Determines whether [is built-in type] [the specified type].
+	/// Determines whether the specified type is a built-in .NET type.
 	/// </summary>
-	/// <param name="type">The type.</param>
-	/// <returns><c>true</c> if [is built-in type] [the specified type]; otherwise, <c>false</c>.</returns>
+	/// <param name="type">The type to check.</param>
+	/// <returns>
+	///   <c>true</c> if [is built-in type] [the specified type]; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type" /> is null.</exception>
+	/// <remarks>Built-in types are fundamental types predefined by the .NET runtime. This method checks if the given type is one of these fundamental types.</remarks>
 	[Information(nameof(IsBuiltinType), author: "David McCarter", createdOn: "11/6/2023", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsBuiltinType(Type type)
 	{

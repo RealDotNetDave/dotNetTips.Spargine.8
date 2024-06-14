@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -635,6 +635,11 @@ public static class StringExtensions
 	[Information(nameof(Indent), UnitTestCoverage = 100, Status = Status.Available)]
 	public static string Indent([NotNull] this string input, int length, char indentationCharacter)
 	{
+		if (input.CheckIsNotNull() is false || length <= 0)
+		{
+			return string.Empty;
+		}
+
 		var sb = _stringBuilderPool.Get();
 
 		try
@@ -654,7 +659,7 @@ public static class StringExtensions
 				_ = sb.Append(input);
 			}
 
-			return sb.ToString();
+			return sb.ToString().TrimEnd();
 		}
 		finally
 		{

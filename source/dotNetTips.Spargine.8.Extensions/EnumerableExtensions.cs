@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -30,8 +30,10 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class EnumerableExtensions.
+/// Provides a collection of static methods for querying objects that implement <see cref="IEnumerable{T}"/>.
+/// These extensions add functionality for adding, checking, and manipulating elements within enumerable collections.
 /// </summary>
+
 public static class EnumerableExtensions
 {
 
@@ -48,12 +50,13 @@ public static class EnumerableExtensions
 	private static int GenerateRandomNumber() => RandomNumberGenerator.GetInt32(int.MaxValue);
 
 	/// <summary>
-	/// Adds items to a list if they do not exist.
+	/// Adds distinct items to the source enumerable collection.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="source">The source.</param>
-	/// <param name="items">The items.</param>
-	/// <returns>IEnumerable&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="source">The source collection to add items to.</param>
+	/// <param name="items">The items to add to the collection if they are not already present.</param>
+	/// <returns>An <see cref="IEnumerable{T}"/> that contains the distinct elements from the original collection and any new items added.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="items"/> is null.</exception>
 	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static IEnumerable<T> AddDistinct<T>([NotNull] this IEnumerable<T> source, [NotNull] params T[] items)
 	{
@@ -78,13 +81,13 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Adds the specified item to the <see cref="IEnumerable{T}" />.
-	/// Validates that <paramref name="collection" /> and <paramref name="item" /> is not null.
+	/// Adds the specified item to the beginning of the collection.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="item">The item.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to add the item to.</param>
+	/// <param name="item">The item to add to the collection.</param>
+	/// <returns>An <see cref="IEnumerable{T}"/> that starts with the specified item followed by the original collection items.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[Information(nameof(AddFirst), "David McCarter", "10/24/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<T> AddFirst<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item)
 	{
@@ -97,14 +100,14 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Adds item to the <see cref="IEnumerable{T}" /> if the condition is met.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Adds the specified item to the collection if the condition is true.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="item">The item.</param>
-	/// <param name="condition">if set to <c>true</c> [condition].</param>
-	/// <returns>IEnumerable&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
+	/// <param name="collection">The collection to add the item to.</param>
+	/// <param name="item">The item to add to the collection.</param>
+	/// <param name="condition">The condition that determines if the item should be added.</param>
+	/// <returns>An <see cref="IEnumerable{T}"/> that includes the original collection and, if the condition is true, the specified item.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[Information(nameof(AddIf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static IEnumerable<T> AddIf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item, bool condition)
 	{
@@ -124,13 +127,13 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Adds the specified item to the <see cref="IEnumerable{T}" />.
-	/// Validates that <paramref name="collection" /> and <paramref name="item" /> is not null.
+	/// Adds the specified item to the end of the collection.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="item">The item.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
+	/// <param name="collection">The collection to add the item to.</param>
+	/// <param name="item">The item to add to the collection.</param>
+	/// <returns>An <see cref="IEnumerable{T}"/> that includes the original collection items followed by the specified item.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[Information(nameof(AddLast), "David McCarter", "10/24/2023", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<T> AddLast<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item)
 	{
@@ -142,15 +145,14 @@ public static class EnumerableExtensions
 		return collection.ArgumentNotNull().Append(item);
 	}
 
-
 	/// <summary>
-	/// Determines whether the specified  <see cref="IEnumerable{T}" /> has items specified.
+	/// Determines whether the collection contains any of the specified items.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The source.</param>
-	/// <param name="items">The items.</param>
-	/// <returns><c>true</c> if the specified items has items; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">List is null or empty.</exception>
+	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
+	/// <param name="collection">The collection to check.</param>
+	/// <param name="items">The items to look for in the collection.</param>
+	/// <returns><c>true</c> if the collection contains any of the specified items; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="items"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
 	public static bool ContainsAny<T>([NotNull] this IEnumerable<T> collection, [NotNull] params T[] items)
 	{
@@ -168,11 +170,11 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Counts items in a <see cref="IEnumerable" />.
+	/// Counts the number of elements in the specified collection.
 	/// </summary>
-	/// <param name="collection">The list.</param>
-	/// <returns>System.Int32.</returns>
-	/// <exception cref="ArgumentNullException">list</exception>
+	/// <param name="collection">The collection to count the elements of.</param>
+	/// <returns>The number of elements in the collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(Count), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static int Count([NotNull] this IEnumerable collection)
 	{
@@ -181,15 +183,24 @@ public static class EnumerableExtensions
 			return 0;
 		}
 
-		var count = 0;
+		// If the collection is an ICollection or ICollection<T>, use its Count property for efficiency.
+		if (collection is ICollection col)
+		{
+			return col.Count;
+		}
+		else if (collection is ICollection<object> colT)
+		{
+			return colT.Count;
+		}
 
+		// Fallback to manual counting for other IEnumerable types.
+		var count = 0;
 		var enumerator = collection.GetEnumerator();
 
 		while (enumerator.MoveNext())
 		{
 			count++;
 		}
-
 		return count;
 	}
 
@@ -205,33 +216,23 @@ public static class EnumerableExtensions
 	public static async Task<int> CountAsync<T>([NotNull] this IEnumerable<T> collection, [AllowNull] CancellationToken cancellationToken) => await Task.Run(collection.ArgumentNotNull().Count, cancellationToken).ConfigureAwait(false);
 
 	/// <summary>
-	/// Creates the specified <see cref="Collection{T}" />.
+	/// Creates a new <see cref="Collection{T}"/> from the specified items. Optionally ensures uniqueness of items in the collection.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="items">The items.</param>
-	/// <param name="ensureUnique">if set to <c>true</c> [ensure unique].</param>
-	/// <returns>Collection&lt;T&gt;.</returns>
-	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="items">The items to include in the new collection.</param>
+	/// <param name="ensureUnique">If set to <c>true</c>, the new collection will only include unique items.</param>
+	/// <returns>A new <see cref="Collection{T}"/> containing the specified items, with duplicates removed if <paramref name="ensureUnique"/> is <c>true</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
+	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static Collection<T> Create<T>([NotNull] this IEnumerable<T> items, bool ensureUnique)
 	{
 		items = items.ArgumentNotNull();
 
-		var newItems = new Collection<T>();
-
 		//TODO: TRY CHANING TO FROZENSET
-		foreach (var item in items.Where(p => p is not null))
-		{
-			if (ensureUnique is true)
-			{
-				_ = newItems.AddIfNotExists(item);
-			}
-			else
-			{
-				newItems.Add(item);
-			}
-		}
+		IList<T> list = ensureUnique ? new HashSet<T>(items).ToList() : new List<T>(items);
 
-		return newItems;
+		return new Collection<T>(list);
+
 	}
 
 	/// <summary>
@@ -385,42 +386,33 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Finds first item in the <see cref="IEnumerable{T}" /> or returns null.
-	/// Validates that <paramref name="collection" /> contains items.
+	/// Returns the first element of a sequence that satisfies a specified condition or a default null value if no such element is found.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="match">The match.</param>
-	/// <returns>System.Nullable&lt;T&gt;.</returns>
-	/// <exception cref="ArgumentNullException">Match cannot be null.</exception>
+	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
+	/// <param name="collection">The <see cref="IEnumerable{T}"/> to search.</param>
+	/// <param name="match">The predicate function to apply to each element.</param>
+	/// <returns>The first element that satisfies the condition defined by <paramref name="match"/>, or default null if no such element is found.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="match"/> is null.</exception>
 	[DefaultValue(null)]
-	[Information(nameof(FirstOrNull), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(FirstOrNull), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static T? FirstOrNull<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> match)
 		where T : struct
 	{
-		var listToProcess = collection.ArgumentItemsExists().ToCollection();
+		collection = collection.ArgumentNotNull();
 		match = match.ArgumentNotNull();
 
-		for (var listCount = 0; listCount < listToProcess.FastCount(); listCount++)
-		{
-			var local = listToProcess[listCount];
-
-			if (match?.Invoke(local) ?? default)
-			{
-				return new T?(local);
-			}
-		}
-
-		return null;
+		var result = collection.FirstOrDefault(match);
+		return result.Equals(default(T)) ? null : result;
 	}
 
 	/// <summary>
-	/// Determines whether the specified items has duplicates.
+	/// Determines whether the specified collection contains any duplicate elements.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="items">The items.</param>
-	/// <returns><c>true</c> if the specified items has duplicates; otherwise, <c>false</c>.</returns>
-	[Information("Orginal code by Milan Jovanović", author: "David McCarter", createdOn: "7/3/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="items">The collection to check for duplicates.</param>
+	/// <returns><c>true</c> if the collection contains duplicates; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
+	[Information("Orginal code by Milan Jovanović", author: "David McCarter", createdOn: "7/3/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug23")]
 	public static bool HasDuplicates<T>([NotNull] this IEnumerable<T> items)
 	{
 		if (items.DoesNotHaveItems())
@@ -428,18 +420,17 @@ public static class EnumerableExtensions
 			return false;
 		}
 
-		var elements = ImmutableHashSet.CreateBuilder<T>();
+		var seenItems = new HashSet<T>();
 
-		//FrozenSet is slower.
 		foreach (var item in items)
 		{
-			if (elements.Add(item) is false)
+			if (!seenItems.Add(item)) // Add returns false if the item was already in the set.
 			{
-				return true;
+				return true; // Duplicate found.
 			}
 		}
 
-		return false;
+		return false; // No duplicates found.
 	}
 
 	/// <summary>
@@ -597,47 +588,43 @@ public static class EnumerableExtensions
 	public static IOrderedEnumerable<T> OrderByOrdinal<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, string> keySelector) => collection.ArgumentNotNull().OrderBy(keySelector.ArgumentNotNull(), StringComparer.Ordinal);
 
 	/// <summary>
-	/// Converts a processedCollection into separate collections based on page size.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Partitions the specified collection into smaller collections of a given size.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="pageSize">Size of the page. Minimum page size is 1.</param>
-	/// <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
-	/// <exception cref="ArgumentOutOfRangeException">pageCount</exception>
-	/// <exception cref="ArgumentNullException">pageCount</exception>
-	/// <exception cref="ArgumentNullException">pageCount</exception>
-	/// <exception cref="ArgumentOutOfRangeException">pageCount</exception>
-	[Information(nameof(Page), "David McCarter", "11/21/2010", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to partition.</param>
+	/// <param name="pageSize">The size of each partition.</param>
+	/// <returns>An enumerable of collections, where each collection contains no more than <paramref name="pageSize"/> elements.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="pageSize"/> is less than or equal to 0.</exception>
+	[Information(nameof(Page), "David McCarter", "11/21/2010", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IEnumerable<IEnumerable<T>> Page<T>([NotNull] this IEnumerable<T> collection, int pageSize)
 	{
 		collection = collection.ArgumentNotNull();
-
 		pageSize = pageSize.EnsureMinimum(1);
 
-		using (var enumerator = collection.GetEnumerator())
+		using var enumerator = collection.GetEnumerator();
+		while (enumerator.MoveNext())
 		{
-			while (enumerator.MoveNext())
+			var currentPage = new List<T>(pageSize);
+
+			do
 			{
-				var currentPage = new List<T>(pageSize) { enumerator.Current };
+				currentPage.Add(enumerator.Current);
+			} while (currentPage.Count < pageSize && enumerator.MoveNext());
 
-				while (currentPage.FastCount() < pageSize && enumerator.MoveNext())
-				{
-					currentPage.Add(enumerator.Current);
-				}
-
-				yield return currentPage.AsEnumerable();
-			}
+			yield return currentPage;
 		}
 	}
 
 	/// <summary>
-	/// Partitions the collection into the specified page count.
+	/// Partitions the specified collection into smaller collections of a specified size.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to partition.</param>
-	/// <param name="pageCount">The page count.</param>
-	/// <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
+	/// <param name="pageCount">The size of each partition.</param>
+	/// <returns>An enumerable of collections, where each collection contains no more than <paramref name="pageCount"/> elements.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="pageCount"/> is less than or equal to 0.</exception>
 	/// <remarks>Original code from: https://github.com/dncuug/X.PagedList/blob/master/src/X.PagedList/PagedListExtensions.cs</remarks>
 	[Information(nameof(Partition), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<IEnumerable<T>> Partition<T>([NotNull] this IEnumerable<T> collection, int pageCount)
@@ -664,12 +651,13 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Picks a random item from a processedCollection.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Picks a random element from the specified collection.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The list.</param>
-	/// <returns>T.</returns>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection from which to pick a random element.</param>
+	/// <returns>A randomly selected element from the collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	/// <exception cref="InvalidOperationException">Thrown if <paramref name="collection"/> is empty.</exception>
 	[Information(nameof(PickRandom), "David McCarter", "8/26/2020", "9/19/2020", BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static T PickRandom<T>([NotNull] this IEnumerable<T> collection)
 	{
@@ -746,47 +734,49 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Splits a collection into the specified page count.
+	/// Splits the specified collection into smaller collections of a specified size.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to split.</param>
-	/// <param name="pageCount">The page count.</param>
-	/// <returns>IEnumerable&lt;IEnumerable&lt;T&gt;&gt;.</returns>
+	/// <param name="size">The size of each smaller collection.</param>
+	/// <returns>An enumerable of collections, where each collection contains no more than <paramref name="size"/> elements.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="size"/> is less than or equal to 0.</exception>
 	/// <remarks>Original code from: https://github.com/dncuug/X.PagedList/blob/master/src/X.PagedList/PagedListExtensions.cs</remarks>
-	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
-	public static IEnumerable<IEnumerable<T>> Split<T>([NotNull] this IEnumerable<T> collection, int pageCount)
+	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineApril2022")]
+	public static IEnumerable<IEnumerable<T>> Split<T>([NotNull] this IEnumerable<T> collection, int size)
 	{
 		collection = collection.ArgumentNotNull();
+		size = size.EnsureMinimum(1);
 
-		pageCount = pageCount.EnsureMinimum(1);
+		var bucket = new List<T>(size);
 
-		var takeCount = Convert.ToInt32(Math.Ceiling(collection.Count() / (double)pageCount));
-
-		var result = new List<IEnumerable<T>>();
-
-		for (var pageIndex = 0; pageIndex < pageCount; pageIndex++)
+		foreach (var item in collection)
 		{
-			//ImmutableArray is slower
-			var chunk = collection.Skip(pageIndex * takeCount).Take(takeCount);
-
-			if (chunk.HasItems())
+			bucket.Add(item);
+			if (bucket.Count == size)
 			{
-				result.Add(chunk);
-			};
+				yield return bucket;
+				bucket = new List<T>(size);
+			}
 		}
 
-		return result;
+		if (bucket.Count > 0)
+		{
+			yield return bucket;
+		}
 	}
 
 	/// <summary>
-	/// Determines if first <see cref="IEnumerable{T}" /> starts with the second <see cref="IEnumerable{T}" />.
+	/// Determines whether the beginning of the first sequence matches the second sequence.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="first">The first.</param>
-	/// <param name="second">The second.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <typeparam name="T">The type of elements in the sequences.</typeparam>
+	/// <param name="first">The first sequence to compare.</param>
+	/// <param name="second">The sequence to compare to the beginning of the first sequence.</param>
+	/// <returns>true if the first sequence starts with the second sequence; otherwise, false.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="first"/> or <paramref name="second"/> is null.</exception>
 	/// <remarks>Original code from efcore-master on GitHub.</remarks>
-	[Information(nameof(StartsWith), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(StartsWith), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static bool StartsWith<T>([NotNull] this IEnumerable<T> first, [NotNull] IEnumerable<T> second)
 	{
 		if (first is null || second is null)
@@ -794,16 +784,12 @@ public static class EnumerableExtensions
 			return false;
 		}
 
-		if (ReferenceEquals(first, second))
-		{
-			return true;
-		}
-
 		using (var firstEnumerator = first.GetEnumerator())
+		using (var secondEnumerator = second.GetEnumerator())
 		{
-			foreach (var item in second)
+			while (secondEnumerator.MoveNext())
 			{
-				if (!firstEnumerator.MoveNext() || !Equals(firstEnumerator.Current, item))
+				if (!firstEnumerator.MoveNext() || !EqualityComparer<T>.Default.Equals(firstEnumerator.Current, secondEnumerator.Current))
 				{
 					return false;
 				}
@@ -814,15 +800,15 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Determines if two <see cref="IEnumerable{T}" /> sequences are equal.
+	/// Determines whether the beginning of the first sequence structurally equals the second sequence.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="first">The first.</param>
-	/// <param name="second">The second.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="ArgumentNullException">second</exception>
+	/// <typeparam name="T">The type of elements in the sequences.</typeparam>
+	/// <param name="first">The first sequence to compare.</param>
+	/// <param name="second">The sequence to compare against the first sequence.</param>
+	/// <returns>true if the first sequence structurally equals the second sequence; otherwise, false.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="first"/> or <paramref name="second"/> is null.</exception>
 	/// <remarks>Original code from efcore-master on GitHub.</remarks>
-	[Information(nameof(StructuralSequenceEqual), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(StructuralSequenceEqual), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static bool StructuralSequenceEqual<T>([NotNull] this IEnumerable<T> first, [NotNull] IEnumerable<T> second)
 	{
 		if (first is null || second is null)
@@ -830,61 +816,51 @@ public static class EnumerableExtensions
 			return false;
 		}
 
-		if (ReferenceEquals(first, second))
-		{
-			return true;
-		}
+		var comparer = StructuralComparisons.StructuralEqualityComparer;
 
-		using (var firstEnumerator = first.GetEnumerator())
+		using (var enumerator1 = first.GetEnumerator())
+		using (var enumerator2 = second.GetEnumerator())
 		{
-			using (var secondEnumerator = second.GetEnumerator())
+			while (enumerator1.MoveNext())
 			{
-				while (firstEnumerator.MoveNext())
+				if (!(enumerator2.MoveNext() && comparer.Equals(enumerator1.Current, enumerator2.Current)))
 				{
-					if (!secondEnumerator.MoveNext() ||
-						!StructuralComparisons.StructuralEqualityComparer
-							.Equals(firstEnumerator.Current, secondEnumerator.Current))
-					{
-						return false;
-					}
+					return false;
 				}
+			}
 
-				return !secondEnumerator.MoveNext();
+			if (enumerator2.MoveNext())
+			{
+				return false; // Second sequence has more elements
 			}
 		}
+
+		return true;
 	}
 
 	/// <summary>
-	/// Converts a <see cref="IEnumerable{T}" /> to a BlockingCollection.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Converts an <see cref="IEnumerable{T}"/> to a <see cref="BlockingCollection{T}"/>.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <returns>BlockingCollection&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to convert.</param>
+	/// <returns>A <see cref="BlockingCollection{T}"/> containing all the elements of the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	/// <remarks>The resulting collection supports IDisposable. Make sure to properly dispose!</remarks>
-	[Information(nameof(ToBlockingCollection), "David McCarter", "4/13/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineMarch2021")]
+	[Information(nameof(ToBlockingCollection), "David McCarter", "4/13/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineMarch2021")]
 	public static BlockingCollection<T> ToBlockingCollection<T>([NotNull] this IEnumerable<T> collection)
 	{
-		collection = collection.ArgumentItemsExists();
+		collection = collection.ArgumentNotNull();
 
-		var returnValue = new BlockingCollection<T>(collection.Count());
-
-		//FrozenSet is slower
-		foreach (var item in collection)
-		{
-			_ = returnValue.TryAdd(item);
-		}
-
-		return returnValue;
+		return new BlockingCollection<T>(new ConcurrentQueue<T>(collection));
 	}
 
 	/// <summary>
-	/// Converts the <see cref="IEnumerable{T}" /> to a <see cref="Collection{T}" />.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Converts an <see cref="IEnumerable{T}"/> to a <see cref="Collection{T}"/>.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <returns>Collection&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to convert.</param>
+	/// <returns>A <see cref="Collection{T}"/> that contains elements from the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(ToCollection), "David McCarter", "4/13/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static Collection<T> ToCollection<T>([NotNull] this IEnumerable<T> collection)
 	{
@@ -894,12 +870,13 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Convert a <see cref="IEnumerable{T}" /> to a delimited string using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
+	/// Converts an <see cref="IEnumerable{T}"/> to a delimited string.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
-	/// <returns>System.String.</returns>
+	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
+	/// <param name="collection">The collection to convert.</param>
+	/// <param name="delimiter">The delimiter to use. Default is comma.</param>
+	/// <returns>A string that represents the concatenated elements of the collection, separated by the specified delimiter.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(ToDelimitedString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb21")]
 	public static string ToDelimitedString<T>([NotNull] this IEnumerable<T> collection, char delimiter = ControlChars.Comma)
 	{
@@ -932,23 +909,23 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Converts a <see cref="IEnumerable{T}" /> to <see cref="FrozenSet{T}" />.
+	/// Converts an <see cref="IEnumerable{T}"/> to a <see cref="FrozenSet{T}"/>.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="list">The list.</param>
-	/// <returns>FrozenSet&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="list">The collection to convert.</param>
+	/// <returns>A <see cref="FrozenSet{T}"/> that contains elements from the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
 	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this IEnumerable<T> list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>
-	/// Converts a <see cref="IEnumerable{T}" /> to <see cref="ImmutableList{T}" />.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Converts an <see cref="IEnumerable{T}"/> to an <see cref="ImmutableList{T}"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The values.</param>
-	/// <returns>IImmutableList&lt;T&gt;.</returns>
-	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to convert.</param>
+	/// <returns>An <see cref="ImmutableList{T}"/> that contains elements from the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(ToImmutable), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static ImmutableList<T> ToImmutable<T>([NotNull] this IEnumerable<T> collection)
 	{
@@ -976,13 +953,12 @@ public static class EnumerableExtensions
 	//}
 
 	/// <summary>
-	/// Converts <see cref="IEnumerable{T}" /> to a <see cref="LinkedList{T}" />.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Converts an <see cref="IEnumerable{T}"/> to a <see cref="LinkedList{T}"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The values.</param>
-	/// <returns>LinkedList&lt;T&gt;.</returns>
-	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to convert.</param>
+	/// <returns>A <see cref="LinkedList{T}"/> that contains elements from the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(ToLinkedList), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static LinkedList<T> ToLinkedList<T>([NotNull] this IEnumerable<T> collection)
 	{
@@ -1009,31 +985,34 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Converts to <see cref=" ReadOnlyCollection{T}" />.
+	/// Converts an <see cref="IEnumerable{T}"/> to a <see cref="ReadOnlyCollection{T}"/>.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The collection.</param>
-	/// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to convert.</param>
+	/// <returns>A <see cref="ReadOnlyCollection{T}"/> that contains elements from the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>([NotNull] this IEnumerable<T> collection) => new(collection.ArgumentNotNull().ToList());
 
 	/// <summary>
-	/// Converts to <see cref=" ReadOnlyCollection{T}" />.
+	/// Converts a <see cref="ConcurrentBag{T}"/> to a <see cref="ReadOnlyCollection{T}"/>.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The collection.</param>
-	/// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to convert.</param>
+	/// <returns>A <see cref="ReadOnlyCollection{T}"/> that contains elements from the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "2/5/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>([NotNull] this ConcurrentBag<T> collection) => new(collection.ArgumentNotNull().ToList());
 
 	/// <summary>
-	/// Upserts (update or insert) the specified item to the <see cref="IEnumerable{T}" />.
-	/// Validates that <paramref name="collection" />  is not null.
+	/// Inserts or updates an item in the collection. If the item already exists, it is updated; otherwise, it is added.
+	/// Note: This method returns a new <see cref="IEnumerable{T}"/> with the item upserted and does not modify the original collection.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="item">The item.</param>
-	/// <returns>System.Collections.Generic.IEnumerable&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
+	/// <param name="collection">The collection to perform the upsert operation on.</param>
+	/// <param name="item">The item to insert or update in the collection.</param>
+	/// <returns>A new <see cref="IEnumerable{T}"/> with the item upserted.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(Upsert), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static IEnumerable<T> Upsert<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item)
 	{

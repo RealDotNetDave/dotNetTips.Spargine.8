@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -28,8 +28,11 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class DictionaryExtensions.
+/// Provides extension methods for <see cref="IDictionary{TKey, TValue}" /> to enhance and simplify its usage.
 /// </summary>
+/// <remarks>This class includes methods for adding or updating entries in a dictionary in a single operation (upsert),
+/// adding multiple entries from another collection, converting dictionaries to various types, and more.
+/// These methods are designed to improve code readability and efficiency when working with dictionaries.</remarks>
 public static class DictionaryExtensions
 {
 
@@ -57,16 +60,15 @@ public static class DictionaryExtensions
 	}
 
 	/// <summary>
-	/// Tries the add the item to <see cref="IDictionary{TKey, TValue}" /> if it does not exist.
-	/// Validates that <paramref name="collection" /> and <paramref name="key" /> is not null.
+	/// Adds the specified key and value to the dictionary if the key does not already exist.
 	/// </summary>
-	/// <typeparam name="TKey">The type of the t key.</typeparam>
-	/// <typeparam name="TValue">The type of the t value.</typeparam>
-	/// <param name="collection">The dictionary.</param>
-	/// <param name="key">The key.</param>
-	/// <param name="value">The value.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="ArgumentNullException">key or value</exception>
+	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+	/// <param name="collection">The dictionary to add to.</param>
+	/// <param name="key">The key of the element to add.</param>
+	/// <param name="value">The value of the element to add. It must not be null.</param>
+	/// <returns>true if the key/value pair was added to the dictionary successfully; otherwise, false.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" />, <paramref name="key" />, or <paramref name="value" /> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static bool AddIfNotExists<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection, [NotNull] TKey key, [NotNull] TValue value)
 	{
@@ -142,19 +144,15 @@ public static class DictionaryExtensions
 	}
 
 	/// <summary>
-	/// Gets a value or adds it to the <see cref="IDictionary{TKey, TValue}" />.
-	/// Validates that <paramref name="collection" />, <paramref name="key" /> and
-	/// <paramref name="value" /> is not null.
+	/// Gets the value associated with the specified key or adds it if the key does not exist.
 	/// </summary>
-	/// <typeparam name="TKey">The type of the t key.</typeparam>
-	/// <typeparam name="TValue">The type of the t value.</typeparam>
-	/// <param name="collection">The dictionary.</param>
-	/// <param name="key">The key.</param>
-	/// <param name="value">The value.</param>
-	/// <returns>TValue.</returns>
-	/// <exception cref="ArgumentNullException">Dictionary cannot be null.</exception>
-	/// <exception cref="ArgumentNullException">Key cannot be null.</exception>
-	/// <exception cref="ArgumentNullException">Value cannot be null.</exception>
+	/// <typeparam name="TKey">The type of keys in the dictionary.</typeparam>
+	/// <typeparam name="TValue">The type of values in the dictionary.</typeparam>
+	/// <param name="collection">The dictionary to search or add to.</param>
+	/// <param name="key">The key of the value to get or add.</param>
+	/// <param name="value">The value to add if the key does not exist.</param>
+	/// <returns>The value associated with the specified key.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" />, <paramref name="key" />, or <paramref name="value" /> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static TValue GetOrAdd<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> collection, [NotNull] TKey key, [NotNull] TValue value)
 	{

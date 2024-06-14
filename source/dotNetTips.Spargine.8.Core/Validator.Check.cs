@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-12-2024
 // ***********************************************************************
 // <copyright file="Validator.Check.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -27,7 +27,8 @@ using DotNetTips.Spargine.Core.Properties;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class to validate variables.
+/// Provides a set of static methods for performing various validation checks.
+/// These methods can throw exceptions if the validation fails and throwException parameter is set to true.
 /// </summary>
 public static partial class Validator
 {
@@ -42,14 +43,13 @@ public static partial class Validator
 	private static string CreateExceptionMessage(string message, string messageFromResource) => string.IsNullOrEmpty(message) ? messageFromResource : message;
 
 	/// <summary>
-	/// Checks to insure <see cref="Type" />s are the same.
+	/// Checks if the input type is equal to the expected type.
 	/// </summary>
-	/// <param name="input">The <see cref="Type" /> to validate.</param>
-	/// <param name="expectedType">The expected type.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <param name="input">The type to check.</param>
+	/// <param name="expectedType">The expected type to compare against.</param>
+	/// <param name="throwException">If set to true, throws an exception when the types do not match.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the input type matches the expected type; otherwise, false.</returns>
 	[Information(nameof(CheckEquals), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckEquals(this Type input, Type expectedType, bool throwException = false, string errorMessage = "")
@@ -65,13 +65,13 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks to see if the <see cref="FileInfo" /> file exists.
+	/// Checks if the specified <see cref="FileInfo" /> exists on the file system.
 	/// </summary>
-	/// <param name="input">The <see cref="FileInfo" /> file.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="FileNotFoundException">File not found.</exception>
+	/// <param name="input">The <see cref="FileInfo" /> to check.</param>
+	/// <param name="throwException">If set to true, an exception is thrown if the file does not exist.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the file exists; otherwise, false.</returns>
+	/// <exception cref="FileNotFoundException">Thrown if <paramref name="throwException" /> is true and the file does not exist.</exception>
 	[Information(nameof(CheckExists), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckExists(this FileInfo input, bool throwException = false, string errorMessage = "")
@@ -87,14 +87,14 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks if <see cref="DirectoryInfo" /> directory exists. Creates path if it does not exist.
+	/// Checks if the specified <see cref="DirectoryInfo" /> exists on the file system. Optionally creates the directory if it does not exist.
 	/// </summary>
-	/// <param name="input">The <see cref="DirectoryInfo" /> directory to validate.</param>
-	/// <param name="createDirectory">if set to <c>true</c> [create directory]. By default, the directory will be created.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="DirectoryNotFoundException">Directory not found.</exception>
+	/// <param name="input">The <see cref="DirectoryInfo" /> to check.</param>
+	/// <param name="createDirectory">If set to true, the directory is created if it does not exist.</param>
+	/// <param name="throwException">If set to true, an exception is thrown if the directory does not exist and <paramref name="createDirectory" /> is false.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the directory exists or was successfully created; otherwise, false.</returns>
+	/// <exception cref="DirectoryNotFoundException">Thrown if <paramref name="throwException" /> is true, <paramref name="createDirectory" /> is false, and the directory does not exist.</exception>
 	[Information(nameof(CheckExists), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckExists(this DirectoryInfo input, bool createDirectory = true, bool throwException = false, string errorMessage = "")
@@ -116,15 +116,15 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Tries the validate input.
+	/// Checks if the specified condition is true for the input value.
 	/// </summary>
-	/// <typeparam name="T">The type of the t value.</typeparam>
-	/// <param name="input">The value to validate.</param>
-	/// <param name="condition">if set to <c>true</c> [condition].</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <typeparam name="T">The type of the input value.</typeparam>
+	/// <param name="input">The input value to check.</param>
+	/// <param name="condition">The condition to evaluate against the input value.</param>
+	/// <param name="throwException">Indicates whether to throw an exception if the condition is false.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the condition is met; otherwise, false.</returns>
+	/// <exception cref="ArgumentException">Thrown if <paramref name="throwException" /> is true and the condition is not met.</exception>
 	[Information(nameof(CheckIsCondition), "David McCarter", "2/10/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsCondition<T>(this T input, bool condition, bool throwException = false, string errorMessage = "")
@@ -140,37 +140,37 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks to see if the <see cref="Enum" /> is defined.
+	/// Checks if the specified enum value is defined in its enumeration type.
 	/// </summary>
-	/// <param name="input">The <see cref="Enum" /> to validate.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if the specified throw exception is defined; otherwise, <c>false</c>.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <param name="input">The enum value to check.</param>
+	/// <param name="throwException">If set to true, throws an exception if the enum value is not defined.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the enum value is defined; otherwise, false.</returns>
+	/// <exception cref="ArgumentException">Thrown if <paramref name="throwException" /> is true and the enum value is not defined.</exception>
 	[Information(nameof(CheckIsDefined), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsDefined(this Enum input, bool throwException = false, string errorMessage = "")
 	{
-		var isValid = input is not null && Enum.IsDefined(input.GetType(), input);
+		var isDefined = input is not null && Enum.IsDefined(input.GetType(), input);
 
-		if (isValid is false && throwException)
+		if (isDefined is false && throwException)
 		{
 			ExceptionThrower.ThrowInvalidValueException(CreateExceptionMessage(errorMessage, Resources.ErrorEnumNotDefined), input);
 		}
 
-		return isValid;
+		return isDefined;
 	}
 
 	/// <summary>
-	/// Checks that the <see cref="DateTime" /> is in range.
+	/// Checks if the input value is within the specified range.
 	/// </summary>
-	/// <param name="input">The <see cref="DateTime" /> to validate.</param>
-	/// <param name="lower">The minimum <see cref="DateTime" />.</param>
-	/// <param name="upper">The maximum <see cref="DateTime" />.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns>DateTime.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <param name="input">The input value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <param name="throwException">If set to true, throws an exception if the input is outside the range.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the input value is within the range; otherwise, false.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
 	[Information(nameof(CheckIsInRange), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsInRange(this DateTime input, DateTime lower, DateTime upper, bool throwException = false, string errorMessage = "")
@@ -186,15 +186,15 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks that the <see cref="TimeOnly" /> in range.
+	/// Checks if the input value is within the specified range.
 	/// </summary>
-	/// <param name="input">The <see cref="TimeOnly" /> to validate.</param>
-	/// <param name="lower">The minimum <see cref="TimeOnly" />.</param>
-	/// <param name="upper">The maximum <see cref="TimeOnly" />.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <param name="input">The input value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <param name="throwException">If set to true, throws an exception if the input is outside the range.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the input value is within the range; otherwise, false.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
 	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsInRange(this TimeOnly input, TimeOnly lower, TimeOnly upper, bool throwException = false, string errorMessage = "")
@@ -210,15 +210,15 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks the is in range.
+	/// Checks if the input value is within the specified range.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="lower">The minimum.</param>
-	/// <param name="upper">The maximum.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <param name="input">The input value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <param name="throwException">If set to true, throws an exception if the input is outside the range.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the input value is within the range; otherwise, false.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
 	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsInRange(this DateOnly input, DateOnly lower, DateOnly upper, bool throwException = false, string errorMessage = "")
@@ -234,15 +234,15 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks that the <see cref="int" /> is in range.
+	/// Checks if the input value is within the specified range.
 	/// </summary>
-	/// <param name="input">The <see cref="int" /> to validate.</param>
-	/// <param name="lower">The minimum <see cref="int" />.</param>
-	/// <param name="upper">The maximum <see cref="int" />.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns>System.Int32.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <param name="input">The input value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <param name="throwException">If set to true, throws an exception if the input is outside the range.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the input value is within the range; otherwise, false.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
 	[Information(nameof(CheckIsInRange), "David McCarter", "2/3/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsInRange(this int input, int lower, int upper, bool throwException = false, string errorMessage = "")
@@ -258,15 +258,15 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks that the <see cref="long" /> is in range.
+	/// Checks if the input value is within the specified range.
 	/// </summary>
-	/// <param name="input">The <see cref="long" /> to validate.</param>
-	/// <param name="lower">The minimum <see cref="long" />.</param>
-	/// <param name="upper">The maximum <see cref="long" />.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <param name="input">The input value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <param name="throwException">If set to true, throws an exception if the input is outside the range.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the input value is within the range; otherwise, false.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
 	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsInRange(this long input, long lower, long upper, bool throwException = false, string errorMessage = "")
@@ -282,15 +282,15 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks that the <see cref="double" /> is in range.
+	/// Checks if the input value is within the specified range.
 	/// </summary>
-	/// <param name="input">The <see cref="double" /> to validate.</param>
-	/// <param name="lower">The minimum <see cref="double" />.</param>
-	/// <param name="upper">The maximum <see cref="double" />.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The errorMessage.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <param name="input">The input value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <param name="throwException">If set to true, throws an exception if the input is outside the range.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the input value is within the range; otherwise, false.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
 	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsInRange(this double input, double lower, double upper, bool throwException = false, string errorMessage = "")
@@ -306,15 +306,15 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks that the <see cref="decimal" /> is in range.
+	/// Checks if the input value is within the specified range.
 	/// </summary>
-	/// <param name="input">The <see cref="decimal" /> to validate.</param>
-	/// <param name="lower">The minimum <see cref="decimal" />.</param>
-	/// <param name="upper">The maximum <see cref="decimal" />.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <param name="input">The input value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <param name="throwException">If set to true, throws an exception if the input is outside the range.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the input value is within the range; otherwise, false.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
 	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsInRange(this decimal input, decimal lower, decimal upper, bool throwException = false, string errorMessage = "")
@@ -330,15 +330,15 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks that the <see cref="DateTimeOffset" /> is in range.
+	/// Checks if the input value is within the specified range.
 	/// </summary>
-	/// <param name="input">The <see cref="DateTimeOffset" /> to validate.</param>
-	/// <param name="lower">The minimum <see cref="DateTimeOffset" />.</param>
-	/// <param name="upper">The maximum <see cref="DateTimeOffset" />.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns>DateTimeOffset.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Validation failed for input.</exception>
+	/// <param name="input">The input value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <param name="throwException">If set to true, throws an exception if the input is outside the range.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the input value is within the range; otherwise, false.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
 	[Information(nameof(CheckIsInRange), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsInRange(this DateTimeOffset input, DateTimeOffset lower, DateTimeOffset upper, bool throwException = false, string errorMessage = "")
@@ -377,13 +377,13 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks that the <see cref="Guid" /> is not empty.
+	/// Determines whether the specified <see cref="Guid" /> is not empty.
 	/// </summary>
 	/// <param name="input">The <see cref="Guid" /> to validate.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="InvalidOperationException">Input cannot be empty.</exception>
+	/// <param name="throwException">if set to <c>true</c>, throws an exception if the Guid is empty.</param>
+	/// <param name="errorMessage">The error message to be used in the exception message. If not provided, a default message is used.</param>
+	/// <returns><c>true</c> if the specified Guid is not empty; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentException">Thrown when <paramref name="input" /> is empty and <paramref name="throwException" /> is true.</exception>
 	[Information(nameof(CheckIsNotEmpty), "David McCarter", "2/2/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsNotEmpty([NotNull] this Guid input, bool throwException = false, string errorMessage = "")
@@ -399,15 +399,15 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks that the input is not <see langword="null" />.
+	/// Checks if the input value is not null.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="input">The value to validate.</param>
-	/// <param name="throwException">if set to <c>true</c> [throws exception].</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="ArgumentNullException">Input cannot be null.</exception>
-	[Information(nameof(CheckIsNotNull), "David McCarter", "2/10/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "ADD LINK TO VALIDATION ARTICLE")]
+	/// <typeparam name="T">The type of the input value.</typeparam>
+	/// <param name="input">The input value to check.</param>
+	/// <param name="throwException">If set to true, throws an exception if the input is null.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the input value is not null; otherwise, false.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="throwException" /> is true and the input value is null.</exception>
+	[Information(nameof(CheckIsNotNull), "David McCarter", "2/10/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "ADD URL")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckIsNotNull<T>(this T input, bool throwException = false, string errorMessage = "") where T : class
 	{
@@ -422,14 +422,14 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Checks the <see cref="IEnumerable{T}" /> exists.
+	/// Checks if the input <see cref="IEnumerable{T}" /> contains any items.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="input">The <see cref="IEnumerable{T}" /> to validate.</param>
-	/// <param name="throwException">if set to <c>true</c> [throw exception].</param>
-	/// <param name="errorMessage">The error message.</param>
-	/// <returns>IEnumerable&lt;T&gt;.</returns>
-	/// <exception cref="InvalidValueException{TValue}">Input must have items.</exception>
+	/// <typeparam name="T">The type of the items in the enumerable.</typeparam>
+	/// <param name="input">The enumerable to check.</param>
+	/// <param name="throwException">If set to true, throws an exception if the enumerable is empty.</param>
+	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
+	/// <returns>True if the enumerable contains any items; otherwise, false.</returns>
+	/// <exception cref="ArgumentException">Thrown if <paramref name="throwException" /> is true and the enumerable is empty.</exception>
 	[Information(nameof(CheckItemsExists), "David McCarter", "4/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CheckItemsExists<T>(this IEnumerable<T> input, bool throwException = false, string errorMessage = "")

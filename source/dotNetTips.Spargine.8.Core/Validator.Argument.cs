@@ -4,7 +4,7 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-12-2024
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -817,15 +817,22 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Tries to validate that the <see cref="string" /> is not null or empty.
+	/// Validates that the provided string is not null or empty. Optionally trims the string before validation.
 	/// </summary>
-	/// <param name="input">The <see cref="string" /> to validate.</param>
-	/// <param name="trim">if set to <c>true</c> trims the string.</param>
-	/// <param name="defaultValue">The default value that will be returned if validation fails.</param>
-	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
-	/// <param name="paramName">Name of the parameter.</param>
-	/// <returns>System.String.</returns>
-	/// <exception cref="ArgumentNullException">Input cannot be null.</exception>
+	/// <param name="input">The string to validate.</param>
+	/// <param name="trim">Indicates whether to trim the string before validation. Default is true.</param>
+	/// <param name="defaultValue">The default value to return if the input is null or empty. This parameter is optional.</param>
+	/// <param name="errorMessage">The error message to use if validation fails. If not provided, a default message is used.</param>
+	/// <param name="paramName">The name of the parameter being validated. This is automatically provided and typically does not need to be specified manually.</param>
+	/// <returns>The input string if it is not null or empty.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the input string is null.</exception>
+	/// <exception cref="ArgumentException">Thrown if the input string is empty.</exception>
+	/// <example>
+	/// Here is an example of using <c>ArgumentNotNullOrEmpty</c>:
+	/// <code>
+	/// string name = "John Doe";
+	/// name = Validator.ArgumentNotNullOrEmpty(name, trim: true, errorMessage: "Name cannot be empty");
+	/// </code></example>
 	[Information(nameof(ArgumentNotNullOrEmpty), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string ArgumentNotNullOrEmpty([NotNull] this string input, bool trim = true, [AllowNull] string? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")

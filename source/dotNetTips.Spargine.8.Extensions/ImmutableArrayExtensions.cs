@@ -4,7 +4,7 @@
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="ImmutableArrayExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -23,17 +23,19 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class ImmutableArrayExtensions.
+/// Provides extension methods for <see cref="ImmutableArray{T}"/> to enhance usability and functionality.
+/// These methods include checks for item presence, conditional actions, count comparisons, and item shuffling.
 /// </summary>
 public static class ImmutableArrayExtensions
 {
 
 	/// <summary>
-	/// Determines whether the specified <see cref="ICollection{T}" /> has items.
+	/// Checks if the <see cref="ImmutableArray{T}"/> contains any elements.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The source.</param>
-	/// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
+	/// <typeparam name="T">The type of elements in the array.</typeparam>
+	/// <param name="collection">The immutable array to check.</param>
+	/// <returns><c>true</c> if the array contains one or more elements; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.NoInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this ImmutableArray<T> collection)
@@ -49,12 +51,13 @@ public static class ImmutableArrayExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified list has items.
+	/// Determines whether the <see cref="ImmutableArray{T}"/> contains any elements that match the condition defined by the specified predicate.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="list">The list.</param>
-	/// <param name="action">The action.</param>
-	/// <returns>bool.</returns>
+	/// <typeparam name="T">The type of elements in the array.</typeparam>
+	/// <param name="list">The immutable array to check.</param>
+	/// <param name="action">The predicate that defines the conditions of the elements to search for.</param>
+	/// <returns><c>true</c> if one or more elements in the <see cref="ImmutableArray{T}"/> match the condition defined by the specified predicate; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this ImmutableArray<T> list, [NotNull] Func<T, bool> action)
@@ -70,12 +73,13 @@ public static class ImmutableArrayExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified <see cref="ICollection{T}" /> has items.
+	/// Determines whether the <see cref="ImmutableArray{T}"/> has exactly the specified number of items.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="list">The source.</param>
-	/// <param name="count">The specific count.</param>
-	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
+	/// <typeparam name="T">The type of elements in the array.</typeparam>
+	/// <param name="list">The immutable array to check.</param>
+	/// <param name="count">The number of items to match.</param>
+	/// <returns><c>true</c> if the array contains exactly <paramref name="count"/> items; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this ImmutableArray<T> list, int count)
@@ -89,13 +93,18 @@ public static class ImmutableArrayExtensions
 			return list.Length == count;
 		}
 	}
+
 	/// <summary>
-	/// Shuffles the specified items.
+	/// Shuffles the elements of the specified <see cref="ImmutableArray{T}"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="list">The items.</param>
-	/// <returns>IEnumerable&lt;T&gt;.</returns>
-	/// <exception cref="ArgumentNullException">list</exception>
+	/// <typeparam name="T">The type of elements in the array.</typeparam>
+	/// <param name="list">The immutable array to shuffle.</param>
+	/// <returns>A new <see cref="ImmutableArray{T}"/> with elements in random order.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
+	/// <remarks>
+	/// This method generates a sequence of random indices using <see cref="RandomNumberGenerator"/> to shuffle the array elements.
+	/// If the array does not contain any items, it is returned unchanged.
+	/// </remarks>
 	[Information(nameof(Shuffle), "David McCarter", "8/27/2020", "1/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, UnitTestCoverage = 0)]
 	public static ImmutableArray<T> Shuffle<T>([NotNull] this ImmutableArray<T> list) => list.DoesNotHaveItems() ? list : [.. list.OrderBy(_ => RandomNumberGenerator.GetInt32(int.MinValue, int.MaxValue))];
 

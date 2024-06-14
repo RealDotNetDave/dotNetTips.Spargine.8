@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -35,15 +35,14 @@ public static class ArrayExtensions
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	/// <summary>
-	/// Adds a single item to the beginning of the array.
-	/// Validates that <paramref name="array" /> and <paramref name="item" /> is not null.
+	/// Adds an item to the beginning of the specified array.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="array">The array.</param>
-	/// <param name="item">The item.</param>
-	/// <returns>T[].</returns>
-	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="array">The array to which the item will be added.</param>
+	/// <param name="item">The item to add to the array.</param>
+	/// <returns>A new array with the item added at the beginning.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.CheckPerformance)]
 	public static T[] AddFirst<T>([NotNull] this T[] array, [NotNull] T item)
 	{
 		if (item is null)
@@ -53,20 +52,23 @@ public static class ArrayExtensions
 
 		array = array.ArgumentNotNull();
 
-		var result = new List<T>(array);
+		var result = new T[array.Length + 1];
+		result[0] = item;
+		Array.Copy(array, 0, result, 1, array.Length);
 
-		return [.. result.AddFirst(item)];
+		return result;
 	}
+
 	/// <summary>
-	/// Adds item to the array if the condition is meet.
-	/// Validates that <paramref name="array" /> and <paramref name="item" /> is not null.
+	/// Adds an item to the array if a specified condition is true.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="array">The array.</param>
-	/// <param name="item">The item.</param>
-	/// <param name="condition">if set to <c>true</c> [condition].</param>
-	/// <returns>T[].</returns>
-	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="array">The array to which the item will be added.</param>
+	/// <param name="item">The item to add to the array.</param>
+	/// <param name="condition">The condition that determines whether the item should be added.</param>
+	/// <returns>A new array with the item added if the condition is true; otherwise, the original array.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
+
 	[Information(nameof(AddIf), author: "David McCarter", createdOn: "4/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static T[] AddIf<T>([NotNull] this T[] array, [NotNull] T item, bool condition)
 	{
@@ -79,16 +81,16 @@ public static class ArrayExtensions
 
 		return condition ? array.AddLast(item) : array;
 	}
+
 	/// <summary>
-	/// Adds item to the end of the array.
-	/// Validates that <paramref name="array" /> and <paramref name="item" /> is not null.
+	/// Adds an item to the end of the specified array.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="array">The array.</param>
-	/// <param name="item">The item.</param>
-	/// <returns>T[].</returns>
-	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="array">The array to which the item will be added.</param>
+	/// <param name="item">The item to add to the array.</param>
+	/// <returns>A new array with the item added at the end.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.CheckPerformance)]
 	public static T[] AddLast<T>([NotNull] this T[] array, [NotNull] T item)
 	{
 		if (item is null)
@@ -98,9 +100,9 @@ public static class ArrayExtensions
 
 		array = array.ArgumentNotNull();
 
-		Array.Resize(ref array, array.Length + 1);
-
-		array[^1] = item;
+		var newSize = array.Length + 1;
+		Array.Resize(ref array, newSize);
+		array[newSize - 1] = item;
 
 		return array;
 	}
@@ -474,15 +476,14 @@ public static class ArrayExtensions
 	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this T[] list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>
-	/// Upserts (add or insert) the specified item.
-	/// Validates that <paramref name="array" /> and <paramref name="item" /> is not null.
+	/// Inserts or updates an item in the array. If the item already exists, it is updated; otherwise, it is added.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="array">The array.</param>
-	/// <param name="item">The item.</param>
-	/// <returns>T[].</returns>
-	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information(nameof(Upsert), author: "David McCarter", createdOn: "4/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="array">The array to upsert the item into.</param>
+	/// <param name="item">The item to insert or update in the array.</param>
+	/// <returns>A new array with the item inserted or updated.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
+	[Information(nameof(Upsert), author: "David McCarter", createdOn: "4/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static T[] Upsert<T>([NotNull] this T[] array, [NotNull] T item)
 	{
 		if (item is null)
@@ -492,25 +493,31 @@ public static class ArrayExtensions
 
 		array = array.ArgumentNotNull();
 
-		if (array.Contains(item))
+		// Check if the item already exists in the array
+		var index = Array.IndexOf(array, item);
+		if (index != -1)
 		{
-			Array.Fill(array, item, array.IndexOf(item), 1);
-
+			// Item found, replace it (if needed, based on specific logic)
+			array[index] = item;
 			return array;
 		}
 		else
 		{
-			return array.AddLast(item);
+			// Item not found, add it
+			var newArray = new T[array.Length + 1];
+			array.CopyTo(newArray, 0);
+			newArray[^1] = item; // Using the ^1 index for the last element
+			return newArray;
 		}
 	}
+
 	/// <summary>
-	/// Upserts the specified array.
-	/// Validates that <paramref name="array" /> and <paramref name="item" /> is not null.
+	/// Inserts or updates an IDataRecord in the array. If the IDataRecord already exists (based on a specific criteria, e.g., ID), it is updated; otherwise, it is added to the array.
 	/// </summary>
-	/// <param name="array">The array.</param>
-	/// <param name="item">The item.</param>
-	/// <returns>T[].</returns>
-	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
+	/// <param name="array">The array of IDataRecord to upsert the item into.</param>
+	/// <param name="item">The IDataRecord item to insert or update in the array.</param>
+	/// <returns>A new array with the IDataRecord inserted or updated.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
 	[Information(nameof(Upsert), author: "David McCarter", createdOn: "5/2/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static IDataRecord[] Upsert([NotNull] this IDataRecord[] array, [NotNull] IDataRecord item)
 	{

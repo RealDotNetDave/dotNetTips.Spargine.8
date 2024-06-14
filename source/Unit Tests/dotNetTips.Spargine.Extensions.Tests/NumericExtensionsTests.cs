@@ -86,7 +86,7 @@ public class NumericExtensionsTests : TestClass
 		var result = NumericExtensions.FormatSize(1L * 1024 * 1024 * 1024 * 1024 * 1024 * 1024);
 
 		// Assert
-		Assert.AreEqual("1.0 EB", result);
+		Assert.AreEqual("1 EB", result);
 	}
 
 	[TestMethod]
@@ -96,7 +96,7 @@ public class NumericExtensionsTests : TestClass
 		var result = NumericExtensions.FormatSize(5000000000);
 
 		// Assert
-		Assert.AreEqual("4.7 GB", result);
+		Assert.AreEqual("4.66 GB", result);
 	}
 
 	[TestMethod]
@@ -116,7 +116,7 @@ public class NumericExtensionsTests : TestClass
 		var result = NumericExtensions.FormatSize(5000);
 
 		// Assert
-		Assert.AreEqual("4.9 KB", result);
+		Assert.AreEqual("4.88 KB", result);
 	}
 
 	[TestMethod]
@@ -126,7 +126,7 @@ public class NumericExtensionsTests : TestClass
 		var result = NumericExtensions.FormatSize(5000000);
 
 		// Assert
-		Assert.AreEqual("4.8 MB", result);
+		Assert.AreEqual("4.77 MB", result);
 	}
 
 	[TestMethod]
@@ -136,7 +136,7 @@ public class NumericExtensionsTests : TestClass
 		var result = NumericExtensions.FormatSize(1L * 1024 * 1024 * 1024 * 1024 * 1024);
 
 		// Assert
-		Assert.AreEqual("1.0 PB", result);
+		Assert.AreEqual("1 PB", result);
 	}
 
 	[TestMethod]
@@ -146,7 +146,7 @@ public class NumericExtensionsTests : TestClass
 		var result = NumericExtensions.FormatSize(1L * 1024 * 1024 * 1024 * 1024);
 
 		// Assert
-		Assert.AreEqual("1.0 TB", result);
+		Assert.AreEqual("1 TB", result);
 	}
 
 	[TestMethod]

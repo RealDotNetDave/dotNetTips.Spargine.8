@@ -420,7 +420,7 @@ public class EnumerableExtensionsTests
 		var splitPeople = people.Split(Count / 10);
 
 		Assert.IsNotNull(splitPeople);
-		Assert.IsTrue(splitPeople.Count() == 24);
+		Assert.IsTrue(splitPeople.Count() == 11);
 
 		var emptyPeople = new List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>();
 

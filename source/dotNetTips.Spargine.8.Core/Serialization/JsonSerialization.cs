@@ -4,7 +4,7 @@
 // Created          : 02-21-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 06-12-2024
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -121,26 +121,25 @@ public static class JsonSerialization
 	}
 
 	/// <summary>
-	/// Deserializes the specified Json.
+	/// Deserializes the specified JSON string into an object of type <typeparamref name="TResult"/>.
 	/// </summary>
-	/// <typeparam name="TResult">The type of the t result.</typeparam>
-	/// <param name="json">The json.</param>
-	/// <returns>T.</returns>
+	/// <typeparam name="TResult">The type of the object to deserialize to.</typeparam>
+	/// <param name="json">The JSON string to deserialize.</param>
+	/// <returns>An instance of <typeparamref name="TResult"/> deserialized from the JSON string.</returns>
+	/// <exception cref="InvalidOperationException">Thrown if deserialization fails or the result is null.</exception>
 	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json)
 	{
-		var obj = JsonSerializer.Deserialize<TResult>(json, _options);
-
-		return obj;
+		return JsonSerializer.Deserialize<TResult>(json, _options) ?? throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
 	}
 
 	/// <summary>
-	/// Deserialize JSON from a file.
+	/// Deserializes JSON content from a specified file into an object of type <typeparamref name="TResult" />.
 	/// </summary>
-	/// <typeparam name="TResult">The type of the t result.</typeparam>
-	/// <param name="file">File</param>
-	/// <returns>TResult.</returns>
-	/// <exception cref="FileNotFoundException">File not found. Cannot deserialize from JSON.</exception>
+	/// <typeparam name="TResult">The type of the object to deserialize the JSON content into.</typeparam>
+	/// <param name="file">The file containing the JSON content to deserialize.</param>
+	/// <returns>An instance of <typeparamref name="TResult" /> deserialized from the JSON content in the file.</returns>
+	/// <exception cref="FileNotFoundException">Thrown if the specified file does not exist.</exception>
 	[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : class
 	{
@@ -173,35 +172,32 @@ public static class JsonSerialization
 	}
 
 	/// <summary>
-	/// Serializes the specified object.
+	/// Serializes the specified object to a JSON string using configured JsonSerializerOptions.
 	/// </summary>
-	/// <param name="obj">The object.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="obj">The object to serialize.</param>
+	/// <returns>A JSON string representation of the object.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the input object is null.</exception>
 	[Information(nameof(Serialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static string Serialize([NotNull] object obj) => JsonSerializer.Serialize(obj.ArgumentNotNull());
+	public static string Serialize([NotNull] object obj)
+	{
+		obj = obj.ArgumentNotNull();
+		return JsonSerializer.Serialize(obj, _options);
+	}
 
 	/// <summary>
-	/// Serializes to and object to a JSON file.
+	/// Serializes the specified object to a JSON file using configured JsonSerializerOptions.
 	/// </summary>
-	/// <param name="obj">The object.</param>
-	/// <param name="file">File</param>
+	/// <param name="obj">The object to serialize.</param>
+	/// <param name="file">The file information where the JSON content will be written.</param>
+	/// <exception cref="ArgumentNullException">Thrown if the input object or file is null.</exception>
+	/// <remarks>This method ensures that all directories and subdirectories in the specified path are created unless they already exist before writing the JSON content.</remarks>
 	[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static void SerializeToFile([NotNull] object obj, [NotNull] FileInfo file)
 	{
 		obj = obj.ArgumentNotNull();
 		file = file.ArgumentNotNull();
 
-		if (file.Exists)
-		{
-			file.Delete();
-		}
-
-		var directoryName = file.DirectoryName;
-
-		if (Directory.Exists(directoryName) is false)
-		{
-			_ = Directory.CreateDirectory(directoryName);
-		}
+		file.Directory?.Create(); // Creates all directories and subdirectories in the specified path unless they already exist.
 
 		File.WriteAllText(file.FullName, Serialize(obj));
 	}

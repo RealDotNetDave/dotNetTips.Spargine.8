@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="NumericExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -23,10 +23,25 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class IntegerExtensions.
+/// Provides extension methods for numeric types, offering a variety of mathematical and utility operations to enhance the functionality of the basic numeric types in .NET.
 /// </summary>
 public static class NumericExtensions
 {
+
+	/// <summary>
+	/// The file format sizes
+	/// </summary>
+	private static readonly string[] _fileFormatSizes = { Resources.Bytes, Resources.KB, Resources.MB, Resources.GB, Resources.TB, Resources.PB, Resources.EB };
+
+	/// <summary>
+	/// The roman numerals
+	/// </summary>
+	private static readonly string[] _romanNumerals = new[] { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+
+	/// <summary>
+	/// The roman values
+	/// </summary>
+	private static readonly int[] _romanValues = new[] { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
 
 	/// <summary>
 	/// The string builder pool
@@ -35,138 +50,121 @@ public static class NumericExtensions
 new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	/// <summary>
-	/// Averages two numbers.
+	/// Calculates the average of two double values.
 	/// </summary>
-	/// <param name="a">First number to average</param>
-	/// <param name="b">Second number to average</param>
-	/// <returns>double.</returns>
+	/// <param name="a">The first double value.</param>
+	/// <param name="b">The second double value.</param>
+	/// <returns>The average of the two double values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static double Average(this double a, double b) => (a + b) / 2;
 
 	/// <summary>
-	/// Averages two numbers.
+	/// Calculates the average of two long values.
 	/// </summary>
-	/// <param name="a">First number to average</param>
-	/// <param name="b">Second number to average</param>
-	/// <returns>double.</returns>
+	/// <param name="a">The first long value.</param>
+	/// <param name="b">The second long value.</param>
+	/// <returns>The average of the two long values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static long Average(this long a, long b) => (a + b) / 2;
 
 	/// <summary>
-	/// Averages two numbers.
+	/// Calculates the average of two integer values.
 	/// </summary>
-	/// <param name="a">First number to average</param>
-	/// <param name="b">Second number to average</param>
-	/// <returns>double.</returns>
+	/// <param name="a">The first integer value.</param>
+	/// <param name="b">The second integer value.</param>
+	/// <returns>The average of the two integer values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static int Average(this int a, int b) => (a + b) / 2;
 
 	/// <summary>
-	/// Averages two numbers.
+	/// Calculates the average of two decimal values.
 	/// </summary>
-	/// <param name="a">First number to average</param>
-	/// <param name="b">Second number to average</param>
-	/// <returns>double.</returns>
+	/// <param name="a">The first decimal value.</param>
+	/// <param name="b">The second decimal value.</param>
+	/// <returns>The average of the two decimal values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static decimal Average(this decimal a, decimal b) => (a + b) / 2;
 
 	/// <summary>
-	/// Decrement a number ensuring it never passes a given lower-bound.
+	/// Decrements the specified value by a given step, not going below a specified lower bound.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <param name="lowerBound">Lower bound</param>
-	/// <param name="step">Step of the decrement</param>
-	/// <returns>Integer</returns>
+	/// <param name="value">The value to decrement.</param>
+	/// <param name="lowerBound">The minimum value that can be returned. Default is 0.</param>
+	/// <param name="step">The decrement step. Default is 1.</param>
+	/// <returns>The decremented value, ensuring it does not fall below the lower bound.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Decrement), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int Decrement(this int value, int lowerBound = 0, int step = 1)
 	{
-		var n = value - step;
-		return n < lowerBound ? lowerBound : n;
+		var result = value - step;
+		return result < lowerBound ? lowerBound : result;
 	}
 
 	/// <summary>
-	/// Ensures the minimum value.
+	/// Ensures that the given value is not less than the specified minimum value.
 	/// </summary>
-	/// <param name="value">The value.</param>
+	/// <param name="value">The value to check against the minimum value.</param>
 	/// <param name="minValue">The minimum value.</param>
-	/// <returns>System.Int32.</returns>
+	/// <returns>The original value if it is greater than or equal to the minimum value; otherwise, the minimum value.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(EnsureMinimum), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int EnsureMinimum(this int value, int minValue) => value < minValue ? minValue : value;
 
 	/// <summary>
-	/// Formats the number to friendly <see cref="string" />.
+	/// Formats the size of a file from bytes into a more readable string format (e.g., KB, MB, GB, TB, etc.).
+	/// This method is optimized for long integer values to accommodate large file sizes.
 	/// </summary>
-	/// <param name="fileSize">Size of the file or other resourse.</param>
-	/// <returns>System.String.</returns>
-	/// <example>Return Example: 250 KB</example>
+	/// <param name="fileSize">The size of the file in bytes.</param>
+	/// <returns>A string representing the formatted size of the file, including the appropriate size unit.</returns>
 	[Information(nameof(FormatSize), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string FormatSize(this long fileSize)
 	{
-		switch (fileSize)
+		if (fileSize < 0)
 		{
-			case < 1024:
-				return fileSize.ToString("F0", CultureInfo.CurrentCulture) + $" {Resources.Bytes}";
-			default:
-				if (fileSize >> 10 < 1024)
-				{
-					return (fileSize / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.KB}";
-				}
-				else if (fileSize >> 20 < 1024)
-				{
-					return ((fileSize >> 10) / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.MB}";
-				}
-				else if (fileSize >> 30 < 1024)
-				{
-					return ((fileSize >> 20) / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.GB}";
-				}
-				else if (fileSize >> 40 < 1024)
-				{
-					return ((fileSize >> 30) / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.TB}";
-				}
-				else if (fileSize >> 50 < 1024)
-				{
-					return ((fileSize >> 40) / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.PB}";
-				}
-				else
-				{
-					return ((fileSize >> 50) / 1024F).ToString("F1", CultureInfo.CurrentCulture) + $" {Resources.EB}";
-				}
+			return "Invalid size";
 		}
+
+		var order = 0;
+		double len = fileSize;
+		while (len >= 1024 && order < _fileFormatSizes.Length - 1)
+		{
+			order++;
+			len /= 1024;
+		}
+
+		return $"{len:0.##} {_fileFormatSizes[order]}";
 	}
 
 	/// <summary>
-	/// Formats the number to friendly <see cref="string" />.
+	/// Formats the size of a file from bytes into a more readable string format (e.g., KB, MB, GB, TB, etc.).
+	/// This method is optimized for double precision floating-point numbers to accommodate very large or very precise file sizes.
 	/// </summary>
-	/// <param name="fileSize">Size of the file or other resource.</param>
-	/// <returns>System.String.</returns>
-	/// <example>Return Example: 250.22947265625 KB</example>
+	/// <param name="fileSize">The size of the file in bytes as a double.</param>
+	/// <returns>A string representing the formatted size of the file, including the appropriate size unit.</returns>
 	[Information(nameof(FormatSize), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string FormatSize(this double fileSize)
 	{
-		double size = 0;
-
-		while (fileSize > 1024 && size < 4)
+		var order = 0;
+		while (fileSize >= 1024 && order < _fileFormatSizes.Length - 1)
 		{
-			fileSize = Convert.ToDouble(fileSize / 1024);
-			size++;
+			order++;
+			fileSize /= 1024;
 		}
 
-		return $"{fileSize.ToString(CultureInfo.CurrentCulture)} {(new string[] { Resources.Bytes, Resources.KB, Resources.MB, Resources.GB })[Convert.ToInt64(size)]}";
+		return $"{Math.Round(fileSize, 2)} {_fileFormatSizes[order]}";
 	}
 
 	/// <summary>
-	/// Increment a number ensuring it never passes a given upper-bound.
+	/// Increments the specified value by a given step, not exceeding a specified upper bound.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <param name="upperBound">Upper bound</param>
-	/// <param name="step">Step of the increment</param>
-	/// <returns>Integer</returns>
+	/// <param name="value">The value to increment.</param>
+	/// <param name="upperBound">The maximum value that can be returned. Default is 100.</param>
+	/// <param name="step">The increment step. Default is 1.</param>
+	/// <returns>The incremented value, ensuring it does not exceed the upper bound.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Increment), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int Increment(this int value, int upperBound = 100, int step = 1)
@@ -176,120 +174,120 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Indicate whether the number is even.
+	/// Determines whether the specified decimal value is even.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <returns>True/False</returns>
+	/// <param name="value">The decimal value to check.</param>
+	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this decimal value) => (value % 2) == 0;
 
 	/// <summary>
-	/// Indicate whether the number is even.
+	/// Determines whether the specified double value is even.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <returns>True/False</returns>
+	/// <param name="value">The double value to check.</param>
+	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this double value) => (value % 2) == 0;
 
 	/// <summary>
-	/// Indicate whether the number is even.
+	/// Determines whether the specified float value is even.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <returns>True/False</returns>
+	/// <param name="value">The float value to check.</param>
+	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this float value) => (value % 2) == 0;
 
 	/// <summary>
-	/// Indicate whether the number is even.
+	/// Determines whether the specified integer value is even.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <returns>True/False</returns>
+	/// <param name="value">The integer value to check.</param>
+	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this int value) => (value % 2) == 0;
 
 	/// <summary>
-	/// Indicate whether the number is even.
+	/// Determines whether the specified long value is even.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <returns>True/False</returns>
+	/// <param name="value">The long value to check.</param>
+	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this long value) => (value % 2) == 0;
 
 	/// <summary>
-	/// Indicate whether the number is even.
+	/// Determines whether the specified sbyte value is even.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <returns>True/False</returns>
+	/// <param name="value">The sbyte value to check.</param>
+	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this sbyte value) => (value % 2) == 0;
 
 	/// <summary>
-	/// Indicate whether the number is even.
+	/// Determines whether the specified short value is even.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <returns>True/False</returns>
+	/// <param name="value">The short value to check.</param>
+	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this short value) => (value % 2) == 0;
 
 	/// <summary>
-	/// Indicate whether the number falls in the specified range.
+	/// Determines whether the specified integer value is within a specified range.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <param name="lower">Lower bound</param>
-	/// <param name="upper">Upper bound</param>
-	/// <returns>True/False</returns>
+	/// <param name="value">The integer value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <returns><c>true</c> if the value is within the range; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsInRange), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRange(this int value, int lower, int upper) => value >= lower && value <= upper;
 
 	/// <summary>
-	/// Determines whether [is in range] [the specified lower].
+	/// Determines whether the specified long value is within a specified range.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <param name="lower">The lower.</param>
-	/// <param name="upper">The upper.</param>
-	/// <returns><c>true</c> if [is in range] [the specified lower]; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The long value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <returns><c>true</c> if the value is within the range; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsInRange), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRange(this long value, long lower, long upper) => value >= lower && value <= upper;
 
 	/// <summary>
-	/// Determines whether [is in range] [the specified lower].
+	/// Determines whether the specified double value is within a specified range.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <param name="lower">The lower.</param>
-	/// <param name="upper">The upper.</param>
-	/// <returns><c>true</c> if [is in range] [the specified lower]; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The double value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <returns><c>true</c> if the value is within the range; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsInRange), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRange(this double value, double lower, double upper) => value >= lower && value <= upper;
 
 	/// <summary>
-	/// Determines whether [is in range] [the specified lower].
+	/// Determines whether the specified decimal value is within a specified range.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <param name="lower">The lower.</param>
-	/// <param name="upper">The upper.</param>
-	/// <returns><c>true</c> if [is in range] [the specified lower]; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The decimal value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <returns><c>true</c> if the value is within the range; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsInRange), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRange(this decimal value, decimal lower, decimal upper) => value >= lower && value <= upper;
 
 	/// <summary>
-	/// Determines whether [is in range throws exception] [the specified value]. Throws Exception if invalid.
+	/// Determines whether the specified double value is within a specified range and throws an exception if it is not.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <param name="lower">The lower.</param>
-	/// <param name="upper">The upper.</param>
-	/// <returns>System.Boolean.</returns>
-	/// <exception cref="ArgumentOutOfRangeException">Value is out of range.</exception>
+	/// <param name="value">The double value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <returns><c>true</c> if the value is within the range; otherwise, throws an exception.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRangeThrowsException(this double value, double lower, double upper)
@@ -303,13 +301,13 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Determines whether [is in range throws exception] [the specified value]. Throws Exception if invalid.
+	/// Determines whether the specified decimal value is within a specified range and throws an exception if it is not.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <param name="lower">The lower.</param>
-	/// <param name="upper">The upper.</param>
-	/// <returns>System.Boolean.</returns>
-	/// <exception cref="ArgumentOutOfRangeException">Value is out of range.</exception>
+	/// <param name="value">The decimal value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <returns><c>true</c> if the value is within the range; otherwise, throws an <see cref="ArgumentOutOfRangeException" />.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRangeThrowsException(this decimal value, decimal lower, decimal upper)
@@ -323,13 +321,13 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Determines whether [is in range] [the specified lower] and will throw Exception if false.
+	/// Determines whether the specified integer value is within a specified range and throws an exception if it is not.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <param name="lower">The lower.</param>
-	/// <param name="upper">The upper.</param>
-	/// <returns><c>true</c> if [is in range] [the specified lower]; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentOutOfRangeException">Value is out of range.</exception>
+	/// <param name="value">The integer value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <returns><c>true</c> if the value is within the range; otherwise, throws an <see cref="ArgumentOutOfRangeException" />.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRangeThrowsException(this int value, int lower, int upper)
@@ -343,13 +341,13 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Determines whether [is in range throws exception] [the specified value]. Throws Exception if invalid.
+	/// Determines whether the specified long value is within a specified range and throws an exception if it is not.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <param name="lower">The lower.</param>
-	/// <param name="upper">The upper.</param>
-	/// <returns>System.Boolean.</returns>
-	/// <exception cref="ArgumentOutOfRangeException">Value is out of range.</exception>
+	/// <param name="value">The long value to check.</param>
+	/// <param name="lower">The lower bound of the range.</param>
+	/// <param name="upper">The upper bound of the range.</param>
+	/// <returns><c>true</c> if the value is within the range; otherwise, throws an <see cref="ArgumentOutOfRangeException" />.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRangeThrowsException(this long value, long lower, long upper)
@@ -363,24 +361,23 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Determines if the Integer is of the specified interval. E.g. if the interval is 100 and the integer is 400,
-	/// it would return true. This function uses the Mod operator, for the above example: (300 Mod 100 = 0)
+	/// Determines whether the specified integer value is evenly divisible by the given interval.
 	/// </summary>
-	/// <param name="value">The number.</param>
-	/// <param name="interval">The interval.</param>
-	/// <returns><c>true</c> if the specified number is interval; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The integer value to check.</param>
+	/// <param name="interval">The interval to check divisibility against.</param>
+	/// <returns><c>true</c> if the value is evenly divisible by the interval; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsInterval), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInterval(this int value, int interval) => value % interval == 0;
 
 	/// <summary>
-	/// Determines whether [is interval throws exception] [the specified value] and throws Exception if invalid.
+	/// Determines whether the specified integer value is evenly divisible by the given interval and throws an exception if it is not.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <param name="interval">The interval.</param>
-	/// <param name="paramName">Name of the parameter.</param>
-	/// <returns>System.Boolean.</returns>
-	/// <exception cref="ArgumentOutOfRangeException">Interval is out of range.</exception>
+	/// <param name="value">The integer value to check.</param>
+	/// <param name="interval">The interval to check divisibility against.</param>
+	/// <param name="paramName">The name of the parameter that caused the current exception.</param>
+	/// <returns><c>true</c> if the value is evenly divisible by the interval; otherwise, throws an <see cref="ArgumentOutOfRangeException" />.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not evenly divisible by the interval.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsIntervalThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsIntervalThrowsException(this int value, int interval, string paramName)
@@ -394,131 +391,113 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Determines whether the specified value is negative.
+	/// Determines whether the specified double value is negative.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <returns><c>true</c> if the specified value is negative; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The double value to check.</param>
+	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this double value) => Math.Sign(value) == -1;
 
 	/// <summary>
-	/// Determines whether the specified value is negative.
+	/// Determines whether the specified integer value is negative.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <returns><c>true</c> if the specified value is negative; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The integer value to check.</param>
+	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this int value) => Math.Sign(value) == -1;
 
 	/// <summary>
-	/// Determines whether the specified value is negative.
+	/// Determines whether the specified long value is negative.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <returns><c>true</c> if the specified value is negative; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The long value to check.</param>
+	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this long value) => Math.Sign(value) == -1;
 
 	/// <summary>
-	/// Determines whether the specified value is negative.
+	/// Determines whether the specified sbyte value is negative.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <returns><c>true</c> if the specified value is negative; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The sbyte value to check.</param>
+	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this sbyte value) => Math.Sign(value) == -1;
 
 	/// <summary>
-	/// Determines whether the specified value is negative.
+	/// Determines whether the specified short value is negative.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <returns><c>true</c> if the specified value is negative; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The short value to check.</param>
+	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this short value) => Math.Sign(value) == -1;
 
 	/// <summary>
-	/// Determines whether the specified value is negative.
+	/// Determines whether the specified decimal value is negative.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <returns><c>true</c> if the specified value is negative; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The decimal value to check.</param>
+	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this decimal value) => Math.Sign(value) == -1;
 
 	/// <summary>
-	/// Determines whether the specified value is negative.
+	/// Determines whether the specified float value is negative.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <returns><c>true</c> if the specified value is negative; otherwise, <c>false</c>.</returns>
+	/// <param name="value">The float value to check.</param>
+	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this float value) => Math.Sign(value) == -1;
 
 	/// <summary>
-	/// Converts milliseconds to a string.
-	/// <code>
-	/// Example output: 02:45:00
-	/// </code>
+	/// Converts the total milliseconds to a formatted string representation.
 	/// </summary>
-	/// <param name="totalMilliseconds">The total milliseconds.</param>
-	/// <returns>string.</returns>
+	/// <param name="totalMilliseconds">The total milliseconds to convert.</param>
+	/// <returns>A string representation of the total milliseconds in the format of hours, minutes, seconds, and milliseconds.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this long totalMilliseconds)
 	{
-		var hours = (int)(totalMilliseconds / (1000 * 60 * 60));
-		var minutes = (int)(totalMilliseconds / (1000 * 60) % 60);
-		var seconds = (int)(totalMilliseconds / 1000 % 60);
-
-		return $"{hours:D2}:{minutes:D2}:{seconds:D2}";
+		return $"{(int)(totalMilliseconds / (1000 * 60 * 60)):D2}:{(int)(totalMilliseconds / (1000 * 60) % 60):D2}:{(int)(totalMilliseconds / 1000 % 60):D2}";
 	}
 
 	/// <summary>
-	/// Converts milliseconds to a string.
-	/// <code>
-	/// Example output: 02:45:00
-	/// </code>
+	/// Converts a TimeSpan to a formatted string representation of milliseconds.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <returns>string.</returns>
+	/// <param name="input">The TimeSpan to convert.</param>
+	/// <returns>A string representation of the total milliseconds contained in the TimeSpan.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this TimeSpan input)
 	{
 		var totalMilliseconds = input.TotalMilliseconds;
-		var hours = (int)(totalMilliseconds / (1000 * 60 * 60));
-		var minutes = (int)(totalMilliseconds / (1000 * 60) % 60);
-		var seconds = (int)(totalMilliseconds / 1000 % 60);
 
-		return $"{hours:D2}:{minutes:D2}:{seconds:D2}";
+		return $"{(int)(totalMilliseconds / (1000 * 60 * 60)):D2}:{(int)(totalMilliseconds / (1000 * 60) % 60):D2}:{(int)(totalMilliseconds / 1000 % 60):D2}";
 	}
 
 	/// <summary>
-	/// Converts milliseconds to a string.
-	/// <code>
-	/// Example output: 02:45:00
-	/// </code>
+	/// Converts the total milliseconds to a formatted string representation.
 	/// </summary>
-	/// <param name="totalMilliseconds">The total milliseconds.</param>
-	/// <returns>string.</returns>
+	/// <param name="totalMilliseconds">The total milliseconds to convert.</param>
+	/// <returns>A string representation of the total milliseconds in the format of hours, minutes, seconds, and milliseconds.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this int totalMilliseconds)
 	{
-		var hours = totalMilliseconds / (1000 * 60 * 60);
-		var minutes = totalMilliseconds / (1000 * 60) % 60;
-		var seconds = totalMilliseconds / 1000 % 60;
-
-		return $"{hours:D2}:{minutes:D2}:{seconds:D2}";
+		return $"{totalMilliseconds / (1000 * 60 * 60):D2}:{totalMilliseconds / (1000 * 60) % 60:D2}:{totalMilliseconds / 1000 % 60:D2}";
 	}
 
 	/// <summary>
-	/// Returns the nearest power of 2 that is bigger than the number.
+	/// Rounds the given integer value up to the nearest power of two.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <returns>Integer</returns>
+	/// <param name="value">The integer value to round.</param>
+	/// <returns>The nearest power of two that is greater than or equal to the given value.</returns>
+	/// <remarks>If the input value is less than or equal to 1, the return value is 1.
+	/// This method uses bitwise operations for efficient computation.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(RoundToPowerOf2), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int RoundToPowerOf2(this int value)
@@ -537,11 +516,11 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Converts number to a formatted string.
+	/// Converts the given integer to a formatted string based on the specified numeric format.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="format">The format.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="input">The integer to format.</param>
+	/// <param name="format">The numeric format to apply.</param>
+	/// <returns>A formatted string representation of the input integer.</returns>
 	/// <exception cref="ArgumentInvalidException">Invalid number format.</exception>
 	/// <example>
 	/// Output: Currency: $2,103,162,670.00, Decimal: 2103162670, Exponential: 2.103163E+009 FixedPoint:
@@ -564,11 +543,12 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Converts to a Double to a formatted string.
+	/// Converts the given double to a formatted string based on the specified numeric format.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="format">The format.</param>
-	/// <returns>string.</returns>
+	/// <param name="input">The double to format.</param>
+	/// <param name="format">The numeric format to apply.</param>
+	/// <returns>A formatted string representation of the input double.</returns>
+	/// <exception cref="ArgumentInvalidException">Invalid number format.</exception>
 	/// <example>
 	/// Output: Currency: $555.55, RoundTrip: 555.555, Exponential: 5.555550E+002, FixedPoint: 555.55, General:
 	/// 555.555, Number: 555.55, Percent: 55,555.50%.
@@ -589,11 +569,12 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Converts a Long to a formatted string.
+	/// Converts the given long to a formatted string based on the specified numeric format.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="format">The format.</param>
-	/// <returns>string.</returns>
+	/// <param name="input">The long value to format.</param>
+	/// <param name="format">The numeric format to apply.</param>
+	/// <returns>A formatted string representation of the input long.</returns>
+	/// <exception cref="ArgumentInvalidException">Invalid number format.</exception>
 	/// <example>
 	/// Output: Currency: $4,611,686,018,427,387.00, Decimal: 4611686018427387, Exponential: 4.611686E+015
 	/// FixedPoint: 4611686018427387.00, General: 4611686018427387, Hexadecimal: 10624DD2F1A9FB Number:
@@ -615,11 +596,12 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Converts a ULong to a formatted string.
+	/// Converts the given unsigned long to a formatted string based on the specified numeric format.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="format">The format.</param>
-	/// <returns>string.</returns>
+	/// <param name="input">The unsigned long value to format.</param>
+	/// <param name="format">The numeric format to apply.</param>
+	/// <returns>A formatted string representation of the input unsigned long.</returns>
+	/// <exception cref="ArgumentInvalidException">Invalid number format.</exception>
 	/// <example>
 	/// Output: Currency: $9,223,372,036,854.00, Decimal: 9223372036854, Exponential: 9.223372E+012 FixedPoint:
 	/// 9223372036854.00, General: 9223372036854, Hexadecimal: 8637BD05AF6 Number: 9,223,372,036,854.00, Percent:
@@ -641,11 +623,12 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Converts a UInt to a formatted string.
+	/// Converts the given unsigned integer to a formatted string based on the specified numeric format.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="format">The format.</param>
-	/// <returns>string.</returns>
+	/// <param name="input">The unsigned integer value to format.</param>
+	/// <param name="format">The numeric format to apply.</param>
+	/// <returns>A formatted string representation of the input unsigned integer.</returns>
+	/// <exception cref="ArgumentInvalidException">Invalid number format.</exception>
 	/// <example>
 	/// Output: Currency: $21,474,836.00, Decimal: 21474836, Exponential: 2.147484E+007 FixedPoint: 21474836.00,
 	/// General: 21474836, Hexadecimal: 147AE14 Number: 21,474,836.00, Percent: 2,147,483,600.00%.
@@ -666,11 +649,12 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Converts a Short to a formatted string.
+	/// Converts the given short to a formatted string based on the specified numeric format.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="format">The format.</param>
-	/// <returns>string.</returns>
+	/// <param name="input">The short value to format.</param>
+	/// <param name="format">The numeric format to apply.</param>
+	/// <returns>A formatted string representation of the input short.</returns>
+	/// <exception cref="ArgumentInvalidException">Invalid number format.</exception>
 	/// <example>
 	/// Output: Currency: $32,767.00, Decimal: 32767, Exponential: 3.276700E+004 FixedPoint: 32767.00, General:
 	/// 32767, Hexadecimal: 7FFF, Number: 32,767.00 Percent: 3,276,700.00%.
@@ -691,11 +675,12 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Converts a UShort to a formatted string.
+	/// Converts the given unsigned short to a formatted string based on the specified numeric format.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="format">The format.</param>
-	/// <returns>string.</returns>
+	/// <param name="input">The unsigned short value to format.</param>
+	/// <param name="format">The numeric format to apply.</param>
+	/// <returns>A formatted string representation of the input unsigned short.</returns>
+	/// <exception cref="ArgumentInvalidException">Invalid number format.</exception>
 	/// <example>
 	/// Output: Currency: $65,535.00, Decimal: 65535, Exponential: 6.553500E+004, FixedPoint: 65535.00 General:
 	/// 65535, Hexadecimal: FFFF, Number: 65,535.00, Percent: 6,553,500.00%.
@@ -716,61 +701,57 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// To the positive value.
+	/// Converts a negative integer to 0, otherwise returns the original value.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <returns>System.Int32.</returns>
+	/// <param name="value">The integer value to convert.</param>
+	/// <returns>The original value if it is within the range of 0 to <see cref="int.MaxValue" />, otherwise returns 0.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToPositiveValue), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int ToPositiveValue(this int value) => value.IsInRange(0, int.MaxValue) ? value : 0;
 
 	/// <summary>
-	/// To the positive value.
+	/// Converts a negative long integer to 0, otherwise returns the original value.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <returns>System.Int64.</returns>
+	/// <param name="value">The long integer value to convert.</param>
+	/// <returns>The original value if it is within the range of 0 to <see cref="int.MaxValue" />, otherwise returns 0.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToPositiveValue), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static long ToPositiveValue(this long value) => value.IsInRange(0, int.MaxValue) ? value : 0;
 
 	/// <summary>
-	/// To the positive value.
+	/// Converts a negative decimal value to 0, otherwise returns the original value.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <returns>System.Decimal.</returns>
+	/// <param name="value">The decimal value to convert.</param>
+	/// <returns>The original value if it is within the range of 0 to <see cref="int.MaxValue" />, otherwise returns 0.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToPositiveValue), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static decimal ToPositiveValue(this decimal value) => value.IsInRange(0, int.MaxValue) ? value : 0;
 
 	/// <summary>
-	/// Converts to roman numeral using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
+	/// Converts the given integer to its Roman numeral representation.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <returns>string.</returns>
-	/// <remarks>Original code from: https://www.c-sharpcorner.com/article/convert-numbers-to-roman-characters-in-c-sharp/</remarks>
+	/// <param name="number">The integer to convert. Must be in the range 1 to 3999.</param>
+	/// <returns>A string containing the Roman numeral representation of the given integer.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="number" /> is outside the range 1 to 3999.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToRomanNumeral), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static string ToRomanNumeral(this int input)
+	public static string ToRomanNumeral(this int number)
 	{
+		if (number is < 1 or > 3999)
+		{
+			ExceptionThrower.ThrowArgumentOutOfRangeException(Resources.ValueMustBeInTheRange13999, nameof(number));
+		}
+
 		var sb = _stringBuilderPool.Get();
 
 		try
 		{
-			string[] romanLetters = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
-			int[] numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
-
-			var index = 0;
-
-			while (input != 0)
+			for (var count = 0; count < _romanValues.Length; count++)
 			{
-				if (input >= numbers[index])
+				while (number >= _romanValues[count])
 				{
-					input -= numbers[index];
-					_ = sb.Append(romanLetters[index]);
-				}
-				else
-				{
-					index++;
+					number -= _romanValues[count];
+					_ = sb.Append(_romanNumerals[count]);
 				}
 			}
 
@@ -783,13 +764,13 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
-	/// Parses the number to a string or a default string if outside given range.
+	/// Converts the integer value to a string representation if it falls outside the specified range. Otherwise, returns a default text.
 	/// </summary>
-	/// <param name="value">Number to process</param>
-	/// <param name="lowerLimit">Lower bound</param>
-	/// <param name="upperLimit">Upper bound</param>
-	/// <param name="defaultText">Default text</param>
-	/// <returns>String</returns>
+	/// <param name="value">The integer value to evaluate.</param>
+	/// <param name="lowerLimit">The inclusive lower limit of the range. If <paramref name="value" /> is less than or equal to this, <paramref name="defaultText" /> is returned.</param>
+	/// <param name="upperLimit">The exclusive upper limit of the range. If <paramref name="value" /> is greater than this, <paramref name="defaultText" /> is returned.</param>
+	/// <param name="defaultText">The default text to return if <paramref name="value" /> falls outside the specified range. Defaults to a double quote.</param>
+	/// <returns>A string representation of <paramref name="value" /> if it falls outside the specified range; otherwise, <paramref name="defaultText" />.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToStringOrEmpty), UnitTestCoverage = 0, Status = Status.Available)]
 	public static string ToStringOrEmpty(this int value, int lowerLimit = 100, int upperLimit = 9000, string defaultText = ControlChars.DoubleQuote) => value <= lowerLimit || value > upperLimit
@@ -797,10 +778,10 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 			: value.ToString(CultureInfo.InvariantCulture);
 
 	/// <summary>
-	/// Translate the number in words (English)
+	/// Converts the specified integer value to its equivalent in English words.
 	/// </summary>
-	/// <param name="value">Number to translate</param>
-	/// <returns>String</returns>
+	/// <param name="value">The integer value to convert.</param>
+	/// <returns>A string that represents the specified integer value in English words.</returns>
 	/// <example>
 	/// Input: 54928 Output: Fifty-Four Thousand Nine Hundred and Twenty-Eight"
 	/// </example>

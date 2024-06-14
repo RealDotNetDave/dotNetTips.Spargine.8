@@ -4,7 +4,7 @@
 // Created          : 07-30-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="GuidExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -20,17 +20,17 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class GuidExtensions.
+/// Provides extension methods for the <see cref="Guid"/> type.
+/// These methods include converting a Guid to a string representation without dashes and checking if a Guid is not empty.
 /// </summary>
 public static class GuidExtensions
 {
 
 	/// <summary>
-	/// Returns the <see cref="Guid" /> without dashes.
-	/// Validates that <paramref name="input" /> is not empty.
+	/// Converts the specified <see cref="Guid"/> to a string representation without dashes.
 	/// </summary>
-	/// <param name="input">The Guid value.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="input">The <see cref="Guid"/> to convert.</param>
+	/// <returns>A string representation of the <see cref="Guid"/> without dashes if the <paramref name="input"/> is not empty; otherwise, an empty string.</returns>
 	[Information(nameof(ToDigits), UnitTestCoverage = 100, Status = Status.Available)]
 	public static string ToDigits([NotNull] this Guid input)
 	{

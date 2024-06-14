@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-24-2023
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="ExceptionExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -21,19 +21,21 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class ExceptionExtension.
+/// Provides extension methods for enhancing the functionality of the <see cref="Exception"/> class.
+/// These methods include getting all messages, checking if an exception is critical or fatal, and more.
 /// </summary>
 public static class ExceptionExtensions
 {
 
 	/// <summary>
-	/// Returns the hierarchy from the source.
-	/// Validates that <paramref name="source" /> and <paramref name="nextItem" /> is not null.
+	/// Returns an enumerable collection representing the hierarchy of exceptions starting from the specified source exception.
+	/// This method is useful for traversing nested exceptions (e.g., when dealing with aggregate exceptions).
 	/// </summary>
-	/// <typeparam name="TSource">The type of the t source.</typeparam>
-	/// <param name="source">The source.</param>
-	/// <param name="nextItem">The next item.</param>
-	/// <returns>IEnumerable&lt;T&gt;.</returns>
+	/// <typeparam name="TSource">The type of the source exception, must derive from <see cref="Exception"/>.</typeparam>
+	/// <param name="source">The source exception to start traversing from.</param>
+	/// <param name="nextItem">A delegate that defines the method to retrieve the next exception in the hierarchy.</param>
+	/// <returns>An <see cref="IEnumerable{TSource}"/> that represents the hierarchy of exceptions.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="nextItem"/> is null.</exception>
 	[Information(nameof(FromHierarchy), UnitTestCoverage = 100, Status = Status.Available)]
 	public static IEnumerable<TSource> FromHierarchy<TSource>([NotNull] this TSource source, [NotNull] Func<TSource, TSource> nextItem) where TSource : Exception
 	{
@@ -44,16 +46,17 @@ public static class ExceptionExtensions
 	}
 
 	/// <summary>
-	/// Returns the hierarchy from the source.
-	/// Validates that <paramref name="source" />, <paramref name="nextItem" /> and
-	/// <paramref name="canContinue" /> is not null.
+	/// Returns the hierarchy from the source, validating that <paramref name="source"/>, <paramref name="nextItem"/>, and <paramref name="canContinue"/> are not null.
+	/// This method allows traversing a hierarchy (e.g., of exceptions) by repeatedly applying <paramref name="nextItem"/> to get the next item in the hierarchy,
+	/// until <paramref name="canContinue"/> returns false.
 	/// </summary>
-	/// <typeparam name="TSource">The type of the t source.</typeparam>
-	/// <param name="source">The source.</param>
-	/// <param name="nextItem">The next item.</param>
-	/// <param name="canContinue">The can continue.</param>
-	/// <returns>IEnumerable&lt;T&gt;.</returns>
-	[Information(nameof(FromHierarchy), UnitTestCoverage = 99, Status = Status.Available)]
+	/// <typeparam name="TSource">The type of the source items in the hierarchy.</typeparam>
+	/// <param name="source">The starting item in the hierarchy.</param>
+	/// <param name="nextItem">A function to get the next item in the hierarchy from the current item.</param>
+	/// <param name="canContinue">A function that determines whether to continue traversing the hierarchy from the current item.</param>
+	/// <returns>A sequence of items from the source up through the hierarchy as determined by <paramref name="nextItem"/> and <paramref name="canContinue"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/>, <paramref name="nextItem"/>, or <paramref name="canContinue"/> is null.</exception>
+	[Information(nameof(FromHierarchy), UnitTestCoverage = 99, Status = Status.CheckPerformance)]
 	public static IEnumerable<TSource> FromHierarchy<TSource>([NotNull] this TSource source, [NotNull] Func<TSource, TSource> nextItem, [NotNull] Func<TSource, bool> canContinue)
 		where TSource : Exception
 	{
@@ -61,19 +64,20 @@ public static class ExceptionExtensions
 		nextItem = nextItem.ArgumentNotNull();
 		canContinue = canContinue.ArgumentNotNull();
 
-		for (var current = source; canContinue(current); current = nextItem(current))
+		while (source != null && canContinue(source))
 		{
-			yield return current;
+			yield return source;
+			source = nextItem(source);
 		}
 	}
 
 	/// <summary>
-	/// Gets all messages from an <see cref="Exception" />.
-	/// Validates that <paramref name="exception" /> is not null.
+	/// Gets all messages from an <see cref="Exception"/> and its inner exceptions, concatenated into a single string.
 	/// </summary>
-	/// <param name="exception">The exception.</param>
-	/// <param name="separator">The separator.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="exception">The exception to extract messages from.</param>
+	/// <param name="separator">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
+	/// <returns>A string containing all exception messages, separated by the specified separator.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information(nameof(GetAllMessages), UnitTestCoverage = 100, Status = Status.Available)]
 	public static string GetAllMessages([NotNull] this Exception exception, char separator = ControlChars.Comma)
 	{
@@ -85,42 +89,43 @@ public static class ExceptionExtensions
 	}
 
 	/// <summary>
-	/// Gets all messages from a <see cref="Exception" /> including the stack trace.
-	/// Validates that <paramref name="exception" /> is not null.
+	/// Gets all messages and their stack traces from an <see cref="Exception"/> and its inner exceptions, encapsulating them into a read-only collection.
+	/// Each tuple in the collection contains the message and the stack trace of an exception.
+	/// If the stack trace is null, "NONE" is used as a placeholder.
 	/// </summary>
-	/// <param name="exception">The exception.</param>
-	/// <returns>System.Collections.ObjectModel.ReadOnlyCollection&lt;(string message, string StackTrace)&gt;.</returns>
-	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	/// <param name="exception">The exception to extract messages and stack traces from.</param>
+	/// <returns>A <see cref="ReadOnlyCollection{T}"/> where each item is a tuple containing the message and stack trace of an exception.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
+	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static ReadOnlyCollection<(string message, string StackTrace)> GetAllMessagesWithStackTrace([NotNull] this Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
 
-		var messages = exception.FromHierarchy(ex => ex.InnerException)
-			.Select(ex => new
-			{
-				ex.Message,
-				StackTrace = ex.StackTrace.IsNotEmpty() ? ex.StackTrace : "NONE"
-			})
-			.AsEnumerable()
-			.Select(c => (c.Message, c.StackTrace))
-			.ToReadOnlyCollection();
+		var result = new List<(string message, string StackTrace)>();
 
-		return messages;
+		foreach (var ex in exception.FromHierarchy(ex => ex.InnerException))
+		{
+			result.Add((ex.Message, ex.StackTrace ?? "NONE"));
+		}
+
+		return result.AsReadOnly();
 	}
 
 	/// <summary>
-	/// Determines whether the specified <see cref="Exception" /> is critical is a
-	/// <see cref="NullReferenceException" />, <see cref="StackOverflowException" />,
-	/// <see cref="OutOfMemoryException" />, <see cref="ThreadAbortException" />,
-	/// <see cref="IndexOutOfRangeException" /> or <see cref="AccessViolationException" />.
-	/// Validates that <paramref name="exception" /> is not null.
+	/// Determines whether the specified <see cref="Exception"/> is considered critical. A critical exception is one of the following types:
+	/// <see cref="NullReferenceException"/>, <see cref="StackOverflowException"/>, <see cref="OutOfMemoryException"/>, <see cref="ThreadAbortException"/>,
+	/// <see cref="IndexOutOfRangeException"/>, or <see cref="AccessViolationException"/>.
 	/// </summary>
-	/// <param name="exception">The ex.</param>
-	/// <returns><c>true</c> if the specified ex is critical; otherwise, <c>false</c>.</returns>
+	/// <param name="exception">The exception to check.</param>
+	/// <returns><c>true</c> if the exception is critical; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static bool IsCritical([NotNull] this Exception exception)
 	{
-		exception = exception.ArgumentNotNull();
+		if (exception.IsNull())
+		{
+			return false;
+		}
 
 		return exception is NullReferenceException or
 		StackOverflowException or
@@ -131,40 +136,47 @@ public static class ExceptionExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified  <see cref="Exception" /> is fatal (<see cref="OutOfMemoryException" />).
-	/// Validates that <paramref name="exception" /> is not null.
+	/// Determines whether the specified <see cref="Exception"/> is fatal. A fatal exception is one that is severe enough to justify terminating the application, such as <see cref="OutOfMemoryException"/>.
 	/// </summary>
-	/// <param name="exception">The ex.</param>
-	/// <returns><c>true</c> if the specified ex is fatal; otherwise, <c>false</c>.</returns>
+	/// <param name="exception">The exception to check.</param>
+	/// <returns><c>true</c> if the exception is fatal; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static bool IsFatal([NotNull] this Exception exception)
 	{
-		exception = exception.ArgumentNotNull();
+		if (exception.IsNull())
+		{
+			return false;
+		}
 
 		return exception is OutOfMemoryException;
 	}
 
 	/// <summary>
-	/// Determines whether the <see cref="Exception" /> is <see cref="SecurityException" /> or is critical].
-	/// Validates that <paramref name="exception" /> is not null.
+	/// Determines whether the specified <see cref="Exception"/> is either a <see cref="SecurityException"/> or considered critical.
+	/// A critical exception is one of the types identified by the <see cref="IsCritical"/> method.
 	/// </summary>
-	/// <param name="exception">The ex.</param>
-	/// <returns><c>true</c> if [is security or critical] [the specified ex]; otherwise, <c>false</c>.</returns>
+	/// <param name="exception">The exception to check.</param>
+	/// <returns><c>true</c> if the exception is a <see cref="SecurityException"/> or critical; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static bool IsSecurityOrCritical([NotNull] this Exception exception)
 	{
-		exception = exception.ArgumentNotNull();
+		if (exception.IsNull())
+		{
+			return false;
+		}
 
 		return (exception is SecurityException) || exception.IsCritical();
 	}
 
 	/// <summary>
-	/// Traverses the <see cref="Exception" />.
-	/// Validates that <paramref name="exception" /> is not null.
+	/// Traverses the exception hierarchy starting from the specified exception to find an exception of type <typeparamref name="T"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="exception">The ex.</param>
-	/// <returns>T.</returns>
+	/// <typeparam name="T">The type of exception to search for.</typeparam>
+	/// <param name="exception">The starting exception for the traversal.</param>
+	/// <returns>An exception of type <typeparamref name="T"/> if found; otherwise, null.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information(nameof(TraverseFor), UnitTestCoverage = 0, Status = Status.Available)]
 	public static T TraverseFor<T>([NotNull] this Exception exception)
 		where T : class

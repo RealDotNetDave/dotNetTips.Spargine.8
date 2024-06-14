@@ -4,7 +4,7 @@
 // Created          : 10-08-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-13-2024
 // ***********************************************************************
 // <copyright file="DirectoryInfoExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -19,23 +19,32 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// DirectoryInfoExtensions.
+/// Provides extension methods for <see cref="DirectoryInfo" /> to enhance and simplify its usage.
 /// </summary>
+/// <remarks>This class includes methods for calculating the total size of files within a directory,
+/// and potentially more functionalities that extend <see cref="DirectoryInfo" />.
+/// These methods aim to provide more convenient ways to interact with directories in .NET applications.</remarks>
+
 public static class DirectoryInfoExtensions
 {
 
 	/// <summary>
-	/// Gets the total size of files in a <see cref="DirectoryInfo" />.
-	/// Validates that <paramref name="path" /> and <paramref name="searchPattern" /> is not null
-	/// and <paramref name="searchOption" />is defined.
+	/// Gets the total size of files in a <see cref="DirectoryInfo" /> based on a search pattern and search option.
 	/// </summary>
-	/// <param name="path">The information.</param>
-	/// <param name="searchPattern">The search pattern.</param>
-	/// <param name="searchOption">The search option.</param>
-	/// <returns>System.Int64.</returns>
-	/// <exception cref="ArgumentNullException">DirectoryInfo cannot be null.</exception>
-	/// <exception cref="ArgumentNullException">Search pattern cannot be null or empty.</exception>
-	/// <exception cref="ArgumentOutOfRangeException">Search option invalid.</exception>
+	/// <param name="path">The directory information.</param>
+	/// <param name="searchPattern">The search pattern to match against the names of files in <paramref name="path" />. This parameter can contain a combination of valid literal and wildcard characters, but doesn't support regular expressions.</param>
+	/// <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or should include all subdirectories.</param>
+	/// <returns>The total size of files in bytes.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="path" /> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="searchPattern" /> is null or empty.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="searchOption" /> is not a valid <see cref="SearchOption" />.</exception>
+	/// <example>
+	/// This example shows how to use the <see cref="GetSize" /> method to calculate the total size of files in a directory and its subdirectories.
+	/// <code>
+	/// var directoryInfo = new DirectoryInfo(@"C:\MyDirectory");
+	/// long totalSize = directoryInfo.GetSize("*.*", SearchOption.AllDirectories);
+	/// Console.WriteLine($"Total size: {totalSize} bytes");
+	/// </code></example>
 	[Information(nameof(GetSize), author: "David McCarter", createdOn: "10/8/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static long GetSize([NotNull] this DirectoryInfo path, [NotNull] string searchPattern = "*.*", SearchOption searchOption = SearchOption.TopDirectoryOnly)
 	{
@@ -43,7 +52,12 @@ public static class DirectoryInfoExtensions
 		searchPattern = searchPattern.ArgumentNotNullOrEmpty();
 		searchOption = searchOption.ArgumentDefined();
 
-		return path.GetFiles(searchPattern, searchOption).Sum(p => p.Length);
+		long totalSize = 0;
+		foreach (var file in path.EnumerateFiles(searchPattern, searchOption))
+		{
+			totalSize += file.Length;
+		}
+		return totalSize;
 	}
 
 }

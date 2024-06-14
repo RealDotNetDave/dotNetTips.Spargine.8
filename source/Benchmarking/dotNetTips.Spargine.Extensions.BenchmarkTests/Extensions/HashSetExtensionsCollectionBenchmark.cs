@@ -37,15 +37,15 @@ public class HashSetExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		collection.AddIf(this._personRefToAdd, true);
 
-		Consume(collection);
+		this.Consume(collection);
 	}
 
 	public override void Setup()
 	{
 		base.Setup();
 
-		this._personRefHashSet = GetPersonRefCollection().ToHashSet();
-		this._peopleRefToAdd = this._personRefHashSet.Take(Count / 2).ToHashSet();
+		this._personRefHashSet = this.GetPersonRefCollection().ToHashSet();
+		this._peopleRefToAdd = this._personRefHashSet.Take(this.Count / 2).ToHashSet();
 		this._personRefToAdd = this._personRefHashSet.Last();
 
 	}
@@ -55,7 +55,7 @@ public class HashSetExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		var result = this._personRefHashSet.ToConcurrentHashSet();
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(HashSetExtensions.ToImmutableHashSet))]
@@ -63,7 +63,7 @@ public class HashSetExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		var result = this._personRefHashSet.ToImmutableHashSet();
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(HashSetExtensions.Upsert))]
@@ -73,7 +73,7 @@ public class HashSetExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		collection.Upsert(this._personRefToAdd);
 
-		Consume(collection);
+		this.Consume(collection);
 	}
 
 }

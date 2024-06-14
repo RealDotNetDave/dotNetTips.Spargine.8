@@ -71,7 +71,7 @@ public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		base.Setup();
 
 		this._personRefDictionary = this.GetPersonRefDictionary();
-		this._personRefDictionaryToInsert = RandomData.GeneratePersonRefCollection<Address>(Count / 2).ToDictionary(p => p.Id);
+		this._personRefDictionaryToInsert = RandomData.GeneratePersonRefCollection<Address>(this.Count / 2).ToDictionary(p => p.Id);
 	}
 
 	[Benchmark(Description = nameof(DictionaryExtensions.ToConcurrentDictionary))]
