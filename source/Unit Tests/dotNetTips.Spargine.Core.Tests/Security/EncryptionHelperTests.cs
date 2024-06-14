@@ -24,6 +24,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DotNetTips.Spargine.Core.Tests.Security;
 
 [ExcludeFromCodeCoverage]
+
 [TestClass]
 public class EncryptionHelperTests
 {
