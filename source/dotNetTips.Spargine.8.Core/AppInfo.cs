@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-14-2024
 // ***********************************************************************
 // <copyright file="AppInfo.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -19,7 +19,7 @@ using System.Globalization;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class Info.
+/// Represents application-specific information such as company, product, version, and memory usage.
 /// </summary>
 [ExcludeFromCodeCoverage(Justification = "Model class with no validation.")]
 public record AppInfo
