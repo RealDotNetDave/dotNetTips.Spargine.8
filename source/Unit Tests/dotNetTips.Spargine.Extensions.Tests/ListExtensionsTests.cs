@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,8 @@ public class ListExtensionsTests
 		Assert.IsTrue(people.FastCount() == Count + 1);
 	}
 
+
+
 	[TestMethod]
 	public void AddLastTest()
 	{
@@ -75,6 +78,7 @@ public class ListExtensionsTests
 		Assert.IsTrue(result2.Length == Count + 1);
 		Assert.IsTrue(result2.Last().Equals(person));
 	}
+
 
 	[TestMethod]
 	public void AsSpanTest()
@@ -119,6 +123,59 @@ public class ListExtensionsTests
 	}
 
 	[TestMethod]
+	public void GenerateHashCodeWithDifferentListsTest()
+	{
+		// Arrange
+		var list1 = new List<int> { 1, 2, 3, 4, 5 };
+		var list2 = new List<int> { 5, 4, 3, 2, 1 };
+
+		// Act
+		var hashCode1 = list1.GenerateHashCode();
+		var hashCode2 = list2.GenerateHashCode();
+
+		// Assert
+		Assert.AreNotEqual(hashCode1, hashCode2, "Hash codes should not be equal for lists with different contents.");
+	}
+
+	[TestMethod]
+	public void GenerateHashCodeWithEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int>();
+
+		// Act
+		var hashCode = list.GenerateHashCode();
+
+		// Assert
+		Assert.AreNotEqual(0, hashCode, "Hash code should not be zero for an empty list.");
+	}
+
+
+	[TestMethod]
+	public void GenerateHashCodeWithNonEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3, 4, 5 };
+
+		// Act
+		var hashCode1 = list.GenerateHashCode();
+		var hashCode2 = list.GenerateHashCode();
+
+		// Assert
+		Assert.AreEqual(hashCode1, hashCode2, "Hash codes should be equal for the same list contents.");
+	}
+
+	[TestMethod]
+	public void GenerateHashCodeWithNullListTest()
+	{
+		// Arrange
+		List<int> nullList = null;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => nullList.GenerateHashCode(), "Expected an ArgumentNullException for a null list.");
+	}
+
+	[TestMethod]
 	public void HasItemsTest01()
 	{
 		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(Count);
@@ -143,6 +200,67 @@ public class ListExtensionsTests
 	}
 
 	[TestMethod]
+	public void IndexAtLoopedWithEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int>();
+
+		// Act & Assert
+		Assert.ThrowsException<OverflowException>(() => list.IndexAtLooped(0), "Expected an ArgumentOutOfRangeException for an empty list.");
+	}
+
+	[TestMethod]
+	public void IndexAtLoopedWithIndexGreaterThanListCountTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3, 4, 5 };
+		var expectedIndex5 = 1; // Looped back to the start
+		var expectedIndex6 = 2; // Looped back to the start + 1
+
+		// Act
+		var resultIndex5 = list.IndexAtLooped(5);
+		var resultIndex6 = list.IndexAtLooped(6);
+
+		// Assert
+		Assert.AreEqual(expectedIndex5, resultIndex5, "The item at index 5 (looped) should be 1.");
+		Assert.AreEqual(expectedIndex6, resultIndex6, "The item at index 6 (looped) should be 2.");
+	}
+
+	[TestMethod]
+	public void IndexAtLoopedWithNegativeIndexTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3, 4, 5 };
+		var expectedIndexMinus1 = 5; // Looped to the end
+		var expectedIndexMinus2 = 4; // Looped to the end - 1
+
+		// Act
+		var resultIndexMinus1 = list.IndexAtLooped(-1);
+		var resultIndexMinus2 = list.IndexAtLooped(-2);
+
+		// Assert
+		Assert.AreEqual(expectedIndexMinus1, resultIndexMinus1, "The item at index -1 (looped) should be 5.");
+		Assert.AreEqual(expectedIndexMinus2, resultIndexMinus2, "The item at index -2 (looped) should be 4.");
+	}
+
+	[TestMethod]
+	public void IndexAtLoopedWithValidIndexTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3, 4, 5 };
+		var expectedIndex0 = 1;
+		var expectedIndex4 = 5;
+
+		// Act
+		var resultIndex0 = list.IndexAtLooped(0);
+		var resultIndex4 = list.IndexAtLooped(4);
+
+		// Assert
+		Assert.AreEqual(expectedIndex0, resultIndex0, "The item at index 0 should be 1.");
+		Assert.AreEqual(expectedIndex4, resultIndex4, "The item at index 4 should be 5.");
+	}
+
+	[TestMethod]
 	public void IndexOfTest()
 	{
 		var peopleList = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
@@ -155,6 +273,64 @@ public class ListExtensionsTests
 		// Test 
 		Assert.IsTrue(peopleList.IndexOf(testPerson, new PersonComparer()) >= 0);
 	}
+
+	[TestMethod]
+	public void IsEqualToWithBothEmptyListsTest()
+	{
+		// Arrange
+		var list1 = new List<int>();
+		var list2 = new List<int>();
+
+		// Act
+		var result = list1.IsEqualTo(list2);
+
+		// Assert
+		Assert.IsTrue(result, "Two empty lists should be considered equal.");
+	}
+
+	[TestMethod]
+	public void IsEqualToWithDifferentListsTest()
+	{
+		// Arrange
+		var list1 = new List<int> { 1, 2, 3, 4, 5 };
+		var list2 = new List<int> { 5, 4, 3, 2, 1 };
+
+		// Act
+		var result = list1.IsEqualTo(list2);
+
+		// Assert
+		Assert.IsFalse(result, "Lists with different elements should not be considered equal.");
+	}
+
+	[TestMethod]
+	public void IsEqualToWithEqualListsTest()
+	{
+		// Arrange
+		var list1 = new List<int> { 1, 2, 3, 4, 5 };
+		var list2 = new List<int> { 1, 2, 3, 4, 5 };
+
+		// Act
+		var result = list1.IsEqualTo(list2);
+
+		// Assert
+		Assert.IsTrue(result, "Lists with identical elements should be considered equal.");
+	}
+
+
+	[TestMethod]
+	public void IsEqualToWithOneEmptyListTest()
+	{
+		// Arrange
+		var list1 = new List<int> { 1, 2, 3, 4, 5 };
+		var list2 = new List<int>();
+
+		// Act
+		var result = list1.IsEqualTo(list2);
+
+		// Assert
+		Assert.IsFalse(result, "A non-empty list and an empty list should not be considered equal.");
+	}
+
 
 	[TestMethod]
 	public void ListHashCodeTest()
@@ -215,6 +391,67 @@ public class ListExtensionsTests
 	}
 
 	[TestMethod]
+	public void PivotTest()
+	{
+		// Arrange
+		var source = new List<(string Category, string Product, int Quantity)>
+	{
+		("Fruit", "Apple", 5),
+		("Fruit", "Banana", 2),
+		("Vegetable", "Carrot", 10),
+		("Fruit", "Apple", 7),
+		("Vegetable", "Beet", 3)
+	};
+
+		// Act
+		var result = source.Pivot(
+			item => item.Category,
+			item => item.Product,
+			items => items.Sum(item => item.Quantity));
+
+		// Assert
+		Assert.AreEqual(2, result.Count, "Expected 2 categories.");
+		Assert.IsTrue(result.ContainsKey("Fruit"), "Expected 'Fruit' category.");
+		Assert.IsTrue(result.ContainsKey("Vegetable"), "Expected 'Vegetable' category.");
+		Assert.AreEqual(12, result["Fruit"]["Apple"], "Expected 12 apples.");
+		Assert.AreEqual(2, result["Fruit"]["Banana"], "Expected 2 bananas.");
+		Assert.AreEqual(10, result["Vegetable"]["Carrot"], "Expected 10 carrots.");
+		Assert.AreEqual(3, result["Vegetable"]["Beet"], "Expected 3 beets.");
+	}
+
+	[TestMethod]
+	public void PivotWithEmptySourceTest()
+	{
+		// Arrange
+		var source = new List<(string Category, string Product, int Quantity)>();
+
+		// Act
+		var result = source.Pivot(
+			item => item.Category,
+			item => item.Product,
+			items => items.Sum(item => item.Quantity));
+
+		// Assert
+		Assert.AreEqual(0, result.Count, "Expected empty result for empty source.");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void PivotWithNullSourceTest()
+	{
+		// Arrange
+		List<(string Category, string Product, int Quantity)> source = null;
+
+		// Act
+		var result = source.Pivot(
+			item => item.Category,
+			item => item.Product,
+			items => items.Sum(item => item.Quantity));
+
+		// Assert is handled by the ExpectedException
+	}
+
+	[TestMethod]
 	public void RemoveFirstTest()
 	{
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(2500).ToArray();
@@ -267,6 +504,69 @@ public class ListExtensionsTests
 		Assert.IsTrue(result.FastCount() == Count);
 	}
 
+
+	[TestMethod]
+	public void ToCollectionWithEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int>();
+
+		// Act
+		var result = list.ToCollection();
+
+		// Assert
+		Assert.IsNotNull(result, "Result should not be null.");
+		Assert.IsInstanceOfType(result, typeof(Collection<int>), "Result should be of type Collection<int>.");
+		Assert.AreEqual(0, result.Count, "Resulting collection should be empty.");
+	}
+
+	[TestMethod]
+	public void ToCollectionWithNonEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3, 4, 5 };
+
+		// Act
+		var result = list.ToCollection();
+
+		// Assert
+		Assert.IsNotNull(result, "Result should not be null.");
+		Assert.IsInstanceOfType(result, typeof(Collection<int>), "Result should be of type Collection<int>.");
+		Assert.AreEqual(list.Count, result.Count, "Resulting collection should have the same count as the source list.");
+		for (int i = 0; i < list.Count; i++)
+		{
+			Assert.AreEqual(list[i], result[i], $"Item at index {i} should be equal in both list and resulting collection.");
+		}
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void ToCollectionWithNullListTest()
+	{
+		// Arrange
+		List<int> list = null;
+
+		// Act
+		var result = list.ToCollection();
+
+		// Assert is handled by the ExpectedException
+	}
+
+
+	[TestMethod]
+	public void ToDistinctBlockingCollectionCompleteAddingTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3 };
+
+		// Act
+		var result = list.ToDistinctBlockingCollection(completeAdding: true);
+
+		// Assert
+		Assert.IsNotNull(result, "Result should not be null.");
+		Assert.IsTrue(result.IsAddingCompleted, "Adding should be marked as completed.");
+	}
+
 	[TestMethod]
 	public void ToDistinctBlockingCollectionTest()
 	{
@@ -279,6 +579,19 @@ public class ListExtensionsTests
 		Assert.IsTrue(result.FastCount() == Count);
 
 		Assert.IsTrue(result.IsAddingCompleted);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void ToDistinctBlockingCollectionWithNullListTest()
+	{
+		// Arrange
+		List<int> list = null;
+
+		// Act
+		var result = list.ToDistinctBlockingCollection();
+
+		// Assert is handled by the ExpectedException
 	}
 
 	[TestMethod]
@@ -303,6 +616,72 @@ public class ListExtensionsTests
 		Assert.IsNotNull(result);
 
 		Assert.IsTrue(result.FastCount() == Count);
+	}
+
+
+
+	[TestMethod]
+	public void ToFrozenSetWithDuplicatesTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 2, 3, 3, 3, 4, 4, 4, 4 };
+
+		// Act
+		var result = list.ToFrozenSet();
+
+		// Assert
+		Assert.IsNotNull(result, "Result should not be null.");
+		Assert.AreEqual(list.Distinct().Count(), result.Count, "Resulting FrozenSet should contain distinct elements only.");
+		foreach (var item in list.Distinct())
+		{
+			Assert.IsTrue(result.Contains(item), $"Item {item} should be present in the resulting FrozenSet.");
+		}
+	}
+
+	[TestMethod]
+	public void ToFrozenSetWithEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int>();
+
+		// Act
+		var result = list.ToFrozenSet();
+
+		// Assert
+		Assert.IsNotNull(result, "Result should not be null.");
+		Assert.AreEqual(0, result.Count, "Resulting FrozenSet should be empty.");
+	}
+
+	[TestMethod]
+	public void ToFrozenSetWithNonEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3, 4, 5 };
+
+		// Act
+		var result = list.ToFrozenSet();
+
+		// Assert
+		Assert.IsNotNull(result, "Result should not be null.");
+		Assert.AreEqual(list.Count, result.Count, "Resulting FrozenSet should have the same count as the source list.");
+		foreach (var item in list)
+		{
+			Assert.IsTrue(result.Contains(item), $"Item {item} should be present in the resulting FrozenSet.");
+		}
+	}
+
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void ToFrozenSetWithNullListTest()
+	{
+		// Arrange
+		List<int> list = null;
+
+		// Act
+		var result = list.ToFrozenSet();
+
+		// Assert is handled by the ExpectedException
 	}
 
 	[TestMethod]
@@ -335,6 +714,97 @@ public class ListExtensionsTests
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToReadOnlyCollection();
 
 		Assert.IsTrue(people.FastCount() == Count);
+	}
+
+	[TestMethod]
+	public void ToReadOnlyListWithEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int>();
+
+		// Act
+		var readOnlyList = list.ToReadOnlyList();
+
+		// Assert
+		Assert.IsNotNull(readOnlyList, "Result should not be null.");
+		Assert.AreEqual(0, readOnlyList.Count, "Resulting IReadOnlyList should be empty.");
+	}
+
+	[TestMethod]
+	public void ToReadOnlyListWithNonEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3, 4, 5 };
+
+		// Act
+		var readOnlyList = list.ToReadOnlyList();
+
+		// Assert
+		Assert.IsNotNull(readOnlyList, "Result should not be null.");
+		Assert.AreEqual(list.Count, readOnlyList.Count, "Resulting IReadOnlyList should have the same count as the source list.");
+		for (int i = 0; i < list.Count; i++)
+		{
+			Assert.AreEqual(list[i], readOnlyList[i], $"Item at index {i} should be equal in both list and resulting IReadOnlyList.");
+		}
+	}
+
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void ToReadOnlyListWithNullListTest()
+	{
+		// Arrange
+		List<int> list = null;
+
+		// Act
+		var readOnlyList = list.ToReadOnlyList();
+
+		// Assert is handled by the ExpectedException
+	}
+
+	[TestMethod]
+	public void ToReadOnlyObservableCollectionWithEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int>();
+
+		// Act
+		var readOnlyObservableCollection = list.ToReadOnlyObservableCollection();
+
+		// Assert
+		Assert.IsNotNull(readOnlyObservableCollection, "Result should not be null.");
+		Assert.AreEqual(0, readOnlyObservableCollection.Count, "Resulting ReadOnlyObservableCollection should be empty.");
+	}
+
+	[TestMethod]
+	public void ToReadOnlyObservableCollectionWithNonEmptyListTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3, 4, 5 };
+
+		// Act
+		var readOnlyObservableCollection = list.ToReadOnlyObservableCollection();
+
+		// Assert
+		Assert.IsNotNull(readOnlyObservableCollection, "Result should not be null.");
+		Assert.AreEqual(list.Count, readOnlyObservableCollection.Count, "Resulting ReadOnlyObservableCollection should have the same count as the source list.");
+		for (int i = 0; i < list.Count; i++)
+		{
+			Assert.AreEqual(list[i], readOnlyObservableCollection[i], $"Item at index {i} should be equal in both list and resulting ReadOnlyObservableCollection.");
+		}
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void ToReadOnlyObservableCollectionWithNullListTest()
+	{
+		// Arrange
+		List<int> list = null;
+
+		// Act
+		var readOnlyObservableCollection = list.ToReadOnlyObservableCollection();
+
+		// Assert is handled by the ExpectedException
 	}
 
 }

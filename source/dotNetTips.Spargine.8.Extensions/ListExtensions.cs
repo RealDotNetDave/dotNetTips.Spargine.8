@@ -316,7 +316,7 @@ public static class ListExtensions
 	/// <returns>Dictionary&lt;TFirstKey, Dictionary&lt;TSecondKey, TValue&gt;&gt;.</returns>
 	/// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value. or list - Aggregate cannot be null. or firstKeySelector -
 	/// First key selector cannot be null. or secondKeySelector - Second key selector cannot be null.</exception>
-	[Information(nameof(Pivot), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(Pivot), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>([NotNull] this IEnumerable<TSource> collection, [NotNull] Func<TSource, TFirstKey> firstKeySelector, [NotNull] Func<TSource, TSecondKey> secondKeySelector, [NotNull] Func<IEnumerable<TSource>, TValue> aggregate)
 	{
 		collection = collection.ArgumentNotNull();
