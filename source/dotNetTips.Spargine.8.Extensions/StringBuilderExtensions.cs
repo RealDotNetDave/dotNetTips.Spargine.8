@@ -4,12 +4,12 @@
 // Created          : 05-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-01-2024
+// Last Modified On : 06-05-2024
 // ***********************************************************************
 // <copyright file="StringBuilderExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>StringBuilder Extensions.</summary> 
+// <summary>StringBuilder Extensions.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -93,7 +93,7 @@ public static class StringBuilderExtensions
 	/// <exception cref="ArgumentException">key</exception>
 	/// <exception cref="ArgumentException">value</exception>
 	/// <exception cref="ArgumentException">sb</exception>
-	[Information("FROM .NET CORE SOURCE", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 99, Status = Status.Available)]
+	[Information("FROM .NET CORE SOURCE", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static void AppendKeyValue([NotNull] this StringBuilder sb, [NotNull] string key, [NotNull] string value, bool includeQuotes = true, bool includeComma = true)
 	{
 		sb = sb.ArgumentNotNull();
@@ -260,7 +260,7 @@ public static class StringBuilderExtensions
 	/// <param name="param">The parameter.</param>
 	/// <param name="joinAction">The join action.</param>
 	/// <returns>StringBuilder.</returns>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static void AppendValues<T, TParam>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam param, [NotNull] Action<T, TParam> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -315,7 +315,7 @@ public static class StringBuilderExtensions
 	/// <exception cref="ArgumentNullException">values</exception>
 	/// <exception cref="ArgumentNullException">param1</exception>
 	/// <exception cref="ArgumentNullException">param2</exception>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static void AppendValues<T, TParam1, TParam2>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam1 param1, [NotNull] TParam2 param2, [NotNull] Action<StringBuilder, T, TParam1, TParam2> joinAction)
 	{
 		sb = sb.ArgumentNotNull();

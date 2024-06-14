@@ -12,6 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -108,6 +110,7 @@ public class StringBuilderExtensionsTests
 		Assert.IsTrue(pool.Length > 10);
 	}
 
+
 	[TestMethod]
 	public void AppendValuesTest()
 	{
@@ -133,6 +136,81 @@ public class StringBuilderExtensionsTests
 		});
 
 		Assert.IsTrue(pool.Length > 50);
+	}
+
+
+	[TestMethod]
+	public void AppendValuesWithParamTest()
+	{
+		var sb = new StringBuilder();
+		var values = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(count: 5);
+		string separator = ", ";
+		string format = "{0} - {1}";
+
+		sb.AppendValues(separator, values, format, (person, fmt) =>
+		{
+			_ = sb.AppendFormat(fmt, person.FirstName, person.LastName);
+		});
+
+		Assert.IsTrue(sb.Length > 0, "StringBuilder should contain formatted values.");
+
+		var pool = new StringBuilder();
+
+		pool.AppendValues(separator, values, format, (person, fmt) =>
+		{
+			_ = pool.AppendFormat(fmt, person.FirstName, person.LastName);
+		});
+
+		Assert.IsTrue(pool.Length > 0, "StringBuilder should contain formatted values in the pool instance.");
+	}
+
+	[TestMethod]
+	public void AppendValuesWithTwoParamsEmptyValuesTest()
+	{
+		var sb = new StringBuilder();
+		var values = new List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>(); // Empty collection
+		string separator = ", ";
+
+		sb.AppendValues(separator, values, "ExtraParam1", "ExtraParam2", (StringBuilder builder, Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> person, string param1, string param2) =>
+		{
+			// This block should not execute because the collection is empty
+			Assert.Fail("The action should not be executed for an empty collection.");
+		});
+
+		Assert.AreEqual(0, sb.Length, "StringBuilder should remain empty for an empty input collection.");
+		var pool = new StringBuilder();
+
+		pool.AppendValues(separator, values, "ExtraParam1", "ExtraParam2", (StringBuilder builder, Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> person, string param1, string param2) =>
+		{
+			// This block should not execute because the collection is empty
+			Assert.Fail("The action should not be executed for an empty collection.");
+		});
+
+		Assert.AreEqual(0, pool.Length, "StringBuilder should remain empty for an empty input collection in the pool instance.");
+	}
+
+	[TestMethod]
+	public void AppendValuesWithTwoParamsTest()
+	{
+		var sb = new StringBuilder();
+		var values = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(count: 5);
+		string separator = ", ";
+		string format = "{0} - {1} lives at {2}";
+
+		sb.AppendValues(separator, values, "ExtraParam1", "ExtraParam2", (StringBuilder builder, Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> person, string param1, string param2) =>
+		{
+			_ = builder.AppendFormat(format, person.FirstName, person.LastName, person.Addresses, param1, param2);
+		});
+
+		Assert.IsTrue(sb.Length > 0, "StringBuilder should contain formatted values.");
+		var pool = new StringBuilder();
+
+		pool.AppendValues(separator, values, "ExtraParam1", "ExtraParam2", (StringBuilder builder, Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> person, string param1, string param2) =>
+		{
+			_ = builder.AppendFormat(format, person.FirstName, person.LastName, person.Addresses, param1, param2);
+		});
+
+		Assert.IsTrue(pool.Length > 0, "StringBuilder should contain formatted values in the pool instance.");
 	}
 
 }
