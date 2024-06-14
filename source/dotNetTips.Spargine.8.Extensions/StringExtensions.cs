@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-13-2024
+// Last Modified On : 06-14-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -32,11 +32,6 @@ namespace DotNetTips.Spargine.Extensions;
 /// </summary>
 public static class StringExtensions
 {
-
-	/// <summary>
-	/// Returns 0.
-	/// </summary>
-	private const int Zero = 0;
 
 	/// <summary>
 	/// The credit card number reg ex
@@ -145,12 +140,13 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Combines a the input with the <see cref=" string" /> array.
+	/// Combines the input string with additional strings into a single string.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="args">The arguments.</param>
-	/// <returns>string.</returns>
+	/// <param name="input">The initial string to combine.</param>
+	/// <param name="args">An array of strings to combine with the initial string.</param>
+	/// <returns>A combined string consisting of the input string and all strings in <paramref name="args"/>.</returns>
 	[Information(nameof(Concat), "David McCarter", "1/3/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
+
 	public static string CombineToString([NotNull] this string input, [NotNull] params string[] args) => FastStringBuilder.CombineStrings(false, args.ArgumentNotNull().AddFirst(input.ArgumentNotNull()));
 
 	/// <summary>
@@ -762,7 +758,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The value.</param>
 	/// <returns><c>true</c> if the specified value is unique identifier; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsGuid), "David McCarter", "3/24/2017", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsGuid), "David McCarter", "3/24/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsGuid([NotNull][StringSyntax(StringSyntaxAttribute.GuidFormat)] this string input) => _guidRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -778,7 +774,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The value.</param>
 	/// <returns><c>true</c> if [is mac address] [the specified value]; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsMacAddress), "David McCarter", "3/24/2017", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsMacAddress), "David McCarter", "3/24/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsMacAddress([NotNull] this string input) => _macAddressRegEx.IsMatch(input.ArgumentNotNull());
 
 #nullable enable
@@ -872,17 +868,15 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Splits the string based on the separator with options.
-	/// Validates that <paramref name="input" /> is not null or empty.
+	/// Splits the input string by a specified separator into a ReadOnlyCollection of strings, with options to control the split operation.
 	/// </summary>
-	/// <param name="input">The value.</param>
-	/// <param name="options">The options.</param>
-	/// <param name="separator">The separator.</param>
-	/// <returns>System.Collections.ObjectModel.ReadOnlyCollection&lt;string&gt;.</returns>
-	/// <exception cref="ArgumentInvalidException">Input cannot be <see langword="null" />.</exception>
-	/// <exception cref="ArgumentOutOfRangeException">Options are invalid.</exception>
+	/// <param name="input">The input string to split.</param>
+	/// <param name="options">Options to control the splitting operation, such as whether to remove empty entries.</param>
+	/// <param name="separator">The character to use as a separator. Defaults to a comma.</param>
+	/// <returns>A ReadOnlyCollection of strings that are substrings of the input string, split as per the separator and options.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, [NotNull] char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -892,57 +886,51 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Splits the string based on the separator with options.
-	/// Validates that <paramref name="input" /> is not null or empty.
+	/// Splits the input string into a ReadOnlyCollection of strings based on the specified separator and options.
 	/// </summary>
-	/// <param name="input">The value.</param>
-	/// <param name="options">The options.</param>
-	/// <param name="count">The count.</param>
-	/// <param name="separator">The separator.</param>
-	/// <returns>System.Collections.ObjectModel.ReadOnlyCollection&lt;string&gt;.</returns>
-	/// <exception cref="ArgumentInvalidException">Input cannot be <see langword="null" />.</exception>
-	/// <exception cref="ArgumentOutOfRangeException">Options are invalid.</exception>
-	/// <exception cref="ArgumentOutOfRangeException">Count must be greater than 1.</exception>
+	/// <param name="input">The input string to be split.</param>
+	/// <param name="options">The StringSplitOptions to be used when splitting the string.</param>
+	/// <param name="count">The maximum number of substrings to return. The last substring will contain the remainder of the input string if the count is reached.</param>
+	/// <param name="separator">The character used as a separator for splitting the input string. Defaults to a comma.</param>
+	/// <returns>A ReadOnlyCollection of strings that are substrings of the input string, split as per the specified separator and options.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.CheckPerformance)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
 		count = count.ArgumentInRange(lower: 1);
 
-		return input.Split(new[] { separator }, count, options).AsReadOnly();
+		return Array.AsReadOnly(input.Split(new[] { separator }, count, options));
 	}
 
 	/// <summary>
-	/// Splits the string based on the separator.
-	/// Validates that <paramref name="input" /> is not null or empty.
+	/// Splits the input string into a ReadOnlyCollection of substrings based on the specified separator and options.
 	/// </summary>
-	/// <param name="input">The value.</param>
-	/// <param name="options">The options.</param>
-	/// <param name="count">The count.</param>
-	/// <param name="separator">The separator.</param>
-	/// <returns>System.Collections.ObjectModel.ReadOnlyCollection&lt;string&gt;.</returns>
-	/// <exception cref="ArgumentInvalidException">input cannot be <see langword="null" />.</exception>
-	/// <exception cref="ArgumentOutOfRangeException">Options are invalid.</exception>
-	/// <exception cref="ArgumentOutOfRangeException">Count must be greater than 1.</exception>
+	/// <param name="input">The input string to be split.</param>
+	/// <param name="options">The options to control the splitting operation, such as whether to remove empty entries.</param>
+	/// <param name="count">The maximum number of substrings to return. The last substring contains the remainder of the input string if the count is reached.</param>
+	/// <param name="separator">The string used as a separator for splitting the input string. Defaults to the default separator.</param>
+	/// <returns>A ReadOnlyCollection of substrings that are split from the input string as per the specified separator and options.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull] string separator = ControlChars.DefaultSeparator)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
 		count = count.ArgumentInRange(lower: 1);
 
-		return input.Split(new[] { separator }, count, options).AsReadOnly();
+		return new ReadOnlyCollection<string>(input.Split(new[] { separator }, count, options));
 	}
 
 	/// <summary>
-	/// Splits the lines of text into separate lines.
-	/// Validates that <paramref name="input" /> is not null or empty.
+	/// Splits the input string into lines using the default newline characters as separators.
 	/// </summary>
-	/// <param name="input">The string.</param>
-	/// <returns>DotNetTips.Spargine.Extensions.LineSplitEnumerator.</returns>
+	/// <param name="input">The input string to split into lines.</param>
+	/// <returns>An enumerator that allows iterating over each line in the input string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	[Information(nameof(SplitLines), "David McCarter", "6/9/2022", UnitTestCoverage = 100, Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static LineSplitEnumerator SplitLines([NotNull] this string input)
 	{
@@ -953,12 +941,11 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Splits the specified input using ',' and removes empty entries.
-	/// Validates that <paramref name="input" /> is not null or empty.
+	/// Splits the input string into a ReadOnlyCollection of non-empty substrings based on whitespace characters.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <returns>System.Collections.ObjectModel.ReadOnlyCollection&lt;string&gt;.</returns>
-	/// <exception cref="ArgumentInvalidException">input string cannot be null.</exception>
+	/// <param name="input">The input string to be split.</param>
+	/// <returns>A ReadOnlyCollection of non-empty substrings that result from splitting the input string on whitespace.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(SplitRemoveEmpty), UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<string> SplitRemoveEmpty([NotNull] this string input)
@@ -969,14 +956,14 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Determines if the input starts with ordinal.
-	/// Validates that <paramref name="input" /> and <paramref name="inputToCompare" /> is not null or empty.
+	/// Determines whether the beginning of this string instance matches the specified string when compared using ordinal sort rules.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="inputToCompare">The value to compare.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="input">The string to check.</param>
+	/// <param name="inputToCompare">The string to compare to the beginning of this instance.</param>
+	/// <returns>true if <paramref name="inputToCompare"/> matches the beginning of this string; otherwise, false.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="inputToCompare"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static bool StartsWithOrdinal([NotNull] this string input, [NotNull] string inputToCompare)
 	{
 		if (input is null || inputToCompare is null)
@@ -984,16 +971,16 @@ public static class StringExtensions
 			return false;
 		}
 
-		return string.Compare(input, 0, inputToCompare, 0, inputToCompare.Length, StringComparison.Ordinal) == Zero;
+		return input.StartsWith(inputToCompare, StringComparison.Ordinal);
 	}
 
 	/// <summary>
-	/// Determines if the input starts the with ordinal while ignoring case.
-	/// Validates that <paramref name="input" /> and <paramref name="inputToCompare" /> is not null or empty.
+	/// Determines whether the beginning of this string instance matches the specified string in a case-insensitive manner using ordinal sort rules.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="inputToCompare">The value to compare.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="input">The string to check.</param>
+	/// <param name="inputToCompare">The string to compare to the beginning of this instance.</param>
+	/// <returns>true if <paramref name="inputToCompare"/> matches the beginning of this string instance ignoring case; otherwise, false.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="inputToCompare"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool StartsWithOrdinalIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare)
@@ -1003,21 +990,20 @@ public static class StringExtensions
 			return false;
 		}
 
-		return string.Compare(input, 0, inputToCompare, 0, inputToCompare.Length, StringComparison.OrdinalIgnoreCase) == Zero;
+		return input.StartsWith(inputToCompare, StringComparison.OrdinalIgnoreCase);
+
 	}
 
 	/// <summary>
-	/// Substrings the trim.
-	/// Validates that <paramref name="input" /> is not null or empty.
+	/// Trims whitespace from the start and end of the substring defined by <paramref name="startIndex"/> and <paramref name="length"/> within the <paramref name="input"/> string.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="startIndex">The start index.</param>
-	/// <param name="length">The length.</param>
-	/// <returns>System.String.</returns>
-	/// <exception cref="ArgumentOutOfRangeException">startIndex - startIndex + length must be less than or equal to  value.Length</exception>
-	/// <exception cref="ArgumentOutOfRangeException">startIndex length must be less than or
-	/// equal to value.Length</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	/// <param name="input">The input string from which the substring will be trimmed.</param>
+	/// <param name="startIndex">The zero-based starting character position of a substring in this instance.</param>
+	/// <param name="length">The number of characters in the substring.</param>
+	/// <returns>A string that is equivalent to the substring of <paramref name="input"/> that begins at <paramref name="startIndex"/> and has a length of <paramref name="length"/>, minus any leading and trailing whitespace characters.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="input"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="startIndex"/> or <paramref name="length"/> is less than zero, or <paramref name="startIndex"/> + <paramref name="length"/> is greater than the length of <paramref name="input"/>.</exception>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string SubstringTrim(this string input, int startIndex, int length)
 	{
 		if (input.IsNullOrEmpty())
@@ -1065,12 +1051,12 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Converts string to Base64 string.
-	/// Validates that <paramref name="input" /> is not null or empty.
+	/// Converts the input string to its Base64 encoded form.
 	/// </summary>
-	/// <param name="input">The value.</param>
-	/// <returns>System.String.</returns>
-	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	/// <param name="input">The string to encode.</param>
+	/// <returns>A Base64 encoded string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
+	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static string ToBase64([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1078,15 +1064,16 @@ public static class StringExtensions
 			return ControlChars.EmptyString;
 		}
 
-		return Convert.ToBase64String(new ASCIIEncoding().GetBytes(input));
+		return Convert.ToBase64String(Encoding.UTF8.GetBytes(input));
 	}
 
 	/// <summary>
-	/// Converts the input to a Brotli compressed string as an asynchronous operation.
+	/// Compresses the input string using Brotli algorithm and returns the compressed data as a Base64 encoded string.
 	/// </summary>
-	/// <param name="input">The value.</param>
-	/// <param name="level">The level.</param>
-	/// <returns>Compressed string.</returns>
+	/// <param name="input">The input string to compress.</param>
+	/// <param name="level">The compression level to use. Defaults to <see cref="CompressionLevel.Fastest"/>.</param>
+	/// <returns>A task that represents the asynchronous operation. The task result contains the Base64 encoded string of the compressed input.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	/// <example>
 	/// Input: "dotNetTips.com"
 	/// Output
@@ -1120,12 +1107,12 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Converts the <see cref="string" /> to a <see cref="byte" /> array based on the Encoder.
+	/// Converts the input string to a byte array using the specified encoding.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="encoding">The encoding method.</param>
-	/// <returns>byte[].</returns>
-	/// <remarks>Use <seealso cref="ArrayExtensions.BytesToString(byte[])" /> to convert it back to a <see cref="string" />.</remarks>
+	/// <param name="input">The string to convert.</param>
+	/// <param name="encoding">The encoding to use for the conversion.</param>
+	/// <returns>A byte array representing the encoded string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="encoding"/> is null.</exception>
 	[Information(nameof(ToByteArray), "David McCarter", "12/21/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static byte[] ToByteArray([NotNull] this string input, Encoding encoding)
 	{
@@ -1135,11 +1122,12 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// To compresses string as deflate as an asynchronous operation.
+	/// Compresses the input string using the Deflate algorithm and returns the compressed data as a Base64 encoded string.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="level">The level.</param>
-	/// <returns>A Task&lt;System.String&gt; representing the asynchronous operation.</returns>
+	/// <param name="input">The input string to compress.</param>
+	/// <param name="level">The compression level to use. Defaults to <see cref="CompressionLevel.Fastest"/>.</param>
+	/// <returns>A task that represents the asynchronous operation. The task result contains the Base64 encoded string of the compressed input.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	/// <example>
 	/// Input: "dotNetTips.com"
 	/// Output
@@ -1148,38 +1136,28 @@ public static class StringExtensions
 	/// Optimal: SmHIZyhh8GNIBZIhDJkMBQzFDHoMyUDRXAYAAAAA//8=
 	/// SmallestSize: SmHIZyhh8GNIBZIhDJkMBQzFDHoMyUDRXAYAAAAA//8=
 	/// </example>
-	[Information(nameof(ToDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(ToDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.CheckPerformance)]
 	public static async Task<string> ToDeflateStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
 	{
-		var bytes = Encoding.Unicode.GetBytes(input.ArgumentNotNull());
+		_ = input.ArgumentNotNull();
 
-		var inputStream = new MemoryStream(bytes);
-
-		await using (inputStream.ConfigureAwait(false))
+		using var inputMemoryStream = new MemoryStream(Encoding.UTF8.GetBytes(input));
+		using var outputMemoryStream = new MemoryStream();
+		using (var deflateStream = new DeflateStream(outputMemoryStream, level, true))
 		{
-			var outputStream = new MemoryStream();
-
-			await using (outputStream.ConfigureAwait(false))
-			{
-				var stream = new DeflateStream(outputStream, level);
-
-				await using (stream.ConfigureAwait(false))
-				{
-					await inputStream.CopyToAsync(stream, CancellationToken.None).ConfigureAwait(false);
-					await stream.FlushAsync(CancellationToken.None).ConfigureAwait(false);
-
-					return Convert.ToBase64String(outputStream.ToArray());
-				}
-			}
+			await inputMemoryStream.CopyToAsync(deflateStream).ConfigureAwait(false);
 		}
+
+		return Convert.ToBase64String(outputMemoryStream.ToArray());
 	}
 
 	/// <summary>
-	/// To compresses string to gzip as an asynchronous operation.
+	/// Compresses the input string using the GZip algorithm and returns the compressed data as a Base64 encoded string.
 	/// </summary>
-	/// <param name="input">The value.</param>
-	/// <param name="level">The level.</param>
-	/// <returns>Compressed string.</returns>
+	/// <param name="input">The input string to compress.</param>
+	/// <param name="level">The compression level to use. Defaults to <see cref="CompressionLevel.Fastest"/>.</param>
+	/// <returns>A task that represents the asynchronous operation. The task result contains the Base64 encoded string of the compressed input.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	/// <example>
 	/// Input: "dotNetTips.com"
 	/// Output
@@ -1192,35 +1170,24 @@ public static class StringExtensions
 	[Information(nameof(ToGZipStringAsync), "David McCarter", "10/24/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static async Task<string> ToGZipStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
 	{
-		var bytes = Encoding.Unicode.GetBytes(input.ArgumentNotNull());
+		_ = input.ArgumentNotNull();
 
-		var inputStream = new MemoryStream(bytes);
-
-		await using (inputStream.ConfigureAwait(false))
+		using var inputMemoryStream = new MemoryStream(Encoding.UTF8.GetBytes(input));
+		using var outputMemoryStream = new MemoryStream();
+		using (var gzipStream = new GZipStream(outputMemoryStream, level, true))
 		{
-			var outputStream = new MemoryStream();
-
-			await using (outputStream.ConfigureAwait(false))
-			{
-				var stream = new GZipStream(outputStream, level);
-
-				await using (stream.ConfigureAwait(false))
-				{
-					await inputStream.CopyToAsync(stream, CancellationToken.None).ConfigureAwait(false);
-					await stream.FlushAsync(CancellationToken.None).ConfigureAwait(false);
-
-					return Convert.ToBase64String(outputStream.ToArray());
-				}
-			}
+			await inputMemoryStream.CopyToAsync(gzipStream).ConfigureAwait(false);
 		}
+
+		return Convert.ToBase64String(outputMemoryStream.ToArray());
 	}
 
 	/// <summary>
-	/// Converts to a string to title case.
-	/// Validates that <paramref name="input" /> is not null or empty.
+	/// Converts the specified string to title case (except for words that are entirely in uppercase, which are considered to be acronyms).
 	/// </summary>
-	/// <param name="input">The source.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="input">The string to convert to title case.</param>
+	/// <returns>A string converted to title case.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToTitleCase), "David McCarter", "10/8/2020", "10/8/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string ToTitleCase([NotNull] this string input)
@@ -1234,13 +1201,13 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Trims the beginning and end of a string.
-	/// Validates that <paramref name="input" /> is not null or empty.
+	/// Trims whitespace from the beginning and end of the string.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <returns>Trimmed System.String.</returns>
+	/// <param name="input">The string to trim.</param>
+	/// <returns>A trimmed string with no leading or trailing whitespace characters.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToTrimmed), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(ToTrimmed), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static string ToTrimmed([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1248,15 +1215,16 @@ public static class StringExtensions
 			return input;
 		}
 
-		return input.TrimEnd().TrimStart();
+		return input.Trim();
 	}
 
 	/// <summary>
-	/// To compresses string as ZLib as an asynchronous operation.
+	/// Compresses the input string using the ZLib compression algorithm and returns the compressed data as a Base64 encoded string.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="level">The level.</param>
-	/// <returns>A Task&lt;System.String&gt; representing the asynchronous operation.</returns>
+	/// <param name="input">The input string to compress.</param>
+	/// <param name="level">The compression level to use. Defaults to <see cref="CompressionLevel.Fastest"/>.</param>
+	/// <returns>A task that represents the asynchronous operation. The task result contains the Base64 encoded string of the compressed input.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	/// <example>
 	/// Input: "dotNetTips.com"
 	/// Output
@@ -1265,30 +1233,19 @@ public static class StringExtensions
 	/// Optimal: eJxKYchnKGHwY0gFkiEMmQwFDMUMegzJQNFcBgAAAAD//w==
 	/// SmallestSize: eNpKYchnKGHwY0gFkiEMmQwFDMUMegzJQNFcBgAAAAD//w==
 	/// </example>
-	[Information(nameof(ToZLibStringAsync), "David McCarter", "9/12/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(ToZLibStringAsync), "David McCarter", "9/12/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static async Task<string> ToZLibStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
 	{
-		var bytes = Encoding.Unicode.GetBytes(input.ArgumentNotNull());
+		_ = input.ArgumentNotNull();
 
-		var inputStream = new MemoryStream(bytes);
-
-		await using (inputStream.ConfigureAwait(false))
+		using var inputMemoryStream = new MemoryStream(Encoding.UTF8.GetBytes(input));
+		using var outputMemoryStream = new MemoryStream();
+		using (var zlibStream = new ZLibStream(outputMemoryStream, level, true))
 		{
-			var outputStream = new MemoryStream();
-
-			await using (outputStream.ConfigureAwait(false))
-			{
-				var stream = new ZLibStream(outputStream, level);
-
-				await using (stream.ConfigureAwait(false))
-				{
-					await inputStream.CopyToAsync(stream, CancellationToken.None).ConfigureAwait(false);
-					await stream.FlushAsync(CancellationToken.None).ConfigureAwait(false);
-
-					return Convert.ToBase64String(outputStream.ToArray());
-				}
-			}
+			await inputMemoryStream.CopyToAsync(zlibStream).ConfigureAwait(false);
 		}
+
+		return Convert.ToBase64String(outputMemoryStream.ToArray());
 	}
 
 }

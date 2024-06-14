@@ -15,6 +15,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO.Compression;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -40,21 +41,19 @@ public class StringExtensionsTests
 	{
 		var testValue = RandomData.GenerateWord(25);
 
-		var r1 = await testValue.ToBrotliStringAsync();  //Fastest is default
 		var r2 = await testValue.ToBrotliStringAsync(CompressionLevel.NoCompression);
 		var r3 = await testValue.ToBrotliStringAsync(CompressionLevel.Optimal);
 		var r4 = await testValue.ToBrotliStringAsync(CompressionLevel.SmallestSize);
 
-		Assert.IsFalse(string.IsNullOrEmpty(r1));
 		Assert.IsFalse(string.IsNullOrEmpty(r2));
 		Assert.IsFalse(string.IsNullOrEmpty(r3));
 		Assert.IsFalse(string.IsNullOrEmpty(r4));
 
-		Assert.IsFalse(string.IsNullOrEmpty(await r1.FromBrotliStringAsync()));
 		Assert.IsFalse(string.IsNullOrEmpty(await r2.FromBrotliStringAsync()));
 		Assert.IsFalse(string.IsNullOrEmpty(await r3.FromBrotliStringAsync()));
 		Assert.IsFalse(string.IsNullOrEmpty(await r4.FromBrotliStringAsync()));
 	}
+
 
 	[TestMethod]
 	public void CombineToStringTest()
@@ -78,6 +77,7 @@ public class StringExtensionsTests
 			Assert.IsTrue(result.IsNotEmpty());
 		}
 	}
+
 
 	[TestMethod]
 	public void ComputeSha256HashTest()
@@ -329,10 +329,142 @@ public class StringExtensionsTests
 		Assert.IsTrue("David McCarter".IsFirstLastName());
 	}
 
+
+	[TestMethod]
+	public void IsGuid_EmptyStringTest()
+	{
+		// Arrange
+		var emptyString = string.Empty;
+
+		// Act
+		var result = emptyString.IsGuid();
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for an empty string.");
+	}
+
+	[TestMethod]
+	public void IsGuid_InvalidGuidTest()
+	{
+		// Arrange
+		var invalidGuid = "ThisIsNotAGuid";
+
+		// Act
+		var result = invalidGuid.IsGuid();
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for an invalid GUID string.");
+	}
+
+	[TestMethod]
+	public void IsGuid_NullStringTest()
+	{
+		// Arrange
+		string nullString = null;
+
+		// Act
+		// Using a lambda to defer the evaluation and catch the ArgumentNullException
+		Action act = () => _ = nullString.IsGuid();
+
+		// Assert
+		Assert.ThrowsException<ArgumentNullException>(act, "Expected to throw ArgumentNullException for a null string.");
+	}
+
+	[TestMethod]
+	public void IsGuid_ValidGuidTest()
+	{
+		// Arrange
+		var validGuid = Guid.NewGuid().ToString();
+
+		// Act
+		var result = validGuid.IsGuid();
+
+		// Assert
+		Assert.IsTrue(result, "Expected to return true for a valid GUID string.");
+	}
+
 	[TestMethod]
 	public void IsISBNTest()
 	{
 		Assert.IsTrue("1257561035".IsISBN());
+	}
+
+	[TestMethod]
+	public void IsMacAddress_EmptyStringTest()
+	{
+		// Arrange
+		var emptyString = string.Empty;
+
+		// Act
+		var result = emptyString.IsMacAddress();
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for an empty string.");
+	}
+
+	[TestMethod]
+	public void IsMacAddress_InvalidMacAddressTest()
+	{
+		// Arrange
+		var invalidMacAddress = "00-14-22-01-23-G5"; // Invalid character 'G'
+
+		// Act
+		var result = invalidMacAddress.IsMacAddress();
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for an invalid MAC address.");
+	}
+
+	[TestMethod]
+	public void IsMacAddress_NullStringTest()
+	{
+		// Arrange
+		string nullString = null;
+
+		// Act
+		Action act = () => _ = nullString.IsMacAddress();
+
+		// Assert
+		Assert.ThrowsException<ArgumentNullException>(act, "Expected to throw ArgumentNullException for a null string.");
+	}
+
+	[TestMethod]
+	public void IsMacAddress_ValidMacAddressTest()
+	{
+		// Arrange
+		var validMacAddress = "00-14-22-01-23-45";
+
+		// Act
+		var result = validMacAddress.IsMacAddress();
+
+		// Assert
+		Assert.IsTrue(result, "Expected to return true for a valid MAC address.");
+	}
+
+	[TestMethod]
+	public void IsMacAddress_WithColonsTest()
+	{
+		// Arrange
+		var macAddressWithColons = "00:14:22:01:23:45";
+
+		// Act
+		var result = macAddressWithColons.IsMacAddress();
+
+		// Assert
+		Assert.IsTrue(result, "Expected to return true for a MAC address with colons.");
+	}
+
+	[TestMethod]
+	public void IsMacAddress_WithDashesTest()
+	{
+		// Arrange
+		var macAddressWithDashes = "00-14-22-01-23-45";
+
+		// Act
+		var result = macAddressWithDashes.IsMacAddress();
+
+		// Assert
+		Assert.IsTrue(result, "Expected to return true for a MAC address with dashes.");
 	}
 
 	[TestMethod]
@@ -408,6 +540,65 @@ public class StringExtensionsTests
 		Assert.IsTrue(result.EndsWith("...") is false);
 
 		_ = Assert.ThrowsException<ArgumentNullException>(() => string.IsNullOrEmpty(string.Empty.ReplaceEllipsisWithPeriod()));
+	}
+
+	[TestMethod]
+	public void Split_WithCustomSeparatorTest()
+	{
+		// Arrange
+		var input = "apple|banana|cherry";
+		var expected = new[] { "apple", "banana", "cherry" };
+		var separator = '|';
+
+		// Act
+		var result = input.Split(StringSplitOptions.None, separator);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result.ToArray(), "The split strings should match the expected array with custom separator.");
+	}
+
+	[TestMethod]
+	public void Split_WithDefaultSeparatorTest()
+	{
+		// Arrange
+		var input = "apple,banana,cherry";
+		var expected = new[] { "apple", "banana", "cherry" };
+
+		// Act
+		var result = input.Split(StringSplitOptions.None);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result.ToArray(), "The split strings should match the expected array.");
+	}
+
+	[TestMethod]
+	public void Split_WithOptionsNoneTest()
+	{
+		// Arrange
+		var input = "apple,,banana,,cherry,";
+		var expected = new[] { "apple", string.Empty, "banana", string.Empty, "cherry", string.Empty };
+
+		// Act
+		var result = input.Split(StringSplitOptions.None);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result.ToArray(), "The split strings should match the expected array, including empty entries.");
+	}
+
+
+
+	[TestMethod]
+	public void Split_WithOptionsRemoveEmptyEntriesTest()
+	{
+		// Arrange
+		var input = "apple,,banana,,cherry,";
+		var expected = new[] { "apple", "banana", "cherry" };
+
+		// Act
+		var result = input.Split(StringSplitOptions.RemoveEmptyEntries);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result.ToArray(), "The split strings should match the expected array, removing empty entries.");
 	}
 
 	[TestMethod]
