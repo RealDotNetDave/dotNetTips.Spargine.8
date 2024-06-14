@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2024
+// Last Modified On : 06-14-2024
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -30,10 +30,12 @@ public static class SHA256PasswordHasher
 {
 
 	/// <summary>
-	/// Generates the salt.
+	/// Generates a cryptographic salt of the specified byte length.
 	/// </summary>
-	/// <param name="byteLength">Length of the byte.</param>
-	/// <returns>System.Byte[].</returns>
+	/// <param name="byteLength">The length of the salt in bytes.</param>
+	/// <returns>A byte array containing the generated salt.</returns>
+	/// <remarks>This method uses a secure random number generator to produce a salt.
+	/// The salt can be used as part of a hashing function to increase the security of stored passwords.</remarks>
 	private static byte[] GenerateSalt(int byteLength)
 	{
 		var salt = RandomNumberGenerator.GetBytes(byteLength);
@@ -42,21 +44,25 @@ public static class SHA256PasswordHasher
 	}
 
 	/// <summary>
-	/// Hashes the password with salt.
+	/// Hashes the specified password with the given salt using SHA256.
 	/// </summary>
-	/// <param name="password">The password.</param>
-	/// <param name="salt">The salt.</param>
-	/// <returns>System.Byte[].</returns>
+	/// <param name="password">The password to hash.</param>
+	/// <param name="salt">The salt to use in the hashing process.</param>
+	/// <returns>A byte array containing the hashed password combined with the salt.</returns>
+	/// <remarks>This method combines the password and salt before applying the SHA256 hashing algorithm.
+	/// The resulting hash can be used for securely storing passwords.</remarks>
 	private static byte[] HashPasswordWithSalt(string password, byte[] salt)
 	{
-		using (var hashAlgorithm = SHA256.Create())
-		{
-			var input = Encoding.UTF8.GetBytes(password);
-			_ = hashAlgorithm.TransformBlock(salt, 0, salt.Length, salt, 0);
-			_ = hashAlgorithm.TransformFinalBlock(input, 0, input.Length);
+		using var hashAlgorithm = SHA256.Create();
+		var passwordBytes = Encoding.UTF8.GetBytes(password);
 
-			return hashAlgorithm.Hash;
-		}
+		// Combine salt and password bytes
+		var saltAndPassword = new byte[salt.Length + passwordBytes.Length];
+		Buffer.BlockCopy(salt, 0, saltAndPassword, 0, salt.Length);
+		Buffer.BlockCopy(passwordBytes, 0, saltAndPassword, salt.Length, passwordBytes.Length);
+
+		// Compute and return the hash
+		return SHA256.HashData(saltAndPassword);
 	}
 
 	// In .NET Core 2.1, you can use CryptographicOperations.FixedTimeEquals
@@ -92,11 +98,14 @@ public static class SHA256PasswordHasher
 	}
 
 	/// <summary>
-	/// Hashes a password.
+	/// Hashes the specified password using SHA256 and a unique salt, returning the result as a Base64 string.
 	/// </summary>
-	/// <param name="password">The password.</param>
-	/// <returns>System.String.</returns>
-	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	/// <param name="password">The password to hash.</param>
+	/// <returns>A Base64 encoded string representing the hashed password combined with a salt.</returns>
+	/// <remarks>This method generates a new salt for each password, hashes the password using SHA256 with the salt,
+	/// and returns the combined salt and hash as a Base64 string. This approach enhances security by ensuring
+	/// that each password is stored with a unique salt, making it more resistant to dictionary and rainbow table attacks.</remarks>
+	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string HashPassword([NotNull] string password)
 	{
 		password = password.ArgumentNotNullOrEmpty();
@@ -115,60 +124,66 @@ public static class SHA256PasswordHasher
 	}
 
 	/// <summary>
-	/// Verifies a hashed password.
+	/// Verifies a hashed password against a provided plain text password.
 	/// </summary>
-	/// <param name="hashedPassword">The hashed password.</param>
-	/// <param name="password">The password.</param>
-	/// <returns>PasswordVerificationResult.</returns>
-	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	/// <param name="hashedPassword">The hashed password as a Base64 encoded string.</param>
+	/// <param name="password">The plain text password to verify against the hashed password.</param>
+	/// <returns>A <see cref="PasswordVerificationResult" /> indicating the result of the verification.</returns>
+	/// <example>
+	/// Here is how you can use the <see cref="VerifyHashedPassword" /> method:
+	/// <code>
+	/// var hashedPassword = "your-hashed-password-in-base64";
+	/// var password = "your-plain-text-password";
+	/// var result = SHA256PasswordHasher.VerifyHashedPassword(hashedPassword, password);
+	/// Console.WriteLine(result == PasswordVerificationResult.Success ? "Password verified" : "Password verification failed");
+	/// </code></example>
+	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static PasswordVerificationResult VerifyHashedPassword(string hashedPassword, [NotNull] string password)
 	{
-		hashedPassword = hashedPassword.ArgumentNotNullOrEmpty();
-		password = password.ArgumentNotNullOrEmpty();
-
 		if (string.IsNullOrEmpty(hashedPassword))
 		{
 			return PasswordVerificationResult.Failed;
 		}
 
-		Span<byte> passwordBytes = Convert.FromBase64String(hashedPassword);
-
-		if (passwordBytes.Length < 1)
+		if (Convert.FromBase64String(hashedPassword).Length < 1 + SaltSize)
 		{
 			return PasswordVerificationResult.Failed;
 		}
 
-		var version = passwordBytes[0];
-
-		if (version > Version)
+		if (Convert.FromBase64String(hashedPassword)[0] > Version)
 		{
 			return PasswordVerificationResult.Failed;
 		}
 
-		var salt = passwordBytes.Slice(1, SaltSize).ToArray();
-		var bytes = passwordBytes[(1 + SaltSize)..].ToArray();
+		var salt = new byte[SaltSize];
+		Buffer.BlockCopy(Convert.FromBase64String(hashedPassword), 1, salt, 0, SaltSize);
 
-		var hash = HashPasswordWithSalt(password, salt);
+		var expectedHash = new byte[Convert.FromBase64String(hashedPassword).Length - 1 - SaltSize];
+		Buffer.BlockCopy(Convert.FromBase64String(hashedPassword), 1 + SaltSize, expectedHash, 0, expectedHash.Length);
 
-		return FixedTimeEquals(hash, bytes) ? PasswordVerificationResult.Success : PasswordVerificationResult.Failed;
+		var actualHash = HashPasswordWithSalt(password, salt);
+
+		return FixedTimeEquals(actualHash, expectedHash) ? PasswordVerificationResult.Success : PasswordVerificationResult.Failed;
 	}
 
 	/// <summary>
-	/// Gets the name of the hash algorithm.
+	/// Gets the name of the hash algorithm used by the SHA256PasswordHasher.
 	/// </summary>
-	/// <value>The name of the hash algorithm.</value>
+	/// <value>The name of the hash algorithm, which is SHA256.</value>
 	public static HashAlgorithmName HashAlgorithmName { get; } = HashAlgorithmName.SHA256;
 
 	/// <summary>
-	/// Gets the size of the salt.
+	/// Gets the size of the salt used in the hashing process.
 	/// </summary>
-	/// <value>The size of the salt.</value>
+	/// <value>The size of the salt in bytes.</value>
+	/// <remarks>The salt size is crucial for the security of the hashed passwords. A larger salt size increases the complexity and security of the hash, making it more resistant to brute-force attacks.</remarks>
 	public static int SaltSize { get; } = 128 / 8;
 
 	/// <summary>
-	/// Gets the version.
+	/// Gets the version of the SHA256PasswordHasher.
 	/// </summary>
-	/// <value>The version.</value>
+	/// <value>The current version of the SHA256PasswordHasher.</value>
+	/// <remarks>This version can be used to manage different hashing strategies or updates in the future.</remarks>
 	public static byte Version => 1;
 
 }
