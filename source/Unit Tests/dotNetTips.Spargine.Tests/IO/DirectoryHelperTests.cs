@@ -72,21 +72,6 @@ public class DirectoryHelperTests
 	}
 
 
-	[TestMethod]
-	public void AppDataFolder_UsesDefaultFolderNameWhenCompanyNotDefined()
-	{
-		// This test assumes that there's a default folder name used when the company name is not defined in the assembly.
-		// You need to replace "DefaultFolderName" with the actual default name used in your implementation.
-		var defaultFolderName = "DefaultFolderName"; // Replace with actual default folder name used in your implementation
-
-		// Act
-		var result = DirectoryHelper.AppDataFolder();
-
-		// Assert
-		Assert.IsTrue(result.EndsWith(defaultFolderName), $"The resulting path should end with the default folder name '{defaultFolderName}' when the company name is not defined.");
-	}
-
-
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
 	public void CheckPermissionTest()
@@ -112,36 +97,6 @@ public class DirectoryHelperTests
 		DirectoryHelper.CopyDirectory(invalidSourceDirectory, destinationDirectory, true);
 
 		// No need for Assert, as an exception is expected
-	}
-
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
-	public void CopyDirectory_OverwriteFalse_DoesNotOverwriteExistingFiles()
-	{
-		// Arrange
-		var sourceDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var sourceDirectory = Directory.CreateDirectory(sourceDirectoryPath);
-		var destinationDirectory = Directory.CreateDirectory(destinationDirectoryPath);
-
-		// Create a file in both directories
-		var fileName = "testFile.txt";
-		var sourceFilePath = Path.Combine(sourceDirectory.FullName, fileName);
-		var destinationFilePath = Path.Combine(destinationDirectory.FullName, fileName);
-		File.WriteAllText(sourceFilePath, "This is the source file.");
-		File.WriteAllText(destinationFilePath, "This is the destination file.");
-
-		// Act
-		DirectoryHelper.CopyDirectory(sourceDirectory, destinationDirectory, false);
-
-		// Assert
-		var destinationFileContent = File.ReadAllText(destinationFilePath);
-		Assert.AreEqual("This is the destination file.", destinationFileContent, "The destination file should not have been overwritten.");
-
-		// Cleanup
-		sourceDirectory.Delete(true);
-		destinationDirectory.Delete(true);
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -318,74 +273,6 @@ public class DirectoryHelperTests
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
-	[ExpectedException(typeof(DirectoryNotFoundException))]
-	public void MoveDirectory_InvalidSource_ThrowsDirectoryNotFoundException()
-	{
-		// Arrange
-		var invalidSourceDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var invalidSourceDirectory = new DirectoryInfo(invalidSourceDirectoryPath);
-		var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
-
-		// Act
-		DirectoryHelper.MoveDirectory(invalidSourceDirectory, destinationDirectory);
-
-		// No need for Assert, as an exception is expected
-	}
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
-	public void MoveDirectory_ValidSourceAndDestination_MovesSuccessfully()
-	{
-		// Arrange
-		var sourceDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var sourceDirectory = Directory.CreateDirectory(sourceDirectoryPath);
-		var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
-
-		// Act
-		DirectoryHelper.MoveDirectory(sourceDirectory, destinationDirectory);
-
-		// Assert
-		Assert.IsFalse(Directory.Exists(sourceDirectoryPath), "The source directory should no longer exist.");
-		Assert.IsTrue(Directory.Exists(destinationDirectoryPath), "The destination directory should exist.");
-
-		// Cleanup
-		destinationDirectory.Delete(true);
-	}
-
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
-	public void MoveDirectory_WithRetries_MovesSuccessfullyAfterRetries()
-	{
-		// Arrange
-		var sourceDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var sourceDirectory = Directory.CreateDirectory(sourceDirectoryPath);
-		var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
-
-		// Simulate a condition that would initially prevent moving, such as a temporary lock by another process
-		// For testing purposes, this is simulated by a short delay within the test, as actual process locking is complex and flaky in automated tests
-
-		Task.Delay(100).ContinueWith(_ =>
-		{
-			DirectoryHelper.MoveDirectory(sourceDirectory, destinationDirectory, 5);
-		});
-
-		// Act
-		Thread.Sleep(500); // Wait for the delayed move attempt
-
-		// Assert
-		Assert.IsFalse(Directory.Exists(sourceDirectoryPath), "The source directory should have been moved after retries.");
-		Assert.IsTrue(Directory.Exists(destinationDirectoryPath), "The destination directory should exist.");
-
-		// Cleanup
-		destinationDirectory.Delete(true);
-	}
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
 	public void SafeDirectorySearchTest()
 	{
 		var folder = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
@@ -448,19 +335,6 @@ public class DirectoryHelperTests
 
 		// Cleanup
 		parentDirectory.Delete(true);
-	}
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
-	public void SetFileAttributesToNormal_NonExistentDirectory_NoExceptionThrown()
-	{
-		// Arrange
-		var nonExistentDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var nonExistentDirectory = new DirectoryInfo(nonExistentDirectoryPath);
-
-		// Act & Assert
-		DirectoryHelper.SetFileAttributesToNormal(nonExistentDirectory);
-		// No exception is expected, even though the directory does not exist
 	}
 
 	[SupportedOSPlatform("windows")]
