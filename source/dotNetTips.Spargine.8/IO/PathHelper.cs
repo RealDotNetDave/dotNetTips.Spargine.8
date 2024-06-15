@@ -21,7 +21,7 @@ using DotNetTips.Spargine.Extensions;
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Class PathHelper.
+/// Provides utility methods for path manipulation and validation, including combining paths, ensuring trailing slashes, and checking for invalid characters.
 /// </summary>
 public static class PathHelper
 {
@@ -37,11 +37,18 @@ public static class PathHelper
 	private static readonly char[] InvalidPathChars = Path.GetInvalidPathChars().Where(c => c != Path.DirectorySeparatorChar && c != Path.AltDirectorySeparatorChar).ToArray();
 
 	/// <summary>
-	/// Combines the paths collection.
+	/// Combines the paths into a single path. If <paramref name="createIfNotExists"/> is true, the combined path will be created if it does not exist.
 	/// </summary>
-	/// <param name="createIfNotExists">if set to <c>true</c> [create path if it does not exists].</param>
-	/// <param name="paths">The paths.</param>
-	/// <returns>DirectoryInfo.</returns>
+	/// <param name="createIfNotExists">if set to <c>true</c>, the combined path will be created if it does not exist.</param>
+	/// <param name="paths">The paths to combine.</param>
+	/// <returns>A <see cref="DirectoryInfo"/> object for the combined path.</returns>
+	/// <example>
+	/// Here is how you can use the CombinePaths method:
+	/// <code>
+	/// var combinedPathInfo = PathHelper.CombinePaths(true, "C:\\path1", "path2", "path3");
+	/// Console.WriteLine(combinedPathInfo.FullName);
+	/// </code>
+	/// </example>
 	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] params string[] paths)
 	{
@@ -52,9 +59,9 @@ public static class PathHelper
 			paths[paramCount] = paths[paramCount].ToTrimmed();
 		}
 
-		var pathString = Path.Join(paths);
+		var combinedPath = Path.Combine(paths);
 
-		var di = new DirectoryInfo(pathString);
+		var di = new DirectoryInfo(combinedPath);
 
 		if (createIfNotExists && di.Exists is false)
 		{
@@ -65,12 +72,19 @@ public static class PathHelper
 	}
 
 	/// <summary>
-	/// Combines the specified path strings.
+	/// Combines two specified path strings into a single path. If <paramref name="createIfNotExists"/> is set to <c>true</c>, the combined path will be created if it does not exist.
 	/// </summary>
-	/// <param name="createIfNotExists">if set to <c>true</c> [create path if it does not exists].</param>
-	/// <param name="path1">The path1.</param>
-	/// <param name="path2">The path2.</param>
-	/// <returns>DirectoryInfo.</returns>
+	/// <param name="createIfNotExists">if set to <c>true</c>, the combined path will be created if it does not exist.</param>
+	/// <param name="path1">The first path to combine.</param>
+	/// <param name="path2">The second path to combine.</param>
+	/// <returns>A <see cref="DirectoryInfo"/> object for the combined path.</returns>
+	/// <example>
+	/// Here is how you can use the CombinePaths method:
+	/// <code>
+	/// var combinedPathInfo = PathHelper.CombinePaths(true, "C:\\path1", "path2");
+	/// Console.WriteLine(combinedPathInfo.FullName);
+	/// </code>
+	/// </example>
 	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] string path1, [NotNull] string path2)
 	{
@@ -81,13 +95,20 @@ public static class PathHelper
 	}
 
 	/// <summary>
-	/// Combines the paths.
+	/// Combines three specified path strings into a single path. If <paramref name="createIfNotExists"/> is set to <c>true</c>, the combined path will be created if it does not exist.
 	/// </summary>
-	/// <param name="createIfNotExists">if set to <c>true</c> [create path if it does not exists].</param>
-	/// <param name="path1">The path1.</param>
-	/// <param name="path2">The path2.</param>
-	/// <param name="path3">The path3.</param>
-	/// <returns>DirectoryInfo.</returns>
+	/// <param name="createIfNotExists">if set to <c>true</c>, the combined path will be created if it does not exist.</param>
+	/// <param name="path1">The first path to combine.</param>
+	/// <param name="path2">The second path to combine.</param>
+	/// <param name="path3">The third path to combine.</param>
+	/// <returns>A <see cref="DirectoryInfo"/> object for the combined path.</returns>
+	/// <example>
+	/// Here is how you can use the CombinePaths method:
+	/// <code>
+	/// var combinedPathInfo = PathHelper.CombinePaths(true, "C:\\path1", "path2", "path3");
+	/// Console.WriteLine(combinedPathInfo.FullName);
+	/// </code>
+	/// </example>
 	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] string path1, [NotNull] string path2, [NotNull] string path3)
 	{
@@ -99,14 +120,21 @@ public static class PathHelper
 	}
 
 	/// <summary>
-	/// Combines the paths.
+	/// Combines four specified path strings into a single path. If <paramref name="createIfNotExists"/> is set to <c>true</c>, the combined path will be created if it does not exist.
 	/// </summary>
-	/// <param name="createIfNotExists">if set to <c>true</c> [create path if it does not exists].</param>
-	/// <param name="path1">The path1.</param>
-	/// <param name="path2">The path2.</param>
-	/// <param name="path3">The path3.</param>
-	/// <param name="path4">The path4.</param>
-	/// <returns>DirectoryInfo.</returns>
+	/// <param name="createIfNotExists">if set to <c>true</c>, the combined path will be created if it does not exist.</param>
+	/// <param name="path1">The first path to combine.</param>
+	/// <param name="path2">The second path to combine.</param>
+	/// <param name="path3">The third path to combine.</param>
+	/// <param name="path4">The fourth path to combine.</param>
+	/// <returns>A <see cref="DirectoryInfo"/> object for the combined path.</returns>
+	/// <example>
+	/// Here is how you can use the CombinePaths method:
+	/// <code>
+	/// var combinedPathInfo = PathHelper.CombinePaths(true, "C:\\path1", "path2", "path3", "path4");
+	/// Console.WriteLine(combinedPathInfo.FullName);
+	/// </code>
+	/// </example>
 	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] string path1, [NotNull] string path2, [NotNull] string path3, [NotNull] string path4)
 	{
@@ -121,23 +149,44 @@ public static class PathHelper
 	}
 
 	/// <summary>
-	/// Ensures the trailing slash.
+	/// Ensures that the specified path ends with a directory separator character.
 	/// </summary>
-	/// <param name="path">The path.</param>
-	/// <returns>System.String.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	/// <param name="path">The path to modify.</param>
+	/// <returns>The modified path that ends with a directory separator character.</returns>
+	/// <example>
+	/// Here is how you can use the EnsureTrailingSlash method:
+	/// <code>
+	/// string path = "C:\\MyDirectory";
+	/// string result = PathHelper.EnsureTrailingSlash(path);
+	/// Console.WriteLine(result); // Output: C:\MyDirectory\
+	/// </code>
+	/// </example>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static string EnsureTrailingSlash([NotNull] string path)
 	{
 		path = path.ArgumentNotNullOrEmpty();
 
-		return path[^1] != Path.DirectorySeparatorChar ? $"{path}{Path.DirectorySeparatorChar}" : path;
+		if (!path.EndsWith(Path.DirectorySeparatorChar.ToString(), StringComparison.Ordinal))
+		{
+			path += Path.DirectorySeparatorChar;
+		}
+
+		return path;
 	}
 
 	/// <summary>
-	/// Determines whether [has invalid filter chars] [the specified path].
+	/// Determines whether the specified filter contains any invalid characters.
 	/// </summary>
-	/// <param name="filter">The filter.</param>
-	/// <returns><c>true</c> if [has invalid filter chars] [the specified path]; otherwise, <c>false</c>.</returns>
+	/// <param name="filter">The filter string to check.</param>
+	/// <returns><c>true</c> if the specified filter contains invalid characters; otherwise, <c>false</c>.</returns>
+	/// <example>
+	/// Here is how you can use the HasInvalidFilterChars method:
+	/// <code>
+	/// string filter = "filename?.txt";
+	/// bool result = PathHelper.HasInvalidFilterChars(filter);
+	/// Console.WriteLine(result); // Output: True
+	/// </code>
+	/// </example>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static bool HasInvalidFilterChars([NotNull] string filter)
 	{
@@ -147,29 +196,52 @@ public static class PathHelper
 	}
 
 	/// <summary>
-	/// Gets the invalid filter chars.
+	/// Gets the invalid filter characters, excluding wildcards.
 	/// </summary>
-	/// <returns>ReadOnlyCollection&lt;System.Char&gt;.</returns>
-	/// <value>The invalid filter chars.</value>
+	/// <returns>A read-only collection of characters that are invalid in file names, excluding wildcard characters.</returns>
+	/// <example>
+	/// Here is how you can retrieve the invalid filter characters:
+	/// <code>
+	/// var invalidChars = PathHelper.InvalidFilterChars();
+	/// foreach (var c in invalidChars)
+	/// {
+	///     Console.Write(c + ", ");
+	/// }
+	/// </code>
+	/// </example>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static ReadOnlyCollection<char> InvalidFilterChars() => InvalidFileNameChars.ToReadOnlyCollection();
 
 	/// <summary>
-	/// Gets the invalid path name chars.
+	/// Gets the invalid path name characters, excluding directory separators.
 	/// </summary>
-	/// <returns>IEnumerable&lt;System.Char&gt;.</returns>
+	/// <returns>A read-only collection of characters that are invalid in path names, excluding directory separator characters.</returns>
 	/// <example>
-	/// Output: "|,\0,\u0001,\u0002,\u0003,\u0004,\u0005,\u0006,\a,\b,\t,\n,\v,\f,\r,\u000e,\u000f,\u0010,\u0011,\u0012,\u0013,\u0014,\u0015,\u0016,\u0017,\u0018,\u0019,\u001a,\u001b,\u001c,\u001d,\u001e,\u001f"
+	/// Here is how you can retrieve the invalid path name characters:
+	/// <code>
+	/// var invalidChars = PathHelper.InvalidPathNameChars();
+	/// foreach (var c in invalidChars)
+	/// {
+	///     Console.Write(c + ", ");
+	/// }
+	/// </code>
 	/// </example>
-	/// <value>The invalid path name chars.</value>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<char> InvalidPathNameChars() => InvalidPathChars.ToReadOnlyCollection();
 
 	/// <summary>
-	/// Checks to see if path contains any wild cards.
+	/// Checks to see if the path contains any wildcards ('*' or '?').
 	/// </summary>
-	/// <param name="path">The path.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="path">The path to check.</param>
+	/// <returns><c>true</c> if the path contains wildcards; otherwise, <c>false</c>.</returns>
+	/// <example>
+	/// Here is how you can use the PathContainsWildcard method:
+	/// <code>
+	/// string path = "C:\\MyDirectory\\*.txt";
+	/// bool containsWildcard = PathHelper.PathContainsWildcard(path);
+	/// Console.WriteLine(containsWildcard); // Output: True
+	/// </code>
+	/// </example>
 	[Information(nameof(PathContainsWildcard), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static bool PathContainsWildcard([NotNull] string path)
 	{
@@ -192,9 +264,9 @@ public static class PathHelper
 	}
 
 	/// <summary>
-	/// Gets the path separators.
+	/// Gets the path separators used in file paths.
 	/// </summary>
-	/// <value>The path separators.</value>
+	/// <value>A read-only collection of characters used as path separators.</value>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<char> PathSeparators => new[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar }.ToReadOnlyCollection();
 

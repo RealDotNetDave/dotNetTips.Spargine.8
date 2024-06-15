@@ -4,7 +4,7 @@
 // Created          : 01-11-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-15-2024
 // ***********************************************************************
 // <copyright file="HttpClientHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -23,14 +23,13 @@ using DotNetTips.Spargine.Properties;
 namespace DotNetTips.Spargine.Net.Http;
 
 /// <summary>
-/// HttpClient Helper Methods.
-/// Uses 20 second timeout.
+/// Provides utility methods for working with HttpClient, including getting HTTP responses and streams with a default timeout.
 /// </summary>
 public static class HttpClientHelper
 {
 
 	/// <summary>
-	/// The http client
+	/// The HttpClient instance used for making HTTP requests. Configured with a 20-second timeout.
 	/// </summary>
 	private static readonly HttpClient Client = new()
 	{
@@ -42,6 +41,13 @@ public static class HttpClientHelper
 	/// </summary>
 	/// <param name="url">The URL.</param>
 	/// <returns>A Task&lt;HttpResponseMessage&gt; representing the asynchronous operation.</returns>
+	/// <example>
+	/// Here is how you can use the GetHttpResponseAsync method:
+	/// <code>
+	/// Uri url = new Uri("https://example.com");
+	/// HttpResponseMessage response = await HttpClientHelper.GetHttpResponseAsync(url);
+	/// Console.WriteLine(response.StatusCode);
+	/// </code></example>
 	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static async Task<HttpResponseMessage> GetHttpResponseAsync(Uri url)
 	{
@@ -54,12 +60,20 @@ public static class HttpClientHelper
 	}
 
 	/// <summary>
-	/// Calls GetAsync for HttpClient
+	/// Asynchronously gets an HTTP response for the specified URL using a cancellation token.
 	/// </summary>
-	/// <param name="url">The URL.</param>
-	/// <param name="cancellationToken">The cancellation token.</param>
-	/// <returns>HttpResponseMessage.</returns>
-	/// <exception cref="ArgumentInvalidException">Url cannot be null or empty.</exception>
+	/// <param name="url">The URL to get the response from.</param>
+	/// <param name="cancellationToken">The cancellation token to cancel the request.</param>
+	/// <returns>A task that represents the asynchronous operation and contains the HTTP response.</returns>
+	/// <exception cref="ArgumentInvalidException">Thrown when the URL is null or empty.</exception>
+	/// <example>
+	/// Here is how you can use the GetHttpResponseAsync method with a cancellation token:
+	/// <code>
+	/// Uri url = new Uri("https://example.com");
+	/// using var cancellationTokenSource = new CancellationTokenSource();
+	/// HttpResponseMessage response = await HttpClientHelper.GetHttpResponseAsync(url, cancellationTokenSource);
+	/// Console.WriteLine(response.StatusCode);
+	/// </code></example>
 	/// <remarks>Original code by: Máňa Píchová.</remarks>
 	[DefaultValue(null)]
 	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
@@ -97,11 +111,17 @@ public static class HttpClientHelper
 	}
 
 	/// <summary>
-	/// Calls GetStreamAsync for HttpClient
+	/// Asynchronously retrieves a stream from the specified URL.
 	/// </summary>
-	/// <param name="url">The URL.</param>
-	/// <returns>Stream.</returns>
-	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	/// <param name="url">The URL to retrieve the stream from.</param>
+	/// <returns>A task that represents the asynchronous operation and contains the stream from the specified URL.</returns>
+	/// <example>
+	/// Here is how you can use the GetStreamAsync method:
+	/// <code>
+	/// Uri url = new Uri("https://example.com");
+	/// Stream stream = await HttpClientHelper.GetStreamAsync(url);
+	/// // Use the stream
+	/// </code></example>
 	[DefaultValue(null)]
 	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static async Task<Stream> GetStreamAsync(Uri url)

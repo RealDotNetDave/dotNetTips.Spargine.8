@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-15-2024
 // ***********************************************************************
 // <copyright file="RegistryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -22,7 +22,7 @@ using Microsoft.Win32;
 namespace DotNetTips.Spargine.Win32;
 
 /// <summary>
-/// Class RegistryHelper.
+/// Provides utility methods for interacting with the Windows Registry, simplifying access and manipulation of registry keys.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public static class RegistryHelper
@@ -50,7 +50,17 @@ public static class RegistryHelper
 	/// <param name="registryKeyType">Type of the registry key.</param>
 	/// <returns>RegistryKey.</returns>
 	/// <exception cref="PlatformNotSupportedException"></exception>
-	[Information(nameof(GetRegistryKey), "David McCarter", "9/10/2020", "9/10/2020", Status = Status.Available, UnitTestCoverage = 90, BenchMarkStatus = BenchMarkStatus.None)]
+	/// <example>
+	/// Here is how you can use the GetRegistryKey method:
+	/// <code>
+	/// var key = RegistryHelper.GetRegistryKey(RegistryHelper.KeyCurrentUserMicrosoft, RegistryHive.CurrentUser);
+	/// if (key != null)
+	/// {
+	///     // Use the key
+	/// }
+	/// </code>
+	/// </example>
+	[Information(nameof(GetRegistryKey), "David McCarter", "9/10/2020", "9/10/2020", Status = Status.Available, UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.None)]
 	public static RegistryKey GetRegistryKey([NotNull] string keyName, [NotNull] RegistryHive registryKeyType)
 	{
 		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) is false)
@@ -69,7 +79,7 @@ public static class RegistryHelper
 			RegistryHive.LocalMachine => Registry.LocalMachine.OpenSubKey(keyName),
 			RegistryHive.PerformanceData => Registry.PerformanceData.OpenSubKey(keyName),
 			RegistryHive.Users => Registry.CurrentUser.OpenSubKey(keyName),
-			_ => null,
+			_ => throw new ArgumentOutOfRangeException(nameof(registryKeyType), $"Unsupported registry hive: {registryKeyType}"),
 		};
 	}
 

@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-15-2024
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -27,29 +27,70 @@ using DotNetTips.Spargine.Properties;
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Process files with events.
+/// Facilitates file copying, deletion, and folder deletion operations. It incorporates event handling to notify about the progress and status of file operations.
 /// </summary>
+/// <remarks>
+/// <para>This class provides methods to copy and delete files and folders with the added capability of event-based notifications for each operation. This allows for real-time monitoring of the process, including success, failure, and progress updates.</para>
+/// <para>Events:</para>
+/// <list type="bullet">
+/// <item>
+/// <description><see cref="Processed"/>: Occurs when a file or folder has been processed, providing details such as the operation performed, the name of the file or folder, and the outcome.</description>
+/// </item>
+/// </list>
+/// <para>Usage:</para>
+/// <code>
+/// var fileProcessor = new FileProcessor();
+/// fileProcessor.Processed += (sender, e) => 
+/// {
+///     Console.WriteLine($"{e.ProgressState}: {e.Name}");
+/// };
+/// 
+/// var filesToCopy = new List&lt;FileInfo&gt; { new FileInfo("path/to/source/file.txt") };
+/// var destinationDir = new DirectoryInfo("path/to/destination");
+/// fileProcessor.CopyFiles(filesToCopy, destinationDir);
+/// </code>
+/// </remarks>
 public class FileProcessor
 {
 
 	/// <summary>
-	/// Occurs when processor processes a file or folder.
+	/// Occurs when a file or folder has been processed.
 	/// </summary>
+	/// <remarks>
+	/// This event can be used to receive notifications about the progress and status of file and folder operations such as copying, deletion, etc.
+	/// Each event provides data through <see cref="FileProgressEventArgs"/> which includes details like the operation performed, the name of the file or folder, and the outcome.
+	/// </remarks>
 	public event EventHandler<FileProgressEventArgs> Processed;
 
 	/// <summary>
-	/// Handles the <see cref="Processed" /> event that is thrown after each file is processed.
+	/// Raises the <see cref="Processed"/> event.
 	/// </summary>
-	/// <param name="e">The <see cref="FileProgressEventArgs" /> instance containing the event data.</param>
+	/// <param name="e">The <see cref="FileProgressEventArgs"/> instance containing the event data.</param>
 	protected virtual void OnProcessed(FileProgressEventArgs e) => this.Processed?.Invoke(this, e);
 
 	/// <summary>
-	/// Copies files to new location. Will not throw exceptions.
+	/// Copies files to a new location. This method will not throw exceptions.
 	/// </summary>
-	/// <param name="files">The files.</param>
-	/// <param name="destination">The destination folder.</param>
-	/// <returns>System.Object.</returns>
-	/// <remarks>Use the Processed event to find out if file copied succeeded or failed.</remarks>
+	/// <param name="files">The files to copy.</param>
+	/// <param name="destination">The destination folder where files will be copied.</param>
+	/// <returns>The number of files successfully copied.</returns>
+	/// <remarks>
+	/// Use the <see cref="Processed"/> event to find out if file copy succeeded or failed.
+	/// </remarks>
+	/// <example>
+	/// Here is an example of using the <see cref="CopyFiles"/> method:
+	/// <code>
+	/// var fileProcessor = new FileProcessor();
+	/// fileProcessor.Processed += (sender, e) => 
+	/// {
+	///     Console.WriteLine($"{e.ProgressState}: {e.Name}");
+	/// };
+	/// 
+	/// var filesToCopy = new List&lt;FileInfo&gt; { new FileInfo("path/to/source/file.txt") };
+	/// var destinationDir = new DirectoryInfo("path/to/destination");
+	/// fileProcessor.CopyFiles(filesToCopy, destinationDir);
+	/// </code>
+	/// </example>
 	[Information(nameof(CopyFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public int CopyFiles([NotNull] IEnumerable<FileInfo> files, [NotNull] DirectoryInfo destination)
 	{
@@ -121,11 +162,26 @@ public class FileProcessor
 	}
 
 	/// <summary>
-	/// Deletes file list.
+	/// Deletes the specified files.
 	/// </summary>
-	/// <param name="files">The file list to delete.</param>
-	/// <returns>System.Int32 with the number of files that were successfully deleted.</returns>
-	/// <remarks>Use the <seealso cref="Processed">Processed</seealso> event to find out if file deletion succeeded or failed.</remarks>
+	/// <param name="files">The files to delete.</param>
+	/// <returns>The number of files successfully deleted.</returns>
+	/// <remarks>
+	/// Use the <see cref="Processed"/> event to find out if file deletion succeeded or failed.
+	/// </remarks>
+	/// <example>
+	/// Here is an example of using the <see cref="DeleteFiles"/> method:
+	/// <code>
+	/// var fileProcessor = new FileProcessor();
+	/// fileProcessor.Processed += (sender, e) => 
+	/// {
+	///     Console.WriteLine($"{e.ProgressState}: {e.Name}");
+	/// };
+	/// 
+	/// var filesToDelete = new List&lt;FileInfo&gt; { new FileInfo("path/to/file/to/delete.txt") };
+	/// fileProcessor.DeleteFiles(filesToDelete);
+	/// </code>
+	/// </example>
 	[Information(nameof(DeleteFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public int DeleteFiles([NotNull] IEnumerable<FileInfo> files)
 	{
@@ -188,10 +244,26 @@ public class FileProcessor
 	}
 
 	/// <summary>
-	/// Deletes the folders.
+	/// Deletes the specified folders and all their contents.
 	/// </summary>
-	/// <param name="folders">The folders.</param>
-	/// <returns>System.Int32.</returns>
+	/// <param name="folders">The folders to delete.</param>
+	/// <returns>The number of folders successfully deleted.</returns>
+	/// <remarks>
+	/// Use the <see cref="Processed"/> event to find out if folder deletion succeeded or failed.
+	/// </remarks>
+	/// <example>
+	/// Here is an example of using the <see cref="DeleteFolders"/> method:
+	/// <code>
+	/// var fileProcessor = new FileProcessor();
+	/// fileProcessor.Processed += (sender, e) => 
+	/// {
+	///     Console.WriteLine($"{e.ProgressState}: {e.Name}");
+	/// };
+	/// 
+	/// var foldersToDelete = new List&lt;DirectoryInfo&gt; { new DirectoryInfo("path/to/folder/to/delete") };
+	/// fileProcessor.DeleteFolders(foldersToDelete);
+	/// </code>
+	/// </example>
 	[Information(nameof(DeleteFolders), author: "David McCarter", createdOn: "8/6/2017", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public int DeleteFolders([NotNull] IEnumerable<DirectoryInfo> folders)
 	{

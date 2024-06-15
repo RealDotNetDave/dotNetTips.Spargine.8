@@ -28,7 +28,7 @@ using DotNetTips.Spargine.Properties;
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Helper methods for files.
+/// Provides utility methods for file operations such as copying, moving, deleting, and permissions checking.
 /// </summary>
 [Information(nameof(FileHelper), "David McCarter", "2/11/2017", Status = Status.Available)]
 public static class FileHelper
@@ -114,10 +114,17 @@ public static class FileHelper
 	/// <summary>
 	/// Checks the permission of a file.
 	/// </summary>
-	/// <param name="file">The file.</param>
-	/// <param name="permission">The requested permission.</param>
-	/// <returns>
-	///   <c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="file">The file to check permissions on.</param>
+	/// <param name="permission">The permission to check for. Defaults to FileSystemRights.Read.</param>
+	/// <returns><c>true</c> if the file has the specified permission; otherwise, <c>false</c>.</returns>
+	/// <example>
+	/// Here is how you can use the <see cref="CheckPermission"/> method:
+	/// <code>
+	/// var fileInfo = new FileInfo("path/to/your/file.txt");
+	/// var hasReadPermission = FileHelper.CheckPermission(fileInfo, FileSystemRights.Read);
+	/// Console.WriteLine($"Has read permission: {hasReadPermission}");
+	/// </code>
+	/// </example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool CheckPermission([NotNull] FileInfo file, FileSystemRights permission = FileSystemRights.Read)
@@ -141,22 +148,23 @@ public static class FileHelper
 		var allow = false;
 		var deny = false;
 
-		for (var index = 0; index < rules.Count; index++)
+		foreach (FileSystemAccessRule rule in rules)
 		{
-			var rule = rules[index] as FileSystemAccessRule;
-
-			if ((permission & rule.FileSystemRights) != permission)
+			if ((rule.FileSystemRights & permission) != permission)
 			{
 				continue;
 			}
 
-			if (rule.AccessControlType == AccessControlType.Allow)
+			switch (rule.AccessControlType)
 			{
-				allow = true;
-			}
-			else if (rule.AccessControlType == AccessControlType.Deny)
-			{
-				deny = true;
+				case AccessControlType.Allow:
+					allow = true;
+					break;
+				case AccessControlType.Deny:
+					deny = true;
+					break;
+				default:
+					break;
 			}
 		}
 
@@ -167,12 +175,22 @@ public static class FileHelper
 	/// Copies the file to a new directory. If the file already exists, it
 	/// will be overwritten.
 	/// </summary>
-	/// <param name="file">The file.</param>
-	/// <param name="destination">The destination folder.</param>
-	/// <returns>File length as System.Int64. If value is -1, then there is an issue creating the file.</returns>
-	[Information(nameof(CopyFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	/// <param name="file">The file to copy.</param>
+	/// <param name="destination">The destination directory.</param>
+	/// <returns>The length of the copied file in bytes.</returns>
+	/// <example>
+	/// Here is how you can use the CopyFile method:
+	/// <code>
+	/// var sourceFile = new FileInfo("path/to/source/file.txt");
+	/// var destinationDir = new DirectoryInfo("path/to/destination");
+	/// var fileLength = FileHelper.CopyFile(sourceFile, destinationDir);
+	/// Console.WriteLine($"Copied file length: {fileLength}");
+	/// </code>
+	/// </example>
+	[Information(nameof(CopyFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static long CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
+		//TODO: ADD TO BENCHMARKING TESTS. THEN TRY OPTIMIZE.
 		var fileName = file.ArgumentExists().FullName;
 
 		if (destination.ArgumentNotNull().CheckExists(throwException: true))
@@ -204,16 +222,30 @@ public static class FileHelper
 	}
 
 	/// <summary>
-	/// Copies the file using a callback.
+	/// Copies the file to a new directory with progress callback. If the file already exists, it
+	/// will be overwritten.
 	/// </summary>
-	/// <param name="file">The file.</param>
-	/// <param name="destination">The destination.</param>
+	/// <param name="file">The file to copy.</param>
+	/// <param name="destination">The destination directory.</param>
 	/// <param name="progressCallback">The progress callback.</param>
-	/// <returns>
-	///   <c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <returns><c>true</c> if the file was copied successfully; otherwise, <c>false</c>.</returns>
+	/// <example>
+	/// Here is how you can use the CopyFile method with a progress callback:
+	/// <code>
+	/// var sourceFile = new FileInfo("path/to/source/file.txt");
+	/// var destinationDir = new DirectoryInfo("path/to/destination");
+	/// bool result = FileHelper.CopyFile(sourceFile, destinationDir, (totalFileSize, totalBytesTransferred, streamSize, streamBytesTransferred, dwStreamNumber, dwCallbackReason, hSourceFile, hDestinationFile, lpData) =>
+	/// {
+	///     Console.WriteLine($"{totalBytesTransferred} of {totalFileSize} bytes transferred.");
+	///     return CopyProgressResult.PROGRESS_CONTINUE;
+	/// });
+	/// Console.WriteLine($"Copy result: {result}");
+	/// </code>
+	/// </example>
 	[Information(nameof(CopyFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static bool CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, [NotNull] CopyProgressRoutine progressCallback)
 	{
+		//TODO: ADD TO BENCHMARKING TESTS. THEN TRY OPTIMIZE.
 		file = file.ArgumentNotNull();
 		destination = destination.ArgumentNotNull();
 		progressCallback = progressCallback.ArgumentNotNull();
@@ -236,11 +268,21 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="file">The file.</param>
 	/// <param name="destination">The destination folder.</param>
-	/// <returns>Task&lt;System.Int32&gt;.</returns>
-	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	/// <returns>Task&lt;System.Int64&gt; representing the length of the copied file in bytes.</returns>
+	/// <example>
+	/// Here is how you can use the <see cref="CopyFileAsync"/> method:
+	/// <code>
+	/// var sourceFile = new FileInfo("path/to/source/file.txt");
+	/// var destinationDir = new DirectoryInfo("path/to/destination");
+	/// var fileLength = await FileHelper.CopyFileAsync(sourceFile, destinationDir);
+	/// Console.WriteLine($"Copied file length: {fileLength}");
+	/// </code>
+	/// </example>
 	[Information(nameof(CopyFileAsync), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://dotnettips.wordpress.com/2020/11/17/coding-faster-with-the-dotnettips-utility-november-2020-update")]
 	public static async Task<long> CopyFileAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
+		//TODO: ADD TO BENCHMARKING TESTS. THEN TRY OPTIMIZE.
+
 		var fileName = file.ArgumentExists().FullName;
 		_ = destination.ArgumentNotNull().CheckExists(createDirectory: true, throwException: true, errorMessage: string.Format(CultureInfo.InvariantCulture, Resources.DirectoryDoesNotExistOrCannotBeCreated, destination.FullName));
 
@@ -275,6 +317,8 @@ public static class FileHelper
 	[Information(nameof(DeleteFiles), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static SimpleResult<ReadOnlyCollection<string>> DeleteFiles([NotNull] this ReadOnlyCollection<string> files, bool stopOnFirstError = false)
 	{
+		//TODO: ADD TO BENCHMARKING TESTS. THEN TRY OPTIMIZE.
+
 		files = files.ArgumentNotNull();
 
 		var result = new SimpleResult<ReadOnlyCollection<string>>();
@@ -314,12 +358,19 @@ public static class FileHelper
 	}
 
 	/// <summary>
-	/// Download file from web and unzips it as an asynchronous operation.
+	/// Downloads a file from a web URL and unzips it into the specified destination directory as an asynchronous operation.
 	/// </summary>
 	/// <param name="remoteUri">The remote file URL.</param>
-	/// <param name="destination">The local expanded dir file.</param>
-	/// <returns>Task.</returns>
-	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	/// <param name="destination">The local directory where the file will be unzipped.</param>
+	/// <returns>A task that represents the asynchronous download and unzip operation.</returns>
+	/// <example>
+	/// Here is how you can use the <see cref="DownloadFileFromWebAndUnzipAsync"/> method:
+	/// <code>
+	/// var remoteFileUrl = new Uri("http://example.com/file.zip");
+	/// var destinationDir = new DirectoryInfo("path/to/destination");
+	/// await FileHelper.DownloadFileFromWebAndUnzipAsync(remoteFileUrl, destinationDir);
+	/// </code>
+	/// </example>
 	[Information(nameof(DownloadFileFromWebAndUnzipAsync), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static async Task DownloadFileFromWebAndUnzipAsync([NotNull] Uri remoteUri, [NotNull] DirectoryInfo destination)
 	{
@@ -340,6 +391,14 @@ public static class FileHelper
 	/// <param name="destination">The local file file.</param>
 	/// <returns>Task.</returns>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	/// <example>
+	/// Here is how you can use the <see cref="DownloadFileFromWebAsync"/> method:
+	/// <code>
+	/// var remoteFileUrl = new Uri("http://example.com/file.zip");
+	/// var destinationDir = new DirectoryInfo("path/to/destination");
+	/// await FileHelper.DownloadFileFromWebAsync(remoteFileUrl, destinationDir);
+	/// </code>
+	/// </example>
 	[Information(nameof(DownloadFileFromWebAsync), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static async Task DownloadFileFromWebAsync([NotNull] Uri remoteUri, [NotNull] DirectoryInfo destination)
 	{
@@ -367,12 +426,10 @@ public static class FileHelper
 	}
 
 	/// <summary>
-	/// Determines whether [has invalid file chars] [the specified file name].
-	/// Validates <paramref name="file" /> to ensure it's not null.
+	/// Checks if the file name contains any invalid characters.
 	/// </summary>
-	/// <param name="file">The file.</param>
-	/// <returns>
-	///   <c>true</c> if [has invalid file chars] [the specified file name]; otherwise, <c>false</c>.</returns>
+	/// <param name="file">The file to check.</param>
+	/// <returns><c>true</c> if the file name contains invalid characters; otherwise, <c>false</c>.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool FileHasInvalidChars([NotNull] FileInfo file) => file.CheckExists() && file.ArgumentNotNull().FullName.IndexOfAny([.. InvalidFileNameChars]) != -1;
 
@@ -383,7 +440,16 @@ public static class FileHelper
 	/// <param name="destinationFile">Name of the destination file.</param>
 	/// <param name="fileMoveOptions">The file move options.</param>
 	/// <param name="retryCount">The retry count.</param>
-	/// <returns>bool.</returns>
+	/// <returns><c>true</c> if the file was moved successfully; otherwise, <c>false</c>.</returns>
+	/// <example>
+	/// Here is how you can use the <see cref="MoveFile"/> method:
+	/// <code>
+	/// var sourceFile = new FileInfo("path/to/source/file.txt");
+	/// var destinationFile = new FileInfo("path/to/destination/file.txt");
+	/// bool result = FileHelper.MoveFile(sourceFile, destinationFile, FileMoveOptions.ReplaceExisting, 3);
+	/// Console.WriteLine($"Move result: {result}");
+	/// </code>
+	/// </example>
 	[Information(nameof(MoveFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static bool MoveFile([NotNull] FileInfo file, [NotNull] FileInfo destinationFile, FileMoveOptions fileMoveOptions = FileMoveOptions.ReplaceExisting, int retryCount = 1)
 	{
@@ -414,11 +480,19 @@ public static class FileHelper
 	}
 
 	/// <summary>
-	/// Un-GZip's a file as an asynchronous operation.
+	/// Decompresses a GZip (.gz) file into the specified destination directory as an asynchronous operation.
 	/// </summary>
-	/// <param name="source">The source.</param>
-	/// <param name="destination">The destination.</param>
-	/// <returns>Task.</returns>
+	/// <param name="source">The source GZip file.</param>
+	/// <param name="destination">The destination directory where the decompressed files will be placed.</param>
+	/// <returns>A task that represents the asynchronous decompression operation.</returns>
+	/// <example>
+	/// Here is how you can use the UnGZipAsync method:
+	/// <code>
+	/// var sourceFile = new FileInfo("path/to/your/file.gz");
+	/// var destinationDir = new DirectoryInfo("path/to/destination");
+	/// await FileHelper.UnGZipAsync(sourceFile, destinationDir);
+	/// </code>
+	/// </example>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(UnGZipAsync), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 0, Status = Status.Available)]
 	public static async Task UnGZipAsync([NotNull] FileInfo source, [NotNull] DirectoryInfo destination)
@@ -445,12 +519,20 @@ public static class FileHelper
 	}
 
 	/// <summary>
-	/// un-GZip as an asynchronous operation.
+	/// Decompresses a GZip (.gz) file into the specified destination directory and optionally deletes the GZip file afterwards as an asynchronous operation.
 	/// </summary>
-	/// <param name="file">The gzip file.</param>
-	/// <param name="destination">The expanded file file.</param>
-	/// <param name="deleteGZipFile">if set to <c>true</c> [delete g zip file].</param>
-	/// <returns>Task.</returns>
+	/// <param name="file">The GZip file to decompress.</param>
+	/// <param name="destination">The destination directory where the decompressed files will be placed.</param>
+	/// <param name="deleteGZipFile">if set to <c>true</c>, the GZip file will be deleted after decompression.</param>
+	/// <returns>A task that represents the asynchronous decompression operation.</returns>
+	/// <example>
+	/// Here is how you can use the UnGZipAsync method:
+	/// <code>
+	/// var gzipFile = new FileInfo("path/to/your/file.gz");
+	/// var destinationDir = new DirectoryInfo("path/to/destination");
+	/// await FileHelper.UnGZipAsync(gzipFile, destinationDir, true);
+	/// </code>
+	/// </example>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(UnGZipAsync), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 0, Status = Status.Available)]
 	public static async Task UnGZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, bool deleteGZipFile)
@@ -468,11 +550,19 @@ public static class FileHelper
 	}
 
 	/// <summary>
-	/// Unzips a file as an asynchronous operation.
+	/// Unzips the specified ZIP file into the given destination directory as an asynchronous operation.
 	/// </summary>
-	/// <param name="file">The file to the zip file.</param>
-	/// <param name="destination">The directory file where files will be unzipped.</param>
-	/// <returns>Task.</returns>
+	/// <param name="file">The ZIP file to unzip.</param>
+	/// <param name="destination">The destination directory where the unzipped files will be placed.</param>
+	/// <returns>A task that represents the asynchronous unzip operation.</returns>
+	/// <example>
+	/// Here is how you can use the UnZipAsync method:
+	/// <code>
+	/// var zipFile = new FileInfo("path/to/your/file.zip");
+	/// var destinationDir = new DirectoryInfo("path/to/destination");
+	/// await FileHelper.UnZipAsync(zipFile, destinationDir);
+	/// </code>
+	/// </example>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(UnZipAsync), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 0, Status = Status.Available)]
 	public static async Task UnZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
@@ -485,13 +575,20 @@ public static class FileHelper
 	}
 
 	/// <summary>
-	/// Unzips a file as an asynchronous operation.
+	/// Unzips the specified ZIP file into the given destination directory and optionally deletes the ZIP file afterwards as an asynchronous operation.
 	/// </summary>
-	/// <param name="file">The file to the zip file.</param>
-	/// <param name="destination">The directory file where files will be unzipped.</param>
-	/// <param name="deleteZipFile">if set to <c>true</c> [deletes zip file].</param>
-	/// <returns>Task.</returns>
-	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	/// <param name="file">The ZIP file to unzip.</param>
+	/// <param name="destination">The destination directory where the unzipped files will be placed.</param>
+	/// <param name="deleteZipFile">if set to <c>true</c>, the ZIP file will be deleted after unzipping.</param>
+	/// <returns>A task that represents the asynchronous unzip operation.</returns>
+	/// <example>
+	/// Here is how you can use the UnZipAsync method:
+	/// <code>
+	/// var zipFile = new FileInfo("path/to/your/file.zip");
+	/// var destinationDir = new DirectoryInfo("path/to/destination");
+	/// await UnZipAsync(zipFile, destinationDir, true);
+	/// </code>
+	/// </example>
 	[Information(nameof(UnZipAsync), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 0, Status = Status.Available)]
 	public static async Task UnZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, bool deleteZipFile)
 	{
@@ -507,9 +604,9 @@ public static class FileHelper
 	}
 
 	/// <summary>
-	/// Gets the invalid file name chars.
+	/// Gets a read-only collection of characters that are not allowed in file names, excluding
+	/// the directory separator and alternate directory separator characters.
 	/// </summary>
-	/// <value>The invalid file name chars.</value>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<char> InvalidFileNameChars { get; } = Path.GetInvalidFileNameChars().Where(c => c != Path.DirectorySeparatorChar && c != Path.AltDirectorySeparatorChar).ToReadOnlyCollection();
 

@@ -4,7 +4,7 @@
 // Created          : 03-15-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-15-2024
 // ***********************************************************************
 // <copyright file="Services.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -25,34 +25,57 @@ using DotNetTips.Spargine.Properties;
 namespace DotNetTips.Spargine;
 
 /// <summary>
-/// Helper class for Services.
+/// Provides a collection of methods for managing and interacting with Windows services and processes.
+/// This includes functionality to load, start, stop services, check service existence, and process status.
 /// </summary>
 public static class Services
 {
 
 	/// <summary>
-	/// Loads the service.
+	/// Loads the service specified by the service name.
 	/// </summary>
-	/// <param name="serviceName">Name of the service.</param>
-	/// <returns>ServiceController.</returns>
+	/// <param name="serviceName">The name of the service to load.</param>
+	/// <returns>A ServiceController object for the specified service.</returns>
+	/// <example>
+	/// Here is how you can use the LoadService method:
+	/// <code>
+	/// var serviceName = "YourServiceName";
+	/// var serviceController = Services.LoadService(serviceName);
+	/// if(serviceController != null)
+	/// {
+	///     Console.WriteLine($"Service {serviceName} is loaded.");
+	/// }
+	/// else
+	/// {
+	///     Console.WriteLine($"Service {serviceName} could not be found.");
+	/// }
+	/// </code>
+	/// </example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(LoadService), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	private static ServiceController LoadService(string serviceName) => Array.Find(ServiceController.GetServices(), p => string.Equals(p.ServiceName, serviceName, StringComparison.Ordinal));
 
 	/// <summary>
-	/// Returns the name of all of the services that are running.
+	/// Retrieves the names of all services installed on the system.
 	/// </summary>
-	/// <returns>ReadOnlyCollection&lt;System.String&gt;.</returns>
+	/// <returns>A read-only collection of strings containing the names of all services.</returns>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(AllServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<string> AllServices() => ServiceController.GetServices().Select(p => p.ServiceName).ToReadOnlyCollection();
 
 	/// <summary>
-	/// Determines whether [is application already running] [the specified process name].
+	/// Determines whether the specified process is already running.
 	/// </summary>
 	/// <param name="processName">Name of the process.</param>
-	/// <returns><c>true</c> if [is application already running] [the specified process name]; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">processName - Process name is required.</exception>
+	/// <returns><c>true</c> if the specified process is running; otherwise, <c>false</c>.</returns>
+	/// <example>
+	/// Here is how you can use the IsProcessRunning method:
+	/// <code>
+	/// var processName = "notepad";
+	/// var isRunning = Services.IsProcessRunning(processName);
+	/// Console.WriteLine($"{processName} is running: {isRunning}");
+	/// </code>
+	/// </example>
 	[SupportedOSPlatform("windows")]
 	[Information(Status = Status.Available)]
 	public static bool IsProcessRunning([NotNull] string processName)
@@ -63,10 +86,18 @@ public static class Services
 	}
 
 	/// <summary>
-	/// Kills the process.
+	/// Kills the specified process.
 	/// </summary>
-	/// <param name="processName">Name of the process.</param>
-	/// <exception cref="ArgumentNullException">Process name is nothing or empty.</exception>
+	/// <param name="processName">Name of the process to kill.</param>
+	/// <exception cref="ArgumentNullException">Thrown when the process name is null or empty.</exception>
+	/// <example>
+	/// Here is how you can use the KillProcess method:
+	/// <code>
+	/// var processName = "notepad";
+	/// Services.KillProcess(processName);
+	/// Console.WriteLine($"{processName} has been killed.");
+	/// </code>
+	/// </example>
 	[SupportedOSPlatform("windows")]
 	[Information(UnitTestCoverage = 0, Status = Status.Available)]
 	public static void KillProcess([NotNull] string processName)
@@ -81,10 +112,18 @@ public static class Services
 	}
 
 	/// <summary>
-	/// Services the exists.
+	/// Checks if the specified service exists on the system.
 	/// </summary>
-	/// <param name="serviceName">Name of the service.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="serviceName">The name of the service to check.</param>
+	/// <returns><c>true</c> if the service exists; otherwise, <c>false</c>.</returns>
+	/// <example>
+	/// Here is how you can use the ServiceExists method:
+	/// <code>
+	/// var serviceName = "MSSQLSERVER";
+	/// var exists = Services.ServiceExists(serviceName);
+	/// Console.WriteLine($"Service exists: {exists}");
+	/// </code>
+	/// </example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(ServiceExists), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static bool ServiceExists([NotNull] string serviceName)
@@ -95,11 +134,19 @@ public static class Services
 	}
 
 	/// <summary>
-	/// Services the status.
+	/// Gets the current status of the specified service.
 	/// </summary>
-	/// <param name="serviceName">Name of the service.</param>
-	/// <returns>ServiceControllerStatus.</returns>
-	/// <exception cref="InvalidOperationException"></exception>
+	/// <param name="serviceName">The name of the service.</param>
+	/// <returns>The current status of the service.</returns>
+	/// <exception cref="InvalidOperationException">Thrown when the service is not found.</exception>
+	/// <example>
+	/// Here is how you can use the ServiceStatus method:
+	/// <code>
+	/// var serviceName = "MSSQLSERVER";
+	/// var status = Services.ServiceStatus(serviceName);
+	/// Console.WriteLine($"Service status: {status}");
+	/// </code>
+	/// </example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(ServiceStatus), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ServiceControllerStatus ServiceStatus(string serviceName)
@@ -109,10 +156,18 @@ public static class Services
 	}
 
 	/// <summary>
-	/// Starts the service.
+	/// Starts the specified service.
 	/// </summary>
-	/// <param name="serviceName">Name of the service.</param>
-	/// <returns>ServiceActionResult.</returns>
+	/// <param name="serviceName">The name of the service to start.</param>
+	/// <returns>A <see cref="ServiceActionResult"/> indicating the result of the operation.</returns>
+	/// <example>
+	/// Here is how you can use the StartService method:
+	/// <code>
+	/// var serviceName = "YourServiceName";
+	/// var result = Services.StartService(serviceName);
+	/// Console.WriteLine($"Service start result: {result}");
+	/// </code>
+	/// </example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(StartService), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ServiceActionResult StartService([NotNull] string serviceName)
@@ -138,17 +193,17 @@ public static class Services
 	}
 
 	/// <summary>
-	/// Starts the services.
+	/// Starts the services specified in the requests collection.
 	/// </summary>
-	/// <param name="requests">The requests.</param>
+	/// <param name="requests">The collection of service action requests.</param>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(StartServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void StartServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StartService(request.ServiceName));
 
 	/// <summary>
-	/// Starts or stops services.
+	/// Starts or stops the specified services based on the action requests.
 	/// </summary>
-	/// <param name="requests">The requests.</param>
+	/// <param name="requests">The collection of service action requests, indicating whether to start or stop each service.</param>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(StartStopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void StartStopServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request =>
@@ -164,10 +219,18 @@ public static class Services
 		});
 
 	/// <summary>
-	/// Stops the service.
+	/// Stops the specified service.
 	/// </summary>
-	/// <param name="serviceName">Name of the service.</param>
-	/// <returns>ServiceActionResult.</returns>
+	/// <param name="serviceName">The name of the service to stop.</param>
+	/// <returns>A <see cref="ServiceActionResult"/> indicating the result of the operation.</returns>
+	/// <example>
+	/// Here is how you can use the StopService method:
+	/// <code>
+	/// var serviceName = "YourServiceName";
+	/// var result = Services.StopService(serviceName);
+	/// Console.WriteLine($"Service stop result: {result}");
+	/// </code>
+	/// </example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(StopService), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ServiceActionResult StopService([NotNull] string serviceName)
@@ -193,9 +256,9 @@ public static class Services
 	}
 
 	/// <summary>
-	/// Stops the services.
+	/// Stops the services specified in the requests collection.
 	/// </summary>
-	/// <param name="requests">The requests.</param>
+	/// <param name="requests">The collection of service action requests.</param>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(StopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void StopServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StopService(request.ServiceName));

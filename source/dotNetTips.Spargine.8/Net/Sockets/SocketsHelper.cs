@@ -4,7 +4,7 @@
 // Created          : 01-11-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-15-2024
 // ***********************************************************************
 // <copyright file="SocketsHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -13,14 +13,23 @@
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Sockets;
+using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 namespace DotNetTips.Spargine.Net.Sockets;
 
 /// <summary>
-/// Socket helper methods.
+/// Provides utility methods for working with sockets, including methods for connecting to TCP servers asynchronously.
+/// This class contains methods that are essential for network communication, leveraging the <see cref="Socket"/> class
+/// for creating connections and transmitting data over the network. The methods are designed to be efficient and easy to use,
+/// abstracting some of the complexities involved in socket programming.
 /// </summary>
+/// <remarks>
+/// The methods within this class are optimized for performance and usability, ensuring that common socket operations
+/// are accessible with minimal code. It is part of the DotNetTips.Spargine library, which aims to provide a comprehensive
+/// set of utilities for .NET developers.
+/// </remarks>
 public static class SocketsHelper
 {
 
@@ -29,10 +38,21 @@ public static class SocketsHelper
 	/// </summary>
 	/// <param name="context">The context.</param>
 	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-	/// <returns>Stream.</returns>
+	/// <returns>A <see cref="ValueTask{Stream}"/> that represents the asynchronous operation, which upon completion returns a <see cref="Stream"/> connected to the TCP server.</returns>
+	/// <example>
+	/// Here is how you can use the ConnectTcpAsync method:
+	/// <code>
+	/// var context = new SocketsHttpConnectionContext(new DnsEndPoint("example.com", 80));
+	/// var cancellationToken = new CancellationToken();
+	/// var stream = await SocketsHelper.ConnectTcpAsync(context, cancellationToken);
+	/// // Use the stream for network operations
+	/// </code>
+	/// </example>
 	/// <remarks>Original code by: Máňa Píchová.</remarks>
 	public static async ValueTask<Stream> ConnectTcpAsync([NotNull] SocketsHttpConnectionContext context, [AllowNull] CancellationToken cancellationToken)
 	{
+		context = context.ArgumentNotNull();
+
 		// The following socket constructor will create a dual-mode socket on systems where IPV6 is available.
 		using var socket = new Socket(SocketType.Stream, ProtocolType.Tcp)
 		{
