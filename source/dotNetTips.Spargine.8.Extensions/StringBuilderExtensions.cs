@@ -4,7 +4,7 @@
 // Created          : 05-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-05-2024
+// Last Modified On : 06-19-2024
 // ***********************************************************************
 // <copyright file="StringBuilderExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -21,8 +21,11 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// StringBuilder Extensions.
+/// Provides extension methods for <see cref="StringBuilder"/> to enhance and simplify its functionality.
 /// </summary>
+/// <remarks>
+/// This class includes methods for appending key-value pairs, bytes, and collections with various formatting options.
+/// </remarks>
 [Information(nameof(StringBuilderExtensions), "David McCarter", "5/26/2020", "7/29/2020", Status = Status.Available)]
 public static class StringBuilderExtensions
 {
@@ -63,7 +66,7 @@ public static class StringBuilderExtensions
 	/// </code>
 	/// </example>
 	[Information("Original code from efcore-master on GitHub", author: "David McCarter", createdOn: "5/26/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static void AppendBytes([NotNull] this StringBuilder sb, [NotNull] byte[] bytes)
+	public static void AppendBytes(this StringBuilder sb, byte[] bytes)
 	{
 		if (bytes is null)
 		{
@@ -94,7 +97,7 @@ public static class StringBuilderExtensions
 	/// <exception cref="ArgumentException">value</exception>
 	/// <exception cref="ArgumentException">sb</exception>
 	[Information("FROM .NET CORE SOURCE", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
-	public static void AppendKeyValue([NotNull] this StringBuilder sb, [NotNull] string key, [NotNull] string value, bool includeQuotes = true, bool includeComma = true)
+	public static void AppendKeyValue(this StringBuilder sb, string key, string value, bool includeQuotes = true, bool includeComma = true)
 	{
 		sb = sb.ArgumentNotNull();
 		key = key.ArgumentNotNullOrEmpty();
@@ -163,7 +166,7 @@ public static class StringBuilderExtensions
 	/// </code>
 	/// </example>
 	[Information("Original code from efcore-master on GitHub.", author: "David McCarter", createdOn: "7/1/2020", UnitTestCoverage = 100, Status = Status.Available)]
-	public static void AppendValues([NotNull] this StringBuilder sb, [NotNull] string separator, [NotNull] IEnumerable<string> values)
+	public static void AppendValues(this StringBuilder sb, string separator, IEnumerable<string> values)
 	{
 		sb = sb.ArgumentNotNull();
 
@@ -178,17 +181,22 @@ public static class StringBuilderExtensions
 	}
 
 	/// <summary>
-	/// Appends the values.
-	/// Validates that <paramref name="sb" /> and <paramref name="values" /> is not null.
+	/// Appends the values to the <see cref="StringBuilder"/> using the specified separator.
 	/// </summary>
-	/// <param name="sb">The string builder.</param>
-	/// <param name="separator">The separator.</param>
-	/// <param name="values">The values.</param>
-	/// <returns>StringBuilder.</returns>
-	/// <exception cref="ArgumentNullException">sb</exception>
-	/// <exception cref="ArgumentException">values</exception>
+	/// <param name="sb">The <see cref="StringBuilder"/> to append to.</param>
+	/// <param name="separator">The separator to use between appended values.</param>
+	/// <param name="values">The values to append.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/> is null.</exception>
+	/// <example>
+	///   <code>
+	/// var sb = new StringBuilder();
+	/// var values = new[] { "value1", "value2", "value3" };
+	/// sb.AppendValues(",", values);
+	/// Console.WriteLine(sb.ToString()); // Output: value1,value2,value3
+	/// </code>
+	/// </example>
 	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 100, Status = Status.Available)]
-	public static void AppendValues([NotNull] this StringBuilder sb, [NotNull] string separator, params string[] values)
+	public static void AppendValues(this StringBuilder sb, string separator, params string[] values)
 	{
 		sb = sb.ArgumentNotNull();
 
@@ -203,23 +211,17 @@ public static class StringBuilderExtensions
 	}
 
 	/// <summary>
-	/// Appends the values.
-	/// Validates that <paramref name="sb" />, <paramref name="values" />
-	/// and <paramref name="joinAction" /> is not null.
+	/// Appends the values to the <see cref="StringBuilder"/> using the specified separator and join action.
+	/// Validates that <paramref name="sb"/>, <paramref name="values"/>, and <paramref name="joinAction"/> are not null.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="sb">The string builder.</param>
-	/// <param name="separator">The separator.</param>
-	/// <param name="values">The values.</param>
-	/// <param name="joinAction">The join action.</param>
-	/// <returns>StringBuilder.</returns>
-	/// <exception cref="ArgumentNullException">sb</exception>
-	/// <exception cref="ArgumentNullException">values</exception>
-	/// <exception cref="ArgumentNullException">joinAction</exception>
-	/// <exception cref="ArgumentNullException">sb</exception>
-	/// <exception cref="ArgumentNullException">values</exception>
+	/// <typeparam name="T">The type of the elements in <paramref name="values"/>.</typeparam>
+	/// <param name="sb">The <see cref="StringBuilder"/> to append to.</param>
+	/// <param name="separator">The separator to use between appended values.</param>
+	/// <param name="values">The collection of values to append.</param>
+	/// <param name="joinAction">The action to perform on each element in the <paramref name="values"/> collection.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/>, <paramref name="values"/>, or <paramref name="joinAction"/> is null.</exception>
 	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 100, Status = Status.Available)]
-	public static void AppendValues<T>([NotNull] this StringBuilder sb, string separator, IEnumerable<T> values, [NotNull] Action<T> joinAction)
+	public static void AppendValues<T>(this StringBuilder sb, string separator, IEnumerable<T> values, Action<T> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
 		joinAction = joinAction.ArgumentNotNull();
@@ -248,18 +250,17 @@ public static class StringBuilderExtensions
 	}
 
 	/// <summary>
-	/// Appends the values.
-	/// Validates that <paramref name="sb" />, <paramref name="values" />,
-	/// <paramref name="joinAction" /> and <paramref name="param" /> not null.
+	/// Appends the values to the <see cref="StringBuilder"/> using the specified separator and join action.
+	/// Validates that <paramref name="sb"/>, <paramref name="values"/>, <paramref name="param"/>, and <paramref name="joinAction"/> are not null.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <typeparam name="TParam">The type of the t parameter.</typeparam>
-	/// <param name="sb">The string builder.</param>
-	/// <param name="separator">The separator.</param>
-	/// <param name="values">The values.</param>
-	/// <param name="param">The parameter.</param>
-	/// <param name="joinAction">The join action.</param>
-	/// <returns>StringBuilder.</returns>
+	/// <typeparam name="T">The type of the elements in <paramref name="values"/>.</typeparam>
+	/// <typeparam name="TParam">The type of the parameter passed to the join action.</typeparam>
+	/// <param name="sb">The <see cref="StringBuilder"/> to append to.</param>
+	/// <param name="separator">The separator to use between appended values.</param>
+	/// <param name="values">The collection of values to append.</param>
+	/// <param name="param">The parameter to pass to each invocation of <paramref name="joinAction"/>.</param>
+	/// <param name="joinAction">The action to perform on each element in the <paramref name="values"/> collection, which also takes <paramref name="param"/> as an argument.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/>, <paramref name="values"/>, <paramref name="param"/>, or <paramref name="joinAction"/> is null.</exception>
 	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static void AppendValues<T, TParam>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam param, [NotNull] Action<T, TParam> joinAction)
 	{
@@ -291,30 +292,19 @@ public static class StringBuilderExtensions
 	}
 
 	/// <summary>
-	/// Appends the values.
-	/// Validates that <paramref name="sb" />, <paramref name="values" />,
-	/// <paramref name="param1" />, <paramref name="param2" /> and
-	/// <paramref name="joinAction" /> is not null.
+	/// Appends the values to the <see cref="StringBuilder"/> using the specified separator and join action.
+	/// Validates that <paramref name="sb"/>, <paramref name="values"/>, <paramref name="param1"/>, <paramref name="param2"/>, and <paramref name="joinAction"/> are not null.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <typeparam name="TParam1">The type of the t param1.</typeparam>
-	/// <typeparam name="TParam2">The type of the t param2.</typeparam>
-	/// <param name="sb">The string builder.</param>
-	/// <param name="separator">The separator.</param>
-	/// <param name="values">The values.</param>
-	/// <param name="param1">The param1.</param>
-	/// <param name="param2">The param2.</param>
-	/// <param name="joinAction">The join action.</param>
-	/// <returns>StringBuilder.</returns>
-	/// <exception cref="ArgumentNullException">sb</exception>
-	/// <exception cref="ArgumentNullException">values</exception>
-	/// <exception cref="ArgumentNullException">param1</exception>
-	/// <exception cref="ArgumentNullException">param2</exception>
-	/// <exception cref="ArgumentNullException">joinAction</exception>
-	/// <exception cref="ArgumentNullException">sb</exception>
-	/// <exception cref="ArgumentNullException">values</exception>
-	/// <exception cref="ArgumentNullException">param1</exception>
-	/// <exception cref="ArgumentNullException">param2</exception>
+	/// <typeparam name="T">The type of the elements in <paramref name="values"/>.</typeparam>
+	/// <typeparam name="TParam1">The type of the first parameter passed to the join action.</typeparam>
+	/// <typeparam name="TParam2">The type of the second parameter passed to the join action.</typeparam>
+	/// <param name="sb">The <see cref="StringBuilder"/> to append to.</param>
+	/// <param name="separator">The separator to use between appended values.</param>
+	/// <param name="values">The collection of values to append.</param>
+	/// <param name="param1">The first parameter to pass to each invocation of <paramref name="joinAction"/>.</param>
+	/// <param name="param2">The second parameter to pass to each invocation of <paramref name="joinAction"/>.</param>
+	/// <param name="joinAction">The action to perform on each element in the <paramref name="values"/> collection, which also takes <paramref name="param1"/> and <paramref name="param2"/> as arguments.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/>, <paramref name="values"/>, <paramref name="param1"/>, <paramref name="param2"/>, or <paramref name="joinAction"/> is null.</exception>
 	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static void AppendValues<T, TParam1, TParam2>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam1 param1, [NotNull] TParam2 param2, [NotNull] Action<StringBuilder, T, TParam1, TParam2> joinAction)
 	{

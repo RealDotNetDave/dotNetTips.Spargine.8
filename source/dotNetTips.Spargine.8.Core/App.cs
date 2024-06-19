@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-14-2024
+// Last Modified On : 06-19-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -171,26 +171,20 @@ public static class App
 	/// </code>
 	/// This will print the names of all specific cultures.
 	/// </example>
-	[Information(nameof(AppInfo), UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static ReadOnlyCollection<string> GetCultureNames(CultureTypes cultureType = CultureTypes.AllCultures)
-	{
-		return _cultureNames ??= CultureInfo.GetCultures(cultureType)
-											 .OrderBy(p => p.Name)
-											 .Select(c => c.Name)
-											 .ToList()
-											 .AsReadOnly();
-	}
+	[Information(nameof(AppInfo), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	public static ReadOnlyCollection<string> GetCultureNames(CultureTypes cultureType = CultureTypes.AllCultures) => _cultureNames ??= CultureInfo.GetCultures(cultureType)
+		.OrderBy(p => p.Name)
+		.Select(c => c.Name)
+		.ToList()
+		.AsReadOnly();
 
 	/// <summary>
 	/// Gets the environment variables as an immutable dictionary.
 	/// </summary>
 	/// <returns>An immutable dictionary containing all environment variables where the key is the variable name and the value is its value.</returns>
-	[Information(UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static IImmutableDictionary<string, string> GetEnvironmentVariables()
-	{
-		return Environment.GetEnvironmentVariables().Cast<DictionaryEntry>()
+	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	public static IImmutableDictionary<string, string> GetEnvironmentVariables() => Environment.GetEnvironmentVariables().Cast<DictionaryEntry>()
 			.ToImmutableDictionary(de => de.Key.ToString(), de => de.Value.ToString());
-	}
 
 	/// <summary>
 	/// Retrieves detailed information about the processor.
@@ -312,14 +306,11 @@ public static class App
 	/// Console.WriteLine(assembly);
 	/// }
 	/// </code></example>
-	[Information(UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static ReadOnlyCollection<string> ReferencedAssemblies()
-	{
-		return Assembly.GetEntryAssembly().GetReferencedAssemblies()
+	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	public static ReadOnlyCollection<string> ReferencedAssemblies() => Assembly.GetEntryAssembly().GetReferencedAssemblies()
 					   .Select(a => a.ToString())
 					   .ToList()
 					   .AsReadOnly();
-	}
 
 	/// <summary>
 	/// Restarts the application with administrator privileges.

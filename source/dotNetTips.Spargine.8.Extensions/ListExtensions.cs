@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-14-2024
+// Last Modified On : 06-18-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -39,7 +39,8 @@ public static class ListExtensions
 	/// <param name="collection">The list to which the item will be added.</param>
 	/// <param name="item">The item to add to the beginning of the list.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.CheckPerformance)]
 	public static List<T> AddFirst<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		if (item is null)
@@ -57,6 +58,7 @@ public static class ListExtensions
 	/// <param name="collection">The list to which the item will be added.</param>
 	/// <param name="item">The item to add to the end of the list.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static List<T> AddLast<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
@@ -104,7 +106,8 @@ public static class ListExtensions
 	/// <param name="collection">The list from which to remove null elements.</param>
 	/// <returns><c>true</c> if any elements were removed; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Information(nameof(ClearNulls), author: "David McCarter", createdOn: "8/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ClearNulls), author: "David McCarter", createdOn: "8/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static bool ClearNulls<T>([NotNull] this List<T> collection)
 	{
 		if (collection is null)
@@ -122,7 +125,8 @@ public static class ListExtensions
 	/// <param name="collection">The list whose elements are copied.</param>
 	/// <returns>A new <see cref="Collection{T}"/> containing the elements of the input list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Information(nameof(CopyToCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CopyToCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static Collection<T> CopyToCollection<T>([NotNull] this List<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -136,7 +140,8 @@ public static class ListExtensions
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
 	/// <param name="collection">The list to check.</param>
 	/// <returns><c>true</c> if the list is null or contains no elements; otherwise, <c>false</c>.</returns>
-	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool DoesNotHaveItems<T>([NotNull] this List<T> collection)
 	{
 		if (collection is null)
@@ -156,6 +161,7 @@ public static class ListExtensions
 	/// <param name="collection">The list for which to generate a hash code.</param>
 	/// <returns>A hash code representing the contents of the list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static int GenerateHashCode<T>([NotNull] this List<T> collection)
 	{
@@ -180,7 +186,8 @@ public static class ListExtensions
 	/// <param name="collection">The list to check.</param>
 	/// <returns><c>true</c> if the list contains one or more elements; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this List<T> collection)
 	{
 		if (collection is null)
@@ -200,7 +207,8 @@ public static class ListExtensions
 	/// <param name="action">The action.</param>
 	/// <returns><c>true</c> if the specified action has items; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">action</exception>
-	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this List<T> collection, [NotNull] Predicate<T> action)
 	{
 		if (collection.CheckIsNotNull() is false || action.CheckIsNotNull() is false)
@@ -218,7 +226,8 @@ public static class ListExtensions
 	/// <param name="collection">The source.</param>
 	/// <param name="count">The specific count.</param>
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
-	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this List<T> collection, int count)
 	{
 		if (collection is null)
@@ -240,7 +249,8 @@ public static class ListExtensions
 	/// <returns>T.</returns>
 	/// <exception cref="ArgumentNullException">collection</exception>
 	/// <remarks>Original code by: @TheOtherBoz</remarks>
-	[Information(nameof(IndexAtLooped), author: "David McCarter", createdOn: "7/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(IndexAtLooped), author: "David McCarter", createdOn: "7/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
 	public static T IndexAtLooped<T>([NotNull] this List<T> collection, int index)
 	{
 		collection = collection.ArgumentNotNull();
@@ -260,8 +270,8 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the specified list to check is equal; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">collection</exception>
 	/// <exception cref="ArgumentNullException">collectionToCheck</exception>
-	[Information(nameof(IsEqualTo), author: "David McCarter", createdOn: "3/22/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(IsEqualTo), author: "David McCarter", createdOn: "3/22/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static bool IsEqualTo<T>([NotNull] this List<T> collection, [NotNull] List<T> collectionToCheck)
 	{
 		if (collection is null || collectionToCheck is null)
@@ -316,7 +326,8 @@ public static class ListExtensions
 	/// <returns>Dictionary&lt;TFirstKey, Dictionary&lt;TSecondKey, TValue&gt;&gt;.</returns>
 	/// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value. or list - Aggregate cannot be null. or firstKeySelector -
 	/// First key selector cannot be null. or secondKeySelector - Second key selector cannot be null.</exception>
-	[Information(nameof(Pivot), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(Pivot), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
 	public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>([NotNull] this IEnumerable<TSource> collection, [NotNull] Func<TSource, TFirstKey> firstKeySelector, [NotNull] Func<TSource, TSecondKey> secondKeySelector, [NotNull] Func<IEnumerable<TSource>, TValue> aggregate)
 	{
 		collection = collection.ArgumentNotNull();
@@ -431,6 +442,7 @@ public static class ListExtensions
 	/// <returns>List&lt;T&gt;.</returns>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ToListAsync), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static async Task<List<TSource>> ToListAsync<TSource>([NotNull] this IAsyncEnumerable<TSource> collection, [AllowNull] CancellationToken cancellationToken = default)
 	{
 		collection = collection.ArgumentNotNull();

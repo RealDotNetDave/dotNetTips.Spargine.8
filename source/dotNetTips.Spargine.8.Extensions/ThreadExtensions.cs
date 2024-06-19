@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 06-19-2024
 // ***********************************************************************
 // <copyright file="ThreadExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -19,20 +19,19 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class ThreadExtensions.
+/// Provides extension methods for <see cref="Thread"/> to enhance thread operations.
 /// </summary>
 public static class ThreadExtensions
 {
 
 	/// <summary>
-	/// Tries the set priority.
-	/// Validates that <paramref name="thread" /> is not null.
+	/// Tries to set the priority of the specified thread. Validates that <paramref name="thread" /> is not null.
 	/// </summary>
-	/// <param name="thread">The thread.</param>
-	/// <param name="priority">The priority.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="ArgumentNullException">thread or logger</exception>
-	/// <exception cref="ArgumentOutOfRangeException">priority</exception>
+	/// <param name="thread">The thread whose priority is to be set. This parameter cannot be null.</param>
+	/// <param name="priority">The desired <see cref="ThreadPriority"/> for the thread.</param>
+	/// <returns><c>true</c> if the priority was successfully set; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="thread"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="priority"/> is not a defined <see cref="ThreadPriority"/> value.</exception>
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static bool TrySetPriority([NotNull] this Thread thread, ThreadPriority priority = ThreadPriority.Normal)
 	{
@@ -45,19 +44,20 @@ public static class ThreadExtensions
 	/// Waits for a certain amount of time. Does not use timer (no need to call Dispose).
 	/// Validates that <paramref name="thread" /> is not null.
 	/// </summary>
-	/// <param name="thread">The thread.</param>
+	/// <param name="thread">The <see cref="Thread"/> to wait on. This parameter cannot be null.</param>
 	/// <param name="interval">The wait interval.</param>
 	[Information(nameof(WaitUntil), UnitTestCoverage = 0, Status = Status.Available)]
 	public static void WaitUntil([NotNull] this Thread thread, TimeSpan interval) => WaitUntil(thread.ArgumentNotNull(), interval, 0);
 
 	/// <summary>
-	/// Waits the until.
+	/// Waits until the specified time interval has passed or the specified number of wait iterations has been completed, whichever comes first.
 	/// Validates that <paramref name="thread" /> is not null.
 	/// </summary>
-	/// <param name="thread">The thread.</param>
-	/// <param name="interval">The wait interval.</param>
-	/// <param name="waitIterations">The wait iterations.</param>
-	/// <exception cref="ArgumentNullException">thread</exception>
+	/// <param name="thread">The <see cref="Thread"/> to monitor. This parameter cannot be null.</param>
+	/// <param name="interval">The maximum time to wait.</param>
+	/// <param name="waitIterations">The number of iterations to perform a spin-wait. Must be zero or greater.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="thread"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="waitIterations"/> is less than zero.</exception>
 	[Information(nameof(WaitUntil), UnitTestCoverage = 0, Status = Status.Available)]
 	public static void WaitUntil([NotNull] this Thread thread, TimeSpan interval, int waitIterations)
 	{

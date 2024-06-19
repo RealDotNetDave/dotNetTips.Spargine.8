@@ -4,7 +4,7 @@
 // Created          : 02-21-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-12-2024
+// Last Modified On : 06-19-2024
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -128,10 +128,7 @@ public static class JsonSerialization
 	/// <returns>An instance of <typeparamref name="TResult"/> deserialized from the JSON string.</returns>
 	/// <exception cref="InvalidOperationException">Thrown if deserialization fails or the result is null.</exception>
 	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json)
-	{
-		return JsonSerializer.Deserialize<TResult>(json, _options) ?? throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
-	}
+	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json) => JsonSerializer.Deserialize<TResult>(json, _options) ?? throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
 
 	/// <summary>
 	/// Deserializes JSON content from a specified file into an object of type <typeparamref name="TResult" />.

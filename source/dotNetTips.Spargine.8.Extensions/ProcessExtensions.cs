@@ -4,7 +4,7 @@
 // Created          : 07-15-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-31-2024
+// Last Modified On : 06-18-2024
 // ***********************************************************************
 // <copyright file="ProcessExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions.Properties;
 using Microsoft.Extensions.Logging;
@@ -22,7 +23,7 @@ using Microsoft.Extensions.Logging;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Process Extensions.
+/// Provides extension methods for the <see cref="Process"/> class to manipulate process priorities and execute processes with specific configurations.
 /// </summary>
 public static class ProcessExtensions
 {
@@ -34,6 +35,7 @@ public static class ProcessExtensions
 	/// <param name="process">The process.</param>
 	/// <param name="logger">The logger.</param>
 	/// <exception cref="ArgumentNullException">process</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static void EnsureHighPriority([NotNull] this Process process, [AllowNull] ILogger logger)
 	{
@@ -59,6 +61,7 @@ public static class ProcessExtensions
 	/// <param name="process">The process.</param>
 	/// <param name="logger">The logger.</param>
 	/// <exception cref="ArgumentNullException">process</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static void EnsureLowPriority([NotNull] this Process process, [AllowNull] ILogger logger)
 	{
@@ -86,6 +89,7 @@ public static class ProcessExtensions
 	/// <param name="timeout">The timeout.</param>
 	/// <returns>System.Int32.</returns>
 	/// <exception cref="ArgumentException">fileName</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static int RunProcessAndIgnoreOutput([NotNull] this string fileName, [NotNull] string arguments, TimeSpan timeout)
 	{
@@ -121,6 +125,7 @@ public static class ProcessExtensions
 	/// <param name="timeout">The timeout.</param>
 	/// <returns>System.ValueTuple&lt;System.Int32, System.String&gt;.</returns>
 	/// <exception cref="ArgumentException">fileName</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static (int exitCode, string output) RunProcessAndReadOutput([NotNull] this string fileName, [NotNull] string arguments, TimeSpan timeout)
 	{
@@ -157,6 +162,7 @@ public static class ProcessExtensions
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	/// <exception cref="ArgumentNullException">process or logger error</exception>
 	/// <exception cref="ArgumentOutOfRangeException">priority</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static bool TrySetPriority([NotNull] this Process process, ProcessPriorityClass priority, [AllowNull] ILogger logger)
 	{

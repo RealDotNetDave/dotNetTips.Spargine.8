@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-13-2024
+// Last Modified On : 06-18-2024
 // ***********************************************************************
 // <copyright file="HashSetExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -12,7 +12,6 @@
 // <summary>Extension methods for the HashSet type.</summary>
 // ***********************************************************************
 using System.Collections.Immutable;
-using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 
@@ -37,7 +36,7 @@ public static class HashSetExtensions
 	/// <param name="item">The item to add to the hash set.</param>
 	/// <param name="condition">The condition that determines whether the item should be added.</param>
 	[Information(nameof(AddIf), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static void AddIf<T>([NotNull] this HashSet<T> collection, [NotNull] T item, bool condition)
+	public static void AddIf<T>(this HashSet<T> collection, T item, bool condition)
 	{
 		collection = collection.ArgumentNotNull();
 		item = item.ArgumentNotNull();
@@ -57,7 +56,7 @@ public static class HashSetExtensions
 	/// <returns>A new instance of <see cref="ConcurrentHashSet{T}" /> containing all elements from the original hash set.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
 	[Information(nameof(ToConcurrentHashSet), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static ConcurrentHashSet<T> ToConcurrentHashSet<T>([NotNull] this HashSet<T> collection) => new(collection.ArgumentNotNull());
+	public static ConcurrentHashSet<T> ToConcurrentHashSet<T>(this HashSet<T> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
 	/// Converts a <see cref="HashSet{T}" /> to an <see cref="ImmutableHashSet{T}" />.
@@ -69,7 +68,7 @@ public static class HashSetExtensions
 	/// <returns>An <see cref="ImmutableHashSet{T}" /> containing all elements from the original hash set.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
 	[Information(nameof(ToImmutableHashSet), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
-	public static ImmutableHashSet<T> ToImmutableHashSet<T>([NotNull] this HashSet<T> collection) => ImmutableHashSet.CreateRange(collection.ArgumentNotNull());
+	public static ImmutableHashSet<T> ToImmutableHashSet<T>(this HashSet<T> collection) => ImmutableHashSet.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>
 	/// Upserts (updates or inserts) an item into the <see cref="HashSet{T}" />.
@@ -81,7 +80,7 @@ public static class HashSetExtensions
 	/// <param name="item">The item to upsert into the hash set.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> or <paramref name="item" /> is null.</exception>
 	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static void Upsert<T>([NotNull] this HashSet<T> collection, [NotNull] T item)
+	public static void Upsert<T>(this HashSet<T> collection, T item)
 	{
 		collection = collection.ArgumentNotNull();
 		item = item.ArgumentNotNull();

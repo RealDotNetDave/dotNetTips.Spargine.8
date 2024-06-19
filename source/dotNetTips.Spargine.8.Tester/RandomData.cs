@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-16-2024
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="dotNetTips.Spargine.8.Tester">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -253,7 +253,7 @@ public static partial class RandomData
 	/// <param name="addressLength">Length of the address. Length must be between 5 - 100. Defaults to 25.</param>
 	/// <param name="countyProvinceLength">Length of the county province. Length must be between 5 - 50. Defaults to 20.</param>
 	/// <returns>System.Collections.ObjectModel.Collection&lt;T&gt;.</returns>
-	[Information(nameof(GenerateAddressCollection), "David McCarter", "12/4/2023", UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(GenerateAddressCollection), "David McCarter", "12/4/2023", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static Collection<T> GenerateAddressCollection<T>([NotNull] Country country, int count = 2, int addressLength = 25, int countyProvinceLength = 20) where T : IAddress, new()
 	{
 		country = country.ArgumentNotNull();

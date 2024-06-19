@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-12-2024
+// Last Modified On : 06-16-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -339,7 +339,7 @@ public static class TypeHelper
 	/// <param name="baseType">Type of the base.</param>
 	/// <param name="classOnly">if set to <c>true</c> [class only].</param>
 	/// <returns>IEnumerable&lt;Type&gt;.</returns>
-	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
 		currentDomain = currentDomain.ArgumentNotNull();
@@ -387,7 +387,7 @@ public static class TypeHelper
 	/// <returns>IEnumerable&lt;Type&gt;.</returns>
 	/// <exception cref="DirectoryNotFoundException">Could not find path.</exception>
 	/// <exception cref="ArgumentNullException">Could not find path.</exception>
-	[Information(UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] DirectoryInfo path, SearchOption fileSearchType, [NotNull] Type baseType, bool classOnly)
 	{
 		fileSearchType = fileSearchType.ArgumentDefined();

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-12-2024
+// Last Modified On : 06-19-2024
 // ***********************************************************************
 // <copyright file="SortedSetExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -21,7 +21,7 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class SortedSetExtensions.
+/// Provides extension methods for <see cref="SortedSet{T}"/>.
 /// </summary>
 public static class SortedSetExtensions
 {
@@ -29,9 +29,9 @@ public static class SortedSetExtensions
 	/// <summary>
 	/// Checks set for null and ensures there are items in the set.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <typeparam name="T">The type of elements in the set.</typeparam>
+	/// <param name="collection">The <see cref="SortedSet{T}"/> to check.</param>
+	/// <returns><c>true</c> if the <paramref name="collection"/> is null or has no items; otherwise, <c>false</c>.</returns>
 	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool DoesNotHaveItems<T>([NotNull] this SortedSet<T> collection)
 	{
@@ -46,11 +46,11 @@ public static class SortedSetExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified <see cref="ICollection{T}" /> has items.
+	/// Determines whether the specified <see cref="SortedSet{T}"/> has items.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The source.</param>
-	/// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
+	/// <typeparam name="T">The type of elements in the set.</typeparam>
+	/// <param name="collection">The collection to check.</param>
+	/// <returns><c>true</c> if the specified collection has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this SortedSet<T> collection)
@@ -66,12 +66,12 @@ public static class SortedSetExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified list has items.
+	/// Determines whether the specified <see cref="SortedSet{T}"/> has items that match the condition defined by the specified predicate.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="action">The action.</param>
-	/// <returns>bool.</returns>
+	/// <typeparam name="T">The type of elements in the set.</typeparam>
+	/// <param name="collection">The collection to check.</param>
+	/// <param name="action">The predicate to apply to each element. Each element is passed to the <see cref="Func{T, TResult}"/> to determine if it matches the condition.</param>
+	/// <returns><c>true</c> if any elements in the specified collection match the condition defined by the specified predicate; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this SortedSet<T> collection, [NotNull] Func<T, bool> action)
@@ -87,12 +87,12 @@ public static class SortedSetExtensions
 	}
 
 	/// <summary>
-	/// Converts to immutable SortedSet.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Converts the specified <see cref="SortedSet{T}"/> to an <see cref="ImmutableSortedSet{T}"/>.
+	/// Validates that <paramref name="collection"/> is not null before conversion.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The values.</param>
-	/// <returns>ImmutableSortedSet&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the set.</typeparam>
+	/// <param name="collection">The <see cref="SortedSet{T}"/> to convert.</param>
+	/// <returns>An <see cref="ImmutableSortedSet{T}"/> that contains elements from the input collection.</returns>
 	[Information(nameof(ToImmutableSortedSet), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ImmutableSortedSet<T> ToImmutableSortedSet<T>([NotNull] this SortedSet<T> collection) => ImmutableSortedSet.CreateRange(collection.ArgumentNotNull());
 

@@ -11,7 +11,6 @@
 // </copyright>
 // <summary>Extension methods tailored for LINQ.</summary>
 // ***********************************************************************
-using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -38,7 +37,7 @@ public static class LinqExtensions
 	/// <returns>An <see cref="IQueryable{T}"/> that has been conditionally transformed based on the provided functions.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transforms"/> is null.</exception>
 	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available, UnitTestCoverage = 0)]
-	public static IQueryable<T> If<T>([NotNull] this IQueryable<T> input, bool should, [NotNull] params Func<IQueryable<T>, IQueryable<T>>[] transforms)
+	public static IQueryable<T> If<T>(this IQueryable<T> input, bool should, params Func<IQueryable<T>, IQueryable<T>>[] transforms)
 	{
 		input = input.ArgumentNotNull();
 		transforms = transforms.ArgumentItemsExists();
@@ -57,7 +56,7 @@ public static class LinqExtensions
 	/// <returns>An <see cref="IEnumerable{T}"/> that has been conditionally transformed based on the provided functions.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transforms"/> is null.</exception>
 	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available, UnitTestCoverage = 0)]
-	public static IEnumerable<T> If<T>([NotNull] this IEnumerable<T> input, bool should, [NotNull] params Func<IEnumerable<T>, IEnumerable<T>>[] transforms)
+	public static IEnumerable<T> If<T>(this IEnumerable<T> input, bool should, params Func<IEnumerable<T>, IEnumerable<T>>[] transforms)
 	{
 		input = input.ArgumentNotNull();
 		transforms = transforms.ArgumentItemsExists();

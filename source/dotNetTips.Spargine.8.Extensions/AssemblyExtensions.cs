@@ -4,7 +4,7 @@
 // Created          : 01-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-13-2024
+// Last Modified On : 06-17-2024
 // ***********************************************************************
 // <copyright file="AssemblyExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -22,12 +22,10 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Provides extension methods for <see cref="Assembly"/>.
+/// Provides extension methods for <see cref="Assembly" />.
 /// </summary>
-/// <remarks>
-/// This class contains methods that extend the functionality of the <see cref="Assembly"/> class,
-/// making it easier to perform common tasks such as getting all types, interfaces, or instances of a specific type within an assembly.
-/// </remarks>
+/// <remarks>This class contains methods that extend the functionality of the <see cref="Assembly" /> class,
+/// making it easier to perform common tasks such as getting all types, interfaces, or instances of a specific type within an assembly.</remarks>
 public static class AssemblyExtensions
 {
 
@@ -39,16 +37,20 @@ public static class AssemblyExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assembly" /> is null.</exception>
 	/// <remarks>This method extracts all interfaces from the types defined in the specified assembly, ensuring no duplicates are returned.
 	/// It validates that the provided assembly is not null before proceeding with the extraction.</remarks>
-	[Information(nameof(GetAllInterfaces), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineMarch2021")]
+	[Information(nameof(GetAllInterfaces), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<Type> GetAllInterfaces([NotNull] this Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
 
-		// USING SPAN CAUSES ISSUES. FrozenSet is slower.
-		var interfaces = assembly.GetTypes()
-								 .SelectMany(type => type.GetInterfaces())
-								 .Distinct()
-								 .ToList();
+		var interfaces = new List<Type>();
+
+		// USING SPAN CAUSES ISSUES. FrozenSet is slower. Recommendation from CoPilot is slower.
+		var array = assembly.GetTypes();
+
+		foreach (var arrayItem in array)
+		{
+			interfaces.AddRange(arrayItem.GetInterfaces());
+		}
 
 		return interfaces.AsReadOnly();
 	}
@@ -62,16 +64,13 @@ public static class AssemblyExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assembly" /> is null.</exception>
 	/// <remarks>This method is useful for scenarios where you need to work with concrete types defined in an assembly,
 	/// such as when creating instances or performing reflection-based processing.</remarks>
-	[Information(nameof(GetAllTypes), "David McCarter", "221/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineMarch2021")]
+	[Information(nameof(GetAllTypes), "David McCarter", "221/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<Type> GetAllTypes([NotNull] this Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
 
-		var types = assembly.GetTypes()
-							.Where(type => !type.IsAbstract)
-							.ToArray(); // Using ToArray for potentially better performance in ReadOnlyCollection constructor
-
-		return Array.AsReadOnly(types);
+		//RECOMMENDATION FROM COPILOT IS SLOWER
+		return assembly.GetTypes().Where(p => !p.IsAbstract).ToList().AsReadOnly();
 	}
 
 	/// <summary>
@@ -84,16 +83,24 @@ public static class AssemblyExtensions
 	/// <remarks>This method searches the assembly for types that are assignable to <typeparamref name="T" />,
 	/// are not interfaces, are not abstract, and are not generic types. It then attempts to create an instance
 	/// of each found type using the default constructor.</remarks>
-	[Information(nameof(GetInstances), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
+	[Information(nameof(GetInstances), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static IEnumerable<T> GetInstances<T>([NotNull] this Assembly assembly) where T : class
 	{
 		assembly = assembly.ArgumentNotNull();
 
-		//FrozenSet is slower.
-		return assembly.GetTypes()
-			.Where(type => typeof(T).IsAssignableFrom(type) && !type.IsInterface && !type.IsAbstract && !type.IsGenericType)
-			.Select(type => Activator.CreateInstance(type) as T)
-			.Where(instance => instance != null);
+		var types = assembly.GetTypes()
+			.Where(x => !x.IsInterface
+			&& !x.IsAbstract && !x.IsGenericType
+			&& typeof(T).IsAssignableFrom(x));
+
+		//FrozenSet and recommendation from Copilot is slower.
+		foreach (var type in types)
+		{
+			if (Activator.CreateInstance(type) is T instance)
+			{
+				yield return instance;
+			}
+		}
 	}
 
 	/// <summary>
@@ -105,17 +112,15 @@ public static class AssemblyExtensions
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="assembly" /> or <paramref name="type" /> is null.</exception>
 	/// <remarks>This method is useful for finding all concrete implementations or subclasses of a given type within an assembly.
 	/// Original code from: oqtane.framework</remarks>
-	[Information(nameof(GetTypes), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
+	[Information(nameof(GetTypes), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static ReadOnlyCollection<Type> GetTypes([NotNull] this Assembly assembly, [NotNull] Type type)
 	{
 		assembly = assembly.ArgumentNotNull();
 		type = type.ArgumentNotNull();
 
-		var types = assembly.GetTypes()
-							.Where(p => !p.IsAbstract && type.IsAssignableFrom(p))
-							.ToArray(); // Directly converting to array for ReadOnlyCollection
+		//RECOMMENDATION FROM COPILOT SLOWER
+		return assembly.GetTypes().Where(p => !p.IsAbstract && type.IsAssignableFrom(p)).ToList().AsReadOnly();
 
-		return Array.AsReadOnly(types);
 	}
 
 }

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-13-2024
+// Last Modified On : 06-19-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -23,6 +23,7 @@ using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 namespace DotNetTips.Spargine.Extensions;
+
 /// <summary>
 /// Extensions methods for the Array type.
 /// </summary>
@@ -42,6 +43,7 @@ public static class ArrayExtensions
 	/// <param name="item">The item to add to the array.</param>
 	/// <returns>A new array with the item added at the beginning.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.CheckPerformance)]
 	public static T[] AddFirst<T>([NotNull] this T[] array, [NotNull] T item)
 	{
@@ -68,8 +70,8 @@ public static class ArrayExtensions
 	/// <param name="condition">The condition that determines whether the item should be added.</param>
 	/// <returns>A new array with the item added if the condition is true; otherwise, the original array.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
-
-	[Information(nameof(AddIf), author: "David McCarter", createdOn: "4/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(AddIf), author: "David McCarter", createdOn: "4/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static T[] AddIf<T>([NotNull] this T[] array, [NotNull] T item, bool condition)
 	{
 		if (item is null)
@@ -90,6 +92,7 @@ public static class ArrayExtensions
 	/// <param name="item">The item to add to the array.</param>
 	/// <returns>A new array with the item added at the end.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.CheckPerformance)]
 	public static T[] AddLast<T>([NotNull] this T[] array, [NotNull] T item)
 	{
@@ -113,8 +116,8 @@ public static class ArrayExtensions
 	/// <param name="array">The input.</param>
 	/// <param name="arrayToCheck">The array to check.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(AreEqual), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+	[Information(nameof(AreEqual), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
 	public static bool AreEqual<T>([NotNull] this T[] array, [NotNull] T[] arrayToCheck)
 	{
 		if (array is null || arrayToCheck is null)
@@ -157,6 +160,7 @@ public static class ArrayExtensions
 	/// <param name="array">The bytes.</param>
 	/// <returns>A <see cref="string" /> that represents this instance.</returns>
 	/// <exception cref="ArgumentNullException">Array cannot be null.</exception>
+	[MethodImpl(MethodImplOptions.NoInlining)]
 	[Information(nameof(BytesToString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static string BytesToString([NotNull] this byte[] array)
 	{
@@ -169,8 +173,8 @@ public static class ArrayExtensions
 
 		try
 		{
-			//Span is slower.
-			foreach (var arrayItem in array.ToFrozenSet())
+			//Span & FrozenSet is slower.
+			foreach (var arrayItem in array.ToImmutableArray())
 			{
 				_ = sb.Append(arrayItem.ToString("x2", CultureInfo.InvariantCulture));
 			}
@@ -210,83 +214,79 @@ public static class ArrayExtensions
 			_stringBuilderPool.Return(sb);
 		}
 	}
+
 	/// <summary>
 	/// Clones the specified array.
-	/// Validates that <paramref name="array" /> is not null.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="array">The input.</param>
-	/// <returns>T[].</returns>
-	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/30/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="array">The array to clone.</param>
+	/// <returns>A new array containing all the elements of the original array.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(Clone), author: "David McCarter", createdOn: "7/30/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static T[] Clone<T>([NotNull] this T[] array)
 	{
 		array = array.ArgumentNotNull();
 
-		return [.. array];
+		return (T[])array.Clone();
 	}
+
 	/// <summary>
-	/// Determines whether the specified array has items specified.
-	/// Validates that <paramref name="array" /> and <paramref name="items" /> is not null.
+	/// Determines whether the array contains any of the specified items.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="array">The source.</param>
-	/// <param name="items">The items.</param>
-	/// <returns><c>true</c> if the specified items has items; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">items cannot be null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="array">The array to check.</param>
+	/// <param name="items">The items to check for within the array.</param>
+	/// <returns><c>true</c> if the array contains any of the specified items; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> or <paramref name="items"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.NoInlining)]
+	[Information(nameof(ContainsAny), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static bool ContainsAny<T>([NotNull] this T[] array, [NotNull] params T[] items)
 	{
-		if (array is null)
+		if (array is null || array.Length is 0 || items.Length is 0)
 		{
 			return false;
 		}
 
-		if (items.ArgumentNotNull().FastCount() == 0)
+		var itemsSet = new HashSet<T>(items);
+
+		foreach (var element in array)
 		{
-			return false;
+			if (itemsSet.Contains(element))
+			{
+				return true;
+			}
 		}
 
-		var itemsList = items.ToReadOnlyCollection();
+		return false;
+	}
 
-		return itemsList.HasItems() && array.ToReadOnlyCollection().Any(itemsList.Contains);
-	}
 	/// <summary>
-	/// Ensures there are items no items in the array.
+	/// Determines whether the specified array does not contain any items.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="array">The array.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool DoesNotHaveItems<T>([AllowNull] this T[] array)
-	{
-		if (array is null)
-		{
-			return true;
-		}
-		else
-		{
-			return array.Count() <= 0;
-		}
-	}
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="array">The array to check.</param>
+	/// <returns><c>true</c> if the array is null or empty; otherwise, <c>false</c>.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
+	public static bool DoesNotHaveItems<T>([AllowNull] this T[] array) => array == null || array.Length == 0;
+
 	/// <summary>
-	/// Counts items in the array.
-	/// Validates that <paramref name="array" /> is not null.
+	/// Gets the total number of elements in the array.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="array">The list.</param>
-	/// <returns>System.Int64.</returns>
-	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="array">The array to count.</param>
+	/// <returns>The total number of elements in the array as a long.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(FastCount), "David McCarter", "1/9/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static long FastCount<T>([NotNull] this T[] array) => array.ArgumentNotNull().LongLength;
 
 	/// <summary>
-	/// Hashes data using SHA256.
+	/// Computes a fast SHA256 hash for the given byte array data.
 	/// </summary>
-	/// <param name="data">The data.</param>
-	/// <returns>byte[].</returns>
-	/// <remarks>Example output (as string): 84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652</remarks>
+	/// <param name="data">The byte array to compute the hash for.</param>
+	/// <returns>A byte array containing the hash value.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="data"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(FastHashData), author: "David McCarter", createdOn: "3/11/2024", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static byte[] FastHashData([NotNull] this byte[] data)
@@ -298,38 +298,51 @@ public static class ArrayExtensions
 
 		return SHA256.HashData(data);
 	}
+
 	/// <summary>
-	/// Processes the array with the specified values.
-	/// Validates that <paramref name="array" /> and <paramref name="action" /> is not null.
+	/// Processes each element in the array with the specified action.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="array">The array.</param>
-	/// <param name="action">The values.</param>
-	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	/// <exception cref="ArgumentNullException">action cannot be null.</exception>
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="array">The array to process.</param>
+	/// <param name="action">The action to apply to each element of the array.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "11/8/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "11/8/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static void FastProcessor<T>([NotNull] this T[] array, [NotNull] Action<T> action)
 	{
 		array = array.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		//Span and FrozenSet is slower.
-		foreach (var item in array.ToImmutableArray())
+		//Span, ImmutableArray and FrozenSet is slower.
+		foreach (var item in array)
 		{
 			action(item);
 		}
 	}
+
 	/// <summary>
-	/// Generates hash code for the array.
-	/// Validates that <paramref name="array" /> is not null.
+	/// Generates a hash code for the entire array.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="array">The array to use to generate hash code.</param>
-	/// <returns>Hash code as System.Int32.</returns>
-	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
-	public static int GenerateHashCode<T>([NotNull] this T[] array) => array.ArgumentNotNull().Where(t => t is not null).Aggregate(6551, (accumulator, t) => accumulator ^= (accumulator << 5) ^ EqualityComparer<T>.Default.GetHashCode(t));
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="array">The array for which to generate a hash code.</param>
+	/// <returns>A hash code representing the contents of the array.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "ADD URL")]
+	public static int GenerateHashCode<T>([NotNull] this T[] array)
+	{
+		array = array.ArgumentNotNull();
+
+		var accumulator = 6551;
+		foreach (var t in array)
+		{
+			if (t != null)
+			{
+				accumulator ^= (accumulator << 5) ^ EqualityComparer<T>.Default.GetHashCode(t);
+			}
+		}
+		return accumulator;
+	}
 
 	/// <summary>
 	/// Determines whether the specified array has items.
@@ -390,13 +403,14 @@ public static class ArrayExtensions
 			return array.Length == count;
 		}
 	}
+
 	/// <summary>
-	/// Performs the action for the items in the array.
+	/// Performs the specified action on each element of the array.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="values">The values.</param>
-	/// <param name="action">The action.</param>
-	/// <exception cref="ArgumentNullException">action cannot be null.</exception>
+	/// <typeparam name="T">The type of the elements in the array.</typeparam>
+	/// <param name="values">The array of elements to perform the action on.</param>
+	/// <param name="action">The action to perform on each element of the array.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="values"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.CheckPerformance, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static void PerformAction<T>([NotNull] this T[] values, [NotNull] Action<T> action)
@@ -416,8 +430,8 @@ public static class ArrayExtensions
 		}
 		else
 		{
-			//Span is slower.
-			foreach (var value in values.ToImmutableArray())
+			//Span and ImmutableArray is slower.
+			foreach (var value in values)
 			{
 				action(value);
 			}
@@ -432,7 +446,8 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null or empty.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static T[] RemoveFirst<T>([NotNull] this T[] array)
 	{
 		array = array.ArgumentItemsExists();
@@ -447,7 +462,8 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null or empty.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "ADD URL")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static T[] RemoveLast<T>([NotNull] this T[] array)
 	{
 		array = array.ArgumentItemsExists();
@@ -462,7 +478,8 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
-	[Information(nameof(ToDistinct), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ToDistinct), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
 	public static T[] ToDistinct<T>([NotNull] this T[] array) => array.ArgumentNotNull().Distinct().ToArray();
 
 	/// <summary>
@@ -483,6 +500,7 @@ public static class ArrayExtensions
 	/// <param name="item">The item to insert or update in the array.</param>
 	/// <returns>A new array with the item inserted or updated.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Upsert), author: "David McCarter", createdOn: "4/28/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static T[] Upsert<T>([NotNull] this T[] array, [NotNull] T item)
 	{
@@ -493,21 +511,16 @@ public static class ArrayExtensions
 
 		array = array.ArgumentNotNull();
 
-		// Check if the item already exists in the array
-		var index = Array.IndexOf(array, item);
-		if (index != -1)
+		//Recomendation from CoPilot slower.
+		if (array.Contains(item))
 		{
-			// Item found, replace it (if needed, based on specific logic)
-			array[index] = item;
+			Array.Fill(array, item, array.IndexOf(item), 1);
+
 			return array;
 		}
 		else
 		{
-			// Item not found, add it
-			var newArray = new T[array.Length + 1];
-			array.CopyTo(newArray, 0);
-			newArray[^1] = item; // Using the ^1 index for the last element
-			return newArray;
+			return array.AddLast(item);
 		}
 	}
 
@@ -518,7 +531,8 @@ public static class ArrayExtensions
 	/// <param name="item">The IDataRecord item to insert or update in the array.</param>
 	/// <returns>A new array with the IDataRecord inserted or updated.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
-	[Information(nameof(Upsert), author: "David McCarter", createdOn: "5/2/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(Upsert), author: "David McCarter", createdOn: "5/2/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static IDataRecord[] Upsert([NotNull] this IDataRecord[] array, [NotNull] IDataRecord item)
 	{
 		if (item is null)

@@ -21,18 +21,20 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class SortedDictionaryExtensions.
+/// Provides extension methods for <see cref="SortedDictionary{TKey, TValue}"/> to enhance functionality
+/// with additional utility methods. These methods include checking for items, converting to immutable collections,
+/// and upsert operations.
 /// </summary>
 public static class SortedDictionaryExtensions
 {
 
 	/// <summary>
-	/// Checks dictionary for null and ensures there are items in the dictionary.
+	/// Checks if the <see cref="SortedDictionary{TKey, TValue}"/> is null or does not contain any items.
 	/// </summary>
-	/// <typeparam name="TKey">The type of the t key.</typeparam>
-	/// <typeparam name="TValue">The type of the t value.</typeparam>
-	/// <param name="collection">The list.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+	/// <param name="collection">The <see cref="SortedDictionary{TKey, TValue}"/> to check.</param>
+	/// <returns><c>true</c> if the dictionary is null or empty; otherwise, <c>false</c>.</returns>
 	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool DoesNotHaveItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection)
 	{
@@ -47,11 +49,11 @@ public static class SortedDictionaryExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified dictionary has items.
+	/// Determines whether the specified <see cref="SortedDictionary{TKey, TValue}"/> has items.
 	/// </summary>
-	/// <typeparam name="TKey">The type of the t key.</typeparam>
-	/// <typeparam name="TValue">The type of the t value.</typeparam>
-	/// <param name="collection">The dictionary.</param>
+	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+	/// <param name="collection">The <see cref="SortedDictionary{TKey, TValue}"/> to check.</param>
 	/// <returns><c>true</c> if the specified dictionary has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
@@ -68,13 +70,13 @@ public static class SortedDictionaryExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified action has items.
+	/// Determines whether the specified action finds any items in the <see cref="SortedDictionary{TKey, TValue}"/>.
 	/// </summary>
-	/// <typeparam name="TKey">The type of the t key.</typeparam>
-	/// <typeparam name="TValue">The type of the t value.</typeparam>
-	/// <param name="collection">The dictionary.</param>
-	/// <param name="action">The action.</param>
-	/// <returns><c>true</c> if the specified action has items; otherwise, <c>false</c>.</returns>
+	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+	/// <param name="collection">The <see cref="SortedDictionary{TKey, TValue}"/> to check.</param>
+	/// <param name="action">The action to test each item in the <paramref name="collection"/>.</param>
+	/// <returns><c>true</c> if the specified action finds items that match the condition; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, [NotNull] Func<KeyValuePair<TKey, TValue>, bool> action)
@@ -90,13 +92,13 @@ public static class SortedDictionaryExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified count has items.
+	/// Determines whether the specified count of items exists in the <see cref="SortedDictionary{TKey, TValue}"/>.
 	/// </summary>
-	/// <typeparam name="TKey">The type of the t key.</typeparam>
-	/// <typeparam name="TValue">The type of the t value.</typeparam>
-	/// <param name="collection">The dictionary.</param>
-	/// <param name="count">The count.</param>
-	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
+	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+	/// <param name="collection">The <see cref="SortedDictionary{TKey, TValue}"/> to check.</param>
+	/// <param name="count">The count of items to verify in the <paramref name="collection"/>.</param>
+	/// <returns><c>true</c> if the count of items in the <paramref name="collection"/> equals the specified <paramref name="count"/>; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, int count)
@@ -112,23 +114,21 @@ public static class SortedDictionaryExtensions
 	}
 
 	/// <summary>
-	/// Converts to immutable Dictionary.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Converts the specified <see cref="SortedDictionary{TKey, TValue}"/> to an <see cref="ImmutableSortedDictionary{TKey, TValue}"/>.
 	/// </summary>
-	/// <typeparam name="TKey">The type of the t key.</typeparam>
-	/// <typeparam name="TValue">The type of the t value.</typeparam>
-	/// <param name="collection">The values.</param>
-	/// <returns>ImmutableSortedDictionary&lt;TKey, TValue&gt;.</returns>
+	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+	/// <param name="collection">The <see cref="SortedDictionary{TKey, TValue}"/> to convert.</param>
+	/// <returns>An <see cref="ImmutableSortedDictionary{TKey, TValue}"/> that contains the elements from the specified dictionary.</returns>
 	[Information(nameof(ToImmutable), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ImmutableSortedDictionary<TKey, TValue> ToImmutable<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection) => ImmutableSortedDictionary.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>
-	/// Upserts the by the specified key.
-	/// Validates that <paramref name="collection" />, <paramref name="key" /> and <paramref name="value" /> is not null.
+	/// Upserts the specified key.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the t key.</typeparam>
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
-	/// <param name="collection">The dictionary.</param>
+	/// <param name="collection">The collection.</param>
 	/// <param name="key">The key.</param>
 	/// <param name="value">The value.</param>
 	/// <returns>TValue.</returns>

@@ -19,16 +19,16 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Extension helper methods for <see cref="Task" />.
+/// Provides extension methods for <see cref="Task"/> to enhance asynchronous programming.
 /// </summary>
 public static class TaskExtensions
 {
 
 	/// <summary>
-	/// Fires the and forget<seealso cref="Task" />.
-	/// Validates that <paramref name="task" /> is not null.
+	/// Fires the task and forgets it. Validates that <paramref name="task" /> is not null.
+	/// If the task throws an exception, it will be caught and can be handled by continuing with another task.
 	/// </summary>
-	/// <param name="task">The Task.</param>
+	/// <param name="task">The <see cref="Task"/> to execute.</param>
 	/// <example>
 	/// SomeType.FireAsync("Test Message").FireAndForget();
 	/// </example>
@@ -36,16 +36,15 @@ public static class TaskExtensions
 	public static void FireAndForget([NotNull] this Task task) => _ = task.ArgumentNotNull().ContinueWith(tsk => tsk.Exception, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.Default);
 
 	/// <summary>
-	/// Fires the and forget a <seealso cref="Task" />.
-	/// Validates that <paramref name="task" /> is not null.
+	/// Fires the task and forgets it. Validates that <paramref name="task" /> is not null and handles exceptions using the provided action.
 	/// </summary>
-	/// <param name="task">The Task.</param>
-	/// <param name="action">The Exception to throw.</param>
+	/// <param name="task">The <see cref="Task"/> to execute.</param>
+	/// <param name="action">The action to execute if an exception occurs. The action receives the exception as a parameter.</param>
 	/// <example>
 	/// Action&lt;Exception&gt; exAction = (Exception ex) =&gt; Debug.WriteLine(ex.Message);
 	/// SomeType.FireAsync("Test Message").FireAndForget(exAction);
 	/// </example>
 	[Information("Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App", "David McCarter", "7/13/2021", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
-	public static void FireAndForget([NotNull] this Task task, Action<Exception> action) => _ = task.ArgumentNotNull().ContinueWith((tsk) => action?.Invoke(tsk.Exception), CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.Default);
+	public static void FireAndForget([NotNull] this Task task, [NotNull] Action<Exception> action) => _ = task.ArgumentNotNull().ContinueWith((tsk) => action?.Invoke(tsk.Exception), CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.Default);
 
 }

@@ -11,7 +11,6 @@
 // </copyright>
 // <summary>Extension methods designed for DirectoryInfo.</summary>
 // ***********************************************************************
-using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -46,7 +45,7 @@ public static class DirectoryInfoExtensions
 	/// Console.WriteLine($"Total size: {totalSize} bytes");
 	/// </code></example>
 	[Information(nameof(GetSize), author: "David McCarter", createdOn: "10/8/2020", UnitTestCoverage = 100, Status = Status.Available)]
-	public static long GetSize([NotNull] this DirectoryInfo path, [NotNull] string searchPattern = "*.*", SearchOption searchOption = SearchOption.TopDirectoryOnly)
+	public static long GetSize(this DirectoryInfo path, string searchPattern = "*.*", SearchOption searchOption = SearchOption.TopDirectoryOnly)
 	{
 		path = path.ArgumentNotNull();
 		searchPattern = searchPattern.ArgumentNotNullOrEmpty();

@@ -19,7 +19,6 @@ using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.Extensions.ObjectPool;
 
@@ -55,21 +54,21 @@ public static class FastStringBuilder
 		var sb = _stringBuilderPool.Get();
 
 		//Set capacity to increace performance
-		sb.Capacity = bytes.Length * 2;
+		_ = sb.EnsureCapacity((bytes.Length * 2) + 3);
 
 		try
 		{
 			_ = sb.Append("'0x");
 
 			//FrozenSet and Span is slower.
-			foreach (var @byte in CollectionsMarshal.AsSpan(bytes.ToList()))
+			foreach (var @byte in bytes.ToImmutableArray())
 			{
 				_ = sb.Append(@byte.ToString("X2", CultureInfo.InvariantCulture));
 			}
 
 			_ = sb.Append('\'');
 
-			return sb.ToString();
+			return sb.ToString().Trim();
 		}
 		finally
 		{
@@ -98,8 +97,8 @@ public static class FastStringBuilder
 
 		try
 		{
-			//ASSPAN IS FASTER!
-			foreach (var arg in args.AsSpan())
+			//ASSPAN IS Slower!
+			foreach (var arg in args.ToImmutableArray())
 			{
 				_ = addLineFeed ? sb.AppendLine(arg) : sb.Append(arg);
 			}
@@ -134,7 +133,7 @@ public static class FastStringBuilder
 	/// <exception cref="ArgumentInvalidException">input cannot be null.</exception>
 	/// <remarks>Example output: <code>r^wQTNvT, HcETQ, COtc\\G[U, loUR_SbL, o_HYYskfM"</code></remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineStringConcatenation")]
+	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineStringConcatenation")]
 	public static string ConcatStrings(string delimiter = ",", bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (delimiter == null)

@@ -82,11 +82,22 @@ public class SimpleResult<T>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static ref readonly T GetReference(in SimpleResult<T> result) => ref result._value;
 
+
 	/// <summary>
-	/// Adds the exception..
+	/// Adds an exception to the collection of exceptions. This method captures the exception
+	/// and stores it, allowing multiple exceptions to be associated with a single result.
 	/// </summary>
-	/// <param name="error">The error.</param>
-	public void AddException([NotNull] Exception error) => this._exceptions.Add(ExceptionDispatchInfo.Capture(error).SourceException);
+	/// <param name="error">The exception to add. Cannot be <see langword="null"/>.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="error"/> is <see langword="null"/>.</exception>
+	public void AddException([NotNull] Exception error)
+	{
+
+		error = error.ArgumentNotNull();
+
+		this._exceptions.Add(ExceptionDispatchInfo.Capture(error).SourceException);
+
+	}
+
 
 	/// <summary>
 	/// Gets exceptions associated with this result.

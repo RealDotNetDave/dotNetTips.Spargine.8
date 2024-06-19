@@ -4,7 +4,7 @@
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-13-2024
+// Last Modified On : 06-18-2024
 // ***********************************************************************
 // <copyright file="ImmutableArrayExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,7 +13,6 @@
 // ***********************************************************************
 
 using System.Collections.Immutable;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using DotNetTips.Spargine.Core;
@@ -38,7 +37,7 @@ public static class ImmutableArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.NoInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this ImmutableArray<T> collection)
+	public static bool HasItems<T>(this ImmutableArray<T> collection)
 	{
 		if (collection.ArgumentNotNull().IsEmpty)
 		{
@@ -60,7 +59,7 @@ public static class ImmutableArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this ImmutableArray<T> list, [NotNull] Func<T, bool> action)
+	public static bool HasItems<T>(this ImmutableArray<T> list, Func<T, bool> action)
 	{
 		if (list.ArgumentNotNull().IsEmpty || action is null)
 		{
@@ -82,7 +81,7 @@ public static class ImmutableArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this ImmutableArray<T> list, int count)
+	public static bool HasItems<T>(this ImmutableArray<T> list, int count)
 	{
 		if (list.ArgumentNotNull().IsEmpty)
 		{
@@ -106,6 +105,6 @@ public static class ImmutableArrayExtensions
 	/// If the array does not contain any items, it is returned unchanged.
 	/// </remarks>
 	[Information(nameof(Shuffle), "David McCarter", "8/27/2020", "1/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, UnitTestCoverage = 0)]
-	public static ImmutableArray<T> Shuffle<T>([NotNull] this ImmutableArray<T> list) => list.DoesNotHaveItems() ? list : [.. list.OrderBy(_ => RandomNumberGenerator.GetInt32(int.MinValue, int.MaxValue))];
+	public static ImmutableArray<T> Shuffle<T>(this ImmutableArray<T> list) => list.DoesNotHaveItems() ? list : [.. list.OrderBy(_ => RandomNumberGenerator.GetInt32(int.MinValue, int.MaxValue))];
 
 }

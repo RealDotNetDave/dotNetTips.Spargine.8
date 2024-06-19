@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-13-2024
+// Last Modified On : 06-17-2024
 // ***********************************************************************
 // <copyright file="ExceptionExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -37,7 +37,7 @@ public static class ExceptionExtensions
 	/// <returns>An <see cref="IEnumerable{TSource}"/> that represents the hierarchy of exceptions.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="nextItem"/> is null.</exception>
 	[Information(nameof(FromHierarchy), UnitTestCoverage = 100, Status = Status.Available)]
-	public static IEnumerable<TSource> FromHierarchy<TSource>([NotNull] this TSource source, [NotNull] Func<TSource, TSource> nextItem) where TSource : Exception
+	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem) where TSource : Exception
 	{
 		source = source.ArgumentNotNull();
 		nextItem = nextItem.ArgumentNotNull();
@@ -56,8 +56,8 @@ public static class ExceptionExtensions
 	/// <param name="canContinue">A function that determines whether to continue traversing the hierarchy from the current item.</param>
 	/// <returns>A sequence of items from the source up through the hierarchy as determined by <paramref name="nextItem"/> and <paramref name="canContinue"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/>, <paramref name="nextItem"/>, or <paramref name="canContinue"/> is null.</exception>
-	[Information(nameof(FromHierarchy), UnitTestCoverage = 99, Status = Status.CheckPerformance)]
-	public static IEnumerable<TSource> FromHierarchy<TSource>([NotNull] this TSource source, [NotNull] Func<TSource, TSource> nextItem, [NotNull] Func<TSource, bool> canContinue)
+	[Information(nameof(FromHierarchy), UnitTestCoverage = 0, Status = Status.Available)]
+	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
 		where TSource : Exception
 	{
 		source = source.ArgumentNotNull();
@@ -79,7 +79,7 @@ public static class ExceptionExtensions
 	/// <returns>A string containing all exception messages, separated by the specified separator.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information(nameof(GetAllMessages), UnitTestCoverage = 100, Status = Status.Available)]
-	public static string GetAllMessages([NotNull] this Exception exception, char separator = ControlChars.Comma)
+	public static string GetAllMessages(this Exception exception, char separator = ControlChars.Comma)
 	{
 		exception = exception.ArgumentNotNull();
 
@@ -96,7 +96,7 @@ public static class ExceptionExtensions
 	/// <param name="exception">The exception to extract messages and stack traces from.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> where each item is a tuple containing the message and stack trace of an exception.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<(string message, string StackTrace)> GetAllMessagesWithStackTrace([NotNull] this Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
@@ -120,7 +120,7 @@ public static class ExceptionExtensions
 	/// <returns><c>true</c> if the exception is critical; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
-	public static bool IsCritical([NotNull] this Exception exception)
+	public static bool IsCritical(this Exception exception)
 	{
 		if (exception.IsNull())
 		{
@@ -130,9 +130,9 @@ public static class ExceptionExtensions
 		return exception is NullReferenceException or
 		StackOverflowException or
 		OutOfMemoryException or
-						ThreadAbortException or
-						IndexOutOfRangeException or
-						AccessViolationException;
+		ThreadAbortException or
+		IndexOutOfRangeException or
+		AccessViolationException;
 	}
 
 	/// <summary>
@@ -142,7 +142,7 @@ public static class ExceptionExtensions
 	/// <returns><c>true</c> if the exception is fatal; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
-	public static bool IsFatal([NotNull] this Exception exception)
+	public static bool IsFatal(this Exception exception)
 	{
 		if (exception.IsNull())
 		{
@@ -160,7 +160,7 @@ public static class ExceptionExtensions
 	/// <returns><c>true</c> if the exception is a <see cref="SecurityException"/> or critical; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
-	public static bool IsSecurityOrCritical([NotNull] this Exception exception)
+	public static bool IsSecurityOrCritical(this Exception exception)
 	{
 		if (exception.IsNull())
 		{
@@ -178,7 +178,7 @@ public static class ExceptionExtensions
 	/// <returns>An exception of type <typeparamref name="T"/> if found; otherwise, null.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information(nameof(TraverseFor), UnitTestCoverage = 0, Status = Status.Available)]
-	public static T TraverseFor<T>([NotNull] this Exception exception)
+	public static T TraverseFor<T>(this Exception exception)
 		where T : class
 	{
 		exception = exception.ArgumentNotNull();

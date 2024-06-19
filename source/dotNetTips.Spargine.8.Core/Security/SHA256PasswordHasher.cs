@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-14-2024
+// Last Modified On : 06-16-2024
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -105,7 +105,7 @@ public static class SHA256PasswordHasher
 	/// <remarks>This method generates a new salt for each password, hashes the password using SHA256 with the salt,
 	/// and returns the combined salt and hash as a Base64 string. This approach enhances security by ensuring
 	/// that each password is stored with a unique salt, making it more resistant to dictionary and rainbow table attacks.</remarks>
-	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string HashPassword([NotNull] string password)
 	{
 		password = password.ArgumentNotNullOrEmpty();
@@ -137,7 +137,7 @@ public static class SHA256PasswordHasher
 	/// var result = SHA256PasswordHasher.VerifyHashedPassword(hashedPassword, password);
 	/// Console.WriteLine(result == PasswordVerificationResult.Success ? "Password verified" : "Password verification failed");
 	/// </code></example>
-	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static PasswordVerificationResult VerifyHashedPassword(string hashedPassword, [NotNull] string password)
 	{
 		if (string.IsNullOrEmpty(hashedPassword))

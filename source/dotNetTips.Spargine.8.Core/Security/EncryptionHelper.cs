@@ -74,27 +74,34 @@ public static class EncryptionHelper
 	/// Console.WriteLine(decryptedString);
 	/// </code>
 	/// </example>
-	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string AesDecrypt([NotNull] string cipherText, [NotNull] byte[] key, [NotNull] byte[] iv)
 	{
 		cipherText = cipherText.ArgumentNotNull();
 		key = key.ArgumentNotNull();
 		iv = iv.ArgumentNotNull();
 
-		using var aes = Aes.Create();
-		aes.Key = key;
-		aes.IV = iv;
-		aes.Mode = CipherMode.CBC;
-		aes.Padding = PaddingMode.PKCS7;
-
-		var buffer = Convert.FromBase64String(cipherText);
-
-		using var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-		using var ms = new MemoryStream(buffer);
-		using var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read);
-		using var reader = new StreamReader(cs);
-
-		return reader.ReadToEnd();
+		// Create AesManaged.
+		using (var aes = Aes.Create())
+		{
+			// Create a decryptor.
+			using (var decryptor = aes.CreateDecryptor(key, iv))
+			{
+				// Create the streams used for decryption.
+				using (var ms = new MemoryStream(Convert.FromBase64String(cipherText)))
+				{
+					// Create crypto stream.
+					using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
+					{
+						// Read crypto stream.
+						using (var reader = new StreamReader(cs))
+						{
+							return reader.ReadToEnd();
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/// <summary>
@@ -114,28 +121,34 @@ public static class EncryptionHelper
 	/// </code>
 	/// </example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(AesEncrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(AesEncrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string AesEncrypt([NotNull] string plainText, [NotNull] byte[] key, [NotNull] byte[] iv)
 	{
 		plainText = plainText.ArgumentNotNullOrEmpty(true);
 		key = key.ArgumentNotNull();
 		iv = iv.ArgumentNotNull();
 
-		using var aes = Aes.Create();
-		aes.Key = key;
-		aes.IV = iv;
-		aes.Mode = CipherMode.CBC;
-		aes.Padding = PaddingMode.PKCS7;
-
-		using var ms = new MemoryStream();
-		using var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-		using var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write);
-		using (var sw = new StreamWriter(cs))
+		// Create MemoryStream
+		using (var ms = new MemoryStream())
 		{
-			sw.Write(plainText);
-		}
+			// Create encryptor
+			using (var aesCng = new AesCng())
+			{
+				// Create crypto stream using the CryptoStream class. This class is the key to encryption
+				// and encrypts and decrypts data from any given stream. In this case, we will pass a memory stream
+				// to encrypt
+				using (var cs = new CryptoStream(ms, aesCng.CreateEncryptor(key, iv), CryptoStreamMode.Write))
+				{
+					// Create StreamWriter and write data to a stream
+					using (var sw = new StreamWriter(cs))
+					{
+						sw.Write(plainText);
+					}
+				}
 
-		return Convert.ToBase64String(ms.ToArray());
+				return Convert.ToBase64String(ms.ToArray());
+			}
+		}
 	}
 
 	/// <summary>

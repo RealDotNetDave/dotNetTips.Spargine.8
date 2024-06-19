@@ -4,7 +4,7 @@
 // Created          : 01-13-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-12-2024
+// Last Modified On : 06-19-2024
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -117,10 +117,7 @@ public sealed class InMemoryCache
 	/// <remarks>This method is intended to remove all items from the cache, effectively resetting it.
 	/// Use with caution as this will remove all cached data.</remarks>
 	[Information(nameof(Clear), "David McCarter", "6/12/2024", Status = Status.New, UnitTestCoverage = 0)]
-	public void Clear()
-	{
-		this.Cache.Clear();
-	}
+	public void Clear() => this.Cache.Clear();
 
 	/// <summary>
 	/// Gets the cache item.

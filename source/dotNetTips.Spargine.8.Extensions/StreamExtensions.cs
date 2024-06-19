@@ -4,7 +4,7 @@
 // Created          : 07-22-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-19-2024
 // ***********************************************************************
 // <copyright file="StreamExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -12,7 +12,6 @@
 // <summary>Extension methods designed for Stream.</summary>
 // ***********************************************************************
 using System.Buffers;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using DotNetTips.Spargine.Core;
 
@@ -21,17 +20,17 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Extensions methods for Stream.
+/// Provides extension methods for <see cref="Stream"/> to enhance and simplify its use.
 /// </summary>
 [Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", Status = Status.Available)]
 public static class StreamExtensions
 {
 
 	/// <summary>
-	/// Flushes and closes the Stream.
+	/// Flushes and closes the specified <see cref="Stream"/>.
 	/// </summary>
-	/// <param name="stream">The stream.</param>
-	public static void FlushClose([NotNull] this Stream stream)
+	/// <param name="stream">The <see cref="Stream"/> to flush and close.</param>
+	public static void FlushClose(this Stream stream)
 	{
 		if (stream is not null)
 		{
@@ -41,16 +40,15 @@ public static class StreamExtensions
 	}
 
 	/// <summary>
-	/// Reads from the Stream asynchronously.
-	/// Validates that <paramref name="stream" /> is not null.
+	/// Reads from the <see cref="Stream"/> asynchronously.
+	/// Validates that <paramref name="stream"/> is not null.
 	/// </summary>
-	/// <param name="stream">The stream.</param>
-	/// <param name="destination">The destination.</param>
-	/// <param name="cancellationToken">The cancellation token.</param>
-	/// <returns>ValueTask&lt;System.Int32&gt;.</returns>
-	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	/// <param name="stream">The stream to read from.</param>
+	/// <param name="destination">The memory region to fill with the data read from the stream.</param>
+	/// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+	/// <returns>A task that represents the asynchronous read operation. The value of the TResult parameter contains the total number of bytes read into the buffer.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
-	public static ValueTask<int> ReadAsync([NotNull] this Stream stream, [NotNull] Memory<byte> destination, [AllowNull] CancellationToken cancellationToken = default)
+	public static ValueTask<int> ReadAsync(this Stream stream, Memory<byte> destination, CancellationToken cancellationToken = default)
 	{
 		stream = stream.ArgumentNotNull();
 		destination = destination.ArgumentNotNull();
@@ -82,15 +80,15 @@ public static class StreamExtensions
 	}
 
 	/// <summary>
-	/// Writes to the Stream asynchronously.
-	/// Validates that <paramref name="stream" /> is not null.
+	/// Writes to the <see cref="Stream"/> asynchronously.
+	/// Validates that <paramref name="stream"/> is not null.
 	/// </summary>
-	/// <param name="stream">The stream.</param>
-	/// <param name="source">The source.</param>
-	/// <param name="cancellationToken">The cancellation token.</param>
-	/// <returns>ValueTask.</returns>
+	/// <param name="stream">The <see cref="Stream"/> to write to.</param>
+	/// <param name="source">The data to write to the stream.</param>
+	/// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+	/// <returns>A <see cref="ValueTask"/> that represents the asynchronous write operation.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
-	public static ValueTask WriteAsync([NotNull] this Stream stream, [NotNull] ReadOnlyMemory<byte> source, [AllowNull] CancellationToken cancellationToken = default)
+	public static ValueTask WriteAsync(this Stream stream, ReadOnlyMemory<byte> source, CancellationToken cancellationToken = default)
 	{
 		stream = stream.ArgumentNotNull();
 

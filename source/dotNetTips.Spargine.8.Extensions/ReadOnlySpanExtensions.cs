@@ -4,7 +4,7 @@
 // Created          : 04-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-19-2024
 // ***********************************************************************
 // <copyright file="ReadOnlySpanExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -20,18 +20,20 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class ReadOnlySpanExtensions.
+/// Provides extension methods for <see cref="ReadOnlySpan{T}"/>.
+/// These methods include operations that are not provided by the framework but are commonly used.
 /// </summary>
 public static class ReadOnlySpanExtensions
 {
 
 	/// <summary>
 	/// Picks a random item from a <see cref="ReadOnlySpan{T}" />.
-	/// Validates that <paramref name="span" /> is not empty.
+	/// Validates that the <paramref name="span"/> is not empty before selecting a random item.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="span">The list.</param>
-	/// <returns>ReadOnlySpan&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the span.</typeparam>
+	/// <param name="span">The span from which to pick a random item.</param>
+	/// <returns>A single item from the span as a new <see cref="ReadOnlySpan{T}"/> of length 1.</returns>
+	/// <exception cref="ArgumentException">Thrown when the <paramref name="span"/> is empty.</exception>	[return: NotNull]
 	[Information(nameof(PickRandom), "David McCarter", "6/28/2021", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, UnitTestCoverage = 0)]
 	public static ReadOnlySpan<T> PickRandom<T>([NotNull] this ReadOnlySpan<T> span)
 	{

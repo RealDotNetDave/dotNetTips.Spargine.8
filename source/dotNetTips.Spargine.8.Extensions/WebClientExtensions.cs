@@ -11,7 +11,6 @@
 // </copyright>
 // <summary>Extension methods for WebClient.</summary>
 // ***********************************************************************
-using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Runtime.Serialization.Json;
@@ -23,24 +22,24 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// WebClient Extensions.
+/// Provides extension methods for <see cref="WebClient"/> to enhance its functionality,
+/// including methods for converting JSON data to objects.
 /// </summary>
 public static class WebClientExtensions
 {
 
 	/// <summary>
-	/// Gets the json.
-	/// Validates that <paramref name="client" /> and <paramref name="url" /> is not null.
+	/// Converts JSON data from a specified URL into an object of type <typeparamref name="T"/>.
+	/// Validates that <paramref name="client"/> and <paramref name="url"/> are not null.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="client">The client.</param>
-	/// <param name="url">The URL.</param>
-	/// <returns>T.</returns>
-	/// <exception cref="ArgumentNullException">client</exception>
-	/// <exception cref="ArgumentNullException">URL cannot be empty or null.</exception>
-	[DefaultValue(null)]
+	/// <typeparam name="T">The type of the object to convert to.</typeparam>
+	/// <param name="client">The <see cref="WebClient"/> instance. This parameter cannot be null.</param>
+	/// <param name="url">The URL to download JSON data from. This parameter cannot be null.</param>
+	/// <returns>An instance of type <typeparamref name="T"/> populated with data from the JSON string; otherwise, null if the JSON data is empty.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="client"/> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="url"/> is null.</exception>
 	[Information(nameof(ConvertFrom), UnitTestCoverage = 0, Status = Status.Available)]
-	public static T ConvertFrom<T>([NotNull] this WebClient client, Uri url)
+	public static T ConvertFrom<T>([NotNull] this WebClient client, [NotNull] Uri url)
 		where T : class
 	{
 		client = client.ArgumentNotNull();

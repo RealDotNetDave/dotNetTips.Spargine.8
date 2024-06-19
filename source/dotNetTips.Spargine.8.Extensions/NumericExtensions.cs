@@ -4,13 +4,14 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-13-2024
+// Last Modified On : 06-18-2024
 // ***********************************************************************
 // <copyright file="NumericExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>Extension methods designed for numbers.</summary>
 // ***********************************************************************
+
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -169,6 +170,8 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	[Information(nameof(Increment), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int Increment(this int value, int upperBound = 100, int step = 1)
 	{
+		step = step.ArgumentInRange(0);
+
 		var number = value + step;
 		return number > upperBound ? upperBound : number;
 	}
@@ -462,6 +465,8 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this long totalMilliseconds)
 	{
+		totalMilliseconds = totalMilliseconds.ArgumentInRange(0);
+
 		return $"{(int)(totalMilliseconds / (1000 * 60 * 60)):D2}:{(int)(totalMilliseconds / (1000 * 60) % 60):D2}:{(int)(totalMilliseconds / 1000 % 60):D2}";
 	}
 
@@ -488,6 +493,8 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this int totalMilliseconds)
 	{
+		totalMilliseconds = totalMilliseconds.ArgumentInRange(0);
+
 		return $"{totalMilliseconds / (1000 * 60 * 60):D2}:{totalMilliseconds / (1000 * 60) % 60:D2}:{totalMilliseconds / 1000 % 60:D2}";
 	}
 
@@ -502,6 +509,8 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	[Information(nameof(RoundToPowerOf2), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int RoundToPowerOf2(this int value)
 	{
+		value = value.ArgumentInRange(0);
+
 		var exponent = 1;
 
 		while (true)

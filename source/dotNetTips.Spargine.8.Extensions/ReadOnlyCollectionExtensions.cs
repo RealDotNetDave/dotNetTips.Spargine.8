@@ -21,7 +21,8 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class ReadOnlyCollectionExtensions.
+/// Provides extension methods for <see cref="ReadOnlyCollection{T}"/>.
+/// These methods include checks for item presence, generating hash codes, and performing actions on items within the collection.
 /// </summary>
 public static class ReadOnlyCollectionExtensions
 {

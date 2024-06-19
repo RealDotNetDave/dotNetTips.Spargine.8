@@ -4,7 +4,7 @@
 // Created          : 03-13-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 06-19-2024
 // ***********************************************************************
 // <copyright file="PrefixAndLength.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,7 +13,6 @@
 // ***********************************************************************
 
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -51,7 +50,7 @@ internal struct PrefixAndLength(string prefix, int length) : IEquatable<PrefixAn
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
 	/// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
-	public override readonly bool Equals([NotNullWhen(true)] object obj) => base.Equals(obj);
+	public override readonly bool Equals(object obj) => base.Equals(obj);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.

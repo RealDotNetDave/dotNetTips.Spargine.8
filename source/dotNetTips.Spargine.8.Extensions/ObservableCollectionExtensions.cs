@@ -21,7 +21,8 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class ObservableCollectionExtensions.
+/// Provides extension methods for <see cref="ObservableCollection{T}"/>.
+/// These methods include checks for item presence, item count, and actions on items within the collection.
 /// </summary>
 public static class ObservableCollectionExtensions
 {
@@ -32,8 +33,9 @@ public static class ObservableCollectionExtensions
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="collection">The collection.</param>
 	/// <returns><c>true</c> if the specified collection has items; otherwise, <c>false</c>.</returns>
-	[Information(nameof(DoesNotHaveItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool DoesNotHaveItems<T>([NotNull] this ObservableCollection<T> collection)
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(DoesNotHaveItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
+	public static bool DoesNotHaveItems<T>([AllowNull] this ObservableCollection<T> collection)
 	{
 		if (collection is null)
 		{
@@ -49,7 +51,8 @@ public static class ObservableCollectionExtensions
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="collection">The collection.</param>
 	/// <returns><c>true</c> if the specified collection has items; otherwise, <c>false</c>.</returns>
-	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection)
 	{
 		if (collection is null)
@@ -90,7 +93,8 @@ public static class ObservableCollectionExtensions
 	/// <param name="collection">The collection.</param>
 	/// <param name="count">The specific count.</param>
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
-	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection, int count)
 	{
 		if (collection is null)
