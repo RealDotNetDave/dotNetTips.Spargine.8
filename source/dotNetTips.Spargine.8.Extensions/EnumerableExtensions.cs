@@ -205,7 +205,7 @@ public static class EnumerableExtensions
 	/// <returns>A Task&lt;System.Int32&gt; representing the asynchronous operation.</returns>
 	/// <remarks>Orginal code from: https://github.com/dncuug/X.PagedList/blob/master/src/X.PagedList/PagedListExtensions.cs</remarks>
 	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
-	public static async Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken) => await Task.Run(collection.ArgumentNotNull().Count, cancellationToken).ConfigureAwait(false);
+	public static async Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default) => await Task.Run(collection.ArgumentNotNull().Count, cancellationToken).ConfigureAwait(false);
 
 	/// <summary>
 	/// Creates a new <see cref="Collection{T}" /> from the specified items. Optionally ensures uniqueness of items in the collection.

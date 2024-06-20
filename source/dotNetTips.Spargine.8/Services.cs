@@ -4,7 +4,7 @@
 // Created          : 03-15-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-15-2024
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="Services.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -28,6 +28,7 @@ namespace DotNetTips.Spargine;
 /// Provides a collection of methods for managing and interacting with Windows services and processes.
 /// This includes functionality to load, start, stop services, check service existence, and process status.
 /// </summary>
+[SupportedOSPlatform("windows")]
 public static class Services
 {
 
@@ -51,15 +52,13 @@ public static class Services
 	/// }
 	/// </code>
 	/// </example>
-	[SupportedOSPlatform("windows")]
 	[Information(nameof(LoadService), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	private static ServiceController LoadService(string serviceName) => Array.Find(ServiceController.GetServices(), p => string.Equals(p.ServiceName, serviceName, StringComparison.Ordinal));
+	private static ServiceController LoadService([NotNull] string serviceName) => Array.Find(ServiceController.GetServices(), p => string.Equals(p.ServiceName, serviceName, StringComparison.Ordinal));
 
 	/// <summary>
 	/// Retrieves the names of all services installed on the system.
 	/// </summary>
 	/// <returns>A read-only collection of strings containing the names of all services.</returns>
-	[SupportedOSPlatform("windows")]
 	[Information(nameof(AllServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<string> AllServices() => ServiceController.GetServices().Select(p => p.ServiceName).ToReadOnlyCollection();
 
@@ -76,7 +75,6 @@ public static class Services
 	/// Console.WriteLine($"{processName} is running: {isRunning}");
 	/// </code>
 	/// </example>
-	[SupportedOSPlatform("windows")]
 	[Information(Status = Status.Available)]
 	public static bool IsProcessRunning([NotNull] string processName)
 	{
@@ -98,7 +96,6 @@ public static class Services
 	/// Console.WriteLine($"{processName} has been killed.");
 	/// </code>
 	/// </example>
-	[SupportedOSPlatform("windows")]
 	[Information(UnitTestCoverage = 0, Status = Status.Available)]
 	public static void KillProcess([NotNull] string processName)
 	{
@@ -124,7 +121,6 @@ public static class Services
 	/// Console.WriteLine($"Service exists: {exists}");
 	/// </code>
 	/// </example>
-	[SupportedOSPlatform("windows")]
 	[Information(nameof(ServiceExists), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static bool ServiceExists([NotNull] string serviceName)
 	{
@@ -147,9 +143,8 @@ public static class Services
 	/// Console.WriteLine($"Service status: {status}");
 	/// </code>
 	/// </example>
-	[SupportedOSPlatform("windows")]
 	[Information(nameof(ServiceStatus), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static ServiceControllerStatus ServiceStatus(string serviceName)
+	public static ServiceControllerStatus ServiceStatus([NotNull] string serviceName)
 	{
 		var service = LoadService(serviceName.ArgumentNotNullOrEmpty());
 		return service is not null ? service.Status : throw new InvalidOperationException(Resources.ServiceNotFound);
@@ -168,7 +163,6 @@ public static class Services
 	/// Console.WriteLine($"Service start result: {result}");
 	/// </code>
 	/// </example>
-	[SupportedOSPlatform("windows")]
 	[Information(nameof(StartService), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ServiceActionResult StartService([NotNull] string serviceName)
 	{
@@ -196,7 +190,6 @@ public static class Services
 	/// Starts the services specified in the requests collection.
 	/// </summary>
 	/// <param name="requests">The collection of service action requests.</param>
-	[SupportedOSPlatform("windows")]
 	[Information(nameof(StartServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void StartServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StartService(request.ServiceName));
 
@@ -204,7 +197,6 @@ public static class Services
 	/// Starts or stops the specified services based on the action requests.
 	/// </summary>
 	/// <param name="requests">The collection of service action requests, indicating whether to start or stop each service.</param>
-	[SupportedOSPlatform("windows")]
 	[Information(nameof(StartStopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void StartStopServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request =>
 		{
@@ -231,7 +223,6 @@ public static class Services
 	/// Console.WriteLine($"Service stop result: {result}");
 	/// </code>
 	/// </example>
-	[SupportedOSPlatform("windows")]
 	[Information(nameof(StopService), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ServiceActionResult StopService([NotNull] string serviceName)
 	{
@@ -259,7 +250,6 @@ public static class Services
 	/// Stops the services specified in the requests collection.
 	/// </summary>
 	/// <param name="requests">The collection of service action requests.</param>
-	[SupportedOSPlatform("windows")]
 	[Information(nameof(StopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void StopServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StopService(request.ServiceName));
 

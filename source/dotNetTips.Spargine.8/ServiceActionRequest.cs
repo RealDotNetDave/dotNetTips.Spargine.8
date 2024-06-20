@@ -4,7 +4,7 @@
 // Created          : 03-15-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="ServiceActionRequest.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -14,25 +14,27 @@
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
+
+
 namespace DotNetTips.Spargine;
 
 /// <summary>
-/// Enum ServiceActionRequest.
+/// Defines the request types for a service action.
 /// </summary>
 public enum ServiceActionRequest
 {
 	/// <summary>
-	/// The unknown
+	/// Represents an unknown request. This is the default value.
 	/// </summary>
 	Unknown,
 
 	/// <summary>
-	/// The start
+	/// Represents a request to start the service.
 	/// </summary>
 	Start,
 
 	/// <summary>
-	/// The stop
+	/// Represents a request to stop the service.
 	/// </summary>
 	Stop,
 }

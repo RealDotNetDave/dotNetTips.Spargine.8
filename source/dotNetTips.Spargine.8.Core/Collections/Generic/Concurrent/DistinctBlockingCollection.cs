@@ -81,7 +81,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// </summary>
 	/// <param name="item">The item to be added to the collection. The value can be a null reference.</param>
 	/// <param name="cancellationToken">A cancellation token to observe.</param>
-	public new void Add([NotNull] T item, [AllowNull] CancellationToken cancellationToken = default)
+	public new void Add([NotNull] T item, CancellationToken cancellationToken = default)
 	{
 		if (item is null)
 		{
@@ -181,7 +181,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// <returns>true if the <paramref name="item" /> could be added to the collection within the specified time; otherwise,
 	/// false. If the item is a duplicate, and the underlying collection does not accept duplicate items, then an
 	/// <see cref="InvalidOperationException" /> is thrown.</returns>
-	public new bool TryAdd([AllowNull] T item, int millisecondsTimeout, [AllowNull] CancellationToken cancellationToken)
+	public new bool TryAdd([AllowNull] T item, int millisecondsTimeout, CancellationToken cancellationToken = default)
 	{
 		if (item is null)
 		{

@@ -4,7 +4,7 @@
 // Created          : 01-11-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-15-2024
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="SocketsHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -49,7 +49,7 @@ public static class SocketsHelper
 	/// </code>
 	/// </example>
 	/// <remarks>Original code by: Máňa Píchová.</remarks>
-	public static async ValueTask<Stream> ConnectTcpAsync([NotNull] SocketsHttpConnectionContext context, [AllowNull] CancellationToken cancellationToken)
+	public static async ValueTask<Stream> ConnectTcpAsync([NotNull] SocketsHttpConnectionContext context, CancellationToken cancellationToken = default)
 	{
 		context = context.ArgumentNotNull();
 

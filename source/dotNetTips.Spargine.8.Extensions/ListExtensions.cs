@@ -443,7 +443,7 @@ public static class ListExtensions
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToListAsync), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static async Task<List<TSource>> ToListAsync<TSource>([NotNull] this IAsyncEnumerable<TSource> collection, [AllowNull] CancellationToken cancellationToken = default)
+	public static async Task<List<TSource>> ToListAsync<TSource>([NotNull] this IAsyncEnumerable<TSource> collection, CancellationToken cancellationToken = default)
 	{
 		collection = collection.ArgumentNotNull();
 

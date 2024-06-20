@@ -4,7 +4,7 @@
 // Created          : 01-11-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-15-2024
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="HttpClientHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -37,17 +37,21 @@ public static class HttpClientHelper
 	};
 
 	/// <summary>
-	/// Get HTTP response as an asynchronous operation.
+	/// Asynchronously gets an HTTP response for the specified URL.
 	/// </summary>
-	/// <param name="url">The URL.</param>
-	/// <returns>A Task&lt;HttpResponseMessage&gt; representing the asynchronous operation.</returns>
+	/// <param name="url">The URL to get the response from.</param>
+	/// <returns>A task that represents the asynchronous operation and contains the <see cref="HttpResponseMessage"/>.</returns>
 	/// <example>
 	/// Here is how you can use the GetHttpResponseAsync method:
 	/// <code>
 	/// Uri url = new Uri("https://example.com");
 	/// HttpResponseMessage response = await HttpClientHelper.GetHttpResponseAsync(url);
 	/// Console.WriteLine(response.StatusCode);
-	/// </code></example>
+	/// </code>
+	/// </example>
+	/// <remarks>
+	/// This method creates a new <see cref="CancellationTokenSource"/> internally to manage cancellation.
+	/// </remarks>
 	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static async Task<HttpResponseMessage> GetHttpResponseAsync(Uri url)
 	{

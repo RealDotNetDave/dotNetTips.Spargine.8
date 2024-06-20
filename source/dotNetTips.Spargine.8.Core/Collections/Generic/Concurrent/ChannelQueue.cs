@@ -88,7 +88,7 @@ public sealed class ChannelQueue<T>
 	/// <returns>T.</returns>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(ReadAsync), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
-	public async Task<T> ReadAsync([AllowNull] CancellationToken cancellationToken = default) => await this._channel.Reader.ReadAsync(cancellationToken).ConfigureAwait(false);
+	public async Task<T> ReadAsync(CancellationToken cancellationToken = default) => await this._channel.Reader.ReadAsync(cancellationToken).ConfigureAwait(false);
 
 	/// <summary>
 	/// Write to the Channel as an asynchronous operation.
@@ -98,7 +98,7 @@ public sealed class ChannelQueue<T>
 	/// <returns>A Task representing the asynchronous operation.</returns>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(WriteAsync), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
-	public async Task WriteAsync([NotNull] T item, [AllowNull] CancellationToken cancellationToken = default)
+	public async Task WriteAsync([NotNull] T item, CancellationToken cancellationToken = default)
 	{
 		if (item is null)
 		{
@@ -117,7 +117,7 @@ public sealed class ChannelQueue<T>
 	/// <returns>A Task representing the asynchronous operation.</returns>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(WriteAsync), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
-	public async Task WriteAsync([NotNull] IEnumerable<T> items, bool lockQueue = false, [AllowNull] CancellationToken cancellationToken = default)
+	public async Task WriteAsync([NotNull] IEnumerable<T> items, bool lockQueue = false, CancellationToken cancellationToken = default)
 	{
 		items = items.ArgumentNotNull();
 
