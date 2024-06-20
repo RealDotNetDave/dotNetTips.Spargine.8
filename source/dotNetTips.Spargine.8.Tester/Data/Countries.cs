@@ -4,7 +4,7 @@
 // Created          : 03-12-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-30-2024
+// Last Modified On : 05-31-2024
 // ***********************************************************************
 // <copyright file="Countries.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -27,7 +27,8 @@ using DotNetTips.Spargine.Tester.Properties;
 namespace DotNetTips.Spargine.Tester.Data;
 
 /// <summary>
-/// Class _countries. This class cannot be inherited.
+/// Provides methods for retrieving comprehensive data encompassing all countries worldwide,
+/// including their respective regions, states, and cities.
 /// </summary>
 public static class Countries
 {
@@ -62,7 +63,7 @@ public static class Countries
 	/// <summary>
 	/// Gets country data.
 	/// </summary>
-	/// <returns>ReadOnlyCollection&lt;Country&gt;.</returns>
+	/// <returns>A <see cref="ReadOnlyCollection{Country}"/> representing all countries.</returns>
 	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static ReadOnlyCollection<Country> GetCountries()
 	{
@@ -72,10 +73,11 @@ public static class Countries
 	}
 
 	/// <summary>
-	/// Gets the name of the country by country name.
+	/// Gets the country by the specified country name.
 	/// </summary>
-	/// <param name="countryName">Name of the country.</param>
-	/// <returns>Country.</returns>
+	/// <param name="countryName">The name of the country. This parameter cannot be null.</param>
+	/// <returns>A <see cref="Country"/> object if found; otherwise, null.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
 	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static Country GetCountry([NotNull] CountryName countryName)
 	{
@@ -87,8 +89,9 @@ public static class Countries
 	/// <summary>
 	/// Gets the country by country Id.
 	/// </summary>
-	/// <param name="countryId">The country identifier.</param>
-	/// <returns>Country.</returns>
+	/// <param name="countryId">The country identifier. This parameter must be a positive number.</param>
+	/// <returns>A <see cref="Country"/> object if found; otherwise, null.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="countryId"/> is less than or equal to 0.</exception>
 	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static Country GetCountry(long countryId) => GetCountries().FirstOrDefault(p => p.Id == countryId);
 

@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="PersonData.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -15,6 +15,7 @@
 // </summary>
 // ***********************************************************************
 
+using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Tester.Data;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -22,10 +23,8 @@ using DotNetTips.Spargine.Tester.Data;
 namespace DotNetTips.Spargine.Tester;
 
 /// <summary>
-/// Class PersonData.
-/// Implements the <see cref="IEquatable{PersonData}" />
+/// Represents person data including personal information and contact details.
 /// </summary>
-/// <seealso cref="IEquatable{PersonData}" />
 [Serializable]
 public sealed record PersonData
 {
@@ -36,22 +35,17 @@ public sealed record PersonData
 	public PersonData() { }
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="PersonData" /> class.
+	/// Initializes a new instance of the <see cref="PersonData"/> class.
 	/// </summary>
-	/// <param name="bornOn">The born on.</param>
-	/// <param name="cellPhone">The cell phone.</param>
-	/// <param name="country">The country.</param>
-	/// <param name="email">The email.</param>
-	/// <param name="firstName">The first name.</param>
-	/// <param name="lastName">The last name.</param>
-	/// <param name="phone">The phone.</param>
-	/// <exception cref="ArgumentNullException">cellPhone</exception>
-	/// <exception cref="ArgumentNullException">country</exception>
-	/// <exception cref="ArgumentNullException">email</exception>
-	/// <exception cref="ArgumentNullException">firstName</exception>
-	/// <exception cref="ArgumentNullException">lastName</exception>
-	/// <exception cref="ArgumentNullException">phone</exception>
-	public PersonData(DateTimeOffset bornOn, string cellPhone, Country country, string email, string firstName, string lastName, string phone)
+	/// <param name="bornOn">The date and time the person was born.</param>
+	/// <param name="cellPhone">The cell phone number. Cannot be null.</param>
+	/// <param name="country">The country. Cannot be null.</param>
+	/// <param name="email">The email address. Cannot be null.</param>
+	/// <param name="firstName">The first name. Cannot be null.</param>
+	/// <param name="lastName">The last name. Cannot be null.</param>
+	/// <param name="phone">The phone number. Cannot be null.</param>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="cellPhone"/>, <paramref name="country"/>, <paramref name="email"/>, <paramref name="firstName"/>, <paramref name="lastName"/>, or <paramref name="phone"/> is null.</exception>
+	public PersonData(DateTimeOffset bornOn, [NotNull] string cellPhone, [NotNull] Country country, [NotNull] string email, [NotNull] string firstName, [NotNull] string lastName, [NotNull] string phone)
 	{
 		this.BornOn = bornOn;
 		this.CellPhone = cellPhone ?? throw new ArgumentNullException(nameof(cellPhone));
@@ -63,45 +57,57 @@ public sealed record PersonData
 	}
 
 	/// <summary>
-	/// Gets the born on date.
+	/// Gets the date and time the person was born.
 	/// </summary>
-	/// <value>The born on.</value>
+	/// <value>The date and time of birth.</value>
 	public DateTimeOffset BornOn { get; init; }
 
 	/// <summary>
 	/// Gets the cell phone number.
 	/// </summary>
-	/// <value>The cell phone.</value>
+	/// <value>The cell phone number.</value>
+	/// <seealso cref="PersonData"/>
+	[NotNull]
 	public string CellPhone { get; init; }
 
 	/// <summary>
 	/// Gets the country.
 	/// </summary>
 	/// <value>The country.</value>
+	/// <seealso cref="Country"/>
+	[NotNull]
 	public Country Country { get; init; }
 
 	/// <summary>
-	/// Gets the email.
+	/// Gets the email address.
 	/// </summary>
-	/// <value>The email.</value>
+	/// <value>The email address.</value>
+	/// <seealso cref="PersonData"/>
+	[NotNull]
 	public string Email { get; init; }
 
 	/// <summary>
 	/// Gets the first name.
 	/// </summary>
 	/// <value>The first name.</value>
+	/// <seealso cref="PersonData"/>
+	[NotNull]
 	public string FirstName { get; init; }
 
 	/// <summary>
 	/// Gets the last name.
 	/// </summary>
 	/// <value>The last name.</value>
+	/// <seealso cref="PersonData"/>
+	[NotNull]
 	public string LastName { get; init; }
 
 	/// <summary>
-	/// Gets the phone.
+	/// Gets the phone number.
 	/// </summary>
-	/// <value>The phone.</value>
+	/// <value>The phone number.</value>
+	/// <seealso cref="PersonData"/>
+	[NotNull]
 	public string Phone { get; init; }
 
 }
