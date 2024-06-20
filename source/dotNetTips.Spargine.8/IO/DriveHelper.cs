@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="DriveHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -23,19 +23,28 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Class DriveHelper.
+/// Provides common methods for working with disk drives on Windows.
 /// </summary>
+/// <remarks>
+/// This class includes methods for retrieving information about the system's drives, such as getting the serial number of a drive using <see cref="GetDriveSerialNumber"/>, 
+/// listing all fixed drives that are ready using <see cref="GetFixedDrives"/>, and listing all removable drives that are ready using <see cref="GetRemovableDrives"/>.
+/// </remarks>
 [SupportedOSPlatform("windows")]
 public static class DriveHelper
 {
 
 	/// <summary>
-	/// Gets the serial number of the drive.
+	/// Gets the serial number of the specified drive.
 	/// </summary>
-	/// <param name="drive">The drive.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="drive">The drive letter (e.g., "C:"). Must not be null or empty.</param>
+	/// <returns>The serial number of the drive as a string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="drive"/> is null or empty.</exception>
+	/// <remarks>
+	/// This method utilizes the <see cref="ManagementObjectSearcher"/> to query the system for the drive's serial number.
+	/// It's important to ensure that the <paramref name="drive"/> parameter is not null or empty to avoid runtime errors.
+	/// </remarks>
 	[Information(nameof(GetDriveSerialNumber), author: "David McCarter", createdOn: "9/6/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://dotnettips.wordpress.com/2007/12/14/finding-a-drives-serial-number/")]
-	public static string GetDriveSerialNumber([NotNull] string drive)
+	public static string GetDriveSerialNumber([NotNull][DisallowNull] string drive)
 	{
 		drive = drive.ArgumentNotNullOrEmpty();
 
@@ -63,9 +72,13 @@ public static class DriveHelper
 	}
 
 	/// <summary>
-	/// Gets the fixed drives, that are ready, for a computer.
+	/// Gets the fixed drives that are ready for a computer.
 	/// </summary>
-	/// <returns>ReadOnlyCollection&lt;DriveInfo&gt;.</returns>
+	/// <returns>A <see cref="ReadOnlyCollection{DriveInfo}"/> representing the fixed drives that are ready.</returns>
+	/// <example>Result Example - [0]: {C:\}</example>
+	/// <remarks>
+	/// This method filters the drives returned by <see cref="DriveInfo.GetDrives"/> to include only those that are fixed and ready.
+	/// </remarks>
 	/// <example>Result Example - [0]: {C:\}</example>
 	[Information(nameof(GetFixedDrives), author: "David McCarter", createdOn: "9/6/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<DriveInfo> GetFixedDrives() => DriveInfo.GetDrives()
@@ -74,10 +87,13 @@ public static class DriveHelper
 					.ToList().AsReadOnly();
 
 	/// <summary>
-	/// Gets the removable drives, that are ready, for a computer.
+	/// Gets the removable drives that are ready for a computer.
 	/// </summary>
-	/// <returns>ReadOnlyCollection&lt;DriveInfo&gt;.</returns>
+	/// <returns>A <see cref="ReadOnlyCollection{DriveInfo}"/> representing the removable drives that are ready.</returns>
 	/// <example>Result example - [0]: {E:\} [1]: {F:\}</example>
+	/// <remarks>
+	/// This method filters the drives returned by <see cref="DriveInfo.GetDrives"/> to include only those that are removable and ready.
+	/// </remarks>
 	[Information(nameof(GetRemovableDrives), author: "David McCarter", createdOn: "9/6/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<DriveInfo> GetRemovableDrives() => DriveInfo.GetDrives()
 					.Where(p => p.DriveType == DriveType.Removable && p.IsReady)

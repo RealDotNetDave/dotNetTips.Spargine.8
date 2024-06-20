@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-02-2024
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="PathHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
 
@@ -27,13 +28,23 @@ public static class PathHelper
 {
 
 	/// <summary>
-	/// The invalid file name chars
+	/// The invalid file name characters, excluding '*', '|', and '?'.
 	/// </summary>
+	/// <remarks>
+	/// This array is derived from <see cref="FileHelper.InvalidFileNameChars"/> by filtering out specific characters.
+	/// It is used to validate file names by checking against characters that are not allowed in file names according to the file system.
+	/// </remarks>
+	[SupportedOSPlatform("windows")]
 	private static readonly char[] InvalidFileNameChars = FileHelper.InvalidFileNameChars.Where(c => c is not '*' and not '|' and not '?').ToArray();
 
 	/// <summary>
-	/// The invalid path chars
+	/// The invalid path characters, excluding directory separator characters.
 	/// </summary>
+	/// <remarks>
+	/// This array is derived from <see cref="Path.GetInvalidPathChars"/> by filtering out the directory separator characters
+	/// <see cref="Path.DirectorySeparatorChar"/> and <see cref="Path.AltDirectorySeparatorChar"/>.
+	/// It is used to validate paths by checking against characters that are not allowed in paths according to the file system.
+	/// </remarks>
 	private static readonly char[] InvalidPathChars = Path.GetInvalidPathChars().Where(c => c != Path.DirectorySeparatorChar && c != Path.AltDirectorySeparatorChar).ToArray();
 
 	/// <summary>
@@ -187,6 +198,7 @@ public static class PathHelper
 	/// Console.WriteLine(result); // Output: True
 	/// </code>
 	/// </example>
+	[SupportedOSPlatform("windows")]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static bool HasInvalidFilterChars([NotNull] string filter)
 	{
@@ -209,6 +221,7 @@ public static class PathHelper
 	/// }
 	/// </code>
 	/// </example>
+	[SupportedOSPlatform("windows")]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static ReadOnlyCollection<char> InvalidFilterChars() => InvalidFileNameChars.ToReadOnlyCollection();
 
@@ -251,10 +264,14 @@ public static class PathHelper
 	}
 
 	/// <summary>
-	/// Determines if the path has invalid chars.
+	/// Determines if the path has invalid characters.
 	/// </summary>
-	/// <param name="path">The path.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="path">The path to check for invalid characters.</param>
+	/// <returns><c>true</c> if the path contains any characters that are invalid in file and directory paths; otherwise, <c>false</c>.</returns>
+	/// <remarks>
+	/// This method checks the path against a set of characters that are not allowed in file and directory paths, as defined by the operating system.
+	/// The invalid characters are obtained from <see cref="InvalidPathNameChars"/>, which excludes directory separator characters.
+	/// </remarks>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static bool PathHasInvalidChars([NotNull] string path)
 	{
@@ -266,7 +283,10 @@ public static class PathHelper
 	/// <summary>
 	/// Gets the path separators used in file paths.
 	/// </summary>
-	/// <value>A read-only collection of characters used as path separators.</value>
+	/// <value>
+	/// A read-only collection of characters used as path separators, specifically the
+	/// <see cref="Path.DirectorySeparatorChar"/> and <see cref="Path.AltDirectorySeparatorChar"/>.
+	/// </value>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<char> PathSeparators => new[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar }.ToReadOnlyCollection();
 

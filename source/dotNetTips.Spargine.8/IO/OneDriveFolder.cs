@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="OneDriveFolder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -18,7 +18,7 @@ using DotNetTips.Spargine.Extensions;
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Class OneDriveFolder.
+/// Represents a OneDrive folder, providing details such as account name, account type, directory information, and user email.
 /// </summary>
 public class OneDriveFolder
 {

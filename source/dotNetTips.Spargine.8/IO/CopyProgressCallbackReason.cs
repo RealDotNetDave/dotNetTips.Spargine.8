@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="CopyProgressCallbackReason.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -12,23 +12,29 @@
 // <summary>Common methods for working with files.</summary>
 // ***********************************************************************
 
+
 namespace DotNetTips.Spargine.IO;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 /// <summary>
-/// Enum CopyProgressCallbackReason
+/// Specifies the reason the callback function was called during a file copy operation.
 /// </summary>
+/// <remarks>
+/// This enum is used in conjunction with the CopyFileEx method to indicate the progress of the copy operation.
+/// </remarks>
 public enum CopyProgressCallbackReason : uint
 {
 	/// <summary>
-	/// The chunk finished
+	/// Indicates that a chunk of the file has been copied.
 	/// </summary>
 	ChunkFinished = 0x00000000,
-
 	/// <summary>
-	/// The stream switch
+	/// Indicates that the copy operation is switching to a new stream.
 	/// </summary>
+	/// <remarks>
+	/// This is typically used when copying files that contain alternate data streams.
+	/// </remarks>
 	StreamSwitch = 0x00000001
 }
 

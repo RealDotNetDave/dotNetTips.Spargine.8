@@ -15,11 +15,21 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Enum SpecialFolder.
+/// Enum SpecialFolder defines constants for many commonly used special folders.
+/// These folders are locations in the file system that are used to store user documents,
+/// application settings, files, and other data. Special folders make it easier to locate
+/// these common directories across different versions of Windows.
 /// </summary>
+/// <remarks>
+/// The values in this enumeration correspond to the constants used by the
+/// <see cref="Environment.SpecialFolder"/> enumeration provided by the .NET Framework.
+/// They represent system-defined special folder locations. These locations can vary
+/// across different operating systems and can be redirected by the user.
+/// </remarks>
 public enum SpecialFolder
 {
 	/// <summary>

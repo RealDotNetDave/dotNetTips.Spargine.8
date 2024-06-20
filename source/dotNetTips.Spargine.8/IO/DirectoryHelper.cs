@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-16-2024
+// Last Modified On : 06-18-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -70,7 +70,7 @@ public static class DirectoryHelper
 	/// </code></example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool CheckPermission(DirectoryInfo directory, FileSystemRights permission = FileSystemRights.Read)
+	public static bool CheckPermission([NotNull] DirectoryInfo directory, FileSystemRights permission = FileSystemRights.Read)
 	{
 		directory = directory.ArgumentNotNull();
 
@@ -317,11 +317,16 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Moves the directory with retry. Retry max count is 100.
+	/// Moves a directory from a source to a destination, optionally allowing retries in case of failure.
 	/// </summary>
-	/// <param name="source">The source directory to move.</param>
-	/// <param name="destination">The destination directory where <paramref name="source" /> should be moved.</param>
-	/// <param name="retries">The number of retry attempts for the move operation. Default is 10.</param>
+	/// <param name="source">The source directory to move. Must not be null.</param>
+	/// <param name="destination">The destination directory where the source directory should be moved to. Must not be null.</param>
+	/// <param name="retries">The number of retry attempts for the move operation. Must be greater than or equal to 0.</param>
+	/// <remarks>
+	/// This method uses <see cref="DirectoryInfo.MoveTo"/> for moving the directory. If the operation fails, it will retry the specified number of times.
+	/// </remarks>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="destination"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="retries"/> is less than 0.</exception>
 	/// <example>
 	/// This example shows how to call the <see cref="MoveDirectory" /> method.
 	/// <code>
@@ -329,7 +334,6 @@ public static class DirectoryHelper
 	/// var destDir = new DirectoryInfo(@"C:\DestinationDirectory");
 	/// DirectoryHelper.MoveDirectory(sourceDir, destDir, 5);
 	/// </code></example>
-	/// <remarks>This method attempts to move <paramref name="source" /> to <paramref name="destination" />. If the operation fails due to an <see cref="IOException" /> or <see cref="UnauthorizedAccessException" />, it will retry the operation up to <paramref name="retries" /> times.</remarks>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100)]
 	public static void MoveDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, int retries = 10)
@@ -344,12 +348,15 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Searches the specified directory and returns true if it contains any files that match one of the search patterns.
+	/// Performs a safe directory search by matching specified search patterns and search option, ignoring errors accessing directories.
 	/// </summary>
 	/// <param name="path">The directory to search.</param>
-	/// <param name="searchOption">The search option to use: either the current directory only or include all subdirectories.</param>
+	/// <param name="searchOption">Specifies whether the search operation should include only the current directory or should include all subdirectories.</param>
 	/// <param name="searchPatterns">The search patterns to use for matching files.</param>
 	/// <returns><c>true</c> if the directory contains any files that match the search patterns; otherwise, <c>false</c>.</returns>
+	/// <remarks>
+	/// Utilizes <see cref="DirectoryInfo.EnumerateDirectories(string, SearchOption)"/> and <see cref="DirectoryInfo.EnumerateFiles(string, SearchOption)"/> for searching, providing a more robust and error-tolerant approach compared to direct enumeration.
+	/// </remarks>
 	/// <example>
 	/// This example shows how to call the SafeDirectorySearch method.
 	/// <code>
@@ -371,10 +378,12 @@ public static class DirectoryHelper
 	/// <summary>
 	/// Performs a safe directory search by matching a specified search pattern and search option.
 	/// </summary>
-	/// <param name="path">The root directory to start the search from.</param>
+	/// <param name="path">The root directory to start the search from. Must not be null.</param>
 	/// <param name="searchPattern">The search pattern to match against the directory names. Default is "*.*" which matches all directories.</param>
 	/// <param name="searchOption">Specifies whether to search only the current directory, or all subdirectories. The default is <see cref="SearchOption.TopDirectoryOnly" />.</param>
 	/// <returns>An <see cref="IEnumerable{DirectoryInfo}" /> containing directories that match the search pattern and option.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="path"/> or <paramref name="searchPattern"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="searchOption"/> is not a valid <see cref="SearchOption"/>.</exception>
 	/// <example>
 	/// This example shows how to call the SafeDirectorySearch method.
 	/// <code>
@@ -411,10 +420,12 @@ public static class DirectoryHelper
 	/// Performs a safe file search in the specified directory using the given search pattern and search option.
 	/// Ignores errors accessing directories.
 	/// </summary>
-	/// <param name="path">The directory to search.</param>
-	/// <param name="searchPattern">The search pattern to match against the names of files in <paramref name="path" />.</param>
-	/// <param name="searchOption">Specifies whether the search operation should include only the current directory or should include all subdirectories.</param>
-	/// <returns>A read-only collection of <see cref="FileInfo" /> objects that match the search pattern and option.</returns>
+	/// <param name="path">The directory to search. Must not be null.</param>
+	/// <param name="searchPattern">The search pattern to match against the names of files in <paramref name="path"/>.</param>
+	/// <param name="searchOption">Specifies whether the search operation should include only the current directory or should include all subdirectories. Uses <see cref="SearchOption"/>.</param>
+	/// <returns>A read-only collection of <see cref="FileInfo"/> objects that match the search pattern and option.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="path"/> or <paramref name="searchPattern"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="searchOption"/> is not a valid <see cref="SearchOption"/>.</exception>
 	/// <example>
 	/// This example shows how to call the SafeFileSearch method.
 	/// <code>
@@ -427,7 +438,7 @@ public static class DirectoryHelper
 	/// </code></example>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "http://bit.ly/SpargineMarch2021")]
-	public static ReadOnlyCollection<FileInfo> SafeFileSearch(DirectoryInfo path, string searchPattern, SearchOption searchOption)
+	public static ReadOnlyCollection<FileInfo> SafeFileSearch([NotNull] DirectoryInfo path, [NotNull] string searchPattern, SearchOption searchOption)
 	{
 		var directories = new List<DirectoryInfo>(1)
 		{
@@ -441,10 +452,12 @@ public static class DirectoryHelper
 	/// Performs a safe file search in the specified directories using the given search pattern and search option.
 	/// Ignores errors accessing directories.
 	/// </summary>
-	/// <param name="directories">The directories to search.</param>
-	/// <param name="searchPattern">The search pattern to match against the names of files in <paramref name="directories" />.</param>
-	/// <param name="searchOption">Specifies whether the search operation should include only the current directory or should include all subdirectories.</param>
-	/// <returns>An <see cref="IEnumerable{FileInfo}" /> containing files that match the search pattern and option.</returns>
+	/// <param name="directories">The directories to search. Must not be null.</param>
+	/// <param name="searchPattern">The search pattern to match against the names of files in <paramref name="directories"/>.</param>
+	/// <param name="searchOption">Specifies whether the search operation should include only the current directory or should include all subdirectories. Uses <see cref="SearchOption"/>.</param>
+	/// <returns>An <see cref="IEnumerable{FileInfo}"/> containing files that match the search pattern and option.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="directories"/> or <paramref name="searchPattern"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="searchOption"/> is not a valid <see cref="SearchOption"/>.</exception>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100)]
 	public static IEnumerable<FileInfo> SafeFileSearch([NotNull] IEnumerable<DirectoryInfo> directories, [NotNull] string searchPattern, SearchOption searchOption = SearchOption.TopDirectoryOnly)
@@ -483,9 +496,14 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Sets the file attributes of all files and directories within the specified directory to normal.
+	/// Sets the attributes of all files in the specified directory, and its subdirectories, to normal.
 	/// </summary>
-	/// <param name="path">The directory whose contents' attributes will be set to normal.</param>
+	/// <param name="path">The directory whose file attributes will be set to normal. Must not be null.</param>
+	/// <remarks>
+	/// This method recursively traverses all files in the given directory and its subdirectories, setting their attributes to <see cref="FileAttributes.Normal"/>.
+	/// It's useful for preparing files for deletion that might otherwise be read-only or have other attributes set.
+	/// </remarks>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="path"/> is null.</exception>
 	/// <example>
 	/// This example shows how to call the <see cref="SetFileAttributesToNormal" /> method.
 	/// <code>

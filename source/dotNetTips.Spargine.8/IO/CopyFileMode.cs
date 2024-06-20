@@ -4,7 +4,7 @@
 // Created          : 11-02-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2024
+// Last Modified On : 02-27-2024
 // ***********************************************************************
 // <copyright file="CopyFileMode.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,43 +13,44 @@
 // ***********************************************************************
 
 
+
 namespace DotNetTips.Spargine.IO;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 /// <summary>
-/// Enum CopyFileMode
+/// Defines copy file modes for use with CopyFileEx method.
 /// </summary>
 [Flags]
 public enum CopyFileMode : uint
 {
 	/// <summary>
-	/// The fail if exists
+	/// The operation fails if the target file already exists.
 	/// </summary>
 	FailIfExists = 0x00000001,
 
 	/// <summary>
-	/// The restartable
+	/// The copy operation is restartable.
 	/// </summary>
 	Restartable = 0x00000002,
 
 	/// <summary>
-	/// The open source for write
+	/// Opens the source file with write permissions.
 	/// </summary>
 	OpenSourceForWrite = 0x00000004,
 
 	/// <summary>
-	/// The allow decrypted destination
+	/// Allows the destination file to be decrypted.
 	/// </summary>
 	AllowDecryptedDestination = 0x00000008,
 
 	/// <summary>
-	/// The copy symlink
+	/// Copies the symbolic link itself rather than the target of the link.
 	/// </summary>
 	CopySymlink = 0x00000800,
 
 	/// <summary>
-	/// The no buffering
+	/// Copies data to the target file without using the Windows cache manager.
 	/// </summary>
 	NoBuffering = 0x00001000
 }

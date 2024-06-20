@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="FileProgressState.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -15,30 +15,35 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+
+
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
 /// Enum FileProgressState
 /// </summary>
+/// <remarks>
+/// Defines the possible states of a file operation, such as copying, moving, or deleting.
+/// </remarks>
 public enum FileProgressState
 {
 	/// <summary>
-	/// The error
+	/// Indicates an error occurred during the file operation.
 	/// </summary>
 	Error = 0,
 
 	/// <summary>
-	/// The deleted
+	/// Indicates the file was successfully deleted.
 	/// </summary>
 	Deleted = 1,
 
 	/// <summary>
-	/// The moved
+	/// Indicates the file was successfully moved.
 	/// </summary>
 	Moved = 2,
 
 	/// <summary>
-	/// The copied
+	/// Indicates the file was successfully copied.
 	/// </summary>
 	Copied = 3,
 }

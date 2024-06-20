@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="FileProgressEventArgs.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -15,12 +15,16 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+
+
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Class FileProgressEventArgs. This class cannot be inherited.
-/// Implements the <see cref="EventArgs" />
+/// Represents the arguments for file progress events.
 /// </summary>
+/// <remarks>
+/// This class provides data for events related to the progress of file operations, such as copying, moving, or deleting files.
+/// </remarks>
 /// <seealso cref="EventArgs" />
 public sealed class FileProgressEventArgs : EventArgs
 {
@@ -33,7 +37,7 @@ public sealed class FileProgressEventArgs : EventArgs
 	/// <summary>
 	/// Gets or sets the file progress message.
 	/// </summary>
-	/// <value>The message.</value>
+	/// <value>The message indicating the progress of the file operation.</value>
 	public string Message
 	{
 		get; internal set;
@@ -42,7 +46,7 @@ public sealed class FileProgressEventArgs : EventArgs
 	/// <summary>
 	/// Gets or sets the full path and file name.
 	/// </summary>
-	/// <value>The full name.</value>
+	/// <value>The full name of the file including its path.</value>
 	public string Name
 	{
 		get; internal set;
@@ -52,6 +56,7 @@ public sealed class FileProgressEventArgs : EventArgs
 	/// Gets or sets the progress state.
 	/// </summary>
 	/// <value>The state of the progress.</value>
+	/// <seealso cref="FileProgressState"/>
 	public FileProgressState ProgressState
 	{
 		get; internal set;
@@ -60,7 +65,7 @@ public sealed class FileProgressEventArgs : EventArgs
 	/// <summary>
 	/// Gets or sets the file size.
 	/// </summary>
-	/// <value>The size.</value>
+	/// <value>The size of the file in bytes.</value>
 	public long Size
 	{
 		get; internal set;
@@ -69,7 +74,7 @@ public sealed class FileProgressEventArgs : EventArgs
 	/// <summary>
 	/// Gets or sets the speed in milliseconds.
 	/// </summary>
-	/// <value>The speed in milliseconds.</value>
+	/// <value>The speed of the file operation in milliseconds.</value>
 	public double SpeedInMilliseconds
 	{
 		get; internal set;

@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="LibraryImport.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -20,33 +20,37 @@ using static DotNetTips.Spargine.IO.FileHelper;
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Class LibraryImport.
+/// Provides P/Invoke method signatures for Windows API calls.
 /// </summary>
+/// <remarks>
+/// This class contains methods that are used to invoke native system calls from the Windows Kernel32.dll.
+/// The methods within are used for file operations such as copying and moving files with advanced options not available through managed code.
+/// </remarks>
 internal static partial class LibraryImport
 {
 
 	/// <summary>
-	/// Copies the file ex.
+	/// Copies an existing file to a new file, notifying the application of its progress through a callback function.
 	/// </summary>
-	/// <param name="lpExistingFileName">Name of the lp existing file.</param>
-	/// <param name="lpNewFileName">Name of the lp new file.</param>
-	/// <param name="lpProgressRoutine">The lp progress routine.</param>
-	/// <param name="lpData">The lp data.</param>
-	/// <param name="pbCancel">The pb cancel.</param>
-	/// <param name="dwCopyFlags">The dw copy flags.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="lpExistingFileName">The name of the existing file.</param>
+	/// <param name="lpNewFileName">The name of the new file.</param>
+	/// <param name="lpProgressRoutine">A callback function that is called each time another portion of the file has been copied. This function is of type <see cref="CopyProgressRoutine"/>.</param>
+	/// <param name="lpData">An argument to be passed to the callback function. This is a pointer to the data used by the callback function.</param>
+	/// <param name="pbCancel">A reference to an integer that, if set to TRUE during the copy operation, cancels the operation. Otherwise, the copy operation will continue to completion.</param>
+	/// <param name="dwCopyFlags">Flags that specify how the file is to be copied. This parameter can be one or more of the values defined in the <see cref="CopyFileMode"/> enumeration.</param>
+	/// <returns><c>true</c> if the file was successfully copied; otherwise, <c>false</c>.</returns>
 	[LibraryImport("kernel32.dll", EntryPoint = "CopyFileExW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
 	[DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
 	[return: MarshalAs(UnmanagedType.Bool)]
 	internal static partial bool CopyFileEx(string lpExistingFileName, string lpNewFileName, CopyProgressRoutine lpProgressRoutine, IntPtr lpData, ref int pbCancel, CopyFileMode dwCopyFlags);
 
 	/// <summary>
-	/// Moves the file.
+	/// Moves an existing file to a new file location, with options for overwrite behavior and other flags.
 	/// </summary>
-	/// <param name="lpExistingFileName">Name of the lp existing file.</param>
-	/// <param name="lpNewFileName">Name of the lp new file.</param>
-	/// <param name="dwFlags">The dw flags.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="lpExistingFileName">The name of the existing file to move.</param>
+	/// <param name="lpNewFileName">The name of the new file location.</param>
+	/// <param name="dwFlags">Flags that specify how the file is to be moved. This parameter can be one or more of the values defined in the MoveFileFlags enumeration.</param>
+	/// <returns><c>true</c> if the file was successfully moved; otherwise, <c>false</c>. To get extended error information, call <see cref="Marshal.GetLastWin32Error"/>.</returns>
 	[LibraryImport("kernel32.dll", EntryPoint = "MoveFileExW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
 	[DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
 	[return: MarshalAs(UnmanagedType.Bool)]
