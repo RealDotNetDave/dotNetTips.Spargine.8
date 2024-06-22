@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-18-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -19,6 +19,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -56,20 +57,27 @@ public static class EnumerableExtensions
 	/// <returns>An <see cref="IEnumerable{T}" /> that contains the distinct elements from the original collection and any new items added.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source" /> or <paramref name="items" /> is null.</exception>
 	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
-	public static IEnumerable<T> AddDistinct<T>(this IEnumerable<T> source, params T[] items)
+	public static IEnumerable<T> AddDistinct<T>([NotNull] this IEnumerable<T> source, [NotNull] params T[] items)
 	{
-		source = source.ArgumentNotNull();
-		items = items.ArgumentNotNull();
+		source ??= [];
 
-		//ASSPAN IS SLOWER. NEW CODE FROM COPILOT
-		var uniqueItems = new HashSet<T>(source);
-		foreach (var item in items)
+		if (items is null || !items.HasItems())
 		{
-			if (uniqueItems.Add(item)) // Add returns true if the item was added (i.e., it was not already present)
+			return source;
+		}
+
+		//SUGGESTION FROM COPILOT DOES NOT WORK
+		var result = source.ToList();
+
+		foreach (var itemItem in items.AsSpan())
+		{
+			if (!result.Contains(itemItem))
 			{
-				yield return item;
+				result.Add(itemItem);
 			}
 		}
+
+		return result;
 	}
 
 	/// <summary>
@@ -504,62 +512,37 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Returns the zero-based index of the first occurrence of a specific item in the <see cref="IEnumerable{T}"/>.
+	/// Finds the index of the first occurrence of a specific item in the given collection.
 	/// </summary>
-	/// <typeparam name="T">The type of the elements of the input collection.</typeparam>
+	/// <remarks>
+	/// This method extends IEnumerable&lt;T&gt; to provide a convenient way to find the index of an item using the default equality comparer.
+	/// </remarks>
+	/// <typeparam name="T">The type of the items in the collection.</typeparam>
 	/// <param name="collection">The collection to search.</param>
-	/// <param name="item">The object to locate in the <paramref name="collection"/>.</param>
-	/// <returns>The zero-based index of the first occurrence of <paramref name="item"/> within the entire <paramref name="collection"/>, if found; otherwise, -1.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when <paramref name="collection"/> is null.</exception>
-	[Pure]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static int IndexOf<T>(this IEnumerable<T> collection, T item)
-	{
-		collection = collection.ArgumentNotNull();
-
-		var index = 0;
-
-		foreach (var element in collection)
-		{
-			if (EqualityComparer<T>.Default.Equals(element, item))
-			{
-				return index;
-			}
-			index++;
-		}
-		return -1;
-	}
+	/// <param name="item">The item to locate in the collection.</param>
+	/// <returns>The index of the first occurrence of the item within the collection, if found; otherwise, -1.</returns>
+	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item) => IndexOf(collection.ArgumentItemsExists(), item.ArgumentNotNull(), EqualityComparer<T>.Default);
 
 	/// <summary>
-	/// Returns the zero-based index of the first occurrence of a specific item in the <see cref="IEnumerable{T}"/>, using a specified <see cref="IEqualityComparer{T}"/>.
+	/// Finds the index of the first occurrence of a specific item in the given collection, using a specified <see cref="IEqualityComparer{T}"/>.
 	/// </summary>
-	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
+	/// <remarks>
+	/// This method extends IEnumerable&lt;T&gt; to provide a convenient way to find the index of an item using a custom equality comparer.
+	/// </remarks>
+	/// <typeparam name="T">The type of the items in the collection.</typeparam>
 	/// <param name="collection">The collection to search.</param>
-	/// <param name="item">The object to locate in the collection.</param>
-	/// <param name="comparer">An equality comparer to compare values.</param>
-	/// <returns>The zero-based index of the first occurrence of <paramref name="item"/> within the entire <paramref name="collection"/>, if found; otherwise, -1.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/>, <paramref name="item"/>, or <paramref name="comparer"/> is null.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static int IndexOf<T>(this IEnumerable<T> collection, T item, IEqualityComparer<T> comparer)
+	/// <param name="item">The item to locate in the collection.</param>
+	/// <param name="comparer">The equality comparer to use for comparing items.</param>
+	/// <returns>The index of the first occurrence of the item within the collection, if found; otherwise, -1.</returns>
+	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item, [NotNull] IEqualityComparer<T> comparer)
 	{
 		collection = collection.ArgumentItemsExists();
+		item = item.ArgumentNotNull();
 		comparer = comparer.ArgumentNotNull();
 
-		var index = 0;
-
-		foreach (var element in collection)
-		{
-			if (comparer.Equals(element, item))
-			{
-				return index;
-			}
-			index++;
-		}
-
-		return -1;
+		return collection.Select((x, index) => comparer.Equals(item, x) ? index : -1).FirstOrDefault(x => x != -1, -1);
 	}
 
 	/// <summary>
@@ -630,25 +613,36 @@ public static class EnumerableExtensions
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(OrderBy), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static IEnumerable<T> OrderBy<T>(this IEnumerable<T> collection, string sortExpression)
+	public static IEnumerable<T> OrderBy<T>([NotNull] this IEnumerable<T> collection, [NotNull] string sortExpression)
 	{
 		collection = collection.ArgumentNotNull();
-		sortExpression = sortExpression.ArgumentNotNullOrEmpty();
 
-		var propertyInfo = typeof(T).GetProperty(sortExpression);
+		sortExpression += string.Empty;
 
-		if (propertyInfo == null)
+		var parts = sortExpression.Split(Convert.ToChar(" ", CultureInfo.InvariantCulture));
+		var descending = false;
+		var property = string.Empty;
+
+		if (parts.LongLength > 0 && !string.IsNullOrEmpty(parts[0]))
 		{
-			ExceptionThrower.ThrowArgumentException($"No property '{sortExpression}' found on type '{typeof(T).Name}'.", nameof(sortExpression));
+			property = parts[0];
+
+			if (parts.LongLength > 1)
+			{
+				@descending = CultureInfo.InvariantCulture.TextInfo.ToLower(parts[1]).Contains("esc", StringComparison.OrdinalIgnoreCase);
+			}
+
+			var prop = typeof(T).GetRuntimeProperty(property);
+
+			if (prop.CheckIsNotNull(throwException: true))
+			{
+				return @descending
+					? collection.OrderByDescending(x => prop.GetValue(x, null))
+					: collection.OrderBy(x => prop.GetValue(x, null));
+			}
 		}
 
-		var orderedCollection = collection.OrderBy(item =>
-		{
-			var value = propertyInfo.GetValue(item, null);
-			return value;
-		});
-
-		return orderedCollection;
+		return collection;
 	}
 
 	/// <summary>

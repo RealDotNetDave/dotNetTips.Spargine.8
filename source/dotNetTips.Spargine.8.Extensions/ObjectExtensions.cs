@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-18-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -19,6 +19,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Serialization;
 using DotNetTips.Spargine.Extensions.Properties;
@@ -280,28 +281,73 @@ public static class ObjectExtensions
 	/// [24]: {[PersonRecord.Addresses[1].PostalCode, 33385672]}
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[return: NotNull]
 	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static IDictionary<string, string> PropertiesToDictionary([NotNull] this object obj, [NotNull] string memberName = ControlChars.EmptyString, bool ignoreNulls = true)
 	{
 		obj = obj.ArgumentNotNull();
 
-		var properties = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 		var result = new Dictionary<string, string>();
+		memberName = memberName.ArgumentNotNull();
 
-		foreach (var property in properties)
+		var objectType = obj.ArgumentNotNull().GetType();
+
+		// Reserve a special treatment for specific types by design (like string -that's a list of chars and you don't want to iterate on its items)
+		if (TypeHelper.BuiltInTypeNames.ContainsKey(objectType))
 		{
-			if (!string.IsNullOrEmpty(memberName) && !property.Name.Equals(memberName, StringComparison.Ordinal))
+			result.Add(memberName, obj.ToString());
+			return result;
+		}
+
+		// If the type implements the IEnumerable interface.
+		if (objectType.IsEnumerable())
+		{
+			var itemCount = 0;
+
+			// Loop through the collection using the enumerator strategy and collect all items in the result bag
+			// Note: if the collection is empty it will not return anything about its existence,
+			// because the method is supposed to catch value items not the list itself
+			foreach (var item in (IEnumerable)obj)
 			{
-				continue;
+				var itemId = itemCount++;
+
+				var itemInnerMember = string.Format(CultureInfo.CurrentCulture, $"{{0}}[{{1}}]", memberName, itemId);
+
+				result = result.Concat(item.PropertiesToDictionary(itemInnerMember)).ToDictionary(e => e.Key, e => e.Value);
 			}
 
-			var value = property.GetValue(obj);
-			if (value == null && ignoreNulls)
-			{
-				continue;
-			}
+			return result;
+		}
 
-			result[property.Name] = value?.ToString() ?? string.Empty;
+		// Otherwise go deeper in the object tree.
+		// And foreach object public property collect each value
+		var propertyCollection = objectType.GetProperties();
+
+		var newMemberName = string.Empty;
+
+		if (memberName.Length > 0)
+		{
+			newMemberName = $"{memberName}{ControlChars.Dot}";
+		}
+
+		//Span is slower
+		foreach (var property in propertyCollection)
+		{
+			var ignoreAttribute = property.GetAttribute<JsonIgnoreAttribute>();
+
+			if (ignoreAttribute == null)
+			{
+				var innerObject = property.GetValue(obj, (object[])null);
+
+				if (ignoreNulls && innerObject is null)
+				{
+					continue;
+				}
+
+				var innerMember = string.Format(CultureInfo.CurrentCulture, "{0}{1}", newMemberName, property.Name);
+
+				result = result.Concat(innerObject.PropertiesToDictionary(innerMember)).ToDictionary(e => e.Key, e => e.Value);
+			}
 		}
 
 		return result;
