@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-20-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -30,6 +30,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// <remarks>
 /// This implementation provides atomic operations for adding, removing, and checking for elements, making it suitable for concurrent scenarios.
 /// </remarks>
+[Information(Status = Status.Available, UnitTestCoverage = 99)]
 public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T>
 {
 
@@ -83,67 +84,35 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="comparer"/> is null.</exception>
 	private ConcurrentHashSet(int concurrencyLevel, int capacity, bool growLockArray, [NotNull] IEqualityComparer<T> comparer)
 	{
-
 		if (concurrencyLevel < 1)
-
 		{
-
 			concurrencyLevel = 1;
-
 		}
-
-
 
 		concurrencyLevel = concurrencyLevel.EnsureMinimum(1);
-
 		capacity = capacity.EnsureMinimum(0);
 
-
-
 		// The capacity should be at least as large as the concurrency level. Otherwise, we would have locks that don't guard
-
 		// any buckets.
-
 		if (capacity < concurrencyLevel)
-
 		{
-
 			capacity = concurrencyLevel;
-
 		}
-
-
 
 		var locks = new object[concurrencyLevel];
 
-
-
 		for (var lockCount = 0; lockCount < locks.Length; lockCount++)
-
 		{
-
 			locks[lockCount] = new object();
-
 		}
 
-
-
 		var countPerLock = new int[locks.Length];
-
 		var buckets = new Node[capacity];
 
-
-
 		this._tables = new Tables(buckets, locks, countPerLock);
-
-
-
 		this._growLockArray = growLockArray;
-
 		this._budget = buckets.Length / locks.Length;
-
 		this._comparer = comparer ?? EqualityComparer<T>.Default;
-
 	}
 
 
