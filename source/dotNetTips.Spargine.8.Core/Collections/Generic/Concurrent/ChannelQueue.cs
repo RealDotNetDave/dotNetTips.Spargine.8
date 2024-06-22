@@ -4,7 +4,7 @@
 // Created          : 11-12-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-20-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="ChannelQueue.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -26,7 +26,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// Thread-Safe queue using <see cref="Channel{T}"/>.
 /// </summary>
 /// <typeparam name="T">The type of items stored in the queue.</typeparam>
-[Information("Queue using Channel<T>.", "David McCarter", "7/26/2021")]
+[Information("Queue using Channel<T>.", "David McCarter", "7/26/2021", UnitTestCoverage = 99)]
 public sealed class ChannelQueue<T>
 {
 
