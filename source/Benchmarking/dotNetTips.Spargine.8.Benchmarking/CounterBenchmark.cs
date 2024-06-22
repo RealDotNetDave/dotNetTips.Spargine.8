@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="CounterBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -16,39 +16,33 @@ using BenchmarkDotNet.Loggers;
 namespace DotNetTips.Spargine.Benchmarking;
 
 /// <summary>
-/// CounterBenchmark base class.
-/// Implements the <see cref="Benchmark" />
+/// Provides a base class for benchmark tests that involve a counter. This abstract class is designed to be inherited by benchmarks that require counting operations, ensuring a consistent setup and logging mechanism across different counting benchmarks.
 /// </summary>
-/// <seealso cref="Benchmark" />
 public abstract class CounterBenchmark : Benchmark
 {
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="CounterBenchmark" /> class.
+	/// Initializes a new instance of the <see cref="CounterBenchmark"/> class.
 	/// </summary>
-	/// <param name="maxCount">The maximum count.</param>
+	/// <param name="maxCount">The maximum count for the benchmark, ensuring that the count does not fall below 2.</param>
 	protected CounterBenchmark(int maxCount)
 	{
 		this.MaxCount = Math.Max(2, maxCount);
-
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Max Count={maxCount}: {nameof(CounterBenchmark)}.");
-
 	}
 
 	/// <summary>
-	/// Gets the maximum count.
+	/// Gets the maximum count for the benchmark. This value is used to determine the upper limit of counting operations in derived benchmark classes.
 	/// </summary>
 	/// <value>The maximum count.</value>
-
 	protected int MaxCount { get; }
 
 	/// <summary>
-	/// Setups this instance.
+	/// Performs setup operations for the counter benchmark. This method is called automatically by the BenchmarkDotNet framework before each benchmark run. It ensures that the base setup is called and logs the maximum count.
 	/// </summary>
 	public override void Setup()
 	{
 		base.Setup();
-
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Max Count={this.MaxCount}: {nameof(CounterBenchmark)}.");
 	}
 

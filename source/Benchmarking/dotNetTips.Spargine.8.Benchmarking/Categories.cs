@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="Categories.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -15,146 +15,148 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+
+
 namespace DotNetTips.Spargine.Benchmarking;
 
 /// <summary>
-/// Class Categories.
+/// Provides a list of categories used to classify benchmarks. These categories help in organizing and filtering benchmarks based on their functionality or the features they demonstrate.
 /// </summary>
 public static class Categories
 {
 
 	/// <summary>
-	/// Asynchronous code
+	/// Category for benchmarks involving arrays.
 	/// </summary>
 	public const string Array = "Array";
 
 	/// <summary>
-	/// Asynchronous code
+	/// Category for benchmarks involving asynchronous operations.
 	/// </summary>
 	public const string Async = "Async";
 
 	/// <summary>
-	/// Cloud code
+	/// Category for benchmarks related to cloud computing and operations.
 	/// </summary>
 	public const string Cloud = "Cloud";
 
 	/// <summary>
-	/// Code for collections
+	/// Category for benchmarks that deal with collections.
 	/// </summary>
 	public const string Collections = "Collections";
 
 	/// <summary>
-	/// Code for compression
+	/// Category for benchmarks involving data compression techniques.
 	/// </summary>
 	public const string Compression = "Compression";
 
 	/// <summary>
-	/// Code for encryption
+	/// Category for benchmarks involving encryption algorithms.
 	/// </summary>
 	public const string Encryption = "Encryption";
 
 	/// <summary>
-	/// For comparison
+	/// Special category for benchmarks that are meant for comparison purposes.
 	/// </summary>
 	public const string ForComparison = "**FOR COMPARISON**";
 
 	/// <summary>
-	/// Generic collections code
+	/// Category for benchmarks that use generic collections.
 	/// </summary>
 	public const string GenericCollections = "Collections<>";
 
 	/// <summary>
-	/// Code for globalization
+	/// Category for benchmarks involving globalization features.
 	/// </summary>
 	public const string Globalization = "Globalization";
 
 	/// <summary>
-	/// Immutable code
+	/// Category for benchmarks that involve immutable data structures.
 	/// </summary>
 	public const string Immutable = "Immutable";
 
 	/// <summary>
-	/// I/O code
+	/// Category for benchmarks that involve input/output operations.
 	/// </summary>
 	public const string IO = "IO";
 
 	/// <summary>
-	/// Code that uses JSON
+	/// Category for benchmarks that involve JSON operations.
 	/// </summary>
 	public const string JSON = "JSON";
 
 	/// <summary>
-	/// Code that uses LINQ
+	/// Category for benchmarks that involve LINQ operations.
 	/// </summary>
 	public const string LINQ = "LINQ";
 
 	/// <summary>
-	/// Logging code
+	/// Category for benchmarks that involve logging operations.
 	/// </summary>
 	public const string Logging = "LOGGING";
 
 	/// <summary>
-	/// New code
+	/// Special category for new benchmarks or benchmarks that have been recently added.
 	/// </summary>
 	public const string New = "**NEW**";
 
 	/// <summary>
-	/// Code for queues
+	/// Category for benchmarks that involve queue data structures.
 	/// </summary>
 	public const string Queues = "Queues";
 
 	/// <summary>
-	/// Code for record types
+	/// Category for benchmarks that involve record types.
 	/// </summary>
 	public const string RecordType = "Record Type";
 
 	/// <summary>
-	/// Code for reference types
+	/// Category for benchmarks that involve reference types.
 	/// </summary>
 	public const string ReferenceType = "Ref Type";
 
 	/// <summary>
-	/// Code for reflection
+	/// Category for benchmarks that involve reflection.
 	/// </summary>
 	public const string Reflection = "Reflection";
 
 	/// <summary>
-	/// Code for serialization
+	/// Category for benchmarks that involve serialization operations.
 	/// </summary>
 	public const string Serialization = "Serialization";
 
 	/// <summary>
-	/// Code for Span
+	/// Category for benchmarks that involve Span operations.
 	/// </summary>
 	public const string Span = "Span";
 
 	/// <summary>
-	/// Code for strings
+	/// Category for benchmarks that involve string operations.
 	/// </summary>
 	public const string Strings = "Strings";
 
 	/// <summary>
-	/// Code for threading
+	/// Category for benchmarks that involve threading and concurrency.
 	/// </summary>
 	public const string Threading = "Threading";
 
 	/// <summary>
-	/// The method has been updated
+	/// Special category for benchmarks that have been updated.
 	/// </summary>
 	public const string Updated = "Updated";
 
 	/// <summary>
-	/// Method Validation Benchmarks
+	/// Category for benchmarks that involve validation operations.
 	/// </summary>
 	public const string Validation = "Validation";
 
 	/// <summary>
-	/// Code for value types
+	/// Category for benchmarks that involve value types.
 	/// </summary>
 	public const string ValueType = "Value Type";
 
 	/// <summary>
-	/// The XML
+	/// Category for benchmarks that involve XML operations.
 	/// </summary>
 	public const string XML = "XML";
 

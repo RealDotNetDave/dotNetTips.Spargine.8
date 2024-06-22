@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-06-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -25,54 +25,53 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 namespace DotNetTips.Spargine.Benchmarking;
 
 /// <summary>
-/// Partial class for Collections benchmark.
-/// Implements the <see cref="Benchmark" />
+/// Represents the base class for benchmarks that involve collections, specifically optimized for handling PersonRecord objects.
+/// This class provides methods to preload PersonRecord collections to improve benchmark test speed and efficiency.
 /// </summary>
-/// <seealso cref="Benchmark" />
 public partial class CollectionBenchmark : Benchmark
 {
 
 	/// <summary>
-	/// The people record to insert
+	/// The people record to insert.
 	/// </summary>
 	private PersonRecord[] _peopleRecordToInsert;
 
 	/// <summary>
-	/// The people to insert
+	/// The people to insert as reference types.
 	/// </summary>
 	private Person<Address>[] _peopleRefToInsert;
 
 	/// <summary>
-	/// The people value to insert
+	/// The people to insert as value types.
 	/// </summary>
 	private Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] _peopleValToInsert;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="CollectionBenchmark" /> class.
+	/// Initializes a new instance of the <see cref="CollectionBenchmark"/> class.
 	/// </summary>
-	/// <param name="maxCount">The maximum count.</param>
+	/// <param name="maxCount">The maximum count for the collections used in the benchmark.</param>
 	protected CollectionBenchmark(int maxCount) => this.MaxCount = Math.Max(2, maxCount);
 
 	/// <summary>
-	/// Gets a collection of <see cref="PersonRecord" /> objects for insertion into collections.
+	/// Gets a collection of <see cref="PersonRecord"/> objects for insertion into collections.
 	/// </summary>
-	/// <returns>PersonRecord[].</returns>
+	/// <returns>An array of <see cref="PersonRecord"/>.</returns>
 	protected virtual PersonRecord[] GetPersonRecordCollectionToInsert() => this._peopleRecordToInsert;
 
 	/// <summary>
-	/// Gets a collection of <see cref="Person{TAddress}" /> reference objects for insertion into collections.
+	/// Gets a collection of <see cref="Person{TAddress}"/> reference objects for insertion into collections.
 	/// </summary>
-	/// <returns>Person&lt;Address&gt;[].</returns>
+	/// <returns>An array of <see cref="Person{TAddress}"/>.</returns>
 	protected virtual Person<Address>[] GetPersonRefCollectionToInsert() => this._peopleRefToInsert;
 
 	/// <summary>
-	/// Gets a collection of <see cref="Person{TAddress}" /> value objects for insertion into collections.
+	/// Gets a collection of <see cref="Tester.Models.ValueTypes.Person{TAddress}"/> value objects for insertion into collections.
 	/// </summary>
-	/// <returns>Tester.Models.ValueTypes.Person[].</returns>
+	/// <returns>An array of <see cref="Tester.Models.ValueTypes.Person{TAddress}"/>.</returns>
 	protected virtual Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] GetPersonValCollectionToInsert() => this._peopleValToInsert;
 
 	/// <summary>
-	/// Setups this instance.
+	/// Setups the benchmark instance. This method is called before the benchmark runs and is responsible for initializing the collections and loading the data.
 	/// </summary>
 	public override void Setup()
 	{
@@ -80,19 +79,19 @@ public partial class CollectionBenchmark : Benchmark
 
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Collection Count={this.MaxCount}: {nameof(CollectionBenchmark)}.");
 
-		//Load collections
+		// Load collections
 		this.LoadCoordinateCollections();
 		this.LoadPersonRecordCollections();
 		this.LoadPersonCollections();
 
-		//Load people objects
+		// Load people objects
 		this._peopleRefToInsert = new List<Person<Address>>(this.GetPersonRefArray().Shuffle(Math.Max(2, this.MaxCount / 2))).ToArray();
 		this._peopleValToInsert = new List<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(this.GetPersonValArray().Shuffle(Math.Max(2, this.MaxCount / 2))).ToArray();
 		this._peopleRecordToInsert = new List<PersonRecord>(this.GetPersonRecordArray().Shuffle(Math.Max(2, this.MaxCount / 2))).ToArray();
 	}
 
 	/// <summary>
-	/// Retrieves the maximum count.
+	/// Gets or sets the maximum count for the collections used in the benchmark.
 	/// </summary>
 	/// <value>The maximum count.</value>
 	public int MaxCount { get; internal set; }

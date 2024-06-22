@@ -4,7 +4,7 @@
 // Created          : 04-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-05-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -27,50 +27,48 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 namespace DotNetTips.Spargine.Benchmarking;
 
 /// <summary>
-/// Partial class for Collections benchmark.
-/// Implements the <see cref="Benchmark" />
+/// Partial class for Collections benchmark that includes functionality for preloading Person collections.
+/// This includes PersonRecord, Person reference types, and Person value types in various collection types like arrays, lists, and dictionaries.
 /// </summary>
-/// <seealso cref="Benchmark" />
 public partial class CollectionBenchmark
 {
 
 	/// <summary>
-	/// The person record dictionary
+	/// The person record dictionary.
 	/// </summary>
 	private Dictionary<string, PersonRecord> _personRecordDictionary;
-
 	/// <summary>
-	/// The person reference array
+	/// The person reference array.
 	/// </summary>
 	private Person<Address>[] _personRefArray;
 
 	/// <summary>
-	/// The person reference dictionary
+	/// The person reference dictionary.
 	/// </summary>
 	private Dictionary<string, Person<Address>> _personRefDictionary;
 
 	/// <summary>
-	/// The person reference list
+	/// The person reference list.
 	/// </summary>
 	private List<Person<Address>> _personRefList;
 
 	/// <summary>
-	/// The person value array
+	/// The person value array.
 	/// </summary>
 	private Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] _personValArray;
 
 	/// <summary>
-	/// The person value dictionary
+	/// The person value dictionary.
 	/// </summary>
 	private Dictionary<string, Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> _personValDictionary;
 
 	/// <summary>
-	/// The person value list
+	/// The person value list.
 	/// </summary>
 	private List<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> _personValList;
 
 	/// <summary>
-	/// Loads the person reference array.
+	/// Loads the person collections into memory, including arrays, lists, and dictionaries for PersonRecord, Person reference types, and Person value types.
 	/// </summary>
 	protected void LoadPersonCollections()
 	{
@@ -91,45 +89,44 @@ public partial class CollectionBenchmark
 	}
 
 	/// <summary>
-	/// Gets a <see cref="Dictionary{TKey, TValue}" /> for <see cref="PersonRecord" />.
+	/// Gets a dictionary for PersonRecord.
 	/// </summary>
-	/// <returns>System.Collections.Generic.Dictionary&lt;string, DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord&gt;.</returns>
+	/// <returns>A dictionary of PersonRecord indexed by string.</returns>
 	public Dictionary<string, PersonRecord> GetPersonRecordDictionary() => this._personRecordDictionary.Clone<Dictionary<string, PersonRecord>>();
 
 	/// <summary>
-	/// Gets <see cref="Person{TAddress}" /> reference array.
+	/// Gets Person reference array.
 	/// </summary>
-	/// <returns>Person[].</returns>
+	/// <returns>An array of Person reference types.</returns>
 	public Person<Address>[] GetPersonRefArray() => this._personRefArray.Clone<Person<Address>[]>();
 
 	/// <summary>
-	/// Gets the <see cref="Person{TAddress}" /> reference list as a <see cref="Collection{T}" />.
+	/// Gets the Person reference list as a collection.
 	/// </summary>
-	/// <returns>Collection&lt;Person&lt;Address&gt;&gt;.</returns>
+	/// <returns>A collection of Person reference types.</returns>
 	public Collection<Person<Address>> GetPersonRefCollection() => this._personRefList.Clone<List<Person<Address>>>().ToCollection();
 
 	/// <summary>
-	/// Gets <see cref="Person{TAddress}" /> reference types as a <see cref="Dictionary{TKey, TValue}" />.
+	/// Gets Person reference types as a dictionary.
 	/// </summary>
-	/// <returns>Dictionary&lt;System.String, Person&lt;Address&gt;&gt;.</returns>
+	/// <returns>A dictionary of Person reference types indexed by string.</returns>
 	public Dictionary<string, Person<Address>> GetPersonRefDictionary() => this._personRefDictionary.Clone<Dictionary<string, Person<Address>>>();
 
 	/// <summary>
-	/// Gets <see cref="Person{TAddress}" /> value types as an array.
+	/// Gets Person value types as an array.
 	/// </summary>
-	/// <returns>Tester.Models.ValueTypes.Person[].</returns>
+	/// <returns>An array of Person value types.</returns>
 	public Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] GetPersonValArray() => this._personValArray.Clone<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[]>();
 
 	/// <summary>
-	/// Retrieves <see cref="Person{TAddress}" />  value types as a <see cref="Collection{T}" />.
+	/// Retrieves Person value types as a collection.
 	/// </summary>
-	/// <returns>Collection&lt;Tester.Models.ValueTypes.Person&lt;Tester.Models.ValueTypes.Address&gt;&gt;.</returns>
+	/// <returns>A collection of Person value types.</returns>
 	public Collection<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> GetPersonValCollection() => this._personValList.Clone<List<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>>().ToCollection();
 
 	/// <summary>
-	/// Gets the person reference dictionary.
+	/// Gets the person value dictionary.
 	/// </summary>
-	/// <returns>System.Collections.Generic.Dictionary&lt;string, DotNetTips.Spargine.Tester.Models.ValueTypes.Person&lt;DotNetTips.Spargine.Tester.Models.ValueTypes.Address&gt;[]&gt;.</returns>
 	public Dictionary<string, Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> GetPersonValDictionary() => this._personValDictionary.Clone<Dictionary<string, Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>>();
 
 }

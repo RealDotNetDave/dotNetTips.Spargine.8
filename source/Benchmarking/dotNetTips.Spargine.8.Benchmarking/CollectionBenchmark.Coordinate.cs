@@ -4,7 +4,7 @@
 // Created          : 04-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-03-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.Coordinate.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -26,25 +26,25 @@ using DotNetTips.Spargine.Tester.Models.ValueTypes;
 namespace DotNetTips.Spargine.Benchmarking;
 
 /// <summary>
-/// Partial class for Collections benchmark.
-/// Implements the <see cref="Benchmark" />
+/// Represents the base class for benchmarks that involve collections, specifically optimized for handling Coordinate objects.
+/// This partial class provides methods to preload Coordinate collections to improve benchmark test speed and efficiency.
 /// </summary>
-/// <seealso cref="Benchmark" />
 public partial class CollectionBenchmark
 {
 
 	/// <summary>
-	/// The coordinate array
+	/// The coordinate array.
 	/// </summary>
 	private Coordinate[] _coordinateArray;
 
 	/// <summary>
-	/// The coordinate list
+	/// The coordinate list.
 	/// </summary>
 	private List<Coordinate> _coordinateList;
 
 	/// <summary>
-	/// Loads the coordinate array.
+	/// Loads the coordinate collections into memory. This includes both a list and an array of Coordinate objects,
+	/// populated to the maximum count specified for the benchmark. This method is called to prepare data for benchmark tests.
 	/// </summary>
 	protected void LoadCoordinateCollections()
 	{
@@ -56,15 +56,17 @@ public partial class CollectionBenchmark
 	}
 
 	/// <summary>
-	/// Gets <see cref="Coordinate" /> array.
+	/// Gets a copy of the Coordinate array. This method ensures that benchmarks operate on a fresh copy of the data,
+	/// preventing modifications from affecting subsequent benchmark runs.
 	/// </summary>
-	/// <returns>Tester.Models.ValueTypes.Coordinate[].</returns>
+	/// <returns>A clone of the Coordinate array.</returns>
 	public Coordinate[] GetCoordinateValArray() => this._coordinateArray.Clone<Coordinate[]>();
 
 	/// <summary>
-	/// Gets the coordinate list.
+	/// Gets a copy of the Coordinate list as a <see cref="Collection{T}"/>.
+	/// Similar to <see cref="GetCoordinateValArray"/>, this method provides a fresh copy of the data for benchmark tests.
 	/// </summary>
-	/// <returns>Collection&lt;Tester.Models.ValueTypes.Coordinate&gt;.</returns>
+	/// <returns>A clone of the Coordinate list as a Collection.</returns>
 	public Collection<Coordinate> GetCoordinateValCollection() => this._coordinateArray.Clone<Coordinate[]>().ToCollection();
 
 }

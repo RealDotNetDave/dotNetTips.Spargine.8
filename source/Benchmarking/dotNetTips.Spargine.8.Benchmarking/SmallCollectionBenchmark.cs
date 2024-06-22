@@ -4,7 +4,7 @@
 // Created          : 07-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-06-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="SmallCollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -23,20 +23,22 @@ using BenchmarkDotNet.Loggers;
 namespace DotNetTips.Spargine.Benchmarking;
 
 /// <summary>
-/// Benchmark class for small collections.
-/// Implements the <see cref="CounterBenchmark" />
+/// Provides benchmark tests for small collections, with count values ranging from 16 to 2,048.
+/// This class is designed to measure the performance of operations on collections of varying small sizes,
+/// helping to identify the most efficient data structures and algorithms for use cases involving small datasets.
 /// </summary>
-/// <seealso cref="CounterBenchmark" />
 public class SmallCollectionBenchmark : CollectionBenchmark
 {
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="SmallCollectionBenchmark" /> class.
+	/// Initializes a new instance of the <see cref="SmallCollectionBenchmark"/> class with a maximum count of 2,048.
+	/// This constructor also logs the maximum count information using the <see cref="ConsoleLogger"/>.
 	/// </summary>
 	public SmallCollectionBenchmark() : base(2048) => ConsoleLogger.Default.WriteLine(LogKind.Info, $"Max Count={this.MaxCount}: {nameof(SmallCollectionBenchmark)}.");
 
 	/// <summary>
-	/// Setups this instance.
+	/// Performs setup operations specific to SmallCollectionBenchmark. This includes logging the current count before and after the base setup is called,
+	/// and adjusting the MaxCount property to match the current Count. This method is called automatically by the BenchmarkDotNet framework before each benchmark run.
 	/// </summary>
 	public override void Setup()
 	{
@@ -49,7 +51,8 @@ public class SmallCollectionBenchmark : CollectionBenchmark
 	}
 
 	/// <summary>
-	/// Gets or sets the collection count.
+	/// Gets or sets the collection count for the benchmark. This value determines the size of the collection to be used in the benchmark tests.
+	/// Valid values are 16, 32, 64, 128, 256, 512, 1024, and 2048, allowing for a range of small collection sizes to be tested.
 	/// </summary>
 	/// <value>The collection count.</value>
 	[Params(16, 32, 64, 128, 256, 512, 1024, 2048)]

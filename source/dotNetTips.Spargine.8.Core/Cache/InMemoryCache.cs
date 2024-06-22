@@ -111,7 +111,7 @@ public sealed class InMemoryCache
 	/// <param name="item">The item to add to the cache. This can be of any type.</param>
 	/// <param name="timeout">The custom timeout for the cache item.</param>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key" /> is null or empty, or <paramref name="item" /> is null.</exception>
-	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", Status = Status.New, UnitTestCoverage = 0)]
+	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", Status = Status.New, UnitTestCoverage = 100)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, TimeSpan timeout)
 	{
 		key = key.ArgumentNotNullOrEmpty();
@@ -130,7 +130,7 @@ public sealed class InMemoryCache
 	/// <param name="timeout">The custom expiration time for the cache item.</param>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key" /> is null or empty, or <paramref name="item" /> is null.</exception>
 
-	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", Status = Status.New, UnitTestCoverage = 0)]
+	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", Status = Status.New, UnitTestCoverage = 100)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, DateTimeOffset timeout)
 	{
 		key = key.ArgumentNotNullOrEmpty();
@@ -145,7 +145,7 @@ public sealed class InMemoryCache
 	/// </summary>
 	/// <remarks>This method is intended to remove all items from the cache, effectively resetting it.
 	/// Use with caution as this will remove all cached data.</remarks>
-	[Information(nameof(Clear), "David McCarter", "6/12/2024", Status = Status.New, UnitTestCoverage = 0)]
+	[Information(nameof(Clear), "David McCarter", "6/12/2024", Status = Status.New, UnitTestCoverage = 100)]
 	public void Clear() => this.Cache.Clear();
 
 	/// <summary>
