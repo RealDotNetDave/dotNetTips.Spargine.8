@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="FastSortedList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -22,9 +22,10 @@ using System.Diagnostics.CodeAnalysis;
 namespace DotNetTips.Spargine.Core.Collections.Generic;
 
 /// <summary>
-/// FastSortedList sorts the collection only when the collection is retrieved. Saves a lot on performance.
+/// FastSortedList sorts the collection only when the collection is retrieved, which saves a lot on performance.
+/// This class inherits from the <see cref="List{T}"/> class and overrides some of its methods to ensure that sorting is performed only when necessary.
 /// </summary>
-/// <typeparam name="T">Generic type parameter.</typeparam>
+/// <typeparam name="T">The type of elements in the list.</typeparam>
 /// <seealso cref="List{T}" />
 [Serializable]
 public class FastSortedList<T> : List<T>
@@ -36,30 +37,32 @@ public class FastSortedList<T> : List<T>
 	private bool _sorted;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="SortedList{TKey, TValue}" /> class.
+	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class.
 	/// </summary>
 	public FastSortedList()
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="FastSortedList{T}" /> class.
+	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class.
 	/// </summary>
-	/// <param name="collection">Creates class and copies in items from collection.</param>
+	/// <param name="collection">The collection whose elements are copied to the new list.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	public FastSortedList([NotNull] IEnumerable<T> collection) : base(collection)
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="FastSortedList{T}" /> class that is empty and has the specified initial capacity.
+	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class that is empty and has the specified initial capacity.
 	/// </summary>
-	/// <param name="capacity">The number of elements that the new list can initially store.</param>
+	/// <param name="capacity">The number of elements that the new list, derived from <see cref="List{T}"/>, can initially store.</param>
 	public FastSortedList(int capacity) : base(capacity)
 	{
 	}
 
 	/// <summary>
-	/// Sorts the items in the collection.
+	/// Sorts the items in the collection if they have not been sorted yet.
+	/// This method checks the <see cref="_sorted"/> flag before performing the sort operation to ensure that sorting is only done when necessary.
 	/// </summary>
 	private void SortCollection()
 	{
@@ -72,15 +75,12 @@ public class FastSortedList<T> : List<T>
 	}
 
 	/// <summary>
-	/// Adds an object to the end of the list.
+	/// Adds an object to the end of the <see cref="FastSortedList{T}"/>.
 	/// </summary>
-	/// <param name="item">The object to be added to the end of the list. The value can be <see langword="null" /> for reference types.</param>
-	public new void Add([NotNull] T item)
+	/// <param name="item">The object to be added to the end of the <see cref="FastSortedList{T}"/>. The value can be <see langword="null" /> for reference types.</param>
+	public new void Add(T item)
 	{
-		if (item is null)
-		{
-			ExceptionThrower.ThrowArgumentNullException(nameof(item));
-		}
+		item = item.ArgumentNotNull();
 
 		base.Add(item);
 
@@ -88,10 +88,11 @@ public class FastSortedList<T> : List<T>
 	}
 
 	/// <summary>
-	/// Adds the items to the end of the list.
+	/// Adds the items to the end of the <see cref="FastSortedList{T}"/>.
 	/// </summary>
-	/// <param name="items">The items.</param>
-	public new void AddRange([NotNull] IEnumerable<T> items)
+	/// <param name="items">The items to add to the end of the <see cref="FastSortedList{T}"/>. The collection itself cannot be null, but it can contain elements that are <see langword="null" /> for reference types.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null, indicating that the collection of items cannot be null.</exception>
+	public new void AddRange(IEnumerable<T> items)
 	{
 		base.AddRange(items.ArgumentNotNull());
 
@@ -99,9 +100,10 @@ public class FastSortedList<T> : List<T>
 	}
 
 	/// <summary>
-	/// Returns an enumerator that iterates through the collection.
+	/// Returns an enumerator that iterates through the <see cref="FastSortedList{T}"/>.
+	/// This method ensures the collection is sorted before returning the enumerator, if it has not been sorted already.
 	/// </summary>
-	/// <returns>A enumerator for the <see cref="List{T}" />.</returns>
+	/// <returns>An enumerator for the <see cref="FastSortedList{T}"/>.</returns>
 	public new Enumerator GetEnumerator()
 	{
 		this.SortCollection();
@@ -109,9 +111,10 @@ public class FastSortedList<T> : List<T>
 	}
 
 	/// <summary>
-	/// Copies the elements of the list to a new array.
+	/// Converts the <see cref="FastSortedList{T}"/> to an array.
+	/// This method ensures the collection is sorted before converting, if it has not been sorted already.
 	/// </summary>
-	/// <returns>An array containing copies of the elements of the <see cref="List{T}" />.</returns>
+	/// <returns>An array containing the elements of the <see cref="FastSortedList{T}"/>.</returns>
 	public new T[] ToArray()
 	{
 		this.SortCollection();
@@ -120,9 +123,10 @@ public class FastSortedList<T> : List<T>
 	}
 
 	/// <summary>
-	/// To the immutable list.
+	/// Converts the <see cref="FastSortedList{T}"/> to an immutable list.
+	/// This method ensures the collection is sorted before converting, if it has not been sorted already.
 	/// </summary>
-	/// <returns>System.Collections.Immutable.IImmutableList&lt;T&gt;.</returns>
+	/// <returns>An <see cref="IImmutableList{T}"/> containing the elements of the <see cref="FastSortedList{T}"/>.</returns>
 	public IImmutableList<T> ToImmutableList()
 	{
 		this.SortCollection();
@@ -131,9 +135,10 @@ public class FastSortedList<T> : List<T>
 	}
 
 	/// <summary>
-	/// Returns a new collection based on the current collection.
+	/// Returns a new collection based on the current <see cref="FastSortedList{T}"/>.
+	/// This method ensures the collection is sorted before creating a new list, if it has not been sorted already.
 	/// </summary>
-	/// <returns>List&lt;T&gt;.</returns>
+	/// <returns>A new <see cref="List{T}"/> containing the elements of the <see cref="FastSortedList{T}"/>.</returns>
 	public IList<T> ToList()
 	{
 		this.SortCollection();

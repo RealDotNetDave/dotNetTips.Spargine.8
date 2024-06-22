@@ -4,7 +4,7 @@
 // Created          : 07-25-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-22-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="TaskHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -18,20 +18,21 @@ using System.Diagnostics.CodeAnalysis;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class TaskHelper.
+/// Provides utility methods for synchronously running asynchronous tasks. This includes methods for running tasks without awaiting them (fire and forget) and for running tasks with return values synchronously.
 /// </summary>
 public static class TaskHelper
 {
 
 	/// <summary>
-	/// The task factory
+	/// A TaskFactory configured with default settings for running tasks synchronously.
 	/// </summary>
 	private static readonly TaskFactory _taskFactory = new(CancellationToken.None, TaskCreationOptions.None, TaskContinuationOptions.None, TaskScheduler.Default);
 
 	/// <summary>
-	/// Fires the and forget<seealso cref="Task" />.
+	/// Executes the specified asynchronous task synchronously on a background thread.
 	/// </summary>
-	/// <param name="task">The Task.</param>
+	/// <param name="task">The asynchronous task to execute.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="task"/> is null.</exception>
 	/// <example>
 	/// TaskHelper.RunSync(() =&gt; SomeType.FireAsync("Test Message"));
 	/// </example>
@@ -39,13 +40,14 @@ public static class TaskHelper
 	public static void RunSync([NotNull] Func<Task> task) => _taskFactory.StartNew(task.ArgumentNotNull(), CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
 
 	/// <summary>
-	/// Executes an async Task&lt;T&gt; method which has a T return type synchronously.
+	/// Executes an async Task&lt;T&gt; method which has a TResult return type synchronously.
 	/// </summary>
-	/// <typeparam name="TResult">Return Type</typeparam>
-	/// <param name="task">Task&lt;T&gt; method to execute</param>
-	/// <returns>TResult.</returns>
+	/// <typeparam name="TResult">The return type of the task.</typeparam>
+	/// <param name="task">The Task&lt;T&gt; method to execute.</param>
+	/// <returns>The result of type TResult.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="task"/> is null.</exception>
 	/// <example>
-	/// TaskHelper.RunSync(() =&gt; SomeType.FireWithReturnAsync("Test Message"));
+	/// var result = TaskHelper.RunSync(() => SomeType.CalculateAsync());
 	/// </example>
 	[Information("Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App", "David McCarter", "7/13/2021", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
 	public static TResult RunSync<TResult>([NotNull] this Func<Task<TResult>> task)
@@ -60,21 +62,22 @@ public static class TaskHelper
 	}
 
 	/// <summary>
-	/// Executes an async Task&lt;T&gt; method which has a T return type synchronously.
+	/// Executes an async Task&lt;T&gt; method which has a TResult return type synchronously, with support for cancellation and custom task configuration.
 	/// </summary>
-	/// <typeparam name="TResult">Return Type</typeparam>
-	/// <param name="func">Task&lt;T&gt; method to execute</param>
+	/// <typeparam name="TResult">The return type of the task.</typeparam>
+	/// <param name="func">The Task&lt;T&gt; method to execute.</param>
 	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-	/// <param name="taskCreation">The task creation.</param>
-	/// <param name="taskContinuation">The task continuation.</param>
-	/// <param name="taskScheduler">The task scheduler.</param>
-	/// <returns>TResult.</returns>
+	/// <param name="taskCreation">The task creation options.</param>
+	/// <param name="taskContinuation">The task continuation options.</param>
+	/// <param name="taskScheduler">The task scheduler to use.</param>
+	/// <returns>The result of type TResult.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="func"/> is null.</exception>
 	/// <example>
 	/// var cancelToken = new CancellationTokenSource().Token;
-	/// TaskHelper.RunSync(() =&gt; SomeType.FireWithReturnAsync("Test Message", cancellationToken: cancelToken);
+	/// var result = TaskHelper.RunSync(() => SomeType.CalculateAsync(), cancelToken);
 	/// </example>
 	[Information("Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App", "David McCarter", "7/13/2021", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
-	public static TResult RunSync<TResult>([NotNull] Func<Task<TResult>> func, CancellationToken cancellationToken = default, TaskCreationOptions taskCreation = TaskCreationOptions.None, TaskContinuationOptions taskContinuation = TaskContinuationOptions.None, TaskScheduler taskScheduler = null)
+	public static TResult RunSync<TResult>([NotNull] Func<Task<TResult>> func, CancellationToken cancellationToken, TaskCreationOptions taskCreation = TaskCreationOptions.None, TaskContinuationOptions taskContinuation = TaskContinuationOptions.None, TaskScheduler taskScheduler = null)
 	{
 		func = func.ArgumentNotNull();
 
@@ -88,19 +91,20 @@ public static class TaskHelper
 	}
 
 	/// <summary>
-	/// Fires the and forget<seealso cref="Task" />.
+	/// Executes the specified asynchronous task synchronously with support for cancellation and custom task configuration.
 	/// </summary>
-	/// <param name="task">The Task.</param>
+	/// <param name="task">The asynchronous task to execute.</param>
 	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-	/// <param name="taskCreation">The task creation.</param>
-	/// <param name="taskContinuation">The task continuation.</param>
-	/// <param name="taskScheduler">The task scheduler.</param>
+	/// <param name="taskCreation">The task creation options.</param>
+	/// <param name="taskContinuation">The task continuation options.</param>
+	/// <param name="taskScheduler">The task scheduler to use. If null, the default scheduler is used.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="task"/> is null.</exception>
 	/// <example>
 	/// var cancelToken = new CancellationTokenSource().Token;
-	/// TaskHelper.RunSync(() =&gt; SomeType.FireAsync("Test Message"), cancellationToken: cancelToken);
+	/// TaskHelper.RunSync(() => SomeType.FireAsync("Test Message"), cancellationToken: cancelToken);
 	/// </example>
 	[Information("Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App", "David McCarter", "7/13/2021", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
-	public static void RunSync([NotNull] this Func<Task> task, CancellationToken cancellationToken = default, TaskCreationOptions taskCreation = TaskCreationOptions.None, TaskContinuationOptions taskContinuation = TaskContinuationOptions.None, TaskScheduler taskScheduler = null)
+	public static void RunSync([NotNull] this Func<Task> task, CancellationToken cancellationToken, TaskCreationOptions taskCreation = TaskCreationOptions.None, TaskContinuationOptions taskContinuation = TaskContinuationOptions.None, TaskScheduler taskScheduler = null)
 	{
 		task = task.ArgumentNotNull();
 

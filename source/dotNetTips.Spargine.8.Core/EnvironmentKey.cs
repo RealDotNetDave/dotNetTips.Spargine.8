@@ -4,7 +4,7 @@
 // Created          : 10-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="EnvironmentKey.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -15,320 +15,322 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+
+
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Enum EnvironmentKeys
+/// Enum EnvironmentKey represents common environment variable keys.
 /// </summary>
 public enum EnvironmentKey
 {
 	/// <summary>
-	/// The ASP.NET Core Environment
+	/// The ASP.NET Core Environment variable.
 	/// </summary>
 	ASPNETCORE_ENVIRONMENT,
 
 	/// <summary>
-	/// The all users profile
+	/// The environment variable for all users' profile path.
 	/// </summary>
 	ALLUSERSPROFILE,
 
 	/// <summary>
-	/// The app data
+	/// The environment variable for the application data directory.
 	/// </summary>
 	APPDATA,
 
 	/// <summary>
-	/// The client name
+	/// The environment variable for the client name in a remote session.
 	/// </summary>
 	CLIENTNAME,
 
 	/// <summary>
-	/// The com plus no GUI from shim for side-by-side execution
+	/// The COM+ environment variable to disable GUI in the shim for side-by-side execution.
 	/// </summary>
 	COMPLUS_NoGuiFromShim,
 
 	/// <summary>
-	/// The common program files
+	/// The environment variable for the common program files directory.
 	/// </summary>
 	CommonProgramFiles,
 
 	/// <summary>
-	/// The common program W6432
+	/// The environment variable for the common program files directory on Windows x64.
 	/// </summary>
 	CommonProgramW6432,
 
 	/// <summary>
-	/// The computer name
+	/// The environment variable for the computer name.
 	/// </summary>
 	COMPUTERNAME,
 
 	/// <summary>
-	/// The COM spec
+	/// The environment variable for the command-line interpreter executable path.
 	/// </summary>
 	ComSpec,
 
 	/// <summary>
-	/// The driver data
+	/// The environment variable for driver data.
 	/// </summary>
 	DriverData,
 
 	/// <summary>
-	/// The enable xaml diagnostics source information
+	/// The environment variable to enable XAML diagnostics source information.
 	/// </summary>
 	ENABLE_XAML_DIAGNOSTICS_SOURCE_INFO,
 
 	/// <summary>
-	/// The FPS browser application profile string
+	/// The environment variable for the FPS browser application profile string.
 	/// </summary>
 	FPS_BROWSER_APP_PROFILE_STRING,
 
 	/// <summary>
-	/// The FPS browser user profile string
+	/// The environment variable for the FPS browser user profile string.
 	/// </summary>
 	FPS_BROWSER_USER_PROFILE_STRING,
 
 	/// <summary>
-	/// The F# install dir
+	/// The environment variable for the F# installation directory.
 	/// </summary>
 	FSHARPINSTALLDIR,
 
 	/// <summary>
-	/// The home drive
+	/// The environment variable for the home drive.
 	/// </summary>
 	HOMEDRIVE,
 
 	/// <summary>
-	/// The home path
+	/// The environment variable for the home path.
 	/// </summary>
 	HOMEPATH,
 
 	/// <summary>
-	/// The IIS bin
+	/// The environment variable for the IIS binaries directory.
 	/// </summary>
 	IIS_BIN,
 
 	/// <summary>
-	/// The IIS drive
+	/// The environment variable for the IIS drive.
 	/// </summary>
 	IIS_DRIVE,
 
 	/// <summary>
-	/// The IIS sites home.
+	/// The environment variable for the IIS sites home directory.
 	/// </summary>
 	IIS_SITES_HOME,
 
 	/// <summary>
-	/// The IIS user home.
+	/// The environment variable for the IIS user home directory.
 	/// </summary>
 	IIS_USER_HOME,
 
 	/// <summary>
-	/// The local application data.
+	/// The environment variable for the local application data directory.
 	/// </summary>
 	LOCALAPPDATA,
 
 	/// <summary>
-	/// The logon server.
+	/// The environment variable for the logon server.
 	/// </summary>
 	LOGONSERVER,
 
 	/// <summary>
-	/// The ms build load microsoft targets read only.
+	/// The environment variable to make MSBuild load Microsoft targets in read-only mode.
 	/// </summary>
 	MSBuildLoadMicrosoftTargetsReadOnly,
 
 	/// <summary>
-	/// The MSMPI bin
+	/// The environment variable for the MSMPI binaries directory.
 	/// </summary>
 	MSMPI_BIN,
 
 	/// <summary>
-	/// The number of processors
+	/// The environment variable for the number of processors.
 	/// </summary>
 	NUMBER_OF_PROCESSORS,
 
 	/// <summary>
-	/// The path to OneDrive
+	/// The environment variable for the path to OneDrive.
 	/// </summary>
 	OneDrive,
 
 	/// <summary>
-	/// The path to OneDrive Business
+	/// The environment variable for the path to OneDrive for Business.
 	/// </summary>
 	OneDriveCommercial,
 
 	/// <summary>
-	/// The path to OneDrive Consumer
+	/// The environment variable for the path to OneDrive for Consumer.
 	/// </summary>
 	OneDriveConsumer,
 
 	/// <summary>
-	/// The operating system name
+	/// The environment variable for the operating system name.
 	/// </summary>
 	OS,
 
 	/// <summary>
-	/// The path
+	/// The environment variable for the system path.
 	/// </summary>
 	Path,
 
 	/// <summary>
-	/// The path ext
+	/// The environment variable for the executable file extensions.
 	/// </summary>
 	PATHEXT,
 
 	/// <summary>
-	/// The PKG definition application configuration file
+	/// The environment variable for the PKG definition application configuration file.
 	/// </summary>
 	PkgDefApplicationConfigFile,
 
 	/// <summary>
-	/// The app data
+	/// The environment variable for the processor architecture.
 	/// </summary>
 	PROCESSOR_ARCHITECTURE,
 
 	/// <summary>
-	/// The processor identifier
+	/// The environment variable for the processor identifier.
 	/// </summary>
 	PROCESSOR_IDENTIFIER,
 
 	/// <summary>
-	/// The processor level
+	/// The environment variable for the processor level.
 	/// </summary>
 	PROCESSOR_LEVEL,
 
 	/// <summary>
-	/// The processor revision
+	/// The environment variable for the processor revision.
 	/// </summary>
 	PROCESSOR_REVISION,
 
 	/// <summary>
-	/// The client name
+	/// The environment variable for the program data directory.
 	/// </summary>
 	ProgramData,
 
 	/// <summary>
-	/// The program files
+	/// The environment variable for the program files directory.
 	/// </summary>
 	ProgramFiles,
 
 	/// <summary>
-	/// The program W6432
+	/// The environment variable for the program files directory on Windows x64.
 	/// </summary>
 	ProgramW6432,
 
 	/// <summary>
-	/// The ps module path
+	/// The environment variable for the PowerShell module path.
 	/// </summary>
 	PSModulePath,
 
 	/// <summary>
-	/// The common program files
+	/// The environment variable for the public directory.
 	/// </summary>
 	PUBLIC,
 
 	/// <summary>
-	/// The service hub log session key
+	/// The environment variable for the Service Hub log session key.
 	/// </summary>
 	ServiceHubLogSessionKey,
 
 	/// <summary>
-	/// The session name
+	/// The environment variable for the session name.
 	/// </summary>
 	SESSIONNAME,
 
 	/// <summary>
-	/// The system drive
+	/// The environment variable for the system drive.
 	/// </summary>
 	SystemDrive,
 
 	/// <summary>
-	/// The system root
+	/// The environment variable for the system root directory.
 	/// </summary>
 	SystemRoot,
 
 	/// <summary>
-	/// The common program W6432
+	/// The environment variable for the temporary files directory.
 	/// </summary>
 	TEMP,
 
 	/// <summary>
-	/// The threaded wait dialog dpi context
+	/// The environment variable for the threaded wait dialog DPI context.
 	/// </summary>
 	ThreadedWaitDialogDpiContext,
 
 	/// <summary>
-	/// The temporary
+	/// The environment variable for the temporary files directory.
 	/// </summary>
 	TMP,
 
 	/// <summary>
-	/// The user domain
+	/// The environment variable for the user domain.
 	/// </summary>
 	USERDOMAIN,
 
 	/// <summary>
-	/// The user domain roaming profile
+	/// The environment variable for the user domain roaming profile.
 	/// </summary>
 	USERDOMAIN_ROAMINGPROFILE,
 
 	/// <summary>
-	/// The computer name
+	/// The environment variable for the user name.
 	/// </summary>
 	USERNAME,
 
 	/// <summary>
-	/// The user profile
+	/// The environment variable for the user profile directory.
 	/// </summary>
 	USERPROFILE,
 
 	/// <summary>
-	/// The visual studio dir
+	/// The environment variable for the Visual Studio directory.
 	/// </summary>
 	VisualStudioDir,
 
 	/// <summary>
-	/// The visual studio edition
+	/// The environment variable for the Visual Studio edition.
 	/// </summary>
 	VisualStudioEdition,
 
 	/// <summary>
-	/// The COM spec
+	/// The environment variable for the Visual Studio version.
 	/// </summary>
 	VisualStudioVersion,
 
 	/// <summary>
-	/// The vs app id dir
+	/// The environment variable for the Visual Studio App ID directory.
 	/// </summary>
 	VSAPPIDDIR,
 
 	/// <summary>
-	/// The vs app id name
+	/// The environment variable for the Visual Studio App ID name.
 	/// </summary>
 	VSAPPIDNAME,
 
 	/// <summary>
-	/// The vs lang
+	/// The environment variable for the Visual Studio language.
 	/// </summary>
 	VSLANG,
 
 	/// <summary>
-	/// The driver data
+	/// The environment variable for the Visual Studio logger unique ID.
 	/// </summary>
 	VSLOGGER_UNIQUEID,
 
 	/// <summary>
-	/// The vs sku edition
+	/// The environment variable for the Visual Studio SKU edition.
 	/// </summary>
 	VSSKUEDITION,
 
 	/// <summary>
-	/// The VTune amplifier 2019 dir
+	/// The environment variable for the VTune Amplifier 2019 directory.
 	/// </summary>
 	VTUNE_AMPLIFIER_2019_DIR,
 
 	/// <summary>
-	/// The Windows directory
+	/// The environment variable for the Windows directory.
 	/// </summary>
 	windir
 }

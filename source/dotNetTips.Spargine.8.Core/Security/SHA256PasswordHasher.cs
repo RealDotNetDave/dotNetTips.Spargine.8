@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-16-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -24,7 +24,8 @@ using System.Text;
 namespace DotNetTips.Spargine.Core.Security;
 
 /// <summary>
-/// Class SHA256PasswordHasher. This class cannot be inherited.
+/// Provides methods for hashing passwords using the SHA256 algorithm and verifying hashed passwords.
+/// This class cannot be inherited and is designed to enhance security by incorporating salt and fixed-time comparison to mitigate common vulnerabilities.
 /// </summary>
 public static class SHA256PasswordHasher
 {

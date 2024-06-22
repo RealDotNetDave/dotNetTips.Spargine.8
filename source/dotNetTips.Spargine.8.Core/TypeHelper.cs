@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-16-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -38,24 +38,26 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class TypeHelper.
+/// Provides a collection of utility methods for type inspection and manipulation, including methods to create instances,
+/// check types, retrieve type information, and work with JSON serialization.
 /// </summary>
 public static class TypeHelper
 {
 
 	/// <summary>
-	/// The builtin types
+	/// A read-only collection of built-in .NET types. This collection is used internally to check if a type is a built-in .NET type.
 	/// </summary>
 	private static ReadOnlyCollection<Type> _builtinTypes;
 
 	/// <summary>
-	/// The string builder pool
+	/// Provides a pool of reusable <see cref="StringBuilder"/> instances to reduce allocations and improve performance.
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool =
 	new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	/// <summary>
-	/// Computes the builtin types.
+	/// Computes and initializes the list of built-in .NET types that are considered primitive for the purposes of this utility class.
+	/// This method populates the <see cref="_builtinTypes"/> collection with types that are commonly used and recognized as fundamental types within .NET applications.
 	/// </summary>
 	[Information(nameof(ComputeBuiltinTypes), author: "David McCarter", createdOn: "11/6/2023")]
 	private static void ComputeBuiltinTypes()
@@ -88,10 +90,10 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Determines whether [is dot net assemblyCollection] [the specified stream].
+	/// Determines whether the provided stream represents a .NET assembly.
 	/// </summary>
-	/// <param name="stream">The stream.</param>
-	/// <returns>bool.</returns>
+	/// <param name="stream">The stream to analyze.</param>
+	/// <returns><c>true</c> if the stream represents a .NET assembly; otherwise, <c>false</c>.</returns>
 	[Information(nameof(IsDotNetAssembly), author: "David McCarter", createdOn: "5/20/2024")]
 	private static bool IsDotNetAssembly(Stream stream)
 	{
@@ -116,12 +118,12 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Loads the derived types of a type.
+	/// Loads types derived from a specified base type from a collection of TypeInfo objects.
 	/// </summary>
-	/// <param name="types">The types.</param>
-	/// <param name="baseType">Type of the base.</param>
-	/// <param name="classOnly">The class only.</param>
-	/// <returns>IEnumerable&lt;Type&gt;.</returns>
+	/// <param name="types">The collection of TypeInfo objects to search through.</param>
+	/// <param name="baseType">The base type to find derived types of.</param>
+	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
+	/// <returns>An enumerable collection of types that are derived from the specified base type.</returns>
 	[Information(UnitTestCoverage = 99, Status = Status.Available)]
 	private static IEnumerable<Type> LoadDerivedTypes(IEnumerable<TypeInfo> types, Type baseType, bool classOnly)
 	{
@@ -156,17 +158,13 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Processes a generic type and appends its formatted string representation to the provided StringBuilder.
+	/// Processes a generic type to construct its display name, including handling of generic arguments.
 	/// </summary>
-	/// <param name="builder">The StringBuilder to which the type's string representation is appended.</param>
+	/// <param name="builder">The <see cref="StringBuilder"/> used to build the display name.</param>
 	/// <param name="type">The generic type to process.</param>
-	/// <param name="genericArguments">An array of Type objects that represent the arguments of the generic type.</param>
-	/// <param name="length">The number of generic arguments to process.</param>
-	/// <param name="options">Display options that specify how the type name is formatted.</param>
-	/// <remarks>
-	/// This method is responsible for generating a human-readable string representation of a generic type,
-	/// including its name and its generic type arguments, according to the specified display options.
-	/// </remarks>
+	/// <param name="genericArguments">The array of generic arguments for the type.</param>
+	/// <param name="length">The number of generic arguments to consider.</param>
+	/// <param name="options">Display name options to customize the output.</param>
 	[Information(UnitTestCoverage = 99, Status = Status.Available)]
 	private static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, int length, DisplayNameOptions options)
 	{
@@ -225,11 +223,11 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Processes the type.
+	/// Processes a given type to construct its display name, handling generic types and applying specified display options.
 	/// </summary>
-	/// <param name="builder">The builder.</param>
-	/// <param name="type">The type.</param>
-	/// <param name="options">The options.</param>
+	/// <param name="builder">The <see cref="StringBuilder"/> instance used to build the display name.</param>
+	/// <param name="type">The type to process for display.</param>
+	/// <param name="options">Options that specify how the display name should be formatted.</param>
 	[Information(UnitTestCoverage = 99, Status = Status.Available)]
 	private static void ProcessType(StringBuilder builder, Type type, DisplayNameOptions options)
 	{
@@ -267,14 +265,10 @@ public static class TypeHelper
 
 	/// <summary>
 	/// Creates an instance of the specified type <typeparamref name="T"/>.
+	/// This method requires the type <typeparamref name="T"/> to have a parameterless constructor.
 	/// </summary>
 	/// <typeparam name="T">The type of object to create.</typeparam>
-	/// <returns>A new instance of the specified type.</returns>
-	/// <exception cref="InvalidOperationException">Thrown when the type cannot 
-	/// be instantiated. This can occur if <typeparamref name="T"/> is an 
-	/// interface, abstract class, or does not have a parameterless 
-	/// constructor.
-	/// </exception>
+	/// <returns>An instance of the specified type.</returns>
 	/// <remarks>
 	/// This method uses reflection to create an instance of 
 	/// <typeparamref name="T"/>. It requires <typeparamref name="T"/> 
@@ -291,11 +285,14 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Creates the specified parameter assemblyCollection.
+	/// Creates an instance of the specified type <typeparamref name="T"/> using the provided constructor parameters.
+	/// This method dynamically invokes a constructor of <typeparamref name="T"/> that matches the types of the provided parameters.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="paramArray">The parameter assemblyCollection.</param>
-	/// <returns>T.</returns>
+	/// <typeparam name="T">The type of object to create.</typeparam>
+	/// <param name="paramArray">The parameters to pass to the constructor of <typeparamref name="T"/>.</param>
+	/// <returns>An instance of the specified type.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="paramArray"/> is null.</exception>
+	/// <exception cref="MissingMethodException">Thrown if a matching constructor for the specified parameters is not found.</exception>
 	[Information(UnitTestCoverage = 100, Status = Status.Available)]
 	public static T Create<T>([NotNull] params object[] paramArray)
 	{
@@ -305,11 +302,12 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Does the object equal instance.
+	/// Determines whether the specified object equals the specified instance.
 	/// </summary>
-	/// <param name="value">The value.</param>
-	/// <param name="instance">The instance.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="value">The object to compare.</param>
+	/// <param name="instance">The instance to compare against.</param>
+	/// <returns><c>true</c> if <paramref name="value"/> equals <paramref name="instance"/>; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="value"/> or <paramref name="instance"/> is null.</exception>
 	[Information(UnitTestCoverage = 100, Status = Status.Available)]
 	public static bool DoesObjectEqualInstance([NotNull] object value, [NotNull] object instance)
 	{
@@ -319,11 +317,11 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Finds the derived types in the app folder.
+	/// Finds all types derived from a specified base type within the currently loaded assemblies.
 	/// </summary>
-	/// <param name="baseType">Type of the base.</param>
-	/// <param name="classOnly">if set to <c>true</c> [class only].</param>
-	/// <returns>IEnumerable&lt;Type&gt;.</returns>
+	/// <param name="baseType">The base type to find derived types of.</param>
+	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
+	/// <returns>A read-only collection of types that are derived from the specified base type.</returns>
 	[Information(UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] Type baseType, bool classOnly)
 	{
@@ -333,12 +331,12 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Finds the derived types in a <see cref="AppDomain"/>.
+	/// Finds all types derived from a specified base type within the specified <see cref="AppDomain"/>.
 	/// </summary>
-	/// <param name="currentDomain">The current domain.</param>
-	/// <param name="baseType">Type of the base.</param>
-	/// <param name="classOnly">if set to <c>true</c> [class only].</param>
-	/// <returns>IEnumerable&lt;Type&gt;.</returns>
+	/// <param name="currentDomain">The <see cref="AppDomain"/> to search for derived types in.</param>
+	/// <param name="baseType">The base type to find derived types of.</param>
+	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
+	/// <returns>A read-only collection of types that are derived from the specified base type.</returns>
 	[Information(UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
@@ -378,18 +376,17 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Finds the derived types using the path.
+	/// Finds all types derived from a specified base type within the assemblies located in the specified directory.
 	/// </summary>
-	/// <param name="path">The path.</param>
-	/// <param name="fileSearchType">The search option.</param>
-	/// <param name="baseType">Type of the base.</param>
-	/// <param name="classOnly">if set to <c>true</c> [class only].</param>
-	/// <returns>IEnumerable&lt;Type&gt;.</returns>
-	/// <exception cref="DirectoryNotFoundException">Could not find path.</exception>
-	/// <exception cref="ArgumentNullException">Could not find path.</exception>
+	/// <param name="path">The directory containing the assemblies to search.</param>
+	/// <param name="fileSearchType">Specifies whether to search all directories or only the top directory.</param>
+	/// <param name="baseType">The base type to find derived types of.</param>
+	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
+	/// <returns>A read-only collection of types that are derived from the specified base type.</returns>
 	[Information(UnitTestCoverage = 100, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] DirectoryInfo path, SearchOption fileSearchType, [NotNull] Type baseType, bool classOnly)
 	{
+		path = path.ArgumentNotNull();
 		fileSearchType = fileSearchType.ArgumentDefined();
 		baseType = baseType.ArgumentNotNull();
 
@@ -438,22 +435,25 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Creates object from Json.
+	/// Deserializes a JSON string into an instance of type <typeparamref name="T"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="json">The json.</param>
-	/// <returns>T.</returns>
+	/// <typeparam name="T">The type of the object to deserialize to.</typeparam>
+	/// <param name="json">The JSON string to deserialize.</param>
+	/// <returns>An instance of <typeparamref name="T"/> deserialized from the JSON string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="json"/> is null or empty.</exception>
+	/// <exception cref="JsonException">Thrown if the JSON is invalid or the deserialization fails.</exception>
 	[Information(nameof(FromJson), UnitTestCoverage = 100, Status = Status.Available)]
 	public static T FromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json)
 		where T : class => JsonSerializer.Deserialize<T>(json);
 
 	/// <summary>
-	/// Creates object from a Json file.
+	/// Deserializes a JSON file into an instance of type <typeparamref name="T"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="file">File</param>
-	/// <returns>T.</returns>
-	/// <exception cref="FileNotFoundException">The exception.</exception>
+	/// <typeparam name="T">The type of the object to deserialize to.</typeparam>
+	/// <param name="file">The <see cref="FileInfo"/> representing the file to deserialize from.</param>
+	/// <returns>An instance of <typeparamref name="T"/> deserialized from the JSON file.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
+	/// <exception cref="JsonException">Thrown if the JSON is invalid or the deserialization fails.</exception>
 	[Information(nameof(FromJsonFile), UnitTestCoverage = 99, Status = Status.Available)]
 	public static T FromJsonFile<T>([NotNull] FileInfo file)
 		where T : class
@@ -471,23 +471,19 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Gets the default type.
+	/// Gets the default value for the specified type <typeparamref name="T"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <returns>T.</returns>
+	/// <typeparam name="T">The type for which to get the default value.</typeparam>
+	/// <returns>The default value for type <typeparamref name="T"/>.</returns>
 	[Information(UnitTestCoverage = 100, Status = Status.Available)]
 	public static T GetDefault<T>() => default;
 
 	/// <summary>
-	/// Calculates and returns the hash code for the specified instance.
+	/// Computes the hash code for the specified instance.
 	/// </summary>
-	/// <param name="instance">The instance for which to calculate the hash code.</param>
-	/// <returns>The hash code of the specified instance.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if
-	/// <paramref name="instance" /> is null.</exception>
-	/// <remarks>This method uses the default hash code provider of the object's
-	/// type to compute the hash code. It is a convenient way to obtain an
-	/// instance's hash code with null-checking.</remarks>
+	/// <param name="instance">The instance to compute the hash code for.</param>
+	/// <returns>The computed hash code.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="instance"/> is null.</exception>
 	[Information(UnitTestCoverage = 100, Status = Status.Available)]
 	public static int GetInstanceHashCode([NotNull] object instance)
 	{
@@ -497,11 +493,12 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Gets the property values from a type.
+	/// Gets the property values of the specified object.
 	/// </summary>
-	/// <typeparam name="T">Generic type.</typeparam>
-	/// <param name="input">The input.</param>
-	/// <returns>ReadOnlyDictionary&lt;System.String, System.String&gt;.</returns>
+	/// <typeparam name="T">The type of the object to get property values from.</typeparam>
+	/// <param name="input">The object instance to extract property values from.</param>
+	/// <returns>A read-only collection of key-value pairs where each key is a property name and each value is the property's value as a string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	/// <example>Output:
 	/// [Address1, `fqrZjAqTNANUNIyJWFyNjCQx]
 	/// [Address2, bSUnkmaIIMutgJtAKYZANpSHM]
@@ -555,24 +552,23 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Gets the display name of the type.
+	/// Gets the display name of the type of the specified object.
 	/// </summary>
-	/// <param name="item">The item.</param>
-	/// <param name="fullName">if set to <c>true</c> [full name].</param>
-	/// <returns>System.String.</returns>
+	/// <param name="item">The object to get the type display name for.</param>
+	/// <param name="fullName">If true, the full name of the type is returned; otherwise, the short name is returned.</param>
+	/// <returns>The display name of the type of the specified object.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/31/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static string GetTypeDisplayName([NotNull] object item, bool fullName = true) => item is null ? null : GetTypeDisplayName(item.GetType(), fullName);
 
 	/// <summary>
-	/// Pretty print a type name using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
+	/// Gets the display name of the specified type.
 	/// </summary>
-	/// <param name="type">The <see cref="Type" />.</param>
-	/// <param name="fullName"><c>true</c> to print a fully qualified name.</param>
-	/// <param name="includeGenericParameterNames"><c>true</c> to include generic parameter names.</param>
-	/// <param name="includeGenericParameters"><c>true</c> to include generic parameters.</param>
-	/// <param name="nestedTypeDelimiter">Character to use as a delimiter in nested type names</param>
-	/// <returns>The pretty printed type name.</returns>
-	/// <exception cref="ArgumentNullException">type</exception>
+	/// <param name="type">The type to get the display name for.</param>
+	/// <param name="fullName">If true, returns the full name of the type; otherwise, returns the short name.</param>
+	/// <param name="includeGenericParameterNames">If true, includes the names of generic parameters in the display name.</param>
+	/// <param name="includeGenericParameters">If true, includes generic parameters in the display name.</param>
+	/// <param name="nestedTypeDelimiter">The delimiter to use for nested types.</param>
+	/// <returns>The display name of the type.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/31/2020", UnitTestCoverage = 100, Status = Status.Available)]
 	public static string GetTypeDisplayName([NotNull] Type type, bool fullName = true, bool includeGenericParameterNames = false, bool includeGenericParameters = true, char nestedTypeDelimiter = ControlChars.Plus)
 	{
@@ -602,10 +598,7 @@ public static class TypeHelper
 	/// Determines whether the specified type is a built-in .NET type.
 	/// </summary>
 	/// <param name="type">The type to check.</param>
-	/// <returns>
-	///   <c>true</c> if [is built-in type] [the specified type]; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type" /> is null.</exception>
-	/// <remarks>Built-in types are fundamental types predefined by the .NET runtime. This method checks if the given type is one of these fundamental types.</remarks>
+	/// <returns><c>true</c> if the type is a built-in .NET type; otherwise, <c>false</c>.</returns>
 	[Information(nameof(IsBuiltinType), author: "David McCarter", createdOn: "11/6/2023", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsBuiltinType(Type type)
 	{
@@ -643,11 +636,13 @@ public static class TypeHelper
 		return false;
 	}
 
-	/// <summary>Determines whether [is dot net assemblyCollection] [the specified file].</summary>
-	/// <param name="file">The file.</param>
-	/// <returns>
-	///   <c>true</c> if [is dot net assemblyCollection] [the specified file]; otherwise, <c>false</c>.</returns>
-	/// <exception cref="FileNotFoundException">File not found.</exception>
+	/// <summary>
+	/// Determines whether the specified file is a .NET assembly.
+	/// </summary>
+	/// <param name="file">The file to check.</param>
+	/// <returns><c>true</c> if the file is a .NET assembly; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the file does not exist.</exception>
 	[Information("Orginal code by GÉRALD BARRÉ", author: "David McCarter", createdOn: "5/20/2024", UnitTestCoverage = 100, Status = Status.New)]
 	public static bool IsDotNetAssembly(FileInfo file)
 	{
@@ -659,9 +654,8 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Gets the built in type names.
+	/// Provides a dictionary mapping built-in .NET types to their string representations.
 	/// </summary>
-	/// <value>The built in type names.</value>
 	public static Dictionary<Type, string> BuiltInTypeNames { get; } = new()
 	{
 		{ typeof(bool), "bool" },
@@ -683,12 +677,13 @@ public static class TypeHelper
 		{ typeof(ulong), "ulong" },
 		{ typeof(ushort), "ushort" },
 		{ typeof(void), "void" },
+		{ typeof(TimeOnly), "timeonly" },
+		{ typeof(DateOnly), "dateonly" },
 	};
 
 	/// <summary>
-	/// Gets all of the builtin types for .NET.
+	/// Gets a read-only collection of built-in .NET types.
 	/// </summary>
-	/// <value>The builtin types.</value>
 	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static ReadOnlyCollection<Type> BuiltinTypes
 	{
@@ -704,38 +699,33 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Struct DisplayNameOptions.
+	/// Represents options for displaying type names.
 	/// </summary>
-	/// <param name="fullName">if set to <c>true</c> [full name].</param>
-	/// <param name="includeGenericParameterNames">if set to <c>true</c> [include generic parameter names].</param>
-	/// <param name="includeGenericParameters">if set to <c>true</c> [include generic parameters].</param>
-	/// <param name="nestedTypeDelimiter">The nested type delimiter.</param>
-	/// <remarks>Initializes a new instance of the <see cref="DisplayNameOptions" /> struct.</remarks>
+	/// <param name="fullName">If true, the full name of the type is used; otherwise, the short name is used.</param>
+	/// <param name="includeGenericParameterNames">If true, includes the names of generic parameters.</param>
+	/// <param name="includeGenericParameters">If true, includes generic parameters in the display name.</param>
+	/// <param name="nestedTypeDelimiter">The delimiter to use for nested types.</param>
 	internal readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter)
 	{
 
 		/// <summary>
-		/// Gets a value indicating whether [full name].
+		/// Gets a value indicating whether the full name of the type is used.
 		/// </summary>
-		/// <value><c>true</c> if [full name]; otherwise, <c>false</c>.</value>
 		public bool FullName { get; } = fullName;
 
 		/// <summary>
-		/// Gets a value indicating whether [include generic parameter names].
+		/// Gets a value indicating whether the names of generic parameters are included in the type's display name.
 		/// </summary>
-		/// <value><c>true</c> if [include generic parameter names]; otherwise, <c>false</c>.</value>
 		public bool IncludeGenericParameterNames { get; } = includeGenericParameterNames;
 
 		/// <summary>
-		/// Gets a value indicating whether [include generic parameters].
+		/// Gets a value indicating whether generic parameters are included in the type's display name.
 		/// </summary>
-		/// <value><c>true</c> if [include generic parameters]; otherwise, <c>false</c>.</value>
 		public bool IncludeGenericParameters { get; } = includeGenericParameters;
 
 		/// <summary>
-		/// Gets the nested type delimiter.
+		/// Gets the delimiter used for nested types in the type's display name.
 		/// </summary>
-		/// <value>The nested type delimiter.</value>
 		public char NestedTypeDelimiter { get; } = nestedTypeDelimiter;
 
 	}

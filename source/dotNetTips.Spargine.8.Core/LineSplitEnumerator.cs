@@ -4,7 +4,7 @@
 // Created          : 07-05-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="LineSplitEnumerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -16,29 +16,29 @@
 
 
 
+
+
+
 namespace DotNetTips.Spargine.Core;
 
-// Must be a ref struct as it contains a ReadOnlySpan<char>
 /// <summary>
-/// Struct LineSplitEnumerator
+/// Initializes a new instance of the <see cref="LineSplitEnumerator"/> struct for splitting a string into lines.
 /// </summary>
-/// <param name="input">The string.</param>
-/// <remarks>Initializes a new instance of the <see cref="LineSplitEnumerator" /> struct.</remarks>
+/// <param name="input">The input string to be split into lines.</param>
 [Information(nameof(LineSplitEnumerator), "David McCarter", "6/9/2022", Status = Status.Available, Documentation = "https://www.meziantou.net/split-a-string-into-lines-without-allocation.htm")]
 public ref struct LineSplitEnumerator(ReadOnlySpan<char> input)
 {
 
-	// Needed to be compatible with the foreach operator
 	/// <summary>
-	/// Gets the enumerator.
+	/// Gets the enumerator itself, required to support the foreach loop semantics.
 	/// </summary>
-	/// <returns>LineSplitEnumerator.</returns>
+	/// <returns>The <see cref="LineSplitEnumerator"/> instance.</returns>
 	public readonly LineSplitEnumerator GetEnumerator() => this;
 
 	/// <summary>
-	/// Moves the next.
+	/// Advances the enumerator to the next line in the input string.
 	/// </summary>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <returns><c>true</c> if the enumerator was successfully advanced to the next line; <c>false</c> if the enumerator has passed the end of the collection.</returns>
 	public bool MoveNext()
 	{
 		var span = this._string;
@@ -82,13 +82,13 @@ public ref struct LineSplitEnumerator(ReadOnlySpan<char> input)
 	}
 
 	/// <summary>
-	/// Gets the current line.
+	/// Gets the current line in the input string being enumerated.
 	/// </summary>
-	/// <value>The current.</value>
+	/// <value>The current line as a <see cref="LineSplitEntry"/>.</value>
 	public LineSplitEntry Current { get; private set; } = default;
 
 	/// <summary>
-	/// The string
+	/// The input string represented as a ReadOnlySpan.
 	/// </summary>
 	private ReadOnlySpan<char> _string = input;
 

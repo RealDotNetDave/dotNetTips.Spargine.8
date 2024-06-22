@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="ServiceProxy.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -23,32 +23,35 @@ using System.ServiceModel.Description;
 namespace DotNetTips.Spargine.Core.Web;
 
 /// <summary>
-/// Class ServiceProxy.
+/// Provides a base class for creating service proxies for types that implement <see cref="ICommunicationObject"/>.
+/// This enables communication with WCF services by abstracting the creation and management of service channels.
 /// </summary>
-/// <typeparam name="T">Generic type parameter.</typeparam>
-/// <seealso cref="IDisposable" />
-/// <param name="serviceEndpoint">The service endpoint.</param>
-/// <remarks>Initializes a new instance of the <see cref="ServiceProxy{T}" /> class.</remarks>
+/// <typeparam name="T">The service contract type that implements <see cref="ICommunicationObject"/>.</typeparam>
+/// <remarks>
+/// Service proxies are used to manage service channels efficiently, handling creation, usage, and cleanup of channels.
+/// This abstract class requires the implementation of the service contract as a generic type parameter.
+/// </remarks>
 public abstract class ServiceProxy<T>([NotNull] ServiceEndpoint serviceEndpoint) : IDisposable where T : ICommunicationObject
 {
 
 	/// <summary>
-	/// The channel.
+	/// The communication channel used to interact with the service.
 	/// </summary>
 	private T _channel;
 
 	/// <summary>
-	/// The channel factory.
+	/// The factory used to create channels for communication with the service.
 	/// </summary>
 	private ChannelFactory<T> _channelFactory;
 
 	/// <summary>
-	/// The lock.
+	/// The synchronization lock object used to ensure thread safety when initializing or disposing resources.
 	/// </summary>
 	private readonly object _lock = new();
 
 	/// <summary>
-	/// Initializes this instance.
+	/// Initializes the service proxy by creating a channel factory and channel based on the provided service endpoint.
+	/// Ensures that only one channel is created per instance, using a thread-safe initialization pattern.
 	/// </summary>
 	private void Initialize()
 	{
@@ -66,8 +69,12 @@ public abstract class ServiceProxy<T>([NotNull] ServiceEndpoint serviceEndpoint)
 	}
 
 	/// <summary>
-	/// Closes the channel.
+	/// Closes the communication channel with the service, ensuring a graceful shutdown of the connection.
 	/// </summary>
+	/// <remarks>
+	/// This method checks if the channel exists and is not already disposed before attempting to close it.
+	/// It's designed to be called from within the class or by derived classes to ensure resources are properly released.
+	/// </remarks>
 	protected void CloseChannel()
 	{
 		if (this.Channel is not null && this.Disposed is false)
@@ -80,6 +87,10 @@ public abstract class ServiceProxy<T>([NotNull] ServiceEndpoint serviceEndpoint)
 	/// Releases unmanaged and - optionally - managed resources.
 	/// </summary>
 	/// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+	/// <remarks>
+	/// If <paramref name="disposing"/> is <c>true</c>, the method disposes of managed resources (like the channel and channel factory).
+	/// This method is called by the public Dispose method and the <see cref="GC.SuppressFinalize"/> method to release managed and unmanaged resources.
+	/// </remarks>
 	protected virtual void Dispose(bool disposing)
 	{
 		// Do nothing if the object has already been disposed of.
@@ -103,9 +114,12 @@ public abstract class ServiceProxy<T>([NotNull] ServiceEndpoint serviceEndpoint)
 	}
 
 	/// <summary>
-	/// Gets the channel.
+	/// Gets the communication channel used to interact with the service. This property ensures the channel is initialized before use.
 	/// </summary>
-	/// <value>The channel.</value>
+	/// <value>The communication channel.</value>
+	/// <remarks>
+	/// The channel is lazily initialized upon first access to ensure efficient use of resources. This design supports the efficient management of service connections.
+	/// </remarks>
 	protected T Channel
 	{
 		get
@@ -118,14 +132,23 @@ public abstract class ServiceProxy<T>([NotNull] ServiceEndpoint serviceEndpoint)
 	}
 
 	/// <summary>
-	/// Gets or sets a value indicating whether <see cref="ServiceProxy{T}" /> is disposed.
+	/// Gets or sets a value indicating whether the <see cref="ServiceProxy{T}"/> is disposed.
 	/// </summary>
-	/// <value><c>true</c> if disposed; otherwise, <c>false</c>.</value>
+	/// <value><c>true</c> if this instance is disposed; otherwise, <c>false</c>.</value>
+	/// <remarks>
+	/// This property is used internally to track the disposal state of the service proxy instance,
+	/// ensuring that resources are not inadvertently released more than once.
+	/// </remarks>
 	protected bool Disposed { get; set; }
 
 	/// <summary>
-	/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+	/// Disposes of the resources (other than memory) used by the <see cref="ServiceProxy{T}"/>.
 	/// </summary>
+	/// <remarks>
+	/// This method disposes the service proxy's resources by calling the protected virtual Dispose method with the disposing parameter set to true.
+	/// It then calls GC.SuppressFinalize to take this object off the finalization queue and prevent finalization code for this object
+	/// from executing a second time.
+	/// </remarks>
 	[Preserve("Part of IDisposable", "4/16/2023", "David McCarter")]
 	public void Dispose()
 	{

@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="ExecutionHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -29,12 +29,22 @@ public static class ExecutionHelper
 {
 
 	/// <summary>
-	/// Progressive retry for a function call.
+	/// Provides utility methods for executing operations with retry logic, allowing for progressive delays between retries.
+	/// This can be particularly useful for handling transient faults in network communication or external service calls.
 	/// </summary>
-	/// <param name="operation">The operation to perform.</param>
-	/// <param name="retryCount">The retry count (default 3).</param>
-	/// <param name="retryWaitMilliseconds">The retry wait milliseconds (default 100).</param>
-	/// <returns>System.Int32.</returns>
+	/// <param name="operation">The operation to execute. Must not be null.</param>
+	/// <param name="retryCount">The maximum number of retry attempts.</param>
+	/// <param name="retryWaitMilliseconds">The initial wait time in milliseconds before the first retry. This wait time increases progressively with each retry.</param>
+	/// <returns>A SimpleResult{int} object that contains the result of the operation and the number of attempts made.</returns>
+	/// <example>
+	/// This example shows how to use the <see cref="ProgressiveRetry"/> method to attempt an operation up to 3 times with a progressive delay.
+	/// <code>
+	/// var result = ExecutionHelper.ProgressiveRetry(() =>
+	/// {
+	///     // Operation that may fail and need retries
+	/// }, 3, 100);
+	/// </code>
+	/// </example>
 	[Information(nameof(ProgressiveRetry), UnitTestCoverage = 100, Status = Status.Available)]
 	public static SimpleResult<int> ProgressiveRetry([NotNull] Action operation, byte retryCount = 3, int retryWaitMilliseconds = 100)
 	{
@@ -43,7 +53,6 @@ public static class ExecutionHelper
 		retryWaitMilliseconds = retryWaitMilliseconds.ArgumentInRange(lower: 1);
 
 		var attempts = 0;
-
 		var result = new SimpleResult<int>();
 
 		while (true)

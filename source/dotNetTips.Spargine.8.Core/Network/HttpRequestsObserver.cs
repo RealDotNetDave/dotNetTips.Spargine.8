@@ -4,7 +4,7 @@
 // Created          : 07-11-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="HttpRequestsObserver.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -16,7 +16,6 @@
 // </summary>
 // ***********************************************************************
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.Logging;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -24,24 +23,33 @@ using Microsoft.Extensions.Logging;
 namespace DotNetTips.Spargine.Core.Network;
 
 /// <summary>
-/// Class HttpRequestsObserver. This class cannot be inherited.
-/// Implements the <see cref="IDisposable" />
-/// Implements the <see cref="IObserver{DiagnosticListener}" />
+/// Observes and subscribes to <see cref="DiagnosticListener"/> instances specifically for HTTP request and response diagnostic events.
+/// This observer allows for monitoring and logging of HTTP traffic, providing insights into HttpRequestMessage and HttpResponseMessage activities.
 /// </summary>
-/// <seealso cref="IDisposable" />
-/// <seealso cref="IObserver{DiagnosticListener}" />
-/// <param name="logger">The logger.</param>
-/// <remarks>Initializes a new instance of the <see cref="HttpRequestsObserver" /> class.</remarks>
+/// <remarks>
+/// This class implements <see cref="IDisposable"/> and <see cref="IObserver{DiagnosticListener}"/>, subscribing to diagnostic events that match the "HttpHandlerDiagnosticListener".
+/// When such an event is observed, it creates and subscribes an instance of <see cref="HttpHandlerDiagnosticListener"/> to further process these HTTP events.
+/// </remarks>
+/// <example>
+/// Usage example:
+/// <code>
+/// var logger = new LoggerFactory().CreateLogger("HttpLogger");
+/// using var observer = new HttpRequestsObserver(logger);
+/// // Assuming a DiagnosticListener is published somewhere in the application that matches "HttpHandlerDiagnosticListener"
+/// </code>
+/// </example>
+/// <param name="logger">The logger used for logging information about the HTTP requests and responses.</param>
 public sealed class HttpRequestsObserver(ILogger logger) : IDisposable, IObserver<DiagnosticListener>
 {
 
 	/// <summary>
-	/// The disposed flag.
+	/// Indicates whether the object has been disposed, preventing any further operations once disposed.
 	/// </summary>
 	private bool _disposed;
 
 	/// <summary>
-	/// The subscription.
+	/// Holds the subscription to the diagnostic listener. This field is used to manage the lifetime of the subscription,
+	/// allowing the observer to unsubscribe when it is disposed.
 	/// </summary>
 	private IDisposable _subscription;
 
@@ -81,22 +89,22 @@ public sealed class HttpRequestsObserver(ILogger logger) : IDisposable, IObserve
 
 	/// <summary>
 	/// Notifies the observer that the provider has finished sending push-based notifications.
+	/// This method is intentionally left empty because this observer does not need to handle completion notifications.
 	/// </summary>
-	/// <exception cref="NotSupportedException"></exception>
 	public void OnCompleted() { }
 
 	/// <summary>
 	/// Notifies the observer that the provider has experienced an error condition.
+	/// This method is intentionally left empty because this observer does not need to handle error notifications.
 	/// </summary>
 	/// <param name="error">An object that provides additional information about the error.</param>
-	/// <exception cref="NotSupportedException"></exception>
 	public void OnError(Exception error) { }
 
 	/// <summary>
-	/// Provides the observer with new data.
+	/// Provides the observer with new data by subscribing to the specified <see cref="DiagnosticListener"/>.
 	/// </summary>
-	/// <param name="value">The current notification information.</param>
-	public void OnNext([NotNull] DiagnosticListener value)
+	/// <param name="value">The <see cref="DiagnosticListener"/> instance to observe.</param>
+	public void OnNext(DiagnosticListener value)
 	{
 		if (value.ArgumentNotNull().Name is "HttpHandlerDiagnosticListener")
 		{

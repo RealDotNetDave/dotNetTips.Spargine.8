@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -22,20 +22,24 @@ using System.Diagnostics.CodeAnalysis;
 namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 
 /// <summary>
-/// DistinctConcurrentBag ensures that duplicate items are not added to the bag.
+/// Represents a thread-safe, unordered collection of objects that does not allow duplicate elements.
 /// </summary>
-/// <typeparam name="T">Generic type parameter.</typeparam>
+/// <typeparam name="T">The type of the elements in the bag.</typeparam>
+/// <remarks>
+/// This collection wraps a <see cref="ConcurrentBag{T}"/>, ensuring that all elements are unique.
+/// </remarks>
 /// <seealso cref="ConcurrentBag{T}" />
+/// <seealso cref="ICollection{T}" />
 public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 {
 
 	/// <summary>
-	/// The hash codes
+	/// The hash codes of the items contained in the <see cref="DistinctConcurrentBag{T}"/>.
 	/// </summary>
 	private readonly HashSet<int> _hashCodes = [];
 
 	/// <summary>
-	/// The lock
+	/// The synchronization lock used to ensure thread safety when modifying the <see cref="DistinctConcurrentBag{T}"/>.
 	/// </summary>
 	private readonly object _lock = new();
 
@@ -53,9 +57,10 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	public DistinctConcurrentBag([NotNull] IEnumerable<T> collection) => collection?.ToList().ForEach(this.Add);
 
 	/// <summary>
-	/// Adds an object to the list.
+	/// Adds an object to the <see cref="DistinctConcurrentBag{T}"/>.
 	/// </summary>
-	/// <param name="item">The object to be added to the list. The value can be a null reference (Nothing in Visual Basic) for reference types.</param>
+	/// <param name="item">The object to be added to the bag. The value cannot be a null reference for reference types.</param>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="item"/> is null.</exception>
 	void ICollection<T>.Add([NotNull] T item)
 	{
 		if (item is null)
@@ -76,11 +81,11 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	}
 
 	/// <summary>
-	/// Determines whether the collection contains a specific value.
+	/// Determines whether the <see cref="DistinctConcurrentBag{T}"/> contains a specific value.
 	/// </summary>
-	/// <param name="item">The object to locate in the collection.</param>
-	/// <returns><see langword="true" /> if <paramref name="item" /> is found in the collection; otherwise, <see langword="false" />.</returns>
-	bool ICollection<T>.Contains([NotNull] T item)
+	/// <param name="item">The object to locate in the <see cref="DistinctConcurrentBag{T}"/>.</param>
+	/// <returns><see langword="true" /> if <paramref name="item" /> is found in the <see cref="DistinctConcurrentBag{T}"/>; otherwise, <see langword="false" />.</returns>
+	bool ICollection<T>.Contains([NotNullWhen(true)] T item)
 	{
 		if (item is null)
 		{
@@ -91,25 +96,24 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	}
 
 	/// <summary>
-	/// Removes the first occurrence of a specific object from the collection.
+	/// Removes the first occurrence of a specific object from the <see cref="DistinctConcurrentBag{T}"/>.
 	/// </summary>
-	/// <param name="item">The object to remove from the collection.</param>
-	/// <returns><see langword="true" /> if <paramref name="item" /> was successfully removed from the collection; otherwise, <see langword="false" />. This method also returns <see langword="false" /> if <paramref name="item" /> is not found in the original collection.</returns>
-	/// <exception cref="NotImplementedException"></exception>
+	/// <param name="item">The object to remove from the <see cref="DistinctConcurrentBag{T}"/>.</param>
+	/// <returns><see langword="true" /> if <paramref name="item" /> was successfully removed from the <see cref="DistinctConcurrentBag{T}"/>; otherwise, <see langword="false" />. This method also returns <see langword="false" /> if <paramref name="item" /> is not found in the original collection.</returns>
+	/// <exception cref="NotImplementedException">This method is not implemented.</exception>
 	bool ICollection<T>.Remove([NotNull] T item) => throw new NotImplementedException();
 
 	/// <summary>
-	/// Gets a value indicating whether the collection is read-only.
+	/// Gets a value indicating whether the <see cref="DistinctConcurrentBag{T}"/> is read-only.
 	/// </summary>
-	/// <value><c>true</c> if this instance is read only; otherwise, <c>false</c>.</value>
-	/// <exception cref="NotImplementedException"></exception>
-	bool ICollection<T>.IsReadOnly => throw new NotImplementedException();
+	/// <value>Always <c>false</c> because the <see cref="DistinctConcurrentBag{T}"/> allows adding and removing items.</value>
+	bool ICollection<T>.IsReadOnly => false;
 
 	/// <summary>
 	/// Attempts to remove and return an object from the <see cref="DistinctConcurrentBag{T}" />.
 	/// </summary>
-	/// <param name="result">When this method returns, result contains the object removed from the <see cref="DistinctConcurrentBag{T}" /> or the default value of T if the bag is empty.</param>
-	/// <returns>true if an object was removed successfully; otherwise, false.</returns>
+	/// <param name="result">When this method returns, <paramref name="result"/> contains the object removed from the <see cref="DistinctConcurrentBag{T}" /> or the default value of <typeparamref name="T"/> if the bag is empty.</param>
+	/// <returns><see langword="true"/> if an object was removed successfully; otherwise, <see langword="false"/>.</returns>
 	public new bool TryTake(out T result)
 	{
 		lock (this._lock)

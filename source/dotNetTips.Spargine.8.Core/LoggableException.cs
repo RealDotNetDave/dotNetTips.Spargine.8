@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-09-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="LoggableException.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -31,36 +31,34 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class LoggableException.
+/// Represents an exception that can be logged. This class extends <see cref="Exception"/> to include additional functionality for logging.
 /// </summary>
-/// <seealso cref="Exception" />
-/// <seealso cref="IXmlSerializable" />
 [Serializable]
 public class LoggableException : Exception
 {
 
 	/// <summary>
-	/// The string builder pool
+	/// The string builder pool used for performance optimization.
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool =
 	new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	/// <summary>
-	/// The exception has been logged
+	/// Indicates whether the exception has been logged.
 	/// </summary>
 	[NonSerialized]
 	[XmlIgnore]
 	private bool _hasBeenLogged;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="LoggableException" /> class.
+	/// Initializes a new instance of the <see cref="LoggableException"/> class.
 	/// </summary>
 	public LoggableException()
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="LoggableException" /> class.
+	/// Initializes a new instance of the <see cref="LoggableException"/> class with a specified error message.
 	/// </summary>
 	/// <param name="message">The message that describes the error.</param>
 	public LoggableException(string message) : base(message)
@@ -68,27 +66,27 @@ public class LoggableException : Exception
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="LoggableException" /> class.
+	/// Initializes a new instance of the <see cref="LoggableException"/> class with a specified error message and a reference to the inner exception that is the cause of this exception.
 	/// </summary>
 	/// <param name="message">The error message that explains the reason for the exception.</param>
-	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
 	public LoggableException(string message, [AllowNull] Exception innerException) : base(message, innerException)
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="LoggableException" /> class.
+	/// Initializes a new instance of the <see cref="LoggableException"/> class with a specified error message, a reference to the inner exception that is the cause of this exception, and a user-friendly message.
 	/// </summary>
-	/// <param name="message">The message.</param>
-	/// <param name="ex">The ex.</param>
-	/// <param name="userMessage">The user message.</param>
+	/// <param name="message">The message that describes the error.</param>
+	/// <param name="ex">The exception that is the cause of the current exception.</param>
+	/// <param name="userMessage">The user-friendly message.</param>
 	public LoggableException(string message, [NotNull] Exception ex, [AllowNull] string userMessage) : base(message, ex) => this.UserMessage = userMessage;
 
 	/// <summary>
-	/// Return's a list of properties and their value using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
+	/// Reflects the exception to return a list of properties and their values using a <see cref="ObjectPool&lt;StringBuilder&gt;"/> for performance optimization.
 	/// </summary>
-	/// <param name="ex">The ex.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="ex">The exception to reflect.</param>
+	/// <returns>A string representation of the exception properties and their values.</returns>
 	private static string ReflectException(Exception ex)
 	{
 		var sb = _stringBuilderPool.Get();
@@ -134,10 +132,9 @@ public class LoggableException : Exception
 	}
 
 	/// <summary>
-	/// Gets Exception message, including inner Exceptions.
+	/// Gets a collection of exception messages, including those from inner exceptions.
 	/// </summary>
-	/// <returns>System.String[].</returns>
-	/// <value>The messages.</value>
+	/// <returns>A read-only collection of exception messages.</returns>
 	public virtual ReadOnlyCollection<string> Messages()
 	{
 		var exceptions = LoggingHelper.RetrieveAllExceptions(this);
@@ -177,9 +174,9 @@ public class LoggableException : Exception
 	}
 
 	/// <summary>
-	/// Gets or sets the user message.
+	/// Gets or sets the user-friendly message associated with the exception.
 	/// </summary>
-	/// <value>The user message.</value>
+	/// <value>The user-friendly message.</value>
 	public virtual string UserMessage { get; }
 
 }

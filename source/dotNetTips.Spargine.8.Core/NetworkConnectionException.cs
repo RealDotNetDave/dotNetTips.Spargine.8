@@ -4,7 +4,7 @@
 // Created          : 03-05-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="NetworkConnectionException.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -20,24 +20,22 @@ using DotNetTips.Spargine.Core.Properties;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class NetworkConnectionException. This class cannot be inherited.
-/// Implements the <see cref="Exception" />
+/// Represents errors that occur during network connection operations.
 /// </summary>
-/// <seealso cref="Exception" />
 [Serializable]
 [Information(nameof(NetworkConnectionException), Status = Status.Available)]
 public sealed class NetworkConnectionException : LoggableException
 {
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="ArgumentInvalidException" /> class.
+	/// Initializes a new instance of the <see cref="NetworkConnectionException"/> class with a default error message.
 	/// </summary>
 	public NetworkConnectionException() : base(Resources.NetworkConnectionIssue)
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="ArgumentInvalidException" /> class.
+	/// Initializes a new instance of the <see cref="NetworkConnectionException"/> class with a specified error message.
 	/// </summary>
 	/// <param name="message">The message that describes the error.</param>
 	public NetworkConnectionException(string message) : base(message)
@@ -45,19 +43,19 @@ public sealed class NetworkConnectionException : LoggableException
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="ArgumentReadOnlyException" /> class that accepts a message an inner exception.
+	/// Initializes a new instance of the <see cref="NetworkConnectionException"/> class with a specified error message and a reference to the inner exception that is the cause of this exception.
 	/// </summary>
 	/// <param name="message">The error message that explains the reason for the exception.</param>
-	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
 	public NetworkConnectionException(string message, Exception innerException) : base(message, innerException)
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="ArgumentInvalidException" /> class.
+	/// Initializes a new instance of the <see cref="NetworkConnectionException"/> class with a specified error message and the network connection that caused this exception.
 	/// </summary>
 	/// <param name="message">The error message that explains the reason for the exception.</param>
-	/// <param name="connection">The connection.</param>
+	/// <param name="connection">The network connection that caused the exception.</param>
 	public NetworkConnectionException(string message, NetworkConnection connection) : base($"{connection}:{message}")
 	{
 	}

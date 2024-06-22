@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-05-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -18,7 +18,6 @@
 // </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.ExceptionServices;
 using Microsoft.Extensions.Logging;
 
@@ -27,30 +26,38 @@ using Microsoft.Extensions.Logging;
 namespace DotNetTips.Spargine.Core.Logging;
 
 /// <summary>
-/// Logging Helper.
+/// Provides utility methods for logging, including functionality to log computer information, application details, and capture all domain exceptions.
 /// </summary>
 public static class LoggingHelper
 {
 
 	/// <summary>
-	/// The application domain exception logger
+	/// The application domain exception logger.
 	/// </summary>
+	/// <remarks>
+	/// This logger is used specifically for capturing and logging exceptions that occur within the application domain.
+	/// It is set through the <see cref="LogAppDomainExceptions(ILogger)"/> method.
+	/// </remarks>
 	private static ILogger _appDomainExceptionLogger;
 
 	/// <summary>
-	/// Handles the FirstChanceException event of the CurrentDomain control.
+	/// Handles the <see cref="AppDomain.FirstChanceException"/> event of the <see cref="AppDomain.CurrentDomain"/> control.
+	/// Logs the exception using the <see cref="FastLogger.LogException(ILogger, string, Exception)"/> method.
 	/// </summary>
 	/// <param name="sender">The source of the event.</param>
-	/// <param name="e">The <see cref="FirstChanceExceptionEventArgs" /> instance containing the event data.</param>
+	/// <param name="e">The <see cref="FirstChanceExceptionEventArgs"/> instance containing the event data.</param>
 	private static void CurrentDomain_FirstChanceException(object sender, FirstChanceExceptionEventArgs e) => FastLogger.LogException(_appDomainExceptionLogger, e.Exception.GetAllMessages(), e.Exception);
 
 	/// <summary>
-	/// Logs the application domain exceptions.
+	/// Initializes logging of application domain exceptions.
 	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <remarks>Logger can only be set once. If this is called twice or more, it will be ignored.</remarks>
+	/// <param name="logger">The logger to use for logging domain exceptions. This cannot be null and is validated by ArgumentNotNull.</param>
+	/// <remarks>
+	/// Logger can only be set once. If this is called twice or more, it will be ignored.
+	/// Utilizes <see cref="AppDomain.CurrentDomain"/> for capturing all exceptions across the application domain.
+	/// </remarks>
 	[Information(nameof(LogAppDomainExceptions), author: "David McCarter", createdOn: "10/19/2021", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static void LogAppDomainExceptions([NotNull] ILogger logger)
+	public static void LogAppDomainExceptions(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
 
@@ -62,11 +69,12 @@ public static class LoggingHelper
 			FastLogger.LogInformation(logger, $"Starting to capture all exceptions on {DateTime.UtcNow} UTC");
 		}
 	}
+
 	/// <summary>
-	/// Logs default application information as key/ value pairs to <see cref="ILogger" />.
+	/// Logs default application information as key/value pairs to the specified <see cref="ILogger"/>.
 	/// </summary>
-	/// <param name="logger">The ILogger.</param>
-	/// <exception cref="ArgumentNullException">Logger cannot be null.</exception>
+	/// <param name="logger">The logger to use for logging application information. Must not be null.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="logger"/> is null.</exception>
 	/// <example>
 	///   <b>Output:</b>
 	/// AppInfo:Company - Microsoft Corporation
@@ -77,7 +85,7 @@ public static class LoggingHelper
 	/// AppInfo:Title - dotNetTips.Spargine
 	/// </example>
 	[Information(nameof(LogApplicationInformation), author: "David McCarter", createdOn: "11/03/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
-	public static void LogApplicationInformation([NotNull] ILogger logger)
+	public static void LogApplicationInformation(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
 
@@ -96,10 +104,10 @@ public static class LoggingHelper
 	}
 
 	/// <summary>
-	/// Logs computer information.
+	/// Logs detailed computer information, such as OS, architecture, and memory usage, to the specified logger.
 	/// </summary>
-	/// <param name="logger">The ILogger.</param>
-	/// <exception cref="ArgumentNullException">Logger cannot be null.</exception>
+	/// <param name="logger">The logger to use for logging computer information. Must not be null.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="logger"/> is null.</exception>
 	/// <example>OUTPUT:
 	/// AppInfo:Is64BitProcess - True
 	/// AppInfo:ProcessArchitecture - X64
@@ -127,7 +135,7 @@ public static class LoggingHelper
 	/// AppInfo:HasShutdownStarted - False
 	/// </example>
 	[Information(nameof(LogComputerInformation), author: "David McCarter", createdOn: "11/04/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
-	public static void LogComputerInformation([NotNull] ILogger logger)
+	public static void LogComputerInformation(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
 
@@ -146,36 +154,36 @@ public static class LoggingHelper
 	}
 
 	/// <summary>
-	/// Retrieves all exception messages.
+	/// Retrieves all exception messages from the provided exception, including messages from any inner exceptions.
 	/// </summary>
-	/// <param name="exception">The ex.</param>
-	/// <returns>IEnumerable&lt;System.String&gt;.</returns>
-	/// <exception cref="ArgumentNullException">Exception cannot be null.</exception>
+	/// <param name="exception">The exception to retrieve messages from. Must not be null.</param>
+	/// <returns>A read-only collection of exception messages.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information(nameof(RetrieveAllExceptionMessages), UnitTestCoverage = 100, Status = Status.Available)]
-	public static ReadOnlyCollection<string> RetrieveAllExceptionMessages([NotNull] Exception exception)
+	public static ReadOnlyCollection<string> RetrieveAllExceptionMessages(Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
 
 		var exceptions = RetrieveAllExceptions(exception);
 
-		var messages = new string[exceptions.Count];
+		var messages = new List<string>();
 
-		for (var exCount = 0; exCount < exceptions.Count; exCount++)
+		foreach (var ex in exceptions)
 		{
-			messages[exCount] = exceptions[exCount].Message;
+			messages.Add(ex.Message);
 		}
 
 		return messages.AsReadOnly();
 	}
 
 	/// <summary>
-	/// Retrieves all exceptions (including inner exceptions).
+	/// Retrieves all exceptions, including inner exceptions, from the provided exception.
 	/// </summary>
-	/// <param name="exception">The ex.</param>
-	/// <returns>IEnumerable&lt;Exception&gt;.</returns>
-	/// <exception cref="ArgumentNullException">Exception cannot be null.</exception>
+	/// <param name="exception">The exception from which to retrieve all exceptions, including inner exceptions. Must not be null.</param>
+	/// <returns>A read-only collection of all exceptions, including inner exceptions.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information(nameof(RetrieveAllExceptions), UnitTestCoverage = 100, Status = Status.Available)]
-	public static ReadOnlyCollection<Exception> RetrieveAllExceptions([NotNull] Exception exception)
+	public static ReadOnlyCollection<Exception> RetrieveAllExceptions(Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
 

@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="ICloneable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -19,19 +19,21 @@
 
 
 
+
+
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// ICloneable Interface.
+/// Defines a method to create a clone of a type.
 /// </summary>
-/// <typeparam name="T">Generic type parameter.</typeparam>
+/// <typeparam name="T">The type of object to clone.</typeparam>
 public interface ICloneable<out T>
 {
 
 	/// <summary>
-	/// Cones this instance.
+	/// Creates a new object that is a copy of the current instance.
 	/// </summary>
-	/// <returns>T.</returns>
+	/// <returns>A new object that is a copy of this instance.</returns>
 	T Clone();
 
 }

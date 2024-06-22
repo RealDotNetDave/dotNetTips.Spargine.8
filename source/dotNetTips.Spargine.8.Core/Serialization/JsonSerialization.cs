@@ -4,7 +4,7 @@
 // Created          : 02-21-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-19-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -26,27 +26,36 @@ using DotNetTips.Spargine.Core.Properties;
 namespace DotNetTips.Spargine.Core.Serialization;
 
 /// <summary>
-/// Class JsonSerializer.
+/// Provides methods for serializing objects to JSON strings and deserializing JSON strings to objects.
+/// Utilizes the System.Text.Json namespace for efficient processing. This class supports custom serialization
+/// options and aims to simplify the use of JSON serialization in .NET applications.
 /// </summary>
 public static class JsonSerialization
 {
 
 	/// <summary>
-	/// The options
+	/// Specifies options for JSON serialization and deserialization.
 	/// </summary>
+	/// <remarks>
+	/// This includes settings such as number handling to allow reading from and writing numbers as strings.
+	/// </remarks>
 	private static readonly JsonSerializerOptions _options = new()
 	{
 		NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString
 	};
 
 	/// <summary>
-	/// Compares two <see cref="JsonElement" />s.
+	/// Compares two <see cref="JsonElement"/> instances for equality, considering their structure and data.
 	/// </summary>
-	/// <param name="expected">The expected.</param>
-	/// <param name="actual">The actual.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="NotSupportedException">Undefined JsonValueKind: {valueKind}.</exception>
-	/// <exception cref="NotSupportedException">Unexpected JsonValueKind: {valueKind}.</exception>
+	/// <param name="expected">The expected <see cref="JsonElement"/> structure.</param>
+	/// <param name="actual">The actual <see cref="JsonElement"/> structure to compare against the expected.</param>
+	/// <returns><c>true</c> if both <see cref="JsonElement"/> instances are equal; otherwise, <c>false</c>.</returns>
+	/// <exception cref="NotSupportedException">Thrown when an undefined or unexpected <see cref="JsonValueKind"/> is encountered.</exception>
+	/// <remarks>
+	/// This method performs a deep comparison of the contents of two <see cref="JsonElement"/> instances,
+	/// including objects, arrays, and primitive values. It is designed to handle complex JSON structures
+	/// and can be used for testing and validation purposes.
+	/// </remarks>
 	private static bool JsonEqual(JsonElement expected, JsonElement actual)
 	{
 		var valueKind = expected.ValueKind;
@@ -127,6 +136,11 @@ public static class JsonSerialization
 	/// <param name="json">The JSON string to deserialize.</param>
 	/// <returns>An instance of <typeparamref name="TResult"/> deserialized from the JSON string.</returns>
 	/// <exception cref="InvalidOperationException">Thrown if deserialization fails or the result is null.</exception>
+	/// <remarks>
+	/// This method uses the configured <see cref="JsonSerializerOptions"/> for deserialization.
+	/// It throws an <see cref="InvalidOperationException"/> if the deserialization process fails
+	/// or if the result is null, ensuring that a valid object is always returned.
+	/// </remarks>
 	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json) => JsonSerializer.Deserialize<TResult>(json, _options) ?? throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
 

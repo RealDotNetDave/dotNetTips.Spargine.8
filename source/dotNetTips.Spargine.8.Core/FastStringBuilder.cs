@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -27,21 +27,23 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// StringBuilder Helper.
+/// Provides methods to efficiently build strings using a pooled StringBuilder to reduce memory allocations.
 /// </summary>
 public static class FastStringBuilder
 {
 
 	/// <summary>
-	/// The string builder pool
+	/// The ObjectPool of StringBuilder instances.
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	/// <summary>
-	/// Converts bytes to string using ObjectPool to improve performance.
+	/// Converts an array of bytes to a hexadecimal string representation.
+	/// This method uses an object pool for <see cref="StringBuilder"/> to improve performance and reduce memory allocations.
 	/// </summary>
-	/// <param name="bytes">The bytes.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="bytes">The byte array to convert.</param>
+	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bytes"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string BytesToString([NotNull] byte[] bytes)
@@ -77,13 +79,13 @@ public static class FastStringBuilder
 	}
 
 	/// <summary>
-	/// Combines a <see cref="string" /> array to a string using ObjectPool to improve performance.
-	/// Linefeed can be added at the end.
+	/// Combines an array of strings into a single string, optionally adding a line feed after each element.
+	/// This method uses an object pool for <see cref="StringBuilder"/> to improve performance and reduce memory allocations.
 	/// </summary>
-	/// <param name="addLineFeed">if set to <c>true</c> [add line feed].</param>
-	/// <param name="args">The arguments.</param>
-	/// <returns>string.</returns>
-	/// <exception cref="ArgumentNullException">args cannot be null.</exception>
+	/// <param name="addLineFeed">If set to <c>true</c>, adds a line feed after each element.</param>
+	/// <param name="args">The array of strings to combine.</param>
+	/// <returns>A combined string with or without line feeds after each element based on <paramref name="addLineFeed"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string CombineStrings(bool addLineFeed = false, [NotNull] params string[] args)
@@ -112,25 +114,26 @@ public static class FastStringBuilder
 	}
 
 	/// <summary>
-	/// Concat to string.
+	/// Concatenates an array of strings using a specified delimiter, optionally adding a line feed after each element.
+	/// This method is a wrapper over <see cref="ConcatStrings(string, bool, string[])"/> for convenience when using a char delimiter.
 	/// </summary>
-	/// <param name="delimiter">The delimiter.</param>
-	/// <param name="addLineFeed">Adds line feed. If set to true, delimiter will not be used.</param>
-	/// <param name="args">The arguments.</param>
-	/// <returns>System.String.</returns>
-	/// <exception cref="ArgumentInvalidException">input cannot be null.</exception>
+	/// <param name="delimiter">The character used to separate each string in the output.</param>
+	/// <param name="addLineFeed">If set to <c>true</c>, adds a line feed after each element instead of using the delimiter.</param>
+	/// <param name="args">The array of strings to concatenate.</param>
+	/// <returns>A concatenated string with elements separated by <paramref name="delimiter"/> or line feeds based on <paramref name="addLineFeed"/>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcatStrings), "David McCarter", "12/28/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string ConcatStrings(char delimiter = ControlChars.Comma, bool addLineFeed = false, [NotNull] params string[] args) => ConcatStrings(delimiter.ToString(), addLineFeed, args);
 
 	/// <summary>
-	/// Converts <see cref=" string" /> array to string using ObjectPool to improve performance.
+	/// Concatenates an array of strings using a specified delimiter, optionally adding a line feed after each element.
+	/// This method leverages an object pool for <see cref="StringBuilder"/> to improve performance and reduce memory allocations.
 	/// </summary>
-	/// <param name="delimiter">The delimiter.</param>
-	/// <param name="addLineFeed">Adds line feed. If set to true, delimiter will not be used.</param>
-	/// <param name="args">The arguments.</param>
-	/// <returns>System.String.</returns>
-	/// <exception cref="ArgumentInvalidException">input cannot be null.</exception>
+	/// <param name="delimiter">The delimiter used to separate each string. If <c>null</c>, a comma (",") is used as the default delimiter.</param>
+	/// <param name="addLineFeed">If set to <c>true</c>, a line feed is added after each element, ignoring the delimiter.</param>
+	/// <param name="args">The array of strings to concatenate.</param>
+	/// <returns>A concatenated string with elements separated by the specified delimiter or line feeds based on the <paramref name="addLineFeed"/> parameter.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null.</exception>
 	/// <remarks>Example output: <code>r^wQTNvT, HcETQ, COtc\\G[U, loUR_SbL, o_HYYskfM"</code></remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineStringConcatenation")]
@@ -176,10 +179,23 @@ public static class FastStringBuilder
 	}
 
 	/// <summary>
-	/// Performs and action using ObjectPool to improve performance.
+	/// Performs the specified action on a <see cref="StringBuilder"/> instance obtained from an object pool.
+	/// This approach improves performance by reducing memory allocations.
 	/// </summary>
-	/// <param name="action">The action to perform.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="action">The action to perform on the <see cref="StringBuilder"/>. Must not be null.</param>
+	/// <returns>A string resulting from the action performed on the <see cref="StringBuilder"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="action"/> is null.</exception>
+	/// <example>
+	/// Here is an example of using PerformAction method:
+	/// <code>
+	/// var result = FastStringBuilder.PerformAction(sb => 
+	/// {
+	///     sb.Append("Hello, ");
+	///     sb.Append("world!");
+	/// });
+	/// Console.WriteLine(result); // Output: Hello, world!
+	/// </code>
+	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(PerformAction), "David McCarter", "12/23/2022", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string PerformAction([NotNull] Action<StringBuilder> action)
@@ -205,14 +221,17 @@ public static class FastStringBuilder
 	}
 
 	/// <summary>
-	/// Converts to list to a delimited string using ObjectPool to improve performance.
+	/// Converts a dictionary to a delimited string using an ObjectPool to improve performance.
 	/// </summary>
-	/// <typeparam name="TKey">The type of the t key.</typeparam>
-	/// <typeparam name="TValue">The type of the t value.</typeparam>
-	/// <param name="collection">The list.</param>
-	/// <param name="delimiter">The delimiter.</param>
-	/// <returns>System.String.</returns>
-	/// <remarks>Example output: <code>CKpPdnfyf: CKpPdnfyf,T\\\\^wwVx: T\\\\^wwVx,S`ikV: S`ikV,uHTR[yy: uHTR[yy,PNmB_h: PNmB_</code></remarks>
+	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+	/// <param name="collection">The dictionary to convert.</param>
+	/// <param name="delimiter">The delimiter to use between each key-value pair.</param>
+	/// <returns>A string representation of the dictionary, with each key-value pair separated by the specified delimiter.</returns>
+	/// <remarks>
+	/// This method is optimized for performance by using a StringBuilder from an ObjectPool, reducing memory allocations.
+	/// Example output: <code>CKpPdnfyf: CKpPdnfyf,T\\\\^wwVx: T\\\\^wwVx,S`ikV: S`ikV,uHTR[yy: uHTR[yy,PNmB_h: PNmB_</code>
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToDelimitedString), "David McCarter", "1/1/2021", Status = Status.CheckPerformance, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string ToDelimitedString<TKey, TValue>([NotNull] Dictionary<TKey, TValue> collection, char delimiter = ControlChars.Comma)

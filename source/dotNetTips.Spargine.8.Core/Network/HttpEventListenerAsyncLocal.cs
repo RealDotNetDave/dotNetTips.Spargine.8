@@ -4,7 +4,7 @@
 // Created          : 07-11-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-25-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="HttpEventListenerAsyncLocal.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -25,28 +25,40 @@ using Microsoft.Extensions.Logging;
 namespace DotNetTips.Spargine.Core.Network;
 
 /// <summary>
-/// Class HttpEventListenerAsyncLocal. This class cannot be inherited.
-/// Implements the <see cref="EventListener" />
+/// Provides an event listener for HTTP events that operates with <see cref="AsyncLocal{T}"/> to track and log HTTP request start and stop events asynchronously.
+/// This class is designed to capture and log detailed information about HTTP requests, including their execution time, which aids in monitoring and debugging HTTP traffic in .NET applications.
 /// </summary>
+/// <remarks>
+/// This class leverages <see cref="EventListener"/> to subscribe to HTTP-related events emitted by the System.Net.Http event source.
+/// It uses an <see cref="AsyncLocal{T}"/> field to maintain the context of the current HTTP request across asynchronous control flows, enabling accurate logging of request execution times.
+/// </remarks>
 /// <example>
-/// Output: HTTP Request: https://dotnettips.com:443/ executed in 1408.0ms
+/// Usage example:
+/// <code>
+/// using (var logger = new LoggerFactory().CreateLogger("HttpLogger"))
+/// {
+///     using var listener = new HttpEventListenerAsyncLocal(logger);
+///     // Perform HTTP operations...
+/// }
+/// </code>
 /// </example>
-/// <seealso cref="EventListener" />
-/// <param name="logger">The logger.</param>
-/// <remarks>Initializes a new instance of the <see cref="HttpEventListenerAsyncLocal" /> class.</remarks>
+/// <seealso cref="EventListener"/>
+/// <param name="logger">The logger used for logging HTTP events. This logger is utilized to log information about each HTTP request's start and stop events, including the URL and execution time.</param>
 [Information(nameof(HttpEventListenerAsyncLocal), UnitTestCoverage = 100, Status = Status.Available)]
 public sealed class HttpEventListenerAsyncLocal(ILogger logger) : EventListener
 {
 
 	/// <summary>
-	/// The current request
+	/// Holds the context of the current HTTP request across asynchronous control flows.
+	/// This enables tracking of request start and stop events to accurately log request execution times.
 	/// </summary>
 	private readonly AsyncLocal<Request> _currentRequest = new();
 
 	/// <summary>
-	/// Logs the message.
+	/// Logs a message to the configured logger and writes the message to the system diagnostic trace.
+	/// This method is intended for internal use within the <see cref="HttpEventListenerAsyncLocal"/> class to log HTTP event information.
 	/// </summary>
-	/// <param name="message">The message.</param>
+	/// <param name="message">The message to be logged. It should contain information about the HTTP event being processed.</param>
 	private void LogMessage(string message)
 	{
 		if (logger is not null)
@@ -59,8 +71,9 @@ public sealed class HttpEventListenerAsyncLocal(ILogger logger) : EventListener
 
 	/// <summary>
 	/// Called for all existing event sources when the event listener is created and when a new event source is attached to the listener.
+	/// This method subscribes to the HTTP event source to enable logging of HTTP request start and stop events.
 	/// </summary>
-	/// <param name="eventSource">The event source.</param>
+	/// <param name="eventSource">The event source to be processed.</param>
 	protected override void OnEventSourceCreated(EventSource eventSource)
 	{
 		eventSource = eventSource.ArgumentNotNull();
@@ -75,8 +88,10 @@ public sealed class HttpEventListenerAsyncLocal(ILogger logger) : EventListener
 
 	/// <summary>
 	/// Called whenever an event has been written by an event source for which the event listener has enabled events.
+	/// This method processes the event data, extracting relevant information for logging purposes.
+	/// Specifically, it handles "RequestStart" and "RequestStop" events to track and log the execution time of HTTP requests.
 	/// </summary>
-	/// <param name="eventData">The event arguments that describe the event.</param>
+	/// <param name="eventData">The event arguments that describe the event. This includes details such as the event ID and payload.</param>
 	protected override void OnEventWritten(EventWrittenEventArgs eventData)
 	{
 		eventData = eventData.ArgumentNotNull();
@@ -102,8 +117,11 @@ public sealed class HttpEventListenerAsyncLocal(ILogger logger) : EventListener
 	}
 
 	/// <summary>
-	/// Class Request. This class cannot be inherited.
+	/// Represents an HTTP request with its URL and a stopwatch to measure execution time.
+	/// This record is used to track the start and stop times of HTTP requests for logging purposes.
 	/// </summary>
+	/// <param name="Url">The URL of the HTTP request.</param>
+	/// <param name="ExecutionTime">The stopwatch used to measure the execution time of the HTTP request.</param>
 	private sealed record Request(string Url, Stopwatch ExecutionTime);
 
 }

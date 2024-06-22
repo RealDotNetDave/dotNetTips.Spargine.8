@@ -4,7 +4,7 @@
 // Created          : 05-01-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="FastLogger.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -23,93 +23,72 @@ using Microsoft.Extensions.Logging;
 namespace DotNetTips.Spargine.Core.Logging;
 
 /// <summary>
-/// Class Logger.
+/// Provides a set of static methods for logging different levels of information to an <see cref="ILogger"/>. This includes methods for critical, debug, error, exception, information, trace, and warning messages.
 /// </summary>
 public static partial class FastLogger
 {
 
 	/// <summary>
-	/// Logs critical storedProcedure.
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The storedProcedure.</param>
-	/// <param name="exception">The exception.</param>
+	/// Logs a critical level message and exception using the specified <see cref="ILogger"/>.
 	/// </summary>
-	/// <summary>
-	/// Logs the critical.
-	/// </summary>
+	/// <param name="logger">The <see cref="ILogger"/> to use for logging.</param>
+	/// <param name="message">The message to log.</param>
+	/// <param name="exception">The exception to log.</param>
 	[Information(nameof(LogCritical), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 911, Level = LogLevel.Critical, EventName = "CRITICAL", Message = "{message}")]
 	public static partial void LogCritical(ILogger logger, string message, Exception exception);
 
 	/// <summary>
-	/// Logs debug storedProcedure.
+	/// Logs a debug level message using the specified <see cref="ILogger"/>.
 	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The storedProcedure.</param>
-	/// <summary>
-	/// Logs the debug.
-	/// </summary>
+	/// <param name="logger">The <see cref="ILogger"/> to use for logging. Must not be null.</param>
+	/// <param name="message">The message to log. Must not be null.</param>
 	[Information(nameof(LogDebug), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 200, Level = LogLevel.Debug, EventName = "DEBUG", Message = "{message}")]
 	public static partial void LogDebug(ILogger logger, string message);
 
 	/// <summary>
-	/// Logs error storedProcedure.
+	/// Logs an error message using the specified <see cref="ILogger"/>.
 	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The storedProcedure.</param>
-	/// <summary>
-	/// Logs the error.
-	/// </summary>
+	/// <param name="logger">The <see cref="ILogger"/> to use for logging. Must not be null.</param>
+	/// <param name="message">The error message to log. Must not be null.</param>
 	[Information(nameof(LogError), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 300, Level = LogLevel.Error, EventName = "ERROR", Message = "{message}")]
 	public static partial void LogError(ILogger logger, string message);
 
 	/// <summary>
-	/// Logs <see cref="Exception"/> along with error storedProcedure.
+	/// Logs an exception along with a custom message using the specified <see cref="ILogger"/>.
 	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The storedProcedure.</param>
-	/// <param name="exception">The exception.</param>
-	/// <summary>
-	/// Logs the exception.
-	/// </summary>
+	/// <param name="logger">The <see cref="ILogger"/> to use for logging the exception and message. Must not be null.</param>
+	/// <param name="message">The custom message to log alongside the exception. Must not be null.</param>
+	/// <param name="exception">The <see cref="Exception"/> to log. Must not be null.</param>
 	[Information(nameof(LogException), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 500, Level = LogLevel.Error, EventName = "EXCEPTION", Message = "{message}")]
 	public static partial void LogException(ILogger logger, string message, Exception exception);
 
 	/// <summary>
-	/// Logs information storedProcedure.
+	/// Logs an information level message using the specified <see cref="ILogger"/>.
 	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The storedProcedure.</param>
-	/// <summary>
-	/// Logs the information.
-	/// </summary>
+	/// <param name="logger">The <see cref="ILogger"/> to use for logging. Must not be null.</param>
+	/// <param name="message">The message to log. Must not be null.</param>
 	[Information(nameof(LogInformation), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 400, Level = LogLevel.Information, EventName = "INFORMATION", Message = "{message}")]
 	public static partial void LogInformation(ILogger logger, string message);
 
 	/// <summary>
-	/// Logs trace storedProcedure.
+	/// Logs a trace level message using the specified <see cref="ILogger"/>.
 	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The storedProcedure.</param>
-	/// <summary>
-	/// Logs the trace.
-	/// </summary>
+	/// <param name="logger">The <see cref="ILogger"/> to use for logging. Must not be null.</param>
+	/// <param name="message">The message to log. Must not be null.</param>
 	[Information(nameof(LogTrace), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 100, Level = LogLevel.Trace, EventName = "TRACE", Message = "{message}")]
 	public static partial void LogTrace(ILogger logger, string message);
 
 	/// <summary>
-	/// Logs warning storedProcedure.
+	/// Logs a warning level message using the specified <see cref="ILogger"/>.
 	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The storedProcedure.</param>
-	/// <summary>
-	/// Logs the warning.
-	/// </summary>
+	/// <param name="logger">The <see cref="ILogger"/> to use for logging. Must not be null.</param>
+	/// <param name="message">The message to log. Must not be null.</param>
 	[Information(nameof(LogWarning), author: "David McCarter", createdOn: "1/1/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 600, Level = LogLevel.Warning, EventName = "WARNING", Message = "{message}")]
 	public static partial void LogWarning(ILogger logger, string message);

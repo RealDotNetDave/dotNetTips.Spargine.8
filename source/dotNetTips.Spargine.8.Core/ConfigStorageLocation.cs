@@ -5,7 +5,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="ConfigStorageLocation.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -16,20 +16,22 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+
+
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Enum StorageLocation.
+/// Defines the storage locations for configuration settings.
 /// </summary>
 public enum ConfigStorageLocation
 {
 	/// <summary>
-	/// User storage.
+	/// The configuration settings are stored in a location specific to the user, such as the user's profile folder.
 	/// </summary>
 	User,
 
 	/// <summary>
-	/// Application storage.
+	/// The configuration settings are stored in a location specific to the application, such as the application's installation directory.
 	/// </summary>
 	Application,
 }

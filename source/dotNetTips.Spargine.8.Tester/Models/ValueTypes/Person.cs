@@ -220,12 +220,6 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	public override readonly int GetHashCode() => base.GetHashCode();
 
 	/// <summary>
-	/// Returns a <see cref="string" /> that represents this instance.
-	/// </summary>
-	/// <returns>A <see cref="string" /> that represents this instance.</returns>
-	public override readonly string ToString() => this.As<IPerson<TAddress>>().AllPropertiesToString();
-
-	/// <summary>
 	/// Gets a collection of <see cref="Address" /> for a Person.
 	/// </summary>
 	/// <value>The addresses.</value>

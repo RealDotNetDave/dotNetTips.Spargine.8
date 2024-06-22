@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="ControlChars.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -19,174 +19,178 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+
+
 namespace DotNetTips.Spargine.Core;
+
 /// <summary>
-/// Class ControlChars.
+/// Provides a collection of control characters and frequently used strings for convenience.
 /// </summary>
 public static class ControlChars
 {
 
 	/// <summary>
-	/// @ Symbol.
+	/// The at symbol (@).
 	/// </summary>
 	public const char At = '@';
 
 	/// <summary>
-	/// Back Space.
+	/// The backspace character.
 	/// </summary>
 	public const char Back = '\b';
 
 	/// <summary>
-	/// Back Slash.
+	/// The backslash character (\).
 	/// </summary>
 	public const char Backslash = '\\';
 
 	/// <summary>
-	/// The back tick.
+	/// The back tick character (`).
 	/// </summary>
 	public const char BackTick = '`';
 
 	/// <summary>
-	/// Colon.
+	/// The colon character (:).
 	/// </summary>
 	public const char Colon = ':';
 
 	/// <summary>
-	/// Comma.
+	/// The comma character (,).
 	/// </summary>
 	public const char Comma = ',';
+
 	/// <summary>
-	/// Comma + Space
+	/// A comma followed by a space.
 	/// </summary>
 	public const string CommaSpace = ", ";
 
 	/// <summary>
-	/// Carriage Return.
+	/// The carriage return character.
 	/// </summary>
 	public const char CR = '\r';
 
 	/// <summary>
-	/// Carriage Return &amp; Line Feed.
+	/// The carriage return and line feed sequence (\r\n).
 	/// </summary>
 	public const string CRLF = "\r\n";
 
 	/// <summary>
-	/// The dash character.
+	/// The dash character (-).
 	/// </summary>
 	public const char Dash = '-';
 
 	/// <summary>
-	/// The default separator
+	/// The default separator, a comma followed by a space.
 	/// </summary>
 	public const string DefaultSeparator = ", ";
 
 	/// <summary>
-	/// Dot (period).
+	/// The dot (period) character (.).
 	/// </summary>
 	public const char Dot = '.';
 
 	/// <summary>
-	/// Double quote.
+	/// The double quote character (").
 	/// </summary>
 	public const string DoubleQuote = "''";
 
 	/// <summary>
-	/// Empty String
+	/// An empty string.
 	/// </summary>
 	public const string EmptyString = "";
 
 	/// <summary>
-	/// The end angle bracket.
+	/// The end angle bracket character (>).
 	/// </summary>
 	public const char EndAngleBracket = '>';
 
 	/// <summary>
-	/// ).
+	/// The end comment character ()).
 	/// </summary>
 	public const char EndComment = ')';
 
 	/// <summary>
-	/// [.
+	/// The end square bracket character (]).
 	/// </summary>
 	public const char EndSquareBracket = ']';
 
 	/// <summary>
-	/// The equal symbol.
+	/// The equal symbol (=).
 	/// </summary>
 	public const char Equal = '=';
 
 	/// <summary>
-	/// Form feed.
+	/// The form feed character.
 	/// </summary>
 	public const char FormFeed = '\f';
 
 	/// <summary>
-	/// Forward slash.
+	/// The forward slash character (/).
 	/// </summary>
 	public const char ForwardSlash = '/';
 
 	/// <summary>
-	/// The Line Feed.
+	/// The line feed character.
 	/// </summary>
 	public const char LF = '\n';
 
 	/// <summary>
-	/// New line.
+	/// The new line character.
 	/// </summary>
 	public const char NewLine = '\n';
 
 	/// <summary>
-	/// Null character.
+	/// The null character.
 	/// </summary>
 	public const char NullChar = '\0';
 
 	/// <summary>
-	/// The plus character
+	/// The plus character (+).
 	/// </summary>
 	public const char Plus = '+';
 
 	/// <summary>
-	/// Quote.
+	/// The quote character (").
 	/// </summary>
 	public const char Quote = '\"';
 
 	/// <summary>
-	/// Single quote.
+	/// The single quote character (').
 	/// </summary>
 	public const char SingleQuote = '\'';
 
 	/// <summary>
-	/// Space.
+	/// The space character.
 	/// </summary>
 	public const char Space = ' ';
 
 	/// <summary>
-	/// Left angle bracket.
+	/// The start angle bracket character.
 	/// </summary>
 	public const char StartAngleBracket = '<';
 
 	/// <summary>
-	/// (.
+	/// The start comment character (()).
 	/// </summary>
 	public const char StartComment = '(';
 
 	/// <summary>
-	/// [.
+	/// The start square bracket character ([).
 	/// </summary>
 	public const char StartSquareBracket = '[';
 
 	/// <summary>
-	/// Tab.
+	/// The tab character.
 	/// </summary>
 	public const char Tab = '\t';
 
 	/// <summary>
-	/// Underscore.
+	/// The underscore character (_).
 	/// </summary>
 	public const char Underscore = '_';
 
 	/// <summary>
-	/// Vertical tab.
+	/// The vertical tab character.
 	/// </summary>
 	public const char VerticalTab = '\v';
 

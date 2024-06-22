@@ -520,6 +520,15 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No more items to retrieve and the collection is not set to repeat..
+        /// </summary>
+        internal static string NoMoreItemsToRetrieveAndTheCollectionIsNot {
+            get {
+                return ResourceManager.GetString("NoMoreItemsToRetrieveAndTheCollectionIsNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rebooting is only supported on Windows..
         /// </summary>
         internal static string RebootingIsOnlySupportedOnWindows {

@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="XmlSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -25,18 +25,20 @@ using DotNetTips.Spargine.Core.Properties;
 namespace DotNetTips.Spargine.Core.Serialization;
 
 /// <summary>
-/// XML Serialization helper methods.
+/// Provides functionality for serializing objects to XML strings and deserializing XML strings to objects.
+/// This class contains static methods for both serialization to, and deserialization from, XML format.
+/// It supports operations on both strings and files, offering a flexible API for working with XML data in .NET applications.
 /// </summary>
 public static class XmlSerialization
 {
 
 	/// <summary>
-	/// Deserialize the specified XML.
+	/// Deserializes the specified XML string into an object of the specified type.
 	/// </summary>
-	/// <typeparam name="TResult">Type.</typeparam>
-	/// <param name="xml">The XML.</param>
-	/// <returns>T.</returns>
-	/// <exception cref="ArgumentNullException">xml.</exception>
+	/// <typeparam name="TResult">The type of the object to deserialize to.</typeparam>
+	/// <param name="xml">The XML string to deserialize.</param>
+	/// <returns>An instance of the specified type containing the deserialized data.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the xml parameter is null or empty.</exception>
 	[Information(nameof(Deserialize), BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Xml)] string xml) where TResult : class
 	{
@@ -50,12 +52,12 @@ public static class XmlSerialization
 	}
 
 	/// <summary>
-	/// De-serializes from XML file.
+	/// Deserializes an XML file into an object of the specified type.
 	/// </summary>
-	/// <typeparam name="TResult">Type.</typeparam>
-	/// <param name="file">File</param>
-	/// <returns>T.</returns>
-	/// <exception cref="FileNotFoundException"></exception>
+	/// <typeparam name="TResult">The type of the object to deserialize to.</typeparam>
+	/// <param name="file">The file containing the XML to deserialize.</param>
+	/// <returns>An instance of the specified type containing the deserialized data from the file.</returns>
+	/// <exception cref="FileNotFoundException">Thrown if the specified file does not exist.</exception>
 	[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : class
 	{
@@ -67,11 +69,11 @@ public static class XmlSerialization
 	}
 
 	/// <summary>
-	/// Serializes the specified obj to xml.
+	/// Serializes the specified object to an XML string.
 	/// </summary>
-	/// <param name="obj">The obj.</param>
-	/// <returns>System.String.</returns>
-	/// <exception cref="ArgumentNullException">obj.</exception>
+	/// <param name="obj">The object to serialize.</param>
+	/// <returns>A string containing the XML representation of the object.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the obj parameter is null.</exception>
 	[Information(nameof(Serialize), BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static string Serialize([NotNull] object obj)
 	{
@@ -94,10 +96,11 @@ public static class XmlSerialization
 	}
 
 	/// <summary>
-	/// Serializes obj to XML file.
+	/// Serializes the specified object to an XML file.
 	/// </summary>
-	/// <param name="obj">The obj.</param>
-	/// <param name="file">File</param>
+	/// <param name="obj">The object to serialize.</param>
+	/// <param name="file">The file to write the XML to.</param>
+	/// <exception cref="ArgumentNullException">Thrown if any parameter is null.</exception>
 	[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
 	public static void SerializeToFile([NotNull] object obj, [NotNull] FileInfo file)
 	{
@@ -120,20 +123,21 @@ public static class XmlSerialization
 	}
 
 	/// <summary>
-	/// Securely convert string to XDocument.
+	/// Converts a string to an XDocument securely.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <returns>XDocument.</returns>
+	/// <param name="input">The input string to convert.</param>
+	/// <returns>An XDocument instance representing the XML content of the input string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the input parameter is null or empty.</exception>
 	[Information(nameof(StringToXDocument), "David McCarter", "9/9/2020", "9/9/2020", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None)]
 	public static XDocument StringToXDocument([NotNull] string input) => StringToXDocument(input.ArgumentNotNullOrEmpty(), null);
 
 	/// <summary>
-	/// Securely convert string to XDocument.
+	/// Converts a string to an XDocument securely, with an optional XML resolver.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <param name="resolver">The resolver.</param>
-	/// <returns>XDocument.</returns>
-	/// <remarks>Uses DtdProcessing.Prohibit.</remarks>
+	/// <param name="input">The input string to convert.</param>
+	/// <param name="resolver">The XML resolver to use during conversion.</param>
+	/// <returns>An XDocument instance representing the XML content of the input string.</returns>
+	/// <remarks>Uses DtdProcessing.Prohibit to enhance security.</remarks>
 	[Information(nameof(StringToXDocument), "David McCarter", "9/9/2020", "9/9/2020", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None)]
 	public static XDocument StringToXDocument([NotNull] string input, [AllowNull] XmlResolver resolver)
 	{

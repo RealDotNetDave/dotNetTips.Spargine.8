@@ -4,53 +4,54 @@
 // Created          : 03-20-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="ProcessorArchitecture.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Enumeration to indicate the type of processor being used
+// <summary>
+// Enumeration to indicate the type of processor being used
 // by the computer.
 // </summary>
 // ***********************************************************************
 
 
+
+
 namespace DotNetTips.Spargine.Core;
 
-//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
-
 /// <summary>
-/// Enum ProcessorArchitecture
+/// Defines processor architectures.
 /// </summary>
 public enum ProcessorArchitecture
 {
 	/// <summary>
-	/// Intel
+	/// The Intel x86 processor architecture.
 	/// </summary>
 	Intel = 0,
 
 	/// <summary>
-	/// Arm
+	/// The ARM processor architecture.
 	/// </summary>
 	Arm = 5,
 
 	/// <summary>
-	/// IA64
+	/// The Intel Itanium (IA64) processor architecture.
 	/// </summary>
 	IA64 = 6,
 
 	/// <summary>
-	/// AMD64
+	/// The AMD x64 (AMD64) processor architecture.
 	/// </summary>
 	AMD64 = 9,
 
 	/// <summary>
-	/// ARM64
+	/// The ARM64 processor architecture.
 	/// </summary>
 	ARM64 = 12,
 
 	/// <summary>
-	/// Unknown architecture
+	/// An unknown processor architecture.
 	/// </summary>
 	Unknown = 0xFFFF
 }

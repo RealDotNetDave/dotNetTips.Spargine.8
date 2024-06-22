@@ -297,4 +297,7 @@
   <data name="RebootingIsOnlySupportedOnWindows" xml:space="preserve">
     <value>Rebooting is only supported on Windows.</value>
   </data>
+  <data name="NoMoreItemsToRetrieveAndTheCollectionIsNot" xml:space="preserve">
+    <value>No more items to retrieve and the collection is not set to repeat.</value>
+  </data>
 </root>

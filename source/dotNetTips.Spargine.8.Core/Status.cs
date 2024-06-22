@@ -4,7 +4,7 @@
 // Created          : 02-27-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-30-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="Status.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -16,76 +16,46 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Availability Status
+/// Defines the availability status for use in the InformationAttribute.
 /// </summary>
 [Information(description: "For use in InformationAttribute.", author: "David McCarter", createdOn: "7/29/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Available)]
 public enum Status
 {
 	/// <summary>
-	/// Status not set.
+	/// Indicates that the status has not been set.
 	/// </summary>
 	NotSet,
 
 	/// <summary>
-	/// New method or class.
+	/// Indicates that the method or class is new.
 	/// </summary>
 	New,
 
 	/// <summary>
-	/// Method or class is available.
+	/// Indicates that the method or class is available for use.
 	/// </summary>
 	Available,
 
 	/// <summary>
-	/// Method or class is not used
+	/// Indicates that the method or class is not used.
 	/// </summary>
 	NotUsed,
 
 	/// <summary>
-	/// Method or class has been updated
+	/// Indicates that the method or class has been updated.
 	/// </summary>
 	Updated,
 
 	/// <summary>
-	/// The code needs documentation
+	/// Indicates that the code needs documentation.
 	/// </summary>
 	NeedsDocumentation,
 
 	/// <summary>
-	/// The check performance
+	/// Indicates that the performance of the method or class should be checked.
 	/// </summary>
 	CheckPerformance,
 }

@@ -4,7 +4,7 @@
 // Created          : 11-06-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="CollectionRandomizer.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -25,42 +25,47 @@ using DotNetTips.Spargine.Core.Properties;
 namespace DotNetTips.Spargine.Core.Collections;
 
 /// <summary>
-/// Class CollectionRandomizer.
+/// Initializes a new instance of the <see cref="CollectionRandomizer{T}"/> class.
 /// </summary>
-/// <typeparam name="T">Generic type parameter.</typeparam>
-/// <param name="collection">The collection.</param>
-/// <param name="repeat">If set to <c>true</c> and when using GetNext() the collection will repeat over and over and each time re-
-/// shuffled. Be careful of getting into an endless loop, it could cause your app to crash.</param>
-/// <remarks>The CollectionRandomizer is designed to shuffle a collection and allow retrieving items by using GetNext().</remarks>
+/// <param name="collection">The collection to randomize. This collection must not be null.</param>
+/// <param name="repeat">if set to <c>true</c>, the collection will repeat over and over, each time reshuffled. Be cautious of endless loops, which could crash your application.</param>
+/// <remarks>
+/// The <see cref="CollectionRandomizer{T}"/> is designed to shuffle a collection and allow retrieving items sequentially with the option to repeat and reshuffle.
+/// </remarks>
 [Information(nameof(CollectionRandomizer<T>), author: "David McCarter and Kristine Tran", createdOn: "8/26/2020", Status = Status.Available)]
 [method: Information(nameof(CollectionRandomizer<T>), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestCoverage = 0)]
 public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection, bool repeat = false)
 {
 
 	/// <summary>
-	/// The collection
+	/// The collection to be randomized. This collection is converted to an <see cref="ImmutableArray{T}"/> to ensure thread-safety and immutability.
 	/// </summary>
 	private ImmutableArray<T> _collection = collection.ToImmutableArray();
 
 	/// <summary>
-	/// The collection enumerator
+	/// The enumerator for the randomized collection. This enumerator is used internally to iterate through the <see cref="ImmutableArray{T}"/> of randomized items.
 	/// </summary>
 	private ImmutableArray<T>.Enumerator _collectionEnumerator;
 
 	/// <summary>
-	/// The initialized
+	/// Indicates whether the <see cref="CollectionRandomizer{T}"/> has been initialized. Initialization occurs upon the first call to <see cref="GetNext"/>. 
+	/// If <c>true</c>, the collection has been shuffled and is ready for item retrieval.
 	/// </summary>
 	private bool _initialized;
 
 	/// <summary>
-	/// The thread lock
+	/// The thread lock used to ensure thread safety when accessing the collection.
 	/// </summary>
 	private readonly object _threadLock = new();
 
 	/// <summary>
-	/// Initializes this instance.
+	/// Initializes this instance of <see cref="CollectionRandomizer{T}"/>.
 	/// </summary>
-	/// <exception cref="InvalidValueException{ImmutableArray}">Underlying collection is null.</exception>
+	/// <remarks>
+	/// This method prepares the collection for item retrieval by shuffling it. If the <see cref="CollectionRandomizer{T}"/> is set to repeat,
+	/// the collection will be reshuffled each time it is exhausted. This method is called automatically before the first item retrieval.
+	/// </remarks>
+	/// <exception cref="InvalidValueException{ImmutableArray}">Thrown if the underlying collection is null or empty.</exception>
 	private void Init()
 	{
 		//Ignore if initialized unless repeat is true.
@@ -89,15 +94,24 @@ public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection,
 	}
 
 	/// <summary>
-	/// Gets the next item in the collection.
+	/// Gets the next item in the collection. If the collection is set to repeat, it will reshuffle once all items have been retrieved.
 	/// </summary>
-	/// <returns>T.</returns>
+	/// <returns>The next item of type <typeparamref name="T"/> from the collection.</returns>
+	/// <exception cref="InvalidOperationException">Thrown if the collection is empty or all items have been retrieved and the collection is not set to repeat.</exception>
+	/// <seealso cref="Init"/>
 	[Information(nameof(GetNext), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestCoverage = 0)]
 	public T GetNext()
 	{
 		lock (this._threadLock)
 		{
-			this.Init();
+			if (!_initialized || (!HasRemainingItems && repeat))
+			{
+				Init();
+			}
+			else if (!HasRemainingItems)
+			{
+				ExceptionThrower.ThrowInvalidOperationException(Resources.NoMoreItemsToRetrieveAndTheCollectionIsNot);
+			}
 
 			var collectionItem = this._collectionEnumerator.Current;
 
@@ -108,10 +122,12 @@ public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection,
 	}
 
 	/// <summary>
-	/// Gets a value indicating whether this instance has remaining items.
+	/// Gets a value indicating whether this instance has remaining items to be retrieved by <see cref="GetNext"/>.
 	/// </summary>
-	/// <value><c>true</c> if this instance has remaining items; otherwise, <c>false</c>. This value will be <c>false</c>
-	/// until the first time GetNext() is called and the shuffle is initialized.</value>
+	/// <value>
+	/// <c>true</c> if this instance has remaining items; otherwise, <c>false</c>. This value will be <c>false</c>
+	/// until the first time <see cref="GetNext"/> is called and the collection is shuffled.
+	/// </value>
 	[Information(nameof(HasRemainingItems), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestCoverage = 0)]
 	public bool HasRemainingItems { get; private set; }
 

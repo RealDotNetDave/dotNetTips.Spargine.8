@@ -4,7 +4,7 @@
 // Created          : 03-20-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-09-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="ProcessorInformation.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -18,42 +18,42 @@ using System.Runtime.InteropServices;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Struct ProcessorInformation
+/// Represents information about the computer's processor, including details such as the number of processors, processor architecture, and page size.
 /// </summary>
 public struct ProcessorInformation : IEquatable<ProcessorInformation>
 {
 
 	/// <summary>
-	/// Implements the != operator.
+	/// Implements the inequality operator. Checks whether two <see cref="ProcessorInformation"/> instances are not equal.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The first instance to compare.</param>
+	/// <param name="right">The second instance to compare.</param>
+	/// <returns><c>true</c> if the instances are not equal; otherwise, <c>false</c>.</returns>
 	public static bool operator !=(ProcessorInformation left, ProcessorInformation right) => !(left == right);
 
 	/// <summary>
-	/// Implements the == operator.
+	/// Implements the equality operator. Checks whether two <see cref="ProcessorInformation"/> instances are equal.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The first instance to compare.</param>
+	/// <param name="right">The second instance to compare.</param>
+	/// <returns><c>true</c> if the instances are equal; otherwise, <c>false</c>.</returns>
 	public static bool operator ==(ProcessorInformation left, ProcessorInformation right) => left.Equals(right);
 
 	/// <summary>
-	/// Determines whether the specified <see cref="object" /> is equal to this instance.
+	/// Determines whether the specified object is equal to the current <see cref="ProcessorInformation"/> instance.
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
-	/// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+	/// <returns><c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.</returns>
 	public override readonly bool Equals(object obj) => obj is ProcessorInformation information && this.Equals(information);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
-	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
+	/// <returns><c>true</c> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <c>false</c>.</returns>
 	public readonly bool Equals(ProcessorInformation other)
 	{
-		return this.PageSize == other.PageSize && this.MinimumApplicationAddress.Equals(other.MinimumApplicationAddress) && this.MaximumApplicationAddress.Equals(other.MaximumApplicationAddress) && this.ActiveProcessorMask.Equals(other.ActiveProcessorMask) && this.NumberOfProcessors == other.NumberOfProcessors && this.ProcessorArchitecture == other.ProcessorArchitecture && this.AllocationGranularity == other.AllocationGranularity && this.ProcessorLevel == other.ProcessorLevel && this.ProcessorRevision == other.ProcessorRevision && this.PageSize == other.PageSize && this.MinimumApplicationAddress.Equals(other.MinimumApplicationAddress) && this.MaximumApplicationAddress.Equals(other.MaximumApplicationAddress) && this.ActiveProcessorMask.Equals(other.ActiveProcessorMask) && this.NumberOfProcessors == other.NumberOfProcessors && this.ProcessorArchitecture == other.ProcessorArchitecture && this.AllocationGranularity == other.AllocationGranularity && this.ProcessorLevel == other.ProcessorLevel && this.ProcessorRevision == other.ProcessorRevision;
+		return this.PageSize == other.PageSize && this.MinimumApplicationAddress.Equals(other.MinimumApplicationAddress) && this.MaximumApplicationAddress.Equals(other.MaximumApplicationAddress) && this.ActiveProcessorMask.Equals(other.ActiveProcessorMask) && this.NumberOfProcessors == other.NumberOfProcessors && this.ProcessorArchitecture == other.ProcessorArchitecture && this.AllocationGranularity == other.AllocationGranularity && this.ProcessorLevel == other.ProcessorLevel && this.ProcessorRevision == other.ProcessorRevision;
 	}
 
 	/// <summary>
@@ -63,15 +63,6 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	public override readonly int GetHashCode()
 	{
 		var hash = new HashCode();
-		hash.Add(this.PageSize);
-		hash.Add(this.MinimumApplicationAddress);
-		hash.Add(this.MaximumApplicationAddress);
-		hash.Add(this.ActiveProcessorMask);
-		hash.Add(this.NumberOfProcessors);
-		hash.Add(this.ProcessorArchitecture);
-		hash.Add(this.AllocationGranularity);
-		hash.Add(this.ProcessorLevel);
-		hash.Add(this.ProcessorRevision);
 		hash.Add(this.PageSize);
 		hash.Add(this.MinimumApplicationAddress);
 		hash.Add(this.MaximumApplicationAddress);
@@ -94,7 +85,6 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// Gets the allocation granularity.
 	/// </summary>
 	/// <value>The allocation granularity.</value>
-
 	public int AllocationGranularity { get; internal set; }
 
 	/// <summary>

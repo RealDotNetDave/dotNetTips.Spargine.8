@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="ApiLibraries.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -15,11 +15,16 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+
+
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class ApiLibraries.
+/// Contains constants for commonly used Windows API library names. This class provides a centralized repository of DLL names used in P/Invoke method declarations.
 /// </summary>
+/// <remarks>
+/// The constants in this class represent the file names of various Windows API libraries. These constants are used to specify the DLL name in P/Invoke signatures, ensuring type safety and reducing the likelihood of runtime errors due to misspelled library names.
+/// </remarks>
 [Information(nameof(ApiLibraries), "David McCarter", "3/24/2023", Status = Status.Available)]
 public static class ApiLibraries
 {

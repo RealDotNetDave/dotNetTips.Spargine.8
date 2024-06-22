@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
 // <copyright file="EnumHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -27,38 +27,41 @@ using System.Xml.Serialization;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// EnumHelper.
+/// Provides utility methods for working with enumerations, such as converting between names and values,
+/// adjusting naming conventions, and extracting metadata. This class cannot be inherited.
 /// </summary>
 public static class EnumHelper
 {
 
 	/// <summary>
-	/// The title case regex
+	/// Regular expression used to identify camel case words within a string.
+	/// This is used to adjust enum names to a more readable format by inserting spaces between camel case words.
 	/// </summary>
 	private static readonly Regex _titleCaseRegex = new(@"(\B[A-Z])", RegexOptions.Multiline | RegexOptions.Compiled);
 
 	/// <summary>
-	/// Adjusts the camel case.
+	/// Adjusts camel case naming in the provided string by inserting a space before each capital letter that is not at the beginning.
 	/// </summary>
-	/// <param name="name">The name.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="name">The string to adjust.</param>
+	/// <returns>A string with spaces inserted before capital letters that are not at the beginning.</returns>
 	private static string AdjustCamelCase(string name) => _titleCaseRegex.Replace(name, replacement: " $1");
 
 	/// <summary>
-	/// Adjusts the name.
+	/// Adjusts the name of the enumeration value by replacing underscores with spaces and applying camel case adjustment.
 	/// </summary>
-	/// <param name="name">The name.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="name">The original name of the enumeration value.</param>
+	/// <returns>The adjusted name with underscores replaced by spaces and camel case naming applied.</returns>
 	private static string AdjustName(string name) => AdjustCamelCase(name.Replace(ControlChars.Underscore, ControlChars.Space))
 			.Replace(ControlChars.Space, ControlChars.Space);
 
 	/// <summary>
-	/// Gets the enum names.
+	/// Retrieves a list of names for an enumeration type, with options to adjust for readability and to use XML attributes.
 	/// </summary>
-	/// <param name="type">The type.</param>
-	/// <param name="fixNames">if set to <c>true</c> [fix names].</param>
-	/// <param name="useXml">if set to <c>true</c> [use XML].</param>
-	/// <returns>List&lt;System.String&gt;.</returns>
+	/// <param name="type">The enumeration type.</param>
+	/// <param name="fixNames">If set to <c>true</c>, adjusts the names for readability by adding spaces in camel case names and replacing underscores with spaces.</param>
+	/// <param name="useXml">If set to <c>true</c>, uses the <see cref="XmlEnumAttribute"/> for the names if available.</param>
+	/// <returns>A list of enumeration names as strings.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="type"/> is null.</exception>
 	private static List<string> GetNames([NotNull] Type type, bool fixNames = true, bool useXml = true)
 	{
 		// Set up result
@@ -101,18 +104,19 @@ public static class EnumHelper
 	}
 
 	/// <summary>
-	/// Gets the enum names and values.
+	/// Gets the enumeration names and values for a specified enumeration type.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="fixNames">if set to <c>true</c> [fix names].</param>
-	/// <param name="useXmlNames">if set to <c>true</c> [use XML names].</param>
-	/// <returns>ReadOnlyCollection&lt;EnumValue&gt;.</returns>
+	/// <typeparam name="T">The type of the enumeration.</typeparam>
+	/// <param name="fixNames">If set to <c>true</c>, adjusts the names for readability by adding spaces in camel case names and replacing underscores with spaces.</param>
+	/// <param name="useXmlNames">If set to <c>true</c>, uses the <see cref="XmlEnumAttribute"/> for the names if available.</param>
+	/// <returns>A read-only collection of <see cref="EnumValue"/>, each representing an enumeration name and its corresponding value.</returns>
 	/// <example>
-	/// Using this with the RequestCacheLevel will return the following:
-	/// EnumValue { Name = Default, Value = 0 },EnumValue { Name = BypassCache, Value = 1 },
-	/// EnumValue { Name = CacheOnly, Value = 2 },EnumValue { Name = CacheIfAvailable, Value = 3 },
-	/// EnumValue { Name = Revalidate, Value = 4 },EnumValue { Name = Reload, Value = 5 },
-	/// EnumValue { Name = NoCacheNoStore, Value = 6 }
+	/// Using this method with an enumeration type <c>RequestCacheLevel</c> will return a collection containing:
+	/// <code>
+	/// new EnumValue { Name = "Default", Value = 0 },
+	/// new EnumValue { Name = "BypassCache", Value = 1 },
+	/// and so on for each enumeration value.
+	/// </code>
 	/// </example>
 	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static ReadOnlyCollection<EnumValue> GetValues<T>(bool fixNames = true, bool useXmlNames = true)

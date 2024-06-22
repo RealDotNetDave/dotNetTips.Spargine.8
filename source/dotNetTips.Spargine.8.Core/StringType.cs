@@ -4,7 +4,7 @@
 // Created          : 05-26-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2023
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="StringType.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -18,25 +18,27 @@
 
 
 
+
+
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Enum for StringType
+/// Defines string validation types.
 /// </summary>
 public enum StringType
 {
 	/// <summary>
-	/// String type not set.
+	/// Indicates that the string type is not set.
 	/// </summary>
 	NotSet,
 
 	/// <summary>
-	/// Validates that string is a email address.
+	/// Validates that the string is an email address.
 	/// </summary>
 	Email,
 
 	/// <summary>
-	/// Validates that the string is a Url.
+	/// Validates that the string is a URL.
 	/// </summary>
 	Url
 }

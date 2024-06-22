@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-02-2023
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="UnhandledExceptionEventInformation.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -18,25 +18,26 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+
+
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class UnhandledExceptionEventInformation.
+/// Represents information about an unhandled exception event. This class holds details about the exception and the state of the application when the exception occurred.
 /// </summary>
-/// <seealso cref="IEventInformation" />
 public sealed class UnhandledExceptionEventInformation : IEventInformation
 {
 
 	/// <summary>
-	/// Gets the exception.
+	/// Gets the exception that was unhandled and caused the event.
 	/// </summary>
-	/// <value>The exception.</value>
+	/// <value>The exception that was not handled.</value>
 	public LoggableException Exception { get; internal set; }
 
 	/// <summary>
-	/// Gets a value indicating whether [network available].
+	/// Gets a value indicating whether the application is terminating due to the unhandled exception.
 	/// </summary>
-	/// <value><c>true</c> if [network available]; otherwise, <c>false</c>.</value>
+	/// <value><c>true</c> if the application is terminating; otherwise, <c>false</c>.</value>
 	public bool IsTerminating { get; internal set; }
 
 }

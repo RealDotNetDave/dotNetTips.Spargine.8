@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="Config.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -23,19 +23,22 @@ using DotNetTips.Spargine.Core.Serialization;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class Config.
+/// Provides a generic configuration management class that simplifies the creation, loading, and saving of configuration objects to disk.
+/// This class is designed to be adaptable for various types of configuration needs.
 /// </summary>
-/// <typeparam name="T">Generic type parameter.</typeparam>
+/// <typeparam name="T">The type of the configuration object.</typeparam>
+[Serializable]
 public class Config<T> where T : class, new()
 {
 
 	/// <summary>
-	/// The instance.
+	/// The singleton instance of the configuration object.
 	/// </summary>
 	private static T _instance = new();
 
 	/// <summary>
-	/// Prevents a default instance of the <see cref="Config{T}" /> class from being created.
+	/// Initializes a new instance of the <see cref="Config{T}"/> class.
+	/// Sets up default paths for the configuration file based on application information.
 	/// </summary>
 	protected Config()
 	{
@@ -45,55 +48,51 @@ public class Config<T> where T : class, new()
 	}
 
 	/// <summary>
-	/// Loads this instance.
+	/// Loads the configuration from the disk if it exists.
 	/// </summary>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <returns><c>true</c> if the configuration was successfully loaded; otherwise, <c>false</c>.</returns>
 	public virtual bool Load()
 	{
 		if (File.Exists(this.ConfigFileName))
 		{
 			_instance = XmlSerialization.DeserializeFromFile<T>(new FileInfo(this.ConfigFileName));
-
 			return true;
 		}
-
 		return false;
 	}
 
 	/// <summary>
-	/// Saves this instance.
+	/// Saves the current instance of the configuration to the disk.
 	/// </summary>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <returns><c>true</c> if the configuration was successfully saved; otherwise, <c>false</c>.</returns>
 	public virtual bool Save()
 	{
 		if (File.Exists(this.ConfigFileName))
 		{
 			File.Delete(this.ConfigFileName);
 		}
-
 		XmlSerialization.SerializeToFile(this.Instance, new FileInfo(this.ConfigFileName));
-
 		return true;
 	}
 
 	/// <summary>
-	/// Gets the name of the configuration file.
+	/// Gets the full path of the configuration file.
 	/// </summary>
-	/// <value>The name of the configuration file.</value>
+	/// <value>The full path of the configuration file.</value>
 	[XmlIgnore]
 	public string ConfigFileName { get; }
 
 	/// <summary>
-	/// Gets the name of the configuration folder.
+	/// Gets the full path of the configuration folder.
 	/// </summary>
-	/// <value>The name of the configuration folder.</value>
+	/// <value>The full path of the configuration folder.</value>
 	[XmlIgnore]
 	public string ConfigFolderName { get; }
 
 	/// <summary>
-	/// Gets the instance for the object.
+	/// Gets the singleton instance of the configuration object.
 	/// </summary>
-	/// <value>The instance.</value>
+	/// <value>The instance of the configuration object.</value>
 	[XmlIgnore]
 	public T Instance => _instance;
 

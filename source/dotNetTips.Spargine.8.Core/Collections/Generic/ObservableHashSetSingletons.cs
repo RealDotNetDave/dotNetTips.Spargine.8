@@ -4,7 +4,7 @@
 // Created          : 08-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="ObservableHashSetSingletons.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -18,27 +18,27 @@ using System.ComponentModel;
 namespace DotNetTips.Spargine.Core.Collections.Generic;
 
 /// <summary>
-/// ObservableHashSetSingletons.
+/// Provides singleton instances for commonly used <see cref="PropertyChangedEventArgs"/> and <see cref="PropertyChangingEventArgs"/> to avoid unnecessary allocations in ObservableHashSet{T}.
 /// </summary>
 internal static class ObservableHashSetSingletons
 {
 
 	/// <summary>
-	/// Gets the count property changed.
+	/// Gets the <see cref="PropertyChangedEventArgs"/> instance for the "Count" property change.
 	/// </summary>
-	/// <value>The count property changed.</value>
+	/// <value>The <see cref="PropertyChangedEventArgs"/> for the "Count" property change.</value>
 	internal static PropertyChangedEventArgs CountPropertyChanged { get; } = new(propertyName: "Count");
 
 	/// <summary>
-	/// Gets the count property changing.
+	/// Gets the <see cref="PropertyChangingEventArgs"/> instance for the "Count" property changing.
 	/// </summary>
-	/// <value>The count property changing.</value>
+	/// <value>The <see cref="PropertyChangingEventArgs"/> for the "Count" property changing.</value>
 	internal static PropertyChangingEventArgs CountPropertyChanging { get; } = new(propertyName: "Count");
 
 	/// <summary>
-	/// Gets the no items.
+	/// Gets an empty array to represent no items, used to avoid unnecessary allocations.
 	/// </summary>
-	/// <value>The no items.</value>
+	/// <value>An empty array representing no items.</value>
 	internal static object[] NoItems { get; } = [];
 
 }

@@ -4,7 +4,7 @@
 // Created          : 07-11-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="HttpEventListener.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -25,25 +25,33 @@ using Microsoft.Extensions.Logging;
 namespace DotNetTips.Spargine.Core.Network;
 
 /// <summary>
-/// Class HttpEventListener. This class cannot be inherited.
-/// Implements the <see cref="EventListener" />
+/// Provides a mechanism to listen to and log HTTP events, facilitating comprehensive monitoring and logging of HTTP-related activities within an application.
+/// This class captures events such as HTTP request start and stop, providing insights into the HTTP traffic that occurs during the application's runtime.
 /// </summary>
+/// <remarks>
+/// This class is sealed to prevent inheritance, ensuring that the behavior defined here is consistent and not altered through subclassing.
+/// The functionality is based on the <see cref="EventListener"/> class, leveraging event sources for HTTP activities.
+/// </remarks>
 /// <example>
-///   <b>Output:</b> HTTP RequestStart: 00000011-0000-0000-0000-00008ed19d59 https://dotnettips.com:443/
-/// HTTP/1.1 POLICY: RequestVersionOrLower
-/// <b>Output:</b> HTTP RequestStop: 00000011-0000-0000-0000-00008ed19d59
+/// Usage example:
+/// <code>
+/// using (var logger = new LoggerFactory().CreateLogger("HttpLogger"))
+/// {
+///     using var listener = new HttpEventListener(logger);
+///     // Perform HTTP operations...
+/// }
+/// </code>
 /// </example>
-/// <seealso cref="EventListener" />
-/// <param name="logger">The logger.</param>
-/// <remarks>Creates a new instance of the <see cref="HttpEventListener" /> class.</remarks>
+/// <seealso cref="EventListener"/>
 [Information(nameof(HttpEventListener), UnitTestCoverage = 100, Status = Status.Available)]
 public sealed class HttpEventListener(ILogger logger) : EventListener
 {
 
 	/// <summary>
-	/// Logs the message.
+	/// Logs a message to the configured logger and writes the message to the system diagnostic trace.
+	/// This method is intended for internal use within the <see cref="HttpEventListener"/> class to log HTTP event information.
 	/// </summary>
-	/// <param name="message">The message.</param>
+	/// <param name="message">The message to be logged. It should contain information about the HTTP event being processed.</param>
 	private void LogMessage(string message)
 	{
 		logger?.LogInformationMessage(message);
@@ -53,8 +61,9 @@ public sealed class HttpEventListener(ILogger logger) : EventListener
 
 	/// <summary>
 	/// Called for all existing event sources when the event listener is created and when a new event source is attached to the listener.
+	/// This method ensures that events from specific sources, particularly those related to HTTP activities, are captured and logged.
 	/// </summary>
-	/// <param name="eventSource">The event source.</param>
+	/// <param name="eventSource">The event source to be processed. This parameter is validated to ensure it is not null.</param>
 	protected override void OnEventSourceCreated(EventSource eventSource)
 	{
 		eventSource = eventSource.ArgumentNotNull();
@@ -80,8 +89,10 @@ public sealed class HttpEventListener(ILogger logger) : EventListener
 
 	/// <summary>
 	/// Called whenever an event has been written by an event source for which the event listener has enabled events.
+	/// This method processes the event data, extracting relevant information for logging purposes.
 	/// </summary>
-	/// <param name="eventData">The event arguments that describe the event.</param>
+	/// <param name="eventData">The event arguments that describe the event. This includes details such as the event ID and payload.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="eventData"/> is null, ensuring that event processing does not proceed with null event data.</exception>
 	protected override void OnEventWritten(EventWrittenEventArgs eventData)
 	{
 		eventData = eventData.ArgumentNotNull();

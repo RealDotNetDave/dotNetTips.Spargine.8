@@ -4,7 +4,7 @@
 // Created          : 02-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="IDataRecord.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -24,27 +24,30 @@ using DotNetTips.Spargine.Core.Internal;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Interface for data record classes to ensure all types have an Id property.
+/// Defines the essential characteristics of a data record, including a unique identifier and the ability to represent its properties as a string.
 /// </summary>
 [Information(nameof(IDataRecord), author: "David McCarter", createdOn: "3/4/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "http://bit.ly/SpargineMarch2021")]
 public interface IDataRecord
 {
 
 	/// <summary>
-	/// Converts all properties and values to a string.
+	/// Converts all properties and their values of the implementing class to a string representation.
 	/// </summary>
-	/// <returns>string.</returns>
-	/// <remarks>This method uses reflection.</remarks>
+	/// <returns>A string that represents all the properties and their values of the implementing class.</returns>
+	/// <remarks>This method uses reflection to iterate over all properties.</remarks>
 	public sealed string AllPropertiesToString() => this.PropertiesToString();
 
 	/// <summary>
-	/// Gets or sets the identifier.
+	/// Gets the unique identifier for the data record.
 	/// </summary>
-	/// <value>The identifier.</value>
-	[Required]
-	[MaxLength(length: 50, ErrorMessage = "Id must be 10 characters to a max of 50.")]
-	[MinLength(length: 10, ErrorMessage = "Id must be 10 characters to a max of 50.")]
-	[DisallowNull]
+	/// <value>The unique identifier as a string.</value>
+	/// <remarks>
+	/// The identifier must be between 10 to 50 characters in length.
+	/// </remarks>
+	[Required(ErrorMessage = "Id is required.")]
+	[MaxLength(50, ErrorMessage = "Id must be a maximum of 50 characters.")]
+	[MinLength(10, ErrorMessage = "Id must be at least 10 characters.")]
+	[DisallowNull()]
 	public string Id { get; init; }
 
 }

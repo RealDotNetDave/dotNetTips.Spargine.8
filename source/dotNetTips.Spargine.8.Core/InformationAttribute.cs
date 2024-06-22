@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="InformationAttribute.cs" company="dotNetTips.Spargine.Core">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -22,10 +22,9 @@ using DotNetTips.Spargine.Core.Properties;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class InformationAttribute. This class cannot be inherited.
-/// Implements the <see cref="Attribute" />
+/// Attribute that enables the addition of informational data to methods, classes, and other members.
+/// This includes authorship, creation and modification dates, documentation links, and more.
 /// </summary>
-/// <seealso cref="Attribute" />
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Delegate, Inherited = false)]
 public sealed class InformationAttribute : Attribute
 {
@@ -36,39 +35,39 @@ public sealed class InformationAttribute : Attribute
 	private int _unitTestCoverage;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="InformationAttribute" /> class.
+	/// Initializes a new instance of the <see cref="InformationAttribute"/> class.
 	/// </summary>
 	public InformationAttribute()
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="InformationAttribute" /> class.
+	/// Initializes a new instance of the <see cref="InformationAttribute"/> class with a description.
 	/// </summary>
-	/// <param name="description">The description.</param>
+	/// <param name="description">The description of the member this attribute is applied to.</param>
 	public InformationAttribute(string description)
 		: this(description, string.Empty, string.Empty, string.Empty)
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="InformationAttribute" /> class.
+	/// Initializes a new instance of the <see cref="InformationAttribute"/> class with a description, author, and creation date.
 	/// </summary>
-	/// <param name="description">The message.</param>
-	/// <param name="author">The author.</param>
-	/// <param name="createdOn">The created on.</param>
+	/// <param name="description">The description of the member this attribute is applied to.</param>
+	/// <param name="author">The author of the member.</param>
+	/// <param name="createdOn">The creation date of the member.</param>
 	public InformationAttribute(string description, string author, string createdOn)
 		: this(description, author, createdOn, createdOn)
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="InformationAttribute" /> class.
+	/// Initializes a new instance of the <see cref="InformationAttribute"/> class with a description, author, creation date, and modification date.
 	/// </summary>
-	/// <param name="description">The message.</param>
-	/// <param name="author">The author.</param>
-	/// <param name="createdOn">The created on.</param>
-	/// <param name="modifiedOn">The modified on.</param>
+	/// <param name="description">The description of the member this attribute is applied to.</param>
+	/// <param name="author">The author of the member.</param>
+	/// <param name="createdOn">The creation date of the member.</param>
+	/// <param name="modifiedOn">The modification date of the member.</param>
 	public InformationAttribute(string description, string author, string createdOn, string modifiedOn)
 	{
 		this.Description = description;
@@ -91,59 +90,49 @@ public sealed class InformationAttribute : Attribute
 	}
 
 	/// <summary>
-	/// Gets the author.
+	/// Gets the author of the member.
 	/// </summary>
-	/// <value>The author.</value>
 	public string Author { get; }
-
 	/// <summary>
-	/// Gets or sets the benchmark status.
+	/// Gets or sets the benchmark status of the member.
 	/// </summary>
-	/// <value>The bench mark status.</value>
 	public BenchMarkStatus BenchMarkStatus { get; set; } = BenchMarkStatus.None;
 
 	/// <summary>
-	/// Gets the created on date.
+	/// Gets the creation date of the member.
 	/// </summary>
-	/// <value>The created on.</value>
 	public DateTimeOffset CreatedOn { get; set; }
 
 	/// <summary>
-	/// Gets the description of the type, method or event.
+	/// Gets the description of the member.
 	/// </summary>
-	/// <value>The message.</value>
 	public string Description { get; }
 
 	/// <summary>
-	/// Gets or sets the Uri for external documentation.
+	/// Gets or sets the Uri for external documentation related to the member.
 	/// </summary>
-	/// <value>The documentation Uri.</value>
 	public string Documentation { get; set; }
 
 	/// <summary>
-	/// Gets or sets the modified by.
+	/// Gets or sets the name of the person who last modified the member.
 	/// </summary>
-	/// <value>The modified by.</value>
 	public string ModifiedBy { get; set; }
 
 	/// <summary>
-	/// Gets the modified on date.
+	/// Gets the last modification date of the member.
 	/// </summary>
-	/// <value>The modified on.</value>
 	public DateTimeOffset ModifiedOn { get; private set; }
 
 	/// <summary>
-	/// Gets or sets the status.
+	/// Gets or sets the development status of the member.
 	/// </summary>
-	/// <value>The status.</value>
 	public Status Status { get; set; } = Status.NotSet;
 
 	/// <summary>
-	/// Gets or sets the unit test coverage.
+	/// Gets or sets the unit test coverage percentage of the member.
+	/// Must be between 0 - 100.
 	/// </summary>
-	/// <value>The unit test coverage.</value>
-	/// <exception cref="ArgumentOutOfRangeException">value - Unit test coverage must be in the range of 0 - 100.</exception>
-	/// <remarks>Value must be between 0 - 100</remarks>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not in the range of 0 - 100.</exception>
 	public int UnitTestCoverage
 	{
 		get => this._unitTestCoverage;

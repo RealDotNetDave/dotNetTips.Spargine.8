@@ -4,7 +4,7 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-18-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -24,18 +24,20 @@ using System.Runtime.CompilerServices;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class CachedEnumerable.
+/// Provides a mechanism for caching the results of enumerating an <see cref="IEnumerable{T}"/>.
+/// This can significantly improve performance when iterating over the same enumerable multiple times.
 /// </summary>
 [Information(nameof(CachedEnumerable), UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 public static class CachedEnumerable
 {
 
 	/// <summary>
-	/// Creates the specified enumerable.
+	/// Creates a cached version of the specified enumerable.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="enumerable">The enumerable.</param>
-	/// <returns>CachedEnumerable&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the enumerable.</typeparam>
+	/// <param name="enumerable">The enumerable to cache.</param>
+	/// <returns>A <see cref="CachedEnumerable{T}"/> that caches the results of enumerating the specified enumerable.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="enumerable"/> is null.</exception>
 	public static CachedEnumerable<T> Create<T>([NotNull] IEnumerable<T> enumerable)
 	{
 		enumerable = enumerable.ArgumentNotNull();
@@ -46,37 +48,35 @@ public static class CachedEnumerable
 }
 
 /// <summary>
-/// Class CachedEnumerable. This class cannot be inherited.
-/// Implements the <see cref="IEnumerable{T}" />
-/// Implements the <see cref="IDisposable" />
+/// Represents a cached enumerable that caches the results of enumerating an <see cref="IEnumerable{T}"/>.
+/// This class provides improved performance by storing the results of enumeration, allowing for repeated iterations over the data without re-enumerating the underlying sequence.
 /// </summary>
-/// <typeparam name="T"></typeparam>
-/// <seealso cref="IEnumerable{T}" />
-/// <seealso cref="IDisposable" />
-/// <param name="enumerable">The enumerable.</param>
-/// <remarks>This type implements IDisposable. Make sure to call .Dispose() or use the 'using' statement
-/// to remove from memory.</remarks>
+/// <typeparam name="T">The type of elements in the enumerable.</typeparam>
+/// <param name="enumerable">The enumerable sequence to cache.</param>
+/// <remarks>
+/// This type implements <see cref="IDisposable"/>. Make sure to call Dispose or use the 'using' statement to release resources when done.
+/// </remarks>
 [Information(nameof(CachedEnumerable<T>), BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable<T>, IDisposable
 {
 
 	/// <summary>
-	/// The cache
+	/// The cache used to store enumerated elements.
 	/// </summary>
 	private readonly List<T> _cache = [];
 
 	/// <summary>
-	/// The disposed value
+	/// Indicates whether the <see cref="CachedEnumerable{T}"/> has been disposed.
 	/// </summary>
 	private bool _disposed;
 
 	/// <summary>
-	/// The enumerated
+	/// Indicates whether the entire enumerable has been enumerated and cached.
 	/// </summary>
 	private bool _enumerated;
 
 	/// <summary>
-	/// The enumerator
+	/// The enumerator used to iterate through the enumerable.
 	/// </summary>
 	private IEnumerator<T> _enumerator;
 
@@ -86,21 +86,22 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	~CachedEnumerable() => this.Dispose(false);
 
 	/// <summary>
-	/// Returns an enumerator that iterates through a collection.
+	/// Returns an enumerator that iterates through the collection.
 	/// </summary>
-	/// <returns>An <see cref="IEnumerator" /> object that can be used to iterate through the collection.</returns>
+	/// <returns>An enumerator that can be used to iterate through the collection.</returns>
 	IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
 	/// <summary>
-	/// Checks the enumerable.
+	/// Validates that the enumerable has been initialized and is not null.
 	/// </summary>
+	/// <exception cref="InvalidOperationException">Thrown if the enumerable is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private void CheckEnumerable() => _ = this._enumerable.CheckIsNotNull(true);
 
 	/// <summary>
 	/// Releases unmanaged and - optionally - managed resources.
 	/// </summary>
-	/// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+	/// <param name="disposing">If set to <c>true</c>, releases both managed and unmanaged resources; if <c>false</c>, releases only unmanaged resources.</param>
 	private void Dispose(bool disposing)
 	{
 		if (!this._disposed)
@@ -116,11 +117,13 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	}
 
 	/// <summary>
-	/// Tries the get item.
+	/// Attempts to retrieve an item at the specified index from the cache. If the item is not in the cache,
+	/// it will try to enumerate the underlying enumerable to get the item.
 	/// </summary>
-	/// <param name="index">The index.</param>
-	/// <param name="result">The result.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="index">The zero-based index of the item to retrieve.</param>
+	/// <param name="result">When this method returns, contains the item at the specified index, if the item is found;
+	/// otherwise, the default value for the type of the item parameter. This parameter is passed uninitialized.</param>
+	/// <returns><c>true</c> if the item at the specified index is successfully retrieved; otherwise, <c>false</c>.</returns>
 	private bool TryGetItem(int index, out T result)
 	{
 		this.CheckEnumerable();
@@ -209,7 +212,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	}
 
 	/// <summary>
-	/// The enumerable
+	/// The underlying enumerable sequence that is being cached.
 	/// </summary>
 	private readonly IEnumerable<T> _enumerable = enumerable;
 

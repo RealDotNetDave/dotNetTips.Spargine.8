@@ -4,14 +4,12 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="InvalidValueException.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Custom exception to be used when an invalid value is encountered.
-// </summary>
+// <summary>Custom exception to be used when an invalid value is encountered.</summary>
 // ***********************************************************************
 using DotNetTips.Spargine.Core.Internal;
 using DotNetTips.Spargine.Core.Properties;
@@ -21,62 +19,63 @@ using DotNetTips.Spargine.Core.Properties;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class InvalidValueException. This class cannot be inherited.
+/// Represents an exception that is thrown when an invalid value of type <typeparamref name="TValue"/> is encountered.
 /// </summary>
-/// <typeparam name="TValue">The type of the t value.</typeparam>
-[Serializable]
+/// <typeparam name="TValue">The type of the invalid value.</typeparam>
+[Serializable]
 public sealed class InvalidValueException<TValue> : LoggableException
 {
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}"/> class with a default error message.
 	/// </summary>
 	public InvalidValueException() : base(Resources.MessageGoToDotNetTipsComForHelp)
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}"/> class with the specified invalid value.
 	/// </summary>
-	/// <param name="value">The value.</param>
+	/// <param name="value">The invalid value that caused the exception.</param>
 	public InvalidValueException(TValue value) : base(Resources.MessageGoToDotNetTipsComForHelp) => this.Value = value;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}"/> class with a specified error message.
 	/// </summary>
-	/// <param name="message">The message.</param>
+	/// <param name="message">The message that describes the error.</param>
 	public InvalidValueException(string message) : base(message)
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}"/> class with a specified error message and invalid value.
 	/// </summary>
-	/// <param name="message">The message.</param>
-	/// <param name="value">The value.</param>
+	/// <param name="message">The message that describes the error.</param>
+	/// <param name="value">The invalid value that caused the exception.</param>
 	public InvalidValueException(string message, TValue value) : base(message) => this.Value = value;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}"/> class with a specified error message and a reference to the inner exception that is the cause of this exception.
 	/// </summary>
-	/// <param name="message">The message.</param>
-	/// <param name="innerException">The inner exception.</param>
+	/// <param name="message">The error message that explains the reason for the exception.</param>
+	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
 	public InvalidValueException(string message, Exception innerException) : base(message, innerException)
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}" /> class.
+	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}"/> class with a specified error message, invalid value, and a reference to the inner exception that is the cause of this exception.
 	/// </summary>
-	/// <param name="message">The message.</param>
-	/// <param name="value">The value.</param>
-	/// <param name="innerException">The inner exception.</param>
+	/// <param name="message">The error message that explains the reason for the exception.</param>
+	/// <param name="value">The invalid value that caused the exception.</param>
+	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
 	public InvalidValueException(string message, TValue value, Exception innerException) : base(message, innerException) => this.Value = value;
 
 	/// <summary>
 	/// Converts to string.
+	/// Provides a string representation of the exception, including the message, inner exception, and the invalid value.
 	/// </summary>
-	/// <returns>string.</returns>
+	/// <returns>A string that represents the current exception.</returns>
 	public override string ToString()
 	{
 		var valueProperties = string.Empty;
@@ -96,9 +95,9 @@ public sealed class InvalidValueException<TValue> : LoggableException
 	}
 
 	/// <summary>
-	/// Gets the value.
+	/// Gets the invalid value that caused the exception.
 	/// </summary>
-	/// <value>The value.</value>
+	/// <value>The invalid value.</value>
 	public TValue Value { get; private set; }
 
 }

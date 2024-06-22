@@ -4,7 +4,7 @@
 // Created          : 03-20-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-09-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="SourceGenerators.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -18,36 +18,36 @@ using System.Runtime.InteropServices;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Class SourceGenerators.
+/// Provides utility methods and constants for working with source generation and system information.
 /// </summary>
 internal static partial class SourceGenerators
 {
 
 	/// <summary>
-	/// The processor architecture am D64
+	/// The processor architecture AMD64
 	/// </summary>
 	internal const int PROCESSOR_ARCHITECTURE_AMD64 = 9;
 
 	/// <summary>
-	/// The processor architecture arm
+	/// The processor architecture ARM
 	/// </summary>
 	internal const int PROCESSOR_ARCHITECTURE_ARM = 5;
 
 	/// <summary>
-	/// The processor architecture ar M64
+	/// The processor architecture ARM64
 	/// </summary>
 	internal const int PROCESSOR_ARCHITECTURE_ARM64 = 12;
 
 	/// <summary>
-	/// The processor architecture intel
+	/// The processor architecture Intel
 	/// </summary>
 	internal const int PROCESSOR_ARCHITECTURE_INTEL = 0;
 
 	/// <summary>
-	/// Converts the processor architecture.
+	/// Converts an integer representing a processor architecture into the corresponding <see cref="Architecture"/> enum value.
 	/// </summary>
-	/// <param name="processorArchitecture">The processor architecture.</param>
-	/// <returns>Architecture.</returns>
+	/// <param name="processorArchitecture">The processor architecture as an integer. Expected values are from the PROCESSOR_ARCHITECTURE_* constants.</param>
+	/// <returns>The <see cref="Architecture"/> enum value that corresponds to the given processor architecture integer.</returns>
 	internal static Architecture ConvertProcessorArchitecture(int processorArchitecture) => processorArchitecture switch
 	{
 		PROCESSOR_ARCHITECTURE_ARM64 => Architecture.Arm64,
@@ -57,72 +57,69 @@ internal static partial class SourceGenerators
 	};
 
 	/// <summary>
-	/// Gets the system information.
+	/// Retrieves information about the current system.
 	/// </summary>
-	/// <param name="si">The si.</param>
+	/// <param name="si">A reference to a <see cref="SystemInfo"/> structure that receives the information.</param>
+	/// <remarks>
+	/// This method directly invokes the native GetSystemInfo function from the Kernel32 DLL.
+	/// </remarks>
 	[DllImport(ApiLibraries.Kernel32, EntryPoint = "GetSystemInfo", SetLastError = true)]
 	[DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
 	internal static extern void GetSystemInfoDllImport(ref SystemInfo si);
 
-	//#if NET7_0_OR_GREATER
-	//	[LibraryImport(ApiLibraries.Kernel32, EntryPoint = "GetSystemInfo", SetLastError = true)]
-	//	internal static partial void GetSystemInfoLibraryImport(ref SystemInfo si)
-	//	{ }
-	//#endif
-
 	/// <summary>
-	/// Struct SystemInfo
+	/// Represents information about the system's current configuration.
 	/// </summary>
 	internal struct SystemInfo
 	{
 
 		/// <summary>
-		/// The dw oem identifier
+		/// The OEM ID.
 		/// </summary>
 		internal uint _dwOemId;
 
 		/// <summary>
-		/// The dw page size
+		/// The system's page size.
 		/// </summary>
 		internal uint _dwPageSize;
 
 		/// <summary>
-		/// The lp minimum application address
+		/// The minimum application address.
 		/// </summary>
 		internal IntPtr _lpMinimumApplicationAddress;
 
 		/// <summary>
-		/// The lp maximum application address
+		/// The maximum application address.
 		/// </summary>
 		internal IntPtr _lpMaximumApplicationAddress;
 
 		/// <summary>
-		/// The dw active processor mask
+		/// A mask representing the active processor set.
 		/// </summary>
 		internal IntPtr _dwActiveProcessorMask;
 
 		/// <summary>
-		/// The dw number of processors
+		/// The number of processors in the system.
 		/// </summary>
 		internal uint _dwNumberOfProcessors;
 
 		/// <summary>
-		/// The dw processor type
+		/// The processor type.
 		/// </summary>
 		internal uint _dwProcessorType;
 
 		/// <summary>
-		/// The dw allocation granularity
+		/// The granularity with which virtual memory is allocated.
 		/// </summary>
 		internal uint _dwAllocationGranularity;
 
 		/// <summary>
-		/// The w processor level
+		/// The processor level.
 		/// </summary>
 		internal ushort _wProcessorLevel;
 
 		/// <summary>
-		/// The w processor revision
+		/// The processor revision.
 		/// </summary>
 		internal ushort _wProcessorRevision;
 

@@ -4,7 +4,7 @@
 // Created          : 02-27-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-30-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="BenchMarkStatus.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -16,107 +16,36 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// BenchMarkStatus attribute to add more meta data for types.
+/// Defines the benchmark status for a component or method, indicating whether benchmarks have been conducted, are in progress, or are not required.
 /// </summary>
-/// <remarks>For use in InformationAttribute.</remarks>
 [Information(description: "For use in InformationAttribute.", author: "David McCarter", createdOn: "7/29/2020", BenchMarkStatus = NotRequired, Status = Status.Available)]
 public enum BenchMarkStatus
 {
 	/// <summary>
-	/// No benchmark.
+	/// Indicates that no benchmark has been conducted.
 	/// </summary>
 	None,
 
 	/// <summary>
-	/// Benchmark is not required
+	/// Indicates that a benchmark is not required for the component or method.
 	/// </summary>
 	NotRequired,
 
 	/// <summary>
-	/// Benchmark work is in progress.
+	/// Indicates that benchmark work is currently in progress.
 	/// </summary>
 	WIP,
 
 	/// <summary>
-	/// Benchmarks test done.
+	/// Indicates that benchmark tests have been completed.
 	/// </summary>
 	Completed,
 
 	/// <summary>
-	/// Benchmark needs to be updated
+	/// Indicates that the existing benchmark needs to be updated.
 	/// </summary>
 	NeedsUpdate,
 }

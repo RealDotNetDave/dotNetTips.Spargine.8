@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-21-2024
 // ***********************************************************************
 // <copyright file="WebHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -24,26 +24,40 @@ using Microsoft.AspNetCore.Http;
 namespace DotNetTips.Spargine.Core.Web;
 
 /// <summary>
-/// Class WebHelper.
+/// Provides utility methods for website calls, streamlining interactions and efficiently managing HTTP-related tasks.
 /// </summary>
+/// <remarks>
+/// The WebHelper class simplifies common web operations such as downloading content asynchronously,
+/// identifying local URIs, and managing HTTP headers. It leverages <see cref="HttpClient"/> for network communications,
+/// ensuring best practices like connection reuse are followed. This class is part of the DotNetTips.Spargine.8.Core library,
+/// aimed at enhancing .NET development productivity.
+/// </remarks>
 [Information("From dotNetTips.Utility", Status = Status.Available)]
 public static class WebHelper
 {
 
 	/// <summary>
-	/// The HTTP client
+	/// A static instance of <see cref="HttpClient"/> used for making HTTP requests.
 	/// </summary>
+	/// <remarks>
+	/// This instance is shared across all uses of the WebHelper class to ensure efficient socket usage and modern HTTP/2 protocol support.
+	/// </remarks>
 	private static readonly HttpClient _httpClient = new();
 
 	/// <summary>
-	/// Downloads the string.
+	/// Asynchronously downloads the string content from the specified URI.
 	/// </summary>
-	/// <param name="address">The address.</param>
-	/// <param name="clientId">The client identifier.</param>
-	/// <returns>System.String.</returns>
-	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	/// <param name="address">The URI from which to download the string content. Must not be null.</param>
+	/// <param name="clientId">Optional. The client identifier to be added to the request headers. If not specified, defaults to "NONE".</param>
+	/// <returns>A task that represents the asynchronous download operation. The task result contains the downloaded string content.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
+	/// <exception cref="HttpRequestException">Thrown if the request fails due to an underlying issue such as network connectivity, DNS failure, server certificate validation, or timeout.</exception>
+	/// <remarks>
+	/// This method adds a "CLIENTID" header to the request if <paramref name="clientId"/> is provided and not "NONE".
+	/// Ensure proper disposal of the task to avoid resource leaks.
+	/// </remarks>
 	[Information(nameof(DownloadStringAsync), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
-	public static async Task<string> DownloadStringAsync(Uri address, string clientId = "NONE")
+	public static async Task<string> DownloadStringAsync([NotNull] Uri address, string clientId = "NONE")
 	{
 		address = address.ArgumentNotNull();
 
@@ -60,21 +74,26 @@ public static class WebHelper
 	}
 
 	/// <summary>
-	/// Gets the HTTP header names.
+	/// Retrieves a read-only collection of HTTP header names defined in <see cref="HttpRequestHeader"/>.
 	/// </summary>
-	/// <returns>System.String[].</returns>
-	/// <value>The HTTP header names.</value>
+	/// <returns>A read-only collection of strings representing the names of HTTP headers.</returns>
+	/// <remarks>
+	/// This method provides a convenient way to access all standard HTTP header names as defined by the .NET framework.
+	/// It can be useful for validation, logging, or setting headers in HTTP requests.
+	/// </remarks>
 	[Information(nameof(HttpHeaderNames), "David McCarter", "9/2/2020", "9/2/2020", Status = Status.Available, UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired)]
 	public static ReadOnlyCollection<string> HttpHeaderNames() => Enum.GetNames(typeof(HttpRequestHeader)).AsReadOnly();
 
 	/// <summary>
-	/// Determines whether the Uri is from the local server.
+	/// Determines whether the specified URI is local to the server.
 	/// </summary>
-	/// <param name="path">The Uri.</param>
-	/// <param name="request">The context.</param>
-	/// <returns><c>true</c> if [is local Uri] [the specified Uri]; otherwise, <c>false</c>.</returns>
-	/// <remarks>If you are using .NET 4 or above or .NET Core, this check is not needed unless you have turned
-	/// off validation in the config file or in classes.</remarks>
+	/// <param name="path">The URI to check.</param>
+	/// <param name="request">The current HTTP request context.</param>
+	/// <returns><c>true</c> if the URI is local; otherwise, <c>false</c>.</returns>
+	/// <remarks>
+	/// This method is useful for validating whether a given URI points to a resource on the same server,
+	/// which can be important for security and resource access decisions.
+	/// </remarks>
 	[Information(nameof(IsLocalUri), author: "David McCarter", createdOn: "9/12/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static bool IsLocalUri([NotNull] string path, [NotNull] HttpRequest request)
 	{

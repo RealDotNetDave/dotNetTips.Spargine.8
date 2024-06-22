@@ -4,7 +4,7 @@
 // Created          : 11-12-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 06-20-2024
 // ***********************************************************************
 // <copyright file="ChannelQueue.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -23,46 +23,50 @@ using System.Threading.Channels;
 namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 
 /// <summary>
-/// Thread-Safe queue.
+/// Thread-Safe queue using <see cref="Channel{T}"/>.
 /// </summary>
-/// <typeparam name="T"></typeparam>
+/// <typeparam name="T">The type of items stored in the queue.</typeparam>
 [Information("Queue using Channel<T>.", "David McCarter", "7/26/2021")]
 public sealed class ChannelQueue<T>
 {
 
 	/// <summary>
-	/// The channel
+	/// The channel used for storing items.
 	/// </summary>
 	private readonly Channel<T> _channel;
 
 	/// <summary>
-	/// The lock
+	/// The object used for thread synchronization.
 	/// </summary>
 	private readonly object _lock = new();
 
 	/// <summary>
-	/// Prevents a default instance of the <see cref="ChannelQueue{T}" /> class from being created.
+	/// Initializes a new instance of the <see cref="ChannelQueue{T}"/> class with an unbounded capacity.
 	/// </summary>
 	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public ChannelQueue() => this._channel = Channel.CreateUnbounded<T>();
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="ChannelQueue{T}" /> class.
+	/// Initializes a new instance of the <see cref="ChannelQueue{T}"/> class with a specified capacity.
 	/// </summary>
-	/// <param name="capacity">The capacity.</param>
+	/// <param name="capacity">The capacity of the <see cref="Channel{T}"/>.</param>
 	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public ChannelQueue(int capacity) => this._channel = Channel.CreateBounded<T>(capacity);
 
 	/// <summary>
 	/// Reads all items from the Channel as an asynchronous operation.
-	/// Call Lock() to complete this method.
+	/// Call <see cref="Lock"/> to complete this method.
 	/// </summary>
 	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-	/// <returns>IAsyncEnumerable&lt;T&gt;.</returns>
+	/// <returns>An IAsyncEnumerable of type <typeparamref name="T"/>.</returns>
 	[Information(nameof(ListenAsync), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public async IAsyncEnumerable<T> ListenAsync([EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
-		await foreach (var item in this._channel.Reader.ReadAllAsync(cancellationToken).ConfigureAwait(false))
+		// Ensure the cancellation token is linked with any existing tokens with a reasonable timeout to allow for graceful shutdowns
+		using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+		linkedCts.CancelAfter(TimeSpan.FromMinutes(5)); // Adjust the timeout as necessary for your application
+
+		await foreach (var item in this._channel.Reader.ReadAllAsync(linkedCts.Token).ConfigureAwait(false))
 		{
 			yield return item;
 		}
@@ -71,7 +75,7 @@ public sealed class ChannelQueue<T>
 	/// <summary>
 	/// Locks the Channel so more items cannot be added. This is not reversible.
 	/// </summary>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <returns><c>true</c> if the <see cref="ChannelWriter{T}"/> successfully marked the channel as complete; <c>false</c> otherwise.</returns>
 	[Information(nameof(Lock), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public bool Lock()
 	{
@@ -82,20 +86,22 @@ public sealed class ChannelQueue<T>
 	}
 
 	/// <summary>
-	/// Read an item from the Channel as an asynchronous operation.
+	/// Reads an item from the Channel as an asynchronous operation.
 	/// </summary>
 	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-	/// <returns>T.</returns>
+	/// <returns>A task that represents the asynchronous read operation. The task result contains the read item of type <typeparamref name="T"/>.</returns>
+	/// <exception cref="OperationCanceledException">Thrown when the operation is canceled.</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(ReadAsync), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public async Task<T> ReadAsync(CancellationToken cancellationToken = default) => await this._channel.Reader.ReadAsync(cancellationToken).ConfigureAwait(false);
 
 	/// <summary>
-	/// Write to the Channel as an asynchronous operation.
+	/// Writes an item to the Channel as an asynchronous operation.
 	/// </summary>
-	/// <param name="item">The item.</param>
-	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-	/// <returns>A Task representing the asynchronous operation.</returns>
+	/// <param name="item">The item to write.</param>
+	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation. See <see cref="CancellationToken"/>.</param>
+	/// <returns>A Task representing the asynchronous operation. See <see cref="Task"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="item"/> is null.</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(WriteAsync), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public async Task WriteAsync([NotNull] T item, CancellationToken cancellationToken = default)
@@ -111,11 +117,16 @@ public sealed class ChannelQueue<T>
 	/// <summary>
 	/// Write a collection to the Channel as an asynchronous operation.
 	/// </summary>
-	/// <param name="items">The items.</param>
-	/// <param name="lockQueue">if set to <c>true</c> [lock queue].</param>
-	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-	/// <returns>A Task representing the asynchronous operation.</returns>
-	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	/// <param name="items">The items to write to the <see cref="Channel{T}"/>.</param>
+	/// <param name="lockQueue">If set to <c>true</c>, locks the queue after writing the items, preventing any more items from being added.</param>
+	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation. See <see cref="CancellationToken"/>.</param>
+	/// <returns>A Task representing the asynchronous operation. See <see cref="Task"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="items"/> is null.</exception>
+	/// <remarks>
+	/// This method allows for multiple items to be written to the channel at once. If <paramref name="lockQueue"/> is true,
+	/// the queue will be locked after the items are written, which is useful for batch processing scenarios.
+	/// Make sure to call .Dispose on Task
+	/// </remarks>
 	[Information(nameof(WriteAsync), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public async Task WriteAsync([NotNull] IEnumerable<T> items, bool lockQueue = false, CancellationToken cancellationToken = default)
 	{
@@ -133,9 +144,13 @@ public sealed class ChannelQueue<T>
 	}
 
 	/// <summary>
-	/// Gets the count.
+	/// Gets the count of items currently in the channel.
 	/// </summary>
-	/// <value>The count.</value>
+	/// <value>The count of items. Returns -1 if the channel does not support counting.</value>
+	/// <remarks>
+	/// Use this property to get the number of items that are currently queued in the <see cref="Channel{T}"/>.
+	/// This property acquires a lock to ensure thread safety when accessing the count.
+	/// </remarks>
 	[Information(nameof(Count), "David McCarter", "7/26/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public int Count
 	{
