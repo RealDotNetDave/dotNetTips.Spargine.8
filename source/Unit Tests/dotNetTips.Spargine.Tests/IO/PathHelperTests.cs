@@ -16,7 +16,11 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Threading;
 using DotNetTips.Spargine.IO;
+using DotNetTips.Spargine.Net.Http;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

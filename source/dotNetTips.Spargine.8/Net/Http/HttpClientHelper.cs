@@ -52,7 +52,7 @@ public static class HttpClientHelper
 	/// <remarks>
 	/// This method creates a new <see cref="CancellationTokenSource"/> internally to manage cancellation.
 	/// </remarks>
-	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static async Task<HttpResponseMessage> GetHttpResponseAsync(Uri url)
 	{
 		url = url.ArgumentNotNull<Uri>();
@@ -80,7 +80,7 @@ public static class HttpClientHelper
 	/// </code></example>
 	/// <remarks>Original code by: Máňa Píchová.</remarks>
 	[DefaultValue(null)]
-	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static async Task<HttpResponseMessage> GetHttpResponseAsync([NotNull] Uri url, [NotNull] CancellationTokenSource cancellationToken)
 	{
 		url = url.ArgumentNotNull<Uri>();
@@ -127,7 +127,7 @@ public static class HttpClientHelper
 	/// // Use the stream
 	/// </code></example>
 	[DefaultValue(null)]
-	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(GetHttpResponseAsync), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static async Task<Stream> GetStreamAsync(Uri url)
 	{
 		url = url.ArgumentNotNull<Uri>();
@@ -157,6 +157,12 @@ public static class HttpClientHelper
 				// Handle 404
 				ExceptionThrower.ThrowInvalidOperationException(message: string.Format(CultureInfo.CurrentCulture, Resources.ResourceWasNotFound, url), ex);
 			}
+			catch (HttpRequestException ex)
+			{
+				// Handle 404
+				ExceptionThrower.ThrowInvalidOperationException(message: string.Format(CultureInfo.CurrentCulture, Resources.ResourceWasNotFound, url), ex);
+			}
+
 		}
 
 		return null;
