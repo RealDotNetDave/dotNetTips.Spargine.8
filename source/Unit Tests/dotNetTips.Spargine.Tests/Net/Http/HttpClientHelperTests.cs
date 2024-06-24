@@ -14,10 +14,13 @@
 
 using System;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Net.Http;
+using DotNetTips.Spargine.Net.Sockets;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -148,6 +151,4 @@ public class HttpClientHelperTests
 		Assert.IsNotNull(stream);
 		Assert.IsTrue(stream.CanRead);
 	}
-
-
 }
