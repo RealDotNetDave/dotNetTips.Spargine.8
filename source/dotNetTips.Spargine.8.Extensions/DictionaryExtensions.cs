@@ -109,7 +109,7 @@ public static class DictionaryExtensions
 	/// <returns><c>true</c> if at least one item was added to the dictionary; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/>, <paramref name="items"/>, <paramref name="key"/>, or <paramref name="value"/> is null.</exception>
 	[DebuggerStepThrough]
-	[Information(nameof(AddRange), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.CheckPerformance)]
+	[Information(nameof(AddRange), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available)]
 	public static bool AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> collection, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
 		where TKey : notnull
 		where TValue : notnull
@@ -267,7 +267,7 @@ public static class DictionaryExtensions
 	/// <param name="collection">The values.</param>
 	/// <returns>IImmutableDictionary&lt;TKey, TValue&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToImmutableDictionary), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(ToImmutableDictionary), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static ImmutableDictionary<TKey, TValue> ToImmutableDictionary<TKey, TValue>(this IDictionary<TKey, TValue> collection) => ImmutableDictionary.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>

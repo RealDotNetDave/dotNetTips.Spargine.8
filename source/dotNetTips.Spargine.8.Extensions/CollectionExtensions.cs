@@ -148,7 +148,7 @@ public static class CollectionExtensions
 	/// // myCollection now contains the unique items from newItems.
 	/// </code>
 	/// </example>
-	[Information(nameof(AddRange), "David McCarter", "11/7/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "ADD URL")]
+	[Information(nameof(AddRange), "David McCarter", "11/7/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static bool AddRange<T>([NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> items, bool ensureUnique = true)
 	{
 		items = items.ArgumentNotNull();
@@ -319,7 +319,7 @@ public static class CollectionExtensions
 	/// This method ensures that the collection will not contain duplicate items based on their ID.
 	/// It is a convenient way to update an existing item or add a new item without having to manually check for its existence.
 	/// </remarks>
-	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void Upsert<T, TKey>([NotNull] this ICollection<T> collection, [NotNull] T item) where T : IDataModel<T, TKey>
 	{
 		if (item is null)
@@ -352,7 +352,7 @@ public static class CollectionExtensions
 	/// This method ensures that the collection will not contain duplicate items based on their ID.
 	/// It is a convenient way to update an existing item or add a new item without having to manually check for its existence.
 	/// </remarks>
-	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 0, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void Upsert([NotNull] this ICollection<IDataRecord> collection, [NotNull] IDataRecord item)
 	{
 		if (item is null)

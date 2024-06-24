@@ -62,8 +62,8 @@ public static class FastStringBuilder
 		{
 			_ = sb.Append("'0x");
 
-			//FrozenSet and Span is slower.
-			foreach (var @byte in bytes.ToImmutableArray())
+			//FrozenSet, ImmutableArray and Span is slower.
+			foreach (var @byte in bytes)
 			{
 				_ = sb.Append(@byte.ToString("X2", CultureInfo.InvariantCulture));
 			}
@@ -99,8 +99,8 @@ public static class FastStringBuilder
 
 		try
 		{
-			//ASSPAN IS Slower!
-			foreach (var arg in args.ToImmutableArray())
+			//ASSPAN, IMMUTABLEARRAY IS Slower!
+			foreach (var arg in args)
 			{
 				_ = addLineFeed ? sb.AppendLine(arg) : sb.Append(arg);
 			}
@@ -245,8 +245,8 @@ public static class FastStringBuilder
 
 		try
 		{
-			//FrozenDictionary and FrozenSet is slower.
-			foreach (var item in collection.ToImmutableArray())
+			//FrozenDictionary, ImmutableArray and FrozenSet is slower.
+			foreach (var item in collection)
 			{
 
 				if (sb.Length > 0)

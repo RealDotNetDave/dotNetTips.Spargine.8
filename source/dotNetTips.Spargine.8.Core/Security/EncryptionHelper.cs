@@ -214,7 +214,7 @@ public static class EncryptionHelper
 	/// Console.WriteLine(decryptedText);
 	/// </code>
 	/// </example>
-	[Information(nameof(SimpleSHA256Decrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(SimpleSHA256Decrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string SimpleSHA256Decrypt([NotNull] string cipherText, [NotNull] string key)
 	{
 		cipherText = cipherText.ArgumentNotNullOrEmpty(true);
@@ -241,7 +241,7 @@ public static class EncryptionHelper
 	/// </code>
 	/// </example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SimpleSHA256Encrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(SimpleSHA256Encrypt), "David McCarter", "7/19/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string SimpleSHA256Encrypt([NotNull] string plainText, [NotNull] string key)
 	{
 		plainText = plainText.ArgumentNotNullOrEmpty(true);

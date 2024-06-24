@@ -69,7 +69,7 @@ public static class DirectoryHelper
 	/// Console.WriteLine($"Has read permission: {hasReadPermission}");
 	/// </code></example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool CheckPermission([NotNull] DirectoryInfo directory, FileSystemRights permission = FileSystemRights.Read)
 	{
 		directory = directory.ArgumentNotNull();

@@ -278,7 +278,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns>The number of elements in the collection.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastCount), "David McCarter", "5/21/2022", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.CheckPerformance)]
+	[Information(nameof(FastCount), "David McCarter", "5/21/2022", Status = Status.Available)]
 	public static long FastCount<T>(this IEnumerable<T> collection) => collection.ArgumentNotNull().LongCount();
 
 	/// <summary>

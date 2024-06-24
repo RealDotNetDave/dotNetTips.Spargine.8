@@ -40,7 +40,7 @@ public static class ListExtensions
 	/// <param name="item">The item to add to the beginning of the list.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.CheckPerformance)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static List<T> AddFirst<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		if (item is null)
@@ -107,7 +107,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if any elements were removed; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ClearNulls), author: "David McCarter", createdOn: "8/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
+	[Information(nameof(ClearNulls), author: "David McCarter", createdOn: "8/12/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool ClearNulls<T>([NotNull] this List<T> collection)
 	{
 		if (collection is null)
@@ -126,7 +126,7 @@ public static class ListExtensions
 	/// <returns>A new <see cref="Collection{T}"/> containing the elements of the input list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CopyToCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(CopyToCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static Collection<T> CopyToCollection<T>([NotNull] this List<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -141,7 +141,7 @@ public static class ListExtensions
 	/// <param name="collection">The list to check.</param>
 	/// <returns><c>true</c> if the list is null or contains no elements; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool DoesNotHaveItems<T>([NotNull] this List<T> collection)
 	{
 		if (collection is null)
@@ -162,7 +162,7 @@ public static class ListExtensions
 	/// <returns>A hash code representing the contents of the list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static int GenerateHashCode<T>([NotNull] this List<T> collection)
 	{
 		collection = collection.ArgumentNotNull();

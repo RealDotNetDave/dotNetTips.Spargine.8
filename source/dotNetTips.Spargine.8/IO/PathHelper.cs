@@ -172,7 +172,7 @@ public static class PathHelper
 	/// Console.WriteLine(result); // Output: C:\MyDirectory\
 	/// </code>
 	/// </example>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SparginePathHelper")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static string EnsureTrailingSlash([NotNull] string path)
 	{
 		path = path.ArgumentNotNullOrEmpty();
