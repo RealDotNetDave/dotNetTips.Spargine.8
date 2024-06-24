@@ -229,7 +229,7 @@ public static class DateTimeExtensions
 	/// <param name="day">Day of week to find on calendar</param>
 	/// <returns>Future date</returns>
 	[Obsolete("Use the GetNextDayOfWeek method.")]
-	[Information(nameof(NextDayOfWeek), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(NextDayOfWeek), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
 	public static DateTime NextDayOfWeek(this DateTime date, DayOfWeek day = DayOfWeek.Monday)
 	{
 		while (true)

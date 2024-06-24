@@ -172,7 +172,7 @@ public static class PathHelper
 	/// Console.WriteLine(result); // Output: C:\MyDirectory\
 	/// </code>
 	/// </example>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
 	public static string EnsureTrailingSlash([NotNull] string path)
 	{
 		path = path.ArgumentNotNullOrEmpty();
@@ -287,7 +287,7 @@ public static class PathHelper
 	/// A read-only collection of characters used as path separators, specifically the
 	/// <see cref="Path.DirectorySeparatorChar"/> and <see cref="Path.AltDirectorySeparatorChar"/>.
 	/// </value>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
 	public static ReadOnlyCollection<char> PathSeparators => new[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar }.ToReadOnlyCollection();
 
 }
