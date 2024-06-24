@@ -987,4 +987,29 @@ public class ValidatorArgumentTests
 		}
 	}
 
+	[TestMethod]
+	public void TestNotNullCollectionWithErrorMessage()
+	{
+		// Arrange
+		var collection = new Collection<string> { "item1", "item2" };
+		var errorMessage = "Collection should not be null.";
+
+		// Act & Assert
+		Validator.ArgumentNotNull(collection, errorMessage, paramName: nameof(collection));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void TestNullCollectionWithErrorMessage()
+	{
+		// Arrange
+		Collection<string> collection = null;
+		var errorMessage = "Collection should not be null.";
+
+		// Act
+		Validator.ArgumentNotNull(collection, errorMessage, paramName: nameof(collection));
+
+		// Assert is handled by ExpectedException
+	}
+
 }

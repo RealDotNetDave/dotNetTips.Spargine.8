@@ -121,7 +121,7 @@ public static class App
 	/// </code>
 	/// This will change the current culture and UI culture to English (United States).
 	/// </example>
-	[Information(UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void ChangeCulture(CultureInfo culture)
 	{
 		CultureInfo.CurrentCulture = culture.ArgumentNotNull();
@@ -263,7 +263,7 @@ public static class App
 	/// <remarks>This method retrieves the name of the process that started the currently executing application,
 	/// removes the file extension to get the process name, and then calls <see cref="KillProcess" />
 	/// with that name to terminate the process.</remarks>
-	[Information(UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void Kill() => KillProcess(Path.GetFileNameWithoutExtension(AppContext.BaseDirectory));
 
 	/// <summary>
@@ -277,7 +277,7 @@ public static class App
 	/// Reboots the computer.
 	/// </summary>
 	/// <exception cref="PlatformNotSupportedException">Thrown when the operating system is not supported.</exception>
-	[Information(UnitTestCoverage = 0, Status = Status.New, Documentation = "ADD URL")]
+	[Information(Status = Status.New, Documentation = "ADD URL")]
 	public static void RebootComputer()
 	{
 		if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -318,7 +318,7 @@ public static class App
 	/// <remarks>If the current user is not an administrator, this method will attempt to restart the application with administrator privileges.
 	/// It prompts the user for permission to run as an administrator. If granted, the application restarts; otherwise, it exits.
 	/// This method should be used cautiously, as it terminates the current process and starts a new one.</remarks>
-	[Information(UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void RunAsAdministrator()
 	{
 		if (IsUserAdministrator())

@@ -11,8 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
@@ -44,12 +46,62 @@ public class AppTests
 
 	}
 
+
 	[TestMethod]
 	public void AppInfoTest()
 	{
 		var info = App.AppInfo;
 
 		Assert.IsTrue(info is not null);
+	}
+
+	[TestMethod]
+	public void ChangeCulture_WithCultureInfo_ChangesCurrentCulture()
+	{
+		// Arrange
+		var originalCulture = CultureInfo.CurrentCulture;
+		var testCultureInfo = new CultureInfo("fr-FR");
+
+		// Act
+		App.ChangeCulture(testCultureInfo);
+
+		// Assert
+		Assert.AreEqual(testCultureInfo, CultureInfo.CurrentCulture, "The current culture should be changed to the one provided.");
+
+		// Cleanup
+		App.ChangeCulture(originalCulture);
+	}
+
+	[TestMethod]
+	public void ChangeCulture_WithCultureInfo_DoesNotChangeCurrentUICulture()
+	{
+		// Arrange
+		var originalUICulture = CultureInfo.CurrentUICulture;
+		var originalCulture = CultureInfo.CurrentCulture;
+		var testCultureInfo = new CultureInfo("fr-FR");
+
+		// Act
+		App.ChangeCulture(testCultureInfo);
+
+		// Assert
+		Assert.AreNotEqual(testCultureInfo, CultureInfo.CurrentUICulture, "Changing the current culture should not affect the current UI culture.");
+
+		// Cleanup
+		App.ChangeCulture(originalCulture);
+		App.ChangeUICulture(originalUICulture.DisplayName);
+	}
+
+	[TestMethod]
+	public void ChangeCulture_WithCultureInfoToSameCulture_DoesNotThrowException()
+	{
+		// Arrange
+		var originalCulture = CultureInfo.CurrentCulture;
+		var testCultureInfo = new CultureInfo(CultureInfo.CurrentCulture.Name);
+
+		// Act & Assert
+		App.ChangeCulture(testCultureInfo);
+
+		// No exception means the test passed. Cleanup is not necessary as the culture was not changed.
 	}
 
 	[TestMethod]

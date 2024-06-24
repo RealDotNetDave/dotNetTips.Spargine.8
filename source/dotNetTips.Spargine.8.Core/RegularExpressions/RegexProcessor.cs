@@ -375,7 +375,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input contains a URL domain address; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsUrlDomainAddress), "David McCarter", "9/28/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsUrlDomainAddress), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsUrlDomainAddress(string input)
 	{
 		if (input is null)
@@ -391,7 +391,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a valid string; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsValidString), "David McCarter", "9/28/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsValidString), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsValidString(string input)
 	{
 		if (input is null)

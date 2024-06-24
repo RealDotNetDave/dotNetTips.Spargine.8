@@ -19,12 +19,13 @@
 
 
 
+
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
 /// Provides constants for common HTML elements and characters.
 /// </summary>
-[Information(nameof(HtmlElement), "David McCarter", "1/3/2023", UnitTestCoverage = 0, Status = Status.Available)]
+[Information(nameof(HtmlElement), "David McCarter", "1/3/2023", Status = Status.Available)]
 public static class HtmlElement
 {
 

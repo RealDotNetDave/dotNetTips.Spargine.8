@@ -310,7 +310,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="canContinue">A function that determines whether to continue traversing the hierarchy from the current item.</param>
 	/// <returns>A sequence of items from the source up through the hierarchy as determined by <paramref name="nextItem"/> and <paramref name="canContinue"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/>, <paramref name="nextItem"/>, or <paramref name="canContinue"/> is null.</exception>
-	[Information(nameof(FromHierarchy), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(FromHierarchy), Status = Status.Available)]
 	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
 		where TSource : Exception
 	{

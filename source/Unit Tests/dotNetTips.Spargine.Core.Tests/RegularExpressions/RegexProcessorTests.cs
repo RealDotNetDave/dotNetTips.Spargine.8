@@ -133,6 +133,61 @@ public class RegexProcessorTests
 	}
 
 	[TestMethod]
+	public void IsUrlDomainAddressTest_EmptyAndNull()
+	{
+		// Test with empty string
+		var resultEmpty = RegexProcessor.IsUrlDomainAddress(string.Empty);
+		Assert.IsFalse(resultEmpty, "Empty string should be invalid.");
+
+		// Test with null
+		var resultNull = RegexProcessor.IsUrlDomainAddress(null);
+		Assert.IsFalse(resultNull, "Null should be invalid.");
+	}
+
+	[TestMethod]
+	public void IsUrlDomainAddressTest_InvalidDomains()
+	{
+		// Invalid domain addresses
+		var invalidDomains = new string[]
+		{
+		"example",
+		"dotnettips",
+		"spargine.xyz",
+		"localhost",
+		"192.168.1.1",
+		"example.com.au"
+		};
+
+		foreach (var domain in invalidDomains)
+		{
+			var result = RegexProcessor.IsUrlDomainAddress(domain);
+			Assert.IsFalse(result, $"Domain '{domain}' should be invalid.");
+		}
+	}
+
+	[TestMethod]
+	public void IsUrlDomainAddressTest_ValidDomains()
+	{
+		// Valid domain addresses
+		var validDomains = new string[]
+		{
+		"example.com",
+		"dotnettips.net",
+		"spargine.org",
+		"microsoft.edu",
+		"us-army.mil"
+		};
+
+		foreach (var domain in validDomains)
+		{
+			var result = RegexProcessor.IsUrlDomainAddress(domain);
+			Assert.IsTrue(result, $"Domain '{domain}' should be valid.");
+		}
+	}
+
+
+
+	[TestMethod]
 	public void IsUrlTest()
 	{
 		var result = RegexProcessor.IsUrl("dotnettips");
@@ -142,6 +197,47 @@ public class RegexProcessorTests
 		result = RegexProcessor.IsUrl(@"https://dotnetips.com");
 
 		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void IsValidStringTest_EmptyAndNull()
+	{
+		// Test with empty string
+		var resultEmpty = RegexProcessor.IsValidString(string.Empty);
+		Assert.IsFalse(resultEmpty, "Empty string should be invalid.");
+
+		// Test with null
+		var resultNull = RegexProcessor.IsValidString(null);
+		Assert.IsFalse(resultNull, "Null should be invalid.");
+	}
+
+	[TestMethod]
+	public void IsValidStringTest_InvalidStrings()
+	{
+		// Invalid strings (if any specific cases exist that should be considered invalid)
+		// Note: Based on the current implementation, all non-null strings are considered valid.
+		// This test is a placeholder for future modifications or specific invalid cases.
+	}
+
+	[TestMethod]
+	public void IsValidStringTest_ValidStrings()
+	{
+		// Valid strings
+		var validStrings = new string[]
+		{
+		"Hello, World!",
+		"1234567890",
+		"@#$%^&*()_+",
+		"Text with spaces",
+		"Text_with_underscores",
+		"Mixed123Text&Symbols"
+		};
+
+		foreach (var str in validStrings)
+		{
+			var result = RegexProcessor.IsValidString(str);
+			Assert.IsTrue(result, $"String '{str}' should be valid.");
+		}
 	}
 
 	[TestMethod]
