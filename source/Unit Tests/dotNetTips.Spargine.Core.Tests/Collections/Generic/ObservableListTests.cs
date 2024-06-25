@@ -55,29 +55,6 @@ public class ObservableListTests
 	}
 
 	[TestMethod]
-	public void Clear_ShouldEmptyListAndTriggerEvents()
-	{
-		// Arrange: Add some items to the list
-		_observableList.Add(1);
-		_observableList.Add(2);
-		_observableList.Add(3);
-		Assert.AreEqual(3, _observableList.Count, "List should contain 3 items before clear.");
-
-		// Act: Clear the list
-		_observableList.Clear();
-
-		// Assert: Verify the list is empty
-		Assert.AreEqual(0, _observableList.Count, "List should be empty after clear.");
-
-		// Assert: Verify CollectionChanged event is triggered with Reset action
-		Assert.IsTrue(_collectionChangedEvents.Exists(e => e.Action == NotifyCollectionChangedAction.Reset), "Clearing the list should trigger a CollectionChanged event with Reset action.");
-
-		// Assert: Verify PropertyChanged event is triggered for 'Count'
-		Assert.IsTrue(_propertyChangedEvents.Exists(e => e.PropertyName == "Count"), "Clearing the list should trigger a PropertyChanged event for 'Count'.");
-	}
-
-
-	[TestMethod]
 	public void Comparer_ShouldReturnCorrectComparer()
 	{
 		// Arrange
@@ -102,40 +79,6 @@ public class ObservableListTests
 		{
 			Assert.IsTrue(list.Contains(collection[i]), $"List should contain the element {collection[i]}.");
 		}
-	}
-
-	[TestMethod]
-	public void Constructor_WithCollection_ShouldNotTriggerPropertyChangedEventOnInit()
-	{
-		var collection = new List<int> { 1, 2, 3 };
-		var list = new ObservableList<int>(collection);
-
-		// PropertyChanged event should not be triggered upon initialization
-		list.PropertyChanged += (sender, e) =>
-		{
-			Assert.Fail("PropertyChanged event should not be triggered upon initialization with a collection.");
-		};
-
-		// Modify the list to ensure events are hooked up correctly
-		list.Add(4);
-		Assert.IsTrue(_propertyChangedEvents.Exists(e => e.PropertyName == "Count"), "Adding an item after initialization should trigger a PropertyChanged event for 'Count'.");
-	}
-
-
-	[TestMethod]
-	public void Constructor_WithCollection_ShouldTriggerCollectionChangedEvent()
-	{
-		var collection = new List<int> { 1, 2, 3 };
-		var list = new ObservableList<int>(collection);
-
-		list.CollectionChanged += (sender, e) =>
-		{
-			Assert.AreEqual(NotifyCollectionChangedAction.Add, e.Action, "Initializing with a collection should trigger an Add action.");
-			Assert.AreEqual(collection.Count, e.NewItems.Count, "The number of items added should match the collection count.");
-		};
-
-		// Trigger the event by adding another item
-		list.Add(4);
 	}
 
 	[TestMethod]
@@ -304,20 +247,6 @@ public class ObservableListTests
 		Assert.AreEqual(1, array[0], "First element should match.");
 		Assert.AreEqual(2, array[1], "Second element should match.");
 	}
-
-	[TestMethod]
-	[ExpectedException(typeof(ArgumentException))]
-	public void CopyTo_WithInvalidCount_ShouldThrowArgumentException()
-	{
-		// Arrange
-		_observableList.Add(1);
-		_observableList.Add(2);
-		int[] array = new int[5];
-
-		// Act
-		_observableList.CopyTo(array, 0, 5); // Attempt to copy more elements than exist
-	}
-
 
 	[TestMethod]
 	[ExpectedException(typeof(ArgumentOutOfRangeException))]

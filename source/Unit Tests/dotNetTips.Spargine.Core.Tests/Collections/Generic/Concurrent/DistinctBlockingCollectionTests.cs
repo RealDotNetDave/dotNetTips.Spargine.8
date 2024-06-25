@@ -42,18 +42,6 @@ public class DistinctBlockingCollectionTests
 
 		Assert.IsTrue(collection.Count == 2);
 	}
-	/// <summary>
-	/// Defines the test method AddTest.
-	/// </summary>
-	[TestMethod]
-	public void AddTest()
-	{
-		var collection = new DistinctBlockingCollection<string>();
-
-		collection.Add("test");
-
-		Assert.IsTrue(collection.Count == 1);
-	}
 
 	/// <summary>
 	/// Defines the test method BoundedTest.

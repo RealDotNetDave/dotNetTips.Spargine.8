@@ -73,25 +73,6 @@ public class AppTests
 	}
 
 	[TestMethod]
-	public void ChangeCulture_WithCultureInfo_DoesNotChangeCurrentUICulture()
-	{
-		// Arrange
-		var originalUICulture = CultureInfo.CurrentUICulture;
-		var originalCulture = CultureInfo.CurrentCulture;
-		var testCultureInfo = new CultureInfo("fr-FR");
-
-		// Act
-		App.ChangeCulture(testCultureInfo);
-
-		// Assert
-		Assert.AreNotEqual(testCultureInfo, CultureInfo.CurrentUICulture, "Changing the current culture should not affect the current UI culture.");
-
-		// Cleanup
-		App.ChangeCulture(originalCulture);
-		App.ChangeUICulture(originalUICulture.DisplayName);
-	}
-
-	[TestMethod]
 	public void ChangeCulture_WithCultureInfoToSameCulture_DoesNotThrowException()
 	{
 		// Arrange

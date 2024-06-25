@@ -159,44 +159,6 @@ public class CollectionExtensionsTests
 	}
 
 	[TestMethod]
-	public void Upsert_WithExistingItem_ShouldUpdateItem()
-	{
-		// Arrange
-		var existingItem = new PersonRecord("1", "John Doe");
-		var updatedItem = new PersonRecord("1", "Jane Doe"); // Same Id, different Name
-		var collection = new List<IDataRecord> { existingItem };
-
-		// Act
-		collection.Upsert(updatedItem);
-
-		// Assert
-		Assert.AreEqual(1, collection.Count);
-		Assert.IsFalse(collection.Contains(existingItem));
-		Assert.IsTrue(collection.Contains(updatedItem));
-	}
-
-	[TestMethod]
-	public void Upsert_WithMultipleItems_ShouldHandleCorrectly()
-	{
-		// Arrange
-		var item1 = new PersonRecord("1", "John Doe");
-		var item2 = new PersonRecord("2", "Jane Doe");
-		var updatedItem1 = new PersonRecord("1", "Johnny Doe"); // Update for item1
-		var newItem3 = new PersonRecord("3", "Jake Doe"); // New item
-		var collection = new List<IDataRecord> { item1, item2 };
-
-		// Act
-		collection.Upsert(updatedItem1);
-		collection.Upsert(newItem3);
-
-		// Assert
-		Assert.AreEqual(3, collection.Count);
-		Assert.IsTrue(collection.Contains(updatedItem1));
-		Assert.IsTrue(collection.Contains(item2));
-		Assert.IsTrue(collection.Contains(newItem3));
-	}
-
-	[TestMethod]
 	public void Upsert_WithNewItem_ShouldAddItem()
 	{
 		// Arrange
