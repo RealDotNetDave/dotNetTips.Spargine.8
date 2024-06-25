@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Core.Collections;
 /// The <see cref="CollectionRandomizer{T}"/> is designed to shuffle a collection and allow retrieving items sequentially with the option to repeat and reshuffle.
 /// </remarks>
 [Information(nameof(CollectionRandomizer<T>), author: "David McCarter and Kristine Tran", createdOn: "8/26/2020", Status = Status.Available)]
-[method: Information(nameof(CollectionRandomizer<T>), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestCoverage = 0)]
+[method: Information(nameof(CollectionRandomizer<T>), "David McCarter", "4/21/2021", Status = Status.Available)]
 public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection, bool repeat = false)
 {
 

@@ -109,7 +109,7 @@ public static class DictionaryExtensions
 	/// <returns><c>true</c> if at least one item was added to the dictionary; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/>, <paramref name="items"/>, <paramref name="key"/>, or <paramref name="value"/> is null.</exception>
 	[DebuggerStepThrough]
-	[Information(nameof(AddRange), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(AddRange), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
 	public static bool AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> collection, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
 		where TKey : notnull
 		where TValue : notnull
@@ -146,7 +146,7 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the values in the dictionary, which must implement <see cref="IDisposable"/> if they are to be disposed.</typeparam>
 	/// <param name="collection">The dictionary containing the items to dispose.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Information(nameof(DisposeCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(DisposeCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> collection)
 	{
 		if (collection.HasItems())
