@@ -34,7 +34,7 @@ public static class ReadOnlySpanExtensions
 	/// <param name="span">The span from which to pick a random item.</param>
 	/// <returns>A single item from the span as a new <see cref="ReadOnlySpan{T}"/> of length 1.</returns>
 	/// <exception cref="ArgumentException">Thrown when the <paramref name="span"/> is empty.</exception>	[return: NotNull]
-	[Information(nameof(PickRandom), "David McCarter", "6/28/2021", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, UnitTestCoverage = 0)]
+	[Information(nameof(PickRandom), "David McCarter", "6/28/2021", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
 	public static ReadOnlySpan<T> PickRandom<T>([NotNull] this ReadOnlySpan<T> span)
 	{
 		span = span.ArgumentNotEmpty();

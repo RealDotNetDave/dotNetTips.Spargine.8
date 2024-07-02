@@ -45,7 +45,7 @@ public static class ExecutionHelper
 	/// }, 3, 100);
 	/// </code>
 	/// </example>
-	[Information(nameof(ProgressiveRetry), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(ProgressiveRetry), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static SimpleResult<int> ProgressiveRetry([NotNull] Action operation, byte retryCount = 3, int retryWaitMilliseconds = 100)
 	{
 		operation = operation.ArgumentNotNull();

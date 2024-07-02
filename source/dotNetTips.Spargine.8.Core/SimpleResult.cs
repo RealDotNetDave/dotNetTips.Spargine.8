@@ -91,13 +91,10 @@ public class SimpleResult<T>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="error"/> is <see langword="null"/>.</exception>
 	public void AddException([NotNull] Exception error)
 	{
-
 		error = error.ArgumentNotNull();
 
 		this._exceptions.Add(ExceptionDispatchInfo.Capture(error).SourceException);
-
 	}
-
 
 	/// <summary>
 	/// Gets exceptions associated with this result.

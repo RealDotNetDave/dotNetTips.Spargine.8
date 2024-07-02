@@ -43,7 +43,7 @@ public static class DriveHelper
 	/// This method utilizes the <see cref="ManagementObjectSearcher"/> to query the system for the drive's serial number.
 	/// It's important to ensure that the <paramref name="drive"/> parameter is not null or empty to avoid runtime errors.
 	/// </remarks>
-	[Information(nameof(GetDriveSerialNumber), author: "David McCarter", createdOn: "9/6/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://dotnettips.wordpress.com/2007/12/14/finding-a-drives-serial-number/")]
+	[Information(nameof(GetDriveSerialNumber), author: "David McCarter", createdOn: "9/6/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://dotnettips.wordpress.com/2007/12/14/finding-a-drives-serial-number/")]
 	public static string GetDriveSerialNumber([NotNull][DisallowNull] string drive)
 	{
 		drive = drive.ArgumentNotNullOrEmpty();
@@ -80,7 +80,7 @@ public static class DriveHelper
 	/// This method filters the drives returned by <see cref="DriveInfo.GetDrives"/> to include only those that are fixed and ready.
 	/// </remarks>
 	/// <example>Result Example - [0]: {C:\}</example>
-	[Information(nameof(GetFixedDrives), author: "David McCarter", createdOn: "9/6/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(GetFixedDrives), author: "David McCarter", createdOn: "9/6/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<DriveInfo> GetFixedDrives() => DriveInfo.GetDrives()
 					.Where(p => p.DriveType == DriveType.Fixed && p.IsReady)
 					.Distinct()
@@ -94,7 +94,7 @@ public static class DriveHelper
 	/// <remarks>
 	/// This method filters the drives returned by <see cref="DriveInfo.GetDrives"/> to include only those that are removable and ready.
 	/// </remarks>
-	[Information(nameof(GetRemovableDrives), author: "David McCarter", createdOn: "9/6/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(GetRemovableDrives), author: "David McCarter", createdOn: "9/6/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<DriveInfo> GetRemovableDrives() => DriveInfo.GetDrives()
 					.Where(p => p.DriveType == DriveType.Removable && p.IsReady)
 					.Distinct()

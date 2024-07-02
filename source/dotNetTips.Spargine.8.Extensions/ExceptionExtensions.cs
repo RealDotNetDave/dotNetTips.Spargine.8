@@ -36,7 +36,7 @@ public static class ExceptionExtensions
 	/// <param name="nextItem">A delegate that defines the method to retrieve the next exception in the hierarchy.</param>
 	/// <returns>An <see cref="IEnumerable{TSource}"/> that represents the hierarchy of exceptions.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="nextItem"/> is null.</exception>
-	[Information(nameof(FromHierarchy), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(FromHierarchy), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem) where TSource : Exception
 	{
 		source = source.ArgumentNotNull();
@@ -56,7 +56,7 @@ public static class ExceptionExtensions
 	/// <param name="canContinue">A function that determines whether to continue traversing the hierarchy from the current item.</param>
 	/// <returns>A sequence of items from the source up through the hierarchy as determined by <paramref name="nextItem"/> and <paramref name="canContinue"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/>, <paramref name="nextItem"/>, or <paramref name="canContinue"/> is null.</exception>
-	[Information(nameof(FromHierarchy), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(FromHierarchy), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
 		where TSource : Exception
 	{
@@ -78,7 +78,7 @@ public static class ExceptionExtensions
 	/// <param name="separator">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
 	/// <returns>A string containing all exception messages, separated by the specified separator.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(GetAllMessages), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetAllMessages), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string GetAllMessages(this Exception exception, char separator = ControlChars.Comma)
 	{
 		exception = exception.ArgumentNotNull();
@@ -96,7 +96,7 @@ public static class ExceptionExtensions
 	/// <param name="exception">The exception to extract messages and stack traces from.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> where each item is a tuple containing the message and stack trace of an exception.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<(string message, string StackTrace)> GetAllMessagesWithStackTrace([NotNull] this Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
@@ -119,7 +119,7 @@ public static class ExceptionExtensions
 	/// <param name="exception">The exception to check.</param>
 	/// <returns><c>true</c> if the exception is critical; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsCritical(this Exception exception)
 	{
 		if (exception.IsNull())
@@ -141,7 +141,7 @@ public static class ExceptionExtensions
 	/// <param name="exception">The exception to check.</param>
 	/// <returns><c>true</c> if the exception is fatal; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsFatal(this Exception exception)
 	{
 		if (exception.IsNull())
@@ -159,7 +159,7 @@ public static class ExceptionExtensions
 	/// <param name="exception">The exception to check.</param>
 	/// <returns><c>true</c> if the exception is a <see cref="SecurityException"/> or critical; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsSecurityOrCritical(this Exception exception)
 	{
 		if (exception.IsNull())
@@ -177,7 +177,7 @@ public static class ExceptionExtensions
 	/// <param name="exception">The starting exception for the traversal.</param>
 	/// <returns>An exception of type <typeparamref name="T"/> if found; otherwise, null.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(TraverseFor), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(TraverseFor), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static T TraverseFor<T>(this Exception exception)
 		where T : class
 	{

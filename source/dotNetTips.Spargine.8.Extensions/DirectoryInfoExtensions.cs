@@ -44,7 +44,7 @@ public static class DirectoryInfoExtensions
 	/// long totalSize = directoryInfo.GetSize("*.*", SearchOption.AllDirectories);
 	/// Console.WriteLine($"Total size: {totalSize} bytes");
 	/// </code></example>
-	[Information(nameof(GetSize), author: "David McCarter", createdOn: "10/8/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetSize), author: "David McCarter", createdOn: "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static long GetSize(this DirectoryInfo path, string searchPattern = "*.*", SearchOption searchOption = SearchOption.TopDirectoryOnly)
 	{
 		path = path.ArgumentNotNull();

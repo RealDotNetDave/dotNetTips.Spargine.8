@@ -56,7 +56,7 @@ public abstract record Enumeration
 	/// <param name="value">The integer value of the enumeration.</param>
 	/// <param name="displayName">The display name of the enumeration.</param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="displayName"/> is null or empty.</exception>
-	[Information(nameof(Enumeration), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(Enumeration), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	protected Enumeration(int value, [NotNull] string displayName)
 	{
 		this._value = value;
@@ -93,7 +93,7 @@ public abstract record Enumeration
 	/// <param name="secondValue">The second enumeration instance.</param>
 	/// <returns>The absolute difference between the values of <paramref name="firstValue"/> and <paramref name="secondValue"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when either <paramref name="firstValue"/> or <paramref name="secondValue"/> is null.</exception>
-	[Information(nameof(AbsoluteDifference), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(AbsoluteDifference), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static int AbsoluteDifference([NotNull] Enumeration firstValue, [NotNull] Enumeration secondValue)
 	{
 		firstValue = firstValue.ArgumentNotNull();
@@ -111,7 +111,7 @@ public abstract record Enumeration
 	/// <returns>An instance of the enumeration type that matches the given display name.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="displayName"/> is null or empty.</exception>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
-	[Information(nameof(FromDisplayName), UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(FromDisplayName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static T FromDisplayName<T>([NotNull] string displayName) where T : Enumeration, new()
 	{
 		displayName = displayName.ArgumentNotNullOrEmpty();
@@ -128,7 +128,7 @@ public abstract record Enumeration
 	/// <param name="value">The integer value of the enumeration instance.</param>
 	/// <returns>An instance of the enumeration type that matches the given integer value.</returns>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
-	[Information(nameof(FromValue), UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(FromValue), UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static T FromValue<T>(int value) where T : Enumeration, new()
 	{
 		var matchingItem = Parse<T>("Validating int.", item => item.Value == value);
@@ -141,7 +141,7 @@ public abstract record Enumeration
 	/// </summary>
 	/// <typeparam name="T">The type of enumeration to retrieve instances for.</typeparam>
 	/// <returns>An <see cref="IEnumerable{T}"/> containing all instances of the specified enumeration type.</returns>
-	[Information(nameof(GetAll), UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(GetAll), UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static IEnumerable<T> GetAll<T>() where T : Enumeration, new()
 	{
 		var type = typeof(T);
@@ -162,7 +162,7 @@ public abstract record Enumeration
 	/// Gets the display name of the enumeration.
 	/// </summary>
 	/// <value>The display name.</value>
-	[Information(nameof(DisplayName), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(DisplayName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string DisplayName
 	{
 		get => this._displayName;
@@ -173,7 +173,7 @@ public abstract record Enumeration
 	/// Gets the integer value of the enumeration.
 	/// </summary>
 	/// <value>The integer value.</value>
-	[Information(nameof(Value), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(Value), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public int Value
 	{
 		get => this._value;

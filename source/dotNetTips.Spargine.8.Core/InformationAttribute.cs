@@ -93,6 +93,8 @@ public sealed class InformationAttribute : Attribute
 	/// Gets the author of the member.
 	/// </summary>
 	public string Author { get; }
+
+	//TODO: FIX CASE AT THE END OF 2024
 	/// <summary>
 	/// Gets or sets the benchmark status of the member.
 	/// </summary>
@@ -124,6 +126,11 @@ public sealed class InformationAttribute : Attribute
 	public DateTimeOffset ModifiedOn { get; private set; }
 
 	/// <summary>
+	/// Gets or sets the optimization status of the member.
+	/// </summary>
+	public OptimizationStatus OptimizationStatus { get; set; } = OptimizationStatus.None;
+
+	/// <summary>
 	/// Gets or sets the development status of the member.
 	/// </summary>
 	public Status Status { get; set; } = Status.NotSet;
@@ -133,6 +140,7 @@ public sealed class InformationAttribute : Attribute
 	/// Must be between 0 - 100.
 	/// </summary>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not in the range of 0 - 100.</exception>
+	[Obsolete("Property will be removed at the end of 2024. Use UnitTestStatus instead.")]
 	public int UnitTestCoverage
 	{
 		get => this._unitTestCoverage;
@@ -153,5 +161,10 @@ public sealed class InformationAttribute : Attribute
 			}
 		}
 	}
+
+	/// <summary>
+	/// Gets or sets the unit test status of the member.
+	/// </summary>
+	public UnitTestStatus UnitTestStatus { get; set; } = UnitTestStatus.None;
 
 }

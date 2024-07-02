@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2024
+// Last Modified On : 06-27-2024
 // ***********************************************************************
 // <copyright file="RegistryExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using DotNetTips.Spargine.Core;
 using Microsoft.Win32;
 
@@ -23,6 +24,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// <summary>
 /// Class RegistryExtensions.
 /// </summary>
+[SupportedOSPlatform("windows")]
 public static class RegistryExtensions
 {
 
@@ -33,7 +35,7 @@ public static class RegistryExtensions
 	/// <param name="name">The name.</param>
 	/// <returns>RegistryKey.</returns>
 	/// <exception cref="PlatformNotSupportedException"></exception>
-	[Information(nameof(GetSubKey), author: "David McCarter", createdOn: "3/1/2021", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetSubKey), author: "David McCarter", createdOn: "3/1/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static RegistryKey GetSubKey([NotNull] this RegistryKey key, [NotNull] string name) => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? key.OpenSubKey(name) : throw new PlatformNotSupportedException();
 
 	/// <summary>
@@ -44,7 +46,7 @@ public static class RegistryExtensions
 	/// <param name="name">The name.</param>
 	/// <returns>T.</returns>
 	/// <exception cref="PlatformNotSupportedException"></exception>
-	[Information(nameof(GetValue), author: "David McCarter", createdOn: "3/1/2021", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetValue), author: "David McCarter", createdOn: "3/1/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T GetValue<T>([NotNull] this RegistryKey key, string name)
 	{
 		name = name.ArgumentNotNullOrEmpty();

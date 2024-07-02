@@ -72,7 +72,7 @@ internal static class InternalMethods
 	/// <param name="minValue">The minimum value.</param>
 	/// <returns>System.Int32.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(EnsureMinimum), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(EnsureMinimum), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	internal static int EnsureMinimum(this int value, int minValue) => value < minValue ? minValue : value;
 
 	/// <summary>

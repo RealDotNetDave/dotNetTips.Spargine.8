@@ -11,19 +11,13 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
-
 using System;
-using System.Linq;
 using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Net.Sockets;
 using DotNetTips.Spargine.Tester;
-using DotNetTips.Spargine.Win32;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Win32;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 namespace DotNetTips.Spargine.Tests.Net.Sockets;
@@ -45,4 +39,5 @@ public class SocketsHelperTests
 
 		// Assert is handled by the ExpectedException attribute
 	}
+
 }

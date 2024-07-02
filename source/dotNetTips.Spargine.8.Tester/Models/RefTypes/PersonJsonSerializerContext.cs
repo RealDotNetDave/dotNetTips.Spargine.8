@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [JsonSourceGenerationOptions(IncludeFields = false)]
 [JsonSerializable(typeof(Person<Address>), TypeInfoPropertyName = "Person")]
 [JsonSerializable(typeof(List<Person<Address>>), TypeInfoPropertyName = "PersonList")]
-[Information(nameof(PersonJsonSerializerContext), Status = Status.Available, Documentation = "ADD URL")]
+[Information(nameof(PersonJsonSerializerContext), Status = Status.NeedsDocumentation)]
 public partial class PersonJsonSerializerContext : JsonSerializerContext
 {
 }

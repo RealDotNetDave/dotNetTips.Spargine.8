@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Core;
 /// Provides a mechanism for caching the results of enumerating an <see cref="IEnumerable{T}"/>.
 /// This can significantly improve performance when iterating over the same enumerable multiple times.
 /// </summary>
-[Information(nameof(CachedEnumerable), BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+[Information(nameof(CachedEnumerable), Status = Status.Available)]
 public static class CachedEnumerable
 {
 
@@ -38,7 +38,7 @@ public static class CachedEnumerable
 	/// <param name="enumerable">The enumerable to cache.</param>
 	/// <returns>A <see cref="CachedEnumerable{T}"/> that caches the results of enumerating the specified enumerable.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="enumerable"/> is null.</exception>
-	[Information(Status = Status.Available, UnitTestCoverage = 100)]
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public static CachedEnumerable<T> Create<T>([NotNull] IEnumerable<T> enumerable)
 	{
 		enumerable = enumerable.ArgumentNotNull();

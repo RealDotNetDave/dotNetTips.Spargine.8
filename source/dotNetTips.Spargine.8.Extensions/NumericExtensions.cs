@@ -57,7 +57,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="b">The second double value.</param>
 	/// <returns>The average of the two double values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static double Average(this double a, double b) => (a + b) / 2;
 
 	/// <summary>
@@ -67,7 +67,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="b">The second long value.</param>
 	/// <returns>The average of the two long values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static long Average(this long a, long b) => (a + b) / 2;
 
 	/// <summary>
@@ -77,7 +77,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="b">The second integer value.</param>
 	/// <returns>The average of the two integer values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static int Average(this int a, int b) => (a + b) / 2;
 
 	/// <summary>
@@ -87,7 +87,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="b">The second decimal value.</param>
 	/// <returns>The average of the two decimal values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static decimal Average(this decimal a, decimal b) => (a + b) / 2;
 
 	/// <summary>
@@ -98,7 +98,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="step">The decrement step. Default is 1.</param>
 	/// <returns>The decremented value, ensuring it does not fall below the lower bound.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Decrement), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(Decrement), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int Decrement(this int value, int lowerBound = 0, int step = 1)
 	{
 		var result = value - step;
@@ -112,7 +112,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="minValue">The minimum value.</param>
 	/// <returns>The original value if it is greater than or equal to the minimum value; otherwise, the minimum value.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(EnsureMinimum), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(EnsureMinimum), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int EnsureMinimum(this int value, int minValue) => value < minValue ? minValue : value;
 
 	/// <summary>
@@ -121,7 +121,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// </summary>
 	/// <param name="fileSize">The size of the file in bytes.</param>
 	/// <returns>A string representing the formatted size of the file, including the appropriate size unit.</returns>
-	[Information(nameof(FormatSize), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(FormatSize), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string FormatSize(this long fileSize)
 	{
 		if (fileSize < 0)
@@ -146,7 +146,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// </summary>
 	/// <param name="fileSize">The size of the file in bytes as a double.</param>
 	/// <returns>A string representing the formatted size of the file, including the appropriate size unit.</returns>
-	[Information(nameof(FormatSize), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(FormatSize), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string FormatSize(this double fileSize)
 	{
 		var order = 0;
@@ -167,7 +167,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="step">The increment step. Default is 1.</param>
 	/// <returns>The incremented value, ensuring it does not exceed the upper bound.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Increment), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(Increment), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int Increment(this int value, int upperBound = 100, int step = 1)
 	{
 		step = step.ArgumentInRange(0);
@@ -182,7 +182,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The decimal value to check.</param>
 	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsEven), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this decimal value) => (value % 2) == 0;
 
 	/// <summary>
@@ -191,7 +191,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The double value to check.</param>
 	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsEven), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this double value) => (value % 2) == 0;
 
 	/// <summary>
@@ -200,7 +200,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The float value to check.</param>
 	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsEven), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this float value) => (value % 2) == 0;
 
 	/// <summary>
@@ -209,7 +209,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The integer value to check.</param>
 	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsEven), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this int value) => (value % 2) == 0;
 
 	/// <summary>
@@ -218,7 +218,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The long value to check.</param>
 	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsEven), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this long value) => (value % 2) == 0;
 
 	/// <summary>
@@ -227,7 +227,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The sbyte value to check.</param>
 	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsEven), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this sbyte value) => (value % 2) == 0;
 
 	/// <summary>
@@ -236,7 +236,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The short value to check.</param>
 	/// <returns><c>true</c> if the value is even; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsEven), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsEven), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsEven(this short value) => (value % 2) == 0;
 
 	/// <summary>
@@ -247,7 +247,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="upper">The upper bound of the range.</param>
 	/// <returns><c>true</c> if the value is within the range; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsInRange), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsInRange), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRange(this int value, int lower, int upper) => value >= lower && value <= upper;
 
 	/// <summary>
@@ -258,7 +258,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="upper">The upper bound of the range.</param>
 	/// <returns><c>true</c> if the value is within the range; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsInRange), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsInRange), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRange(this long value, long lower, long upper) => value >= lower && value <= upper;
 
 	/// <summary>
@@ -269,7 +269,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="upper">The upper bound of the range.</param>
 	/// <returns><c>true</c> if the value is within the range; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsInRange), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsInRange), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRange(this double value, double lower, double upper) => value >= lower && value <= upper;
 
 	/// <summary>
@@ -280,7 +280,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="upper">The upper bound of the range.</param>
 	/// <returns><c>true</c> if the value is within the range; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsInRange), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsInRange), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRange(this decimal value, decimal lower, decimal upper) => value >= lower && value <= upper;
 
 	/// <summary>
@@ -292,7 +292,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns><c>true</c> if the value is within the range; otherwise, throws an exception.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRangeThrowsException(this double value, double lower, double upper)
 	{
 		if (value.IsInRange(lower, upper) is false)
@@ -312,7 +312,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns><c>true</c> if the value is within the range; otherwise, throws an <see cref="ArgumentOutOfRangeException" />.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRangeThrowsException(this decimal value, decimal lower, decimal upper)
 	{
 		if (value.IsInRange(lower, upper) is false)
@@ -332,7 +332,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns><c>true</c> if the value is within the range; otherwise, throws an <see cref="ArgumentOutOfRangeException" />.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRangeThrowsException(this int value, int lower, int upper)
 	{
 		if (value.IsInRange(lower, upper) is false)
@@ -352,7 +352,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns><c>true</c> if the value is within the range; otherwise, throws an <see cref="ArgumentOutOfRangeException" />.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInRangeThrowsException(this long value, long lower, long upper)
 	{
 		if (value.IsInRange(lower, upper) is false)
@@ -370,7 +370,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="interval">The interval to check divisibility against.</param>
 	/// <returns><c>true</c> if the value is evenly divisible by the interval; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsInterval), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsInterval), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsInterval(this int value, int interval) => value % interval == 0;
 
 	/// <summary>
@@ -382,7 +382,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns><c>true</c> if the value is evenly divisible by the interval; otherwise, throws an <see cref="ArgumentOutOfRangeException" />.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not evenly divisible by the interval.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsIntervalThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsIntervalThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsIntervalThrowsException(this int value, int interval, string paramName)
 	{
 		if (value.IsInterval(interval) is false)
@@ -399,7 +399,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The double value to check.</param>
 	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this double value) => Math.Sign(value) == -1;
 
 	/// <summary>
@@ -408,7 +408,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The integer value to check.</param>
 	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this int value) => Math.Sign(value) == -1;
 
 	/// <summary>
@@ -417,7 +417,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The long value to check.</param>
 	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this long value) => Math.Sign(value) == -1;
 
 	/// <summary>
@@ -426,7 +426,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The sbyte value to check.</param>
 	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this sbyte value) => Math.Sign(value) == -1;
 
 	/// <summary>
@@ -435,7 +435,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The short value to check.</param>
 	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this short value) => Math.Sign(value) == -1;
 
 	/// <summary>
@@ -444,7 +444,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The decimal value to check.</param>
 	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this decimal value) => Math.Sign(value) == -1;
 
 	/// <summary>
@@ -453,7 +453,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The float value to check.</param>
 	/// <returns><c>true</c> if the value is negative; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNegative(this float value) => Math.Sign(value) == -1;
 
 	/// <summary>
@@ -462,7 +462,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="totalMilliseconds">The total milliseconds to convert.</param>
 	/// <returns>A string representation of the total milliseconds in the format of hours, minutes, seconds, and milliseconds.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this long totalMilliseconds)
 	{
 		totalMilliseconds = totalMilliseconds.ArgumentInRange(0);
@@ -476,7 +476,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="input">The TimeSpan to convert.</param>
 	/// <returns>A string representation of the total milliseconds contained in the TimeSpan.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this TimeSpan input)
 	{
 		var totalMilliseconds = input.TotalMilliseconds;
@@ -490,7 +490,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="totalMilliseconds">The total milliseconds to convert.</param>
 	/// <returns>A string representation of the total milliseconds in the format of hours, minutes, seconds, and milliseconds.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this int totalMilliseconds)
 	{
 		totalMilliseconds = totalMilliseconds.ArgumentInRange(0);
@@ -506,7 +506,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <remarks>If the input value is less than or equal to 1, the return value is 1.
 	/// This method uses bitwise operations for efficient computation.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(RoundToPowerOf2), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(RoundToPowerOf2), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int RoundToPowerOf2(this int value)
 	{
 		value = value.ArgumentInRange(0);
@@ -538,7 +538,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// </example>
 	/// <remarks>This method does not support <see cref="NumericFormat.RoundTrip" />.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static string ToFormattedString(this int input, NumericFormat format)
 	{
 		format = format.ArgumentNotNull();
@@ -564,7 +564,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// </example>
 	/// <remarks>This method does not support <see cref="NumericFormat.RoundTrip" /> or <see cref="NumericFormat.Hexadecimal" />.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static string ToFormattedString(this double input, NumericFormat format)
 	{
 		format = format.ArgumentNotNull();
@@ -591,7 +591,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// </example>
 	/// <remarks>This method does not support <see cref="NumericFormat.RoundTrip" />.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static string ToFormattedString(this long input, NumericFormat format)
 	{
 		format = format.ArgumentNotNull();
@@ -618,7 +618,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// </example>
 	/// <remarks>This method does not support <see cref="NumericFormat.RoundTrip" />.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static string ToFormattedString(this ulong input, NumericFormat format)
 	{
 		format = format.ArgumentNotNull();
@@ -644,7 +644,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// </example>
 	/// <remarks>This method does not support <see cref="NumericFormat.RoundTrip" />.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static string ToFormattedString(this uint input, NumericFormat format)
 	{
 		format = format.ArgumentNotNull();
@@ -670,7 +670,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// </example>
 	/// <remarks>This method does not support <see cref="NumericFormat.RoundTrip" />.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static string ToFormattedString(this short input, NumericFormat format)
 	{
 		format = format.ArgumentNotNull();
@@ -696,7 +696,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// </example>
 	/// <remarks>This method does not support <see cref="NumericFormat.RoundTrip" />.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static string ToFormattedString(this ushort input, NumericFormat format)
 	{
 		format = format.ArgumentNotNull();
@@ -715,7 +715,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The integer value to convert.</param>
 	/// <returns>The original value if it is within the range of 0 to <see cref="int.MaxValue" />, otherwise returns 0.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToPositiveValue), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToPositiveValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static int ToPositiveValue(this int value) => value.IsInRange(0, int.MaxValue) ? value : 0;
 
 	/// <summary>
@@ -724,7 +724,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The long integer value to convert.</param>
 	/// <returns>The original value if it is within the range of 0 to <see cref="int.MaxValue" />, otherwise returns 0.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToPositiveValue), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToPositiveValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static long ToPositiveValue(this long value) => value.IsInRange(0, int.MaxValue) ? value : 0;
 
 	/// <summary>
@@ -733,7 +733,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="value">The decimal value to convert.</param>
 	/// <returns>The original value if it is within the range of 0 to <see cref="int.MaxValue" />, otherwise returns 0.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToPositiveValue), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToPositiveValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static decimal ToPositiveValue(this decimal value) => value.IsInRange(0, int.MaxValue) ? value : 0;
 
 	/// <summary>
@@ -743,7 +743,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns>A string containing the Roman numeral representation of the given integer.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="number" /> is outside the range 1 to 3999.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToRomanNumeral), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(ToRomanNumeral), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static string ToRomanNumeral(this int number)
 	{
 		if (number is < 1 or > 3999)
@@ -781,7 +781,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="defaultText">The default text to return if <paramref name="value" /> falls outside the specified range. Defaults to a double quote.</param>
 	/// <returns>A string representation of <paramref name="value" /> if it falls outside the specified range; otherwise, <paramref name="defaultText" />.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToStringOrEmpty), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(ToStringOrEmpty), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static string ToStringOrEmpty(this int value, int lowerLimit = 100, int upperLimit = 9000, string defaultText = ControlChars.DoubleQuote) => value <= lowerLimit || value > upperLimit
 			? defaultText
 			: value.ToString(CultureInfo.InvariantCulture);
@@ -795,7 +795,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// Input: 54928 Output: Fifty-Four Thousand Nine Hundred and Twenty-Eight"
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToWords), UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToWords), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string ToWords(this int value)
 	{
 		if (value == 0)

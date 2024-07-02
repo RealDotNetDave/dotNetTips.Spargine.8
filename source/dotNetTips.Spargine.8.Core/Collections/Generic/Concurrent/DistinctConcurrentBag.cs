@@ -46,7 +46,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	/// <summary>
 	/// Initializes a new instance of the <see cref="DistinctConcurrentBag{T}" /> class.
 	/// </summary>
-	[Information(Status = Status.Available, UnitTestCoverage = 100)]
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public DistinctConcurrentBag()
 	{
 	}
@@ -55,7 +55,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	/// Initializes a new instance of the <see cref="DistinctConcurrentBag{T}" /> class.
 	/// </summary>
 	/// <param name="collection">The collection whose elements are copied to the <see cref="DistinctConcurrentBag{T}" />.</param>
-	[Information(Status = Status.Available, UnitTestCoverage = 100)]
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public DistinctConcurrentBag([NotNull] IEnumerable<T> collection) => collection?.ToList().ForEach(this.Add);
 
 	/// <summary>
@@ -63,7 +63,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	/// </summary>
 	/// <param name="item">The object to be added to the bag. The value cannot be a null reference for reference types.</param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="item"/> is null.</exception>
-	[Information(Status = Status.Available, UnitTestCoverage = 100)]
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public new void Add([NotNull] T item)
 	{
 		if (item is null)
@@ -88,7 +88,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	/// </summary>
 	/// <param name="item">The object to locate in the <see cref="DistinctConcurrentBag{T}"/>.</param>
 	/// <returns><see langword="true" /> if <paramref name="item" /> is found in the <see cref="DistinctConcurrentBag{T}"/>; otherwise, <see langword="false" />.</returns>
-	[Information(Status = Status.Available, UnitTestCoverage = 100)]
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public bool Contains([NotNullWhen(true)] T item)
 	{
 		if (item is null)
@@ -105,7 +105,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	/// <param name="item">The object to remove from the <see cref="DistinctConcurrentBag{T}"/>.</param>
 	/// <returns><see langword="true" /> if <paramref name="item" /> was successfully removed from the <see cref="DistinctConcurrentBag{T}"/>; otherwise, <see langword="false" />. This method also returns <see langword="false" /> if <paramref name="item" /> is not found in the original collection.</returns>
 	/// <exception cref="NotImplementedException">This method is not implemented.</exception>
-	[Information(Status = Status.Available, UnitTestCoverage = 100)]
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public bool Remove([NotNull] T item) => throw new NotImplementedException();
 
 	/// <summary>
@@ -113,7 +113,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	/// </summary>
 	/// <param name="result">When this method returns, <paramref name="result"/> contains the object removed from the <see cref="DistinctConcurrentBag{T}" /> or the default value of <typeparamref name="T"/> if the bag is empty.</param>
 	/// <returns><see langword="true"/> if an object was removed successfully; otherwise, <see langword="false"/>.</returns>
-	[Information(Status = Status.Available, UnitTestCoverage = 100)]
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public new bool TryTake(out T result)
 	{
 		lock (this._lock)

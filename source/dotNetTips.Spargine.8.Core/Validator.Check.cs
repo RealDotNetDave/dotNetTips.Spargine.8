@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-12-2024
+// Last Modified On : 06-27-2024
 // ***********************************************************************
 // <copyright file="Validator.Check.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -50,11 +50,11 @@ public static partial class Validator
 	/// <param name="throwException">If set to true, throws an exception when the types do not match.</param>
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the input type matches the expected type; otherwise, false.</returns>
-	[Information(nameof(CheckEquals), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckEquals), "David McCarter", "1/31/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckEquals(this Type input, Type expectedType, bool throwException = false, string errorMessage = "")
 	{
-		var isValid = (input is not null) && (expectedType != null) && (input == expectedType);
+		var isValid = input == expectedType;
 
 		if (isValid is false && throwException)
 		{
@@ -72,15 +72,17 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the file exists; otherwise, false.</returns>
 	/// <exception cref="FileNotFoundException">Thrown if <paramref name="throwException" /> is true and the file does not exist.</exception>
-	[Information(nameof(CheckExists), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckExists), "David McCarter", "1/31/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckExists(this FileInfo input, bool throwException = false, string errorMessage = "")
 	{
-		var isValid = input is not null && input.Exists;
+		input = input.ArgumentNotNull();
+
+		var isValid = input.Exists;
 
 		if (isValid is false && throwException)
 		{
-			ExceptionThrower.ThrowFileNotFoundException(CreateExceptionMessage(errorMessage, Resources.ErrorFileNotFound), input!.FullName);
+			ExceptionThrower.ThrowFileNotFoundException(CreateExceptionMessage(errorMessage, Resources.ErrorFileNotFound), input.FullName);
 		}
 
 		return isValid;
@@ -95,19 +97,21 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the directory exists or was successfully created; otherwise, false.</returns>
 	/// <exception cref="DirectoryNotFoundException">Thrown if <paramref name="throwException" /> is true, <paramref name="createDirectory" /> is false, and the directory does not exist.</exception>
-	[Information(nameof(CheckExists), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckExists), "David McCarter", "1/31/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckExists(this DirectoryInfo input, bool createDirectory = true, bool throwException = false, string errorMessage = "")
 	{
-		var isValid = input is not null && input.Exists;
+		input = input.ArgumentNotNull();
+
+		var isValid = input.Exists;
 
 		if (isValid is false && throwException)
 		{
-			ExceptionThrower.ThrowDirectoryNotFoundException(CreateExceptionMessage(errorMessage, input!.FullName), input);
+			ExceptionThrower.ThrowDirectoryNotFoundException(CreateExceptionMessage(errorMessage, input.FullName), input);
 		}
 		else if (isValid is false && createDirectory)
 		{
-			input!.Create();
+			input.Create();
 
 			isValid = input.Exists;
 		}
@@ -125,18 +129,20 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the condition is met; otherwise, false.</returns>
 	/// <exception cref="ArgumentException">Thrown if <paramref name="throwException" /> is true and the condition is not met.</exception>
-	[Information(nameof(CheckIsCondition), "David McCarter", "2/10/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsCondition), "David McCarter", "2/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsCondition<T>(this T input, bool condition, bool throwException = false, string errorMessage = "")
 	{
-		var isValid = input is not null && condition;
+		input = input.ArgumentNotNull();
 
-		if (isValid is false && throwException)
+		if (condition is false && throwException)
 		{
-			ExceptionThrower.ThrowInvalidValueException<object>(CreateExceptionMessage(errorMessage, Resources.ErrorInvalidValue), input!);
+#pragma warning disable CS8604 // Possible null reference argument.
+			ExceptionThrower.ThrowInvalidValueException<object>(CreateExceptionMessage(errorMessage, Resources.ErrorInvalidValue), input);
+#pragma warning restore CS8604 // Possible null reference argument.
 		}
 
-		return isValid;
+		return condition;
 	}
 
 	/// <summary>
@@ -147,8 +153,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the enum value is defined; otherwise, false.</returns>
 	/// <exception cref="ArgumentException">Thrown if <paramref name="throwException" /> is true and the enum value is not defined.</exception>
-	[Information(nameof(CheckIsDefined), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsDefined), "David McCarter", "1/31/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsDefined(this Enum input, bool throwException = false, string errorMessage = "")
 	{
 		var isDefined = input is not null && Enum.IsDefined(input.GetType(), input);
@@ -171,8 +177,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the input value is within the range; otherwise, false.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
-	[Information(nameof(CheckIsInRange), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsInRange), "David McCarter", "1/31/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsInRange(this DateTime input, DateTime lower, DateTime upper, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = (input >= lower) && (input <= upper);
@@ -195,8 +201,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the input value is within the range; otherwise, false.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
-	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsInRange(this TimeOnly input, TimeOnly lower, TimeOnly upper, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = (input >= lower) && (input <= upper);
@@ -219,8 +225,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the input value is within the range; otherwise, false.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
-	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsInRange(this DateOnly input, DateOnly lower, DateOnly upper, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = (input >= lower) && (input <= upper);
@@ -243,8 +249,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the input value is within the range; otherwise, false.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
-	[Information(nameof(CheckIsInRange), "David McCarter", "2/3/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsInRange), "David McCarter", "2/3/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsInRange(this int input, int lower, int upper, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = (input >= lower) && (input <= upper);
@@ -267,8 +273,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the input value is within the range; otherwise, false.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
-	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsInRange(this long input, long lower, long upper, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = (input >= lower) && (input <= upper);
@@ -291,8 +297,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the input value is within the range; otherwise, false.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
-	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsInRange(this double input, double lower, double upper, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = (input >= lower) && (input <= upper);
@@ -315,8 +321,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the input value is within the range; otherwise, false.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
-	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsInRange), "David McCarter", "2/14/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsInRange(this decimal input, decimal lower, decimal upper, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = (input >= lower) && (input <= upper);
@@ -339,8 +345,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the input value is within the range; otherwise, false.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
-	[Information(nameof(CheckIsInRange), "David McCarter", "1/31/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsInRange), "David McCarter", "1/31/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsInRange(this DateTimeOffset input, DateTimeOffset lower, DateTimeOffset upper, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = (input >= lower) && (input <= upper);
@@ -362,8 +368,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
 	/// <returns><c>true</c> if [is not empty] [the specified span]; otherwise, <c>false</c>.</returns>
 	/// <exception cref="InvalidOperationException">Input cannot be empty.</exception>
-	[Information(nameof(CheckIsNotEmpty), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsNotEmpty), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsNotEmpty<T>([NotNull] this ReadOnlySpan<T> input, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = input.IsEmpty is false;
@@ -384,8 +390,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to be used in the exception message. If not provided, a default message is used.</param>
 	/// <returns><c>true</c> if the specified Guid is not empty; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentException">Thrown when <paramref name="input" /> is empty and <paramref name="throwException" /> is true.</exception>
-	[Information(nameof(CheckIsNotEmpty), "David McCarter", "2/2/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsNotEmpty), "David McCarter", "2/2/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsNotEmpty([NotNull] this Guid input, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = input.Equals(Guid.Empty) is false;
@@ -407,8 +413,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the input value is not null; otherwise, false.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="throwException" /> is true and the input value is null.</exception>
-	[Information(nameof(CheckIsNotNull), "David McCarter", "2/10/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "ADD URL")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckIsNotNull), "David McCarter", "2/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
 	public static bool CheckIsNotNull<T>(this T input, bool throwException = false, string errorMessage = "") where T : class
 	{
 		var isValid = input != null;
@@ -430,8 +436,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to use if an exception is thrown. If not provided, a default message is used.</param>
 	/// <returns>True if the enumerable contains any items; otherwise, false.</returns>
 	/// <exception cref="ArgumentException">Thrown if <paramref name="throwException" /> is true and the enumerable is empty.</exception>
-	[Information(nameof(CheckItemsExists), "David McCarter", "4/14/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CheckItemsExists), "David McCarter", "4/14/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckItemsExists<T>(this IEnumerable<T> input, bool throwException = false, string errorMessage = "")
 	{
 		var isValid = input?.Count() > 0;

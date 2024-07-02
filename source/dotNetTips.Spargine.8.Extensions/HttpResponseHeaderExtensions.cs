@@ -22,7 +22,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// <summary>
 /// Class HttpResponseHeaderExtensions.
 /// </summary>
-[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 public static class HttpResponseHeaderExtensions
 {
 
@@ -67,7 +67,7 @@ public static class HttpResponseHeaderExtensions
 	/// </summary>
 	/// <param name="header">The header.</param>
 	/// <returns>System.String.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static string GetName([NotNull] this HttpResponseHeader header)
 	{
 		header = header.ArgumentDefined(nameof(header));

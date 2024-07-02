@@ -71,7 +71,7 @@ public class FastStringBuilderTests
 
 		var result = FastStringBuilder.CombineStrings(false, strings);
 
-		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
+		Assert.IsTrue(string.IsNullOrEmpty(result) is false);
 
 		result = FastStringBuilder.CombineStrings(true, strings);
 

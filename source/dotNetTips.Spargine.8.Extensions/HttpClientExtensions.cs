@@ -36,7 +36,7 @@ public static class HttpClientExtensions
 	/// <param name="options">The options.</param>
 	/// <returns>T.</returns>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
-	[Information("Original code from: https://ardalis.com/keep-tests-short-and-dry-with-extensions", "David McCarter", "7/13/2021", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("Original code from: https://ardalis.com/keep-tests-short-and-dry-with-extensions", "David McCarter", "7/13/2021", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task<T> GetAndDeserializeAsync<T>([NotNull] this HttpClient client, [NotNull] Uri url, [NotNull] JsonSerializerOptions options)
 	{
 		client = client.ArgumentNotNull();

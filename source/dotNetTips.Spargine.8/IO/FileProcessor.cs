@@ -91,7 +91,7 @@ public class FileProcessor
 	/// fileProcessor.CopyFiles(filesToCopy, destinationDir);
 	/// </code>
 	/// </example>
-	[Information(nameof(CopyFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(CopyFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public int CopyFiles([NotNull] IEnumerable<FileInfo> files, [NotNull] DirectoryInfo destination)
 	{
 		var list = files.ArgumentNotNull().ToArray();
@@ -182,7 +182,7 @@ public class FileProcessor
 	/// fileProcessor.DeleteFiles(filesToDelete);
 	/// </code>
 	/// </example>
-	[Information(nameof(DeleteFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(DeleteFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public int DeleteFiles([NotNull] IEnumerable<FileInfo> files)
 	{
 		if (files.HasItems() is false)
@@ -264,7 +264,7 @@ public class FileProcessor
 	/// fileProcessor.DeleteFolders(foldersToDelete);
 	/// </code>
 	/// </example>
-	[Information(nameof(DeleteFolders), author: "David McCarter", createdOn: "8/6/2017", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(DeleteFolders), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public int DeleteFolders([NotNull] IEnumerable<DirectoryInfo> folders)
 	{
 		if (folders.HasItems() is false)

@@ -215,7 +215,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns><c>true</c> if the item was added to the collection; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	/// <exception cref="ArgumentReadOnlyException">Thrown if <paramref name="collection"/> is read-only.</exception>
-	[Information(nameof(AddIfNotExists), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(AddIfNotExists), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool AddIfNotExists<T>([NotNull] this ICollection<T> collection, [NotNull] T item)
 	{
 		if (item is null)
@@ -241,7 +241,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="collection">The collection to count the elements of.</param>
 	/// <returns>The number of elements in the collection.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
-	[Information(nameof(Count), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(Count), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int Count(this IEnumerable collection)
 	{
 		if (collection is null)
@@ -290,7 +290,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="nextItem">A delegate that defines the method to retrieve the next exception in the hierarchy.</param>
 	/// <returns>An <see cref="IEnumerable{TSource}"/> that represents the hierarchy of exceptions.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="nextItem"/> is null.</exception>
-	[Information(nameof(FromHierarchy), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(FromHierarchy), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem) where TSource : Exception
 	{
 		source = source.ArgumentNotNull();
@@ -332,7 +332,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="separator">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
 	/// <returns>A string containing all exception messages, separated by the specified separator.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(GetAllMessages), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(GetAllMessages), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string GetAllMessages(this Exception exception, char separator = ControlChars.Comma)
 	{
 		exception = exception.ArgumentNotNull();
@@ -348,7 +348,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
 	/// <returns>An <see cref="IEnumerable{PropertyInfo}"/> representing all properties of the specified type.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
-	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static IEnumerable<PropertyInfo> GetAllProperties([NotNull] this Type type)
 	{
 		var typeInfo = type.ArgumentNotNull().GetTypeInfo();
@@ -373,7 +373,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// This method considers a string as having a value if it is not null and contains characters other than whitespace.
 	/// Uses <see cref="string.IsNullOrWhiteSpace(string)"/> internally to check if the string is null or whitespace.
 	/// </remarks>
-	[Information(nameof(HasValue), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasValue([NotNull] this string input) => input is not null && (input.Trim().Length > 0);
 
 	/// <summary>
@@ -386,7 +386,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// This method checks if the <paramref name="input"/> string has a length equal to the specified <paramref name="length"/>.
 	/// It is an extension method and cannot be called on a null instance.
 	/// </remarks>
-	[Information(nameof(HasValue), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasValue([NotNull] this string input, int length)
 	{
 		length = length.ArgumentInRange(lower: 1, upper: length);
@@ -405,7 +405,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// Then, it compares the input string with the specified value using <see cref="string.Equals(string, string, StringComparison)"/>
 	/// with <see cref="StringComparison.Ordinal"/>.
 	/// </remarks>
-	[Information(nameof(HasValue), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasValue([NotNull] this string input, [NotNull] string value) => input.HasValue() && string.Equals(input, value, StringComparison.Ordinal);
 
 	/// <summary>
@@ -419,7 +419,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// This method first checks if the input string has any value using <see cref="HasValue(string)"/> method.
 	/// Then, it creates a new <see cref="Regex"/> instance with the specified pattern and options to perform the match.
 	/// </remarks>
-	[Information(nameof(HasValue), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasValue([NotNull] this string input, [NotNull][StringSyntax(StringSyntaxAttribute.Regex)] string expression, [NotNull] RegexOptions options) => input.HasValue() && expression.HasValue() && new Regex(expression, options.ArgumentDefined()).IsMatch(input);
 
 	/// <summary>
@@ -433,7 +433,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// This method checks if the <paramref name="input"/> string's length is between <paramref name="minLength"/> and <paramref name="maxLength"/>.
 	/// It is an extension method and cannot be called on a null instance.
 	/// </remarks>
-	[Information(nameof(HasValue), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasValue([NotNull] this string input, int minLength, int maxLength)
 	{
 		minLength = minLength.ArgumentInRange(lower: 0, upper: maxLength);

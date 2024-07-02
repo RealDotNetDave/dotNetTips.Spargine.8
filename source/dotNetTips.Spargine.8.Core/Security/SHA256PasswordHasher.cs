@@ -74,7 +74,7 @@ public static class SHA256PasswordHasher
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 	public static bool FixedTimeEquals([NotNull] byte[] left, [NotNull] byte[] right)
 	{
@@ -106,7 +106,7 @@ public static class SHA256PasswordHasher
 	/// <remarks>This method generates a new salt for each password, hashes the password using SHA256 with the salt,
 	/// and returns the combined salt and hash as a Base64 string. This approach enhances security by ensuring
 	/// that each password is stored with a unique salt, making it more resistant to dictionary and rainbow table attacks.</remarks>
-	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string HashPassword([NotNull] string password)
 	{
 		password = password.ArgumentNotNullOrEmpty();
@@ -138,7 +138,7 @@ public static class SHA256PasswordHasher
 	/// var result = SHA256PasswordHasher.VerifyHashedPassword(hashedPassword, password);
 	/// Console.WriteLine(result == PasswordVerificationResult.Success ? "Password verified" : "Password verification failed");
 	/// </code></example>
-	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static PasswordVerificationResult VerifyHashedPassword(string hashedPassword, [NotNull] string password)
 	{
 		if (string.IsNullOrEmpty(hashedPassword))

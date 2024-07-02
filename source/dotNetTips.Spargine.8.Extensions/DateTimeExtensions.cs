@@ -32,7 +32,7 @@ public static class DateTimeExtensions
 	/// </summary>
 	/// <param name="epochTime">The Epoch time.</param>
 	/// <returns>DateTime.</returns>
-	[Information(nameof(FromMilliEpochTime), "David McCarter", "3/24/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
+	[Information(nameof(FromMilliEpochTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
 	public static DateTime FromMilliEpochTime(this long epochTime)
 	{
 		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -46,7 +46,7 @@ public static class DateTimeExtensions
 	/// <param name="unixTime">The unix time.</param>
 	/// <returns>DateTime.</returns>
 	[Obsolete("Use FromMilliEpochTime instead.")]
-	[Information(nameof(FromUnixTime), "David McCarter", "3/24/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
+	[Information(nameof(FromUnixTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
 	public static DateTime FromUnixTime(this int unixTime)
 	{
 		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -61,7 +61,7 @@ public static class DateTimeExtensions
 	/// <param name="input">The input.</param>
 	/// <param name="dayOfWeek">The day of week.</param>
 	/// <returns>DateTimeOffset.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static DateTimeOffset GetLastDayOfWeek(this DateTimeOffset input, DayOfWeek dayOfWeek = DayOfWeek.Sunday) => input.AddDays((input.DayOfWeek > dayOfWeek
 							? input.DayOfWeek - dayOfWeek
 							: 7 - (int)dayOfWeek + (int)input.DayOfWeek) * -1);
@@ -73,7 +73,7 @@ public static class DateTimeExtensions
 	/// <param name="input">The input.</param>
 	/// <param name="dayOfWeek">The day of week.</param>
 	/// <returns>DateTimeOffset.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static DateTimeOffset GetNextDayOfWeek(this DateTimeOffset input, DayOfWeek dayOfWeek)
 	{
 		var daysToAdd = input.DayOfWeek < dayOfWeek
@@ -91,7 +91,7 @@ public static class DateTimeExtensions
 	/// <param name="intersectingStartDate">The intersecting start date.</param>
 	/// <param name="intersectingEndDate">The intersecting end date.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(Intersects), UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(Intersects), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool Intersects(this DateTime startDate, DateTime endDate, DateTime intersectingStartDate, DateTime intersectingEndDate) => intersectingEndDate >= startDate && intersectingStartDate <= endDate;
 
 	/// <summary>
@@ -102,7 +102,7 @@ public static class DateTimeExtensions
 	/// <param name="intersectingStartDate">The intersecting start date.</param>
 	/// <param name="intersectingEndDate">The intersecting end date.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool Intersects(this DateTimeOffset startDate, DateTimeOffset endDate, DateTimeOffset intersectingStartDate, DateTimeOffset intersectingEndDate) => intersectingEndDate >= startDate && intersectingStartDate <= endDate;
 
 	/// <summary>
@@ -112,7 +112,7 @@ public static class DateTimeExtensions
 	/// <param name="beginningTime">The beginning date.</param>
 	/// <param name="endTime">The end date.</param>
 	/// <returns><c>true</c> if [is in range] [the specified beginning date]; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsInRange), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsInRange), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool IsInRange(this DateTime value, DateTime beginningTime, DateTime endTime) => value >= beginningTime && value <= endTime;
 
 	/// <summary>
@@ -122,7 +122,7 @@ public static class DateTimeExtensions
 	/// <param name="beginningTime">The beginning time.</param>
 	/// <param name="endTime">The end time.</param>
 	/// <returns><c>true</c> if [is in range] [the specified beginning time]; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsInRange), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsInRange), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool IsInRange(this TimeSpan value, TimeSpan beginningTime, TimeSpan endTime) => value >= beginningTime && value <= endTime;
 
 	/// <summary>
@@ -132,7 +132,7 @@ public static class DateTimeExtensions
 	/// <param name="beginningTime">The beginning time.</param>
 	/// <param name="endTime">The end time.</param>
 	/// <returns><c>true</c> if [is in range] [the specified beginning time]; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsInRange), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsInRange), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool IsInRange(this DateTimeOffset value, DateTimeOffset beginningTime, DateTimeOffset endTime) => value >= beginningTime && value <= endTime;
 
 	/// <summary>
@@ -144,7 +144,7 @@ public static class DateTimeExtensions
 	/// <param name="endTime">The end time.</param>
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns><c>true</c> if [is in range throws exception] [the specified beginning time]; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool IsInRangeThrowsException(this DateTime value, DateTime beginningTime, DateTime endTime, string paramName)
 	{
 		if (value.IsInRange(beginningTime, endTime) is false)
@@ -164,7 +164,7 @@ public static class DateTimeExtensions
 	/// <param name="endTime">The end time.</param>
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns><c>true</c> if [is in range throws exception] [the specified beginning time]; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool IsInRangeThrowsException(this TimeSpan value, TimeSpan beginningTime, TimeSpan endTime, string paramName)
 	{
 		if (value.IsInRange(beginningTime, endTime) is false)
@@ -184,7 +184,7 @@ public static class DateTimeExtensions
 	/// <param name="endTime">The end time.</param>
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns><c>true</c> if [is in range throws exception] [the specified beginning time]; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool IsInRangeThrowsException(this DateTimeOffset value, DateTimeOffset beginningTime, DateTimeOffset endTime, string paramName = "")
 	{
 		if (value.IsInRange(beginningTime, endTime) is false)
@@ -201,7 +201,7 @@ public static class DateTimeExtensions
 	/// <param name="date">Date to process</param>
 	/// <param name="timezoneFromUtc">Hours of the timezone from UTC</param>
 	/// <returns>Future date</returns>
-	[Information(nameof(LocalTimeFromUtc), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(LocalTimeFromUtc), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static DateTime LocalTimeFromUtc(this DateTime date, int timezoneFromUtc) => date.ToUniversalTime().AddHours(timezoneFromUtc);
 
 	/// <summary>
@@ -210,7 +210,7 @@ public static class DateTimeExtensions
 	/// <param name="date">The date.</param>
 	/// <param name="compareTo">The date to compare.</param>
 	/// <returns>DateTime.</returns>
-	[Information(nameof(Max), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(Max), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static DateTime Max(this DateTime date, DateTime compareTo) => date > compareTo ? date : compareTo;
 
 	/// <summary>
@@ -219,7 +219,7 @@ public static class DateTimeExtensions
 	/// <param name="date">The date.</param>
 	/// <param name="compareTo">The date to compare.</param>
 	/// <returns>DateTimeOffset.</returns>
-	[Information(nameof(Max), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(Max), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static DateTimeOffset Max(this DateTimeOffset date, DateTimeOffset compareTo) => date > compareTo ? date : compareTo;
 
 	/// <summary>
@@ -229,7 +229,7 @@ public static class DateTimeExtensions
 	/// <param name="day">Day of week to find on calendar</param>
 	/// <returns>Future date</returns>
 	[Obsolete("Use the GetNextDayOfWeek method.")]
-	[Information(nameof(NextDayOfWeek), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(NextDayOfWeek), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static DateTime NextDayOfWeek(this DateTime date, DayOfWeek day = DayOfWeek.Monday)
 	{
 		while (true)
@@ -250,7 +250,7 @@ public static class DateTimeExtensions
 	/// <param name="day">The day.</param>
 	/// <returns>DateTimeOffset.</returns>
 	[Obsolete("Use the GetNextDayOfWeek method.")]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 100, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static DateTimeOffset NextDayOfWeek(this DateTimeOffset date, DayOfWeek day = DayOfWeek.Monday)
 	{
 		while (true)
@@ -271,7 +271,7 @@ public static class DateTimeExtensions
 	/// <param name="input">The input.</param>
 	/// <param name="time">The time.</param>
 	/// <returns>DateTime.</returns>
-	[Information(nameof(Subtract), author: "David McCarter", createdOn: "10/9/2023", UnitTestCoverage = 0, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(Subtract), author: "David McCarter", createdOn: "10/9/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.NeedsDocumentation)]
 	public static DateTime Subtract(this DateTime input, TimeSpan time) => input.ToUniversalTime().Add(time);
 
 	/// <summary>
@@ -299,7 +299,7 @@ public static class DateTimeExtensions
 	/// SortableDateTime: 2021-01-07T15:36:39
 	/// UniversalFullDateTime: Thursday, January 7, 2021 11:36:39 PM.
 	/// </example>
-	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static string ToFormattedString(this DateTime input, [NotNull] DateTimeFormat format) => input.ToString(format.DisplayName, CultureInfo.CurrentCulture);
 
 	/// <summary>
@@ -327,7 +327,7 @@ public static class DateTimeExtensions
 	/// SortableDateTime: 2021-01-07T15:36:39
 	/// UniversalFullDateTime: Thursday, January 7, 2021 11:36:39 PM.
 	/// </example>
-	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestCoverage = 100, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(ToFormattedString), "David McCarter", "12/21/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static string ToFormattedString(this DateTimeOffset input, [NotNull] DateTimeFormat format) => input.ToString(format.ArgumentNotNull().DisplayName, CultureInfo.CurrentCulture);
 
 	/// <summary>
@@ -338,7 +338,7 @@ public static class DateTimeExtensions
 	/// <example>
 	/// Output: Today @ 2:24:08 pm
 	/// </example>
-	[Information(nameof(ToFriendlyDateString), author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 99, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(ToFriendlyDateString), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.WIP, Status = Status.NeedsDocumentation)]
 	public static string ToFriendlyDateString(this DateTime input)
 	{
 		string formattedDate;
@@ -379,7 +379,7 @@ public static class DateTimeExtensions
 	/// <example>
 	/// Output: Today @ 2:28:59 pm
 	/// </example>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 99, Status = Status.Available, Documentation = "ADD URL")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.WIP, Status = Status.NeedsDocumentation)]
 	public static string ToFriendlyDateString(this DateTimeOffset input)
 	{
 		string formattedDate;
@@ -421,7 +421,7 @@ public static class DateTimeExtensions
 	/// <remarks>In computing, an epoch is a date and time from which a computer measures system time.
 	/// For instance, Unix and POSIX measure time as the number of seconds that have passed
 	/// since 1 January 1970 00:00:00 UT, a point in time known as the Unix epoch.</remarks>
-	[Information(nameof(ToMilliEpochTime), "David McCarter", "3/24/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(ToMilliEpochTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
 	public static long ToMilliEpochTime(this DateTime date)
 	{
 		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -437,7 +437,7 @@ public static class DateTimeExtensions
 	/// Output: 1697121012
 	/// </example>
 	[Obsolete("Use the ToMilliEpochTime method.")]
-	[Information(nameof(ToUnixTime), "David McCarter", "3/24/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(ToUnixTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static int ToUnixTime(this DateTime date)
 	{
 		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);

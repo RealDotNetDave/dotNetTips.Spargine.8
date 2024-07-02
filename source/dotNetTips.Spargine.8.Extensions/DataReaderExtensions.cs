@@ -43,7 +43,7 @@ public static class DataReaderExtensions
 	/// <param name="includeHeaderAsFirstRow">if set to <c>true</c> [include header as first row].</param>
 	/// <param name="separator">The separator.</param>
 	/// <returns>ReadOnlyCollection&lt;System.String&gt;.</returns>
-	[Information(nameof(ToCsv), author: "David McCarter", createdOn: "10/8/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(ToCsv), author: "David McCarter", createdOn: "10/8/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static ReadOnlyCollection<string> ToCsv([NotNull] this IDataReader dataReader, bool includeHeaderAsFirstRow, char separator = ControlChars.Comma)
 	{
 		dataReader = dataReader.ArgumentNotNull();

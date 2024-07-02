@@ -277,15 +277,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid url address..
-        /// </summary>
-        internal static string ErrorInvalidUrlAddress {
-            get {
-                return ResourceManager.GetString("ErrorInvalidUrlAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid Value..
         /// </summary>
         internal static string ErrorInvalidValue {
@@ -363,15 +354,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         internal static string ErrorParameterIsInvalid {
             get {
                 return ResourceManager.GetString("ErrorParameterIsInvalid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parameter name is required..
-        /// </summary>
-        internal static string ErrorParameterNameIsRequired {
-            get {
-                return ResourceManager.GetString("ErrorParameterNameIsRequired", resourceCulture);
             }
         }
         

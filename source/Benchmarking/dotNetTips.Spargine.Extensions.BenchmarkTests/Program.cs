@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-29-2024
+// Last Modified On : 06-28-2024
 // ***********************************************************************
 // <copyright file="Program.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -31,6 +31,7 @@ public static class Program
 {
 
 	private const string CompleteMessage = "COMPLETE!";
+
 	private const string ErrorMessage = "ERROR!";
 
 	/// <summary>
@@ -64,7 +65,7 @@ public static class Program
 			//_ = BenchmarkRunner.Run<StringBuilderExtensionsCounterBenchmark>(config);
 			//_ = BenchmarkRunner.Run<StringBuilderExtensionsCounterBenchmark>(config);
 			//_ = BenchmarkRunner.Run<StringExtensionsBenchmark>(config);
-			_ = BenchmarkRunner.Run<StringExtensionsCounterBenchmark>(config);
+			//_ = BenchmarkRunner.Run<StringExtensionsCounterBenchmark>(config);
 			_ = BenchmarkRunner.Run<TypeExtensionsBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine(CompleteMessage);

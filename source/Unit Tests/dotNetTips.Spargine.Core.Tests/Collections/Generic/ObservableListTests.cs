@@ -4,7 +4,7 @@
 // Created          : 06-24-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-24-2024
+// Last Modified On : 06-25-2024
 // ***********************************************************************
 // <copyright file="ObservableListTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -1113,7 +1113,7 @@ public class ObservableListTests
 		Assert.AreEqual(4, _observableList.Count, "List should contain exactly four unique elements.");
 	}
 
-	class CustomIntComparer : IEqualityComparer<int>
+	internal class CustomIntComparer : IEqualityComparer<int>
 	{
 
 		public bool Equals(int x, int y)

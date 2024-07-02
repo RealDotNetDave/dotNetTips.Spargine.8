@@ -160,15 +160,6 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exception cannot be null..
-        /// </summary>
-        internal static string ErrorExceptionCannotBeNull {
-            get {
-                return ResourceManager.GetString("ErrorExceptionCannotBeNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} is null, empty or the file does not exist..
         /// </summary>
         internal static string ErrorFileIsNullEmptyOrDoesNotExist {
@@ -615,15 +606,6 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         internal static string RegexString {
             get {
                 return ResourceManager.GetString("RegexString", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ^(?n:(?!-[\d\,]*K) (?!-((\d{1,3},)*((([3-9]\d\d|2[89]\d|27[4-9])\xB0C)|(((4[6-9]|[5-9]\d)\d)\xB0F)))) -?\d{1,3}(,\d{3})*(\xB0[CF]|K) )$.
-        /// </summary>
-        internal static string RegexTemp {
-            get {
-                return ResourceManager.GetString("RegexTemp", resourceCulture);
             }
         }
         

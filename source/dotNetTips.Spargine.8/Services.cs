@@ -52,14 +52,14 @@ public static class Services
 	/// }
 	/// </code>
 	/// </example>
-	[Information(nameof(LoadService), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(LoadService), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	private static ServiceController LoadService([NotNull] string serviceName) => Array.Find(ServiceController.GetServices(), p => string.Equals(p.ServiceName, serviceName, StringComparison.Ordinal));
 
 	/// <summary>
 	/// Retrieves the names of all services installed on the system.
 	/// </summary>
 	/// <returns>A read-only collection of strings containing the names of all services.</returns>
-	[Information(nameof(AllServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(AllServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<string> AllServices() => ServiceController.GetServices().Select(p => p.ServiceName).ToReadOnlyCollection();
 
 	/// <summary>
@@ -96,7 +96,7 @@ public static class Services
 	/// Console.WriteLine($"{processName} has been killed.");
 	/// </code>
 	/// </example>
-	[Information(UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void KillProcess([NotNull] string processName)
 	{
 		var app = Process.GetProcessesByName(processName.ArgumentNotNullOrEmpty()).FirstOrDefault();
@@ -121,7 +121,7 @@ public static class Services
 	/// Console.WriteLine($"Service exists: {exists}");
 	/// </code>
 	/// </example>
-	[Information(nameof(ServiceExists), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(ServiceExists), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static bool ServiceExists([NotNull] string serviceName)
 	{
 		var service = LoadService(serviceName.ArgumentNotNullOrEmpty());
@@ -143,7 +143,7 @@ public static class Services
 	/// Console.WriteLine($"Service status: {status}");
 	/// </code>
 	/// </example>
-	[Information(nameof(ServiceStatus), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(ServiceStatus), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ServiceControllerStatus ServiceStatus([NotNull] string serviceName)
 	{
 		var service = LoadService(serviceName.ArgumentNotNullOrEmpty());
@@ -163,7 +163,7 @@ public static class Services
 	/// Console.WriteLine($"Service start result: {result}");
 	/// </code>
 	/// </example>
-	[Information(nameof(StartService), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(StartService), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ServiceActionResult StartService([NotNull] string serviceName)
 	{
 		serviceName = serviceName.ArgumentNotNullOrEmpty();
@@ -190,14 +190,14 @@ public static class Services
 	/// Starts the services specified in the requests collection.
 	/// </summary>
 	/// <param name="requests">The collection of service action requests.</param>
-	[Information(nameof(StartServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(StartServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void StartServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StartService(request.ServiceName));
 
 	/// <summary>
 	/// Starts or stops the specified services based on the action requests.
 	/// </summary>
 	/// <param name="requests">The collection of service action requests, indicating whether to start or stop each service.</param>
-	[Information(nameof(StartStopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(StartStopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void StartStopServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request =>
 		{
 			if (request.ServiceActionRequest == ServiceActionRequest.Start)
@@ -223,7 +223,7 @@ public static class Services
 	/// Console.WriteLine($"Service stop result: {result}");
 	/// </code>
 	/// </example>
-	[Information(nameof(StopService), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(StopService), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ServiceActionResult StopService([NotNull] string serviceName)
 	{
 		serviceName = serviceName.ArgumentNotNullOrEmpty();
@@ -250,7 +250,7 @@ public static class Services
 	/// Stops the services specified in the requests collection.
 	/// </summary>
 	/// <param name="requests">The collection of service action requests.</param>
-	[Information(nameof(StopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(StopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void StopServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StopService(request.ServiceName));
 
 }

@@ -25,7 +25,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Provides detailed information about the computer system.
 /// </summary>
-[Information(nameof(ComputerInfo), "David McCarter", "10/15/2018", Status = Status.Available)]
+[Information(nameof(ComputerInfo), author: "David McCarter", createdOn: "10/15/2018", Status = Status.Available)]
 [DataContract(Namespace = "dotNetTips.com/Info")]
 public sealed class ComputerInfo
 {
@@ -41,189 +41,189 @@ public sealed class ComputerInfo
 	/// Gets the computer culture in three-letter ISO language name format.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string ComputerCulture { get; private set; } = CultureInfo.CurrentCulture.ThreeLetterISOLanguageName;
 
 	/// <summary>
 	/// Gets the computer UI culture in three-letter ISO language name format.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string ComputerUICulture { get; private set; } = CultureInfo.CurrentUICulture.ThreeLetterISOLanguageName;
 
 	/// <summary>
 	/// Gets the current managed thread identifier.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int CurrentManagedTreadId { get; private set; } = Environment.CurrentManagedThreadId;
 
 	/// <summary>
 	/// Gets the current stack trace information.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string CurrentStackTrace { get; private set; } = Environment.StackTrace;
 
 	/// <summary>
 	/// Gets the current system tick count.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int CurrentSystemTickCount { get; private set; } = Environment.TickCount;
 
 	/// <summary>
 	/// Gets the current working directory.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string CurrentWorkingDirectory { get; private set; } = Environment.CurrentDirectory;
 
 	/// <summary>
 	/// Gets the framework description.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string FrameworkDescription { get; private set; } = RuntimeInformation.FrameworkDescription;
 
 	/// <summary>
 	/// Gets the framework version.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public Version FrameworkVersion { get; private set; } = Environment.Version;
 
 	/// <summary>
 	/// Gets a value indicating whether the shutdown process has started.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public bool HasShutdownStarted { get; private set; } = Environment.HasShutdownStarted;
 
 	/// <summary>
 	/// Gets the IP address of the computer.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string IPAddress { get; private set; } = Dns.GetHostAddresses(Dns.GetHostName()).Where(p => p.AddressFamily == AddressFamily.InterNetwork).ToDelimitedString(char.Parse(","));
 
 	/// <summary>
 	/// Gets a value indicating whether the operating system is 64-bit.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public bool Is64BitOperatingSystem { get; private set; } = Environment.Is64BitOperatingSystem;
 
 	/// <summary>
 	/// Gets a value indicating whether the process is 64-bit.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public bool Is64BitProcess { get; private set; } = Environment.Is64BitProcess;
 
 	/// <summary>
 	/// Gets a value indicating whether the user interface is interactive.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public bool IsUserInteractive { get; private set; } = Environment.UserInteractive;
 
 	/// <summary>
 	/// Gets the logical drives on the computer.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ReadOnlyCollection<string> LogicalDrives { get; private set; } = Environment.GetLogicalDrives().AsReadOnly();
 
 	/// <summary>
 	/// Gets the name of the machine.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string MachineName { get; private set; } = Environment.MachineName;
 
 	/// <summary>
 	/// Gets the architecture of the operating system.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public Architecture OSArchitecture { get; private set; } = RuntimeInformation.OSArchitecture;
 
 	/// <summary>
 	/// Gets the description of the operating system.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string OSDescription { get; private set; } = RuntimeInformation.OSDescription;
 
 	/// <summary>
 	/// Gets the size of the operating system's memory page.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int OsMemoryPageSize { get; private set; } = Environment.SystemPageSize;
 
 	/// <summary>
 	/// Gets the amount of physical memory in use.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public long PhysicalMemoryInUse { get; private set; } = Environment.WorkingSet;
 
 	/// <summary>
 	/// Gets the architecture of the process.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public Architecture ProcessArchitecture { get; private set; } = RuntimeInformation.ProcessArchitecture;
 
 	/// <summary>
 	/// Gets the number of processors.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int ProcessorCount { get; private set; } = Environment.ProcessorCount;
 
 	/// <summary>
 	/// Gets the system directory.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string SystemDirectory { get; private set; } = Environment.SystemDirectory;
 
 	/// <summary>
 	/// Gets the size of the system page.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int SystemPageSize { get; private set; } = Environment.SystemPageSize;
 
 	/// <summary>
 	/// Gets the system tick count.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int TickCount { get; private set; } = Environment.TickCount;
 
 	/// <summary>
 	/// Gets the system tick count as a 64-bit value.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public long TickCount64 { get; private set; } = Environment.TickCount64;
 
 	/// <summary>
 	/// Gets the name of the user domain.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string UserDomainName { get; private set; } = Environment.UserDomainName;
 
 	/// <summary>
 	/// Gets the name of the user.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string UserName { get; private set; } = Environment.UserName;
 
 }

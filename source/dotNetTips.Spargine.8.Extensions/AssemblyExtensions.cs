@@ -37,7 +37,7 @@ public static class AssemblyExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assembly" /> is null.</exception>
 	/// <remarks>This method extracts all interfaces from the types defined in the specified assembly, ensuring no duplicates are returned.
 	/// It validates that the provided assembly is not null before proceeding with the extraction.</remarks>
-	[Information(nameof(GetAllInterfaces), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
+	[Information(nameof(GetAllInterfaces), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<Type> GetAllInterfaces([NotNull] this Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
@@ -64,7 +64,7 @@ public static class AssemblyExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assembly" /> is null.</exception>
 	/// <remarks>This method is useful for scenarios where you need to work with concrete types defined in an assembly,
 	/// such as when creating instances or performing reflection-based processing.</remarks>
-	[Information(nameof(GetAllTypes), "David McCarter", "221/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
+	[Information(nameof(GetAllTypes), "David McCarter", "221/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<Type> GetAllTypes([NotNull] this Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
@@ -83,7 +83,7 @@ public static class AssemblyExtensions
 	/// <remarks>This method searches the assembly for types that are assignable to <typeparamref name="T" />,
 	/// are not interfaces, are not abstract, and are not generic types. It then attempts to create an instance
 	/// of each found type using the default constructor.</remarks>
-	[Information(nameof(GetInstances), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GetInstances), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static IEnumerable<T> GetInstances<T>([NotNull] this Assembly assembly) where T : class
 	{
 		assembly = assembly.ArgumentNotNull();
@@ -112,7 +112,7 @@ public static class AssemblyExtensions
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="assembly" /> or <paramref name="type" /> is null.</exception>
 	/// <remarks>This method is useful for finding all concrete implementations or subclasses of a given type within an assembly.
 	/// Original code from: oqtane.framework</remarks>
-	[Information(nameof(GetTypes), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestCoverage = 100, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(GetTypes), "David McCarter", "1/7/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<Type> GetTypes([NotNull] this Assembly assembly, [NotNull] Type type)
 	{
 		assembly = assembly.ArgumentNotNull();

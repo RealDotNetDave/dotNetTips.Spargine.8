@@ -41,7 +41,7 @@ namespace DotNetTips.Spargine.Core.Network;
 /// </code>
 /// </example>
 /// <remarks>Initializes a new instance of the <see cref="HttpHandlerDiagnosticListener" /> class.</remarks>
-[Information(nameof(HttpHandlerDiagnosticListener), UnitTestCoverage = 100, Status = Status.Available)]
+[Information(nameof(HttpHandlerDiagnosticListener), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 public sealed class HttpHandlerDiagnosticListener(ILogger logger) : IObserver<KeyValuePair<string, object>>
 {
 

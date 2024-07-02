@@ -4,7 +4,7 @@
 // Created          : 06-24-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-24-2024
+// Last Modified On : 06-27-2024
 // ***********************************************************************
 // <copyright file="HttpClientHelperTests.cs" company="DotNetTips.Spargine.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -13,14 +13,10 @@
 // ***********************************************************************
 
 using System;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Net.Http;
-using DotNetTips.Spargine.Net.Sockets;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -151,4 +147,5 @@ public class HttpClientHelperTests
 		Assert.IsNotNull(stream);
 		Assert.IsTrue(stream.CanRead);
 	}
+
 }

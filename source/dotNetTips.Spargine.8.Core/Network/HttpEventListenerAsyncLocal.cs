@@ -44,7 +44,7 @@ namespace DotNetTips.Spargine.Core.Network;
 /// </example>
 /// <seealso cref="EventListener"/>
 /// <param name="logger">The logger used for logging HTTP events. This logger is utilized to log information about each HTTP request's start and stop events, including the URL and execution time.</param>
-[Information(nameof(HttpEventListenerAsyncLocal), UnitTestCoverage = 100, Status = Status.Available)]
+[Information(nameof(HttpEventListenerAsyncLocal), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 public sealed class HttpEventListenerAsyncLocal(ILogger logger) : EventListener
 {
 

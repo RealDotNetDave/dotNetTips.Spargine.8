@@ -4,7 +4,7 @@
 // Created          : 08-03-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2024
+// Last Modified On : 07-01-2024
 // ***********************************************************************
 // <copyright file="StringExtensionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -485,7 +485,7 @@ public class StringExtensionsBenchmark : Benchmark
 	}
 
 	[Benchmark(Description = nameof(StringExtensions.ToBase64))]
-	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	[BenchmarkCategory(Categories.Strings)]
 	public void ToBase64()
 	{
 		var result = this.LongTestString.ToBase64();

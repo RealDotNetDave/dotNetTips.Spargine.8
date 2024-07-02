@@ -44,7 +44,7 @@ public class EncryptionHelperTests
 	public void AesDecrypt_NullIv_ThrowsArgumentNullException()
 	{
 		// Act and Assert
-		Assert.ThrowsException<ArgumentNullException>(() => EncryptionHelper.AesDecrypt(_cipherText, _key, null));
+		_ = Assert.ThrowsException<ArgumentNullException>(() => EncryptionHelper.AesDecrypt(_cipherText, _key, null));
 	}
 
 	[TestMethod]

@@ -36,7 +36,7 @@ public static class ProcessExtensions
 	/// <param name="logger">The logger.</param>
 	/// <exception cref="ArgumentNullException">process</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void EnsureHighPriority([NotNull] this Process process, [AllowNull] ILogger logger)
 	{
 		process = process.ArgumentNotNull();
@@ -62,7 +62,7 @@ public static class ProcessExtensions
 	/// <param name="logger">The logger.</param>
 	/// <exception cref="ArgumentNullException">process</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void EnsureLowPriority([NotNull] this Process process, [AllowNull] ILogger logger)
 	{
 		process = process.ArgumentNotNull();
@@ -90,7 +90,7 @@ public static class ProcessExtensions
 	/// <returns>System.Int32.</returns>
 	/// <exception cref="ArgumentException">fileName</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static int RunProcessAndIgnoreOutput([NotNull] this string fileName, [NotNull] string arguments, TimeSpan timeout)
 	{
 		fileName = fileName.ArgumentNotNullOrEmpty();
@@ -126,7 +126,7 @@ public static class ProcessExtensions
 	/// <returns>System.ValueTuple&lt;System.Int32, System.String&gt;.</returns>
 	/// <exception cref="ArgumentException">fileName</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static (int exitCode, string output) RunProcessAndReadOutput([NotNull] this string fileName, [NotNull] string arguments, TimeSpan timeout)
 	{
 		fileName = fileName.ArgumentNotNullOrEmpty();
@@ -163,7 +163,7 @@ public static class ProcessExtensions
 	/// <exception cref="ArgumentNullException">process or logger error</exception>
 	/// <exception cref="ArgumentOutOfRangeException">priority</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool TrySetPriority([NotNull] this Process process, ProcessPriorityClass priority, [AllowNull] ILogger logger)
 	{
 		if (process is null)

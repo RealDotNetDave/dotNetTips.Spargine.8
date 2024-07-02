@@ -32,7 +32,7 @@ public static class ThreadExtensions
 	/// <returns><c>true</c> if the priority was successfully set; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="thread"/> is null.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="priority"/> is not a defined <see cref="ThreadPriority"/> value.</exception>
-	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool TrySetPriority([NotNull] this Thread thread, ThreadPriority priority = ThreadPriority.Normal)
 	{
 		thread.ArgumentNotNull().Priority = priority.ArgumentDefined();
@@ -46,7 +46,7 @@ public static class ThreadExtensions
 	/// </summary>
 	/// <param name="thread">The <see cref="Thread"/> to wait on. This parameter cannot be null.</param>
 	/// <param name="interval">The wait interval.</param>
-	[Information(nameof(WaitUntil), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(WaitUntil), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void WaitUntil([NotNull] this Thread thread, TimeSpan interval) => WaitUntil(thread.ArgumentNotNull(), interval, 0);
 
 	/// <summary>
@@ -58,7 +58,7 @@ public static class ThreadExtensions
 	/// <param name="waitIterations">The number of iterations to perform a spin-wait. Must be zero or greater.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="thread"/> is null.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="waitIterations"/> is less than zero.</exception>
-	[Information(nameof(WaitUntil), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(WaitUntil), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void WaitUntil([NotNull] this Thread thread, TimeSpan interval, int waitIterations)
 	{
 		thread = thread.ArgumentNotNull();

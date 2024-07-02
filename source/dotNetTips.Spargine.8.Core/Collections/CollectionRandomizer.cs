@@ -4,7 +4,7 @@
 // Created          : 11-06-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 06-27-2024
 // ***********************************************************************
 // <copyright file="CollectionRandomizer.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -99,16 +99,16 @@ public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection,
 	/// <returns>The next item of type <typeparamref name="T"/> from the collection.</returns>
 	/// <exception cref="InvalidOperationException">Thrown if the collection is empty or all items have been retrieved and the collection is not set to repeat.</exception>
 	/// <seealso cref="Init"/>
-	[Information(nameof(GetNext), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestCoverage = 0)]
+	[Information(nameof(GetNext), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
 	public T GetNext()
 	{
 		lock (this._threadLock)
 		{
-			if (!_initialized || (!HasRemainingItems && repeat))
+			if (!this._initialized || (!this.HasRemainingItems && repeat))
 			{
-				Init();
+				this.Init();
 			}
-			else if (!HasRemainingItems)
+			else if (!this.HasRemainingItems)
 			{
 				ExceptionThrower.ThrowInvalidOperationException(Resources.NoMoreItemsToRetrieveAndTheCollectionIsNot);
 			}
@@ -128,7 +128,7 @@ public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection,
 	/// <c>true</c> if this instance has remaining items; otherwise, <c>false</c>. This value will be <c>false</c>
 	/// until the first time <see cref="GetNext"/> is called and the collection is shuffled.
 	/// </value>
-	[Information(nameof(HasRemainingItems), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestCoverage = 0)]
+	[Information(nameof(HasRemainingItems), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
 	public bool HasRemainingItems { get; private set; }
 
 }

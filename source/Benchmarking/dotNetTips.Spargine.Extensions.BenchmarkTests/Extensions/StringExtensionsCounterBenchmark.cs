@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 07-01-2024
 // ***********************************************************************
 // <copyright file="StringExtensionsCounterBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -34,7 +34,7 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 {
 
-	private string _base64String;
+	private readonly string _base64String;
 	private string _brotilString;
 	private string _crlfString;
 	private string _gzipString;
@@ -136,27 +136,24 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 		base.Setup();
 
 		//Create lines of text.
-		var sb = new StringBuilder();
+		var sb = new StringBuilder(Count * 70);
 
 		for (var lineCount = 0; lineCount < this.Count; lineCount++)
 		{
-			_ = sb.AppendLine(
-				RandomData.GenerateWord(10) +
-					ControlChars.Space +
-					RandomData.GenerateWord(10) + ControlChars.Space +
-					RandomData.GenerateWord(10) + ControlChars.Space +
-					RandomData.GenerateWord(10) + ControlChars.Space +
-					RandomData.GenerateWord(10) +
-					ControlChars.Dot);
+			_ = sb.Append(RandomData.GenerateWord(10))
+			  .Append(ControlChars.Space)
+			  .Append(RandomData.GenerateWord(10)).Append(ControlChars.Space)
+			  .Append(RandomData.GenerateWord(10)).Append(ControlChars.Space)
+			  .Append(RandomData.GenerateWord(10)).Append(ControlChars.Space)
+			  .Append(RandomData.GenerateWord(10))
+			  .Append(ControlChars.Dot)
+			  .AppendLine();
 		}
 
-		this._crlfString = sb.ToString();
-
+		this._crlfString = sb.ToString().Trim();
 		this._brotilString = this._crlfString.ToBrotliStringAsync().Result;
-
-		this._gzipString = this._crlfString.ToGZipStringAsync().Result;
-
-		this._base64String = this._crlfString.ToBase64();
+		_brotilString = _crlfString.ToBrotliStringAsync().GetAwaiter().GetResult();
+		_gzipString = _crlfString.ToGZipStringAsync().GetAwaiter().GetResult();
 	}
 
 	[Benchmark(Description = "Split")]
@@ -217,15 +214,6 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 		{
 			this.Consume(line);
 		}
-	}
-
-	[Benchmark(Description = nameof(StringExtensions.ToBase64))]
-	[BenchmarkCategory(Categories.Strings)]
-	public void ToBase64()
-	{
-		var result = this.LongTestString.ToBase64();
-
-		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(StringExtensions.ToBrotliStringAsync))]

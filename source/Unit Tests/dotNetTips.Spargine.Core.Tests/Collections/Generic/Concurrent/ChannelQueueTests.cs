@@ -98,7 +98,7 @@ public class ChannelQueueTests
 		var channel = new ChannelQueue<int>();
 		await channel.WriteAsync(1);
 		await channel.WriteAsync(2);
-		await channel.ReadAsync();
+		_ = await channel.ReadAsync();
 		Assert.AreEqual(1, channel.Count, "Count should decrease after reading an item.");
 	}
 

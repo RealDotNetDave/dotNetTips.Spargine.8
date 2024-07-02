@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 07-02-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="David McCarter - dotNetTips.com">
 //     David McCarter - dotNetTips.com
@@ -19,7 +19,6 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Serialization;
 using DotNetTips.Spargine.Extensions.Properties;
@@ -77,7 +76,7 @@ public static class ObjectExtensions
 	/// <param name="obj">The object to convert.</param>
 	/// <returns>The converted object of type <typeparamref name="T" />.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
-	[Information(nameof(As), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(As), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T As<T>([NotNull] this object obj) => (T)obj.ArgumentNotNull();
 
 	/// <summary>
@@ -89,7 +88,7 @@ public static class ObjectExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
 	/// <remarks>This method serializes the object to JSON and then deserializes it back to create a deep copy.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Clone), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(Clone), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T Clone<T>([NotNull] this object obj) => FromJson<T>(obj.ArgumentNotNull().ToJson());
 
 	/// <summary>
@@ -101,7 +100,7 @@ public static class ObjectExtensions
 	/// <remarks>This method serializes the object to JSON using the default serializer settings and then computes the SHA256 hash of the resulting string.
 	/// It is useful for generating a consistent hash for objects that can be serialized to JSON.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ComputeSha256Hash), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(ComputeSha256Hash), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string ComputeSha256Hash([NotNull] this object obj)
 	{
 		obj = obj.ArgumentNotNull();
@@ -136,7 +135,7 @@ public static class ObjectExtensions
 	/// <remarks>This method uses reflection to iterate through all fields of the object. If a field implements <see cref="IDisposable" />,
 	/// it will be disposed. This is useful for cleaning up resources in objects that contain multiple disposable fields.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(DisposeFields), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(DisposeFields), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void DisposeFields([NotNull] this IDisposable obj)
 	{
 		if (obj is null)
@@ -175,8 +174,7 @@ public static class ObjectExtensions
 	/// <param name="json">The JSON string to deserialize.</param>
 	/// <returns>An instance of <typeparamref name="TResult" /> deserialized from the JSON string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="json" /> is null or empty.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FromJson), "David McCarter", "4/21/2022", UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(FromJson), "David McCarter", "4/21/2022", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static TResult FromJson<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] this string json) => JsonSerialization.Deserialize<TResult>(json.ArgumentNotNullOrEmpty());
 
 	/// <summary>
@@ -187,7 +185,7 @@ public static class ObjectExtensions
 	/// <returns><c>true</c> if the property exists; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> or <paramref name="propertyName" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasProperty), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(HasProperty), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasProperty([NotNull] this object obj, [NotNull] string propertyName)
 	{
 		if (obj is null)
@@ -210,7 +208,7 @@ public static class ObjectExtensions
 	/// <param name="obj">The object whose fields will be initialized. Must not be null.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(InitializeFields), UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance)]
+	[Information(nameof(InitializeFields), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void InitializeFields([NotNull] this object obj)
 	{
 		obj = obj.ArgumentNotNull();
@@ -232,8 +230,7 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The object to check.</param>
 	/// <returns><c>true</c> if the object is not null; otherwise, <c>false</c>.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsNotNull), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(IsNotNull), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static bool IsNotNull([AllowNull] this object obj) => obj is not null;
 
 	/// <summary>
@@ -242,7 +239,7 @@ public static class ObjectExtensions
 	/// <param name="obj">The object to check.</param>
 	/// <returns><c>true</c> if the object is null; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsNull), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(IsNull), UnitTestStatus = UnitTestStatus.Completed, Status = Status.CheckPerformance, OptimizationStatus = OptimizationStatus.WIP)]
 	public static bool IsNull([AllowNull] this object obj) => obj is null;
 
 	/// <summary>
@@ -282,72 +279,29 @@ public static class ObjectExtensions
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
-	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 99, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.WIP, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static IDictionary<string, string> PropertiesToDictionary([NotNull] this object obj, [NotNull] string memberName = ControlChars.EmptyString, bool ignoreNulls = true)
 	{
 		obj = obj.ArgumentNotNull();
 
+		var properties = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 		var result = new Dictionary<string, string>();
-		memberName = memberName.ArgumentNotNull();
 
-		var objectType = obj.ArgumentNotNull().GetType();
-
-		// Reserve a special treatment for specific types by design (like string -that's a list of chars and you don't want to iterate on its items)
-		if (TypeHelper.BuiltInTypeNames.ContainsKey(objectType))
+		//SPAN IS SLOWER
+		foreach (var property in properties)
 		{
-			result.Add(memberName, obj.ToString());
-			return result;
-		}
-
-		// If the type implements the IEnumerable interface.
-		if (objectType.IsEnumerable())
-		{
-			var itemCount = 0;
-
-			// Loop through the collection using the enumerator strategy and collect all items in the result bag
-			// Note: if the collection is empty it will not return anything about its existence,
-			// because the method is supposed to catch value items not the list itself
-			foreach (var item in (IEnumerable)obj)
+			if (!string.IsNullOrEmpty(memberName) && !property.Name.Equals(memberName, StringComparison.Ordinal))
 			{
-				var itemId = itemCount++;
-
-				var itemInnerMember = string.Format(CultureInfo.CurrentCulture, $"{{0}}[{{1}}]", memberName, itemId);
-
-				result = result.Concat(item.PropertiesToDictionary(itemInnerMember)).ToDictionary(e => e.Key, e => e.Value);
+				continue;
 			}
 
-			return result;
-		}
-
-		// Otherwise go deeper in the object tree.
-		// And foreach object public property collect each value
-		var propertyCollection = objectType.GetProperties();
-
-		var newMemberName = string.Empty;
-
-		if (memberName.Length > 0)
-		{
-			newMemberName = $"{memberName}{ControlChars.Dot}";
-		}
-
-		//Span is slower
-		foreach (var property in propertyCollection)
-		{
-			var ignoreAttribute = property.GetAttribute<JsonIgnoreAttribute>();
-
-			if (ignoreAttribute == null)
+			var value = property.GetValue(obj);
+			if (value == null && ignoreNulls)
 			{
-				var innerObject = property.GetValue(obj, (object[])null);
-
-				if (ignoreNulls && innerObject is null)
-				{
-					continue;
-				}
-
-				var innerMember = string.Format(CultureInfo.CurrentCulture, "{0}{1}", newMemberName, property.Name);
-
-				result = result.Concat(innerObject.PropertiesToDictionary(innerMember)).ToDictionary(e => e.Key, e => e.Value);
+				continue;
 			}
+
+			result[property.Name] = value?.ToString() ?? string.Empty;
 		}
 
 		return result;
@@ -384,7 +338,7 @@ public static class ObjectExtensions
 	/// PersonRecord.Addresses[1].PostalCode:33385672
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PropertiesToString), author: "David McCarter", createdOn: "11/19/2020", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineFeb2021")]
+	[Information(nameof(PropertiesToString), author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2021")]
 	public static string PropertiesToString([NotNull] this object obj, [AllowNull] string header = ControlChars.EmptyString, char keyValueSeparator = ControlChars.Colon, [NotNull] string sequenceSeparator = ControlChars.DefaultSeparator, bool ignoreNulls = true, bool includeMemberName = true)
 	{
 		obj = obj.ArgumentNotNull();
@@ -413,8 +367,7 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The object to convert to a string.</param>
 	/// <returns>The string representation of <paramref name="obj" /> if it is not null; otherwise, an empty string.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(StripNull), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(StripNull), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static string StripNull([AllowNull] this object obj) => obj is null ? string.Empty : obj.ToString();
 
 	/// <summary>
@@ -424,7 +377,7 @@ public static class ObjectExtensions
 	/// <returns>A JSON string representation of <paramref name="obj" />.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToJson), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(ToJson), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	[return: NotNull]
 	public static string ToJson([NotNull] this object obj) => JsonSerializer.Serialize(obj.ArgumentNotNull(), _options);
 
@@ -436,7 +389,7 @@ public static class ObjectExtensions
 	/// <returns>A <see cref="SimpleResult{T}" /> containing the JSON string representation of <paramref name="obj" /> if serialization is successful; otherwise, contains the exception.</returns>
 	/// <exception cref="NotSupportedException">Thrown if serialization is not supported for the object.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToJson), UnitTestCoverage = 100, Status = Status.CheckPerformance, Documentation = "https://bit.ly/SpargineAug23")]
+	[Information(nameof(ToJson), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 	public static SimpleResult<string> ToJson([NotNull] this object obj, [AllowNull] JsonSerializerOptions options = null)
 	{
 		obj = obj.ArgumentNotNull();
@@ -462,7 +415,7 @@ public static class ObjectExtensions
 	/// <remarks>This method serializes the object to a JSON string using the default JsonSerializerOptions and writes it to the specified file.
 	/// If the file already exists, it will be overwritten.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToJsonFile), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(ToJsonFile), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ToJsonFile([NotNull] this object obj, [NotNull] FileInfo file)
 	{
 		file = file.ArgumentNotNull();
@@ -477,7 +430,7 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The <see cref="IDisposable" /> object to dispose.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(TryDispose), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(TryDispose), UnitTestStatus = UnitTestStatus.Completed, Status = Status.CheckPerformance)]
 	public static void TryDispose([NotNull] this IDisposable obj) => TryDispose(obj.ArgumentNotNull(), false);
 
 	/// <summary>
@@ -487,7 +440,7 @@ public static class ObjectExtensions
 	/// <param name="throwException">Specifies whether to throw an exception if the disposal fails.</param>
 	/// <exception cref="Exception">Thrown if <paramref name="throwException" /> is true and the disposal fails.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(TryDispose), UnitTestCoverage = 100, Status = Status.CheckPerformance)]
+	[Information(nameof(TryDispose), UnitTestStatus = UnitTestStatus.Completed, Status = Status.CheckPerformance)]
 	public static void TryDispose([NotNull] this IDisposable obj, [DoesNotReturnIf(true)] bool throwException)
 	{
 		if (obj is null)

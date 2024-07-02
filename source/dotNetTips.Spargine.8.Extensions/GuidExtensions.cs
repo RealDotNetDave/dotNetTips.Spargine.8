@@ -31,7 +31,7 @@ public static class GuidExtensions
 	/// </summary>
 	/// <param name="input">The <see cref="Guid"/> to convert.</param>
 	/// <returns>A string representation of the <see cref="Guid"/> without dashes if the <paramref name="input"/> is not empty; otherwise, an empty string.</returns>
-	[Information(nameof(ToDigits), UnitTestCoverage = 100, Status = Status.Available)]
+	[Information(nameof(ToDigits), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string ToDigits([NotNull] this Guid input)
 	{
 		if (input.CheckIsNotEmpty())

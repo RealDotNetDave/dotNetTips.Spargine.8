@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,9 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AndLowerCase" xml:space="preserve">
+    <value>and</value>
+  </data>
   <data name="Bytes" xml:space="preserve">
     <value>Bytes</value>
     <comment>For StringExtensions</comment>
+  </data>
+  <data name="CannotAddItemsToAReadOnlyDictionary" xml:space="preserve">
+    <value>Cannot add items to a read-only dictionary!</value>
+  </data>
+  <data name="EB" xml:space="preserve">
+    <value>EB</value>
+  </data>
+  <data name="Eight" xml:space="preserve">
+    <value>Eight</value>
+  </data>
+  <data name="Eighteen" xml:space="preserve">
+    <value>Eighteen</value>
+  </data>
+  <data name="Eighty" xml:space="preserve">
+    <value>Eighty</value>
+  </data>
+  <data name="Eleven" xml:space="preserve">
+    <value>Eleven</value>
   </data>
   <data name="ErrorCannotBeOfTypeException" xml:space="preserve">
     <value>{0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only).</value>
@@ -130,8 +151,8 @@
   <data name="ErrorCollectionSizeIsNotValid" xml:space="preserve">
     <value>Collection size is not valid.</value>
   </data>
-  <data name="ErrorExceptionCannotBeNull" xml:space="preserve">
-    <value>Exception cannot be null.</value>
+  <data name="ErrorFileIsNullEmptyOrDoesNotExist" xml:space="preserve">
+    <value>{0} is null, empty or the file does not exist.</value>
   </data>
   <data name="ErrorFileNotFound" xml:space="preserve">
     <value>File not found.</value>
@@ -142,69 +163,20 @@
   <data name="ErrorFolderNotFound" xml:space="preserve">
     <value>Folder not found.</value>
   </data>
-  <data name="GB" xml:space="preserve">
-    <value>GB</value>
-    <comment>For StringExtensions</comment>
-  </data>
   <data name="ErrorGuidIsEmpty" xml:space="preserve">
     <value>Guid is Empty.</value>
+  </data>
+  <data name="ErrorInvalidFileName" xml:space="preserve">
+    <value>Invalid file name.</value>
   </data>
   <data name="ErrorInvalidType" xml:space="preserve">
     <value>Invalid type.</value>
   </data>
-  <data name="KB" xml:space="preserve">
-    <value>KB</value>
-    <comment>For StringExtensions</comment>
-  </data>
   <data name="ErrorLengthMustBeGreaterThan0" xml:space="preserve">
     <value>Length must be greater than 0.</value>
   </data>
-  <data name="MB" xml:space="preserve">
-    <value>MB</value>
-    <comment>For StringExtensions</comment>
-  </data>
   <data name="ErrorParameterIsInvalid" xml:space="preserve">
     <value>Parameter is invalid. </value>
-  </data>
-  <data name="RegexCreditCard" xml:space="preserve">
-    <value>^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$</value>
-  </data>
-  <data name="RegexDomain" xml:space="preserve">
-    <value>^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$</value>
-  </data>
-  <data name="RegexEmail" xml:space="preserve">
-    <value>\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</value>
-  </data>
-  <data name="RegexFirstLastName" xml:space="preserve">
-    <value>^[\p{Lu}\p{M}][\p{L}\p{M},.'-]+(?: [\p{L}\p{M},.'-]+)*$</value>
-  </data>
-  <data name="RegexISBN" xml:space="preserve">
-    <value>^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$</value>
-    <comment>ISBN Regex</comment>
-  </data>
-  <data name="RegexPhoneNumberUS" xml:space="preserve">
-    <value>((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}</value>
-  </data>
-  <data name="REGEXP_US_ZIP_CODE" xml:space="preserve">
-    <value>\d{5}(-\d{4})?</value>
-  </data>
-  <data name="RegexScientific" xml:space="preserve">
-    <value>\b-?[1-9](?:\.\d+)?[Ee][-+]?\d+\b</value>
-  </data>
-  <data name="RegexSSNUS" xml:space="preserve">
-    <value>\d{3}-\d{2}-\d{4}</value>
-  </data>
-  <data name="RegexString" xml:space="preserve">
-    <value>^(\w|\W)+$</value>
-  </data>
-  <data name="RegexTemp" xml:space="preserve">
-    <value>^(?n:(?!-[\d\,]*K) (?!-((\d{1,3},)*((([3-9]\d\d|2[89]\d|27[4-9])\xB0C)|(((4[6-9]|[5-9]\d)\d)\xB0F)))) -?\d{1,3}(,\d{3})*(\xB0[CF]|K) )$</value>
-  </data>
-  <data name="RegexUrl" xml:space="preserve">
-    <value>(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;amp;:/~\+#]*[\w\-\@?^=%&amp;amp;/~\+#])?</value>
-  </data>
-  <data name="RegexWindowsFilePath" xml:space="preserve">
-    <value>([A-Z]:\\[^/:\*\?&lt;&gt;\|]+\.\w{2,6})|(\\{2}[^/:\*\?&lt;&gt;\|]+\.\w{2,6})</value>
   </data>
   <data name="ErrorStringDoesNotMatch" xml:space="preserve">
     <value>Strings do not match.</value>
@@ -227,157 +199,179 @@
   <data name="ErrorValueIsInvalid" xml:space="preserve">
     <value>Value is invalid.</value>
   </data>
-  <data name="Yesterday" xml:space="preserve">
-    <value>Yesterday</value>
-  </data>
-  <data name="ErrorInvalidFileName" xml:space="preserve">
-    <value>Invalid file name.</value>
-  </data>
-  <data name="TrueLowerCase" xml:space="preserve">
-    <value>true</value>
-  </data>
-  <data name="FalseLowerCase" xml:space="preserve">
-    <value>false</value>
-  </data>
   <data name="FailedToSetUpHighPriority" xml:space="preserve">
     <value>Failed to set up high priority. Make sure you have the right permissions.</value>
   </data>
   <data name="FailedToSetUpLowPriority" xml:space="preserve">
     <value>Failed to set up low priority. Make sure you have the right permissions.</value>
   </data>
-  <data name="ErrorFileIsNullEmptyOrDoesNotExist" xml:space="preserve">
-    <value>{0} is null, empty or the file does not exist.</value>
-  </data>
-  <data name="Zero" xml:space="preserve">
-    <value>Zero</value>
-  </data>
-  <data name="Minus" xml:space="preserve">
-    <value>Minus</value>
-  </data>
-  <data name="Million" xml:space="preserve">
-    <value>Million</value>
-  </data>
-  <data name="Thousand" xml:space="preserve">
-    <value>Thousand</value>
-  </data>
-  <data name="Hundred" xml:space="preserve">
-    <value>Hundred</value>
-  </data>
-  <data name="AndLowerCase" xml:space="preserve">
-    <value>and</value>
-  </data>
-  <data name="One" xml:space="preserve">
-    <value>One</value>
-  </data>
-  <data name="Two" xml:space="preserve">
-    <value>Two</value>
-  </data>
-  <data name="Three" xml:space="preserve">
-    <value>Three</value>
-  </data>
-  <data name="Four" xml:space="preserve">
-    <value>Four</value>
-  </data>
-  <data name="Five" xml:space="preserve">
-    <value>Five</value>
-  </data>
-  <data name="Six" xml:space="preserve">
-    <value>Six</value>
-  </data>
-  <data name="Seven" xml:space="preserve">
-    <value>Seven</value>
-  </data>
-  <data name="Eight" xml:space="preserve">
-    <value>Eight</value>
-  </data>
-  <data name="Nine" xml:space="preserve">
-    <value>Nine</value>
-  </data>
-  <data name="Ten" xml:space="preserve">
-    <value>Ten</value>
-  </data>
-  <data name="Eleven" xml:space="preserve">
-    <value>Eleven</value>
-  </data>
-  <data name="Twelve" xml:space="preserve">
-    <value>Twelve</value>
-  </data>
-  <data name="Thirteen" xml:space="preserve">
-    <value>Thirteen</value>
-  </data>
-  <data name="Fourteen" xml:space="preserve">
-    <value>Fourteen</value>
+  <data name="FalseLowerCase" xml:space="preserve">
+    <value>false</value>
   </data>
   <data name="Fifteen" xml:space="preserve">
     <value>Fifteen</value>
   </data>
-  <data name="Sixteen" xml:space="preserve">
-    <value>Sixteen</value>
+  <data name="Fifty" xml:space="preserve">
+    <value>Fifty</value>
   </data>
-  <data name="Seventeen" xml:space="preserve">
-    <value>Seventeen</value>
-  </data>
-  <data name="Eighteen" xml:space="preserve">
-    <value>Eighteen</value>
-  </data>
-  <data name="Nineteen" xml:space="preserve">
-    <value>Nineteen</value>
-  </data>
-  <data name="Twenty" xml:space="preserve">
-    <value>Twenty</value>
-  </data>
-  <data name="Thirty" xml:space="preserve">
-    <value>Thirty</value>
+  <data name="Five" xml:space="preserve">
+    <value>Five</value>
   </data>
   <data name="Forty" xml:space="preserve">
     <value>Forty</value>
   </data>
-  <data name="Fifty" xml:space="preserve">
-    <value>Fifty</value>
+  <data name="Four" xml:space="preserve">
+    <value>Four</value>
   </data>
-  <data name="Sixty" xml:space="preserve">
-    <value>Sixty</value>
+  <data name="Fourteen" xml:space="preserve">
+    <value>Fourteen</value>
   </data>
-  <data name="Seventy" xml:space="preserve">
-    <value>Seventy</value>
-  </data>
-  <data name="Eighty" xml:space="preserve">
-    <value>Eighty</value>
-  </data>
-  <data name="Ninety" xml:space="preserve">
-    <value>Ninety</value>
-  </data>
-  <data name="RegexOneToSevenAlpha" xml:space="preserve">
-    <value>^[a-zA-Z]{1,7}$</value>
-  </data>
-  <data name="RegexCurrencyCode" xml:space="preserve">
-    <value>^[a-zA-Z]{3}$</value>
-  </data>
-  <data name="CannotAddItemsToAReadOnlyDictionary" xml:space="preserve">
-    <value>Cannot add items to a read-only dictionary!</value>
-  </data>
-  <data name="ThereIsAnIssueDisposingOfTheObjectUsingAsyncDispose" xml:space="preserve">
-    <value>There is an issue disposing of the object using DisposeAsync().</value>
-  </data>
-  <data name="StartIndexMustBeLessThanInputLength" xml:space="preserve">
-    <value>{0} + {1} must be &lt;= {2}</value>
-  </data>
-  <data name="InvalidNumberFormat" xml:space="preserve">
-    <value>Invalid number format.</value>
+  <data name="GB" xml:space="preserve">
+    <value>GB</value>
+    <comment>For StringExtensions</comment>
   </data>
   <data name="HttpRequestHasNoBody" xml:space="preserve">
     <value>HttpRequest has no body.</value>
   </data>
-  <data name="EB" xml:space="preserve">
-    <value>EB</value>
+  <data name="Hundred" xml:space="preserve">
+    <value>Hundred</value>
+  </data>
+  <data name="InvalidNumberFormat" xml:space="preserve">
+    <value>Invalid number format.</value>
+  </data>
+  <data name="KB" xml:space="preserve">
+    <value>KB</value>
+    <comment>For StringExtensions</comment>
+  </data>
+  <data name="MB" xml:space="preserve">
+    <value>MB</value>
+    <comment>For StringExtensions</comment>
+  </data>
+  <data name="Million" xml:space="preserve">
+    <value>Million</value>
+  </data>
+  <data name="Minus" xml:space="preserve">
+    <value>Minus</value>
+  </data>
+  <data name="Nine" xml:space="preserve">
+    <value>Nine</value>
+  </data>
+  <data name="Nineteen" xml:space="preserve">
+    <value>Nineteen</value>
+  </data>
+  <data name="Ninety" xml:space="preserve">
+    <value>Ninety</value>
+  </data>
+  <data name="One" xml:space="preserve">
+    <value>One</value>
   </data>
   <data name="PB" xml:space="preserve">
     <value>PB</value>
   </data>
+  <data name="RegexCreditCard" xml:space="preserve">
+    <value>^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$</value>
+  </data>
+  <data name="RegexCurrencyCode" xml:space="preserve">
+    <value>^[a-zA-Z]{3}$</value>
+  </data>
+  <data name="RegexDomain" xml:space="preserve">
+    <value>^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$</value>
+  </data>
+  <data name="RegexEmail" xml:space="preserve">
+    <value>\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</value>
+  </data>
+  <data name="RegexFirstLastName" xml:space="preserve">
+    <value>^[\p{Lu}\p{M}][\p{L}\p{M},.'-]+(?: [\p{L}\p{M},.'-]+)*$</value>
+  </data>
+  <data name="RegexISBN" xml:space="preserve">
+    <value>^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$</value>
+    <comment>ISBN Regex</comment>
+  </data>
+  <data name="RegexOneToSevenAlpha" xml:space="preserve">
+    <value>^[a-zA-Z]{1,7}$</value>
+  </data>
+  <data name="RegexPhoneNumberUS" xml:space="preserve">
+    <value>((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}</value>
+  </data>
+  <data name="REGEXP_US_ZIP_CODE" xml:space="preserve">
+    <value>\d{5}(-\d{4})?</value>
+  </data>
+  <data name="RegexScientific" xml:space="preserve">
+    <value>\b-?[1-9](?:\.\d+)?[Ee][-+]?\d+\b</value>
+  </data>
+  <data name="RegexSSNUS" xml:space="preserve">
+    <value>\d{3}-\d{2}-\d{4}</value>
+  </data>
+  <data name="RegexString" xml:space="preserve">
+    <value>^(\w|\W)+$</value>
+  </data>
+  <data name="RegexUrl" xml:space="preserve">
+    <value>(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;amp;:/~\+#]*[\w\-\@?^=%&amp;amp;/~\+#])?</value>
+  </data>
+  <data name="RegexWindowsFilePath" xml:space="preserve">
+    <value>([A-Z]:\\[^/:\*\?&lt;&gt;\|]+\.\w{2,6})|(\\{2}[^/:\*\?&lt;&gt;\|]+\.\w{2,6})</value>
+  </data>
+  <data name="Seven" xml:space="preserve">
+    <value>Seven</value>
+  </data>
+  <data name="Seventeen" xml:space="preserve">
+    <value>Seventeen</value>
+  </data>
+  <data name="Seventy" xml:space="preserve">
+    <value>Seventy</value>
+  </data>
+  <data name="Six" xml:space="preserve">
+    <value>Six</value>
+  </data>
+  <data name="Sixteen" xml:space="preserve">
+    <value>Sixteen</value>
+  </data>
+  <data name="Sixty" xml:space="preserve">
+    <value>Sixty</value>
+  </data>
+  <data name="StartIndexMustBeLessThanInputLength" xml:space="preserve">
+    <value>{0} + {1} must be &lt;= {2}</value>
+  </data>
   <data name="TB" xml:space="preserve">
     <value>TB</value>
   </data>
+  <data name="Ten" xml:space="preserve">
+    <value>Ten</value>
+  </data>
+  <data name="ThereIsAnIssueDisposingOfTheObjectUsingAsyncDispose" xml:space="preserve">
+    <value>There is an issue disposing of the object using DisposeAsync().</value>
+  </data>
+  <data name="Thirteen" xml:space="preserve">
+    <value>Thirteen</value>
+  </data>
+  <data name="Thirty" xml:space="preserve">
+    <value>Thirty</value>
+  </data>
+  <data name="Thousand" xml:space="preserve">
+    <value>Thousand</value>
+  </data>
+  <data name="Three" xml:space="preserve">
+    <value>Three</value>
+  </data>
+  <data name="TrueLowerCase" xml:space="preserve">
+    <value>true</value>
+  </data>
+  <data name="Twelve" xml:space="preserve">
+    <value>Twelve</value>
+  </data>
+  <data name="Twenty" xml:space="preserve">
+    <value>Twenty</value>
+  </data>
+  <data name="Two" xml:space="preserve">
+    <value>Two</value>
+  </data>
   <data name="ValueMustBeInTheRange13999" xml:space="preserve">
     <value>Value must be in the range 1 - 3999.</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="Zero" xml:space="preserve">
+    <value>Zero</value>
   </data>
 </root>

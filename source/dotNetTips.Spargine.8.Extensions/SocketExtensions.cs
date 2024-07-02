@@ -37,7 +37,7 @@ public static class SocketExtensions
 	/// <param name="socket">The socket.</param>
 	/// <param name="address">The address.</param>
 	/// <returns>System.Int32.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static int BindToAnonymousPort([NotNull] this Socket socket, [NotNull] IPAddress address)
 	{
 		socket.ArgumentNotNull().Bind(new IPEndPoint(address.ArgumentNotNull(), 0));
@@ -52,7 +52,7 @@ public static class SocketExtensions
 	/// </summary>
 	/// <param name="socket">The <see cref="Socket"/> to modify.</param>
 	/// <param name="force">if set to <c>true</c>, the <paramref name="socket"/> is forced into non-blocking mode.</param>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void ForceNonBlocking([NotNull] this Socket socket, bool force)
 	{
 		if (socket.CheckIsNotNull())
@@ -72,7 +72,7 @@ public static class SocketExtensions
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="socket"/> or <paramref name="remoteEndpoint"/> is null.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="millisecondsTimeout"/> is less than 1.</exception>
 	/// <exception cref="PlatformNotSupportedException">Thrown when the operation is not supported on the current platform, specifically non-Windows platforms.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool TryConnect([NotNull] this Socket socket, [NotNull] EndPoint remoteEndpoint, int millisecondsTimeout)
 	{
 		socket = socket.ArgumentNotNull();

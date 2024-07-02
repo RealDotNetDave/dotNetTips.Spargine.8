@@ -4,7 +4,7 @@
 // Created          : 07-05-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 06-27-2024
 // ***********************************************************************
 // <copyright file="LineSplitEnumerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,6 +13,8 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
+
 
 
 
@@ -53,30 +55,26 @@ public ref struct LineSplitEnumerator(ReadOnlySpan<char> input)
 		if (index == -1) // The string is composed of only one line
 		{
 			this._string = ReadOnlySpan<char>.Empty; // The remaining string is an empty string
-
 			this.Current = new LineSplitEntry(span, ReadOnlySpan<char>.Empty);
 
 			return true;
 		}
 
-		if (index < span.Length - 1 && span[index] == '\r')
+		ReadOnlySpan<char> lineEndSpan;
+		var lineEndLength = 1;
+
+		if (index < span.Length - 1 && span[index] == '\r' && span[index + 1] == '\n')
 		{
-			// Try to consume the '\n' associated to the '\r'
-			var next = span[index + 1];
-
-			if (next == '\n')
-			{
-				this.Current = new LineSplitEntry(span[..index], span.Slice(index, 2));
-
-				this._string = span[(index + 2)..];
-
-				return true;
-			}
+			lineEndSpan = span.Slice(index, 2);
+			lineEndLength = 2;
+		}
+		else
+		{
+			lineEndSpan = span.Slice(index, 1);
 		}
 
-		this.Current = new LineSplitEntry(span[..index], span.Slice(index, 1));
-
-		this._string = span[(index + 1)..];
+		this.Current = new LineSplitEntry(span[..index], lineEndSpan);
+		this._string = span[(index + lineEndLength)..];
 
 		return true;
 	}

@@ -42,7 +42,7 @@ public static class MathExtensions
 	/// <param name="second">The second <see cref="TimeSpan" /> value, to compare with the first.</param>
 	/// <returns>The percentage difference between the first and second <see cref="TimeSpan" /> values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CalculatePercent), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static double CalculatePercent(this TimeSpan first, TimeSpan second) => (second.TotalMilliseconds - first.TotalMilliseconds) / Math.Abs(first.TotalMilliseconds) * 100;
 
 	/// <summary>
@@ -52,7 +52,7 @@ public static class MathExtensions
 	/// <param name="second">The second integer value, to compare with the first.</param>
 	/// <returns>The percentage difference between the first and second integer values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CalculatePercent), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static double CalculatePercent(this int first, int second) => (second - first) / Math.Abs(first) * 100;
 
 	/// <summary>
@@ -62,7 +62,7 @@ public static class MathExtensions
 	/// <param name="second">The second double value, to compare with the first.</param>
 	/// <returns>The percentage difference between the first and second double values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CalculatePercent), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static double CalculatePercent(this double first, double second) => (second - first) / Math.Abs(first) * 100;
 
 	/// <summary>
@@ -72,7 +72,7 @@ public static class MathExtensions
 	/// <param name="second">The second long integer value, to compare with the first.</param>
 	/// <returns>The percentage difference between the first and second long integer values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CalculatePercent), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static double CalculatePercent(this long first, long second) => (second - first) / Math.Abs(first) * 100;
 
 	/// <summary>
@@ -83,7 +83,7 @@ public static class MathExtensions
 	/// <remarks>A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
 	/// This method efficiently checks for primality by eliminating divisible numbers early.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsPrime), author: "David McCarter", createdOn: "7/15/2022", UnitTestCoverage = 0, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(IsPrime), author: "David McCarter", createdOn: "7/15/2022", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool IsPrime(this int number)
 	{
 		if (number < 2)
@@ -120,7 +120,7 @@ public static class MathExtensions
 	/// <param name="value">The double value to round.</param>
 	/// <returns>The integer value that is closest to the specified double value.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static int Round(this double value) => Convert.ToInt32(Math.Round(value));
 
 	/// <summary>
@@ -129,7 +129,7 @@ public static class MathExtensions
 	/// <param name="value">The decimal value to round.</param>
 	/// <returns>The integer value that is closest to the specified decimal value.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static int Round(this decimal value) => Convert.ToInt32(Math.Round(value));
 
 	/// <summary>
@@ -139,7 +139,7 @@ public static class MathExtensions
 	/// <param name="digits">The number of fractional digits in the return value.</param>
 	/// <returns>The integer value that is closest to the specified double value, rounded to the specified number of fractional digits.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static int Round(this double value, int digits) => Convert.ToInt32(Math.Round(value, digits));
 
 	/// <summary>
@@ -150,7 +150,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified double value, rounded according to the specified rounding convention.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static int Round(this double value, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
@@ -165,7 +165,7 @@ public static class MathExtensions
 	/// <param name="digits">The number of fractional digits in the return value.</param>
 	/// <returns>The integer value that is closest to the specified decimal value, rounded to the specified number of fractional digits.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static int Round(this decimal value, int digits) => Convert.ToInt32(Math.Round(value, digits));
 
 	/// <summary>
@@ -176,7 +176,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified decimal value, rounded according to the specified rounding convention.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static int Round(this decimal value, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
@@ -193,7 +193,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified double value, rounded to the specified number of fractional digits and according to the specified rounding convention.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static int Round(this double value, int digits, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
@@ -210,7 +210,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified decimal value, rounded to the specified number of fractional digits and according to the specified rounding convention.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static int Round(this decimal value, int digits, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));

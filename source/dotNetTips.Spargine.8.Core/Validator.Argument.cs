@@ -4,7 +4,7 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-12-2024
+// Last Modified On : 06-30-2024
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -68,8 +68,8 @@ public static partial class Validator
 	/// <returns>Enum.</returns>
 	/// <exception cref="ArgumentException">Input cannot be null.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">The value is not defined in the enum type.</exception>
-	[Information(nameof(ArgumentDefined), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentDefined), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static T ArgumentDefined<T>([NotNull] this T input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "") where T : Enum
 	{
 		var isValid = Enum.IsDefined(input.ArgumentNotNull().GetType(), input);
@@ -93,8 +93,8 @@ public static partial class Validator
 	/// <exception cref="ArgumentInvalidException">Validation failed for Input.</exception>
 	/// <exception cref="ArgumentException">Input cannot be null.</exception>
 	/// <exception cref="ArgumentException">Expected Type cannot be null.</exception>
-	[Information(nameof(ArgumentEquals), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentEquals), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static Type ArgumentEquals([NotNull] this Type input, [NotNull] Type expectedType, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		input = input.ArgumentNotNull();
@@ -119,16 +119,13 @@ public static partial class Validator
 	/// <exception cref="ArgumentNullException">Input cannot be null.</exception>
 	/// <exception cref="DirectoryNotFoundException">Directory not found.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentExists), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentExists), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static DirectoryInfo ArgumentExists([NotNull] this DirectoryInfo input, DirectoryInfo? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
-		if (input.CheckIsNotNull() is false)
-		{
-			ExceptionThrower.ThrowArgumentNullException(CreateParamExceptionMessage(errorMessage, paramName, Resources.ErrorArgumentNull));
-		}
+		input = input.ArgumentNotNull();
 
-		var isValid = input!.Exists;
+		var isValid = input.Exists;
 
 		if (isValid is false && defaultValue is not null)
 		{
@@ -136,10 +133,10 @@ public static partial class Validator
 		}
 		else if (isValid is false)
 		{
-			ExceptionThrower.ThrowDirectoryNotFoundException(CreateParamExceptionMessage(errorMessage, paramName, $"{Resources.ErrorDirectoryDoesNotExist} Directory:{input!.FullName}"), input);
+			ExceptionThrower.ThrowDirectoryNotFoundException(CreateParamExceptionMessage(errorMessage, paramName, $"{Resources.ErrorDirectoryDoesNotExist} Directory:{input.FullName}"), input);
 		}
 
-		return input!;
+		return input;
 	}
 
 	/// <summary>
@@ -152,10 +149,12 @@ public static partial class Validator
 	/// <returns>A valid <see cref="FileInfo" /> object.</returns>
 	/// <exception cref="FileNotFoundException">File cannot be found.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentExists), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentExists), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static FileInfo ArgumentExists([NotNull] this FileInfo input, FileInfo? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
+		input = input.ArgumentNotNull();
+
 		var isValid = input.CheckExists();
 
 		if (isValid is false && defaultValue is not null)
@@ -164,10 +163,10 @@ public static partial class Validator
 		}
 		else if (isValid is false)
 		{
-			ExceptionThrower.ThrowFileNotFoundException(CreateParamExceptionMessage(errorMessage, paramName, Resources.ErrorFileNotFound), input!.FullName);
+			ExceptionThrower.ThrowFileNotFoundException(CreateParamExceptionMessage(errorMessage, paramName, Resources.ErrorFileNotFound), input.FullName);
 		}
 
-		return input!;
+		return input;
 	}
 
 	/// <summary>
@@ -180,8 +179,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>System.Byte.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation of lower or upper failed.</exception>
-	[Information(nameof(ArgumentInRange), "David McCarter", "1/29/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentInRange), "David McCarter", "1/29/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static byte ArgumentInRange(this byte input, byte lower = byte.MinValue, byte upper = byte.MaxValue, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
@@ -204,8 +203,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>DateTime.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
-	[Information(nameof(ArgumentInRange), "David McCarter", "1/21/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentInRange), "David McCarter", "1/21/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static DateTime ArgumentInRange(this DateTime input, DateTime lower, DateTime upper, DateTime? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
@@ -233,8 +232,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>DateTimeOffset.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
-	[Information(nameof(ArgumentInRange), "David McCarter", "1/21/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentInRange), "David McCarter", "1/21/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static DateTimeOffset ArgumentInRange(this DateTimeOffset input, DateTimeOffset lower, DateTimeOffset upper, DateTimeOffset? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
@@ -262,8 +261,8 @@ public static partial class Validator
 	/// <param name="errorMessage">The error message to be used in the Exception message.</param>
 	/// <returns>System.Int32.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
-	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static int ArgumentInRange(this int input, int lower = 0, [CallerArgumentExpression(nameof(input))] string paramName = "", int upper = int.MaxValue, int? defaultValue = null, string errorMessage = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
@@ -291,8 +290,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>System.Double.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
-	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static double ArgumentInRange(this double input, double lower = 0, double upper = double.MaxValue, double? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
@@ -320,8 +319,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>System.Int64.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
-	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static long ArgumentInRange(this long input, long lower = 0, long upper = long.MaxValue, long? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
@@ -349,8 +348,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>System.Decimal.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
-	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static decimal ArgumentInRange(this decimal input, decimal lower = 0, decimal upper = decimal.MaxValue, decimal? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
@@ -378,8 +377,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>DateOnly.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
-	[Information(nameof(ArgumentInRange), "David McCarter", "2/15/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentInRange), "David McCarter", "2/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static DateOnly ArgumentInRange(this DateOnly input, DateOnly lower, DateOnly upper, DateOnly? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
@@ -407,8 +406,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>TimeOnly.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
-	[Information(nameof(ArgumentInRange), "David McCarter", "2/15/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentInRange), "David McCarter", "2/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static TimeOnly ArgumentInRange(this TimeOnly input, TimeOnly lower, TimeOnly upper, TimeOnly? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input!.CheckIsInRange(lower, upper);
@@ -440,8 +439,8 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Minimum length is not valid.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Value is not within range.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static string ArgumentInRange([NotNull] this string input, int lower = 0, int upper = int.MaxValue, bool trim = true, string? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsNotNull() && input!.Length.CheckIsInRange(lower, upper);
@@ -468,8 +467,8 @@ public static partial class Validator
 	/// <returns>IEnumerable.</returns>
 	/// <exception cref="ArgumentNullException">Collection is null or has no items.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentItemsExists), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentItemsExists), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static IEnumerable<T> ArgumentItemsExists<T>([NotNull] this IEnumerable<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckItemsExists();
@@ -491,8 +490,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>IReadOnlyList&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Input cannot be empty.</exception>
-	[Information(nameof(ArgumentItemsExists), "David McCarter", "5/25/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentItemsExists), "David McCarter", "5/25/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static IReadOnlyList<T> ArgumentItemsExists<T>(this IReadOnlyList<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckItemsExists();
@@ -514,8 +513,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>IReadOnlyCollection&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Input cannot be empty.</exception>
-	[Information(nameof(ArgumentItemsExists), "David McCarter", "5/27/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentItemsExists), "David McCarter", "5/27/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static IReadOnlyCollection<T> ArgumentItemsExists<T>(this IReadOnlyCollection<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckItemsExists();
@@ -538,8 +537,8 @@ public static partial class Validator
 	/// <returns>IEnumerable.</returns>
 	/// <exception cref="ArgumentNullException">Collection is null or has no items.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentItemsExists), "David McCarter", "2/17/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentItemsExists), "David McCarter", "2/17/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static List<T> ArgumentItemsExists<T>([NotNull] this List<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckItemsExists();
@@ -562,8 +561,8 @@ public static partial class Validator
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">Input cannot be empty.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentItemsExists), "David McCarter", "2/4/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentItemsExists), "David McCarter", "2/4/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static T[] ArgumentItemsExists<T>([NotNull] this T[] input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckItemsExists();
@@ -587,8 +586,8 @@ public static partial class Validator
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed due to invalid count.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentItemsExists), "David McCarter", "4/4/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentItemsExists), "David McCarter", "4/4/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static IEnumerable<T> ArgumentItemsExists<T>([NotNull] this IEnumerable<T> input, long count, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		input = input.ArgumentNotNull();
@@ -617,8 +616,8 @@ public static partial class Validator
 	/// <exception cref="ArgumentNullException">'match' cannot be null or empty.</exception>
 	/// <exception cref="ArgumentInvalidException">Argument not matched.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentMatched), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentMatched), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static string ArgumentMatched([NotNull] this string input, [NotNull] Regex match, bool trim = true, string? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		input = input!.ArgumentNotNullOrEmpty();
@@ -650,8 +649,8 @@ public static partial class Validator
 	/// <returns>T.</returns>
 	/// <exception cref="ArgumentInvalidException">Codition failed.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentMeetsCondition), "David McCarter", "4/4/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentMeetsCondition), "David McCarter", "4/4/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static T ArgumentMeetsCondition<T>(this T input, bool condition, T? defaultValue = default, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input is not null && condition;
@@ -677,8 +676,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>ReadOnlySpan&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Argument is empty.</exception>
-	[Information(nameof(ArgumentNotEmpty), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentNotEmpty), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static ReadOnlySpan<T> ArgumentNotEmpty<T>([NotNull] this ReadOnlySpan<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		if (input.CheckIsNotEmpty() is false)
@@ -698,8 +697,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>Span&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Input is empty.</exception>
-	[Information(nameof(ArgumentNotEmpty), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentNotEmpty), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static Span<T> ArgumentNotEmpty<T>([NotNull] this Span<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		if (input.IsEmpty)
@@ -720,8 +719,8 @@ public static partial class Validator
 	/// <returns>Collections.Generic.Collection&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentNullException">Input cannot be null.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentNotNull), "David McCarter", "10/24/2023", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentNotNull), "David McCarter", "10/24/2023", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 	public static Collection<T> ArgumentNotNull<T>([NotNull] this Collection<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		if (input is null)
@@ -743,8 +742,8 @@ public static partial class Validator
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	/// <exception cref="ArgumentNullException">Input cannot be null.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentNotNull), "David McCarter", "2/10/2021", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentNotNull), "David McCarter", "2/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static T ArgumentNotNull<T>(this T input, T? defaultValue = default, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "") //where T : class
 	{
 		var isValid = input is not null;
@@ -771,8 +770,8 @@ public static partial class Validator
 	/// <returns>Uri.</returns>
 	/// <exception cref="ArgumentNullException">Input cannot be null.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentNotNull), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentNotNull), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static Uri ArgumentNotNull([NotNull] this Uri input, [AllowNull] Uri? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsNotNull();
@@ -798,8 +797,8 @@ public static partial class Validator
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns>Guid.</returns>
 	/// <exception cref="ArgumentInvalidException">Guid cannot be empty.</exception>
-	[Information(nameof(ArgumentNotNullOrEmpty), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentNotNullOrEmpty), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static Guid ArgumentNotNullOrEmpty([NotNull] this Guid input, string errorMessage = "", [AllowNull] Guid? defaultValue = null, [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsNotEmpty();
@@ -833,8 +832,8 @@ public static partial class Validator
 	/// string name = "John Doe";
 	/// name = Validator.ArgumentNotNullOrEmpty(name, trim: true, errorMessage: "Name cannot be empty");
 	/// </code></example>
-	[Information(nameof(ArgumentNotNullOrEmpty), "David McCarter", "6/26/2017", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentNotNullOrEmpty), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static string ArgumentNotNullOrEmpty([NotNull] this string input, bool trim = true, [AllowNull] string? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = string.IsNullOrEmpty(input) is false;
@@ -861,8 +860,8 @@ public static partial class Validator
 	/// <returns>IList&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentReadOnlyException">Input cannot be read-only.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentNotReadOnly), "David McCarter", "1/29/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentNotReadOnly), "David McCarter", "1/29/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static IList<T> ArgumentNotReadOnly<T>(this IList<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input is not null && input.IsReadOnly is false;
@@ -885,8 +884,8 @@ public static partial class Validator
 	/// <returns>ICollection&lt;T&gt;.</returns>
 	/// <exception cref="ArgumentReadOnlyException">Input cannot be read-only.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
-	[Information(nameof(ArgumentNotReadOnly), "David McCarter", "1/28/2022", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ArgumentNotReadOnly), "David McCarter", "1/28/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static ICollection<T> ArgumentNotReadOnly<T>(this ICollection<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input is not null && input!.IsReadOnly is false;

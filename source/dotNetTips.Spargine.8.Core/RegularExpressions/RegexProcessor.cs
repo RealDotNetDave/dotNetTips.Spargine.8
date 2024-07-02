@@ -215,7 +215,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <returns>Regex.</returns>
 	/// <returns>Regex.</returns>
-	[Information(nameof(ContainsFirstLastName), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(ContainsFirstLastName), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool ContainsFirstLastName(string input)
 	{
 		if (input is null)
@@ -231,7 +231,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input contains a word; otherwise, <c>false</c>.</returns>
-	[Information(nameof(ContainsWord), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ContainsWord), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool ContainsWord(string input)
 	{
 		if (input is null)
@@ -247,7 +247,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a credit card number; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsCreditCardNumber), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(IsCreditCardNumber), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsCreditCardNumber(string input)
 	{
 		if (input is null)
@@ -263,7 +263,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a currency code; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsCurrencyCode), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(IsCurrencyCode), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsCurrencyCode(string input)
 	{
 		if (input is null)
@@ -279,7 +279,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is an email address; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsEmailAddress), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(IsEmailAddress), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsEmailAddress(string input)
 	{
 		if (input is null)
@@ -295,7 +295,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a GUID; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsGuid), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(IsGuid), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsGuid(string input)
 	{
 		if (input is null)
@@ -311,7 +311,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is an ISBN; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsISBN), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(IsISBN), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsISBN(string input)
 	{
 		if (input is null)
@@ -327,7 +327,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a MAC address; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsMACAddress), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsMACAddress), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsMACAddress(string input)
 	{
 		if (input is null)
@@ -343,7 +343,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a SHA1 hash; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsSHA1Hash), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsSHA1Hash), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsSHA1Hash(string input)
 	{
 		if (input is null)
@@ -359,7 +359,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a URL; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsUrl), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(IsUrl), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsUrl(string input)
 	{
 		if (input is null)
@@ -375,7 +375,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input contains a URL domain address; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsUrlDomainAddress), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsUrlDomainAddress), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsUrlDomainAddress(string input)
 	{
 		if (input is null)
@@ -391,7 +391,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a valid string; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsValidString), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsValidString), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool IsValidString(string input)
 	{
 		if (input is null)
@@ -408,7 +408,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string.</param>
 	/// <param name="replacement">The replacement string (defaults to "").</param>
 	/// <returns>The modified string.</returns>
-	[Information(nameof(ReplaceCrLf), "David McCarter", "9/28/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(ReplaceCrLf), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static string ReplaceCrLf(string input, string replacement = "")
 	{
 		if (input is null || replacement is null)
@@ -425,7 +425,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string.</param>
 	/// <param name="replacement">The replacement string (defaults to "_").</param>
 	/// <returns>The modified string.</returns>
-	[Information(nameof(ReplaceSpaces), "David McCarter", "3/16/2023", UnitTestCoverage = 100, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ReplaceSpaces), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string ReplaceSpaces(string input, string replacement = "_")
 	{
 		if (input is null || replacement is null)

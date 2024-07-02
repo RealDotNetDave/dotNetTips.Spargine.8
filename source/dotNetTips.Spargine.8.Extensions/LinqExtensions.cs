@@ -36,7 +36,7 @@ public static class LinqExtensions
 	/// <param name="transforms">A params array of functions that represent the transformations to apply to the input query.</param>
 	/// <returns>An <see cref="IQueryable{T}"/> that has been conditionally transformed based on the provided functions.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transforms"/> is null.</exception>
-	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available, UnitTestCoverage = 0)]
+	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
 	public static IQueryable<T> If<T>(this IQueryable<T> input, bool should, params Func<IQueryable<T>, IQueryable<T>>[] transforms)
 	{
 		input = input.ArgumentNotNull();
@@ -55,7 +55,7 @@ public static class LinqExtensions
 	/// <param name="transforms">A params array of functions that represent the transformations to apply to the input sequence.</param>
 	/// <returns>An <see cref="IEnumerable{T}"/> that has been conditionally transformed based on the provided functions.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transforms"/> is null.</exception>
-	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available, UnitTestCoverage = 0)]
+	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
 	public static IEnumerable<T> If<T>(this IEnumerable<T> input, bool should, params Func<IEnumerable<T>, IEnumerable<T>>[] transforms)
 	{
 		input = input.ArgumentNotNull();

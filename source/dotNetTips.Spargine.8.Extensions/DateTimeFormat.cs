@@ -22,7 +22,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Implements the <see cref="Enumeration" />
 /// </summary>
 /// <seealso cref="Enumeration" />
-[Information(nameof(DateTimeFormat), Status = Status.Available, Documentation = "ADD URL")]
+[Information(nameof(DateTimeFormat), Status = Status.NeedsDocumentation)]
 public record DateTimeFormat : Enumeration
 {
 

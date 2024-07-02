@@ -31,7 +31,7 @@ public static class HttpContextExtensions
 	/// </summary>
 	/// <param name="context">The context.</param>
 	/// <returns>System.String.</returns>
-	[Information("Original code from: https://edi.wang/post/2017/10/16/get-client-ip-aspnet-20", "David McCarter", "9/04/2017", UnitTestCoverage = 0, Status = Status.Available)]
+	[Information("Original code from: https://edi.wang/post/2017/10/16/get-client-ip-aspnet-20", "David McCarter", "9/04/2017", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static string GetRemoteIPAddress([NotNull] this HttpContext context) => context.ArgumentNotNull().Connection.RemoteIpAddress.ToString();
 
 }

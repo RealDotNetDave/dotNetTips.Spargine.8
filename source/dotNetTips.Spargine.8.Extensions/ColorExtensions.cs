@@ -32,7 +32,7 @@ public static class ColorExtensions
 	/// <param name="colors">The colors.</param>
 	/// <returns>Color.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">colors - colors</exception>
-	[Information(nameof(Average), "David McCarter", "1/1/2015", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "ADD URL")]
+	[Information(nameof(Average), "David McCarter", "1/1/2015", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
 	public static Color Average([NotNull] this IEnumerable<Color> colors)
 	{
 		colors = colors.ArgumentItemsExists();

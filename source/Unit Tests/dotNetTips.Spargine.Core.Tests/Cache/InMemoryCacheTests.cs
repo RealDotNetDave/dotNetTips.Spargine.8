@@ -174,7 +174,7 @@ public class InMemoryCacheTests
 		var testKey = "testKey";
 		var testValue = "testValue";
 
-		cacheInstance.Cache.Set(testKey, testValue, DateTimeOffset.Now.AddMinutes(5));
+		_ = cacheInstance.Cache.Set(testKey, testValue, DateTimeOffset.Now.AddMinutes(5));
 		cacheInstance.Clear(); // Clearing the cache
 
 		var result = cacheInstance.Cache.Get<string>(testKey);

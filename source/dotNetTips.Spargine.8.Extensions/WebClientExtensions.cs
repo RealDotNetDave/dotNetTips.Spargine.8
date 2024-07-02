@@ -38,7 +38,7 @@ public static class WebClientExtensions
 	/// <returns>An instance of type <typeparamref name="T"/> populated with data from the JSON string; otherwise, null if the JSON data is empty.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="client"/> is null.</exception>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="url"/> is null.</exception>
-	[Information(nameof(ConvertFrom), UnitTestCoverage = 0, Status = Status.Available)]
+	[Information(nameof(ConvertFrom), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static T ConvertFrom<T>([NotNull] this WebClient client, [NotNull] Uri url)
 		where T : class
 	{

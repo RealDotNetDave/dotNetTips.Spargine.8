@@ -16,6 +16,7 @@
 
 
 
+
 namespace DotNetTips.Spargine.Core.Network;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -31,7 +32,7 @@ public static class NetworkHelper
 	///// Checks the network connection.
 	///// </summary>
 	///// <returns>NetworkConnection.</returns>
-	//[Information(nameof(CheckNetworkConnection), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.Available)]
+	//[Information(nameof(CheckNetworkConnection), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	//public static NetworkConnection CheckNetworkConnection()
 	//{
 	//	var bluetooth = false;
