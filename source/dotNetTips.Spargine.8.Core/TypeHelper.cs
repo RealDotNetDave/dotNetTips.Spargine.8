@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 07-03-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -275,7 +275,7 @@ public static class TypeHelper
 	/// to have a parameterless constructor. 
 	/// Original code by: Jeremy Clark
 	/// </remarks>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.None)]
 	public static T Create<T>()
 		where T : class
 	{
@@ -293,7 +293,7 @@ public static class TypeHelper
 	/// <returns>An instance of the specified type.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="paramArray"/> is null.</exception>
 	/// <exception cref="MissingMethodException">Thrown if a matching constructor for the specified parameters is not found.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.None)]
 	public static T Create<T>([NotNull] params object[] paramArray)
 	{
 		var instance = (T)Activator.CreateInstance(typeof(T), args: paramArray);
@@ -308,7 +308,7 @@ public static class TypeHelper
 	/// <param name="instance">The instance to compare against.</param>
 	/// <returns><c>true</c> if <paramref name="value"/> equals <paramref name="instance"/>; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="value"/> or <paramref name="instance"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.None)]
 	public static bool DoesObjectEqualInstance([NotNull] object value, [NotNull] object instance)
 	{
 		var result = ReferenceEquals(value, instance);
@@ -322,7 +322,7 @@ public static class TypeHelper
 	/// <param name="baseType">The base type to find derived types of.</param>
 	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
 	/// <returns>A read-only collection of types that are derived from the specified base type.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Unnecessary)]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] Type baseType, bool classOnly)
 	{
 		var path = Path.GetDirectoryName(AppContext.BaseDirectory);
@@ -337,7 +337,7 @@ public static class TypeHelper
 	/// <param name="baseType">The base type to find derived types of.</param>
 	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
 	/// <returns>A read-only collection of types that are derived from the specified base type.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
 		currentDomain = currentDomain.ArgumentNotNull();
@@ -383,7 +383,7 @@ public static class TypeHelper
 	/// <param name="baseType">The base type to find derived types of.</param>
 	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
 	/// <returns>A read-only collection of types that are derived from the specified base type.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] DirectoryInfo path, SearchOption fileSearchType, [NotNull] Type baseType, bool classOnly)
 	{
 		path = path.ArgumentNotNull();
@@ -442,7 +442,7 @@ public static class TypeHelper
 	/// <returns>An instance of <typeparamref name="T"/> deserialized from the JSON string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="json"/> is null or empty.</exception>
 	/// <exception cref="JsonException">Thrown if the JSON is invalid or the deserialization fails.</exception>
-	[Information(nameof(FromJson), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(FromJson), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Unnecessary)]
 	public static T FromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json)
 		where T : class => JsonSerializer.Deserialize<T>(json);
 
@@ -454,7 +454,7 @@ public static class TypeHelper
 	/// <returns>An instance of <typeparamref name="T"/> deserialized from the JSON file.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
 	/// <exception cref="JsonException">Thrown if the JSON is invalid or the deserialization fails.</exception>
-	[Information(nameof(FromJsonFile), UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available)]
+	[Information(nameof(FromJsonFile), UnitTestStatus = UnitTestStatus.WIP, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static T FromJsonFile<T>([NotNull] FileInfo file)
 		where T : class
 	{
@@ -484,7 +484,7 @@ public static class TypeHelper
 	/// <param name="instance">The instance to compute the hash code for.</param>
 	/// <returns>The computed hash code.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="instance"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static int GetInstanceHashCode([NotNull] object instance)
 	{
 		var hash = instance.ArgumentNotNull().GetType().GetRuntimeProperties().Where(p => p is not null).Select(prop => prop.GetValue(instance)).Where(value => value is not null).Aggregate(-1, (accumulator, value) => accumulator ^ value.GetHashCode());
@@ -514,7 +514,7 @@ public static class TypeHelper
 	/// [LastName, H^hkKhwWggIrUCYbbxiFEJGJM]
 	/// [PostalCode, 86560656].
 	/// </example>
-	[Information(nameof(GetPropertyValues), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineMarch2021")]
+	[Information(nameof(GetPropertyValues), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "http://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<KeyValuePair<string, string>> GetPropertyValues<T>([NotNull] in T input)
 	{
 		_ = input.ArgumentNotNull();
@@ -557,7 +557,7 @@ public static class TypeHelper
 	/// <param name="item">The object to get the type display name for.</param>
 	/// <param name="fullName">If true, the full name of the type is returned; otherwise, the short name is returned.</param>
 	/// <returns>The display name of the type of the specified object.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/31/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/31/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static string GetTypeDisplayName([NotNull] object item, bool fullName = true) => item is null ? null : GetTypeDisplayName(item.GetType(), fullName);
 
 	/// <summary>

@@ -78,7 +78,7 @@ public static class ExceptionExtensions
 	/// <param name="separator">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
 	/// <returns>A string containing all exception messages, separated by the specified separator.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(GetAllMessages), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GetAllMessages), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static string GetAllMessages(this Exception exception, char separator = ControlChars.Comma)
 	{
 		exception = exception.ArgumentNotNull();
@@ -96,7 +96,7 @@ public static class ExceptionExtensions
 	/// <param name="exception">The exception to extract messages and stack traces from.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> where each item is a tuple containing the message and stack trace of an exception.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static ReadOnlyCollection<(string message, string StackTrace)> GetAllMessagesWithStackTrace([NotNull] this Exception exception)
 	{
 		exception = exception.ArgumentNotNull();

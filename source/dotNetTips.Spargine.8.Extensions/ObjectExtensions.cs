@@ -19,6 +19,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Serialization;
 using DotNetTips.Spargine.Extensions.Properties;
@@ -100,7 +101,7 @@ public static class ObjectExtensions
 	/// <remarks>This method serializes the object to JSON using the default serializer settings and then computes the SHA256 hash of the resulting string.
 	/// It is useful for generating a consistent hash for objects that can be serialized to JSON.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ComputeSha256Hash), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ComputeSha256Hash), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static string ComputeSha256Hash([NotNull] this object obj)
 	{
 		obj = obj.ArgumentNotNull();
@@ -135,7 +136,7 @@ public static class ObjectExtensions
 	/// <remarks>This method uses reflection to iterate through all fields of the object. If a field implements <see cref="IDisposable" />,
 	/// it will be disposed. This is useful for cleaning up resources in objects that contain multiple disposable fields.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(DisposeFields), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(DisposeFields), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static void DisposeFields([NotNull] this IDisposable obj)
 	{
 		if (obj is null)
@@ -185,7 +186,7 @@ public static class ObjectExtensions
 	/// <returns><c>true</c> if the property exists; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> or <paramref name="propertyName" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasProperty), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(HasProperty), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static bool HasProperty([NotNull] this object obj, [NotNull] string propertyName)
 	{
 		if (obj is null)
@@ -208,7 +209,7 @@ public static class ObjectExtensions
 	/// <param name="obj">The object whose fields will be initialized. Must not be null.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(InitializeFields), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(InitializeFields), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static void InitializeFields([NotNull] this object obj)
 	{
 		obj = obj.ArgumentNotNull();
@@ -239,7 +240,7 @@ public static class ObjectExtensions
 	/// <param name="obj">The object to check.</param>
 	/// <returns><c>true</c> if the object is null; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsNull), UnitTestStatus = UnitTestStatus.Completed, Status = Status.CheckPerformance, OptimizationStatus = OptimizationStatus.WIP)]
+	[Information(nameof(IsNull), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.WIP)]
 	public static bool IsNull([AllowNull] this object obj) => obj is null;
 
 	/// <summary>
@@ -279,29 +280,71 @@ public static class ObjectExtensions
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
-	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.WIP, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.WIP, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.WIP, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static IDictionary<string, string> PropertiesToDictionary([NotNull] this object obj, [NotNull] string memberName = ControlChars.EmptyString, bool ignoreNulls = true)
 	{
-		obj = obj.ArgumentNotNull();
-
-		var properties = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 		var result = new Dictionary<string, string>();
+		memberName = memberName.ArgumentNotNull();
 
-		//SPAN IS SLOWER
-		foreach (var property in properties)
+		var objectType = obj.ArgumentNotNull().GetType();
+
+		// Reserve a special treatment for specific types by design (like string -that's a list of chars and you don't want to iterate on its items)
+		if (TypeHelper.BuiltInTypeNames.ContainsKey(objectType))
 		{
-			if (!string.IsNullOrEmpty(memberName) && !property.Name.Equals(memberName, StringComparison.Ordinal))
+			result.Add(memberName, obj.ToString());
+			return result;
+		}
+
+		// If the type implements the IEnumerable interface.
+		if (objectType.IsEnumerable())
+		{
+			var itemCount = 0;
+
+			// Loop through the collection using the enumerator strategy and collect all items in the result bag
+			// Note: if the collection is empty it will not return anything about its existence,
+			// because the method is supposed to catch value items not the list itself
+			foreach (var item in (IEnumerable)obj)
 			{
-				continue;
+				var itemId = itemCount++;
+
+				var itemInnerMember = string.Format(CultureInfo.CurrentCulture, $"{{0}}[{{1}}]", memberName, itemId);
+
+				result = result.Concat(item.PropertiesToDictionary(itemInnerMember)).ToDictionary(e => e.Key, e => e.Value);
 			}
 
-			var value = property.GetValue(obj);
-			if (value == null && ignoreNulls)
-			{
-				continue;
-			}
+			return result;
+		}
 
-			result[property.Name] = value?.ToString() ?? string.Empty;
+		// Otherwise go deeper in the object tree.
+		// And foreach object public property collect each value
+		var propertyCollection = objectType.GetProperties().AsReadOnlySpan();
+
+		var newMemberName = string.Empty;
+
+		if (memberName.Length > 0)
+		{
+			newMemberName = $"{memberName}{ControlChars.Dot}";
+		}
+
+		for (var propertyIndex = 0; propertyIndex < propertyCollection.Length; propertyIndex++)
+		{
+			var property = propertyCollection[propertyIndex];
+
+			var ignoreAttribute = property.GetAttribute<JsonIgnoreAttribute>();
+
+			if (ignoreAttribute == null)
+			{
+				var innerObject = property.GetValue(obj, null);
+
+				if (ignoreNulls && innerObject is null)
+				{
+					continue;
+				}
+
+				var innerMember = string.Format(CultureInfo.CurrentCulture, "{0}{1}", newMemberName, property.Name);
+
+				result = result.Concat(innerObject.PropertiesToDictionary(innerMember)).ToDictionary(e => e.Key, e => e.Value);
+			}
 		}
 
 		return result;
@@ -430,7 +473,7 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The <see cref="IDisposable" /> object to dispose.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(TryDispose), UnitTestStatus = UnitTestStatus.Completed, Status = Status.CheckPerformance)]
+	[Information(nameof(TryDispose), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.WIP)]
 	public static void TryDispose([NotNull] this IDisposable obj) => TryDispose(obj.ArgumentNotNull(), false);
 
 	/// <summary>
@@ -440,7 +483,7 @@ public static class ObjectExtensions
 	/// <param name="throwException">Specifies whether to throw an exception if the disposal fails.</param>
 	/// <exception cref="Exception">Thrown if <paramref name="throwException" /> is true and the disposal fails.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(TryDispose), UnitTestStatus = UnitTestStatus.Completed, Status = Status.CheckPerformance)]
+	[Information(nameof(TryDispose), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.WIP)]
 	public static void TryDispose([NotNull] this IDisposable obj, [DoesNotReturnIf(true)] bool throwException)
 	{
 		if (obj is null)

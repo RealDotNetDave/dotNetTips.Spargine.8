@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 07-02-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -286,7 +286,7 @@ public class ArrayExtensionsTests
 
 		people.PerformAction((person) => _ = sb.Append($"{person.ToString()}|"));
 
-		Assert.IsTrue(sb.Length > 100);
+		Assert.IsTrue(sb.Length > 1000);
 	}
 
 	/// <summary>

@@ -4,7 +4,7 @@
 // Created          : 02-27-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 07-02-2024
 // ***********************************************************************
 // <copyright file="Status.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,6 +13,8 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
+
 
 
 
@@ -53,9 +55,4 @@ public enum Status
 	/// Indicates that the code needs documentation.
 	/// </summary>
 	NeedsDocumentation,
-
-	/// <summary>
-	/// Indicates that the performance of the method or class should be checked.
-	/// </summary>
-	CheckPerformance,
 }

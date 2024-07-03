@@ -38,7 +38,7 @@ public static class EnumExtensions
 	/// <param name="input">The enum value to get the description for.</param>
 	/// <returns>The description of the enum value.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input" /> is null.</exception>
-	[Information(nameof(GetDescription), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(GetDescription), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static string GetDescription(this Enum input)
 	{
 		input = input.ArgumentDefined();
@@ -59,7 +59,7 @@ public static class EnumExtensions
 	/// <param name="input">The enumeration to retrieve items from.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}" /> where T is a tuple of string and int, representing the description and value of each enum member.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input" /> is null.</exception>
-	[Information(nameof(GetItems), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(GetItems), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
 	public static ReadOnlyCollection<(string Description, int Value)> GetItems(this Enum input)
 	{
 		var enumType = input.GetType();

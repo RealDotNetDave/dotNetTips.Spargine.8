@@ -4,7 +4,7 @@
 // Created          : 04-13-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2024
+// Last Modified On : 07-02-2024
 // ***********************************************************************
 // <copyright file="ValidatorCheckTests.cs" company="dotNetTips.Spargine.Core.Tests">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -236,7 +236,7 @@ public class ValidatorCheckTests
 		Assert.IsFalse(personProper.CheckIsCondition(personProper.Id.IsEmpty(), errorMessage: "Should be false."));
 
 		Person<Address> nullPerson = null;
-		_ = Assert.ThrowsException<InvalidValueException<object>>(() => nullPerson.CheckIsCondition(personProper.Id.IsNotEmpty(), true));
+		_ = Assert.ThrowsException<ArgumentNullException>(() => nullPerson.CheckIsCondition(personProper.Id.IsNotEmpty(), true));
 	}
 
 	[TestMethod]
@@ -255,7 +255,7 @@ public class ValidatorCheckTests
 		}
 
 		DirectoryInfo nullDirectoryInfo = null;
-		_ = Assert.ThrowsException<NullReferenceException>(() => nullDirectoryInfo.CheckExists(true));
+		_ = Assert.ThrowsException<ArgumentNullException>(() => nullDirectoryInfo.CheckExists(true));
 
 		_ = Assert.ThrowsException<DotNetTips.Spargine.Core.DirectoryNotFoundException>(() => new DirectoryInfo("fakefile").CheckExists(throwException: true));
 	}
@@ -279,7 +279,7 @@ public class ValidatorCheckTests
 		}
 
 		FileInfo nullFileInfo = null;
-		_ = Assert.ThrowsException<NullReferenceException>(() => nullFileInfo.CheckExists(true));
+		_ = Assert.ThrowsException<ArgumentNullException>(() => nullFileInfo.CheckExists(true));
 
 		_ = Assert.ThrowsException<FileNotFoundException>(() => new FileInfo("fakefile").CheckExists(true));
 	}

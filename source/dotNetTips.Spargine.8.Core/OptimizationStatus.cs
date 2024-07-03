@@ -4,7 +4,7 @@
 // Created          : 07-01-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-01-2024
+// Last Modified On : 07-02-2024
 // ***********************************************************************
 // <copyright file="OptimizationStatus.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -14,6 +14,7 @@
 
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
 
 
 
@@ -29,6 +30,11 @@ public enum OptimizationStatus
 	/// Indicates no optimization status has been set.
 	/// </summary>
 	None,
+
+	/// <summary>
+	/// Indicates optimization should be performed.
+	/// </summary>
+	Optimize,
 
 	/// <summary>
 	/// Indicates optimization is unnecessary.

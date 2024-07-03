@@ -4,7 +4,7 @@
 // Created          : 11-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-12-2024
+// Last Modified On : 07-02-2024
 // ***********************************************************************
 // <copyright file="ValidatorArgumentTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -117,7 +117,7 @@ public class ValidatorArgumentTests
 		}
 
 		FileInfo nullFileInfo = null;
-		_ = Assert.ThrowsException<NullReferenceException>(() => nullFileInfo.ArgumentExists());
+		_ = Assert.ThrowsException<ArgumentNullException>(() => nullFileInfo.ArgumentExists());
 
 		_ = Assert.ThrowsException<FileNotFoundException>(() => new FileInfo("fakefile").ArgumentExists());
 

@@ -46,6 +46,15 @@ public class TypeHelperBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(TypeHelper.Create))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void CreateNormal()
+	{
+		var result = TypeHelper.Create<Person<Address>>();
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = "Looping Collection: Normal StringBuilder")]
 	[BenchmarkCategory(Categories.Strings)]
 	public void CreateStringBuilder()
@@ -58,6 +67,24 @@ public class TypeHelperBenchmark : Benchmark
 		}
 
 		this.Consume(sb.ToString());
+	}
+
+	[Benchmark(Description = nameof(TypeHelper.Create) + ": With Parameters")]
+	[BenchmarkCategory(Categories.Strings)]
+	public void CreateWithParameters()
+	{
+		var result = TypeHelper.Create<Person<Address>>("TESTID", "DOTNETDAVE@LIVE.COM");
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(TypeHelper.DoesObjectEqualInstance))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void DoesObjectEqualInstance()
+	{
+		var result = TypeHelper.DoesObjectEqualInstance(this.PersonRef01, this.PersonRef02);
+
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(TypeHelper.FindDerivedTypes))]

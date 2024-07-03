@@ -1076,7 +1076,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method performs an ordinal (case-sensitive and culture-insensitive) comparison.
 	/// </remarks>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static bool StartsWithOrdinal([NotNull] this string input, [NotNull] string inputToCompare)
 	{
 		if (input is null || inputToCompare is null)
@@ -1245,7 +1245,7 @@ public static class StringExtensions
 	/// Optimal: SmHIZyhh8GNIBZIhDJkMBQzFDHoMyUDRXAYAAAAA//8=
 	/// SmallestSize: SmHIZyhh8GNIBZIhDJkMBQzFDHoMyUDRXAYAAAAA//8=
 	/// </example>
-	[Information(nameof(ToDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(ToDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static async Task<string> ToDeflateStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
 	{
 		_ = input.ArgumentNotNull();
@@ -1311,7 +1311,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to trim. If this string is null, an empty string is returned.</param>
 	/// <returns>A trimmed string, or an empty string if the input is null.</returns>
-	[Information(nameof(ToTrimmed), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ToTrimmed), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static string ToTrimmed([AllowNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
