@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-15-2024
 // ***********************************************************************
-// <copyright file="RegistryHelper.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="RegistryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Convenient methods for interacting with the Windows registration database, streamlining access and manipulation tasks.</summary>

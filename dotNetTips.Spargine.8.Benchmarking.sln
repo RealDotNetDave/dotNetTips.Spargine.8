@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{0E1E9F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.8.Benchmarking", "source\Benchmarking\dotNetTips.Spargine.8.Benchmarking\DotNetTips.Spargine.8.Benchmarking.csproj", "{D128470C-62BB-483A-ACAE-300B00361B8D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotNetTips.Spargine.Tester.BenchmarkTests", "source\Benchmarking\dotNetTips.Spargine.Tester.Benchmarking\dotNetTips.Spargine.Tester.BenchmarkTests.csproj", "{2F5484B8-E5F1-4EF8-B09A-7A4AD8707BB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.Tester.BenchmarkTests", "source\Benchmarking\dotNetTips.Spargine.Tester.Benchmarking\DotNetTips.Spargine.Tester.BenchmarkTests.csproj", "{2F5484B8-E5F1-4EF8-B09A-7A4AD8707BB4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTips.Spargine.Core.BenchmarkTests", "source\Benchmarking\dotNetTips.Spargine.Core.BenchmarkTests\DotNetTips.Spargine.Core.BenchmarkTests.csproj", "{4FEB3475-17D4-47CF-840C-ABEF3F7BDC6F}"
 EndProject

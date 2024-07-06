@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 07-02-2024
 // ***********************************************************************
-// <copyright file="EnumerableExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
+// <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>Extension methods for IEnumerable types.</summary>

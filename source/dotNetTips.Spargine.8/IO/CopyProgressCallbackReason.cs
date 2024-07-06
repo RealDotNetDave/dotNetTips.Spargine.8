@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 02-27-2024
 // ***********************************************************************
-// <copyright file="CopyProgressCallbackReason.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="CopyProgressCallbackReason.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Common methods for working with files.</summary>

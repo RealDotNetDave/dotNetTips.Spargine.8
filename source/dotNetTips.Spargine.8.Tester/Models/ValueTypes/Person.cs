@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.8.Tester
+// Assembly         : DotNetTips.Spargine.8.Tester
 // Author           : david
 // Created          : 10-25-2021
 //
 // Last Modified By : david
 // Last Modified On : 05-11-2024
 // ***********************************************************************
-// <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>

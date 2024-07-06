@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 10-22-2023
 // ***********************************************************************
-// <copyright file="EnumItem.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="EnumItem.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
 // </copyright>
 // <summary>

@@ -1,5 +1,5 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.8.Benchmarking
+// Assembly         : DotNetTips.Spargine.8.Benchmarking
 // Author           : David McCarter
 // Created          : 11-13-2021
 //

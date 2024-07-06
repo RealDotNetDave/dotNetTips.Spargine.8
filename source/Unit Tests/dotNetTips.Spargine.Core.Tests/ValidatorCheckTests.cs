@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.Core.Tests
+// Assembly         : DotNetTips.Spargine.Core.Tests
 // Author           : David McCarter
 // Created          : 04-13-2022
 //
 // Last Modified By : David McCarter
 // Last Modified On : 07-02-2024
 // ***********************************************************************
-// <copyright file="ValidatorCheckTests.cs" company="dotNetTips.Spargine.Core.Tests">
+// <copyright file="ValidatorCheckTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -24,7 +23,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
-namespace dotNetTips.Spargine.Core.Tests;
+namespace DotNetTips.Spargine.Core.Tests;
 
 [ExcludeFromCodeCoverage]
 [TestClass]
@@ -257,7 +256,7 @@ public class ValidatorCheckTests
 		DirectoryInfo nullDirectoryInfo = null;
 		_ = Assert.ThrowsException<ArgumentNullException>(() => nullDirectoryInfo.CheckExists(true));
 
-		_ = Assert.ThrowsException<DotNetTips.Spargine.Core.DirectoryNotFoundException>(() => new DirectoryInfo("fakefile").CheckExists(throwException: true));
+		_ = Assert.ThrowsException<DirectoryNotFoundException>(() => new DirectoryInfo("fakefile").CheckExists(throwException: true));
 	}
 
 	[TestMethod]

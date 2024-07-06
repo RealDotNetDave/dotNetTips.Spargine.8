@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.Core.Tests
+// Assembly         : DotNetTips.Spargine.Core.Tests
 // Author           : David McCarter
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
 // Last Modified On : 04-28-2023
 // ***********************************************************************
-// <copyright file="NetworkHelperTests.cs" company="dotNetTips.Spargine.Core.Tests">
+// <copyright file="NetworkHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>

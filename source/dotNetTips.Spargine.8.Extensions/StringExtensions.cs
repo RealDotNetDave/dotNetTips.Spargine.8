@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-19-2024
 // ***********************************************************************
-// <copyright file="StringExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
 // </copyright>
 // <summary>Common String Extensions.</summary>
@@ -151,7 +151,6 @@ public static class StringExtensions
 	/// <param name="args">An array of strings to combine with the initial string. Must not be null.</param>
 	/// <returns>A combined string.</returns>
 	[Information(nameof(Concat), "David McCarter", "1/3/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
-
 	public static string CombineToString([NotNull] this string input, [NotNull] params string[] args) => FastStringBuilder.CombineStrings(false, args.ArgumentNotNull().AddFirst(input.ArgumentNotNull()));
 
 	/// <summary>

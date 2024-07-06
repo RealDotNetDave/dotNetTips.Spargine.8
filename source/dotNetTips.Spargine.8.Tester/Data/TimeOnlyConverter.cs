@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 12-18-2023
 // ***********************************************************************
-// <copyright file="TimeOnlyConverter.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="TimeOnlyConverter.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Converter tailored for TimeOnly.</summary>

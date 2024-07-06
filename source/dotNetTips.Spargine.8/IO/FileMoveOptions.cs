@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-20-2024
 // ***********************************************************************
-// <copyright file="FileMoveOptions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="FileMoveOptions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>File move options for the FileMove method.</summary>

@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.Tests
+// Assembly         : DotNetTips.Spargine.Tests
 // Author           : David McCarter
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
 // Last Modified On : 04-18-2024
 // ***********************************************************************
-// <copyright file="FileProcessorTests.cs" company="dotNetTips.Spargine.Tests">
+// <copyright file="FileProcessorTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
 // </copyright>
 // <summary></summary>

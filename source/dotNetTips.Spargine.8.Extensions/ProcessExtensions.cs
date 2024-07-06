@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-18-2024
 // ***********************************************************************
-// <copyright file="ProcessExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="ProcessExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Extension methods designed for Process.</summary>

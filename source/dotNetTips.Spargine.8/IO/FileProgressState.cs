@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-20-2024
 // ***********************************************************************
-// <copyright file="FileProgressState.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="FileProgressState.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>File progress state values for FileProcessor.cs</summary>

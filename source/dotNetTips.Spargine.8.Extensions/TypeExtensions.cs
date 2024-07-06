@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-14-2024
 // ***********************************************************************
-// <copyright file="TypeExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="TypeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
 // </copyright>
 // <summary>Extension methods for general types.</summary>

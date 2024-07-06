@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.Tests
+// Assembly         : DotNetTips.Spargine.Tests
 // Author           : David McCarter
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
 // Last Modified On : 05-02-2024
 // ***********************************************************************
-// <copyright file="FileHelperTests.cs" company="dotNetTips.Spargine.Tests">
+// <copyright file="FileHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
 // </copyright>
 // <summary></summary>

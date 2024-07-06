@@ -31,7 +31,7 @@
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 		<PackageLicenseUrl></PackageLicenseUrl>
-		<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
 --MAY 2024: Performance improvements.</PackageReleaseNotes>
@@ -41,7 +41,7 @@
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<PublishSingleFile>true</PublishSingleFile>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</RepositoryUrl>
+		<RepositoryUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</RepositoryUrl>
 		<RootNamespace>DotNetTips.Spargine.Tester</RootNamespace>
 		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
 		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
@@ -54,7 +54,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>..\..\AppBin\dotNetTips.Spargine.Tester.xml</DocumentationFile>
+		<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.Tester.xml</DocumentationFile>
 		<OutputPath>..\..\AppBin\</OutputPath>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -65,7 +65,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<OutputPath>..\..\AppBin\</OutputPath>
-		<DocumentationFile>..\..\AppBin\dotNetTips.Spargine.Tester.xml</DocumentationFile>
+		<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.Tester.xml</DocumentationFile>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />

@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.Extensions.Tests
+// Assembly         : DotNetTips.Spargine.Extensions.Tests
 // Author           : David McCarter
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
 // Last Modified On : 02-05-2024
 // ***********************************************************************
-// <copyright file="ImmutableArrayTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
+// <copyright file="ImmutableArrayTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
 // </copyright>
 // <summary></summary>

@@ -4,9 +4,9 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-18-2024
+// Last Modified On : 07-06-2024
 // ***********************************************************************
-// <copyright file="NumericExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
+// <copyright file="NumericExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>Extension methods designed for numbers.</summary>
@@ -32,17 +32,17 @@ public static class NumericExtensions
 	/// <summary>
 	/// The file format sizes
 	/// </summary>
-	private static readonly string[] _fileFormatSizes = { Resources.Bytes, Resources.KB, Resources.MB, Resources.GB, Resources.TB, Resources.PB, Resources.EB };
+	private static readonly string[] _fileFormatSizes = [Resources.Bytes, Resources.KB, Resources.MB, Resources.GB, Resources.TB, Resources.PB, Resources.EB];
 
 	/// <summary>
 	/// The roman numerals
 	/// </summary>
-	private static readonly string[] _romanNumerals = new[] { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+	private static readonly string[] _romanNumerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
 
 	/// <summary>
 	/// The roman values
 	/// </summary>
-	private static readonly int[] _romanValues = new[] { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+	private static readonly int[] _romanValues = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
 
 	/// <summary>
 	/// The string builder pool

@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-17-2024
 // ***********************************************************************
-// <copyright file="DictionaryExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
+// <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>Extension methods for IDictionary types.</summary>

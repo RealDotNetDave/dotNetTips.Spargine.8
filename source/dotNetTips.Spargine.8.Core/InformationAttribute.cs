@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 07-02-2024
 // ***********************************************************************
-// <copyright file="InformationAttribute.cs" company="dotNetTips.Spargine.Core">
+// <copyright file="InformationAttribute.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary>

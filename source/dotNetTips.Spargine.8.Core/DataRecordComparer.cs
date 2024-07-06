@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-21-2024
 // ***********************************************************************
-// <copyright file="DataRecordComparer.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="DataRecordComparer.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Comparer to be used in DataRecord.</summary>

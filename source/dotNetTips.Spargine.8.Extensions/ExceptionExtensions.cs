@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-17-2024
 // ***********************************************************************
-// <copyright file="ExceptionExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="ExceptionExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
 // </copyright>
 // <summary>Extension methods tailored for Exception.</summary>

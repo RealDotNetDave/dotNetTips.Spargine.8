@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.8.Tester
+// Assembly         : DotNetTips.Spargine.8.Tester
 // Author           : David McCarter
 // Created          : 01-16-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-18-2023
+// Last Modified On : 07-06-2024
 // ***********************************************************************
-// <copyright file="TestClass.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="TestClass.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Common methods for TestClasses.</summary>

@@ -33,7 +33,7 @@
 		<LangVersion>latest</LangVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
-		<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
 --MAY 2024: Added CopyFile to FileHelper.</PackageReleaseNotes>
@@ -41,7 +41,7 @@
 		<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</RepositoryUrl>
+		<RepositoryUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</RepositoryUrl>
 		<RootNamespace>DotNetTips.Spargine</RootNamespace>
 		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
 		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
@@ -53,7 +53,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<OutputPath>..\..\AppBin\</OutputPath>
-		<DocumentationFile>..\..\AppBin\dotNetTips.Spargine.8.xml</DocumentationFile>
+		<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.8.xml</DocumentationFile>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />
@@ -61,7 +61,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<OutputPath>..\..\AppBin\</OutputPath>
-		<DocumentationFile>..\..\AppBin\dotNetTips.Spargine.8.xml</DocumentationFile>
+		<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.8.xml</DocumentationFile>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />

@@ -1,13 +1,13 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.6.Tester.Benchmarking
+// Assembly         : DotNetTips.Spargine.Tester.BenchmarkTests
 // Author           : David McCarter
-// Created          : 08-02-2022
+// Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-22-2024
+// Last Modified On : 06-22-2024
 // ***********************************************************************
-// <copyright file="Program.cs" company="dotNetTips.Spargine.Tester.Benchmarking">
-//     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
+// <copyright file="Program.cs" company="dotNetTips.com - McCarter Consulting">
+//     David McCarter
 // </copyright>
 // <summary></summary>
 // ***********************************************************************

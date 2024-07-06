@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 11-07-2023
 // ***********************************************************************
-// <copyright file="HttpResponseHeaderExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="HttpResponseHeaderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Extension methods designed for HttpResponseHeader.</summary>

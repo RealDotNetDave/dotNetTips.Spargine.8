@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 04-01-2022
 // ***********************************************************************
-// <copyright file="NumericFormat.cs" company="dotNetTips.Spargine.8.Extensions">
+// <copyright file="NumericFormat.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>Class that provides common formats for numbers.</summary>

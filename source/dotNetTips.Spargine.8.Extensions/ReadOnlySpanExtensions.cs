@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.8.Extensions
+// Assembly         : DotNetTips.Spargine.8.Extensions
 // Author           : David McCarter
 // Created          : 04-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-19-2024
+// Last Modified On : 07-06-2024
 // ***********************************************************************
-// <copyright file="ReadOnlySpanExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="ReadOnlySpanExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Extension methods designed for ReadOnlySpan.</summary>

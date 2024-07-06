@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.8.Tester
+// Assembly         : DotNetTips.Spargine.8.Tester
 // Author           : David McCarter
 // Created          : 12-29-2020
 //
 // Last Modified By : David McCarter
 // Last Modified On : 02-24-2024
 // ***********************************************************************
-// <copyright file="ICoordinate.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="ICoordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>

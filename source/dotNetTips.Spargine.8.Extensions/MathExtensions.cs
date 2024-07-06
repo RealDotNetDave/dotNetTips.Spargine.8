@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-13-2024
 // ***********************************************************************
-// <copyright file="MathExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="MathExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
 // </copyright>
 // <summary>Extension methods tailored for Math.</summary>

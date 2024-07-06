@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 02-27-2024
 // ***********************************************************************
-// <copyright file="CountryName.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="CountryName.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Enumeration that represents all the countries in the world.</summary>

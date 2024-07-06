@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.Extensions.Tests
+// Assembly         : DotNetTips.Spargine.Extensions.Tests
 // Author           : David McCarter
 // Created          : 06-15-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-29-2023
+// Last Modified On : 07-06-2024
 // ***********************************************************************
-// <copyright file="ReadOnlyCollectionExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
+// <copyright file="ReadOnlyCollectionExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
 // </copyright>
 // <summary></summary>

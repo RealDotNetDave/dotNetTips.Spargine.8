@@ -4,7 +4,7 @@
 // Created          : 11-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-02-2024
+// Last Modified On : 07-06-2024
 // ***********************************************************************
 // <copyright file="ValidatorArgumentTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -21,15 +21,13 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DirectoryNotFoundException = DotNetTips.Spargine.Core.DirectoryNotFoundException;
 
-namespace dotNetTips.Spargine.Core.Tests;
+namespace DotNetTips.Spargine.Core.Tests;
 
 [ExcludeFromCodeCoverage]
 [TestClass]

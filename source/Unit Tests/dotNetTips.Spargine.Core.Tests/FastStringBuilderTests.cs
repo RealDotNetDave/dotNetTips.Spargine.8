@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.Core.Tests
+// Assembly         : DotNetTips.Spargine.Core.Tests
 // Author           : David McCarter
 // Created          : 01-03-2023
 //
 // Last Modified By : David McCarter
 // Last Modified On : 06-03-2024
 // ***********************************************************************
-// <copyright file="FastStringBuilderTests.cs" company="dotNetTips.Spargine.Core.Tests">
+// <copyright file="FastStringBuilderTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>

@@ -4,9 +4,9 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-14-2024
+// Last Modified On : 07-06-2024
 // ***********************************************************************
-// <copyright file="StringExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
+// <copyright file="StringExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -19,8 +19,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using dotNetTips.Spargine.Extensions.Tests.Properties;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Extensions.Tests.Properties;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

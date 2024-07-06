@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-27-2024
 // ***********************************************************************
-// <copyright file="LineSplitEnumerator.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="LineSplitEnumerator.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Class to enumerate a line split.</summary>

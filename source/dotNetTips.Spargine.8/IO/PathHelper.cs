@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-24-2024
 // ***********************************************************************
-// <copyright file="PathHelper.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="PathHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Common methods for path manipulation, encompassing handling invalid filter characters, invalid path names, and path separators.</summary>

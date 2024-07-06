@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-18-2024
 // ***********************************************************************
-// <copyright file="EnumExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="EnumExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
 // </copyright>
 // <summary>Extension methods designed for Enum.</summary>

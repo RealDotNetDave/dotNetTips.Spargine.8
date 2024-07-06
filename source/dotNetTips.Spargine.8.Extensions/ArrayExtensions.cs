@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 07-02-2024
 // ***********************************************************************
-// <copyright file="ArrayExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
+// <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>Extensions methods for the Array type.</summary>

@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 07-06-2024
 // ***********************************************************************
 // <copyright file="XmlSerializationTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -22,7 +22,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
-namespace dotNetTips.Spargine.Core.Tests.Serialization;
+namespace DotNetTips.Spargine.Core.Tests.Serialization;
 
 /// <summary>
 /// Defines test class XmlSerializationTests.

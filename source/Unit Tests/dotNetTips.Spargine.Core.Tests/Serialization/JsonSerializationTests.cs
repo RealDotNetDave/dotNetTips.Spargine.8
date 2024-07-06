@@ -15,7 +15,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Serialization;
 using DotNetTips.Spargine.Core.Tests.Properties;
 using DotNetTips.Spargine.Tester;
@@ -24,7 +23,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
-namespace dotNetTips.Spargine.Core.Tests.Serialization;
+namespace DotNetTips.Spargine.Core.Tests.Serialization;
 
 /// <summary>
 /// Defines test class JsonSerializationTests.

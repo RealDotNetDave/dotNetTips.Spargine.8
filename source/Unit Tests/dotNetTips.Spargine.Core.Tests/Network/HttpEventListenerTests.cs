@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.Core.Tests
+// Assembly         : DotNetTips.Spargine.Core.Tests
 // Author           : David McCarter
 // Created          : 07-11-2022
 //
 // Last Modified By : David McCarter
 // Last Modified On : 08-04-2023
 // ***********************************************************************
-// <copyright file="HttpEventListenerTests.cs" company="dotNetTips.Spargine.Core.Tests">
+// <copyright file="HttpEventListenerTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
 // </copyright>
 // <summary></summary>

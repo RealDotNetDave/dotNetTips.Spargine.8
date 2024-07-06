@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 02-27-2024
 // ***********************************************************************
-// <copyright file="HttpClientExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="HttpClientExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Extension methods tailored for HttpClient.</summary>

@@ -19,9 +19,9 @@ namespace DotNetTips.Spargine.Core.Tests;
 
 /// <summary>
 /// DateTime Format.
-/// Implements the <see cref="dotNetTips.Spargine.Core.Enumeration" />
+/// Implements the <see cref="DotNetTips.Spargine.Core.Enumeration" />
 /// </summary>
-/// <seealso cref="dotNetTips.Spargine.Core.Enumeration" />
+/// <seealso cref="DotNetTips.Spargine.Core.Enumeration" />
 //public class DateTimeFormat : Enumeration
 //{
 

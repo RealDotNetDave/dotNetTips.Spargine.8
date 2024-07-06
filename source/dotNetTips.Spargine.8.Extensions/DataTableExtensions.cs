@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 02-15-2024
 // ***********************************************************************
-// <copyright file="DataTableExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="DataTableExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Extension methods for the DataTable type.</summary>

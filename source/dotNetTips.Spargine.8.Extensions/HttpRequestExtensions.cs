@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 05-02-2024
 // ***********************************************************************
-// <copyright file="HttpRequestExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="HttpRequestExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
 // </copyright>
 // <summary>Extension methods designed for HttpRequest.</summary>

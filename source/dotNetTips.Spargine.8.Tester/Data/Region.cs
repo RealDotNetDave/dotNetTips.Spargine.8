@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 02-27-2024
 // ***********************************************************************
-// <copyright file="Region.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="Region.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Enumeration for all the regions in the world.</summary>

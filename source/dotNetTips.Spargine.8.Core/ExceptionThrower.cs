@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-22-2024
 // ***********************************************************************
-// <copyright file="ExceptionThrower.cs" company="dotNetTips.Spargine.Core">
+// <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary>

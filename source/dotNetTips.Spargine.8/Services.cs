@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-20-2024
 // ***********************************************************************
-// <copyright file="Services.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="Services.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Convenient helper methods for seamless management of Windows services, offering key features such as loading a service, checking its running status, starting and stopping services, and more.</summary>

@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-11-2024
 // ***********************************************************************
-// <copyright file="DateTimeFormat.cs" company="dotNetTips.Spargine.8.Extensions">
+// <copyright file="DateTimeFormat.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>Class that offers common date and time formats.</summary>

@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.8.Tester
+// Assembly         : DotNetTips.Spargine.8.Tester
 // Author           : David McCarter
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
 // Last Modified On : 06-20-2024
 // ***********************************************************************
-// <copyright file="RandomData.cs" company="dotNetTips.Spargine.8.Tester">
+// <copyright file="RandomData.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary>Create random data for unit and benchmark testing.</summary>

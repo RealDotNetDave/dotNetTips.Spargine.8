@@ -6,13 +6,14 @@
 // Last Modified By : David McCarter
 // Last Modified On : 03-29-2023
 // ***********************************************************************
-// <copyright file="AbstractTestType.cs" company="dotNetTips.Spargine.Extensions.Tests">
+// <copyright file="AbstractTestType.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+
 
 namespace DotNetTips.Spargine.Extensions.Tests;
 

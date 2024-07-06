@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-25-2024
 // ***********************************************************************
-// <copyright file="CollectionExtensionsTests.cs" company="dotNetTips.Spargine.Extensions.Tests">
+// <copyright file="CollectionExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>

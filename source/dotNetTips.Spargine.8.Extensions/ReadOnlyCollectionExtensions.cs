@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.8.Extensions
+// Assembly         : DotNetTips.Spargine.8.Extensions
 // Author           : David McCarter
 // Created          : 04-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-12-2024
+// Last Modified On : 07-06-2024
 // ***********************************************************************
-// <copyright file="ReadOnlyCollectionExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="ReadOnlyCollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Extension methods tailored for ReadOnlyCollection.</summary>

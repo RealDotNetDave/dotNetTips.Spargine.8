@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.8.Tester
+// Assembly         : DotNetTips.Spargine.8.Tester
 // Author           : David McCarter
 // Created          : 03-08-2023
 //
 // Last Modified By : David McCarter
 // Last Modified On : 05-29-2024
 // ***********************************************************************
-// <copyright file="PersonJsonSerializerContext.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="PersonJsonSerializerContext.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>

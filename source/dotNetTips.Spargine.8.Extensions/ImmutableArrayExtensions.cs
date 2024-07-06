@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.8.Extensions
+// Assembly         : DotNetTips.Spargine.8.Extensions
 // Author           : David McCarter
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
 // Last Modified On : 06-18-2024
 // ***********************************************************************
-// <copyright file="ImmutableArrayExtensions.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="ImmutableArrayExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Extension methods for the ImmutableArray.</summary>

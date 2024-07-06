@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-02-2024
 // ***********************************************************************
-// <copyright file="RandomDataTests.cs" company="dotNetTips.Spargine.Tester.Tests">
+// <copyright file="RandomDataTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>

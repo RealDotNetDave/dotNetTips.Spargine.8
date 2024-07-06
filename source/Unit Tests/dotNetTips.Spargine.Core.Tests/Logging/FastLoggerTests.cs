@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : dotNetTips.Spargine.Core.Tests
+// Assembly         : DotNetTips.Spargine.Core.Tests
 // Author           : David McCarter
 // Created          : 02-28-2023
 //
 // Last Modified By : David McCarter
 // Last Modified On : 02-15-2024
 // ***********************************************************************
-// <copyright file="FastLoggerTests.cs" company="dotNetTips.Spargine.Core.Tests">
+// <copyright file="FastLoggerTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -20,7 +20,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
-namespace dotNetTips.Spargine.Core.Tests.Logging;
+namespace DotNetTips.Spargine.Core.Tests.Logging;
 
 [ExcludeFromCodeCoverage]
 [TestClass]

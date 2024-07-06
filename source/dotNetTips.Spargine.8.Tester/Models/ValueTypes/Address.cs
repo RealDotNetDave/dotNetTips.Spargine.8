@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 05-08-2024
 // ***********************************************************************
-// <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="Address.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
@@ -36,10 +36,10 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// Implements the <see cref="IAddress" />
 /// </summary>
 /// <seealso cref="IAddress" />
-[DataContract(Name = "address", Namespace = "http://dotNetTips.Spargine.Tester.Models.Val")]
+[DataContract(Name = "address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
 [DebuggerDisplay("{Id}")]
 [Serializable]
-[XmlRoot(ElementName = "Address", Namespace = "http://dotNetTips.Spargine.Tester.Models.Val")]
+[XmlRoot(ElementName = "Address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public struct Address : IAddress, IEquatable<Address>
 {

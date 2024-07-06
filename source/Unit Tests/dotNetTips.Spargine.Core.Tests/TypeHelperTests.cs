@@ -1,23 +1,23 @@
 // ***********************************************************************
 // Assembly         : DotNetTips.Spargine.Core.Tests
 // Author           : David McCarter
-// Created          : 12-17-2020
+// Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-02-2024
+// Last Modified On : 07-06-2024
 // ***********************************************************************
-// <copyright file="TypeHelperTests.cs" company="DotNetTips.Spargine.Core.Tests">
-//     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
+// <copyright file="TypeHelperTests.cs" company="McCarter Consulting">
+//     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
-using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -25,7 +25,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
-namespace dotNetTips.Spargine.Core.Tests;
+namespace DotNetTips.Spargine.Core.Tests;
 
 [ExcludeFromCodeCoverage]
 [TestClass]

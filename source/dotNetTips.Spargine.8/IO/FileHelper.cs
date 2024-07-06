@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-20-2024
 // ***********************************************************************
-// <copyright file="FileHelper.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Common methods for working with files.</summary>

@@ -7,7 +7,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-21-2024
 // ***********************************************************************
-// <copyright file="ConfigStorageLocation.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="ConfigStorageLocation.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Enumeration utilized in Config.</summary>

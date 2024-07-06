@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-18-2024
 // ***********************************************************************
-// <copyright file="HashSetExtensions.cs" company="dotNetTips.Spargine.8.Extensions">
+// <copyright file="HashSetExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>Extension methods for the HashSet type.</summary>

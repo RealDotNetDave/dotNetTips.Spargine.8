@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-21-2024
 // ***********************************************************************
-// <copyright file="ArgumentInvalidException.cs" company="dotNetTips.Spargine.Core">
+// <copyright file="ArgumentInvalidException.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary>Custom exception type for invalid argument value.</summary>
