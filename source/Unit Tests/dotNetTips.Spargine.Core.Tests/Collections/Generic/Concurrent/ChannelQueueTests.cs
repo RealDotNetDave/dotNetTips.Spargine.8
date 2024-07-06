@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-22-2024
 // ***********************************************************************
-// <copyright file="ChannelQueueTests.cs" company="DotNetTips.Spargine.Core.Tests">
+// <copyright file="ChannelQueueTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>

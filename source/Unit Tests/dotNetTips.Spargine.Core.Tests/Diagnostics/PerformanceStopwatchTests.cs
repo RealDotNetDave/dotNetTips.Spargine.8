@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 08-09-2023
 // ***********************************************************************
-// <copyright file="PerformanceStopwatchTests.cs" company="DotNetTips.Spargine.Core.Tests">
+// <copyright file="PerformanceStopwatchTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>

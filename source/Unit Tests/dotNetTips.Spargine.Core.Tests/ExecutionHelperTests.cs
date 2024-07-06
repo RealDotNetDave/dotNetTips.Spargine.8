@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 02-15-2024
 // ***********************************************************************
-// <copyright file="ExecutionHelperTests.cs" company="DotNetTips.Spargine.Core.Tests">
+// <copyright file="ExecutionHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>

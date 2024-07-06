@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-22-2024
 // ***********************************************************************
-// <copyright file="InMemoryCacheTests.cs" company="DotNetTips.Spargine.Core.Tests">
+// <copyright file="InMemoryCacheTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
 // </copyright>
 // <summary></summary>

@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-11-2024
 // ***********************************************************************
-// <copyright file="DriveHelperTests.cs" company="DotNetTips.Spargine.Tests">
+// <copyright file="DriveHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>

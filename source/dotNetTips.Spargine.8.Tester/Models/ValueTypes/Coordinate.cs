@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 02-29-2024
 // ***********************************************************************
-// <copyright file="Coordinate.cs" company="dotNetTips.com - David McCarter">
+// <copyright file="Coordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>

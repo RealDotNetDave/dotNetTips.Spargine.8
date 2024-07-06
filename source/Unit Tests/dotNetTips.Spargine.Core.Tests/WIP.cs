@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 05-05-2023
 // ***********************************************************************
-// <copyright file="WIP.cs" company="DotNetTips.Spargine.Core.Tests">
+// <copyright file="WIP.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>

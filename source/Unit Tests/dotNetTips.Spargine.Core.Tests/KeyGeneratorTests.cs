@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 06-24-2024
 // ***********************************************************************
-// <copyright file="KeyGeneratorTests.cs" company="DotNetTips.Spargine.Core.Tests">
+// <copyright file="KeyGeneratorTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>

@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 07-06-2024
 // ***********************************************************************
-// <copyright file="ValidatorArgumentTests.cs" company="DotNetTips.Spargine.Core.Tests">
+// <copyright file="ValidatorArgumentTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>
