@@ -161,7 +161,7 @@ public static class StringExtensions
 	/// <param name="input">The input string to compute the hash for. Must not be null.</param>
 	/// <param name="hashType">The type of hash algorithm to use, specified by the <see cref="HashType"/> enum. Defaults to <see cref="HashType.SHA256"/>.</param>
 	/// <returns>A string representation of the computed hash.</returns>
-	[Information(nameof(ComputeHash), "David McCarter", "10/8/2020", "1/9/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ComputeHash), "David McCarter", "10/8/2020", "1/9/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string ComputeHash([NotNull] this string input, HashType hashType = HashType.SHA256)
 	{
 		if (input.IsNullOrEmpty())
@@ -196,7 +196,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses the <see cref="SHA256"/> class to compute the hash.
 	/// </remarks>
-	[Information(nameof(ComputeSHA256Hash), "David McCarter", "9/15/2017", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ComputeSHA256Hash), "David McCarter", "9/15/2017", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static string ComputeSHA256Hash([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -223,7 +223,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses the String.Join(string, string[]) method internally to perform the concatenation.
 	/// </remarks>
-	[Information(nameof(Concat), "David McCarter", "9/15/2017", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Concat), "David McCarter", "9/15/2017", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static string Concat([NotNull] this string input, [NotNull] string delimiter, bool addLineFeed, [NotNull] params string[] args)
 	{
 		if (input.IsNullOrEmpty())
@@ -273,7 +273,7 @@ public static class StringExtensions
 	/// <param name="stringComparison">The string comparison option to use. Defaults to <see cref="StringComparison.OrdinalIgnoreCase"/>.</param>
 	/// <param name="characters">The characters to check for in the input string. Must not be null.</param>
 	/// <returns><c>true</c> if the input string contains any of the specified characters; otherwise, <c>false</c>.</returns>
-	[Information(nameof(ContainsAny), "David McCarter", "9/15/2017", "2/9/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ContainsAny), "David McCarter", "9/15/2017", "2/9/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static bool ContainsAny([NotNull] this string input, StringComparison stringComparison = StringComparison.OrdinalIgnoreCase, [NotNull] params string[] characters)
 	{
 		if (input is null || characters.CheckItemsExists() is false)
@@ -335,8 +335,8 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method splits the string based on the specified <paramref name="delimiter"/> using <see cref="string.Split(char[])"/>.
 	/// </remarks>
-	[Information(nameof(DelimitedStringToArray), "David McCarter", "8/13/2020", "8/13/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static string[] DelimitedStringToArray(this string input, char delimiter = ControlChars.Comma)
+	[Information(nameof(DelimitedStringToArray), "David McCarter", "8/13/2020", "8/13/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	public static string[] DelimitedStringToArray([NotNull] this string input, char delimiter = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 
@@ -352,8 +352,8 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses <see cref="string.Equals(string, string, StringComparison)"/> for comparison.
 	/// </remarks>
-	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static bool EqualsIgnoreCase(this string input, string inputToCompare)
+	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
+	public static bool EqualsIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare)
 	{
 		if (input is null || inputToCompare is null)
 		{
@@ -373,8 +373,8 @@ public static class StringExtensions
 	/// This method uses <see cref="string.Equals(string?, string?, StringComparison)"/> with <see cref="StringComparison.Ordinal"/> to perform the comparison.
 	/// </remarks>
 
-	[Information(nameof(EqualsOrBothNullOrEmpty), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static bool EqualsOrBothNullOrEmpty(this string input, string inputToCompare) => string.Equals(input ?? string.Empty, inputToCompare ?? string.Empty, StringComparison.Ordinal);
+	[Information(nameof(EqualsOrBothNullOrEmpty), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	public static bool EqualsOrBothNullOrEmpty([NotNull] this string input, [NotNull] string inputToCompare) => string.Equals(input ?? string.Empty, inputToCompare ?? string.Empty, StringComparison.Ordinal);
 
 	/// <summary>
 	/// Extracts a substring from the input string that is between the start and end strings.
@@ -386,8 +386,8 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method performs a search to find the <paramref name="start"/> and <paramref name="end"/> strings within the <paramref name="input"/> string and then extracts the substring that is between them.
 	/// </remarks>
-	[Information(nameof(Extract), "David McCarter", "10/8/2020", "2/9/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static string Extract(this string input, string start, string end)
+	[Information(nameof(Extract), "David McCarter", "10/8/2020", "2/9/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	public static string Extract([NotNull] this string input, [NotNull] string start, [NotNull] string end)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		start = start.ArgumentNotNullOrEmpty();
@@ -407,8 +407,8 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method decodes the string using <see cref="Convert.FromBase64String(string)"/> and then converts the byte array to a string using <see cref="Encoding.UTF8"/>.
 	/// </remarks>
-	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
-	public static string FromBase64(this string input)
+	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
+	public static string FromBase64([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
 		{
@@ -678,7 +678,7 @@ public static class StringExtensions
 	/// </code>
 	/// This will indent each line of <c>myText</c> by four spaces.
 	/// </example>
-	[Information(nameof(Indent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Indent), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static string Indent([NotNull] this string input, int length, char indentationCharacter)
 	{
 		if (input.CheckIsNotNull() is false || length <= 0)
@@ -956,7 +956,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method is useful for normalizing text that uses ellipses.
 	/// </remarks>
-	[Information(nameof(ReplaceEllipsisWithPeriod), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ReplaceEllipsisWithPeriod), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static string ReplaceEllipsisWithPeriod([NotNull] this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty(true);
@@ -978,7 +978,7 @@ public static class StringExtensions
 	/// <param name="options">Options for controlling the splitting operation.</param>
 	/// <param name="separator">The character to use as a separator. <see cref="ControlChars.Comma"/> is the default.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -998,7 +998,7 @@ public static class StringExtensions
 	/// <param name="count">The maximum number of substrings to return.</param>
 	/// <param name="separator">The character to use as a separator. Defaults to <see cref="ControlChars.Comma"/>.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{String}"/> of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.NeedsDocumentation)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1019,7 +1019,7 @@ public static class StringExtensions
 	/// <param name="count">The maximum number of substrings to return.</param>
 	/// <param name="separator">The string to use as a separator. Defaults to <see cref="ControlChars.DefaultSeparator"/>.</param>
 	/// <returns>A ReadOnlyCollection{string} of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull] string separator = ControlChars.DefaultSeparator)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1039,7 +1039,7 @@ public static class StringExtensions
 	/// It is particularly useful for processing multi-line strings.
 	/// </remarks>
 	[return: NotNull]
-	[Information(nameof(SplitLines), "David McCarter", "6/9/2022", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(SplitLines), "David McCarter", "6/9/2022", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static LineSplitEnumerator SplitLines([NotNull] this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1057,7 +1057,7 @@ public static class StringExtensions
 	/// This method uses <see cref="string.Split(char[], StringSplitOptions)"/> internally with <see cref="StringSplitOptions.RemoveEmptyEntries"/> to remove empty entries.
 	/// </remarks>
 	[return: NotNull]
-	[Information(nameof(SplitRemoveEmpty), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(SplitRemoveEmpty), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static ReadOnlyCollection<string> SplitRemoveEmpty([NotNull] this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1116,7 +1116,7 @@ public static class StringExtensions
 	/// <param name="length">The number of characters in the substring.</param>
 	/// <returns>A string that is equivalent to the substring of length <paramref name="length"/> that begins at <paramref name="startIndex"/> in this instance, but with whitespace trimmed from both ends. If <paramref name="startIndex"/> plus <paramref name="length"/> indicates a position not within this instance, or if <paramref name="length"/> is less than zero, this method returns a <see cref="string.Empty"/>.</returns>
 	[return: NotNull]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
 	public static string SubstringTrim(this string input, int startIndex, int length)
 	{
 		if (input.IsNullOrEmpty())
@@ -1144,23 +1144,7 @@ public static class StringExtensions
 			return string.Empty;
 		}
 
-		var endIndex = startIndex + length - 1;
-
-		while ((startIndex <= endIndex) && char.IsWhiteSpace(input[startIndex]))
-		{
-			startIndex++;
-		}
-
-		while ((endIndex >= startIndex) && char.IsWhiteSpace(input[endIndex]))
-		{
-			endIndex--;
-		}
-
-		var newLength = endIndex - startIndex + 1;
-
-		var condition = newLength == input.Length ? input : input.Substring(startIndex, newLength);
-
-		return newLength == 0 ? string.Empty : condition;
+		return input.Substring(startIndex, length).Trim();
 	}
 
 	/// <summary>
@@ -1168,7 +1152,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to encode. This string cannot be null.</param>
 	/// <returns>A <see cref="string"/> representing the Base64 encoded form of the input string.</returns>
-	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.NeedsDocumentation)]
+	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.NeedsDocumentation)]
 	public static string ToBase64([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1224,12 +1208,13 @@ public static class StringExtensions
 	/// <param name="input">The string to convert. This string cannot be null.</param>
 	/// <param name="encoding">The encoding to use for the conversion. This cannot be null. See <see cref="Encoding"/> for encoding types.</param>
 	/// <returns>A byte array representing the encoded string.</returns>
-	[Information(nameof(ToByteArray), "David McCarter", "12/21/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(ToByteArray), "David McCarter", "12/21/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static byte[] ToByteArray([NotNull] this string input, [NotNull] Encoding encoding)
 	{
 		input = input.ArgumentNotNullOrEmpty();
+		encoding = encoding.ArgumentNotNull();
 
-		return encoding?.GetBytes(input);
+		return encoding.GetBytes(input);
 	}
 
 	/// <summary>
@@ -1296,7 +1281,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to convert to title case. This string cannot be null.</param>
 	/// <returns>A string converted to title case using <see cref="CultureInfo.CurrentCulture"/> rules.</returns>
-	[Information(nameof(ToTitleCase), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ToTitleCase), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string ToTitleCase([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1312,7 +1297,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to trim. If this string is null, an empty string is returned.</param>
 	/// <returns>A trimmed string, or an empty string if the input is null.</returns>
-	[Information(nameof(ToTrimmed), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
+	[Information(nameof(ToTrimmed), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.NeedsDocumentation)]
 	public static string ToTrimmed([AllowNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
