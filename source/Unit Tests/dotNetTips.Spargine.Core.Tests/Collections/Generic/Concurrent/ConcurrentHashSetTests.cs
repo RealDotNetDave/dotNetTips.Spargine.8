@@ -40,6 +40,52 @@ public class ConcurrentHashSetTests
 	}
 
 	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void CopyTo_NullArray_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
+
+		// Act
+		((ICollection<string>)set).CopyTo(null, 0);
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentOutOfRangeException))]
+	public void CopyTo_NegativeArrayIndex_ThrowsArgumentOutOfRangeException()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
+		string[] array = new string[3];
+
+		// Act
+		((ICollection<string>)set).CopyTo(array, -1);
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
+	public void CopyTo_ArrayIndexCorrect_CopiesExpectedElements()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
+		string[] array = new string[5]; // Larger than set, with offset
+
+		// Act
+		((ICollection<string>)set).CopyTo(array, 2);
+
+		// Assert
+		Assert.IsNull(array[0]);
+		Assert.IsNull(array[1]);
+		CollectionAssert.Contains(array, "one");
+		CollectionAssert.Contains(array, "two");
+		CollectionAssert.Contains(array, "three");
+	}
+
+
+	[TestMethod]
 	public void Add_MultipleUniqueItems_IncreasesCountCorrectly()
 	{
 		var hashSet = new ConcurrentHashSet<int>();
