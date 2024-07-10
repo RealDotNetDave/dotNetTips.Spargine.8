@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-19-2024
+// Last Modified On : 07-10-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -999,7 +999,7 @@ public static class StringExtensions
 	/// <param name="count">The maximum number of substrings to return.</param>
 	/// <param name="separator">The character to use as a separator. Defaults to <see cref="ControlChars.Comma"/>.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{String}"/> of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1020,7 +1020,7 @@ public static class StringExtensions
 	/// <param name="count">The maximum number of substrings to return.</param>
 	/// <param name="separator">The string to use as a separator. Defaults to <see cref="ControlChars.DefaultSeparator"/>.</param>
 	/// <returns>A ReadOnlyCollection{string} of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull] string separator = ControlChars.DefaultSeparator)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1058,7 +1058,7 @@ public static class StringExtensions
 	/// This method uses <see cref="string.Split(char[], StringSplitOptions)"/> internally with <see cref="StringSplitOptions.RemoveEmptyEntries"/> to remove empty entries.
 	/// </remarks>
 	[return: NotNull]
-	[Information(nameof(SplitRemoveEmpty), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(SplitRemoveEmpty), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static ReadOnlyCollection<string> SplitRemoveEmpty([NotNull] this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1168,7 +1168,8 @@ public static class StringExtensions
 	/// Converts the specified string to its Base64 encoded form.
 	/// </summary>
 	/// <param name="input">The string to encode. This string cannot be null.</param>
-	/// <returns>A <see cref="string"/> representing the Base64 encoded form of the input string.</returns>	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020",  UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	/// <returns>A <see cref="string"/> representing the Base64 encoded form of the input string.</returns>
+	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string ToBase64([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1194,7 +1195,7 @@ public static class StringExtensions
 	/// Optimal: iw0A+I+UrMG9dHJoJzwdrIKg1dYDoCSJKErYXLOsvkcYAw==
 	/// SmallestSize: iw0A+I+UrMG9dHJoJzwdrIKg1dYDoCSJKErYXLOsvkcYAw==
 	/// </example>
-	[Information(nameof(ToBrotliStringAsync), "David McCarter", "10/24/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(ToBrotliStringAsync), "David McCarter", "10/24/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
 	public static async Task<string> ToBrotliStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
 	{
 		var inputStream = new MemoryStream(Encoding.Unicode.GetBytes(input.ArgumentNotNull()));
@@ -1246,7 +1247,7 @@ public static class StringExtensions
 	/// Optimal: SmHIZyhh8GNIBZIhDJkMBQzFDHoMyUDRXAYAAAAA//8=
 	/// SmallestSize: SmHIZyhh8GNIBZIhDJkMBQzFDHoMyUDRXAYAAAAA//8=
 	/// </example>
-	[Information(nameof(ToDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
+	[Information(nameof(ToDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
 	public static async Task<string> ToDeflateStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
 	{
 		_ = input.ArgumentNotNull();

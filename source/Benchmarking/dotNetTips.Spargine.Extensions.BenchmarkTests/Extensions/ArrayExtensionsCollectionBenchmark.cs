@@ -37,6 +37,27 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	private Person<Address>[] _personRefArray;
 	private Spargine.Tester.Models.ValueTypes.Person<Spargine.Tester.Models.ValueTypes.Address>[] _personValArray;
 
+	[Benchmark(Description = nameof(ArrayExtensions.AddFirst) + " : Reference")]
+	[BenchmarkCategory(Categories.ReferenceType)]
+	public void AddFirst_Ref()
+	{
+		var people = this._personRefArray;
+
+		var result = people.AddFirst(this.PersonRef01);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ArrayExtensions.AddLast) + " : Reference")]
+	[BenchmarkCategory(Categories.ReferenceType)]
+	public void AddLast_Ref()
+	{
+		var people = this._personRefArray;
+
+		var result = people.AddLast(this.PersonRef02);
+
+		this.Consume(result);
+	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.AreEqual) + ": as Reference")]
 	[BenchmarkCategory(Categories.ReferenceType)]
@@ -366,6 +387,28 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		}
 
 		this.Consume(sb.ToString());
+	}
+
+	[Benchmark(Description = nameof(ArrayExtensions.RemoveFirst) + " : Reference")]
+	[BenchmarkCategory(Categories.ReferenceType)]
+	public void RemoveFirst_Ref()
+	{
+		var people = this._personRefArray;
+
+		var result = people.RemoveFirst();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ArrayExtensions.RemoveLast) + " : Reference")]
+	[BenchmarkCategory(Categories.ReferenceType)]
+	public void RemoveLast_Ref()
+	{
+		var people = this._personRefArray;
+
+		var result = people.RemoveLast();
+
+		this.Consume(result);
 	}
 
 	public override void Setup()

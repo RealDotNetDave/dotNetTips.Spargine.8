@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-06-2024
+// Last Modified On : 07-10-2024
 // ***********************************************************************
 // <copyright file="StringExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -543,6 +543,37 @@ public class StringExtensionsTests
 	}
 
 	[TestMethod]
+	public void Split_WithCountGreaterThanNumberOfParts_ShouldIncludeAllParts()
+	{
+		// Arrange
+		var input = "one,two,three";
+		var separator = ',';
+		var expected = new[] { "one", "two", "three" };
+
+		// Act
+		var result = input.Split(StringSplitOptions.None, 5, separator);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result);
+	}
+
+
+	[TestMethod]
+	public void Split_WithCountLessThanNumberOfParts_ShouldSplitCorrectly()
+	{
+		// Arrange
+		var input = "one,two,three,four";
+		var separator = ',';
+		var expected = new[] { "one", "two", "three,four" };
+
+		// Act
+		var result = input.Split(StringSplitOptions.None, 3, separator);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result);
+	}
+
+	[TestMethod]
 	public void Split_WithCustomSeparatorTest()
 	{
 		// Arrange
@@ -572,6 +603,71 @@ public class StringExtensionsTests
 	}
 
 	[TestMethod]
+	public void Split_WithEmptyInputAndRemoveEmptyEntries_ReturnsEmptyArray()
+	{
+		// Arrange
+		var input = string.Empty;
+		var separator = ",";
+		var count = 3;
+
+		// Act
+		var result = input.Split(StringSplitOptions.RemoveEmptyEntries, count, separator);
+
+		// Assert
+		Assert.AreEqual(0, result.Count, "An empty array should be returned when input is empty and RemoveEmptyEntries is specified.");
+	}
+
+	[TestMethod]
+	public void Split_WithMultipleCalls_ReturnsConsistentResults()
+	{
+		// Arrange
+		var input = "alpha|beta|gamma|delta";
+		var separator = "|";
+		var count = 2;
+		var expectedFirstCall = new[] { "alpha", "beta|gamma|delta" };
+		var expectedSecondCall = new[] { "alpha", "beta|gamma|delta" };
+
+		// Act
+		var resultFirstCall = input.Split(StringSplitOptions.None, count, separator);
+		var resultSecondCall = input.Split(StringSplitOptions.None, count, separator);
+
+		// Assert
+		CollectionAssert.AreEqual(expectedFirstCall, resultFirstCall, "First call should return the expected result.");
+		CollectionAssert.AreEqual(expectedSecondCall, resultSecondCall, "Second call should return the same result as the first call.");
+	}
+
+	[TestMethod]
+	public void Split_WithMultipleSeparators_ShouldSplitCorrectly()
+	{
+		// Arrange
+		var input = "one,two;three|four";
+		var separators = new[] { ',', ';', '|' };
+		var expected = new[] { "one", "two", "three", "four" };
+
+		// Act
+		var result = input.Split(separators, StringSplitOptions.None);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result);
+	}
+
+	[TestMethod]
+	public void Split_WithNoMatchingSeparator_ReturnsOriginalString()
+	{
+		// Arrange
+		var input = "one two three";
+		var separator = ",";
+		var count = 3;
+		var expected = new[] { "one two three" };
+
+		// Act
+		var result = input.Split(StringSplitOptions.None, count, separator);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result, "The original string should be returned as a single element array.");
+	}
+
+	[TestMethod]
 	public void Split_WithOptionsNoneTest()
 	{
 		// Arrange
@@ -585,6 +681,36 @@ public class StringExtensionsTests
 		CollectionAssert.AreEqual(expected, result.ToArray(), "The split strings should match the expected array, including empty entries.");
 	}
 
+	[TestMethod]
+	public void Split_WithOptionsRemoveEmptyEntries_RemovesEmptyEntries()
+	{
+		// Arrange
+		var input = "one,,two,,,three";
+		var separator = ",";
+		var count = 5;
+		var expected = new[] { "one", "two", "three" };
+
+		// Act
+		var result = input.Split(StringSplitOptions.RemoveEmptyEntries, count, separator);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result, "Empty entries should be removed from the result.");
+	}
+
+	[TestMethod]
+	public void Split_WithOptionsRemoveEmptyEntries_ShouldRemoveEmptyEntries()
+	{
+		// Arrange
+		var input = "one,,two,,";
+		var separator = ',';
+		var expected = new[] { "one", "two" };
+
+		// Act
+		var result = input.Split(StringSplitOptions.RemoveEmptyEntries, 3, separator);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result);
+	}
 
 
 	[TestMethod]
@@ -599,6 +725,37 @@ public class StringExtensionsTests
 
 		// Assert
 		CollectionAssert.AreEqual(expected, result.ToArray(), "The split strings should match the expected array, removing empty entries.");
+	}
+
+	[TestMethod]
+	public void Split_WithSeparatorAndCount_SplitsCorrectly()
+	{
+		// Arrange
+		var input = "one,two,three,four";
+		var separator = ",";
+		var count = 3;
+		var expected = new[] { "one", "two", "three,four" };
+
+		// Act
+		var result = input.Split(StringSplitOptions.None, count, separator);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result, "The input string should be split into the expected parts.");
+	}
+
+	[TestMethod]
+	public void Split_WithSingleSeparator_ShouldSplitCorrectly()
+	{
+		// Arrange
+		var input = "one,two,three";
+		var separator = ',';
+		var expected = new[] { "one", "two", "three" };
+
+		// Act
+		var result = input.Split(StringSplitOptions.None, 3, separator);
+
+		// Assert
+		CollectionAssert.AreEqual(expected, result);
 	}
 
 	[TestMethod]
