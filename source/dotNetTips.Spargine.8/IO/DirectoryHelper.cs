@@ -365,7 +365,7 @@ public static class DirectoryHelper
 	/// Console.WriteLine($"Directory contains matching files: {containsFiles}");
 	/// </code></example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeDirectorySearch), "David McCarter", "6/14/2021", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2022")]
+	[Information(nameof(SafeDirectorySearch), "David McCarter", "6/14/2021", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2022")]
 	public static bool SafeDirectorySearch([NotNull] DirectoryInfo path, SearchOption searchOption = SearchOption.TopDirectoryOnly, [NotNull] params string[] searchPatterns)
 	{
 		path = path.ArgumentExists();

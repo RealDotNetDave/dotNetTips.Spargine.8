@@ -60,7 +60,7 @@ public static class RegistryHelper
 	/// }
 	/// </code>
 	/// </example>
-	[Information(nameof(GetRegistryKey), "David McCarter", "9/10/2020", "9/10/2020", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None)]
+	[Information(nameof(GetRegistryKey), "David McCarter", "9/10/2020", "9/10/2020", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired)]
 	public static RegistryKey GetRegistryKey([NotNull] string keyName, [NotNull] RegistryHive registryKeyType)
 	{
 		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) is false)

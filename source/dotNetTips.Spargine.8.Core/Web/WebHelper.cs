@@ -56,7 +56,7 @@ public static class WebHelper
 	/// This method adds a "CLIENTID" header to the request if <paramref name="clientId"/> is provided and not "NONE".
 	/// Ensure proper disposal of the task to avoid resource leaks.
 	/// </remarks>
-	[Information(nameof(DownloadStringAsync), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(DownloadStringAsync), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static async Task<string> DownloadStringAsync([NotNull] Uri address, string clientId = "NONE")
 	{
 		address = address.ArgumentNotNull();

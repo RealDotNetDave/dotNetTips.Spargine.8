@@ -203,7 +203,7 @@ public static class FileHelper
 	/// Console.WriteLine($"Copied file length: {fileLength}");
 	/// </code>
 	/// </example>
-	[Information(nameof(CopyFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(CopyFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static long CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
 		var fileName = file.ArgumentExists().FullName;

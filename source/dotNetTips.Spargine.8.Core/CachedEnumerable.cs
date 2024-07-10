@@ -57,7 +57,7 @@ public static class CachedEnumerable
 /// <remarks>
 /// This type implements <see cref="IDisposable"/>. Make sure to call Dispose or use the 'using' statement to release resources when done.
 /// </remarks>
-[Information(nameof(CachedEnumerable<T>), BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+[Information(nameof(CachedEnumerable<T>), Status = Status.Available)]
 public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable<T>, IDisposable
 {
 

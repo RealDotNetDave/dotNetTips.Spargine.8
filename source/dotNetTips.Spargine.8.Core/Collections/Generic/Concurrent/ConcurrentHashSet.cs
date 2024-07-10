@@ -204,7 +204,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// Returns an enumerator that iterates through a collection.
 	/// </summary>
 	/// <returns>An <see cref="IEnumerator"></see> object that can be used to iterate through the collection.</returns>
-	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	IEnumerator<T> IEnumerable<T>.GetEnumerator() => this.GetEnumerator();
 
 	/// <summary>

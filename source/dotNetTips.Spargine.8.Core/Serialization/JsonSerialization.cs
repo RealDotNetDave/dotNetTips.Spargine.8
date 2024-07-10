@@ -151,7 +151,7 @@ public static class JsonSerialization
 	/// <param name="file">The file containing the JSON content to deserialize.</param>
 	/// <returns>An instance of <typeparamref name="TResult" /> deserialized from the JSON content in the file.</returns>
 	/// <exception cref="FileNotFoundException">Thrown if the specified file does not exist.</exception>
-	[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : class
 	{
 		if (file.Exists is false)
@@ -202,7 +202,7 @@ public static class JsonSerialization
 	/// <param name="file">The file information where the JSON content will be written.</param>
 	/// <exception cref="ArgumentNullException">Thrown if the input object or file is null.</exception>
 	/// <remarks>This method ensures that all directories and subdirectories in the specified path are created unless they already exist before writing the JSON content.</remarks>
-	[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void SerializeToFile([NotNull] object obj, [NotNull] FileInfo file)
 	{
 		obj = obj.ArgumentNotNull();

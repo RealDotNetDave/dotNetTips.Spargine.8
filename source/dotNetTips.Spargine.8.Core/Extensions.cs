@@ -194,7 +194,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <typeparam name="TValue">The type of the value.</typeparam>
 	/// <param name="dictionary">The dictionary.</param>
 	/// <returns>ReadOnlyCollection&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;.</returns>
-	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.None)]
+	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/6/2023")]
 	internal static ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary)
 	{
 		// Convert the dictionary to a list of KeyValuePair

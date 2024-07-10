@@ -58,7 +58,7 @@ public static class XmlSerialization
 	/// <param name="file">The file containing the XML to deserialize.</param>
 	/// <returns>An instance of the specified type containing the deserialized data from the file.</returns>
 	/// <exception cref="FileNotFoundException">Thrown if the specified file does not exist.</exception>
-	[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : class
 	{
 		file = file.ArgumentNotNull();
@@ -101,7 +101,7 @@ public static class XmlSerialization
 	/// <param name="obj">The object to serialize.</param>
 	/// <param name="file">The file to write the XML to.</param>
 	/// <exception cref="ArgumentNullException">Thrown if any parameter is null.</exception>
-	[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void SerializeToFile([NotNull] object obj, [NotNull] FileInfo file)
 	{
 		obj = obj.ArgumentNotNull();
@@ -128,7 +128,7 @@ public static class XmlSerialization
 	/// <param name="input">The input string to convert.</param>
 	/// <returns>An XDocument instance representing the XML content of the input string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the input parameter is null or empty.</exception>
-	[Information(nameof(StringToXDocument), "David McCarter", "9/9/2020", "9/9/2020", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None)]
+	[Information(nameof(StringToXDocument), "David McCarter", "9/9/2020", "9/9/2020", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired)]
 	public static XDocument StringToXDocument([NotNull] string input) => StringToXDocument(input.ArgumentNotNullOrEmpty(), null);
 
 	/// <summary>
@@ -138,7 +138,7 @@ public static class XmlSerialization
 	/// <param name="resolver">The XML resolver to use during conversion.</param>
 	/// <returns>An XDocument instance representing the XML content of the input string.</returns>
 	/// <remarks>Uses DtdProcessing.Prohibit to enhance security.</remarks>
-	[Information(nameof(StringToXDocument), "David McCarter", "9/9/2020", "9/9/2020", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None)]
+	[Information(nameof(StringToXDocument), "David McCarter", "9/9/2020", "9/9/2020", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired)]
 	public static XDocument StringToXDocument([NotNull] string input, [AllowNull] XmlResolver resolver)
 	{
 		using (var stringReader = new StringReader(input.ArgumentNotNullOrEmpty()))
