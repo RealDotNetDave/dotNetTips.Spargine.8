@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-02-2024
+// Last Modified On : 07-10-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -77,7 +77,8 @@ public static class ObjectExtensions
 	/// <param name="obj">The object to convert.</param>
 	/// <returns>The converted object of type <typeparamref name="T" />.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
-	[Information(nameof(As), OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(As), OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T As<T>([NotNull] this object obj)
 	{
 		return (T)obj.ArgumentNotNull();
@@ -92,7 +93,7 @@ public static class ObjectExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
 	/// <remarks>This method serializes the object to JSON and then deserializes it back to create a deep copy.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Clone), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(Clone), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
 	public static T Clone<T>([NotNull] this object obj) => FromJson<T>(obj.ArgumentNotNull().ToJson());
 
 	/// <summary>
@@ -104,7 +105,7 @@ public static class ObjectExtensions
 	/// <remarks>This method serializes the object to JSON using the default serializer settings and then computes the SHA256 hash of the resulting string.
 	/// It is useful for generating a consistent hash for objects that can be serialized to JSON.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ComputeSha256Hash), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Complete, BenchMarkStatus = BenchMarkStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(ComputeSha256Hash), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string ComputeSha256Hash([NotNull] this object obj)
 	{
 		obj = obj.ArgumentNotNull();
@@ -139,7 +140,7 @@ public static class ObjectExtensions
 	/// <remarks>This method uses reflection to iterate through all fields of the object. If a field implements <see cref="IDisposable" />,
 	/// it will be disposed. This is useful for cleaning up resources in objects that contain multiple disposable fields.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(DisposeFields), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(DisposeFields), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static void DisposeFields([NotNull] this IDisposable obj)
 	{
 		if (obj is null)
@@ -179,7 +180,7 @@ public static class ObjectExtensions
 	/// <returns>An instance of <typeparamref name="TResult" /> deserialized from the JSON string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="json" /> is null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FromJson), "David McCarter", "4/21/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(FromJson), "David McCarter", "4/21/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static TResult FromJson<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] this string json) => JsonSerialization.Deserialize<TResult>(json.ArgumentNotNullOrEmpty());
 
 	/// <summary>
@@ -190,7 +191,7 @@ public static class ObjectExtensions
 	/// <returns><c>true</c> if the property exists; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> or <paramref name="propertyName" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasProperty), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(HasProperty), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool HasProperty([NotNull] this object obj, [NotNull] string propertyName)
 	{
 		if (obj is null)
@@ -424,7 +425,7 @@ public static class ObjectExtensions
 	/// <returns>A JSON string representation of <paramref name="obj" />.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToJson), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ToJson), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	[return: NotNull]
 	public static string ToJson([NotNull] this object obj) => JsonSerializer.Serialize(obj.ArgumentNotNull(), _options);
 
@@ -436,7 +437,7 @@ public static class ObjectExtensions
 	/// <returns>A <see cref="SimpleResult{T}" /> containing the JSON string representation of <paramref name="obj" /> if serialization is successful; otherwise, contains the exception.</returns>
 	/// <exception cref="NotSupportedException">Thrown if serialization is not supported for the object.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToJson), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
+	[Information(nameof(ToJson), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 	public static SimpleResult<string> ToJson([NotNull] this object obj, [AllowNull] JsonSerializerOptions options = null)
 	{
 		obj = obj.ArgumentNotNull();
@@ -462,7 +463,7 @@ public static class ObjectExtensions
 	/// <remarks>This method serializes the object to a JSON string using the default JsonSerializerOptions and writes it to the specified file.
 	/// If the file already exists, it will be overwritten.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToJsonFile), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ToJsonFile), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static void ToJsonFile([NotNull] this object obj, [NotNull] FileInfo file)
 	{
 		file = file.ArgumentNotNull();
@@ -487,7 +488,7 @@ public static class ObjectExtensions
 	/// <param name="throwException">Specifies whether to throw an exception if the disposal fails.</param>
 	/// <exception cref="Exception">Thrown if <paramref name="throwException" /> is true and the disposal fails.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(TryDispose), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.WIP, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(TryDispose), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.WIP, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void TryDispose([NotNull] this IDisposable obj, [DoesNotReturnIf(true)] bool throwException)
 	{
 		if (obj is null)
