@@ -48,7 +48,7 @@ public class NumericExtensionsTests : TestClass
 		long bytes = -1024;
 
 		// Act and Assert
-		Assert.ThrowsException<ArgumentException>(() => bytes.BytesToMegabytes(), "Converting negative bytes should throw ArgumentException.");
+		Assert.ThrowsException<ArgumentOutOfRangeException>(() => bytes.BytesToMegabytes(), "Converting negative bytes should throw ArgumentException.");
 	}
 
 	[TestMethod]

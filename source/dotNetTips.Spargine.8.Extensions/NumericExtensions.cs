@@ -100,6 +100,8 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	[Information(nameof(BytesToMegabytes), "David McCarter", "7/9/2024", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New, Documentation = "ADD URL")]
 	public static double BytesToMegabytes(this long bytes)
 	{
+		bytes = bytes.ArgumentInRange(0);
+
 		return bytes / 1048576.0; // 1024 * 1024
 	}
 

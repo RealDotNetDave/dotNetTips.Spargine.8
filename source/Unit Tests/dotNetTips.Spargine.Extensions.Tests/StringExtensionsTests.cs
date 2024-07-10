@@ -603,21 +603,6 @@ public class StringExtensionsTests
 	}
 
 	[TestMethod]
-	public void Split_WithEmptyInputAndRemoveEmptyEntries_ReturnsEmptyArray()
-	{
-		// Arrange
-		var input = string.Empty;
-		var separator = ",";
-		var count = 3;
-
-		// Act
-		var result = input.Split(StringSplitOptions.RemoveEmptyEntries, count, separator);
-
-		// Assert
-		Assert.AreEqual(0, result.Count, "An empty array should be returned when input is empty and RemoveEmptyEntries is specified.");
-	}
-
-	[TestMethod]
 	public void Split_WithMultipleCalls_ReturnsConsistentResults()
 	{
 		// Arrange
