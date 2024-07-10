@@ -146,7 +146,7 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the values in the dictionary, which must implement <see cref="IDisposable"/> if they are to be disposed.</typeparam>
 	/// <param name="collection">The dictionary containing the items to dispose.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Information(nameof(DisposeCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(DisposeCollection), "David McCarter", "11/21/2020", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> collection)
 	{
 		if (collection.HasItems())

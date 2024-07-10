@@ -94,7 +94,7 @@ public static class WebHelper
 	/// This method is useful for validating whether a given URI points to a resource on the same server,
 	/// which can be important for security and resource access decisions.
 	/// </remarks>
-	[Information(nameof(IsLocalUri), author: "David McCarter", createdOn: "9/12/2020", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(IsLocalUri), author: "David McCarter", createdOn: "9/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static bool IsLocalUri([NotNull] string path, [NotNull] HttpRequest request)
 	{
 		path = path.ArgumentNotNullOrEmpty(true);
@@ -102,9 +102,7 @@ public static class WebHelper
 
 		if (Uri.TryCreate(path, UriKind.Absolute, out var absoluteUri))
 		{
-			var validHostName = string.Equals(request.Host.ToUriComponent(), absoluteUri.Host, StringComparison.OrdinalIgnoreCase);
-
-			return validHostName;
+			return string.Equals(request.Host.ToUriComponent(), absoluteUri.Host, StringComparison.OrdinalIgnoreCase);
 		}
 		else
 		{
