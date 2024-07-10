@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 07-10-2024
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -193,78 +193,6 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 		: this(concurrencyLevel, capacity, false, comparer)
 	{
 	}
-
-	/// <summary>
-	/// Adds an item to the <see cref="ConcurrentHashSet{T}"/>.
-	/// </summary>
-	/// <param name="item">The item to add to the set. The value cannot be null.</param>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
-	void ICollection<T>.Add([NotNull] T item)
-	{
-		if (item is null)
-		{
-			ExceptionThrower.ThrowArgumentNullException(nameof(item));
-		}
-
-		_ = this.Add(item);
-	}
-
-	/// <summary>
-	/// Copies the elements of the <see cref="ConcurrentHashSet{T}"/> to an array, starting at a particular array index.
-	/// </summary>
-	/// <param name="array">The one-dimensional array that is the destination of the elements copied from <see cref="ConcurrentHashSet{T}"/>. The array must have zero-based indexing.</param>
-	/// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> is null.</exception>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="arrayIndex"/> is less than 0.</exception>
-	/// <exception cref="ArgumentException">Thrown if the number of elements in the source <see cref="ConcurrentHashSet{T}"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.</exception>
-	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
-	void ICollection<T>.CopyTo([NotNull] T[] array, int arrayIndex)
-	{
-		array = array.ArgumentItemsExists(nameof(array));
-
-		var locksAcquired = 0;
-
-		try
-		{
-			this.AcquireAllLocks(ref locksAcquired);
-
-			var count = 0;
-
-			for (var lockCount = 0; lockCount < this._tables._locks.Length && count >= 0; lockCount++)
-			{
-				count += this._tables._countPerLock[lockCount];
-			}
-
-			// "count" itself or "count + arrayIndex" can overflow
-			if (array.Length - count < arrayIndex || count < 0)
-			{
-				ExceptionThrower.ThrowArgumentInvalidException(Resources.TheIndexIsEqualToOrGreaterThanTheLengthOfInput, nameof(array));
-			}
-
-			this.CopyToItems(array, arrayIndex);
-		}
-		finally
-		{
-			this.ReleaseLocks(0, locksAcquired);
-		}
-	}
-
-	/// <summary>
-	/// Removes the specified item from the <see cref="ConcurrentHashSet{T}"/>.
-	/// </summary>
-	/// <param name="item">The item to remove.</param>
-	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>. This method also returns <c>false</c> if the item was not found in the original <see cref="ConcurrentHashSet{T}"/>.</returns>
-	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
-	bool ICollection<T>.Remove([NotNull] T item) => this.TryRemove(item);
-
-	/// <summary>
-	/// Gets a value indicating whether the <see cref="ConcurrentHashSet{T}"/> is read-only.
-	/// </summary>
-	/// <value>
-	/// Always returns <c>false</c>, as <see cref="ConcurrentHashSet{T}"/> is not a read-only collection.
-	/// </value>
-	bool ICollection<T>.IsReadOnly => false;
 
 	/// <summary>
 	/// Returns an enumerator that iterates through the <see cref="ConcurrentHashSet{T}"/>.
@@ -651,15 +579,20 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	}
 
 	/// <summary>
-	/// Adds an item to the <see cref="ConcurrentHashSet{T}"/> if it does not already exist.
+	/// Adds an item to the <see cref="ConcurrentHashSet{T}"/>.
 	/// </summary>
-	/// <param name="item">The item to add to the <see cref="ConcurrentHashSet{T}"/>. Cannot be null.</param>
-	/// <returns><c>true</c> if the item was successfully added to the <see cref="ConcurrentHashSet{T}"/>, <c>false</c> otherwise.</returns>
-	/// <remarks>
-	/// This method ensures thread-safety during the add operation and will acquire the necessary locks to prevent data corruption.
-	/// </remarks>
-	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
-	public bool Add([NotNull] T item) => this.AddInternal(item.ArgumentNotNull(), this._comparer.GetHashCode(item), acquireLock: true);
+	/// <param name="item">The item to add to the set. The value cannot be null.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	public void Add([NotNull] T item)
+	{
+		if (item is null)
+		{
+			ExceptionThrower.ThrowArgumentNullException(nameof(item));
+		}
+
+		_ = this.AddInternal(item, this._comparer.GetHashCode(item), false);
+	}
 
 	/// <summary>
 	/// Removes all items from the <see cref="ConcurrentHashSet{T}"/>.
@@ -721,6 +654,46 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	}
 
 	/// <summary>
+	/// Copies the elements of the <see cref="ConcurrentHashSet{T}"/> to an array, starting at a particular array index.
+	/// </summary>
+	/// <param name="array">The one-dimensional array that is the destination of the elements copied from <see cref="ConcurrentHashSet{T}"/>. The array must have zero-based indexing.</param>
+	/// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> is null.</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="arrayIndex"/> is less than 0.</exception>
+	/// <exception cref="ArgumentException">Thrown if the number of elements in the source <see cref="ConcurrentHashSet{T}"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.</exception>
+	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	public void CopyTo([NotNull] T[] array, int arrayIndex)
+	{
+		array = array.ArgumentItemsExists(nameof(array));
+
+		var locksAcquired = 0;
+
+		try
+		{
+			this.AcquireAllLocks(ref locksAcquired);
+
+			var count = 0;
+
+			for (var lockCount = 0; lockCount < this._tables._locks.Length && count >= 0; lockCount++)
+			{
+				count += this._tables._countPerLock[lockCount];
+			}
+
+			// "count" itself or "count + arrayIndex" can overflow
+			if (array.Length - count < arrayIndex || count < 0)
+			{
+				ExceptionThrower.ThrowArgumentInvalidException(Resources.TheIndexIsEqualToOrGreaterThanTheLengthOfInput, nameof(array));
+			}
+
+			this.CopyToItems(array, arrayIndex);
+		}
+		finally
+		{
+			this.ReleaseLocks(0, locksAcquired);
+		}
+	}
+
+	/// <summary>
 	/// Returns an enumerator that iterates through the <see cref="ConcurrentHashSet{T}"/>.
 	/// </summary>
 	/// <returns>An <see cref="IEnumerator{T}"/> for the <see cref="ConcurrentHashSet{T}"/>.</returns>
@@ -743,20 +716,27 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	}
 
 	/// <summary>
-	/// Attempts to remove an item from the <see cref="ConcurrentHashSet{T}"/>.
+	/// Removes the specified item from the <see cref="ConcurrentHashSet{T}"/>.
 	/// </summary>
-	/// <param name="item">The item to remove. Cannot be null.</param>
+	/// <param name="item">The item to remove.</param>
+	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>. This method also returns <c>false</c> if the item was not found in the original <see cref="ConcurrentHashSet{T}"/>.</returns>
+	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	public bool Remove([NotNull] T item) => this.TryRemove(item);
+
+	/// <summary>
+	/// Attempts to remove the specified item from the <see cref="ConcurrentHashSet{T}"/>.
+	/// </summary>
+	/// <param name="item">The item to remove.</param>
 	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	/// <remarks>
+	/// This method is thread-safe and may be used concurrently with other operations on the <see cref="ConcurrentHashSet{T}"/>.
+	/// </remarks>
 	[DefaultValue(true)]
 	[Information(nameof(TryRemove), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public bool TryRemove([NotNull] T item)
 	{
-
-		if (item is null)
-		{
-			return false;
-		}
+		item = item.ArgumentNotNull();
 
 		var hashCode = this._comparer.GetHashCode(item);
 
@@ -869,6 +849,14 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 			return true;
 		}
 	}
+
+	/// <summary>
+	/// Gets a value indicating whether the <see cref="ConcurrentHashSet{T}"/> is read-only.
+	/// </summary>
+	/// <value>
+	/// Always returns <c>false</c>, as <see cref="ConcurrentHashSet{T}"/> is not a read-only collection.
+	/// </value>
+	public bool IsReadOnly => false;
 
 	/// <summary>
 	/// Represents a node within the <see cref="ConcurrentHashSet{T}"/>.

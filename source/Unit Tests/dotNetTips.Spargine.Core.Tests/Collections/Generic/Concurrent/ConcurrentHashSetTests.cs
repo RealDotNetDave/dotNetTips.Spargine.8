@@ -4,7 +4,7 @@
 // Created          : 12-06-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 07-10-2024
 // ***********************************************************************
 // <copyright file="ConcurrentHashSetTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -14,6 +14,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -28,64 +29,6 @@ public class ConcurrentHashSetTests
 {
 
 	[TestMethod]
-	public void Add_DuplicateItem_ReturnsFalse()
-	{
-		var hashSet = new ConcurrentHashSet<int>();
-		bool firstAddResult = hashSet.Add(1);
-		bool secondAddResult = hashSet.Add(1); // Attempt to add duplicate
-
-		Assert.IsTrue(firstAddResult, "First add should succeed.");
-		Assert.IsFalse(secondAddResult, "Second add of a duplicate item should return false.");
-		Assert.AreEqual(1, hashSet.Count, "Count should be 1 after attempting to add a duplicate item.");
-	}
-
-	[TestMethod]
-	[ExpectedException(typeof(ArgumentNullException))]
-	public void CopyTo_NullArray_ThrowsArgumentNullException()
-	{
-		// Arrange
-		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
-
-		// Act
-		((ICollection<string>)set).CopyTo(null, 0);
-
-		// Assert is handled by ExpectedException
-	}
-
-	[TestMethod]
-	[ExpectedException(typeof(ArgumentOutOfRangeException))]
-	public void CopyTo_NegativeArrayIndex_ThrowsArgumentOutOfRangeException()
-	{
-		// Arrange
-		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
-		string[] array = new string[3];
-
-		// Act
-		((ICollection<string>)set).CopyTo(array, -1);
-
-		// Assert is handled by ExpectedException
-	}
-
-	[TestMethod]
-	public void CopyTo_ArrayIndexCorrect_CopiesExpectedElements()
-	{
-		// Arrange
-		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
-		string[] array = new string[5]; // Larger than set, with offset
-
-		// Act
-		((ICollection<string>)set).CopyTo(array, 2);
-
-		// Assert
-		Assert.IsNull(array[0]);
-		Assert.IsNull(array[1]);
-		CollectionAssert.Contains(array, "one");
-		CollectionAssert.Contains(array, "two");
-		CollectionAssert.Contains(array, "three");
-	}
-
-
-	[TestMethod]
 	public void Add_MultipleUniqueItems_IncreasesCountCorrectly()
 	{
 		var hashSet = new ConcurrentHashSet<int>();
@@ -97,8 +40,6 @@ public class ConcurrentHashSetTests
 		Assert.AreEqual(10, hashSet.Count, "Count should reflect the number of unique items added.");
 	}
 
-
-
 	[TestMethod]
 	public void Add_NullItem_ThrowsArgumentNullException()
 	{
@@ -107,28 +48,30 @@ public class ConcurrentHashSetTests
 	}
 
 	[TestMethod]
-	public void Add_WithComparer_DuplicatesNotAdded()
+	public void AddAndRemove_Concurrent_DifferentItems()
 	{
-		var comparer = StringComparer.OrdinalIgnoreCase;
-		var hashSet = new ConcurrentHashSet<string>(comparer);
+		var set = new ConcurrentHashSet<int>();
+		int itemsToAdd = 50;
+		int itemsToRemove = 25;
+		var addTasks = new List<Task>();
+		var removeTasks = new List<Task>();
 
-		bool firstAddResult = hashSet.Add("test");
-		bool secondAddResult = hashSet.Add("TEST");
+		for (int i = 0; i < itemsToAdd; i++)
+		{
+			var localI = i;
+			addTasks.Add(Task.Run(() => set.Add(localI)));
+		}
 
-		Assert.IsTrue(firstAddResult, "First add should succeed.");
-		Assert.IsFalse(secondAddResult, "Second add should fail due to case-insensitive comparison.");
-		Assert.AreEqual(1, hashSet.Count, "Hash set should contain only one item due to the custom comparer.");
-	}
+		for (int i = 0; i < itemsToRemove; i++)
+		{
+			var localI = i;
+			removeTasks.Add(Task.Run(() => set.TryRemove(localI)));
+		}
 
-	[TestMethod]
-	public void AddTest()
-	{
-		var people = new ConcurrentHashSet<Person<Address>>(RandomData.GeneratePersonRefCollection<Address>(100));
+		Task.WaitAll(addTasks.ToArray());
+		Task.WaitAll(removeTasks.ToArray());
 
-		var result = people.Add(RandomData.GeneratePersonRef<Address>());
-
-		Assert.IsTrue(result);
-		Assert.IsTrue(people.Count == 101);
+		Assert.AreEqual(itemsToAdd - itemsToRemove, set.Count, "Count should reflect the number of items added minus the number of items removed.");
 	}
 
 	[TestMethod]
@@ -365,6 +308,51 @@ public class ConcurrentHashSetTests
 	}
 
 	[TestMethod]
+	public void CopyTo_ArrayIndexCorrect_CopiesExpectedElements()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
+		string[] array = new string[5]; // Larger than set, with offset
+
+		// Act
+		((ICollection<string>)set).CopyTo(array, 2);
+
+		// Assert
+		Assert.IsNull(array[0]);
+		Assert.IsNull(array[1]);
+		CollectionAssert.Contains(array, "one");
+		CollectionAssert.Contains(array, "two");
+		CollectionAssert.Contains(array, "three");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentOutOfRangeException))]
+	public void CopyTo_NegativeArrayIndex_ThrowsArgumentOutOfRangeException()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
+		string[] array = new string[3];
+
+		// Act
+		((ICollection<string>)set).CopyTo(array, -1);
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void CopyTo_NullArray_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
+
+		// Act
+		((ICollection<string>)set).CopyTo(null, 0);
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
 	public void Count_AfterAddingDuplicateItem_RemainsUnchanged()
 	{
 		var hashSet = new ConcurrentHashSet<int> { 1, 2, 3 };
@@ -415,21 +403,6 @@ public class ConcurrentHashSetTests
 	}
 
 	[TestMethod]
-	public void DefaultConstructorTest()
-	{
-		var hashSet = new ConcurrentHashSet<int>();
-
-		// Verify the hashSet is empty upon initialization
-		Assert.AreEqual(0, hashSet.Count, "Count should be 0 for a newly initialized ConcurrentHashSet.");
-		Assert.IsTrue(hashSet.IsEmpty, "IsEmpty should be true for a newly initialized ConcurrentHashSet.");
-
-		// Verify that the hashSet can have items added after being initialized with the default constructor
-		bool addResult = hashSet.Add(1);
-		Assert.IsTrue(addResult, "Should be able to add an item to the ConcurrentHashSet initialized with the default constructor.");
-		Assert.AreEqual(1, hashSet.Count, "Count should reflect the number of items added.");
-	}
-
-	[TestMethod]
 	public void GetEnumerator_ExplicitInterfaceImplementation_EnumeratesAllItems()
 	{
 		var hashSet = new ConcurrentHashSet<int> { 1, 2, 3 };
@@ -462,6 +435,21 @@ public class ConcurrentHashSetTests
 	}
 
 	[TestMethod]
+	public void IsEmpty_AfterRemovingAllItems_ReturnsTrue()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
+
+		// Act
+		set.Remove("one");
+		set.Remove("two");
+		set.Remove("three");
+
+		// Assert
+		Assert.IsTrue(set.IsEmpty);
+	}
+
+	[TestMethod]
 	public void IsEmpty_NewSet_ReturnsTrue()
 	{
 		var hashSet = new ConcurrentHashSet<int>();
@@ -476,6 +464,95 @@ public class ConcurrentHashSetTests
 		Assert.IsFalse(((ICollection<int>)hashSet).IsReadOnly, "IsReadOnly should always return false for ConcurrentHashSet.");
 	}
 
+	[TestMethod]
+	public void Remove_Concurrent_Removals_ShouldDecreaseCountCorrectly()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<int>();
+		int itemsToAdd = 1000;
+		for (int i = 0; i < itemsToAdd; i++)
+		{
+			set.Add(i);
+		}
+		var tasks = new List<Task>();
+
+		// Act
+		for (int i = 0; i < itemsToAdd; i++)
+		{
+			var localI = i;
+			tasks.Add(Task.Run(() => set.Remove(localI)));
+		}
+		Task.WaitAll(tasks.ToArray());
+
+		// Assert
+		Assert.AreEqual(0, set.Count);
+	}
+
+
+	[TestMethod]
+	public void Remove_ExistingItem_ReturnsTrueAndRemovesItem()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
+
+		// Act
+		bool result = set.Remove("two");
+
+		// Assert
+		Assert.IsTrue(result, "Expected Remove to return true for existing item.");
+		Assert.IsFalse(set.Contains("two"), "Expected item to be removed from the set.");
+	}
+
+	[TestMethod]
+	public void Remove_NonExistingItem_ReturnsFalse()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
+
+		// Act
+		bool result = set.Remove("four");
+
+		// Assert
+		Assert.IsFalse(result, "Expected Remove to return false for non-existing item.");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void Remove_NullItem_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<string> { "one", "two", "three" };
+
+		// Act
+		set.Remove(null);
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
+	public void TryRemove_Concurrent_SameItem_MultipleThreads()
+	{
+		var set = new ConcurrentHashSet<int> { 1 };
+		int numberOfRemovalAttempts = 100;
+		var tasks = new List<Task<bool>>();
+		int successfulRemovals = 0;
+
+		for (int i = 0; i < numberOfRemovalAttempts; i++)
+		{
+			tasks.Add(Task.Run(() => set.TryRemove(1)));
+		}
+
+		Task.WaitAll(tasks.ToArray());
+
+		foreach (var task in tasks)
+		{
+			if (task.Result)
+				successfulRemovals++;
+		}
+
+		Assert.AreEqual(1, successfulRemovals, "Only one thread should successfully remove the item.");
+		Assert.IsTrue(set.IsEmpty, "Set should be empty after successful removal.");
+	}
 
 	[TestMethod]
 	public void TryRemove_ExistingItem_ReturnsTrueAndRemovesItem()
@@ -497,15 +574,13 @@ public class ConcurrentHashSetTests
 	}
 
 	[TestMethod]
-	public void TryRemove_NullItem_ReturnsFalse()
+	public void TryRemove_NullItem_ThrowsArgumentNullException()
 	{
-		var hashSet = new ConcurrentHashSet<string> { "a", "b", "c" };
-		bool result = hashSet.TryRemove(null);
+		// Arrange
+		var set = new ConcurrentHashSet<string>();
 
-		// Adjust the assertion based on whether your implementation allows nulls or not.
-		// If nulls are allowed and expected to be found, use Assert.IsTrue(result);
-		// If nulls are not allowed or expected not to be found, use Assert.IsFalse(result);
-		Assert.IsFalse(result, "TryRemove should return false for a null item, depending on whether nulls are allowed.");
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => set.TryRemove(null));
 	}
 
 
