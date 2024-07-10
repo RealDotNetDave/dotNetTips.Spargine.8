@@ -206,7 +206,6 @@ public static class FileHelper
 	[Information(nameof(CopyFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static long CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
-		//TODO: ADD TO BENCHMARKING TESTS. THEN TRY OPTIMIZE.
 		var fileName = file.ArgumentExists().FullName;
 
 		if (destination.ArgumentNotNull().CheckExists(throwException: true))
@@ -262,7 +261,6 @@ public static class FileHelper
 	[Information(nameof(CopyFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static bool CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, [NotNull] CopyProgressRoutine progressCallback)
 	{
-		//TODO: ADD TO BENCHMARKING TESTS. THEN TRY OPTIMIZE.
 		file = file.ArgumentNotNull();
 		destination = destination.ArgumentNotNull();
 		progressCallback = progressCallback.ArgumentNotNull();
@@ -300,8 +298,6 @@ public static class FileHelper
 	[Information(nameof(CopyFileAsync), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://dotnettips.wordpress.com/2020/11/17/coding-faster-with-the-dotnettips-utility-november-2020-update")]
 	public static async Task<long> CopyFileAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
-		//TODO: ADD TO BENCHMARKING TESTS. THEN TRY OPTIMIZE.
-
 		var fileName = file.ArgumentExists().FullName;
 		_ = destination.ArgumentNotNull().CheckExists(createDirectory: true, throwException: true, errorMessage: string.Format(CultureInfo.InvariantCulture, Resources.DirectoryDoesNotExistOrCannotBeCreated, destination.FullName));
 
@@ -340,8 +336,6 @@ public static class FileHelper
 	[Information(nameof(DeleteFiles), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static SimpleResult<ReadOnlyCollection<string>> DeleteFiles([NotNull] this ReadOnlyCollection<string> files, bool stopOnFirstError = false)
 	{
-		//TODO: ADD TO BENCHMARKING TESTS. THEN TRY OPTIMIZE.
-
 		files = files.ArgumentNotNull();
 
 		var result = new SimpleResult<ReadOnlyCollection<string>>();

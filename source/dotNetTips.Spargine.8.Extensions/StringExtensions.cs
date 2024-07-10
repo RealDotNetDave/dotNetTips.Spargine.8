@@ -53,6 +53,8 @@ public static class StringExtensions
 	/// </summary>
 	private static readonly Regex _emailRegEx = new(Resources.RegexEmail, RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
 
+	private static readonly ASCIIEncoding _encoding = new ASCIIEncoding();
+
 	/// <summary>
 	/// The first last name reg ex
 	/// </summary>
@@ -405,7 +407,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method decodes the string using <see cref="Convert.FromBase64String(string)"/> and then converts the byte array to a string using <see cref="Encoding.UTF8"/>.
 	/// </remarks>
-	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
 	public static string FromBase64(this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -413,10 +415,7 @@ public static class StringExtensions
 			return ControlChars.EmptyString;
 		}
 
-		//TODO: MOVE TO FIELD?
-		var encoding = new ASCIIEncoding();
-
-		return encoding.GetString(Convert.FromBase64String(input));
+		return _encoding.GetString(Convert.FromBase64String(input));
 	}
 
 	/// <summary>
@@ -1169,7 +1168,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to encode. This string cannot be null.</param>
 	/// <returns>A <see cref="string"/> representing the Base64 encoded form of the input string.</returns>
-	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.NeedsDocumentation)]
 	public static string ToBase64([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1178,7 +1177,7 @@ public static class StringExtensions
 		}
 
 		//RECOMMENDATION FROM COPILOT IS SLOWER
-		return Convert.ToBase64String(new ASCIIEncoding().GetBytes(input));
+		return Convert.ToBase64String(_encoding.GetBytes(input));
 	}
 
 	/// <summary>
