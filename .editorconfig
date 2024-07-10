@@ -34,6 +34,7 @@ indent_style = tab
 insert_final_newline = true
 tab_width = 4
 trim_trailing_whitespace = true
+csharp_prefer_braces = true:error
 
 # Visual Studio Solution Files
 [*.sln]

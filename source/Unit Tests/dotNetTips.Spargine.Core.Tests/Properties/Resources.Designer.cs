@@ -68,14 +68,5 @@ namespace DotNetTips.Spargine.Core.Tests.Properties {
                 return ResourceManager.GetString("JsonPersonProper", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {&quot;Addresses&quot;:[{&quot;Address1&quot;:&quot;by\u0060fEjGnGhFBStEpqIseKKQhP&quot;,&quot;Address2&quot;:&quot;LDaTeJWUgeWIDnbGeqbdqcGcP&quot;,&quot;City&quot;:&quot;AwhdbXmomHjtUDB[baHtQSNiv&quot;,&quot;Country&quot;:&quot;UHJX\u0060lFXZUNYrqSawV]^g[pNq&quot;,&quot;CountyProvince&quot;:&quot;tnwiGlJJZ\u0060swfmVNvvCs&quot;,&quot;Id&quot;:&quot;fae8983040664a1191bcbdc9015953bc&quot;,&quot;Phone&quot;:&quot;243-657-1576&quot;,&quot;PostalCode&quot;:&quot;66030566&quot;,&quot;State&quot;:&quot;VDpwZOvotsHJkOp&quot;},{&quot;Address1&quot;:&quot;uudsj^DtM_IkhmebQKKJLIBjj&quot;,&quot;Address2&quot;:&quot;UFjWShnWaACeJBIeIrQ\\TjLdK&quot;,&quot;City&quot;:&quot;^[hQSjaAuMpuReDvbEZoqBqqb&quot;,&quot;Country&quot;:&quot;gE\u0060ooJIPx[mkETY_vKf\u0060\u0060SFF\u0060&quot;,&quot;Cou [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string JsonPersonRecord {
-            get {
-                return ResourceManager.GetString("JsonPersonRecord", resourceCulture);
-            }
-        }
     }
 }

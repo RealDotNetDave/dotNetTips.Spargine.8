@@ -123,12 +123,6 @@
   <data name="ErrorArgumentOutOfRange" xml:space="preserve">
     <value>Argument is out of the given range.</value>
   </data>
-  <data name="ErrorArrayCannotBeReadOnly" xml:space="preserve">
-    <value>Array cannot be null or read-only.</value>
-  </data>
-  <data name="ErrorCannotBeOfTypeException" xml:space="preserve">
-    <value>{0} should never ever be Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only).</value>
-  </data>
   <data name="ErrorCollectionIsNullOrHasNoItems" xml:space="preserve">
     <value>Collection is null or has no items.</value>
   </data>
@@ -141,12 +135,6 @@
   <data name="ErrorDateIsInvalidBasedOnTheMinMaxRange" xml:space="preserve">
     <value>Date is invalid based on the min / max range.</value>
   </data>
-  <data name="ErrorDictionaryCannotBeReadOnly" xml:space="preserve">
-    <value>Dictionary cannot be null or read-only.</value>
-  </data>
-  <data name="ErrorDirectoryCannotBeNull" xml:space="preserve">
-    <value>Directory cannot be null.</value>
-  </data>
   <data name="ErrorDirectoryDoesNotExist" xml:space="preserve">
     <value>Directory does not exist.</value>
   </data>
@@ -155,9 +143,6 @@
   </data>
   <data name="ErrorEnumNotDefined" xml:space="preserve">
     <value>The value is not defined in the Enum.</value>
-  </data>
-  <data name="ErrorFileCannotBeNull" xml:space="preserve">
-    <value>File cannot be null.</value>
   </data>
   <data name="ErrorFileNotFound" xml:space="preserve">
     <value>File not found.</value>
@@ -174,17 +159,11 @@
   <data name="ErrorInvalidCast" xml:space="preserve">
     <value>The object could not be cast to a new type.</value>
   </data>
-  <data name="ErrorInvalidEmailAddress" xml:space="preserve">
-    <value>Invalid email address.</value>
-  </data>
   <data name="ErrorInvalidEnumType" xml:space="preserve">
     <value>Invalid Enum type.</value>
   </data>
   <data name="ErrorInvalidOperation" xml:space="preserve">
     <value>Invalid operation.</value>
-  </data>
-  <data name="ErrorInvalidStringType" xml:space="preserve">
-    <value>Invalid StringType.</value>
   </data>
   <data name="ErrorInvalidType" xml:space="preserve">
     <value>Invalid type.</value>
@@ -201,20 +180,11 @@
   <data name="ErrorNetworkConnectionIssue" xml:space="preserve">
     <value>Unknown network connection issue.</value>
   </data>
-  <data name="ErrorNullException" xml:space="preserve">
-    <value>Exception cannot be null.</value>
-  </data>
   <data name="ErrorNumberIsInvalidBasedOnTheMinMaxValue" xml:space="preserve">
     <value>Number is invalid based on the min/max range.</value>
   </data>
   <data name="ErrorObjectCannotBeNull" xml:space="preserve">
     <value>Object cannot be null. Duh!</value>
-  </data>
-  <data name="ErrorObjectValidationFailed" xml:space="preserve">
-    <value>Object validation failed.</value>
-  </data>
-  <data name="ErrorParameterIsInvalid" xml:space="preserve">
-    <value>Parameter is invalid. </value>
   </data>
   <data name="ErrorReadOnlyCollection" xml:space="preserve">
     <value>Collection cannot be read-only.</value>
@@ -228,23 +198,11 @@
   <data name="ErrorSpanIsEmpty" xml:space="preserve">
     <value>Span is empty.</value>
   </data>
-  <data name="ErrorStringDoesNotMatch" xml:space="preserve">
-    <value>Strings do not match.</value>
-  </data>
-  <data name="ErrorStringDoesNotMatchMaximumLength" xml:space="preserve">
-    <value>String does not match maximum length.</value>
-  </data>
-  <data name="ErrorStringDoesNotMatchMinimumLength" xml:space="preserve">
-    <value>String does not match minimum length.</value>
-  </data>
   <data name="ErrorStringIsNotValid" xml:space="preserve">
     <value>String is not valid.</value>
   </data>
   <data name="ErrorStringIsNullOrEmpty" xml:space="preserve">
     <value>String is Null or Empty.</value>
-  </data>
-  <data name="ErrorStringLengthIsTooLongOrTooShort" xml:space="preserve">
-    <value>String is null or length is too long or too short</value>
   </data>
   <data name="ErrorTimeIsInvalidBasedOnTheMinMaxRange" xml:space="preserve">
     <value>Time is invalid based on the min/max range.</value>
@@ -276,9 +234,6 @@
   <data name="RegexUrl" xml:space="preserve">
     <value>(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;amp;:/~\+#]*[\w\-\@?^=%&amp;amp;/~\+#])?</value>
   </data>
-  <data name="SerializationInfoIsNull" xml:space="preserve">
-    <value>{0} is null.</value>
-  </data>
   <data name="TheIndexIsEqualToOrGreaterThanTheLengthOfInput" xml:space="preserve">
     <value>The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array.</value>
   </data>
@@ -290,8 +245,5 @@
   </data>
   <data name="UserUnknown" xml:space="preserve">
     <value>UNKNOWN</value>
-  </data>
-  <data name="X0IsNull" xml:space="preserve">
-    <value>{0} is null.</value>
   </data>
 </root>

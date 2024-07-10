@@ -79,24 +79,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Array cannot be null or read-only..
-        /// </summary>
-        internal static string ErrorArrayCannotBeReadOnly {
-            get {
-                return ResourceManager.GetString("ErrorArrayCannotBeReadOnly", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} should never ever be Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)..
-        /// </summary>
-        internal static string ErrorCannotBeOfTypeException {
-            get {
-                return ResourceManager.GetString("ErrorCannotBeOfTypeException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Collection is null or has no items..
         /// </summary>
         internal static string ErrorCollectionIsNullOrHasNoItems {
@@ -133,24 +115,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dictionary cannot be null or read-only..
-        /// </summary>
-        internal static string ErrorDictionaryCannotBeReadOnly {
-            get {
-                return ResourceManager.GetString("ErrorDictionaryCannotBeReadOnly", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Directory cannot be null..
-        /// </summary>
-        internal static string ErrorDirectoryCannotBeNull {
-            get {
-                return ResourceManager.GetString("ErrorDirectoryCannotBeNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Directory does not exist..
         /// </summary>
         internal static string ErrorDirectoryDoesNotExist {
@@ -174,15 +138,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         internal static string ErrorEnumNotDefined {
             get {
                 return ResourceManager.GetString("ErrorEnumNotDefined", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to File cannot be null..
-        /// </summary>
-        internal static string ErrorFileCannotBeNull {
-            get {
-                return ResourceManager.GetString("ErrorFileCannotBeNull", resourceCulture);
             }
         }
         
@@ -232,15 +187,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid email address..
-        /// </summary>
-        internal static string ErrorInvalidEmailAddress {
-            get {
-                return ResourceManager.GetString("ErrorInvalidEmailAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid Enum type..
         /// </summary>
         internal static string ErrorInvalidEnumType {
@@ -255,15 +201,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         internal static string ErrorInvalidOperation {
             get {
                 return ResourceManager.GetString("ErrorInvalidOperation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid StringType..
-        /// </summary>
-        internal static string ErrorInvalidStringType {
-            get {
-                return ResourceManager.GetString("ErrorInvalidStringType", resourceCulture);
             }
         }
         
@@ -313,15 +250,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exception cannot be null..
-        /// </summary>
-        internal static string ErrorNullException {
-            get {
-                return ResourceManager.GetString("ErrorNullException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Number is invalid based on the min/max range..
         /// </summary>
         internal static string ErrorNumberIsInvalidBasedOnTheMinMaxValue {
@@ -336,24 +264,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         internal static string ErrorObjectCannotBeNull {
             get {
                 return ResourceManager.GetString("ErrorObjectCannotBeNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Object validation failed..
-        /// </summary>
-        internal static string ErrorObjectValidationFailed {
-            get {
-                return ResourceManager.GetString("ErrorObjectValidationFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parameter is invalid. .
-        /// </summary>
-        internal static string ErrorParameterIsInvalid {
-            get {
-                return ResourceManager.GetString("ErrorParameterIsInvalid", resourceCulture);
             }
         }
         
@@ -394,33 +304,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Strings do not match..
-        /// </summary>
-        internal static string ErrorStringDoesNotMatch {
-            get {
-                return ResourceManager.GetString("ErrorStringDoesNotMatch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to String does not match maximum length..
-        /// </summary>
-        internal static string ErrorStringDoesNotMatchMaximumLength {
-            get {
-                return ResourceManager.GetString("ErrorStringDoesNotMatchMaximumLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to String does not match minimum length..
-        /// </summary>
-        internal static string ErrorStringDoesNotMatchMinimumLength {
-            get {
-                return ResourceManager.GetString("ErrorStringDoesNotMatchMinimumLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to String is not valid..
         /// </summary>
         internal static string ErrorStringIsNotValid {
@@ -435,15 +318,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         internal static string ErrorStringIsNullOrEmpty {
             get {
                 return ResourceManager.GetString("ErrorStringIsNullOrEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to String is null or length is too long or too short.
-        /// </summary>
-        internal static string ErrorStringLengthIsTooLongOrTooShort {
-            get {
-                return ResourceManager.GetString("ErrorStringLengthIsTooLongOrTooShort", resourceCulture);
             }
         }
         
@@ -538,15 +412,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} is null..
-        /// </summary>
-        internal static string SerializationInfoIsNull {
-            get {
-                return ResourceManager.GetString("SerializationInfoIsNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The index is equal to or greater than the length of the array, or the number of elements in the set is greater than the available space from index to the end of the destination array..
         /// </summary>
         internal static string TheIndexIsEqualToOrGreaterThanTheLengthOfInput {
@@ -579,15 +444,6 @@ namespace DotNetTips.Spargine.Core.Properties {
         internal static string UserUnknown {
             get {
                 return ResourceManager.GetString("UserUnknown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} is null..
-        /// </summary>
-        internal static string X0IsNull {
-            get {
-                return ResourceManager.GetString("X0IsNull", resourceCulture);
             }
         }
     }

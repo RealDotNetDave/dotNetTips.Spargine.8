@@ -124,9 +124,6 @@
     <value>Bytes</value>
     <comment>For StringExtensions</comment>
   </data>
-  <data name="CannotAddItemsToAReadOnlyDictionary" xml:space="preserve">
-    <value>Cannot add items to a read-only dictionary!</value>
-  </data>
   <data name="EB" xml:space="preserve">
     <value>EB</value>
   </data>
@@ -142,62 +139,20 @@
   <data name="Eleven" xml:space="preserve">
     <value>Eleven</value>
   </data>
-  <data name="ErrorCannotBeOfTypeException" xml:space="preserve">
-    <value>{0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only).</value>
-  </data>
   <data name="ErrorCollectionIsNullOrHasNoItems" xml:space="preserve">
     <value>Collection is null or has no items.</value>
   </data>
   <data name="ErrorCollectionSizeIsNotValid" xml:space="preserve">
     <value>Collection size is not valid.</value>
   </data>
-  <data name="ErrorFileIsNullEmptyOrDoesNotExist" xml:space="preserve">
-    <value>{0} is null, empty or the file does not exist.</value>
-  </data>
   <data name="ErrorFileNotFound" xml:space="preserve">
     <value>File not found.</value>
-  </data>
-  <data name="ErrorFileSizeIsInvalid" xml:space="preserve">
-    <value>File size is invalid.</value>
-  </data>
-  <data name="ErrorFolderNotFound" xml:space="preserve">
-    <value>Folder not found.</value>
-  </data>
-  <data name="ErrorGuidIsEmpty" xml:space="preserve">
-    <value>Guid is Empty.</value>
-  </data>
-  <data name="ErrorInvalidFileName" xml:space="preserve">
-    <value>Invalid file name.</value>
   </data>
   <data name="ErrorInvalidType" xml:space="preserve">
     <value>Invalid type.</value>
   </data>
-  <data name="ErrorLengthMustBeGreaterThan0" xml:space="preserve">
-    <value>Length must be greater than 0.</value>
-  </data>
-  <data name="ErrorParameterIsInvalid" xml:space="preserve">
-    <value>Parameter is invalid. </value>
-  </data>
-  <data name="ErrorStringDoesNotMatch" xml:space="preserve">
-    <value>Strings do not match.</value>
-  </data>
-  <data name="ErrorStringDoesNotMatchMaximumLength" xml:space="preserve">
-    <value>String does not match maximum length.</value>
-  </data>
-  <data name="ErrorStringDoesNotMatchMinimumLength" xml:space="preserve">
-    <value>String does not match minimum length.</value>
-  </data>
-  <data name="ErrorStringIsEmpty" xml:space="preserve">
-    <value>String is empty.</value>
-  </data>
   <data name="ErrorStringIsNotValid" xml:space="preserve">
     <value>String is not valid.</value>
-  </data>
-  <data name="ErrorTheValueIsNotDefinedInTheEnumeration" xml:space="preserve">
-    <value>The values are not defined in the enum.</value>
-  </data>
-  <data name="ErrorValueIsInvalid" xml:space="preserve">
-    <value>Value is invalid.</value>
   </data>
   <data name="FailedToSetUpHighPriority" xml:space="preserve">
     <value>Failed to set up high priority. Make sure you have the right permissions.</value>
@@ -290,26 +245,14 @@
   <data name="RegexOneToSevenAlpha" xml:space="preserve">
     <value>^[a-zA-Z]{1,7}$</value>
   </data>
-  <data name="RegexPhoneNumberUS" xml:space="preserve">
-    <value>((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}</value>
-  </data>
-  <data name="REGEXP_US_ZIP_CODE" xml:space="preserve">
-    <value>\d{5}(-\d{4})?</value>
-  </data>
   <data name="RegexScientific" xml:space="preserve">
     <value>\b-?[1-9](?:\.\d+)?[Ee][-+]?\d+\b</value>
-  </data>
-  <data name="RegexSSNUS" xml:space="preserve">
-    <value>\d{3}-\d{2}-\d{4}</value>
   </data>
   <data name="RegexString" xml:space="preserve">
     <value>^(\w|\W)+$</value>
   </data>
   <data name="RegexUrl" xml:space="preserve">
     <value>(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;amp;:/~\+#]*[\w\-\@?^=%&amp;amp;/~\+#])?</value>
-  </data>
-  <data name="RegexWindowsFilePath" xml:space="preserve">
-    <value>([A-Z]:\\[^/:\*\?&lt;&gt;\|]+\.\w{2,6})|(\\{2}[^/:\*\?&lt;&gt;\|]+\.\w{2,6})</value>
   </data>
   <data name="Seven" xml:space="preserve">
     <value>Seven</value>

@@ -70,15 +70,6 @@ namespace DotNetTips.Spargine.Tester.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address length is limited to 50 characters..
-        /// </summary>
-        internal static string AddressLengthIsLimitedTo50Characters {
-            get {
-                return ResourceManager.GetString("AddressLengthIsLimitedTo50Characters", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to City length is limited to 150 characters..
         /// </summary>
         internal static string CityLengthIsLimitedToCharacters {
@@ -174,15 +165,6 @@ namespace DotNetTips.Spargine.Tester.Properties {
         internal static string LongTestString {
             get {
                 return ResourceManager.GetString("LongTestString", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Minimum length cannot be greater than maximum length..
-        /// </summary>
-        internal static string MinimumLenghthCannotBeGreaterThanMaximum {
-            get {
-                return ResourceManager.GetString("MinimumLenghthCannotBeGreaterThanMaximum", resourceCulture);
             }
         }
         

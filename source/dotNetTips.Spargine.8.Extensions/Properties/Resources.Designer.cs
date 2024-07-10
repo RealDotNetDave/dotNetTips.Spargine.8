@@ -79,15 +79,6 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot add items to a read-only dictionary!.
-        /// </summary>
-        internal static string CannotAddItemsToAReadOnlyDictionary {
-            get {
-                return ResourceManager.GetString("CannotAddItemsToAReadOnlyDictionary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to EB.
         /// </summary>
         internal static string EB {
@@ -133,15 +124,6 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} cannot be of type Exception. Use a more specific exception from the framework or a custom Exception inheriting type Exception (only)..
-        /// </summary>
-        internal static string ErrorCannotBeOfTypeException {
-            get {
-                return ResourceManager.GetString("ErrorCannotBeOfTypeException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Collection is null or has no items..
         /// </summary>
         internal static string ErrorCollectionIsNullOrHasNoItems {
@@ -160,56 +142,11 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} is null, empty or the file does not exist..
-        /// </summary>
-        internal static string ErrorFileIsNullEmptyOrDoesNotExist {
-            get {
-                return ResourceManager.GetString("ErrorFileIsNullEmptyOrDoesNotExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to File not found..
         /// </summary>
         internal static string ErrorFileNotFound {
             get {
                 return ResourceManager.GetString("ErrorFileNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to File size is invalid..
-        /// </summary>
-        internal static string ErrorFileSizeIsInvalid {
-            get {
-                return ResourceManager.GetString("ErrorFileSizeIsInvalid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Folder not found..
-        /// </summary>
-        internal static string ErrorFolderNotFound {
-            get {
-                return ResourceManager.GetString("ErrorFolderNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Guid is Empty..
-        /// </summary>
-        internal static string ErrorGuidIsEmpty {
-            get {
-                return ResourceManager.GetString("ErrorGuidIsEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid file name..
-        /// </summary>
-        internal static string ErrorInvalidFileName {
-            get {
-                return ResourceManager.GetString("ErrorInvalidFileName", resourceCulture);
             }
         }
         
@@ -223,83 +160,11 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Length must be greater than 0..
-        /// </summary>
-        internal static string ErrorLengthMustBeGreaterThan0 {
-            get {
-                return ResourceManager.GetString("ErrorLengthMustBeGreaterThan0", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parameter is invalid. .
-        /// </summary>
-        internal static string ErrorParameterIsInvalid {
-            get {
-                return ResourceManager.GetString("ErrorParameterIsInvalid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Strings do not match..
-        /// </summary>
-        internal static string ErrorStringDoesNotMatch {
-            get {
-                return ResourceManager.GetString("ErrorStringDoesNotMatch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to String does not match maximum length..
-        /// </summary>
-        internal static string ErrorStringDoesNotMatchMaximumLength {
-            get {
-                return ResourceManager.GetString("ErrorStringDoesNotMatchMaximumLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to String does not match minimum length..
-        /// </summary>
-        internal static string ErrorStringDoesNotMatchMinimumLength {
-            get {
-                return ResourceManager.GetString("ErrorStringDoesNotMatchMinimumLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to String is empty..
-        /// </summary>
-        internal static string ErrorStringIsEmpty {
-            get {
-                return ResourceManager.GetString("ErrorStringIsEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to String is not valid..
         /// </summary>
         internal static string ErrorStringIsNotValid {
             get {
                 return ResourceManager.GetString("ErrorStringIsNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The values are not defined in the enum..
-        /// </summary>
-        internal static string ErrorTheValueIsNotDefinedInTheEnumeration {
-            get {
-                return ResourceManager.GetString("ErrorTheValueIsNotDefinedInTheEnumeration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Value is invalid..
-        /// </summary>
-        internal static string ErrorValueIsInvalid {
-            get {
-                return ResourceManager.GetString("ErrorValueIsInvalid", resourceCulture);
             }
         }
         
@@ -565,38 +430,11 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \d{5}(-\d{4})?.
-        /// </summary>
-        internal static string REGEXP_US_ZIP_CODE {
-            get {
-                return ResourceManager.GetString("REGEXP_US_ZIP_CODE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}.
-        /// </summary>
-        internal static string RegexPhoneNumberUS {
-            get {
-                return ResourceManager.GetString("RegexPhoneNumberUS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to \b-?[1-9](?:\.\d+)?[Ee][-+]?\d+\b.
         /// </summary>
         internal static string RegexScientific {
             get {
                 return ResourceManager.GetString("RegexScientific", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to \d{3}-\d{2}-\d{4}.
-        /// </summary>
-        internal static string RegexSSNUS {
-            get {
-                return ResourceManager.GetString("RegexSSNUS", resourceCulture);
             }
         }
         
@@ -615,15 +453,6 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         internal static string RegexUrl {
             get {
                 return ResourceManager.GetString("RegexUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ([A-Z]:\\[^/:\*\?&lt;&gt;\|]+\.\w{2,6})|(\\{2}[^/:\*\?&lt;&gt;\|]+\.\w{2,6}).
-        /// </summary>
-        internal static string RegexWindowsFilePath {
-            get {
-                return ResourceManager.GetString("RegexWindowsFilePath", resourceCulture);
             }
         }
         

@@ -91,6 +91,19 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	public static decimal Average(this decimal a, decimal b) => (a + b) / 2;
 
 	/// <summary>
+	/// Converts the number of bytes into megabytes.
+	/// </summary>
+	/// <param name="bytes">The number of bytes.</param>
+	/// <returns>The equivalent number of megabytes as a double.</returns>
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(BytesToMegabytes), "David McCarter", "7/9/2024", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New, Documentation = "ADD URL")]
+	public static double BytesToMegabytes(this long bytes)
+	{
+		return bytes / 1048576.0; // 1024 * 1024
+	}
+
+	/// <summary>
 	/// Decrements the specified value by a given step, not going below a specified lower bound.
 	/// </summary>
 	/// <param name="value">The value to decrement.</param>

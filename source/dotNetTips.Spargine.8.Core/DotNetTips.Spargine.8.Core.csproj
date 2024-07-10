@@ -23,7 +23,7 @@
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<EnablePackageValidation>false</EnablePackageValidation>
 		<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
-		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<FileVersion>2024.8.5.17</FileVersion>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -59,6 +59,8 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<WarningsAsErrors />
+		<Optimize>False</Optimize>
+		<NoWarn />
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -68,6 +70,8 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />
 		<WarningLevel>9999</WarningLevel>
+		<Optimize>True</Optimize>
+		<NoWarn />
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -97,7 +101,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="IDisposableAnalyzers" Version="4.0.7">
+		<PackageReference Include="IDisposableAnalyzers" Version="4.0.8">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

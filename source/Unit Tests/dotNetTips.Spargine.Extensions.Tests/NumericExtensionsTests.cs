@@ -28,6 +28,57 @@ public class NumericExtensionsTests : TestClass
 	private const string OutOfRange = "OUT OF RANGE";
 
 	[TestMethod]
+	public void BytesToMegabytes_LargeNumberOfBytes_ReturnsCorrectMegabytes()
+	{
+		// Arrange
+		long bytes = 1073741824; // 1 GB in bytes
+		double expected = 1024; // 1 GB in megabytes
+
+		// Act
+		double result = bytes.BytesToMegabytes();
+
+		// Assert
+		Assert.AreEqual(expected, result, "Converting 1073741824 bytes should return 1024 megabytes.");
+	}
+
+	[TestMethod]
+	public void BytesToMegabytes_NegativeBytes_ThrowsArgumentException()
+	{
+		// Arrange
+		long bytes = -1024;
+
+		// Act and Assert
+		Assert.ThrowsException<ArgumentException>(() => bytes.BytesToMegabytes(), "Converting negative bytes should throw ArgumentException.");
+	}
+
+	[TestMethod]
+	public void BytesToMegabytes_RegularBytes_ReturnsCorrectMegabytes()
+	{
+		// Arrange
+		long bytes = 1048576; // 1 MB in bytes
+		double expected = 1;
+
+		// Act
+		double result = bytes.BytesToMegabytes();
+
+		// Assert
+		Assert.AreEqual(expected, result, "Converting 1048576 bytes should return 1 megabyte.");
+	}
+	[TestMethod]
+	public void BytesToMegabytes_ZeroBytes_ReturnsZero()
+	{
+		// Arrange
+		long bytes = 0;
+		double expected = 0;
+
+		// Act
+		double result = bytes.BytesToMegabytes();
+
+		// Assert
+		Assert.AreEqual(expected, result, "Converting zero bytes should return zero.");
+	}
+
+	[TestMethod]
 	public void DecrementTest()
 	{
 		var testValue = 256234;
