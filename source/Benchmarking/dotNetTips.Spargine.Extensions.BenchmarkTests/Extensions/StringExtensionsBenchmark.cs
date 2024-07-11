@@ -4,7 +4,7 @@
 // Created          : 08-03-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-01-2024
+// Last Modified On : 07-11-2024
 // ***********************************************************************
 // <copyright file="StringExtensionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -39,6 +39,7 @@ public class StringExtensionsBenchmark : Benchmark
 	private string _compressedString;
 	private readonly string _creditCardNumber = RandomData.GenerateNumber(12);
 	private readonly string _currencyCode = "USD";
+	private readonly string _delimitedString = RandomData.GenerateWords(100).ToDelimitedString();
 	private readonly string _domainAddress = "www.dotnettips.com";
 	private readonly string _emailAddress = RandomData.GenerateEmailAddress();
 	private readonly string _hashCode = RandomData.GenerateWord(100).ComputeSHA256Hash();
@@ -54,7 +55,7 @@ public class StringExtensionsBenchmark : Benchmark
 	[BenchmarkCategory(Categories.Strings)]
 	public void CombineToString()
 	{
-		var result = this.LongTestString.Clone<string>().CombineToString(this.GetStringArray(10, 15, 15));
+		var result = this.LongTestString.CombineToString(this.GetStringArray(10, 15, 15));
 
 		this.Consume(result);
 	}
@@ -63,9 +64,20 @@ public class StringExtensionsBenchmark : Benchmark
 	[BenchmarkCategory(Categories.Strings)]
 	public void ComputeHash()
 	{
-		var testString = this.LongTestString.Clone<string>();
+		var testString = this.LongTestString;
 
 		var result = testString.ComputeHash();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.ComputeSHA256Hash))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void ComputeSHA256Hash()
+	{
+		var testString = this.LongTestString;
+
+		var result = testString.ComputeSHA256Hash();
 
 		this.Consume(result);
 	}
@@ -74,9 +86,20 @@ public class StringExtensionsBenchmark : Benchmark
 	[BenchmarkCategory(Categories.Strings)]
 	public void Concat()
 	{
-		var testString = this.LongTestString.Clone<string>();
+		var testString = this.LongTestString;
 
 		var result = testString.Concat(",", true, this.GetStringArray(10, 15, 15));
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.ContainsAny))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void ContainsAny()
+	{
+		var testString = this.LongTestString;
+
+		var result = testString.ContainsAny(StringComparison.InvariantCultureIgnoreCase, "d", "T");
 
 		this.Consume(result);
 	}
@@ -131,6 +154,17 @@ public class StringExtensionsBenchmark : Benchmark
 	public void DefaultIfNullWithDefaultValueFromNull()
 	{
 		var result = this._nullTestString.DefaultIfNull("David");
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.DelimitedStringToArray))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void DelimitedStringToArray()
+	{
+		var testString = this._delimitedString;
+
+		var result = testString.DelimitedStringToArray();
 
 		this.Consume(result);
 	}

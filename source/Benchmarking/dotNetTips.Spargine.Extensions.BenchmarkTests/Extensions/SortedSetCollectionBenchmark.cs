@@ -34,7 +34,7 @@ public class SortedSetCollectionBenchmark : SmallCollectionBenchmark
 	[Benchmark(Description = nameof(SortedSetExtensions.DoesNotHaveItems))]
 	public void DoesNotHaveItems()
 	{
-		var people = new SortedSet<Person<Address>>(this._personRefSortedSet);
+		var people = this._personRefSortedSet;
 
 		this.Consume(people.DoesNotHaveItems());
 	}
@@ -56,6 +56,14 @@ public class SortedSetCollectionBenchmark : SmallCollectionBenchmark
 		base.Setup();
 
 		this._personRefSortedSet = new SortedSet<Person<Address>>(this.GetPersonRefArray());
+	}
+
+	[Benchmark(Description = nameof(SortedSetExtensions.ToImmutableSortedSet))]
+	public void ToImmutableSortedSet()
+	{
+		var people = this._personRefSortedSet;
+
+		this.Consume(people.ToImmutableSortedSet());
 	}
 
 }

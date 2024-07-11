@@ -4,7 +4,7 @@
 // Created          : 12-23-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 07-11-2024
 // ***********************************************************************
 // <copyright file="SortedSetExtensionsTest.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -76,11 +76,11 @@ public class SortedSetExtensionsTest
 		Assert.IsFalse(nullCollection.HasItems());
 	}
 	[TestMethod]
-	public void ToImmutableTest()
+	public void ToImmutableSortedSet()
 	{
 		var peopleSortedSet = new SortedSet<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>(RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(100));
 
-		var result = peopleSortedSet.ToImmutable();
+		var result = peopleSortedSet.ToImmutableSortedSet();
 
 		Assert.IsNotNull(result);
 	}

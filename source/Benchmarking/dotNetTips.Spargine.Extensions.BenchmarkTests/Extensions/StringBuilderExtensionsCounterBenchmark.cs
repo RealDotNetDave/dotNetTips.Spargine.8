@@ -54,7 +54,7 @@ public class StringBuilderExtensionsCounterBenchmark : TinyCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(StringBuilderExtensions.AppendKeyValue))]
+	[Benchmark(Description = nameof(StringBuilderExtensions.AppendKeyValue) + ": Includes = true (default)")]
 	public void AppendKeyValue1()
 	{
 		var sb = new StringBuilder();
@@ -64,6 +64,21 @@ public class StringBuilderExtensionsCounterBenchmark : TinyCollectionBenchmark
 		{
 			var testString = stringArray[index];
 			sb.AppendKeyValue(testString, testString);
+		}
+
+		this.Consume(sb.ToString());
+	}
+
+	[Benchmark(Description = nameof(StringBuilderExtensions.AppendKeyValue) + ": Includes = false")]
+	public void AppendKeyValue2()
+	{
+		var sb = new StringBuilder();
+		var stringArray = this._stringArray;
+
+		for (var index = 0; index < stringArray.Length; index++)
+		{
+			var testString = stringArray[index];
+			sb.AppendKeyValue(testString, testString, false, false);
 		}
 
 		this.Consume(sb.ToString());
