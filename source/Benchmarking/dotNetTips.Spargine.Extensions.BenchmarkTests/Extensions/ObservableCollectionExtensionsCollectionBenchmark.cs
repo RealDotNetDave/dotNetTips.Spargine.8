@@ -27,6 +27,15 @@ public class ObservableCollectionExtensionsCollectionBenchmark : SmallCollection
 
 	private ObservableCollection<Person<Address>> _personRefObservableCollection;
 
+	[Benchmark(Description = nameof(ObservableCollectionExtensions.DoesNotHaveItems))]
+	[BenchmarkCategory(Categories.Collections)]
+	public void DoesNotHaveItems()
+	{
+		var result = this._personRefObservableCollection.DoesNotHaveItems();
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(ObservableCollectionExtensions.HasItems))]
 	[BenchmarkCategory(Categories.Collections)]
 	public void HasItems()
