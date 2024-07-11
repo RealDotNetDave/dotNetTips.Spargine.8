@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-12-2024
+// Last Modified On : 07-11-2024
 // ***********************************************************************
 // <copyright file="SortedDictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -120,7 +120,7 @@ public static class SortedDictionaryExtensions
 	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
 	/// <param name="collection">The <see cref="SortedDictionary{TKey, TValue}"/> to convert.</param>
 	/// <returns>An <see cref="ImmutableSortedDictionary{TKey, TValue}"/> that contains the elements from the specified dictionary.</returns>
-	[Information(nameof(ToImmutable), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ToImmutable), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ImmutableSortedDictionary<TKey, TValue> ToImmutable<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection) => ImmutableSortedDictionary.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -132,7 +132,7 @@ public static class SortedDictionaryExtensions
 	/// <param name="key">The key.</param>
 	/// <param name="value">The value.</param>
 	/// <returns>TValue.</returns>
-	[Information(nameof(Upsert), author: "David McCarter", createdOn: "4/28/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(Upsert), author: "David McCarter", createdOn: "4/28/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
 	public static TValue Upsert<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, [NotNull] TKey key, [NotNull] TValue value)
 	{
 		if (value is null)

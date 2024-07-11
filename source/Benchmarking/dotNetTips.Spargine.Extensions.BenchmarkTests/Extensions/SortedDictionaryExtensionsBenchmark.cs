@@ -70,4 +70,22 @@ public class SortedDictionaryExtensionsBenchmark : SmallCollectionBenchmark
 		this._personRefSortedDictionary = this.GetPersonRefDictionary().ToSortedDictionary();
 	}
 
+	[Benchmark(Description = nameof(SortedDictionaryExtensions.ToImmutable))]
+	public void ToImmutable()
+	{
+		var people = this._personRefSortedDictionary;
+
+		this.Consume(people.ToImmutable());
+	}
+
+	[Benchmark(Description = nameof(SortedDictionaryExtensions.Upsert))]
+	public void Upsert()
+	{
+		var people = this._personRefSortedDictionary;
+
+		people.Upsert(this.PersonRef01);
+
+		this.Consume(people);
+	}
+
 }
