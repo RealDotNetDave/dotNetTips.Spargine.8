@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-19-2024
+// Last Modified On : 07-10-2024
 // ***********************************************************************
 // <copyright file="ThreadExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com

@@ -366,7 +366,7 @@ public static class EnumerableExtensions
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "12/9/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "12/9/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static void FastProcessor<T>(this IEnumerable<T> collection, Action<T> action)
 	{
 		collection = collection.ArgumentNotNull();

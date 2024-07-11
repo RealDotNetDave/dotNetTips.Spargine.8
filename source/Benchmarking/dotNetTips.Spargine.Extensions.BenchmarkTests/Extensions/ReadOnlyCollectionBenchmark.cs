@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using System.Collections.ObjectModel;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;

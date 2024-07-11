@@ -204,6 +204,17 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(EnumerableExtensions.FastProcessor))]
+	[BenchmarkCategory(Categories.ReferenceType)]
+	public void FastProcessor_Ref()
+	{
+		var people = this._personRefEnumerable;
+
+		people.FastProcessor(person => person.Phone = "5555555555");
+
+		this.Consume(people);
+	}
+
 	[Benchmark(Description = nameof(EnumerableExtensions.FirstOrDefault) + ": Alternate")]
 	public void FirstOrDefaultAlternate()
 	{

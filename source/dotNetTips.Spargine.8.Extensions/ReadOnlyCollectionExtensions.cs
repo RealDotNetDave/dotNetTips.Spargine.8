@@ -53,7 +53,7 @@ public static class ReadOnlyCollectionExtensions
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="collection">The list to use to generate hash code.</param>
 	/// <returns>Hash code as System.Int32.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
 	public static int GenerateHashCode<T>([NotNull] this ReadOnlyCollection<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
