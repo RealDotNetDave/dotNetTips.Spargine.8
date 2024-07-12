@@ -352,7 +352,7 @@ public static class CollectionExtensions
 	/// This method ensures that the collection will not contain duplicate items based on their ID.
 	/// It is a convenient way to update an existing item or add a new item without having to manually check for its existence.
 	/// </remarks>
-	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void Upsert([NotNull] this ICollection<IDataRecord> collection, [NotNull] IDataRecord item)
 	{
 		if (item is null)

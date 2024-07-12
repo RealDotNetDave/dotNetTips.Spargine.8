@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-11-2024
+// Last Modified On : 07-12-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -273,7 +273,7 @@ public static class StringExtensions
 	/// <param name="stringComparison">The string comparison option to use. Defaults to <see cref="StringComparison.OrdinalIgnoreCase"/>.</param>
 	/// <param name="characters">The characters to check for in the input string. Must not be null.</param>
 	/// <returns><c>true</c> if the input string contains any of the specified characters; otherwise, <c>false</c>.</returns>
-	[Information(nameof(ContainsAny), "David McCarter", "9/15/2017", "2/9/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ContainsAny), "David McCarter", "9/15/2017", "2/9/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool ContainsAny([NotNull] this string input, StringComparison stringComparison = StringComparison.OrdinalIgnoreCase, [NotNull] params string[] characters)
 	{
 		if (input is null || characters.CheckItemsExists() is false)

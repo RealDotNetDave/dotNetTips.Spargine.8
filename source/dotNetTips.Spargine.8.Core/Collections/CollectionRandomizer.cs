@@ -4,7 +4,7 @@
 // Created          : 11-06-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-27-2024
+// Last Modified On : 07-12-2024
 // ***********************************************************************
 // <copyright file="CollectionRandomizer.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -33,7 +33,6 @@ namespace DotNetTips.Spargine.Core.Collections;
 /// The <see cref="CollectionRandomizer{T}"/> is designed to shuffle a collection and allow retrieving items sequentially with the option to repeat and reshuffle.
 /// </remarks>
 [Information(nameof(CollectionRandomizer<T>), author: "David McCarter and Kristine Tran", createdOn: "8/26/2020", Status = Status.Available)]
-[method: Information(nameof(CollectionRandomizer<T>), "David McCarter", "4/21/2021", Status = Status.Available)]
 public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection, bool repeat = false)
 {
 
@@ -99,7 +98,7 @@ public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection,
 	/// <returns>The next item of type <typeparamref name="T"/> from the collection.</returns>
 	/// <exception cref="InvalidOperationException">Thrown if the collection is empty or all items have been retrieved and the collection is not set to repeat.</exception>
 	/// <seealso cref="Init"/>
-	[Information(nameof(GetNext), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
+	[Information(nameof(GetNext), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public T GetNext()
 	{
 		lock (this._threadLock)

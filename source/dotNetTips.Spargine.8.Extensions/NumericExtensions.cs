@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-12-2024
 // ***********************************************************************
 // <copyright file="NumericExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -57,7 +57,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="b">The second double value.</param>
 	/// <returns>The average of the two double values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static double Average(this double a, double b) => (a + b) / 2;
 
 	/// <summary>
@@ -67,7 +67,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="b">The second long value.</param>
 	/// <returns>The average of the two long values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static long Average(this long a, long b) => (a + b) / 2;
 
 	/// <summary>
@@ -77,7 +77,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="b">The second integer value.</param>
 	/// <returns>The average of the two integer values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static int Average(this int a, int b) => (a + b) / 2;
 
 	/// <summary>
@@ -87,7 +87,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="b">The second decimal value.</param>
 	/// <returns>The average of the two decimal values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(Average), "David McCarter", "2/19/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static decimal Average(this decimal a, decimal b) => (a + b) / 2;
 
 	/// <summary>
@@ -477,7 +477,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="totalMilliseconds">The total milliseconds to convert.</param>
 	/// <returns>A string representation of the total milliseconds in the format of hours, minutes, seconds, and milliseconds.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this long totalMilliseconds)
 	{
 		totalMilliseconds = totalMilliseconds.ArgumentInRange(0);
@@ -491,7 +491,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="input">The TimeSpan to convert.</param>
 	/// <returns>A string representation of the total milliseconds contained in the TimeSpan.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this TimeSpan input)
 	{
 		var totalMilliseconds = input.TotalMilliseconds;
@@ -505,7 +505,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="totalMilliseconds">The total milliseconds to convert.</param>
 	/// <returns>A string representation of the total milliseconds in the format of hours, minutes, seconds, and milliseconds.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(MillisecondsToString), "David McCarter", "4/16/2003", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string MillisecondsToString(this int totalMilliseconds)
 	{
 		totalMilliseconds = totalMilliseconds.ArgumentInRange(0);
@@ -796,7 +796,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="defaultText">The default text to return if <paramref name="value" /> falls outside the specified range. Defaults to a double quote.</param>
 	/// <returns>A string representation of <paramref name="value" /> if it falls outside the specified range; otherwise, <paramref name="defaultText" />.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToStringOrEmpty), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ToStringOrEmpty), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string ToStringOrEmpty(this int value, int lowerLimit = 100, int upperLimit = 9000, string defaultText = ControlChars.DoubleQuote) => value <= lowerLimit || value > upperLimit
 			? defaultText
 			: value.ToString(CultureInfo.InvariantCulture);

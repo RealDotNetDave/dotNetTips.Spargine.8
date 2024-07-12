@@ -222,7 +222,7 @@ public static class PathHelper
 	/// </code>
 	/// </example>
 	[SupportedOSPlatform("windows")]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<char> InvalidFilterChars() => InvalidFileNameChars.ToReadOnlyCollection();
 
 	/// <summary>
@@ -287,7 +287,7 @@ public static class PathHelper
 	/// A read-only collection of characters used as path separators, specifically the
 	/// <see cref="Path.DirectorySeparatorChar"/> and <see cref="Path.AltDirectorySeparatorChar"/>.
 	/// </value>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<char> PathSeparators => new[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar }.ToReadOnlyCollection();
 
 }

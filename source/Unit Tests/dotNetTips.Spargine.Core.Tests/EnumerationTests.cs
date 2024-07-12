@@ -38,7 +38,6 @@ public class EnumerationTests
 		Assert.IsNotNull(DateTimeFormat.MonthDay.DisplayName);
 	}
 
-
 	[TestMethod]
 	public void EqualsTest()
 	{

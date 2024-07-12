@@ -4,7 +4,7 @@
 // Created          : 03-12-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-31-2024
+// Last Modified On : 07-12-2024
 // ***********************************************************************
 // <copyright file="Countries.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -64,7 +64,7 @@ public static class Countries
 	/// Gets country data.
 	/// </summary>
 	/// <returns>A <see cref="ReadOnlyCollection{Country}"/> representing all countries.</returns>
-	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static ReadOnlyCollection<Country> GetCountries()
 	{
 		_countries ??= DeserializeCountires();
@@ -78,7 +78,7 @@ public static class Countries
 	/// <param name="countryName">The name of the country. This parameter cannot be null.</param>
 	/// <returns>A <see cref="Country"/> object if found; otherwise, null.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static Country GetCountry([NotNull] CountryName countryName)
 	{
 		countryName = countryName.ArgumentNotNull();
@@ -92,7 +92,7 @@ public static class Countries
 	/// <param name="countryId">The country identifier. This parameter must be a positive number.</param>
 	/// <returns>A <see cref="Country"/> object if found; otherwise, null.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="countryId"/> is less than or equal to 0.</exception>
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static Country GetCountry(long countryId) => GetCountries().FirstOrDefault(p => p.Id == countryId);
 
 	/// <summary>

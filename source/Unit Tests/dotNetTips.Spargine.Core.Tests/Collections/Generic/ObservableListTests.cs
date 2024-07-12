@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using DotNetTips.Spargine.Core.Collections;
 using DotNetTips.Spargine.Core.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

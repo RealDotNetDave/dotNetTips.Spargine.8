@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-12-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -31,7 +31,7 @@ public static class ArrayExtensions
 {
 
 	/// <summary>
-	/// The string builder pool
+	/// Provides a pool of reusable <see cref="StringBuilder"/> instances.
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
@@ -192,7 +192,7 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>System.String.</returns>
 	/// <exception cref="ArgumentNullException">array cannot be empty.</exception>
-	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
+	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, Status = Status.NeedsDocumentation)]
 	public static string BytesToString([NotNull] this ReadOnlySpan<byte> array)
 	{
 		array = array.ArgumentNotEmpty();

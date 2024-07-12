@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-12-2024
 // ***********************************************************************
 // <copyright file="NumericExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -26,6 +26,242 @@ public class NumericExtensionsTests : TestClass
 {
 
 	private const string OutOfRange = "OUT OF RANGE";
+
+	[TestMethod]
+	public void Average_IntsWithRounding_ReturnsCorrectAverage()
+	{
+		// Arrange
+		int a = 10;
+		int b = 21; // This will test if the method correctly handles rounding.
+		int expectedResult = 15; // Expected to round down from 15.5 to 15
+
+		// Act
+		int result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of 10 and 21 should be 15, demonstrating rounding down.");
+	}
+
+	[TestMethod]
+	public void Average_MixedDecimals_ReturnsCorrectAverage()
+	{
+		// Arrange
+		decimal a = -10.5m;
+		decimal b = 20.5m;
+		decimal expectedResult = 5.0m;
+
+		// Act
+		decimal result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of -10.5 and 20.5 should be 5.0.");
+	}
+
+	[TestMethod]
+	public void Average_MixedDoubles_ReturnsCorrectAverage()
+	{
+		// Arrange
+		double a = -10.5;
+		double b = 20.5;
+		double expectedResult = 5.0;
+
+		// Act
+		double result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of -10.5 and 20.5 should be 5.0.");
+	}
+
+	[TestMethod]
+	public void Average_MixedInts_ReturnsCorrectAverage()
+	{
+		// Arrange
+		int a = -10;
+		int b = 30;
+		int expectedResult = 10;
+
+		// Act
+		int result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of -10 and 30 should be 10.");
+	}
+
+	[TestMethod]
+	public void Average_MixedLongs_ReturnsCorrectAverage()
+	{
+		// Arrange
+		long a = -10L;
+		long b = 30L;
+		long expectedResult = 10L;
+
+		// Act
+		long result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of -10 and 30 should be 10.");
+	}
+
+	[TestMethod]
+	public void Average_NegativeDecimals_ReturnsCorrectAverage()
+	{
+		// Arrange
+		decimal a = -10.5m;
+		decimal b = -20.5m;
+		decimal expectedResult = -15.5m;
+
+		// Act
+		decimal result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of -10.5 and -20.5 should be -15.5.");
+	}
+
+	[TestMethod]
+	public void Average_NegativeDoubles_ReturnsCorrectAverage()
+	{
+		// Arrange
+		double a = -10.5;
+		double b = -20.5;
+		double expectedResult = -15.5;
+
+		// Act
+		double result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of -10.5 and -20.5 should be -15.5.");
+	}
+
+	[TestMethod]
+	public void Average_NegativeInts_ReturnsCorrectAverage()
+	{
+		// Arrange
+		int a = -10;
+		int b = -20;
+		int expectedResult = -15;
+
+		// Act
+		int result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of -10 and -20 should be -15.");
+	}
+
+	[TestMethod]
+	public void Average_NegativeLongs_ReturnsCorrectAverage()
+	{
+		// Arrange
+		long a = -10L;
+		long b = -20L;
+		long expectedResult = -15L;
+
+		// Act
+		long result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of -10 and -20 should be -15.");
+	}
+	[TestMethod]
+	public void Average_PositiveDecimals_ReturnsCorrectAverage()
+	{
+		// Arrange
+		decimal a = 10.5m;
+		decimal b = 20.5m;
+		decimal expectedResult = 15.5m;
+
+		// Act
+		decimal result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of 10.5 and 20.5 should be 15.5.");
+	}
+	[TestMethod]
+	public void Average_PositiveDoubles_ReturnsCorrectAverage()
+	{
+		// Arrange
+		double a = 10.5;
+		double b = 20.5;
+		double expectedResult = 15.5;
+
+		// Act
+		double result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of 10.5 and 20.5 should be 15.5.");
+	}
+	[TestMethod]
+	public void Average_PositiveInts_ReturnsCorrectAverage()
+	{
+		// Arrange
+		int a = 10;
+		int b = 20;
+		int expectedResult = 15;
+
+		// Act
+		int result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of 10 and 20 should be 15.");
+	}
+	[TestMethod]
+	public void Average_PositiveLongs_ReturnsCorrectAverage()
+	{
+		// Arrange
+		long a = 10L;
+		long b = 20L;
+		long expectedResult = 15L;
+
+		// Act
+		long result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of 10 and 20 should be 15.");
+	}
+
+	[TestMethod]
+	public void Average_ZeroDecimals_ReturnsZero()
+	{
+		// Arrange
+		decimal a = 0m;
+		decimal b = 0m;
+		decimal expectedResult = 0m;
+
+		// Act
+		decimal result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of 0 and 0 should be 0.");
+	}
+
+	[TestMethod]
+	public void Average_ZeroDoubles_ReturnsZero()
+	{
+		// Arrange
+		double a = 0.0;
+		double b = 0.0;
+		double expectedResult = 0.0;
+
+		// Act
+		double result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of 0.0 and 0.0 should be 0.0.");
+	}
+
+	[TestMethod]
+	public void Average_ZeroLongs_ReturnsZero()
+	{
+		// Arrange
+		long a = 0L;
+		long b = 0L;
+		long expectedResult = 0L;
+
+		// Act
+		long result = NumericExtensions.Average(a, b);
+
+		// Assert
+		Assert.AreEqual(expectedResult, result, "The average of 0 and 0 should be 0.");
+	}
 
 	[TestMethod]
 	public void BytesToMegabytes_LargeNumberOfBytes_ReturnsCorrectMegabytes()

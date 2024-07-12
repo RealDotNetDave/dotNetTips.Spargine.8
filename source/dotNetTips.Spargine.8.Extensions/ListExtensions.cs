@@ -79,7 +79,7 @@ public static class ListExtensions
 	/// <returns>A read-only span representing the list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New, Documentation = "")]
+	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, Documentation = "")]
 	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this List<T> list) => new([.. list.ArgumentNotNull()]);
 
 	/// <summary>
@@ -417,7 +417,7 @@ public static class ListExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>FrozenSet&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New, Documentation = "ADD URL")]
 	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this List<T> list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>

@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-20-2024
+// Last Modified On : 07-12-2024
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -393,7 +393,7 @@ public static partial class RandomData
 	/// This method utilizes <see cref="GenerateInteger(int, int)"/> to generate a random integer within the specified range and then casts it to a character.
 	/// </remarks>
 	/// <example>Output: 65 'A'</example>
-	[Information(nameof(GenerateCharacter), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateCharacter), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static char GenerateCharacter(char minValue, char maxValue) => (char)GenerateInteger(minValue, maxValue);
 
 	/// <summary>
@@ -434,7 +434,7 @@ public static partial class RandomData
 	/// <remarks>
 	/// This method utilizes the <see cref="RandomCreditCardNumberGenerator.GetCreditCardNumber"/> method to generate a valid credit card number.
 	/// </remarks>
-	[Information(nameof(GenerateCreditCard), "David McCarter", "3/13/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(GenerateCreditCard), "David McCarter", "3/13/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GenerateCreditCard() => RandomCreditCardNumberGenerator.GetCreditCardNumber();
 
 	/// <summary>
@@ -445,7 +445,7 @@ public static partial class RandomData
 	/// <remarks>
 	/// This method leverages the <see cref="GenerateCreditCard"/> method to generate each credit card number in the collection.
 	/// </remarks>
-	[Information(nameof(GenerateCreditCard), "David McCarter", "3/13/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateCreditCard), "David McCarter", "3/13/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> GenerateCreditCards(int count = 100)
 	{
 		count = count.ArgumentInRange(1, defaultValue: 1);
@@ -480,7 +480,7 @@ public static partial class RandomData
 	/// This method selects a random domain extension from a predefined list using the <see cref="Of(string[])"/> method.
 	/// </remarks>
 	/// <example>Output: creditunion</example>
-	[Information(nameof(GenerateDomainExtension), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateDomainExtension), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string GenerateDomainExtension() => Of(_domainExtensions.Value);
 
 	/// <summary>
@@ -491,7 +491,7 @@ public static partial class RandomData
 	/// This method constructs an email address by generating a random username and domain name using <see cref="GenerateWord(int, int, char, char)"/> and appends a random domain extension using <see cref="GenerateDomainExtension"/>.
 	/// </remarks>
 	/// <example>Output: fbxpfvtanqysqmuqfh@kiuvf.fr</example>
-	[Information(nameof(GenerateEmailAddress), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateEmailAddress), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string GenerateEmailAddress() => $"{GenerateWord(5, 25, 'a', 'z')}@{GenerateWord(5, 15, 'a', 'z')}.{GenerateDomainExtension()}";
 
 	/// <summary>
@@ -579,7 +579,7 @@ public static partial class RandomData
 	/// <remarks>
 	/// This method selects a random first name from a predefined list using the PickRandom{T}(IEnumerable{T}) extension method on <see cref="_firstNames"/>.
 	/// </remarks>
-	[Information(nameof(GenerateFirstName), "David McCarter", "3/11/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(GenerateFirstName), "David McCarter", "3/11/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string GenerateFirstName() => _firstNames.Value.PickRandom();
 
 	/// <summary>
@@ -589,7 +589,7 @@ public static partial class RandomData
 	/// <param name="max">The exclusive upper bound of the random number returned. Must be greater than or equal to <paramref name="min"/>. Default is <see cref="int.MaxValue"/>.</param>
 	/// <returns>A 32-bit signed integer greater than or equal to <paramref name="min"/> and less than <paramref name="max"/>.</returns>
 	/// <exception cref="ArgumentOutOfRangeException"><paramref name="min"/> is greater than <paramref name="max"/>.</exception>
-	[Information(nameof(GenerateInteger), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateInteger), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static int GenerateInteger(int min = int.MinValue, int max = int.MaxValue)
 	{
 		//Ensure maxLength is +1 of minLength so the _randomNumberGenerator does not cause an exception.
@@ -616,7 +616,7 @@ public static partial class RandomData
 	/// <remarks>
 	/// This method selects a random last name from a predefined list using the PickRandom{TSource}System.Collections.Generic.IEnumerable{TSource} extension method on <see cref="_lastNames"/>.
 	/// </remarks>
-	[Information(nameof(GenerateLastName), "David McCarter", "3/11/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(GenerateLastName), "David McCarter", "3/11/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string GenerateLastName() => _lastNames.Value.PickRandom();
 
 	/// <summary>
@@ -629,7 +629,7 @@ public static partial class RandomData
 	/// This method uses <see cref="Random"/> for generating each digit of the number. Ensure that the <see cref="Random"/> instance is properly initialized to avoid generating predictable sequences.
 	/// </remarks>
 	/// <example>Output: "446085072052112"</example>
-	[Information(nameof(GenerateNumber), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateNumber), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GenerateNumber(int length = 1)
 	{
 		length = length.ArgumentInRange(lower: 1, defaultValue: 1);
@@ -662,7 +662,7 @@ public static partial class RandomData
 	/// <remarks>
 	/// This method leverages <see cref="GenerateFirstName"/> and <see cref="GenerateLastName"/> to create each <see cref="PersonName"/>.
 	/// </remarks>
-	[Information(nameof(GeneratePersonNames), "David McCarter", "12/15/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(GeneratePersonNames), "David McCarter", "12/15/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static ReadOnlyCollection<PersonName> GeneratePersonNames(int count = 1)
 	{
 		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
@@ -711,7 +711,7 @@ public static partial class RandomData
 	/// <remarks>
 	/// This method leverages <see cref="GeneratePersonRecord(int, int, int)"/> to create each <see cref="PersonRecord"/> in the collection.
 	/// </remarks>
-	[Information(nameof(GeneratePersonRecordCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GeneratePersonRecordCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<PersonRecord> GeneratePersonRecordCollection(int count = 1)
 	{
 		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
@@ -767,7 +767,7 @@ public static partial class RandomData
 	/// <typeparam name="TAddress">The type of address, must implement <see cref="IAddress"/> and have a parameterless constructor.</typeparam>
 	/// <param name="count">The number of <see cref="Models.RefTypes.Person{TAddress}"/> objects to generate. Default is 1.</param>
 	/// <returns>A read-only collection of <see cref="Models.RefTypes.Person{TAddress}"/> objects.</returns>
-	[Information(nameof(GeneratePersonRefCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GeneratePersonRefCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<Models.RefTypes.Person<TAddress>> GeneratePersonRefCollection<TAddress>(int count = 1) where TAddress : IAddress, new()
 	{
 		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
@@ -790,7 +790,7 @@ public static partial class RandomData
 	/// <param name="addressLength">The length of each address line. Default is 25.</param>
 	/// <param name="countyProvinceLength">The length of the county or province name. Default is 20.</param>
 	/// <returns>A <see cref="Models.ValueTypes.Person{TAddress}"/> object.</returns>
-	[Information(nameof(GeneratePersonVal), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GeneratePersonVal), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static Models.ValueTypes.Person<TAddress> GeneratePersonVal<TAddress>(int addressCount = 2, int addressLength = 25, int countyProvinceLength = 20) where TAddress : struct, IAddress
 	{
 		addressCount = addressCount.ArgumentInRange(lower: 0, defaultValue: 2);
@@ -820,7 +820,7 @@ public static partial class RandomData
 	/// <typeparam name="TAddress">The type of address, must be a struct and implement <see cref="IAddress"/>.</typeparam>
 	/// <param name="count">The number of <see cref="Models.ValueTypes.Person{TAddress}"/> objects to generate. Default is 1.</param>
 	/// <returns>A read-only collection of <see cref="Models.ValueTypes.Person{TAddress}"/> objects.</returns>
-	[Information(nameof(GeneratePersonValCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GeneratePersonValCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<Models.ValueTypes.Person<TAddress>> GeneratePersonValCollection<TAddress>(int count = 1) where TAddress : struct, IAddress
 	{
 		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
@@ -846,7 +846,7 @@ public static partial class RandomData
 	/// This method utilizes the <see cref="Country"/> enumeration to determine the format of the generated phone number.
 	/// </remarks>
 	/// <example>Output for Taiwan: 886-352346002</example>
-	[Information(nameof(GeneratePhoneNumber), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GeneratePhoneNumber), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GeneratePhoneNumber([NotNull] Country country, bool includeCountryCode = false)
 	{
 		country = country.ArgumentNotNull();
@@ -865,7 +865,7 @@ public static partial class RandomData
 	/// This method utilizes the <see cref="CountryName"/> enumeration to determine the format of the generated phone number.
 	/// </remarks>
 	/// <example>Output for Taiwan: 886-352346002</example>
-	[Information(nameof(GeneratePhoneNumber), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GeneratePhoneNumber), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GeneratePhoneNumber([NotNull] CountryName countryName, bool includeCountryCode = false)
 	{
 		countryName = countryName.ArgumentDefined();
@@ -884,7 +884,7 @@ public static partial class RandomData
 	/// <returns>A random file name with the specified length and extension.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="extension"/> is null.</exception>
 	/// <example>Output: C:\\Users\\user folder Ex\\AppData\\Local\\Temp\\MSPRINYRBU.dotnettips.temp</example>
-	[Information(nameof(GenerateRandomFileName), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateRandomFileName), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GenerateRandomFileName(int fileNameLength = 10, [NotNull] string extension = DefaultFileExtension)
 	{
 		fileNameLength = fileNameLength.ArgumentInRange(1, upper: 256);
@@ -904,7 +904,7 @@ public static partial class RandomData
 	/// <returns>A string representing the full path of the generated file.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="path"/> or <paramref name="extension"/> is null.</exception>
 	/// <example>Output: c:\\temp\\FFDHRBMDXP.dotnettips</example>
-	[Information(nameof(GenerateRandomFileName), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateRandomFileName), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GenerateRandomFileName([NotNull] string path, int fileNameLength = 10, [NotNull] string extension = DefaultFileExtension)
 	{
 		fileNameLength = fileNameLength.ArgumentInRange(1, upper: 256);
@@ -975,7 +975,7 @@ public static partial class RandomData
 	/// This method can be used to generate relative URLs for web applications. It's a part of the <see cref="RandomData"/> class which provides various methods for generating random data.
 	/// </remarks>
 	/// <example>Output:"/ljsylu/rsglcurkiylqld/wejdbuainlgjofnv/uwbrjftyt/"</example>
-	[Information(nameof(GenerateRelativeUrl), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateRelativeUrl), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GenerateRelativeUrl()
 	{
 		var sb = _stringBuilderPool.Get();
@@ -1003,7 +1003,7 @@ public static partial class RandomData
 	/// <param name="fileLength">The length of the file in characters. Default is <see cref="DefaultFileLength"/>.</param>
 	/// <returns>The path to the generated temporary file.</returns>
 	/// <example>Output: C:\\Users\\user folder\\AppData\\Local\\Temp\\OFQCKBRAKQ.dotnettips.temp</example>
-	[Information(nameof(GenerateTempFile), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateTempFile), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GenerateTempFile(int fileLength = DefaultFileLength)
 	{
 		fileLength = fileLength.ArgumentInRange(lower: 1, defaultValue: DefaultFileLength);
@@ -1024,7 +1024,7 @@ public static partial class RandomData
 	/// This method combines the output of <see cref="GenerateUrlHostName"/> and <see cref="GenerateRelativeUrl"/> to construct the full URL.
 	/// </remarks>
 	/// <example>Output: https://www.rp.red/wyfkxbfft/pqypmdstoydnootvdvnsqkn/</example>
-	[Information(nameof(GenerateUrl), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateUrl), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GenerateUrl() => $"{GenerateUrlHostName()}{GenerateRelativeUrl()}";
 
 	/// <summary>
@@ -1035,7 +1035,7 @@ public static partial class RandomData
 	/// The fragment is generated by creating a random word using <see cref="GenerateWord(int, int, char, char)"/> method.
 	/// </remarks>
 	/// <example>Output: /rregyyjxpjiats</example>
-	[Information(nameof(GenerateUrlFragment), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateUrlFragment), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GenerateUrlFragment() => $"/{GenerateWord(1, 25, 'a', 'z')}";
 
 	/// <summary>
@@ -1046,7 +1046,7 @@ public static partial class RandomData
 	/// This method constructs a full URL host name by prefixing the HTTPS protocol to the host name generated by <see cref="GenerateUrlHostNameNoProtocol"/>.
 	/// </remarks>
 	/// <example>Output: https://www.ukrsusbrtjijfktfj.shouji</example>
-	[Information(nameof(GenerateUrlHostName), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GenerateUrlHostName), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string GenerateUrlHostName() => $"https://{GenerateUrlHostNameNoProtocol()}";
 
 	/// <summary>

@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-12-2024
 // ***********************************************************************
 // <copyright file="EnumHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -118,7 +118,7 @@ public static class EnumHelper
 	/// and so on for each enumeration value.
 	/// </code>
 	/// </example>
-	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, BenchMarkStatus = BenchMarkStatus.WIP, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static ReadOnlyCollection<EnumValue> GetValues<T>(bool fixNames = true, bool useXmlNames = true)
 		where T : Enum
 	{

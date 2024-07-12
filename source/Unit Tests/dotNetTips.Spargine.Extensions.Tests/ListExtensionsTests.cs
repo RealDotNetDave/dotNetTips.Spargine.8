@@ -54,8 +54,6 @@ public class ListExtensionsTests
 		Assert.IsTrue(people.FastCount() == Count + 1);
 	}
 
-
-
 	[TestMethod]
 	public void AddLastTest()
 	{
@@ -77,6 +75,23 @@ public class ListExtensionsTests
 		var result2 = peopleArray.AddLast(person);
 		Assert.IsTrue(result2.Length == Count + 1);
 		Assert.IsTrue(result2.Last().Equals(person));
+	}
+
+	[TestMethod]
+	public void AsReadOnlySpanTest()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3, 4, 5 };
+
+		// Act
+		var span = list.AsReadOnlySpan();
+
+		// Assert
+		Assert.AreEqual(list.Count, span.Length, "The length of the span should match the count of the list.");
+		for (int i = 0; i < list.Count; i++)
+		{
+			Assert.AreEqual(list[i], span[i], $"The element at index {i} should match between the list and the span.");
+		}
 	}
 
 
