@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-12-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -299,13 +299,10 @@ public static class DirectoryHelper
 								}
 								else
 								{
-									folder.AccountName = (string)key.GetValue(string.Empty);
+									folder.AccountName = OneDriveAccountType.Personal.ToString();
 								}
 
-								if (folder.AccountName.HasValue() && folder.DirectoryInfo.IsNotNull())
-								{
-									folders.Add(folder);
-								}
+								folders.Add(folder);
 							}
 						}
 					}

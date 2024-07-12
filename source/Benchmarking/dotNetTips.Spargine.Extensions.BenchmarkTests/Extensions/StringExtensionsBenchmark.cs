@@ -493,6 +493,15 @@ public class StringExtensionsBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(StringExtensions.SplitRemoveEmpty))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void SplitRemoveEmpty()
+	{
+		var result = this.LongTestString.SplitRemoveEmpty();
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(StringExtensions.StartsWithOrdinal))]
 	[BenchmarkCategory(Categories.Strings)]
 	public void StartsWithOrdinal()

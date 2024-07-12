@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-14-2024
+// Last Modified On : 07-12-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -194,7 +194,7 @@ public class DirectoryHelperTests
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
-	public void GetOneDriveFolerTest()
+	public void GetOneDriveFolderTest()
 	{
 		var result = DirectoryHelper.LoadOneDriveFolders();
 
