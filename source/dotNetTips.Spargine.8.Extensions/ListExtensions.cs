@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-06-2024
+// Last Modified On : 07-13-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -107,7 +107,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if any elements were removed; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ClearNulls), author: "David McCarter", createdOn: "8/12/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ClearNulls), author: "David McCarter", createdOn: "8/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool ClearNulls<T>([NotNull] this List<T> collection)
 	{
 		if (collection is null)
@@ -126,7 +126,7 @@ public static class ListExtensions
 	/// <returns>A new <see cref="Collection{T}"/> containing the elements of the input list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CopyToCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(CopyToCollection), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static Collection<T> CopyToCollection<T>([NotNull] this List<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -141,7 +141,7 @@ public static class ListExtensions
 	/// <param name="collection">The list to check.</param>
 	/// <returns><c>true</c> if the list is null or contains no elements; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool DoesNotHaveItems<T>([NotNull] this List<T> collection)
 	{
 		if (collection is null)
@@ -150,7 +150,7 @@ public static class ListExtensions
 		}
 		else
 		{
-			return collection.Count <= 0;
+			return collection.Count == 0;
 		}
 	}
 
@@ -162,7 +162,7 @@ public static class ListExtensions
 	/// <returns>A hash code representing the contents of the list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static int GenerateHashCode<T>([NotNull] this List<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
@@ -186,7 +186,7 @@ public static class ListExtensions
 	/// <param name="collection">The list to check.</param>
 	/// <returns><c>true</c> if the list contains one or more elements; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(HasItems), "David McCarter", "8/27/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
 	public static bool HasItems<T>([NotNull] this List<T> collection)
 	{
 		if (collection is null)
@@ -207,7 +207,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the specified action has items; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">action</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(HasItems), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this List<T> collection, [NotNull] Predicate<T> action)
 	{
 		if (collection.CheckIsNotNull() is false || action.CheckIsNotNull() is false)
@@ -226,7 +226,7 @@ public static class ListExtensions
 	/// <param name="count">The specific count.</param>
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.WIP, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.WIP, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
 	public static bool HasItems<T>([NotNull] this List<T> collection, int count)
 	{
 		if (collection is null)
@@ -249,7 +249,7 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">collection</exception>
 	/// <remarks>Original code by: @TheOtherBoz</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IndexAtLooped), author: "David McCarter", createdOn: "7/17/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
+	[Information(nameof(IndexAtLooped), author: "David McCarter", createdOn: "7/17/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static T IndexAtLooped<T>([NotNull] this List<T> collection, int index)
 	{
 		collection = collection.ArgumentNotNull();
@@ -270,7 +270,7 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">collection</exception>
 	/// <exception cref="ArgumentNullException">collectionToCheck</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsEqualTo), author: "David McCarter", createdOn: "3/22/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(IsEqualTo), author: "David McCarter", createdOn: "3/22/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineMay2023", Status = Status.Available)]
 	public static bool IsEqualTo<T>([NotNull] this List<T> collection, [NotNull] List<T> collectionToCheck)
 	{
 		if (collection is null || collectionToCheck is null)
@@ -291,7 +291,7 @@ public static class ListExtensions
 	/// <param name="collection">The collection.</param>
 	/// <param name="action">The action.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static void PerformAction<T>([NotNull] this List<T> collection, [NotNull] Action<T> action)
 	{
 		collection = collection.ArgumentNotNull();
@@ -360,7 +360,7 @@ public static class ListExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>Core.Collections.Generic.Collection&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToCollection), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToCollection), "David McCarter", "10/21/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static Collection<T> ToCollection<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -375,7 +375,7 @@ public static class ListExtensions
 	/// <remarks>This type implements IDisposable. Make sure to call .Dispose() or use the 'using' statement
 	/// to remove from memory.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToDistinctBlockingCollection), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToDistinctBlockingCollection), "David McCarter", "10/21/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineJan2022", Status = Status.Available)]
 	public static DistinctBlockingCollection<T> ToDistinctBlockingCollection<T>([NotNull] this List<T> collection, bool completeAdding = false)
 	{
 		var result = new DistinctBlockingCollection<T>(collection.ArgumentItemsExists());
@@ -396,7 +396,7 @@ public static class ListExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>DistinctConcurrentBag&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToDistinctConcurrentBag), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToDistinctConcurrentBag), "David McCarter", "10/21/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineJan2022", Status = Status.Available)]
 	public static DistinctConcurrentBag<T> ToDistinctConcurrentBag<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -407,7 +407,7 @@ public static class ListExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>FastSortedList&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFastSortedList), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToFastSortedList), "David McCarter", "10/21/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineJan2022", Status = Status.Available)]
 	public static FastSortedList<T> ToFastSortedList<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -417,7 +417,7 @@ public static class ListExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>FrozenSet&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "ADD URL", Status = Status.New)]
 	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this List<T> list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>
@@ -428,7 +428,7 @@ public static class ListExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>ImmutableArray&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToCollection), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToCollection), "David McCarter", "12/3/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this List<T> collection) => ImmutableArray.Create([.. collection.ArgumentNotNull()]);
 
 	/// <summary>
@@ -441,7 +441,7 @@ public static class ListExtensions
 	/// <returns>List&lt;T&gt;.</returns>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToListAsync), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToListAsync), "David McCarter", "12/3/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static async Task<List<TSource>> ToListAsync<TSource>([NotNull] this IAsyncEnumerable<TSource> collection, CancellationToken cancellationToken = default)
 	{
 		collection = collection.ArgumentNotNull();
@@ -464,7 +464,7 @@ public static class ListExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>ObservableCollection.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToObservableCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ToObservableCollection), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ObservableCollection<T> ToObservableCollection<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -475,7 +475,7 @@ public static class ListExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>ObservableList&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToObservableList), "David McCarter", "10/21/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToObservableList), "David McCarter", "10/21/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ObservableList<T> ToObservableList<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -486,7 +486,7 @@ public static class ListExtensions
 	/// <param name="collection">The <see cref="List{T}" /> to convert.</param>
 	/// <returns>ReadOnlyCollection&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -497,8 +497,8 @@ public static class ListExtensions
 	/// <param name="collection">The <see cref="List{T}" /> to convert.</param>
 	/// <returns>IReadOnlyList&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToReadOnlyList), "David McCarter", "4/10/2022", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static IReadOnlyList<T> ToReadOnlyList<T>([NotNull] this List<T> collection) => collection.ArgumentNotNull();
+	[Information(nameof(ToReadOnlyList), "David McCarter", "4/10/2022", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public static IReadOnlyList<T> ToReadOnlyList<T>([NotNull] this List<T> collection) => collection.ArgumentNotNull().AsReadOnly();
 
 	/// <summary>
 	/// Converts to <see cref="ReadOnlyObservableCollection{T}" />.
@@ -507,7 +507,7 @@ public static class ListExtensions
 	/// <param name="collection">The collection.</param>
 	/// <returns>ReadOnlyObservableCollection&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToObservableCollection), "David McCarter", "11/26/2022", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(ToObservableCollection), "David McCarter", "11/26/2022", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static ReadOnlyObservableCollection<T> ToReadOnlyObservableCollection<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull().ToObservableCollection());
 
 }

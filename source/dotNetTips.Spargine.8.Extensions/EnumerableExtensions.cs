@@ -1142,7 +1142,7 @@ public static class EnumerableExtensions
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "2/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
-	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this ConcurrentBag<T> collection) => new ReadOnlyCollection<T>(collection.ArgumentNotNull().ToArray());
+	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this ConcurrentBag<T> collection) => new(collection.ArgumentNotNull().ToArray());
 
 	/// <summary>
 	/// Inserts or updates an item in the collection. If the item already exists, it is updated; otherwise, it is added.

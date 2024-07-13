@@ -53,7 +53,11 @@ public static class StringExtensions
 	/// </summary>
 	private static readonly Regex _emailRegEx = new(Resources.RegexEmail, RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
 
-	private static readonly ASCIIEncoding _encoding = new ASCIIEncoding();
+	/// <summary>
+	/// Provides a static instance of the <see cref="ASCIIEncoding"/> class for use throughout the StringExtensions class.
+	/// This encoding is used for operations that require ASCII character encoding.
+	/// </summary>
+	private static readonly ASCIIEncoding _encoding = new();
 
 	/// <summary>
 	/// The first last name reg ex

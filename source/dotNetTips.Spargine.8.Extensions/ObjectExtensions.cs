@@ -79,10 +79,7 @@ public static class ObjectExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(As), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static T As<T>([NotNull] this object obj)
-	{
-		return (T)obj.ArgumentNotNull();
-	}
+	public static T As<T>([NotNull] this object obj) => (T)obj.ArgumentNotNull();
 
 	/// <summary>
 	/// Creates a deep copy of the specified object.
