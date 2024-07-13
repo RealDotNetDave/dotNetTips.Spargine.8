@@ -4,7 +4,7 @@
 // Created          : 02-27-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-11-2024
+// Last Modified On : 07-13-2024
 // ***********************************************************************
 // <copyright file="BenchMarkStatus.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -48,4 +48,9 @@ public enum BenchMarkStatus
 	/// Indicates that the existing benchmark needs to be updated.
 	/// </summary>
 	NeedsUpdate,
+
+	/// <summary>
+	/// Indicates that a benchmark needs to be created.
+	/// </summary>
+	Benchmark,
 }

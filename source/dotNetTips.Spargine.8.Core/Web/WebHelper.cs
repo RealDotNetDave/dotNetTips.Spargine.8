@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-13-2024
 // ***********************************************************************
 // <copyright file="WebHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -56,7 +56,7 @@ public static class WebHelper
 	/// This method adds a "CLIENTID" header to the request if <paramref name="clientId"/> is provided and not "NONE".
 	/// Ensure proper disposal of the task to avoid resource leaks.
 	/// </remarks>
-	[Information(nameof(DownloadStringAsync), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(DownloadStringAsync), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static async Task<string> DownloadStringAsync([NotNull] Uri address, string clientId = "NONE")
 	{
 		address = address.ArgumentNotNull();
@@ -81,7 +81,7 @@ public static class WebHelper
 	/// This method provides a convenient way to access all standard HTTP header names as defined by the .NET framework.
 	/// It can be useful for validation, logging, or setting headers in HTTP requests.
 	/// </remarks>
-	[Information(nameof(HttpHeaderNames), "David McCarter", "9/2/2020", "9/2/2020", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired)]
+	[Information(nameof(HttpHeaderNames), "David McCarter", "9/2/2020", "9/2/2020", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Unnecessary, BenchMarkStatus = BenchMarkStatus.NotRequired)]
 	public static ReadOnlyCollection<string> HttpHeaderNames() => Enum.GetNames(typeof(HttpRequestHeader)).AsReadOnly();
 
 	/// <summary>
@@ -106,11 +106,9 @@ public static class WebHelper
 		}
 		else
 		{
-			var isLocal = !path.StartsWith("http:", StringComparison.OrdinalIgnoreCase) &&
-				!path.StartsWith("https:", StringComparison.OrdinalIgnoreCase) &&
+			return !path.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+				!path.StartsWith("https://", StringComparison.OrdinalIgnoreCase) &&
 				Uri.IsWellFormedUriString(path, UriKind.Relative);
-
-			return isLocal;
 		}
 	}
 

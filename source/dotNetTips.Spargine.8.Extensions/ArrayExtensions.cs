@@ -192,7 +192,7 @@ public static class ArrayExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>System.String.</returns>
 	/// <exception cref="ArgumentNullException">array cannot be empty.</exception>
-	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.NeedsDocumentation)]
 	public static string BytesToString([NotNull] this ReadOnlySpan<byte> array)
 	{
 		array = array.ArgumentNotEmpty();

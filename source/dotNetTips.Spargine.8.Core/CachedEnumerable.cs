@@ -4,7 +4,7 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-13-2024
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Core;
 /// Provides a mechanism for caching the results of enumerating an <see cref="IEnumerable{T}"/>.
 /// This can significantly improve performance when iterating over the same enumerable multiple times.
 /// </summary>
-[Information(nameof(CachedEnumerable), Status = Status.Available)]
+[Information(nameof(CachedEnumerable), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 public static class CachedEnumerable
 {
 
@@ -38,7 +38,7 @@ public static class CachedEnumerable
 	/// <param name="enumerable">The enumerable to cache.</param>
 	/// <returns>A <see cref="CachedEnumerable{T}"/> that caches the results of enumerating the specified enumerable.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="enumerable"/> is null.</exception>
-	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static CachedEnumerable<T> Create<T>([NotNull] IEnumerable<T> enumerable)
 	{
 		enumerable = enumerable.ArgumentNotNull();
@@ -167,9 +167,10 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 			else
 			{
 				// There are no more items, we can dispose the underlying enumerator
+				this._enumerated = true;
 				this._enumerator.Dispose();
 				this._enumerator = null;
-				this._enumerated = true;
+
 				result = default;
 				return false;
 			}

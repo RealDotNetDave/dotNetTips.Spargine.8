@@ -78,7 +78,7 @@ public static class ObjectExtensions
 	/// <returns>The converted object of type <typeparamref name="T" />.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(As), OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(As), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T As<T>([NotNull] this object obj)
 	{
 		return (T)obj.ArgumentNotNull();
@@ -463,7 +463,7 @@ public static class ObjectExtensions
 	/// <remarks>This method serializes the object to a JSON string using the default JsonSerializerOptions and writes it to the specified file.
 	/// If the file already exists, it will be overwritten.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToJsonFile), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(ToJsonFile), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static void ToJsonFile([NotNull] this object obj, [NotNull] FileInfo file)
 	{
 		file = file.ArgumentNotNull();

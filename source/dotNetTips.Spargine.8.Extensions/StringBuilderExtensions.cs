@@ -96,7 +96,7 @@ public static class StringBuilderExtensions
 	/// <exception cref="ArgumentException">key</exception>
 	/// <exception cref="ArgumentException">value</exception>
 	/// <exception cref="ArgumentException">sb</exception>
-	[Information("FROM .NET CORE SOURCE", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("FROM .NET CORE SOURCE", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void AppendKeyValue([NotNull] this StringBuilder sb, [NotNull] string key, string value, bool includeQuotes = true, bool includeComma = true)
 	{
 		sb = sb.ArgumentNotNull();
@@ -164,7 +164,7 @@ public static class StringBuilderExtensions
 	/// sb.AppendValues(",", values);
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub.", author: "David McCarter", createdOn: "7/1/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub.", author: "David McCarter", createdOn: "7/1/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<string> values)
 	{
 		sb = sb.ArgumentNotNull();
@@ -194,7 +194,7 @@ public static class StringBuilderExtensions
 	/// Console.WriteLine(sb.ToString()); // Output: value1,value2,value3
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues([NotNull] this StringBuilder sb, string separator, [NotNull] params string[] values)
 	{
 		sb = sb.ArgumentNotNull();
@@ -219,7 +219,7 @@ public static class StringBuilderExtensions
 	/// <param name="values">The collection of values to append.</param>
 	/// <param name="joinAction">The action to perform on each element in the <paramref name="values"/> collection.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/>, <paramref name="values"/>, or <paramref name="joinAction"/> is null.</exception>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues<T>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] Action<T> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -260,7 +260,7 @@ public static class StringBuilderExtensions
 	/// <param name="param">The parameter to pass to each invocation of <paramref name="joinAction"/>.</param>
 	/// <param name="joinAction">The action to perform on each element in the <paramref name="values"/> collection, which also takes <paramref name="param"/> as an argument.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/>, <paramref name="values"/>, <paramref name="param"/>, or <paramref name="joinAction"/> is null.</exception>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues<T, TParam>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam param, [NotNull] Action<T, TParam> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -304,7 +304,7 @@ public static class StringBuilderExtensions
 	/// <param name="param2">The second parameter to pass to each invocation of <paramref name="joinAction"/>.</param>
 	/// <param name="joinAction">The action to perform on each element in the <paramref name="values"/> collection, which also takes <paramref name="param1"/> and <paramref name="param2"/> as arguments.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/>, <paramref name="values"/>, <paramref name="param1"/>, <paramref name="param2"/>, or <paramref name="joinAction"/> is null.</exception>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues<T, TParam1, TParam2>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam1 param1, [NotNull] TParam2 param2, [NotNull] Action<StringBuilder, T, TParam1, TParam2> joinAction)
 	{
 		sb = sb.ArgumentNotNull();

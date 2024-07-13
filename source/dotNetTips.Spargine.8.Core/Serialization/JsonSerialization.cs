@@ -4,7 +4,7 @@
 // Created          : 02-21-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-13-2024
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -141,7 +141,7 @@ public static class JsonSerialization
 	/// It throws an <see cref="InvalidOperationException"/> if the deserialization process fails
 	/// or if the result is null, ensuring that a valid object is always returned.
 	/// </remarks>
-	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json) => JsonSerializer.Deserialize<TResult>(json, _options) ?? throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
 
 	/// <summary>
@@ -151,7 +151,7 @@ public static class JsonSerialization
 	/// <param name="file">The file containing the JSON content to deserialize.</param>
 	/// <returns>An instance of <typeparamref name="TResult" /> deserialized from the JSON content in the file.</returns>
 	/// <exception cref="FileNotFoundException">Thrown if the specified file does not exist.</exception>
-	[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(DeserializeFromFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : class
 	{
 		if (file.Exists is false)
@@ -168,7 +168,7 @@ public static class JsonSerialization
 	/// <param name="actual">The actual.</param>
 	/// <param name="expected">The expected.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool JsonEqual([NotNull] string actual, string expected)
 	{
 		actual = actual.ArgumentNotNullOrEmpty();
@@ -188,7 +188,7 @@ public static class JsonSerialization
 	/// <param name="obj">The object to serialize.</param>
 	/// <returns>A JSON string representation of the object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the input object is null.</exception>
-	[Information(nameof(Serialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Serialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string Serialize([NotNull] object obj)
 	{
 		obj = obj.ArgumentNotNull();
@@ -202,7 +202,7 @@ public static class JsonSerialization
 	/// <param name="file">The file information where the JSON content will be written.</param>
 	/// <exception cref="ArgumentNullException">Thrown if the input object or file is null.</exception>
 	/// <remarks>This method ensures that all directories and subdirectories in the specified path are created unless they already exist before writing the JSON content.</remarks>
-	[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(SerializeToFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void SerializeToFile([NotNull] object obj, [NotNull] FileInfo file)
 	{
 		obj = obj.ArgumentNotNull();

@@ -51,6 +51,10 @@ public class Config<T> where T : class, new()
 	/// Loads the configuration from the disk if it exists.
 	/// </summary>
 	/// <returns><c>true</c> if the configuration was successfully loaded; otherwise, <c>false</c>.</returns>
+	/// <remarks>
+	/// This method attempts to deserialize the configuration object from a file specified by <see cref="ConfigFileName"/>.
+	/// If the file does not exist, the method returns <c>false</c>.
+	/// </remarks>
 	public virtual bool Load()
 	{
 		if (File.Exists(this.ConfigFileName))

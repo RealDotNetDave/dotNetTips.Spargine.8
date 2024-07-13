@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 07-13-2024
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Core;
 /// This allows for richer domain models with type safety, without the limitations of the built-in Enum type.
 /// </summary>
 /// <remarks>Original code by: Jimmy Bogard</remarks>
-[Information(nameof(Enumeration), Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+[Information(nameof(Enumeration), Documentation = "http://bit.ly/SpargineFeb2021", Status = Status.Available)]
 [DebuggerDisplay(nameof(DisplayName))]
 public abstract record Enumeration
 {
@@ -93,14 +93,13 @@ public abstract record Enumeration
 	/// <param name="secondValue">The second enumeration instance.</param>
 	/// <returns>The absolute difference between the values of <paramref name="firstValue"/> and <paramref name="secondValue"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when either <paramref name="firstValue"/> or <paramref name="secondValue"/> is null.</exception>
-	[Information(nameof(AbsoluteDifference), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(AbsoluteDifference), OptimizationStatus = OptimizationStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static int AbsoluteDifference([NotNull] Enumeration firstValue, [NotNull] Enumeration secondValue)
 	{
 		firstValue = firstValue.ArgumentNotNull();
 		secondValue = secondValue.ArgumentNotNull();
 
-		var absoluteDifference = Math.Abs(firstValue.Value - secondValue.Value);
-		return absoluteDifference;
+		return Math.Abs(firstValue.Value - secondValue.Value);
 	}
 
 	/// <summary>
@@ -112,7 +111,7 @@ public abstract record Enumeration
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="displayName"/> is null or empty.</exception>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
 	[DebuggerStepThrough]
-	[Information(nameof(FromDisplayName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(FromDisplayName), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static T FromDisplayName<T>([NotNull] string displayName) where T : Enumeration, new()
 	{
 		displayName = displayName.ArgumentNotNullOrEmpty();
@@ -129,7 +128,7 @@ public abstract record Enumeration
 	/// <param name="value">The integer value of the enumeration instance.</param>
 	/// <returns>An instance of the enumeration type that matches the given integer value.</returns>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
-	[Information(nameof(FromValue), UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(FromValue), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static T FromValue<T>(int value) where T : Enumeration, new()
 	{
 		var matchingItem = Parse<T>("Validating int.", item => item.Value == value);
@@ -142,7 +141,7 @@ public abstract record Enumeration
 	/// </summary>
 	/// <typeparam name="T">The type of enumeration to retrieve instances for.</typeparam>
 	/// <returns>An <see cref="IEnumerable{T}"/> containing all instances of the specified enumeration type.</returns>
-	[Information(nameof(GetAll), UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(GetAll), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static IEnumerable<T> GetAll<T>() where T : Enumeration, new()
 	{
 		var type = typeof(T);

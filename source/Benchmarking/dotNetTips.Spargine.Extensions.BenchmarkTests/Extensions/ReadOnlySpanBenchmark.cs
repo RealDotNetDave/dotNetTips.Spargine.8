@@ -34,7 +34,7 @@ public class ReadOnlySpanBenchmark : SmallCollectionBenchmark
 
 		var result = collection.PickRandom();
 
-		Consume(result.ToArray());
+		Consume(result);
 	}
 
 	public override void Setup()
