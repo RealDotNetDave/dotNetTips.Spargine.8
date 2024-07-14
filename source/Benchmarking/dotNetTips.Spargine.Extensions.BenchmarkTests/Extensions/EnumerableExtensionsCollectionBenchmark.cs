@@ -39,6 +39,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	private IEnumerable<Coordinate> _coordinateValEnumerable;
 	private IEnumerable<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefEnumerable;
 	private IEnumerable<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefEnumerableToAdd;
+	private List<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefList;
 	private List<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefListDups;
 
 	private static bool AnyWithPredicate<T>([NotNull] IEnumerable<T> list, [NotNull] Func<T, bool> predicate) => list.Any(predicate);
@@ -121,7 +122,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Counting: Count With Predicate")]
+	[Benchmark(Description = "IEnumerable.Count: With Predicate")]
 	[BenchmarkCategory(Categories.ForComparison)]
 	public void Count_Count_WithPredicate()
 	{
@@ -130,7 +131,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Counting: CountAsync()")]
+	[Benchmark(Description = nameof(EnumerableExtensions.CountAsync))]
 	public async Task Count_CountAsync()
 	{
 		var result = await this._personRefEnumerable.CountAsync(CancellationToken.None).ConfigureAwait(false);
@@ -138,7 +139,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Counting: EnumerableExtensions.Count()")]
+	[Benchmark(Description = nameof(EnumerableExtensions.Count))]
 	public void Count_EnumerableExtensions_Count()
 	{
 		var result = this._personRefEnumerable.Count();
@@ -146,7 +147,15 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Counting: FastCount() With Predicate")]
+	[Benchmark(Description = nameof(EnumerableExtensions.FastCount) + ":IList ")]
+	public void Count_FastCount_IList()
+	{
+		var result = this._personRefList.FastCount();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(EnumerableExtensions.FastCount) + ":With Predicate")]
 	public void Count_FastCount_WithPredicate()
 	{
 		var result = this._personRefEnumerable.FastCount(p => p.LastName.Contains('a', StringComparison.CurrentCulture));
@@ -154,7 +163,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Counting: FastCount()")]
+	[Benchmark(Description = nameof(EnumerableExtensions.FastCount))]
 	public void Counting_FastCount()
 	{
 		var result = this._personRefEnumerable.FastCount();
@@ -215,7 +224,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(people);
 	}
 
-	[Benchmark(Description = nameof(EnumerableExtensions.FirstOrDefault) + ": Alternate")]
+	[Benchmark(Description = nameof(EnumerableExtensions.FirstOrDefault) + ": With Alternate")]
 	public void FirstOrDefaultAlternate()
 	{
 		var result = this._personRefEnumerable.FirstOrDefault(alternate: this.PersonRef01);
@@ -223,7 +232,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(EnumerableExtensions.FirstOrDefault) + ": Predicate, Alternate")]
+	[Benchmark(Description = nameof(EnumerableExtensions.FirstOrDefault) + ": Predicate, With Alternate")]
 	public void FirstOrDefaultPredicateAlternate()
 	{
 		var result = this._personRefEnumerable.FirstOrDefault(p => p.Id == this.PersonRef01.Id, this.PersonRef01);
@@ -374,6 +383,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		base.Setup();
 
 		this._personRefEnumerable = this.GetPersonRefCollection().AsEnumerable();
+		this._personRefList = this.GetPersonRefCollection().ToList();
 		this._coordinateValEnumerable = this.GetCoordinateValArray().AsEnumerable();
 
 		var peopleToAdd = this._personRefEnumerable.ToList();

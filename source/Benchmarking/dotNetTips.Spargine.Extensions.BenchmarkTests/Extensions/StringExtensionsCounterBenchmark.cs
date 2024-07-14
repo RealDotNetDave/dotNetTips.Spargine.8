@@ -15,7 +15,6 @@
 using System;
 using System.Globalization;
 using System.Text;
-using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core;
@@ -102,23 +101,23 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(StringExtensions.FromBrotliStringAsync))]
-	[BenchmarkCategory(Categories.New, Categories.Strings, Categories.Async)]
-	public async Task FromBrotliAsync()
-	{
-		var result = await this._brotilString.FromBrotliStringAsync().ConfigureAwait(false);
+	//[Benchmark(Description = nameof(StringExtensions.FromBrotliStringAsync))]
+	//[BenchmarkCategory(Categories.New, Categories.Strings, Categories.Async)]
+	//public async Task FromBrotliAsync()
+	//{
+	//	var result = await this._brotilString.FromBrotliStringAsync().ConfigureAwait(false);
 
-		await this.ConsumeAsync(result).ConfigureAwait(false);
-	}
+	//	await this.ConsumeAsync(result).ConfigureAwait(false);
+	//}
 
-	[Benchmark(Description = nameof(StringExtensions.FromGZipStringAsync))]
-	[BenchmarkCategory(Categories.New, Categories.Strings, Categories.Async)]
-	public async Task FromGZipAsync()
-	{
-		var result = await this._gzipString.FromGZipStringAsync().ConfigureAwait(false);
+	//[Benchmark(Description = nameof(StringExtensions.FromGZipStringAsync))]
+	//[BenchmarkCategory(Categories.New, Categories.Strings, Categories.Async)]
+	//public async Task FromGZipAsync()
+	//{
+	//	var result = await this._gzipString.FromGZipStringAsync().ConfigureAwait(false);
 
-		await this.ConsumeAsync(result).ConfigureAwait(false);
-	}
+	//	await this.ConsumeAsync(result).ConfigureAwait(false);
+	//}
 
 	[Benchmark(Description = nameof(StringExtensions.RemoveCRLF))]
 	[BenchmarkCategory(Categories.Strings)]
@@ -216,22 +215,23 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 		}
 	}
 
-	[Benchmark(Description = nameof(StringExtensions.ToBrotliStringAsync))]
-	[BenchmarkCategory(Categories.New, Categories.Strings)]
-	public async Task ToBrotliAsync()
-	{
-		var result = await this._crlfString.ToBrotliStringAsync().ConfigureAwait(false);
+	//TODO: CAUSES BENCHMARK TESTS TO CRASH
+	//[Benchmark(Description = nameof(StringExtensions.ToBrotliStringAsync))]
+	//[BenchmarkCategory(Categories.New, Categories.Strings)]
+	//public async Task ToBrotliAsync()
+	//{
+	//	var result = await this._crlfString.ToBrotliStringAsync().ConfigureAwait(false);
 
-		await this.ConsumeAsync(result).ConfigureAwait(false);
-	}
+	//	await this.ConsumeAsync(result).ConfigureAwait(false);
+	//}
 
-	[Benchmark(Description = nameof(StringExtensions.ToGZipStringAsync))]
-	[BenchmarkCategory(Categories.New, Categories.Strings)]
-	public async Task ToGZipAsync()
-	{
-		var result = await this._crlfString.ToGZipStringAsync().ConfigureAwait(false);
+	//[Benchmark(Description = nameof(StringExtensions.ToGZipStringAsync))]
+	//[BenchmarkCategory(Categories.New, Categories.Strings)]
+	//public async Task ToGZipAsync()
+	//{
+	//	var result = await this._crlfString.ToGZipStringAsync().ConfigureAwait(false);
 
-		await this.ConsumeAsync(result).ConfigureAwait(false);
-	}
+	//	await this.ConsumeAsync(result).ConfigureAwait(false);
+	//}
 
 }

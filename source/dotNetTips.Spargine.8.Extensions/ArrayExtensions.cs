@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-12-2024
+// Last Modified On : 07-14-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -44,7 +44,7 @@ public static class ArrayExtensions
 	/// <returns>A new array with the item added at the beginning.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.NeedsDocumentation)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
 	public static T[] AddFirst<T>([NotNull] this T[] array, [NotNull] T item)
 	{
 		if (item is null)
@@ -93,7 +93,7 @@ public static class ArrayExtensions
 	/// <returns>A new array with the item added at the end.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.NeedsDocumentation)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static T[] AddLast<T>([NotNull] this T[] array, [NotNull] T item)
 	{
 		if (item is null)
@@ -434,7 +434,7 @@ public static class ArrayExtensions
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.NeedsDocumentation)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static T[] RemoveFirst<T>([NotNull] this T[] array)
 	{
 		array = array.ArgumentItemsExists();
@@ -450,7 +450,7 @@ public static class ArrayExtensions
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.NeedsDocumentation)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static T[] RemoveLast<T>([NotNull] this T[] array)
 	{
 		array = array.ArgumentItemsExists();

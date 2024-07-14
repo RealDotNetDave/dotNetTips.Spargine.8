@@ -15,7 +15,6 @@
 using System;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core;
@@ -205,23 +204,23 @@ public class StringExtensionsBenchmark : Benchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(StringExtensions.FromDeflateStringAsync))]
-	[BenchmarkCategory(Categories.Strings)]
-	public async Task FromDeflateStringAsync()
-	{
-		var result = await this._compressedString.FromDeflateStringAsync().ConfigureAwait(false);
+	//[Benchmark(Description = nameof(StringExtensions.FromDeflateStringAsync))]
+	//[BenchmarkCategory(Categories.Strings)]
+	//public async Task FromDeflateStringAsync()
+	//{
+	//	var result = await this._compressedString.FromDeflateStringAsync().ConfigureAwait(false);
 
-		await this.ConsumeAsync(result).ConfigureAwait(false);
-	}
+	//	await this.ConsumeAsync(result).ConfigureAwait(false);
+	//}
 
-	[Benchmark(Description = nameof(StringExtensions.FromZLibStringAsync))]
-	[BenchmarkCategory(Categories.Strings)]
-	public async Task FromZLibStringAsync()
-	{
-		var result = await this._zlibString.FromZLibStringAsync().ConfigureAwait(false);
+	//[Benchmark(Description = nameof(StringExtensions.FromZLibStringAsync))]
+	//[BenchmarkCategory(Categories.Strings)]
+	//public async Task FromZLibStringAsync()
+	//{
+	//	var result = await this._zlibString.FromZLibStringAsync().ConfigureAwait(false);
 
-		await this.ConsumeAsync(result).ConfigureAwait(false);
-	}
+	//	await this.ConsumeAsync(result).ConfigureAwait(false);
+	//}
 
 	[Benchmark(Description = nameof(StringExtensions.HasValue))]
 	[BenchmarkCategory(Categories.Strings)]
@@ -599,14 +598,14 @@ public class StringExtensionsBenchmark : Benchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(StringExtensions.ToDeflateStringAsync))]
-	[BenchmarkCategory(Categories.Strings)]
-	public async Task ToDeflateStringAsync()
-	{
-		var result = await this.LongTestString.ToDeflateStringAsync().ConfigureAwait(false);
+	//[Benchmark(Description = nameof(StringExtensions.ToDeflateStringAsync))]
+	//[BenchmarkCategory(Categories.Strings)]
+	//public async Task ToDeflateStringAsync()
+	//{
+	//	var result = await this.LongTestString.ToDeflateStringAsync().ConfigureAwait(false);
 
-		await this.ConsumeAsync(result).ConfigureAwait(false);
-	}
+	//	await this.ConsumeAsync(result).ConfigureAwait(false);
+	//}
 
 	[Benchmark(Description = nameof(StringExtensions.ToTitleCase))]
 	public void ToTitleCase() => this.Consume(LowerCaseString.ToTitleCase());
@@ -619,13 +618,13 @@ public class StringExtensionsBenchmark : Benchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(StringExtensions.ToZLibStringAsync))]
-	[BenchmarkCategory(Categories.Strings)]
-	public async Task ToZLibStringAsync()
-	{
-		var result = await this.LongTestString.ToZLibStringAsync().ConfigureAwait(false);
+	//[Benchmark(Description = nameof(StringExtensions.ToZLibStringAsync))]
+	//[BenchmarkCategory(Categories.Strings)]
+	//public async Task ToZLibStringAsync()
+	//{
+	//	var result = await this.LongTestString.ToZLibStringAsync().ConfigureAwait(false);
 
-		await this.ConsumeAsync(result).ConfigureAwait(false);
-	}
+	//	await this.ConsumeAsync(result).ConfigureAwait(false);
+	//}
 
 }

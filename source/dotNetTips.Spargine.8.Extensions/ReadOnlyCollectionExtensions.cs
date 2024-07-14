@@ -4,7 +4,7 @@
 // Created          : 04-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-11-2024
+// Last Modified On : 07-14-2024
 // ***********************************************************************
 // <copyright file="ReadOnlyCollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -53,7 +53,7 @@ public static class ReadOnlyCollectionExtensions
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="collection">The list to use to generate hash code.</param>
 	/// <returns>Hash code as System.Int32.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
 	public static int GenerateHashCode<T>([NotNull] this ReadOnlyCollection<T> collection)
 	{
 		collection = collection.ArgumentNotNull();

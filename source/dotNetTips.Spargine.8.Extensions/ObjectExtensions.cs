@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-14-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -90,7 +90,7 @@ public static class ObjectExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
 	/// <remarks>This method serializes the object to JSON and then deserializes it back to create a deep copy.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Clone), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
+	[Information(nameof(Clone), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
 	public static T Clone<T>([NotNull] this object obj) => FromJson<T>(obj.ArgumentNotNull().ToJson());
 
 	/// <summary>

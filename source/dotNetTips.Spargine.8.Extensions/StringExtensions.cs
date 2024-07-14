@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-12-2024
+// Last Modified On : 07-14-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -356,7 +356,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses <see cref="string.Equals(string, string, StringComparison)"/> for comparison.
 	/// </remarks>
-	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
+	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
 	public static bool EqualsIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare)
 	{
 		if (input is null || inputToCompare is null)
@@ -411,7 +411,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method decodes the string using <see cref="Convert.FromBase64String(string)"/> and then converts the byte array to a string using <see cref="Encoding.UTF8"/>.
 	/// </remarks>
-	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
+	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
 	public static string FromBase64([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1120,7 +1120,7 @@ public static class StringExtensions
 	/// <param name="length">The number of characters in the substring.</param>
 	/// <returns>A string that is equivalent to the substring of length <paramref name="length"/> that begins at <paramref name="startIndex"/> in this instance, but with whitespace trimmed from both ends. If <paramref name="startIndex"/> plus <paramref name="length"/> indicates a position not within this instance, or if <paramref name="length"/> is less than zero, this method returns a <see cref="string.Empty"/>.</returns>
 	[return: NotNull]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
 	public static string SubstringTrim(this string input, int startIndex, int length)
 	{
 		if (input.IsNullOrEmpty())
@@ -1156,7 +1156,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to encode. This string cannot be null.</param>
 	/// <returns>A <see cref="string"/> representing the Base64 encoded form of the input string.</returns>
-	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.WIP, Status = Status.NeedsDocumentation)]
+	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
 	public static string ToBase64([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1164,7 +1164,6 @@ public static class StringExtensions
 			return ControlChars.EmptyString;
 		}
 
-		//RECOMMENDATION FROM COPILOT IS SLOWER
 		return Convert.ToBase64String(_encoding.GetBytes(input));
 	}
 
