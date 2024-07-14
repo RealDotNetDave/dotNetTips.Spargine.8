@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-13-2024
+// Last Modified On : 07-14-2024
 // ***********************************************************************
 // <copyright file="WebHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -81,7 +81,7 @@ public static class WebHelper
 	/// This method provides a convenient way to access all standard HTTP header names as defined by the .NET framework.
 	/// It can be useful for validation, logging, or setting headers in HTTP requests.
 	/// </remarks>
-	[Information(nameof(HttpHeaderNames), "David McCarter", "9/2/2020", "9/2/2020", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Unnecessary, BenchMarkStatus = BenchMarkStatus.NotRequired)]
+	[Information(nameof(HttpHeaderNames), "David McCarter", "9/2/2020", "9/2/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<string> HttpHeaderNames() => Enum.GetNames(typeof(HttpRequestHeader)).AsReadOnly();
 
 	/// <summary>

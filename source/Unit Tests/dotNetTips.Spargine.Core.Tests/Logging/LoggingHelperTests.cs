@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2024
+// Last Modified On : 07-06-2024
 // ***********************************************************************
 // <copyright file="LoggingHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.

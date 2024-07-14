@@ -17,7 +17,7 @@
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Defines the benchmark status for a component or method, indicating whether benchmarks have been conducted, are in progress, or are not required.
+/// Defines the benchmark status for a component or method, indicating the current state of performance testing.
 /// </summary>
 [Information(description: "For use in InformationAttribute.", author: "David McCarter", createdOn: "7/29/2020", BenchMarkStatus = NotRequired, Status = Status.Available)]
 public enum BenchMarkStatus
@@ -28,6 +28,26 @@ public enum BenchMarkStatus
 	None,
 
 	/// <summary>
+	/// Indicates that a benchmark needs to be created.
+	/// </summary>
+	Benchmark,
+
+	/// <summary>
+	/// Indicates that benchmark tests have been completed.
+	/// </summary>
+	Completed,
+
+	/// <summary>
+	/// Indicates that performance should be checked from benchmark test.
+	/// </summary>
+	CheckPerformance,
+
+	/// <summary>
+	/// Indicates that the existing benchmark needs to be updated.
+	/// </summary>
+	NeedsUpdate,
+
+	/// <summary>
 	/// Indicates that a benchmark is not required for the component or method.
 	/// </summary>
 	NotRequired,
@@ -36,24 +56,4 @@ public enum BenchMarkStatus
 	/// Indicates that benchmark work is currently in progress.
 	/// </summary>
 	WIP,
-
-	/// <summary>
-	/// Indicates that benchmark tests have been completed.
-	/// </summary>
-	Completed,
-
-	/// <summary>
-	/// Indicates that the existing benchmark needs to be updated.
-	/// </summary>
-	NeedsUpdate,
-
-	/// <summary>
-	/// Indicates that a benchmark needs to be created.
-	/// </summary>
-	Benchmark,
-
-	/// <summary>
-	/// Indicates that performance should be checked from benchmark test.
-	/// </summary>
-	CheckPerformance,
 }

@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core.Logging;
@@ -45,6 +46,17 @@ public class LoggingHelperBenchmark : Benchmark
 	public void LogComputerInformation()
 	{
 		LoggingHelper.LogComputerInformation(this._logger);
+	}
+
+	[Benchmark(Description = nameof(LoggingHelper.RetrieveAllExceptions))]
+	[BenchmarkCategory(Categories.Logging)]
+	public void LogComputerInformation()
+	{
+		var testException = new ArgumentNullException("TEST EX1.", new ArithmeticException("TEST EX2"));
+
+		var result = LoggingHelper.RetrieveAllExceptionMessages(testException);
+
+		base.Consume(result);
 	}
 
 	public override void Setup()
