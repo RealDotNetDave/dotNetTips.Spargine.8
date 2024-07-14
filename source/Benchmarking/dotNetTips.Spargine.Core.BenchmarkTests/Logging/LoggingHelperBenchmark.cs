@@ -4,7 +4,7 @@
 // Created          : 04-26-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 07-14-2024
 // ***********************************************************************
 // <copyright file="LoggingHelperBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -48,13 +48,24 @@ public class LoggingHelperBenchmark : Benchmark
 		LoggingHelper.LogComputerInformation(this._logger);
 	}
 
-	[Benchmark(Description = nameof(LoggingHelper.RetrieveAllExceptions))]
+	[Benchmark(Description = nameof(LoggingHelper.RetrieveAllExceptionMessages))]
 	[BenchmarkCategory(Categories.Logging)]
-	public void LogComputerInformation()
+	public void RetrieveAllExceptionMessages()
 	{
 		var testException = new ArgumentNullException("TEST EX1.", new ArithmeticException("TEST EX2"));
 
 		var result = LoggingHelper.RetrieveAllExceptionMessages(testException);
+
+		base.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(LoggingHelper.RetrieveAllExceptions))]
+	[BenchmarkCategory(Categories.Logging)]
+	public void RetrieveAllExceptions()
+	{
+		var testException = new ArgumentNullException("TEST EX1.", new ArithmeticException("TEST EX2"));
+
+		var result = LoggingHelper.RetrieveAllExceptions(testException);
 
 		base.Consume(result);
 	}
