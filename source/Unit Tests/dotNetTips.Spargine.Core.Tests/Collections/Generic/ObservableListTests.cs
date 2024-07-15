@@ -21,7 +21,7 @@ using DotNetTips.Spargine.Core.Collections;
 using DotNetTips.Spargine.Core.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
+//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Core.Tests.Collections.Generic;
 
