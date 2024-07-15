@@ -27,13 +27,6 @@ public class LoggingHelperBenchmark : Benchmark
 
 	private ILogger<LoggingHelperBenchmark> _logger;
 
-	[Benchmark(Description = nameof(LoggingHelper.LogAppDomainExceptions))]
-	[BenchmarkCategory(Categories.Logging)]
-	public void LogAppDomainExceptions()
-	{
-		LoggingHelper.LogAppDomainExceptions(this._logger);
-	}
-
 	[Benchmark(Description = nameof(LoggingHelper.LogApplicationInformation))]
 	[BenchmarkCategory(Categories.Logging)]
 	public void LogApplicationInformation()

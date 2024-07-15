@@ -514,7 +514,7 @@ public static class TypeHelper
 	/// [LastName, H^hkKhwWggIrUCYbbxiFEJGJM]
 	/// [PostalCode, 86560656].
 	/// </example>
-	[Information(nameof(GetPropertyValues), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Completed, Documentation = "http://bit.ly/SpargineMarch2021", Status = Status.Available)]
+	[Information(nameof(GetPropertyValues), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, OptimizationStatus = OptimizationStatus.NeedsUpdate, Documentation = "http://bit.ly/SpargineMarch2021", Status = Status.Available)]
 	public static ReadOnlyCollection<KeyValuePair<string, string>> GetPropertyValues<T>([NotNull] in T input)
 	{
 		_ = input.ArgumentNotNull();
