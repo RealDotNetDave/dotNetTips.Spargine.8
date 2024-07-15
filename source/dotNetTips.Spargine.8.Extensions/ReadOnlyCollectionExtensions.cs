@@ -4,7 +4,7 @@
 // Created          : 04-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="ReadOnlyCollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -47,13 +47,17 @@ public static class ReadOnlyCollectionExtensions
 	}
 
 	/// <summary>
-	/// Generates hash code for the collection.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Generates a hash code for the <see cref="ReadOnlyCollection{T}"/>.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The list to use to generate hash code.</param>
-	/// <returns>Hash code as System.Int32.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection for which to generate a hash code.</param>
+	/// <returns>A hash code for the collection, considering the hash codes of individual elements.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	/// <remarks>
+	/// This method computes the hash code by aggregating the hash codes of the elements in the collection.
+	/// It ensures that the collection is not null before proceeding with the computation.
+	/// </remarks>
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
 	public static int GenerateHashCode<T>([NotNull] this ReadOnlyCollection<T> collection)
 	{
 		collection = collection.ArgumentNotNull();

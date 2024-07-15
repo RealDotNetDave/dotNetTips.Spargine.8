@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -356,7 +356,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses <see cref="string.Equals(string, string, StringComparison)"/> for comparison.
 	/// </remarks>
-	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
+	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
 	public static bool EqualsIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare)
 	{
 		if (input is null || inputToCompare is null)
@@ -1113,12 +1113,13 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Retrieves a substring from this instance and trims the result. The substring starts at a specified character position and has a specified length.
+	/// Trims whitespace from the start and end of the substring extracted from the specified range of the input string.
 	/// </summary>
-	/// <param name="input">The string to extract the substring from. This string cannot be null.</param>
+	/// <param name="input">The input string from which to extract and trim the substring.</param>
 	/// <param name="startIndex">The zero-based starting character position of a substring in this instance.</param>
 	/// <param name="length">The number of characters in the substring.</param>
-	/// <returns>A string that is equivalent to the substring of length <paramref name="length"/> that begins at <paramref name="startIndex"/> in this instance, but with whitespace trimmed from both ends. If <paramref name="startIndex"/> plus <paramref name="length"/> indicates a position not within this instance, or if <paramref name="length"/> is less than zero, this method returns a <see cref="string.Empty"/>.</returns>
+	/// <returns>A string that is equivalent to the substring of length that begins at startIndex in input, but with white-space characters removed from the start and end.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="startIndex"/> or <paramref name="length"/> is less than zero, or <paramref name="startIndex"/> + <paramref name="length"/> is greater than the length of <paramref name="input"/>.</exception>
 	[return: NotNull]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
 	public static string SubstringTrim(this string input, int startIndex, int length)
@@ -1128,34 +1129,20 @@ public static class StringExtensions
 			return ControlChars.EmptyString;
 		}
 
-		if (startIndex.IsNegative())
-		{
-			ExceptionThrower.ThrowArgumentOutOfRangeException(nameof(startIndex));
-		}
-
-		if (length.IsNegative())
+		if (startIndex < 0 || length < 0 || startIndex + length > input.Length)
 		{
 			ExceptionThrower.ThrowArgumentOutOfRangeException(nameof(length));
-		}
-
-		if (startIndex >= input.Length - length)
-		{
-			ExceptionThrower.ThrowArgumentOutOfRangeException(string.Format(CultureInfo.CurrentCulture, Resources.StartIndexMustBeLessThanInputLength, nameof(startIndex), nameof(length), nameof(input.Length)), nameof(startIndex));
-		}
-
-		if (length == 0)
-		{
-			return string.Empty;
 		}
 
 		return input.Substring(startIndex, length).Trim();
 	}
 
 	/// <summary>
-	/// Converts the specified string to its Base64 encoded form.
+	/// Converts the input string to its Base64 encoded form.
 	/// </summary>
-	/// <param name="input">The string to encode. This string cannot be null.</param>
-	/// <returns>A <see cref="string"/> representing the Base64 encoded form of the input string.</returns>
+	/// <param name="input">The string to encode.</param>
+	/// <returns>A Base64 encoded string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
 	public static string ToBase64([NotNull] this string input)
 	{

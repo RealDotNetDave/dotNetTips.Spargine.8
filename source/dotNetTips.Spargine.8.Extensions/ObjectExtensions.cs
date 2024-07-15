@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -78,31 +78,37 @@ public static class ObjectExtensions
 	/// <returns>The converted object of type <typeparamref name="T" />.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(As), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(As), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T As<T>([NotNull] this object obj) => (T)obj.ArgumentNotNull();
 
 	/// <summary>
-	/// Creates a deep copy of the specified object.
+	/// Creates a deep clone of the object.
 	/// </summary>
 	/// <typeparam name="T">The type of the object being cloned.</typeparam>
 	/// <param name="obj">The object to clone.</param>
-	/// <returns>A deep copy of the object.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
-	/// <remarks>This method serializes the object to JSON and then deserializes it back to create a deep copy.</remarks>
+	/// <returns>A deep clone of the original object.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj"/> is null.</exception>
+	/// <remarks>
+	/// This method serializes the object to JSON and then deserializes it back to create a deep clone.
+	/// It requires the object to be serializable with <see cref="System.Text.Json"/>.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Clone), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information(nameof(Clone), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static T Clone<T>([NotNull] this object obj) => FromJson<T>(obj.ArgumentNotNull().ToJson());
 
 	/// <summary>
-	/// Computes the SHA256 hash of the serialized JSON representation of the specified object.
+	/// Computes the SHA-256 hash of the serialized JSON representation of the object.
 	/// </summary>
-	/// <param name="obj">The object to compute the SHA256 hash for. The object is serialized to JSON before hashing.</param>
-	/// <returns>A string representing the hexadecimal value of the SHA256 hash.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
-	/// <remarks>This method serializes the object to JSON using the default serializer settings and then computes the SHA256 hash of the resulting string.
-	/// It is useful for generating a consistent hash for objects that can be serialized to JSON.</remarks>
+	/// <param name="obj">The object to compute the hash for.</param>
+	/// <returns>A string representing the hexadecimal value of the SHA-256 hash.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj"/> is null.</exception>
+	/// <remarks>
+	/// This method serializes the object to JSON using the default <see cref="System.Text.Json.JsonSerializerOptions"/>
+	/// and then computes the SHA-256 hash of the resulting JSON string. This is useful for generating a consistent hash
+	/// for objects that implement the same data but may have different reference identities.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ComputeSha256Hash), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
+	[Information(nameof(ComputeSha256Hash), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string ComputeSha256Hash([NotNull] this object obj)
 	{
 		obj = obj.ArgumentNotNull();
@@ -130,12 +136,13 @@ public static class ObjectExtensions
 	}
 
 	/// <summary>
-	/// Disposes all disposable fields within the object.
+	/// Disposes all IDisposable fields within the object.
 	/// </summary>
-	/// <param name="obj">The object containing the fields to dispose.</param>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> is null.</exception>
-	/// <remarks>This method uses reflection to iterate through all fields of the object. If a field implements <see cref="IDisposable" />,
-	/// it will be disposed. This is useful for cleaning up resources in objects that contain multiple disposable fields.</remarks>
+	/// <param name="obj">The object containing IDisposable fields to be disposed.</param>
+	/// <remarks>
+	/// This method uses reflection to find all fields within the object that implement IDisposable and disposes them.
+	/// It's designed to help with explicit disposal of resources in complex objects that hold unmanaged resources.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(DisposeFields), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
 	public static void DisposeFields([NotNull] this IDisposable obj)
@@ -145,26 +152,11 @@ public static class ObjectExtensions
 			return;
 		}
 
-		//ReadOnlySpan and FrozenSet is slower.
-		var list = obj.GetType().GetRuntimeFields().Where(p => p.IsStatic is false);
-
-		if (list.DoesNotHaveItems())
+		foreach (var field in obj.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
 		{
-			return;
-		}
-
-		foreach (var field in list)
-		{
-			if (field is not null)
+			if (field.FieldType.IsAssignableTo(typeof(IDisposable)) && field.GetValue(obj) is IDisposable disposableField)
 			{
-				if (field is IDisposable disposableItem)
-				{
-					disposableItem.TryDispose();
-				}
-				else if (field is IEnumerable collection)
-				{
-					collection.DisposeCollection();
-				}
+				disposableField.Dispose();
 			}
 		}
 	}
@@ -181,25 +173,19 @@ public static class ObjectExtensions
 	public static TResult FromJson<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] this string json) => JsonSerialization.Deserialize<TResult>(json.ArgumentNotNullOrEmpty());
 
 	/// <summary>
-	/// Determines whether the specified object has a property with the given name.
+	/// Determines whether the specified object has a property with the specified name.
 	/// </summary>
-	/// <param name="obj">The object to check.</param>
-	/// <param name="propertyName">The name of the property to look for.</param>
+	/// <param name="obj">The object to inspect.</param>
+	/// <param name="propertyName">The name of the property to search for.</param>
 	/// <returns><c>true</c> if the property exists; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj" /> or <paramref name="propertyName" /> is null.</exception>
+	/// <remarks>
+	/// This method uses reflection to inspect the object's properties, including both public and non-public properties.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasProperty), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
 	public static bool HasProperty([NotNull] this object obj, [NotNull] string propertyName)
 	{
-		if (obj is null)
-		{
-			return false;
-		}
-
-		propertyName = propertyName.ArgumentNotNullOrEmpty();
-
-		var type = obj.GetType();
-		return type.GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance) != null;
+		return obj.GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic) != null;
 	}
 
 	/// <summary>
@@ -233,16 +219,19 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The object to check.</param>
 	/// <returns><c>true</c> if the object is not null; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsNotNull), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, OptimizationStatus = OptimizationStatus.Completed)]
+	[Information(nameof(IsNotNull), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool IsNotNull([AllowNull] this object obj) => obj is not null;
 
 	/// <summary>
 	/// Determines whether the specified object is null.
 	/// </summary>
-	/// <param name="obj">The object to check.</param>
+	/// <param name="obj">The object to test for null.</param>
 	/// <returns><c>true</c> if the object is null; otherwise, <c>false</c>.</returns>
+	/// <remarks>
+	/// This method is an extension method and can be called on any object to easily check for nullity.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsNull), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
+	[Information(nameof(IsNull), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static bool IsNull([AllowNull] this object obj) => obj is null;
 
 	/// <summary>
@@ -427,14 +416,17 @@ public static class ObjectExtensions
 	public static string ToJson([NotNull] this object obj) => JsonSerializer.Serialize(obj.ArgumentNotNull(), _options);
 
 	/// <summary>
-	/// Serializes the specified object to a JSON string using optional JsonSerializerOptions.
+	/// Serializes the object to a JSON string using the specified <see cref="JsonSerializerOptions"/>.
 	/// </summary>
 	/// <param name="obj">The object to serialize.</param>
-	/// <param name="options">The JsonSerializerOptions to use for serialization. If null, default options will be used.</param>
-	/// <returns>A <see cref="SimpleResult{T}" /> containing the JSON string representation of <paramref name="obj" /> if serialization is successful; otherwise, contains the exception.</returns>
-	/// <exception cref="NotSupportedException">Thrown if serialization is not supported for the object.</exception>
+	/// <param name="options">The options to use for serialization, or null to use default options.</param>
+	/// <returns>A <see cref="SimpleResult{T}"/> containing the JSON string representation of the object and a flag indicating success.</returns>
+	/// <remarks>
+	/// This method provides a convenient way to serialize objects to JSON, allowing for custom serialization options.
+	/// If <paramref name="options"/> is null, default serialization options will be used.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToJson), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
+	[Information(nameof(ToJson), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 	public static SimpleResult<string> ToJson([NotNull] this object obj, [AllowNull] JsonSerializerOptions options = null)
 	{
 		obj = obj.ArgumentNotNull();

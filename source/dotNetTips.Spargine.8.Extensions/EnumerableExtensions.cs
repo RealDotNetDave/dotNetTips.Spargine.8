@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -58,7 +58,7 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source" /> or <paramref name="items" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.NeedsDocumentation)]
+	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.NeedsDocumentation)]
 	public static IEnumerable<T> AddDistinct<T>(this IEnumerable<T> source, [NotNull] params T[] items)
 	{
 		source ??= [];
@@ -163,20 +163,24 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> or <paramref name="items" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
 	public static bool ContainsAny<T>(this IEnumerable<T> collection, params T[] items)
 	{
-		if (collection is null || items is null)
+		if (collection.IsNull() || items.IsNull())
 		{
 			return false;
 		}
 
-		if (items.DoesNotHaveItems())
-		{
-			return false;
-		}
+		var set = items.ToHashSet();
 
-		return collection.FastAny(p => items.Contains(p));
+		foreach (var item in collection)
+		{
+			if (set.Contains(item))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/// <summary>
@@ -226,7 +230,7 @@ public static class EnumerableExtensions
 	/// <remarks>Orginal code from: https://github.com/dncuug/X.PagedList/blob/master/src/X.PagedList/PagedListExtensions.cs</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.NeedsUpdate, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.NeedsUpdate, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static async Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default) => await Task.Run(collection.ArgumentNotNull().Count, cancellationToken).ConfigureAwait(false);
 
 	/// <summary>
@@ -261,17 +265,24 @@ public static class EnumerableExtensions
 	public static bool DoesNotHaveItems(this IEnumerable collection) => collection?.Count() <= 0;
 
 	/// <summary>
-	/// Ensures the items in the processedCollection are unique.
+	/// Ensures that all elements in the collection are unique based on default equality comparer.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="collection">The processedCollection.</param>
-	/// <returns>IEnumerable&lt;T&gt;.</returns>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to check for uniqueness.</param>
+	/// <returns>An IEnumerable containing only unique elements from the original collection.</returns>
+	/// <remarks>
+	/// This method uses default equality comparer for the type <typeparamref name="T"/> to determine uniqueness.
+	/// If the collection contains duplicate items, only the first occurrence is included in the returned collection.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(EnsureUnique), "David McCarter", "11/8/2022", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(EnsureUnique), "David McCarter", "11/8/2022", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IEnumerable<T> EnsureUnique<T>(this IEnumerable<T> collection)
 	{
-		return new HashSet<T>(collection);
+		collection = collection.ArgumentNotNull();
+
+		//RECOMENDATION FROM COPILOT SLOWER.
+		return collection.Distinct();
 	}
 
 	/// <summary>
@@ -320,8 +331,32 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(FastCount), "David McCarter", "5/21/2022", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static long FastCount<T>(this IEnumerable<T> collection) => collection.ArgumentNotNull().LongCount();
+	[Information(nameof(FastCount), "David McCarter", "5/21/2022", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	public static long FastCount<T>(this IEnumerable<T> collection)
+	{
+		collection = collection.ArgumentNotNull();
+
+		if (collection is ICollection<T> col)
+		{
+			return col.Count;
+		}
+		else if (collection is ICollection colNonGeneric)
+		{
+			return colNonGeneric.Count;
+		}
+		else
+		{
+			long count = 0;
+			using (var enumerator = collection.GetEnumerator())
+			{
+				while (enumerator.MoveNext())
+				{
+					count++;
+				}
+			}
+			return count;
+		}
+	}
 
 	/// <summary>
 	/// Counts the number of elements in the specified list.
@@ -336,17 +371,41 @@ public static class EnumerableExtensions
 	public static long FastCount<T>(this IList<T> collection) => collection.ArgumentNotNull().Count;
 
 	/// <summary>
-	/// Counts the number of elements in the specified collection that satisfy a condition.
+	/// Counts the number of elements in the collection that satisfy a condition.
 	/// </summary>
-	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
-	/// <param name="collection">The collection to count the elements of.</param>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to count elements from.</param>
 	/// <param name="predicate">A function to test each element for a condition.</param>
-	/// <returns>The number of elements in the collection that satisfy the condition.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="predicate"/> is null.</exception>
+	/// <returns>The number of elements in the collection that satisfy the condition in the predicate function.</returns>
+	/// <remarks>
+	/// This method is optimized for performance and should be used over <see cref="Enumerable.Count{TSource}(IEnumerable{TSource}, Func{TSource, bool})"/>
+	/// when working with large collections or performance-critical code.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(FastCount), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static long FastCount<T>(this IEnumerable<T> collection, Func<T, bool> predicate) => collection.ArgumentNotNull().LongCount(predicate.ArgumentNotNull());
+	public static long FastCount<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
+	{
+		collection = collection.ArgumentNotNull();
+		predicate = predicate.ArgumentNotNull();
+
+		if (collection is ICollection<T> col)
+		{
+			long count = 0;
+			foreach (var item in col)
+			{
+				if (predicate(item))
+				{
+					count++;
+				}
+			}
+			return count;
+		}
+		else
+		{
+			return collection.Count(predicate);
+		}
+	}
 
 	/// <summary>
 	/// Processes each item in the given collection using the specified action.
@@ -364,7 +423,7 @@ public static class EnumerableExtensions
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "12/9/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "12/9/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static void FastProcessor<T>(this IEnumerable<T> collection, Action<T> action)
 	{
 		collection = collection.ArgumentNotNull();
@@ -389,7 +448,7 @@ public static class EnumerableExtensions
 	/// <remarks>Original code from efcore-master on GitHub.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(FirstOrDefault), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, Documentation = "https://bit.ly/SpargineNov2022", Status = Status.Available)]
+	[Information(nameof(FirstOrDefault), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NeedsUpdate, Documentation = "https://bit.ly/SpargineNov2022", Status = Status.Available)]
 	public static T FirstOrDefault<T>(this IEnumerable<T> collection, T alternate)
 	{
 		collection = collection.ArgumentNotNull();
@@ -538,34 +597,33 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Finds the index of the first occurrence of a specific item in the given collection.
+	/// Finds the index of the first occurrence of an item in the collection.
 	/// </summary>
-	/// <remarks>
-	/// This method extends IEnumerable&lt;T&gt; to provide a convenient way to find the index of an item using the default equality comparer.
-	/// </remarks>
-	/// <typeparam name="T">The type of the items in the collection.</typeparam>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to search.</param>
-	/// <param name="item">The item to locate in the collection.</param>
-	/// <returns>The index of the first occurrence of the item within the collection, if found; otherwise, -1.</returns>
+	/// <param name="item">The item to find in the collection.</param>
+	/// <returns>The zero-based index of the first occurrence of item within the entire collection, if found; otherwise, -1.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
+	/// <remarks>
+	/// This method uses <see cref="EqualityComparer{T}.Default"/> to compare elements.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item) => IndexOf(collection.ArgumentItemsExists(), item.ArgumentNotNull(), EqualityComparer<T>.Default);
 
 	/// <summary>
-	/// Finds the index of the first occurrence of a specific item in the given collection, using a specified <see cref="IEqualityComparer{T}"/>.
+	/// Finds the index of the first occurrence of an item in the collection using a specified comparer.
 	/// </summary>
-	/// <remarks>
-	/// This method extends IEnumerable&lt;T&gt; to provide a convenient way to find the index of an item using a custom equality comparer.
-	/// </remarks>
-	/// <typeparam name="T">The type of the items in the collection.</typeparam>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to search.</param>
-	/// <param name="item">The item to locate in the collection.</param>
+	/// <param name="item">The item to find in the collection.</param>
 	/// <param name="comparer">The equality comparer to use for comparing items.</param>
-	/// <returns>The index of the first occurrence of the item within the collection, if found; otherwise, -1.</returns>
+	/// <returns>The zero-based index of the first occurrence of item within the entire collection, if found; otherwise, -1.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/>, <paramref name="item"/>, or <paramref name="comparer"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item, [NotNull] IEqualityComparer<T> comparer)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -1139,8 +1197,8 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToReadOnlyCollection), "David McCarter", "2/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
-	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this ConcurrentBag<T> collection) => new(collection.ArgumentNotNull().ToArray());
+	[Information(nameof(ToReadOnlyCollection), "David McCarter", "2/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this ConcurrentBag<T> collection) => new(collection.ArgumentNotNull().ToList());
 
 	/// <summary>
 	/// Inserts or updates an item in the collection. If the item already exists, it is updated; otherwise, it is added.
