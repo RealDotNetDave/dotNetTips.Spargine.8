@@ -39,7 +39,7 @@ public static class ReadOnlySpanExtensions
 	{
 		span = span.ArgumentNotEmpty();
 
-		var index = RandomNumberGenerator.GetInt32(0, span.Length);
+		var index = RandomNumberGenerator.GetInt32(0, span.Length - 1);
 
 		return span[index];
 	}

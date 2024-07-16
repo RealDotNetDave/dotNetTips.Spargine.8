@@ -494,9 +494,9 @@ public class RandomDataTests
 		Assert.IsNotNull(person.Phone);
 		Assert.IsTrue(person.Addresses.Count == 5);
 
-		File.WriteAllText(@"c:\temp\personval.txt", person.ToString());
+		//File.WriteAllText(@"c:\temp\personval.txt", person.ToString());
 
-		JsonSerialization.SerializeToFile(person, new FileInfo(@"c:\temp\personval.json"));
+		//JsonSerialization.SerializeToFile(person, new FileInfo(@"c:\temp\personval.json"));
 
 		Assert.IsTrue(person.Addresses.FastCount() == AddressCount);
 	}

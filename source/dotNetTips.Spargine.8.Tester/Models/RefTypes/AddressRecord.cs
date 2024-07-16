@@ -120,7 +120,6 @@ public sealed record AddressRecord : IDataRecord
 	/// </summary>
 	/// <param name="id">The unique identifier for the address record.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="id"/> is null.</exception>
-	[JsonConstructor]
 	public AddressRecord([NotNull] string id) => this.Id = id;
 
 	/// <summary>
@@ -136,7 +135,6 @@ public sealed record AddressRecord : IDataRecord
 	/// <param name="postalCode">The postal code of the address.</param>
 	/// <param name="phone">The phone number associated with the address (optional).</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="id"/> is null.</exception>
-	[JsonConstructor]
 	public AddressRecord([NotNull] string id, string address1, string address2, string city, string state, string countyProvince, string country, string postalCode, string phone) : this(id)
 	{
 		this.Address1 = address1;
