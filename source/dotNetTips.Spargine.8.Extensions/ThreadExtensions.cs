@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-16-2024
 // ***********************************************************************
 // <copyright file="ThreadExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -41,24 +41,25 @@ public static class ThreadExtensions
 	}
 
 	/// <summary>
-	/// Waits for a certain amount of time. Does not use timer (no need to call Dispose).
+	/// Waits for a certain amount of time. Does not use a timer, thus no need to call Dispose.
 	/// Validates that <paramref name="thread" /> is not null.
 	/// </summary>
 	/// <param name="thread">The <see cref="Thread"/> to wait on. This parameter cannot be null.</param>
 	/// <param name="interval">The wait interval.</param>
-	[Information(nameof(WaitUntil), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="thread"/> is null.</exception>
+	[Information(nameof(WaitUntil), OptimizationStatus = OptimizationStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void WaitUntil([NotNull] this Thread thread, TimeSpan interval) => WaitUntil(thread.ArgumentNotNull(), interval, 0);
 
 	/// <summary>
 	/// Waits until the specified time interval has passed or the specified number of wait iterations has been completed, whichever comes first.
-	/// Validates that <paramref name="thread" /> is not null.
+	/// This method performs a spin-wait for a specified number of iterations and checks the thread's alive status.
 	/// </summary>
 	/// <param name="thread">The <see cref="Thread"/> to monitor. This parameter cannot be null.</param>
 	/// <param name="interval">The maximum time to wait.</param>
 	/// <param name="waitIterations">The number of iterations to perform a spin-wait. Must be zero or greater.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="thread"/> is null.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="waitIterations"/> is less than zero.</exception>
-	[Information(nameof(WaitUntil), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(WaitUntil), OptimizationStatus = OptimizationStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void WaitUntil([NotNull] this Thread thread, TimeSpan interval, int waitIterations)
 	{
 		thread = thread.ArgumentNotNull();
@@ -66,10 +67,10 @@ public static class ThreadExtensions
 
 		var stopAt = DateTime.Now.Add(interval);
 
-		do
+		while (thread.IsAlive && DateTime.Now < stopAt)
 		{
 			Thread.SpinWait(waitIterations);
-		} while (thread.IsAlive && DateTime.Now < stopAt);
+		}
 	}
 
 }
