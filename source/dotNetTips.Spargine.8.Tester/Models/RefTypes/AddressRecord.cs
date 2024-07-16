@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-22-2024
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="AddressRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -31,13 +31,13 @@ using DotNetTips.Spargine.Tester.Properties;
 namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 
 /// <summary>
-/// Class Person with proper encapsulation and validation.
-/// Implements the <see cref="object" />
+/// Represents an address record with detailed information such as address lines, city, state, country, postal code, and phone number.
+/// This record is designed to be used in various scenarios where address information is required.
 /// </summary>
+[DataContract(Name = "addressRecord")]
 [DebuggerDisplay("{Id}")]
 [Serializable]
 [XmlRoot(ElementName = "AddressRecord")]
-[DataContract(Name = "addressRecord")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public sealed record AddressRecord : IDataRecord
 {
@@ -106,31 +106,37 @@ public sealed record AddressRecord : IDataRecord
 	private string _state;
 
 	/// <summary>
-	/// Prevents a default instance of the <see cref="PersonRecord" /> class from being created.
+	/// Initializes a new instance of the <see cref="AddressRecord"/> class.
+	/// This constructor is used to create an empty instance of an AddressRecord.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
+	[JsonConstructor]
 	public AddressRecord()
 	{
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="AddressRecord" /> class.
+	/// Initializes a new instance of the <see cref="AddressRecord"/> class with a specified identifier.
 	/// </summary>
-	/// <param name="id">The identifier.</param>
+	/// <param name="id">The unique identifier for the address record.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="id"/> is null.</exception>
+	[JsonConstructor]
 	public AddressRecord([NotNull] string id) => this.Id = id;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="AddressRecord" /> class.
+	/// Initializes a new instance of the <see cref="AddressRecord"/> class with specified details.
 	/// </summary>
-	/// <param name="id">The identifier.</param>
-	/// <param name="address1">The address1.</param>
-	/// <param name="address2">The address2.</param>
-	/// <param name="city">The city.</param>
-	/// <param name="state">The state.</param>
-	/// <param name="countyProvince">The county province.</param>
-	/// <param name="country">The country.</param>
-	/// <param name="postalCode">The postal code.</param>
-	/// <param name="phone">The phone.</param>
+	/// <param name="id">The unique identifier for the address record.</param>
+	/// <param name="address1">The first line of the address.</param>
+	/// <param name="address2">The second line of the address (optional).</param>
+	/// <param name="city">The city of the address.</param>
+	/// <param name="state">The state of the address.</param>
+	/// <param name="countyProvince">The county or province of the address (optional).</param>
+	/// <param name="country">The country of the address.</param>
+	/// <param name="postalCode">The postal code of the address.</param>
+	/// <param name="phone">The phone number associated with the address (optional).</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="id"/> is null.</exception>
+	[JsonConstructor]
 	public AddressRecord([NotNull] string id, string address1, string address2, string city, string state, string countyProvince, string country, string postalCode, string phone) : this(id)
 	{
 		this.Address1 = address1;
@@ -144,10 +150,11 @@ public sealed record AddressRecord : IDataRecord
 	}
 
 	/// <summary>
-	/// Converts to <see cref="Address" /> to <see cref="AddressRecord" />.
+	/// Converts an <see cref="Address"/> object to an <see cref="AddressRecord"/> object.
 	/// </summary>
-	/// <param name="address">The address.</param>
-	/// <returns>AddressRecord.</returns>
+	/// <param name="address">The address object to convert.</param>
+	/// <returns>An instance of <see cref="AddressRecord"/> initialized with values from the provided <see cref="Address"/> object.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
 	public static AddressRecord ToAddress([NotNull] Address address) => new(address.ArgumentNotNull().Id)
 	{
 		Address1 = address.Address1,
@@ -161,10 +168,11 @@ public sealed record AddressRecord : IDataRecord
 	};
 
 	/// <summary>
-	/// Converts to <see cref="Address" /> to <see cref="AddressRecord" />.
+	/// Converts a <see cref="ValueTypes.Address"/> object to an <see cref="AddressRecord"/> object.
 	/// </summary>
-	/// <param name="address">The address.</param>
-	/// <returns>AddressRecord.</returns>
+	/// <param name="address">The <see cref="ValueTypes.Address"/> object to convert.</param>
+	/// <returns>An instance of <see cref="AddressRecord"/> initialized with values from the provided <see cref="ValueTypes.Address"/> object.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
 	public static AddressRecord ToAddress([NotNull] ValueTypes.Address address) => new(address.ArgumentNotNull().Id)
 	{
 		Address1 = address.Address1,
@@ -178,12 +186,10 @@ public sealed record AddressRecord : IDataRecord
 	};
 
 	/// <summary>
-	/// Gets or sets the Address1.
+	/// Gets or sets the first line of the address.
 	/// </summary>
-	/// <value>The Address1.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Address1</exception>
-	/// <exception cref="ArgumentNullException">Address1</exception>
-	/// <remarks>Address1 is limited to 100 characters.</remarks>
+	/// <value>The first line of the address.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 100 characters.</exception>
 	[DataMember(Name = "address1", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("address1")]
@@ -208,11 +214,11 @@ public sealed record AddressRecord : IDataRecord
 	}
 
 	/// <summary>
-	/// Gets or sets the Address2.
+	/// Gets or sets the second line of the address.
 	/// </summary>
-	/// <value>The Address2.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Address2</exception>
-	/// <remarks>Address2 is limited to 100 characters.</remarks>
+	/// <value>The second line of the address.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 100 characters.</exception>
+	/// <remarks>Address2 is optional and is limited to 100 characters.</remarks>
 	[DataMember(Name = "address2", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("address2")]
@@ -237,11 +243,11 @@ public sealed record AddressRecord : IDataRecord
 	}
 
 	/// <summary>
-	/// Gets or sets the city.
+	/// Gets or sets the city name.
 	/// </summary>
-	/// <value>The city name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">City</exception>
-	/// <remarks>City is limted to 150 characters.</remarks>
+	/// <value>The name of the city.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 150 characters.</exception>
+	/// <remarks>City name is limited to 150 characters.</remarks>
 	[DataMember(Name = "city", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("city")]
@@ -269,7 +275,7 @@ public sealed record AddressRecord : IDataRecord
 	/// Gets or sets the country.
 	/// </summary>
 	/// <value>The country name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Country</exception>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 50 characters.</exception>
 	/// <remarks>Country is limited to 50 characters.</remarks>
 	[DataMember(Name = "country", IsRequired = false)]
 	[DefaultValue("")]
@@ -295,11 +301,11 @@ public sealed record AddressRecord : IDataRecord
 	}
 
 	/// <summary>
-	/// Gets or sets the county province.
+	/// Gets or sets the county or province.
 	/// </summary>
-	/// <value>The county province.</value>
-	/// <exception cref="ArgumentOutOfRangeException">CountyProvince</exception>
-	/// <remarks>County is limited to 50 characters.</remarks>
+	/// <value>The county or province.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 50 characters.</exception>
+	/// <remarks>CountyProvince is optional and is limited to 50 characters.</remarks>
 	[DefaultValue("")]
 	[JsonPropertyName("countryProvince")]
 	[MemberNotNull(nameof(_countyProvince))]
@@ -317,12 +323,13 @@ public sealed record AddressRecord : IDataRecord
 			this._countyProvince = value?.Length > 50 ? throw new ArgumentOutOfRangeException(nameof(this.CountyProvince), Resources.CountyProvinceLengthIsLimitedTo50Character) : value;
 		}
 	}
+
 	/// <summary>
-	/// Gets or sets the identifier.
+	/// Gets or sets the unique identifier for the address record.
 	/// </summary>
-	/// <value>The identifier.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Id</exception>
-	/// <remarks>Id is limited to 50 characters.</remarks>
+	/// <value>The unique identifier.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the identifier value is not within the required range.</exception>
+	/// <remarks>The identifier is limited to 50 characters and is required for identifying the address record uniquely.</remarks>
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("id")]
@@ -346,11 +353,11 @@ public sealed record AddressRecord : IDataRecord
 	}
 
 	/// <summary>
-	/// Gets or sets the phone.
+	/// Gets or sets the phone number associated with the address.
 	/// </summary>
-	/// <value>The phone.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Phone</exception>
-	/// <remarks>Phone number is limited to 50 characters.</remarks>
+	/// <value>The phone number.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the phone number is longer than 50 characters.</exception>
+	/// <remarks>Phone number is optional and is limited to 50 characters.</remarks>
 	[DataMember(Name = "phone", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("phone")]
@@ -377,8 +384,8 @@ public sealed record AddressRecord : IDataRecord
 	/// <summary>
 	/// Gets or sets the postal code.
 	/// </summary>
-	/// <value>The postal code.</value>
-	/// <exception cref="ArgumentOutOfRangeException">PostalCode</exception>
+	/// <value>The postal code of the address.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the postal code is longer than 40 characters.</exception>
 	/// <remarks>Postal code is limited to 40 characters.</remarks>
 	[DataMember(Name = "postalCode", IsRequired = false)]
 	[DefaultValue("")]
@@ -404,11 +411,11 @@ public sealed record AddressRecord : IDataRecord
 	}
 
 	/// <summary>
-	/// Gets or sets the state.
+	/// Gets or sets the state or region of the address.
 	/// </summary>
-	/// <value>The state.</value>
-	/// <exception cref="ArgumentOutOfRangeException">State</exception>
-	/// <remarks>State is limited to 60 characters.</remarks>
+	/// <value>The state or region.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown when the state value is longer than 60 characters.</exception>
+	/// <remarks>State is optional and is limited to 60 characters.</remarks>
 	[DataMember(Name = "state", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("state")]

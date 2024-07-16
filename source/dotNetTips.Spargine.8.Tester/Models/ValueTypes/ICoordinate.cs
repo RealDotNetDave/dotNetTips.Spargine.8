@@ -4,7 +4,7 @@
 // Created          : 12-29-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-24-2024
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="ICoordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -22,16 +22,16 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 
 /// <summary>
-/// Interface ICoordinate used to create Coordinate.
+/// Defines a set of properties for working with coordinates in a 3D space.
 /// </summary>
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public interface ICoordinate
 {
 
 	/// <summary>
-	/// Returns a <see cref="string" /> of the coordinates.
+	/// Converts to string representation of the coordinate.
 	/// </summary>
-	/// <returns>A <see cref="string" /> of the coordinates.</returns>
+	/// <returns>A <see cref="string" /> that represents the current object.</returns>
 	string ToString();
 
 	/// <summary>

@@ -4,7 +4,7 @@
 // Created          : 12-28-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 07-16-2024
 // ***********************************************************************
 // <copyright file="CountryName.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -19,8 +19,9 @@ using System.Runtime.Serialization;
 namespace DotNetTips.Spargine.Tester.Data;
 
 /// <summary>
-/// Enum CountryName
+/// Represents the names of countries.
 /// </summary>
+[DataContract]
 public enum CountryName
 {
 	/// <summary>

@@ -45,9 +45,9 @@ public static class Program
 
 			//_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
-			_ = BenchmarkRunner.Run<ArrayExtensionsCollectionBenchmark>(config);
-			_ = BenchmarkRunner.Run<EnumerableExtensionsCollectionBenchmark>(config);
-			_ = BenchmarkRunner.Run<ObjectExtensionsBenchmark>(config);
+			//_ = BenchmarkRunner.Run<ArrayExtensionsCollectionBenchmark>(config);
+			//_ = BenchmarkRunner.Run<EnumerableExtensionsCollectionBenchmark>(config);
+			//_ = BenchmarkRunner.Run<ObjectExtensionsBenchmark>(config);
 			_ = BenchmarkRunner.Run<ReadOnlyCollectionBenchmark>(config);
 			_ = BenchmarkRunner.Run<StringExtensionsBenchmark>(config);
 			_ = BenchmarkRunner.Run<StringExtensionsCounterBenchmark>(config);

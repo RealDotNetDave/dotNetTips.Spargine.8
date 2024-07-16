@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-02-2024
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -19,6 +19,7 @@
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
@@ -33,9 +34,12 @@ using DotNetTips.Spargine.Tester.Properties;
 namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 
 /// <summary>
-/// Person class that implements interfaces and validates data.
+/// Represents a person with various personal details and a collection of addresses.
+/// This class is sealed to prevent inheritance, ensuring a consistent representation of a person across the application.
+/// It implements IDataModel{Person{TAddress}, string} and <see cref="IPerson{TAddress}"/>,
+/// indicating it can serve as a data model with a string identifier and has person-specific properties.
 /// </summary>
-/// <typeparam name="TAddress">The type of the t address.</typeparam>
+/// <typeparam name="TAddress">The type of address this person can have, constrained to types that implement <see cref="IAddress"/>.</typeparam>
 [DataContract(Name = "person")]
 [DebuggerDisplay("{Email}")]
 [Serializable]
@@ -101,88 +105,96 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	private string _lastName;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="Person{TAddress}" /> class.
+	/// Initializes a new instance of the <see cref="Person{TAddress}"/> class.
+	/// This parameterless constructor is primarily used for serialization.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
+	[JsonConstructor]
 	public Person()
 	{ }
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="Person{TAddress}" /> class.
+	/// Initializes a new instance of the <see cref="Person{TAddress}"/> class with specified id and email.
 	/// </summary>
-	/// <param name="id">The identifier.</param>
-	/// <param name="email">The email.</param>
-	public Person([NotNull] string id, [NotNull] string email)
+	/// <param name="id">The unique identifier for the person.</param>
+	/// <param name="email">The email address of the person.</param>
+	/// <exception cref="ValidationException">Thrown when <paramref name="id"/> or <paramref name="email"/> is null or empty.</exception>
+	public Person([Required] string id, [Required] string email)
 	{
 		this.Id = id;
 		this.Email = email;
 	}
 
 	/// <summary>
-	/// Implements the != operator.
+	/// Determines whether two specified instances of <see cref="Person{TAddress}"/> are not equal.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The first instance of <see cref="Person{TAddress}"/>.</param>
+	/// <param name="right">The second instance of <see cref="Person{TAddress}"/>.</param>
+	/// <returns>true if <paramref name="left"/> and <paramref name="right"/> do not represent the same value; otherwise, false.</returns>
 	public static bool operator !=(Person<TAddress> left, Person<TAddress> right) => !(left == right);
 
 	/// <summary>
-	/// Implements the &lt; operator.
+	/// Implements the less than operator. Determines whether the left instance is less than the right instance.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
+	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
+	/// <returns>true if the left instance is less than the right instance; otherwise, false.</returns>
 	public static bool operator <(Person<TAddress> left, Person<TAddress> right) => left is null
 		? right is not null
 		: left.CompareTo(right) < 0;
 
 	/// <summary>
-	/// Implements the &lt;= operator.
+	/// Implements the less than or equal to operator. Determines whether the left instance is less than or equal to the right instance.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
+	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
+	/// <returns>true if the left instance is less than or equal to the right instance; otherwise, false.</returns>
 	public static bool operator <=(Person<TAddress> left, Person<TAddress> right) => left is null ||
 		left.CompareTo(right) <= 0;
 
 	/// <summary>
-	/// Implements the == operator.
+	/// Implements the equality operator. Determines whether the specified instances of <see cref="Person{TAddress}"/> are equal.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
+	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
+	/// <returns>true if both instances are null or if they represent the same value; otherwise, false.</returns>
 	public static bool operator ==(Person<TAddress> left, Person<TAddress> right) => left is null ? right is null : left.Equals(right);
 
 	/// <summary>
-	/// Implements the &gt; operator.
+	/// Implements the greater than operator. Determines whether the left instance is greater than the right instance.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
+	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
+	/// <returns>true if the left instance is greater than the right instance; otherwise, false.</returns>
 	public static bool operator >(Person<TAddress> left, Person<TAddress> right) => left is not null &&
 		left.CompareTo(right) > 0;
 
 	/// <summary>
-	/// Implements the &gt;= operator.
+	/// Implements the greater than or equal to operator. Determines whether the left instance is greater than or equal to the right instance.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
+	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
+	/// <returns>true if the left instance is greater than or equal to the right instance; otherwise, false.</returns>
 	public static bool operator >=(Person<TAddress> left, Person<TAddress> right) => left is null
 		? right is null
 		: left.CompareTo(right) >= 0;
 
 	/// <summary>
-	/// Calculates the person's age.
+	/// Calculates the person's age based on the <see cref="BornOn"/> date.
 	/// </summary>
-	/// <returns>TimeSpan.</returns>
+	/// <returns>A <see cref="TimeSpan"/> representing the age of the person.</returns>
 	public TimeSpan CalculateAge() => DateTimeOffset.UtcNow.Subtract(this.BornOn);
 
 	/// <summary>
-	/// Compares to.
+	/// Compares this instance with a specified <see cref="Person{TAddress}"/> object and indicates whether this instance
+	/// precedes, follows, or appears in the same position in the sort order as the specified <see cref="Person{TAddress}"/>.
 	/// </summary>
-	/// <param name="other">The other.</param>
-	/// <returns>int.</returns>
+	/// <param name="other">The <see cref="Person{TAddress}"/> to compare with this instance.</param>
+	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
+	/// Less than zero: This instance precedes <paramref name="other"/> in the sort order.
+	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
+	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
+	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
 	public int CompareTo([NotNull] Person<TAddress> other)
 	{
 		if (other is null)
@@ -194,11 +206,16 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Compares to.
+	/// Compares this instance with a specified <see cref="IPerson{TAddress}"/> object and indicates whether this instance
+	/// precedes, follows, or appears in the same position in the sort order as the specified <see cref="IPerson{TAddress}"/>.
 	/// </summary>
-	/// <param name="other">The other.</param>
-	/// <returns>int.</returns>
-	public int CompareTo([NotNull] IPerson<TAddress> other)
+	/// <param name="other">The <see cref="IPerson{TAddress}"/> to compare with this instance.</param>
+	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
+	/// Less than zero: This instance precedes <paramref name="other"/> in the sort order.
+	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
+	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
+	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
+	public int CompareTo([DisallowNull] IPerson<TAddress> other)
 	{
 		if (other is null)
 		{
@@ -209,32 +226,32 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Determines whether the specified <see cref="object" /> is equal to this instance.
+	/// Determines whether the specified object is equal to the current instance.
 	/// </summary>
-	/// <param name="obj">The object to compare with the current object.</param>
-	/// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
-	/// <exception cref="NotImplementedException"></exception>
-	public override bool Equals([NotNull] object obj) => ReferenceEquals(this, obj);
+	/// <param name="obj">The object to compare with the current instance.</param>
+	/// <returns><c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.</returns>
+	public override bool Equals(object obj) => ReferenceEquals(this, obj);
 
 	/// <summary>
-	/// Equals the specified other.
+	/// Determines whether the specified <see cref="Person{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>.
 	/// </summary>
-	/// <param name="other">The other.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	/// <exception cref="NotImplementedException"></exception>
+	/// <param name="other">The <see cref="Person{TAddress}"/> to compare with the current <see cref="Person{TAddress}"/>.</param>
+	/// <returns><c>true</c> if the specified <see cref="Person{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>; otherwise, <c>false</c>.</returns>
+	[EditorBrowsable(EditorBrowsableState.Never)]
 	public bool Equals([NotNull] Person<TAddress> other) => ReferenceEquals(this, other);
 
 	/// <summary>
-	/// Equalses the specified other.
+	/// Determines whether the specified <see cref="IPerson{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>.
 	/// </summary>
-	/// <param name="other">The other.</param>
-	/// <returns>bool.</returns>
+	/// <param name="other">The <see cref="IPerson{TAddress}"/> to compare with the current <see cref="Person{TAddress}"/>.</param>
+	/// <returns><c>true</c> if the specified <see cref="IPerson{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>; otherwise, <c>false</c>.</returns>
+	[EditorBrowsable(EditorBrowsableState.Never)]
 	public bool Equals([NotNull] IPerson<TAddress> other) => ReferenceEquals(this, other);
 
 	/// <summary>
-	/// Returns a hash code for this instance.
+	/// Returns a hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
 	/// </summary>
-	/// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+	/// <returns>A hash code for this instance.</returns>
 	public override int GetHashCode()
 	{
 		var hash = new HashCode();
@@ -255,6 +272,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </summary>
 	/// <param name="person">The person.</param>
 	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.Person.</returns>
+	[return: NotNull]
 	public static Person<Address> ToPerson([NotNull] ValueTypes.Person<ValueTypes.Address> person)
 	{
 		person = person.ArgumentNotNull();
@@ -283,10 +301,11 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Converts <see cref="PersonRecord" /> .
+	/// Converts a <see cref="PersonRecord"/> to a <see cref="Person{TAddress}"/>.
 	/// </summary>
-	/// <param name="person">The person.</param>
-	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.Person.</returns>
+	/// <param name="person">The <see cref="PersonRecord"/> to convert.</param>
+	/// <returns>A new instance of <see cref="Person{TAddress}"/> based on the provided <see cref="PersonRecord"/>.</returns>
+	[return: NotNull]
 	public static Person<Address> ToPerson([NotNull] PersonRecord person)
 	{
 		person = person.ArgumentNotNull();
@@ -313,15 +332,20 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Returns a <see cref="string" /> that represents this instance.
+	/// Returns a string that represents the current object, using PropertiesToString for a detailed representation.
 	/// </summary>
-	/// <returns>A <see cref="string" /> that represents this instance.</returns>
+	/// <returns>A string that represents the current object.</returns>
+	[DebuggerStepThrough]
 	public override string ToString() => this.PropertiesToString();
 
 	/// <summary>
-	/// Gets a collection of <see cref="Address" /> for a Person.
+	/// Gets or sets the collection of addresses associated with the person.
 	/// </summary>
-	/// <value>The addresses.</value>
+	/// <value>The collection of <typeparamref name="TAddress"/> objects representing the addresses of the person.</value>
+	/// <remarks>
+	/// This property is serialized and deserialized using JSON but is ignored in XML serialization.
+	/// Use <see cref="AddressesSerilization"/> for XML serialization.
+	/// </remarks>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
 	[MemberNotNull(nameof(_addresses))]
@@ -348,8 +372,9 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </summary>
 	/// <value>The addresses serilization.</value>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	[XmlArray("Addresses")]
 	[JsonIgnore]
+	[XmlArray("Addresses")]
+	[XmlArrayItem("Address")]
 	[MemberNotNull(nameof(_addresses))]
 	public Collection<TAddress> AddressesSerilization
 	{
@@ -369,22 +394,26 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Gets the age of the person.
+	/// Gets the age of the person calculated from the <see cref="BornOn"/> date.
 	/// </summary>
-	/// <value>The age.</value>
+	/// <value>The age as a <see cref="TimeSpan"/>.</value>
+	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
 	public TimeSpan Age => this.CalculateAge();
 
 	/// <summary>
-	/// Gets or sets the born on date and time.
+	/// Gets or sets the date and time when the person was born.
 	/// </summary>
-	/// <value>The born on.</value>
-	/// <exception cref="ArgumentOutOfRangeException">BornOn cannot be in the future.</exception>
+	/// <value>The birth date and time of the person.</value>
+	/// <remarks>
+	/// This property is serialized with the name "bornOn" and is required for XML serialization.
+	/// It is marked with <see cref="MemberNotNullAttribute"/> to indicate that the backing field <c>_bornOn</c> will not be null after being set.
+	/// </remarks>
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
-	[XmlElement]
 	[MemberNotNull(nameof(_bornOn))]
+	[XmlElement]
 	public DateTimeOffset BornOn
 	{
 		get => this._bornOn;
@@ -405,15 +434,16 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Gets or sets the cell phone number.
+	/// Gets or sets the cell phone number of the person.
 	/// </summary>
-	/// <value>The cell phone.</value>
-	/// <exception cref="ArgumentOutOfRangeException">CellPhone is limited
-	/// to 50 characters.</exception>
-	/// <remarks>Cell phone number is limited to 50 characters.</remarks>
+	/// <value>The cell phone number.</value>
+	/// <remarks>
+	/// The cell phone number is limited to 50 characters. It can be left empty.
+	/// </remarks>
 	[DataMember(Name = "cellPhone", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("cellPhone")]
+	[MaxLength(50)]
 	[MemberNotNull(nameof(_cellPhone))]
 	[XmlElement]
 	public string CellPhone
@@ -436,15 +466,18 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Gets the email address.
+	/// Gets or sets the email address of the person.
 	/// </summary>
-	/// <value>The email.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Email is limited
-	/// to 75 characters.</exception>
-	/// <remarks>Email is limited to 75 characters.</remarks>
+	/// <value>The email address.</value>
+	/// <remarks>
+	/// The email address is required and must be a valid email format. It is limited to 75 characters.
+	/// This property is read-only and serialized with the name "email".
+	/// </remarks>
 	[DataMember(Name = "email", IsRequired = true)]
 	[DisallowNull]
+	[EmailAddress]
 	[JsonPropertyName("email")]
+	[MaxLength(75)]
 	[MemberNotNull(nameof(_email))]
 	[ReadOnly(true)]
 	[XmlElement(IsNullable = false)]
@@ -468,15 +501,16 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Gets or sets the first name.
+	/// Gets or sets the first name of the person.
 	/// </summary>
 	/// <value>The first name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">First name is limted
-	/// to 50 characters.</exception>
-	/// <remarks>Firt name is limited to 50 characters.</remarks>
+	/// <remarks>
+	/// The first name is limited to 50 characters. It is serialized with the name "firstName".
+	/// </remarks>
 	[DataMember(Name = "firstName", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("firstName")]
+	[MaxLength(50)]
 	[MemberNotNull(nameof(_firstName))]
 	[XmlElement]
 	public string FirstName
@@ -498,21 +532,22 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Gets the full name of the person.
+	/// Gets the full name of the person by concatenating the first name and the last name.
 	/// </summary>
-	/// <value>The full name.</value>
+	/// <value>The full name of the person.</value>
 	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
 	public string FullName => $"{this.FirstName} {this.LastName}";
 
 	/// <summary>
-	/// Gets the identifier.
+	/// Gets the unique identifier for the person.
 	/// </summary>
-	/// <value>The identifier.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Id is limited
-	/// to 50 characters.</exception>
-	/// <remarks>Id is limited to 50 characters.</remarks>
+	/// <value>The unique identifier.</value>
+	/// <remarks>
+	/// The ID is a read-only property that is set at the time of object creation.
+	/// It is serialized with the name "id" and is required for data exchange processes.
+	/// </remarks>
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("id")]
@@ -537,15 +572,16 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Gets or sets the last name.
+	/// Gets or sets the last name of the person.
 	/// </summary>
 	/// <value>The last name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">LastName is limited
-	/// to 50 characters.</exception>
-	/// <remarks>Last name is limited to 50 characters.</remarks>
+	/// <remarks>
+	/// The last name is limited to 50 characters. It is serialized with the name "lastName".
+	/// </remarks>
 	[DataMember(Name = "lastName", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("lastName")]
+	[MaxLength(50)]
 	[MemberNotNull(nameof(_lastName))]
 	[XmlElement]
 	public string LastName
@@ -567,15 +603,16 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Gets or sets the home phone.
+	/// Gets or sets the home phone number.
 	/// </summary>
-	/// <value>The home phone.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Phone is limted
-	/// to 50 characters.</exception>
-	/// <remarks>Home phone is limited to 50 characters.</remarks>
+	/// <value>The home phone number.</value>
+	/// <remarks>
+	/// The home phone number is limited to 50 characters. It is serialized with the name "homePhone".
+	/// </remarks>
 	[DataMember(Name = "homePhone", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
+	[MaxLength(50)]
 	[MemberNotNull(nameof(_homePhone))]
 	[XmlElement]
 	public string Phone

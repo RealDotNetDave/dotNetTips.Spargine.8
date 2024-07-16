@@ -4,7 +4,7 @@
 // Created          : 11-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-26-2023
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="IAddress.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -17,6 +17,7 @@
 // </summary>
 // ***********************************************************************
 
+using System.ComponentModel.DataAnnotations;
 using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -24,57 +25,65 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 
 /// <summary>
-/// Interface IAddress
+/// Defines the contract for an address model, including properties for address lines, city, country, county or province, phone number, postal code, and state.
 /// </summary>
 public interface IAddress : IDataModel<IAddress, string>
 {
 
 	/// <summary>
-	/// Gets the address1.
+	/// Gets or sets the first line of the address.
 	/// </summary>
-	/// <value>The address1.</value>
+	/// <value>The first line of the address.</value>
+	[StringLength(100, ErrorMessage = "The first line of the address must not exceed 100 characters.")]
 	string Address1 { get; set; }
 
 	/// <summary>
-	/// Gets the address2.
+	/// Gets or sets the second line of the address.
 	/// </summary>
-	/// <value>The address2.</value>
+	/// <value>The second line of the address. This field is optional.</value>
+	[StringLength(100, ErrorMessage = "The second line of the address must not exceed 100 characters.")]
 	string Address2 { get; set; }
 
 	/// <summary>
-	/// Gets the city.
+	/// Gets or sets the city where the address is located.
 	/// </summary>
-	/// <value>The city.</value>
+	/// <value>The city of the address.</value>
+	[StringLength(50, ErrorMessage = "The city must not exceed 50 characters.")]
 	string City { get; set; }
 
 	/// <summary>
-	/// Gets the country.
+	/// Gets or sets the country part of the address.
 	/// </summary>
-	/// <value>The country.</value>
+	/// <value>The country where the address is located.</value>
+	[StringLength(50, ErrorMessage = "The country must not exceed 50 characters.")]
 	string Country { get; set; }
 
 	/// <summary>
-	/// Gets the county province.
+	/// Gets or sets the county or province part of the address.
 	/// </summary>
-	/// <value>The county province.</value>
+	/// <value>The county or province where the address is located. This field is optional.</value>
+	[StringLength(50, ErrorMessage = "The county or province must not exceed 50 characters.")]
 	string CountyProvince { get; set; }
 
 	/// <summary>
-	/// Gets the phone number.
+	/// Gets or sets the phone number associated with the address.
 	/// </summary>
-	/// <value>The phone.</value>
+	/// <value>The phone number.</value>
+	[Phone(ErrorMessage = "The phone number is not in a valid format.")]
 	string Phone { get; set; }
 
 	/// <summary>
-	/// Gets the postal code.
+	/// Gets or sets the postal code for the address.
 	/// </summary>
-	/// <value>The postal code.</value>
+	/// <value>The postal code where the address is located.</value>
+	[StringLength(20, ErrorMessage = "The postal code must not exceed 20 characters.")]
 	string PostalCode { get; set; }
 
 	/// <summary>
-	/// Gets the state.
+	/// Gets or sets the state or region part of the address.
 	/// </summary>
-	/// <value>The state.</value>
+	/// <value>The state or region where the address is located.</value>
+	[StringLength(50, ErrorMessage = "The state or region must not exceed 50 characters.")]
 	string State { get; set; }
 
 }

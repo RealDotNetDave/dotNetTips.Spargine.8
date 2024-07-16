@@ -4,7 +4,7 @@
 // Created          : 06-04-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-29-2024
+// Last Modified On : 07-16-2024
 // ***********************************************************************
 // <copyright file="Coordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -28,16 +28,16 @@ using DotNetTips.Spargine.Tester.Properties;
 namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 
 /// <summary>
-/// Struct Coordinate
-/// Implements the <see cref="ICoordinate" />
-/// Implements the <see cref="IComparable" />&gt;
+/// Represents a 3D coordinate with X, Y, and Z integer values.
 /// </summary>
-/// <seealso cref="IComparable" />
-/// <seealso cref="ICoordinate" />
-/// <param name="x">The x.</param>
-/// <param name="y">The y.</param>
-/// <param name="z">The z.</param>
-/// <remarks>Initializes a new instance of the <see cref="Coordinate" /> struct.</remarks>
+/// <param name="x">The X coordinate.</param>
+/// <param name="y">The Y coordinate.</param>
+/// <param name="z">The Z coordinate. Default is 0.</param>
+/// <remarks>
+/// This struct is designed for testing and benchmarking scenarios.
+/// It implements <see cref="ICoordinate"/>, <see cref="IEquatable{Coordinate}"/>,
+/// <see cref="IComparable"/>, and <see cref="IComparable{Coordinate}"/> interfaces.
+/// </remarks>
 [DataContract(Name = "coordinate")]
 [Serializable]
 [XmlRoot(ElementName = "Coordinate")]
@@ -46,59 +46,62 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 {
 
 	/// <summary>
-	/// Implements the != operator.
+	/// Implements the inequality operator. Checks if two <see cref="Coordinate"/> instances are not equal.
 	/// </summary>
-	/// <param name="cord1">The first coordinate.</param>
-	/// <param name="cord2">The second coordinate.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="cord1">The first <see cref="Coordinate"/> instance.</param>
+	/// <param name="cord2">The second <see cref="Coordinate"/> instance.</param>
+	/// <returns><c>true</c> if the instances are not equal; otherwise, <c>false</c>.</returns>
 	public static bool operator !=(Coordinate cord1, Coordinate cord2) => !(cord1 == cord2);
 
 	/// <summary>
-	/// Implements the &lt; operator.
+	/// Implements the less than operator. Checks if the first <see cref="Coordinate"/> instance is less than the second.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
+	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
+	/// <returns><c>true</c> if the first instance is less than the second; otherwise, <c>false</c>.</returns>
 	public static bool operator <(Coordinate left, Coordinate right) => left.CompareTo(right) < 0;
 
 	/// <summary>
-	/// Implements the &lt;= operator.
+	/// Implements the less than or equal to operator. Checks if the first <see cref="Coordinate"/> instance is less than or equal to the second.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
+	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
+	/// <returns><c>true</c> if the first instance is less than or equal to the second; otherwise, <c>false</c>.</returns>
 	public static bool operator <=(Coordinate left, Coordinate right) => left.CompareTo(right) <= 0;
 
 	/// <summary>
-	/// Implements the == operator.
+	/// Implements the equality operator. Checks if two <see cref="Coordinate"/> instances are equal.
 	/// </summary>
-	/// <param name="cord1">The first coordinate.</param>
-	/// <param name="cord2">The second coordinate.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="cord1">The first <see cref="Coordinate"/> instance.</param>
+	/// <param name="cord2">The second <see cref="Coordinate"/> instance.</param>
+	/// <returns><c>true</c> if the instances are equal; otherwise, <c>false</c>.</returns>
 	public static bool operator ==(Coordinate cord1, Coordinate cord2) => cord1.Equals(cord2);
 
 	/// <summary>
-	/// Implements the &gt; operator.
+	/// Implements the greater than operator. Checks if the first <see cref="Coordinate"/> instance is greater than the second.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
+	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
+	/// <returns><c>true</c> if the first instance is greater than the second; otherwise, <c>false</c>.</returns>
 	public static bool operator >(Coordinate left, Coordinate right) => left.CompareTo(right) > 0;
 
 	/// <summary>
-	/// Implements the &gt;= operator.
+	/// Implements the greater than or equal to operator. Checks if the first <see cref="Coordinate"/> instance is greater than or equal to the second.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
+	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
+	/// <returns><c>true</c> if the first instance is greater than or equal to the second; otherwise, <c>false</c>.</returns>
 	public static bool operator >=(Coordinate left, Coordinate right) => left.CompareTo(right) >= 0;
 
 	/// <summary>
-	/// Compares one object to another.
+	/// Compares this instance with a specified <see cref="object"/> and indicates whether this instance precedes, follows, or appears in the same position in the sort order as the specified <see cref="object"/>.
 	/// </summary>
-	/// <param name="obj">The object.</param>
-	/// <returns>System.Int32.</returns>
-	/// <exception cref="ArgumentInvalidException">obj</exception>
+	/// <param name="obj">The object to compare with this instance.</param>
+	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings: 
+	/// Less than zero: This instance precedes <paramref name="obj"/> in the sort order. 
+	/// Zero: This instance occurs in the same position in the sort order as <paramref name="obj"/>.
+	/// Greater than zero: This instance follows <paramref name="obj"/> in the sort order.</returns>
+	/// <exception cref="ArgumentException">Thrown when <paramref name="obj"/> is not of type <see cref="Coordinate"/>.</exception>
 	public readonly int CompareTo(object obj)
 	{
 		if (obj is not Coordinate)
@@ -110,10 +113,13 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	}
 
 	/// <summary>
-	/// Compares to.
+	/// Compares this instance with another instance of <see cref="Coordinate"/> and returns an integer indicating whether this instance precedes, follows, or is in the same position in the sort order as the other instance.
 	/// </summary>
-	/// <param name="other">The other.</param>
-	/// <returns>System.Int32.</returns>
+	/// <param name="other">An instance of <see cref="Coordinate"/> to compare with this instance.</param>
+	/// <returns>A value that indicates the relative order of the objects being compared. The return value has the following meanings: 
+	/// Less than zero: This instance precedes <paramref name="other"/> in the sort order. 
+	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
+	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
 	public readonly int CompareTo(Coordinate other)
 	{
 		var result = this.X.CompareTo(other.X);
@@ -138,17 +144,17 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	}
 
 	/// <summary>
-	/// Determines whether the specified <see cref="object" /> is equal to this instance.
+	/// Determines whether the specified object is equal to the current instance.
 	/// </summary>
-	/// <param name="obj">The object to compare with the this instance.</param>
-	/// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+	/// <param name="obj">The object to compare with the current instance.</param>
+	/// <returns><c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.</returns>
 	public override readonly bool Equals(object obj) => obj is Coordinate proper && this.Equals(proper);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
 	/// <param name="other">An object to compare with this instance.</param>
-	/// <returns>True if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.</returns>
+	/// <returns>True if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.</returns>
 	public readonly bool Equals(Coordinate other) => this.X == other.X && this.Y == other.Y && this.Z == other.Z;
 
 	/// <summary>
@@ -158,9 +164,9 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	public override readonly int GetHashCode() => HashCode.Combine(this.X, this.Y, this.Z);
 
 	/// <summary>
-	/// Returns a <see cref="string" /> of the coordinates.
+	/// Returns a string that represents the current <see cref="Coordinate"/>.
 	/// </summary>
-	/// <returns>A <see cref="string" /> of the coordinates.</returns>
+	/// <returns>A string representation of the current <see cref="Coordinate"/>, including its X, Y, and Z values.</returns>
 	public override readonly string ToString() => this.PropertiesToString();
 
 	/// <summary>

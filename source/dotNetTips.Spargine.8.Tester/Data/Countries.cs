@@ -4,7 +4,7 @@
 // Created          : 03-12-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-12-2024
+// Last Modified On : 07-16-2024
 // ***********************************************************************
 // <copyright file="Countries.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -16,6 +16,7 @@
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using DotNetTips.Spargine.Core;
@@ -27,21 +28,25 @@ using DotNetTips.Spargine.Tester.Properties;
 namespace DotNetTips.Spargine.Tester.Data;
 
 /// <summary>
-/// Provides methods for retrieving comprehensive data encompassing all countries worldwide,
-/// including their respective regions, states, and cities.
+/// Provides static methods for retrieving comprehensive data about countries, including their regions, states, and cities.
+/// Utilizes resources and serialization to efficiently manage and access country data.
 /// </summary>
 public static class Countries
 {
 
 	/// <summary>
-	/// The countries
+	/// Holds a read-only collection of all countries, lazily initialized upon first access.
 	/// </summary>
 	private static ReadOnlyCollection<Country> _countries;
 
 	/// <summary>
-	/// Configures the serializer options.
+	/// Configures and returns the serializer options for JSON serialization.
 	/// </summary>
-	/// <returns>JsonSerializerOptions.</returns>
+	/// <returns>A <see cref="JsonSerializerOptions"/> object configured with custom settings for serialization.</returns>
+	/// <remarks>
+	/// This method sets up JSON serializer options to handle numbers as strings and adds custom converters.
+	/// </remarks>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static JsonSerializerOptions ConfigureSerializerOptions()
 	{
 		var options = new JsonSerializerOptions()
@@ -55,15 +60,37 @@ public static class Countries
 	}
 
 	/// <summary>
-	/// Deserializes collection of <see cref="Country" />.
+	/// Deserializes the JSON string from resources into a collection of <see cref="Country"/>.
+	/// This method is marked with <see cref="MethodImplOptions.NoInlining"/> to suggest that
+	/// the JIT compiler should not inline this method, potentially to improve debugging or
+	/// to work around JIT compilation behaviors.
 	/// </summary>
-	/// <returns>ReadOnlyCollection&lt;Country&gt;.</returns>
-	private static ReadOnlyCollection<Country> DeserializeCountires() => JsonSerializer.Deserialize<Country[]>(Resources.WorldCities, _options).AsReadOnly();
+	/// <returns>A read-only collection of <see cref="Country"/> objects.</returns>
+	/// <exception cref="InvalidOperationException">Thrown when deserialization fails due to invalid JSON format.</exception>
+	[MethodImpl(MethodImplOptions.NoInlining)]
+	private static ReadOnlyCollection<Country> DeserializeCountires()
+	{
+		try
+		{
+			var countries = JsonSerializer.Deserialize<Country[]>(Resources.WorldCities, _options);
+			return countries?.AsReadOnly() ?? new ReadOnlyCollection<Country>(new List<Country>());
+		}
+		catch (JsonException ex)
+		{
+			// Log the exception or handle it as needed.
+			throw new InvalidOperationException("Failed to deserialize countries data.", ex);
+		}
+	}
 
 	/// <summary>
-	/// Gets country data.
+	/// Retrieves a read-only collection of all countries.
 	/// </summary>
-	/// <returns>A <see cref="ReadOnlyCollection{Country}"/> representing all countries.</returns>
+	/// <returns>A <see cref="ReadOnlyCollection{Country}"/> representing the comprehensive list of countries.</returns>
+	/// <remarks>
+	/// This method ensures thread-safe initialization and retrieval of the country collection.
+	/// It leverages lazy loading to initialize the collection only once, upon the first request.
+	/// </remarks>
+	[MethodImpl(MethodImplOptions.Synchronized)]
 	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static ReadOnlyCollection<Country> GetCountries()
 	{
@@ -73,11 +100,12 @@ public static class Countries
 	}
 
 	/// <summary>
-	/// Gets the country by the specified country name.
+	/// Retrieves a country by its name.
 	/// </summary>
-	/// <param name="countryName">The name of the country. This parameter cannot be null.</param>
-	/// <returns>A <see cref="Country"/> object if found; otherwise, null.</returns>
+	/// <param name="countryName">The name of the country to retrieve. Cannot be null.</param>
+	/// <returns>The <see cref="Country"/> object if found; otherwise, null.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static Country GetCountry([NotNull] CountryName countryName)
 	{
@@ -87,16 +115,16 @@ public static class Countries
 	}
 
 	/// <summary>
-	/// Gets the country by country Id.
+	/// Retrieves a country by its unique identifier.
 	/// </summary>
-	/// <param name="countryId">The country identifier. This parameter must be a positive number.</param>
+	/// <param name="countryId">The unique identifier for the country.</param>
 	/// <returns>A <see cref="Country"/> object if found; otherwise, null.</returns>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="countryId"/> is less than or equal to 0.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static Country GetCountry(long countryId) => GetCountries().FirstOrDefault(p => p.Id == countryId);
 
 	/// <summary>
-	/// The options
+	/// The serializer options configured for JSON operations within the Countries class.
 	/// </summary>
 	private static readonly JsonSerializerOptions _options = ConfigureSerializerOptions();
 

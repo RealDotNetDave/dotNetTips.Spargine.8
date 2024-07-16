@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-11-2024
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -19,6 +19,7 @@
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
@@ -33,8 +34,8 @@ using DotNetTips.Spargine.Tester.Properties;
 namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 
 /// <summary>
-/// Class Person with proper encapsulation and validation.
-/// Implements the <see cref="IDataRecord" />
+/// Represents a person record in the system. This record includes personal information such as name, contact details, and addresses.
+/// It implements <see cref="IDataRecord"/> for data handling and <see cref="IComparable{PersonRecord}"/> for sorting and comparison purposes.
 /// </summary>
 [DataContract(Name = "personRecord")]
 [DebuggerDisplay("{Email}")]
@@ -101,67 +102,72 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	private string _lastName;
 
 	/// <summary>
-	/// Prevents a default instance of the <see cref="PersonRecord" /> class from being created.
+	/// Initializes a new instance of the <see cref="PersonRecord"/> class.
+	/// This constructor is primarily used for deserialization.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public PersonRecord()
 	{ }
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="PersonRecord" /> class.
+	/// Initializes a new instance of the <see cref="PersonRecord"/> class with specified email and identifier.
 	/// </summary>
-	/// <param name="email">The email.</param>
-	/// <param name="id">The identifier.</param>
-	public PersonRecord([NotNull] string email, [NotNull] string id)
+	/// <param name="email">The email address of the person. Must be a valid email format and not exceed 75 characters.</param>
+	/// <param name="id">The unique identifier for the person. Must not exceed 50 characters.</param>
+	/// <exception cref="ValidationException">Thrown if the email or id does not meet the specified criteria.</exception>
+	public PersonRecord([NotNull][EmailAddress][MaxLength(75)] string email, [NotNull][MaxLength(50)] string id)
 	{
 		this.Email = email;
 		this.Id = id;
 	}
 
 	/// <summary>
-	/// Implements the &lt; operator.
+	/// Defines the less than operator for comparing two instances of <see cref="PersonRecord"/>.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
+	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
+	/// <returns><c>true</c> if the left instance is less than the right instance; otherwise, <c>false</c>.</returns>
 	public static bool operator <(PersonRecord left, PersonRecord right) => left is null ? right is not null : left.CompareTo(right) < 0;
 
 	/// <summary>
-	/// Implements the &lt;= operator.
+	/// Implements the less than or equal to operator for comparing two instances of <see cref="PersonRecord"/>.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
+	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
+	/// <returns><c>true</c> if the left instance is less than or equal to the right instance; otherwise, <c>false</c>.</returns>
 	public static bool operator <=(PersonRecord left, PersonRecord right) => left is null || left.CompareTo(right) <= 0;
 
 	/// <summary>
-	/// Implements the &gt; operator.
+	/// Implements the greater than operator for comparing two instances of <see cref="PersonRecord"/>.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
+	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
+	/// <returns><c>true</c> if the left instance is greater than the right instance; otherwise, <c>false</c>.</returns>
 	public static bool operator >(PersonRecord left, PersonRecord right) => left is not null && left.CompareTo(right) > 0;
 
 	/// <summary>
-	/// Implements the &gt;= operator.
+	/// Implements the greater than or equal to operator for comparing two instances of <see cref="PersonRecord"/>.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns>The result of the operator.</returns>
+	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
+	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
+	/// <returns><c>true</c> if the left instance is greater than or equal to the right instance; otherwise, <c>false</c>.</returns>
 	public static bool operator >=(PersonRecord left, PersonRecord right) => left is null ? right is null : left.CompareTo(right) >= 0;
 
 	/// <summary>
-	/// Calculates the person's age.
+	/// Calculates the age of the person based on the current date and the person's birth date.
 	/// </summary>
-	/// <returns>TimeSpan.</returns>
+	/// <returns>A <see cref="TimeSpan"/> representing the age of the person.</returns>
 	public TimeSpan CalculateAge() => DateTimeOffset.UtcNow.Subtract(this.BornOn);
 
 	/// <summary>
-	/// Compares to.
+	/// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
 	/// </summary>
-	/// <param name="other">The other.</param>
-	/// <returns>System.Int32.</returns>
-	public int CompareTo([NotNull] PersonRecord other)
+	/// <param name="other">An object to compare with this instance.</param>
+	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings: 
+	/// Less than zero: This instance precedes <paramref name="other"/> in the sort order. 
+	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>. 
+	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
+	public int CompareTo(PersonRecord other)
 	{
 		if (other is null)
 		{
@@ -172,10 +178,12 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	}
 
 	/// <summary>
-	/// Converts to <see cref="ValueTypes.Person{TAddress}" /> to <see cref="PersonRecord" />
+	/// Converts a erson{ValueTypes.Address} instance to a <see cref="PersonRecord"/>.
 	/// </summary>
-	/// <param name="person">The person.</param>
-	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord.</returns>
+	/// <param name="person">The ValueTypes.Person{ValueTypes.Address} to convert.</param>
+	/// <returns>A <see cref="PersonRecord"/> that represents the converted person.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
+	[return: NotNull]
 	public static PersonRecord ToPersonRecord([NotNull] ValueTypes.Person<ValueTypes.Address> person)
 	{
 		person = person.ArgumentNotNull();
@@ -203,10 +211,12 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	}
 
 	/// <summary>
-	/// Converts to <see cref="Person{TAddress}" /> to <see cref="PersonRecord" />
+	/// Converts a <see cref="Person{Address}"/> instance to a <see cref="PersonRecord"/>.
 	/// </summary>
-	/// <param name="person">The person.</param>
-	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord.</returns>
+	/// <param name="person">The <see cref="Person{Address}"/> to convert.</param>
+	/// <returns>A <see cref="PersonRecord"/> that represents the converted person.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
+	[return: NotNull]
 	public static PersonRecord ToPersonRecord([NotNull] Person<Address> person)
 	{
 		person = person.ArgumentNotNull();
@@ -232,20 +242,19 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 
 		return newPerson;
 	}
+
 	/// <summary>
-	/// Converts to string.
+	/// Converts the person record to a string representation, utilizing the PropertiesToString method for detailed output.
 	/// </summary>
-	/// <returns>string.</returns>
+	/// <returns>A string representation of the person record.</returns>
 	public override string ToString() => this.PropertiesToString();
 
 	/// <summary>
-	/// Gets a collection of <see cref="Address" /> for a Person.
+	/// Gets or sets the collection of addresses associated with the person.
 	/// </summary>
-	/// <value>The addresses.</value>
+	/// <value>The collection of <see cref="AddressRecord"/> objects.</value>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
-	[MaybeNull]
-	[MemberNotNull(nameof(_addresses))]
 	[XmlIgnore]
 	public Collection<AddressRecord> Addresses
 	{
@@ -265,13 +274,14 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	}
 
 	/// <summary>
-	/// Gets or sets the addresses for XML serilization only.
+	/// Gets or sets the addresses for XML serialization only.
+	/// This property is intended for use by the XML serializer and should not be used directly in code.
 	/// </summary>
-	/// <value>The addresses serilization.</value>
+	/// <value>The collection of addresses for serialization.</value>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	[XmlArray("Addresses")]
 	[JsonIgnore]
 	[MemberNotNull(nameof(_addresses))]
+	[XmlArray("Addresses")]
 	public Collection<AddressRecord> AddressesSerilization
 	{
 		get => this._addresses;
@@ -292,18 +302,19 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	}
 
 	/// <summary>
-	/// Gets the age of the person.
+	/// Gets the age of the person calculated from the born on date to the current date.
 	/// </summary>
-	/// <value>The age.</value>
+	/// <value>The age as a <see cref="TimeSpan"/>.</value>
+	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
 	public TimeSpan Age => this.CalculateAge();
 
 	/// <summary>
-	/// Gets or sets the born on date.
+	/// Gets or sets the date and time when the person was born.
 	/// </summary>
-	/// <value>The born on date.</value>
-	/// <exception cref="ArgumentOutOfRangeException">BornOn cannot be in the future.</exception>
+	/// <value>The born on date and time as a <see cref="DateTimeOffset"/>.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if an attempt is made to set a future date.</exception>
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
 	[XmlElement]
@@ -330,14 +341,15 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// Gets or sets the cell phone number.
 	/// </summary>
 	/// <value>The cell phone number.</value>
-	/// <exception cref="ArgumentOutOfRangeException">CellPhone is limited
-	/// to 50 characters.</exception>
-	/// <remarks>Cell phone number is limited to 50 characters.</remarks>
+	/// <remarks>
+	/// The cell phone number is limited to 50 characters and should be in a valid format.
+	/// </remarks>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if the cell phone number exceeds 50 characters.</exception>
 	[DataMember(Name = "cellPhone", IsRequired = false)]
-	[DefaultValue("")]
 	[JsonPropertyName("cellPhone")]
-	[MemberNotNull(nameof(_cellPhone))]
-	[XmlElement]
+	[MaxLength(50, ErrorMessage = "Cell phone number cannot exceed 50 characters.")]
+	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
+	[XmlElement("CellPhone")]
 	public string CellPhone
 	{
 		get => this._cellPhone;
@@ -360,13 +372,16 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// Gets or sets the email address.
 	/// </summary>
 	/// <value>The email address.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Email is limited
-	/// to 75 characters.</exception>
-	/// <remarks>Email is limited to 75 characters.</remarks>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if the email exceeds 75 characters.</exception>
+	/// <remarks>
+	/// The email address is validated to ensure it is in a correct format and does not exceed 75 characters in length.
+	/// </remarks>
 	[DataMember(Name = "email", IsRequired = true)]
 	[DefaultValue("")]
 	[DisallowNull]
+	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
 	[JsonPropertyName("email")]
+	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
 	[MemberNotNull(nameof(_email))]
 	[XmlElement(IsNullable = false)]
 	public string Email
@@ -389,17 +404,18 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	}
 
 	/// <summary>
-	/// Gets or sets the first name.
+	/// Gets or sets the first name of the person.
 	/// </summary>
 	/// <value>The first name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">First name is limted
-	/// to 50 characters.</exception>
-	/// <remarks>Firt name is limited to 50 characters.</remarks>
-	[DataMember(Name = "firstName", IsRequired = false)]
+	/// <remarks>
+	/// The first name is limited to 50 characters. It is a required field and cannot be null or empty.
+	/// </remarks>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if the first name exceeds 50 characters.</exception>
+	[DataMember(Name = "firstName", IsRequired = true)]
 	[DefaultValue("")]
 	[JsonPropertyName("firstName")]
-	[MemberNotNull(nameof(_firstName))]
-	[XmlElement]
+	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
+	[XmlElement("FirstName")]
 	public string FirstName
 	{
 		get => this._firstName;
@@ -419,7 +435,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	}
 
 	/// <summary>
-	/// Gets the full name of the person.
+	/// Gets the full name of the person by concatenating the first name and the last name.
 	/// </summary>
 	/// <value>The full name.</value>
 	[IgnoreDataMember]
@@ -430,15 +446,17 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <summary>
 	/// Gets or sets the home phone number.
 	/// </summary>
-	/// <value>The home phone.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Phone is limted
-	/// to 50 characters.</exception>
-	/// <remarks>Home phone is limited to 50 characters.</remarks>
+	/// <value>The home phone number.</value>
+	/// <remarks>
+	/// The home phone number is limited to 50 characters. It should be in a valid phone number format.
+	/// This property is optional and can be left empty.
+	/// </remarks>
 	[DataMember(Name = "homePhone", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
-	[MemberNotNull(nameof(_homePhone))]
-	[XmlElement]
+	[MaxLength(50, ErrorMessage = "Home phone number cannot exceed 50 characters.")]
+	[Phone(ErrorMessage = "The home phone number is not in a valid format.")]
+	[XmlElement("HomePhone")]
 	public string HomePhone
 	{
 		get => this._homePhone;
@@ -460,13 +478,15 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <summary>
 	/// Gets or sets the identifier.
 	/// </summary>
-	/// <value>The identifier.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Id is limited
-	/// to 50 characters.</exception>
-	/// <remarks>Id is limited to 50 characters.</remarks>
+	/// <value>The unique identifier for the person.</value>
+	/// <remarks>
+	/// The identifier is a required field and must not exceed 50 characters in length.
+	/// </remarks>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if the identifier exceeds 50 characters.</exception>
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("id")]
+	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
 	[MemberNotNull(nameof(_id))]
 	[ReadOnly(true)]
 	[XmlElement(IsNullable = false)]
@@ -488,17 +508,20 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	}
 
 	/// <summary>
-	/// Gets or sets the last name.
+	/// Gets or sets the last name of the person.
 	/// </summary>
-	/// <value>The last name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">LastName is limited
-	/// to 50 characters.</exception>
-	/// <remarks>Last name is limited to 50 characters.</remarks>
-	[DataMember(Name = "lastName", IsRequired = false)]
+	/// <value>The last name of the person.</value>
+	/// <remarks>
+	/// The last name is a required field and must not exceed 50 characters in length.
+	/// This property is used to store the family name of the person.
+	/// </remarks>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if the last name exceeds 50 characters.</exception>
+	[DataMember(Name = "lastName", IsRequired = true)]
 	[DefaultValue("")]
 	[JsonPropertyName("lastName")]
+	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
 	[MemberNotNull(nameof(_lastName))]
-	[XmlElement]
+	[XmlElement("LastName")]
 	public string LastName
 	{
 		get => this._lastName;

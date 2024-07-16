@@ -4,7 +4,7 @@
 // Created          : 03-08-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-29-2024
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="PersonJsonSerializerContext.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -24,12 +24,13 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 
 /// <summary>
-/// Class PersonJsonSerializerContext.
-/// Implements the <see cref="JsonSerializerContext" />
-/// Implements the <see cref="System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver" />
+/// Provides a custom JSON serialization context for optimizing the serialization
+/// and deserialization of <see cref="Person{TAddress}"/> types and their collections.
 /// </summary>
-/// <seealso cref="JsonSerializerContext" />
-/// <seealso cref="System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver" />
+/// <remarks>
+/// This class leverages source generation for JSON serialization to improve performance
+/// and reduce runtime overhead by generating serialization metadata at compile time.
+/// </remarks>
 [JsonSourceGenerationOptions(IncludeFields = false)]
 [JsonSerializable(typeof(Person<Address>), TypeInfoPropertyName = "Person")]
 [JsonSerializable(typeof(List<Person<Address>>), TypeInfoPropertyName = "PersonList")]
