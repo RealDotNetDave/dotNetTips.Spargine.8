@@ -54,7 +54,7 @@ public static class Countries
 			NumberHandling = JsonNumberHandling.AllowReadingFromString,
 		};
 
-		_ = options.Converters.AddRange(ContryConverters.Settings.Converters, false);
+		_ = options.Converters.AddRange(CountryConverters.Settings.Converters, false);
 
 		return options;
 	}

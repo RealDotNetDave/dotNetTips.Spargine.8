@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-11-2024
+// Last Modified On : 07-16-2024
 // ***********************************************************************
 // <copyright file="City.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -12,6 +12,7 @@
 // <summary>Class that encapsulates data for a City.</summary>
 // ***********************************************************************
 
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -19,43 +20,48 @@ using System.Text.Json.Serialization;
 namespace DotNetTips.Spargine.Tester.Data;
 
 /// <summary>
-/// Class City.
+/// Represents a city with properties for identification and location coordinates.
 /// </summary>
+[DataContract] // Indicates that this class is part of a data contract for serialization.
 public sealed class City
 {
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="City" /> class.
+	/// Initializes a new instance of the <see cref="City"/> class.
 	/// </summary>
 	public City()
 	{
 	}
 
 	/// <summary>
-	/// Gets or sets the identifier.
+	/// Gets or sets the unique identifier for the city.
 	/// </summary>
-	/// <value>The identifier.</value>
+	/// <value>The city's unique identifier.</value>
+	[DataMember(Name = "id")] // Specifies the name of the data member when the object is serialized.
 	[JsonPropertyName("id")]
 	public long Id { get; set; }
 
 	/// <summary>
-	/// Gets or sets the latitude.
+	/// Gets or sets the latitude of the city.
 	/// </summary>
-	/// <value>The latitude.</value>
+	/// <value>The city's latitude.</value>
+	[DataMember(Name = "latitude")] // Specifies the name of the data member when the object is serialized.
 	[JsonPropertyName("latitude")]
 	public string Latitude { get; set; }
 
 	/// <summary>
-	/// Gets or sets the longitude.
+	/// Gets or sets the longitude of the city.
 	/// </summary>
-	/// <value>The longitude.</value>
+	/// <value>The city's longitude.</value>
+	[DataMember(Name = "longitude")] // Specifies the name of the data member when the object is serialized.
 	[JsonPropertyName("longitude")]
 	public string Longitude { get; set; }
 
 	/// <summary>
-	/// Gets or sets the name.
+	/// Gets or sets the name of the city.
 	/// </summary>
-	/// <value>The name.</value>
+	/// <value>The city's name.</value>
+	[DataMember(Name = "name")] // Specifies the name of the data member when the object is serialized.
 	[JsonPropertyName("name")]
 	public string Name { get; set; }
 

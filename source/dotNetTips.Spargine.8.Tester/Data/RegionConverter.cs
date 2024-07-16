@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 07-16-2024
 // ***********************************************************************
 // <copyright file="RegionConverter.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -20,28 +20,27 @@ using System.Text.Json.Serialization;
 namespace DotNetTips.Spargine.Tester.Data;
 
 /// <summary>
-/// Class RegionConverter.
-/// Implements the <see cref="JsonConverter{Region}" />
+/// Provides custom serialization and deserialization for <see cref="Region"/> enumeration values.
+/// This converter enables the conversion of enumeration values to their corresponding string representations in JSON and vice versa.
 /// </summary>
-/// <seealso cref="JsonConverter{Region}" />
 internal sealed class RegionConverter : JsonConverter<Region>
 {
 
 	/// <summary>
-	/// Determines whether this instance can convert the specified t.
+	/// Determines whether this instance can convert the specified type.
 	/// </summary>
-	/// <param name="t">The t.</param>
-	/// <returns><c>true</c> if this instance can convert the specified t; otherwise, <c>false</c>.</returns>
+	/// <param name="t">The type to check for conversion capability.</param>
+	/// <returns><c>true</c> if this instance can convert the specified type; otherwise, <c>false</c>.</returns>
 	public override bool CanConvert(Type t) => t == typeof(Region);
 
 	/// <summary>
-	/// Reads and converts the JSON to type <see cref=" Region" />.
+	/// Reads and converts the JSON to type <see cref="Region"/>.
 	/// </summary>
 	/// <param name="reader">The reader.</param>
 	/// <param name="typeToConvert">The type to convert.</param>
 	/// <param name="options">An object that specifies serialization options to use.</param>
 	/// <returns>The converted value.</returns>
-	/// <remarks>A converter may throw any Exception, but should throw <cref>JsonException</cref> when the JSON is invalid.</remarks>
+	/// <remarks>A converter may throw any Exception, but should throw <see cref="JsonException"/> when the JSON is invalid.</remarks>
 	public override Region Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
 		var value = reader.GetString();
@@ -65,7 +64,7 @@ internal sealed class RegionConverter : JsonConverter<Region>
 	/// <param name="value">The value to convert to JSON.</param>
 	/// <param name="options">An object that specifies serialization options to use.</param>
 	/// <exception cref="Exception">Cannot marshal type Region</exception>
-	/// <remarks>A converter may throw any Exception, but should throw <cref>JsonException</cref> when the JSON
+	/// <remarks>A converter may throw any Exception, but should throw <see cref="JsonException"/> when the JSON
 	/// cannot be created.</remarks>
 	public override void Write(Utf8JsonWriter writer, Region value, JsonSerializerOptions options)
 	{
@@ -99,8 +98,9 @@ internal sealed class RegionConverter : JsonConverter<Region>
 	}
 
 	/// <summary>
-	/// The singleton
+	/// Provides a singleton instance of the <see cref="RegionConverter"/> for reuse across the application.
 	/// </summary>
 	public static readonly RegionConverter Singleton = new();
 
 }
+

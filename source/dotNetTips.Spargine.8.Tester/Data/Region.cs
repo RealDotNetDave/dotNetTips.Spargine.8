@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 07-16-2024
 // ***********************************************************************
 // <copyright file="Region.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -12,47 +12,49 @@
 // <summary>Enumeration for all the regions in the world.</summary>
 // ***********************************************************************
 
+//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
+
 
 
 namespace DotNetTips.Spargine.Tester.Data;
 
 /// <summary>
-/// Enum Region
+/// Represents all the geographic regions in the world.
 /// </summary>
 public enum Region
 {
 	/// <summary>
-	/// The africa
+	/// The African region.
 	/// </summary>
 	Africa,
 
 	/// <summary>
-	/// The americas
+	/// The Americas region, including both North and South America.
 	/// </summary>
 	Americas,
 
 	/// <summary>
-	/// The asia
+	/// The Asian region.
 	/// </summary>
 	Asia,
 
 	/// <summary>
-	/// The empty
+	/// Represents an undefined or unspecified region.
 	/// </summary>
 	Empty,
 
 	/// <summary>
-	/// The europe
+	/// The European region.
 	/// </summary>
 	Europe,
 
 	/// <summary>
-	/// The oceania
+	/// The Oceania region, including Australasia, Melanesia, Micronesia, and Polynesia.
 	/// </summary>
 	Oceania,
 
 	/// <summary>
-	/// The polar
+	/// The Polar regions, including the Arctic and Antarctica.
 	/// </summary>
 	Polar
 };

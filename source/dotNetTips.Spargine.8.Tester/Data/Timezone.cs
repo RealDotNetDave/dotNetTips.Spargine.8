@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 07-16-2024
 // ***********************************************************************
 // <copyright file="Timezone.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -19,28 +19,30 @@ using System.Text.Json.Serialization;
 namespace DotNetTips.Spargine.Tester.Data;
 
 /// <summary>
-/// Class Timezone.
+/// Represents information for a timezone, including its abbreviation, GMT offset, and names.
 /// </summary>
+[Serializable]
 public sealed class Timezone
 {
 
 	/// <summary>
-	/// Gets or sets the abbreviation.
+	/// Gets or sets the abbreviation of the timezone.
 	/// </summary>
-	/// <value>The abbreviation.</value>
+	/// <value>The abbreviation of the timezone.</value>
 	[JsonPropertyName("abbreviation")]
 	public string Abbreviation { get; set; }
 
 	/// <summary>
-	/// Gets the country.
+	/// Gets the country associated with the timezone. This property is static and not serialized.
 	/// </summary>
-	/// <value>The country.</value>
+	/// <value>The country associated with the timezone.</value>
+	[JsonIgnore]
 	public static Country Country => default!;
 
 	/// <summary>
-	/// Gets or sets the GMT offset.
+	/// Gets or sets the GMT offset of the timezone.
 	/// </summary>
-	/// <value>The GMT offset.</value>
+	/// <value>The GMT offset of the timezone.</value>
 	[JsonPropertyName("gmtOffset")]
 	public long GmtOffset { get; set; }
 
@@ -52,11 +54,12 @@ public sealed class Timezone
 	public string GmtOffsetName { get; set; }
 
 	/// <summary>
-	/// Gets or sets the name of the tz.
+	/// Gets or sets the timezone name.
 	/// </summary>
-	/// <value>The name of the tz.</value>
+	/// <value>The timezone name.</value>
 	[JsonPropertyName("tzName")]
 	public string TzName { get; set; }
+
 	/// <summary>
 	/// Gets or sets the name of the zone.
 	/// </summary>

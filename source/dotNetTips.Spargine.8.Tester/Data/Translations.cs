@@ -4,14 +4,12 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2024
+// Last Modified On : 07-16-2024
 // ***********************************************************************
 // <copyright file="Translations.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Class that encapsulates information for a translation.
-// </summary>
+// <summary>Class that encapsulates information for a translation.</summary>
 // ***********************************************************************
 
 using System.Text.Json.Serialization;
@@ -21,115 +19,117 @@ using System.Text.Json.Serialization;
 namespace DotNetTips.Spargine.Tester.Data;
 
 /// <summary>
-/// Class Translations.
+/// Represents translations for various languages.
 /// </summary>
 [Serializable]
 public sealed class Translations
 {
 
 	/// <summary>
-	/// Gets or sets the cn.
+	/// Gets or sets the translation for Chinese.
 	/// </summary>
-	/// <value>The cn.</value>
+	/// <value>The Chinese translation.</value>
 	[JsonPropertyName("cn")]
 	public string Cn { get; set; }
 
 	/// <summary>
-	/// Gets or sets the country.
+	/// The country associated with the translations. This property is static and not serialized.
 	/// </summary>
-	/// <value>The country.</value>
+	/// <value>The country associated with the translations.</value>
+	[JsonIgnore]
 	public static Country Country => default!;
 
 	/// <summary>
-	/// Gets or sets the de.
+	/// Gets or sets the translation for German. Null values will not be written during serialization.
 	/// </summary>
-	/// <value>The de.</value>
+	/// <value>The German translation.</value>
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	[JsonPropertyName("de")]
 	public string De { get; set; }
 
 	/// <summary>
-	/// Gets or sets the es.
+	/// Gets or sets the translation for Spanish. Null values will not be written during serialization.
 	/// </summary>
-	/// <value>The es.</value>
+	/// <value>The Spanish translation.</value>
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	[JsonPropertyName("es")]
 	public string Es { get; set; }
 
 	/// <summary>
-	/// Gets or sets the fa.
+	/// Gets or sets the translation for Persian. Null values will not be written during serialization.
 	/// </summary>
-	/// <value>The fa.</value>
+	/// <value>The Persian translation.</value>
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	[JsonPropertyName("fa")]
 	public string Fa { get; set; }
 
 	/// <summary>
-	/// Gets or sets the fr.
+	/// Gets or sets the translation for French. Null values will not be written during serialization.
 	/// </summary>
-	/// <value>The fr.</value>
+	/// <value>The French translation.</value>
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	[JsonPropertyName("fr")]
 	public string Fr { get; set; }
 
 	/// <summary>
-	/// Gets or sets the hr.
+	/// Gets or sets the translation for Croatian. Null values will not be written during serialization.
 	/// </summary>
-	/// <value>The hr.</value>
+	/// <value>The Croatian translation.</value>
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	[JsonPropertyName("hr")]
 	public string Hr { get; set; }
 
 	/// <summary>
-	/// Gets or sets it.
+	/// Gets or sets the translation for Italian. Null values will not be written during serialization.
 	/// </summary>
-	/// <value>It.</value>
+	/// <value>The Italian translation.</value>
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	[JsonPropertyName("it")]
 	public string It { get; set; } = string.Empty;
 
 	/// <summary>
-	/// Gets or sets the ja.
+	/// Gets or sets the translation for Japanese. Null values will not be written during serialization.
 	/// </summary>
-	/// <value>The ja.</value>
+	/// <value>The Japanese translation.</value>
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	[JsonPropertyName("ja")]
 	public string Ja { get; set; }
+
 	/// <summary>
-	/// Gets or sets the kr.
+	/// Gets or sets the translation for Korean.
 	/// </summary>
-	/// <value>The kr.</value>
+	/// <value>The Korean translation.</value>
 	[JsonPropertyName("kr")]
 	public string Kr { get; set; }
 
 	/// <summary>
-	/// Gets or sets the nl.
+	/// Gets or sets the translation for Dutch. Null values will not be written during serialization.
 	/// </summary>
-	/// <value>The nl.</value>
+	/// <value>The Dutch translation.</value>
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	[JsonPropertyName("nl")]
 	public string Nl { get; set; }
 
 	/// <summary>
-	/// Gets or sets the pt.
+	/// Gets or sets the translation for Portuguese. Null values will not be written during serialization.
 	/// </summary>
-	/// <value>The pt.</value>
+	/// <value>The Portuguese translation.</value>
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	[JsonPropertyName("pt")]
 	public string Pt { get; set; }
 
 	/// <summary>
-	/// Gets or sets the pt br.
+	/// Gets or sets the translation for Brazilian Portuguese. Null values will not be written during serialization.
 	/// </summary>
-	/// <value>The pt br.</value>
+	/// <value>The Brazilian Portuguese translation.</value>
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	[JsonPropertyName("pt-BR")]
 	public string PtBr { get; set; }
 
 	/// <summary>
-	/// Gets or sets the tr.
+	/// Gets or sets the translation for Turkish.
 	/// </summary>
-	/// <value>The tr.</value>
+	/// <value>The Turkish translation.</value>
 	[JsonPropertyName("tr")]
 	public string Tr { get; set; }
 

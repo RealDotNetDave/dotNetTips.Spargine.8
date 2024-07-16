@@ -1,4 +1,3 @@
-
 // ***********************************************************************
 // Assembly         : DotNetTips.Spargine.8.Tester
 // Author           : David McCarter
@@ -16,10 +15,8 @@
 // </summary>
 // ***********************************************************************
 
-using System.Diagnostics.CodeAnalysis;
-using DotNetTips.Spargine.Core;
-
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
+
 
 namespace DotNetTips.Spargine.Tester;
 
@@ -31,43 +28,42 @@ public sealed record PersonName
 {
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="PersonName" /> class.
+	/// Initializes a new instance of the <see cref="PersonName"/> class.
 	/// </summary>
 	public PersonName()
 	{
+		FirstName = string.Empty;
+		LastName = string.Empty;
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="PersonName"/> class.
+	/// Initializes a new instance of the <see cref="PersonName"/> class with specified first and last names.
 	/// </summary>
 	/// <param name="firstName">The first name.</param>
 	/// <param name="lastName">The last name.</param>
-	public PersonName([NotNull] string firstName, [NotNull] string lastName)
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="firstName"/> or <paramref name="lastName"/> is null.</exception>
+	public PersonName(string firstName, string lastName)
 	{
-		this.FirstName = firstName;
-		this.LastName = lastName;
+		FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
+		LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
 	}
 
 	/// <summary>
 	/// Gets the first name.
 	/// </summary>
 	/// <value>The first name.</value>
-	/// <seealso cref="PersonName"/>
-	[NotNull]
 	public string FirstName { get; init; }
 
 	/// <summary>
 	/// Gets the full name, constructed from <see cref="FirstName"/> and <see cref="LastName"/>.
 	/// </summary>
 	/// <value>The full name.</value>
-	public string FullName => $"{this.FirstName}{ControlChars.Space}{this.LastName}";
+	public string FullName => $"{FirstName} {LastName}";
 
 	/// <summary>
 	/// Gets the last name.
 	/// </summary>
 	/// <value>The last name.</value>
-	/// <seealso cref="PersonName"/>
-	[NotNull]
 	public string LastName { get; init; }
 
 }
