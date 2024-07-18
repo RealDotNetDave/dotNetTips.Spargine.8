@@ -1,6 +1,6 @@
 # dotNetDave's (David McCarter) Editor Config - dotNetTips.com
 # Updates to this file are posted quarterly at: https://bit.ly/EditorConfig5
-# Updated May 2, 2024
+# Updated August 1, 2024
 # dotNetDave's NEW coding standards book is available at: https://bit.ly/CodingStandards8
 # Rockin' the Code World with dotNetDave (weekly live show): https://bit.ly/RockinCodeWorldShows
 
@@ -10,35 +10,26 @@ root = true
 [*]
 charset = utf-8
 csharp_indent_labels = one_less_than_current
-csharp_prefer_simple_using_statement = false:silent
 csharp_style_allow_blank_line_after_token_in_arrow_expression_clause_experimental = true:silent
 csharp_style_allow_blank_line_after_token_in_conditional_expression_experimental = true:silent
-csharp_style_expression_bodied_accessors = true:warning
-csharp_style_expression_bodied_constructors = true:warning
-csharp_style_expression_bodied_indexers = true:warning
-csharp_style_expression_bodied_lambdas = true:warning
-csharp_style_expression_bodied_local_functions = true:warning
-csharp_style_expression_bodied_methods = true:warning
-csharp_style_expression_bodied_operators = true:warning
-csharp_style_expression_bodied_properties = true:warning
-csharp_style_namespace_declarations = file_scoped:warning
 csharp_style_prefer_method_group_conversion = true:silent
 csharp_style_prefer_primary_constructors = true:suggestion
 csharp_style_prefer_readonly_struct_member = true:suggestion
 csharp_style_prefer_top_level_statements = true:silent
 csharp_style_prefer_utf8_string_literals = true:suggestion
-csharp_using_directive_placement = outside_namespace:warning
 end_of_line = crlf
 indent_size = 4
 indent_style = tab
 insert_final_newline = true
 tab_width = 4
 trim_trailing_whitespace = true
-csharp_prefer_braces = true:error
 
-# Visual Studio Solution Files
-[*.sln]
-indent_style = tab
+# Nullability settings
+# Enable nullable reference types
+dotnet_build_property.Nullable = enable
+
+# Enable or disable the analyzers
+dotnet_analyzer_diagnostic.severity = warning
 
 # Visual Studio XML Project Files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
@@ -1592,7 +1583,6 @@ dotnet_diagnostic.CA2261.severity = warning
 # this and Me preferences
 dotnet_diagnostic.IDE0003.severity = suggestion
 dotnet_diagnostic.IDE0009.severity = suggestion
-dotnet_style_qualification_for_field = true:suggestion
 
 # Use 'System.HashCode.Combine' ****
 dotnet_diagnostic.IDE0070.severity = warning
@@ -2288,7 +2278,6 @@ dotnet_diagnostic.ENUM0002.severity = warning
 # Populate switch
 dotnet_diagnostic.ENUM0003.severity = warning
 
-tab_width = 4
 dotnet_style_allow_multiple_blank_lines_experimental = false:suggestion
 dotnet_style_allow_statement_immediately_after_block_experimental = true:suggestion
 dotnet_style_namespace_match_folder = true:suggestion
@@ -2327,6 +2316,9 @@ csharp_new_line_between_query_expression_clauses = true
 # C# Unnecessary code rules
 csharp_style_unused_value_assignment_preference = discard_variable:suggestion
 csharp_style_unused_value_expression_statement_preference = discard_variable:suggestion
+
+# Set the C# language version (e.g., latest, 9.0, 8.0)
+csharp_language_version = latest
 
 # Simplify name
 dotnet_diagnostic.IDE0001.severity = warning
@@ -2450,7 +2442,6 @@ csharp_indent_block_contents = true
 csharp_indent_braces = false
 csharp_indent_case_contents = true
 csharp_indent_case_contents_when_block = true
-csharp_indent_labels = one_less_than_current
 csharp_indent_switch_labels = true
 
 # Namespace options
@@ -2463,10 +2454,8 @@ csharp_style_allow_blank_lines_between_consecutive_braces_experimental = true:si
 csharp_style_allow_embedded_statements_on_same_line_experimental = true:silent
 csharp_style_prefer_extended_property_pattern = true:suggestion
 csharp_style_prefer_local_over_anonymous_function = true:suggestion
-csharp_style_prefer_method_group_conversion = true:silent
 csharp_style_prefer_null_check_over_type_check = true:warning
 csharp_style_prefer_parameter_null_checking = true:suggestion
-csharp_style_prefer_top_level_statements = true:silent
 csharp_style_prefer_tuple_swap = true:suggestion
 
 # Simplify boolean comparison.

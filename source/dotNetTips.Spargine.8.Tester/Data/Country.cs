@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="Country.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -24,6 +24,7 @@ namespace DotNetTips.Spargine.Tester.Data;
 /// Represents detailed information about a country, including its name, capital, currency, and geographical data.
 /// </summary>
 [DataContract]
+[Serializable]
 public sealed class Country
 {
 

@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="Address.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -249,18 +249,15 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
 	[DebuggerStepThrough]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public readonly bool Equals(Address other)
-	{
-		return string.Equals(Address1, other.Address1, StringComparison.Ordinal) &&
-			   string.Equals(Address2, other.Address2, StringComparison.Ordinal) &&
-			   string.Equals(City, other.City, StringComparison.Ordinal) &&
-			   string.Equals(State, other.State, StringComparison.Ordinal) &&
-			   string.Equals(CountyProvince, other.CountyProvince, StringComparison.Ordinal) &&
-			   string.Equals(Country, other.Country, StringComparison.Ordinal) &&
-			   string.Equals(PostalCode, other.PostalCode, StringComparison.Ordinal) &&
-			   string.Equals(Phone, other.Phone, StringComparison.Ordinal) &&
-			   string.Equals(Id, other.Id, StringComparison.Ordinal);
-	}
+	public readonly bool Equals(Address other) => string.Equals(this.Address1, other.Address1, StringComparison.Ordinal) &&
+			   string.Equals(this.Address2, other.Address2, StringComparison.Ordinal) &&
+			   string.Equals(this.City, other.City, StringComparison.Ordinal) &&
+			   string.Equals(this.State, other.State, StringComparison.Ordinal) &&
+			   string.Equals(this.CountyProvince, other.CountyProvince, StringComparison.Ordinal) &&
+			   string.Equals(this.Country, other.Country, StringComparison.Ordinal) &&
+			   string.Equals(this.PostalCode, other.PostalCode, StringComparison.Ordinal) &&
+			   string.Equals(this.Phone, other.Phone, StringComparison.Ordinal) &&
+			   string.Equals(this.Id, other.Id, StringComparison.Ordinal);
 
 	/// <summary>
 	/// Returns a hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.

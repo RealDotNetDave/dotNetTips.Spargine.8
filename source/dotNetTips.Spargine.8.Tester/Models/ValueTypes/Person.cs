@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -206,11 +206,8 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// <param name="other">The <see cref="Person{TAddress}"/> to compare with the current <see cref="Person{TAddress}"/>.</param>
 	/// <returns><c>true</c> if the specified <see cref="Person{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>; otherwise, <c>false</c>.</returns>
 
-	public readonly bool Equals([NotNull] Person<TAddress> other)
-	{
-		return string.Equals(this.Id, other.Id, StringComparison.Ordinal) &&
+	public readonly bool Equals([NotNull] Person<TAddress> other) => string.Equals(this.Id, other.Id, StringComparison.Ordinal) &&
 			   string.Equals(this.Email, other.Email, StringComparison.OrdinalIgnoreCase);
-	}
 
 	/// <summary>
 	/// Determines whether the specified object is equal to the current instance.
@@ -221,7 +218,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	{
 		if (obj is Person<TAddress> other)
 		{
-			return Equals(other);
+			return this.Equals(other);
 		}
 
 		return false;

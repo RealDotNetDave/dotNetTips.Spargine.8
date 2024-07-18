@@ -103,7 +103,7 @@ public static class ObjectExtensions
 	/// <returns>A string representing the hexadecimal value of the SHA-256 hash.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj"/> is null.</exception>
 	/// <remarks>
-	/// This method serializes the object to JSON using the default <see cref="System.Text.Json.JsonSerializerOptions"/>
+	/// This method serializes the object to JSON using the default <see cref="JsonSerializerOptions"/>
 	/// and then computes the SHA-256 hash of the resulting JSON string. This is useful for generating a consistent hash
 	/// for objects that implement the same data but may have different reference identities.
 	/// </remarks>
@@ -183,10 +183,7 @@ public static class ObjectExtensions
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasProperty), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static bool HasProperty([NotNull] this object obj, [NotNull] string propertyName)
-	{
-		return obj.GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic) != null;
-	}
+	public static bool HasProperty([NotNull] this object obj, [NotNull] string propertyName) => obj.GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic) != null;
 
 	/// <summary>
 	/// Initializes all fields of the specified object that are currently null to their default values.

@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="PersonData.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -46,13 +46,13 @@ public sealed record PersonData
 	/// <exception cref="ArgumentNullException">Thrown when a required argument is null.</exception>
 	public PersonData(DateTimeOffset bornOn, string cellPhone, Country country, string email, string firstName, string lastName, string phone)
 	{
-		BornOn = bornOn;
-		CellPhone = cellPhone ?? throw new ArgumentNullException(nameof(cellPhone));
-		Country = country ?? throw new ArgumentNullException(nameof(country));
-		Email = email ?? throw new ArgumentNullException(nameof(email));
-		FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
-		LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
-		Phone = phone ?? throw new ArgumentNullException(nameof(phone));
+		this.BornOn = bornOn;
+		this.CellPhone = cellPhone ?? throw new ArgumentNullException(nameof(cellPhone));
+		this.Country = country ?? throw new ArgumentNullException(nameof(country));
+		this.Email = email ?? throw new ArgumentNullException(nameof(email));
+		this.FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
+		this.LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
+		this.Phone = phone ?? throw new ArgumentNullException(nameof(phone));
 	}
 
 	/// <summary>

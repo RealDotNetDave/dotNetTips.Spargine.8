@@ -4,7 +4,7 @@
 // Created          : 12-15-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="PersonName.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -16,6 +16,8 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
+
+
 
 
 namespace DotNetTips.Spargine.Tester;
@@ -32,8 +34,8 @@ public sealed record PersonName
 	/// </summary>
 	public PersonName()
 	{
-		FirstName = string.Empty;
-		LastName = string.Empty;
+		this.FirstName = string.Empty;
+		this.LastName = string.Empty;
 	}
 
 	/// <summary>
@@ -44,8 +46,8 @@ public sealed record PersonName
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="firstName"/> or <paramref name="lastName"/> is null.</exception>
 	public PersonName(string firstName, string lastName)
 	{
-		FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
-		LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
+		this.FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
+		this.LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
 	}
 
 	/// <summary>
@@ -58,7 +60,7 @@ public sealed record PersonName
 	/// Gets the full name, constructed from <see cref="FirstName"/> and <see cref="LastName"/>.
 	/// </summary>
 	/// <value>The full name.</value>
-	public string FullName => $"{FirstName} {LastName}";
+	public string FullName => $"{this.FirstName} {this.LastName}";
 
 	/// <summary>
 	/// Gets the last name.

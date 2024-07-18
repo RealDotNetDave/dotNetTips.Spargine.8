@@ -4,7 +4,7 @@
 // Created          : 03-13-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="PrefixAndLength.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -21,20 +21,14 @@ namespace DotNetTips.Spargine.Tester;
 /// <summary>
 /// Represents a prefix and its associated length.
 /// </summary>
+/// <remarks>
+/// Initializes a new instance of the <see cref="PrefixAndLength"/> struct.
+/// </remarks>
+/// <param name="prefix">The prefix.</param>
+/// <param name="length">The length.</param>
 [DebuggerDisplay("{Prefix,nq}")]
-internal struct PrefixAndLength : IEquatable<PrefixAndLength>
+internal struct PrefixAndLength(string prefix, int length) : IEquatable<PrefixAndLength>
 {
-
-	/// <summary>
-	/// Initializes a new instance of the <see cref="PrefixAndLength"/> struct.
-	/// </summary>
-	/// <param name="prefix">The prefix.</param>
-	/// <param name="length">The length.</param>
-	public PrefixAndLength(string prefix, int length)
-	{
-		Prefix = prefix;
-		Length = length;
-	}
 
 	/// <summary>
 	/// Implements the != operator.
@@ -57,7 +51,7 @@ internal struct PrefixAndLength : IEquatable<PrefixAndLength>
 	/// </summary>
 	/// <param name="obj">The object to compare with the current object.</param>
 	/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
-	public override readonly bool Equals(object obj) => obj is PrefixAndLength other && Equals(other);
+	public override readonly bool Equals(object obj) => obj is PrefixAndLength other && this.Equals(other);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
@@ -70,24 +64,24 @@ internal struct PrefixAndLength : IEquatable<PrefixAndLength>
 	/// Returns a hash code for this instance.
 	/// </summary>
 	/// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
-	public override readonly int GetHashCode() => HashCode.Combine(Prefix, Length);
+	public override readonly int GetHashCode() => HashCode.Combine(this.Prefix, this.Length);
 
 	/// <summary>
 	/// Returns a string that represents this instance.
 	/// </summary>
 	/// <returns>A string that represents this instance.</returns>
-	public override readonly string ToString() => $"{Prefix}, {Length}";
+	public override readonly string ToString() => $"{this.Prefix}, {this.Length}";
 
 	/// <summary>
 	/// Gets or sets the length.
 	/// </summary>
 	/// <value>The length.</value>
-	public int Length { get; set; }
+	public int Length { get; set; } = length;
 
 	/// <summary>
 	/// Gets or sets the prefix.
 	/// </summary>
 	/// <value>The prefix.</value>
-	public string Prefix { get; set; }
+	public string Prefix { get; set; } = prefix;
 
 }
