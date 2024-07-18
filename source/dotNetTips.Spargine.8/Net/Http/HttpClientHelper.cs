@@ -4,7 +4,7 @@
 // Created          : 01-11-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="HttpClientHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -25,6 +25,12 @@ namespace DotNetTips.Spargine.Net.Http;
 /// <summary>
 /// Provides utility methods for working with HttpClient, including getting HTTP responses and streams with a default timeout.
 /// </summary>
+/// <remarks>
+/// This class encapsulates functionality for making HTTP requests and handling responses. It simplifies the process of using <see cref="HttpClient"/>
+/// by providing methods that abstract away some of the complexities involved in setting up requests and processing responses. The class is designed
+/// to be used statically, with a shared instance of <see cref="HttpClient"/> that is configured with a default timeout value. This approach helps to
+/// avoid the common pitfalls associated with managing the lifecycle of <see cref="HttpClient"/> instances.
+/// </remarks>
 public static class HttpClientHelper
 {
 

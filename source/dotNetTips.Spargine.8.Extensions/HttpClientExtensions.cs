@@ -4,7 +4,7 @@
 // Created          : 07-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="HttpClientExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -20,8 +20,14 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// HttpContext Extensions.
+/// Provides extension methods tailored for <see cref="HttpClient"/>, enhancing its functionality with additional utility methods.
+/// These methods simplify common tasks such as deserializing JSON responses from HTTP GET requests.
 /// </summary>
+/// <remarks>
+/// The extension methods within this class aim to reduce boilerplate code and improve readability when working with <see cref="HttpClient"/>.
+/// For example, the <see cref="GetAndDeserializeAsync{T}"/> method streamlines the process of sending a GET request, checking the response status,
+/// reading the response content as a string, and deserializing it into an instance of a type.
+/// </remarks>
 public static class HttpClientExtensions
 {
 

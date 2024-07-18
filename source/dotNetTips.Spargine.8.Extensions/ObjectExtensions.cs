@@ -30,8 +30,14 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Provides extension methods for objects.
+/// Provides a collection of extension methods for objects, enhancing functionality with additional utility methods for common tasks.
 /// </summary>
+/// <remarks>
+/// This class includes methods for deep cloning objects, computing SHA256 hashes, disposing object fields, converting objects to and from JSON,
+/// checking for properties, initializing fields, checking for nullability, converting properties to dictionaries or strings, and more.
+/// These methods are designed to extend the capabilities of all objects and simplify common operations related to serialization,
+/// reflection, and memory management.
+/// </remarks>
 public static class ObjectExtensions
 {
 

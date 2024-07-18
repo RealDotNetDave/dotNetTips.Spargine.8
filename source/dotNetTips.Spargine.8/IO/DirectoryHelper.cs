@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-12-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -29,8 +29,13 @@ using Microsoft.Win32;
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Provides utility methods for directory operations such as copying, moving, deleting, and permissions checking.
+/// Provides a collection of static methods for directory operations, enhancing functionality with additional utility methods.
 /// </summary>
+/// <remarks>
+/// This class includes methods for performing operations such as copying, moving, deleting directories, checking permissions,
+/// loading files asynchronously, managing OneDrive folders, and conducting safe directory and file searches. These methods
+/// are designed to extend the capabilities of the <see cref="DirectoryInfo"/> class and simplify common file system operations.
+/// </remarks>
 public static class DirectoryHelper
 {
 

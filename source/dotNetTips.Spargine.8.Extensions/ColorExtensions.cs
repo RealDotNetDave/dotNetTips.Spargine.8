@@ -4,7 +4,7 @@
 // Created          : 07-29-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="ColorExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -20,8 +20,12 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class ColorExtensionsExtensions methods for the Color type.
+/// Provides extension methods for the <see cref="Color"/> type, enhancing functionality with additional utility methods.
 /// </summary>
+/// <remarks>
+/// This class includes methods for operations such as averaging the RGB values of a collection of colors. It is part of the DotNetTips.Spargine.8.Extensions
+/// library, which provides a wide range of extension methods for .NET types, aiming to improve code readability and efficiency.
+/// </remarks>
 public static class ColorExtensions
 {
 

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -25,8 +25,14 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Extensions methods for the Array type.
+/// Provides extension methods for arrays, enhancing functionality with additional utility methods.
 /// </summary>
+/// <remarks>
+/// This class includes methods for adding elements to the beginning or end of an array, checking array equality,
+/// converting byte arrays to strings, cloning arrays, checking for the presence of any items, performing actions on array elements,
+/// generating hash codes for arrays, removing elements, and more. These methods are designed to be efficient and
+/// are optimized for performance where applicable.
+/// </remarks>
 public static class ArrayExtensions
 {
 

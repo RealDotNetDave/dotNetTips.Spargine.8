@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-27-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="Validator.Check.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -414,7 +414,7 @@ public static partial class Validator
 	/// <returns>True if the input value is not null; otherwise, false.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="throwException" /> is true and the input value is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CheckIsNotNull), "David McCarter", "2/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
+	[Information(nameof(CheckIsNotNull), "David McCarter", "2/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckIsNotNull<T>(this T input, bool throwException = false, string errorMessage = "") where T : class
 	{
 		var isValid = input != null;

@@ -4,7 +4,7 @@
 // Created          : 03-15-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-20-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="Services.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -28,6 +28,12 @@ namespace DotNetTips.Spargine;
 /// Provides a collection of methods for managing and interacting with Windows services and processes.
 /// This includes functionality to load, start, stop services, check service existence, and process status.
 /// </summary>
+/// <remarks>
+/// This class is designed to be used in Windows environments where service management is required. It offers a simplified interface
+/// for common service operations such as starting, stopping, and checking the status of services. Additionally, it provides methods
+/// for process management, including checking if a process is running and killing processes. This class is part of the DotNetTips.Spargine
+/// library, which provides a wide range of utilities and helper methods for .NET developers.
+/// </remarks>
 [SupportedOSPlatform("windows")]
 public static class Services
 {

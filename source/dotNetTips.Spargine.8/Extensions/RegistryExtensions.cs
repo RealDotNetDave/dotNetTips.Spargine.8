@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-27-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="RegistryExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -22,8 +22,13 @@ using Microsoft.Win32;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class RegistryExtensions.
+/// Provides extension methods for working with the Windows Registry. These methods extend the <see cref="RegistryKey"/> class,
+/// allowing for simplified access to registry keys and values with additional safety checks and platform compatibility considerations.
 /// </summary>
+/// <remarks>
+/// The methods in this class are designed to be used on Windows platforms only. Attempts to use these methods on non-Windows platforms
+/// will result in a <see cref="PlatformNotSupportedException"/>.
+/// </remarks>
 [SupportedOSPlatform("windows")]
 public static class RegistryExtensions
 {

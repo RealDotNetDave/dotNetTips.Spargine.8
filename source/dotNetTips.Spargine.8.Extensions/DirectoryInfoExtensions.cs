@@ -4,7 +4,7 @@
 // Created          : 10-08-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-13-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="DirectoryInfoExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -23,7 +23,6 @@ namespace DotNetTips.Spargine.Extensions;
 /// <remarks>This class includes methods for calculating the total size of files within a directory,
 /// and potentially more functionalities that extend <see cref="DirectoryInfo" />.
 /// These methods aim to provide more convenient ways to interact with directories in .NET applications.</remarks>
-
 public static class DirectoryInfoExtensions
 {
 

@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -29,8 +29,16 @@ using DotNetTips.Spargine.Properties;
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Provides utility methods for file operations such as copying, moving, deleting, and permissions checking.
+/// Provides utility methods for file operations such as copying, moving, deleting, and downloading files,
+/// as well as working with zip and gzip archives. It also includes methods for checking file permissions
+/// and validating file names against invalid characters.
 /// </summary>
+/// <remarks>
+/// This class leverages both synchronous and asynchronous programming models to provide a comprehensive
+/// set of file operation utilities. It is designed to simplify common file manipulation tasks with enhanced
+/// error handling and validation checks. Some methods utilize external services or system calls and are
+/// intended for use on Windows platforms only.
+/// </remarks>
 [SupportedOSPlatform("windows")]
 [Information(nameof(FileHelper), "David McCarter", "2/11/2017", Status = Status.Available)]
 public static class FileHelper

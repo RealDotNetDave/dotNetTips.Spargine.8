@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-18-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -25,8 +25,14 @@ using Microsoft.VisualBasic;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Extension methods for the <see cref="ICollection" /> Collection type.
+/// Provides extension methods for <see cref="ICollection{T}"/> and other collection types, enhancing functionality with additional utility methods.
+/// These methods include conditional addition, unique addition, bulk addition, and conversion utilities, aimed at simplifying common collection operations.
 /// </summary>
+/// <remarks>
+/// The extension methods in this class are designed to improve the usability and efficiency of collections in .NET.
+/// They include features such as adding items conditionally, ensuring items are unique before adding them, and converting collections to different types.
+/// These utilities can significantly reduce boilerplate code and improve performance in scenarios involving collection manipulation.
+/// </remarks>
 public static class CollectionExtensions
 {
 

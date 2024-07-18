@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -397,7 +397,7 @@ public static class LoggingHelper
 	}
 
 	/// <summary>
-	/// Retrieves all loggableException messages from the provided loggableException, including messages from any inner exceptions.
+	/// Retrieves all Exception messages from the provided Exception, including messages from any inner exceptions.
 	/// </summary>
 	/// <param name="exception">The loggableException to retrieve messages from. Must not be null.</param>
 	/// <returns>A read-only collection of loggableException messages.</returns>
@@ -420,7 +420,7 @@ public static class LoggingHelper
 	}
 
 	/// <summary>
-	/// Retrieves all exceptions, including inner exceptions, from the provided loggableException.
+	/// Retrieves all exceptions, including inner exceptions, from the provided Exception.
 	/// </summary>
 	/// <param name="exception">The loggableException from which to retrieve all exceptions, including inner exceptions. Must not be null.</param>
 	/// <returns>A read-only collection of all exceptions, including inner exceptions.</returns>

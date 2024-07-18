@@ -4,7 +4,7 @@
 // Created          : 07-15-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-18-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="ProcessExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -25,6 +25,10 @@ namespace DotNetTips.Spargine.Extensions;
 /// <summary>
 /// Provides extension methods for the <see cref="Process"/> class to manipulate process priorities and execute processes with specific configurations.
 /// </summary>
+/// <remarks>
+/// These extension methods include setting process priority, running processes with custom arguments and handling their output, and more.
+/// They are designed to simplify common tasks related to process management in .NET applications.
+/// </remarks>
 public static class ProcessExtensions
 {
 

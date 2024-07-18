@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="ThreadExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -20,6 +20,7 @@ namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
 /// Provides extension methods for <see cref="Thread"/> to enhance thread operations.
+/// These methods include setting thread priority and implementing wait mechanisms without the need for timers.
 /// </summary>
 public static class ThreadExtensions
 {

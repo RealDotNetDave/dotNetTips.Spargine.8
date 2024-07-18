@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-19-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -27,9 +27,12 @@ using static DotNetTips.Spargine.Core.SourceGenerators;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Provides a collection of static methods and properties that provide access to application-level information and utilities.
-/// This includes methods to change culture, manage processes, access environment variables, and retrieve application and system information.
+/// Provides a centralized point of application-level properties and methods, including information about the application, culture settings, and system information.
 /// </summary>
+/// <remarks>
+/// This class serves as a utility for accessing various application and system properties such as culture information, OS details, and processor information.
+/// It also provides methods for changing culture settings, retrieving environment variables, and managing application processes.
+/// </remarks>
 public static class App
 {
 

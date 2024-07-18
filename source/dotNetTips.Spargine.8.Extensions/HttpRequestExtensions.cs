@@ -4,7 +4,7 @@
 // Created          : 06-01-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-02-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="HttpRequestExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -23,8 +23,13 @@ using Microsoft.AspNetCore.Http;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class HttpRequestExtensions.
+/// Provides extension methods for <see cref="HttpRequest"/> to enhance its functionality.
+/// These methods include retrieving the raw body as a byte array or string, and trying to get the body directly into a specified type.
 /// </summary>
+/// <remarks>
+/// The extension methods in this class aim to simplify the process of working with the request body of <see cref="HttpRequest"/>.
+/// They provide convenient ways to access the raw body for various purposes such as logging, validation, or further processing.
+/// </remarks>
 public static class HttpRequestExtensions
 {
 

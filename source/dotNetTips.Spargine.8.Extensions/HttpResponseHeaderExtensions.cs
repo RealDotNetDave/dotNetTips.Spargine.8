@@ -4,7 +4,7 @@
 // Created          : 07-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-07-2023
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="HttpResponseHeaderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -20,8 +20,12 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Class HttpResponseHeaderExtensions.
+/// Provides extension methods for working with <see cref="HttpResponseHeader"/>, enhancing its functionality by allowing easy retrieval of header names.
 /// </summary>
+/// <remarks>
+/// This class simplifies the process of converting <see cref="HttpResponseHeader"/> enumeration values to their corresponding string names.
+/// It is particularly useful for logging, debugging, or any scenario where the string representation of an HTTP response header is needed.
+/// </remarks>
 [Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 public static class HttpResponseHeaderExtensions
 {

@@ -28,8 +28,14 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Provides extension methods for <see cref="string"/> to perform common string operations more efficiently and with less code.
+/// Provides a collection of static methods for string manipulation and checks, enhancing the built-in string functionality.
 /// </summary>
+/// <remarks>
+/// The <see cref="StringExtensions"/> class includes methods for various string operations such as computing hashes,
+/// checking for specific content within strings (e.g., email addresses, domain names, GUIDs), converting strings to different formats or encodings,
+/// and performing manipulations like concatenation, extraction, and indentation. These utilities aim to simplify common string handling tasks
+/// in .NET applications.
+/// </remarks>
 public static class StringExtensions
 {
 

@@ -4,7 +4,7 @@
 // Created          : 01-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="AssemblyExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -22,10 +22,13 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Provides extension methods for <see cref="Assembly" />.
+/// Provides extension methods for <see cref="Assembly" /> to enhance functionality related to type discovery and instantiation.
 /// </summary>
-/// <remarks>This class contains methods that extend the functionality of the <see cref="Assembly" /> class,
-/// making it easier to perform common tasks such as getting all types, interfaces, or instances of a specific type within an assembly.</remarks>
+/// <remarks>
+/// The <see cref="AssemblyExtensions"/> class contains methods that extend the functionality of the <see cref="Assembly" /> class,
+/// making it easier to perform tasks such as getting all types, interfaces, or instances of a specific type within an assembly,
+/// and filtering them based on various criteria. These methods are designed to simplify common reflection-based tasks.
+/// </remarks>
 public static class AssemblyExtensions
 {
 
@@ -74,7 +77,7 @@ public static class AssemblyExtensions
 	}
 
 	/// <summary>
-	/// Gets all instances of a specified type <typeparamref name="T" /> within the given assembly.
+	/// Gets all instances of a specified type <typeparamref name="T" /> within the assembly.
 	/// </summary>
 	/// <typeparam name="T">The type of instances to find. This type must be a class.</typeparam>
 	/// <param name="assembly">The assembly to search for instances of type <typeparamref name="T" />.</param>

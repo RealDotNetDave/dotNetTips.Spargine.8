@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-24-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="PathHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -24,6 +24,10 @@ namespace DotNetTips.Spargine.IO;
 /// <summary>
 /// Provides utility methods for path manipulation and validation, including combining paths, ensuring trailing slashes, and checking for invalid characters.
 /// </summary>
+/// <remarks>
+/// This class offers a variety of static methods to assist with common path manipulation tasks such as combining paths, ensuring paths end with a directory separator,
+/// and validating paths for invalid characters. It is designed to simplify file system operations by abstracting complex checks and operations into straightforward method calls.
+/// </remarks>
 public static class PathHelper
 {
 

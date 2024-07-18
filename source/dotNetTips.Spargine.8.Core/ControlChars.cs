@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="ControlChars.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -18,15 +18,16 @@
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
-
-
-
-
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
 /// Provides a collection of control characters and frequently used strings for convenience.
 /// </summary>
+/// <remarks>
+/// This class contains constants for various control characters and strings that are commonly used in programming,
+/// such as new line characters, space, tab, and special punctuation marks. It simplifies the use of these characters
+/// by providing them as ready-to-use constants, avoiding the need for magic strings or characters throughout the code.
+/// </remarks>
 public static class ControlChars
 {
 

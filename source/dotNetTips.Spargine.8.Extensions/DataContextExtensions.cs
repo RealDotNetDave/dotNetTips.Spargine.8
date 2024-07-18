@@ -4,7 +4,7 @@
 // Created          : 10-08-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="DataContextExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -23,8 +23,13 @@ using LinqToDB;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Extension methods for the DataContext type.
+/// Extension methods for the <see cref="DataContext"/> type, enhancing its functionality with additional utility methods.
 /// </summary>
+/// <remarks>
+/// This class provides methods to interact with a <see cref="DataContext"/> in ways that are not supported by default.
+/// For example, it allows retrieving tracked objects within a DataContext, which can be useful for debugging or auditing changes.
+/// Note: The use of reflection to access internal properties of DataContext may be subject to change in future versions of the framework.
+/// </remarks>
 public static class DataContextExtensions
 {
 

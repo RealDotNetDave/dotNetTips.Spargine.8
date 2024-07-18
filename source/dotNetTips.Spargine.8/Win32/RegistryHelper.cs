@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-15-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="RegistryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -24,6 +24,10 @@ namespace DotNetTips.Spargine.Win32;
 /// <summary>
 /// Provides utility methods for interacting with the Windows Registry, simplifying access and manipulation of registry keys.
 /// </summary>
+/// <remarks>
+/// This class offers methods to retrieve and manipulate Windows Registry keys in a more straightforward manner than using the base registry classes directly.
+/// It includes functionality for getting registry keys based on predefined constants for common registry paths and simplifies the process of checking for platform compatibility.
+/// </remarks>
 [SupportedOSPlatform("windows")]
 public static class RegistryHelper
 {

@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-12-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -21,8 +21,12 @@ using DotNetTips.Spargine.Extensions.Properties;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Extension methods for DateTime and DateTimeOffset.
+/// Provides extension methods for <see cref="DateTime"/>, <see cref="DateTimeOffset"/>, and <see cref="TimeSpan"/> types, enhancing functionality with additional utility methods.
 /// </summary>
+/// <remarks>
+/// This class includes methods for converting between Unix epoch time and <see cref="DateTime"/>, finding the next or last day of the week from a given date, checking if a date range intersects with another, and more.
+/// These methods are designed to simplify common date and time operations, making code more readable and efficient.
+/// </remarks>
 public static class DateTimeExtensions
 {
 
@@ -136,8 +140,7 @@ public static class DateTimeExtensions
 	public static bool IsInRange(this DateTimeOffset value, DateTimeOffset beginningTime, DateTimeOffset endTime) => value >= beginningTime && value <= endTime;
 
 	/// <summary>
-	/// Determines whether [is in range throws exception] [the specified beginning time]. Throws Exception if
-	/// invalid.
+	/// Determines whether [is in range throws exception] [the specified beginning time]. Throws Exception if invalid.
 	/// </summary>
 	/// <param name="value">The value.</param>
 	/// <param name="beginningTime">The beginning time.</param>
@@ -229,7 +232,7 @@ public static class DateTimeExtensions
 	/// <param name="day">Day of week to find on calendar</param>
 	/// <returns>Future date</returns>
 	[Obsolete("Use the GetNextDayOfWeek method.")]
-	[Information(nameof(NextDayOfWeek), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(NextDayOfWeek), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static DateTime NextDayOfWeek(this DateTime date, DayOfWeek day = DayOfWeek.Monday)
 	{
 		while (true)
@@ -336,7 +339,7 @@ public static class DateTimeExtensions
 	/// <param name="input">The date.</param>
 	/// <returns>System.String.</returns>
 	/// <example>
-	/// Output: Today @ 2:24:08 pm
+	/// Output: Today @ 10:27:43 am
 	/// </example>
 	[Information(nameof(ToFriendlyDateString), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.WIP, Status = Status.NeedsDocumentation)]
 	public static string ToFriendlyDateString(this DateTime input)
@@ -377,7 +380,7 @@ public static class DateTimeExtensions
 	/// <param name="input">The input.</param>
 	/// <returns>System.String.</returns>
 	/// <example>
-	/// Output: Today @ 2:28:59 pm
+	/// Output: Today @ 10:27:43 am
 	/// </example>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.WIP, Status = Status.NeedsDocumentation)]
 	public static string ToFriendlyDateString(this DateTimeOffset input)

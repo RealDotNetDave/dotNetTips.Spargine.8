@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -38,9 +38,15 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Provides a collection of utility methods for type inspection and manipulation, including methods to create instances,
-/// check types, retrieve type information, and work with JSON serialization.
+/// Provides a collection of utility methods for type inspection and manipulation, including functionality
+/// for creating instances, comparing objects, finding derived types, and working with JSON and assembly data.
 /// </summary>
+/// <remarks>
+/// This class includes methods for various operations such as creating instances of types, checking if an object
+/// equals an instance, finding derived types within assemblies, directories, or the current AppDomain, and
+/// converting objects to and from JSON. It also provides methods to get default values, hash codes, property values,
+/// and display names for types, as well as determining if a type is a built-in .NET type or if an assembly is a .NET assembly.
+/// </remarks>
 public static class TypeHelper
 {
 

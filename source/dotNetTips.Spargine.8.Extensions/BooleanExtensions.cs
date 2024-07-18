@@ -4,7 +4,7 @@
 // Created          : 07-15-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="BooleanExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -20,8 +20,12 @@ using DotNetTips.Spargine.Extensions.Properties;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Extensions for the boolean type.
+/// Provides extension methods for the <see cref="bool"/> type, enhancing its usability and integration within applications.
 /// </summary>
+/// <remarks>
+/// This class includes methods for converting boolean values to strings in various formats, such as lowercase,
+/// which can be particularly useful for generating user-friendly display strings or for serialization purposes.
+/// </remarks>
 [Information(nameof(BooleanExtensions), author: "David McCarter", createdOn: "7/15/2020")]
 public static class BooleanExtensions
 {

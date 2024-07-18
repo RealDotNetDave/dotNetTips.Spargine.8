@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-18-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="HashSetExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -23,7 +23,6 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for <see cref="HashSet{T}" /> to enhance its functionality.
 /// These methods include adding items conditionally, converting to concurrent or immutable hash sets, and upserting items.
 /// </summary>
-
 public static class HashSetExtensions
 {
 

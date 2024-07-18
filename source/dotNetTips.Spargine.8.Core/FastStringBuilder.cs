@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-02-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -29,6 +29,10 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Provides methods to efficiently build strings using a pooled StringBuilder to reduce memory allocations.
 /// </summary>
+/// <remarks>
+/// This class leverages an ObjectPool of StringBuilder instances to minimize the overhead of creating and disposing StringBuilder objects,
+/// which can lead to significant performance improvements in scenarios where string manipulation is frequent.
+/// </remarks>
 public static class FastStringBuilder
 {
 

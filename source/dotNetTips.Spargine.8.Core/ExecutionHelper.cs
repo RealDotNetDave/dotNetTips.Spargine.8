@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-13-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="ExecutionHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -23,8 +23,14 @@ using System.Diagnostics.CodeAnalysis;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Helper class for executing methods.
+/// Helper class for executing methods with retry logic, including progressive delays between retries.
 /// </summary>
+/// <remarks>
+/// This class provides methods to execute operations with retry logic, which is useful for handling transient faults,
+/// especially in network communication or external service calls. The <see cref="ProgressiveRetry"/> method, for example,
+/// attempts the provided operation multiple times with increasing delay intervals, improving the robustness of applications
+/// in unstable network conditions.
+/// </remarks>
 public static class ExecutionHelper
 {
 
@@ -45,7 +51,7 @@ public static class ExecutionHelper
 	/// }, 3, 100);
 	/// </code>
 	/// </example>
-	[Information(nameof(ProgressiveRetry), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.NeedsDocumentation)]
+	[Information(nameof(ProgressiveRetry), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available, Documentation = "https://bit.ly/SpargineProgressiveRetry")]
 	public static SimpleResult<int> ProgressiveRetry([NotNull] Action operation, byte retryCount = 3, int retryWaitMilliseconds = 100)
 	{
 		operation = operation.ArgumentNotNull();

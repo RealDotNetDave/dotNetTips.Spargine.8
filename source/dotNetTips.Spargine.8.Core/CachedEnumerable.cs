@@ -4,7 +4,7 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-13-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -27,6 +27,12 @@ namespace DotNetTips.Spargine.Core;
 /// Provides a mechanism for caching the results of enumerating an <see cref="IEnumerable{T}"/>.
 /// This can significantly improve performance when iterating over the same enumerable multiple times.
 /// </summary>
+/// <remarks>
+/// This static class offers a method to create a cached version of any <see cref="IEnumerable{T}"/>.
+/// The cached enumerable stores the results of enumeration, allowing for repeated iterations over the data
+/// without re-enumerating the underlying sequence. This approach is particularly useful for expensive enumerations
+/// that do not change between iterations.
+/// </remarks>
 [Information(nameof(CachedEnumerable), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 public static class CachedEnumerable
 {

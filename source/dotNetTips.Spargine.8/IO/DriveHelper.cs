@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-20-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="DriveHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -28,6 +28,8 @@ namespace DotNetTips.Spargine.IO;
 /// <remarks>
 /// This class includes methods for retrieving information about the system's drives, such as getting the serial number of a drive using <see cref="GetDriveSerialNumber"/>, 
 /// listing all fixed drives that are ready using <see cref="GetFixedDrives"/>, and listing all removable drives that are ready using <see cref="GetRemovableDrives"/>.
+/// Utilizing the Windows Management Instrumentation (WMI) for some of its operations, it provides a simple interface for drive management tasks.
+/// Note: These methods are intended to be used on Windows platforms only.
 /// </remarks>
 [SupportedOSPlatform("windows")]
 public static class DriveHelper

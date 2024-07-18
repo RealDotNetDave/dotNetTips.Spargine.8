@@ -4,7 +4,7 @@
 // Created          : 07-22-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-19-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="StreamExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -21,6 +21,7 @@ namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
 /// Provides extension methods for <see cref="Stream"/> to enhance and simplify its use.
+/// These methods include functionalities such as flushing and closing streams, and asynchronous read and write operations.
 /// </summary>
 [Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", Status = Status.Available)]
 public static class StreamExtensions

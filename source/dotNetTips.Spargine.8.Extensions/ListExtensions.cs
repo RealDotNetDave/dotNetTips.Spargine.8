@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-13-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -25,10 +25,13 @@ using DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Provides a collection of extension methods for <see cref="List{T}"/> to enhance its functionality and usability.
-/// These methods include adding elements to the beginning or end, converting lists to different collection types,
-/// performing actions on each element, checking for item presence, and more, aiming to increase the productivity and maintainability of list operations.
+/// Provides extension methods for <see cref="List{T}"/> to enhance its functionality.
 /// </summary>
+/// <remarks>
+/// This class includes methods for adding elements to the beginning or end of a list, checking for nulls,
+/// converting lists to various collection types, performing actions on list elements, and more. These methods
+/// are designed to extend the capabilities of <see cref="List{T}"/> and simplify common operations.
+/// </remarks>
 public static class ListExtensions
 {
 

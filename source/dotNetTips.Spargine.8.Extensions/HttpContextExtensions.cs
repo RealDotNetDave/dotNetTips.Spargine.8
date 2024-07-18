@@ -4,7 +4,7 @@
 // Created          : 09-04-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-22-2023
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="HttpContextExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -20,8 +20,14 @@ using Microsoft.AspNetCore.Http;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// HttpContext Extensions.
+/// Provides extension methods for <see cref="HttpContext"/>, enhancing its functionality with additional utility methods.
+/// These methods include getting the remote IP address of the client, which can be useful for logging, analytics, and security purposes.
 /// </summary>
+/// <remarks>
+/// The extension methods in this class are designed to simplify common operations performed on <see cref="HttpContext"/> instances,
+/// making it easier to retrieve information such as the client's IP address. This can be particularly useful in web applications
+/// for tracking user activity or implementing security measures based on IP addresses.
+/// </remarks>
 public static class HttpContextExtensions
 {
 

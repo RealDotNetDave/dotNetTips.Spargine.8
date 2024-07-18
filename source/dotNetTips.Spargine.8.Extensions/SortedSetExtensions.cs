@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-11-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="SortedSetExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -23,6 +23,11 @@ namespace DotNetTips.Spargine.Extensions;
 /// <summary>
 /// Provides extension methods for <see cref="SortedSet{T}"/>.
 /// </summary>
+/// <remarks>
+/// This class contains extension methods for <see cref="SortedSet{T}"/> that enhance its functionality by providing methods to check for items,
+/// determine if any items match a specified condition, and convert the set to an immutable sorted set. These methods aim to simplify common
+/// operations performed on sorted sets and improve code readability and maintainability.
+/// </remarks>
 public static class SortedSetExtensions
 {
 

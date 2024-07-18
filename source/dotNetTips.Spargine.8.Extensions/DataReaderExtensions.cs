@@ -4,7 +4,7 @@
 // Created          : 10-08-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-11-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="DataReaderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -24,8 +24,12 @@ using Microsoft.Extensions.ObjectPool;
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// DataReaderExtensions.
+/// Provides extension methods for <see cref="IDataReader"/> instances, enhancing functionality with additional utility methods.
 /// </summary>
+/// <remarks>
+/// This class includes methods for converting data readers to other formats, such as CSV, with performance optimizations
+/// such as using a <see cref="ObjectPool{T}"/> for <see cref="StringBuilder"/> instances to reduce memory allocations.
+/// </remarks>
 public static class DataReaderExtensions
 {
 
