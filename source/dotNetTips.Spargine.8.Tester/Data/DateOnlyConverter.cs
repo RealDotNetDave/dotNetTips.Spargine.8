@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-17-2024
 // ***********************************************************************
 // <copyright file="DateOnlyConverter.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -55,8 +55,10 @@ public class DateOnlyConverter(string? serializationFormat) : JsonConverter<Date
 		}
 		catch (FormatException e)
 		{
-			throw new JsonException("Invalid date format.", e);
+			ExceptionThrower.ThrowJsonException("Invalid date format.", e);
 		}
+
+		return default;
 	}
 
 	/// <summary>

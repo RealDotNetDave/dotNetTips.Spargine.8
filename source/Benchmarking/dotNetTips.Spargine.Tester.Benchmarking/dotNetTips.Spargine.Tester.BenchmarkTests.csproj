@@ -43,7 +43,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\dotNetTips.Spargine.8.Benchmarking\DotNetTips.Spargine.8.Benchmarking.csproj" />
-	  <ProjectReference Include="..\dotNetTips.Spargine.Extensions.BenchmarkTests\DotNetTips.Spargine.Extensions.BenchmarkTests.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-17-2024
 // ***********************************************************************
 // <copyright file="IsoDateTimeOffsetConverter.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -78,13 +78,15 @@ internal sealed class IsoDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
 			}
 			catch (FormatException e)
 			{
-				throw new JsonException($"Unable to convert \"{dateText}\" to DateTimeOffset.", e);
+				ExceptionThrower.ThrowJsonException($"Unable to convert \"{dateText}\" to DateTimeOffset.", e);
 			}
 		}
 		else
 		{
-			throw new JsonException("Date text is null or empty.");
+			ExceptionThrower.ThrowJsonException("Date text is null or empty.");
 		}
+
+		return default;
 	}
 
 	/// <summary>

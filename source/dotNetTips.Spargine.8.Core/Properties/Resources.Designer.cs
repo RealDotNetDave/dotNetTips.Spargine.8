@@ -322,6 +322,15 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error with Json serialization..
+        /// </summary>
+        internal static string ErrorThereWasAnErrorWithJsonSerialization {
+            get {
+                return ResourceManager.GetString("ErrorThereWasAnErrorWithJsonSerialization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time is invalid based on the min/max range..
         /// </summary>
         internal static string ErrorTimeIsInvalidBasedOnTheMinMaxRange {

@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-17-2024
 // ***********************************************************************
 // <copyright file="TimeOnlyConverter.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -59,8 +59,10 @@ public class TimeOnlyConverter(string? serializationFormat) : JsonConverter<Time
 		}
 		catch (FormatException e)
 		{
-			throw new JsonException($"The JSON value '{value}' cannot be parsed as a TimeOnly.", e);
+			ExceptionThrower.ThrowJsonException($"The JSON value '{value}' cannot be parsed as a TimeOnly.", e);
 		}
+
+		return default;
 	}
 
 	/// <summary>
