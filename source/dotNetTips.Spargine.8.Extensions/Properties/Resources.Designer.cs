@@ -511,15 +511,6 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} + {1} must be &lt;= {2}.
-        /// </summary>
-        internal static string StartIndexMustBeLessThanInputLength {
-            get {
-                return ResourceManager.GetString("StartIndexMustBeLessThanInputLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to TB.
         /// </summary>
         internal static string TB {

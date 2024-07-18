@@ -272,9 +272,6 @@
   <data name="Sixty" xml:space="preserve">
     <value>Sixty</value>
   </data>
-  <data name="StartIndexMustBeLessThanInputLength" xml:space="preserve">
-    <value>{0} + {1} must be &lt;= {2}</value>
-  </data>
   <data name="TB" xml:space="preserve">
     <value>TB</value>
   </data>
