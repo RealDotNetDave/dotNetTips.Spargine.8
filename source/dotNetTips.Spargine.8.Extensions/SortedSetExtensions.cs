@@ -99,6 +99,6 @@ public static class SortedSetExtensions
 	/// <param name="collection">The <see cref="SortedSet{T}"/> to convert.</param>
 	/// <returns>An <see cref="ImmutableSortedSet{T}"/> that contains elements from the input collection.</returns>
 	[Information(nameof(ToImmutableSortedSet), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static ImmutableSortedSet<T> ToImmutableSortedSet<T>([NotNull] this SortedSet<T> collection) => ImmutableSortedSet.CreateRange(collection.ArgumentNotNull());
+	public static ImmutableSortedSet<T> ToImmutableSortedSet<T>([NotNull] this SortedSet<T> collection) => ImmutableSortedSet.CreateRange(collection);
 
 }
