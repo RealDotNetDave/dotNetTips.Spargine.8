@@ -547,7 +547,9 @@ public class ConcurrentHashSetTests
 		foreach (var task in tasks)
 		{
 			if (task.Result)
+			{
 				successfulRemovals++;
+			}
 		}
 
 		Assert.AreEqual(1, successfulRemovals, "Only one thread should successfully remove the item.");

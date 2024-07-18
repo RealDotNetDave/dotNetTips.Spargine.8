@@ -98,7 +98,9 @@ public class DateTimeExtensionsTests : TestClass
 	{
 		var now = DateTime.Now;
 
+#pragma warning disable CS0618 // Type or member is obsolete
 		var result = now.NextDayOfWeek(DayOfWeek.Sunday);
+#pragma warning restore CS0618 // Type or member is obsolete
 
 		//PrintResult(result, nameof(this.DateTimeNextDayOfTheWeekTest));
 
@@ -184,7 +186,9 @@ public class DateTimeExtensionsTests : TestClass
 	{
 		var now = DateTimeOffset.Now;
 
+#pragma warning disable CS0618 // Type or member is obsolete
 		var result = now.NextDayOfWeek(DayOfWeek.Sunday);
+#pragma warning restore CS0618 // Type or member is obsolete
 
 		//PrintResult(result, nameof(this.DateTimeOffsetNextDayOfTheWeekTest));
 
@@ -443,14 +447,18 @@ public class DateTimeExtensionsTests : TestClass
 	{
 		var currentTime = DateTime.Now;
 
+#pragma warning disable CS0618 // Type or member is obsolete
 		var epochTime = currentTime.ToUnixTime();
+#pragma warning restore CS0618 // Type or member is obsolete
 
 		//PrintResult(epochTime, nameof(this.ToFromUnixTimeTest));
 
 		Assert.IsTrue(epochTime > 0);
 
 		// Test reverse
+#pragma warning disable CS0618 // Type or member is obsolete
 		var convertedTime = epochTime.FromUnixTime();
+#pragma warning restore CS0618 // Type or member is obsolete
 
 		Assert.IsTrue(convertedTime >= currentTime.Subtract(new TimeSpan(0, 5, 0)));
 
