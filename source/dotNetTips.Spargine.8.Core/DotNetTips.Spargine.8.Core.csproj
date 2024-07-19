@@ -20,14 +20,14 @@
 		<DebugType>embedded</DebugType>
 		<Description>Core types and helper methods for Spargine.</Description>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<EnablePackageValidation>false</EnablePackageValidation>
 		<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<FileVersion>2024.8.7.19</FileVersion>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IncludeSymbols>true</IncludeSymbols>
 		<LangVersion>latest</LangVersion>
@@ -43,13 +43,13 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</RepositoryUrl>
 		<RootNamespace>DotNetTips.Spargine.Core</RootNamespace>
-		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
-		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+		<RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>DotNetTips.Spargine.8.Core</Title>
 		<Version>2024.8.7.19</Version>
-		<SignAssembly>False</SignAssembly>
+		<SignAssembly>false</SignAssembly>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -59,7 +59,7 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 		<WarningsAsErrors />
-		<Optimize>False</Optimize>
+		<Optimize>false</Optimize>
 		<NoWarn />
 	</PropertyGroup>
 
@@ -70,7 +70,7 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors />
 		<WarningLevel>9999</WarningLevel>
-		<Optimize>True</Optimize>
+		<Optimize>true</Optimize>
 		<NoWarn />
 	</PropertyGroup>
 
@@ -88,14 +88,14 @@
 
 	<ItemGroup>
 	  <None Include="..\..\README.md">
-	    <Pack>True</Pack>
+	    <Pack>true</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="dotNetTips-Spargine-8-Logo.png">
-			<Pack>True</Pack>
+			<Pack>true</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
@@ -130,8 +130,8 @@
 
 	<ItemGroup>
 		<Compile Update="Properties\Resources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
+			<DesignTime>true</DesignTime>
+			<AutoGen>true</AutoGen>
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
 	</ItemGroup>
