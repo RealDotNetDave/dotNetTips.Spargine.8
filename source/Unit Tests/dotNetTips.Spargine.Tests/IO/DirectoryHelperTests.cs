@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-12-2024
+// Last Modified On : 07-19-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -110,8 +110,7 @@ public class DirectoryHelperTests
 		var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
 
 		// Create a file in the source directory to test the copy
-		var testFilePath = Path.Combine(sourceDirectory.FullName, "testFile.txt");
-		File.WriteAllText(testFilePath, "This is a test file.");
+		File.WriteAllText(Path.Combine(sourceDirectory.FullName, "testFile.txt"), "This is a test file.");
 
 		// Act
 		DirectoryHelper.CopyDirectory(sourceDirectory, destinationDirectory, true);

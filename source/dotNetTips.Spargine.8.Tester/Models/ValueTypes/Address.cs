@@ -4,9 +4,9 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-19-2024
 // ***********************************************************************
-// <copyright file="Address.cs" company="McCarter Consulting">
+// <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
@@ -20,7 +20,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
@@ -34,13 +33,13 @@ using DotNetTips.Spargine.Tester.Properties;
 namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 
 /// <summary>
-/// Represents a physical address with properties for address lines, city, state, country, postal code, and phone number.
-/// Implements the <see cref="IAddress"/> interface and supports equality comparison.
+/// Represents an address with properties for Address1, Address2, City, Country, CountyProvince, Phone, PostalCode, and State.
+/// This struct implements <see cref="IAddress"/> and <see cref="IEquatable{Address}"/>.
 /// </summary>
-[DataContract(Name = "address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
+[DataContract(Name = "address", Namespace = "http://dotNetTips.Spargine.Tester.Models.Val")]
 [DebuggerDisplay("{Id}")]
 [Serializable]
-[XmlRoot(ElementName = "Address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
+[XmlRoot(ElementName = "Address", Namespace = "http://dotNetTips.Spargine.Tester.Models.Val")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public struct Address : IAddress, IEquatable<Address>
 {
@@ -112,28 +111,28 @@ public struct Address : IAddress, IEquatable<Address>
 	/// Prevents a default instance of the <see cref="PersonRecord" /> class from being created.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	[JsonConstructor]
-	public Address()
-	{ }
+	public Address() { }
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Address"/> struct with a specified identifier.
 	/// </summary>
 	/// <param name="id">The unique identifier for the address.</param>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="id"/> is null.</exception>
+	[JsonConstructor]
 	public Address([NotNull] string id) => this.Id = id;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="Address"/> struct.
+	/// Initializes a new instance of the <see cref="AddressRecord" /> class.
 	/// </summary>
-	/// <param name="id">The unique identifier for the address.</param>
-	/// <param name="address1">The first line of the address.</param>
-	/// <param name="address2">The second line of the address (optional).</param>
-	/// <param name="city">The city of the address.</param>
-	/// <param name="state">The state or region of the address.</param>
-	/// <param name="countyProvince">The county or province of the address (optional).</param>
-	/// <param name="country">The country of the address.</param>
-	/// <param name="postalCode">The postal code of the address.</param>
-	/// <param name="phone">The phone number associated with the address (optional).</param>
+	/// <param name="id">The identifier.</param>
+	/// <param name="address1">The address1.</param>
+	/// <param name="address2">The address2.</param>
+	/// <param name="city">The city.</param>
+	/// <param name="state">The state.</param>
+	/// <param name="countyProvince">The county province.</param>
+	/// <param name="country">The country.</param>
+	/// <param name="postalCode">The postal code.</param>
+	/// <param name="phone">The phone.</param>
 	public Address([NotNull] string id, string address1, string address2, string city, string state, string countyProvince, string country, string postalCode, string phone) : this(id)
 	{
 		this.Address1 = address1;
@@ -147,51 +146,51 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Determines whether two specified instances of <see cref="Address"/> are not equal.
+	/// Implements the != operator.
 	/// </summary>
-	/// <param name="left">The first instance of <see cref="Address"/>.</param>
-	/// <param name="right">The second instance of <see cref="Address"/>.</param>
-	/// <returns><c>true</c> if <paramref name="left"/> and <paramref name="right"/> do not represent the same value; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator !=(Address left, Address right) => !(left == right);
 
 	/// <summary>
-	/// Implements the less than operator &lt;. Determines whether the left instance precedes the right instance in the sort order.
+	/// Implements the &lt; operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Address"/> instance.</param>
-	/// <param name="right">The right <see cref="Address"/> instance.</param>
-	/// <returns><c>true</c> if the left instance precedes the right instance in the sort order; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator <(Address left, Address right) => left.CompareTo(right) < 0;
 
 	/// <summary>
-	/// Implements the less than or equal to operator &lt;=. Determines whether the left instance is either less than or equal to the right instance in the sort order.
+	/// Implements the &lt;= operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Address"/> instance.</param>
-	/// <param name="right">The right <see cref="Address"/> instance.</param>
-	/// <returns><c>true</c> if the left instance is less than or equal to the right instance in the sort order; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator <=(Address left, Address right) => left.CompareTo(right) <= 0;
 
 	/// <summary>
-	/// Implements the equality operator ==. Determines whether the left instance is equal to the right instance.
+	/// Implements the == operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Address"/> instance.</param>
-	/// <param name="right">The right <see cref="Address"/> instance.</param>
-	/// <returns><c>true</c> if the left instance is equal to the right instance; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator ==(Address left, Address right) => left.Equals(right);
 
 	/// <summary>
-	/// Implements the greater than operator &gt;. Determines whether the left instance follows the right instance in the sort order.
+	/// Implements the &gt; operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Address"/> instance.</param>
-	/// <param name="right">The right <see cref="Address"/> instance.</param>
-	/// <returns><c>true</c> if the left instance follows the right instance in the sort order; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator >(Address left, Address right) => left.CompareTo(right) > 0;
 
 	/// <summary>
-	/// Implements the greater than or equal to operator &gt;=. Determines whether the left instance is either greater than or equal to the right instance in the sort order.
+	/// Implements the &gt;= operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Address"/> instance.</param>
-	/// <param name="right">The right <see cref="Address"/> instance.</param>
-	/// <returns><c>true</c> if the left instance is greater than or equal to the right instance in the sort order; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator >=(Address left, Address right) => left.CompareTo(right) >= 0;
 
 	/// <summary>
@@ -200,9 +199,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="other">An object to compare with this instance.</param>
 	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
 	/// <list type="table"><listheader><term> Value</term><description> Meaning</description></listheader><item><term> Less than zero</term><description> This instance precedes <paramref name="other" /> in the sort order.</description></item><item><term> Zero</term><description> This instance occurs in the same position in the sort order as <paramref name="other" />.</description></item><item><term> Greater than zero</term><description> This instance follows <paramref name="other" /> in the sort order.</description></item></list></returns>
-	[DebuggerStepThrough]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	readonly int IComparable<IAddress>.CompareTo([NotNull] IAddress other)
+	readonly int IComparable<IAddress>.CompareTo(IAddress other)
 	{
 		if (other is null)
 		{
@@ -213,81 +210,58 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Compares the current instance with another <see cref="Address"/> instance.
+	/// Compares current object.
 	/// </summary>
-	/// <param name="address">The <see cref="Address"/> to compare with this instance.</param>
-	/// <returns>A 32-bit signed integer that indicates the relative order of the objects being compared.
-	/// The return value has the following meanings: Less than zero indicates this instance precedes <paramref name="address"/>.
-	/// Zero indicates this instance occurs in the same position in the sort order as <paramref name="address"/>.
-	/// Greater than zero indicates this instance follows <paramref name="address"/>.</returns>
-	[DebuggerStepThrough]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public readonly int CompareTo([NotNull] Address address) => string.Compare(this.Id, address.Id, StringComparison.OrdinalIgnoreCase);
+	/// <param name="address">The address.</param>
+	/// <returns>System.Int32.</returns>
+	public readonly int CompareTo(Address address) => this.CompareTo(address);
 
 	/// <summary>
-	/// Determines whether the specified object is equal to the current instance.
+	/// Determines whether the specified <see cref="object" /> is equal to this instance.
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
-	/// <returns><c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.</returns>
-	[DebuggerStepThrough]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public override readonly bool Equals(object obj) => obj is Address other && this.Equals(other);
+	/// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+	public override readonly bool Equals(object obj) => this.Equals(obj);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
-	[DebuggerStepThrough]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public readonly bool Equals([NotNull] IAddress other) => other is Address address && this.Equals(address);
+	public readonly bool Equals([NotNull] IAddress other) => this.Equals(other);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
-	[DebuggerStepThrough]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public readonly bool Equals(Address other) => string.Equals(this.Address1, other.Address1, StringComparison.Ordinal) &&
-			   string.Equals(this.Address2, other.Address2, StringComparison.Ordinal) &&
-			   string.Equals(this.City, other.City, StringComparison.Ordinal) &&
-			   string.Equals(this.State, other.State, StringComparison.Ordinal) &&
-			   string.Equals(this.CountyProvince, other.CountyProvince, StringComparison.Ordinal) &&
-			   string.Equals(this.Country, other.Country, StringComparison.Ordinal) &&
-			   string.Equals(this.PostalCode, other.PostalCode, StringComparison.Ordinal) &&
-			   string.Equals(this.Phone, other.Phone, StringComparison.Ordinal) &&
-			   string.Equals(this.Id, other.Id, StringComparison.Ordinal);
+	public readonly bool Equals(Address other) => this.Equals(other);
 
 	/// <summary>
-	/// Returns a hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+	/// Returns a hash code for this instance.
 	/// </summary>
-	/// <returns>A hash code for this instance.</returns>
+	/// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
 	[DebuggerStepThrough]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public override readonly int GetHashCode()
 	{
 		var hash = new HashCode();
-		hash.Add(this.Address1);
-		hash.Add(this.Address2);
-		hash.Add(this.City);
-		hash.Add(this.Country);
-		hash.Add(this.CountyProvince);
-		hash.Add(this.Id);
-		hash.Add(this.Phone);
-		hash.Add(this.PostalCode);
-		hash.Add(this.State);
+		hash.Add(this.Id, StringComparer.OrdinalIgnoreCase);
+		hash.Add(this.Address1, StringComparer.Ordinal);
+		hash.Add(this.Address2, StringComparer.Ordinal);
+		hash.Add(this.City, StringComparer.Ordinal);
+		hash.Add(this.Country, StringComparer.Ordinal);
+		hash.Add(this.CountyProvince, StringComparer.Ordinal);
+		hash.Add(this.Phone, StringComparer.Ordinal);
+		hash.Add(this.PostalCode, StringComparer.Ordinal);
+		hash.Add(this.State, StringComparer.Ordinal);
 		return hash.ToHashCode();
 	}
 
 	/// <summary>
-	/// Converts an <see cref="AddressRecord"/> to an <see cref="Address"/>.
+	/// Converts to <see cref=" AddressRecord" /> to <see cref=" Address" />.
 	/// </summary>
-	/// <param name="address">The address record to convert.</param>
-	/// <returns>An <see cref="Address"/> instance corresponding to the provided <see cref="AddressRecord"/>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
-	[DebuggerStepThrough]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	/// <param name="address">The address.</param>
+	/// <returns>Address.</returns>
 	public static Address ToAddress([NotNull] AddressRecord address)
 	{
 		return new(address.ArgumentNotNull().Id)
@@ -302,27 +276,24 @@ public struct Address : IAddress, IEquatable<Address>
 			State = address.State,
 		};
 	}
-
 	/// <summary>
-	/// Returns a <see cref="string"/> that represents the current <see cref="Address"/>.
+	/// Returns a <see cref="string" /> that represents this instance.
 	/// </summary>
-	/// <returns>A <see cref="string"/> that represents this instance, formatted according to the properties of the <see cref="Address"/>.</returns>
+	/// <returns>A <see cref="string" /> that represents this instance.</returns>
 	[DebuggerStepThrough]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public override readonly string ToString() => this.PropertiesToString();
 
 	/// <summary>
-	/// Gets or sets the first line of the address.
+	/// Gets or sets the Address1.
 	/// </summary>
-	/// <value>The first line of the address.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range (0 to 100 characters).</exception>
-	/// <remarks>This property is limited to 100 characters.</remarks>
-	[DataMember(Name = "address1", IsRequired = false)]
-	[DefaultValue("")]
+	/// <value>The Address1.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Address1</exception>
+	/// <remarks>Address1 is limited to 100 characters.</remarks>
+	[DataMember(Name = "address1", IsRequired = false, Order = 1)]
+	[Display(Name = "Address Line 1")]
 	[JsonPropertyName("address1")]
-	[MaxLength(100, ErrorMessage = "Address1 length is limited to 100 characters.")]
-	[MinLength(0, ErrorMessage = "Address1 cannot be less than 0 characters.")]
-	[XmlElement(ElementName = "Address1")]
+	[MaxLength(100, ErrorMessage = "Address1 cannot exceed 100 characters.")]
+	[XmlElement("address1")]
 	public string Address1
 	{
 		readonly get => this._address1;
@@ -342,16 +313,16 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Gets or sets the second line of the address.
+	/// Gets or sets the Address2.
 	/// </summary>
-	/// <value>The second line of the address.</value>
-	[DataMember(Name = "address2", IsRequired = false)]
-	[DefaultValue("")]
+	/// <value>The Address2.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Address2</exception>
+	/// <remarks>Address2 is limited to 100 characters.</remarks>
+	[DataMember(Name = "address2", IsRequired = false, Order = 2)]
+	[Display(Name = "Address Line 2")]
 	[JsonPropertyName("address2")]
-	[MaxLength(100, ErrorMessage = "Address2 length is limited to 100 characters.")]
-	[MemberNotNull(nameof(_address2))]
-	[MinLength(0, ErrorMessage = "Address2 cannot be less than 0 characters.")]
-	[XmlElement(ElementName = "Address2")]
+	[MaxLength(100, ErrorMessage = "Address2 cannot exceed 100 characters.")]
+	[XmlElement("address2")]
 	public string Address2
 	{
 		readonly get => this._address2;
@@ -371,15 +342,16 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Gets or sets the city name.
+	/// Gets or sets the city.
 	/// </summary>
-	/// <value>The name of the city.</value>
-	[DataMember(Name = "city", IsRequired = false)]
-	[DefaultValue("")]
+	/// <value>The city name.</value>
+	/// <exception cref="ArgumentOutOfRangeException">City</exception>
+	/// <remarks>City is limted to 150 characters.</remarks>
+	[DataMember(Name = "city", IsRequired = false, Order = 3)]
+	[Display(Name = "City")]
 	[JsonPropertyName("city")]
-	[MaxLength(150, ErrorMessage = "City length is limited to 150 characters.")]
-	[MinLength(0, ErrorMessage = "City cannot be less than 0 characters.")]
-	[XmlElement]
+	[MaxLength(150, ErrorMessage = "City cannot exceed 150 characters.")]
+	[XmlElement("city")]
 	public string City
 	{
 		readonly get => this._city;
@@ -399,16 +371,16 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Gets or sets the country name.
+	/// Gets or sets the country.
 	/// </summary>
-	/// <value>The name of the country.</value>
-	[DataMember(Name = "country", IsRequired = false)]
-	[DefaultValue("")]
+	/// <value>The country name.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Country</exception>
+	/// <remarks>Country is limited to 50 characters.</remarks>
+	[DataMember(Name = "country", IsRequired = false, Order = 4)]
+	[Display(Name = "Country")]
 	[JsonPropertyName("country")]
-	[MaxLength(50, ErrorMessage = "Country length is limited to 50 characters.")]
-	[MemberNotNull(nameof(_country))]
-	[MinLength(0, ErrorMessage = "Country cannot be less than 0 characters.")]
-	[XmlElement]
+	[MaxLength(50, ErrorMessage = "Country cannot exceed 50 characters.")]
+	[XmlElement("country")]
 	public string Country
 	{
 		readonly get => this._country;
@@ -428,16 +400,16 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Gets or sets the county or province part of the address.
+	/// Gets or sets the county province.
 	/// </summary>
-	/// <value>The county or province.</value>
-	[DataMember(Name = "countyProvince", IsRequired = false)]
-	[DefaultValue("")]
+	/// <value>The county province.</value>
+	/// <exception cref="ArgumentOutOfRangeException">CountyProvince</exception>
+	/// <remarks>CountyProvince is limited to 50 characters.</remarks>
+	[DataMember(Name = "countyProvince", IsRequired = false, Order = 5)]
+	[Display(Name = "County/Province")]
 	[JsonPropertyName("countyProvince")]
-	[MaxLength(50, ErrorMessage = "County or province length is limited to 50 characters.")]
-	[MemberNotNull(nameof(_countyProvince))]
-	[MinLength(0, ErrorMessage = "County or province cannot be less than 0 characters.")]
-	[XmlElement]
+	[MaxLength(50, ErrorMessage = "CountyProvince cannot exceed 50 characters.")]
+	[XmlElement("countyProvince")]
 	public string CountyProvince
 	{
 		readonly get => this._countyProvince;
@@ -453,18 +425,17 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Gets or sets the unique identifier for the address.
+	/// Gets or sets the identifier.
 	/// </summary>
-	/// <value>The unique identifier.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range (1 to 50 characters).</exception>
+	/// <value>The identifier.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Id</exception>
 	/// <remarks>Id is limited to 50 characters.</remarks>
-	[DataMember(Name = "id", IsRequired = true)]
-	[DisallowNull]
+	[DataMember(Name = "id", IsRequired = true, Order = 0)]
+	[Display(Name = "Identifier")]
 	[JsonPropertyName("id")]
-	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
-	[MemberNotNull(nameof(_id))]
-	[MinLength(1, ErrorMessage = "Id cannot be empty.")]
-	[XmlElement(IsNullable = false)]
+	[MaxLength(50, ErrorMessage = "Id cannot exceed 50 characters.")]
+	[Required(ErrorMessage = "Id is required.")]
+	[XmlElement("id", IsNullable = false)]
 	public string Id
 	{
 		readonly get => this._id;
@@ -483,16 +454,16 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Gets or sets the phone number associated with the address.
+	/// Gets or sets the phone.
 	/// </summary>
-	/// <value>The phone number.</value>
-	[DataMember(Name = "phone", IsRequired = false)]
-	[DefaultValue("")]
+	/// <value>The phone.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Phone</exception>
+	/// <remarks>Phone number is limited to 50 characters.</remarks>
+	[DataMember(Name = "phone", IsRequired = false, Order = 6)]
+	[Display(Name = "Phone Number")]
 	[JsonPropertyName("phone")]
-	[MaxLength(50, ErrorMessage = "Phone number length is limited to 50 characters.")]
-	[MinLength(0, ErrorMessage = "Phone number cannot be less than 0 characters.")]
-	[MemberNotNull(nameof(_phone))]
-	[XmlElement]
+	[MaxLength(50, ErrorMessage = "Phone number cannot exceed 50 characters.")]
+	[XmlElement("phone")]
 	public string Phone
 	{
 		readonly get => this._phone;
@@ -514,16 +485,14 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <summary>
 	/// Gets or sets the postal code.
 	/// </summary>
-	/// <value>The postal code of the address.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not within the specified range (0 to 40 characters).</exception>
-	/// <remarks>Postal code is limited to 40 characters to ensure compliance with most global postal code formats.</remarks>
-	[DataMember(Name = "postalCode", IsRequired = false)]
-	[DefaultValue("")]
+	/// <value>The postal code.</value>
+	/// <exception cref="ArgumentOutOfRangeException">PostalCode</exception>
+	/// <remarks>Postal code is limited to 40 characters.</remarks>
+	[DataMember(Name = "postalCode", IsRequired = false, Order = 7)]
+	[Display(Name = "Postal Code")]
 	[JsonPropertyName("postalCode")]
-	[MaxLength(40, ErrorMessage = "Postal code length is limited to 40 characters.")]
-	[MemberNotNull(nameof(_postalCode))]
-	[MinLength(0, ErrorMessage = "Postal code cannot be less than 0 characters.")]
-	[XmlElement]
+	[MaxLength(40, ErrorMessage = "Postal code cannot exceed 40 characters.")]
+	[XmlElement("postalCode")]
 	public string PostalCode
 	{
 		readonly get => this._postalCode;
@@ -543,16 +512,16 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Gets or sets the state or province part of the address.
+	/// Gets or sets the state.
 	/// </summary>
-	/// <value>The state or province.</value>
-	[DataMember(Name = "state", IsRequired = false)]
-	[DefaultValue("")]
+	/// <value>The state.</value>
+	/// <exception cref="ArgumentOutOfRangeException">State</exception>
+	/// <remarks>State is limited to 60 characters.</remarks>
+	[DataMember(Name = "state", IsRequired = false, Order = 8)]
+	[Display(Name = "State")]
 	[JsonPropertyName("state")]
-	[MaxLength(60, ErrorMessage = "State length is limited to 60 characters.")]
-	[MemberNotNull(nameof(_state))]
-	[MinLength(0, ErrorMessage = "State cannot be less than 0 characters.")]
-	[XmlElement]
+	[MaxLength(60, ErrorMessage = "State cannot exceed 60 characters.")]
+	[XmlElement("state")]
 	public string State
 	{
 		readonly get => this._state;

@@ -4,7 +4,7 @@
 // Created          : 01-05-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-02-2024
+// Last Modified On : 07-19-2024
 // ***********************************************************************
 // <copyright file="RandomDataTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -21,10 +21,12 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading.Tasks;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Serialization;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Data;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
+using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -78,7 +80,7 @@ public class RandomDataTests
 				}
 				catch (Exception ex) when (ex is ArgumentException ||
 							ex is ArgumentNullException ||
-							ex is DirectoryNotFoundException ||
+							ex is System.IO.DirectoryNotFoundException ||
 							ex is IOException ||
 							ex is NotSupportedException ||
 							ex is PathTooLongException ||
@@ -97,9 +99,9 @@ public class RandomDataTests
 	{
 		try
 		{
-			var people = RandomData.GeneratePersonRefCollection<Address>(Count);
+			var people = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count);
 
-			var newPeople = new List<Person<Address>>();
+			var newPeople = new List<Models.RefTypes.Person<Models.RefTypes.Address>>();
 
 			for (var personCount = 0; personCount < people.FastCount(); personCount++)
 			{
@@ -108,7 +110,7 @@ public class RandomDataTests
 
 			Assert.IsTrue(newPeople.FastCount() == Count);
 
-			var test = RandomData.GeneratePersonRefCollection<Address>(Count).ToDictionary(p => p.Id);
+			var test = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToDictionary(p => p.Id);
 
 		}
 		catch (Exception ex)
@@ -121,11 +123,11 @@ public class RandomDataTests
 	[TestMethod]
 	public void ClonePersonProperTest()
 	{
-		var person = RandomData.GeneratePersonRef<Address>();
+		var person = RandomData.GeneratePersonRef<Models.RefTypes.Address>();
 
 		try
 		{
-			var personClone = person.Clone<Person<Address>>();
+			var personClone = person.Clone<Models.RefTypes.Person<Models.RefTypes.Address>>();
 
 			Assert.IsNotNull(personClone);
 		}
@@ -141,7 +143,7 @@ public class RandomDataTests
 	{
 		var personVal = RandomData.GeneratePersonVal<Models.ValueTypes.Address>();
 
-		var personRef = Person<Address>.ToPerson(personVal);
+		var personRef = Models.RefTypes.Person<Models.RefTypes.Address>.ToPerson(personVal);
 
 		Assert.IsNotNull(personRef);
 	}
@@ -149,7 +151,7 @@ public class RandomDataTests
 	[TestMethod]
 	public void Deserialize_JsonSerilizerContext_Person_Collection_Test()
 	{
-		var json = RandomData.GeneratePersonRefCollection<Address>(Count).ToJson();
+		var json = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToJson();
 
 		var result = JsonSerializer.Deserialize(json, PersonJsonSerializerContext.Default.PersonList);
 
@@ -160,9 +162,9 @@ public class RandomDataTests
 	[TestMethod]
 	public void Deserialize_JsonSerilizerContext_PersonProper_Ref_Test()
 	{
-		var json = RandomData.GeneratePersonRef<Address>().ToJson();
+		var json = RandomData.GeneratePersonRef<Models.RefTypes.Address>().ToJson();
 
-		var normalResult = JsonSerializer.Deserialize<Person<Address>>(json);
+		var normalResult = JsonSerializer.Deserialize<Models.RefTypes.Person<Models.RefTypes.Address>>(json);
 
 		Assert.IsNotNull(normalResult);
 
@@ -224,7 +226,7 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateCoordinateCollectionTest()
 	{
-		var coordinates = RandomData.GenerateCoordinateCollection<Models.ValueTypes.Coordinate>(Count);
+		var coordinates = RandomData.GenerateCoordinateCollection<Coordinate>(Count);
 
 		Assert.IsNotNull(coordinates);
 
@@ -234,7 +236,7 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateCoordinateTest()
 	{
-		var coordinate = RandomData.GenerateCoordinate<Models.ValueTypes.Coordinate>();
+		var coordinate = RandomData.GenerateCoordinate<Coordinate>();
 
 		Assert.IsNotNull(coordinate);
 
@@ -401,6 +403,8 @@ public class RandomDataTests
 		Assert.IsNotNull(people);
 
 		Assert.IsTrue(people.Count == AddressCount);
+
+		JsonSerialization.SerializeToFile(people, new FileInfo(Path.Combine(App.ExecutingFolder(), "PeopleRecord.json")));
 	}
 
 	[TestMethod]
@@ -418,32 +422,30 @@ public class RandomDataTests
 		Assert.IsNotNull(person.FullName);
 		Assert.IsNotNull(person.Id);
 		Assert.IsNotNull(person.LastName);
-		Assert.IsNotNull(person.HomePhone);
+		Assert.IsNotNull(person.Phone);
 		Assert.IsTrue(person.Addresses.Count == 5);
 
-		File.WriteAllText(@"c:\temp\person.txt", person.ToString());
-
-		JsonSerialization.SerializeToFile(person, new FileInfo(@"c:\temp\personrecord.json"));
-
 		Assert.IsTrue(person.Addresses.FastCount() == AddressCount);
+
+		JsonSerialization.SerializeToFile(person, new FileInfo(Path.Combine(App.ExecutingFolder(), "PersonRecord.json")));
 	}
 
 	[TestMethod]
 	public void GeneratePersonRefCollectionTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(Count);
-
-		//people.ToJsonFile(new FileInfo(@"c:\temp\people.json"));
+		var people = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count);
 
 		Assert.IsNotNull(people);
 
 		Assert.IsTrue(people.FastCount() == Count);
+
+		JsonSerialization.SerializeToFile(people, new FileInfo(Path.Combine(App.ExecutingFolder(), "PeopleRef.json")));
 	}
 
 	[TestMethod]
 	public void GeneratePersonRefTest()
 	{
-		var person = RandomData.GeneratePersonRef<Address>(addressCount: AddressCount);
+		var person = RandomData.GeneratePersonRef<Models.RefTypes.Address>(addressCount: AddressCount);
 
 		Assert.IsNotNull(person);
 		Assert.IsNotNull(person.Addresses);
@@ -456,24 +458,21 @@ public class RandomDataTests
 		Assert.IsNotNull(person.Id);
 		Assert.IsNotNull(person.LastName);
 		Assert.IsNotNull(person.Phone);
-		Assert.IsTrue(person.Addresses.Count == 5);
-
-		File.WriteAllText(@"c:\temp\personref.txt", person.ToString());
-
-		JsonSerialization.SerializeToFile(person, new FileInfo(@"c:\temp\personref.json"));
-
 		Assert.IsTrue(person.Addresses.FastCount() == AddressCount);
+
+		JsonSerialization.SerializeToFile(person, new FileInfo(Path.Combine(App.ExecutingFolder(), "PersonRef.json")));
 	}
 
 	[TestMethod]
 	public void GeneratePersonValCollectionTest()
 	{
-		var result = RandomData.GeneratePersonValCollection<Models.ValueTypes.Address>(Count);
+		var people = RandomData.GeneratePersonValCollection<Models.ValueTypes.Address>(Count);
 
-		Assert.IsTrue(result.FastCount() == Count);
+		Assert.IsTrue(people.FastCount() == Count);
 
-		Assert.IsTrue(result.ToDictionary(item => item.Id).FastCount() == Count);
+		Assert.IsTrue(people.ToDictionary(item => item.Id).FastCount() == Count);
 
+		JsonSerialization.SerializeToFile(people, new FileInfo(Path.Combine(App.ExecutingFolder(), "PeopleVal.json")));
 	}
 
 	[TestMethod]
@@ -494,11 +493,9 @@ public class RandomDataTests
 		Assert.IsNotNull(person.Phone);
 		Assert.IsTrue(person.Addresses.Count == 5);
 
-		//File.WriteAllText(@"c:\temp\personval.txt", person.ToString());
-
-		//JsonSerialization.SerializeToFile(person, new FileInfo(@"c:\temp\personval.json"));
-
 		Assert.IsTrue(person.Addresses.FastCount() == AddressCount);
+
+		JsonSerialization.SerializeToFile(person, new FileInfo(Path.Combine(App.ExecutingFolder(), "PersonVal.json")));
 	}
 
 	[TestMethod]
@@ -756,13 +753,41 @@ public class RandomDataTests
 	}
 
 	[TestMethod]
+	public void PersonRef_Serialization_Test()
+	{
+		var person = RandomData.GeneratePersonRef<Models.RefTypes.Address>();
+
+		var result = JsonSerializer.Serialize(person);
+
+		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
+
+		person = JsonSerializer.Deserialize<Models.RefTypes.Person<Models.RefTypes.Address>>(result);
+
+		Assert.IsNotNull(person);
+	}
+
+	[TestMethod]
+	public void PersonVal_Serialization_Test()
+	{
+		var person = RandomData.GeneratePersonVal<Models.ValueTypes.Address>();
+
+		var result = JsonSerializer.Serialize(person);
+
+		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
+
+		person = JsonSerializer.Deserialize<Models.ValueTypes.Person<Models.ValueTypes.Address>>(result);
+
+		Assert.IsNotNull(person);
+	}
+
+	[TestMethod]
 	public void ReadOnlySequenceCollectionTest()
 	{
 		try
 		{
-			var people = new ReadOnlySequence<Person<Address>>(RandomData.GeneratePersonRefCollection<Address>(Count).ToArray());
+			var people = new ReadOnlySequence<Models.RefTypes.Person<Models.RefTypes.Address>>(RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToArray());
 
-			var newPeople = new List<Person<Address>>();
+			var newPeople = new List<Models.RefTypes.Person<Models.RefTypes.Address>>();
 
 			foreach (var person in people)
 			{

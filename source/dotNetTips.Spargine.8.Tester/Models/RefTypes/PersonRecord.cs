@@ -34,13 +34,15 @@ using DotNetTips.Spargine.Tester.Properties;
 namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 
 /// <summary>
-/// Represents a person record in the system. This record includes personal information such as name, contact details, and addresses.
-/// It implements <see cref="IDataRecord"/> for data handling and <see cref="IComparable{PersonRecord}"/> for sorting and comparison purposes.
+/// Represents a person record in the system, encapsulating personal and contact information.
+/// This record is designed to be immutable, ensuring thread safety and simplifying development.
+/// Implements <see cref="IDataRecord"/> for data handling and supports comparison and sorting
+/// through <see cref="IComparable{PersonRecord}"/>.
 /// </summary>
-[DataContract(Name = "personRecord")]
+[DataContract(Name = "personRecord", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [DebuggerDisplay("{Email}")]
 [Serializable]
-[XmlRoot(ElementName = "PersonRecord")]
+[XmlRoot(ElementName = "PersonRecord", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 {
@@ -81,13 +83,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	private string _firstName;
 
 	/// <summary>
-	/// The home phone number
-	/// </summary>
-	[JsonIgnore]
-	[NonSerialized]
-	private string _homePhone;
-
-	/// <summary>
 	/// The identifier
 	/// </summary>
 	[JsonIgnore]
@@ -100,6 +95,13 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[JsonIgnore]
 	[NonSerialized]
 	private string _lastName;
+
+	/// <summary>
+	/// The home phone number
+	/// </summary>
+	[JsonIgnore]
+	[NonSerialized]
+	private string _phone;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="PersonRecord"/> class.
@@ -115,7 +117,9 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <param name="email">The email address of the person. Must be a valid email format and not exceed 75 characters.</param>
 	/// <param name="id">The unique identifier for the person. Must not exceed 50 characters.</param>
 	/// <exception cref="ValidationException">Thrown if the email or id does not meet the specified criteria.</exception>
-	public PersonRecord([NotNull][EmailAddress][MaxLength(75)] string email, [NotNull][MaxLength(50)] string id)
+	[JsonConstructor]
+	public PersonRecord([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
+	[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
 	{
 		this.Email = email;
 		this.Id = id;
@@ -154,9 +158,9 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	public static bool operator >=(PersonRecord left, PersonRecord right) => left is null ? right is null : left.CompareTo(right) >= 0;
 
 	/// <summary>
-	/// Calculates the age of the person based on the current date and the person's birth date.
+	/// Calculates the age of the person based on their birth date and the current UTC date.
 	/// </summary>
-	/// <returns>A <see cref="TimeSpan"/> representing the age of the person.</returns>
+	/// <returns>The age of the person as a <see cref="TimeSpan"/>.</returns>
 	public TimeSpan CalculateAge() => DateTimeOffset.UtcNow.Subtract(this.BornOn);
 
 	/// <summary>
@@ -167,7 +171,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// Less than zero: This instance precedes <paramref name="other"/> in the sort order. 
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>. 
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
-	public int CompareTo(PersonRecord other)
+	public int CompareTo([NotNull] PersonRecord other)
 	{
 		if (other is null)
 		{
@@ -196,7 +200,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 			LastName = person.LastName,
 			BornOn = person.BornOn,
 			CellPhone = person.CellPhone,
-			HomePhone = person.Phone,
+			Phone = person.Phone,
 		};
 
 		if (person.Addresses.HasItems())
@@ -229,7 +233,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 			LastName = person.LastName,
 			BornOn = person.BornOn,
 			CellPhone = person.CellPhone,
-			HomePhone = person.Phone,
+			Phone = person.Phone,
 		};
 
 		if (person.Addresses.HasItems())
@@ -255,6 +259,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <value>The collection of <see cref="AddressRecord"/> objects.</value>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
+	[MemberNotNull(nameof(_addresses))]
 	[XmlIgnore]
 	public Collection<AddressRecord> Addresses
 	{
@@ -280,8 +285,9 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <value>The collection of addresses for serialization.</value>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[JsonIgnore]
-	[MemberNotNull(nameof(_addresses))]
 	[XmlArray("Addresses")]
+	[XmlArrayItem("Address")]
+	[MemberNotNull(nameof(_addresses))]
 	public Collection<AddressRecord> AddressesSerilization
 	{
 		get => this._addresses;
@@ -317,8 +323,8 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if an attempt is made to set a future date.</exception>
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
-	[XmlElement]
 	[MemberNotNull(nameof(_bornOn))]
+	[XmlElement]
 	public DateTimeOffset BornOn
 	{
 		get => this._bornOn;
@@ -346,6 +352,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// </remarks>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the cell phone number exceeds 50 characters.</exception>
 	[DataMember(Name = "cellPhone", IsRequired = false)]
+	[DefaultValue("")]
 	[JsonPropertyName("cellPhone")]
 	[MaxLength(50, ErrorMessage = "Cell phone number cannot exceed 50 characters.")]
 	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
@@ -415,6 +422,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DefaultValue("")]
 	[JsonPropertyName("firstName")]
 	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
+	[MemberNotNull(nameof(_firstName))]
 	[XmlElement("FirstName")]
 	public string FirstName
 	{
@@ -442,38 +450,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[JsonIgnore]
 	[XmlIgnore]
 	public string FullName => $"{this.FirstName} {this.LastName}";
-
-	/// <summary>
-	/// Gets or sets the home phone number.
-	/// </summary>
-	/// <value>The home phone number.</value>
-	/// <remarks>
-	/// The home phone number is limited to 50 characters. It should be in a valid phone number format.
-	/// This property is optional and can be left empty.
-	/// </remarks>
-	[DataMember(Name = "homePhone", IsRequired = false)]
-	[DefaultValue("")]
-	[JsonPropertyName("homePhone")]
-	[MaxLength(50, ErrorMessage = "Home phone number cannot exceed 50 characters.")]
-	[Phone(ErrorMessage = "The home phone number is not in a valid format.")]
-	[XmlElement("HomePhone")]
-	public string HomePhone
-	{
-		get => this._homePhone;
-		init
-		{
-			if (string.Equals(this._homePhone, value, StringComparison.Ordinal))
-			{
-				return;
-			}
-
-			this._homePhone = value.HasValue(0, 50) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.HomePhone),
-					Resources.PhoneNumberIsLimitedTo50Characters)
-				: value;
-		}
-	}
 
 	/// <summary>
 	/// Gets or sets the identifier.
@@ -536,6 +512,37 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.LastName),
 					Resources.LastNameLengthIsLimitedTo50Characters)
+				: value;
+		}
+	}
+
+	/// <summary>
+	/// Gets or sets the home phone number.
+	/// </summary>
+	/// <value>The home phone number.</value>
+	/// <remarks>
+	/// The home phone number is limited to 50 characters. It is serialized with the name "homePhone".
+	/// </remarks>
+	[DataMember(Name = "homePhone", IsRequired = false)]
+	[DefaultValue("")]
+	[JsonPropertyName("homePhone")]
+	[MaxLength(50)]
+	[MemberNotNull(nameof(_phone))]
+	[XmlElement]
+	public string Phone
+	{
+		get => this._phone;
+		set
+		{
+			if (string.Equals(this._phone, value, StringComparison.Ordinal))
+			{
+				return;
+			}
+
+			this._phone = value.HasValue(0, 50) is false
+				? throw new ArgumentOutOfRangeException(
+					nameof(this.Phone),
+					Resources.PhoneNumberIsLimitedTo50Characters)
 				: value;
 		}
 	}

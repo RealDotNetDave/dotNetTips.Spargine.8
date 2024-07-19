@@ -4,7 +4,7 @@
 // Created          : 06-04-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="Coordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -38,9 +38,9 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// It implements <see cref="ICoordinate"/>, <see cref="IEquatable{Coordinate}"/>,
 /// <see cref="IComparable"/>, and <see cref="IComparable{Coordinate}"/> interfaces.
 /// </remarks>
-[DataContract(Name = "coordinate")]
+[DataContract(Name = "coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
 [Serializable]
-[XmlRoot(ElementName = "Coordinate")]
+[XmlRoot(ElementName = "Coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coordinate>, IComparable, IComparable<Coordinate>
 {

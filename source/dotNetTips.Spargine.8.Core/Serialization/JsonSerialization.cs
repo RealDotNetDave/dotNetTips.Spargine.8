@@ -4,7 +4,7 @@
 // Created          : 02-21-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 07-18-2024
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -192,7 +192,8 @@ public static class JsonSerialization
 	public static string Serialize([NotNull] object obj)
 	{
 		obj = obj.ArgumentNotNull();
-		return JsonSerializer.Serialize(obj, _options);
+		//return JsonSerializer.Serialize(obj, _options);
+		return JsonSerializer.Serialize(obj);
 	}
 
 	/// <summary>

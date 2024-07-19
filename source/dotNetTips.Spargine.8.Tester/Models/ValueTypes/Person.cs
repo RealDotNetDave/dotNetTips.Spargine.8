@@ -1,12 +1,12 @@
 // ***********************************************************************
-// Assembly         : DotNetTips.Spargine.8.Tester
+// Assembly         : dotNetTips.Spargine.8.Tester
 // Author           : david
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-19-2024
 // ***********************************************************************
-// <copyright file="Person.cs" company="McCarter Consulting">
+// <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
@@ -33,13 +33,11 @@ using DotNetTips.Spargine.Tester.Properties;
 namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 
 /// <summary>
-/// Represents a person with properties for addresses, age, birth date, contact numbers, email, and names.
-/// This struct is generic to support different types of addresses.
+/// Represents a person with various personal details. This struct is generic to allow for different types of addresses.
 /// </summary>
-/// <typeparam name="TAddress">The type of address this person can have, must implement <see cref="IAddress"/>.</typeparam>
+/// <typeparam name="TAddress">The type of address this person can have, constrained to types that implement <see cref="IAddress"/>.</typeparam>
 [DataContract(Name = "person")]
 [DebuggerDisplay("{Email}")]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 [Serializable]
 [XmlRoot(ElementName = "Person")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
@@ -103,93 +101,100 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	private string _lastName = default;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="Person{TAddress}"/> struct.
-	/// This constructor is primarily used for deserialization purposes.
+	/// Initializes a new instance of the <see cref="Person{TAddress}" /> struct.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	[JsonConstructor]
 	public Person()
 	{ }
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="Person{TAddress}"/> struct with specified identifier and email.
+	/// Initializes a new instance of the <see cref="Person{TAddress}" /> struct.
 	/// </summary>
-	/// <param name="id">The unique identifier for the person.</param>
-	/// <param name="email">The email address of the person.</param>
-	public Person([NotNull] string id, [NotNull] string email) : this()
+	/// <param name="id">The identifier.</param>
+	/// <param name="email">The email.</param>
+	[JsonConstructor]
+	public Person([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
+	[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id) : this()
 	{
 		this.Id = id;
 		this.Email = email;
 	}
 
 	/// <summary>
-	/// Implements the inequality operator (!=). Checks if two <see cref="Person{TAddress}"/> instances are not equal.
+	/// Implements the != operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Person{TAddress}"/> instance.</param>
-	/// <param name="right">The right <see cref="Person{TAddress}"/> instance.</param>
-	/// <returns><c>true</c> if the instances are not equal; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator !=(Person<TAddress> left, Person<TAddress> right) => !(left == right);
 
 	/// <summary>
-	/// Implements the less than operator (&lt;). Checks if the left <see cref="Person{TAddress}"/> instance is less than the right <see cref="Person{TAddress}"/> instance.
+	/// Implements the op_LessThan operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Person{TAddress}"/> instance.</param>
-	/// <param name="right">The right <see cref="Person{TAddress}"/> instance.</param>
-	/// <returns><c>true</c> if the left instance is less than the right instance; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator <(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) < 0;
 
 	/// <summary>
-	/// Implements the less than or equal to operator (&lt;=). Checks if the left <see cref="Person{TAddress}"/> instance is less than or equal to the right <see cref="Person{TAddress}"/> instance.
+	/// Implements the op_LessThanOrEqual operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Person{TAddress}"/> instance.</param>
-	/// <param name="right">The right <see cref="Person{TAddress}"/> instance.</param>
-	/// <returns><c>true</c> if the left instance is less than or equal to the right instance; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator <=(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) <= 0;
 
 	/// <summary>
-	/// Implements the equality operator (==). Checks if two <see cref="Person{TAddress}"/> instances are equal.
+	/// Implements the == operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Person{TAddress}"/> instance.</param>
-	/// <param name="right">The right <see cref="Person{TAddress}"/> instance.</param>
-	/// <returns><c>true</c> if the instances are equal; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator ==(Person<TAddress> left, Person<TAddress> right) => left.Equals(right);
 
 	/// <summary>
-	/// Implements the greater than operator (&gt;). Checks if the left <see cref="Person{TAddress}"/> instance is greater than the right <see cref="Person{TAddress}"/> instance.
+	/// Implements the op_GreaterThan operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Person{TAddress}"/> instance.</param>
-	/// <param name="right">The right <see cref="Person{TAddress}"/> instance.</param>
-	/// <returns><c>true</c> if the left instance is greater than the right instance; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator >(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) > 0;
 
 	/// <summary>
-	/// Implements the greater than or equal to operator (&gt;=). Checks if the left <see cref="Person{TAddress}"/> instance is greater than or equal to the right <see cref="Person{TAddress}"/> instance.
+	/// Implements the op_GreaterThanOrEqual operator.
 	/// </summary>
-	/// <param name="left">The left <see cref="Person{TAddress}"/> instance.</param>
-	/// <param name="right">The right <see cref="Person{TAddress}"/> instance.</param>
-	/// <returns><c>true</c> if the left instance is greater than or equal to the right instance; otherwise, <c>false</c>.</returns>
+	/// <param name="left">The left.</param>
+	/// <param name="right">The right.</param>
+	/// <returns>The result of the operator.</returns>
 	public static bool operator >=(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) >= 0;
 
 	/// <summary>
-	/// Calculates the age of the person based on the current date and the person's birth date.
+	/// Calculates the age of the person based on their birth date and the current UTC date.
 	/// </summary>
-	/// <returns>A <see cref="TimeSpan"/> representing the age of the person.</returns>
+	/// <returns>The age of the person as a <see cref="TimeSpan"/>.</returns>
 	public readonly TimeSpan CalculateAge() => DateTimeOffset.UtcNow.Subtract(this.BornOn);
 
 	/// <summary>
-	/// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+	/// Compares this instance with a specified <see cref="Person{TAddress}"/> object and indicates whether this instance
+	/// precedes, follows, or appears in the same position in the sort order as the specified <see cref="Person{TAddress}"/>.
 	/// </summary>
-	/// <param name="other">An object to compare with this instance.</param>
-	/// <returns>A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This instance precedes <paramref name="other"/> in the sort order. Zero This instance occurs in the same position in the sort order as <paramref name="other"/>. Greater than zero This instance follows <paramref name="other"/> in the sort order.</returns>
-	[DebuggerStepThrough]
-	public readonly int CompareTo([NotNull] Person<TAddress> other) => string.Compare(this._id, other._id, StringComparison.OrdinalIgnoreCase);
+	/// <param name="other">The <see cref="Person{TAddress}"/> to compare with this instance.</param>
+	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
+	/// Less than zero: This instance precedes <paramref name="other"/> in the sort order.
+	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
+	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
+	public readonly int CompareTo(Person<TAddress> other) => string.Compare(this._id, other._id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
-	/// Compares the current instance with another <see cref="IPerson{TAddress}"/> instance and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+	/// Compares this instance with a specified <see cref="IPerson{TAddress}"/> object and indicates whether this instance
+	/// precedes, follows, or appears in the same position in the sort order as the specified <see cref="IPerson{TAddress}"/>.
 	/// </summary>
-	/// <param name="other">An <see cref="IPerson{TAddress}"/> to compare with this instance.</param>
-	/// <returns>A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This instance precedes <paramref name="other"/> in the sort order. Zero This instance occurs in the same position in the sort order as <paramref name="other"/>. Greater than zero This instance follows <paramref name="other"/> in the sort order.</returns>
-	[DebuggerStepThrough]
+	/// <param name="other">The <see cref="IPerson{TAddress}"/> to compare with this instance.</param>
+	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
+	/// Less than zero: This instance precedes <paramref name="other"/> in the sort order.
+	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
+	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
+	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
 	public readonly int CompareTo([NotNull] IPerson<TAddress> other)
 	{
 		if (other is null)
@@ -199,65 +204,46 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 
 		return string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
 	}
-
 	/// <summary>
-	/// Determines whether the specified <see cref="Person{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>.
+	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
-	/// <param name="other">The <see cref="Person{TAddress}"/> to compare with the current <see cref="Person{TAddress}"/>.</param>
-	/// <returns><c>true</c> if the specified <see cref="Person{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>; otherwise, <c>false</c>.</returns>
-
-	public readonly bool Equals([NotNull] Person<TAddress> other) => string.Equals(this.Id, other.Id, StringComparison.Ordinal) &&
-			   string.Equals(this.Email, other.Email, StringComparison.OrdinalIgnoreCase);
+	/// <param name="other">An object to compare with this object.</param>
+	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
+	public readonly bool Equals([NotNull] Person<TAddress> other) => Equals(this, other);
 
 	/// <summary>
-	/// Determines whether the specified object is equal to the current instance.
+	/// Determines whether the specified <see cref="object" /> is equal to this instance.
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
-	/// <returns><c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.</returns>
-	public override readonly bool Equals(object obj)
-	{
-		if (obj is Person<TAddress> other)
-		{
-			return this.Equals(other);
-		}
-
-		return false;
-	}
+	/// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+	public override readonly bool Equals([NotNull] object obj) => base.Equals(obj);
 
 	/// <summary>
-	/// Determines whether the specified <see cref="IPerson{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>.
+	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
-	/// <param name="other">The <see cref="IPerson{TAddress}"/> to compare with the current <see cref="Person{TAddress}"/>.</param>
-	/// <returns><c>true</c> if the specified <see cref="IPerson{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>; otherwise, <c>false</c>.</returns>
-	public readonly bool Equals([NotNull] IPerson<TAddress> other)
-	{
-		if (other == null)
-		{
-			return false;
-		}
-
-		// Assuming Id and Email are the unique identifiers for equality comparison.
-		return string.Equals(this.Id, other.Id, StringComparison.Ordinal) &&
-			   string.Equals(this.Email, other.Email, StringComparison.OrdinalIgnoreCase);
-	}
+	/// <param name="other">An object to compare with this object.</param>
+	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
+	public readonly bool Equals([NotNull] IPerson<TAddress> other) => base.Equals(other);
 
 	/// <summary>
-	/// Returns a hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
-	/// Note: The base GetHashCode method is used here, which might not provide a good distribution for all scenarios.
-	/// Consider overriding this method to compute a hash code based on instance fields that contribute to the object's equality.
+	/// Returns a hash code for this instance.
 	/// </summary>
-	/// <returns>A hash code for the current object.</returns>
+	/// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
 	public override readonly int GetHashCode() => base.GetHashCode();
 
 	/// <summary>
-	/// Gets or sets the collection of addresses for the person.
+	/// Returns a <see cref="string" /> that represents this instance.
 	/// </summary>
-	/// <value>The collection of <typeparamref name="TAddress"/> instances representing the addresses of the person.</value>
+	/// <returns>A <see cref="string" /> that represents this instance.</returns>
+	public override readonly string ToString() => this.As<IPerson<TAddress>>().PropertiesToString();
+
+	/// <summary>
+	/// Gets a collection of <see cref="Address" /> for a Person.
+	/// </summary>
+	/// <value>The addresses.</value>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
-	[NotNull]
-	[XmlArray("Addresses")]
-	[XmlArrayItem("Address")]
+	[XmlIgnore]
 	public Collection<TAddress> Addresses
 	{
 		readonly get => this._addresses;
@@ -276,14 +262,12 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	}
 
 	/// <summary>
-	/// Gets or sets the addresses for XML serialization only. This property is intended for use by the XML serializer and should not be used directly in code.
+	/// Gets or sets the addresses for XML serilization only.
 	/// </summary>
-	/// <value>The collection of addresses for XML serialization.</value>
+	/// <value>The addresses serilization.</value>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	[JsonIgnore]
-	[MemberNotNull(nameof(_addresses))]
 	[XmlArray("Addresses")]
-	[XmlArrayItem("Address")]
+	[JsonIgnore]
 	public Collection<TAddress> AddressesSerilization
 	{
 		readonly get => this._addresses;
@@ -302,21 +286,21 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	}
 
 	/// <summary>
-	/// Gets the age of the person calculated from the birth date to the current date.
+	/// Gets the age of the person.
 	/// </summary>
-	/// <value>The age as a <see cref="TimeSpan"/>.</value>
+	/// <value>The age.</value>
 	[JsonIgnore]
 	[XmlIgnore]
 	public readonly TimeSpan Age => this.CalculateAge();
 
 	/// <summary>
-	/// Gets or sets the date and time when the person was born.
+	/// Gets or sets the born on date and time.
 	/// </summary>
-	/// <value>The date and time representing the person's birth date.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown when setting a future date.</exception>
+	/// <value>The born on.</value>
+	/// <exception cref="ArgumentOutOfRangeException">BornOn</exception>
+	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
-	[XmlElement]
-	[MemberNotNull(nameof(_bornOn))]
+	[XmlElement("BornOn")]
 	public DateTimeOffset BornOn
 	{
 		readonly get => this._bornOn;
@@ -338,16 +322,12 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// <summary>
 	/// Gets or sets the cell phone number.
 	/// </summary>
-	/// <value>The cell phone number in string format.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown if the cell phone number exceeds 50 characters.</exception>
-	/// <remarks>
-	/// The cell phone number is validated to ensure it conforms to a standard phone number format and does not exceed the maximum length.
-	/// </remarks>
+	/// <value>The cell phone.</value>
+	/// <exception cref="ArgumentOutOfRangeException">CellPhone</exception>
 	[DataMember(Name = "cellPhone", IsRequired = false)]
-	[DefaultValue("")]
 	[JsonPropertyName("cellPhone")]
-	[Phone(ErrorMessage = "Invalid Phone Number")]
-	[StringLength(50, ErrorMessage = "Cell phone number cannot exceed 50 characters.")]
+	[MaxLength(50, ErrorMessage = "Cell phone number cannot exceed 50 characters.")]
+	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
 	[XmlElement("CellPhone")]
 	public string CellPhone
 	{
@@ -368,22 +348,15 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	}
 
 	/// <summary>
-	/// Gets or sets the email address of the person.
+	/// Gets the email.
 	/// </summary>
-	/// <value>The email address.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown if the email exceeds 75 characters.</exception>
-	/// <remarks>
-	/// The email address is validated to ensure it conforms to a standard email format and does not exceed the maximum length.
-	/// </remarks>
+	/// <value>The email.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Email</exception>
 	[DataMember(Name = "email", IsRequired = true)]
-	[DisallowNull]
-	[EmailAddress(ErrorMessage = "Invalid Email Address")]
+	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
 	[JsonPropertyName("email")]
-	[MemberNotNull(nameof(_email))]
-	[ReadOnly(true)]
-	[Required(ErrorMessage = "Email is required.")]
-	[StringLength(75, ErrorMessage = "Email cannot exceed 75 characters.")]
-	[XmlElement(IsNullable = false)]
+	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
+	[XmlElement("Email", IsNullable = false)]
 	public string Email
 	{
 		readonly get => this._email;
@@ -403,19 +376,13 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	}
 
 	/// <summary>
-	/// Gets or sets the first name of the person.
+	/// Gets or sets the first name.
 	/// </summary>
 	/// <value>The first name.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown if the first name exceeds 50 characters.</exception>
-	/// <remarks>
-	/// The first name is validated to ensure it does not exceed the maximum length.
-	/// </remarks>
+	/// <exception cref="ArgumentOutOfRangeException">FirstName</exception>
 	[DataMember(Name = "firstName", IsRequired = false)]
-	[DefaultValue("")]
 	[JsonPropertyName("firstName")]
-	[MemberNotNull(nameof(_firstName))]
-	[Required(ErrorMessage = "First name is required.")]
-	[StringLength(50, ErrorMessage = "First name cannot exceed 50 characters.")]
+	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
 	[XmlElement("FirstName")]
 	public string FirstName
 	{
@@ -436,31 +403,25 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	}
 
 	/// <summary>
-	/// Gets the full name of the person by concatenating the first name and the last name.
+	/// Gets the full name of the person.
 	/// </summary>
-	/// <value>The full name of the person.</value>
+	/// <value>The full name.</value>
 	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
-	[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 	public readonly string FullName => $"{this.FirstName} {this.LastName}";
 
 	/// <summary>
-	/// Gets the unique identifier for the person.
+	/// Gets the identifier.
 	/// </summary>
-	/// <value>The unique identifier as a string.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown if the identifier exceeds 50 characters.</exception>
-	/// <remarks>
-	/// The identifier is validated to ensure it does not exceed the maximum length.
-	/// </remarks>
+	/// <value>The identifier.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Id</exception>
 	[DataMember(Name = "id", IsRequired = true)]
-	[DisallowNull]
 	[JsonPropertyName("id")]
-	[MemberNotNull(nameof(_id))]
+	[MaxLength(50, ErrorMessage = "Id cannot exceed 50 characters.")]
 	[ReadOnly(true)]
-	[Required(ErrorMessage = "ID is required.")]
-	[StringLength(50, ErrorMessage = "ID cannot exceed 50 characters.")]
-	[XmlElement(IsNullable = false)]
+	[Required(ErrorMessage = "Id is required.")]
+	[XmlElement("Id", IsNullable = false)]
 	public string Id
 	{
 		readonly get => this._id;
@@ -479,20 +440,14 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	}
 
 	/// <summary>
-	/// Gets or sets the last name of the person.
+	/// Gets or sets the last name.
 	/// </summary>
-	/// <value>The last name as a string.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown if the last name exceeds 50 characters.</exception>
-	/// <remarks>
-	/// The last name is validated to ensure it does not exceed the maximum length allowed.
-	/// </remarks>
-	[DataMember(Name = "lastName", IsRequired = false)]
-	[DefaultValue("")]
+	/// <value>The last name.</value>
+	/// <exception cref="ArgumentOutOfRangeException">LastName</exception>
+	[DataMember(Name = "lastName", IsRequired = true)]
 	[JsonPropertyName("lastName")]
-	[MemberNotNull(nameof(_lastName))]
-	[Required(ErrorMessage = "Last name is required.")]
-	[StringLength(50, ErrorMessage = "Last name cannot exceed 50 characters.")]
-	[XmlElement("LastName")]
+	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
+	[XmlElement("LastName", IsNullable = false)]
 	public string LastName
 	{
 		readonly get => this._lastName;
@@ -512,18 +467,13 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	}
 
 	/// <summary>
-	/// Gets or sets the home phone number.
+	/// Gets or sets the home phone.
 	/// </summary>
-	/// <value>The home phone number in string format.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown if the home phone number exceeds 50 characters.</exception>
-	/// <remarks>
-	/// The home phone number is validated to ensure it conforms to a standard phone number format and does not exceed the maximum length.
-	/// </remarks>
+	/// <value>The home phone.</value>
+	/// <exception cref="ArgumentOutOfRangeException">Phone</exception>
 	[DataMember(Name = "homePhone", IsRequired = false)]
-	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
-	[Phone(ErrorMessage = "Invalid Phone Number")]
-	[StringLength(50, ErrorMessage = "Home phone number cannot exceed 50 characters.")]
+	[MaxLength(50)]
 	[XmlElement("HomePhone")]
 	public string Phone
 	{

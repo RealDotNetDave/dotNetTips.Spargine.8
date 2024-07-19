@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-19-2024
 // ***********************************************************************
 // <copyright file="XmlSerializationTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -43,7 +43,7 @@ public class XmlSerializationTests
 		//Serialize
 		var xml = XmlSerialization.Serialize(people);
 
-		var fileName = @"C:\dotNetTips.com\DebugOutput\PersonCollection.xml";
+		var fileName = Path.Combine(App.ExecutingFolder(), "PersonCollection.xml");
 
 		//For debugging
 		File.WriteAllText(fileName, xml);
@@ -69,7 +69,7 @@ public class XmlSerializationTests
 		//Serialize
 		var xml = XmlSerialization.Serialize(person);
 
-		var fileName = @"C:\dotNetTips.com\DebugOutput\Person.xml";
+		var fileName = Path.Combine(App.ExecutingFolder(), "Person.xml");
 
 		//For debugging
 		File.WriteAllText(fileName, xml);
@@ -95,7 +95,7 @@ public class XmlSerializationTests
 		//Serialize
 		var xml = XmlSerialization.Serialize(person);
 
-		var fileName = @"C:\dotNetTips.com\DebugOutput\PersonRecord.xml";
+		var fileName = Path.Combine(App.ExecutingFolder(), "PersonRecord.xml");
 
 		//For debugging
 		File.WriteAllText(fileName, xml);
@@ -118,7 +118,7 @@ public class XmlSerializationTests
 	{
 		var person = RandomData.GeneratePersonRef<Address>();
 
-		var fileName = @"C:\dotNetTips.com\DebugOutput\TestXml.xml";
+		var fileName = @"C:\dotNetTips.com\DebugOutput\PersonXml.xml";
 
 		try
 		{

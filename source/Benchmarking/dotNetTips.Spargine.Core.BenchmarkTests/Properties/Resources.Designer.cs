@@ -59,41 +59,5 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {&quot;Address1&quot;:&quot;kFMEXMxCCGDmSIYxBJVEXiqCE&quot;,&quot;Address2&quot;:&quot;LFywoulsFLk^YPDHViI_CUtLw&quot;,&quot;Age&quot;:&quot;5840.00:00:00.0350488&quot;,&quot;BornOn&quot;:&quot;2006-04-30T15:42:21.5603971-07:00&quot;,&quot;CellPhone&quot;:&quot;745-442-6873&quot;,&quot;City&quot;:&quot;[BOpiPKrU^IKyHl&quot;,&quot;Country&quot;:&quot;GeL[ot]CxI_V][b&quot;,&quot;Email&quot;:&quot;vsecutbwrvgmnglljry@dqijtmogvvbsxbs.band&quot;,&quot;FirstName&quot;:&quot;FZMxhsOFJvjUOcE&quot;,&quot;HomePhone&quot;:&quot;748-543-3086&quot;,&quot;Id&quot;:&quot;57026b9d8d8146959891e37579c73f39&quot;,&quot;LastName&quot;:&quot;MAqXlW^qJWFSCpMBuD^lbySnH&quot;,&quot;PostalCode&quot;:&quot;63835673&quot;,&quot;State&quot;:&quot;MKlm\u0060UEPc_IPRKX&quot;}.
-        /// </summary>
-        internal static string PersonProperJson {
-            get {
-                return ResourceManager.GetString("PersonProperJson", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;PersonProper xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://dotNetTips.Spargine.Tester.Models&quot;&gt;&lt;Address1&gt;DxKMwshdbxZjeRGXOBBfsgYwo&lt;/Address1&gt;&lt;Address2&gt;SWrlU\iNOSYqRcGJ]tU[euaeb&lt;/Address2&gt;&lt;BornOn&gt;2012-04-29T09:02:49.8686639-07:00&lt;/BornOn&gt;&lt;CellPhone&gt;128-436-5183&lt;/CellPhone&gt;&lt;City&gt;[LiLtknUapqEeGj&lt;/City&gt;&lt;Country&gt;lSVje[VvP^UoK[r&lt;/Country&gt;&lt;Email&gt;saiywiday@jaudmsuxbercl.us&lt;/Email&gt;&lt;FirstName&gt;GJ`CFQwZD]EOg]b&lt;/Fir [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string PersonProperXml {
-            get {
-                return ResourceManager.GetString("PersonProperXml", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {&quot;Addresses&quot;:[{&quot;Address1&quot;:&quot;by\u0060fEjGnGhFBStEpqIseKKQhP&quot;,&quot;Address2&quot;:&quot;LDaTeJWUgeWIDnbGeqbdqcGcP&quot;,&quot;City&quot;:&quot;AwhdbXmomHjtUDB[baHtQSNiv&quot;,&quot;Country&quot;:&quot;UHJX\u0060lFXZUNYrqSawV]^g[pNq&quot;,&quot;CountyProvince&quot;:&quot;tnwiGlJJZ\u0060swfmVNvvCs&quot;,&quot;Id&quot;:&quot;fae8983040664a1191bcbdc9015953bc&quot;,&quot;Phone&quot;:&quot;243-657-1576&quot;,&quot;PostalCode&quot;:&quot;66030566&quot;,&quot;State&quot;:&quot;VDpwZOvotsHJkOp&quot;},{&quot;Address1&quot;:&quot;uudsj^DtM_IkhmebQKKJLIBjj&quot;,&quot;Address2&quot;:&quot;UFjWShnWaACeJBIeIrQ\\TjLdK&quot;,&quot;City&quot;:&quot;^[hQSjaAuMpuReDvbEZoqBqqb&quot;,&quot;Country&quot;:&quot;gE\u0060ooJIPx[mkETY_vKf\u0060\u0060SFF\u0060&quot;,&quot;Cou [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string PersonRecordJson {
-            get {
-                return ResourceManager.GetString("PersonRecordJson", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;PersonRecord xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;&lt;Addresses&gt;&lt;AddressRecord&gt;&lt;Address1&gt;A_OasUYEVSBApO^HRrNJb\Pv[&lt;/Address1&gt;&lt;Address2&gt;Ne]EIgLCltCbp][aIkCITSndR&lt;/Address2&gt;&lt;City&gt;ePIdbC`UdX[e[PXoC[p[mQk_y&lt;/City&gt;&lt;Country&gt;bejmmfI^SgJjZCGwSAwrKIvJ_&lt;/Country&gt;&lt;CountyProvince&gt;Go[UHN[fflXHAGLogIOR&lt;/CountyProvince&gt;&lt;Id&gt;0a23510e83d9419cab41661781186853&lt;/Id&gt;&lt;Phone&gt;360-685-8043&lt;/Phone&gt;&lt;PostalCode&gt;70674581&lt;/PostalCode&gt;&lt;State [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string PersonRecordXml {
-            get {
-                return ResourceManager.GetString("PersonRecordXml", resourceCulture);
-            }
-        }
     }
 }

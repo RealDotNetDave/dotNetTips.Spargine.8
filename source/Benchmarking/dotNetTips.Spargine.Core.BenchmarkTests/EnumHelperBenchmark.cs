@@ -28,7 +28,7 @@ public class EnumHelperBenchmark : Benchmark
 	{
 		var result = EnumHelper.GetValues<RequestCacheLevel>(false, false);
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 }

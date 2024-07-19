@@ -82,9 +82,6 @@ public class JsonSerializationTests
 		//Serialize
 		var json = JsonSerialization.Serialize(person);
 
-		//For debugging
-		JsonSerialization.SerializeToFile(person, new FileInfo(@"C:\dotNetTips.com\DebugOutput\Person.json"));
-
 		Assert.IsTrue(string.IsNullOrEmpty(json) is false);
 
 		//Deserialize
@@ -100,9 +97,6 @@ public class JsonSerializationTests
 
 		//Serialize
 		var json = JsonSerialization.Serialize(people);
-
-		//For debugging
-		JsonSerialization.SerializeToFile(people, new FileInfo(@"C:\dotNetTips.com\DebugOutput\PersonCollection.json"));
 
 		Assert.IsTrue(string.IsNullOrEmpty(json) is false);
 

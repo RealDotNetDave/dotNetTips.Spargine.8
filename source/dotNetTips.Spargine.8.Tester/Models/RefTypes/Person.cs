@@ -40,10 +40,10 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// indicating it can serve as a data model with a string identifier and has person-specific properties.
 /// </summary>
 /// <typeparam name="TAddress">The type of address this person can have, constrained to types that implement <see cref="IAddress"/>.</typeparam>
-[DataContract(Name = "person")]
+[DataContract(Name = "person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [DebuggerDisplay("{Email}")]
 [Serializable]
-[XmlRoot(ElementName = "Person")]
+[XmlRoot(ElementName = "Person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<TAddress> where TAddress : IAddress, new()
 {
@@ -84,13 +84,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	private string _firstName;
 
 	/// <summary>
-	/// The home phone number.
-	/// </summary>
-	[JsonIgnore]
-	[NonSerialized]
-	private string _homePhone;
-
-	/// <summary>
 	/// The unique identifier.
 	/// </summary>
 	[JsonIgnore]
@@ -105,11 +98,17 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	private string _lastName;
 
 	/// <summary>
+	/// The home phone number.
+	/// </summary>
+	[JsonIgnore]
+	[NonSerialized]
+	private string _phone;
+
+	/// <summary>
 	/// Initializes a new instance of the <see cref="Person{TAddress}"/> class.
 	/// This parameterless constructor is primarily used for serialization.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	[JsonConstructor]
 	public Person()
 	{ }
 
@@ -119,10 +118,12 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="id">The unique identifier for the person.</param>
 	/// <param name="email">The email address of the person.</param>
 	/// <exception cref="ValidationException">Thrown when <paramref name="id"/> or <paramref name="email"/> is null or empty.</exception>
-	public Person([Required] string id, [Required] string email)
+	[JsonConstructor]
+	public Person([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
+	[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
 	{
-		this.Id = id;
 		this.Email = email;
+		this.Id = id;
 	}
 
 	/// <summary>
@@ -180,9 +181,9 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 		: left.CompareTo(right) >= 0;
 
 	/// <summary>
-	/// Calculates the person's age based on the <see cref="BornOn"/> date.
+	/// Calculates the age of the person based on their birth date and the current UTC date.
 	/// </summary>
-	/// <returns>A <see cref="TimeSpan"/> representing the age of the person.</returns>
+	/// <returns>The age of the person as a <see cref="TimeSpan"/>.</returns>
 	public TimeSpan CalculateAge() => DateTimeOffset.UtcNow.Subtract(this.BornOn);
 
 	/// <summary>
@@ -316,7 +317,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			LastName = person.LastName,
 			BornOn = person.BornOn,
 			CellPhone = person.CellPhone,
-			Phone = person.HomePhone,
+			Phone = person.Phone,
 		};
 
 		if (person.Addresses.HasItems())
@@ -443,9 +444,9 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "cellPhone", IsRequired = false)]
 	[DefaultValue("")]
 	[JsonPropertyName("cellPhone")]
-	[MaxLength(50)]
-	[MemberNotNull(nameof(_cellPhone))]
-	[XmlElement]
+	[MaxLength(50, ErrorMessage = "Cell phone number cannot exceed 50 characters.")]
+	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
+	[XmlElement("CellPhone")]
 	public string CellPhone
 	{
 		get => this._cellPhone;
@@ -474,12 +475,12 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// This property is read-only and serialized with the name "email".
 	/// </remarks>
 	[DataMember(Name = "email", IsRequired = true)]
+	[DefaultValue("")]
 	[DisallowNull]
-	[EmailAddress]
+	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
 	[JsonPropertyName("email")]
-	[MaxLength(75)]
+	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
 	[MemberNotNull(nameof(_email))]
-	[ReadOnly(true)]
 	[XmlElement(IsNullable = false)]
 	public string Email
 	{
@@ -507,12 +508,12 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <remarks>
 	/// The first name is limited to 50 characters. It is serialized with the name "firstName".
 	/// </remarks>
-	[DataMember(Name = "firstName", IsRequired = false)]
+	[DataMember(Name = "firstName", IsRequired = true)]
 	[DefaultValue("")]
 	[JsonPropertyName("firstName")]
-	[MaxLength(50)]
+	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
 	[MemberNotNull(nameof(_firstName))]
-	[XmlElement]
+	[XmlElement("FirstName")]
 	public string FirstName
 	{
 		get => this._firstName;
@@ -551,6 +552,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "id", IsRequired = true)]
 	[DisallowNull]
 	[JsonPropertyName("id")]
+	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
 	[MemberNotNull(nameof(_id))]
 	[ReadOnly(true)]
 	[XmlElement(IsNullable = false)]
@@ -578,12 +580,12 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <remarks>
 	/// The last name is limited to 50 characters. It is serialized with the name "lastName".
 	/// </remarks>
-	[DataMember(Name = "lastName", IsRequired = false)]
+	[DataMember(Name = "lastName", IsRequired = true)]
 	[DefaultValue("")]
 	[JsonPropertyName("lastName")]
-	[MaxLength(50)]
+	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
 	[MemberNotNull(nameof(_lastName))]
-	[XmlElement]
+	[XmlElement("LastName")]
 	public string LastName
 	{
 		get => this._lastName;
@@ -613,19 +615,19 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
-	[MemberNotNull(nameof(_homePhone))]
+	[MemberNotNull(nameof(_phone))]
 	[XmlElement]
 	public string Phone
 	{
-		get => this._homePhone;
+		get => this._phone;
 		set
 		{
-			if (string.Equals(this._homePhone, value, StringComparison.Ordinal))
+			if (string.Equals(this._phone, value, StringComparison.Ordinal))
 			{
 				return;
 			}
 
-			this._homePhone = value.HasValue(0, 50) is false
+			this._phone = value.HasValue(0, 50) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.Phone),
 					Resources.PhoneNumberIsLimitedTo50Characters)

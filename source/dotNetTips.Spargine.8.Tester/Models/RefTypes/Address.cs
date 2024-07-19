@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 07-19-2024
 // ***********************************************************************
 // <copyright file="Address.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -16,6 +16,7 @@
 // </summary>
 // ***********************************************************************
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -34,10 +35,10 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// Represents a physical address. This class cannot be inherited and implements the IAddress interface.
 /// It includes properties for various components of a physical address such as Address1, Address2, City, State, CountyProvince, Country, PostalCode, and Phone.
 /// </summary>
-[DataContract(Name = "address")]
+[DataContract(Name = "address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [DebuggerDisplay("{Id}")]
 [Serializable]
-[XmlRoot(ElementName = "Address")]
+[XmlRoot(ElementName = "Address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public sealed class Address : IAddress
 {
@@ -110,7 +111,6 @@ public sealed class Address : IAddress
 	/// This constructor is parameterless and intended for use in scenarios where an address is being initialized without initial property values.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	[JsonConstructor]
 	public Address()
 	{ }
 
@@ -119,6 +119,7 @@ public sealed class Address : IAddress
 	/// </summary>
 	/// <param name="id">The unique identifier for the address.</param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="id"/> is null.</exception>
+	[JsonConstructor]
 	public Address([NotNull] string id) => this.Id = id;
 
 	/// <summary>
@@ -262,15 +263,15 @@ public sealed class Address : IAddress
 	public override int GetHashCode()
 	{
 		var hash = new HashCode();
-		hash.Add(this.Address1);
-		hash.Add(this.Address2);
-		hash.Add(this.City);
-		hash.Add(this.Country);
-		hash.Add(this.CountyProvince);
-		hash.Add(this.Id);
-		hash.Add(this.Phone);
-		hash.Add(this.PostalCode);
-		hash.Add(this.State);
+		hash.Add(this.Id, StringComparer.OrdinalIgnoreCase);
+		hash.Add(this.Address1, StringComparer.Ordinal);
+		hash.Add(this.Address2, StringComparer.Ordinal);
+		hash.Add(this.City, StringComparer.Ordinal);
+		hash.Add(this.Country, StringComparer.Ordinal);
+		hash.Add(this.CountyProvince, StringComparer.Ordinal);
+		hash.Add(this.Phone, StringComparer.Ordinal);
+		hash.Add(this.PostalCode, StringComparer.Ordinal);
+		hash.Add(this.State, StringComparer.Ordinal);
 		return hash.ToHashCode();
 	}
 
@@ -317,6 +318,7 @@ public sealed class Address : IAddress
 	/// Returns a <see cref="string"/> that represents the current <see cref="Address"/> instance.
 	/// </summary>
 	/// <returns>A <see cref="string"/> that represents this instance.</returns>
+	[DebuggerStepThrough]
 	public override string ToString() => this.PropertiesToString();
 
 	/// <summary>
@@ -324,11 +326,13 @@ public sealed class Address : IAddress
 	/// </summary>
 	/// <value>The first line of the address.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 100 characters.</exception>
-	[DataMember(Name = "address1", IsRequired = false)]
+	[DataMember(Name = "address1", IsRequired = false, Order = 1)]
 	[DefaultValue("")]
+	[Display(Name = "Address Line 1")]
 	[JsonPropertyName("address1")]
+	[MaxLength(100, ErrorMessage = "Address1 cannot exceed 100 characters.")]
 	[MemberNotNull(nameof(_address1))]
-	[XmlElement]
+	[XmlElement("address1")]
 	public string Address1
 	{
 		get => this._address1;
@@ -353,11 +357,13 @@ public sealed class Address : IAddress
 	/// <value>The second line of the address.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 100 characters.</exception>
 	/// <remarks>Address2 is optional and is limited to 100 characters.</remarks>
-	[DataMember(Name = "address2", IsRequired = false)]
+	[DataMember(Name = "address2", IsRequired = false, Order = 2)]
 	[DefaultValue("")]
+	[Display(Name = "Address Line 2")]
 	[JsonPropertyName("address2")]
+	[MaxLength(100, ErrorMessage = "Address2 cannot exceed 100 characters.")]
 	[MemberNotNull(nameof(_address2))]
-	[XmlElement]
+	[XmlElement("address2")]
 	public string Address2
 	{
 		get => this._address2;
@@ -382,11 +388,13 @@ public sealed class Address : IAddress
 	/// <value>The name of the city.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 150 characters.</exception>
 	/// <remarks>City name is limited to 150 characters.</remarks>
-	[DataMember(Name = "city", IsRequired = false)]
+	[DataMember(Name = "city", IsRequired = false, Order = 3)]
+	[Display(Name = "City")]
 	[DefaultValue("")]
 	[JsonPropertyName("city")]
 	[MemberNotNull(nameof(_city))]
-	[XmlElement]
+	[MaxLength(150, ErrorMessage = "City cannot exceed 150 characters.")]
+	[XmlElement("city")]
 	public string City
 	{
 		get => this._city;
@@ -411,11 +419,13 @@ public sealed class Address : IAddress
 	/// <value>The country name.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 50 characters.</exception>
 	/// <remarks>Country is limited to 50 characters.</remarks>
-	[DataMember(Name = "country", IsRequired = false)]
+	[DataMember(Name = "country", IsRequired = false, Order = 4)]
 	[DefaultValue("")]
+	[Display(Name = "Country")]
 	[JsonPropertyName("country")]
+	[MaxLength(50, ErrorMessage = "Country cannot exceed 50 characters.")]
 	[MemberNotNull(nameof(_country))]
-	[XmlElement]
+	[XmlElement("country")]
 	public string Country
 	{
 		get => this._country;
@@ -440,11 +450,13 @@ public sealed class Address : IAddress
 	/// <value>The county or province.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 50 characters.</exception>
 	/// <remarks>CountyProvince is optional and is limited to 50 characters.</remarks>
-	[DataMember(Name = "countryProvince", IsRequired = false)]
+	[DataMember(Name = "countyProvince", IsRequired = false, Order = 5)]
+	[Display(Name = "County/Province")]
 	[JsonPropertyName("countryProvince")]
 	[XmlElement]
 	[MemberNotNull(nameof(_countyProvince))]
-	[DefaultValue("")]
+	[MaxLength(50, ErrorMessage = "CountyProvince cannot exceed 50 characters.")]
+	[XmlElement("countyProvince")]
 	public string CountyProvince
 	{
 		get => this._countyProvince;
@@ -465,12 +477,15 @@ public sealed class Address : IAddress
 	/// <value>The unique identifier.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the identifier value is not within the required range.</exception>
 	/// <remarks>The identifier is limited to 50 characters and is required for identifying the address record uniquely.</remarks>
-	[DataMember(Name = "id", IsRequired = true)]
+	[DataMember(Name = "id", IsRequired = true, Order = 0)]
 	[DisallowNull]
+	[Display(Name = "Identifier")]
 	[JsonPropertyName("id")]
+	[MaxLength(50, ErrorMessage = "Id cannot exceed 50 characters.")]
 	[MemberNotNull(nameof(_id))]
 	[ReadOnly(true)]
-	[XmlElement(IsNullable = false)]
+	[Required(ErrorMessage = "Id is required.")]
+	[XmlElement("id", IsNullable = false)]
 	public string Id
 	{
 		get => this._id;
@@ -493,11 +508,13 @@ public sealed class Address : IAddress
 	/// <value>The phone number.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the phone number is longer than 50 characters.</exception>
 	/// <remarks>Phone number is optional and is limited to 50 characters.</remarks>
-	[DataMember(Name = "phone", IsRequired = false)]
+	[DataMember(Name = "phone", IsRequired = false, Order = 6)]
+	[Display(Name = "Phone Number")]
 	[DefaultValue("")]
 	[JsonPropertyName("phone")]
 	[MemberNotNull(nameof(_phone))]
-	[XmlElement]
+	[MaxLength(50, ErrorMessage = "Phone number cannot exceed 50 characters.")]
+	[XmlElement("phone")]
 	public string Phone
 	{
 		get => this._phone;
@@ -522,11 +539,13 @@ public sealed class Address : IAddress
 	/// <value>The postal code of the address.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the postal code is longer than 40 characters.</exception>
 	/// <remarks>Postal code is limited to 40 characters.</remarks>
-	[DataMember(Name = "postalCode", IsRequired = false)]
+	[DataMember(Name = "postalCode", IsRequired = false, Order = 7)]
+	[Display(Name = "Postal Code")]
 	[DefaultValue("")]
 	[JsonPropertyName("postalCode")]
 	[MemberNotNull(nameof(_postalCode))]
-	[XmlElement]
+	[MaxLength(40, ErrorMessage = "Postal code cannot exceed 40 characters.")]
+	[XmlElement("postalCode")]
 	public string PostalCode
 	{
 		get => this._postalCode;
@@ -551,11 +570,13 @@ public sealed class Address : IAddress
 	/// <value>The state or region.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the state value is longer than 60 characters.</exception>
 	/// <remarks>State is optional and is limited to 60 characters.</remarks>
-	[DataMember(Name = "state", IsRequired = false)]
+	[DataMember(Name = "state", IsRequired = false, Order = 8)]
+	[Display(Name = "State")]
 	[DefaultValue("")]
 	[JsonPropertyName("state")]
 	[MemberNotNull(nameof(_state))]
-	[XmlElement]
+	[MaxLength(60, ErrorMessage = "State cannot exceed 60 characters.")]
+	[XmlElement("state")]
 	public string State
 	{
 		get => this._state;
