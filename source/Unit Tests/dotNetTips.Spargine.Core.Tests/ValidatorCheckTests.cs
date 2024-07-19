@@ -29,7 +29,6 @@ namespace DotNetTips.Spargine.Core.Tests;
 [TestClass]
 public class ValidatorCheckTests
 {
-
 	[TestMethod]
 	public void ArgumentIsInRangeDateTimeTest()
 	{
@@ -44,18 +43,21 @@ public class ValidatorCheckTests
 		Assert.IsFalse(testValue.CheckIsInRange(outOfRangeLower, outOfRangeUpper));
 
 		// Test Exception throwing.
-		_ = Assert.ThrowsException<InvalidValueException<DateTime>>(() => testValue.CheckIsInRange(outOfRangeLower, outOfRangeUpper, true));
+		_ = Assert.ThrowsException<InvalidValueException<DateTime>>(
+			() => testValue.CheckIsInRange(outOfRangeLower, outOfRangeUpper, true));
 	}
 
 	[TestMethod]
 	public void CheckEqualsTest()
 	{
-
 		// Good Test
 		Assert.IsTrue(typeof(Person<Address>).CheckEquals(typeof(Person<Address>)));
 
 		// Test Exception throwing.
-		_ = Assert.ThrowsException<InvalidValueException<Type>>(() => typeof(Person<Address>).CheckEquals(typeof(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<DotNetTips.Spargine.Tester.Models.ValueTypes.Address>), true));
+		_ = Assert.ThrowsException<InvalidValueException<Type>>(
+			() => typeof(Person<Address>).CheckEquals(
+			typeof(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<DotNetTips.Spargine.Tester.Models.ValueTypes.Address>),
+			true));
 	}
 
 	[TestMethod]
@@ -84,7 +86,8 @@ public class ValidatorCheckTests
 		Assert.IsFalse(testValue.CheckIsInRange(outOfRangeLowerValue, outOfRangeUpperValue));
 
 		// Test Exception
-		_ = Assert.ThrowsException<InvalidValueException<DateOnly>>(() => testValue.CheckIsInRange(outOfRangeLowerValue, outOfRangeUpperValue, true));
+		_ = Assert.ThrowsException<InvalidValueException<DateOnly>>(
+			() => testValue.CheckIsInRange(outOfRangeLowerValue, outOfRangeUpperValue, true));
 	}
 
 	[TestMethod]
@@ -101,7 +104,8 @@ public class ValidatorCheckTests
 		Assert.IsFalse(testValue.CheckIsInRange(outOfRangeLowerValue, outOfRangeUpperValue));
 
 		// Test Exception
-		_ = Assert.ThrowsException<InvalidValueException<DateTimeOffset>>(() => testValue.CheckIsInRange(outOfRangeLowerValue, outOfRangeUpperValue, true));
+		_ = Assert.ThrowsException<InvalidValueException<DateTimeOffset>>(
+			() => testValue.CheckIsInRange(outOfRangeLowerValue, outOfRangeUpperValue, true));
 	}
 
 	[TestMethod]
@@ -170,13 +174,13 @@ public class ValidatorCheckTests
 		Assert.IsFalse(testValue.CheckIsInRange(outOfRangeLowerValue, outOfRangeUpperValue));
 
 		// Test Exception
-		_ = Assert.ThrowsException<InvalidValueException<TimeOnly>>(() => testValue.CheckIsInRange(outOfRangeLowerValue, outOfRangeUpperValue, true));
+		_ = Assert.ThrowsException<InvalidValueException<TimeOnly>>(
+			() => testValue.CheckIsInRange(outOfRangeLowerValue, outOfRangeUpperValue, true));
 	}
 
 	[TestMethod]
 	public void CheckIsNotEmptyReadOnlySpanTest01()
 	{
-
 		ReadOnlySpan<Person<Address>> people = RandomData.GeneratePersonRefCollection<Address>(10).ToArray();
 		var emptyPeople = ReadOnlySpan<Person<Address>>.Empty;
 
@@ -186,7 +190,6 @@ public class ValidatorCheckTests
 
 		// Test Exception
 		//_ = Assert.ThrowsException < InvalidValueException<ReadOnlySpan<Person<Address>>>(() => emptyPeople.CheckIsNotEmpty(true));
-
 	}
 
 	[TestMethod]
@@ -215,6 +218,7 @@ public class ValidatorCheckTests
 		// Test Exception
 		_ = Assert.ThrowsException<InvalidOperationException>(() => Guid.Empty.CheckIsNotEmpty(true));
 	}
+
 	[TestMethod]
 	public void CheckItemsExistsIEnumerableTest()
 	{
@@ -235,7 +239,8 @@ public class ValidatorCheckTests
 		Assert.IsFalse(personProper.CheckIsCondition(personProper.Id.IsEmpty(), errorMessage: "Should be false."));
 
 		Person<Address> nullPerson = null;
-		_ = Assert.ThrowsException<ArgumentNullException>(() => nullPerson.CheckIsCondition(personProper.Id.IsNotEmpty(), true));
+		_ = Assert.ThrowsException<ArgumentNullException>(
+			() => nullPerson.CheckIsCondition(personProper.Id.IsNotEmpty(), true));
 	}
 
 	[TestMethod]
@@ -256,13 +261,14 @@ public class ValidatorCheckTests
 		DirectoryInfo nullDirectoryInfo = null;
 		_ = Assert.ThrowsException<ArgumentNullException>(() => nullDirectoryInfo.CheckExists(true));
 
-		_ = Assert.ThrowsException<DirectoryNotFoundException>(() => new DirectoryInfo("fakefile").CheckExists(throwException: true));
+		_ = Assert.ThrowsException<DirectoryNotFoundException>(
+			() => new DirectoryInfo("fakefile").CheckExists(throwException: true));
 	}
 
 	[TestMethod]
 	public void ExistsCheckFileInfoTest()
 	{
-		var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify), "tempfileinfotest.dat");
+		var fileName = RandomData.GenerateRandomFileName();
 
 		_ = RandomData.GenerateFile(fileName, 500);
 
@@ -296,5 +302,4 @@ public class ValidatorCheckTests
 			Assert.Fail();
 		}
 	}
-
 }

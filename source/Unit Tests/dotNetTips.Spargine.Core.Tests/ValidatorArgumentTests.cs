@@ -33,7 +33,6 @@ namespace DotNetTips.Spargine.Core.Tests;
 [TestClass]
 public class ValidatorArgumentTests
 {
-
 	private const string BadEmail = "BAD@EMAIL";
 	private const string GoodEmail = "fakeemail@google.com";
 
@@ -48,7 +47,9 @@ public class ValidatorArgumentTests
 		Assert.IsNotNull(result);
 
 		//Bad test
-		_ = Assert.ThrowsException<ArgumentInvalidException>(() => typeof(Person<Address>).ArgumentEquals(typeof(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<DotNetTips.Spargine.Tester.Models.ValueTypes.Address>)));
+		_ = Assert.ThrowsException<ArgumentInvalidException>(
+			() => typeof(Person<Address>).ArgumentEquals(
+			typeof(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<DotNetTips.Spargine.Tester.Models.ValueTypes.Address>)));
 	}
 
 	[TestMethod]
@@ -82,7 +83,8 @@ public class ValidatorArgumentTests
 	{
 		var directoryInfo = new DirectoryInfo("c:\temp\bogus");
 
-		var defaultDirectoryInfo = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+		var defaultDirectoryInfo = new DirectoryInfo(
+			Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
 
 		try
 		{
@@ -99,7 +101,7 @@ public class ValidatorArgumentTests
 	[TestMethod]
 	public void ArgumentExistsFileInfoTest()
 	{
-		var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify), "tempfileinfotest.dat");
+		var fileName = RandomData.GenerateRandomFileName();
 
 		_ = RandomData.GenerateFile(fileName, 500);
 
@@ -125,10 +127,18 @@ public class ValidatorArgumentTests
 	[TestMethod]
 	public void ArgumentExistsFileInfoWithDefaultTest()
 	{
-		var firstFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify), "tempfileinfotest.dat1");
+		var firstFileName = Path.Combine(
+			Environment.GetFolderPath(
+				Environment.SpecialFolder.ApplicationData,
+				Environment.SpecialFolderOption.DoNotVerify),
+			"tempfileinfotest.dat1");
 		var firstTempFile = new FileInfo(firstFileName);
 
-		var secondFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify), "tempfileinfotest.dat2");
+		var secondFileName = Path.Combine(
+			Environment.GetFolderPath(
+				Environment.SpecialFolder.ApplicationData,
+				Environment.SpecialFolderOption.DoNotVerify),
+			"tempfileinfotest.dat2");
 		_ = RandomData.GenerateFile(secondFileName, 500);
 		var secondTempFile = new FileInfo(secondFileName);
 
@@ -167,7 +177,8 @@ public class ValidatorArgumentTests
 		//Test Exception
 		_ = byte.TryParse("101", out var invalidValue);
 
-		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(() => invalidValue.ArgumentInRange(lowerValue, upperValue));
+		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(
+			() => invalidValue.ArgumentInRange(lowerValue, upperValue));
 	}
 
 	[TestMethod]
@@ -189,7 +200,8 @@ public class ValidatorArgumentTests
 		}
 
 		// Test Exception
-		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(() => testValue.ArgumentInRange(outOfRangeLowerValue, outOfRangeUpperValue));
+		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(
+			() => testValue.ArgumentInRange(outOfRangeLowerValue, outOfRangeUpperValue));
 	}
 
 	[TestMethod]
@@ -231,7 +243,8 @@ public class ValidatorArgumentTests
 		}
 
 		// Test Exception
-		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(() => testValue.ArgumentInRange(outOfRangeLowerValue, outOfRangeUpperValue));
+		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(
+			() => testValue.ArgumentInRange(outOfRangeLowerValue, outOfRangeUpperValue));
 	}
 
 	[TestMethod]
@@ -273,7 +286,8 @@ public class ValidatorArgumentTests
 		}
 
 		// Test Exception
-		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(() => testValue.ArgumentInRange(outOfRangeLower, outOfRangeUpper));
+		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(
+			() => testValue.ArgumentInRange(outOfRangeLower, outOfRangeUpper));
 	}
 
 	[TestMethod]
@@ -408,7 +422,6 @@ public class ValidatorArgumentTests
 		{
 			Assert.Fail();
 		}
-
 	}
 
 	[TestMethod]
@@ -508,7 +521,8 @@ public class ValidatorArgumentTests
 		}
 
 		// Test Exception
-		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(() => testValue.ArgumentInRange(outOfRangeLowerValue, outOfRangeUpperValue));
+		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(
+			() => testValue.ArgumentInRange(outOfRangeLowerValue, outOfRangeUpperValue));
 	}
 
 	[TestMethod]
@@ -538,7 +552,9 @@ public class ValidatorArgumentTests
 
 		try
 		{
-			var result = personProper.ArgumentMeetsCondition(personProper.Id.IsNotEmpty(), errorMessage: "Person is missing Id");
+			var result = personProper.ArgumentMeetsCondition(
+				personProper.Id.IsNotEmpty(),
+				errorMessage: "Person is missing Id");
 
 			Assert.IsNotNull(result);
 		}
@@ -548,7 +564,8 @@ public class ValidatorArgumentTests
 		}
 
 		//Test Exception
-		_ = Assert.ThrowsException<ArgumentInvalidException>(() => personProper.ArgumentMeetsCondition(personProper.Id == "AA", errorMessage: "Person is missing Id"));
+		_ = Assert.ThrowsException<ArgumentInvalidException>(
+			() => personProper.ArgumentMeetsCondition(personProper.Id == "AA", errorMessage: "Person is missing Id"));
 	}
 
 	[TestMethod]
@@ -576,7 +593,10 @@ public class ValidatorArgumentTests
 			var personProper1 = RandomData.GeneratePersonRef<Address>();
 			var personProper2 = RandomData.GeneratePersonRef<Address>();
 
-			var result = personProper1.ArgumentMeetsCondition(personProper1.Id == "AA", personProper2, errorMessage: "Person is missing Id");
+			var result = personProper1.ArgumentMeetsCondition(
+				personProper1.Id == "AA",
+				personProper2,
+				errorMessage: "Person is missing Id");
 
 			Assert.IsTrue(result == personProper2);
 		}
@@ -623,7 +643,6 @@ public class ValidatorArgumentTests
 		// Test null collection
 		Person<Address>[] nullPeople = null;
 		_ = Assert.ThrowsException<ArgumentNullException>(() => nullPeople.ArgumentItemsExists());
-
 	}
 
 	[TestMethod]
@@ -644,7 +663,6 @@ public class ValidatorArgumentTests
 		// Test null collection
 		IEnumerable<Person<Address>> nullPeople = null;
 		_ = Assert.ThrowsException<ArgumentNullException>(() => nullPeople.ArgumentItemsExists());
-
 	}
 
 	[TestMethod]
@@ -665,7 +683,6 @@ public class ValidatorArgumentTests
 		// Test null collection
 		List<Person<Address>> nullPeople = null;
 		_ = Assert.ThrowsException<ArgumentNullException>(() => nullPeople.ArgumentItemsExists());
-
 	}
 
 	[TestMethod]
@@ -675,7 +692,6 @@ public class ValidatorArgumentTests
 
 		try
 		{
-
 			var result = people.ArgumentItemsExists(count: 10);
 		}
 		catch
@@ -709,7 +725,6 @@ public class ValidatorArgumentTests
 		// Test null collection
 		ReadOnlyCollection<Person<Address>> nullPeople = null;
 		_ = Assert.ThrowsException<ArgumentNullException>(() => nullPeople.ArgumentItemsExists());
-
 	}
 
 	[TestMethod]
@@ -736,7 +751,6 @@ public class ValidatorArgumentTests
 
 		// Test null match
 		_ = Assert.ThrowsException<ArgumentNullException>(() => GoodEmail.ArgumentMatched(null));
-
 	}
 
 	[TestMethod]
@@ -940,7 +954,8 @@ public class ValidatorArgumentTests
 	[TestMethod]
 	public void ArgumentNotNullReadOnlySpanTest()
 	{
-		var testPeople = new ReadOnlySpan<Person<Address>>(RandomData.GeneratePersonRefCollection<Address>(10).ToArray());
+		var testPeople = new ReadOnlySpan<Person<Address>>(
+			RandomData.GeneratePersonRefCollection<Address>(10).ToArray());
 		try
 		{
 			_ = testPeople.ArgumentNotEmpty();
@@ -1009,5 +1024,4 @@ public class ValidatorArgumentTests
 
 		// Assert is handled by ExpectedException
 	}
-
 }

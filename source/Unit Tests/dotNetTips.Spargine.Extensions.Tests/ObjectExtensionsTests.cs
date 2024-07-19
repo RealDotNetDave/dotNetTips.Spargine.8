@@ -29,7 +29,6 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 [TestClass]
 public class ObjectExtensionsTests : TestClass
 {
-
 	[TestMethod]
 	public void CloneTest()
 	{
@@ -135,9 +134,7 @@ public class ObjectExtensionsTests : TestClass
 
 		Assert.IsTrue(result.FastCount() > 1);
 
-		result = propertiesTest.PropertiesToDictionary(
-			memberName: $"TestPerson-{personProper.Id}",
-			ignoreNulls: true);
+		result = propertiesTest.PropertiesToDictionary(memberName: $"TestPerson-{personProper.Id}", ignoreNulls: true);
 
 		Assert.IsTrue(result.FastCount() > 1);
 	}
@@ -164,6 +161,7 @@ public class ObjectExtensionsTests : TestClass
 
 		Assert.IsTrue(result.Length > 100);
 		Assert.IsTrue(result.Contains("Addresses"));
+
 		//PrintResult(result, nameof(this.PropertiesToStringTest));
 
 		result = propertiesTest.PropertiesToString(
@@ -175,6 +173,7 @@ public class ObjectExtensionsTests : TestClass
 
 		Assert.IsTrue(result.Length > 100);
 		Assert.IsTrue(result.Contains("Addresses"));
+
 		//PrintResult(result, nameof(this.PropertiesToStringTest));
 
 		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
@@ -183,6 +182,7 @@ public class ObjectExtensionsTests : TestClass
 
 		Assert.IsTrue(result.Length > 500);
 		Assert.IsTrue(result.Contains("Address1"));
+
 		//PrintResult(result, nameof(this.PropertiesToStringTest));
 
 		var coordinate = RandomData.GenerateCoordinate<Coordinate>();
@@ -191,6 +191,7 @@ public class ObjectExtensionsTests : TestClass
 
 		Assert.IsTrue(result.Length > 50);
 		Assert.IsTrue(result.Contains("X"));
+
 		//PrintResult(result, nameof(this.PropertiesToStringTest));
 
 		var personCollection = RandomData.GeneratePersonRecordCollection(5);
@@ -215,7 +216,7 @@ public class ObjectExtensionsTests : TestClass
 	{
 		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
 
-		var fileName = new FileInfo(Path.Combine(App.ExecutingFolder(), "TEST.JSON"));
+		var fileName = new FileInfo(RandomData.GenerateRandomFileName());
 
 		try
 		{
@@ -265,5 +266,4 @@ public class ObjectExtensionsTests : TestClass
 			Assert.Fail();
 		}
 	}
-
 }

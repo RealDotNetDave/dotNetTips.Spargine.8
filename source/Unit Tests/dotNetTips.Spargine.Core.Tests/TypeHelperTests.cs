@@ -32,7 +32,6 @@ namespace DotNetTips.Spargine.Core.Tests;
 [Guid("5AE2E147-D4DB-4FA4-AAE4-0675C3A2DFC5")]
 public class TypeHelperTests : TestClass
 {
-
 	[TestMethod]
 	public void BuiltInTypeNames01()
 	{
@@ -57,7 +56,6 @@ public class TypeHelperTests : TestClass
 		var result = TypeHelper.Create<Person<Address>>();
 
 		Assert.IsNotNull(result);
-
 	}
 
 	[TestMethod]
@@ -66,7 +64,6 @@ public class TypeHelperTests : TestClass
 		var result = TypeHelper.Create<Person<Address>>("TESTID", "DOTNETDAVE@LIVE.COM");
 
 		Assert.IsNotNull(result);
-
 	}
 
 	[TestMethod]
@@ -76,7 +73,6 @@ public class TypeHelperTests : TestClass
 		var testPerson = person;
 
 		Assert.IsTrue(TypeHelper.DoesObjectEqualInstance(person, testPerson));
-
 	}
 
 	[TestMethod]
@@ -86,13 +82,16 @@ public class TypeHelperTests : TestClass
 		var testPerson = RandomData.GeneratePersonRef<Address>();
 
 		Assert.IsFalse(TypeHelper.DoesObjectEqualInstance(person, testPerson));
-
 	}
 
 	[TestMethod]
 	public void FindDerivedTypes_Directory()
 	{
-		var result = TypeHelper.FindDerivedTypes(new DirectoryInfo(App.ExecutingFolder()), SearchOption.AllDirectories, typeof(MulticastDelegate), true);
+		var result = TypeHelper.FindDerivedTypes(
+			new DirectoryInfo(App.ExecutingFolder()),
+			SearchOption.AllDirectories,
+			typeof(MulticastDelegate),
+			true);
 
 		Assert.IsTrue(result.HasItems());
 	}
@@ -120,20 +119,19 @@ public class TypeHelperTests : TestClass
 		var json = person.ToJson();
 
 		Assert.IsNotNull(TypeHelper.FromJson<Person<Address>>(json));
-
 	}
 
 	[TestMethod]
 	public void FromJsonFile01()
 	{
 		var person = RandomData.GeneratePersonRef<Address>();
-		var fileName = Path.Combine(App.ExecutingFolder(), "testjson.json");
+		var fileName = RandomData.GenerateRandomFileName();
+
 		person.ToJsonFile(new FileInfo(fileName));
 
 		Assert.IsNotNull(TypeHelper.FromJsonFile<Person<Address>>(new FileInfo(fileName)));
 
 		File.Delete(fileName);
-
 	}
 
 	[TestMethod]
@@ -142,7 +140,6 @@ public class TypeHelperTests : TestClass
 		var result = TypeHelper.GetDefault<AccessControlType>();
 
 		Assert.IsNotNull(result);
-
 	}
 
 	[TestMethod]
@@ -167,11 +164,21 @@ public class TypeHelperTests : TestClass
 
 		var result = TypeHelper.GetTypeDisplayName(person);
 
-		Assert.IsTrue(string.Compare(result, "DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address>", StringComparison.Ordinal) == 0);
+		Assert.IsTrue(
+			string.Compare(
+					result,
+					"DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address>",
+					StringComparison.Ordinal) ==
+				0);
 
 		result = TypeHelper.GetTypeDisplayName(person, true);
 
-		Assert.IsTrue(string.Compare(result, "DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address>", StringComparison.Ordinal) == 0);
+		Assert.IsTrue(
+			string.Compare(
+					result,
+					"DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address>",
+					StringComparison.Ordinal) ==
+				0);
 
 		result = TypeHelper.GetTypeDisplayName(typeof(int), true, true, true, '-');
 
@@ -230,5 +237,4 @@ public class TypeHelperTests : TestClass
 		// Assert
 		Assert.IsTrue(result);
 	}
-
 }

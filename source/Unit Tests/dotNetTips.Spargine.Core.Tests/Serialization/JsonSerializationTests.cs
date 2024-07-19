@@ -32,7 +32,6 @@ namespace DotNetTips.Spargine.Core.Tests.Serialization;
 [TestClass]
 public class JsonSerializationTests
 {
-
 	[TestMethod]
 	public void JsonEqual_DifferentInputs_ReturnsFalse()
 	{
@@ -112,7 +111,7 @@ public class JsonSerializationTests
 	[TestMethod]
 	public void SerializeDeserializeTestPersonRecord()
 	{
-		var fileName = @"C:\dotNetTips.com\DebugOutput\PersonRecord.json";
+		var fileName = RandomData.GenerateRandomFileName();
 
 		//For debugging
 		var person = RandomData.GeneratePersonRecord();
@@ -130,7 +129,7 @@ public class JsonSerializationTests
 	public void SerializeDeserializeToFileTestPerson()
 	{
 		var person = RandomData.GeneratePersonRef<Address>();
-		var fileName = Path.Combine(Environment.GetEnvironmentVariable(EnvironmentKey.APPDATA.ToString()), "TestData.json");
+		var fileName = RandomData.GenerateRandomFileName();
 
 		try
 		{
@@ -145,7 +144,7 @@ public class JsonSerializationTests
 			Assert.Fail(ex.Message);
 		}
 
-		_ = Assert.ThrowsException<FileNotFoundException>(() => JsonSerialization.DeserializeFromFile<Person<Address>>(new FileInfo($"{fileName}.bogus")));
+		_ = Assert.ThrowsException<FileNotFoundException>(
+			() => JsonSerialization.DeserializeFromFile<Person<Address>>(new FileInfo($"{fileName}.bogus")));
 	}
-
 }

@@ -40,7 +40,6 @@ namespace DotNetTips.Spargine.Tester.Tests;
 [TestClass]
 public class RandomDataTests
 {
-
 	/// <summary>
 	/// The address count
 	/// </summary>
@@ -72,19 +71,21 @@ public class RandomDataTests
 			return;
 		}
 
-		_ = Parallel.ForEach(source: files, body: (fileName) =>
+		_ = Parallel.ForEach(
+			source: files,
+			body: (fileName) =>
 			{
 				try
 				{
 					File.Delete(fileName);
 				}
 				catch (Exception ex) when (ex is ArgumentException ||
-							ex is ArgumentNullException ||
-							ex is System.IO.DirectoryNotFoundException ||
-							ex is IOException ||
-							ex is NotSupportedException ||
-							ex is PathTooLongException ||
-							ex is UnauthorizedAccessException)
+					ex is ArgumentNullException ||
+					ex is System.IO.DirectoryNotFoundException ||
+					ex is IOException ||
+					ex is NotSupportedException ||
+					ex is PathTooLongException ||
+					ex is UnauthorizedAccessException)
 				{
 					Trace.WriteLine(ex.GetAllMessages());
 				}
@@ -111,7 +112,6 @@ public class RandomDataTests
 			Assert.IsTrue(newPeople.FastCount() == Count);
 
 			var test = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToDictionary(p => p.Id);
-
 		}
 		catch (Exception ex)
 		{
@@ -176,7 +176,11 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateAddressCollectionTest()
 	{
-		var addresses = RandomData.GenerateAddressCollection<Models.ValueTypes.Address>(RandomData.GenerateRandomLocationData().country, AddressCount, 100, 50);
+		var addresses = RandomData.GenerateAddressCollection<Models.ValueTypes.Address>(
+			RandomData.GenerateRandomLocationData().country,
+			AddressCount,
+			100,
+			50);
 
 		Assert.IsNotNull(addresses);
 
@@ -188,7 +192,9 @@ public class RandomDataTests
 	{
 		var country = RandomData.GenerateRandomLocationData().country;
 
-		var countryName = Enum.TryParse<CountryName>(country.Name, out var countryNameResult) ? countryNameResult : CountryName.UnitedStates;
+		var countryName = Enum.TryParse<CountryName>(country.Name, out var countryNameResult)
+			? countryNameResult
+			: CountryName.UnitedStates;
 
 		var addresses = RandomData.GenerateAddressRecordCollection(countryName, AddressCount, 100, 50);
 
@@ -316,7 +322,12 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateFilesWithPathTest()
 	{
-		var files = RandomData.GenerateFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify), Count, FileLength);
+		var files = RandomData.GenerateFiles(
+			Environment.GetFolderPath(
+				Environment.SpecialFolder.ApplicationData,
+				Environment.SpecialFolderOption.DoNotVerify),
+			Count,
+			FileLength);
 
 		Assert.IsNotNull(files);
 
@@ -328,7 +339,7 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateFileTest()
 	{
-		var fileName = RandomData.GenerateFile(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify), "UnitTest.test"), fileLength: FileLength);
+		var fileName = RandomData.GenerateFile(RandomData.GenerateRandomFileName(), fileLength: FileLength);
 
 		Assert.IsNotNull(fileName);
 
@@ -404,7 +415,9 @@ public class RandomDataTests
 
 		Assert.IsTrue(people.Count == AddressCount);
 
-		JsonSerialization.SerializeToFile(people, new FileInfo(Path.Combine(App.ExecutingFolder(), "PeopleRecord.json")));
+		JsonSerialization.SerializeToFile(
+			people,
+			new FileInfo(Path.Combine(App.ExecutingFolder(), "PeopleRecord.json")));
 	}
 
 	[TestMethod]
@@ -427,7 +440,9 @@ public class RandomDataTests
 
 		Assert.IsTrue(person.Addresses.FastCount() == AddressCount);
 
-		JsonSerialization.SerializeToFile(person, new FileInfo(Path.Combine(App.ExecutingFolder(), "PersonRecord.json")));
+		JsonSerialization.SerializeToFile(
+			person,
+			new FileInfo(Path.Combine(App.ExecutingFolder(), "PersonRecord.json")));
 	}
 
 	[TestMethod]
@@ -527,7 +542,12 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateRandomFileNameAllParamsTest()
 	{
-		var stringValue = RandomData.GenerateRandomFileName(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify), fileNameLength: 10, extension: FileExtension);
+		var stringValue = RandomData.GenerateRandomFileName(
+			Environment.GetFolderPath(
+				Environment.SpecialFolder.ApplicationData,
+				Environment.SpecialFolderOption.DoNotVerify),
+			fileNameLength: 10,
+			extension: FileExtension);
 
 		Assert.IsNotNull(stringValue);
 
@@ -785,7 +805,8 @@ public class RandomDataTests
 	{
 		try
 		{
-			var people = new ReadOnlySequence<Models.RefTypes.Person<Models.RefTypes.Address>>(RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToArray());
+			var people = new ReadOnlySequence<Models.RefTypes.Person<Models.RefTypes.Address>>(
+				RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToArray());
 
 			var newPeople = new List<Models.RefTypes.Person<Models.RefTypes.Address>>();
 
@@ -840,5 +861,4 @@ public class RandomDataTests
 
 		Debug.WriteLine(person2.PropertiesToString());
 	}
-
 }
