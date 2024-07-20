@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-19-2024
+// Last Modified On : 07-20-2024
 // ***********************************************************************
 // <copyright file="AddressRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -35,14 +35,13 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// Represents an address record with detailed information such as address lines, city, state, country, postal code, and phone number.
 /// This record is designed to be used in various scenarios where address information is required.
 /// </summary>
-[DataContract(Name = "addressRecord", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
+[DataContract(Name = "addressRecord")]
 [DebuggerDisplay("{Id}")]
 [Serializable]
-[XmlRoot(ElementName = "AddressRecord", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
+[XmlRoot(ElementName = "AddressRecord")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public sealed record AddressRecord : IDataRecord
 {
-
 	/// <summary>
 	/// The address1
 	/// </summary>
@@ -136,7 +135,16 @@ public sealed record AddressRecord : IDataRecord
 	/// <param name="postalCode">The postal code of the address.</param>
 	/// <param name="phone">The phone number associated with the address (optional).</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="id"/> is null.</exception>
-	public AddressRecord([NotNull] string id, string address1, string address2, string city, string state, string countyProvince, string country, string postalCode, string phone) : this(id)
+	public AddressRecord(
+		[NotNull] string id,
+		string address1,
+		string address2,
+		string city,
+		string state,
+		string countyProvince,
+		string country,
+		string postalCode,
+		string phone) : this(id)
 	{
 		this.Address1 = address1;
 		this.Address2 = address2;
@@ -269,9 +277,7 @@ public sealed record AddressRecord : IDataRecord
 			}
 
 			this._city = value.HasValue(0, 150) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.City),
-					Resources.CityLengthIsLimitedToCharacters)
+				? throw new ArgumentOutOfRangeException(nameof(this.City), Resources.CityLengthIsLimitedToCharacters)
 				: value;
 		}
 	}
@@ -330,7 +336,11 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			this._countyProvince = value?.Length > 50 ? throw new ArgumentOutOfRangeException(nameof(this.CountyProvince), Resources.CountyProvinceLengthIsLimitedTo50Character) : value;
+			this._countyProvince = value?.Length > 50
+				? throw new ArgumentOutOfRangeException(
+					nameof(this.CountyProvince),
+					Resources.CountyProvinceLengthIsLimitedTo50Character)
+				: value;
 		}
 	}
 
@@ -457,5 +467,4 @@ public sealed record AddressRecord : IDataRecord
 				: value;
 		}
 	}
-
 }

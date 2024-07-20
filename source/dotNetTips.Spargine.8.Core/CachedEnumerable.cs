@@ -36,7 +36,6 @@ namespace DotNetTips.Spargine.Core;
 [Information(nameof(CachedEnumerable), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 public static class CachedEnumerable
 {
-
 	/// <summary>
 	/// Creates a cached version of the specified enumerable.
 	/// </summary>
@@ -51,7 +50,6 @@ public static class CachedEnumerable
 
 		return new(enumerable);
 	}
-
 }
 
 /// <summary>
@@ -66,7 +64,6 @@ public static class CachedEnumerable
 [Information(nameof(CachedEnumerable<T>), Status = Status.Available)]
 public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable<T>, IDisposable
 {
-
 	/// <summary>
 	/// The cache used to store enumerated elements.
 	/// </summary>
@@ -88,7 +85,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	private IEnumerator<T> _enumerator;
 
 	/// <summary>
-	/// Finalizes an instance of the <see cref="CachedEnumerable{T}" /> class.
+	/// Finalizes an instance of the <see cref="CachedEnumerable{T}"/> class.
 	/// </summary>
 	~CachedEnumerable() => this.Dispose(false);
 
@@ -223,5 +220,4 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// The underlying enumerable sequence that is being cached.
 	/// </summary>
 	private readonly IEnumerable<T> _enumerable = enumerable;
-
 }

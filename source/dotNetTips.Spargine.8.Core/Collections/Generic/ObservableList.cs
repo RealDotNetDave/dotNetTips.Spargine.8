@@ -24,19 +24,13 @@ using System.Diagnostics.CodeAnalysis;
 namespace DotNetTips.Spargine.Core.Collections.Generic;
 
 /// <summary>
-/// Represents a collection of objects that can be individually accessed by index. Provides notifications when items get added, removed, or when the whole list is refreshed.
-/// Implements the <see cref="ISet{T}" />, <see cref="IReadOnlyCollection{T}" />, <see cref="INotifyCollectionChanged" />, <see cref="INotifyPropertyChanged" />, and <see cref="INotifyPropertyChanging" /> interfaces.
+/// Represents a dynamic data collection that provides notifications when items get added, removed, or when the whole list is refreshed.
+/// This collection also implements the <see cref="ISet{T}"/> interface, providing set operations.
 /// </summary>
 /// <typeparam name="T">The type of elements in the list.</typeparam>
-/// <seealso cref="ISet{T}" />
-/// <seealso cref="IReadOnlyCollection{T}" />
-/// <seealso cref="INotifyCollectionChanged" />
-/// <seealso cref="INotifyPropertyChanged" />
-/// <seealso cref="INotifyPropertyChanging" />
 [Information("From .NET EF Core source.", author: "David McCarter", createdOn: "7/31/2020", Status = Status.Available)]
 public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollectionChanged, INotifyPropertyChanged, INotifyPropertyChanging
 {
-
 	/// <summary>
 	/// The underlying <see cref="HashSet{T}"/> used to store elements of the set.
 	/// </summary>
@@ -74,17 +68,18 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="ObservableList{T}" /> class
+	/// Initializes a new instance of the <see cref="ObservableList{T}"/> class
 	/// that uses the specified equality comparer for the set type, contains elements
 	/// copied from the specified collection, and has sufficient capacity to accommodate
 	/// the number of elements copied.
 	/// </summary>
 	/// <param name="collection">The collection whose elements are copied to the new set.</param>
-	/// <param name="comparer">The <see cref="IEqualityComparer{T}" /> implementation to use when
-	/// comparing values in the set, or null to use the default <see cref="IEqualityComparer{T}" />
+	/// <param name="comparer">The <see cref="IEqualityComparer{T}"/> implementation to use when
+	/// comparing values in the set, or null to use the default <see cref="IEqualityComparer{T}"/>
 	/// implementation for the set type.</param>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public ObservableList(IEnumerable<T> collection, IEqualityComparer<T> comparer) => this._set = new HashSet<T>(collection, comparer);
+	public ObservableList(IEnumerable<T> collection, IEqualityComparer<T> comparer) => this._set =
+		new HashSet<T>(collection, comparer);
 
 	/// <summary>
 	/// Occurs when the contents of the collection changes.
@@ -110,7 +105,7 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	public event PropertyChangingEventHandler PropertyChanging;
 
 	/// <summary>
-	/// Adds an item to the <see cref="ObservableList{T}" />.
+	/// Adds an item to the <see cref="ObservableList{T}"/>.
 	/// </summary>
 	/// <param name="item">The object to add to the collection.</param>
 	void ICollection<T>.Add(T item) => this.Add(item);
@@ -141,8 +136,8 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// <remarks>
 	/// This method raises the <see cref="CollectionChanged"/> event with the specified action and item.
 	/// </remarks>
-	private void OnCollectionChanged(NotifyCollectionChangedAction action, T item)
-		=> this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(action, item));
+	private void OnCollectionChanged(NotifyCollectionChangedAction action, T item) => this.OnCollectionChanged(
+		new NotifyCollectionChangedEventArgs(action, item));
 
 	/// <summary>
 	/// Called when the collection changes, specifically when items are replaced.
@@ -153,8 +148,8 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// This method raises the <see cref="CollectionChanged"/> event with <see cref="NotifyCollectionChangedAction.Replace"/> action,
 	/// providing the old items and new items involved in the change.
 	/// </remarks>
-	private void OnCollectionChanged(IList newItems, IList oldItems)
-		=> this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, newItems, oldItems));
+	private void OnCollectionChanged(IList newItems, IList oldItems) => this.OnCollectionChanged(
+		new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, newItems, oldItems));
 
 	/// <summary>
 	/// Called when the "Count" property value has changed.
@@ -180,8 +175,9 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// <remarks>
 	/// This method is called to notify listeners that the collection has changed. The change details are encapsulated in the <paramref name="e"/> parameter.
 	/// </remarks>
-	protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
-		=> this.CollectionChanged?.Invoke(this, e);
+	protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e) => this.CollectionChanged?.Invoke(
+		this,
+		e);
 
 	/// <summary>
 	/// Raises the <see cref="PropertyChanged"/> event.
@@ -190,8 +186,7 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// <remarks>
 	/// This method is called to notify listeners that a property value has changed. The property that changed is specified in the <paramref name="e"/> parameter.
 	/// </remarks>
-	protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
-		=> this.PropertyChanged?.Invoke(this, e);
+	protected virtual void OnPropertyChanged(PropertyChangedEventArgs e) => this.PropertyChanged?.Invoke(this, e);
 
 	/// <summary>
 	/// Raises the <see cref="PropertyChanging"/> event.
@@ -200,14 +195,13 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// <remarks>
 	/// This method is called to notify listeners that a property of the <see cref="ObservableList{T}"/> is about to change.
 	/// </remarks>
-	protected virtual void OnPropertyChanging(PropertyChangingEventArgs e)
-		=> this.PropertyChanging?.Invoke(this, e);
+	protected virtual void OnPropertyChanging(PropertyChangingEventArgs e) => this.PropertyChanging?.Invoke(this, e);
 
 	/// <summary>
 	/// Adds the specified element to the <see cref="ObservableList{T}"/>.
 	/// </summary>
 	/// <param name="item">The element to add to the set.</param>
-	/// <returns><see langword="true" /> if the element is added to the <see cref="ObservableList{T}"/>; <see langword="false" /> if the element is already present.</returns>
+	/// <returns><see langword="true"/> if the element is added to the <see cref="ObservableList{T}"/>; <see langword="false"/> if the element is already present.</returns>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public virtual bool Add(T item)
 	{
@@ -263,7 +257,7 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// Determines whether the <see cref="ObservableList{T}"/> contains the specified element.
 	/// </summary>
 	/// <param name="item">The element to locate in the <see cref="ObservableList{T}"/>.</param>
-	/// <returns><see langword="true" /> if the <see cref="ObservableList{T}"/> contains the specified element; otherwise, <see langword="false" />.</returns>
+	/// <returns><see langword="true"/> if the <see cref="ObservableList{T}"/> contains the specified element; otherwise, <see langword="false"/>.</returns>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public virtual bool Contains([NotNullWhen(true)] T item)
 	{
@@ -292,7 +286,8 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> is null.</exception>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public virtual void CopyTo([NotNull] T[] array, int arrayIndex) => this._set.CopyTo(array.ArgumentNotNull(), arrayIndex);
+	public virtual void CopyTo([NotNull] T[] array, int arrayIndex) => this._set
+		.CopyTo(array.ArgumentNotNull(), arrayIndex);
 
 	/// <summary>
 	/// Copies the specified number of elements of the <see cref="ObservableList{T}"/> to an array, starting at the specified array index.
@@ -303,7 +298,8 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// <param name="count">The number of elements to copy to <paramref name="array"/>.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> is null.</exception>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public virtual void CopyTo([NotNull] T[] array, int arrayIndex, int count) => this._set.CopyTo(array.ArgumentNotNull(), arrayIndex, count);
+	public virtual void CopyTo([NotNull] T[] array, int arrayIndex, int count) => this._set
+		.CopyTo(array.ArgumentNotNull(), arrayIndex, count);
 
 	/// <summary>
 	/// Removes all elements in the specified collection from the current set.
@@ -382,37 +378,41 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// <param name="other">The collection to compare to the current <see cref="ObservableList{T}"/>.</param>
 	/// <returns><see langword="true"/> if the current <see cref="ObservableList{T}"/> is a proper subset of <paramref name="other"/>; otherwise, <see langword="false"/>.</returns>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public virtual bool IsProperSubsetOf([NotNullWhen(true)] IEnumerable<T> other) => this._set.IsProperSubsetOf(other.ArgumentNotNull());
+	public virtual bool IsProperSubsetOf([NotNullWhen(true)] IEnumerable<T> other) => this._set
+		.IsProperSubsetOf(other.ArgumentNotNull());
 
 	/// <summary>
 	/// Determines whether the <see cref="ObservableList{T}"/> is a proper superset of the specified collection.
 	/// </summary>
 	/// <param name="other">The collection to compare to the current <see cref="ObservableList{T}"/>.</param>
-	/// <returns><see langword="true" /> if the <see cref="ObservableList{T}"/> is a proper superset of <paramref name="other"/>; otherwise, <see langword="false" />.</returns>
+	/// <returns><see langword="true"/> if the <see cref="ObservableList{T}"/> is a proper superset of <paramref name="other"/>; otherwise, <see langword="false"/>.</returns>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public virtual bool IsProperSupersetOf([NotNullWhen(true)] IEnumerable<T> other) => this._set.IsProperSupersetOf(other.ArgumentNotNull());
+	public virtual bool IsProperSupersetOf([NotNullWhen(true)] IEnumerable<T> other) => this._set
+		.IsProperSupersetOf(other.ArgumentNotNull());
 
 	/// <summary>
 	/// Determines whether the <see cref="ObservableList{T}"/> is a subset of the specified collection.
 	/// </summary>
 	/// <param name="other">The collection to compare to the current <see cref="ObservableList{T}"/>.</param>
-	/// <returns><see langword="true" /> if the <see cref="ObservableList{T}"/> is a subset of <paramref name="other"/>; otherwise, <see langword="false" />.</returns>
+	/// <returns><see langword="true"/> if the <see cref="ObservableList{T}"/> is a subset of <paramref name="other"/>; otherwise, <see langword="false"/>.</returns>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public virtual bool IsSubsetOf([NotNullWhen(true)] IEnumerable<T> other) => this._set.IsSubsetOf(other.ArgumentNotNull());
+	public virtual bool IsSubsetOf([NotNullWhen(true)] IEnumerable<T> other) => this._set
+		.IsSubsetOf(other.ArgumentNotNull());
 
 	/// <summary>
 	/// Determines whether the <see cref="ObservableList{T}"/> is a superset of the specified collection.
 	/// </summary>
 	/// <param name="other">The collection to compare to the current <see cref="ObservableList{T}"/>.</param>
-	/// <returns><see langword="true" /> if the <see cref="ObservableList{T}"/> is a superset of <paramref name="other"/>; otherwise, <see langword="false" />.</returns>
+	/// <returns><see langword="true"/> if the <see cref="ObservableList{T}"/> is a superset of <paramref name="other"/>; otherwise, <see langword="false"/>.</returns>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public virtual bool IsSupersetOf([NotNullWhen(true)] IEnumerable<T> other) => this._set.IsSupersetOf(other.ArgumentNotNull());
+	public virtual bool IsSupersetOf([NotNullWhen(true)] IEnumerable<T> other) => this._set
+		.IsSupersetOf(other.ArgumentNotNull());
 
 	/// <summary>
 	/// Determines whether the current <see cref="ObservableList{T}"/> overlaps with the specified collection.
 	/// </summary>
 	/// <param name="other">The collection to compare to the current <see cref="ObservableList{T}"/>.</param>
-	/// <returns><see langword="true" /> if the current set and the specified collection share at least one common element; otherwise, <see langword="false"/>.</returns>
+	/// <returns><see langword="true"/> if the current set and the specified collection share at least one common element; otherwise, <see langword="false"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="other"/> is <see langword="null"/>.</exception>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public virtual bool Overlaps([NotNull] IEnumerable<T> other) => this._set.Overlaps(other.ArgumentNotNull());
@@ -484,7 +484,7 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// Determines whether the current <see cref="ObservableList{T}"/> contains the same elements as the specified collection.
 	/// </summary>
 	/// <param name="other">The collection to compare to the current <see cref="ObservableList{T}"/>.</param>
-	/// <returns><see langword="true" /> if the current <see cref="ObservableList{T}"/> set is equal to the specified collection; otherwise, <see langword="false" />.</returns>
+	/// <returns><see langword="true"/> if the current <see cref="ObservableList{T}"/> set is equal to the specified collection; otherwise, <see langword="false"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="other"/> is <see langword="null"/>.</exception>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public virtual bool SetEquals([NotNull] IEnumerable<T> other) => this._set.SetEquals(other.ArgumentNotNull());
@@ -573,5 +573,4 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// </summary>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public virtual bool IsReadOnly => ((ICollection<T>)this._set).IsReadOnly;
-
 }

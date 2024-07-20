@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 07-20-2024
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -46,7 +46,6 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 {
-
 	/// <summary>
 	/// The addresses
 	/// </summary>
@@ -109,7 +108,8 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public PersonRecord()
-	{ }
+	{
+	}
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="PersonRecord"/> class with specified email and identifier.
@@ -118,8 +118,9 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <param name="id">The unique identifier for the person. Must not exceed 50 characters.</param>
 	/// <exception cref="ValidationException">Thrown if the email or id does not meet the specified criteria.</exception>
 	[JsonConstructor]
-	public PersonRecord([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
-	[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
+	public PersonRecord(
+		[NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
+		[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
 	{
 		this.Email = email;
 		this.Id = id;
@@ -131,7 +132,9 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
 	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
 	/// <returns><c>true</c> if the left instance is less than the right instance; otherwise, <c>false</c>.</returns>
-	public static bool operator <(PersonRecord left, PersonRecord right) => left is null ? right is not null : left.CompareTo(right) < 0;
+	public static bool operator <(PersonRecord left, PersonRecord right) => left is null
+		? right is not null
+		: left.CompareTo(right) < 0;
 
 	/// <summary>
 	/// Implements the less than or equal to operator for comparing two instances of <see cref="PersonRecord"/>.
@@ -147,7 +150,8 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
 	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
 	/// <returns><c>true</c> if the left instance is greater than the right instance; otherwise, <c>false</c>.</returns>
-	public static bool operator >(PersonRecord left, PersonRecord right) => left is not null && left.CompareTo(right) > 0;
+	public static bool operator >(PersonRecord left, PersonRecord right) => left is not null &&
+		left.CompareTo(right) > 0;
 
 	/// <summary>
 	/// Implements the greater than or equal to operator for comparing two instances of <see cref="PersonRecord"/>.
@@ -155,7 +159,9 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
 	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
 	/// <returns><c>true</c> if the left instance is greater than or equal to the right instance; otherwise, <c>false</c>.</returns>
-	public static bool operator >=(PersonRecord left, PersonRecord right) => left is null ? right is null : left.CompareTo(right) >= 0;
+	public static bool operator >=(PersonRecord left, PersonRecord right) => left is null
+		? right is null
+		: left.CompareTo(right) >= 0;
 
 	/// <summary>
 	/// Calculates the age of the person based on their birth date and the current UTC date.
@@ -286,7 +292,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[JsonIgnore]
 	[XmlArray("Addresses")]
-	[XmlArrayItem("Address")]
 	[MemberNotNull(nameof(_addresses))]
 	public Collection<AddressRecord> AddressesSerilization
 	{
@@ -336,9 +341,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 			}
 
 			this._bornOn = value.ToUniversalTime() > DateTimeOffset.UtcNow
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.BornOn),
-					Resources.PersonBornOnCannotBeInTheFuture)
+				? throw new ArgumentOutOfRangeException(nameof(this.BornOn), Resources.PersonBornOnCannotBeInTheFuture)
 				: value;
 		}
 	}
@@ -546,5 +549,4 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 				: value;
 		}
 	}
-
 }

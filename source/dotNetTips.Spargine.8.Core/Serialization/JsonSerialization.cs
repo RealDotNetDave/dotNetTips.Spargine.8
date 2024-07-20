@@ -1,21 +1,19 @@
+
+
 // ***********************************************************************
 // Assembly         : DotNetTips.Spargine.8.Core
 // Author           : David McCarter
-// Created          : 02-21-2021
+// Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-19-2024
 // ***********************************************************************
-// <copyright file="JsonSerialization.cs" company="McCarter Consulting">
+// <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// This class simplifies the process of serializing and deserializing
-// strings to and from JSON format using the JsonSerializer. JSON
-// serialization is a widely adopted and efficient method for storing
-// and exchanging data in various applications and APIs.
-// </summary>
+// <summary></summary>
 // ***********************************************************************
+
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -32,13 +30,9 @@ namespace DotNetTips.Spargine.Core.Serialization;
 /// </summary>
 public static class JsonSerialization
 {
-
 	/// <summary>
 	/// Specifies options for JSON serialization and deserialization.
 	/// </summary>
-	/// <remarks>
-	/// This includes settings such as number handling to allow reading from and writing numbers as strings.
-	/// </remarks>
 	private static readonly JsonSerializerOptions _options = new()
 	{
 		NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString
@@ -50,7 +44,7 @@ public static class JsonSerialization
 	/// <param name="expected">The expected <see cref="JsonElement"/> structure.</param>
 	/// <param name="actual">The actual <see cref="JsonElement"/> structure to compare against the expected.</param>
 	/// <returns><c>true</c> if both <see cref="JsonElement"/> instances are equal; otherwise, <c>false</c>.</returns>
-	/// <exception cref="NotSupportedException">Thrown when an undefined or unexpected <see cref="JsonValueKind"/> is encountered.</exception>
+	/// <exception cref="NotSupportedException">Thrown when encountering an undefined or unexpected JsonValueKind.</exception>
 	/// <remarks>
 	/// This method performs a deep comparison of the contents of two <see cref="JsonElement"/> instances,
 	/// including objects, arrays, and primitive values. It is designed to handle complex JSON structures
@@ -97,22 +91,24 @@ public static class JsonSerialization
 				return true;
 			case JsonValueKind.Array:
 				using (var expectedEnumerator = actual.EnumerateArray())
-				using (var actualEnumerator = expected.EnumerateArray())
 				{
-					while (expectedEnumerator.MoveNext())
+					using (var actualEnumerator = expected.EnumerateArray())
 					{
-						if (!actualEnumerator.MoveNext())
+						while (expectedEnumerator.MoveNext())
 						{
-							return false;
+							if (!actualEnumerator.MoveNext())
+							{
+								return false;
+							}
+
+							if (!JsonEqual(expectedEnumerator.Current, actualEnumerator.Current))
+							{
+								return false;
+							}
 						}
 
-						if (!JsonEqual(expectedEnumerator.Current, actualEnumerator.Current))
-						{
-							return false;
-						}
+						return !actualEnumerator.MoveNext();
 					}
-
-					return !actualEnumerator.MoveNext();
 				}
 
 			case JsonValueKind.String:
@@ -135,21 +131,22 @@ public static class JsonSerialization
 	/// <typeparam name="TResult">The type of the object to deserialize to.</typeparam>
 	/// <param name="json">The JSON string to deserialize.</param>
 	/// <returns>An instance of <typeparamref name="TResult"/> deserialized from the JSON string.</returns>
-	/// <exception cref="InvalidOperationException">Thrown if deserialization fails or the result is null.</exception>
-	/// <remarks>
-	/// This method uses the configured <see cref="JsonSerializerOptions"/> for deserialization.
+	/// <exception cref="InvalidOperationException">Failed to deserialize the JSON string to {typeof(TResult)}.</exception>
+	/// <remarks>This method uses the configured <see cref="JsonSerializerOptions"/> for deserialization.
 	/// It throws an <see cref="InvalidOperationException"/> if the deserialization process fails
-	/// or if the result is null, ensuring that a valid object is always returned.
-	/// </remarks>
+	/// or if the result is null, ensuring that a valid object is always returned.</remarks>
 	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json) => JsonSerializer.Deserialize<TResult>(json, _options) ?? throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
+	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json) => JsonSerializer.Deserialize<TResult>(
+			json,
+			_options) ??
+		throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
 
 	/// <summary>
-	/// Deserializes JSON content from a specified file into an object of type <typeparamref name="TResult" />.
+	/// Deserializes JSON content from a specified file into an object of type <typeparamref name="TResult"/>.
 	/// </summary>
 	/// <typeparam name="TResult">The type of the object to deserialize the JSON content into.</typeparam>
 	/// <param name="file">The file containing the JSON content to deserialize.</param>
-	/// <returns>An instance of <typeparamref name="TResult" /> deserialized from the JSON content in the file.</returns>
+	/// <returns>An instance of <typeparamref name="TResult"/> deserialized from the JSON content in the file.</returns>
 	/// <exception cref="FileNotFoundException">Thrown if the specified file does not exist.</exception>
 	[Information(nameof(DeserializeFromFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : class
@@ -183,35 +180,39 @@ public static class JsonSerialization
 	}
 
 	/// <summary>
-	/// Serializes the specified object to a JSON string using configured JsonSerializerOptions.
+	/// Serializes the specified object to a JSON string.
 	/// </summary>
 	/// <param name="obj">The object to serialize.</param>
 	/// <returns>A JSON string representation of the object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the input object is null.</exception>
+	/// <remarks>This method uses the configured JsonSerializerOptions for serialization.
+	/// It ensures that the serialized string is in a format that can be easily deserialized back into an object.</remarks>
 	[Information(nameof(Serialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string Serialize([NotNull] object obj)
 	{
 		obj = obj.ArgumentNotNull();
+
 		//return JsonSerializer.Serialize(obj, _options);
 		return JsonSerializer.Serialize(obj);
 	}
 
 	/// <summary>
-	/// Serializes the specified object to a JSON file using configured JsonSerializerOptions.
+	/// Serializes the specified object to a JSON file.
 	/// </summary>
 	/// <param name="obj">The object to serialize.</param>
 	/// <param name="file">The file information where the JSON content will be written.</param>
 	/// <exception cref="ArgumentNullException">Thrown if the input object or file is null.</exception>
-	/// <remarks>This method ensures that all directories and subdirectories in the specified path are created unless they already exist before writing the JSON content.</remarks>
+	/// <remarks>This method ensures that all directories and subdirectories in the specified path are created unless they already exist before writing the JSON content.
+	/// Utilizes the configured JsonSerializerOptions for serialization.</remarks>
 	[Information(nameof(SerializeToFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void SerializeToFile([NotNull] object obj, [NotNull] FileInfo file)
 	{
 		obj = obj.ArgumentNotNull();
+
 		file = file.ArgumentNotNull();
 
-		file.Directory?.Create(); // Creates all directories and subdirectories in the specified path unless they already exist.
+		file.Directory?.Create();
 
 		File.WriteAllText(file.FullName, Serialize(obj));
 	}
-
 }

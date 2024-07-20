@@ -4,7 +4,7 @@
 // Created          : 06-04-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-20-2024
 // ***********************************************************************
 // <copyright file="Coordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -38,13 +38,12 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// It implements <see cref="ICoordinate"/>, <see cref="IEquatable{Coordinate}"/>,
 /// <see cref="IComparable"/>, and <see cref="IComparable{Coordinate}"/> interfaces.
 /// </remarks>
-[DataContract(Name = "coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
+[DataContract(Name = "coordinate")]
 [Serializable]
-[XmlRoot(ElementName = "Coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
+[XmlRoot(ElementName = "Coordinate")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coordinate>, IComparable, IComparable<Coordinate>
 {
-
 	/// <summary>
 	/// Implements the inequality operator. Checks if two <see cref="Coordinate"/> instances are not equal.
 	/// </summary>
@@ -106,7 +105,9 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	{
 		if (obj is not Coordinate)
 		{
-			ExceptionThrower.ThrowArgumentInvalidException(string.Format(CultureInfo.CurrentCulture, Resources.ObjectIsNotType, nameof(obj), nameof(Coordinate)), nameof(obj));
+			ExceptionThrower.ThrowArgumentInvalidException(
+				string.Format(CultureInfo.CurrentCulture, Resources.ObjectIsNotType, nameof(obj), nameof(Coordinate)),
+				nameof(obj));
 		}
 
 		return this.CompareTo((Coordinate)obj);
@@ -195,5 +196,4 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	[JsonPropertyName("z")]
 	[XmlElement]
 	public int Z { get; set; } = z;
-
 }

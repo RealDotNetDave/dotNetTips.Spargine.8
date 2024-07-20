@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 07-20-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -40,14 +40,14 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// indicating it can serve as a data model with a string identifier and has person-specific properties.
 /// </summary>
 /// <typeparam name="TAddress">The type of address this person can have, constrained to types that implement <see cref="IAddress"/>.</typeparam>
-[DataContract(Name = "person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
+[DataContract(Name = "person")]
 [DebuggerDisplay("{Email}")]
 [Serializable]
-[XmlRoot(ElementName = "Person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
+[XmlRoot(ElementName = "Person")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
-public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<TAddress> where TAddress : IAddress, new()
+public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<TAddress>
+	where TAddress : IAddress, new()
 {
-
 	/// <summary>
 	/// The address collection
 	/// </summary>
@@ -110,7 +110,8 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public Person()
-	{ }
+	{
+	}
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Person{TAddress}"/> class with specified id and email.
@@ -119,8 +120,9 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="email">The email address of the person.</param>
 	/// <exception cref="ValidationException">Thrown when <paramref name="id"/> or <paramref name="email"/> is null or empty.</exception>
 	[JsonConstructor]
-	public Person([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
-	[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
+	public Person(
+		[NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
+		[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
 	{
 		this.Email = email;
 		this.Id = id;
@@ -159,7 +161,9 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
 	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
 	/// <returns>true if both instances are null or if they represent the same value; otherwise, false.</returns>
-	public static bool operator ==(Person<TAddress> left, Person<TAddress> right) => left is null ? right is null : left.Equals(right);
+	public static bool operator ==(Person<TAddress> left, Person<TAddress> right) => left is null
+		? right is null
+		: left.Equals(right);
 
 	/// <summary>
 	/// Implements the greater than operator. Determines whether the left instance is greater than the right instance.
@@ -269,7 +273,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Converts to <see cref="ValueTypes.Person{TAddress}" /> to <see cref="Person{TAddress}" />.
+	/// Converts to <see cref="ValueTypes.Person{TAddress}"/> to <see cref="Person{TAddress}"/>.
 	/// </summary>
 	/// <param name="person">The person.</param>
 	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.Person.</returns>
@@ -294,7 +298,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			foreach (var address in person.Addresses)
 			{
 				newPerson.Addresses.Add(Address.ToAddress(address));
-
 			}
 		}
 
@@ -325,7 +328,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			foreach (var address in person.Addresses)
 			{
 				newPerson.Addresses.Add(Address.ToAddress(address));
-
 			}
 		}
 
@@ -375,7 +377,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[JsonIgnore]
 	[XmlArray("Addresses")]
-	[XmlArrayItem("Address")]
 	[MemberNotNull(nameof(_addresses))]
 	public Collection<TAddress> AddressesSerilization
 	{
@@ -427,9 +428,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			}
 
 			this._bornOn = value.ToUniversalTime() > DateTimeOffset.UtcNow
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.BornOn),
-					Resources.PersonBornOnCannotBeInTheFuture)
+				? throw new ArgumentOutOfRangeException(nameof(this.BornOn), Resources.PersonBornOnCannotBeInTheFuture)
 				: value;
 		}
 	}
@@ -634,5 +633,4 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 				: value;
 		}
 	}
-
 }

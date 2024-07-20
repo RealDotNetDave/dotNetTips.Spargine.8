@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-19-2024
+// Last Modified On : 07-20-2024
 // ***********************************************************************
 // <copyright file="Address.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -35,14 +35,13 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// Represents a physical address. This class cannot be inherited and implements the IAddress interface.
 /// It includes properties for various components of a physical address such as Address1, Address2, City, State, CountyProvince, Country, PostalCode, and Phone.
 /// </summary>
-[DataContract(Name = "address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
+[DataContract(Name = "address")]
 [DebuggerDisplay("{Id}")]
 [Serializable]
-[XmlRoot(ElementName = "Address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
+[XmlRoot(ElementName = "Address")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public sealed class Address : IAddress
 {
-
 	/// <summary>
 	/// The address1
 	/// </summary>
@@ -112,7 +111,8 @@ public sealed class Address : IAddress
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public Address()
-	{ }
+	{
+	}
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Address"/> class with a specified identifier.
@@ -135,7 +135,16 @@ public sealed class Address : IAddress
 	/// <param name="postalCode">The postal code of the address.</param>
 	/// <param name="phone">The phone number associated with the address (optional).</param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="id"/> is null.</exception>
-	public Address([NotNull] string id, string address1, string address2, string city, string state, string countyProvince, string country, string postalCode, string phone) : this(id)
+	public Address(
+		[NotNull] string id,
+		string address1,
+		string address2,
+		string city,
+		string state,
+		string countyProvince,
+		string country,
+		string postalCode,
+		string phone) : this(id)
 	{
 		this.Address1 = address1;
 		this.Address2 = address2;
@@ -161,7 +170,9 @@ public sealed class Address : IAddress
 	/// <param name="left">The left instance of <see cref="Address"/>.</param>
 	/// <param name="right">The right instance of <see cref="Address"/>.</param>
 	/// <returns><c>true</c> if the left instance precedes the right instance in the sort order; otherwise, <c>false</c>.</returns>
-	public static bool operator <(Address left, Address right) => left is null ? right is not null : left.CompareTo(right) < 0;
+	public static bool operator <(Address left, Address right) => left is null
+		? right is not null
+		: left.CompareTo(right) < 0;
 
 	/// <summary>
 	/// Implements the less than or equal to operator. Determines whether the left instance precedes or occurs in the same position in the sort order as the right instance.
@@ -201,14 +212,16 @@ public sealed class Address : IAddress
 	/// <param name="left">The left instance of <see cref="Address"/>.</param>
 	/// <param name="right">The right instance of <see cref="Address"/>.</param>
 	/// <returns><c>true</c> if the left instance follows or occurs in the same position in the sort order as the right instance; otherwise, <c>false</c>.</returns>
-	public static bool operator >=(Address left, Address right) => left is null ? right is null : left.CompareTo(right) >= 0;
+	public static bool operator >=(Address left, Address right) => left is null
+		? right is null
+		: left.CompareTo(right) >= 0;
 
 	/// <summary>
 	/// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
 	/// </summary>
 	/// <param name="other">An object to compare with this instance.</param>
 	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
-	/// <list type="table"><listheader><term> Value</term><description> Meaning</description></listheader><item><term> Less than zero</term><description> This instance precedes <paramref name="other" /> in the sort order.</description></item><item><term> Zero</term><description> This instance occurs in the same position in the sort order as <paramref name="other" />.</description></item><item><term> Greater than zero</term><description> This instance follows <paramref name="other" /> in the sort order.</description></item></list></returns>
+	/// <list type="table"><listheader><term>Value</term><description>Meaning</description></listheader><item><term>Less than zero</term><description>This instance precedes <paramref name="other"/> in the sort order.</description></item><item><term>Zero</term><description>This instance occurs in the same position in the sort order as <paramref name="other"/>.</description></item><item><term>Greater than zero</term><description>This instance follows <paramref name="other"/> in the sort order.</description></item></list></returns>
 	int IComparable<IAddress>.CompareTo(IAddress other)
 	{
 		if (other is null)
@@ -406,9 +419,7 @@ public sealed class Address : IAddress
 			}
 
 			this._city = value.HasValue(0, 150) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.City),
-					Resources.CityLengthIsLimitedToCharacters)
+				? throw new ArgumentOutOfRangeException(nameof(this.City), Resources.CityLengthIsLimitedToCharacters)
 				: value;
 		}
 	}
@@ -467,7 +478,11 @@ public sealed class Address : IAddress
 				return;
 			}
 
-			this._countyProvince = value?.Length > 50 ? throw new ArgumentOutOfRangeException(nameof(this.CountyProvince), Resources.CountyProvinceLengthIsLimitedTo50Character) : value;
+			this._countyProvince = value?.Length > 50
+				? throw new ArgumentOutOfRangeException(
+					nameof(this.CountyProvince),
+					Resources.CountyProvinceLengthIsLimitedTo50Character)
+				: value;
 		}
 	}
 
@@ -594,5 +609,4 @@ public sealed class Address : IAddress
 				: value;
 		}
 	}
-
 }

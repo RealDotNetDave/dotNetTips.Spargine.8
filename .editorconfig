@@ -2083,7 +2083,7 @@ dotnet_diagnostic.IDE0077.severity = warning
 
 #### StyleCop Rules ####
 
-#A violation of this rule occurs when a compilation (project) contains one or more files which are parsed with the DocumentationMode set to None. This most frequently occurs when the project is configured to not produce an XML documentation file during the build.
+# A violation of this rule occurs when a compilation (project) contains one or more files which are parsed with the DocumentationMode set to None. This most frequently occurs when the project is configured to not produce an XML documentation file during the build.
 dotnet_diagnostic.SA0001.severity = warning
 
 # The spacing around a C# keyword is incorrect.

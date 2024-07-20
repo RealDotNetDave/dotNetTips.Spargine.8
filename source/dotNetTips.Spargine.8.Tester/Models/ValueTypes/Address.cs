@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-19-2024
+// Last Modified On : 07-20-2024
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -36,14 +36,13 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// Represents an address with properties for Address1, Address2, City, Country, CountyProvince, Phone, PostalCode, and State.
 /// This struct implements <see cref="IAddress"/> and <see cref="IEquatable{Address}"/>.
 /// </summary>
-[DataContract(Name = "address", Namespace = "http://dotNetTips.Spargine.Tester.Models.Val")]
+[DataContract(Name = "address")]
 [DebuggerDisplay("{Id}")]
 [Serializable]
-[XmlRoot(ElementName = "Address", Namespace = "http://dotNetTips.Spargine.Tester.Models.Val")]
+[XmlRoot(ElementName = "Address")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public struct Address : IAddress, IEquatable<Address>
 {
-
 	/// <summary>
 	/// The address1
 	/// </summary>
@@ -108,10 +107,12 @@ public struct Address : IAddress, IEquatable<Address>
 	private string _id;
 
 	/// <summary>
-	/// Prevents a default instance of the <see cref="PersonRecord" /> class from being created.
+	/// Prevents a default instance of the <see cref="PersonRecord"/> class from being created.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public Address() { }
+	public Address()
+	{
+	}
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Address"/> struct with a specified identifier.
@@ -122,7 +123,7 @@ public struct Address : IAddress, IEquatable<Address>
 	public Address([NotNull] string id) => this.Id = id;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="AddressRecord" /> class.
+	/// Initializes a new instance of the <see cref="AddressRecord"/> class.
 	/// </summary>
 	/// <param name="id">The identifier.</param>
 	/// <param name="address1">The address1.</param>
@@ -133,7 +134,16 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="country">The country.</param>
 	/// <param name="postalCode">The postal code.</param>
 	/// <param name="phone">The phone.</param>
-	public Address([NotNull] string id, string address1, string address2, string city, string state, string countyProvince, string country, string postalCode, string phone) : this(id)
+	public Address(
+		[NotNull] string id,
+		string address1,
+		string address2,
+		string city,
+		string state,
+		string countyProvince,
+		string country,
+		string postalCode,
+		string phone) : this(id)
 	{
 		this.Address1 = address1;
 		this.Address2 = address2;
@@ -198,7 +208,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// </summary>
 	/// <param name="other">An object to compare with this instance.</param>
 	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
-	/// <list type="table"><listheader><term> Value</term><description> Meaning</description></listheader><item><term> Less than zero</term><description> This instance precedes <paramref name="other" /> in the sort order.</description></item><item><term> Zero</term><description> This instance occurs in the same position in the sort order as <paramref name="other" />.</description></item><item><term> Greater than zero</term><description> This instance follows <paramref name="other" /> in the sort order.</description></item></list></returns>
+	/// <list type="table"><listheader><term>Value</term><description>Meaning</description></listheader><item><term>Less than zero</term><description>This instance precedes <paramref name="other"/> in the sort order.</description></item><item><term>Zero</term><description>This instance occurs in the same position in the sort order as <paramref name="other"/>.</description></item><item><term>Greater than zero</term><description>This instance follows <paramref name="other"/> in the sort order.</description></item></list></returns>
 	readonly int IComparable<IAddress>.CompareTo(IAddress other)
 	{
 		if (other is null)
@@ -217,24 +227,24 @@ public struct Address : IAddress, IEquatable<Address>
 	public readonly int CompareTo(Address address) => this.CompareTo(address);
 
 	/// <summary>
-	/// Determines whether the specified <see cref="object" /> is equal to this instance.
+	/// Determines whether the specified <see cref="object"/> is equal to this instance.
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
-	/// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+	/// <returns><c>true</c> if the specified <see cref="object"/> is equal to this instance; otherwise, <c>false</c>.</returns>
 	public override readonly bool Equals(object obj) => this.Equals(obj);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
-	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
+	/// <returns><see langword="true"/> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <see langword="false"/>.</returns>
 	public readonly bool Equals([NotNull] IAddress other) => this.Equals(other);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
-	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
+	/// <returns><see langword="true"/> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <see langword="false"/>.</returns>
 	public readonly bool Equals(Address other) => this.Equals(other);
 
 	/// <summary>
@@ -258,7 +268,7 @@ public struct Address : IAddress, IEquatable<Address>
 	}
 
 	/// <summary>
-	/// Converts to <see cref=" AddressRecord" /> to <see cref=" Address" />.
+	/// Converts to <see cref=" AddressRecord"/> to <see cref=" Address"/>.
 	/// </summary>
 	/// <param name="address">The address.</param>
 	/// <returns>Address.</returns>
@@ -277,9 +287,9 @@ public struct Address : IAddress, IEquatable<Address>
 		};
 	}
 	/// <summary>
-	/// Returns a <see cref="string" /> that represents this instance.
+	/// Returns a <see cref="string"/> that represents this instance.
 	/// </summary>
-	/// <returns>A <see cref="string" /> that represents this instance.</returns>
+	/// <returns>A <see cref="string"/> that represents this instance.</returns>
 	[DebuggerStepThrough]
 	public override readonly string ToString() => this.PropertiesToString();
 
@@ -363,9 +373,7 @@ public struct Address : IAddress, IEquatable<Address>
 			}
 
 			this._city = value.HasValue(0, 150) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.City),
-					Resources.CityLengthIsLimitedToCharacters)
+				? throw new ArgumentOutOfRangeException(nameof(this.City), Resources.CityLengthIsLimitedToCharacters)
 				: value;
 		}
 	}
@@ -420,7 +428,11 @@ public struct Address : IAddress, IEquatable<Address>
 				return;
 			}
 
-			this._countyProvince = value?.Length > 50 ? throw new ArgumentOutOfRangeException(nameof(this.CountyProvince), Resources.CountyProvinceLengthIsLimitedTo50Character) : value;
+			this._countyProvince = value?.Length > 50
+				? throw new ArgumentOutOfRangeException(
+					nameof(this.CountyProvince),
+					Resources.CountyProvinceLengthIsLimitedTo50Character)
+				: value;
 		}
 	}
 
@@ -539,5 +551,4 @@ public struct Address : IAddress, IEquatable<Address>
 				: value;
 		}
 	}
-
 }
