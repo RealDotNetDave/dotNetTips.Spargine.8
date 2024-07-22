@@ -4,7 +4,7 @@
 // Created          : 04-13-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-02-2024
+// Last Modified On : 07-19-2024
 // ***********************************************************************
 // <copyright file="ValidatorCheckTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -56,8 +56,8 @@ public class ValidatorCheckTests
 		// Test Exception throwing.
 		_ = Assert.ThrowsException<InvalidValueException<Type>>(
 			() => typeof(Person<Address>).CheckEquals(
-			typeof(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<DotNetTips.Spargine.Tester.Models.ValueTypes.Address>),
-			true));
+				typeof(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<DotNetTips.Spargine.Tester.Models.ValueTypes.Address>),
+				true));
 	}
 
 	[TestMethod]

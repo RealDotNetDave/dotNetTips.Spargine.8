@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-20-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -40,10 +40,10 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// indicating it can serve as a data model with a string identifier and has person-specific properties.
 /// </summary>
 /// <typeparam name="TAddress">The type of address this person can have, constrained to types that implement <see cref="IAddress"/>.</typeparam>
-[DataContract(Name = "person")]
+[DataContract(Name = "person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [DebuggerDisplay("{Email}")]
 [Serializable]
-[XmlRoot(ElementName = "Person")]
+[XmlRoot(ElementName = "Person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<TAddress>
 	where TAddress : IAddress, new()
@@ -351,7 +351,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </remarks>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
-	[MemberNotNull(nameof(_addresses))]
 	[XmlIgnore]
 	public Collection<TAddress> Addresses
 	{
@@ -377,7 +376,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[JsonIgnore]
 	[XmlArray("Addresses")]
-	[MemberNotNull(nameof(_addresses))]
 	public Collection<TAddress> AddressesSerilization
 	{
 		get => this._addresses;
@@ -414,7 +412,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </remarks>
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
-	[MemberNotNull(nameof(_bornOn))]
 	[XmlElement]
 	public DateTimeOffset BornOn
 	{
@@ -479,7 +476,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
 	[JsonPropertyName("email")]
 	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
-	[MemberNotNull(nameof(_email))]
 	[XmlElement(IsNullable = false)]
 	public string Email
 	{
@@ -511,7 +507,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DefaultValue("")]
 	[JsonPropertyName("firstName")]
 	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
-	[MemberNotNull(nameof(_firstName))]
 	[XmlElement("FirstName")]
 	public string FirstName
 	{
@@ -552,7 +547,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DisallowNull]
 	[JsonPropertyName("id")]
 	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
-	[MemberNotNull(nameof(_id))]
 	[ReadOnly(true)]
 	[XmlElement(IsNullable = false)]
 	public string Id
@@ -583,7 +577,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DefaultValue("")]
 	[JsonPropertyName("lastName")]
 	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
-	[MemberNotNull(nameof(_lastName))]
 	[XmlElement("LastName")]
 	public string LastName
 	{
@@ -614,7 +607,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
-	[MemberNotNull(nameof(_phone))]
 	[XmlElement]
 	public string Phone
 	{

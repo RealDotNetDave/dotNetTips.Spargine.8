@@ -4,7 +4,7 @@
 // Created          : 12-15-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="PersonName.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -16,19 +16,19 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
-
-
-
+using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace DotNetTips.Spargine.Tester;
 
 /// <summary>
 /// Represents a person's name, including first name, last name, and full name.
 /// </summary>
+[DataContract(Name = "PersonName", Namespace = "http://DotNetTips.Spargine.Tester")]
+[DebuggerDisplay("{FullName}")]
 [Serializable]
 public sealed record PersonName
 {
-
 	/// <summary>
 	/// Initializes a new instance of the <see cref="PersonName"/> class.
 	/// </summary>
@@ -54,6 +54,7 @@ public sealed record PersonName
 	/// Gets the first name.
 	/// </summary>
 	/// <value>The first name.</value>
+	[DataMember(Order = 1)]
 	public string FirstName { get; init; }
 
 	/// <summary>
@@ -66,6 +67,6 @@ public sealed record PersonName
 	/// Gets the last name.
 	/// </summary>
 	/// <value>The last name.</value>
+	[DataMember(Order = 2)]
 	public string LastName { get; init; }
-
 }

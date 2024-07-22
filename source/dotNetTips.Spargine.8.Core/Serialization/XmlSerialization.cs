@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="XmlSerialization.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -31,7 +31,6 @@ namespace DotNetTips.Spargine.Core.Serialization;
 /// </summary>
 public static class XmlSerialization
 {
-
 	/// <summary>
 	/// Deserializes the specified XML string into an object of the specified type.
 	/// </summary>
@@ -40,7 +39,8 @@ public static class XmlSerialization
 	/// <returns>An instance of the specified type containing the deserialized data.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the xml parameter is null or empty.</exception>
 	[Information(nameof(Deserialize), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Xml)] string xml) where TResult : class
+	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Xml)] string xml)
+		where TResult : new()
 	{
 		using (var sr = new StringReader(xml.ArgumentNotNullOrEmpty(true)))
 		{
@@ -59,7 +59,7 @@ public static class XmlSerialization
 	/// <returns>An instance of the specified type containing the deserialized data from the file.</returns>
 	/// <exception cref="FileNotFoundException">Thrown if the specified file does not exist.</exception>
 	[Information(nameof(DeserializeFromFile), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : class
+	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : new()
 	{
 		file = file.ArgumentNotNull();
 
@@ -92,7 +92,6 @@ public static class XmlSerialization
 				return writer.ToString();
 			}
 		}
-
 	}
 
 	/// <summary>
@@ -129,7 +128,9 @@ public static class XmlSerialization
 	/// <returns>An XDocument instance representing the XML content of the input string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the input parameter is null or empty.</exception>
 	[Information(nameof(StringToXDocument), "David McCarter", "9/9/2020", "9/9/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
-	public static XDocument StringToXDocument([NotNull] string input) => StringToXDocument(input.ArgumentNotNullOrEmpty(), null);
+	public static XDocument StringToXDocument([NotNull] string input) => StringToXDocument(
+		input.ArgumentNotNullOrEmpty(),
+		null);
 
 	/// <summary>
 	/// Converts a string to an XDocument securely, with an optional XML resolver.
@@ -151,5 +152,4 @@ public static class XmlSerialization
 			}
 		}
 	}
-
 }

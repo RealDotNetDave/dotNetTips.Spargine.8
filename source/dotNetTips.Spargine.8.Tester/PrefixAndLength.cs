@@ -4,7 +4,7 @@
 // Created          : 03-13-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="PrefixAndLength.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -27,9 +27,9 @@ namespace DotNetTips.Spargine.Tester;
 /// <param name="prefix">The prefix.</param>
 /// <param name="length">The length.</param>
 [DebuggerDisplay("{Prefix,nq}")]
+[Serializable]
 internal struct PrefixAndLength(string prefix, int length) : IEquatable<PrefixAndLength>
 {
-
 	/// <summary>
 	/// Implements the != operator.
 	/// </summary>
@@ -83,5 +83,4 @@ internal struct PrefixAndLength(string prefix, int length) : IEquatable<PrefixAn
 	/// </summary>
 	/// <value>The prefix.</value>
 	public string Prefix { get; set; } = prefix;
-
 }

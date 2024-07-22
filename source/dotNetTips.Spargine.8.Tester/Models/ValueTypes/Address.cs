@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-20-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -36,10 +36,10 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// Represents an address with properties for Address1, Address2, City, Country, CountyProvince, Phone, PostalCode, and State.
 /// This struct implements <see cref="IAddress"/> and <see cref="IEquatable{Address}"/>.
 /// </summary>
-[DataContract(Name = "address")]
-[DebuggerDisplay("{Id}")]
+[DataContract(Name = "address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
+[DebuggerDisplay("Id = {Id}, Address1 = {Address1}, City = {City}, Country = {Country}")]
 [Serializable]
-[XmlRoot(ElementName = "Address")]
+[XmlRoot(ElementName = "Address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public struct Address : IAddress, IEquatable<Address>
 {

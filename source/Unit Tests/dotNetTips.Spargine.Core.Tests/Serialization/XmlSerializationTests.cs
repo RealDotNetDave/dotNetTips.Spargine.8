@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-19-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="XmlSerializationTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -42,7 +43,7 @@ public class XmlSerializationTests
 		//Serialize
 		var xml = XmlSerialization.Serialize(people);
 
-		var fileName = Path.Combine(App.ExecutingFolder(), "PersonCollection.xml");
+		var fileName = Path.Combine(App.ExecutingFolder(), "PersonCollectionRef.xml");
 
 		//For debugging
 		File.WriteAllText(fileName, xml);
@@ -50,33 +51,7 @@ public class XmlSerializationTests
 		Assert.IsTrue(string.IsNullOrEmpty(xml) is false);
 
 		//Deserialize
-		var serializedPerson = XmlSerialization.Deserialize<Person<Address>[]>(xml);
-
-		Assert.IsNotNull(serializedPerson);
-
-		File.Delete(fileName);
-	}
-
-	/// <summary>
-	/// Defines the test method SerializeDeserializeTestPerson.
-	/// </summary>
-	[TestMethod]
-	public void SerializeDeserializeTestPerson()
-	{
-		var person = RandomData.GeneratePersonRef<Address>();
-
-		//Serialize
-		var xml = XmlSerialization.Serialize(person);
-
-		var fileName = Path.Combine(App.ExecutingFolder(), "Person.xml");
-
-		//For debugging
-		File.WriteAllText(fileName, xml);
-
-		Assert.IsTrue(string.IsNullOrEmpty(xml) is false);
-
-		//Deserialize
-		var serializedPerson = XmlSerialization.Deserialize<Person<Address>>(xml);
+		var serializedPerson = XmlSerialization.Deserialize<List<Person<Address>>>(xml);
 
 		Assert.IsNotNull(serializedPerson);
 
@@ -110,6 +85,56 @@ public class XmlSerializationTests
 	}
 
 	/// <summary>
+	/// Defines the test method SerializeDeserializeTestPerson.
+	/// </summary>
+	[TestMethod]
+	public void SerializeDeserializeTestPersonRef()
+	{
+		var person = RandomData.GeneratePersonRef<Address>();
+
+		//Serialize
+		var xml = XmlSerialization.Serialize(person);
+
+		var fileName = Path.Combine(App.ExecutingFolder(), "PersonRef.xml");
+
+		//For debugging
+		File.WriteAllText(fileName, xml);
+
+		Assert.IsTrue(string.IsNullOrEmpty(xml) is false);
+
+		//Deserialize
+		var serializedPerson = XmlSerialization.Deserialize<Person<Address>>(xml);
+
+		Assert.IsNotNull(serializedPerson);
+
+		File.Delete(fileName);
+	}
+
+	[TestMethod]
+	public void SerializeDeserializeTestPersonVal()
+	{
+		var person = RandomData.GeneratePersonVal<Tester.Models.ValueTypes.Address>();
+
+		//Serialize
+		var xml = XmlSerialization.Serialize(person);
+
+		var fileName = Path.Combine(App.ExecutingFolder(), "PersonVal.xml");
+
+		//For debugging
+		File.WriteAllText(fileName, xml);
+
+		Assert.IsTrue(string.IsNullOrEmpty(xml) is false);
+
+		//Deserialize
+		var serializedPerson = XmlSerialization.Deserialize<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(
+			xml);
+
+		Assert.IsNotNull(serializedPerson);
+
+		File.Delete(fileName);
+	}
+
+	/// <summary>
 	/// Defines the test method SerializeDeserializeToFileTest.
 	/// </summary>
 	[TestMethod]
@@ -117,7 +142,7 @@ public class XmlSerializationTests
 	{
 		var person = RandomData.GeneratePersonRef<Address>();
 
-		var fileName = @"C:\dotNetTips.com\DebugOutput\PersonXml.xml";
+		var fileName = @"C:\dotNetTips.com\DebugOutput\PersonXmlRef.xml";
 
 		try
 		{

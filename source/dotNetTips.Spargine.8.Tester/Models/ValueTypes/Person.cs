@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 07-19-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -36,14 +36,14 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// Represents a person with various personal details. This struct is generic to allow for different types of addresses.
 /// </summary>
 /// <typeparam name="TAddress">The type of address this person can have, constrained to types that implement <see cref="IAddress"/>.</typeparam>
-[DataContract(Name = "person")]
+[DataContract(Name = "person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
 [DebuggerDisplay("{Email}")]
 [Serializable]
-[XmlRoot(ElementName = "Person")]
+[XmlRoot(ElementName = "Person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
-public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<TAddress> where TAddress : IAddress, new()
+public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<TAddress>
+	where TAddress : IAddress, new()
 {
-
 	/// <summary>
 	/// The addresses
 	/// </summary>
@@ -101,20 +101,22 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	private string _lastName = default;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="Person{TAddress}" /> struct.
+	/// Initializes a new instance of the <see cref="Person{TAddress}"/> struct.
 	/// </summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public Person()
-	{ }
+	{
+	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="Person{TAddress}" /> struct.
+	/// Initializes a new instance of the <see cref="Person{TAddress}"/> struct.
 	/// </summary>
 	/// <param name="id">The identifier.</param>
 	/// <param name="email">The email.</param>
 	[JsonConstructor]
-	public Person([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
-	[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id) : this()
+	public Person(
+		[NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
+		[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id) : this()
 	{
 		this.Id = id;
 		this.Email = email;
@@ -183,7 +185,10 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// Less than zero: This instance precedes <paramref name="other"/> in the sort order.
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
-	public readonly int CompareTo(Person<TAddress> other) => string.Compare(this._id, other._id, StringComparison.OrdinalIgnoreCase);
+	public readonly int CompareTo(Person<TAddress> other) => string.Compare(
+		this._id,
+		other._id,
+		StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Compares this instance with a specified <see cref="IPerson{TAddress}"/> object and indicates whether this instance
@@ -204,25 +209,26 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 
 		return string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
 	}
+
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
-	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
+	/// <returns><see langword="true"/> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <see langword="false"/>.</returns>
 	public readonly bool Equals([NotNull] Person<TAddress> other) => Equals(this, other);
 
 	/// <summary>
-	/// Determines whether the specified <see cref="object" /> is equal to this instance.
+	/// Determines whether the specified <see cref="object"/> is equal to this instance.
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
-	/// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+	/// <returns><c>true</c> if the specified <see cref="object"/> is equal to this instance; otherwise, <c>false</c>.</returns>
 	public override readonly bool Equals([NotNull] object obj) => base.Equals(obj);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
-	/// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
+	/// <returns><see langword="true"/> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <see langword="false"/>.</returns>
 	public readonly bool Equals([NotNull] IPerson<TAddress> other) => base.Equals(other);
 
 	/// <summary>
@@ -232,13 +238,13 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	public override readonly int GetHashCode() => base.GetHashCode();
 
 	/// <summary>
-	/// Returns a <see cref="string" /> that represents this instance.
+	/// Returns a <see cref="string"/> that represents this instance.
 	/// </summary>
-	/// <returns>A <see cref="string" /> that represents this instance.</returns>
+	/// <returns>A <see cref="string"/> that represents this instance.</returns>
 	public override readonly string ToString() => this.As<IPerson<TAddress>>().PropertiesToString();
 
 	/// <summary>
-	/// Gets a collection of <see cref="Address" /> for a Person.
+	/// Gets a collection of <see cref="Address"/> for a Person.
 	/// </summary>
 	/// <value>The addresses.</value>
 	[DataMember(Name = "addresses", IsRequired = false)]
@@ -312,9 +318,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 			}
 
 			this._bornOn = value.ToUniversalTime() > DateTimeOffset.UtcNow
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.BornOn),
-					Resources.PersonBornOnCannotBeInTheFuture)
+				? throw new ArgumentOutOfRangeException(nameof(this.BornOn), Resources.PersonBornOnCannotBeInTheFuture)
 				: value;
 		}
 	}
@@ -492,5 +496,4 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 				: value;
 		}
 	}
-
 }

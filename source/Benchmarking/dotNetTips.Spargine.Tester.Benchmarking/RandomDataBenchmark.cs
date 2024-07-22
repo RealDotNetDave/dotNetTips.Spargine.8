@@ -58,6 +58,15 @@ public class RandomDataBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(RandomData.GenerateCharacter) + ": Min and Max Char")]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateCharacterMinMax()
+	{
+		var result = RandomData.GenerateCharacter(char.MinValue, char.MaxValue);
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(RandomData.GenerateCoordinate))]
 	[BenchmarkCategory(Categories.New)]
 	public void GenerateCoordinate()
@@ -139,22 +148,85 @@ public class RandomDataBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(RandomData.GeneratePersonRecord))]
+	[BenchmarkCategory(Categories.New)]
+	public void GeneratePersonRecord()
+	{
+		var result = RandomData.GeneratePersonRecord();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GeneratePersonRef))]
+	[BenchmarkCategory(Categories.New)]
+	public void GeneratePersonRef()
+	{
+		var result = RandomData.GeneratePersonRef<Models.RefTypes.Address>();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GeneratePersonVal))]
+	[BenchmarkCategory(Categories.New)]
+	public void GeneratePersonVal()
+	{
+		var result = RandomData.GeneratePersonVal<Address>();
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(RandomData.GeneratePhoneNumber))]
 	[BenchmarkCategory(Categories.New)]
 	public void GeneratePhoneNumber()
 	{
-		var fileName = RandomData.GeneratePhoneNumber(CountryName.UnitedStates);
+		var result = RandomData.GeneratePhoneNumber(CountryName.UnitedStates);
 
-		this.Consume(fileName);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(RandomData.GenerateRandomFileName))]
 	[BenchmarkCategory(Categories.New)]
 	public void GenerateRandomFileName()
 	{
+		var fileName = RandomData.GenerateRandomFileName();
+
+		this.Consume(fileName);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GenerateRandomFileName) + ": With Path")]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateRandomFileNameWithPath()
+	{
 		var fileName = RandomData.GenerateRandomFileName(this._filePath);
 
 		this.Consume(fileName);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GenerateRandomLocationData))]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateRandomLocationData()
+	{
+		var result = RandomData.GenerateRandomLocationData();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GenerateRandomPersonData))]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateRandomPersonData()
+	{
+		var result = RandomData.GenerateRandomPersonData();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GenerateRandomPersonName))]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateRandomPersonName()
+	{
+		var result = RandomData.GenerateRandomPersonName();
+
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(RandomData.GeneratePersonRef))]
@@ -243,6 +315,33 @@ public class RandomDataBenchmark : Benchmark
 	public void GenerateWord()
 	{
 		var result = RandomData.GenerateWord(10);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GenerateWord) + ": MIN AND MAX CHAR")]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateWordMinMaxChar()
+	{
+		var result = RandomData.GenerateWord(10, char.MinValue, char.MaxValue);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GenerateWord) + ": MIN AND MAX LENGTH")]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateWordMinMaxLength()
+	{
+		var result = RandomData.GenerateWord(10, 100);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GenerateWord) + ": MIN AND MAX LENGTH + CHAR")]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateWordMinMaxLengthChar()
+	{
+		var result = RandomData.GenerateWord(10, 100, char.MinValue, char.MaxValue);
 
 		this.Consume(result);
 	}

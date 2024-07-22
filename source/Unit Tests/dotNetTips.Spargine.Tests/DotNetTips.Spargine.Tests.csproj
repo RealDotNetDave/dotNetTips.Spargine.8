@@ -5,7 +5,7 @@
 		<AssemblyVersion>2024.8.3.1</AssemblyVersion>
 		<BaseOutputPath>..\..\..\AppBin</BaseOutputPath>
 		<EnableNETAnalyzers>false</EnableNETAnalyzers>
-		<FileVersion>2024.8.71.29</FileVersion>
+		<FileVersion>2024.8.71.30</FileVersion>
 		<IsPackable>false</IsPackable>
 		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 		<RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>

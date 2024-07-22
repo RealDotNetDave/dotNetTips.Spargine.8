@@ -30,12 +30,12 @@ namespace DotNetTips.Spargine.Tester.BenchmarkTests;
 /// </summary>
 public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 {
-
-	private const CountryName DefaultCountry = CountryName.UnitedStates;
+	private const CountryName DefaultCountryName = CountryName.UnitedStates;
 
 	private Collection<Coordinate> _coordinateCollection;
 	private Collection<PersonRecord> _personRecordCollection;
 	private Collection<Models.RefTypes.Person<Models.RefTypes.Address>> _personRefCollection;
+	private readonly Country DefaultCountry = Countries.GetCountry(CountryName.UnitedStates);
 
 	[Benchmark(Description = nameof(Coordinate) + ":OrderBy()")]
 	[BenchmarkCategory(Categories.New, Categories.ValueType)]
@@ -46,20 +46,47 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(RandomData.GenerateAddressRecordCollection))]
+	[Benchmark(Description = nameof(RandomData.GenerateAddressCollection))]
 	[BenchmarkCategory(Categories.New)]
-	public void GenerateAddressRecordCollection()
+	public void GenerateAddressCollectionRef()
 	{
-		var result = RandomData.GenerateAddressRecordCollection(DefaultCountry, this.Count);
+		var result = RandomData.GenerateAddressCollection<Models.RefTypes.Address>(this.DefaultCountry);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(RandomData.GenerateCoordinateCollection) + ": Coordinate")]
+	[Benchmark(Description = nameof(RandomData.GenerateAddressRecordCollection))]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateAddressRecordCollection()
+	{
+		var result = RandomData.GenerateAddressRecordCollection(DefaultCountryName, this.Count);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GenerateCoordinateCollection))]
 	[BenchmarkCategory(Categories.New)]
 	public void GenerateCoordinateCollection()
 	{
 		var result = RandomData.GenerateCoordinateCollection<Coordinate>(this.Count);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GenerateCreditCards))]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateCreditCards()
+	{
+		var result = RandomData.GenerateCreditCards(this.Count);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RandomData.GeneratePersonNames))]
+	[BenchmarkCategory(Categories.New)]
+	public void GeneratePersonNames()
+	{
+		var result = RandomData.GeneratePersonNames(this.Count);
 
 		this.Consume(result);
 	}

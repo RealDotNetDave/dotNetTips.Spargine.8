@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-20-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -265,7 +265,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <value>The collection of <see cref="AddressRecord"/> objects.</value>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
-	[MemberNotNull(nameof(_addresses))]
 	[XmlIgnore]
 	public Collection<AddressRecord> Addresses
 	{
@@ -292,7 +291,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[JsonIgnore]
 	[XmlArray("Addresses")]
-	[MemberNotNull(nameof(_addresses))]
 	public Collection<AddressRecord> AddressesSerilization
 	{
 		get => this._addresses;
@@ -328,7 +326,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if an attempt is made to set a future date.</exception>
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
-	[MemberNotNull(nameof(_bornOn))]
 	[XmlElement]
 	public DateTimeOffset BornOn
 	{
@@ -392,7 +389,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
 	[JsonPropertyName("email")]
 	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
-	[MemberNotNull(nameof(_email))]
 	[XmlElement(IsNullable = false)]
 	public string Email
 	{
@@ -425,7 +421,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DefaultValue("")]
 	[JsonPropertyName("firstName")]
 	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
-	[MemberNotNull(nameof(_firstName))]
 	[XmlElement("FirstName")]
 	public string FirstName
 	{
@@ -466,7 +461,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DisallowNull]
 	[JsonPropertyName("id")]
 	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
-	[MemberNotNull(nameof(_id))]
 	[ReadOnly(true)]
 	[XmlElement(IsNullable = false)]
 	public string Id
@@ -499,7 +493,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DefaultValue("")]
 	[JsonPropertyName("lastName")]
 	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
-	[MemberNotNull(nameof(_lastName))]
 	[XmlElement("LastName")]
 	public string LastName
 	{
@@ -530,7 +523,6 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
-	[MemberNotNull(nameof(_phone))]
 	[XmlElement]
 	public string Phone
 	{

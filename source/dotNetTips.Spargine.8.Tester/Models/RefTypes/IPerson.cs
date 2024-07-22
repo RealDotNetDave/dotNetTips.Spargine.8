@@ -33,7 +33,6 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where TAddress : IAddress, new()
 {
-
 	/// <summary>
 	/// Gets or sets the collection of addresses for the person. This collection encapsulates all the addresses associated with the person,
 	/// allowing for multiple addresses such as home, work, or other. Implementing classes should ensure proper initialization of this collection
@@ -86,5 +85,4 @@ public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where
 	/// <value>The phone number.</value>
 	[Phone(ErrorMessage = "The phone number is not in a valid format.")]
 	string Phone { get; set; }
-
 }

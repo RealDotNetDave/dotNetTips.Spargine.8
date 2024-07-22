@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-21-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="Address.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -35,10 +35,10 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// Represents a physical address. This class cannot be inherited and implements the IAddress interface.
 /// It includes properties for various components of a physical address such as Address1, Address2, City, State, CountyProvince, Country, PostalCode, and Phone.
 /// </summary>
-[DataContract(Name = "address")]
-[DebuggerDisplay("{Id}")]
+[DataContract(Name = "address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
+[DebuggerDisplay("Id = {Id}, Address1 = {Address1}, City = {City}, Country = {Country}")]
 [Serializable]
-[XmlRoot(ElementName = "Address")]
+[XmlRoot(ElementName = "Address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 public sealed class Address : IAddress
 {
@@ -344,7 +344,6 @@ public sealed class Address : IAddress
 	[Display(Name = "Address Line 1")]
 	[JsonPropertyName("address1")]
 	[MaxLength(100, ErrorMessage = "Address1 cannot exceed 100 characters.")]
-	[MemberNotNull(nameof(_address1))]
 	[XmlElement("address1")]
 	public string Address1
 	{
@@ -374,8 +373,6 @@ public sealed class Address : IAddress
 	[DefaultValue("")]
 	[Display(Name = "Address Line 2")]
 	[JsonPropertyName("address2")]
-	[MaxLength(100, ErrorMessage = "Address2 cannot exceed 100 characters.")]
-	[MemberNotNull(nameof(_address2))]
 	[XmlElement("address2")]
 	public string Address2
 	{
@@ -405,7 +402,6 @@ public sealed class Address : IAddress
 	[Display(Name = "City")]
 	[DefaultValue("")]
 	[JsonPropertyName("city")]
-	[MemberNotNull(nameof(_city))]
 	[MaxLength(150, ErrorMessage = "City cannot exceed 150 characters.")]
 	[XmlElement("city")]
 	public string City
@@ -435,7 +431,6 @@ public sealed class Address : IAddress
 	[Display(Name = "Country")]
 	[JsonPropertyName("country")]
 	[MaxLength(50, ErrorMessage = "Country cannot exceed 50 characters.")]
-	[MemberNotNull(nameof(_country))]
 	[XmlElement("country")]
 	public string Country
 	{
@@ -464,8 +459,6 @@ public sealed class Address : IAddress
 	[DataMember(Name = "countyProvince", IsRequired = false, Order = 5)]
 	[Display(Name = "County/Province")]
 	[JsonPropertyName("countryProvince")]
-	[XmlElement]
-	[MemberNotNull(nameof(_countyProvince))]
 	[MaxLength(50, ErrorMessage = "CountyProvince cannot exceed 50 characters.")]
 	[XmlElement("countyProvince")]
 	public string CountyProvince
@@ -497,7 +490,6 @@ public sealed class Address : IAddress
 	[Display(Name = "Identifier")]
 	[JsonPropertyName("id")]
 	[MaxLength(50, ErrorMessage = "Id cannot exceed 50 characters.")]
-	[MemberNotNull(nameof(_id))]
 	[ReadOnly(true)]
 	[Required(ErrorMessage = "Id is required.")]
 	[XmlElement("id", IsNullable = false)]
@@ -527,7 +519,6 @@ public sealed class Address : IAddress
 	[Display(Name = "Phone Number")]
 	[DefaultValue("")]
 	[JsonPropertyName("phone")]
-	[MemberNotNull(nameof(_phone))]
 	[MaxLength(50, ErrorMessage = "Phone number cannot exceed 50 characters.")]
 	[XmlElement("phone")]
 	public string Phone
@@ -558,7 +549,6 @@ public sealed class Address : IAddress
 	[Display(Name = "Postal Code")]
 	[DefaultValue("")]
 	[JsonPropertyName("postalCode")]
-	[MemberNotNull(nameof(_postalCode))]
 	[MaxLength(40, ErrorMessage = "Postal code cannot exceed 40 characters.")]
 	[XmlElement("postalCode")]
 	public string PostalCode
@@ -589,7 +579,6 @@ public sealed class Address : IAddress
 	[Display(Name = "State")]
 	[DefaultValue("")]
 	[JsonPropertyName("state")]
-	[MemberNotNull(nameof(_state))]
 	[MaxLength(60, ErrorMessage = "State cannot exceed 60 characters.")]
 	[XmlElement("state")]
 	public string State

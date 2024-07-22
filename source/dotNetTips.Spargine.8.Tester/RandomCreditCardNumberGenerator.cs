@@ -4,7 +4,7 @@
 // Created          : 03-13-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="RandomCreditCardNumberGenerator.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -23,6 +23,7 @@ using Microsoft.Extensions.ObjectPool;
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Tester;
+//TODO: MAKE PUBLIC AFTER AUG 2024
 
 /// <summary>
 /// Provides functionality to generate random credit card numbers for various card types.
@@ -37,7 +38,6 @@ namespace DotNetTips.Spargine.Tester;
 /// </remarks>
 internal static partial class RandomCreditCardNumberGenerator
 {
-
 	/// <summary>
 	/// The string builder pool
 	/// </summary>
@@ -50,7 +50,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// American Express cards typically start with the prefixes 34 or 37.
 	/// This list is used to generate valid-looking American Express credit card numbers for testing purposes.
 	/// </remarks>
-	internal static readonly string[] AmexPrefixList = ["34", "37"];
+	private static readonly string[] AmexPrefixList = ["34", "37"];
 
 	/// <summary>
 	/// The Diners Club credit card prefix list.
@@ -59,7 +59,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// Diners Club cards typically start with the prefixes listed here.
 	/// This list is used to generate valid-looking Diners Club credit card numbers for testing purposes.
 	/// </remarks>
-	internal static readonly string[] DinersPrefixList = ["300", "301", "302", "303", "36", "38"];
+	private static readonly string[] DinersPrefixList = ["300", "301", "302", "303", "36", "38"];
 
 	/// <summary>
 	/// The Discover credit card prefix list.
@@ -68,7 +68,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// Discover cards typically start with the prefix 6011.
 	/// This list is used to generate valid-looking Discover credit card numbers for testing purposes.
 	/// </remarks>
-	internal static readonly string[] DiscoverPrefixList = ["6011"];
+	private static readonly string[] DiscoverPrefixList = ["6011"];
 
 	/// <summary>
 	/// The EnRoute credit card prefix list.
@@ -77,7 +77,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// EnRoute cards typically start with the prefixes 2014 and 2149.
 	/// This list is used to generate valid-looking EnRoute credit card numbers for testing purposes.
 	/// </remarks>
-	internal static readonly string[] EnroutePrefixList = ["2014", "2149"];
+	private static readonly string[] EnroutePrefixList = ["2014", "2149"];
 
 	/// <summary>
 	/// The JCB credit card prefix list.
@@ -86,7 +86,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// JCB cards typically start with the prefix 35.
 	/// This list is used to generate valid-looking JCB credit card numbers for testing purposes.
 	/// </remarks>
-	internal static readonly string[] JCBPrefixList = ["35"];
+	private static readonly string[] JCBPrefixList = ["35"];
 
 	/// <summary>
 	/// The MasterCard credit card prefix list.
@@ -95,7 +95,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// MasterCard cards typically start with the prefixes listed here, including both the traditional range of 51-55 and the expanded range of 2221-2720.
 	/// This list is used to generate valid-looking MasterCard credit card numbers for testing purposes.
 	/// </remarks>
-	internal static readonly string[] MasterCardPrefixList = ["51", "52", "53", "54", "55", "2221", "2222", "2223", "2224", "2225", "2226", "2227", "2228", "2229", "223", "224", "225", "226", "227", "228", "229", "23", "24", "25", "26", "270", "271", "2720"];
+	private static readonly string[] MasterCardPrefixList = ["51", "52", "53", "54", "55", "2221", "2222", "2223", "2224", "2225", "2226", "2227", "2228", "2229", "223", "224", "225", "226", "227", "228", "229", "23", "24", "25", "26", "270", "271", "2720"];
 
 	/// <summary>
 	/// The Visa credit card prefix list.
@@ -104,7 +104,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// Visa cards typically start with the prefix 4. This list includes common Visa prefixes,
 	/// used to generate valid-looking Visa credit card numbers for testing purposes.
 	/// </remarks>
-	internal static readonly string[] VisaPrefixList = ["4539", "4556", "4916", "4532", "4929", "40240071", "4485", "4716", "4"];
+	private static readonly string[] VisaPrefixList = ["4539", "4556", "4916", "4532", "4929", "40240071", "4485", "4716", "4"];
 
 	/// <summary>
 	/// The Voyager credit card prefix list.
@@ -113,7 +113,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// Voyager cards typically start with the prefix 8699.
 	/// This list is used to generate valid-looking Voyager credit card numbers for testing purposes.
 	/// </remarks>
-	internal static readonly string[] VoyagerPrefixList = ["8699"];
+	private static readonly string[] VoyagerPrefixList = ["8699"];
 
 	/// <summary>
 	/// Builds a collection of <see cref="PrefixAndLength"/> objects from a given list of prefixes and a specified length.
@@ -221,6 +221,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// The generated credit card number is random and follows the credit card companies' numbering schemes, including passing the Luhn check.
 	/// However, these numbers are not valid for real transactions but can be used for testing validation and formatting routines.
 	/// </remarks>
+	[Information(nameof(GetCreditCardNumber), BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.NeedsDocumentation)]
 	public static string GetCreditCardNumber() => GetCreditCardNumbers(1).SingleOrDefault();
 
 	/// <summary>
@@ -234,6 +235,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// The generated numbers are random and follow the credit card companies' numbering schemes, including passing the Luhn check.
 	/// However, these numbers are not valid for real transactions but can be used for testing validation and formatting routines.
 	/// </remarks>
+	[Information(nameof(GetCreditCardNumbers), BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<string> GetCreditCardNumbers([Range(1, int.MaxValue)] int count)
 	{
 		count = count.ArgumentInRange(1);
