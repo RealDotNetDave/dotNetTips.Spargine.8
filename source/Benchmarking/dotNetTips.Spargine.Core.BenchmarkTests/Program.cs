@@ -29,7 +29,6 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests;
 /// </summary>
 public class Program
 {
-
 	/// <summary>
 	/// Defines the entry point of the application.
 	/// </summary>
@@ -38,13 +37,14 @@ public class Program
 		try
 		{
 			var config = DefaultConfig.Instance
-			.AddJob(Job.Default.WithRuntime(CoreRuntime.Core80)).WithSummaryStyle(SummaryStyle.Default.WithTimeUnit(TimeUnit.Nanosecond));
+				.AddJob(Job.Default.WithRuntime(CoreRuntime.Core80))
+				.WithSummaryStyle(SummaryStyle.Default.WithTimeUnit(TimeUnit.Nanosecond));
 
 			config = config.WithOption(ConfigOptions.DisableOptimizationsValidator, true);
 
 			_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
-			//_ = BenchmarkRunner.Run<FastStringBuilderCounterBenchmark>(config);
+			//_ = BenchmarkRunner.Run<SerializationBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine("COMPLETE!");
 			Console.Beep();
@@ -61,5 +61,4 @@ public class Program
 			_ = Console.ReadLine();
 		}
 	}
-
 }

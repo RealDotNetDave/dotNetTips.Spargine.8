@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-20-2024
+// Last Modified On : 07-21-2024
 // ***********************************************************************
 // <copyright file="AddressRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -322,7 +322,6 @@ public sealed record AddressRecord : IDataRecord
 	[DataMember(Name = "countyProvince", IsRequired = false, Order = 5)]
 	[Display(Name = "County/Province")]
 	[JsonPropertyName("countryProvince")]
-	[XmlElement]
 	[MemberNotNull(nameof(_countyProvince))]
 	[MaxLength(50, ErrorMessage = "CountyProvince cannot exceed 50 characters.")]
 	[XmlElement("countyProvince")]

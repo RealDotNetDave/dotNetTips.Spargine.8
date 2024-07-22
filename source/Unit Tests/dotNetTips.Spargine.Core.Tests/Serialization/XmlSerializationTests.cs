@@ -31,7 +31,6 @@ namespace DotNetTips.Spargine.Core.Tests.Serialization;
 [TestClass]
 public class XmlSerializationTests
 {
-
 	/// <summary>
 	/// Defines the test method SerializeDeserializeTestCollection.
 	/// </summary>
@@ -135,7 +134,8 @@ public class XmlSerializationTests
 			Assert.Fail(ex.Message);
 		}
 
-		_ = Assert.ThrowsException<FileNotFoundException>(() => XmlSerialization.DeserializeFromFile<Person<Address>>(new FileInfo("XXX")));
+		_ = Assert.ThrowsException<FileNotFoundException>(
+			() => XmlSerialization.DeserializeFromFile<Person<Address>>(new FileInfo("XXX")));
 	}
 
 	/// <summary>
@@ -153,5 +153,4 @@ public class XmlSerializationTests
 
 		Assert.IsNotNull(result);
 	}
-
 }

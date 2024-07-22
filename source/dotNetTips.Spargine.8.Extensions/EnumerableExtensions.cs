@@ -25,21 +25,22 @@ using System.Security.Cryptography;
 using System.Text;
 using DotNetTips.Spargine.Core;
 using Microsoft.Extensions.ObjectPool;
+
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>
-/// Provides a collection of static methods for querying objects that implement <see cref="IEnumerable{T}" />.
+/// Provides a collection of static methods for querying objects that implement <see cref="IEnumerable{T}"/>.
 /// These extensions add functionality for adding, checking, and manipulating elements within enumerable collections.
 /// </summary>
 public static class EnumerableExtensions
 {
-
 	/// <summary>
 	/// The string builder pool
 	/// </summary>
-	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
+	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool(
+		);
 
 	/// <summary>
 	/// Gets the random.
@@ -54,8 +55,8 @@ public static class EnumerableExtensions
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="source">The source collection to add items to.</param>
 	/// <param name="items">The items to add to the collection if they are not already present.</param>
-	/// <returns>An <see cref="IEnumerable{T}" /> that contains the distinct elements from the original collection and any new items added.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source" /> or <paramref name="items" /> is null.</exception>
+	/// <returns>An <see cref="IEnumerable{T}"/> that contains the distinct elements from the original collection and any new items added.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.NeedsDocumentation)]
@@ -88,8 +89,8 @@ public static class EnumerableExtensions
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to add the item to.</param>
 	/// <param name="item">The item to add to the collection.</param>
-	/// <returns>An <see cref="IEnumerable{T}" /> that starts with the specified item followed by the original collection items.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> or <paramref name="item" /> is null.</exception>
+	/// <returns>An <see cref="IEnumerable{T}"/> that starts with the specified item followed by the original collection items.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(AddFirst), "David McCarter", "10/24/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Documentation = "https://bit.ly/SpargineApril2022", Status = Status.Available)]
@@ -110,8 +111,8 @@ public static class EnumerableExtensions
 	/// <param name="collection">The collection to add the item to.</param>
 	/// <param name="item">The item to add to the collection.</param>
 	/// <param name="condition">The condition that determines if the item should be added.</param>
-	/// <returns>An <see cref="IEnumerable{T}" /> that includes the original collection and, if the condition is true, the specified item.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> or <paramref name="item" /> is null.</exception>
+	/// <returns>An <see cref="IEnumerable{T}"/> that includes the original collection and, if the condition is true, the specified item.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(AddIf), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
@@ -138,8 +139,8 @@ public static class EnumerableExtensions
 	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
 	/// <param name="collection">The collection to add the item to.</param>
 	/// <param name="item">The item to add to the collection.</param>
-	/// <returns>An <see cref="IEnumerable{T}" /> that includes the original collection items followed by the specified item.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> or <paramref name="item" /> is null.</exception>
+	/// <returns>An <see cref="IEnumerable{T}"/> that includes the original collection items followed by the specified item.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(AddLast), "David McCarter", "10/24/2023", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
@@ -160,7 +161,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The collection to check.</param>
 	/// <param name="items">The items to look for in the collection.</param>
 	/// <returns><c>true</c> if the collection contains any of the specified items; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> or <paramref name="items" /> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(ContainsAny), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
@@ -184,7 +185,7 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <param name="collection">The collection to count the elements of.</param>
 	/// <returns>The number of elements in the collection.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Count), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
@@ -227,16 +228,21 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.NeedsUpdate, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
-	public static async Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default) => await Task.Run(collection.ArgumentNotNull().Count, cancellationToken).ConfigureAwait(false);
+	public static async Task<int> CountAsync<T>(
+		this IEnumerable<T> collection,
+		CancellationToken cancellationToken = default) => await Task.Run(
+		collection.ArgumentNotNull().Count,
+		cancellationToken)
+		.ConfigureAwait(false);
 
 	/// <summary>
-	/// Creates a new <see cref="Collection{T}" /> from the specified items. Optionally ensures uniqueness of items in the collection.
+	/// Creates a new <see cref="Collection{T}"/> from the specified items. Optionally ensures uniqueness of items in the collection.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="items">The items to include in the new collection.</param>
 	/// <param name="ensureUnique">If set to <c>true</c>, the new collection will only include unique items.</param>
-	/// <returns>A new <see cref="Collection{T}" /> containing the specified items, with duplicates removed if <paramref name="ensureUnique" /> is <c>true</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items" /> is null.</exception>
+	/// <returns>A new <see cref="Collection{T}"/> containing the specified items, with duplicates removed if <paramref name="ensureUnique"/> is <c>true</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
@@ -247,11 +253,10 @@ public static class EnumerableExtensions
 		IList<T> list = ensureUnique ? new HashSet<T>(items).ToList() : new List<T>(items);
 
 		return new Collection<T>(list);
-
 	}
 
 	/// <summary>
-	/// Determines whether the specified <see cref="IEnumerable" /> does not have items or is null.
+	/// Determines whether the specified <see cref="IEnumerable"/> does not have items or is null.
 	/// </summary>
 	/// <param name="collection">The source.</param>
 	/// <returns><c>true</c> if the specified source has items; otherwise, <c>false</c>.</returns>
@@ -311,7 +316,6 @@ public static class EnumerableExtensions
 			if (predicate.Invoke(item) is false)
 			{
 				return false;
-
 			}
 		}
 
@@ -385,16 +389,22 @@ public static class EnumerableExtensions
 		collection = collection.ArgumentNotNull();
 		predicate = predicate.ArgumentNotNull();
 
-		var count = 0;
-		foreach (var item in collection)
+		if (collection is ICollection<T> col)
 		{
-			if (predicate(item))
-			{
-				count++;
-			}
+			return col.Count(predicate);
 		}
-
-		return count;
+		else
+		{
+			long count = 0;
+			foreach (var item in collection)
+			{
+				if (predicate(item))
+				{
+					count++;
+				}
+			}
+			return count;
+		}
 	}
 
 	/// <summary>
@@ -504,8 +514,7 @@ public static class EnumerableExtensions
 	[Pure]
 	[return: MaybeNull]
 	[Information(nameof(FirstOrNull), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, OptimizationStatus = OptimizationStatus.NeedsUpdate, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static T? FirstOrNull<T>(this IEnumerable<T> collection, Func<T, bool> match)
-		where T : struct
+	public static T? FirstOrNull<T>(this IEnumerable<T> collection, Func<T, bool> match) where T : struct
 	{
 		collection = collection.ArgumentNotNull();
 		match = match.ArgumentNotNull();
@@ -520,7 +529,7 @@ public static class EnumerableExtensions
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="items">The collection to check for duplicates.</param>
 	/// <returns><c>true</c> if the collection contains duplicates; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items" /> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(HasDuplicates), author: "David McCarter", createdOn: "7/3/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineAug23")]
@@ -566,7 +575,7 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the <see cref="IEnumerable" /> has a specified count.
+	/// Determines whether the <see cref="IEnumerable"/> has a specified count.
 	/// </summary>
 	/// <param name="collection">The source.</param>
 	/// <param name="count">The specific count.</param>
@@ -600,7 +609,10 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item) => IndexOf(collection.ArgumentItemsExists(), item.ArgumentNotNull(), EqualityComparer<T>.Default);
+	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item) => IndexOf(
+		collection.ArgumentItemsExists(),
+		item.ArgumentNotNull(),
+		EqualityComparer<T>.Default);
 
 	/// <summary>
 	/// Finds the index of the first occurrence of an item in the collection using a specified comparer.
@@ -614,7 +626,10 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item, [NotNull] IEqualityComparer<T> comparer)
+	public static int IndexOf<T>(
+		[NotNull] this IEnumerable<T> collection,
+		[NotNull] T item,
+		[NotNull] IEqualityComparer<T> comparer)
 	{
 		collection = collection.ArgumentItemsExists();
 		item = item.ArgumentNotNull();
@@ -634,7 +649,8 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(IsNullOrEmpty), "David McCarter", "1/7/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static bool IsNullOrEmpty([AllowNull] this IEnumerable collection) => collection.IsNull() || collection.GetEnumerator().MoveNext() is false;
+	public static bool IsNullOrEmpty([AllowNull] this IEnumerable collection) => collection.IsNull() ||
+		collection.GetEnumerator().MoveNext() is false;
 
 	/// <summary>
 	/// Concatenates the members of a collection, using the specified separator between each member.
@@ -659,7 +675,6 @@ public static class EnumerableExtensions
 
 		return string.Join(separator.ArgumentNotNullOrEmpty(defaultValue: ControlChars.DefaultSeparator), collection);
 	}
-
 
 	/// <summary>
 	/// Orders the elements of a collection according to a specified sort expression.
@@ -689,7 +704,9 @@ public static class EnumerableExtensions
 
 			if (parts.LongLength > 1)
 			{
-				@descending = CultureInfo.InvariantCulture.TextInfo.ToLower(parts[1]).Contains("esc", StringComparison.OrdinalIgnoreCase);
+				@descending = CultureInfo.InvariantCulture.TextInfo
+					.ToLower(parts[1])
+					.Contains("esc", StringComparison.OrdinalIgnoreCase);
 			}
 
 			var prop = typeof(T).GetRuntimeProperty(property);
@@ -834,7 +851,6 @@ public static class EnumerableExtensions
 		{
 			return default;
 		}
-
 	}
 
 	/// <summary>
@@ -867,7 +883,8 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Shuffle), "David McCarter", "8/26/2020", "8/26/2020", BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineSep2020")]
-	public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection) => collection.ArgumentItemsExists().OrderBy(_ => GenerateRandomNumber());
+	public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection) => collection.ArgumentItemsExists()
+		.OrderBy(_ => GenerateRandomNumber());
 
 	/// <summary>
 	/// Shuffles the elements of the specified collection into a new collection with a specified count.
@@ -1043,13 +1060,13 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Converts an <see cref="IEnumerable{T}" /> to a delimited string.
+	/// Converts an <see cref="IEnumerable{T}"/> to a delimited string.
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
 	/// <param name="collection">The collection to convert.</param>
 	/// <param name="delimiter">The delimiter to use. Default is comma.</param>
 	/// <returns>A string that represents the concatenated elements of the collection, separated by the specified delimiter.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(ToDelimitedString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb21")]
@@ -1131,12 +1148,12 @@ public static class EnumerableExtensions
 	//}
 
 	/// <summary>
-	/// Converts an <see cref="IEnumerable{T}" /> to a <see cref="LinkedList{T}" />.
+	/// Converts an <see cref="IEnumerable{T}"/> to a <see cref="LinkedList{T}"/>.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to convert.</param>
-	/// <returns>A <see cref="LinkedList{T}" /> that contains elements from the input collection.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
+	/// <returns>A <see cref="LinkedList{T}"/> that contains elements from the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToLinkedList), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
@@ -1148,8 +1165,8 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Creates a <see cref="List{T}" /> from the <see cref="IEnumerable{T}" />.
-	/// Validates that <paramref name="collection" /> is not null.
+	/// Creates a <see cref="List{T}"/> from the <see cref="IEnumerable{T}"/>.
+	/// Validates that <paramref name="collection"/> is not null.
 	/// </summary>
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="collection">The list.</param>
@@ -1167,38 +1184,40 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Converts an <see cref="IEnumerable{T}" /> to a <see cref="ReadOnlyCollection{T}" />.
+	/// Converts an <see cref="IEnumerable{T}"/> to a <see cref="ReadOnlyCollection{T}"/>.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to convert.</param>
-	/// <returns>A <see cref="ReadOnlyCollection{T}" /> that contains elements from the input collection.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
+	/// <returns>A <see cref="ReadOnlyCollection{T}"/> that contains elements from the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IEnumerable<T> collection) => new(collection.ArgumentNotNull().ToList());
+	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IEnumerable<T> collection) => new(
+		collection.ArgumentNotNull().ToList());
 
 	/// <summary>
-	/// Converts a <see cref="ConcurrentBag{T}" /> to a <see cref="ReadOnlyCollection{T}" />.
+	/// Converts a <see cref="ConcurrentBag{T}"/> to a <see cref="ReadOnlyCollection{T}"/>.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to convert.</param>
-	/// <returns>A <see cref="ReadOnlyCollection{T}" /> that contains elements from the input collection.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
+	/// <returns>A <see cref="ReadOnlyCollection{T}"/> that contains elements from the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "2/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
-	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this ConcurrentBag<T> collection) => new(collection.ArgumentNotNull().ToList());
+	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this ConcurrentBag<T> collection) => new(
+		collection.ArgumentNotNull().ToList());
 
 	/// <summary>
 	/// Inserts or updates an item in the collection. If the item already exists, it is updated; otherwise, it is added.
-	/// Note: This method returns a new <see cref="IEnumerable{T}" /> with the item upserted and does not modify the original collection.
+	/// Note: This method returns a new <see cref="IEnumerable{T}"/> with the item upserted and does not modify the original collection.
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
 	/// <param name="collection">The collection to perform the upsert operation on.</param>
 	/// <param name="item">The item to insert or update in the collection.</param>
-	/// <returns>A new <see cref="IEnumerable{T}" /> with the item upserted.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
+	/// <returns>A new <see cref="IEnumerable{T}"/> with the item upserted.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Upsert), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
@@ -1211,10 +1230,10 @@ public static class EnumerableExtensions
 		{
 			list.Add(item);
 		}
+
 		// Assuming 'item' already exists and 'list' contains unique items,
 		// an 'else' block here would handle updating the existing item.
 		// The specifics of this operation would depend on the requirements.
 		return list;
 	}
-
 }
