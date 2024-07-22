@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+	<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
 	<AnalysisLevel>latest-recommended</AnalysisLevel>
 	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
