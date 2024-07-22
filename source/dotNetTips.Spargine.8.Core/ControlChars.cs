@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-22-2024
 // ***********************************************************************
 // <copyright file="ControlChars.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -30,6 +30,15 @@ namespace DotNetTips.Spargine.Core;
 /// </remarks>
 public static class ControlChars
 {
+	/// <summary>
+	/// The ampersand character.
+	/// </summary>
+	public const char Ampersand = '&';
+
+	/// <summary>
+	/// The asterisk character (*).
+	/// </summary>
+	public const char Asterisk = '*';
 
 	/// <summary>
 	/// The at symbol (@).
@@ -107,6 +116,11 @@ public static class ControlChars
 	public const char EndAngleBracket = '>';
 
 	/// <summary>
+	/// The closing brace character (}).
+	/// </summary>
+	public const char EndBrace = '}';
+
+	/// <summary>
 	/// The end comment character ()).
 	/// </summary>
 	public const char EndComment = ')';
@@ -120,6 +134,16 @@ public static class ControlChars
 	/// The equal symbol (=).
 	/// </summary>
 	public const char Equal = '=';
+
+	/// <summary>
+	/// The Escape character (ESC), ASCII value 27.
+	/// </summary>
+	public const char Escape = (char)27;
+
+	/// <summary>
+	/// The exclamation mark character (!).
+	/// </summary>
+	public const char ExclamationMark = '!';
 
 	/// <summary>
 	/// The form feed character.
@@ -147,14 +171,34 @@ public static class ControlChars
 	public const char NullChar = '\0';
 
 	/// <summary>
+	/// The percent character (%).
+	/// </summary>
+	public const char Percent = '%';
+
+	/// <summary>
+	/// The pipe character (|).
+	/// </summary>
+	public const char Pipe = '|';
+
+	/// <summary>
 	/// The plus character (+).
 	/// </summary>
 	public const char Plus = '+';
 
 	/// <summary>
+	/// The question mark character (?).
+	/// </summary>
+	public const char QuestionMark = '?';
+
+	/// <summary>
 	/// The quote character (").
 	/// </summary>
 	public const char Quote = '\"';
+
+	/// <summary>
+	/// The semicolon character (;).
+	/// </summary>
+	public const char Semicolon = ';';
 
 	/// <summary>
 	/// The single quote character (').
@@ -172,6 +216,11 @@ public static class ControlChars
 	public const char StartAngleBracket = '<';
 
 	/// <summary>
+	/// The opening brace character ({).
+	/// </summary>
+	public const char StartBrace = '{';
+
+	/// <summary>
 	/// The start comment character (()).
 	/// </summary>
 	public const char StartComment = '(';
@@ -185,6 +234,11 @@ public static class ControlChars
 	/// The tab character.
 	/// </summary>
 	public const char Tab = '\t';
+
+	/// <summary>
+	/// The tilde character (~).
+	/// </summary>
+	public const char Tilde = '~';
 
 	/// <summary>
 	/// The underscore character (_).
