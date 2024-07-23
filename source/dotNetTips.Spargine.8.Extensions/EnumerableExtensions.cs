@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-22-2024
+// Last Modified On : 07-23-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -384,27 +384,10 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(FastCount), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static long FastCount<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
+	public static long FastCount<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate)
 	{
-		collection = collection.ArgumentNotNull();
-		predicate = predicate.ArgumentNotNull();
-
-		if (collection is ICollection<T> col)
-		{
-			return col.Count(predicate);
-		}
-		else
-		{
-			long count = 0;
-			foreach (var item in collection)
-			{
-				if (predicate(item))
-				{
-					count++;
-				}
-			}
-			return count;
-		}
+		//COPILOT OPTIMIZATION SLOWER.
+		return collection.ArgumentNotNull().Count(predicate.ArgumentNotNull());
 	}
 
 	/// <summary>
