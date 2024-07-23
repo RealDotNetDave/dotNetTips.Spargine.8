@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 07-23-2024
 // ***********************************************************************
 // <copyright file="RandomDataBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -229,15 +229,6 @@ public class RandomDataBenchmark : Benchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(RandomData.GeneratePersonRef))]
-	[BenchmarkCategory(Categories.New)]
-	public void GenerateRefPerson()
-	{
-		var result = RandomData.GeneratePersonRef<Models.RefTypes.Address>();
-
-		this.Consume(result);
-	}
-
 	[Benchmark(Description = nameof(RandomData.GenerateRelativeUrl))]
 	[BenchmarkCategory(Categories.New)]
 	public void GenerateRelativeUrl()
@@ -299,15 +290,6 @@ public class RandomDataBenchmark : Benchmark
 		var fileName = RandomData.GenerateUrlHostNameNoSubDomain();
 
 		this.Consume(fileName);
-	}
-
-	[Benchmark(Description = nameof(RandomData.GeneratePersonVal))]
-	[BenchmarkCategory(Categories.New)]
-	public void GenerateValPerson()
-	{
-		var result = RandomData.GeneratePersonVal<Address>();
-
-		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(RandomData.GenerateWord))]

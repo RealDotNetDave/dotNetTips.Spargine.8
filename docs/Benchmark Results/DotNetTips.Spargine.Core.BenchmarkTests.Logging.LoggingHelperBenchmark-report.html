@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingHelperBenchmark-20240722-195232</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 10 (10.0.19045.4651/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 8.0.302
+  [Host]     : .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
+  Job-YMCKZB : .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Core.BenchmarkTests.Logging  Categories=LOGGING  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                </th><th>Mean  </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min   </th><th>Q1    </th><th>Median</th><th>Q3    </th><th>Max   </th><th>Op/s </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Gen0</th><th>Code Size</th><th>Exceptions</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>LogApplicationInformation</td><td>4,392.8 ns</td><td>26.26 ns</td><td>24.57 ns</td><td>6.34 ns</td><td>4,352.3 ns</td><td>4,377.5 ns</td><td>4,392.7 ns</td><td>4,408.5 ns</td><td>4,439.0 ns</td><td>227,643.8</td><td>26.2637 ns</td><td>15.00</td><td>1.979</td><td>2.000</td><td>-0.0397</td><td>3</td><td>*</td><td>No</td><td>-</td><td>-</td><td>0.0458</td><td>8,310 B</td><td>-</td><td>4664 B</td>
+</tr><tr><td>LogComputerInformation</td><td>498,888.2 ns</td><td>4,276.59 ns</td><td>4,000.32 ns</td><td>1,032.88 ns</td><td>493,628.8 ns</td><td>496,452.8 ns</td><td>497,341.1 ns</td><td>501,579.4 ns</td><td>505,847.2 ns</td><td>2,004.5</td><td>4,276.5860 ns</td><td>15.00</td><td>1.804</td><td>2.000</td><td>0.4169</td><td>4</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>7,728 B</td><td>-</td><td>37534 B</td>
+</tr><tr><td>RetrieveAllExceptionMessages</td><td>171.7 ns</td><td>0.90 ns</td><td>0.80 ns</td><td>0.21 ns</td><td>170.3 ns</td><td>170.8 ns</td><td>172.0 ns</td><td>172.3 ns</td><td>172.6 ns</td><td>5,824,918.3</td><td>0.9045 ns</td><td>14.00</td><td>1.485</td><td>2.000</td><td>-0.4743</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>0.0067</td><td>1,590 B</td><td>-</td><td>624 B</td>
+</tr><tr><td>RetrieveAllExceptions</td><td>123.7 ns</td><td>0.64 ns</td><td>0.57 ns</td><td>0.15 ns</td><td>122.8 ns</td><td>123.2 ns</td><td>123.8 ns</td><td>124.2 ns</td><td>124.5 ns</td><td>8,082,484.8</td><td>0.6445 ns</td><td>14.00</td><td>1.409</td><td>2.000</td><td>0.0018</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>0.0052</td><td>485 B</td><td>-</td><td>488 B</td>
+</tr></tbody></table>
+</body>
+</html>

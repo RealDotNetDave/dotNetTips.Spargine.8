@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Core.BenchmarkTests.RegularExpressions.RegexProcessorBenchmark-20240722-195401</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 10 (10.0.19045.4651/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 8.0.302
+  [Host]     : .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
+  Job-YMCKZB : .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Core.BenchmarkTests.RegularExpressions  Categories=Strings  
+</code></pre>
+
+<table>
+<thead><tr><th>Method         </th><th>Mean </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min  </th><th>Q1   </th><th>Median</th><th>Q3   </th><th>Max  </th><th>Op/s  </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Gen0</th><th>Code Size</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Exceptions</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>ContainsFirstLastName</td><td>62.09 ns</td><td>0.237 ns</td><td>0.210 ns</td><td>0.056 ns</td><td>61.64 ns</td><td>62.03 ns</td><td>62.15 ns</td><td>62.18 ns</td><td>62.43 ns</td><td>16,106,786.0</td><td>0.2367 ns</td><td>14.00</td><td>2.525</td><td>2.000</td><td>-0.5951</td><td>5</td><td>*</td><td>No</td><td>-</td><td>796 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ContainsWord</td><td>92.69 ns</td><td>0.231 ns</td><td>0.217 ns</td><td>0.056 ns</td><td>92.35 ns</td><td>92.58 ns</td><td>92.67 ns</td><td>92.84 ns</td><td>93.07 ns</td><td>10,788,431.3</td><td>0.2315 ns</td><td>15.00</td><td>1.823</td><td>2.000</td><td>0.0033</td><td>7</td><td>*</td><td>No</td><td>-</td><td>143 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IsCreditCardNumber</td><td>58.50 ns</td><td>0.362 ns</td><td>0.338 ns</td><td>0.087 ns</td><td>57.38 ns</td><td>58.43 ns</td><td>58.55 ns</td><td>58.68 ns</td><td>58.79 ns</td><td>17,093,874.1</td><td>0.3616 ns</td><td>15.00</td><td>8.037</td><td>2.000</td><td>-2.2842</td><td>4</td><td>*</td><td>No</td><td>-</td><td>796 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IsCurrencyCode</td><td>25.54 ns</td><td>0.198 ns</td><td>0.185 ns</td><td>0.048 ns</td><td>25.01 ns</td><td>25.47 ns</td><td>25.57 ns</td><td>25.63 ns</td><td>25.83 ns</td><td>39,158,645.0</td><td>0.1979 ns</td><td>15.00</td><td>4.924</td><td>2.000</td><td>-1.2729</td><td>1</td><td>*</td><td>No</td><td>-</td><td>716 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IsEmailAddress</td><td>127.96 ns</td><td>1.146 ns</td><td>1.072 ns</td><td>0.277 ns</td><td>125.72 ns</td><td>127.50 ns</td><td>128.28 ns</td><td>128.53 ns</td><td>129.36 ns</td><td>7,815,056.2</td><td>1.1463 ns</td><td>15.00</td><td>2.389</td><td>2.000</td><td>-0.7411</td><td>10</td><td>*</td><td>No</td><td>-</td><td>796 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IsGuid</td><td>219.85 ns</td><td>2.252 ns</td><td>2.106 ns</td><td>0.544 ns</td><td>216.19 ns</td><td>217.91 ns</td><td>220.83 ns</td><td>221.55 ns</td><td>222.54 ns</td><td>4,548,614.9</td><td>2.2516 ns</td><td>15.00</td><td>1.407</td><td>2.000</td><td>-0.2884</td><td>11</td><td>*</td><td>No</td><td>-</td><td>796 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IsISBN</td><td>102.07 ns</td><td>0.912 ns</td><td>0.809 ns</td><td>0.216 ns</td><td>100.12 ns</td><td>102.28 ns</td><td>102.41 ns</td><td>102.44 ns</td><td>102.49 ns</td><td>9,796,772.2</td><td>0.9122 ns</td><td>14.00</td><td>4.361</td><td>2.000</td><td>-1.7808</td><td>9</td><td>*</td><td>No</td><td>-</td><td>796 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IsMACAddress</td><td>78.65 ns</td><td>0.260 ns</td><td>0.244 ns</td><td>0.063 ns</td><td>78.32 ns</td><td>78.41 ns</td><td>78.66 ns</td><td>78.83 ns</td><td>79.11 ns</td><td>12,713,906.8</td><td>0.2605 ns</td><td>15.00</td><td>1.583</td><td>2.000</td><td>0.1648</td><td>6</td><td>*</td><td>No</td><td>-</td><td>796 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IsSHA1Hash</td><td>53.76 ns</td><td>0.030 ns</td><td>0.025 ns</td><td>0.007 ns</td><td>53.71 ns</td><td>53.76 ns</td><td>53.76 ns</td><td>53.78 ns</td><td>53.80 ns</td><td>18,600,459.5</td><td>0.0305 ns</td><td>13.00</td><td>2.643</td><td>2.000</td><td>-0.4607</td><td>3</td><td>*</td><td>No</td><td>-</td><td>796 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IsUrl</td><td>99.82 ns</td><td>0.174 ns</td><td>0.163 ns</td><td>0.042 ns</td><td>99.46 ns</td><td>99.73 ns</td><td>99.81 ns</td><td>99.94 ns</td><td>100.09 ns</td><td>10,018,172.0</td><td>0.1743 ns</td><td>15.00</td><td>2.469</td><td>2.000</td><td>-0.2747</td><td>8</td><td>*</td><td>No</td><td>-</td><td>796 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IsUrlDomainAddress</td><td>38.64 ns</td><td>0.206 ns</td><td>0.193 ns</td><td>0.050 ns</td><td>38.21 ns</td><td>38.59 ns</td><td>38.68 ns</td><td>38.75 ns</td><td>38.90 ns</td><td>25,879,818.7</td><td>0.2059 ns</td><td>15.00</td><td>3.180</td><td>2.000</td><td>-1.0567</td><td>2</td><td>*</td><td>No</td><td>-</td><td>716 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IsValidString</td><td>6,889.75 ns</td><td>8.079 ns</td><td>7.557 ns</td><td>1.951 ns</td><td>6,878.21 ns</td><td>6,883.94 ns</td><td>6,888.90 ns</td><td>6,895.69 ns</td><td>6,902.18 ns</td><td>145,143.1</td><td>8.0785 ns</td><td>15.00</td><td>1.553</td><td>2.000</td><td>0.0274</td><td>14</td><td>*</td><td>No</td><td>-</td><td>199 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ReplaceCrLf</td><td>275.73 ns</td><td>2.041 ns</td><td>1.909 ns</td><td>0.493 ns</td><td>272.03 ns</td><td>274.90 ns</td><td>275.71 ns</td><td>276.79 ns</td><td>279.23 ns</td><td>3,626,729.7</td><td>2.0412 ns</td><td>15.00</td><td>2.394</td><td>2.000</td><td>-0.3180</td><td>12</td><td>*</td><td>No</td><td>0.0005</td><td>626 B</td><td>-</td><td>-</td><td>-</td><td>48 B</td>
+</tr><tr><td>ReplaceSpaces</td><td>6,128.63 ns</td><td>19.798 ns</td><td>18.519 ns</td><td>4.781 ns</td><td>6,092.99 ns</td><td>6,117.69 ns</td><td>6,133.39 ns</td><td>6,138.56 ns</td><td>6,160.04 ns</td><td>163,168.5</td><td>19.7976 ns</td><td>15.00</td><td>2.176</td><td>2.000</td><td>-0.3681</td><td>13</td><td>*</td><td>No</td><td>0.0153</td><td>688 B</td><td>-</td><td>-</td><td>-</td><td>1960 B</td>
+</tr></tbody></table>
+</body>
+</html>
