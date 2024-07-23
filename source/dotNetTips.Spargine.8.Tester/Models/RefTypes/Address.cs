@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-22-2024
+// Last Modified On : 07-23-2024
 // ***********************************************************************
 // <copyright file="Address.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -344,7 +344,7 @@ public sealed class Address : IAddress
 	[Display(Name = "Address Line 1")]
 	[JsonPropertyName("address1")]
 	[MaxLength(100, ErrorMessage = "Address1 cannot exceed 100 characters.")]
-	[XmlElement("address1")]
+	[XmlElement("Address1")]
 	public string Address1
 	{
 		get => this._address1;
@@ -373,7 +373,7 @@ public sealed class Address : IAddress
 	[DefaultValue("")]
 	[Display(Name = "Address Line 2")]
 	[JsonPropertyName("address2")]
-	[XmlElement("address2")]
+	[XmlElement("Address2")]
 	public string Address2
 	{
 		get => this._address2;
@@ -403,7 +403,7 @@ public sealed class Address : IAddress
 	[DefaultValue("")]
 	[JsonPropertyName("city")]
 	[MaxLength(150, ErrorMessage = "City cannot exceed 150 characters.")]
-	[XmlElement("city")]
+	[XmlElement("City")]
 	public string City
 	{
 		get => this._city;
@@ -431,7 +431,7 @@ public sealed class Address : IAddress
 	[Display(Name = "Country")]
 	[JsonPropertyName("country")]
 	[MaxLength(50, ErrorMessage = "Country cannot exceed 50 characters.")]
-	[XmlElement("country")]
+	[XmlElement("Country")]
 	public string Country
 	{
 		get => this._country;
@@ -460,7 +460,7 @@ public sealed class Address : IAddress
 	[Display(Name = "County/Province")]
 	[JsonPropertyName("countryProvince")]
 	[MaxLength(50, ErrorMessage = "CountyProvince cannot exceed 50 characters.")]
-	[XmlElement("countyProvince")]
+	[XmlElement("CountyProvince")]
 	public string CountyProvince
 	{
 		get => this._countyProvince;
@@ -492,7 +492,7 @@ public sealed class Address : IAddress
 	[MaxLength(50, ErrorMessage = "Id cannot exceed 50 characters.")]
 	[ReadOnly(true)]
 	[Required(ErrorMessage = "Id is required.")]
-	[XmlElement("id", IsNullable = false)]
+	[XmlElement("Id", IsNullable = false)]
 	public string Id
 	{
 		get => this._id;
@@ -520,7 +520,7 @@ public sealed class Address : IAddress
 	[DefaultValue("")]
 	[JsonPropertyName("phone")]
 	[MaxLength(50, ErrorMessage = "Phone number cannot exceed 50 characters.")]
-	[XmlElement("phone")]
+	[XmlElement("Phone")]
 	public string Phone
 	{
 		get => this._phone;
@@ -550,7 +550,7 @@ public sealed class Address : IAddress
 	[DefaultValue("")]
 	[JsonPropertyName("postalCode")]
 	[MaxLength(40, ErrorMessage = "Postal code cannot exceed 40 characters.")]
-	[XmlElement("postalCode")]
+	[XmlElement("PostalCode")]
 	public string PostalCode
 	{
 		get => this._postalCode;
@@ -580,7 +580,7 @@ public sealed class Address : IAddress
 	[DefaultValue("")]
 	[JsonPropertyName("state")]
 	[MaxLength(60, ErrorMessage = "State cannot exceed 60 characters.")]
-	[XmlElement("state")]
+	[XmlElement("State")]
 	public string State
 	{
 		get => this._state;

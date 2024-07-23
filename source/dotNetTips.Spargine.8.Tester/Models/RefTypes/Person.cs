@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-22-2024
+// Last Modified On : 07-23-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -412,7 +412,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </remarks>
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
-	[XmlElement]
+	[XmlElement("BornOn")]
 	public DateTimeOffset BornOn
 	{
 		get => this._bornOn;
@@ -476,7 +476,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
 	[JsonPropertyName("email")]
 	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
-	[XmlElement(IsNullable = false)]
+	[XmlElement("Email", IsNullable = false)]
 	public string Email
 	{
 		get => this._email;
@@ -548,7 +548,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[JsonPropertyName("id")]
 	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
 	[ReadOnly(true)]
-	[XmlElement(IsNullable = false)]
+	[XmlElement("Id", IsNullable = false)]
 	public string Id
 	{
 		get => this._id;
@@ -607,7 +607,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
-	[XmlElement]
+	[XmlElement("Phone")]
 	public string Phone
 	{
 		get => this._phone;

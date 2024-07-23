@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-22-2024
+// Last Modified On : 07-23-2024
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -303,7 +303,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[Display(Name = "Address Line 1")]
 	[JsonPropertyName("address1")]
 	[MaxLength(100, ErrorMessage = "Address1 cannot exceed 100 characters.")]
-	[XmlElement("address1")]
+	[XmlElement("Address1")]
 	public string Address1
 	{
 		readonly get => this._address1;
@@ -332,7 +332,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[Display(Name = "Address Line 2")]
 	[JsonPropertyName("address2")]
 	[MaxLength(100, ErrorMessage = "Address2 cannot exceed 100 characters.")]
-	[XmlElement("address2")]
+	[XmlElement("Address2")]
 	public string Address2
 	{
 		readonly get => this._address2;
@@ -361,7 +361,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[Display(Name = "City")]
 	[JsonPropertyName("city")]
 	[MaxLength(150, ErrorMessage = "City cannot exceed 150 characters.")]
-	[XmlElement("city")]
+	[XmlElement("City")]
 	public string City
 	{
 		readonly get => this._city;
@@ -388,7 +388,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[Display(Name = "Country")]
 	[JsonPropertyName("country")]
 	[MaxLength(50, ErrorMessage = "Country cannot exceed 50 characters.")]
-	[XmlElement("country")]
+	[XmlElement("Country")]
 	public string Country
 	{
 		readonly get => this._country;
@@ -417,7 +417,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[Display(Name = "County/Province")]
 	[JsonPropertyName("countyProvince")]
 	[MaxLength(50, ErrorMessage = "CountyProvince cannot exceed 50 characters.")]
-	[XmlElement("countyProvince")]
+	[XmlElement("CountyProvince")]
 	public string CountyProvince
 	{
 		readonly get => this._countyProvince;
@@ -447,7 +447,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[JsonPropertyName("id")]
 	[MaxLength(50, ErrorMessage = "Id cannot exceed 50 characters.")]
 	[Required(ErrorMessage = "Id is required.")]
-	[XmlElement("id", IsNullable = false)]
+	[XmlElement("Id", IsNullable = false)]
 	public string Id
 	{
 		readonly get => this._id;
@@ -475,7 +475,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[Display(Name = "Phone Number")]
 	[JsonPropertyName("phone")]
 	[MaxLength(50, ErrorMessage = "Phone number cannot exceed 50 characters.")]
-	[XmlElement("phone")]
+	[XmlElement("Phone")]
 	public string Phone
 	{
 		readonly get => this._phone;
@@ -504,7 +504,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[Display(Name = "Postal Code")]
 	[JsonPropertyName("postalCode")]
 	[MaxLength(40, ErrorMessage = "Postal code cannot exceed 40 characters.")]
-	[XmlElement("postalCode")]
+	[XmlElement("PostalCode")]
 	public string PostalCode
 	{
 		readonly get => this._postalCode;
@@ -533,7 +533,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[Display(Name = "State")]
 	[JsonPropertyName("state")]
 	[MaxLength(60, ErrorMessage = "State cannot exceed 60 characters.")]
-	[XmlElement("state")]
+	[XmlElement("State")]
 	public string State
 	{
 		readonly get => this._state;

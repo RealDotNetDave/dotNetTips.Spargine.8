@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-22-2024
+// Last Modified On : 07-23-2024
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -326,7 +326,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if an attempt is made to set a future date.</exception>
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
-	[XmlElement]
+	[XmlElement("BornOn")]
 	public DateTimeOffset BornOn
 	{
 		get => this._bornOn;
@@ -389,7 +389,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
 	[JsonPropertyName("email")]
 	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
-	[XmlElement(IsNullable = false)]
+	[XmlElement("Email", IsNullable = false)]
 	public string Email
 	{
 		get => this._email;
@@ -462,7 +462,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[JsonPropertyName("id")]
 	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
 	[ReadOnly(true)]
-	[XmlElement(IsNullable = false)]
+	[XmlElement("Id", IsNullable = false)]
 	public string Id
 	{
 		get => this._id;
@@ -523,7 +523,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
-	[XmlElement]
+	[XmlElement("Phone")]
 	public string Phone
 	{
 		get => this._phone;

@@ -4,7 +4,7 @@
 // Created          : 06-04-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-22-2024
+// Last Modified On : 07-23-2024
 // ***********************************************************************
 // <copyright file="Coordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -176,7 +176,7 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	/// <value>The x.</value>
 	[DataMember(Name = "x", IsRequired = false)]
 	[JsonPropertyName("x")]
-	[XmlElement]
+	[XmlElement("X")]
 	public int X { get; set; } = x;
 
 	/// <summary>
@@ -185,7 +185,7 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	/// <value>The y.</value>
 	[DataMember(Name = "y", IsRequired = false)]
 	[JsonPropertyName("y")]
-	[XmlElement]
+	[XmlElement("Y")]
 	public int Y { get; set; } = y;
 
 	/// <summary>
@@ -194,6 +194,6 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	/// <value>The z.</value>
 	[DataMember(Name = "z", IsRequired = false)]
 	[JsonPropertyName("z")]
-	[XmlElement]
+	[XmlElement("Z")]
 	public int Z { get; set; } = z;
 }
