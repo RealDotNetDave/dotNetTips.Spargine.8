@@ -110,7 +110,6 @@ public abstract record Enumeration
 	/// <returns>An instance of the enumeration type that matches the given display name.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="displayName"/> is null or empty.</exception>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
-	[DebuggerStepThrough]
 	[Information(nameof(FromDisplayName), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static T FromDisplayName<T>([NotNull] string displayName) where T : Enumeration, new()
 	{

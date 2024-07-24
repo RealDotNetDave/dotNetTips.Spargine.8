@@ -33,9 +33,9 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// This type implements IDisposable. Make sure to call .Dispose() or use the 'using' statement
 /// to remove from memory.
 /// </remarks>
+[Information(UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available)]
 public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, ICloneable<T>, ICollection<T>
 {
-
 	/// <summary>
 	/// Initializes a new instance of the <see cref="DistinctBlockingCollection{T}" /> class.
 	/// </summary>
@@ -77,7 +77,10 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// </summary>
 	/// <param name="item">The item to check.</param>
 	/// <returns><c>true</c> if the item is null or not contained in the <see cref="DistinctBlockingCollection{T}"/>; otherwise, <c>false</c>.</returns>
-	private bool IsNotInCollection([NotNullWhen(false)] T item) => item is null && this.Contains(item) is false;
+	private bool IsNotInCollection([NotNullWhen(false)] T item)
+	{
+		return this.Contains(item) is false;
+	}
 
 	/// <summary>
 	/// Adds the specified item to the <see cref="DistinctBlockingCollection{T}"/>.
@@ -115,7 +118,24 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// </summary>
 	/// <param name="item">The object to remove from the <see cref="DistinctBlockingCollection{T}"/>. The value cannot be null.</param>
 	/// <returns><see langword="true" /> if <paramref name="item" /> was successfully removed from the <see cref="DistinctBlockingCollection{T}"/>; otherwise, <see langword="false" />. This method also returns <see langword="false" /> if <paramref name="item" /> is not found in the original collection.</returns>
-	public bool Contains([NotNull] T item) => this.Contains<T>(item);
+	public bool Contains([NotNull] T item)
+	{
+		//SUGGESTION FROM COPILOT BREAKS THIS METHOD
+		if (item is null)
+		{
+			return false;
+		}
+
+		foreach (var element in this)
+		{
+			if (EqualityComparer<T>.Default.Equals(element, item))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
 
 	/// <summary>
 	/// Removes the first occurrence of a specific object from the <see cref="DistinctBlockingCollection{T}"/>.
