@@ -4,7 +4,7 @@
 // Created          : 01-13-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-20-2024
+// Last Modified On : 07-24-2024
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -16,6 +16,8 @@
 // ***********************************************************************
 
 using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
+using System.Runtime.CompilerServices;
 using System.Runtime.Versioning;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -91,7 +93,9 @@ public sealed class InMemoryCache
 	/// <remarks>
 	/// This method utilizes MemoryCache.Set to add the item to the cache with an absolute expiration time set through MemoryCacheEntryOptions.SetAbsoluteExpiration.
 	/// </remarks>
-	[Information(nameof(AddCacheItem), "David McCarter", "1/16/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/16/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item)
 	{
 		key = key.ArgumentNotNullOrEmpty();
@@ -111,7 +115,9 @@ public sealed class InMemoryCache
 	/// <param name="item">The item to add to the cache. This can be of any type.</param>
 	/// <param name="timeout">The custom timeout for the cache item.</param>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key" /> is null or empty, or <paramref name="item" /> is null.</exception>
-	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", Status = Status.New, UnitTestStatus = UnitTestStatus.Completed)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, TimeSpan timeout)
 	{
 		key = key.ArgumentNotNullOrEmpty();
@@ -129,8 +135,9 @@ public sealed class InMemoryCache
 	/// <param name="item">The item to add to the cache. This can be of any type.</param>
 	/// <param name="timeout">The custom expiration time for the cache item.</param>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key" /> is null or empty, or <paramref name="item" /> is null.</exception>
-
-	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", Status = Status.New, UnitTestStatus = UnitTestStatus.Completed)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, DateTimeOffset timeout)
 	{
 		key = key.ArgumentNotNullOrEmpty();
@@ -145,8 +152,9 @@ public sealed class InMemoryCache
 	/// </summary>
 	/// <remarks>This method is intended to remove all items from the cache, effectively resetting it.
 	/// Use with caution as this will remove all cached data.</remarks>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Clear), "David McCarter", "6/12/2024", Status = Status.New, UnitTestStatus = UnitTestStatus.Completed)]
-	public void Clear() => this.Cache.Clear();
+	public void Clear() => this.Cache.Compact(1.0);
 
 	/// <summary>
 	/// Gets the cache item associated with the specified key.
@@ -159,9 +167,13 @@ public sealed class InMemoryCache
 	/// Retrieves an item from the cache using the specified key. If the item is found, it is returned; otherwise, the default value for type <typeparamref name="T"/> is returned.
 	/// This method utilizes the <see cref="MemoryCache.TryGetValue"/> method to attempt to retrieve the item.
 	/// </remarks>
-	[Information(nameof(GetCacheItem), "David McCarter", "1/16/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(GetCacheItem), "David McCarter", "1/16/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available)]
 	public T GetCacheItem<T>([NotNull] string key)
 	{
+		key = key.ArgumentNotNullOrEmpty();
+
 		if (this.Cache.TryGetValue(key, out T item))
 		{
 			return item;
@@ -177,6 +189,7 @@ public sealed class InMemoryCache
 	/// <remarks>
 	/// This property exposes the underlying <see cref="MemoryCache"/> used by the <see cref="InMemoryCache"/> class to store cached items.
 	/// </remarks>
+	[NotNull]
 	[Information(nameof(Cache), "David McCarter", "1/16/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public MemoryCache Cache { get; }
 
@@ -187,8 +200,13 @@ public sealed class InMemoryCache
 	/// <remarks>
 	/// This property provides the total number of items currently stored in the cache. It accesses the <see cref="MemoryCache.Count"/> property of the underlying <see cref="MemoryCache"/> instance used by the <see cref="InMemoryCache"/>.
 	/// </remarks>
+	[Pure]
 	[Information(nameof(Count), "David McCarter", "1/16/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public static int Count => Instance.Cache.Count;
+	public static int Count
+	{
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		get => Instance.Cache.Count;
+	}
 
 	/// <summary>
 	/// Gets the singleton instance of <see cref="InMemoryCache"/>.
@@ -197,6 +215,7 @@ public sealed class InMemoryCache
 	/// <remarks>
 	/// This property provides a global access point to the single instance of the <see cref="InMemoryCache"/> class, ensuring that only one instance is used throughout the application.
 	/// </remarks>
+	[NotNull]
 	[Information(nameof(Instance), "David McCarter", "1/16/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public static InMemoryCache Instance { get; } = new();
 
