@@ -14,6 +14,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 using DotNetTips.Spargine.Tester;

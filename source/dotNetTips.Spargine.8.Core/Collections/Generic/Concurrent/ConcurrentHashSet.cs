@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 07-24-2024
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -83,6 +83,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="comparer">The <see cref="IEqualityComparer{T}"/> implementation to use when comparing items for equality.</param>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="concurrencyLevel"/> or <paramref name="capacity"/> is less than 1.</exception>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="comparer"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private ConcurrentHashSet(int concurrencyLevel, int capacity, bool growLockArray, [NotNull] IEqualityComparer<T> comparer)
 	{
 		if (concurrencyLevel < 1)
@@ -120,6 +121,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ConcurrentHashSet{T}"/> class.
 	/// </summary>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ConcurrentHashSet()
 		: this(DefaultConcurrencyLevel, DefaultCapacity, true, null)
@@ -131,6 +133,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// </summary>
 	/// <param name="collection">The collection whose elements are copied to the new <see cref="ConcurrentHashSet{T}"/>.</param>
 	/// <exception cref="ArgumentNullException">Thrown if the <paramref name="collection"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ConcurrentHashSet([NotNull] IEnumerable<T> collection)
 		: this(collection, null)
@@ -142,6 +145,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// </summary>
 	/// <param name="comparer">The <see cref="IEqualityComparer{T}"/> implementation to use when comparing items in the set.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="comparer"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ConcurrentHashSet([NotNull] IEqualityComparer<T> comparer)
 		: this(concurrencyLevel: DefaultConcurrencyLevel, capacity: DefaultCapacity, growLockArray: true, comparer: comparer)
@@ -154,6 +158,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="concurrencyLevel">The estimated number of threads that will update the <see cref="ConcurrentHashSet{T}"/> concurrently.</param>
 	/// <param name="capacity">The initial number of elements that the <see cref="ConcurrentHashSet{T}"/> can contain.</param>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="concurrencyLevel"/> or <paramref name="capacity"/> is less than 1.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ConcurrentHashSet(int concurrencyLevel, int capacity)
 		: this(concurrencyLevel, capacity, false, null)
@@ -166,6 +171,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="collection">The collection whose elements are copied to the new <see cref="ConcurrentHashSet{T}"/>.</param>
 	/// <param name="comparer">The <see cref="IEqualityComparer{T}"/> implementation to use when comparing items in the set.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="comparer"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ConcurrentHashSet([NotNull] IEnumerable<T> collection, [NotNull] IEqualityComparer<T> comparer)
 		: this(comparer) => this.InitializeFromCollection(collection);
@@ -177,6 +183,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="collection">The collection whose elements are copied to the new <see cref="ConcurrentHashSet{T}"/>.</param>
 	/// <param name="comparer">The <see cref="IEqualityComparer{T}"/> implementation to use when comparing items in the set.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="comparer"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ConcurrentHashSet(int concurrencyLevel, [NotNull] IEnumerable<T> collection, [NotNull] IEqualityComparer<T> comparer)
 		: this(concurrencyLevel, DefaultCapacity, false, comparer) => this.InitializeFromCollection(collection);
@@ -188,6 +195,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="capacity">The initial number of elements that the <see cref="ConcurrentHashSet{T}"/> can contain.</param>
 	/// <param name="comparer">The <see cref="IEqualityComparer{T}"/> implementation to use when comparing items in the set.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="comparer"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ConcurrentHashSet(int concurrencyLevel, int capacity, [NotNull] IEqualityComparer<T> comparer)
 		: this(concurrencyLevel, capacity, false, comparer)
@@ -198,12 +206,16 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// Returns an enumerator that iterates through the <see cref="ConcurrentHashSet{T}"/>.
 	/// </summary>
 	/// <returns>An <see cref="IEnumerator"/> that can be used to iterate through the collection.</returns>
+	[DebuggerStepThrough]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
 	/// <summary>
 	/// Returns an enumerator that iterates through a collection.
 	/// </summary>
 	/// <returns>An <see cref="IEnumerator"></see> object that can be used to iterate through the collection.</returns>
+	[DebuggerStepThrough]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	IEnumerator<T> IEnumerable<T>.GetEnumerator() => this.GetEnumerator();
 
@@ -376,9 +388,11 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="hashCode">The hash code of the item.</param>
 	/// <param name="bucketCount">The total number of buckets in the <see cref="ConcurrentHashSet{T}"/>.</param>
 	/// <returns>The index of the bucket.</returns>
+	[DebuggerStepThrough]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static int GetBucket(int hashCode, int bucketCount)
 	{
+		//SUGGESTION FROM COPILOT BROKE THE CODE
 		var bucketNo = (hashCode & 0x7fffffff) % bucketCount;
 		Debug.Assert(bucketNo >= 0 && bucketNo < bucketCount);
 		return bucketNo;
@@ -392,23 +406,22 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="lockNo">The calculated lock number.</param>
 	/// <param name="bucketCount">The total number of buckets in the <see cref="ConcurrentHashSet{T}"/>.</param>
 	/// <param name="lockCount">The total number of locks in the <see cref="ConcurrentHashSet{T}"/>.</param>
+	[DebuggerStepThrough]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static void GetBucketAndLockNo(int hashCode, out int bucketNo, out int lockNo, int bucketCount, int lockCount)
 	{
 		bucketNo = (hashCode & 0x7fffffff) % bucketCount;
 		lockNo = bucketNo % lockCount;
-
-		Debug.Assert(bucketNo >= 0 && bucketNo < bucketCount);
-		Debug.Assert(lockNo >= 0 && lockNo < lockCount);
 	}
 
 	/// <summary>
-	/// Expands the internal storage of the <see cref="ConcurrentHashSet{T}"/> to accommodate more elements and redistributes the existing elements among the new set of buckets.
+	/// Grows the table by doubling its size and rehashing all the elements.
 	/// </summary>
-	/// <param name="tables">The current table structure of the <see cref="ConcurrentHashSet{T}"/> before expansion.</param>
+	/// <param name="tables">The current table to grow.</param>
+	/// <exception cref="ArgumentNullException">Thrown when the tables parameter is null.</exception>
 	[DebuggerStepThrough]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private void GrowTable(Tables tables)
+	private void GrowTable([NotNull] Tables tables)
 	{
 		const int MaxArrayLength = 0X7FEFFFFF;
 		var locksAcquired = 0;
@@ -546,12 +559,13 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	}
 
 	/// <summary>
-	/// Initializes ConcurrentHashSet from a collection.
+	/// Initializes the ConcurrentHashSet from the provided collection.
 	/// </summary>
-	/// <param name="collection">The collection.</param>
+	/// <param name="collection">The collection to initialize from.</param>
+	/// <exception cref="ArgumentNullException">Thrown when the collection is null.</exception>
 	[DebuggerStepThrough]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private void InitializeFromCollection(IEnumerable<T> collection)
+	private void InitializeFromCollection([NotNull] IEnumerable<T> collection)
 	{
 		collection.ArgumentNotNull().ToList().ForEach(item => _ = this.AddInternal(item, this._comparer.GetHashCode(item), false));
 
@@ -570,8 +584,6 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private void ReleaseLocks(int fromInclusive, int toExclusive)
 	{
-		Debug.Assert(fromInclusive <= toExclusive);
-
 		for (var inclusiveCount = fromInclusive; inclusiveCount < toExclusive; inclusiveCount++)
 		{
 			Monitor.Exit(this._tables._locks[inclusiveCount]);
@@ -583,6 +595,8 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// </summary>
 	/// <param name="item">The item to add to the set. The value cannot be null.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	[DebuggerStepThrough]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public void Add([NotNull] T item)
 	{
@@ -600,6 +614,8 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <remarks>
 	/// This method acquires all locks to ensure thread safety during the clear operation.
 	/// </remarks>
+	[DebuggerStepThrough]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Clear), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public void Clear()
 	{
@@ -625,6 +641,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="item">The object to locate in the <see cref="ConcurrentHashSet{T}"/>. Cannot be null.</param>
 	/// <returns><c>true</c> if <paramref name="item"/> is found in the <see cref="ConcurrentHashSet{T}"/>; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	[DebuggerStepThrough]
 	[DefaultValue(false)]
 	[Information(nameof(Contains), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public bool Contains([NotNull] T item)
@@ -661,6 +678,8 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> is null.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="arrayIndex"/> is less than 0.</exception>
 	/// <exception cref="ArgumentException">Thrown if the number of elements in the source <see cref="ConcurrentHashSet{T}"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.</exception>
+	[DebuggerStepThrough]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public void CopyTo([NotNull] T[] array, int arrayIndex)
 	{
@@ -697,6 +716,8 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// Returns an enumerator that iterates through the <see cref="ConcurrentHashSet{T}"/>.
 	/// </summary>
 	/// <returns>An <see cref="IEnumerator{T}"/> for the <see cref="ConcurrentHashSet{T}"/>.</returns>
+	[DebuggerStepThrough]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(GetEnumerator), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public IEnumerator<T> GetEnumerator()
 	{
@@ -720,8 +741,15 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// </summary>
 	/// <param name="item">The item to remove.</param>
 	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>. This method also returns <c>false</c> if the item was not found in the original <see cref="ConcurrentHashSet{T}"/>.</returns>
+	[DebuggerStepThrough]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Add), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
-	public bool Remove([NotNull] T item) => this.TryRemove(item);
+	public bool Remove([NotNull] T item)
+	{
+		item = item.ArgumentNotNull();
+
+		return this.TryRemove(item);
+	}
 
 	/// <summary>
 	/// Attempts to remove the specified item from the <see cref="ConcurrentHashSet{T}"/>.
@@ -732,7 +760,9 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <remarks>
 	/// This method is thread-safe and may be used concurrently with other operations on the <see cref="ConcurrentHashSet{T}"/>.
 	/// </remarks>
-	[DefaultValue(true)]
+	[DefaultValue(false)]
+	[DebuggerStepThrough]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(TryRemove), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public bool TryRemove([NotNull] T item)
 	{
@@ -859,7 +889,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	public bool IsReadOnly => false;
 
 	/// <summary>
-	/// Represents a node within the <see cref="ConcurrentHashSet{T}"/>.
+	/// Represents a node in the concurrent hash set.
 	/// </summary>
 	private sealed class Node
 	{
@@ -897,8 +927,11 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	}
 
 	/// <summary>
-	/// Represents the internal data structure used to store elements in the <see cref="ConcurrentHashSet{T}"/>.
+	/// Represents the table structure used internally by the <see cref="ConcurrentHashSet{T}"/>.
 	/// </summary>
+	/// <remarks>
+	/// This class holds the buckets, locks, and count per lock used to manage the concurrent hash set.
+	/// </remarks>
 	private sealed class Tables
 	{
 
@@ -923,6 +956,8 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 		/// <param name="buckets">The array of buckets to store the elements of the <see cref="ConcurrentHashSet{T}"/>.</param>
 		/// <param name="locks">The array of objects used as locks for synchronizing access to buckets.</param>
 		/// <param name="countPerLock">The array that keeps track of the count of elements in each corresponding bucket.</param>
+		[DebuggerStepThrough]
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal Tables(Node[] buckets, object[] locks, int[] countPerLock)
 		{
 			this._buckets = buckets.ArgumentNotNull();
