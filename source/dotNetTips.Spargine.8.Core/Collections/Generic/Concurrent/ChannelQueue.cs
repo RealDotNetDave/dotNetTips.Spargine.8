@@ -4,7 +4,7 @@
 // Created          : 11-12-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 07-24-2024
 // ***********************************************************************
 // <copyright file="ChannelQueue.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -43,6 +43,7 @@ public sealed class ChannelQueue<T>
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ChannelQueue{T}"/> class with an unbounded capacity.
 	/// </summary>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public ChannelQueue() => this._channel = Channel.CreateUnbounded<T>();
 
@@ -50,6 +51,7 @@ public sealed class ChannelQueue<T>
 	/// Initializes a new instance of the <see cref="ChannelQueue{T}"/> class with a specified capacity.
 	/// </summary>
 	/// <param name="capacity">The capacity of the <see cref="Channel{T}"/>.</param>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public ChannelQueue(int capacity) => this._channel = Channel.CreateBounded<T>(capacity);
 
@@ -59,16 +61,19 @@ public sealed class ChannelQueue<T>
 	/// </summary>
 	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
 	/// <returns>An IAsyncEnumerable of type <typeparamref name="T"/>.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ListenAsync), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public async IAsyncEnumerable<T> ListenAsync([EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
 		// Ensure the cancellation token is linked with any existing tokens with a reasonable timeout to allow for graceful shutdowns
-		using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-		linkedCts.CancelAfter(TimeSpan.FromMinutes(5)); // Adjust the timeout as necessary for your application
-
-		await foreach (var item in this._channel.Reader.ReadAllAsync(linkedCts.Token).ConfigureAwait(false))
+		using (var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken))
 		{
-			yield return item;
+			linkedCts.CancelAfter(TimeSpan.FromMinutes(5)); // Adjust the timeout as necessary for your application
+
+			await foreach (var item in this._channel.Reader.ReadAllAsync(linkedCts.Token).ConfigureAwait(false))
+			{
+				yield return item;
+			}
 		}
 	}
 
@@ -76,6 +81,7 @@ public sealed class ChannelQueue<T>
 	/// Locks the Channel so more items cannot be added. This is not reversible.
 	/// </summary>
 	/// <returns><c>true</c> if the <see cref="ChannelWriter{T}"/> successfully marked the channel as complete; <c>false</c> otherwise.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Lock), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public bool Lock()
 	{
@@ -92,6 +98,7 @@ public sealed class ChannelQueue<T>
 	/// <returns>A task that represents the asynchronous read operation. The task result contains the read item of type <typeparamref name="T"/>.</returns>
 	/// <exception cref="OperationCanceledException">Thrown when the operation is canceled.</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ReadAsync), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public async Task<T> ReadAsync(CancellationToken cancellationToken = default) => await this._channel.Reader.ReadAsync(cancellationToken).ConfigureAwait(false);
 
@@ -103,13 +110,11 @@ public sealed class ChannelQueue<T>
 	/// <returns>A Task representing the asynchronous operation. See <see cref="Task"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="item"/> is null.</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(WriteAsync), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public async Task WriteAsync([NotNull] T item, CancellationToken cancellationToken = default)
 	{
-		if (item is null)
-		{
-			ExceptionThrower.ThrowArgumentNullException(nameof(item));
-		}
+		item = item.ArgumentNotNull();
 
 		await this._channel.Writer.WriteAsync(item, cancellationToken).ConfigureAwait(false);
 	}
@@ -127,6 +132,7 @@ public sealed class ChannelQueue<T>
 	/// the queue will be locked after the items are written, which is useful for batch processing scenarios.
 	/// Make sure to call .Dispose on Task
 	/// </remarks>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(WriteAsync), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public async Task WriteAsync([NotNull] IEnumerable<T> items, bool lockQueue = false, CancellationToken cancellationToken = default)
 	{
