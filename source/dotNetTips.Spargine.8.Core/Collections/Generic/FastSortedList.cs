@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="FastSortedList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -27,7 +27,6 @@ namespace DotNetTips.Spargine.Core.Collections.Generic;
 /// </summary>
 /// <typeparam name="T">The type of elements in the list.</typeparam>
 /// <seealso cref="List{T}" />
-[Serializable]
 public class FastSortedList<T> : List<T>
 {
 
@@ -73,7 +72,6 @@ public class FastSortedList<T> : List<T>
 		if (this._sorted is false)
 		{
 			this.Sort();
-
 			this._sorted = true;
 		}
 	}
@@ -82,13 +80,13 @@ public class FastSortedList<T> : List<T>
 	/// Adds an object to the end of the <see cref="FastSortedList{T}"/>.
 	/// </summary>
 	/// <param name="item">The object to be added to the end of the <see cref="FastSortedList{T}"/>. The value can be <see langword="null" /> for reference types.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public new void Add(T item)
 	{
 		item = item.ArgumentNotNull();
 
 		base.Add(item);
-
 		this._sorted = false;
 	}
 
@@ -101,7 +99,6 @@ public class FastSortedList<T> : List<T>
 	public new void AddRange(IEnumerable<T> items)
 	{
 		base.AddRange(items.ArgumentNotNull());
-
 		this._sorted = false;
 	}
 
