@@ -23,8 +23,11 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Represents information about an unhandled exception event. This class holds details about the exception and the state of the application when the exception occurred.
 /// </summary>
+[Information(nameof(UnhandledExceptionEventInformation), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 public sealed class UnhandledExceptionEventInformation : IEventInformation
 {
+	//TODO: ADD TO EXCEPTIONTHROWER.
+
 	/// <summary>
 	/// Gets the exception that was unhandled and caused the event.
 	/// </summary>

@@ -4,13 +4,14 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="InvalidValueException.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Custom exception to be used when an invalid value is encountered.</summary>
 // ***********************************************************************
+using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core.Internal;
 using DotNetTips.Spargine.Core.Properties;
 
@@ -22,10 +23,10 @@ namespace DotNetTips.Spargine.Core;
 /// Represents an exception that is thrown when an invalid value of type <typeparamref name="TValue"/> is encountered.
 /// </summary>
 /// <typeparam name="TValue">The type of the invalid value.</typeparam>
-[Serializable]
+[Serializable]
+[Information(nameof(InvalidValueException<TValue>), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 public sealed class InvalidValueException<TValue> : LoggableException
 {
-
 	/// <summary>
 	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}"/> class with a default error message.
 	/// </summary>
@@ -37,13 +38,13 @@ public sealed class InvalidValueException<TValue> : LoggableException
 	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}"/> class with the specified invalid value.
 	/// </summary>
 	/// <param name="value">The invalid value that caused the exception.</param>
-	public InvalidValueException(TValue value) : base(Resources.MessageGoToDotNetTipsComForHelp) => this.Value = value;
+	public InvalidValueException([AllowNull] TValue value) : base(Resources.MessageGoToDotNetTipsComForHelp) => this.Value = value;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}"/> class with a specified error message.
 	/// </summary>
 	/// <param name="message">The message that describes the error.</param>
-	public InvalidValueException(string message) : base(message)
+	public InvalidValueException([NotNull] string message) : base(message)
 	{
 	}
 
@@ -52,14 +53,14 @@ public sealed class InvalidValueException<TValue> : LoggableException
 	/// </summary>
 	/// <param name="message">The message that describes the error.</param>
 	/// <param name="value">The invalid value that caused the exception.</param>
-	public InvalidValueException(string message, TValue value) : base(message) => this.Value = value;
+	public InvalidValueException([NotNull] string message, [AllowNull] TValue value) : base(message) => this.Value = value;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="InvalidValueException{TValue}"/> class with a specified error message and a reference to the inner exception that is the cause of this exception.
 	/// </summary>
 	/// <param name="message">The error message that explains the reason for the exception.</param>
 	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
-	public InvalidValueException(string message, Exception innerException) : base(message, innerException)
+	public InvalidValueException([NotNull] string message, [AllowNull] Exception innerException) : base(message, innerException)
 	{
 	}
 
@@ -69,7 +70,7 @@ public sealed class InvalidValueException<TValue> : LoggableException
 	/// <param name="message">The error message that explains the reason for the exception.</param>
 	/// <param name="value">The invalid value that caused the exception.</param>
 	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
-	public InvalidValueException(string message, TValue value, Exception innerException) : base(message, innerException) => this.Value = value;
+	public InvalidValueException([NotNull] string message, [AllowNull] TValue value, [AllowNull] Exception innerException) : base(message, innerException) => this.Value = value;
 
 	/// <summary>
 	/// Converts to string.
@@ -98,6 +99,6 @@ public sealed class InvalidValueException<TValue> : LoggableException
 	/// Gets the invalid value that caused the exception.
 	/// </summary>
 	/// <value>The invalid value.</value>
+	[AllowNull]
 	public TValue Value { get; private set; }
-
 }

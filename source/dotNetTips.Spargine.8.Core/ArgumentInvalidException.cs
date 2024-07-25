@@ -4,13 +4,14 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="ArgumentInvalidException.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary>Custom exception type for invalid argument value.</summary>
 // ***********************************************************************
+using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -23,9 +24,9 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 /// <seealso cref="ArgumentException" />
 [Serializable]
+[Information(nameof(ArgumentInvalidException), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 public sealed class ArgumentInvalidException : ArgumentException
 {
-
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ArgumentInvalidException"/> class with a default error message.
 	/// This constructor initializes a new instance with a predefined error message that indicates an invalid argument was passed.
@@ -39,7 +40,7 @@ public sealed class ArgumentInvalidException : ArgumentException
 	/// This constructor allows for specifying a custom error message that describes the invalid argument.
 	/// </summary>
 	/// <param name="message">The message that describes the error.</param>
-	public ArgumentInvalidException(string message) : base(message)
+	public ArgumentInvalidException([NotNull] string message) : base(message)
 	{
 	}
 
@@ -49,7 +50,7 @@ public sealed class ArgumentInvalidException : ArgumentException
 	/// </summary>
 	/// <param name="message">The error message that explains the reason for the exception.</param>
 	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
-	public ArgumentInvalidException(string message, Exception innerException) : base(message, innerException)
+	public ArgumentInvalidException([NotNull] string message, [NotNull] Exception innerException) : base(message, innerException)
 	{
 	}
 
@@ -59,7 +60,7 @@ public sealed class ArgumentInvalidException : ArgumentException
 	/// </summary>
 	/// <param name="message">The error message that explains the reason for the exception.</param>
 	/// <param name="paramName">The name of the parameter that caused the current exception.</param>
-	public ArgumentInvalidException(string message, string paramName) : base(message, paramName)
+	public ArgumentInvalidException([NotNull] string message, [NotNull] string paramName) : base(message, paramName)
 	{
 	}
 
@@ -70,8 +71,7 @@ public sealed class ArgumentInvalidException : ArgumentException
 	/// <param name="message">The error message that explains the reason for the exception.</param>
 	/// <param name="paramName">The name of the parameter that caused the current exception.</param>
 	/// <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException"/> parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception.</param>
-	public ArgumentInvalidException(string message, string paramName, Exception innerException) : base(message, paramName, innerException)
+	public ArgumentInvalidException([NotNull] string message, [NotNull] string paramName, [NotNull] Exception innerException) : base(message, paramName, innerException)
 	{
 	}
-
 }

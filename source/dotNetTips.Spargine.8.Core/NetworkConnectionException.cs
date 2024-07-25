@@ -4,7 +4,7 @@
 // Created          : 03-05-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="NetworkConnectionException.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -12,6 +12,7 @@
 // <summary>Custom exception to be used when there is a network connection error.</summary>
 // ***********************************************************************
 
+using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core.Network;
 using DotNetTips.Spargine.Core.Properties;
 
@@ -23,10 +24,9 @@ namespace DotNetTips.Spargine.Core;
 /// Represents errors that occur during network connection operations.
 /// </summary>
 [Serializable]
-[Information(nameof(NetworkConnectionException), Status = Status.Available)]
+[Information(nameof(NetworkConnectionException), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 public sealed class NetworkConnectionException : LoggableException
 {
-
 	/// <summary>
 	/// Initializes a new instance of the <see cref="NetworkConnectionException"/> class with a default error message.
 	/// </summary>
@@ -38,7 +38,7 @@ public sealed class NetworkConnectionException : LoggableException
 	/// Initializes a new instance of the <see cref="NetworkConnectionException"/> class with a specified error message.
 	/// </summary>
 	/// <param name="message">The message that describes the error.</param>
-	public NetworkConnectionException(string message) : base(message)
+	public NetworkConnectionException([NotNull] string message) : base(message)
 	{
 	}
 
@@ -47,7 +47,7 @@ public sealed class NetworkConnectionException : LoggableException
 	/// </summary>
 	/// <param name="message">The error message that explains the reason for the exception.</param>
 	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
-	public NetworkConnectionException(string message, Exception innerException) : base(message, innerException)
+	public NetworkConnectionException([NotNull] string message, [NotNull] Exception innerException) : base(message, innerException)
 	{
 	}
 
@@ -56,8 +56,7 @@ public sealed class NetworkConnectionException : LoggableException
 	/// </summary>
 	/// <param name="message">The error message that explains the reason for the exception.</param>
 	/// <param name="connection">The network connection that caused the exception.</param>
-	public NetworkConnectionException(string message, NetworkConnection connection) : base($"{connection}:{message}")
+	public NetworkConnectionException([NotNull] string message, [NotNull] NetworkConnection connection) : base($"{connection}:{message}")
 	{
 	}
-
 }
