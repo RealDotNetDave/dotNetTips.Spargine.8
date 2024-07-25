@@ -4,7 +4,7 @@
 // Created          : 06-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="SimpleResult.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -29,17 +29,17 @@ namespace DotNetTips.Spargine.Core;
 /// Use for return results from methods. This type is thread-safe.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Documentation = "https://bit.ly/SpargineAug23")]
+[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", UnitTestStatus = UnitTestStatus.WIP, Status = Core.Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 public class SimpleResult<T>
 {
 
 	/// <summary>
-	/// The exception
+	/// The collection of exceptions associated with this result.
 	/// </summary>
 	private readonly ConcurrentBag<Exception> _exceptions = [];
 
 	/// <summary>
-	/// The value
+	/// The value associated with this result.
 	/// </summary>
 	private T _value;
 
@@ -65,7 +65,8 @@ public class SimpleResult<T>
 	/// <summary>
 	/// Generates the exception messages.
 	/// </summary>
-	/// <returns>System.String.</returns>
+	/// <returns>A string containing all exception messages.</returns>
+	[return: NotNull]
 	private string GenerateExceptionMessages() => FastStringBuilder.PerformAction((builder) =>
 		   {
 			   foreach (var exception in this._exceptions)
@@ -75,13 +76,12 @@ public class SimpleResult<T>
 		   });
 
 	/// <summary>
-	/// Gets the reference.
+	/// Gets the reference to the value associated with the specified result.
 	/// </summary>
-	/// <param name="result">The result.</param>
-	/// <returns>T.</returns>
+	/// <param name="result">The result object containing the value.</param>
+	/// <returns>A reference to the value of type <typeparamref name="T"/>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static ref readonly T GetReference(in SimpleResult<T> result) => ref result._value;
-
+	internal static ref readonly T GetReference([NotNull] in SimpleResult<T> result) => ref result._value;
 
 	/// <summary>
 	/// Adds an exception to the collection of exceptions. This method captures the exception
@@ -103,22 +103,23 @@ public class SimpleResult<T>
 	public ReadOnlyCollection<Exception> Errors() => new(this._exceptions.ToList());
 
 	/// <summary>
-	/// Extracts actual result.
+	/// Extracts the actual result from the specified <see cref="SimpleResult{T}"/>.
 	/// </summary>
-	/// <param name="result">The result object.</param>
-	/// <returns>T.</returns>
+	/// <param name="result">The result object containing the value.</param>
+	/// <returns>The value of type <typeparamref name="T"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="result"/> is <see langword="null"/>.</exception>
 	public static T FromResult([NotNull] in SimpleResult<T> result) => result.ArgumentNotNull().Value;
 
 	/// <summary>
-	/// Returns Exception messages, including the InnerException.
+	/// Returns the error messages, including the InnerException, if any.
 	/// </summary>
-	/// <returns>The error messages.</returns>
+	/// <returns>A string containing all error messages.</returns>
 	public string GetErrorMessages() => this.GenerateExceptionMessages();
 
 	/// <summary>
-	/// Gets the hash code.
+	/// Gets the hash code for the current instance.
 	/// </summary>
-	/// <returns>int.</returns>
+	/// <returns>An integer representing the hash code of the current instance.</returns>
 	public override int GetHashCode() => base.GetHashCode();
 
 	/// <summary>
@@ -135,16 +136,16 @@ public class SimpleResult<T>
 	public T OrDefault() => this._value;
 
 	/// <summary>
-	/// Sets the value.
+	/// Sets the value associated with this result.
 	/// </summary>
-	/// <param name="value">The value.</param>
+	/// <param name="value">The value to be set.</param>
 	public void SetValue(T value) => this._value = value;
 
 	/// <summary>
 	/// Returns the error message or the string representation of the value.
 	/// </summary>
 	/// <returns>The textual representation of this object.</returns>
-	public override string ToString() => !this._exceptions.IsEmpty ? this.GenerateExceptionMessages() : this._value?.ToString();
+	public override string ToString() => this._exceptions.IsEmpty ? this._value?.ToString() ?? string.Empty : this.GenerateExceptionMessages();
 
 	/// <summary>
 	/// Attempts to extract value if it is present.
@@ -158,9 +159,13 @@ public class SimpleResult<T>
 	}
 
 	/// <summary>
-	/// Indicates that the result is successful.
+	/// Indicates the status of the result.
 	/// </summary>
-	/// <value><see langword="true" /> if this result is successful; <see langword="false" /> if this result represents exception.</value>
+	/// <value>
+	/// <see cref="ResultStatus.Succeeded"/> if the result is successful; 
+	/// <see cref="ResultStatus.PartialSuccess"/> if there are exceptions but a value is present;
+	/// otherwise, <see cref="ResultStatus.Failed"/>.
+	/// </value>>
 	public ResultStatus Status
 	{
 		get
@@ -169,23 +174,20 @@ public class SimpleResult<T>
 			{
 				return ResultStatus.Succeeded;
 			}
-			else
-			{
-				return this._exceptions.IsEmpty is false && this.Value is not null ? ResultStatus.PartialSuccess : ResultStatus.Failed;
-			}
+			return this._value is not null ? ResultStatus.PartialSuccess : ResultStatus.Failed;
 		}
 	}
 
 	/// <summary>
-	/// Extracts the actual result.
+	/// Gets the value associated with this result.
 	/// </summary>
-	/// <value>The value.</value>
+	/// <value>The value of type <typeparamref name="T"/>.</value>
 	public T Value => this._value;
 
 }
 
 /// <summary>
-/// Result Status
+/// Represents the status of a result.
 /// </summary>
 public enum ResultStatus
 {
