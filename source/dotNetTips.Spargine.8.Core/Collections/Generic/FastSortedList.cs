@@ -27,6 +27,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic;
 /// </summary>
 /// <typeparam name="T">The type of elements in the list.</typeparam>
 /// <seealso cref="List{T}" />
+[Information(UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available)]
 public class FastSortedList<T> : List<T>
 {
 
