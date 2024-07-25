@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-02-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="FileHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -31,19 +31,10 @@ namespace DotNetTips.Spargine.Tests.IO;
 [TestClass]
 public class FileHelperTests
 {
-
 	private const int FileCount = 100;
 	private const int FileLength = 2048;
 
-	private static CopyProgressResult CopyProgressCallback(long totalFileSize,
-		long totalBytesTransferred,
-		long streamSize,
-		long streamBytesTransferred,
-		uint dwStreamNumber,
-		CopyProgressCallbackReason dwCallbackReason,
-		IntPtr hSourceFile,
-		IntPtr hDestinationFile,
-		IntPtr lpData)
+	private static CopyProgressResult CopyProgressCallback(long totalFileSize, long totalBytesTransferred, long streamSize, long streamBytesTransferred, uint dwStreamNumber, CopyProgressCallbackReason dwCallbackReason, IntPtr hSourceFile, IntPtr hDestinationFile, IntPtr lpData)
 	{
 		Trace.WriteLine($"TotalFileSize:{totalFileSize}");
 		Trace.WriteLine($"TotalBytesTransferred:{totalBytesTransferred}");
@@ -161,22 +152,6 @@ public class FileHelperTests
 		}
 
 		_ = FileHelper.DeleteFiles(files.Files);
-	}
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
-	public void MoveFile_Test()
-	{
-		//Generate temp file
-		var files = RandomData.GenerateFiles(1, FileLength, $"{nameof(this.DeleteFiles_Full_Test)}.{DateTime.Now.Ticks}");
-
-		var file = new FileInfo(files.Files.First());
-		var destFile = new FileInfo(Path.Combine(App.ExecutingFolder(), file.Name));
-
-		//Move file
-		var result = FileHelper.MoveFile(file, destFile, FileMoveOptions.ReplaceExisting | FileMoveOptions.CopyAllowed, 10);
-
-		Assert.IsTrue(result);
 	}
 
 }

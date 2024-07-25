@@ -115,6 +115,15 @@ namespace DotNetTips.Spargine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The directory for the file cannot be the same as the destination..
+        /// </summary>
+        internal static string TheDirectoryForTheFileCannotBeTheSameAsThe {
+            get {
+                return ResourceManager.GetString("TheDirectoryForTheFileCannotBeTheSameAsThe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The operation has been canceled..
         /// </summary>
         internal static string TheOperationHasBeenCanceled {

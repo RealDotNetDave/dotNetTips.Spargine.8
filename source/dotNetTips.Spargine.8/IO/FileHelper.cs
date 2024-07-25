@@ -14,7 +14,6 @@
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.IO.Compression;
 using System.Net;
 using System.Runtime.Versioning;
@@ -68,7 +67,7 @@ public static class FileHelper
 	/// <param name="streamBytesTransferred">The number of bytes transferred for the current stream. This parameter can be zero if not applicable.</param>
 	/// <param name="dwStreamNumber">The number of the current stream. The first stream is 1.</param>
 	/// <param name="dwCallbackReason">The reason the callback was called. See <see cref="CopyProgressCallbackReason"/> for possible values.</param>
-	/// <param name="hSourceFile">A handle to the source file. This is an IntPtr and does not have a direct <see cref="FileInfo"/> equivalent.</param>
+	/// <param name="hSourceFile">A handle to the file file. This is an IntPtr and does not have a direct <see cref="FileInfo"/> equivalent.</param>
 	/// <param name="hDestinationFile">A handle to the destination file. This is an IntPtr and does not have a direct <see cref="FileInfo"/> equivalent.</param>
 	/// <param name="lpData">A pointer to application-defined data passed to the callback function. This is an IntPtr and does not have a direct .NET equivalent.</param>
 	/// <returns>A <see cref="CopyProgressResult"/> value that determines the action to take.</returns>
@@ -126,6 +125,27 @@ public static class FileHelper
 				}
 			}
 		}
+	}
+
+	/// <summary>
+	/// Validates the file file and destination directory, and creates the destination directory if it does not exist.
+	/// </summary>
+	/// <param name="file">The file file to be copied. Must not be null.</param>
+	/// <param name="destination">The destination directory where the file will be copied. Must not be null.</param>
+	/// <exception cref="ArgumentNullException">Thrown when the file or destination is null.</exception>
+	private static void ValidateCreateDestinationDirectory([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
+	{
+		file = file.ArgumentNotNull();
+		destination = destination.ArgumentNotNull();
+
+		//Ensure the file directory and destination are not the same.
+
+		if (file.Directory.FullName.Equals(destination.FullName, StringComparison.OrdinalIgnoreCase))
+		{
+			ExceptionThrower.ThrowInvalidOperationException(Resources.TheDirectoryForTheFileCannotBeTheSameAsThe);
+		}
+
+		_ = destination.CheckExists(createDirectory: true);
 	}
 
 	/// <summary>
@@ -194,16 +214,16 @@ public static class FileHelper
 	/// <summary>
 	/// Copies a specified file to a new location.
 	/// </summary>
-	/// <param name="file">The source <see cref="FileInfo"/> object representing the file to copy. Must not be null.</param>
+	/// <param name="file">The file <see cref="FileInfo"/> object representing the file to copy. Must not be null.</param>
 	/// <param name="destination">The destination <see cref="DirectoryInfo"/> where the file should be copied to. Must not be null.</param>
 	/// <returns>The size of the copied file in bytes.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destination"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the source file does not exist.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
 	/// <exception cref="IOException">Thrown if an I/O error occurs during copying.</exception>
 	/// <example>
 	/// Here is how you can use the CopyFile method:
 	/// <code>
-	/// var sourceFile = new FileInfo("path/to/source/file.txt");
+	/// var sourceFile = new FileInfo("path/to/file/file.txt");
 	/// var destinationDir = new DirectoryInfo("path/to/destination");
 	/// var fileLength = FileHelper.CopyFile(sourceFile, destinationDir);
 	/// Console.WriteLine($"Copied file length: {fileLength}");
@@ -212,9 +232,11 @@ public static class FileHelper
 	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.WIP, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
 	public static long CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
+		ValidateCreateDestinationDirectory(file, destination);
+
 		var fileName = file.ArgumentExists().FullName;
 
-		if (destination.ArgumentNotNull().CheckExists(throwException: true))
+		if (destination.ArgumentNotNull().CheckExists(createDirectory: true))
 		{
 			var destinationName = destination.FullName;
 
@@ -242,10 +264,11 @@ public static class FileHelper
 		}
 	}
 
+
 	/// <summary>
 	/// Copies a specified file to a new location with progress reporting.
 	/// </summary>
-	/// <param name="file">The source <see cref="FileInfo"/> object representing the file to copy. Must not be null.</param>
+	/// <param name="file">The file <see cref="FileInfo"/> object representing the file to copy. Must not be null.</param>
 	/// <param name="destination">The destination <see cref="DirectoryInfo"/> where the file should be copied to. Must not be null.</param>
 	/// <param name="progressCallback">The <see cref="CopyProgressRoutine"/> callback for reporting progress. Must not be null.</param>
 	/// <returns><c>true</c> if the file was successfully copied; otherwise, <c>false</c>.</returns>
@@ -254,7 +277,7 @@ public static class FileHelper
 	/// <example>
 	/// Here is how you can use the CopyFile method with a progress callback:
 	/// <code>
-	/// var sourceFile = new FileInfo("path/to/source/file.txt");
+	/// var sourceFile = new FileInfo("path/to/file/file.txt");
 	/// var destinationDir = new DirectoryInfo("path/to/destination");
 	/// bool result = FileHelper.CopyFile(sourceFile, destinationDir, (totalFileSize, totalBytesTransferred, streamSize, streamBytesTransferred, dwStreamNumber, dwCallbackReason, hSourceFile, hDestinationFile, lpData) =>
 	/// {
@@ -267,8 +290,7 @@ public static class FileHelper
 	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static bool CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, [NotNull] CopyProgressRoutine progressCallback)
 	{
-		file = file.ArgumentNotNull();
-		destination = destination.ArgumentNotNull();
+		ValidateCreateDestinationDirectory(file, destination);
 		progressCallback = progressCallback.ArgumentNotNull();
 
 		if (destination.ArgumentNotNull().CheckExists(throwException: true))
@@ -286,16 +308,16 @@ public static class FileHelper
 	/// <summary>
 	/// Asynchronously copies a specified file to a new location.
 	/// </summary>
-	/// <param name="file">The source <see cref="FileInfo"/> object representing the file to copy. Must not be null.</param>
+	/// <param name="file">The file <see cref="FileInfo"/> object representing the file to copy. Must not be null.</param>
 	/// <param name="destination">The destination <see cref="DirectoryInfo"/> where the file should be copied to. Must not be null.</param>
 	/// <returns>A Task{long} representing the asynchronous operation that completes with the size of the copied file in bytes.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destination"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the source file does not exist.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
 	/// <exception cref="IOException">Thrown if an I/O error occurs during copying.</exception>
 	/// <example>
 	/// Here is how you can use the <see cref="CopyFileAsync"/> method:
 	/// <code>
-	/// var sourceFile = new FileInfo("path/to/source/file.txt");
+	/// var sourceFile = new FileInfo("path/to/file/file.txt");
 	/// var destinationDir = new DirectoryInfo("path/to/destination");
 	/// var fileLength = await FileHelper.CopyFileAsync(sourceFile, destinationDir);
 	/// Console.WriteLine($"Copied file length: {fileLength}");
@@ -304,8 +326,9 @@ public static class FileHelper
 	[Information(nameof(CopyFileAsync), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Documentation = "https://dotnettips.wordpress.com/2020/11/17/coding-faster-with-the-dotnettips-utility-november-2020-update", Status = Status.Available)]
 	public static async Task<long> CopyFileAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
-		var fileName = file.ArgumentExists().FullName;
-		_ = destination.ArgumentNotNull().CheckExists(createDirectory: true, throwException: true, errorMessage: string.Format(CultureInfo.InvariantCulture, Resources.DirectoryDoesNotExistOrCannotBeCreated, destination.FullName));
+		ValidateCreateDestinationDirectory(file, destination);
+
+		var fileName = file.FullName;
 
 		var destinationName = destination.FullName;
 
@@ -339,7 +362,7 @@ public static class FileHelper
 	/// it will continue to attempt to delete the remaining files even if an error occurs. The result will contain the list of files that were
 	/// successfully deleted and any error information.
 	/// </remarks>
-	[Information(nameof(DeleteFiles), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineMay2024", Status = Status.Available)]
+	[Information(nameof(DeleteFiles), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.WIP, Documentation = "https://bit.ly/SpargineMay2024", Status = Status.Available)]
 	public static SimpleResult<ReadOnlyCollection<string>> DeleteFiles([NotNull] this ReadOnlyCollection<string> files, bool stopOnFirstError = false)
 	{
 		files = files.ArgumentNotNull();
@@ -466,19 +489,19 @@ public static class FileHelper
 	/// <summary>
 	/// Moves a file to a new location, optionally replacing the destination file and with retry logic.
 	/// </summary>
-	/// <param name="file">The source <see cref="FileInfo"/> object representing the file to move. Must not be null.</param>
+	/// <param name="file">The file <see cref="FileInfo"/> object representing the file to move. Must not be null.</param>
 	/// <param name="destinationFile">The destination <see cref="FileInfo"/> object representing the target file location. Must not be null.</param>
 	/// <param name="fileMoveOptions">Specifies the behavior for moving the file, such as whether to overwrite an existing file at the destination. See <see cref="FileMoveOptions"/> for options.</param>
 	/// <param name="retryCount">The number of times to retry the move operation in case of failure. Must be a non-negative number.</param>
 	/// <returns><c>true</c> if the file was successfully moved; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destinationFile"/> is null.</exception>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destinationFile"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the source file does not exist.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
 	/// <exception cref="IOException">Thrown if the destination file already exists and <paramref name="fileMoveOptions"/> is set to <see cref="FileMoveOptions.None"/>.</exception>
 	/// <example>
 	/// Here is how you can use the <see cref="MoveFile"/> method:
 	/// <code>
-	/// var sourceFile = new FileInfo("path/to/source/file.txt");
+	/// var sourceFile = new FileInfo("path/to/file/file.txt");
 	/// var destinationFile = new FileInfo("path/to/destination/file.txt");
 	/// bool result = FileHelper.MoveFile(sourceFile, destinationFile, FileMoveOptions.ReplaceExisting, 3);
 	/// Console.WriteLine($"Move result: {result}");
@@ -517,11 +540,11 @@ public static class FileHelper
 	/// <summary>
 	/// Asynchronously decompresses a GZip (.gz) file to the specified destination directory.
 	/// </summary>
-	/// <param name="source">The source <see cref="FileInfo"/> representing the GZip file to decompress. Must not be null.</param>
+	/// <param name="file">The file <see cref="FileInfo"/> representing the GZip file to decompress. Must not be null.</param>
 	/// <param name="destination">The destination <see cref="DirectoryInfo"/> where the decompressed files will be stored. Must not be null.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous decompression operation.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="destination"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the source file does not exist.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destination"/> is null.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
 	/// <example>
 	/// Here is how you can use the UnGZipAsync method:
 	/// <code>
@@ -532,18 +555,13 @@ public static class FileHelper
 	/// </example>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(UnGZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.NeedsDocumentation)]
-	public static async Task UnGZipAsync([NotNull] FileInfo source, [NotNull] DirectoryInfo destination)
+	public static async Task UnGZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
-		source = source.ArgumentExists();
-
-		if (destination.ArgumentNotNull().Exists is false)
-		{
-			destination.Create();
-		}
+		ValidateCreateDestinationDirectory(file, destination);
 
 		var destinationPath = destination.FullName;
 
-		using (var gzipStream = source.OpenRead())
+		using (var gzipStream = file.OpenRead())
 		{
 			using (var expandedStream = new GZipStream(gzipStream, CompressionMode.Decompress))
 			{
@@ -558,12 +576,12 @@ public static class FileHelper
 	/// <summary>
 	/// Asynchronously decompresses a GZip (.gz) file to the specified destination directory and optionally deletes the GZip file after decompression.
 	/// </summary>
-	/// <param name="file">The source <see cref="FileInfo"/> representing the GZip file to decompress. Must not be null.</param>
+	/// <param name="file">The file <see cref="FileInfo"/> representing the GZip file to decompress. Must not be null.</param>
 	/// <param name="destination">The destination <see cref="DirectoryInfo"/> where the decompressed files will be stored. Must not be null.</param>
 	/// <param name="deleteGZipFile">Specifies whether to delete the GZip file after decompression.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous decompression operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destination"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the source file does not exist.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
 	/// <example>
 	/// Here is how you can use the UnGZipAsync method:
 	/// <code>
@@ -576,11 +594,9 @@ public static class FileHelper
 	[Information(nameof(UnGZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.NeedsDocumentation)]
 	public static async Task UnGZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, bool deleteGZipFile)
 	{
-		var fileName = new FileInfo(file.ArgumentExists().FullName);
+		ValidateCreateDestinationDirectory(file, destination);
 
-		_ = destination.ArgumentNotNull().CheckExists();
-
-		await UnGZipAsync(fileName, destination).ConfigureAwait(false);
+		await UnGZipAsync(file, destination).ConfigureAwait(false);
 
 		if (deleteGZipFile)
 		{
@@ -609,9 +625,9 @@ public static class FileHelper
 	[Information(nameof(UnZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task UnZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
-		var fileName = file.ArgumentExists().FullName;
+		ValidateCreateDestinationDirectory(file, destination);
 
-		_ = destination.ArgumentNotNull().CheckExists();
+		var fileName = file.FullName;
 
 		await UnWinZipAsync(fileName, destination.FullName).ConfigureAwait(false);
 	}
@@ -624,7 +640,7 @@ public static class FileHelper
 	/// <param name="deleteZipFile">Specifies whether to delete the zip file after decompression.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous decompression operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destination"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the source file does not exist.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
 	/// <example>
 	/// Here is how you can use the UnZipAsync method:
 	/// <code>
@@ -636,8 +652,7 @@ public static class FileHelper
 	[Information(nameof(UnZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.NeedsDocumentation)]
 	public static async Task UnZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, bool deleteZipFile)
 	{
-		file = file.ArgumentExists();
-		_ = destination.ArgumentNotNull().CheckExists();
+		ValidateCreateDestinationDirectory(file, destination);
 
 		await UnZipAsync(file, destination).ConfigureAwait(false);
 
