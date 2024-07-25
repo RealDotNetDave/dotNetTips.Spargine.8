@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="UnhandledExceptionEventInformation.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -16,9 +16,7 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
-
-
-
+using System.Diagnostics.CodeAnalysis;
 
 namespace DotNetTips.Spargine.Core;
 
@@ -27,11 +25,11 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 public sealed class UnhandledExceptionEventInformation : IEventInformation
 {
-
 	/// <summary>
 	/// Gets the exception that was unhandled and caused the event.
 	/// </summary>
 	/// <value>The exception that was not handled.</value>
+	[NotNull]
 	public LoggableException Exception { get; internal set; }
 
 	/// <summary>
