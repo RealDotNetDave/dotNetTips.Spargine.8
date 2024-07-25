@@ -340,6 +340,15 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unknown IO Exception..
+        /// </summary>
+        internal static string ErrorUnknownIOException {
+            get {
+                return ResourceManager.GetString("ErrorUnknownIOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uri cannot be null..
         /// </summary>
         internal static string ErrorUriCannotBeNull {

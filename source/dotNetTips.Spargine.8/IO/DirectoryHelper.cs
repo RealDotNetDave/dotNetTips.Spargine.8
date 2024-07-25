@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -40,28 +40,29 @@ public static class DirectoryHelper
 {
 
 	/// <summary>
-	/// Retrieves the application data folder path for the current user on Windows or macOS.
+	/// Gets the application data folder path for the current user.
 	/// </summary>
-	/// <returns>A string representing the path to the application data folder.</returns>
-	/// <remarks>On Windows, this method returns the path to the Local Application Data folder. On macOS, it returns the path to the Home directory.
-	/// The folder path is determined based on the company name specified in the assembly's <see cref="AssemblyCompanyAttribute" />.
-	/// If the company name is not specified, a default folder name is used.</remarks>
+	/// <returns>The path to the application data folder.</returns>
+	/// <exception cref="InvalidOperationException">Thrown when the user path environment variable is not set.</exception>
 	[SupportedOSPlatform("windows")]
 	[SupportedOSPlatform("macos")]
-	[Information(nameof(AppDataFolder), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(AppDataFolder), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static string AppDataFolder()
 	{
 		var userPath = Environment.GetEnvironmentVariable(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "LOCALAPPDATA" : "Home");
 
+		if (string.IsNullOrEmpty(userPath))
+		{
+			ExceptionThrower.ThrowInvalidOperationException("User path environment variable is not set.");
+		}
+
 		var companyName = Assembly.GetEntryAssembly().GetCustomAttributes<AssemblyCompanyAttribute>().FirstOrDefault().Company.Trim();
 
-		var path = Path.Combine(userPath, companyName);
-
-		return path;
+		return Path.Combine(userPath, companyName);
 	}
 
 	/// <summary>
-	/// Checks the permission of a directory.
+	/// Checks if the current user has the specified permission on the given directory.
 	/// </summary>
 	/// <param name="directory">The directory to check permissions on.</param>
 	/// <param name="permission">The permission to check for. Default is <see cref="FileSystemRights.Read" />.</param>
@@ -73,10 +74,12 @@ public static class DirectoryHelper
 	/// var hasReadPermission = DirectoryHelper.CheckPermission(directoryInfo, FileSystemRights.Read);
 	/// Console.WriteLine($"Has read permission: {hasReadPermission}");
 	/// </code></example>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="directory"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
 	public static bool CheckPermission([NotNull] DirectoryInfo directory, FileSystemRights permission = FileSystemRights.Read)
 	{
+		//OPTIMIZATION FROM COPILOT BREAKS THIS CODE
 		directory = directory.ArgumentNotNull();
 
 		var accessControl = directory.GetAccessControl();
@@ -121,22 +124,28 @@ public static class DirectoryHelper
 	/// var destDir = new DirectoryInfo(@"C:\DestinationDirectory");
 	/// DirectoryHelper.CopyDirectory(sourceDir, destDir, true);
 	/// </code></example>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> or <paramref name="destination"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(CopyDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(CopyDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static void CopyDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, bool overwrite = true)
 	{
 		source = source.ArgumentNotNull();
 		_ = destination.ArgumentNotNull().CheckExists();
 
-		foreach (var file in source.GetFiles())
-		{
-			_ = file.CopyTo(Path.Combine(destination.FullName, file.Name), overwrite);
-		}
+		var files = source.GetFiles();
+		var subdirs = source.GetDirectories();
 
-		foreach (var directory in source.GetDirectories())
+		_ = Parallel.ForEach(files, file =>
 		{
-			CopyDirectory(directory, destination.CreateSubdirectory(directory.Name), overwrite);
-		}
+			var destFile = Path.Combine(destination.FullName, file.Name);
+			_ = file.CopyTo(destFile, overwrite);
+		});
+
+		_ = Parallel.ForEach(subdirs, subdir =>
+		{
+			var destSubDir = destination.CreateSubdirectory(subdir.Name);
+			CopyDirectory(subdir, destSubDir, overwrite);
+		});
 	}
 
 	/// <summary>
@@ -151,8 +160,10 @@ public static class DirectoryHelper
 	/// DirectoryHelper.DeleteDirectory(directoryInfo, 5);
 	/// </code></example>
 	/// <remarks>Checks for the <see cref="IOException" /> and <see cref="UnauthorizedAccessException" />.</remarks>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> is null.</exception>
+	/// <exception cref="IOException">Thrown when the directory could not be deleted after the specified number of retries.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static void DeleteDirectory([NotNull] DirectoryInfo path, int retries = 10)
 	{
 		if (path.Exists is false)
@@ -166,11 +177,12 @@ public static class DirectoryHelper
 		do
 		{
 			tries++;
+			var sleep = (retries + 1) * 10;
 
 			if (tries > 1)
 			{
 				// If something has a transient lock on the file waiting may resolve the issue
-				Thread.Sleep((retries + 1) * 10);
+				Thread.Sleep(sleep);
 			}
 
 			try
@@ -185,14 +197,16 @@ public static class DirectoryHelper
 			}
 			catch (IOException) when (tries >= retries)
 			{
-				throw;
+				Thread.Sleep(sleep);
 			}
 			catch (UnauthorizedAccessException) when (tries >= retries)
 			{
-				throw;
+				Thread.Sleep(sleep);
 			}
 		}
 		while (retries > tries);
+
+		ExceptionThrower.ThrowIOException($"Failed to delete directory: {path.FullName} after {retries} retries.");
 	}
 
 	/// <summary>
@@ -203,8 +217,9 @@ public static class DirectoryHelper
 	/// <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or should include all subdirectories.</param>
 	/// <returns>An asynchronous stream (<see cref="IAsyncEnumerable{T}" />) of collections of <see cref="FileInfo" />, where each collection represents files found in a directory.</returns>
 	/// <remarks>This method utilizes deferred execution to improve performance. Files are not loaded into memory until the asynchronous stream is iterated.</remarks>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="directories"/> or <paramref name="searchPattern"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(LoadFilesAsync), author: "David McCarter", createdOn: "3/1/2021", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(LoadFilesAsync), author: "David McCarter", createdOn: "3/1/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static async IAsyncEnumerable<IEnumerable<FileInfo>> LoadFilesAsync([NotNull] IEnumerable<DirectoryInfo> directories, [NotNull] string searchPattern, SearchOption searchOption)
 	{
 		directories = directories.ArgumentNotNull();
@@ -222,13 +237,19 @@ public static class DirectoryHelper
 			options.RecurseSubdirectories = true;
 		}
 
-		var validDirectories = directories.Where(directory => directory.Exists).Select(directory => directory).ToArray();
-
-		for (var directoryCount = 0; directoryCount < validDirectories.FastCount(); directoryCount++)
+		var tasks = directories.Select(async directory =>
 		{
-			var files = await Task.Run(() => validDirectories[directoryCount].EnumerateFiles(searchPattern, options), CancellationToken.None).ConfigureAwait(false);
+			if (directory.Exists)
+			{
+				return await Task.Run(() => directory.GetFiles(searchPattern, searchOption)).ConfigureAwait(false);
+			}
 
-			yield return files;
+			return Enumerable.Empty<FileInfo>();
+		}).ToList();
+
+		foreach (var task in tasks)
+		{
+			yield return await task.ConfigureAwait(false);
 		}
 	}
 
@@ -252,7 +273,7 @@ public static class DirectoryHelper
 	/// </code>
 	/// </example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(LoadOneDriveFolders), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(LoadOneDriveFolders), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<OneDriveFolder> LoadOneDriveFolders()
 	{
 		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) is false)
@@ -336,8 +357,10 @@ public static class DirectoryHelper
 	/// var destDir = new DirectoryInfo(@"C:\DestinationDirectory");
 	/// DirectoryHelper.MoveDirectory(sourceDir, destDir, 5);
 	/// </code></example>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> or <paramref name="destination"/> is null.</exception>
+	/// <exception cref="IOException">Thrown when the directory could not be moved after the specified number of retries.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static void MoveDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, int retries = 10)
 	{
 		source = source.ArgumentExists();
@@ -366,8 +389,9 @@ public static class DirectoryHelper
 	/// bool containsFiles = DirectoryHelper.SafeDirectorySearch(directoryInfo, SearchOption.TopDirectoryOnly, "*.txt", "*.docx");
 	/// Console.WriteLine($"Directory contains matching files: {containsFiles}");
 	/// </code></example>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="searchPatterns"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeDirectorySearch), "David McCarter", "6/14/2021", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2022")]
+	[Information(nameof(SafeDirectorySearch), "David McCarter", "6/14/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2022", Status = Status.NeedsDocumentation)]
 	public static bool SafeDirectorySearch([NotNull] DirectoryInfo path, SearchOption searchOption = SearchOption.TopDirectoryOnly, [NotNull] params string[] searchPatterns)
 	{
 		path = path.ArgumentExists();
@@ -395,10 +419,12 @@ public static class DirectoryHelper
 	/// Console.WriteLine(dir.FullName);
 	/// }
 	/// </code></example>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeDirectorySearch), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(SafeDirectorySearch), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static IEnumerable<DirectoryInfo> SafeDirectorySearch([NotNull] DirectoryInfo path, [NotNull] string searchPattern = "*.*", SearchOption searchOption = SearchOption.TopDirectoryOnly)
 	{
+		//OPTIMIZATION FROM COPILOT BREAKS CODE
 		path = path.ArgumentExists();
 		searchPattern = searchPattern.ArgumentNotNullOrEmpty();
 		searchOption = searchOption.ArgumentDefined();
@@ -438,8 +464,9 @@ public static class DirectoryHelper
 	/// Console.WriteLine(file.FullName);
 	/// }
 	/// </code></example>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "http://bit.ly/SpargineMarch2021")]
+	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "http://bit.ly/SpargineMarch2021", Status = Status.Available)]
 	public static ReadOnlyCollection<FileInfo> SafeFileSearch([NotNull] DirectoryInfo path, [NotNull] string searchPattern, SearchOption searchOption)
 	{
 		var directories = new List<DirectoryInfo>(1)
@@ -461,7 +488,7 @@ public static class DirectoryHelper
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="directories"/> or <paramref name="searchPattern"/> is null.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="searchOption"/> is not a valid <see cref="SearchOption"/>.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static IEnumerable<FileInfo> SafeFileSearch([NotNull] IEnumerable<DirectoryInfo> directories, [NotNull] string searchPattern, SearchOption searchOption = SearchOption.TopDirectoryOnly)
 	{
 		directories = directories.ArgumentNotNull();
@@ -512,8 +539,9 @@ public static class DirectoryHelper
 	/// var directoryInfo = new DirectoryInfo(@"C:\MyDirectory");
 	/// DirectoryHelper.SetFileAttributesToNormal(directoryInfo);
 	/// </code></example>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SetFileAttributesToNormal), "David McCarter", "2/14/2018", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(SetFileAttributesToNormal), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static void SetFileAttributesToNormal([NotNull] DirectoryInfo path)
 	{
 		path = path.ArgumentExists();

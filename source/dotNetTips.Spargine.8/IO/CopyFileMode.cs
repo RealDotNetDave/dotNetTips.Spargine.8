@@ -4,7 +4,7 @@
 // Created          : 11-02-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="CopyFileMode.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -12,11 +12,9 @@
 // <summary>Copy File Mode values for CopyFileEx</summary>
 // ***********************************************************************
 
-
+//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.IO;
-
-//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 /// <summary>
 /// Defines copy file modes for use with CopyFileEx method.

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -248,5 +248,8 @@
   </data>
   <data name="UserUnknown" xml:space="preserve">
     <value>UNKNOWN</value>
+  </data>
+  <data name="ErrorUnknownIOException" xml:space="preserve">
+    <value>Unknown IO Exception.</value>
   </data>
 </root>

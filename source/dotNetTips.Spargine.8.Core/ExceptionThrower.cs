@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -332,6 +332,17 @@ public static class ExceptionThrower
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
 	[Information(nameof(ThrowInvalidValueException), author: "David McCarter", createdOn: "2/10/2021", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
 	public static void ThrowInvalidValueException<TValue>([AllowNull] string message, [NotNull] TValue value, [AllowNull] Exception innerException) => throw new InvalidValueException<TValue>(message ?? Resources.ErrorInvalidValue, value: value, innerException: innerException);
+
+	/// <summary>
+	/// Throws an <see cref="IOException"/> with the specified message.
+	/// </summary>
+	/// <param name="message">The message that describes the error. Can be null.</param>
+	/// <exception cref="IOException">Always thrown with the specified message.</exception>
+	[DoesNotReturn]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
+	[Information(nameof(ThrowIOException), author: "David McCarter", createdOn: "7/25/2024", Status = Status.New)]
+	public static void ThrowIOException([AllowNull] string message) => throw new IOException(message ?? Resources.ErrorUnknownIOException);
 
 	/// <summary>
 	/// Throws a <see cref="JsonException"/> with a specified error message.

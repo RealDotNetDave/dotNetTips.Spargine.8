@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-20-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="CopyProgressResult.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -12,7 +12,7 @@
 // <summary>Common methods for working with files.</summary>
 // ***********************************************************************
 
-
+//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.IO;
 
