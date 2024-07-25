@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-20-2024
+// Last Modified On : 07-25-2024
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -30,6 +30,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// </remarks>
 /// <seealso cref="ConcurrentBag{T}" />
 /// <seealso cref="ICollection{T}" />
+[Information(UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available)]
 public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 {
 
@@ -66,10 +67,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public new void Add([NotNull] T item)
 	{
-		if (item is null)
-		{
-			ExceptionThrower.ThrowArgumentNullException(nameof(item));
-		}
+		item = item.ArgumentNotNull();
 
 		var hashCode = item.GetHashCode();
 
@@ -104,9 +102,34 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	/// </summary>
 	/// <param name="item">The object to remove from the <see cref="DistinctConcurrentBag{T}"/>.</param>
 	/// <returns><see langword="true" /> if <paramref name="item" /> was successfully removed from the <see cref="DistinctConcurrentBag{T}"/>; otherwise, <see langword="false" />. This method also returns <see langword="false" /> if <paramref name="item" /> is not found in the original collection.</returns>
-	/// <exception cref="NotImplementedException">This method is not implemented.</exception>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="item"/> is null.</exception>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public bool Remove([NotNull] T item) => throw new NotImplementedException();
+	public bool Remove([NotNull] T item)
+	{
+		item = item.ArgumentNotNull();
+
+		var hashCode = item.GetHashCode();
+
+		lock (this._lock)
+		{
+			if (this._hashCodes.Contains(hashCode))
+			{
+				var items = this.ToList();
+				if (items.Remove(item))
+				{
+					this.Clear();
+					foreach (var i in items)
+					{
+						base.Add(i);
+					}
+					_ = this._hashCodes.Remove(hashCode);
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 
 	/// <summary>
 	/// Attempts to remove and return an object from the <see cref="DistinctConcurrentBag{T}" />.
@@ -114,7 +137,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	/// <param name="result">When this method returns, <paramref name="result"/> contains the object removed from the <see cref="DistinctConcurrentBag{T}" /> or the default value of <typeparamref name="T"/> if the bag is empty.</param>
 	/// <returns><see langword="true"/> if an object was removed successfully; otherwise, <see langword="false"/>.</returns>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public new bool TryTake(out T result)
+	public new bool TryTake([NotNullWhen(true)] out T result)
 	{
 		lock (this._lock)
 		{
@@ -125,6 +148,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 			}
 			else
 			{
+				result = default;
 				return false;
 			}
 		}
