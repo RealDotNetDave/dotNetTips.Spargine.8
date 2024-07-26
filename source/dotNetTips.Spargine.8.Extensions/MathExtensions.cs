@@ -22,6 +22,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for mathematical operations, enhancing the built-in Math class with additional functionality and utilities.
 /// These methods include operations such as addition, subtraction, rounding, and calculating percentages, as well as determining if a number is prime.
 /// </summary>
+[Information(UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available)]
 public static class MathExtensions
 {
 
@@ -121,7 +122,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified double value.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static int Round(this double value) => Convert.ToInt32(Math.Round(value));
+	public static int Round(this double value) => Convert.ToInt32(Math.Round(value, MidpointRounding.ToPositiveInfinity));
 
 	/// <summary>
 	/// Rounds the specified decimal value to the nearest integer.

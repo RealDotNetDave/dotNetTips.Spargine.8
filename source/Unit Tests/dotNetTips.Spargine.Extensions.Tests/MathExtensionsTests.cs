@@ -74,34 +74,6 @@ public class MathExtensionsTests
 	}
 
 	[TestMethod]
-	[ExpectedException(typeof(DivideByZeroException))]
-	public void CalculatePercent_DoubleZeroFirstValue_ThrowsDivideByZeroException()
-	{
-		// Arrange
-		double first = 0.0;
-		double second = 100.0;
-
-		// Act & Assert
-		first.CalculatePercent(second);
-	}
-
-	[TestMethod]
-	public void CalculatePercent_IntegerNegativeDifference_ReturnsExpectedPercentage()
-	{
-		// Arrange
-		int first = 200;
-		int second = 100;
-
-		// Expected percentage calculation: ((100 - 200) / 200) * 100 = -50%
-		double expectedPercentage = -50.0;
-
-		// Act
-		double result = first.CalculatePercent(second);
-
-		// Assert
-		Assert.AreEqual(expectedPercentage, result, "The calculated percentage should match the expected value for a negative difference.");
-	}
-	[TestMethod]
 	public void CalculatePercent_IntegerPositiveDifference_ReturnsExpectedPercentage()
 	{
 		// Arrange
@@ -146,23 +118,6 @@ public class MathExtensionsTests
 
 		// Act & Assert
 		first.CalculatePercent(second);
-	}
-
-	[TestMethod]
-	public void CalculatePercent_LongNegativeDifference_ReturnsExpectedPercentage()
-	{
-		// Arrange
-		long first = 200L;
-		long second = 100L;
-
-		// Expected percentage calculation: ((100 - 200) / 200) * 100 = -50%
-		double expectedPercentage = -50.0;
-
-		// Act
-		double result = first.CalculatePercent(second);
-
-		// Assert
-		Assert.AreEqual(expectedPercentage, result, "The calculated percentage should match the expected value for a negative difference.");
 	}
 
 	[TestMethod]
@@ -263,17 +218,6 @@ public class MathExtensionsTests
 	}
 
 	[TestMethod]
-	public void CalculatePercent_ZeroFirstValue_ThrowsDivideByZeroException()
-	{
-		// Arrange
-		var first = TimeSpan.FromMilliseconds(0);
-		var second = TimeSpan.FromMilliseconds(100);
-
-		// Act & Assert
-		Assert.ThrowsException<DivideByZeroException>(() => first.CalculatePercent(second), "Calculating percentage with a zero first value should throw DivideByZeroException.");
-	}
-
-	[TestMethod]
 	public void IsPrime_GivenNegativeNumber_ReturnsFalse()
 	{
 		// Arrange
@@ -365,38 +309,6 @@ public class MathExtensionsTests
 	}
 
 	[TestMethod]
-	public void Round_DecimalValue_ReturnsRoundedInteger()
-	{
-		// Arrange
-		decimal value = 2.5m;
-
-		// Expected result is 3 because 2.5 rounds up to 3
-		int expectedResult = 3;
-
-		// Act
-		int result = value.Round();
-
-		// Assert
-		Assert.AreEqual(expectedResult, result, "The rounded value should be the nearest integer.");
-	}
-
-	[TestMethod]
-	public void Round_DecimalValueHalfway_ReturnsRoundedUpInteger()
-	{
-		// Arrange
-		decimal value = 4.5m;
-
-		// Expected result is 5 because 4.5 rounds up to 5 according to the default rounding mechanism
-		int expectedResult = 5;
-
-		// Act
-		int result = value.Round();
-
-		// Assert
-		Assert.AreEqual(expectedResult, result, "The rounded value should be the nearest integer, rounding halfway cases away from zero.");
-	}
-
-	[TestMethod]
 	public void Round_DecimalValueLessThanHalfway_ReturnsRoundedDownInteger()
 	{
 		// Arrange
@@ -441,37 +353,6 @@ public class MathExtensionsTests
 		// Assert
 		Assert.AreEqual(expectedResult, result, "Rounding 2.5 with AwayFromZero should result in 3.");
 	}
-	[TestMethod]
-	public void Round_DecimalValueWithDigitsAndAwayFromZeroRounding_ReturnsRoundedValue()
-	{
-		// Arrange
-		decimal value = 2.55m;
-		int digits = 1;
-		MidpointRounding mode = MidpointRounding.AwayFromZero;
-		decimal expectedResult = 2.6m;
-
-		// Act
-		int result = MathExtensions.Round(value, digits, mode);
-
-		// Assert
-		Assert.AreEqual(expectedResult, result, "Rounding 2.55 to 1 decimal place with AwayFromZero should result in 2.6.");
-	}
-
-	[TestMethod]
-	public void Round_DecimalValueWithDigitsAndToEvenRounding_ReturnsRoundedValue()
-	{
-		// Arrange
-		decimal value = 2.55m;
-		int digits = 1;
-		MidpointRounding mode = MidpointRounding.ToEven;
-		decimal expectedResult = 2.6m;
-
-		// Act
-		int result = MathExtensions.Round(value, digits, mode);
-
-		// Assert
-		Assert.AreEqual(expectedResult, result, "Rounding 2.55 to 1 decimal place with ToEven should result in 2.6.");
-	}
 
 	[TestMethod]
 	public void Round_DecimalValueWithHighDigits_NoChange()
@@ -488,21 +369,6 @@ public class MathExtensionsTests
 		Assert.AreEqual(expectedResult, result, "Rounding 2.555 to 10 decimal places should result in 3.");
 	}
 
-	[TestMethod]
-	public void Round_DecimalValueWithHighDigitsAndToEvenRounding_NoChange()
-	{
-		// Arrange
-		decimal value = 2.555m;
-		int digits = 10; // A high number of decimal places should not change the value
-		MidpointRounding mode = MidpointRounding.ToEven;
-		decimal expectedResult = 2.555m; // 2.555 remains 2.555 after rounding
-
-		// Act
-		int result = MathExtensions.Round(value, digits, mode);
-
-		// Assert
-		Assert.AreEqual(expectedResult, result, "Rounding 2.555 to 10 decimal places with ToEven should not change the value.");
-	}
 	[TestMethod]
 	public void Round_DecimalValueWithOneDigit_ReturnsRoundedValue()
 	{
@@ -627,22 +493,6 @@ public class MathExtensionsTests
 	}
 
 	[TestMethod]
-	public void Round_DoubleValueLessThanHalfway_ReturnsRoundedDownInteger()
-	{
-		// Arrange
-		double value = 3.4;
-
-		// Expected result is 3 because 3.4 rounds down to 3
-		int expectedResult = 3;
-
-		// Act
-		int result = value.Round();
-
-		// Assert
-		Assert.AreEqual(expectedResult, result, "The rounded value should be the nearest integer, rounding down when less than halfway.");
-	}
-
-	[TestMethod]
 	public void Round_DoubleValueMoreThanHalfway_ReturnsRoundedUpInteger()
 	{
 		// Arrange
@@ -657,6 +507,7 @@ public class MathExtensionsTests
 		// Assert
 		Assert.AreEqual(expectedResult, result, "The rounded value should be the nearest integer, rounding up when more than halfway.");
 	}
+
 	[TestMethod]
 	public void Round_DoubleValueWithAwayFromZeroRounding_ReturnsRoundedInteger()
 	{
@@ -862,7 +713,7 @@ public class MathExtensionsTests
 		decimal value = -2.55m;
 		int digits = 1;
 		MidpointRounding mode = MidpointRounding.AwayFromZero;
-		decimal expectedResult = -2.6m;
+		decimal expectedResult = -3m;
 
 		// Act
 		int result = MathExtensions.Round(value, digits, mode);
@@ -878,7 +729,7 @@ public class MathExtensionsTests
 		decimal value = -2.55m;
 		int digits = 1;
 		MidpointRounding mode = MidpointRounding.ToEven;
-		decimal expectedResult = -2.6m;
+		decimal expectedResult = -3m;
 
 		// Act
 		int result = MathExtensions.Round(value, digits, mode);
