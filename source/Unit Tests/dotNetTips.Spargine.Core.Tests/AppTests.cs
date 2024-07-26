@@ -217,6 +217,15 @@ public class AppTests
 	}
 
 	[TestMethod]
+	public void ProcessNameTest()
+	{
+		var result = App.ProcessName;
+
+		Assert.IsFalse(string.IsNullOrEmpty(result), "Process name should not be null or empty.");
+		Assert.AreEqual(Process.GetCurrentProcess().ProcessName, result, "Process name should match the current process name.");
+	}
+
+	[TestMethod]
 	public void ProcessPathTest()
 	{
 		var result = App.ProcessPath;

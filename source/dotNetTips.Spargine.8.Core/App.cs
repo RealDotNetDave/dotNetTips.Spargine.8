@@ -426,7 +426,7 @@ public static class App
 	/// </code>
 	/// This will output the name of the current process.
 	/// </example>
-	[Information(nameof(ProcessName), "David McCarter", "7/26/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available)]
+	[Information(nameof(ProcessName), "David McCarter", "7/26/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available)]
 	public static string ProcessName => Process.GetCurrentProcess().ProcessName;
 
 	/// <summary>
