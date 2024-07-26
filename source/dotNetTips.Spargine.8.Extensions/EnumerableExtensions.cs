@@ -4,12 +4,14 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-23-2024
+// Last Modified On : 07-26-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>Extension methods for IEnumerable types.</summary>
+// <summary>
+//     This file contains extension methods for IEnumerable types.
+// </summary>
 // ***********************************************************************
 using System.Collections;
 using System.Collections.Concurrent;
@@ -37,16 +39,14 @@ namespace DotNetTips.Spargine.Extensions;
 public static class EnumerableExtensions
 {
 	/// <summary>
-	/// The string builder pool
+	/// A pool of <see cref="StringBuilder"/> objects to minimize memory allocations.
 	/// </summary>
-	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool(
-		);
+	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	/// <summary>
-	/// Gets the random.
+	/// Generates a random number between 0 and <see cref="int.MaxValue"/>.
 	/// </summary>
-	/// <returns>System.Int32.</returns>
-	/// <value>The random.</value>
+	/// <returns>A random integer value.</returns>
 	private static int GenerateRandomNumber() => RandomNumberGenerator.GetInt32(int.MaxValue);
 
 	/// <summary>
