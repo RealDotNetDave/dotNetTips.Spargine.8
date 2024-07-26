@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-26-2024
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -147,7 +147,7 @@ public static class LoggingHelper
 	{
 		if (_appDomainEventsLogger is not null)
 		{
-			FastLogger.LogDebug(_appDomainEventsLogger, $"{Process.GetCurrentProcess().ProcessName} exit.");
+			FastLogger.LogDebug(_appDomainEventsLogger, $"{App.ProcessName} exit.");
 		}
 	}
 

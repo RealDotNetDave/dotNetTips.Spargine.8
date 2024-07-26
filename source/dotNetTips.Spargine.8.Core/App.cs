@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-26-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -175,19 +175,14 @@ public static class App
 	/// This will print the names of all specific cultures.
 	/// </example>
 	[Information(nameof(AppInfo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static ReadOnlyCollection<string> GetCultureNames(CultureTypes cultureType = CultureTypes.AllCultures) => _cultureNames ??= CultureInfo.GetCultures(cultureType)
-		.OrderBy(p => p.Name)
-		.Select(c => c.Name)
-		.ToList()
-		.AsReadOnly();
+	public static ReadOnlyCollection<string> GetCultureNames(CultureTypes cultureType = CultureTypes.AllCultures) => _cultureNames ??= CultureInfo.GetCultures(cultureType).OrderBy(p => p.Name).Select(c => c.Name).ToList().AsReadOnly();
 
 	/// <summary>
 	/// Gets the environment variables as an immutable dictionary.
 	/// </summary>
 	/// <returns>An immutable dictionary containing all environment variables where the key is the variable name and the value is its value.</returns>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static IImmutableDictionary<string, string> GetEnvironmentVariables() => Environment.GetEnvironmentVariables().Cast<DictionaryEntry>()
-			.ToImmutableDictionary(de => de.Key.ToString(), de => de.Value.ToString());
+	public static IImmutableDictionary<string, string> GetEnvironmentVariables() => Environment.GetEnvironmentVariables().Cast<DictionaryEntry>().ToImmutableDictionary(de => de.Key.ToString(), de => de.Value.ToString());
 
 	/// <summary>
 	/// Retrieves detailed information about the processor.
@@ -234,7 +229,7 @@ public static class App
 	/// <returns><c>true</c> if the application is already running; otherwise, <c>false</c>.</returns>
 	/// <remarks>This method checks if there are any processes with the same name as the current process. If more than one is found, it indicates that the application is already running.</remarks>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static bool IsRunning() => Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).FastCount() > 0;
+	public static bool IsRunning() => Process.GetProcessesByName(ProcessName).FastCount() > 0;
 
 	/// <summary>
 	/// Checks to see if the current application is running from an ASP.NET context.
@@ -310,10 +305,7 @@ public static class App
 	/// }
 	/// </code></example>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static ReadOnlyCollection<string> ReferencedAssemblies() => Assembly.GetEntryAssembly().GetReferencedAssemblies()
-					   .Select(a => a.ToString())
-					   .ToList()
-					   .AsReadOnly();
+	public static ReadOnlyCollection<string> ReferencedAssemblies() => Assembly.GetEntryAssembly().GetReferencedAssemblies().Select(a => a.ToString()).ToList().AsReadOnly();
 
 	/// <summary>
 	/// Restarts the application with administrator privileges.
@@ -420,8 +412,22 @@ public static class App
 	/// Gets the unique identifier for the current process.
 	/// </summary>
 	/// <value>The process identifier.</value>
-	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(ProcessId), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
 	public static int ProcessId => Environment.ProcessId;
+
+	/// <summary>
+	/// Gets the name of the current process.
+	/// </summary>
+	/// <value>The name of the process.</value>
+	/// <example>Example usage:
+	/// <code>
+	/// var processName = App.ProcessName;
+	/// Console.WriteLine(processName);
+	/// </code>
+	/// This will output the name of the current process.
+	/// </example>
+	[Information(nameof(ProcessName), "David McCarter", "7/26/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available)]
+	public static string ProcessName => Process.GetCurrentProcess().ProcessName;
 
 	/// <summary>
 	/// Returns the path of the executable that started the currently executing process. Returns null when the path is not available.

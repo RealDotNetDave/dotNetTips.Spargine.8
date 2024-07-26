@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark-20240722-194027</title>
+<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark-20240725-171118</title>
 
 <style type="text/css">
     table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -14,7 +14,7 @@
 <body>
 <table>
 <thead>
-<tr><th colspan="21">DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark-20240722-194027</th></tr>
+<tr><th colspan="21">DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark-20240725-171118</th></tr>
 <tr>
 <th>LogCritical_EazyLogger_Benchmark .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2</th>
 <th>LogDebug_EasyLogger_Benchmark .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2</th>
@@ -50,37 +50,37 @@ mov       rbx,[rcx+118]
 mov       rsi,[rcx+120]
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       short 00007FFE49088BE0
+jne       short 00007FFE330B6BD0
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       short 00007FFE49088BCC
+jne       short 00007FFE330B6BBC
 mov       edx,5
-call      qword ptr [7FFE4975D540]
+call      qword ptr [7FFE3378D540]
 test      eax,eax
-jne       short 00007FFE49088BF9
+jne       short 00007FFE330B6BE9
 add       rsp,28
 pop       rbx
 pop       rsi
 ret
-mov       r11,7FFE48ED09B8
+mov       r11,7FFE32F009B8
 mov       edx,5
 call      qword ptr [r11]
-jmp       short 00007FFE49088BC1
+jmp       short 00007FFE330B6BB1
 mov       rcx,rbx
-mov       r11,7FFE48ED09B0
+mov       r11,7FFE32F009B0
 mov       edx,5
 call      qword ptr [r11]
 test      eax,eax
-je        short 00007FFE49088BC5
-mov       rcx,7FFE492F87B8
+je        short 00007FFE330B6BB5
+mov       rcx,7FFE333287B0
 mov       edx,56
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rdx,2BA20005AB0
+mov       rdx,1F178C05AB0
 mov       rax,[rdx]
 mov       rdx,rbx
 mov       r9,rsi
-mov       r8,2FAB207ADC0
+mov       r8,2320AA8ADC0
 mov       rcx,[rax+8]
 add       rsp,28
 pop       rbx
@@ -99,15 +99,15 @@ mov       [rsp+28],rax
 mov       ebx,edx
 mov       rsi,[rcx+18]
 test      rsi,rsi
-je        short 00007FFE49088E86
+je        short 00007FFE330B6E66
 xor       eax,eax
 mov       [rsp+28],rax
 xor       edi,edi
 mov       ebp,[rsi+8]
 test      ebp,ebp
-jg        short 00007FFE49088E93
+jg        short 00007FFE330B6E73
 cmp       qword ptr [rsp+28],0
-jne       short 00007FFE49088ECF
+jne       short 00007FFE330B6EAF
 xor       eax,eax
 cmp       ebp,edi
 setg      al
@@ -131,25 +131,25 @@ lea       rcx,[rcx+rcx*4]
 lea       r14,[rsi+rcx*8+10]
 mov       rcx,r14
 mov       edx,ebx
-call      qword ptr [7FFE4974F0D8]
+call      qword ptr [7FFE3377F0D8]
 test      eax,eax
-je        short 00007FFE49088EC1
+je        short 00007FFE330B6EA1
 mov       rdx,[r14]
 lea       r8,[rsp+28]
 mov       ecx,ebx
-call      qword ptr [7FFE4974E5B0]
+call      qword ptr [7FFE3377E5B0]
 test      eax,eax
-jne       short 00007FFE49088E6C
+jne       short 00007FFE330B6E4C
 inc       edi
 cmp       ebp,edi
-jg        short 00007FFE49088E93
+jg        short 00007FFE330B6E73
 cmp       qword ptr [rsp+28],0
-je        short 00007FFE49088E74
+je        short 00007FFE330B6E54
 mov       rcx,[rsp+28]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE49088E74
+jle       short 00007FFE330B6E54
 mov       rcx,[rsp+28]
-call      qword ptr [7FFE4974E568]
+call      qword ptr [7FFE3377E568]
 int       3
 
 </code></pre></td>
@@ -160,35 +160,35 @@ sub       rsp,20
 mov       rbx,[rcx+118]
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       short 00007FFE490B6BE7
+jne       short 00007FFE330C6B67
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       short 00007FFE490B6BD3
+jne       short 00007FFE330C6B53
 mov       edx,1
-call      qword ptr [7FFE4978D540]
+call      qword ptr [7FFE3379D558]
 test      eax,eax
-jne       short 00007FFE490B6C00
+jne       short 00007FFE330C6B80
 add       rsp,20
 pop       rbx
 ret
-mov       r11,7FFE48F009B8
+mov       r11,7FFE32F109B8
 mov       edx,1
 call      qword ptr [r11]
-jmp       short 00007FFE490B6BC9
+jmp       short 00007FFE330C6B49
 mov       rcx,rbx
-mov       r11,7FFE48F009B0
+mov       r11,7FFE32F109B0
 mov       edx,1
 call      qword ptr [r11]
 test      eax,eax
-je        short 00007FFE490B6BCD
-mov       rcx,7FFE49328760
+je        short 00007FFE330C6B4D
+mov       rcx,7FFE333387B0
 mov       edx,56
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rdx,29371805AB8
+mov       rdx,1B8C0805AB8
 mov       rax,[rdx]
 mov       rdx,rbx
-mov       r8,2D3FF8DADC0
+mov       r8,1F95278ADC0
 xor       r9d,r9d
 mov       rcx,[rax+8]
 add       rsp,20
@@ -207,15 +207,15 @@ mov       [rsp+28],rax
 mov       ebx,edx
 mov       rsi,[rcx+18]
 test      rsi,rsi
-je        short 00007FFE490B6E66
+je        short 00007FFE330C6DE6
 xor       eax,eax
 mov       [rsp+28],rax
 xor       edi,edi
 mov       ebp,[rsi+8]
 test      ebp,ebp
-jg        short 00007FFE490B6E73
+jg        short 00007FFE330C6DF3
 cmp       qword ptr [rsp+28],0
-jne       short 00007FFE490B6EAF
+jne       short 00007FFE330C6E2F
 xor       eax,eax
 cmp       ebp,edi
 setg      al
@@ -239,25 +239,25 @@ lea       rcx,[rcx+rcx*4]
 lea       r14,[rsi+rcx*8+10]
 mov       rcx,r14
 mov       edx,ebx
-call      qword ptr [7FFE4977F3C0]
+call      qword ptr [7FFE3378F258]
 test      eax,eax
-je        short 00007FFE490B6EA1
+je        short 00007FFE330C6E21
 mov       rdx,[r14]
 lea       r8,[rsp+28]
 mov       ecx,ebx
-call      qword ptr [7FFE4977E898]
+call      qword ptr [7FFE3378E730]
 test      eax,eax
-jne       short 00007FFE490B6E4C
+jne       short 00007FFE330C6DCC
 inc       edi
 cmp       ebp,edi
-jg        short 00007FFE490B6E73
+jg        short 00007FFE330C6DF3
 cmp       qword ptr [rsp+28],0
-je        short 00007FFE490B6E54
+je        short 00007FFE330C6DD4
 mov       rcx,[rsp+28]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490B6E54
+jle       short 00007FFE330C6DD4
 mov       rcx,[rsp+28]
-call      qword ptr [7FFE4977E850]
+call      qword ptr [7FFE3378E6E8]
 int       3
 
 </code></pre></td>
@@ -268,35 +268,35 @@ sub       rsp,20
 mov       rbx,[rcx+118]
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       short 00007FFE490A7357
+jne       short 00007FFE330D7737
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       short 00007FFE490A7343
+jne       short 00007FFE330D7723
 mov       edx,4
-call      qword ptr [7FFE4977D540]
+call      qword ptr [7FFE337AD540]
 test      eax,eax
-jne       short 00007FFE490A7370
+jne       short 00007FFE330D7750
 add       rsp,20
 pop       rbx
 ret
-mov       r11,7FFE48EF09B8
+mov       r11,7FFE32F209B8
 mov       edx,4
 call      qword ptr [r11]
-jmp       short 00007FFE490A7339
+jmp       short 00007FFE330D7719
 mov       rcx,rbx
-mov       r11,7FFE48EF09B0
+mov       r11,7FFE32F209B0
 mov       edx,4
 call      qword ptr [r11]
 test      eax,eax
-je        short 00007FFE490A733D
-mov       rcx,7FFE493187B8
+je        short 00007FFE330D771D
+mov       rcx,7FFE333487B0
 mov       edx,56
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rdx,217B1C05AC0
+mov       rdx,1CA4D005AC0
 mov       rax,[rdx]
 mov       rdx,rbx
-mov       r8,25843B5ADC0
+mov       r8,20ADEF0ADC0
 xor       r9d,r9d
 mov       rcx,[rax+8]
 add       rsp,20
@@ -315,15 +315,15 @@ mov       [rsp+28],rax
 mov       ebx,edx
 mov       rsi,[rcx+18]
 test      rsi,rsi
-je        short 00007FFE490A75E6
+je        short 00007FFE330D79C6
 xor       eax,eax
 mov       [rsp+28],rax
 xor       edi,edi
 mov       ebp,[rsi+8]
 test      ebp,ebp
-jg        short 00007FFE490A75F3
+jg        short 00007FFE330D79D3
 cmp       qword ptr [rsp+28],0
-jne       short 00007FFE490A762F
+jne       short 00007FFE330D7A0F
 xor       eax,eax
 cmp       ebp,edi
 setg      al
@@ -347,25 +347,25 @@ lea       rcx,[rcx+rcx*4]
 lea       r14,[rsi+rcx*8+10]
 mov       rcx,r14
 mov       edx,ebx
-call      qword ptr [7FFE4976F0D8]
+call      qword ptr [7FFE3379F0D8]
 test      eax,eax
-je        short 00007FFE490A7621
+je        short 00007FFE330D7A01
 mov       rdx,[r14]
 lea       r8,[rsp+28]
 mov       ecx,ebx
-call      qword ptr [7FFE4976E5B0]
+call      qword ptr [7FFE3379E5B0]
 test      eax,eax
-jne       short 00007FFE490A75CC
+jne       short 00007FFE330D79AC
 inc       edi
 cmp       ebp,edi
-jg        short 00007FFE490A75F3
+jg        short 00007FFE330D79D3
 cmp       qword ptr [rsp+28],0
-je        short 00007FFE490A75D4
+je        short 00007FFE330D79B4
 mov       rcx,[rsp+28]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490A75D4
+jle       short 00007FFE330D79B4
 mov       rcx,[rsp+28]
-call      qword ptr [7FFE4976E568]
+call      qword ptr [7FFE3379E568]
 int       3
 
 </code></pre></td>
@@ -378,37 +378,37 @@ mov       rbx,[rcx+118]
 mov       rsi,[rcx+120]
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       short 00007FFE490A6B90
+jne       short 00007FFE330B8BC0
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       short 00007FFE490A6B7C
+jne       short 00007FFE330B8BAC
 mov       edx,4
-call      qword ptr [7FFE4977D540]
+call      qword ptr [7FFE3378D540]
 test      eax,eax
-jne       short 00007FFE490A6BA9
+jne       short 00007FFE330B8BD9
 add       rsp,28
 pop       rbx
 pop       rsi
 ret
-mov       r11,7FFE48EF09B8
+mov       r11,7FFE32F009B8
 mov       edx,4
 call      qword ptr [r11]
-jmp       short 00007FFE490A6B71
+jmp       short 00007FFE330B8BA1
 mov       rcx,rbx
-mov       r11,7FFE48EF09B0
+mov       r11,7FFE32F009B0
 mov       edx,4
 call      qword ptr [r11]
 test      eax,eax
-je        short 00007FFE490A6B75
-mov       rcx,7FFE49318C30
+je        short 00007FFE330B8BA5
+mov       rcx,7FFE333287B0
 mov       edx,56
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rdx,1337F403AD0
+mov       rdx,1C636405AC8
 mov       rax,[rdx]
 mov       rdx,rbx
 mov       r9,rsi
-mov       r8,1740F3EADC0
+mov       r8,206C822ADC0
 mov       rcx,[rax+8]
 add       rsp,28
 pop       rbx
@@ -427,15 +427,15 @@ mov       [rsp+28],rax
 mov       ebx,edx
 mov       rsi,[rcx+18]
 test      rsi,rsi
-je        short 00007FFE490A6E26
+je        short 00007FFE330B8E66
 xor       eax,eax
 mov       [rsp+28],rax
 xor       edi,edi
 mov       ebp,[rsi+8]
 test      ebp,ebp
-jg        short 00007FFE490A6E33
+jg        short 00007FFE330B8E73
 cmp       qword ptr [rsp+28],0
-jne       short 00007FFE490A6E6F
+jne       short 00007FFE330B8EAF
 xor       eax,eax
 cmp       ebp,edi
 setg      al
@@ -459,25 +459,25 @@ lea       rcx,[rcx+rcx*4]
 lea       r14,[rsi+rcx*8+10]
 mov       rcx,r14
 mov       edx,ebx
-call      qword ptr [7FFE4976F0D8]
+call      qword ptr [7FFE3377F0D8]
 test      eax,eax
-je        short 00007FFE490A6E61
+je        short 00007FFE330B8EA1
 mov       rdx,[r14]
 lea       r8,[rsp+28]
 mov       ecx,ebx
-call      qword ptr [7FFE4976E5B0]
+call      qword ptr [7FFE3377E5B0]
 test      eax,eax
-jne       short 00007FFE490A6E0C
+jne       short 00007FFE330B8E4C
 inc       edi
 cmp       ebp,edi
-jg        short 00007FFE490A6E33
+jg        short 00007FFE330B8E73
 cmp       qword ptr [rsp+28],0
-je        short 00007FFE490A6E14
+je        short 00007FFE330B8E54
 mov       rcx,[rsp+28]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490A6E14
+jle       short 00007FFE330B8E54
 mov       rcx,[rsp+28]
-call      qword ptr [7FFE4976E568]
+call      qword ptr [7FFE3377E568]
 int       3
 
 </code></pre></td>
@@ -488,35 +488,35 @@ sub       rsp,20
 mov       rbx,[rcx+118]
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       short 00007FFE490A8A37
+jne       short 00007FFE330A8BD7
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       short 00007FFE490A8A23
+jne       short 00007FFE330A8BC3
 mov       edx,2
-call      qword ptr [7FFE4977D540]
+call      qword ptr [7FFE3377D558]
 test      eax,eax
-jne       short 00007FFE490A8A50
+jne       short 00007FFE330A8BF0
 add       rsp,20
 pop       rbx
 ret
-mov       r11,7FFE48EF09B8
+mov       r11,7FFE32EF09B8
 mov       edx,2
 call      qword ptr [r11]
-jmp       short 00007FFE490A8A19
+jmp       short 00007FFE330A8BB9
 mov       rcx,rbx
-mov       r11,7FFE48EF09B0
+mov       r11,7FFE32EF09B0
 mov       edx,2
 call      qword ptr [r11]
 test      eax,eax
-je        short 00007FFE490A8A1D
-mov       rcx,7FFE49318640
+je        short 00007FFE330A8BBD
+mov       rcx,7FFE333187B0
 mov       edx,56
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rdx,20DDBC05AD0
+mov       rdx,295DAC05AD0
 mov       rax,[rdx]
 mov       rdx,rbx
-mov       r8,24E6DB3ADC0
+mov       r8,2D668C0ADC0
 xor       r9d,r9d
 mov       rcx,[rax+8]
 add       rsp,20
@@ -535,15 +535,15 @@ mov       [rsp+28],rax
 mov       ebx,edx
 mov       rsi,[rcx+18]
 test      rsi,rsi
-je        short 00007FFE490A8CC6
+je        short 00007FFE330A8E66
 xor       eax,eax
 mov       [rsp+28],rax
 xor       edi,edi
 mov       ebp,[rsi+8]
 test      ebp,ebp
-jg        short 00007FFE490A8CD3
+jg        short 00007FFE330A8E73
 cmp       qword ptr [rsp+28],0
-jne       short 00007FFE490A8D0F
+jne       short 00007FFE330A8EAF
 xor       eax,eax
 cmp       ebp,edi
 setg      al
@@ -567,25 +567,25 @@ lea       rcx,[rcx+rcx*4]
 lea       r14,[rsi+rcx*8+10]
 mov       rcx,r14
 mov       edx,ebx
-call      qword ptr [7FFE4976F3C0]
+call      qword ptr [7FFE3376F2B8]
 test      eax,eax
-je        short 00007FFE490A8D01
+je        short 00007FFE330A8EA1
 mov       rdx,[r14]
 lea       r8,[rsp+28]
 mov       ecx,ebx
-call      qword ptr [7FFE4976E898]
+call      qword ptr [7FFE3376E790]
 test      eax,eax
-jne       short 00007FFE490A8CAC
+jne       short 00007FFE330A8E4C
 inc       edi
 cmp       ebp,edi
-jg        short 00007FFE490A8CD3
+jg        short 00007FFE330A8E73
 cmp       qword ptr [rsp+28],0
-je        short 00007FFE490A8CB4
+je        short 00007FFE330A8E54
 mov       rcx,[rsp+28]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490A8CB4
+jle       short 00007FFE330A8E54
 mov       rcx,[rsp+28]
-call      qword ptr [7FFE4976E850]
+call      qword ptr [7FFE3376E748]
 int       3
 
 </code></pre></td>
@@ -596,35 +596,35 @@ sub       rsp,20
 mov       rbx,[rcx+118]
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       short 00007FFE490A78A1
+jne       short 00007FFE330B6821
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       short 00007FFE490A7890
+jne       short 00007FFE330B6810
 xor       edx,edx
-call      qword ptr [7FFE4977D540]
+call      qword ptr [7FFE3378D540]
 test      eax,eax
-jne       short 00007FFE490A78B7
+jne       short 00007FFE330B6837
 add       rsp,20
 pop       rbx
 ret
-mov       r11,7FFE48EF09B8
+mov       r11,7FFE32F009B8
 xor       edx,edx
 call      qword ptr [r11]
-jmp       short 00007FFE490A7886
+jmp       short 00007FFE330B6806
 mov       rcx,rbx
-mov       r11,7FFE48EF09B0
+mov       r11,7FFE32F009B0
 xor       edx,edx
 call      qword ptr [r11]
 test      eax,eax
-je        short 00007FFE490A788A
-mov       rcx,7FFE493187B8
+je        short 00007FFE330B680A
+mov       rcx,7FFE333287B0
 mov       edx,56
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rdx,22CC1005AD8
+mov       rdx,2230E005AD8
 mov       rax,[rdx]
 mov       rdx,rbx
-mov       r8,26D52FDADC0
+mov       r8,263A009ADC0
 xor       r9d,r9d
 mov       rcx,[rax+8]
 add       rsp,20
@@ -643,15 +643,15 @@ mov       [rsp+28],rax
 mov       ebx,edx
 mov       rsi,[rcx+18]
 test      rsi,rsi
-je        short 00007FFE490A7B26
+je        short 00007FFE330B6AA6
 xor       eax,eax
 mov       [rsp+28],rax
 xor       edi,edi
 mov       ebp,[rsi+8]
 test      ebp,ebp
-jg        short 00007FFE490A7B33
+jg        short 00007FFE330B6AB3
 cmp       qword ptr [rsp+28],0
-jne       short 00007FFE490A7B6F
+jne       short 00007FFE330B6AEF
 xor       eax,eax
 cmp       ebp,edi
 setg      al
@@ -675,25 +675,25 @@ lea       rcx,[rcx+rcx*4]
 lea       r14,[rsi+rcx*8+10]
 mov       rcx,r14
 mov       edx,ebx
-call      qword ptr [7FFE4976F0D8]
+call      qword ptr [7FFE3377F0D8]
 test      eax,eax
-je        short 00007FFE490A7B61
+je        short 00007FFE330B6AE1
 mov       rdx,[r14]
 lea       r8,[rsp+28]
 mov       ecx,ebx
-call      qword ptr [7FFE4976E5B0]
+call      qword ptr [7FFE3377E5B0]
 test      eax,eax
-jne       short 00007FFE490A7B0C
+jne       short 00007FFE330B6A8C
 inc       edi
 cmp       ebp,edi
-jg        short 00007FFE490A7B33
+jg        short 00007FFE330B6AB3
 cmp       qword ptr [rsp+28],0
-je        short 00007FFE490A7B14
+je        short 00007FFE330B6A94
 mov       rcx,[rsp+28]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490A7B14
+jle       short 00007FFE330B6A94
 mov       rcx,[rsp+28]
-call      qword ptr [7FFE4976E568]
+call      qword ptr [7FFE3377E568]
 int       3
 
 </code></pre></td>
@@ -704,35 +704,35 @@ sub       rsp,20
 mov       rbx,[rcx+118]
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       short 00007FFE49097737
+jne       short 00007FFE330D8B77
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       short 00007FFE49097723
+jne       short 00007FFE330D8B63
 mov       edx,3
-call      qword ptr [7FFE4976D540]
+call      qword ptr [7FFE337AD540]
 test      eax,eax
-jne       short 00007FFE49097750
+jne       short 00007FFE330D8B90
 add       rsp,20
 pop       rbx
 ret
-mov       r11,7FFE48EE09B8
+mov       r11,7FFE32F209B8
 mov       edx,3
 call      qword ptr [r11]
-jmp       short 00007FFE49097719
+jmp       short 00007FFE330D8B59
 mov       rcx,rbx
-mov       r11,7FFE48EE09B0
+mov       r11,7FFE32F209B0
 mov       edx,3
 call      qword ptr [r11]
 test      eax,eax
-je        short 00007FFE4909771D
-mov       rcx,7FFE493087B8
+je        short 00007FFE330D8B5D
+mov       rcx,7FFE33348758
 mov       edx,56
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rdx,2A53E805AE0
+mov       rdx,16FABC05AE0
 mov       rax,[rdx]
 mov       rdx,rbx
-mov       r8,2E5D086ADC0
+mov       r8,1B03D90ADC0
 xor       r9d,r9d
 mov       rcx,[rax+8]
 add       rsp,20
@@ -751,15 +751,15 @@ mov       [rsp+28],rax
 mov       ebx,edx
 mov       rsi,[rcx+18]
 test      rsi,rsi
-je        short 00007FFE490979C6
+je        short 00007FFE330D8E06
 xor       eax,eax
 mov       [rsp+28],rax
 xor       edi,edi
 mov       ebp,[rsi+8]
 test      ebp,ebp
-jg        short 00007FFE490979D3
+jg        short 00007FFE330D8E13
 cmp       qword ptr [rsp+28],0
-jne       short 00007FFE49097A0F
+jne       short 00007FFE330D8E4F
 xor       eax,eax
 cmp       ebp,edi
 setg      al
@@ -783,25 +783,25 @@ lea       rcx,[rcx+rcx*4]
 lea       r14,[rsi+rcx*8+10]
 mov       rcx,r14
 mov       edx,ebx
-call      qword ptr [7FFE4975F3C0]
+call      qword ptr [7FFE3379F3C0]
 test      eax,eax
-je        short 00007FFE49097A01
+je        short 00007FFE330D8E41
 mov       rdx,[r14]
 lea       r8,[rsp+28]
 mov       ecx,ebx
-call      qword ptr [7FFE4975E898]
+call      qword ptr [7FFE3379E898]
 test      eax,eax
-jne       short 00007FFE490979AC
+jne       short 00007FFE330D8DEC
 inc       edi
 cmp       ebp,edi
-jg        short 00007FFE490979D3
+jg        short 00007FFE330D8E13
 cmp       qword ptr [rsp+28],0
-je        short 00007FFE490979B4
+je        short 00007FFE330D8DF4
 mov       rcx,[rsp+28]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490979B4
+jle       short 00007FFE330D8DF4
 mov       rcx,[rsp+28]
-call      qword ptr [7FFE4975E850]
+call      qword ptr [7FFE3379E850]
 int       3
 
 </code></pre></td>
@@ -810,9 +810,9 @@ DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark.LogCritical_Eaz
 mov       r8,rcx
 mov       rcx,[r8+118]
 mov       r8,[r8+120]
-mov       rdx,17A12D0ADC0
-mov       r9,17A12D0ADF8
-jmp       qword ptr [7FFE49824828]
+mov       rdx,27C00EDADC0
+mov       r9,27C00EDADF8
+jmp       qword ptr [7FFE33824D50]
 
 DotNetTips.Spargine.Core.Logging.FastLoggerExtensions.LogCriticalMessage(Microsoft.Extensions.Logging.ILogger, System.String, System.Exception, System.String)
 push      r15
@@ -835,29 +835,29 @@ mov       rdi,r8
 mov       rbp,r9
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       near ptr 00007FFE490A71CC
+jne       near ptr 00007FFE330B7A4C
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       near ptr 00007FFE490A71B2
+jne       near ptr 00007FFE330B7A32
 mov       r14,[rcx+18]
 test      r14,r14
-je        short 00007FFE490A714C
+je        short 00007FFE330B79CC
 xor       ecx,ecx
 mov       [rsp+50],rcx
 xor       r15d,r15d
 mov       r13d,[r14+8]
 test      r13d,r13d
-jg        short 00007FFE490A7151
+jg        short 00007FFE330B79D1
 cmp       qword ptr [rsp+50],0
-jne       short 00007FFE490A7197
+jne       short 00007FFE330B7A17
 xor       r12d,r12d
 cmp       r13d,r15d
 setg      r12b
 xor       ecx,ecx
 mov       [rsp+50],rcx
 test      r12d,r12d
-jne       near ptr 00007FFE490A71ED
+jne       near ptr 00007FFE330B7A6D
 add       rsp,58
 pop       rbx
 pop       rbp
@@ -869,58 +869,58 @@ pop       r14
 pop       r15
 ret
 xor       r12d,r12d
-jmp       short 00007FFE490A712B
+jmp       short 00007FFE330B79AB
 mov       ecx,r15d
 lea       rcx,[rcx+rcx*4]
 lea       r12,[r14+rcx*8+10]
 mov       rcx,r12
 mov       edx,5
-call      qword ptr [7FFE4976F0D8]
+call      qword ptr [7FFE3377F2B8]
 test      eax,eax
-je        short 00007FFE490A7187
+je        short 00007FFE330B7A07
 mov       rdx,[r12]
 lea       r8,[rsp+50]
 mov       ecx,5
-call      qword ptr [7FFE4976E5B0]
+call      qword ptr [7FFE3377E790]
 test      eax,eax
-jne       short 00007FFE490A7119
+jne       short 00007FFE330B7999
 inc       r15d
 cmp       r13d,r15d
-jg        short 00007FFE490A7151
+jg        short 00007FFE330B79D1
 cmp       qword ptr [rsp+50],0
-je        short 00007FFE490A7121
+je        short 00007FFE330B79A1
 mov       rcx,[rsp+50]
 cmp       dword ptr [rcx+10],0
-jle       near ptr 00007FFE490A7121
+jle       near ptr 00007FFE330B79A1
 mov       rcx,[rsp+50]
-call      qword ptr [7FFE4976E568]
+call      qword ptr [7FFE3377E748]
 int       3
-mov       r11,7FFE48EF09C0
+mov       r11,7FFE32F009C0
 mov       edx,5
 call      qword ptr [r11]
 mov       r12d,eax
-jmp       near ptr 00007FFE490A7132
+jmp       near ptr 00007FFE330B79B2
 mov       rcx,rbx
-mov       r11,7FFE48EF09B8
+mov       r11,7FFE32F009B8
 mov       edx,5
 call      qword ptr [r11]
 mov       r12d,eax
 test      r12d,r12d
-je        near ptr 00007FFE490A713B
+je        near ptr 00007FFE330B79BB
 mov       rcx,rbx
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[DotNetTips.Spargine.Core.Logging.FastLoggerExtensions+__LogCriticalMessageStruct, DotNetTips.Spargine.8.Core]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, __LogCriticalMessageStruct, System.Exception, System.Func`3<__LogCriticalMessageStruct,System.Exception,System.String>)
 call      CORINFO_HELP_VIRTUAL_FUNC_PTR
 mov       r15,rax
-mov       rcx,17A12D0AE68
+mov       rcx,27C00EDAE68
 mov       [rsp+40],rcx
 mov       dword ptr [rsp+48],390
 mov       [rsp+30],rsi
 mov       [rsp+38],rbp
-mov       rcx,7FFE493187B8
-mov       edx,8C
+mov       rcx,7FFE333287B0
+mov       edx,8B
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rcx,13985003BB8
+mov       rcx,23B6F005BB0
 mov       rcx,[rcx]
 mov       [rsp+28],rcx
 mov       rcx,rbx
@@ -929,15 +929,15 @@ lea       r9,[rsp+30]
 mov       [rsp+20],rdi
 mov       edx,5
 call      r15
-jmp       near ptr 00007FFE490A713B
+jmp       near ptr 00007FFE330B79BB
 
 </code></pre></td>
 <td style="vertical-align:top;"><pre><code>
 DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark.LogError_EazyLoggerExtensions_Benchmark()
 mov       rcx,[rcx+118]
-mov       rdx,1C9A213ADC0
-mov       r8,1C9A213ADF0
-jmp       qword ptr [7FFE49814D80]
+mov       rdx,23BA7F5ADC0
+mov       r8,23BA7F5ADF0
+jmp       qword ptr [7FFE338253B0]
 
 DotNetTips.Spargine.Core.Logging.FastLoggerExtensions.LogErrorMessage(Microsoft.Extensions.Logging.ILogger, System.String, System.String)
 push      r15
@@ -958,29 +958,29 @@ mov       rsi,rdx
 mov       rdi,r8
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       near ptr 00007FFE490A6E01
+jne       near ptr 00007FFE330B79A1
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       near ptr 00007FFE490A6DE7
+jne       near ptr 00007FFE330B7987
 mov       rbp,[rcx+18]
 test      rbp,rbp
-je        short 00007FFE490A6D85
+je        short 00007FFE330B7925
 xor       ecx,ecx
 mov       [rsp+58],rcx
 xor       r14d,r14d
 mov       r15d,[rbp+8]
 test      r15d,r15d
-jg        short 00007FFE490A6D8A
+jg        short 00007FFE330B792A
 cmp       qword ptr [rsp+58],0
-jne       short 00007FFE490A6DD0
+jne       short 00007FFE330B7970
 xor       r13d,r13d
 cmp       r15d,r14d
 setg      r13b
 xor       ecx,ecx
 mov       [rsp+58],rcx
 test      r13d,r13d
-jne       near ptr 00007FFE490A6E22
+jne       near ptr 00007FFE330B79C2
 add       rsp,60
 pop       rbx
 pop       rbp
@@ -991,58 +991,58 @@ pop       r14
 pop       r15
 ret
 xor       r13d,r13d
-jmp       short 00007FFE490A6D66
+jmp       short 00007FFE330B7906
 mov       ecx,r14d
 lea       rcx,[rcx+rcx*4]
 lea       r13,[rbp+rcx*8+10]
 mov       rcx,r13
 mov       edx,4
-call      qword ptr [7FFE4976F3C0]
+call      qword ptr [7FFE3377F3C0]
 test      eax,eax
-je        short 00007FFE490A6DC0
+je        short 00007FFE330B7960
 mov       rdx,[r13]
 lea       r8,[rsp+58]
 mov       ecx,4
-call      qword ptr [7FFE4976E898]
+call      qword ptr [7FFE3377E898]
 test      eax,eax
-jne       short 00007FFE490A6D54
+jne       short 00007FFE330B78F4
 inc       r14d
 cmp       r15d,r14d
-jg        short 00007FFE490A6D8A
+jg        short 00007FFE330B792A
 cmp       qword ptr [rsp+58],0
-je        short 00007FFE490A6D5C
+je        short 00007FFE330B78FC
 mov       rcx,[rsp+58]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490A6D5C
+jle       short 00007FFE330B78FC
 mov       rcx,[rsp+58]
-call      qword ptr [7FFE4976E850]
+call      qword ptr [7FFE3377E850]
 int       3
-mov       r11,7FFE48EF09C8
+mov       r11,7FFE32F009C0
 mov       edx,4
 call      qword ptr [r11]
 mov       r13d,eax
-jmp       near ptr 00007FFE490A6D6D
+jmp       near ptr 00007FFE330B790D
 mov       rcx,rbx
-mov       r11,7FFE48EF09C0
+mov       r11,7FFE32F009B8
 mov       edx,4
 call      qword ptr [r11]
 mov       r13d,eax
 test      r13d,r13d
-je        near ptr 00007FFE490A6D76
+je        near ptr 00007FFE330B7916
 mov       rcx,rbx
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[DotNetTips.Spargine.Core.Logging.FastLoggerExtensions+__LogErrorMessageStruct, DotNetTips.Spargine.8.Core]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, __LogErrorMessageStruct, System.Exception, System.Func`3<__LogErrorMessageStruct,System.Exception,System.String>)
 call      CORINFO_HELP_VIRTUAL_FUNC_PTR
 mov       r14,rax
-mov       rcx,1C9A213AE58
+mov       rcx,23BA7F5AE58
 mov       [rsp+48],rcx
 mov       dword ptr [rsp+50],12D
 mov       [rsp+38],rsi
 mov       [rsp+40],rdi
-mov       rcx,7FFE49318760
-mov       edx,8E
+mov       rcx,7FFE333287B0
+mov       edx,8D
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rcx,18910403BC8
+mov       rcx,1FB16005BC0
 mov       rcx,[rcx]
 mov       [rsp+28],rcx
 mov       rcx,rbx
@@ -1052,15 +1052,15 @@ mov       edx,4
 xor       eax,eax
 mov       [rsp+20],rax
 call      r14
-jmp       near ptr 00007FFE490A6D76
+jmp       near ptr 00007FFE330B7916
 
 </code></pre></td>
 <td style="vertical-align:top;"><pre><code>
 DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark.LogException_EazyLoggerExtensions_Benchmark()
 mov       rcx,[rcx+118]
-mov       rdx,32D07F2ADC0
-mov       r8,32D07F2ADF0
-jmp       qword ptr [7FFE49814D68]
+mov       rdx,2960D0FADC0
+mov       r8,2960D0FADF0
+jmp       qword ptr [7FFE33815398]
 
 DotNetTips.Spargine.Core.Logging.FastLoggerExtensions.LogDebugMessage(Microsoft.Extensions.Logging.ILogger, System.String, System.String)
 push      r15
@@ -1081,29 +1081,29 @@ mov       rsi,rdx
 mov       rdi,r8
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       near ptr 00007FFE490A6DC1
+jne       near ptr 00007FFE330A7981
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       near ptr 00007FFE490A6DA7
+jne       near ptr 00007FFE330A7967
 mov       rbp,[rcx+18]
 test      rbp,rbp
-je        short 00007FFE490A6D45
+je        short 00007FFE330A7905
 xor       ecx,ecx
 mov       [rsp+58],rcx
 xor       r14d,r14d
 mov       r15d,[rbp+8]
 test      r15d,r15d
-jg        short 00007FFE490A6D4A
+jg        short 00007FFE330A790A
 cmp       qword ptr [rsp+58],0
-jne       short 00007FFE490A6D90
+jne       short 00007FFE330A7950
 xor       r13d,r13d
 cmp       r15d,r14d
 setg      r13b
 xor       ecx,ecx
 mov       [rsp+58],rcx
 test      r13d,r13d
-jne       near ptr 00007FFE490A6DE2
+jne       near ptr 00007FFE330A79A2
 add       rsp,60
 pop       rbx
 pop       rbp
@@ -1114,58 +1114,58 @@ pop       r14
 pop       r15
 ret
 xor       r13d,r13d
-jmp       short 00007FFE490A6D26
+jmp       short 00007FFE330A78E6
 mov       ecx,r14d
 lea       rcx,[rcx+rcx*4]
 lea       r13,[rbp+rcx*8+10]
 mov       rcx,r13
 mov       edx,1
-call      qword ptr [7FFE4976F3C0]
+call      qword ptr [7FFE3376F258]
 test      eax,eax
-je        short 00007FFE490A6D80
+je        short 00007FFE330A7940
 mov       rdx,[r13]
 lea       r8,[rsp+58]
 mov       ecx,1
-call      qword ptr [7FFE4976E898]
+call      qword ptr [7FFE3376E730]
 test      eax,eax
-jne       short 00007FFE490A6D14
+jne       short 00007FFE330A78D4
 inc       r14d
 cmp       r15d,r14d
-jg        short 00007FFE490A6D4A
+jg        short 00007FFE330A790A
 cmp       qword ptr [rsp+58],0
-je        short 00007FFE490A6D1C
+je        short 00007FFE330A78DC
 mov       rcx,[rsp+58]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490A6D1C
+jle       short 00007FFE330A78DC
 mov       rcx,[rsp+58]
-call      qword ptr [7FFE4976E850]
+call      qword ptr [7FFE3376E6E8]
 int       3
-mov       r11,7FFE48EF09C0
+mov       r11,7FFE32EF09C0
 mov       edx,1
 call      qword ptr [r11]
 mov       r13d,eax
-jmp       near ptr 00007FFE490A6D2D
+jmp       near ptr 00007FFE330A78ED
 mov       rcx,rbx
-mov       r11,7FFE48EF09B8
+mov       r11,7FFE32EF09B8
 mov       edx,1
 call      qword ptr [r11]
 mov       r13d,eax
 test      r13d,r13d
-je        near ptr 00007FFE490A6D36
+je        near ptr 00007FFE330A78F6
 mov       rcx,rbx
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[DotNetTips.Spargine.Core.Logging.FastLoggerExtensions+__LogDebugMessageStruct, DotNetTips.Spargine.8.Core]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, __LogDebugMessageStruct, System.Exception, System.Func`3<__LogDebugMessageStruct,System.Exception,System.String>)
 call      CORINFO_HELP_VIRTUAL_FUNC_PTR
 mov       r14,rax
-mov       rcx,32D07F18818
+mov       rcx,2960D0E8818
 mov       [rsp+48],rcx
 mov       dword ptr [rsp+50],0C9
 mov       [rsp+38],rsi
 mov       [rsp+40],rdi
-mov       rcx,7FFE493187B8
-mov       edx,8D
+mov       rcx,7FFE333187B0
+mov       edx,8C
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rcx,2EC76005BB8
+mov       rcx,2557F005BB8
 mov       rcx,[rcx]
 mov       [rsp+28],rcx
 mov       rcx,rbx
@@ -1175,15 +1175,15 @@ mov       edx,1
 xor       eax,eax
 mov       [rsp+20],rax
 call      r14
-jmp       near ptr 00007FFE490A6D36
+jmp       near ptr 00007FFE330A78F6
 
 </code></pre></td>
 <td style="vertical-align:top;"><pre><code>
 DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark.LogInformation_EazyLoggerExtensions_Benchmark()
 mov       rcx,[rcx+118]
-mov       rdx,1FFD706ADC0
-mov       r8,1FFD706ADF8
-jmp       qword ptr [7FFE49824DB0]
+mov       rdx,2FE137AADC0
+mov       r8,2FE137AADF8
+jmp       qword ptr [7FFE33844888]
 
 DotNetTips.Spargine.Core.Logging.FastLoggerExtensions.LogInformationMessage(Microsoft.Extensions.Logging.ILogger, System.String, System.String)
 push      r15
@@ -1204,29 +1204,29 @@ mov       rsi,rdx
 mov       rdi,r8
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       near ptr 00007FFE490B7B41
+jne       near ptr 00007FFE330C6E01
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       near ptr 00007FFE490B7B27
+jne       near ptr 00007FFE330C6DE7
 mov       rbp,[rcx+18]
 test      rbp,rbp
-je        short 00007FFE490B7AC5
+je        short 00007FFE330C6D85
 xor       ecx,ecx
 mov       [rsp+58],rcx
 xor       r14d,r14d
 mov       r15d,[rbp+8]
 test      r15d,r15d
-jg        short 00007FFE490B7ACA
+jg        short 00007FFE330C6D8A
 cmp       qword ptr [rsp+58],0
-jne       short 00007FFE490B7B10
+jne       short 00007FFE330C6DD0
 xor       r13d,r13d
 cmp       r15d,r14d
 setg      r13b
 xor       ecx,ecx
 mov       [rsp+58],rcx
 test      r13d,r13d
-jne       near ptr 00007FFE490B7B62
+jne       near ptr 00007FFE330C6E22
 add       rsp,60
 pop       rbx
 pop       rbp
@@ -1237,58 +1237,58 @@ pop       r14
 pop       r15
 ret
 xor       r13d,r13d
-jmp       short 00007FFE490B7AA6
+jmp       short 00007FFE330C6D66
 mov       ecx,r14d
 lea       rcx,[rcx+rcx*4]
 lea       r13,[rbp+rcx*8+10]
 mov       rcx,r13
 mov       edx,2
-call      qword ptr [7FFE4977F3C0]
+call      qword ptr [7FFE3378F0D8]
 test      eax,eax
-je        short 00007FFE490B7B00
+je        short 00007FFE330C6DC0
 mov       rdx,[r13]
 lea       r8,[rsp+58]
 mov       ecx,2
-call      qword ptr [7FFE4977E898]
+call      qword ptr [7FFE3378E5B0]
 test      eax,eax
-jne       short 00007FFE490B7A94
+jne       short 00007FFE330C6D54
 inc       r14d
 cmp       r15d,r14d
-jg        short 00007FFE490B7ACA
+jg        short 00007FFE330C6D8A
 cmp       qword ptr [rsp+58],0
-je        short 00007FFE490B7A9C
+je        short 00007FFE330C6D5C
 mov       rcx,[rsp+58]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490B7A9C
+jle       short 00007FFE330C6D5C
 mov       rcx,[rsp+58]
-call      qword ptr [7FFE4977E850]
+call      qword ptr [7FFE3378E568]
 int       3
-mov       r11,7FFE48F009C0
+mov       r11,7FFE32F109C0
 mov       edx,2
 call      qword ptr [r11]
 mov       r13d,eax
-jmp       near ptr 00007FFE490B7AAD
+jmp       near ptr 00007FFE330C6D6D
 mov       rcx,rbx
-mov       r11,7FFE48F009B8
+mov       r11,7FFE32F109B8
 mov       edx,2
 call      qword ptr [r11]
 mov       r13d,eax
 test      r13d,r13d
-je        near ptr 00007FFE490B7AB6
+je        near ptr 00007FFE330C6D76
 mov       rcx,rbx
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[DotNetTips.Spargine.Core.Logging.FastLoggerExtensions+__LogInformationMessageStruct, DotNetTips.Spargine.8.Core]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, __LogInformationMessageStruct, System.Exception, System.Func`3<__LogInformationMessageStruct,System.Exception,System.String>)
 call      CORINFO_HELP_VIRTUAL_FUNC_PTR
 mov       r14,rax
-mov       rcx,1FFD706AE68
+mov       rcx,2FE137AAE68
 mov       [rsp+48],rcx
 mov       dword ptr [rsp+50],191
 mov       [rsp+38],rsi
 mov       [rsp+40],rdi
-mov       rcx,7FFE493287B8
-mov       edx,90
+mov       rcx,7FFE333387B0
+mov       edx,8F
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rcx,1BF45003BD8
+mov       rcx,2BD85805BD0
 mov       rcx,[rcx]
 mov       [rsp+28],rcx
 mov       rcx,rbx
@@ -1298,7 +1298,7 @@ mov       edx,2
 xor       eax,eax
 mov       [rsp+20],rax
 call      r14
-jmp       near ptr 00007FFE490B7AB6
+jmp       near ptr 00007FFE330C6D76
 
 </code></pre></td>
 <td style="vertical-align:top;"><pre><code>
@@ -1306,9 +1306,9 @@ DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark.LogStoredProced
 mov       r8,rcx
 mov       rcx,[r8+118]
 mov       r8,[r8+120]
-mov       rdx,261F9F8ADC0
-mov       r9,261F9F8ADF0
-jmp       qword ptr [7FFE498248A0]
+mov       rdx,259DB6CADC0
+mov       r9,259DB6CADF0
+jmp       qword ptr [7FFE33834DC8]
 
 DotNetTips.Spargine.Core.Logging.FastLoggerExtensions.LogStoredProcedureError(Microsoft.Extensions.Logging.ILogger, System.String, System.Exception, System.String)
 push      r15
@@ -1331,29 +1331,29 @@ mov       rdi,r8
 mov       rbp,r9
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       near ptr 00007FFE490A6CAC
+jne       near ptr 00007FFE330C6E2C
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       near ptr 00007FFE490A6C92
+jne       near ptr 00007FFE330C6E12
 mov       r14,[rcx+18]
 test      r14,r14
-je        short 00007FFE490A6C2C
+je        short 00007FFE330C6DAC
 xor       ecx,ecx
 mov       [rsp+50],rcx
 xor       r15d,r15d
 mov       r13d,[r14+8]
 test      r13d,r13d
-jg        short 00007FFE490A6C31
+jg        short 00007FFE330C6DB1
 cmp       qword ptr [rsp+50],0
-jne       short 00007FFE490A6C77
+jne       short 00007FFE330C6DF7
 xor       r12d,r12d
 cmp       r13d,r15d
 setg      r12b
 xor       ecx,ecx
 mov       [rsp+50],rcx
 test      r12d,r12d
-jne       near ptr 00007FFE490A6CCD
+jne       near ptr 00007FFE330C6E4D
 add       rsp,58
 pop       rbx
 pop       rbp
@@ -1365,58 +1365,58 @@ pop       r14
 pop       r15
 ret
 xor       r12d,r12d
-jmp       short 00007FFE490A6C0B
+jmp       short 00007FFE330C6D8B
 mov       ecx,r15d
 lea       rcx,[rcx+rcx*4]
 lea       r12,[r14+rcx*8+10]
 mov       rcx,r12
 mov       edx,4
-call      qword ptr [7FFE4976F0D8]
+call      qword ptr [7FFE3378F3C0]
 test      eax,eax
-je        short 00007FFE490A6C67
+je        short 00007FFE330C6DE7
 mov       rdx,[r12]
 lea       r8,[rsp+50]
 mov       ecx,4
-call      qword ptr [7FFE4976E5B0]
+call      qword ptr [7FFE3378E898]
 test      eax,eax
-jne       short 00007FFE490A6BF9
+jne       short 00007FFE330C6D79
 inc       r15d
 cmp       r13d,r15d
-jg        short 00007FFE490A6C31
+jg        short 00007FFE330C6DB1
 cmp       qword ptr [rsp+50],0
-je        short 00007FFE490A6C01
+je        short 00007FFE330C6D81
 mov       rcx,[rsp+50]
 cmp       dword ptr [rcx+10],0
-jle       near ptr 00007FFE490A6C01
+jle       near ptr 00007FFE330C6D81
 mov       rcx,[rsp+50]
-call      qword ptr [7FFE4976E568]
+call      qword ptr [7FFE3378E850]
 int       3
-mov       r11,7FFE48EF09C8
+mov       r11,7FFE32F109C0
 mov       edx,4
 call      qword ptr [r11]
 mov       r12d,eax
-jmp       near ptr 00007FFE490A6C12
+jmp       near ptr 00007FFE330C6D92
 mov       rcx,rbx
-mov       r11,7FFE48EF09C0
+mov       r11,7FFE32F109B8
 mov       edx,4
 call      qword ptr [r11]
 mov       r12d,eax
 test      r12d,r12d
-je        near ptr 00007FFE490A6C1B
+je        near ptr 00007FFE330C6D9B
 mov       rcx,rbx
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[DotNetTips.Spargine.Core.Logging.FastLoggerExtensions+__LogStoredProcedureErrorStruct, DotNetTips.Spargine.8.Core]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, __LogStoredProcedureErrorStruct, System.Exception, System.Func`3<__LogStoredProcedureErrorStruct,System.Exception,System.String>)
 call      CORINFO_HELP_VIRTUAL_FUNC_PTR
 mov       r15,rax
-mov       rcx,261F9F8AE78
+mov       rcx,259DB6CAE78
 mov       [rsp+40],rcx
 mov       dword ptr [rsp+48],1F6
 mov       [rsp+30],rsi
 mov       [rsp+38],rbp
-mov       rcx,7FFE493187B8
-mov       edx,91
+mov       rcx,7FFE333387B0
+mov       edx,90
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rcx,22168003BE0
+mov       rcx,21949805BD8
 mov       rcx,[rcx]
 mov       [rsp+28],rcx
 mov       rcx,rbx
@@ -1425,15 +1425,15 @@ lea       r9,[rsp+30]
 mov       [rsp+20],rdi
 mov       edx,4
 call      r15
-jmp       near ptr 00007FFE490A6C1B
+jmp       near ptr 00007FFE330C6D9B
 
 </code></pre></td>
 <td style="vertical-align:top;"><pre><code>
 DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark.LogStoredProcedureNoRecordsFound_EazyLoggerExtensions_Benchmark()
 mov       rcx,[rcx+118]
-mov       rdx,240E6E7ADC0
-mov       r8,240E6E7ADF0
-jmp       qword ptr [7FFE49814DE0]
+mov       rdx,27C9566ADC0
+mov       r8,27C9566ADF0
+jmp       qword ptr [7FFE33845410]
 
 DotNetTips.Spargine.Core.Logging.FastLoggerExtensions.LogStoredProcedureNoRecordsFound(Microsoft.Extensions.Logging.ILogger, System.String, System.String)
 push      r15
@@ -1454,29 +1454,29 @@ mov       rsi,rdx
 mov       rdi,r8
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       near ptr 00007FFE490A7981
+jne       near ptr 00007FFE330D8E61
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       near ptr 00007FFE490A7967
+jne       near ptr 00007FFE330D8E47
 mov       rbp,[rcx+18]
 test      rbp,rbp
-je        short 00007FFE490A7905
+je        short 00007FFE330D8DE5
 xor       ecx,ecx
 mov       [rsp+58],rcx
 xor       r14d,r14d
 mov       r15d,[rbp+8]
 test      r15d,r15d
-jg        short 00007FFE490A790A
+jg        short 00007FFE330D8DEA
 cmp       qword ptr [rsp+58],0
-jne       short 00007FFE490A7950
+jne       short 00007FFE330D8E30
 xor       r13d,r13d
 cmp       r15d,r14d
 setg      r13b
 xor       ecx,ecx
 mov       [rsp+58],rcx
 test      r13d,r13d
-jne       near ptr 00007FFE490A79A2
+jne       near ptr 00007FFE330D8E82
 add       rsp,60
 pop       rbx
 pop       rbp
@@ -1487,58 +1487,58 @@ pop       r14
 pop       r15
 ret
 xor       r13d,r13d
-jmp       short 00007FFE490A78E6
+jmp       short 00007FFE330D8DC6
 mov       ecx,r14d
 lea       rcx,[rcx+rcx*4]
 lea       r13,[rbp+rcx*8+10]
 mov       rcx,r13
 mov       edx,4
-call      qword ptr [7FFE4976F3C0]
+call      qword ptr [7FFE3379F3C0]
 test      eax,eax
-je        short 00007FFE490A7940
+je        short 00007FFE330D8E20
 mov       rdx,[r13]
 lea       r8,[rsp+58]
 mov       ecx,4
-call      qword ptr [7FFE4976E898]
+call      qword ptr [7FFE3379E898]
 test      eax,eax
-jne       short 00007FFE490A78D4
+jne       short 00007FFE330D8DB4
 inc       r14d
 cmp       r15d,r14d
-jg        short 00007FFE490A790A
+jg        short 00007FFE330D8DEA
 cmp       qword ptr [rsp+58],0
-je        short 00007FFE490A78DC
+je        short 00007FFE330D8DBC
 mov       rcx,[rsp+58]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490A78DC
+jle       short 00007FFE330D8DBC
 mov       rcx,[rsp+58]
-call      qword ptr [7FFE4976E850]
+call      qword ptr [7FFE3379E850]
 int       3
-mov       r11,7FFE48EF09C0
+mov       r11,7FFE32F209C0
 mov       edx,4
 call      qword ptr [r11]
 mov       r13d,eax
-jmp       near ptr 00007FFE490A78ED
+jmp       near ptr 00007FFE330D8DCD
 mov       rcx,rbx
-mov       r11,7FFE48EF09B8
+mov       r11,7FFE32F209B8
 mov       edx,4
 call      qword ptr [r11]
 mov       r13d,eax
 test      r13d,r13d
-je        near ptr 00007FFE490A78F6
+je        near ptr 00007FFE330D8DD6
 mov       rcx,rbx
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[DotNetTips.Spargine.Core.Logging.FastLoggerExtensions+__LogStoredProcedureNoRecordsFoundStruct, DotNetTips.Spargine.8.Core]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, __LogStoredProcedureNoRecordsFoundStruct, System.Exception, System.Func`3<__LogStoredProcedureNoRecordsFoundStruct,System.Exception,System.String>)
 call      CORINFO_HELP_VIRTUAL_FUNC_PTR
 mov       r14,rax
-mov       rcx,240E6E7AE88
+mov       rcx,27C9566AE88
 mov       [rsp+48],rcx
 mov       dword ptr [rsp+50],25A
 mov       [rsp+38],rsi
 mov       [rsp+40],rdi
-mov       rcx,7FFE493187B8
-mov       edx,92
+mov       rcx,7FFE333487B0
+mov       edx,91
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rcx,20059005BE0
+mov       rcx,23C03805BE0
 mov       rcx,[rcx]
 mov       [rsp+28],rcx
 mov       rcx,rbx
@@ -1548,15 +1548,15 @@ mov       edx,4
 xor       eax,eax
 mov       [rsp+20],rax
 call      r14
-jmp       near ptr 00007FFE490A78F6
+jmp       near ptr 00007FFE330D8DD6
 
 </code></pre></td>
 <td style="vertical-align:top;"><pre><code>
 DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark.LogTrace_EazyLoggerExtensions_Benchmark()
 mov       rcx,[rcx+118]
-mov       rdx,26203B8ADC0
-mov       r8,26203B8ADF0
-jmp       qword ptr [7FFE49835428]
+mov       rdx,19B60D1ADC0
+mov       r8,19B60D1ADF0
+jmp       qword ptr [7FFE33825428]
 
 DotNetTips.Spargine.Core.Logging.FastLoggerExtensions.LogTraceMessage(Microsoft.Extensions.Logging.ILogger, System.String, System.String)
 push      r15
@@ -1577,29 +1577,29 @@ mov       rsi,rdx
 mov       rdi,r8
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       near ptr 00007FFE490C6DB8
+jne       near ptr 00007FFE330B7998
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       near ptr 00007FFE490C6DA1
+jne       near ptr 00007FFE330B7981
 mov       rbp,[rcx+18]
 test      rbp,rbp
-je        short 00007FFE490C6D45
+je        short 00007FFE330B7925
 xor       ecx,ecx
 mov       [rsp+58],rcx
 xor       r14d,r14d
 mov       r15d,[rbp+8]
 test      r15d,r15d
-jg        short 00007FFE490C6D4A
+jg        short 00007FFE330B792A
 cmp       qword ptr [rsp+58],0
-jne       short 00007FFE490C6D8A
+jne       short 00007FFE330B796A
 xor       r13d,r13d
 cmp       r15d,r14d
 setg      r13b
 xor       ecx,ecx
 mov       [rsp+58],rcx
 test      r13d,r13d
-jne       near ptr 00007FFE490C6DD6
+jne       near ptr 00007FFE330B79B6
 add       rsp,60
 pop       rbx
 pop       rbp
@@ -1610,58 +1610,58 @@ pop       r14
 pop       r15
 ret
 xor       r13d,r13d
-jmp       short 00007FFE490C6D26
+jmp       short 00007FFE330B7906
 mov       ecx,r14d
 lea       rcx,[rcx+rcx*4]
 lea       r13,[rbp+rcx*8+10]
 mov       rcx,r13
 xor       edx,edx
-call      qword ptr [7FFE4978F3C0]
+call      qword ptr [7FFE3377F3C0]
 test      eax,eax
-je        short 00007FFE490C6D7A
+je        short 00007FFE330B795A
 mov       rdx,[r13]
 lea       r8,[rsp+58]
 xor       ecx,ecx
-call      qword ptr [7FFE4978E898]
+call      qword ptr [7FFE3377E898]
 test      eax,eax
-jne       short 00007FFE490C6D14
+jne       short 00007FFE330B78F4
 inc       r14d
 cmp       r15d,r14d
-jg        short 00007FFE490C6D4A
+jg        short 00007FFE330B792A
 cmp       qword ptr [rsp+58],0
-je        short 00007FFE490C6D1C
+je        short 00007FFE330B78FC
 mov       rcx,[rsp+58]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490C6D1C
+jle       short 00007FFE330B78FC
 mov       rcx,[rsp+58]
-call      qword ptr [7FFE4978E850]
+call      qword ptr [7FFE3377E850]
 int       3
-mov       r11,7FFE48F109C0
+mov       r11,7FFE32F009C0
 xor       edx,edx
 call      qword ptr [r11]
 mov       r13d,eax
-jmp       near ptr 00007FFE490C6D2D
+jmp       near ptr 00007FFE330B790D
 mov       rcx,rbx
-mov       r11,7FFE48F109B8
+mov       r11,7FFE32F009B8
 xor       edx,edx
 call      qword ptr [r11]
 mov       r13d,eax
 test      r13d,r13d
-je        near ptr 00007FFE490C6D36
+je        near ptr 00007FFE330B7916
 mov       rcx,rbx
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[DotNetTips.Spargine.Core.Logging.FastLoggerExtensions+__LogTraceMessageStruct, DotNetTips.Spargine.8.Core]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, __LogTraceMessageStruct, System.Exception, System.Func`3<__LogTraceMessageStruct,System.Exception,System.String>)
 call      CORINFO_HELP_VIRTUAL_FUNC_PTR
 mov       r14,rax
-mov       rcx,26203B8AE58
+mov       rcx,19B60D1AE58
 mov       [rsp+48],rcx
 mov       dword ptr [rsp+50],65
 mov       [rsp+38],rsi
 mov       [rsp+40],rdi
-mov       rcx,7FFE493387B8
-mov       edx,93
+mov       rcx,7FFE333287B0
+mov       edx,92
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rcx,22175C05BE8
+mov       rcx,15ACF003BF0
 mov       rcx,[rcx]
 mov       [rsp+28],rcx
 mov       rcx,rbx
@@ -1671,15 +1671,15 @@ xor       edx,edx
 xor       eax,eax
 mov       [rsp+20],rax
 call      r14
-jmp       near ptr 00007FFE490C6D36
+jmp       near ptr 00007FFE330B7916
 
 </code></pre></td>
 <td style="vertical-align:top;"><pre><code>
 DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark.LogWarning_EazyLoggerExtensions_Benchmark()
 mov       rcx,[rcx+118]
-mov       rdx,2246136ADC0
-mov       r8,2246136ADF0
-jmp       qword ptr [7FFE49824E10]
+mov       rdx,20129BAADC0
+mov       r8,20129BAADF0
+jmp       qword ptr [7FFE33845440]
 
 DotNetTips.Spargine.Core.Logging.FastLoggerExtensions.LogWarningMessage(Microsoft.Extensions.Logging.ILogger, System.String, System.String)
 push      r15
@@ -1700,29 +1700,29 @@ mov       rsi,rdx
 mov       rdi,r8
 mov       rcx,offset MT_Microsoft.Extensions.Logging.Logger`1[[DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark, DotNetTips.Spargine.Core.BenchmarkTests]]
 cmp       [rbx],rcx
-jne       near ptr 00007FFE490B8E81
+jne       near ptr 00007FFE330D6E01
 mov       rcx,[rbx+8]
 mov       rdx,offset MT_Microsoft.Extensions.Logging.Logger
 cmp       [rcx],rdx
-jne       near ptr 00007FFE490B8E67
+jne       near ptr 00007FFE330D6DE7
 mov       rbp,[rcx+18]
 test      rbp,rbp
-je        short 00007FFE490B8E05
+je        short 00007FFE330D6D85
 xor       ecx,ecx
 mov       [rsp+58],rcx
 xor       r14d,r14d
 mov       r15d,[rbp+8]
 test      r15d,r15d
-jg        short 00007FFE490B8E0A
+jg        short 00007FFE330D6D8A
 cmp       qword ptr [rsp+58],0
-jne       short 00007FFE490B8E50
+jne       short 00007FFE330D6DD0
 xor       r13d,r13d
 cmp       r15d,r14d
 setg      r13b
 xor       ecx,ecx
 mov       [rsp+58],rcx
 test      r13d,r13d
-jne       near ptr 00007FFE490B8EA2
+jne       near ptr 00007FFE330D6E22
 add       rsp,60
 pop       rbx
 pop       rbp
@@ -1733,58 +1733,58 @@ pop       r14
 pop       r15
 ret
 xor       r13d,r13d
-jmp       short 00007FFE490B8DE6
+jmp       short 00007FFE330D6D66
 mov       ecx,r14d
 lea       rcx,[rcx+rcx*4]
 lea       r13,[rbp+rcx*8+10]
 mov       rcx,r13
 mov       edx,3
-call      qword ptr [7FFE4977F258]
+call      qword ptr [7FFE3379F3C0]
 test      eax,eax
-je        short 00007FFE490B8E40
+je        short 00007FFE330D6DC0
 mov       rdx,[r13]
 lea       r8,[rsp+58]
 mov       ecx,3
-call      qword ptr [7FFE4977E730]
+call      qword ptr [7FFE3379E898]
 test      eax,eax
-jne       short 00007FFE490B8DD4
+jne       short 00007FFE330D6D54
 inc       r14d
 cmp       r15d,r14d
-jg        short 00007FFE490B8E0A
+jg        short 00007FFE330D6D8A
 cmp       qword ptr [rsp+58],0
-je        short 00007FFE490B8DDC
+je        short 00007FFE330D6D5C
 mov       rcx,[rsp+58]
 cmp       dword ptr [rcx+10],0
-jle       short 00007FFE490B8DDC
+jle       short 00007FFE330D6D5C
 mov       rcx,[rsp+58]
-call      qword ptr [7FFE4977E6E8]
+call      qword ptr [7FFE3379E850]
 int       3
-mov       r11,7FFE48F009C0
+mov       r11,7FFE32F209C8
 mov       edx,3
 call      qword ptr [r11]
 mov       r13d,eax
-jmp       near ptr 00007FFE490B8DED
+jmp       near ptr 00007FFE330D6D6D
 mov       rcx,rbx
-mov       r11,7FFE48F009B8
+mov       r11,7FFE32F209C0
 mov       edx,3
 call      qword ptr [r11]
 mov       r13d,eax
 test      r13d,r13d
-je        near ptr 00007FFE490B8DF6
+je        near ptr 00007FFE330D6D76
 mov       rcx,rbx
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[DotNetTips.Spargine.Core.Logging.FastLoggerExtensions+__LogWarningMessageStruct, DotNetTips.Spargine.8.Core]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, __LogWarningMessageStruct, System.Exception, System.Func`3<__LogWarningMessageStruct,System.Exception,System.String>)
 call      CORINFO_HELP_VIRTUAL_FUNC_PTR
 mov       r14,rax
-mov       rcx,2246136AE58
+mov       rcx,20129BAAE58
 mov       [rsp+48],rcx
 mov       dword ptr [rsp+50],259
 mov       [rsp+38],rsi
 mov       [rsp+40],rdi
-mov       rcx,7FFE493287B8
-mov       edx,94
+mov       rcx,7FFE333487B0
+mov       edx,93
 call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-mov       rcx,1E3CF405BF0
+mov       rcx,1C097C05BF0
 mov       rcx,[rcx]
 mov       [rsp+28],rcx
 mov       rcx,rbx
@@ -1794,7 +1794,7 @@ mov       edx,3
 xor       eax,eax
 mov       [rsp+20],rax
 call      r14
-jmp       near ptr 00007FFE490B8DF6
+jmp       near ptr 00007FFE330D6D76
 
 </code></pre></td>
 <td style="vertical-align:top;"><pre><code>
@@ -1807,15 +1807,15 @@ mov       rcx,[r9+118]
 xor       r8d,r8d
 mov       [rsp+38],r8
 mov       dword ptr [rsp+40],64
-mov       r8,224995DADC0
+mov       r8,1C4A298ADC0
 mov       [rsp+20],r8
-mov       r8,1E40B801E80
+mov       r8,18410801E80
 mov       r8,[r8]
 mov       [rsp+28],r8
 lea       r8,[rsp+38]
 mov       r9,[r9+120]
 mov       edx,5
-call      qword ptr [7FFE49815770]
+call      qword ptr [7FFE33825140]
 nop
 add       rsp,48
 ret
@@ -1838,11 +1838,11 @@ mov       ebp,edx
 mov       rbx,r8
 mov       rdi,r9
 test      rsi,rsi
-je        near ptr 00007FFE490A77A8
+je        near ptr 00007FFE330B78A8
 lea       rcx,[rsp+50]
 mov       rdx,[rsp+0B0]
 mov       r8,[rsp+0B8]
-call      qword ptr [7FFE498157E8]
+call      qword ptr [7FFE338251B8]
 mov       rcx,rsi
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[Microsoft.Extensions.Logging.FormattedLogValues, Microsoft.Extensions.Logging.Abstractions]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, Microsoft.Extensions.Logging.FormattedLogValues, System.Exception, System.Func`3<Microsoft.Extensions.Logging.FormattedLogValues,System.Exception,System.String>)
@@ -1855,7 +1855,7 @@ vmovdqu   xmmword ptr [rsp+38],xmm0
 mov       r9,[rsp+60]
 mov       [rsp+48],r9
 mov       [rsp+20],rdi
-mov       r9,1E407804630
+mov       r9,18410806628
 mov       r9,[r9]
 mov       [rsp+28],r9
 lea       r9,[rsp+38]
@@ -1868,10 +1868,10 @@ pop       rsi
 pop       rdi
 ret
 mov       ecx,1BF
-mov       rdx,7FFE4944A190
+mov       rdx,7FFE3345A190
 call      CORINFO_HELP_STRCNS
 mov       rcx,rax
-call      qword ptr [7FFE4976F7C8]
+call      qword ptr [7FFE3377F7C8]
 int       3
 
 </code></pre></td>
@@ -1885,15 +1885,15 @@ mov       rcx,[r9+118]
 xor       r8d,r8d
 mov       [rsp+38],r8
 mov       dword ptr [rsp+40],64
-mov       r8,2C22BB3ADC0
+mov       r8,22EC61AADC0
 mov       [rsp+20],r8
-mov       r8,28199C01E80
+mov       r8,1EE34401E80
 mov       r8,[r8]
 mov       [rsp+28],r8
 lea       r8,[rsp+38]
 mov       r9,[r9+120]
 mov       edx,1
-call      qword ptr [7FFE497FEDC0]
+call      qword ptr [7FFE33845140]
 nop
 add       rsp,48
 ret
@@ -1916,11 +1916,11 @@ mov       ebp,edx
 mov       rbx,r8
 mov       rdi,r9
 test      rsi,rsi
-je        near ptr 00007FFE490B7878
+je        near ptr 00007FFE330D8648
 lea       rcx,[rsp+50]
 mov       rdx,[rsp+0B0]
 mov       r8,[rsp+0B8]
-call      qword ptr [7FFE497FEE38]
+call      qword ptr [7FFE338451B8]
 mov       rcx,rsi
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[Microsoft.Extensions.Logging.FormattedLogValues, Microsoft.Extensions.Logging.Abstractions]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, Microsoft.Extensions.Logging.FormattedLogValues, System.Exception, System.Func`3<Microsoft.Extensions.Logging.FormattedLogValues,System.Exception,System.String>)
@@ -1933,7 +1933,7 @@ vmovdqu   xmmword ptr [rsp+38],xmm0
 mov       r9,[rsp+60]
 mov       [rsp+48],r9
 mov       [rsp+20],rdi
-mov       r9,28199C08620
+mov       r9,1EE34406628
 mov       r9,[r9]
 mov       [rsp+28],r9
 lea       r9,[rsp+38]
@@ -1946,10 +1946,10 @@ pop       rsi
 pop       rdi
 ret
 mov       ecx,1BF
-mov       rdx,7FFE49459CE0
+mov       rdx,7FFE3347A190
 call      CORINFO_HELP_STRCNS
 mov       rcx,rax
-call      qword ptr [7FFE4977D2C0]
+call      qword ptr [7FFE3379F7C8]
 int       3
 
 </code></pre></td>
@@ -1963,15 +1963,15 @@ mov       rcx,[r9+118]
 xor       r8d,r8d
 mov       [rsp+38],r8
 mov       dword ptr [rsp+40],64
-mov       r8,246BFE1ADC0
+mov       r8,2D12216ADC0
 mov       [rsp+20],r8
-mov       r8,20632001E80
+mov       r8,29094401E80
 mov       r8,[r8]
 mov       [rsp+28],r8
 lea       r8,[rsp+38]
 mov       r9,[r9+120]
 mov       edx,4
-call      qword ptr [7FFE49835140]
+call      qword ptr [7FFE33835770]
 nop
 add       rsp,48
 ret
@@ -1994,11 +1994,11 @@ mov       ebp,edx
 mov       rbx,r8
 mov       rdi,r9
 test      rsi,rsi
-je        near ptr 00007FFE490C77D8
+je        near ptr 00007FFE330C8228
 lea       rcx,[rsp+50]
 mov       rdx,[rsp+0B0]
 mov       r8,[rsp+0B8]
-call      qword ptr [7FFE498351B8]
+call      qword ptr [7FFE338357E8]
 mov       rcx,rsi
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[Microsoft.Extensions.Logging.FormattedLogValues, Microsoft.Extensions.Logging.Abstractions]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, Microsoft.Extensions.Logging.FormattedLogValues, System.Exception, System.Func`3<Microsoft.Extensions.Logging.FormattedLogValues,System.Exception,System.String>)
@@ -2011,7 +2011,7 @@ vmovdqu   xmmword ptr [rsp+38],xmm0
 mov       r9,[rsp+60]
 mov       [rsp+48],r9
 mov       [rsp+20],rdi
-mov       r9,2062E002650
+mov       r9,29094402650
 mov       r9,[r9]
 mov       [rsp+28],r9
 lea       r9,[rsp+38]
@@ -2024,10 +2024,10 @@ pop       rsi
 pop       rdi
 ret
 mov       ecx,1BF
-mov       rdx,7FFE4946A190
+mov       rdx,7FFE3346A190
 call      CORINFO_HELP_STRCNS
 mov       rcx,rax
-call      qword ptr [7FFE4978F660]
+call      qword ptr [7FFE3378F7C8]
 int       3
 
 </code></pre></td>
@@ -2041,15 +2041,15 @@ mov       rcx,[r9+118]
 xor       r8d,r8d
 mov       [rsp+38],r8
 mov       dword ptr [rsp+40],64
-mov       r8,2DD5412ADC0
+mov       r8,1927CF0ADC0
 mov       [rsp+20],r8
-mov       r8,29CC2401E80
+mov       r8,151EB001E80
 mov       r8,[r8]
 mov       [rsp+28],r8
 lea       r8,[rsp+38]
 mov       r9,[r9+120]
 mov       edx,2
-call      qword ptr [7FFE49805140]
+call      qword ptr [7FFE33825770]
 nop
 add       rsp,48
 ret
@@ -2072,11 +2072,11 @@ mov       ebp,edx
 mov       rbx,r8
 mov       rdi,r9
 test      rsi,rsi
-je        near ptr 00007FFE49097898
+je        near ptr 00007FFE330B7718
 lea       rcx,[rsp+50]
 mov       rdx,[rsp+0B0]
 mov       r8,[rsp+0B8]
-call      qword ptr [7FFE498051B8]
+call      qword ptr [7FFE338257E8]
 mov       rcx,rsi
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[Microsoft.Extensions.Logging.FormattedLogValues, Microsoft.Extensions.Logging.Abstractions]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, Microsoft.Extensions.Logging.FormattedLogValues, System.Exception, System.Func`3<Microsoft.Extensions.Logging.FormattedLogValues,System.Exception,System.String>)
@@ -2089,7 +2089,7 @@ vmovdqu   xmmword ptr [rsp+38],xmm0
 mov       r9,[rsp+60]
 mov       [rsp+48],r9
 mov       [rsp+20],rdi
-mov       r9,29CC2406628
+mov       r9,151EF000658
 mov       r9,[r9]
 mov       [rsp+28],r9
 lea       r9,[rsp+38]
@@ -2102,10 +2102,10 @@ pop       rsi
 pop       rdi
 ret
 mov       ecx,1BF
-mov       rdx,7FFE4943A190
+mov       rdx,7FFE3345A190
 call      CORINFO_HELP_STRCNS
 mov       rcx,rax
-call      qword ptr [7FFE4975F660]
+call      qword ptr [7FFE3377F5B8]
 int       3
 
 </code></pre></td>
@@ -2119,15 +2119,15 @@ mov       rcx,[r9+118]
 xor       r8d,r8d
 mov       [rsp+38],r8
 mov       dword ptr [rsp+40],64
-mov       r8,1FEBC7EADC0
+mov       r8,27DAA3EADC0
 mov       [rsp+20],r8
-mov       r8,1BE2A801E80
+mov       r8,23D18401E80
 mov       r8,[r8]
 mov       [rsp+28],r8
 lea       r8,[rsp+38]
 mov       r9,[r9+120]
 xor       edx,edx
-call      qword ptr [7FFE49805140]
+call      qword ptr [7FFE33845140]
 nop
 add       rsp,48
 ret
@@ -2150,11 +2150,11 @@ mov       ebp,edx
 mov       rbx,r8
 mov       rdi,r9
 test      rsi,rsi
-je        near ptr 00007FFE490976B8
+je        near ptr 00007FFE330D7878
 lea       rcx,[rsp+50]
 mov       rdx,[rsp+0B0]
 mov       r8,[rsp+0B8]
-call      qword ptr [7FFE498051B8]
+call      qword ptr [7FFE338451B8]
 mov       rcx,rsi
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[Microsoft.Extensions.Logging.FormattedLogValues, Microsoft.Extensions.Logging.Abstractions]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, Microsoft.Extensions.Logging.FormattedLogValues, System.Exception, System.Func`3<Microsoft.Extensions.Logging.FormattedLogValues,System.Exception,System.String>)
@@ -2167,7 +2167,7 @@ vmovdqu   xmmword ptr [rsp+38],xmm0
 mov       r9,[rsp+60]
 mov       [rsp+48],r9
 mov       [rsp+20],rdi
-mov       r9,1BE2A806628
+mov       r9,23D24400658
 mov       r9,[r9]
 mov       [rsp+28],r9
 lea       r9,[rsp+38]
@@ -2180,10 +2180,10 @@ pop       rsi
 pop       rdi
 ret
 mov       ecx,1BF
-mov       rdx,7FFE4943A190
+mov       rdx,7FFE3347A190
 call      CORINFO_HELP_STRCNS
 mov       rcx,rax
-call      qword ptr [7FFE4975F7C8]
+call      qword ptr [7FFE3379F7C8]
 int       3
 
 </code></pre></td>
@@ -2197,15 +2197,15 @@ mov       rcx,[r9+118]
 xor       r8d,r8d
 mov       [rsp+38],r8
 mov       dword ptr [rsp+40],64
-mov       r8,21BDDBCADC0
+mov       r8,22BC8F3ADC0
 mov       [rsp+20],r8
-mov       r8,1DB4FC01E80
+mov       r8,1EB37001E80
 mov       r8,[r8]
 mov       [rsp+28],r8
 lea       r8,[rsp+38]
 mov       r9,[r9+120]
 mov       edx,3
-call      qword ptr [7FFE49815770]
+call      qword ptr [7FFE33825140]
 nop
 add       rsp,48
 ret
@@ -2228,11 +2228,11 @@ mov       ebp,edx
 mov       rbx,r8
 mov       rdi,r9
 test      rsi,rsi
-je        near ptr 00007FFE490A78C8
+je        near ptr 00007FFE330B85E8
 lea       rcx,[rsp+50]
 mov       rdx,[rsp+0B0]
 mov       r8,[rsp+0B8]
-call      qword ptr [7FFE498157E8]
+call      qword ptr [7FFE338251B8]
 mov       rcx,rsi
 mov       rdx,offset MT_Microsoft.Extensions.Logging.ILogger
 mov       r8,offset MD_Microsoft.Extensions.Logging.ILogger.Log[[Microsoft.Extensions.Logging.FormattedLogValues, Microsoft.Extensions.Logging.Abstractions]](Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, Microsoft.Extensions.Logging.FormattedLogValues, System.Exception, System.Func`3<Microsoft.Extensions.Logging.FormattedLogValues,System.Exception,System.String>)
@@ -2245,7 +2245,7 @@ vmovdqu   xmmword ptr [rsp+38],xmm0
 mov       r9,[rsp+60]
 mov       [rsp+48],r9
 mov       [rsp+20],rdi
-mov       r9,1DB57C00658
+mov       r9,1EB37006628
 mov       r9,[r9]
 mov       [rsp+28],r9
 lea       r9,[rsp+38]
@@ -2258,10 +2258,10 @@ pop       rsi
 pop       rdi
 ret
 mov       ecx,1BF
-mov       rdx,7FFE4944A190
+mov       rdx,7FFE3345A190
 call      CORINFO_HELP_STRCNS
 mov       rcx,rax
-call      qword ptr [7FFE4976F7C8]
+call      qword ptr [7FFE3377F7C8]
 int       3
 
 </code></pre></td>
