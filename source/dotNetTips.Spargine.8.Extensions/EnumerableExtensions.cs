@@ -384,11 +384,9 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(FastCount), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static long FastCount<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate)
-	{
+	public static long FastCount<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate) =>
 		//COPILOT OPTIMIZATION SLOWER.
-		return collection.ArgumentNotNull().Count(predicate.ArgumentNotNull());
-	}
+		collection.ArgumentNotNull().Count(predicate.ArgumentNotNull());
 
 	/// <summary>
 	/// Processes each item in the given collection using the specified action.

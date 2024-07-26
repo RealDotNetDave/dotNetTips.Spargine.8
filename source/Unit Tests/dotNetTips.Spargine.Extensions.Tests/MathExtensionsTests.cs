@@ -4,7 +4,7 @@
 // Created          : 07-12-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-12-2024
+// Last Modified On : 07-26-2024
 // ***********************************************************************
 // <copyright file="MathExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.

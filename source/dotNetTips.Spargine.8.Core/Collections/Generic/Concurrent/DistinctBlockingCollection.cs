@@ -77,10 +77,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// </summary>
 	/// <param name="item">The item to check.</param>
 	/// <returns><c>true</c> if the item is null or not contained in the <see cref="DistinctBlockingCollection{T}"/>; otherwise, <c>false</c>.</returns>
-	private bool IsNotInCollection([NotNullWhen(false)] T item)
-	{
-		return this.Contains(item) is false;
-	}
+	private bool IsNotInCollection([NotNullWhen(false)] T item) => this.Contains(item) is false;
 
 	/// <summary>
 	/// Adds the specified item to the <see cref="DistinctBlockingCollection{T}"/>.

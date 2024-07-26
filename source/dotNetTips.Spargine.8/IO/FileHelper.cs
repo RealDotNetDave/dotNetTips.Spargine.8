@@ -81,10 +81,7 @@ public static class FileHelper
 	/// This method ensures that a single instance of <see cref="HttpClient"/> is reused across the application,
 	/// which is a recommended practice for efficient network resource utilization.
 	/// </remarks>
-	private static HttpClient GetHttpClient()
-	{
-		return _httpClient ??= new HttpClient();
-	}
+	private static HttpClient GetHttpClient() => _httpClient ??= new HttpClient();
 
 	/// <summary>
 	/// Asynchronously extracts the contents of a Windows compressed (zipped) folder to the specified directory.

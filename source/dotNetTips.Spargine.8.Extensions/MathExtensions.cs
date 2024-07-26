@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 07-26-2024
 // ***********************************************************************
 // <copyright file="MathExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
