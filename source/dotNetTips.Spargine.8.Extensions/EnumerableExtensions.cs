@@ -9,9 +9,7 @@
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// <summary>
-//     This file contains extension methods for IEnumerable types.
-// </summary>
+// <summary>This file contains extension methods for IEnumerable types.</summary>
 // ***********************************************************************
 using System.Collections;
 using System.Collections.Concurrent;

@@ -94,44 +94,6 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Count")]
-	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
-	public void Count_Count()
-	{
-		var people = this._peopleRefList;
-
-		this.Consume(people.Count);
-	}
-
-	[Benchmark(Description = nameof(EnumerableExtensions.FastCount))]
-	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
-	public void Count_FastCount()
-	{
-		var people = this._peopleRefList;
-
-		this.Consume(people.FastCount());
-	}
-
-	[Benchmark(Description = "LongCount")]
-	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
-	public void CountLongCount()
-	{
-		var people = this._peopleRefList;
-
-		this.Consume(people.LongCount());
-	}
-
-	[Benchmark(Description = nameof(Enumerable.TryGetNonEnumeratedCount))]
-	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
-	public void CountTryGetNonEnumeratedCount()
-	{
-		var people = this._peopleRefList;
-
-		_ = Enumerable.TryGetNonEnumeratedCount(people, out var count);
-
-		this.Consume(count);
-	}
-
 	[Benchmark(Description = nameof(ListExtensions.DoesNotHaveItems))]
 	[BenchmarkCategory(Categories.Collections)]
 	public void DoesNotHaveItems()
