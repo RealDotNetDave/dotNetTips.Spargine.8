@@ -4,7 +4,7 @@
 // Created          : 11-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-25-2024
+// Last Modified On : 07-27-2024
 // ***********************************************************************
 // <copyright file="AppTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -44,7 +44,6 @@ public class AppTests
 		Assert.IsTrue(config.TestValues.Count1 == 100);
 
 	}
-
 
 	[TestMethod]
 	public void AppInfoTest()

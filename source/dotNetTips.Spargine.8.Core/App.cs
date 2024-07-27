@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-26-2024
+// Last Modified On : 07-27-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -72,7 +72,7 @@ public static class App
 			ThreadAllocatedBytes = GC.GetAllocatedBytesForCurrentThread(),
 			Title = assembly.GetCustomAttributes<AssemblyTitleAttribute>().FirstOrDefault()?.Title,
 			TotalAllocatedBytes = GC.GetTotalAllocatedBytes(precise: false),
-			Version = assembly.GetCustomAttributes<AssemblyInformationalVersionAttribute>().FirstOrDefault()?.InformationalVersion,
+			Version = assembly.GetName().Version.ToString(),
 		};
 	}
 
