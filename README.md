@@ -1,8 +1,8 @@
-# DotNetTips.Spargine for Microsoft .NET 8: v2024.8.5.2 
+# DotNetTips.Spargine for Microsoft .NET 8: v2024.8.8.1 
 ![Spargine 8](docs/Graphics/SPARGINE-8-BANNER.png)
 
 Open-source .NET assemblies from dotNetTips.com and **<a href="https://dotnettips.wordpress.com/about/" target="_blank">David (dotNetDave) McCarter</a>**. 
-This repository is for the dotNetTips.Spargine code for .NET 8. Spargine encompasses foundational code that I have been crafting since the days of .NET 2! Additionally, it features a library designed to assist with your testing and another dedicated to benchmarking your code.
+This repository contains the dotNetTips.Spargine code for .NET 8. Spargine includes foundational code that I've been developing since the days of .NET 2! It also features a library to support your testing and another one dedicated to benchmarking your code.
 
 Please support this project by <a href="https://github.com/sponsors/RealDotNetDave" target="_blank">**clicking here**</a>. 
 <a href="https://dotnettips.wordpress.com/spargine/" target="_blank">Click here</a> to visit the Spargine page on dotNetTips.com. Much of this code is also documented on <a href="https://dotnettips.wordpress.com/category/open-source/spargine/" target="_blank">**dotNetTips.com**</a>.
