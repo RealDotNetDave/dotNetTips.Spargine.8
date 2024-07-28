@@ -5,7 +5,7 @@
        push      rbx
        sub       rsp,38
        mov       rbx,rcx
-       mov       rcx,227E3805988
+       mov       rcx,209B6003BE8
        mov       rcx,[rcx]
        test      byte ptr [rcx+40],40
        jne       short M00_L01
@@ -16,8 +16,8 @@ M00_L00:
        mov       dword ptr [rsp+28],0E
        mov       [rsp+30],esi
        mov       r8d,0FFFFFFFF
-       mov       r9,268756BAAF0
-       call      qword ptr [7FFE333BF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       mov       r9,24A47F9AAF0
+       call      qword ptr [7FFF3A6AF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -71,7 +71,7 @@ M01_L00:
        mov       rdx,[rcx+48]
        mov       rcx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE334D48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
+       call      qword ptr [7FFF3A7C48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
        mov       rcx,[rbp-50]
        lea       rcx,[rcx+8]
        mov       rdx,rbx
@@ -96,7 +96,7 @@ M01_L00:
        lea       r8,[rbp-48]
        mov       r9d,r13d
        sub       r9d,r14d
-       call      qword ptr [7FFE334D4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
+       call      qword ptr [7FFF3A7C4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
        test      edi,edi
        je        near ptr M01_L05
 M01_L01:
@@ -128,13 +128,13 @@ M01_L01:
        mov       rcx,r12
        mov       r8d,r14d
        mov       r9d,esi
-       call      qword ptr [7FFE337FF1B0]
+       call      qword ptr [7FFF3AAEF210]
 M01_L02:
        jmp       near ptr M01_L12
 M01_L03:
        call      CORINFO_HELP_RNGCHKFAIL
 M01_L04:
-       mov       rcx,7FFE333C5FB0
+       mov       rcx,7FFF3A6B5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
        jmp       near ptr M01_L11
@@ -150,15 +150,15 @@ M01_L06:
        mov       rdx,[rbp-50]
        cmp       [rdx+48],ecx
        jne       short M01_L08
-       mov       rcx,7FFE333C5FB0
+       mov       rcx,7FFF3A6B5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-       mov       rcx,227E5800048
+       mov       rcx,209B6004298
        mov       r12,[rcx]
        jmp       short M01_L12
 M01_L07:
        mov       ecx,21
-       call      qword ptr [7FFE3320ED00]
+       call      qword ptr [7FFF3A4FED00]
        int       3
 M01_L08:
        mov       rdx,[rbp-50]
@@ -172,10 +172,10 @@ M01_L09:
 M01_L10:
        xor       edx,edx
        mov       [r12+8],rdx
-       test      byte ptr [7FFE333C6001],1
+       test      byte ptr [7FFF3A6B6001],1
        je        near ptr M01_L04
 M01_L11:
-       mov       rdx,227E5800048
+       mov       rdx,209B6004298
        mov       r12,[rdx]
        jmp       near ptr M01_L02
 M01_L12:
@@ -200,12 +200,12 @@ M01_L12:
 M01_L13:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE338767C0]
+       call      qword ptr [7FFF3AB667C0]
        int       3
 M01_L14:
        mov       ecx,8
        mov       edx,2
-       call      qword ptr [7FFE338767C0]
+       call      qword ptr [7FFF3AB667C0]
        int       3
 M01_L15:
        mov       rax,[rcx+10]
@@ -257,9 +257,9 @@ M01_L15:
        mov       rdx,[rbx+28]
        test      rdx,rdx
        je        short M00_L01
-       mov       rcx,1BE13005968
+       mov       rcx,2C0DFC03BC8
        mov       rcx,[rcx]
-       call      qword ptr [7FFE333AF390]; System.Text.RegularExpressions.Regex.IsMatch(System.String)
+       call      qword ptr [7FFF3A6BF390]; System.Text.RegularExpressions.Regex.IsMatch(System.String)
 M00_L00:
        mov       rcx,[rbx+18]
        mov       [rcx+4C],al
@@ -289,7 +289,7 @@ M01_L00:
        mov       [rsp+28],eax
        mov       [rsp+30],ebx
        mov       r8d,0FFFFFFFF
-       call      qword ptr [7FFE333AF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       call      qword ptr [7FFF3A6BF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -298,7 +298,7 @@ M01_L00:
        ret
 M01_L01:
        mov       ecx,7
-       call      qword ptr [7FFE33867BB8]
+       call      qword ptr [7FFF3AB77780]
        int       3
 M01_L02:
        mov       r9,rdx
@@ -314,7 +314,7 @@ M01_L02:
        push      rbx
        sub       rsp,38
        mov       rbx,rcx
-       mov       rcx,27951C05970
+       mov       rcx,2133E803BD0
        mov       rcx,[rcx]
        test      byte ptr [rcx+40],40
        jne       short M00_L01
@@ -325,8 +325,8 @@ M00_L00:
        mov       dword ptr [rsp+28],10
        mov       [rsp+30],esi
        mov       r8d,0FFFFFFFF
-       mov       r9,2B9E3ADAAF0
-       call      qword ptr [7FFE333AF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       mov       r9,253D070AAF0
+       call      qword ptr [7FFF3A69F120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -380,7 +380,7 @@ M01_L00:
        mov       rdx,[rcx+48]
        mov       rcx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE334C48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
+       call      qword ptr [7FFF3A7B48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
        mov       rcx,[rbp-50]
        lea       rcx,[rcx+8]
        mov       rdx,rbx
@@ -405,7 +405,7 @@ M01_L00:
        lea       r8,[rbp-48]
        mov       r9d,r13d
        sub       r9d,r14d
-       call      qword ptr [7FFE334C4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
+       call      qword ptr [7FFF3A7B4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
        test      edi,edi
        je        near ptr M01_L05
 M01_L01:
@@ -437,13 +437,13 @@ M01_L01:
        mov       rcx,r12
        mov       r8d,r14d
        mov       r9d,esi
-       call      qword ptr [7FFE337EF1B0]
+       call      qword ptr [7FFF3AADF1B0]
 M01_L02:
        jmp       near ptr M01_L12
 M01_L03:
        call      CORINFO_HELP_RNGCHKFAIL
 M01_L04:
-       mov       rcx,7FFE333B5FB0
+       mov       rcx,7FFF3A6A5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
        jmp       near ptr M01_L11
@@ -459,15 +459,15 @@ M01_L06:
        mov       rdx,[rbp-50]
        cmp       [rdx+48],ecx
        jne       short M01_L08
-       mov       rcx,7FFE333B5FB0
+       mov       rcx,7FFF3A6A5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-       mov       rcx,27953C00048
+       mov       rcx,2133E804298
        mov       r12,[rcx]
        jmp       short M01_L12
 M01_L07:
        mov       ecx,21
-       call      qword ptr [7FFE331FED00]
+       call      qword ptr [7FFF3A4EED00]
        int       3
 M01_L08:
        mov       rdx,[rbp-50]
@@ -481,10 +481,10 @@ M01_L09:
 M01_L10:
        xor       edx,edx
        mov       [r12+8],rdx
-       test      byte ptr [7FFE333B6001],1
+       test      byte ptr [7FFF3A6A6001],1
        je        near ptr M01_L04
 M01_L11:
-       mov       rdx,27953C00048
+       mov       rdx,2133E804298
        mov       r12,[rdx]
        jmp       near ptr M01_L02
 M01_L12:
@@ -509,12 +509,12 @@ M01_L12:
 M01_L13:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE33867F30]
+       call      qword ptr [7FFF3AB57F18]
        int       3
 M01_L14:
        mov       ecx,8
        mov       edx,2
-       call      qword ptr [7FFE33867F30]
+       call      qword ptr [7FFF3AB57F18]
        int       3
 M01_L15:
        mov       rax,[rcx+10]
@@ -564,7 +564,7 @@ M01_L15:
        push      rbx
        sub       rsp,38
        mov       rbx,rcx
-       mov       rcx,2A9F2005970
+       mov       rcx,20417C05BC8
        mov       rcx,[rcx]
        test      byte ptr [rcx+40],40
        jne       short M00_L01
@@ -575,8 +575,8 @@ M00_L00:
        mov       dword ptr [rsp+28],3
        mov       [rsp+30],esi
        mov       r8d,0FFFFFFFF
-       mov       r9,2EA83E5AAF0
-       call      qword ptr [7FFE333BF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       mov       r9,244A9D9AAF0
+       call      qword ptr [7FFF3A69F120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -630,7 +630,7 @@ M01_L00:
        mov       rdx,[rcx+48]
        mov       rcx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE334D48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
+       call      qword ptr [7FFF3A7B48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
        mov       rcx,[rbp-50]
        lea       rcx,[rcx+8]
        mov       rdx,rbx
@@ -655,7 +655,7 @@ M01_L00:
        lea       r8,[rbp-48]
        mov       r9d,r13d
        sub       r9d,r14d
-       call      qword ptr [7FFE334D4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
+       call      qword ptr [7FFF3A7B4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
        test      edi,edi
        je        short M01_L04
 M01_L01:
@@ -687,7 +687,7 @@ M01_L01:
        mov       rcx,r12
        mov       r8d,r14d
        mov       r9d,esi
-       call      qword ptr [7FFE337FF1B0]
+       call      qword ptr [7FFF3AADE7C0]
 M01_L02:
        jmp       short M01_L10
 M01_L03:
@@ -704,12 +704,12 @@ M01_L05:
        mov       rdi,[rbp-50]
        cmp       [rdi+48],ecx
        jne       short M01_L07
-       mov       rdx,2A9F2006018
+       mov       rdx,20417C06290
        mov       r12,[rdx]
        jmp       short M01_L10
 M01_L06:
        mov       ecx,21
-       call      qword ptr [7FFE3320ED00]
+       call      qword ptr [7FFF3A4EED00]
        int       3
 M01_L07:
        add       [rdi+4C],edx
@@ -722,7 +722,7 @@ M01_L08:
 M01_L09:
        xor       edx,edx
        mov       [r12+8],rdx
-       mov       rdx,2A9F2006018
+       mov       rdx,20417C06290
        mov       r12,[rdx]
        jmp       short M01_L02
 M01_L10:
@@ -747,12 +747,12 @@ M01_L10:
 M01_L11:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE338767C0]
+       call      qword ptr [7FFF3AB55D70]
        int       3
 M01_L12:
        mov       ecx,8
        mov       edx,2
-       call      qword ptr [7FFE338767C0]
+       call      qword ptr [7FFF3AB55D70]
        int       3
 M01_L13:
        mov       rax,[rcx+10]
@@ -802,7 +802,7 @@ M01_L13:
        push      rbx
        sub       rsp,38
        mov       rbx,rcx
-       mov       rcx,23A81405980
+       mov       rcx,1FB56805BD8
        mov       rcx,[rcx]
        test      byte ptr [rcx+40],40
        jne       short M00_L01
@@ -813,8 +813,8 @@ M00_L00:
        mov       dword ptr [rsp+28],13
        mov       [rsp+30],esi
        mov       r8d,0FFFFFFFF
-       mov       r9,27B1331AAF0
-       call      qword ptr [7FFE333BF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       mov       r9,23BE863AAF0
+       call      qword ptr [7FFF3A6CF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -868,7 +868,7 @@ M01_L00:
        mov       rdx,[rcx+48]
        mov       rcx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE334D48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
+       call      qword ptr [7FFF3A7E48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
        mov       rcx,[rbp-50]
        lea       rcx,[rcx+8]
        mov       rdx,rbx
@@ -893,7 +893,7 @@ M01_L00:
        lea       r8,[rbp-48]
        mov       r9d,r13d
        sub       r9d,r14d
-       call      qword ptr [7FFE334D4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
+       call      qword ptr [7FFF3A7E4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
        test      edi,edi
        je        near ptr M01_L05
 M01_L01:
@@ -925,13 +925,13 @@ M01_L01:
        mov       rcx,r12
        mov       r8d,r14d
        mov       r9d,esi
-       call      qword ptr [7FFE337FF1F8]
+       call      qword ptr [7FFF3AB0E748]
 M01_L02:
        jmp       near ptr M01_L12
 M01_L03:
        call      CORINFO_HELP_RNGCHKFAIL
 M01_L04:
-       mov       rcx,7FFE333C5FB0
+       mov       rcx,7FFF3A6D5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
        jmp       near ptr M01_L11
@@ -947,15 +947,15 @@ M01_L06:
        mov       rdx,[rbp-50]
        cmp       [rdx+48],ecx
        jne       short M01_L08
-       mov       rcx,7FFE333C5FB0
+       mov       rcx,7FFF3A6D5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-       mov       rcx,23A81406018
+       mov       rcx,1FB56806290
        mov       r12,[rcx]
        jmp       short M01_L12
 M01_L07:
        mov       ecx,21
-       call      qword ptr [7FFE3320ED00]
+       call      qword ptr [7FFF3A51ED00]
        int       3
 M01_L08:
        mov       rdx,[rbp-50]
@@ -969,10 +969,10 @@ M01_L09:
 M01_L10:
        xor       edx,edx
        mov       [r12+8],rdx
-       test      byte ptr [7FFE333C6001],1
+       test      byte ptr [7FFF3A6D6001],1
        je        near ptr M01_L04
 M01_L11:
-       mov       rdx,23A81406018
+       mov       rdx,1FB56806290
        mov       r12,[rdx]
        jmp       near ptr M01_L02
 M01_L12:
@@ -997,12 +997,12 @@ M01_L12:
 M01_L13:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE338777F8]
+       call      qword ptr [7FFF3AB868F8]
        int       3
 M01_L14:
        mov       ecx,8
        mov       edx,2
-       call      qword ptr [7FFE338777F8]
+       call      qword ptr [7FFF3AB868F8]
        int       3
 M01_L15:
        mov       rax,[rcx+10]
@@ -1052,7 +1052,7 @@ M01_L15:
        push      rbx
        sub       rsp,38
        mov       rbx,rcx
-       mov       rcx,1C945005990
+       mov       rcx,18056005BE8
        mov       rcx,[rcx]
        test      byte ptr [rcx+40],40
        jne       short M00_L01
@@ -1063,8 +1063,8 @@ M00_L00:
        mov       dword ptr [rsp+28],24
        mov       [rsp+30],esi
        mov       r8d,0FFFFFFFF
-       mov       r9,209D6EEAAF0
-       call      qword ptr [7FFE333CF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       mov       r9,1C0E7D8AAF0
+       call      qword ptr [7FFF3A6AF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -1118,7 +1118,7 @@ M01_L00:
        mov       rdx,[rcx+48]
        mov       rcx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE334E48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
+       call      qword ptr [7FFF3A7C48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
        mov       rcx,[rbp-50]
        lea       rcx,[rcx+8]
        mov       rdx,rbx
@@ -1143,7 +1143,7 @@ M01_L00:
        lea       r8,[rbp-48]
        mov       r9d,r13d
        sub       r9d,r14d
-       call      qword ptr [7FFE334E4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
+       call      qword ptr [7FFF3A7C4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
        test      edi,edi
        je        near ptr M01_L05
 M01_L01:
@@ -1175,13 +1175,13 @@ M01_L01:
        mov       rcx,r12
        mov       r8d,r14d
        mov       r9d,esi
-       call      qword ptr [7FFE3380F210]
+       call      qword ptr [7FFF3AAEF1B0]
 M01_L02:
        jmp       near ptr M01_L12
 M01_L03:
        call      CORINFO_HELP_RNGCHKFAIL
 M01_L04:
-       mov       rcx,7FFE333D5FB0
+       mov       rcx,7FFF3A6B5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
        jmp       near ptr M01_L11
@@ -1197,15 +1197,15 @@ M01_L06:
        mov       rdx,[rbp-50]
        cmp       [rdx+48],ecx
        jne       short M01_L08
-       mov       rcx,7FFE333D5FB0
+       mov       rcx,7FFF3A6B5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-       mov       rcx,1C945006018
+       mov       rcx,18056006290
        mov       r12,[rcx]
        jmp       short M01_L12
 M01_L07:
        mov       ecx,21
-       call      qword ptr [7FFE3321ED00]
+       call      qword ptr [7FFF3A4FED00]
        int       3
 M01_L08:
        mov       rdx,[rbp-50]
@@ -1219,10 +1219,10 @@ M01_L09:
 M01_L10:
        xor       edx,edx
        mov       [r12+8],rdx
-       test      byte ptr [7FFE333D6001],1
+       test      byte ptr [7FFF3A6B6001],1
        je        near ptr M01_L04
 M01_L11:
-       mov       rdx,1C945006018
+       mov       rdx,18056006290
        mov       r12,[rdx]
        jmp       near ptr M01_L02
 M01_L12:
@@ -1247,12 +1247,12 @@ M01_L12:
 M01_L13:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE338867C0]
+       call      qword ptr [7FFF3AB667C0]
        int       3
 M01_L14:
        mov       ecx,8
        mov       edx,2
-       call      qword ptr [7FFE338867C0]
+       call      qword ptr [7FFF3AB667C0]
        int       3
 M01_L15:
        mov       rax,[rcx+10]
@@ -1302,7 +1302,7 @@ M01_L15:
        push      rbx
        sub       rsp,38
        mov       rbx,rcx
-       mov       rcx,20DC7005998
+       mov       rcx,26CA8005BF0
        mov       rcx,[rcx]
        test      byte ptr [rcx+40],40
        jne       short M00_L01
@@ -1313,8 +1313,8 @@ M00_L00:
        mov       dword ptr [rsp+28],0D
        mov       [rsp+30],esi
        mov       r8d,0FFFFFFFF
-       mov       r9,24E54E2AAF0
-       call      qword ptr [7FFE3339F120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       mov       r9,2AD35DDAAF0
+       call      qword ptr [7FFF3A6BF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -1368,7 +1368,7 @@ M01_L00:
        mov       rdx,[rcx+48]
        mov       rcx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE334B48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
+       call      qword ptr [7FFF3A7D48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
        mov       rcx,[rbp-50]
        lea       rcx,[rcx+8]
        mov       rdx,rbx
@@ -1393,7 +1393,7 @@ M01_L00:
        lea       r8,[rbp-48]
        mov       r9d,r13d
        sub       r9d,r14d
-       call      qword ptr [7FFE334B4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
+       call      qword ptr [7FFF3A7D4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
        test      edi,edi
        je        near ptr M01_L05
 M01_L01:
@@ -1425,13 +1425,13 @@ M01_L01:
        mov       rcx,r12
        mov       r8d,r14d
        mov       r9d,esi
-       call      qword ptr [7FFE337DF198]
+       call      qword ptr [7FFF3AAFF198]
 M01_L02:
        jmp       near ptr M01_L12
 M01_L03:
        call      CORINFO_HELP_RNGCHKFAIL
 M01_L04:
-       mov       rcx,7FFE333A5FB0
+       mov       rcx,7FFF3A6C5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
        jmp       near ptr M01_L11
@@ -1447,15 +1447,15 @@ M01_L06:
        mov       rdx,[rbp-50]
        cmp       [rdx+48],ecx
        jne       short M01_L08
-       mov       rcx,7FFE333A5FB0
+       mov       rcx,7FFF3A6C5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-       mov       rcx,20DC7006018
+       mov       rcx,26CA40002C0
        mov       r12,[rcx]
        jmp       short M01_L12
 M01_L07:
        mov       ecx,21
-       call      qword ptr [7FFE331EED00]
+       call      qword ptr [7FFF3A50ED00]
        int       3
 M01_L08:
        mov       rdx,[rbp-50]
@@ -1469,10 +1469,10 @@ M01_L09:
 M01_L10:
        xor       edx,edx
        mov       [r12+8],rdx
-       test      byte ptr [7FFE333A6001],1
+       test      byte ptr [7FFF3A6C6001],1
        je        near ptr M01_L04
 M01_L11:
-       mov       rdx,20DC7006018
+       mov       rdx,26CA40002C0
        mov       r12,[rdx]
        jmp       near ptr M01_L02
 M01_L12:
@@ -1497,12 +1497,12 @@ M01_L12:
 M01_L13:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE33856B98]
+       call      qword ptr [7FFF3AB76B98]
        int       3
 M01_L14:
        mov       ecx,8
        mov       edx,2
-       call      qword ptr [7FFE33856B98]
+       call      qword ptr [7FFF3AB76B98]
        int       3
 M01_L15:
        mov       rax,[rcx+10]
@@ -1552,7 +1552,7 @@ M01_L15:
        push      rbx
        sub       rsp,38
        mov       rbx,rcx
-       mov       rcx,2AAF78059A0
+       mov       rcx,22B12005BF8
        mov       rcx,[rcx]
        test      byte ptr [rcx+40],40
        jne       short M00_L01
@@ -1563,8 +1563,8 @@ M00_L00:
        mov       dword ptr [rsp+28],11
        mov       [rsp+30],esi
        mov       r8d,0FFFFFFFF
-       mov       r9,2EB8568AAF0
-       call      qword ptr [7FFE333BF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       mov       r9,26BA3E0AAF0
+       call      qword ptr [7FFF3A6AF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -1618,7 +1618,7 @@ M01_L00:
        mov       rdx,[rcx+48]
        mov       rcx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE334D48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
+       call      qword ptr [7FFF3A7C48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
        mov       rcx,[rbp-50]
        lea       rcx,[rcx+8]
        mov       rdx,rbx
@@ -1643,7 +1643,7 @@ M01_L00:
        lea       r8,[rbp-48]
        mov       r9d,r13d
        sub       r9d,r14d
-       call      qword ptr [7FFE334D4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
+       call      qword ptr [7FFF3A7C4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
        test      edi,edi
        je        near ptr M01_L05
 M01_L01:
@@ -1675,13 +1675,13 @@ M01_L01:
        mov       rcx,r12
        mov       r8d,r14d
        mov       r9d,esi
-       call      qword ptr [7FFE337FF210]
+       call      qword ptr [7FFF3AAEE760]
 M01_L02:
        jmp       near ptr M01_L12
 M01_L03:
        call      CORINFO_HELP_RNGCHKFAIL
 M01_L04:
-       mov       rcx,7FFE333C5FB0
+       mov       rcx,7FFF3A6B5EA0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
        jmp       near ptr M01_L11
@@ -1697,15 +1697,15 @@ M01_L06:
        mov       rdx,[rbp-50]
        cmp       [rdx+48],ecx
        jne       short M01_L08
-       mov       rcx,7FFE333C5FB0
+       mov       rcx,7FFF3A6B5EA0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-       mov       rcx,2AAF7806018
+       mov       rcx,22B12006290
        mov       r12,[rcx]
        jmp       short M01_L12
 M01_L07:
        mov       ecx,21
-       call      qword ptr [7FFE3320ED00]
+       call      qword ptr [7FFF3A4FED00]
        int       3
 M01_L08:
        mov       rdx,[rbp-50]
@@ -1719,10 +1719,10 @@ M01_L09:
 M01_L10:
        xor       edx,edx
        mov       [r12+8],rdx
-       test      byte ptr [7FFE333C6001],1
+       test      byte ptr [7FFF3A6B5EF1],1
        je        near ptr M01_L04
 M01_L11:
-       mov       rdx,2AAF7806018
+       mov       rdx,22B12006290
        mov       r12,[rdx]
        jmp       near ptr M01_L02
 M01_L12:
@@ -1747,12 +1747,12 @@ M01_L12:
 M01_L13:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE338767C0]
+       call      qword ptr [7FFF3AB65D58]
        int       3
 M01_L14:
        mov       ecx,8
        mov       edx,2
-       call      qword ptr [7FFE338767C0]
+       call      qword ptr [7FFF3AB65D58]
        int       3
 M01_L15:
        mov       rax,[rcx+10]
@@ -1802,7 +1802,7 @@ M01_L15:
        push      rbx
        sub       rsp,38
        mov       rbx,rcx
-       mov       rcx,1BB684059B8
+       mov       rcx,24E38C03C18
        mov       rcx,[rcx]
        test      byte ptr [rcx+40],40
        jne       short M00_L01
@@ -1813,8 +1813,8 @@ M00_L00:
        mov       dword ptr [rsp+28],28
        mov       [rsp+30],esi
        mov       r8d,0FFFFFFFF
-       mov       r9,1FBFA3EAAF0
-       call      qword ptr [7FFE333AF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       mov       r9,28EBEC4AAF0
+       call      qword ptr [7FFF3A6AF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -1868,7 +1868,7 @@ M01_L00:
        mov       rdx,[rcx+48]
        mov       rcx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE334C48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
+       call      qword ptr [7FFF3A7C48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
        mov       rcx,[rbp-50]
        lea       rcx,[rcx+8]
        mov       rdx,rbx
@@ -1893,7 +1893,7 @@ M01_L00:
        lea       r8,[rbp-48]
        mov       r9d,r13d
        sub       r9d,r14d
-       call      qword ptr [7FFE334C4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
+       call      qword ptr [7FFF3A7C4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
        test      edi,edi
        je        near ptr M01_L05
 M01_L01:
@@ -1925,13 +1925,13 @@ M01_L01:
        mov       rcx,r12
        mov       r8d,r14d
        mov       r9d,esi
-       call      qword ptr [7FFE337EF1B0]
+       call      qword ptr [7FFF3AAEE760]
 M01_L02:
        jmp       near ptr M01_L12
 M01_L03:
        call      CORINFO_HELP_RNGCHKFAIL
 M01_L04:
-       mov       rcx,7FFE333B5FB0
+       mov       rcx,7FFF3A6B5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
        jmp       near ptr M01_L11
@@ -1947,15 +1947,15 @@ M01_L06:
        mov       rdx,[rbp-50]
        cmp       [rdx+48],ecx
        jne       short M01_L08
-       mov       rcx,7FFE333B5FB0
+       mov       rcx,7FFF3A6B5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-       mov       rcx,1BB68406018
+       mov       rcx,24E2CC002C0
        mov       r12,[rcx]
        jmp       short M01_L12
 M01_L07:
        mov       ecx,21
-       call      qword ptr [7FFE331FED00]
+       call      qword ptr [7FFF3A4FED00]
        int       3
 M01_L08:
        mov       rdx,[rbp-50]
@@ -1969,10 +1969,10 @@ M01_L09:
 M01_L10:
        xor       edx,edx
        mov       [r12+8],rdx
-       test      byte ptr [7FFE333B6001],1
+       test      byte ptr [7FFF3A6B6001],1
        je        near ptr M01_L04
 M01_L11:
-       mov       rdx,1BB68406018
+       mov       rdx,24E2CC002C0
        mov       r12,[rdx]
        jmp       near ptr M01_L02
 M01_L12:
@@ -1997,12 +1997,12 @@ M01_L12:
 M01_L13:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE33867270]
+       call      qword ptr [7FFF3AB667C0]
        int       3
 M01_L14:
        mov       ecx,8
        mov       edx,2
-       call      qword ptr [7FFE33867270]
+       call      qword ptr [7FFF3AB667C0]
        int       3
 M01_L15:
        mov       rax,[rcx+10]
@@ -2052,7 +2052,7 @@ M01_L15:
        push      rbx
        sub       rsp,38
        mov       rbx,rcx
-       mov       rcx,17D9E4059D8
+       mov       rcx,1E5FB005C30
        mov       rcx,[rcx]
        test      byte ptr [rcx+40],40
        jne       short M00_L01
@@ -2063,8 +2063,8 @@ M00_L00:
        mov       dword ptr [rsp+28],15
        mov       [rsp+30],esi
        mov       r8d,0FFFFFFFF
-       mov       r9,1BE3020AAF0
-       call      qword ptr [7FFE333CF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       mov       r9,2268CFCAAF0
+       call      qword ptr [7FFF3A6BF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -2118,7 +2118,7 @@ M01_L00:
        mov       rdx,[rcx+48]
        mov       rcx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE334E48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
+       call      qword ptr [7FFF3A7D48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
        mov       rcx,[rbp-50]
        lea       rcx,[rcx+8]
        mov       rdx,rbx
@@ -2143,7 +2143,7 @@ M01_L00:
        lea       r8,[rbp-48]
        mov       r9d,r13d
        sub       r9d,r14d
-       call      qword ptr [7FFE334E4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
+       call      qword ptr [7FFF3A7D4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
        test      edi,edi
        je        near ptr M01_L05
 M01_L01:
@@ -2175,13 +2175,13 @@ M01_L01:
        mov       rcx,r12
        mov       r8d,r14d
        mov       r9d,esi
-       call      qword ptr [7FFE3380E760]
+       call      qword ptr [7FFF3AAFE760]
 M01_L02:
        jmp       near ptr M01_L12
 M01_L03:
        call      CORINFO_HELP_RNGCHKFAIL
 M01_L04:
-       mov       rcx,7FFE333D5FB0
+       mov       rcx,7FFF3A6C5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
        jmp       near ptr M01_L11
@@ -2197,15 +2197,15 @@ M01_L06:
        mov       rdx,[rbp-50]
        cmp       [rdx+48],ecx
        jne       short M01_L08
-       mov       rcx,7FFE333D5FB0
+       mov       rcx,7FFF3A6C5FB0
        mov       edx,21
        call      CORINFO_HELP_GETSHARED_NONGCSTATIC_BASE
-       mov       rcx,17DA2400048
+       mov       rcx,1E5FF0002C0
        mov       r12,[rcx]
        jmp       short M01_L12
 M01_L07:
        mov       ecx,21
-       call      qword ptr [7FFE3321ED00]
+       call      qword ptr [7FFF3A50ED00]
        int       3
 M01_L08:
        mov       rdx,[rbp-50]
@@ -2219,10 +2219,10 @@ M01_L09:
 M01_L10:
        xor       edx,edx
        mov       [r12+8],rdx
-       test      byte ptr [7FFE333D6001],1
+       test      byte ptr [7FFF3A6C6001],1
        je        near ptr M01_L04
 M01_L11:
-       mov       rdx,17DA2400048
+       mov       rdx,1E5FF0002C0
        mov       r12,[rdx]
        jmp       near ptr M01_L02
 M01_L12:
@@ -2247,12 +2247,12 @@ M01_L12:
 M01_L13:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE33887108]
+       call      qword ptr [7FFF3AB77108]
        int       3
 M01_L14:
        mov       ecx,8
        mov       edx,2
-       call      qword ptr [7FFE33887108]
+       call      qword ptr [7FFF3AB77108]
        int       3
 M01_L15:
        mov       rax,[rcx+10]
@@ -2302,7 +2302,7 @@ M01_L15:
        push      rbx
        sub       rsp,38
        mov       rbx,rcx
-       mov       rcx,1BA9BC059D0
+       mov       rcx,1F7A5C05C28
        mov       rcx,[rcx]
        test      byte ptr [rcx+40],40
        jne       short M00_L01
@@ -2313,8 +2313,8 @@ M00_L00:
        mov       dword ptr [rsp+28],15
        mov       [rsp+30],esi
        mov       r8d,0FFFFFFFF
-       mov       r9,1FB2996AAF0
-       call      qword ptr [7FFE333CF120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       mov       r9,23837B3AAF0
+       call      qword ptr [7FFF3A68F120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -2368,7 +2368,7 @@ M01_L00:
        mov       rdx,[rcx+48]
        mov       rcx,[rbp-50]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE334E48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
+       call      qword ptr [7FFF3A7A48A0]; System.Text.RegularExpressions.RegexRunner.InitializeTimeout(System.TimeSpan)
        mov       rcx,[rbp-50]
        lea       rcx,[rcx+8]
        mov       rdx,rbx
@@ -2393,7 +2393,7 @@ M01_L00:
        lea       r8,[rbp-48]
        mov       r9d,r13d
        sub       r9d,r14d
-       call      qword ptr [7FFE334E4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
+       call      qword ptr [7FFF3A7A4888]; System.Text.RegularExpressions.RegexRunner.InitializeForScan(System.Text.RegularExpressions.Regex, System.ReadOnlySpan`1<Char>, Int32, System.Text.RegularExpressions.RegexRunnerMode)
        test      edi,edi
        je        short M01_L04
 M01_L01:
@@ -2425,7 +2425,7 @@ M01_L01:
        mov       rcx,r12
        mov       r8d,r14d
        mov       r9d,esi
-       call      qword ptr [7FFE3380F1B0]
+       call      qword ptr [7FFF3AACE7C0]
 M01_L02:
        jmp       short M01_L10
 M01_L03:
@@ -2442,12 +2442,12 @@ M01_L05:
        mov       rdi,[rbp-50]
        cmp       [rdi+48],ecx
        jne       short M01_L07
-       mov       rdx,1BA9BC06018
+       mov       rdx,1F7A5C06290
        mov       r12,[rdx]
        jmp       short M01_L10
 M01_L06:
        mov       ecx,21
-       call      qword ptr [7FFE3321ED00]
+       call      qword ptr [7FFF3A4DED00]
        int       3
 M01_L07:
        add       [rdi+4C],edx
@@ -2460,7 +2460,7 @@ M01_L08:
 M01_L09:
        xor       edx,edx
        mov       [r12+8],rdx
-       mov       rdx,1BA9BC06018
+       mov       rdx,1F7A5C06290
        mov       r12,[rdx]
        jmp       short M01_L02
 M01_L10:
@@ -2485,12 +2485,12 @@ M01_L10:
 M01_L11:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE338879C0]
+       call      qword ptr [7FFF3AB46F58]
        int       3
 M01_L12:
        mov       ecx,8
        mov       edx,2
-       call      qword ptr [7FFE338879C0]
+       call      qword ptr [7FFF3AB46F58]
        int       3
 M01_L13:
        mov       rax,[rcx+10]
@@ -2539,13 +2539,13 @@ M01_L13:
        push      rbx
        sub       rsp,20
        mov       rbx,rcx
-       call      qword ptr [7FFE33575170]; DotNetTips.Spargine.Tester.Properties.Resources.get_LongTestString()
+       call      qword ptr [7FFF3A865170]; DotNetTips.Spargine.Tester.Properties.Resources.get_LongTestString()
        test      rax,rax
        je        short M00_L01
-       mov       rcx,14993C039D0
+       mov       rcx,1E732403C28
        mov       rcx,[rcx]
        mov       rdx,rax
-       call      qword ptr [7FFE3339F390]; System.Text.RegularExpressions.Regex.IsMatch(System.String)
+       call      qword ptr [7FFF3A68F390]; System.Text.RegularExpressions.Regex.IsMatch(System.String)
 M00_L00:
        mov       rcx,[rbx+18]
        mov       [rcx+4C],al
@@ -2560,11 +2560,11 @@ M00_L01:
 ```assembly
 ; DotNetTips.Spargine.Tester.Properties.Resources.get_LongTestString()
        sub       rsp,28
-       call      qword ptr [7FFE33575020]; DotNetTips.Spargine.Tester.Properties.Resources.get_ResourceManager()
+       call      qword ptr [7FFF3A865020]; DotNetTips.Spargine.Tester.Properties.Resources.get_ResourceManager()
        mov       rcx,rax
-       mov       r8,14993C03750
+       mov       r8,1E7324039A8
        mov       r8,[r8]
-       mov       rdx,18A1D8CAAF0
+       mov       rdx,227C43AAAF0
        mov       rax,[rax]
        mov       rax,[rax+48]
        add       rsp,28
@@ -2589,7 +2589,7 @@ M02_L00:
        mov       [rsp+28],eax
        mov       [rsp+30],ebx
        mov       r8d,0FFFFFFFF
-       call      qword ptr [7FFE3339F120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
+       call      qword ptr [7FFF3A68F120]; System.Text.RegularExpressions.Regex.RunSingleMatch(System.Text.RegularExpressions.RegexRunnerMode, Int32, System.String, Int32, Int32, Int32)
        test      rax,rax
        sete      al
        movzx     eax,al
@@ -2598,7 +2598,7 @@ M02_L00:
        ret
 M02_L01:
        mov       ecx,7
-       call      qword ptr [7FFE33856CB8]
+       call      qword ptr [7FFF3AB46CB8]
        int       3
 M02_L02:
        mov       r9,rdx
@@ -2617,14 +2617,14 @@ M02_L02:
        xor       eax,eax
        mov       [rsp+38],rax
        mov       rbx,rcx
-       mov       rcx,233D2C059B0
+       mov       rcx,1F7C2405C08
        mov       rsi,[rcx]
        test      byte ptr [rsi+40],40
        je        near ptr M00_L01
        mov       edi,0C
 M00_L00:
        mov       rcx,rsi
-       call      qword ptr [7FFE333AF0F0]; System.Text.RegularExpressions.Regex.get_RegexReplacementWeakReference()
+       call      qword ptr [7FFF3A6AF0F0]; System.Text.RegularExpressions.Regex.get_RegexReplacementWeakReference()
        mov       rcx,rax
        mov       r8,[rsi+20]
        mov       [rsp+20],r8
@@ -2632,15 +2632,15 @@ M00_L00:
        mov       [rsp+28],r8d
        mov       r8,[rsi+18]
        mov       r9d,[rsi+44]
-       mov       rdx,274649D0008
-       call      qword ptr [7FFE337EEB38]; System.Text.RegularExpressions.RegexReplacement.GetOrCreate(System.WeakReference`1<System.Text.RegularExpressions.RegexReplacement>, System.String, System.Collections.Hashtable, Int32, System.Collections.Hashtable, System.Text.RegularExpressions.RegexOptions)
+       mov       rdx,23854400008
+       call      qword ptr [7FFF3AAEEE08]; System.Text.RegularExpressions.RegexReplacement.GetOrCreate(System.WeakReference`1<System.Text.RegularExpressions.RegexReplacement>, System.String, System.Collections.Hashtable, Int32, System.Collections.Hashtable, System.Text.RegularExpressions.RegexOptions)
        mov       rcx,rax
        mov       [rsp+20],edi
        mov       rdx,rsi
-       mov       r8,274649EAAF0
+       mov       r8,2385441AAF0
        mov       r9d,0FFFFFFFF
        cmp       [rcx],ecx
-       call      qword ptr [7FFE337EEB98]; System.Text.RegularExpressions.RegexReplacement.Replace(System.Text.RegularExpressions.Regex, System.String, Int32, Int32)
+       call      qword ptr [7FFF3AAEEE68]; System.Text.RegularExpressions.RegexReplacement.Replace(System.Text.RegularExpressions.Regex, System.String, Int32, Int32)
        mov       [rsp+38],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+38]
@@ -2682,7 +2682,7 @@ M01_L01:
        mov       rcx,rdi
        xor       edx,edx
        xor       r8d,r8d
-       call      qword ptr [7FFE330FD098]; System.WeakReference`1[[System.__Canon, System.Private.CoreLib]].Create(System.__Canon, Boolean)
+       call      qword ptr [7FFF3A3FD098]; System.WeakReference`1[[System.__Canon, System.Private.CoreLib]].Create(System.__Canon, Boolean)
        mov       rcx,rsi
        mov       rdx,rdi
        xor       r8d,r8d
@@ -2738,11 +2738,11 @@ M02_L02:
        mov       edx,[rsp+98]
        mov       r8,rdi
        mov       r9d,ebp
-       call      qword ptr [7FFE334A44E0]; System.Text.RegularExpressions.RegexParser.ParseReplacement(System.String, System.Text.RegularExpressions.RegexOptions, System.Collections.Hashtable, Int32, System.Collections.Hashtable)
+       call      qword ptr [7FFF3A7A44E0]; System.Text.RegularExpressions.RegexParser.ParseReplacement(System.String, System.Text.RegularExpressions.RegexOptions, System.Collections.Hashtable, Int32, System.Collections.Hashtable)
        mov       r14,rax
        mov       rcx,rbx
        mov       rdx,r14
-       call      qword ptr [7FFE330FD0B0]; System.WeakReference`1[[System.__Canon, System.Private.CoreLib]].SetTarget(System.__Canon)
+       call      qword ptr [7FFF3A3FD0B0]; System.WeakReference`1[[System.__Canon, System.Private.CoreLib]].SetTarget(System.__Canon)
        jmp       short M02_L01
 M02_L03:
        xor       r14d,r14d
@@ -2751,7 +2751,7 @@ M02_L04:
        and       rax,0FFFFFFFFFFFFFFFC
        mov       rcx,[rax]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE3386D350]
+       call      qword ptr [7FFF3AB6D470]
        mov       r14,rax
        jmp       short M02_L00
 M02_L05:
@@ -2764,7 +2764,7 @@ M02_L05:
        mov       r8d,[r15+8]
        add       r8d,r8d
        lea       rdx,[rsi+0C]
-       call      qword ptr [7FFE330F5068]; System.SpanHelpers.SequenceEqual(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A3F5068]; System.SpanHelpers.SequenceEqual(Byte ByRef, Byte ByRef, UIntPtr)
        test      eax,eax
        jne       near ptr M02_L01
        jmp       short M02_L02
@@ -2785,16 +2785,16 @@ M02_L05:
 M03_L00:
        mov       [rsp+50],eax
        add       rsp,28
-       jmp       qword ptr [7FFE337EEBC8]; System.Text.RegularExpressions.RegexReplacement.ReplaceNonSimpleText(System.Text.RegularExpressions.Regex, System.String, Int32, Int32)
+       jmp       qword ptr [7FFF3AAEEE98]; System.Text.RegularExpressions.RegexReplacement.ReplaceNonSimpleText(System.Text.RegularExpressions.Regex, System.String, Int32, Int32)
 M03_L01:
        mov       ecx,3
        mov       edx,1
-       call      qword ptr [7FFE3386D278]
+       call      qword ptr [7FFF3AB6D398]
        int       3
 M03_L02:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE3386D278]
+       call      qword ptr [7FFF3AB6D398]
        int       3
 M03_L03:
        mov       rax,r8
@@ -2807,7 +2807,7 @@ M03_L04:
        cmp       dword ptr [r10+8],0
        jne       short M03_L05
        mov       rcx,rdx
-       mov       r10,274649D0008
+       mov       r10,23854400008
        jmp       short M03_L06
 M03_L05:
        mov       r10,[rcx+8]
@@ -2820,7 +2820,7 @@ M03_L06:
        mov       rdx,r8
        mov       r8,r10
        add       rsp,28
-       jmp       qword ptr [7FFE337EEBB0]
+       jmp       qword ptr [7FFF3AAEEE80]
 M03_L07:
        call      CORINFO_HELP_RNGCHKFAIL
        int       3
@@ -2839,11 +2839,11 @@ M03_L07:
        xor       eax,eax
        mov       [rsp+38],rax
        mov       rbx,rcx
-       call      qword ptr [7FFE335A5170]; DotNetTips.Spargine.Tester.Properties.Resources.get_LongTestString()
+       call      qword ptr [7FFF3A8A5170]; DotNetTips.Spargine.Tester.Properties.Resources.get_LongTestString()
        mov       rsi,rax
        test      rsi,rsi
        je        near ptr M00_L03
-       mov       rcx,1E41F4059C0
+       mov       rcx,13CC9405C18
        mov       rdi,[rcx]
        mov       rbp,rsi
        test      byte ptr [rdi+40],40
@@ -2855,7 +2855,7 @@ M00_L00:
        mov       r14d,[rbp+8]
 M00_L01:
        mov       rcx,rdi
-       call      qword ptr [7FFE333CF0F0]; System.Text.RegularExpressions.Regex.get_RegexReplacementWeakReference()
+       call      qword ptr [7FFF3A6CF0F0]; System.Text.RegularExpressions.Regex.get_RegexReplacementWeakReference()
        mov       rcx,rax
        mov       r8,[rdi+20]
        mov       [rsp+20],r8
@@ -2863,15 +2863,15 @@ M00_L01:
        mov       [rsp+28],r8d
        mov       r8,[rdi+18]
        mov       r9d,[rdi+44]
-       mov       rdx,224B1303720
-       call      qword ptr [7FFE3380E3B8]; System.Text.RegularExpressions.RegexReplacement.GetOrCreate(System.WeakReference`1<System.Text.RegularExpressions.RegexReplacement>, System.String, System.Collections.Hashtable, Int32, System.Collections.Hashtable, System.Text.RegularExpressions.RegexOptions)
+       mov       rdx,17D5B2D3720
+       call      qword ptr [7FFF3AB0EE68]; System.Text.RegularExpressions.RegexReplacement.GetOrCreate(System.WeakReference`1<System.Text.RegularExpressions.RegexReplacement>, System.String, System.Collections.Hashtable, Int32, System.Collections.Hashtable, System.Text.RegularExpressions.RegexOptions)
        mov       rcx,rax
        mov       [rsp+20],r14d
        mov       rdx,rdi
        mov       r8,rbp
        mov       r9d,0FFFFFFFF
        cmp       [rcx],ecx
-       call      qword ptr [7FFE3380E418]; System.Text.RegularExpressions.RegexReplacement.Replace(System.Text.RegularExpressions.Regex, System.String, Int32, Int32)
+       call      qword ptr [7FFF3AB0EEC8]; System.Text.RegularExpressions.RegexReplacement.Replace(System.Text.RegularExpressions.Regex, System.String, Int32, Int32)
 M00_L02:
        mov       [rsp+38],rax
        mov       rbx,[rbx+18]
@@ -2895,11 +2895,11 @@ M00_L03:
 ```assembly
 ; DotNetTips.Spargine.Tester.Properties.Resources.get_LongTestString()
        sub       rsp,28
-       call      qword ptr [7FFE335A5020]; DotNetTips.Spargine.Tester.Properties.Resources.get_ResourceManager()
+       call      qword ptr [7FFF3A8A5020]; DotNetTips.Spargine.Tester.Properties.Resources.get_ResourceManager()
        mov       rcx,rax
-       mov       r8,1E41F405748
+       mov       r8,13CC94059A0
        mov       r8,[r8]
-       mov       rdx,224B131AAF0
+       mov       rdx,17D5B2EAAF0
        mov       rax,[rax]
        mov       rax,[rax+48]
        add       rsp,28
@@ -2930,7 +2930,7 @@ M02_L01:
        mov       rcx,rdi
        xor       edx,edx
        xor       r8d,r8d
-       call      qword ptr [7FFE3311D098]; System.WeakReference`1[[System.__Canon, System.Private.CoreLib]].Create(System.__Canon, Boolean)
+       call      qword ptr [7FFF3A41D098]; System.WeakReference`1[[System.__Canon, System.Private.CoreLib]].Create(System.__Canon, Boolean)
        mov       rcx,rsi
        mov       rdx,rdi
        xor       r8d,r8d
@@ -2984,7 +2984,7 @@ M03_L03:
        and       rcx,0FFFFFFFFFFFFFFFC
        mov       rcx,[rcx]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE33887E40]
+       call      qword ptr [7FFF3AB8CAF8]
        mov       r14,rax
        jmp       short M03_L00
 M03_L04:
@@ -2997,7 +2997,7 @@ M03_L04:
        mov       r8d,[r15+8]
        add       r8d,r8d
        lea       rdx,[rsi+0C]
-       call      qword ptr [7FFE33115068]; System.SpanHelpers.SequenceEqual(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A415068]; System.SpanHelpers.SequenceEqual(Byte ByRef, Byte ByRef, UIntPtr)
        test      eax,eax
        jne       short M03_L01
 M03_L05:
@@ -3007,11 +3007,11 @@ M03_L05:
        mov       edx,[rsp+88]
        mov       r8,rdi
        mov       r9d,ebp
-       call      qword ptr [7FFE334C44E0]; System.Text.RegularExpressions.RegexParser.ParseReplacement(System.String, System.Text.RegularExpressions.RegexOptions, System.Collections.Hashtable, Int32, System.Collections.Hashtable)
+       call      qword ptr [7FFF3A7C44E0]; System.Text.RegularExpressions.RegexParser.ParseReplacement(System.String, System.Text.RegularExpressions.RegexOptions, System.Collections.Hashtable, Int32, System.Collections.Hashtable)
        mov       r14,rax
        mov       rcx,rbx
        mov       rdx,r14
-       call      qword ptr [7FFE3311D0B0]; System.WeakReference`1[[System.__Canon, System.Private.CoreLib]].SetTarget(System.__Canon)
+       call      qword ptr [7FFF3A41D0B0]; System.WeakReference`1[[System.__Canon, System.Private.CoreLib]].SetTarget(System.__Canon)
        jmp       near ptr M03_L01
 ; Total bytes of code 195
 ```
@@ -3042,27 +3042,27 @@ M04_L00:
        mov       rdx,r8
        mov       r8,r10
        add       rsp,28
-       jmp       qword ptr [7FFE3380E430]; System.Text.RegularExpressions.RegexReplacement.ReplaceSimpleText(System.Text.RegularExpressions.Regex, System.String, System.String, Int32, Int32)
+       jmp       qword ptr [7FFF3AB0EEE0]; System.Text.RegularExpressions.RegexReplacement.ReplaceSimpleText(System.Text.RegularExpressions.Regex, System.String, System.String, Int32, Int32)
 M04_L01:
        mov       [rsp+50],eax
        add       rsp,28
-       jmp       qword ptr [7FFE3380E448]
+       jmp       qword ptr [7FFF3AB0EEF8]
 M04_L02:
        mov       ecx,3
        mov       edx,1
-       call      qword ptr [7FFE33887D68]
+       call      qword ptr [7FFF3AB8CA20]
        int       3
 M04_L03:
        mov       ecx,0E
        xor       edx,edx
-       call      qword ptr [7FFE33887D68]
+       call      qword ptr [7FFF3AB8CA20]
        int       3
 M04_L04:
        mov       rax,r8
        add       rsp,28
        ret
 M04_L05:
-       mov       r10,224B1300008
+       mov       r10,17D5B2D0008
        jmp       short M04_L00
 M04_L06:
        call      CORINFO_HELP_RNGCHKFAIL

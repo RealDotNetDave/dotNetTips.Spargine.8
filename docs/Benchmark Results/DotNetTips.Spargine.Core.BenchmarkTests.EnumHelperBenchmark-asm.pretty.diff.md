@@ -1,1 +1,1 @@
-## DotNetTips.Spargine.Core.BenchmarkTests.EnumHelperBenchmark-20240725-155838
+## DotNetTips.Spargine.Core.BenchmarkTests.EnumHelperBenchmark-20240727-125632

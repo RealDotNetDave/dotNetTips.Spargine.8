@@ -13,28 +13,28 @@
        mov       [rsp+50],rax
        mov       rbx,rcx
        mov       rsi,[rbx+128]
-       mov       rcx,2056C8057D8
+       mov       rcx,26075C03A38
        mov       rdi,[rcx]
        test      rsi,rsi
        je        near ptr M00_L03
        mov       rcx,rdi
-       call      qword ptr [7FFE336A6850]; System.Text.Json.Serialization.JsonSerializerContext.get_Options()
+       call      qword ptr [7FFF3A996850]; System.Text.Json.Serialization.JsonSerializerContext.get_Options()
        mov       rbp,rax
        cmp       [rbp],bpl
-       mov       rcx,245FE6C4610
+       mov       rcx,2A107C84610
        call      System.RuntimeTypeHandle.GetCorElementType(System.RuntimeType)
        cmp       eax,0F
        je        near ptr M00_L06
-       mov       rcx,245FE6C4610
+       mov       rcx,2A107C84610
        call      System.RuntimeTypeHandle.GetCorElementType(System.RuntimeType)
        cmp       eax,10
        je        near ptr M00_L06
-       mov       rcx,245FE6C4610
+       mov       rcx,2A107C84610
        call      System.RuntimeTypeHandle.IsByRefLike(System.RuntimeType)
        test      eax,eax
        jne       near ptr M00_L06
-       mov       rcx,245FE6C4610
-       call      qword ptr [7FFE32FB60B8]; System.Type.GetRootElementType()
+       mov       rcx,2A107C84610
+       call      qword ptr [7FFF3A2A60B8]; System.Type.GetRootElementType()
        mov       rcx,rax
        mov       rax,offset MT_System.RuntimeType
        cmp       [rcx],rax
@@ -51,10 +51,10 @@ M00_L00:
        mov       dword ptr [rsp+20],1
        xor       edx,edx
        mov       [rsp+28],edx
-       mov       rdx,245FE6C4610
+       mov       rdx,2A107C84610
        movzx     r9d,word ptr [rsp+48]
        mov       r8d,1
-       call      qword ptr [7FFE335A4E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
+       call      qword ptr [7FFF3A894E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
        mov       rbp,rax
        test      rbp,rbp
        je        near ptr M00_L07
@@ -67,10 +67,10 @@ M00_L01:
        mov       [rsp+38],rcx
        mov       [rsp+40],eax
        lea       rcx,[rsp+38]
-       call      qword ptr [7FFE335AE6D0]; System.Text.Json.JsonSerializer.ReadFromSpanAsObject(System.ReadOnlySpan`1<Char>, System.Text.Json.Serialization.Metadata.JsonTypeInfo)
+       call      qword ptr [7FFF3A89E6D0]; System.Text.Json.JsonSerializer.ReadFromSpanAsObject(System.ReadOnlySpan`1<Char>, System.Text.Json.Serialization.Metadata.JsonTypeInfo)
        mov       rdx,rax
        mov       rcx,offset MT_System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       call      qword ptr [7FFE33064360]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       call      qword ptr [7FFF3A354360]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
        mov       [rsp+50],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+50]
@@ -86,14 +86,14 @@ M00_L01:
        ret
 M00_L02:
        mov       rcx,rbp
-       call      qword ptr [7FFE3362FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+       call      qword ptr [7FFF3A91FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
        jmp       short M00_L01
 M00_L03:
        mov       ecx,3174
-       mov       rdx,7FFE3359ECA0
+       mov       rdx,7FFF3A88ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336A6CE8]
+       call      qword ptr [7FFF3A996CE8]
        int       3
 M00_L04:
        mov       rax,[rcx]
@@ -106,27 +106,27 @@ M00_L05:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rdi,rax
-       call      qword ptr [7FFE3356C990]
+       call      qword ptr [7FFF3A85C990]
        mov       r8,rax
        mov       rcx,rdi
        xor       edx,edx
-       call      qword ptr [7FFE33246670]
+       call      qword ptr [7FFF3A536670]
        mov       rcx,rdi
        call      CORINFO_HELP_THROW
 M00_L06:
        mov       ecx,352A
-       mov       rdx,7FFE3359ECA0
+       mov       rdx,7FFF3A88ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       mov       rdx,245FE6C4610
+       mov       rdx,2A107C84610
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FFE336A7540]
+       call      qword ptr [7FFF3A997540]
        int       3
 M00_L07:
-       mov       rcx,245FE6C4610
+       mov       rcx,2A107C84610
        mov       rdx,rdi
-       call      qword ptr [7FFE336A7BD0]
+       call      qword ptr [7FFF3A997BD0]
        int       3
 ; Total bytes of code 550
 ```
@@ -150,12 +150,12 @@ M01_L01:
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       call      qword ptr [7FFE335A4FA8]; System.Text.Json.JsonSerializerOptions..ctor()
+       call      qword ptr [7FFF3A894FA8]; System.Text.Json.JsonSerializerOptions..ctor()
        mov       rcx,rsi
        mov       rdx,rbx
-       call      qword ptr [7FFE335A5038]; System.Text.Json.JsonSerializerOptions.set_TypeInfoResolver(System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver)
+       call      qword ptr [7FFF3A895038]; System.Text.Json.JsonSerializerOptions.set_TypeInfoResolver(System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver)
        mov       rcx,rsi
-       call      qword ptr [7FFE335A5458]
+       call      qword ptr [7FFF3A895458]
        lea       rcx,[rbx+8]
        mov       rdx,rsi
        call      CORINFO_HELP_ASSIGN_REF
@@ -236,7 +236,7 @@ M02_L04:
        je        near ptr M03_L10
 M03_L00:
        mov       r14,[r15+8]
-       mov       rcx,20578801218
+       mov       rcx,2607DC01490
        mov       r13,[rcx]
        test      r13,r13
        je        near ptr M03_L14
@@ -262,7 +262,7 @@ M03_L02:
        mov       r8,rbx
        mov       r9d,eax
        mov       rcx,offset MT_System.Collections.Concurrent.ConcurrentDictionary`2[[System.Type, System.Private.CoreLib],[System.Text.Json.JsonSerializerOptions+CachingContext+CacheEntry, System.Text.Json]]
-       call      qword ptr [7FFE3341F948]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryGetValueInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, Int32, System.__Canon ByRef)
+       call      qword ptr [7FFF3A70F948]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryGetValueInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, Int32, System.__Canon ByRef)
        test      eax,eax
        jne       short M03_L03
        mov       edx,[rbp-3C]
@@ -282,7 +282,7 @@ M03_L02:
        mov       r8,rbx
        mov       r9,[rbp-50]
        mov       rcx,r14
-       call      qword ptr [7FFE3341FA38]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryAddInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, System.Nullable`1<Int32>, System.__Canon, Boolean, Boolean, System.__Canon ByRef)
+       call      qword ptr [7FFF3A70FA38]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryAddInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, System.Nullable`1<Int32>, System.__Canon, Boolean, Boolean, System.__Canon ByRef)
 M03_L03:
        mov       r8,[rbp-48]
        xor       ecx,ecx
@@ -318,16 +318,16 @@ M03_L07:
        ret
 M03_L08:
        mov       rdx,rbx
-       mov       r11,7FFE32F20C10
+       mov       r11,7FFF3A210C10
        call      qword ptr [r11]
        jmp       near ptr M03_L02
 M03_L09:
        mov       rcx,r14
-       call      qword ptr [7FFE3362FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+       call      qword ptr [7FFF3A91FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
        jmp       short M03_L06
 M03_L10:
        mov       rcx,rsi
-       call      qword ptr [7FFE3362FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
+       call      qword ptr [7FFF3A91FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
        mov       r15,rax
        lea       rcx,[rsi+8]
        mov       rdx,r15
@@ -335,17 +335,17 @@ M03_L10:
        jmp       near ptr M03_L00
 M03_L11:
        mov       ecx,0BB4
-       mov       rdx,7FFE3343B2D8
+       mov       rdx,7FFF3A72B2D8
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336A66A0]
+       call      qword ptr [7FFF3A9966A0]
        int       3
 M03_L12:
        cmp       byte ptr [rbp+30],0
        je        short M03_L06
        mov       rcx,rsi
        mov       rdx,rbx
-       call      qword ptr [7FFE335A54A0]; System.Text.Json.JsonSerializerOptions.GetTypeInfoNoCaching(System.Type)
+       call      qword ptr [7FFF3A8954A0]; System.Text.Json.JsonSerializerOptions.GetTypeInfoNoCaching(System.Type)
        mov       r14,rax
        jmp       near ptr M03_L06
 M03_L13:
@@ -358,7 +358,7 @@ M03_L13:
        je        near ptr M03_L07
        mov       rdx,[rsi+20]
        mov       rcx,rbx
-       call      qword ptr [7FFE336A7B88]
+       call      qword ptr [7FFF3A997B88]
        int       3
 M03_L14:
        mov       rcx,offset MT_System.Func`3[[System.Type, System.Private.CoreLib],[System.Text.Json.JsonSerializerOptions+CachingContext, System.Text.Json],[System.Text.Json.JsonSerializerOptions+CachingContext+CacheEntry, System.Text.Json]]
@@ -367,9 +367,9 @@ M03_L14:
        mov       rcx,r13
        xor       edx,edx
        mov       r8,offset System.Text.Json.JsonSerializerOptions+CachingContext.CreateCacheEntry(System.Type, CachingContext)
-       mov       r9,7FFE32F1D0E0
-       call      qword ptr [7FFE33064258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)
-       mov       rcx,20578801218
+       mov       r9,7FFF3A20D0E0
+       call      qword ptr [7FFF3A354258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)
+       mov       rcx,2607DC01490
        mov       rdx,r13
        call      CORINFO_HELP_ASSIGN_REF
        jmp       near ptr M03_L01
@@ -378,18 +378,18 @@ M03_L15:
        jne       near ptr M03_L04
        mov       rcx,r15
        mov       rdx,rbx
-       call      qword ptr [7FFE336440D8]
+       call      qword ptr [7FFF3A9340D8]
        mov       r14,rax
        jmp       near ptr M03_L05
 M03_L16:
-       call      qword ptr [7FFE33B148D0]
+       call      qword ptr [7FFF3AE048D0]
        int       3
 M03_L17:
        mov       ecx,1
-       mov       rdx,7FFE3343B2D8
+       mov       rdx,7FFF3A72B2D8
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336A66A0]
+       call      qword ptr [7FFF3A9966A0]
        int       3
 ; Total bytes of code 646
 ```
@@ -425,10 +425,10 @@ M04_L00:
        mov       [rbp-220],rcx
        cmp       edi,55555
        ja        short M04_L03
-       mov       rdx,2056C801E78
+       mov       rdx,26079C01E78
        mov       rcx,[rdx]
        lea       edx,[rdi+rdi*2]
-       call      qword ptr [7FFE335EFD48]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Rent(Int32)
+       call      qword ptr [7FFF3A8DFD48]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Rent(Int32)
        mov       [rbp-220],rax
 M04_L01:
        test      rax,rax
@@ -443,7 +443,7 @@ M04_L03:
        mov       [rbp-1F8],rsi
        mov       [rbp-1F0],edi
        lea       rcx,[rbp-1F8]
-       call      qword ptr [7FFE335AF1F8]; System.Text.Json.JsonReaderHelper.GetUtf8ByteCount(System.ReadOnlySpan`1<Char>)
+       call      qword ptr [7FFF3A89F1F8]; System.Text.Json.JsonReaderHelper.GetUtf8ByteCount(System.ReadOnlySpan`1<Char>)
        movsxd    rdx,eax
        mov       rcx,offset MT_System.Byte[]
        call      CORINFO_HELP_NEWARR_1_VC
@@ -457,7 +457,7 @@ M04_L04:
        mov       [rbp-200],ecx
        lea       rcx,[rbp-1F8]
        lea       rdx,[rbp-208]
-       call      qword ptr [7FFE335AF210]; System.Text.Json.JsonReaderHelper.GetUtf8FromText(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)
+       call      qword ptr [7FFF3A89F210]; System.Text.Json.JsonReaderHelper.GetUtf8FromText(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)
        cmp       eax,[rbp-1E4]
        ja        near ptr M04_L07
        mov       rdx,[rbp-238]
@@ -492,7 +492,7 @@ M04_L04:
        lea       rcx,[rbp-130]
        lea       r9,[rbp-70]
        mov       r8d,1
-       call      qword ptr [7FFE337146D8]; System.Text.Json.Utf8JsonReader..ctor(System.ReadOnlySpan`1<Byte>, Boolean, System.Text.Json.JsonReaderState)
+       call      qword ptr [7FFF3AA046D8]; System.Text.Json.Utf8JsonReader..ctor(System.ReadOnlySpan`1<Byte>, Boolean, System.Text.Json.JsonReaderState)
        vxorps    ymm0,ymm0,ymm0
        vmovdqu   ymmword ptr [rbp-1D0],ymm0
        vmovdqu   ymmword ptr [rbp-1B0],ymm0
@@ -502,7 +502,7 @@ M04_L04:
        lea       rcx,[rbp-1D0]
        mov       rdx,rbx
        xor       r8d,r8d
-       call      qword ptr [7FFE337157A0]; System.Text.Json.ReadStack.Initialize(System.Text.Json.Serialization.Metadata.JsonTypeInfo, Boolean)
+       call      qword ptr [7FFF3AA057A0]; System.Text.Json.ReadStack.Initialize(System.Text.Json.Serialization.Metadata.JsonTypeInfo, Boolean)
        mov       rcx,offset MT_System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
        cmp       [rbx],rcx
        jne       short M04_L08
@@ -511,24 +511,24 @@ M04_L04:
        lea       rdx,[rbp-130]
        lea       r9,[rbp-1D0]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE3360E508]; System.Text.Json.Serialization.JsonConverter`1[[System.__Canon, System.Private.CoreLib]].ReadCore(System.Text.Json.Utf8JsonReader ByRef, System.Text.Json.JsonSerializerOptions, System.Text.Json.ReadStack ByRef)
+       call      qword ptr [7FFF3A8FE508]; System.Text.Json.Serialization.JsonConverter`1[[System.__Canon, System.Private.CoreLib]].ReadCore(System.Text.Json.Utf8JsonReader ByRef, System.Text.Json.JsonSerializerOptions, System.Text.Json.ReadStack ByRef)
        jmp       short M04_L09
 M04_L05:
        mov       ecx,318C
-       mov       rdx,7FFE3359ECA0
+       mov       rdx,7FFF3A88ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336A6D00]
+       call      qword ptr [7FFF3A996D00]
        int       3
 M04_L06:
        mov       ecx,318C
-       mov       rdx,7FFE3359ECA0
+       mov       rdx,7FFF3A88ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336A6D30]
+       call      qword ptr [7FFF3A996D30]
        int       3
 M04_L07:
-       call      qword ptr [7FFE3321E9A0]
+       call      qword ptr [7FFF3A50E9A0]
        int       3
 M04_L08:
        lea       r8,[rbp-1D0]
@@ -586,9 +586,9 @@ M04_L11:
        jmp       short M04_L13
 M04_L12:
        mov       rdx,[rbp-1D8]
-       call      qword ptr [7FFE33115BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A405BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
 M04_L13:
-       mov       rcx,2056C801E78
+       mov       rcx,26079C01E78
        mov       r13,[rcx]
        mov       rcx,[rbp-220]
        mov       ecx,[rcx+8]
@@ -598,14 +598,14 @@ M04_L13:
        lzcnt     r12d,ecx
        xor       r12d,1F
        add       r12d,0FFFFFFFD
-       mov       rcx,7FFE32FA5120
+       mov       rcx,7FFF3A295120
        mov       edx,3A
        call      CORINFO_HELP_GETSHARED_GCTHREADSTATIC_BASE_DYNAMICCLASS
        mov       rcx,[rax]
        test      rcx,rcx
        jne       short M04_L14
        mov       rcx,r13
-       call      qword ptr [7FFE33604EB8]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].InitializeTlsBucketsAndTrimming()
+       call      qword ptr [7FFF3A8F4EB8]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].InitializeTlsBucketsAndTrimming()
        mov       rcx,rax
 M04_L14:
        xor       ebx,ebx
@@ -622,15 +622,15 @@ M04_L14:
        mov       rcx,offset MT_System.ArgumentException
        call      CORINFO_HELP_NEWSFAST
        mov       r13,rax
-       call      qword ptr [7FFE3356EAC0]
+       call      qword ptr [7FFF3A85EAC0]
        mov       r12,rax
        mov       ecx,1D3
-       mov       rdx,7FFE32F14000
+       mov       rdx,7FFF3A204000
        call      CORINFO_HELP_STRCNS
        mov       r8,rax
        mov       rdx,r12
        mov       rcx,r13
-       call      qword ptr [7FFE3306F750]
+       call      qword ptr [7FFF3A35F750]
        mov       rcx,r13
        call      CORINFO_HELP_THROW
 M04_L15:
@@ -654,7 +654,7 @@ M04_L15:
        jne       short M04_L16
        mov       rcx,r13
        mov       edx,r12d
-       call      qword ptr [7FFE33604E40]
+       call      qword ptr [7FFF3A8F4E40]
 M04_L16:
        mov       rsi,[rax+8]
        mov       ecx,3
@@ -667,7 +667,7 @@ M04_L16:
        movzx     eax,r14w
        test      eax,eax
        jne       short M04_L18
-       call      qword ptr [7FFE33876328]; System.Threading.ProcessorIdCache.RefreshCurrentProcessorId()
+       call      qword ptr [7FFF3AB66700]; System.Threading.ProcessorIdCache.RefreshCurrentProcessorId()
        jmp       short M04_L19
 M04_L17:
        call      CORINFO_HELP_RNGCHKFAIL
@@ -738,7 +738,7 @@ M04_L26:
 M04_L27:
        mov       esi,ecx
 M04_L28:
-       mov       rax,2056C8005D0
+       mov       rax,26079C005D0
        mov       r14,[rax]
        cmp       byte ptr [r14+9D],0
        je        near ptr M04_L33
@@ -757,7 +757,7 @@ M04_L28:
        mov       r8d,edi
        mov       r9d,r15d
        mov       edx,3
-       call      qword ptr [7FFE33117678]
+       call      qword ptr [7FFF3A407678]
        test      esi,ebx
        jne       short M04_L33
        mov       rcx,[rbp-220]
@@ -787,7 +787,7 @@ M04_L32:
        mov       [rsp+20],ecx
        mov       [rsp+28],eax
        mov       rcx,r14
-       call      qword ptr [7FFE3333F360]
+       call      qword ptr [7FFF3A62F360]
 M04_L33:
        nop
        add       rsp,38
@@ -878,34 +878,34 @@ M06_L00:
        mov       rbx,[rcx+0D8]
        test      rbx,rbx
        jne       short M06_L01
-       mov       rcx,7FFE33B0F2F8
+       mov       rcx,7FFF3ADFF2F8
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp+10]
        mov       byte ptr [rcx+105],1
-       call      qword ptr [7FFE3362FB70]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
+       call      qword ptr [7FFF3A91FB70]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
        mov       rcx,[rbp+10]
        mov       byte ptr [rcx+105],2
        jmp       short M06_L03
 M06_L01:
-       mov       rcx,7FFE33B0F2F4
+       mov       rcx,7FFF3ADFF2F4
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,rbx
-       call      qword ptr [7FFE33B148D0]
+       call      qword ptr [7FFF3AE048D0]
        int       3
 M06_L02:
-       call      qword ptr [7FFE3306E040]
+       call      qword ptr [7FFF3A35E040]
        int       3
 M06_L03:
        cmp       byte ptr [rbp-18],0
        je        short M06_L04
-       mov       rcx,7FFE33B0F2FC
+       mov       rcx,7FFF3ADFF2FC
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp-20]
        call      System.Threading.Monitor.Exit(System.Object)
 M06_L04:
-       mov       rcx,7FFE33B0F300
+       mov       rcx,7FFF3ADFF300
        call      CORINFO_HELP_COUNTPROFILE32
-       mov       rcx,7FFE33B0F304
+       mov       rcx,7FFF3ADFF304
        call      CORINFO_HELP_COUNTPROFILE32
        nop
        add       rsp,40
@@ -915,7 +915,7 @@ M06_L04:
        ret
 M06_L05:
        mov       rcx,rbx
-       call      qword ptr [7FFE3362FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
+       call      qword ptr [7FFF3A91FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
        mov       rsi,rax
        lea       rcx,[rbx+8]
        mov       rdx,rsi
@@ -924,13 +924,13 @@ M06_L05:
        mov       rax,rcx
        jmp       near ptr M06_L00
 M06_L06:
-       call      qword ptr [7FFE336A75B8]
+       call      qword ptr [7FFF3A9975B8]
        int       3
 M06_L07:
-       mov       rcx,7FFE33B0F2F0
+       mov       rcx,7FFF3ADFF2F0
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,rbx
-       call      qword ptr [7FFE33B148D0]
+       call      qword ptr [7FFF3AE048D0]
        int       3
        push      rbp
        push      rsi
@@ -940,7 +940,7 @@ M06_L07:
        mov       [rsp+20],rbp
        lea       rbp,[rbp+50]
        mov       rcx,rdx
-       call      qword ptr [7FFE33B148A0]
+       call      qword ptr [7FFF3AE048A0]
        mov       rcx,[rbp+10]
        lea       rcx,[rcx+0D8]
        mov       rdx,rax
@@ -958,12 +958,12 @@ M06_L07:
        lea       rbp,[rbp+50]
        cmp       byte ptr [rbp-18],0
        je        short M06_L08
-       mov       rcx,7FFE33B0F2FC
+       mov       rcx,7FFF3ADFF2FC
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp-20]
        call      System.Threading.Monitor.Exit(System.Object)
 M06_L08:
-       mov       rcx,7FFE33B0F300
+       mov       rcx,7FFF3ADFF300
        call      CORINFO_HELP_COUNTPROFILE32
        nop
        add       rsp,30
@@ -993,28 +993,28 @@ System.RuntimeTypeHandle.ContainsGenericVariables(System.RuntimeType)
        mov       [rsp+50],rax
        mov       rbx,rcx
        mov       rsi,[rbx+120]
-       mov       rcx,2770E0057D8
+       mov       rcx,247D1005A30
        mov       rdi,[rcx]
        test      rsi,rsi
        je        near ptr M00_L05
        mov       rcx,rdi
-       call      qword ptr [7FFE33676850]; System.Text.Json.Serialization.JsonSerializerContext.get_Options()
+       call      qword ptr [7FFF3A986850]; System.Text.Json.Serialization.JsonSerializerContext.get_Options()
        mov       rbp,rax
        cmp       [rbp],bpl
-       mov       rcx,2B7A007A580
+       mov       rcx,28862F0A580
        call      System.RuntimeTypeHandle.GetCorElementType(System.RuntimeType)
        cmp       eax,0F
        je        near ptr M00_L08
-       mov       rcx,2B7A007A580
+       mov       rcx,28862F0A580
        call      System.RuntimeTypeHandle.GetCorElementType(System.RuntimeType)
        cmp       eax,10
        je        near ptr M00_L08
-       mov       rcx,2B7A007A580
+       mov       rcx,28862F0A580
        call      System.RuntimeTypeHandle.IsByRefLike(System.RuntimeType)
        test      eax,eax
        jne       near ptr M00_L08
-       mov       rcx,2B7A007A580
-       call      qword ptr [7FFE32F860B8]; System.Type.GetRootElementType()
+       mov       rcx,28862F0A580
+       call      qword ptr [7FFF3A2960B8]; System.Type.GetRootElementType()
        mov       rcx,rax
        mov       rax,offset MT_System.RuntimeType
        cmp       [rcx],rax
@@ -1031,10 +1031,10 @@ M00_L00:
        mov       dword ptr [rsp+20],1
        xor       edx,edx
        mov       [rsp+28],edx
-       mov       rdx,2B7A007A580
+       mov       rdx,28862F0A580
        movzx     r9d,word ptr [rsp+48]
        mov       r8d,1
-       call      qword ptr [7FFE33574E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
+       call      qword ptr [7FFF3A884E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
        mov       rbp,rax
        test      rbp,rbp
        je        near ptr M00_L09
@@ -1047,7 +1047,7 @@ M00_L01:
        mov       [rsp+38],rcx
        mov       [rsp+40],eax
        lea       rcx,[rsp+38]
-       call      qword ptr [7FFE3357E6D0]; System.Text.Json.JsonSerializer.ReadFromSpanAsObject(System.ReadOnlySpan`1<Char>, System.Text.Json.Serialization.Metadata.JsonTypeInfo)
+       call      qword ptr [7FFF3A88E6D0]; System.Text.Json.JsonSerializer.ReadFromSpanAsObject(System.ReadOnlySpan`1<Char>, System.Text.Json.Serialization.Metadata.JsonTypeInfo)
        mov       [rsp+50],rax
        test      rax,rax
        jne       short M00_L03
@@ -1073,14 +1073,14 @@ M00_L03:
        jmp       short M00_L02
 M00_L04:
        mov       rcx,rbp
-       call      qword ptr [7FFE335FFE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+       call      qword ptr [7FFF3A90FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
        jmp       short M00_L01
 M00_L05:
        mov       ecx,3174
-       mov       rdx,7FFE3356ECA0
+       mov       rdx,7FFF3A87ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE33676CE8]
+       call      qword ptr [7FFF3A986CE8]
        int       3
 M00_L06:
        mov       rax,[rcx]
@@ -1093,27 +1093,27 @@ M00_L07:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rdi,rax
-       call      qword ptr [7FFE3353C990]
+       call      qword ptr [7FFF3A84C990]
        mov       r8,rax
        mov       rcx,rdi
        xor       edx,edx
-       call      qword ptr [7FFE33216670]
+       call      qword ptr [7FFF3A526670]
        mov       rcx,rdi
        call      CORINFO_HELP_THROW
 M00_L08:
        mov       ecx,352A
-       mov       rdx,7FFE3356ECA0
+       mov       rdx,7FFF3A87ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       mov       rdx,2B7A007A580
+       mov       rdx,28862F0A580
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FFE33677540]
+       call      qword ptr [7FFF3A987540]
        int       3
 M00_L09:
-       mov       rcx,2B7A007A580
+       mov       rcx,28862F0A580
        mov       rdx,rdi
-       call      qword ptr [7FFE33677BD0]
+       call      qword ptr [7FFF3A987BD0]
        int       3
 ; Total bytes of code 564
 ```
@@ -1137,12 +1137,12 @@ M01_L01:
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       call      qword ptr [7FFE33574FA8]; System.Text.Json.JsonSerializerOptions..ctor()
+       call      qword ptr [7FFF3A884FA8]; System.Text.Json.JsonSerializerOptions..ctor()
        mov       rcx,rsi
        mov       rdx,rbx
-       call      qword ptr [7FFE33575038]; System.Text.Json.JsonSerializerOptions.set_TypeInfoResolver(System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver)
+       call      qword ptr [7FFF3A885038]; System.Text.Json.JsonSerializerOptions.set_TypeInfoResolver(System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver)
        mov       rcx,rsi
-       call      qword ptr [7FFE33575458]
+       call      qword ptr [7FFF3A885458]
        lea       rcx,[rbx+8]
        mov       rdx,rsi
        call      CORINFO_HELP_ASSIGN_REF
@@ -1207,93 +1207,97 @@ M02_L04:
        push      rdi
        push      rsi
        push      rbx
-       sub       rsp,58
-       lea       rbp,[rsp+90]
+       sub       rsp,68
+       lea       rbp,[rsp+0A0]
        xor       eax,eax
        mov       [rbp-48],rax
        mov       [rbp+28],r9
        mov       rsi,rcx
        mov       rbx,rdx
        mov       edi,r8d
-       xor       r14d,r14d
+       mov       r14d,[rbp+38]
+       xor       r15d,r15d
        cmp       byte ptr [rsi+8C],0
        je        near ptr M03_L12
-       mov       r15,[rsi+8]
-       test      r15,r15
+       mov       r13,[rsi+8]
+       test      r13,r13
        je        near ptr M03_L10
 M03_L00:
-       mov       r14,[r15+8]
-       mov       rcx,2770E0071E8
-       mov       r13,[rcx]
-       test      r13,r13
+       mov       r15,[r13+8]
+       mov       rcx,247D1007460
+       mov       r12,[rcx]
+       test      r12,r12
        je        near ptr M03_L14
 M03_L01:
-       cmp       [r14],r14b
+       cmp       [r15],r15b
        test      rbx,rbx
        je        near ptr M03_L17
-       test      r13,r13
+       test      r12,r12
        je        near ptr M03_L11
-       mov       r12,[r14+8]
-       mov       rcx,[r12+8]
-       cmp       byte ptr [r14+15],0
+       mov       rax,[r15+8]
+       mov       [rbp-58],rax
+       mov       rcx,[rax+8]
+       cmp       byte ptr [r15+15],0
        je        near ptr M03_L08
        mov       rcx,rbx
-       mov       rax,[rbx]
-       mov       rax,[rax+40]
-       call      qword ptr [rax+18]
+       mov       rdx,[rbx]
+       mov       rdx,[rdx+40]
+       call      qword ptr [rdx+18]
 M03_L02:
        mov       [rbp-3C],eax
        lea       rdx,[rbp-48]
        mov       [rsp+20],rdx
-       mov       rdx,r12
+       mov       rdx,[rbp-58]
        mov       r8,rbx
        mov       r9d,eax
        mov       rcx,offset MT_System.Collections.Concurrent.ConcurrentDictionary`2[[System.Type, System.Private.CoreLib],[System.Text.Json.JsonSerializerOptions+CachingContext+CacheEntry, System.Text.Json]]
-       call      qword ptr [7FFE333EF948]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryGetValueInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, Int32, System.__Canon ByRef)
+       call      qword ptr [7FFF3A6FF948]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryGetValueInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, Int32, System.__Canon ByRef)
        test      eax,eax
        jne       short M03_L03
        mov       edx,[rbp-3C]
+       mov       rax,[rbp-58]
+       mov       [rbp-60],rax
        mov       byte ptr [rbp-50],1
        mov       [rbp-4C],edx
        mov       rdx,rbx
-       mov       r8,r15
-       mov       rcx,[r13+8]
-       call      qword ptr [r13+18]
+       mov       r8,r13
+       mov       rcx,[r12+8]
+       call      qword ptr [r12+18]
        xor       edx,edx
        mov       [rsp+28],edx
        mov       dword ptr [rsp+30],1
        lea       rdx,[rbp-48]
        mov       [rsp+38],rdx
        mov       [rsp+20],rax
-       mov       rdx,r12
+       mov       rdx,[rbp-60]
        mov       r8,rbx
        mov       r9,[rbp-50]
-       mov       rcx,r14
-       call      qword ptr [7FFE333EFA38]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryAddInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, System.Nullable`1<Int32>, System.__Canon, Boolean, Boolean, System.__Canon ByRef)
+       mov       rcx,r15
+       call      qword ptr [7FFF3A6FFA38]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryAddInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, System.Nullable`1<Int32>, System.__Canon, Boolean, Boolean, System.__Canon ByRef)
 M03_L03:
        mov       r8,[rbp-48]
        xor       ecx,ecx
        mov       [rbp-48],rcx
-       cmp       byte ptr [rbp+38],0
+       test      r14b,r14b
        jne       near ptr M03_L15
 M03_L04:
        mov       rcx,[r8+10]
        test      rcx,rcx
        jne       near ptr M03_L16
-       mov       r14,[r8+8]
+       mov       r15,[r8+8]
 M03_L05:
        test      dil,dil
        je        short M03_L06
-       test      r14,r14
+       test      r15,r15
        je        short M03_L06
-       cmp       byte ptr [r14+105],2
+       cmp       byte ptr [r15+105],2
        jne       short M03_L09
 M03_L06:
-       test      r14,r14
+       test      r15,r15
        je        near ptr M03_L13
 M03_L07:
-       mov       rax,r14
-       add       rsp,58
+       mov       rax,r15
+       add       rsp,68
        pop       rbx
        pop       rsi
        pop       rdi
@@ -1305,35 +1309,35 @@ M03_L07:
        ret
 M03_L08:
        mov       rdx,rbx
-       mov       r11,7FFE32EF0C10
+       mov       r11,7FFF3A200C10
        call      qword ptr [r11]
        jmp       near ptr M03_L02
 M03_L09:
-       mov       rcx,r14
-       call      qword ptr [7FFE335FFE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+       mov       rcx,r15
+       call      qword ptr [7FFF3A90FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
        jmp       short M03_L06
 M03_L10:
        mov       rcx,rsi
-       call      qword ptr [7FFE335FFEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
-       mov       r15,rax
+       call      qword ptr [7FFF3A90FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
+       mov       r13,rax
        lea       rcx,[rsi+8]
-       mov       rdx,r15
+       mov       rdx,r13
        call      CORINFO_HELP_ASSIGN_REF
        jmp       near ptr M03_L00
 M03_L11:
        mov       ecx,0BB4
-       mov       rdx,7FFE3340B2D8
+       mov       rdx,7FFF3A71B2D8
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336766A0]
+       call      qword ptr [7FFF3A9866A0]
        int       3
 M03_L12:
        cmp       byte ptr [rbp+30],0
        je        short M03_L06
        mov       rcx,rsi
        mov       rdx,rbx
-       call      qword ptr [7FFE335754A0]; System.Text.Json.JsonSerializerOptions.GetTypeInfoNoCaching(System.Type)
-       mov       r14,rax
+       call      qword ptr [7FFF3A8854A0]; System.Text.Json.JsonSerializerOptions.GetTypeInfoNoCaching(System.Type)
+       mov       r15,rax
        jmp       near ptr M03_L06
 M03_L13:
        movzx     edx,byte ptr [rbp+28]
@@ -1345,40 +1349,40 @@ M03_L13:
        je        near ptr M03_L07
        mov       rdx,[rsi+20]
        mov       rcx,rbx
-       call      qword ptr [7FFE33677B88]
+       call      qword ptr [7FFF3A987B88]
        int       3
 M03_L14:
        mov       rcx,offset MT_System.Func`3[[System.Type, System.Private.CoreLib],[System.Text.Json.JsonSerializerOptions+CachingContext, System.Text.Json],[System.Text.Json.JsonSerializerOptions+CachingContext+CacheEntry, System.Text.Json]]
        call      CORINFO_HELP_NEWSFAST
-       mov       r13,rax
-       mov       rcx,r13
+       mov       r12,rax
+       mov       rcx,r12
        xor       edx,edx
        mov       r8,offset System.Text.Json.JsonSerializerOptions+CachingContext.CreateCacheEntry(System.Type, CachingContext)
-       mov       r9,7FFE32EED0E0
-       call      qword ptr [7FFE33034258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)
-       mov       rcx,2770E0071E8
-       mov       rdx,r13
+       mov       r9,7FFF3A1FD0E0
+       call      qword ptr [7FFF3A344258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)
+       mov       rcx,247D1007460
+       mov       rdx,r12
        call      CORINFO_HELP_ASSIGN_REF
        jmp       near ptr M03_L01
 M03_L15:
        cmp       byte ptr [r8+20],0
        jne       near ptr M03_L04
-       mov       rcx,r15
+       mov       rcx,r13
        mov       rdx,rbx
-       call      qword ptr [7FFE336140D8]
-       mov       r14,rax
+       call      qword ptr [7FFF3A9240D8]
+       mov       r15,rax
        jmp       near ptr M03_L05
 M03_L16:
-       call      qword ptr [7FFE33AE4048]
+       call      qword ptr [7FFF3ADF48D0]
        int       3
 M03_L17:
        mov       ecx,1
-       mov       rdx,7FFE3340B2D8
+       mov       rdx,7FFF3A71B2D8
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336766A0]
+       call      qword ptr [7FFF3A9866A0]
        int       3
-; Total bytes of code 646
+; Total bytes of code 664
 ```
 ```assembly
 ; System.Text.Json.JsonSerializer.ReadFromSpanAsObject(System.ReadOnlySpan`1<Char>, System.Text.Json.Serialization.Metadata.JsonTypeInfo)
@@ -1412,10 +1416,10 @@ M04_L00:
        mov       [rbp-220],rcx
        cmp       edi,55555
        ja        short M04_L03
-       mov       rdx,2770E001E78
+       mov       rdx,247D1001E78
        mov       rcx,[rdx]
        lea       edx,[rdi+rdi*2]
-       call      qword ptr [7FFE335BFD48]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Rent(Int32)
+       call      qword ptr [7FFF3A8CFD48]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Rent(Int32)
        mov       [rbp-220],rax
 M04_L01:
        test      rax,rax
@@ -1430,7 +1434,7 @@ M04_L03:
        mov       [rbp-1F8],rsi
        mov       [rbp-1F0],edi
        lea       rcx,[rbp-1F8]
-       call      qword ptr [7FFE3357F1F8]; System.Text.Json.JsonReaderHelper.GetUtf8ByteCount(System.ReadOnlySpan`1<Char>)
+       call      qword ptr [7FFF3A88F1F8]; System.Text.Json.JsonReaderHelper.GetUtf8ByteCount(System.ReadOnlySpan`1<Char>)
        movsxd    rdx,eax
        mov       rcx,offset MT_System.Byte[]
        call      CORINFO_HELP_NEWARR_1_VC
@@ -1444,7 +1448,7 @@ M04_L04:
        mov       [rbp-200],ecx
        lea       rcx,[rbp-1F8]
        lea       rdx,[rbp-208]
-       call      qword ptr [7FFE3357F210]; System.Text.Json.JsonReaderHelper.GetUtf8FromText(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)
+       call      qword ptr [7FFF3A88F210]; System.Text.Json.JsonReaderHelper.GetUtf8FromText(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)
        cmp       eax,[rbp-1E4]
        ja        near ptr M04_L07
        mov       rdx,[rbp-238]
@@ -1479,7 +1483,7 @@ M04_L04:
        lea       rcx,[rbp-130]
        lea       r9,[rbp-70]
        mov       r8d,1
-       call      qword ptr [7FFE336E46D8]; System.Text.Json.Utf8JsonReader..ctor(System.ReadOnlySpan`1<Byte>, Boolean, System.Text.Json.JsonReaderState)
+       call      qword ptr [7FFF3A9F46D8]; System.Text.Json.Utf8JsonReader..ctor(System.ReadOnlySpan`1<Byte>, Boolean, System.Text.Json.JsonReaderState)
        vxorps    ymm0,ymm0,ymm0
        vmovdqu   ymmword ptr [rbp-1D0],ymm0
        vmovdqu   ymmword ptr [rbp-1B0],ymm0
@@ -1489,7 +1493,7 @@ M04_L04:
        lea       rcx,[rbp-1D0]
        mov       rdx,rbx
        xor       r8d,r8d
-       call      qword ptr [7FFE336E57A0]; System.Text.Json.ReadStack.Initialize(System.Text.Json.Serialization.Metadata.JsonTypeInfo, Boolean)
+       call      qword ptr [7FFF3A9F57A0]; System.Text.Json.ReadStack.Initialize(System.Text.Json.Serialization.Metadata.JsonTypeInfo, Boolean)
        mov       rcx,offset MT_System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
        cmp       [rbx],rcx
        jne       short M04_L08
@@ -1498,24 +1502,24 @@ M04_L04:
        lea       rdx,[rbp-130]
        lea       r9,[rbp-1D0]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE335DE508]; System.Text.Json.Serialization.JsonConverter`1[[System.__Canon, System.Private.CoreLib]].ReadCore(System.Text.Json.Utf8JsonReader ByRef, System.Text.Json.JsonSerializerOptions, System.Text.Json.ReadStack ByRef)
+       call      qword ptr [7FFF3A8EE508]; System.Text.Json.Serialization.JsonConverter`1[[System.__Canon, System.Private.CoreLib]].ReadCore(System.Text.Json.Utf8JsonReader ByRef, System.Text.Json.JsonSerializerOptions, System.Text.Json.ReadStack ByRef)
        jmp       short M04_L09
 M04_L05:
        mov       ecx,318C
-       mov       rdx,7FFE3356ECA0
+       mov       rdx,7FFF3A87ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE33676D00]
+       call      qword ptr [7FFF3A986D00]
        int       3
 M04_L06:
        mov       ecx,318C
-       mov       rdx,7FFE3356ECA0
+       mov       rdx,7FFF3A87ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE33676D30]
+       call      qword ptr [7FFF3A986D30]
        int       3
 M04_L07:
-       call      qword ptr [7FFE331EE9A0]
+       call      qword ptr [7FFF3A4FE9A0]
        int       3
 M04_L08:
        lea       r8,[rbp-1D0]
@@ -1573,9 +1577,9 @@ M04_L11:
        jmp       short M04_L13
 M04_L12:
        mov       rdx,[rbp-1D8]
-       call      qword ptr [7FFE330E5BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A3F5BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
 M04_L13:
-       mov       rcx,2770E001E78
+       mov       rcx,247D1001E78
        mov       r13,[rcx]
        mov       rcx,[rbp-220]
        mov       ecx,[rcx+8]
@@ -1585,14 +1589,14 @@ M04_L13:
        lzcnt     r12d,ecx
        xor       r12d,1F
        add       r12d,0FFFFFFFD
-       mov       rcx,7FFE32F75120
+       mov       rcx,7FFF3A285120
        mov       edx,3A
        call      CORINFO_HELP_GETSHARED_GCTHREADSTATIC_BASE_DYNAMICCLASS
        mov       rcx,[rax]
        test      rcx,rcx
        jne       short M04_L14
        mov       rcx,r13
-       call      qword ptr [7FFE335D4EB8]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].InitializeTlsBucketsAndTrimming()
+       call      qword ptr [7FFF3A8E4EB8]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].InitializeTlsBucketsAndTrimming()
        mov       rcx,rax
 M04_L14:
        xor       ebx,ebx
@@ -1609,15 +1613,15 @@ M04_L14:
        mov       rcx,offset MT_System.ArgumentException
        call      CORINFO_HELP_NEWSFAST
        mov       r13,rax
-       call      qword ptr [7FFE3353EAC0]
+       call      qword ptr [7FFF3A84EAC0]
        mov       r12,rax
        mov       ecx,1D3
-       mov       rdx,7FFE32EE4000
+       mov       rdx,7FFF3A1F4000
        call      CORINFO_HELP_STRCNS
        mov       r8,rax
        mov       rdx,r12
        mov       rcx,r13
-       call      qword ptr [7FFE3303F750]
+       call      qword ptr [7FFF3A34F750]
        mov       rcx,r13
        call      CORINFO_HELP_THROW
 M04_L15:
@@ -1641,7 +1645,7 @@ M04_L15:
        jne       short M04_L16
        mov       rcx,r13
        mov       edx,r12d
-       call      qword ptr [7FFE335D4E40]
+       call      qword ptr [7FFF3A8E4E40]
 M04_L16:
        mov       rsi,[rax+8]
        mov       ecx,3
@@ -1654,7 +1658,7 @@ M04_L16:
        movzx     eax,r14w
        test      eax,eax
        jne       short M04_L18
-       call      qword ptr [7FFE33846700]; System.Threading.ProcessorIdCache.RefreshCurrentProcessorId()
+       call      qword ptr [7FFF3AB56328]; System.Threading.ProcessorIdCache.RefreshCurrentProcessorId()
        jmp       short M04_L19
 M04_L17:
        call      CORINFO_HELP_RNGCHKFAIL
@@ -1725,7 +1729,7 @@ M04_L26:
 M04_L27:
        mov       esi,ecx
 M04_L28:
-       mov       rax,2770E0005D0
+       mov       rax,247D10005D0
        mov       r14,[rax]
        cmp       byte ptr [r14+9D],0
        je        near ptr M04_L33
@@ -1744,7 +1748,7 @@ M04_L28:
        mov       r8d,edi
        mov       r9d,r15d
        mov       edx,3
-       call      qword ptr [7FFE330E7678]
+       call      qword ptr [7FFF3A3F7678]
        test      esi,ebx
        jne       short M04_L33
        mov       rcx,[rbp-220]
@@ -1774,7 +1778,7 @@ M04_L32:
        mov       [rsp+20],ecx
        mov       [rsp+28],eax
        mov       rcx,r14
-       call      qword ptr [7FFE332BD590]
+       call      qword ptr [7FFF3A61F360]
 M04_L33:
        nop
        add       rsp,38
@@ -1825,34 +1829,34 @@ M05_L00:
        mov       rbx,[rcx+0D8]
        test      rbx,rbx
        jne       short M05_L01
-       mov       rcx,7FFE33ADD498
+       mov       rcx,7FFF3ADED498
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp+10]
        mov       byte ptr [rcx+105],1
-       call      qword ptr [7FFE335FFB70]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
+       call      qword ptr [7FFF3A90FB70]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
        mov       rcx,[rbp+10]
        mov       byte ptr [rcx+105],2
        jmp       short M05_L03
 M05_L01:
-       mov       rcx,7FFE33ADD494
+       mov       rcx,7FFF3ADED494
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,rbx
-       call      qword ptr [7FFE33AE4048]
+       call      qword ptr [7FFF3ADF48D0]
        int       3
 M05_L02:
-       call      qword ptr [7FFE3303E040]
+       call      qword ptr [7FFF3A34E040]
        int       3
 M05_L03:
        cmp       byte ptr [rbp-18],0
        je        short M05_L04
-       mov       rcx,7FFE33ADD49C
+       mov       rcx,7FFF3ADED49C
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp-20]
        call      System.Threading.Monitor.Exit(System.Object)
 M05_L04:
-       mov       rcx,7FFE33ADD4A0
+       mov       rcx,7FFF3ADED4A0
        call      CORINFO_HELP_COUNTPROFILE32
-       mov       rcx,7FFE33ADD4A4
+       mov       rcx,7FFF3ADED4A4
        call      CORINFO_HELP_COUNTPROFILE32
        nop
        add       rsp,40
@@ -1862,7 +1866,7 @@ M05_L04:
        ret
 M05_L05:
        mov       rcx,rbx
-       call      qword ptr [7FFE335FFEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
+       call      qword ptr [7FFF3A90FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
        mov       rsi,rax
        lea       rcx,[rbx+8]
        mov       rdx,rsi
@@ -1871,13 +1875,13 @@ M05_L05:
        mov       rax,rcx
        jmp       near ptr M05_L00
 M05_L06:
-       call      qword ptr [7FFE336775B8]
+       call      qword ptr [7FFF3A9875B8]
        int       3
 M05_L07:
-       mov       rcx,7FFE33ADD490
+       mov       rcx,7FFF3ADED490
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,rbx
-       call      qword ptr [7FFE33AE4048]
+       call      qword ptr [7FFF3ADF48D0]
        int       3
        push      rbp
        push      rsi
@@ -1887,7 +1891,7 @@ M05_L07:
        mov       [rsp+20],rbp
        lea       rbp,[rbp+50]
        mov       rcx,rdx
-       call      qword ptr [7FFE33AE4018]
+       call      qword ptr [7FFF3ADF48A0]
        mov       rcx,[rbp+10]
        lea       rcx,[rcx+0D8]
        mov       rdx,rax
@@ -1905,12 +1909,12 @@ M05_L07:
        lea       rbp,[rbp+50]
        cmp       byte ptr [rbp-18],0
        je        short M05_L08
-       mov       rcx,7FFE33ADD49C
+       mov       rcx,7FFF3ADED49C
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp-20]
        call      System.Threading.Monitor.Exit(System.Object)
 M05_L08:
-       mov       rcx,7FFE33ADD4A0
+       mov       rcx,7FFF3ADED4A0
        call      CORINFO_HELP_COUNTPROFILE32
        nop
        add       rsp,30
@@ -1935,7 +1939,7 @@ System.RuntimeTypeHandle.ContainsGenericVariables(System.RuntimeType)
        mov       rbx,rcx
        mov       rdx,[rbx+118]
        mov       rcx,offset MD_DotNetTips.Spargine.Core.Serialization.JsonSerialization.Deserialize[[DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord, DotNetTips.Spargine.8.Tester]](System.String)
-       call      qword ptr [7FFE33975380]; DotNetTips.Spargine.Core.Serialization.JsonSerialization.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String)
+       call      qword ptr [7FFF3AC45380]; DotNetTips.Spargine.Core.Serialization.JsonSerialization.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -1969,14 +1973,14 @@ System.RuntimeTypeHandle.ContainsGenericVariables(System.RuntimeType)
        jmp       short M01_L01
 M01_L00:
        mov       rcx,rbx
-       mov       rdx,7FFE33981DB8
+       mov       rdx,7FFF3AC51DB8
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       rcx,rax
 M01_L01:
-       mov       r8,23968405A80
+       mov       r8,2347B005CD8
        mov       r8,[r8]
        mov       rdx,rsi
-       call      qword ptr [7FFE339753E0]; System.Text.Json.JsonSerializer.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String, System.Text.Json.JsonSerializerOptions)
+       call      qword ptr [7FFF3AC453E0]; System.Text.Json.JsonSerializer.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String, System.Text.Json.JsonSerializerOptions)
        test      rax,rax
        je        short M01_L02
        add       rsp,58
@@ -1987,7 +1991,7 @@ M01_L02:
        lea       rcx,[rsp+28]
        mov       edx,2A
        mov       r8d,1
-       call      qword ptr [7FFE331956B0]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler..ctor(Int32, Int32)
+       call      qword ptr [7FFF3A4656B0]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler..ctor(Int32, Int32)
        mov       ecx,[rsp+38]
        cmp       ecx,[rsp+48]
        ja        near ptr M01_L05
@@ -1998,7 +2002,7 @@ M01_L02:
        sub       eax,ecx
        cmp       eax,29
        jb        short M01_L03
-       mov       rcx,279FA3052A4
+       mov       rcx,2750CE1526C
        vmovdqu   ymm0,ymmword ptr [rcx]
        vmovdqu   ymm1,ymmword ptr [rcx+20]
        vmovdqu   ymm2,ymmword ptr [rcx+32]
@@ -2011,8 +2015,8 @@ M01_L02:
        jmp       short M01_L04
 M01_L03:
        lea       rcx,[rsp+28]
-       mov       rdx,279FA305298
-       call      qword ptr [7FFE331958F0]
+       mov       rdx,2750CE15260
+       call      qword ptr [7FFF3A4658F0]
 M01_L04:
        mov       rcx,[rbx+10]
        mov       rcx,[rcx]
@@ -2020,12 +2024,12 @@ M01_L04:
        mov       r8,rax
        lea       rcx,[rsp+28]
        mov       rdx,offset MD_System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted[[System.Type, System.Private.CoreLib]](System.Type)
-       call      qword ptr [7FFE333BF9C0]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted[[System.__Canon, System.Private.CoreLib]](System.__Canon)
+       call      qword ptr [7FFF3A68F9C0]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted[[System.__Canon, System.Private.CoreLib]](System.__Canon)
        mov       ebx,[rsp+38]
        cmp       ebx,[rsp+48]
        jbe       short M01_L06
 M01_L05:
-       call      qword ptr [7FFE3320E9A0]
+       call      qword ptr [7FFF3A4DE9A0]
        int       3
 M01_L06:
        mov       rcx,[rsp+40]
@@ -2035,7 +2039,7 @@ M01_L06:
        sub       edx,ebx
        cmp       edx,1
        jb        short M01_L07
-       mov       rdx,279FA2E0C54
+       mov       rdx,2750CDF0C54
        movzx     eax,word ptr [rdx]
        mov       [rcx],ax
        mov       ecx,[rsp+38]
@@ -2044,17 +2048,17 @@ M01_L06:
        jmp       short M01_L08
 M01_L07:
        lea       rcx,[rsp+28]
-       mov       rdx,279FA2E0C48
-       call      qword ptr [7FFE331958F0]
+       mov       rdx,2750CDF0C48
+       call      qword ptr [7FFF3A4658F0]
 M01_L08:
        mov       rcx,offset MT_System.InvalidOperationException
        call      CORINFO_HELP_NEWSFAST
        mov       rbx,rax
        lea       rcx,[rsp+28]
-       call      qword ptr [7FFE33195740]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.ToStringAndClear()
+       call      qword ptr [7FFF3A465740]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.ToStringAndClear()
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFE33236718]
+       call      qword ptr [7FFF3A506718]
        mov       rcx,rbx
        call      CORINFO_HELP_THROW
        int       3
@@ -2071,7 +2075,7 @@ M01_L08:
        mov       rbx,rcx
        mov       rdx,[rbx+128]
        mov       rcx,offset MD_DotNetTips.Spargine.Core.Serialization.JsonSerialization.Deserialize[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.String)
-       call      qword ptr [7FFE33955380]; DotNetTips.Spargine.Core.Serialization.JsonSerialization.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String)
+       call      qword ptr [7FFF3AC65380]; DotNetTips.Spargine.Core.Serialization.JsonSerialization.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -2105,14 +2109,14 @@ M01_L08:
        jmp       short M01_L01
 M01_L00:
        mov       rcx,rbx
-       mov       rdx,7FFE33961DB8
+       mov       rdx,7FFF3AC71DB8
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       rcx,rax
 M01_L01:
-       mov       r8,26B83803A88
+       mov       r8,2F309C05CD8
        mov       r8,[r8]
        mov       rdx,rsi
-       call      qword ptr [7FFE339553E0]; System.Text.Json.JsonSerializer.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String, System.Text.Json.JsonSerializerOptions)
+       call      qword ptr [7FFF3AC653E0]; System.Text.Json.JsonSerializer.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String, System.Text.Json.JsonSerializerOptions)
        test      rax,rax
        je        short M01_L02
        add       rsp,58
@@ -2123,7 +2127,7 @@ M01_L02:
        lea       rcx,[rsp+28]
        mov       edx,2A
        mov       r8d,1
-       call      qword ptr [7FFE331756B0]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler..ctor(Int32, Int32)
+       call      qword ptr [7FFF3A4856B0]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler..ctor(Int32, Int32)
        mov       ecx,[rsp+38]
        cmp       ecx,[rsp+48]
        ja        near ptr M01_L05
@@ -2134,7 +2138,7 @@ M01_L02:
        sub       eax,ecx
        cmp       eax,29
        jb        short M01_L03
-       mov       rcx,2AC1570536C
+       mov       rcx,3339BB3536C
        vmovdqu   ymm0,ymmword ptr [rcx]
        vmovdqu   ymm1,ymmword ptr [rcx+20]
        vmovdqu   ymm2,ymmword ptr [rcx+32]
@@ -2147,8 +2151,8 @@ M01_L02:
        jmp       short M01_L04
 M01_L03:
        lea       rcx,[rsp+28]
-       mov       rdx,2AC15705360
-       call      qword ptr [7FFE331758F0]
+       mov       rdx,3339BB35360
+       call      qword ptr [7FFF3A4858F0]
 M01_L04:
        mov       rcx,[rbx+10]
        mov       rcx,[rcx]
@@ -2156,12 +2160,12 @@ M01_L04:
        mov       r8,rax
        lea       rcx,[rsp+28]
        mov       rdx,offset MD_System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted[[System.Type, System.Private.CoreLib]](System.Type)
-       call      qword ptr [7FFE3339F9C0]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted[[System.__Canon, System.Private.CoreLib]](System.__Canon)
+       call      qword ptr [7FFF3A6AF9C0]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.AppendFormatted[[System.__Canon, System.Private.CoreLib]](System.__Canon)
        mov       ebx,[rsp+38]
        cmp       ebx,[rsp+48]
        jbe       short M01_L06
 M01_L05:
-       call      qword ptr [7FFE331EE9A0]
+       call      qword ptr [7FFF3A4FE9A0]
        int       3
 M01_L06:
        mov       rcx,[rsp+40]
@@ -2171,7 +2175,7 @@ M01_L06:
        sub       edx,ebx
        cmp       edx,1
        jb        short M01_L07
-       mov       rdx,2AC156E0C54
+       mov       rdx,3339BB10C54
        movzx     eax,word ptr [rdx]
        mov       [rcx],ax
        mov       ecx,[rsp+38]
@@ -2180,17 +2184,17 @@ M01_L06:
        jmp       short M01_L08
 M01_L07:
        lea       rcx,[rsp+28]
-       mov       rdx,2AC156E0C48
-       call      qword ptr [7FFE331758F0]
+       mov       rdx,3339BB10C48
+       call      qword ptr [7FFF3A4858F0]
 M01_L08:
        mov       rcx,offset MT_System.InvalidOperationException
        call      CORINFO_HELP_NEWSFAST
        mov       rbx,rax
        lea       rcx,[rsp+28]
-       call      qword ptr [7FFE33175740]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.ToStringAndClear()
+       call      qword ptr [7FFF3A485740]; System.Runtime.CompilerServices.DefaultInterpolatedStringHandler.ToStringAndClear()
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFE33216718]
+       call      qword ptr [7FFF3A526718]
        mov       rcx,rbx
        call      CORINFO_HELP_THROW
        int       3
@@ -2207,399 +2211,7 @@ M01_L08:
        mov       rbx,rcx
        mov       rdx,[rbx+140]
        mov       rcx,offset MD_DotNetTips.Spargine.Core.Serialization.XmlSerialization.Deserialize[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.String)
-       call      qword ptr [7FFE33955380]; DotNetTips.Spargine.Core.Serialization.XmlSerialization.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String)
-       mov       [rsp+28],rax
-       mov       rbx,[rbx+18]
-       mov       rdx,[rsp+28]
-       lea       rcx,[rbx+8]
-       call      CORINFO_HELP_ASSIGN_REF
-       xor       eax,eax
-       mov       [rbx+8],rax
-       add       rsp,30
-       pop       rbx
-       ret
-; Total bytes of code 73
-```
-```assembly
-; DotNetTips.Spargine.Core.Serialization.XmlSerialization.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String)
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,78
-       vzeroupper
-       lea       rbp,[rsp+0A0]
-       vxorps    xmm4,xmm4,xmm4
-       vmovdqa   xmmword ptr [rbp-70],xmm4
-       vmovdqa   xmmword ptr [rbp-60],xmm4
-       vmovdqa   xmmword ptr [rbp-50],xmm4
-       vmovdqa   xmmword ptr [rbp-40],xmm4
-       mov       [rbp-78],rsp
-       mov       [rbp-30],rcx
-       mov       rbx,rcx
-       test      rdx,rdx
-       je        short M01_L00
-       mov       ecx,[rdx+8]
-       xor       eax,eax
-       test      ecx,ecx
-       sete      al
-       test      eax,eax
-       sete      al
-       movzx     eax,al
-       test      ecx,ecx
-       jne       short M01_L01
-       jmp       short M01_L01
-M01_L00:
-       xor       eax,eax
-M01_L01:
-       test      eax,eax
-       je        near ptr M01_L08
-       mov       ecx,[rdx+8]
-       test      ecx,ecx
-       je        near ptr M01_L05
-       movzx     eax,word ptr [rdx+0C]
-       cmp       eax,100
-       jae       short M01_L02
-       mov       r8,7FFE8E742C20
-       test      byte ptr [rax+r8],80
-       jne       near ptr M01_L10
-       jmp       short M01_L03
-M01_L02:
-       mov       r8d,eax
-       shr       r8d,9
-       mov       r10,7FFE8E751A80
-       movzx     r8d,byte ptr [r8+r10]
-       shl       r8d,6
-       mov       r10d,eax
-       shr       r10d,3
-       and       r10d,3E
-       add       r8d,r10d
-       mov       r10,7FFE8E74AA98
-       movzx     r8d,word ptr [r8+r10]
-       shl       r8d,4
-       and       eax,0F
-       add       eax,r8d
-       mov       r8,7FFE8E74E5C0
-       movzx     eax,byte ptr [rax+r8]
-       mov       r8,7FFE8E742F20
-       cmp       byte ptr [rax+r8],0
-       jl        near ptr M01_L10
-M01_L03:
-       lea       eax,[rcx-1]
-       cmp       eax,ecx
-       jae       near ptr M01_L12
-       mov       ecx,eax
-       movzx     ecx,word ptr [rdx+rcx*2+0C]
-       cmp       ecx,100
-       jae       short M01_L04
-       mov       rax,7FFE8E742C20
-       test      byte ptr [rcx+rax],80
-       jne       near ptr M01_L10
-       jmp       short M01_L05
-M01_L04:
-       mov       eax,ecx
-       shr       eax,9
-       mov       r8,7FFE8E751A80
-       movzx     eax,byte ptr [rax+r8]
-       shl       eax,6
-       mov       r8d,ecx
-       shr       r8d,3
-       and       r8d,3E
-       add       eax,r8d
-       mov       r8,7FFE8E74AA98
-       movzx     eax,word ptr [rax+r8]
-       shl       eax,4
-       and       ecx,0F
-       add       ecx,eax
-       mov       rax,7FFE8E74E5C0
-       movzx     ecx,byte ptr [rcx+rax]
-       mov       rax,7FFE8E742F20
-       cmp       byte ptr [rcx+rax],0
-       jl        near ptr M01_L10
-M01_L05:
-       mov       rsi,rdx
-M01_L06:
-       mov       rcx,offset MT_System.IO.StringReader
-       call      CORINFO_HELP_NEWSFAST
-       mov       rdi,rax
-       test      rsi,rsi
-       je        near ptr M01_L11
-       lea       rcx,[rdi+8]
-       mov       rdx,rsi
-       call      CORINFO_HELP_ASSIGN_REF
-       mov       [rbp-60],rdi
-       mov       rcx,offset MT_System.Xml.XmlTextReaderImpl
-       call      CORINFO_HELP_NEWSFAST
-       mov       rsi,rax
-       xor       r8d,r8d
-       mov       [rsp+20],r8
-       mov       r8,1FBD7002018
-       mov       r8,[r8]
-       mov       rcx,rsi
-       mov       rdx,rdi
-       mov       r9,23C66DE0008
-       call      qword ptr [7FFE33955848]; System.Xml.XmlTextReaderImpl..ctor(System.IO.TextReader, System.Xml.XmlReaderSettings, System.String, System.Xml.XmlParserContext)
-       mov       [rbp-68],rsi
-       mov       rcx,offset MT_System.Xml.Serialization.XmlSerializer
-       call      CORINFO_HELP_NEWSFAST
-       mov       r14,rax
-       mov       rcx,[rbx+10]
-       mov       rcx,[rcx]
-       call      CORINFO_HELP_TYPEHANDLE_TO_RUNTIMETYPE
-       mov       rdx,rax
-       mov       rcx,r14
-       xor       r8d,r8d
-       call      qword ptr [7FFE33827AC8]; System.Xml.Serialization.XmlSerializer..ctor(System.Type, System.String)
-       mov       rcx,r14
-       mov       rdx,rsi
-       vmovdqu   ymm0,ymmword ptr [rcx+38]
-       vmovdqu   ymmword ptr [rbp-58],ymm0
-       mov       r9,[rcx+58]
-       mov       [rbp-38],r9
-       lea       r9,[rbp-58]
-       xor       r8d,r8d
-       call      qword ptr [7FFE33827CC0]; System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader, System.String, System.Xml.Serialization.XmlDeserializationEvents)
-       mov       r8,rax
-       test      r8,r8
-       je        short M01_L07
-       mov       rcx,[rbx+10]
-       mov       rcx,[rcx]
-       cmp       [r8],rcx
-       je        short M01_L07
-       mov       rdx,rax
-       call      qword ptr [7FFE33034390]; System.Runtime.CompilerServices.CastHelpers.ChkCastAny(Void*, System.Object)
-       mov       r8,rax
-M01_L07:
-       mov       rax,r8
-       mov       [rbp-70],rax
-       mov       rcx,rsp
-       call      M01_L13
-       nop
-       xor       ecx,ecx
-       mov       rdx,[rbp-60]
-       mov       [rdx+8],rcx
-       mov       [rdx+10],ecx
-       mov       rcx,rdx
-       mov       edx,1
-       call      qword ptr [7FFE3316DA58]; System.IO.TextReader.Dispose(Boolean)
-       mov       rcx,[rbp-60]
-       call      System.GC._SuppressFinalize(System.Object)
-       mov       rax,[rbp-70]
-       add       rsp,78
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-M01_L08:
-       call      qword ptr [7FFE3357D620]
-       mov       rsi,rax
-       test      rsi,rsi
-       jne       short M01_L09
-       call      qword ptr [7FFE3357D380]
-       mov       rsi,rax
-M01_L09:
-       mov       rcx,offset MT_System.ArgumentNullException
-       call      CORINFO_HELP_NEWSFAST
-       mov       rbx,rax
-       mov       rcx,rbx
-       mov       rdx,23C66DFCA20
-       mov       r8,rsi
-       call      qword ptr [7FFE33216670]
-       mov       rcx,rbx
-       call      CORINFO_HELP_THROW
-M01_L10:
-       mov       rcx,rdx
-       mov       edx,3
-       call      qword ptr [7FFE330373F0]
-       mov       rsi,rax
-       jmp       near ptr M01_L06
-M01_L11:
-       mov       ecx,11
-       call      qword ptr [7FFE331EECD0]
-       int       3
-M01_L12:
-       call      CORINFO_HELP_RNGCHKFAIL
-       int       3
-M01_L13:
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,38
-       vzeroupper
-       mov       rbp,[rcx+28]
-       mov       [rsp+28],rbp
-       lea       rbp,[rbp+0A0]
-       mov       rsi,[rbp-68]
-       cmp       dword ptr [rsi+160],4
-       je        near ptr M01_L25
-       movzx     edi,byte ptr [rsi+17D]
-       cmp       dword ptr [rsi+108],0C
-       jne       short M01_L15
-       jmp       near ptr M01_L25
-M01_L14:
-       mov       rcx,rsi
-       call      qword ptr [7FFE33956DF0]
-M01_L15:
-       cmp       dword ptr [rsi+13C],0
-       jge       short M01_L14
-       lea       rbx,[rsi+188]
-       test      edi,edi
-       je        near ptr M01_L23
-       mov       rcx,[rbx+10]
-       test      rcx,rcx
-       je        near ptr M01_L20
-       mov       r14,rcx
-       mov       rcx,offset MT_System.IO.FileStream
-       cmp       [r14],rcx
-       jne       short M01_L19
-       mov       rcx,[r14+10]
-       mov       r15,rcx
-       test      r15,r15
-       je        short M01_L18
-       mov       rbx,[r15]
-       mov       rcx,offset MT_System.IO.Strategies.SyncWindowsFileStreamStrategy
-       cmp       rbx,rcx
-       jne       short M01_L17
-       mov       rcx,[r15+18]
-       test      rcx,rcx
-       je        short M01_L18
-       test      byte ptr [rcx+10],1
-       jne       short M01_L18
-       mov       rcx,[r15+18]
-       mov       rcx,[rcx+20]
-       test      rcx,rcx
-       je        short M01_L16
-       call      qword ptr [7FFE33C56750]; Precode of System.Threading.ThreadPoolBoundHandle.Dispose()
-M01_L16:
-       mov       rbx,[r15+18]
-       cmp       [rbx],bl
-       mov       rcx,rbx
-       mov       edx,1
-       call      qword ptr [7FFE3303E3E8]; System.Runtime.InteropServices.SafeHandle.InternalRelease(Boolean)
-       mov       rcx,rbx
-       call      System.GC._SuppressFinalize(System.Object)
-       jmp       short M01_L18
-M01_L17:
-       mov       rcx,r15
-       mov       edx,1
-       mov       rax,[rbx+50]
-       call      qword ptr [rax+20]
-M01_L18:
-       mov       rcx,r14
-       call      System.GC._SuppressFinalize(System.Object)
-       jmp       short M01_L23
-M01_L19:
-       mov       rcx,r14
-       mov       rax,[r14]
-       mov       rax,[rax+50]
-       call      qword ptr [rax+18]
-       jmp       short M01_L23
-M01_L20:
-       mov       rdi,[rbx+28]
-       test      rdi,rdi
-       je        short M01_L23
-       mov       rcx,offset MT_System.IO.StringReader
-       cmp       [rdi],rcx
-       jne       short M01_L21
-       xor       ecx,ecx
-       mov       [rdi+8],rcx
-       mov       [rdi+10],ecx
-       mov       rcx,rdi
-       mov       edx,1
-       call      qword ptr [7FFE3316DA58]; System.IO.TextReader.Dispose(Boolean)
-       jmp       short M01_L22
-M01_L21:
-       mov       rcx,rdi
-       mov       edx,1
-       mov       rax,[rdi]
-       mov       rax,[rax+40]
-       call      qword ptr [rax+38]
-M01_L22:
-       mov       rcx,rdi
-       call      System.GC._SuppressFinalize(System.Object)
-M01_L23:
-       call      qword ptr [7FFE3395C858]; System.Xml.XmlTextReaderImpl+NodeData.get_None()
-       lea       rcx,[rsi+18]
-       mov       rdx,rax
-       call      CORINFO_HELP_ASSIGN_REF
-       mov       dword ptr [rsi+108],0C
-       xor       ecx,ecx
-       mov       [rsi+68],rcx
-       mov       rcx,23C66DE0008
-       mov       [rsi+60],rcx
-       mov       dword ptr [rsi+160],4
-       mov       byte ptr [rsi+176],0
-       cmp       byte ptr [rsi+176],0
-       je        short M01_L24
-       mov       rcx,rsi
-       call      qword ptr [7FFE33956CB8]
-M01_L24:
-       mov       dword ptr [rsi+118],0FFFFFFFF
-       xor       ecx,ecx
-       mov       [rsi+11C],ecx
-       mov       [rsi+120],ecx
-       mov       [rsi+124],ecx
-       mov       [rsi+8],rcx
-M01_L25:
-       add       rsp,38
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,38
-       vzeroupper
-       mov       rbp,[rcx+28]
-       mov       [rsp+28],rbp
-       lea       rbp,[rbp+0A0]
-       xor       ecx,ecx
-       mov       rax,[rbp-60]
-       mov       [rax+8],rcx
-       mov       [rax+10],ecx
-       mov       rcx,rax
-       mov       edx,1
-       call      qword ptr [7FFE3316DA58]; System.IO.TextReader.Dispose(Boolean)
-       mov       rcx,[rbp-60]
-       call      System.GC._SuppressFinalize(System.Object)
-       nop
-       add       rsp,38
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-; Total bytes of code 1344
-```
-
-## .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
-```assembly
-; DotNetTips.Spargine.Core.BenchmarkTests.Serialization.SerializationBenchmark.Deserialize_Xml_PersonRecord()
-       push      rbx
-       sub       rsp,30
-       xor       eax,eax
-       mov       [rsp+28],rax
-       mov       rbx,rcx
-       mov       rdx,[rbx+138]
-       mov       rcx,offset MD_DotNetTips.Spargine.Core.Serialization.XmlSerialization.Deserialize[[DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord, DotNetTips.Spargine.8.Tester]](System.String)
-       call      qword ptr [7FFE33955380]; DotNetTips.Spargine.Core.Serialization.XmlSerialization.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String)
+       call      qword ptr [7FFF3AC75380]; DotNetTips.Spargine.Core.Serialization.XmlSerialization.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -2655,16 +2267,11 @@ M01_L01:
        je        short M01_L05
        movzx     ecx,word ptr [rsi+0C]
        cmp       ecx,100
-       jae       short M01_L02
-       mov       rax,7FFE8E742C20
+       jae       short M01_L03
+       mov       rax,7FFF99282C20
        test      byte ptr [rcx+rax],80
        jne       near ptr M01_L09
-       jmp       short M01_L03
 M01_L02:
-       call      qword ptr [7FFE33825DA0]; System.Globalization.CharUnicodeInfo.GetIsWhiteSpace(Char)
-       test      eax,eax
-       jne       near ptr M01_L09
-M01_L03:
        mov       ecx,[rsi+8]
        dec       ecx
        cmp       ecx,[rsi+8]
@@ -2672,12 +2279,17 @@ M01_L03:
        movzx     ecx,word ptr [rsi+rcx*2+0C]
        cmp       ecx,100
        jae       short M01_L04
-       mov       rax,7FFE8E742C20
+       mov       rax,7FFF99282C20
        test      byte ptr [rcx+rax],80
        jne       near ptr M01_L09
        jmp       short M01_L05
+M01_L03:
+       call      qword ptr [7FFF3AB467F0]; System.Globalization.CharUnicodeInfo.GetIsWhiteSpace(Char)
+       test      eax,eax
+       jne       near ptr M01_L09
+       jmp       short M01_L02
 M01_L04:
-       call      qword ptr [7FFE33825DA0]; System.Globalization.CharUnicodeInfo.GetIsWhiteSpace(Char)
+       call      qword ptr [7FFF3AB467F0]; System.Globalization.CharUnicodeInfo.GetIsWhiteSpace(Char)
        test      eax,eax
        jne       near ptr M01_L09
 M01_L05:
@@ -2695,12 +2307,12 @@ M01_L05:
        mov       rsi,rax
        xor       r8d,r8d
        mov       [rsp+20],r8
-       mov       r8,14A1C402018
+       mov       r8,2006E808260
        mov       r8,[r8]
        mov       rcx,rsi
        mov       rdx,rdi
-       mov       r9,18AA6490008
-       call      qword ptr [7FFE33955848]; System.Xml.XmlTextReaderImpl..ctor(System.IO.TextReader, System.Xml.XmlReaderSettings, System.String, System.Xml.XmlParserContext)
+       mov       r9,241007C0008
+       call      qword ptr [7FFF3AC75848]; System.Xml.XmlTextReaderImpl..ctor(System.IO.TextReader, System.Xml.XmlReaderSettings, System.String, System.Xml.XmlParserContext)
        mov       [rbp-70],rsi
        mov       rcx,offset MT_System.Xml.Serialization.XmlSerializer
        call      CORINFO_HELP_NEWSFAST
@@ -2711,7 +2323,7 @@ M01_L05:
        mov       rdx,rax
        mov       rcx,r14
        xor       r8d,r8d
-       call      qword ptr [7FFE33827078]; System.Xml.Serialization.XmlSerializer..ctor(System.Type, System.String)
+       call      qword ptr [7FFF3AB47AC8]; System.Xml.Serialization.XmlSerializer..ctor(System.Type, System.String)
        mov       rcx,r14
        mov       rdx,rsi
        vmovdqu   ymm0,ymmword ptr [rcx+38]
@@ -2720,7 +2332,7 @@ M01_L05:
        mov       [rbp-40],r9
        lea       r9,[rbp-60]
        xor       r8d,r8d
-       call      qword ptr [7FFE33827270]; System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader, System.String, System.Xml.Serialization.XmlDeserializationEvents)
+       call      qword ptr [7FFF3AB47CC0]; System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader, System.String, System.Xml.Serialization.XmlDeserializationEvents)
        mov       r8,rax
        test      r8,r8
        je        short M01_L06
@@ -2729,7 +2341,7 @@ M01_L05:
        cmp       [r8],rcx
        je        short M01_L06
        mov       rdx,rax
-       call      qword ptr [7FFE33034390]; System.Runtime.CompilerServices.CastHelpers.ChkCastAny(Void*, System.Object)
+       call      qword ptr [7FFF3A354390]; System.Runtime.CompilerServices.CastHelpers.ChkCastAny(Void*, System.Object)
        mov       r8,rax
 M01_L06:
        mov       rax,r8
@@ -2743,7 +2355,7 @@ M01_L06:
        mov       [rdx+10],ecx
        mov       rcx,rdx
        mov       edx,1
-       call      qword ptr [7FFE3316DA58]; System.IO.TextReader.Dispose(Boolean)
+       call      qword ptr [7FFF3A48DA58]; System.IO.TextReader.Dispose(Boolean)
        mov       rcx,[rbp-68]
        call      System.GC._SuppressFinalize(System.Object)
        mov       rax,[rbp-78]
@@ -2757,31 +2369,31 @@ M01_L06:
        pop       rbp
        ret
 M01_L07:
-       call      qword ptr [7FFE3357D620]
+       call      qword ptr [7FFF3A89D620]
        mov       rsi,rax
        test      rsi,rsi
        jne       short M01_L08
-       call      qword ptr [7FFE3357D380]
+       call      qword ptr [7FFF3A89D380]
        mov       rsi,rax
 M01_L08:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rbx,rax
        mov       rcx,rbx
-       mov       rdx,18AA64ACA20
+       mov       rdx,241007DCA20
        mov       r8,rsi
-       call      qword ptr [7FFE33216670]
+       call      qword ptr [7FFF3A536670]
        mov       rcx,rbx
        call      CORINFO_HELP_THROW
 M01_L09:
        mov       rcx,rsi
        mov       edx,3
-       call      qword ptr [7FFE330373F0]
+       call      qword ptr [7FFF3A3573F0]
        mov       rsi,rax
        jmp       near ptr M01_L05
 M01_L10:
        mov       ecx,11
-       call      qword ptr [7FFE331EECD0]
+       call      qword ptr [7FFF3A50ECD0]
        int       3
 M01_L11:
        call      CORINFO_HELP_RNGCHKFAIL
@@ -2808,7 +2420,7 @@ M01_L12:
        jmp       near ptr M01_L31
 M01_L13:
        mov       rcx,rsi
-       call      qword ptr [7FFE33956DF0]
+       call      qword ptr [7FFF3AC76DF0]
 M01_L14:
        cmp       dword ptr [rsi+13C],0
        jge       short M01_L13
@@ -2839,7 +2451,7 @@ M01_L14:
        mov       rcx,[rcx+20]
        test      rcx,rcx
        je        short M01_L15
-       call      qword ptr [7FFE33C3D570]; Precode of System.Threading.ThreadPoolBoundHandle.Dispose()
+       call      qword ptr [7FFF3AF76DE0]; Precode of System.Threading.ThreadPoolBoundHandle.Dispose()
 M01_L15:
        mov       r13,[r15+18]
        cmp       [r13],r13b
@@ -2857,7 +2469,7 @@ M01_L16:
        cmp       byte ptr [r13+14],0
        je        short M01_L17
        mov       rcx,r13
-       call      qword ptr [7FFE3316E2D0]; Precode of Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.get_IsInvalid()
+       call      qword ptr [7FFF3A48E2D0]; Precode of Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid.get_IsInvalid()
        test      eax,eax
        sete      al
        movzx     eax,al
@@ -2883,7 +2495,7 @@ M01_L19:
        call      System.Runtime.InteropServices.Marshal.GetLastPInvokeError()
        mov       r15d,eax
        mov       rcx,r13
-       call      qword ptr [7FFE3316E6D8]; Precode of Microsoft.Win32.SafeHandles.SafeFileHandle.ReleaseHandle()
+       call      qword ptr [7FFF3A48E6D8]; Precode of Microsoft.Win32.SafeHandles.SafeFileHandle.ReleaseHandle()
        mov       ecx,r15d
        call      System.Runtime.InteropServices.Marshal.SetLastPInvokeError(Int32)
 M01_L20:
@@ -2892,7 +2504,7 @@ M01_L20:
        jmp       short M01_L23
 M01_L21:
        mov       rcx,r13
-       call      qword ptr [7FFE331EEE50]
+       call      qword ptr [7FFF3A50EE50]
        int       3
 M01_L22:
        mov       rcx,r15
@@ -2921,7 +2533,7 @@ M01_L25:
        mov       [r13+10],ecx
        mov       rcx,r13
        mov       edx,1
-       call      qword ptr [7FFE3316DA58]; System.IO.TextReader.Dispose(Boolean)
+       call      qword ptr [7FFF3A48DA58]; System.IO.TextReader.Dispose(Boolean)
        jmp       short M01_L27
 M01_L26:
        mov       rcx,r13
@@ -2933,7 +2545,7 @@ M01_L27:
        mov       rcx,r13
        call      System.GC._SuppressFinalize(System.Object)
 M01_L28:
-       mov       rcx,14A1C402028
+       mov       rcx,2006E808270
        mov       rdx,[rcx]
        test      rdx,rdx
        jne       short M01_L29
@@ -2941,8 +2553,8 @@ M01_L28:
        call      CORINFO_HELP_NEWSFAST
        mov       rbx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFE3395C870]
-       mov       rcx,14A1C402028
+       call      qword ptr [7FFF3AC7C870]
+       mov       rcx,2006E808270
        mov       rdx,rbx
        call      CORINFO_HELP_ASSIGN_REF
        mov       rdx,rbx
@@ -2952,14 +2564,14 @@ M01_L29:
        mov       dword ptr [rsi+108],0C
        xor       ecx,ecx
        mov       [rsi+68],rcx
-       mov       rcx,18AA6490008
+       mov       rcx,241007C0008
        mov       [rsi+60],rcx
        mov       dword ptr [rsi+160],4
        mov       byte ptr [rsi+176],0
        cmp       byte ptr [rsi+176],0
        je        short M01_L30
        mov       rcx,rsi
-       call      qword ptr [7FFE33956CB8]
+       call      qword ptr [7FFF3AC76CB8]
 M01_L30:
        mov       dword ptr [rsi+118],0FFFFFFFF
        xor       ecx,ecx
@@ -2995,7 +2607,7 @@ M01_L31:
        mov       [rax+10],ecx
        mov       rcx,rax
        mov       edx,1
-       call      qword ptr [7FFE3316DA58]; System.IO.TextReader.Dispose(Boolean)
+       call      qword ptr [7FFF3A48DA58]; System.IO.TextReader.Dispose(Boolean)
        mov       rcx,[rbp-68]
        call      System.GC._SuppressFinalize(System.Object)
        nop
@@ -3013,6 +2625,400 @@ M01_L31:
 
 ## .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
 ```assembly
+; DotNetTips.Spargine.Core.BenchmarkTests.Serialization.SerializationBenchmark.Deserialize_Xml_PersonRecord()
+       push      rbx
+       sub       rsp,30
+       xor       eax,eax
+       mov       [rsp+28],rax
+       mov       rbx,rcx
+       mov       rdx,[rbx+138]
+       mov       rcx,offset MD_DotNetTips.Spargine.Core.Serialization.XmlSerialization.Deserialize[[DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord, DotNetTips.Spargine.8.Tester]](System.String)
+       call      qword ptr [7FFF3AC75380]; DotNetTips.Spargine.Core.Serialization.XmlSerialization.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String)
+       mov       [rsp+28],rax
+       mov       rbx,[rbx+18]
+       mov       rdx,[rsp+28]
+       lea       rcx,[rbx+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       xor       eax,eax
+       mov       [rbx+8],rax
+       add       rsp,30
+       pop       rbx
+       ret
+; Total bytes of code 73
+```
+```assembly
+; DotNetTips.Spargine.Core.Serialization.XmlSerialization.Deserialize[[System.__Canon, System.Private.CoreLib]](System.String)
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,78
+       vzeroupper
+       lea       rbp,[rsp+0A0]
+       vxorps    xmm4,xmm4,xmm4
+       vmovdqa   xmmword ptr [rbp-70],xmm4
+       vmovdqa   xmmword ptr [rbp-60],xmm4
+       vmovdqa   xmmword ptr [rbp-50],xmm4
+       vmovdqa   xmmword ptr [rbp-40],xmm4
+       mov       [rbp-78],rsp
+       mov       [rbp-30],rcx
+       mov       rbx,rcx
+       test      rdx,rdx
+       je        short M01_L00
+       mov       ecx,[rdx+8]
+       xor       eax,eax
+       test      ecx,ecx
+       sete      al
+       test      eax,eax
+       sete      al
+       movzx     eax,al
+       test      ecx,ecx
+       jne       short M01_L01
+       jmp       short M01_L01
+M01_L00:
+       xor       eax,eax
+M01_L01:
+       test      eax,eax
+       je        near ptr M01_L08
+       mov       ecx,[rdx+8]
+       test      ecx,ecx
+       je        near ptr M01_L05
+       movzx     eax,word ptr [rdx+0C]
+       cmp       eax,100
+       jae       short M01_L02
+       mov       eax,eax
+       mov       r8,7FFF99282C20
+       test      byte ptr [rax+r8],80
+       jne       near ptr M01_L10
+       jmp       short M01_L03
+M01_L02:
+       mov       r8d,eax
+       shr       r8d,9
+       mov       r10,7FFF99291A80
+       movzx     r8d,byte ptr [r8+r10]
+       shl       r8d,6
+       mov       r10d,eax
+       shr       r10d,3
+       and       r10d,3E
+       add       r8d,r10d
+       mov       r10,7FFF9928AA98
+       movzx     r8d,word ptr [r8+r10]
+       shl       r8d,4
+       and       eax,0F
+       add       eax,r8d
+       mov       r8,7FFF9928E5C0
+       movzx     eax,byte ptr [rax+r8]
+       mov       r8,7FFF99282F20
+       cmp       byte ptr [rax+r8],0
+       jl        near ptr M01_L10
+M01_L03:
+       lea       eax,[rcx-1]
+       cmp       eax,ecx
+       jae       near ptr M01_L12
+       mov       ecx,eax
+       movzx     ecx,word ptr [rdx+rcx*2+0C]
+       cmp       ecx,100
+       jae       short M01_L04
+       mov       ecx,ecx
+       mov       rax,7FFF99282C20
+       test      byte ptr [rcx+rax],80
+       jne       near ptr M01_L10
+       jmp       short M01_L05
+M01_L04:
+       mov       eax,ecx
+       shr       eax,9
+       mov       r8,7FFF99291A80
+       movzx     eax,byte ptr [rax+r8]
+       shl       eax,6
+       mov       r8d,ecx
+       shr       r8d,3
+       and       r8d,3E
+       add       eax,r8d
+       mov       r8,7FFF9928AA98
+       movzx     eax,word ptr [rax+r8]
+       shl       eax,4
+       and       ecx,0F
+       add       ecx,eax
+       mov       rax,7FFF9928E5C0
+       movzx     ecx,byte ptr [rcx+rax]
+       mov       rax,7FFF99282F20
+       cmp       byte ptr [rcx+rax],0
+       jl        near ptr M01_L10
+M01_L05:
+       mov       rsi,rdx
+M01_L06:
+       mov       rcx,offset MT_System.IO.StringReader
+       call      CORINFO_HELP_NEWSFAST
+       mov       rdi,rax
+       test      rsi,rsi
+       je        near ptr M01_L11
+       lea       rcx,[rdi+8]
+       mov       rdx,rsi
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbp-60],rdi
+       mov       rcx,offset MT_System.Xml.XmlTextReaderImpl
+       call      CORINFO_HELP_NEWSFAST
+       mov       rsi,rax
+       xor       r8d,r8d
+       mov       [rsp+20],r8
+       mov       r8,2285A002290
+       mov       r8,[r8]
+       mov       rcx,rsi
+       mov       rdx,rdi
+       mov       r9,268E7F50008
+       call      qword ptr [7FFF3AC75848]; System.Xml.XmlTextReaderImpl..ctor(System.IO.TextReader, System.Xml.XmlReaderSettings, System.String, System.Xml.XmlParserContext)
+       mov       [rbp-68],rsi
+       mov       rcx,offset MT_System.Xml.Serialization.XmlSerializer
+       call      CORINFO_HELP_NEWSFAST
+       mov       r14,rax
+       mov       rcx,[rbx+10]
+       mov       rcx,[rcx]
+       call      CORINFO_HELP_TYPEHANDLE_TO_RUNTIMETYPE
+       mov       rdx,rax
+       mov       rcx,r14
+       xor       r8d,r8d
+       call      qword ptr [7FFF3AB47078]; System.Xml.Serialization.XmlSerializer..ctor(System.Type, System.String)
+       mov       rcx,r14
+       mov       rdx,rsi
+       vmovdqu   ymm0,ymmword ptr [rcx+38]
+       vmovdqu   ymmword ptr [rbp-58],ymm0
+       mov       r9,[rcx+58]
+       mov       [rbp-38],r9
+       lea       r9,[rbp-58]
+       xor       r8d,r8d
+       call      qword ptr [7FFF3AB47270]; System.Xml.Serialization.XmlSerializer.Deserialize(System.Xml.XmlReader, System.String, System.Xml.Serialization.XmlDeserializationEvents)
+       mov       r8,rax
+       test      r8,r8
+       je        short M01_L07
+       mov       rcx,[rbx+10]
+       mov       rcx,[rcx]
+       cmp       [r8],rcx
+       je        short M01_L07
+       mov       rdx,rax
+       call      qword ptr [7FFF3A354390]; System.Runtime.CompilerServices.CastHelpers.ChkCastAny(Void*, System.Object)
+       mov       r8,rax
+M01_L07:
+       mov       rax,r8
+       mov       [rbp-70],rax
+       mov       rcx,rsp
+       call      M01_L13
+       nop
+       xor       ecx,ecx
+       mov       rdx,[rbp-60]
+       mov       [rdx+8],rcx
+       mov       [rdx+10],ecx
+       mov       rcx,rdx
+       mov       edx,1
+       call      qword ptr [7FFF3A48DA58]; System.IO.TextReader.Dispose(Boolean)
+       mov       rcx,[rbp-60]
+       call      System.GC._SuppressFinalize(System.Object)
+       mov       rax,[rbp-70]
+       add       rsp,78
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M01_L08:
+       call      qword ptr [7FFF3A89D620]
+       mov       rsi,rax
+       test      rsi,rsi
+       jne       short M01_L09
+       call      qword ptr [7FFF3A89D380]
+       mov       rsi,rax
+M01_L09:
+       mov       rcx,offset MT_System.ArgumentNullException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       mov       rcx,rbx
+       mov       rdx,268E7F6CA20
+       mov       r8,rsi
+       call      qword ptr [7FFF3A536670]
+       mov       rcx,rbx
+       call      CORINFO_HELP_THROW
+M01_L10:
+       mov       rcx,rdx
+       mov       edx,3
+       call      qword ptr [7FFF3A3573F0]
+       mov       rsi,rax
+       jmp       near ptr M01_L06
+M01_L11:
+       mov       ecx,11
+       call      qword ptr [7FFF3A50ECD0]
+       int       3
+M01_L12:
+       call      CORINFO_HELP_RNGCHKFAIL
+       int       3
+M01_L13:
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,38
+       vzeroupper
+       mov       rbp,[rcx+28]
+       mov       [rsp+28],rbp
+       lea       rbp,[rbp+0A0]
+       mov       rsi,[rbp-68]
+       cmp       dword ptr [rsi+160],4
+       je        near ptr M01_L25
+       movzx     edi,byte ptr [rsi+17D]
+       cmp       dword ptr [rsi+108],0C
+       jne       short M01_L15
+       jmp       near ptr M01_L25
+M01_L14:
+       mov       rcx,rsi
+       call      qword ptr [7FFF3AC76DF0]
+M01_L15:
+       cmp       dword ptr [rsi+13C],0
+       jge       short M01_L14
+       lea       rbx,[rsi+188]
+       test      edi,edi
+       je        near ptr M01_L23
+       mov       rcx,[rbx+10]
+       test      rcx,rcx
+       je        near ptr M01_L20
+       mov       r14,rcx
+       mov       rcx,offset MT_System.IO.FileStream
+       cmp       [r14],rcx
+       jne       short M01_L19
+       mov       rcx,[r14+10]
+       mov       r15,rcx
+       test      r15,r15
+       je        short M01_L18
+       mov       rbx,[r15]
+       mov       rcx,offset MT_System.IO.Strategies.SyncWindowsFileStreamStrategy
+       cmp       rbx,rcx
+       jne       short M01_L17
+       mov       rcx,[r15+18]
+       test      rcx,rcx
+       je        short M01_L18
+       test      byte ptr [rcx+10],1
+       jne       short M01_L18
+       mov       rcx,[r15+18]
+       mov       rcx,[rcx+20]
+       test      rcx,rcx
+       je        short M01_L16
+       call      qword ptr [7FFF3AECFF98]; Precode of System.Threading.ThreadPoolBoundHandle.Dispose()
+M01_L16:
+       mov       rbx,[r15+18]
+       cmp       [rbx],bl
+       mov       rcx,rbx
+       mov       edx,1
+       call      qword ptr [7FFF3A35E3E8]; System.Runtime.InteropServices.SafeHandle.InternalRelease(Boolean)
+       mov       rcx,rbx
+       call      System.GC._SuppressFinalize(System.Object)
+       jmp       short M01_L18
+M01_L17:
+       mov       rcx,r15
+       mov       edx,1
+       mov       rax,[rbx+50]
+       call      qword ptr [rax+20]
+M01_L18:
+       mov       rcx,r14
+       call      System.GC._SuppressFinalize(System.Object)
+       jmp       short M01_L23
+M01_L19:
+       mov       rcx,r14
+       mov       rax,[r14]
+       mov       rax,[rax+50]
+       call      qword ptr [rax+18]
+       jmp       short M01_L23
+M01_L20:
+       mov       rdi,[rbx+28]
+       test      rdi,rdi
+       je        short M01_L23
+       mov       rcx,offset MT_System.IO.StringReader
+       cmp       [rdi],rcx
+       jne       short M01_L21
+       xor       ecx,ecx
+       mov       [rdi+8],rcx
+       mov       [rdi+10],ecx
+       mov       rcx,rdi
+       mov       edx,1
+       call      qword ptr [7FFF3A48DA58]; System.IO.TextReader.Dispose(Boolean)
+       jmp       short M01_L22
+M01_L21:
+       mov       rcx,rdi
+       mov       edx,1
+       mov       rax,[rdi]
+       mov       rax,[rax+40]
+       call      qword ptr [rax+38]
+M01_L22:
+       mov       rcx,rdi
+       call      System.GC._SuppressFinalize(System.Object)
+M01_L23:
+       call      qword ptr [7FFF3AC7C858]; System.Xml.XmlTextReaderImpl+NodeData.get_None()
+       lea       rcx,[rsi+18]
+       mov       rdx,rax
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       dword ptr [rsi+108],0C
+       xor       ecx,ecx
+       mov       [rsi+68],rcx
+       mov       rcx,268E7F50008
+       mov       [rsi+60],rcx
+       mov       dword ptr [rsi+160],4
+       mov       byte ptr [rsi+176],0
+       cmp       byte ptr [rsi+176],0
+       je        short M01_L24
+       mov       rcx,rsi
+       call      qword ptr [7FFF3AC76CB8]
+M01_L24:
+       mov       dword ptr [rsi+118],0FFFFFFFF
+       xor       ecx,ecx
+       mov       [rsi+11C],ecx
+       mov       [rsi+120],ecx
+       mov       [rsi+124],ecx
+       mov       [rsi+8],rcx
+M01_L25:
+       add       rsp,38
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,38
+       vzeroupper
+       mov       rbp,[rcx+28]
+       mov       [rsp+28],rbp
+       lea       rbp,[rbp+0A0]
+       xor       ecx,ecx
+       mov       rax,[rbp-60]
+       mov       [rax+8],rcx
+       mov       [rax+10],ecx
+       mov       rcx,rax
+       mov       edx,1
+       call      qword ptr [7FFF3A48DA58]; System.IO.TextReader.Dispose(Boolean)
+       mov       rcx,[rbp-60]
+       call      System.GC._SuppressFinalize(System.Object)
+       nop
+       add       rsp,38
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 1348
+```
+
+## .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
+```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.Serialization.SerializationBenchmark.Serialize_Json_JsonSerializer_Generator_Person_List()
        push      rdi
        push      rsi
@@ -3023,37 +3029,37 @@ M01_L31:
        mov       [rsp+40],rax
        mov       rbx,rcx
        mov       rsi,[rbx+130]
-       mov       rcx,1FF098057D8
+       mov       rcx,1858BC03A38
        mov       rdi,[rcx]
        test      rsi,rsi
        je        short M00_L00
        mov       rcx,rsi
        call      System.Object.GetType()
        mov       rdx,rax
-       mov       rcx,23F9B714610
+       mov       rcx,1C61DAD4610
        cmp       [rcx],ecx
-       call      qword ptr [7FFE32F8A7B0]; System.RuntimeType.IsAssignableFrom(System.Type)
+       call      qword ptr [7FFF3A27A7B0]; System.RuntimeType.IsAssignableFrom(System.Type)
        test      eax,eax
        je        near ptr M00_L04
 M00_L00:
        mov       rcx,rdi
-       call      qword ptr [7FFE33686850]; System.Text.Json.Serialization.JsonSerializerContext.get_Options()
+       call      qword ptr [7FFF3A976850]; System.Text.Json.Serialization.JsonSerializerContext.get_Options()
        mov       rbp,rax
        cmp       [rbp],bpl
-       mov       rcx,23F9B714610
+       mov       rcx,1C61DAD4610
        call      System.RuntimeTypeHandle.GetCorElementType(System.RuntimeType)
        cmp       eax,0F
        je        near ptr M00_L07
-       mov       rcx,23F9B714610
+       mov       rcx,1C61DAD4610
        call      System.RuntimeTypeHandle.GetCorElementType(System.RuntimeType)
        cmp       eax,10
        je        near ptr M00_L07
-       mov       rcx,23F9B714610
+       mov       rcx,1C61DAD4610
        call      System.RuntimeTypeHandle.IsByRefLike(System.RuntimeType)
        test      eax,eax
        jne       near ptr M00_L07
-       mov       rcx,23F9B714610
-       call      qword ptr [7FFE32F960B8]; System.Type.GetRootElementType()
+       mov       rcx,1C61DAD4610
+       call      qword ptr [7FFF3A2860B8]; System.Type.GetRootElementType()
        mov       rcx,rax
        mov       rax,offset MT_System.RuntimeType
        cmp       [rcx],rax
@@ -3070,10 +3076,10 @@ M00_L01:
        mov       dword ptr [rsp+20],1
        xor       edx,edx
        mov       [rsp+28],edx
-       mov       rdx,23F9B714610
+       mov       rdx,1C61DAD4610
        movzx     r9d,word ptr [rsp+38]
        mov       r8d,1
-       call      qword ptr [7FFE33584E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
+       call      qword ptr [7FFF3A874E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
        mov       rbp,rax
        test      rbp,rbp
        je        near ptr M00_L08
@@ -3082,7 +3088,7 @@ M00_L01:
 M00_L02:
        mov       rcx,rsi
        mov       rdx,rbp
-       call      qword ptr [7FFE3358EA18]; System.Text.Json.JsonSerializer.WriteStringAsObject(System.Object, System.Text.Json.Serialization.Metadata.JsonTypeInfo)
+       call      qword ptr [7FFF3A87EA18]; System.Text.Json.JsonSerializer.WriteStringAsObject(System.Object, System.Text.Json.Serialization.Metadata.JsonTypeInfo)
        mov       [rsp+40],rax
        mov       rsi,[rbx+18]
        mov       rdx,[rsp+40]
@@ -3098,12 +3104,12 @@ M00_L02:
        ret
 M00_L03:
        mov       rcx,rbp
-       call      qword ptr [7FFE3360FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+       call      qword ptr [7FFF3A8FFE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
        jmp       short M00_L02
 M00_L04:
-       mov       rcx,23F9B714610
+       mov       rcx,1C61DAD4610
        mov       rdx,rsi
-       call      qword ptr [7FFE33687378]
+       call      qword ptr [7FFF3A977378]
        int       3
 M00_L05:
        mov       rax,[rcx]
@@ -3116,27 +3122,27 @@ M00_L06:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rdi,rax
-       call      qword ptr [7FFE3354C990]
+       call      qword ptr [7FFF3A83C990]
        mov       r8,rax
        mov       rcx,rdi
        xor       edx,edx
-       call      qword ptr [7FFE33226670]
+       call      qword ptr [7FFF3A516670]
        mov       rcx,rdi
        call      CORINFO_HELP_THROW
 M00_L07:
        mov       ecx,352A
-       mov       rdx,7FFE3357ECA0
+       mov       rdx,7FFF3A86ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       mov       rdx,23F9B714610
+       mov       rdx,1C61DAD4610
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FFE33687540]
+       call      qword ptr [7FFF3A977540]
        int       3
 M00_L08:
-       mov       rcx,23F9B714610
+       mov       rcx,1C61DAD4610
        mov       rdx,rdi
-       call      qword ptr [7FFE33687BD0]
+       call      qword ptr [7FFF3A977BD0]
        int       3
 ; Total bytes of code 521
 ```
@@ -3179,7 +3185,7 @@ M01_L02:
        call      qword ptr [rax]
        mov       rdx,rax
        mov       rcx,offset MT_System.RuntimeType
-       call      qword ptr [7FFE33044360]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       call      qword ptr [7FFF3A334360]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
        test      rax,rax
        je        short M01_L03
        mov       rcx,rax
@@ -3192,7 +3198,7 @@ M01_L02:
 M01_L03:
        mov       rdx,rbx
        mov       rcx,offset MT_System.Reflection.Emit.TypeBuilder
-       call      qword ptr [7FFE33044360]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       call      qword ptr [7FFF3A334360]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
        test      rax,rax
        je        short M01_L01
        mov       rcx,rbx
@@ -3203,7 +3209,7 @@ M01_L03:
        test      eax,eax
        jne       near ptr M01_L00
        mov       rcx,rsi
-       call      qword ptr [7FFE32F94E10]; System.Type.get_IsInterface()
+       call      qword ptr [7FFF3A284E10]; System.Type.get_IsInterface()
        test      eax,eax
        je        short M01_L04
        mov       rcx,rbx
@@ -3212,7 +3218,7 @@ M01_L03:
        pop       rbx
        pop       rsi
        pop       rdi
-       jmp       qword ptr [7FFE32F96148]
+       jmp       qword ptr [7FFF3A286148]
 M01_L04:
        cmp       [rsi],sil
        mov       rcx,rsi
@@ -3220,7 +3226,7 @@ M01_L04:
        test      eax,eax
        je        near ptr M01_L01
        mov       rcx,rsi
-       call      qword ptr [7FFE32F8A5A0]; Precode of System.RuntimeType.GetGenericParameterConstraints()
+       call      qword ptr [7FFF3A27A5A0]; Precode of System.RuntimeType.GetGenericParameterConstraints()
        mov       rsi,rax
        xor       edi,edi
        jmp       short M01_L06
@@ -3260,12 +3266,12 @@ M02_L01:
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       call      qword ptr [7FFE33584FA8]; System.Text.Json.JsonSerializerOptions..ctor()
+       call      qword ptr [7FFF3A874FA8]; System.Text.Json.JsonSerializerOptions..ctor()
        mov       rcx,rsi
        mov       rdx,rbx
-       call      qword ptr [7FFE33585038]; System.Text.Json.JsonSerializerOptions.set_TypeInfoResolver(System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver)
+       call      qword ptr [7FFF3A875038]; System.Text.Json.JsonSerializerOptions.set_TypeInfoResolver(System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver)
        mov       rcx,rsi
-       call      qword ptr [7FFE33585458]
+       call      qword ptr [7FFF3A875458]
        lea       rcx,[rbx+8]
        mov       rdx,rsi
        call      CORINFO_HELP_ASSIGN_REF
@@ -3346,7 +3352,7 @@ M03_L04:
        je        near ptr M04_L10
 M04_L00:
        mov       r14,[r15+8]
-       mov       rcx,1FF0D801218
+       mov       rcx,1858BC05468
        mov       r13,[rcx]
        test      r13,r13
        je        near ptr M04_L14
@@ -3372,7 +3378,7 @@ M04_L02:
        mov       r8,rbx
        mov       r9d,eax
        mov       rcx,offset MT_System.Collections.Concurrent.ConcurrentDictionary`2[[System.Type, System.Private.CoreLib],[System.Text.Json.JsonSerializerOptions+CachingContext+CacheEntry, System.Text.Json]]
-       call      qword ptr [7FFE333FF948]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryGetValueInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, Int32, System.__Canon ByRef)
+       call      qword ptr [7FFF3A6EF948]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryGetValueInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, Int32, System.__Canon ByRef)
        test      eax,eax
        jne       short M04_L03
        mov       edx,[rbp-3C]
@@ -3392,7 +3398,7 @@ M04_L02:
        mov       r8,rbx
        mov       r9,[rbp-50]
        mov       rcx,r14
-       call      qword ptr [7FFE333FFA38]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryAddInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, System.Nullable`1<Int32>, System.__Canon, Boolean, Boolean, System.__Canon ByRef)
+       call      qword ptr [7FFF3A6EFA38]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryAddInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, System.Nullable`1<Int32>, System.__Canon, Boolean, Boolean, System.__Canon ByRef)
 M04_L03:
        mov       r8,[rbp-48]
        xor       ecx,ecx
@@ -3428,16 +3434,16 @@ M04_L07:
        ret
 M04_L08:
        mov       rdx,rbx
-       mov       r11,7FFE32F00B90
+       mov       r11,7FFF3A1F0B90
        call      qword ptr [r11]
        jmp       near ptr M04_L02
 M04_L09:
        mov       rcx,r14
-       call      qword ptr [7FFE3360FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+       call      qword ptr [7FFF3A8FFE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
        jmp       short M04_L06
 M04_L10:
        mov       rcx,rsi
-       call      qword ptr [7FFE3360FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
+       call      qword ptr [7FFF3A8FFEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
        mov       r15,rax
        lea       rcx,[rsi+8]
        mov       rdx,r15
@@ -3445,17 +3451,17 @@ M04_L10:
        jmp       near ptr M04_L00
 M04_L11:
        mov       ecx,0BB4
-       mov       rdx,7FFE3341B2D8
+       mov       rdx,7FFF3A70B2D8
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336866A0]
+       call      qword ptr [7FFF3A9766A0]
        int       3
 M04_L12:
        cmp       byte ptr [rbp+30],0
        je        short M04_L06
        mov       rcx,rsi
        mov       rdx,rbx
-       call      qword ptr [7FFE335854A0]; System.Text.Json.JsonSerializerOptions.GetTypeInfoNoCaching(System.Type)
+       call      qword ptr [7FFF3A8754A0]; System.Text.Json.JsonSerializerOptions.GetTypeInfoNoCaching(System.Type)
        mov       r14,rax
        jmp       near ptr M04_L06
 M04_L13:
@@ -3468,7 +3474,7 @@ M04_L13:
        je        near ptr M04_L07
        mov       rdx,[rsi+20]
        mov       rcx,rbx
-       call      qword ptr [7FFE33687B88]
+       call      qword ptr [7FFF3A977B88]
        int       3
 M04_L14:
        mov       rcx,offset MT_System.Func`3[[System.Type, System.Private.CoreLib],[System.Text.Json.JsonSerializerOptions+CachingContext, System.Text.Json],[System.Text.Json.JsonSerializerOptions+CachingContext+CacheEntry, System.Text.Json]]
@@ -3477,9 +3483,9 @@ M04_L14:
        mov       rcx,r13
        xor       edx,edx
        mov       r8,offset System.Text.Json.JsonSerializerOptions+CachingContext.CreateCacheEntry(System.Type, CachingContext)
-       mov       r9,7FFE32EFD0E0
-       call      qword ptr [7FFE33044258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)
-       mov       rcx,1FF0D801218
+       mov       r9,7FFF3A1ED0E0
+       call      qword ptr [7FFF3A334258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)
+       mov       rcx,1858BC05468
        mov       rdx,r13
        call      CORINFO_HELP_ASSIGN_REF
        jmp       near ptr M04_L01
@@ -3488,18 +3494,18 @@ M04_L15:
        jne       near ptr M04_L04
        mov       rcx,r15
        mov       rdx,rbx
-       call      qword ptr [7FFE336240D8]
+       call      qword ptr [7FFF3A9140D8]
        mov       r14,rax
        jmp       near ptr M04_L05
 M04_L16:
-       call      qword ptr [7FFE33ACEFB8]
+       call      qword ptr [7FFF3ADBEFB8]
        int       3
 M04_L17:
        mov       ecx,1
-       mov       rdx,7FFE3341B2D8
+       mov       rdx,7FFF3A70B2D8
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336866A0]
+       call      qword ptr [7FFF3A9766A0]
        int       3
 ; Total bytes of code 646
 ```
@@ -3525,7 +3531,7 @@ M04_L17:
        mov       rsi,rdx
        mov       rcx,[rsi+0B0]
        lea       rdx,[rbp-30]
-       call      qword ptr [7FFE3376EEE0]; System.Text.Json.Utf8JsonWriterCache.RentWriterAndBuffer(System.Text.Json.JsonSerializerOptions, System.Text.Json.PooledByteBufferWriter ByRef)
+       call      qword ptr [7FFF3AA5EEE0]; System.Text.Json.Utf8JsonWriterCache.RentWriterAndBuffer(System.Text.Json.JsonSerializerOptions, System.Text.Json.PooledByteBufferWriter ByRef)
        mov       [rbp-68],rax
        mov       rcx,offset MT_System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
        cmp       [rsi],rcx
@@ -3538,19 +3544,19 @@ M04_L17:
        je        short M05_L00
        mov       rcx,rax
        mov       rdx,rbx
-       call      qword ptr [7FFE330443F0]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
+       call      qword ptr [7FFF3A3343F0]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
 M05_L00:
        mov       [rbp-38],rbx
        lea       r8,[rbp-38]
        mov       rcx,rsi
        mov       rdx,[rbp-68]
        mov       r9,rbx
-       call      qword ptr [7FFE33624930]; System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[System.__Canon, System.Private.CoreLib]].Serialize(System.Text.Json.Utf8JsonWriter, System.__Canon ByRef, System.Object)
+       call      qword ptr [7FFF3A914930]; System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[System.__Canon, System.Private.CoreLib]].Serialize(System.Text.Json.Utf8JsonWriter, System.__Canon ByRef, System.Object)
        xor       ecx,ecx
        mov       [rbp-38],rcx
        jmp       short M05_L05
 M05_L01:
-       call      qword ptr [7FFE331FE9A0]
+       call      qword ptr [7FFF3A4EE9A0]
        int       3
 M05_L02:
        test      esi,esi
@@ -3601,7 +3607,7 @@ M05_L08:
        mov       [rbp-60],rcx
        mov       [rbp-58],r14d
        lea       rcx,[rbp-60]
-       call      qword ptr [7FFE3358F1B0]; System.Text.Json.JsonReaderHelper.TranscodeHelper(System.ReadOnlySpan`1<Byte>)
+       call      qword ptr [7FFF3A87F1B0]; System.Text.Json.JsonReaderHelper.TranscodeHelper(System.ReadOnlySpan`1<Byte>)
        mov       [rbp-70],rax
        mov       rcx,rsp
        call      M05_L09
@@ -3628,7 +3634,7 @@ M05_L09:
        lea       rbp,[rbp+0A0]
        mov       rsi,[rbp-30]
        mov       rcx,gs:[58]
-       mov       rcx,[rcx+40]
+       mov       rcx,[rcx+30]
        cmp       dword ptr [rcx+190],4
        jl        short M05_L10
        mov       rcx,[rcx+198]
@@ -3673,7 +3679,7 @@ M05_L13:
        cmp       [rcx+8],r15d
        jae       short M05_L15
 M05_L14:
-       call      qword ptr [7FFE331FE9A0]
+       call      qword ptr [7FFF3A4EE9A0]
        int       3
 M05_L15:
        add       rcx,10
@@ -3690,16 +3696,16 @@ M05_L16:
        jmp       short M05_L18
 M05_L17:
        mov       rdx,[rbp-50]
-       call      qword ptr [7FFE330F5BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A3E5BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
 M05_L18:
        xor       ecx,ecx
        mov       [rsi+10],ecx
        mov       rdx,[rsi+8]
        mov       [rsi+8],rcx
-       mov       rcx,1FF09801E78
+       mov       rcx,1858FC01E78
        mov       rcx,[rcx]
        xor       r8d,r8d
-       call      qword ptr [7FFE335CFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
+       call      qword ptr [7FFF3A8BFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
        dec       dword ptr [r14+18]
        add       rsp,28
        pop       rbx
@@ -3747,34 +3753,34 @@ M06_L00:
        mov       rbx,[rcx+0D8]
        test      rbx,rbx
        jne       short M06_L01
-       mov       rcx,7FFE33AE4510
+       mov       rcx,7FFF3ADD4510
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp+10]
        mov       byte ptr [rcx+105],1
-       call      qword ptr [7FFE3360FB70]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
+       call      qword ptr [7FFF3A8FFB70]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
        mov       rcx,[rbp+10]
        mov       byte ptr [rcx+105],2
        jmp       short M06_L03
 M06_L01:
-       mov       rcx,7FFE33AE450C
+       mov       rcx,7FFF3ADD450C
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,rbx
-       call      qword ptr [7FFE33ACEFB8]
+       call      qword ptr [7FFF3ADBEFB8]
        int       3
 M06_L02:
-       call      qword ptr [7FFE3304E040]
+       call      qword ptr [7FFF3A33E040]
        int       3
 M06_L03:
        cmp       byte ptr [rbp-18],0
        je        short M06_L04
-       mov       rcx,7FFE33AE4514
+       mov       rcx,7FFF3ADD4514
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp-20]
        call      System.Threading.Monitor.Exit(System.Object)
 M06_L04:
-       mov       rcx,7FFE33AE4518
+       mov       rcx,7FFF3ADD4518
        call      CORINFO_HELP_COUNTPROFILE32
-       mov       rcx,7FFE33AE451C
+       mov       rcx,7FFF3ADD451C
        call      CORINFO_HELP_COUNTPROFILE32
        nop
        add       rsp,40
@@ -3784,7 +3790,7 @@ M06_L04:
        ret
 M06_L05:
        mov       rcx,rbx
-       call      qword ptr [7FFE3360FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
+       call      qword ptr [7FFF3A8FFEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
        mov       rsi,rax
        lea       rcx,[rbx+8]
        mov       rdx,rsi
@@ -3793,13 +3799,13 @@ M06_L05:
        mov       rax,rcx
        jmp       near ptr M06_L00
 M06_L06:
-       call      qword ptr [7FFE336875B8]
+       call      qword ptr [7FFF3A9775B8]
        int       3
 M06_L07:
-       mov       rcx,7FFE33AE4508
+       mov       rcx,7FFF3ADD4508
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,rbx
-       call      qword ptr [7FFE33ACEFB8]
+       call      qword ptr [7FFF3ADBEFB8]
        int       3
        push      rbp
        push      rsi
@@ -3809,7 +3815,7 @@ M06_L07:
        mov       [rsp+20],rbp
        lea       rbp,[rbp+50]
        mov       rcx,rdx
-       call      qword ptr [7FFE33ACEF88]
+       call      qword ptr [7FFF3ADBEF88]
        mov       rcx,[rbp+10]
        lea       rcx,[rcx+0D8]
        mov       rdx,rax
@@ -3827,12 +3833,12 @@ M06_L07:
        lea       rbp,[rbp+50]
        cmp       byte ptr [rbp-18],0
        je        short M06_L08
-       mov       rcx,7FFE33AE4514
+       mov       rcx,7FFF3ADD4514
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp-20]
        call      System.Threading.Monitor.Exit(System.Object)
 M06_L08:
-       mov       rcx,7FFE33AE4518
+       mov       rcx,7FFF3ADD4518
        call      CORINFO_HELP_COUNTPROFILE32
        nop
        add       rsp,30
@@ -3860,37 +3866,37 @@ System.RuntimeTypeHandle.ContainsGenericVariables(System.RuntimeType)
        mov       [rsp+40],rax
        mov       rbx,rcx
        mov       rsi,[rbx+40]
-       mov       rcx,19CC3C037E0
+       mov       rcx,26836005A30
        mov       rdi,[rcx]
        test      rsi,rsi
        je        short M00_L00
        mov       rcx,rsi
        call      System.Object.GetType()
        mov       rdx,rax
-       mov       rcx,1DD55C9A580
+       mov       rcx,2A8C410A580
        cmp       [rcx],ecx
-       call      qword ptr [7FFE32FBA7B0]; System.RuntimeType.IsAssignableFrom(System.Type)
+       call      qword ptr [7FFF3A28A7B0]; System.RuntimeType.IsAssignableFrom(System.Type)
        test      eax,eax
        je        near ptr M00_L04
 M00_L00:
        mov       rcx,rdi
-       call      qword ptr [7FFE336B6850]; System.Text.Json.Serialization.JsonSerializerContext.get_Options()
+       call      qword ptr [7FFF3A986850]; System.Text.Json.Serialization.JsonSerializerContext.get_Options()
        mov       rbp,rax
        cmp       [rbp],bpl
-       mov       rcx,1DD55C9A580
+       mov       rcx,2A8C410A580
        call      System.RuntimeTypeHandle.GetCorElementType(System.RuntimeType)
        cmp       eax,0F
        je        near ptr M00_L07
-       mov       rcx,1DD55C9A580
+       mov       rcx,2A8C410A580
        call      System.RuntimeTypeHandle.GetCorElementType(System.RuntimeType)
        cmp       eax,10
        je        near ptr M00_L07
-       mov       rcx,1DD55C9A580
+       mov       rcx,2A8C410A580
        call      System.RuntimeTypeHandle.IsByRefLike(System.RuntimeType)
        test      eax,eax
        jne       near ptr M00_L07
-       mov       rcx,1DD55C9A580
-       call      qword ptr [7FFE32FC60B8]; System.Type.GetRootElementType()
+       mov       rcx,2A8C410A580
+       call      qword ptr [7FFF3A2960B8]; System.Type.GetRootElementType()
        mov       rcx,rax
        mov       rax,offset MT_System.RuntimeType
        cmp       [rcx],rax
@@ -3907,10 +3913,10 @@ M00_L01:
        mov       dword ptr [rsp+20],1
        xor       edx,edx
        mov       [rsp+28],edx
-       mov       rdx,1DD55C9A580
+       mov       rdx,2A8C410A580
        movzx     r9d,word ptr [rsp+38]
        mov       r8d,1
-       call      qword ptr [7FFE335B4E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
+       call      qword ptr [7FFF3A884E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
        mov       rbp,rax
        test      rbp,rbp
        je        near ptr M00_L08
@@ -3919,7 +3925,7 @@ M00_L01:
 M00_L02:
        mov       rcx,rsi
        mov       rdx,rbp
-       call      qword ptr [7FFE335BEA18]; System.Text.Json.JsonSerializer.WriteStringAsObject(System.Object, System.Text.Json.Serialization.Metadata.JsonTypeInfo)
+       call      qword ptr [7FFF3A88EA18]; System.Text.Json.JsonSerializer.WriteStringAsObject(System.Object, System.Text.Json.Serialization.Metadata.JsonTypeInfo)
        mov       [rsp+40],rax
        mov       rsi,[rbx+18]
        mov       rdx,[rsp+40]
@@ -3935,12 +3941,12 @@ M00_L02:
        ret
 M00_L03:
        mov       rcx,rbp
-       call      qword ptr [7FFE3363FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+       call      qword ptr [7FFF3A90FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
        jmp       short M00_L02
 M00_L04:
-       mov       rcx,1DD55C9A580
+       mov       rcx,2A8C410A580
        mov       rdx,rsi
-       call      qword ptr [7FFE336B7378]
+       call      qword ptr [7FFF3A987378]
        int       3
 M00_L05:
        mov       rax,[rcx]
@@ -3953,27 +3959,27 @@ M00_L06:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rdi,rax
-       call      qword ptr [7FFE3357C990]
+       call      qword ptr [7FFF3A84C990]
        mov       r8,rax
        mov       rcx,rdi
        xor       edx,edx
-       call      qword ptr [7FFE33256670]
+       call      qword ptr [7FFF3A526670]
        mov       rcx,rdi
        call      CORINFO_HELP_THROW
 M00_L07:
        mov       ecx,352A
-       mov       rdx,7FFE335AECA0
+       mov       rdx,7FFF3A87EA90
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       mov       rdx,1DD55C9A580
+       mov       rdx,2A8C410A580
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FFE336B7540]
+       call      qword ptr [7FFF3A987540]
        int       3
 M00_L08:
-       mov       rcx,1DD55C9A580
+       mov       rcx,2A8C410A580
        mov       rdx,rdi
-       call      qword ptr [7FFE336B7BD0]
+       call      qword ptr [7FFF3A987BD0]
        int       3
 ; Total bytes of code 518
 ```
@@ -4016,7 +4022,7 @@ M01_L02:
        call      qword ptr [rax]
        mov       rdx,rax
        mov       rcx,offset MT_System.RuntimeType
-       call      qword ptr [7FFE33074360]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       call      qword ptr [7FFF3A344360]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
        test      rax,rax
        je        short M01_L03
        mov       rcx,rax
@@ -4029,7 +4035,7 @@ M01_L02:
 M01_L03:
        mov       rdx,rbx
        mov       rcx,offset MT_System.Reflection.Emit.TypeBuilder
-       call      qword ptr [7FFE33074360]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
+       call      qword ptr [7FFF3A344360]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfClass(Void*, System.Object)
        test      rax,rax
        je        short M01_L01
        mov       rcx,rbx
@@ -4040,7 +4046,7 @@ M01_L03:
        test      eax,eax
        jne       near ptr M01_L00
        mov       rcx,rsi
-       call      qword ptr [7FFE32FC4E10]; System.Type.get_IsInterface()
+       call      qword ptr [7FFF3A294E10]; System.Type.get_IsInterface()
        test      eax,eax
        je        short M01_L04
        mov       rcx,rbx
@@ -4049,7 +4055,7 @@ M01_L03:
        pop       rbx
        pop       rsi
        pop       rdi
-       jmp       qword ptr [7FFE32FC6148]
+       jmp       qword ptr [7FFF3A296148]
 M01_L04:
        cmp       [rsi],sil
        mov       rcx,rsi
@@ -4057,7 +4063,7 @@ M01_L04:
        test      eax,eax
        je        near ptr M01_L01
        mov       rcx,rsi
-       call      qword ptr [7FFE32FBA5A0]; Precode of System.RuntimeType.GetGenericParameterConstraints()
+       call      qword ptr [7FFF3A28A5A0]; Precode of System.RuntimeType.GetGenericParameterConstraints()
        mov       rsi,rax
        xor       edi,edi
        jmp       short M01_L06
@@ -4097,12 +4103,12 @@ M02_L01:
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       call      qword ptr [7FFE335B4FA8]; System.Text.Json.JsonSerializerOptions..ctor()
+       call      qword ptr [7FFF3A884FA8]; System.Text.Json.JsonSerializerOptions..ctor()
        mov       rcx,rsi
        mov       rdx,rbx
-       call      qword ptr [7FFE335B5038]; System.Text.Json.JsonSerializerOptions.set_TypeInfoResolver(System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver)
+       call      qword ptr [7FFF3A885038]; System.Text.Json.JsonSerializerOptions.set_TypeInfoResolver(System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver)
        mov       rcx,rsi
-       call      qword ptr [7FFE335B5458]
+       call      qword ptr [7FFF3A885458]
        lea       rcx,[rbx+8]
        mov       rdx,rsi
        call      CORINFO_HELP_ASSIGN_REF
@@ -4167,93 +4173,97 @@ M03_L04:
        push      rdi
        push      rsi
        push      rbx
-       sub       rsp,58
-       lea       rbp,[rsp+90]
+       sub       rsp,68
+       lea       rbp,[rsp+0A0]
        xor       eax,eax
        mov       [rbp-48],rax
        mov       [rbp+28],r9
        mov       rsi,rcx
        mov       rbx,rdx
        mov       edi,r8d
-       xor       r14d,r14d
+       mov       r14d,[rbp+38]
+       xor       r15d,r15d
        cmp       byte ptr [rsi+8C],0
        je        near ptr M04_L12
-       mov       r15,[rsi+8]
-       test      r15,r15
+       mov       r13,[rsi+8]
+       test      r13,r13
        je        near ptr M04_L10
 M04_L00:
-       mov       r14,[r15+8]
-       mov       rcx,19CCBC01218
-       mov       r13,[rcx]
-       test      r13,r13
+       mov       r15,[r13+8]
+       mov       rcx,26832001490
+       mov       r12,[rcx]
+       test      r12,r12
        je        near ptr M04_L14
 M04_L01:
-       cmp       [r14],r14b
+       cmp       [r15],r15b
        test      rbx,rbx
        je        near ptr M04_L17
-       test      r13,r13
+       test      r12,r12
        je        near ptr M04_L11
-       mov       r12,[r14+8]
-       mov       rcx,[r12+8]
-       cmp       byte ptr [r14+15],0
+       mov       rax,[r15+8]
+       mov       [rbp-58],rax
+       mov       rcx,[rax+8]
+       cmp       byte ptr [r15+15],0
        je        near ptr M04_L08
        mov       rcx,rbx
-       mov       rax,[rbx]
-       mov       rax,[rax+40]
-       call      qword ptr [rax+18]
+       mov       rdx,[rbx]
+       mov       rdx,[rdx+40]
+       call      qword ptr [rdx+18]
 M04_L02:
        mov       [rbp-3C],eax
        lea       rdx,[rbp-48]
        mov       [rsp+20],rdx
-       mov       rdx,r12
+       mov       rdx,[rbp-58]
        mov       r8,rbx
        mov       r9d,eax
        mov       rcx,offset MT_System.Collections.Concurrent.ConcurrentDictionary`2[[System.Type, System.Private.CoreLib],[System.Text.Json.JsonSerializerOptions+CachingContext+CacheEntry, System.Text.Json]]
-       call      qword ptr [7FFE3342F948]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryGetValueInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, Int32, System.__Canon ByRef)
+       call      qword ptr [7FFF3A6FF948]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryGetValueInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, Int32, System.__Canon ByRef)
        test      eax,eax
        jne       short M04_L03
        mov       edx,[rbp-3C]
+       mov       rax,[rbp-58]
+       mov       [rbp-60],rax
        mov       byte ptr [rbp-50],1
        mov       [rbp-4C],edx
        mov       rdx,rbx
-       mov       r8,r15
-       mov       rcx,[r13+8]
-       call      qword ptr [r13+18]
+       mov       r8,r13
+       mov       rcx,[r12+8]
+       call      qword ptr [r12+18]
        xor       edx,edx
        mov       [rsp+28],edx
        mov       dword ptr [rsp+30],1
        lea       rdx,[rbp-48]
        mov       [rsp+38],rdx
        mov       [rsp+20],rax
-       mov       rdx,r12
+       mov       rdx,[rbp-60]
        mov       r8,rbx
        mov       r9,[rbp-50]
-       mov       rcx,r14
-       call      qword ptr [7FFE3342FA38]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryAddInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, System.Nullable`1<Int32>, System.__Canon, Boolean, Boolean, System.__Canon ByRef)
+       mov       rcx,r15
+       call      qword ptr [7FFF3A6FFA38]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryAddInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, System.Nullable`1<Int32>, System.__Canon, Boolean, Boolean, System.__Canon ByRef)
 M04_L03:
        mov       r8,[rbp-48]
        xor       ecx,ecx
        mov       [rbp-48],rcx
-       cmp       byte ptr [rbp+38],0
+       test      r14b,r14b
        jne       near ptr M04_L15
 M04_L04:
        mov       rcx,[r8+10]
        test      rcx,rcx
        jne       near ptr M04_L16
-       mov       r14,[r8+8]
+       mov       r15,[r8+8]
 M04_L05:
        test      dil,dil
        je        short M04_L06
-       test      r14,r14
+       test      r15,r15
        je        short M04_L06
-       cmp       byte ptr [r14+105],2
+       cmp       byte ptr [r15+105],2
        jne       short M04_L09
 M04_L06:
-       test      r14,r14
+       test      r15,r15
        je        near ptr M04_L13
 M04_L07:
-       mov       rax,r14
-       add       rsp,58
+       mov       rax,r15
+       add       rsp,68
        pop       rbx
        pop       rsi
        pop       rdi
@@ -4265,35 +4275,35 @@ M04_L07:
        ret
 M04_L08:
        mov       rdx,rbx
-       mov       r11,7FFE32F30C50
+       mov       r11,7FFF3A200B90
        call      qword ptr [r11]
        jmp       near ptr M04_L02
 M04_L09:
-       mov       rcx,r14
-       call      qword ptr [7FFE3363FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
+       mov       rcx,r15
+       call      qword ptr [7FFF3A90FE88]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.<EnsureConfigured>g__ConfigureSynchronized|172_0()
        jmp       short M04_L06
 M04_L10:
        mov       rcx,rsi
-       call      qword ptr [7FFE3363FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
-       mov       r15,rax
+       call      qword ptr [7FFF3A90FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
+       mov       r13,rax
        lea       rcx,[rsi+8]
-       mov       rdx,r15
+       mov       rdx,r13
        call      CORINFO_HELP_ASSIGN_REF
        jmp       near ptr M04_L00
 M04_L11:
        mov       ecx,0BB4
-       mov       rdx,7FFE3344B2D8
+       mov       rdx,7FFF3A71AE78
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336B66A0]
+       call      qword ptr [7FFF3A9866A0]
        int       3
 M04_L12:
        cmp       byte ptr [rbp+30],0
        je        short M04_L06
        mov       rcx,rsi
        mov       rdx,rbx
-       call      qword ptr [7FFE335B54A0]; System.Text.Json.JsonSerializerOptions.GetTypeInfoNoCaching(System.Type)
-       mov       r14,rax
+       call      qword ptr [7FFF3A8854A0]; System.Text.Json.JsonSerializerOptions.GetTypeInfoNoCaching(System.Type)
+       mov       r15,rax
        jmp       near ptr M04_L06
 M04_L13:
        movzx     edx,byte ptr [rbp+28]
@@ -4305,40 +4315,40 @@ M04_L13:
        je        near ptr M04_L07
        mov       rdx,[rsi+20]
        mov       rcx,rbx
-       call      qword ptr [7FFE336B7B88]
+       call      qword ptr [7FFF3A987B88]
        int       3
 M04_L14:
        mov       rcx,offset MT_System.Func`3[[System.Type, System.Private.CoreLib],[System.Text.Json.JsonSerializerOptions+CachingContext, System.Text.Json],[System.Text.Json.JsonSerializerOptions+CachingContext+CacheEntry, System.Text.Json]]
        call      CORINFO_HELP_NEWSFAST
-       mov       r13,rax
-       mov       rcx,r13
+       mov       r12,rax
+       mov       rcx,r12
        xor       edx,edx
        mov       r8,offset System.Text.Json.JsonSerializerOptions+CachingContext.CreateCacheEntry(System.Type, CachingContext)
-       mov       r9,7FFE32F2D0E0
-       call      qword ptr [7FFE33074258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)
-       mov       rcx,19CCBC01218
-       mov       rdx,r13
+       mov       r9,7FFF3A1FD0E0
+       call      qword ptr [7FFF3A344258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)
+       mov       rcx,26832001490
+       mov       rdx,r12
        call      CORINFO_HELP_ASSIGN_REF
        jmp       near ptr M04_L01
 M04_L15:
        cmp       byte ptr [r8+20],0
        jne       near ptr M04_L04
-       mov       rcx,r15
+       mov       rcx,r13
        mov       rdx,rbx
-       call      qword ptr [7FFE336540D8]
-       mov       r14,rax
+       call      qword ptr [7FFF3A9240D8]
+       mov       r15,rax
        jmp       near ptr M04_L05
 M04_L16:
-       call      qword ptr [7FFE33AFE010]
+       call      qword ptr [7FFF3ADCE010]
        int       3
 M04_L17:
        mov       ecx,1
-       mov       rdx,7FFE3344B2D8
+       mov       rdx,7FFF3A71AE78
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336B66A0]
+       call      qword ptr [7FFF3A9866A0]
        int       3
-; Total bytes of code 646
+; Total bytes of code 664
 ```
 ```assembly
 ; System.Text.Json.JsonSerializer.WriteStringAsObject(System.Object, System.Text.Json.Serialization.Metadata.JsonTypeInfo)
@@ -4360,7 +4370,7 @@ M04_L17:
        mov       rsi,rdx
        mov       rcx,[rsi+0B0]
        lea       rdx,[rbp-20]
-       call      qword ptr [7FFE3379EBF8]; System.Text.Json.Utf8JsonWriterCache.RentWriterAndBuffer(System.Text.Json.JsonSerializerOptions, System.Text.Json.PooledByteBufferWriter ByRef)
+       call      qword ptr [7FFF3AA6ED78]; System.Text.Json.Utf8JsonWriterCache.RentWriterAndBuffer(System.Text.Json.JsonSerializerOptions, System.Text.Json.PooledByteBufferWriter ByRef)
        mov       rdx,rax
        mov       [rbp-58],rdx
        mov       r8,offset MT_System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
@@ -4377,7 +4387,7 @@ M05_L00:
        mov       [rbp-28],rbx
        lea       r8,[rbp-28]
        mov       r9,rbx
-       call      qword ptr [7FFE33654930]; System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[System.__Canon, System.Private.CoreLib]].Serialize(System.Text.Json.Utf8JsonWriter, System.__Canon ByRef, System.Object)
+       call      qword ptr [7FFF3A924930]; System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[System.__Canon, System.Private.CoreLib]].Serialize(System.Text.Json.Utf8JsonWriter, System.__Canon ByRef, System.Object)
        xor       edx,edx
        mov       [rbp-28],rdx
        jmp       short M05_L02
@@ -4413,7 +4423,7 @@ M05_L05:
        mov       rcx,rbx
        jmp       short M05_L10
 M05_L06:
-       call      qword ptr [7FFE3322E9A0]
+       call      qword ptr [7FFF3A4FE9A0]
        int       3
 M05_L07:
        test      edi,edi
@@ -4424,7 +4434,7 @@ M05_L07:
 M05_L08:
        mov       rcx,rax
        mov       rdx,rbx
-       call      qword ptr [7FFE330743F0]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
+       call      qword ptr [7FFF3A3443F0]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
        int       3
 M05_L09:
        lea       rdx,[rbp-38]
@@ -4438,7 +4448,7 @@ M05_L10:
        mov       [rbp-50],rcx
        mov       [rbp-48],esi
        lea       rcx,[rbp-50]
-       call      qword ptr [7FFE335BF1B0]; System.Text.Json.JsonReaderHelper.TranscodeHelper(System.ReadOnlySpan`1<Byte>)
+       call      qword ptr [7FFF3A88F1B0]; System.Text.Json.JsonReaderHelper.TranscodeHelper(System.ReadOnlySpan`1<Byte>)
        mov       [rbp-60],rax
        mov       rcx,rsp
        call      M05_L11
@@ -4506,7 +4516,7 @@ M05_L15:
        cmp       [rcx+8],edi
        jae       short M05_L17
 M05_L16:
-       call      qword ptr [7FFE3322E9A0]
+       call      qword ptr [7FFF3A4FE9A0]
        int       3
 M05_L17:
        add       rcx,10
@@ -4523,16 +4533,16 @@ M05_L18:
        jmp       short M05_L20
 M05_L19:
        mov       rdx,[rbp-40]
-       call      qword ptr [7FFE33125BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A3F5BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
 M05_L20:
        xor       ecx,ecx
        mov       [rbx+10],ecx
        mov       rdx,[rbx+8]
        mov       [rbx+8],rcx
-       mov       rcx,19CC7C01E78
+       mov       rcx,26836001E78
        mov       rcx,[rcx]
        xor       r8d,r8d
-       call      qword ptr [7FFE335FFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
+       call      qword ptr [7FFF3A8CFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
        dec       dword ptr [rsi+18]
        add       rsp,28
        pop       rbx
@@ -4578,34 +4588,34 @@ M06_L00:
        mov       rbx,[rcx+0D8]
        test      rbx,rbx
        jne       short M06_L01
-       mov       rcx,7FFE33B13568
+       mov       rcx,7FFF3ADE3568
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp+10]
        mov       byte ptr [rcx+105],1
-       call      qword ptr [7FFE3363FB70]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
+       call      qword ptr [7FFF3A90FB70]; System.Text.Json.Serialization.Metadata.JsonTypeInfo.Configure()
        mov       rcx,[rbp+10]
        mov       byte ptr [rcx+105],2
        jmp       short M06_L03
 M06_L01:
-       mov       rcx,7FFE33B13564
+       mov       rcx,7FFF3ADE3564
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,rbx
-       call      qword ptr [7FFE33AFE010]
+       call      qword ptr [7FFF3ADCE010]
        int       3
 M06_L02:
-       call      qword ptr [7FFE3307E040]
+       call      qword ptr [7FFF3A34E040]
        int       3
 M06_L03:
        cmp       byte ptr [rbp-18],0
        je        short M06_L04
-       mov       rcx,7FFE33B1356C
+       mov       rcx,7FFF3ADE356C
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp-20]
        call      System.Threading.Monitor.Exit(System.Object)
 M06_L04:
-       mov       rcx,7FFE33B13570
+       mov       rcx,7FFF3ADE3570
        call      CORINFO_HELP_COUNTPROFILE32
-       mov       rcx,7FFE33B13574
+       mov       rcx,7FFF3ADE3574
        call      CORINFO_HELP_COUNTPROFILE32
        nop
        add       rsp,40
@@ -4615,7 +4625,7 @@ M06_L04:
        ret
 M06_L05:
        mov       rcx,rbx
-       call      qword ptr [7FFE3363FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
+       call      qword ptr [7FFF3A90FEB8]; System.Text.Json.JsonSerializerOptions+TrackedCachingContexts.GetOrCreate(System.Text.Json.JsonSerializerOptions)
        mov       rsi,rax
        lea       rcx,[rbx+8]
        mov       rdx,rsi
@@ -4624,13 +4634,13 @@ M06_L05:
        mov       rax,rcx
        jmp       near ptr M06_L00
 M06_L06:
-       call      qword ptr [7FFE336B75B8]
+       call      qword ptr [7FFF3A9875B8]
        int       3
 M06_L07:
-       mov       rcx,7FFE33B13560
+       mov       rcx,7FFF3ADE3560
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,rbx
-       call      qword ptr [7FFE33AFE010]
+       call      qword ptr [7FFF3ADCE010]
        int       3
        push      rbp
        push      rsi
@@ -4640,7 +4650,7 @@ M06_L07:
        mov       [rsp+20],rbp
        lea       rbp,[rbp+50]
        mov       rcx,rdx
-       call      qword ptr [7FFE33AFDFE0]
+       call      qword ptr [7FFF3ADCDFE0]
        mov       rcx,[rbp+10]
        lea       rcx,[rcx+0D8]
        mov       rdx,rax
@@ -4658,12 +4668,12 @@ M06_L07:
        lea       rbp,[rbp+50]
        cmp       byte ptr [rbp-18],0
        je        short M06_L08
-       mov       rcx,7FFE33B1356C
+       mov       rcx,7FFF3ADE356C
        call      CORINFO_HELP_COUNTPROFILE32
        mov       rcx,[rbp-20]
        call      System.Threading.Monitor.Exit(System.Object)
 M06_L08:
-       mov       rcx,7FFE33B13570
+       mov       rcx,7FFF3ADE3570
        call      CORINFO_HELP_COUNTPROFILE32
        nop
        add       rsp,30
@@ -4693,22 +4703,22 @@ System.RuntimeTypeHandle.ContainsGenericVariables(System.RuntimeType)
        test      rax,rax
        je        near ptr M00_L03
        mov       [rsp+30],rax
-       call      qword ptr [7FFE33594F90]; System.Text.Json.JsonSerializerOptions.get_Default()
+       call      qword ptr [7FFF3A884F90]; System.Text.Json.JsonSerializerOptions.get_Default()
        mov       rsi,rax
        cmp       byte ptr [rsi+8D],0
        jne       short M00_L00
        mov       rcx,rsi
-       call      qword ptr [7FFE33595488]; System.Text.Json.JsonSerializerOptions.ConfigureForJsonSerializer()
+       call      qword ptr [7FFF3A885488]; System.Text.Json.JsonSerializerOptions.ConfigureForJsonSerializer()
 M00_L00:
        mov       rcx,rsi
-       call      qword ptr [7FFE33594ED0]; System.Text.Json.JsonSerializerOptions.get_ObjectTypeInfo()
+       call      qword ptr [7FFF3A884ED0]; System.Text.Json.JsonSerializerOptions.get_ObjectTypeInfo()
        mov       r8,rax
        test      r8,r8
        jne       short M00_L02
 M00_L01:
        lea       rdx,[rsp+30]
        mov       rcx,offset MD_System.Text.Json.JsonSerializer.WriteString[[System.Object, System.Private.CoreLib]](System.Object ByRef, System.Text.Json.Serialization.Metadata.JsonTypeInfo`1<System.Object>)
-       call      qword ptr [7FFE3377ED48]; System.Text.Json.JsonSerializer.WriteString[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef, System.Text.Json.Serialization.Metadata.JsonTypeInfo`1<System.__Canon>)
+       call      qword ptr [7FFF3AA6ED48]; System.Text.Json.JsonSerializer.WriteString[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef, System.Text.Json.Serialization.Metadata.JsonTypeInfo`1<System.__Canon>)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -4725,36 +4735,36 @@ M00_L02:
        cmp       [r8],rcx
        je        short M00_L01
        mov       rdx,rax
-       call      qword ptr [7FFE330543F0]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
+       call      qword ptr [7FFF3A3443F0]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
        int       3
 M00_L03:
-       call      qword ptr [7FFE3359D590]
+       call      qword ptr [7FFF3A88D590]
        mov       ecx,0E0C
-       mov       rdx,7FFE33337DB0
+       mov       rdx,7FFF3A627DC8
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,100A
-       mov       rdx,7FFE33337DB0
+       mov       rdx,7FFF3A627DC8
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFE33056B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFF3A346B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,9EA
-       mov       rdx,7FFE33337DB0
+       mov       rdx,7FFF3A627DC8
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFE33056B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFF3A346B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FFE3359D380]
+       call      qword ptr [7FFF3A88D380]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FFE33236670]
+       call      qword ptr [7FFF3A526670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -4763,7 +4773,7 @@ M00_L03:
 ```assembly
 ; System.Text.Json.JsonSerializerOptions.get_Default()
        sub       rsp,28
-       mov       rax,292900071E0
+       mov       rax,13A7B805460
        mov       rax,[rax]
        test      rax,rax
        je        short M01_L01
@@ -4771,7 +4781,7 @@ M01_L00:
        add       rsp,28
        ret
 M01_L01:
-       call      qword ptr [7FFE33595530]; System.Text.Json.JsonSerializerOptions.GetOrCreateDefaultOptionsInstance()
+       call      qword ptr [7FFF3A885530]; System.Text.Json.JsonSerializerOptions.GetOrCreateDefaultOptionsInstance()
        jmp       short M01_L00
 ; Total bytes of code 35
 ```
@@ -4783,17 +4793,17 @@ M01_L01:
        push      rbx
        sub       rsp,28
        mov       rbx,rcx
-       call      qword ptr [7FFE990C5068]
+       call      qword ptr [7FFFFD345068]
        cmp       byte ptr [rax+18F],0
        je        near ptr M02_L03
-       call      qword ptr [7FFE990C9F80]; Precode of System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.RootDefaultInstance()
+       call      qword ptr [7FFFFD349F80]; Precode of System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.RootDefaultInstance()
        mov       rsi,rax
        mov       rcx,[rbx+20]
        test      rcx,rcx
        jne       short M02_L01
        lea       rcx,[rbx+20]
        mov       rdx,rsi
-       call      qword ptr [7FFE990C4FC8]; CORINFO_HELP_ASSIGN_REF
+       call      qword ptr [7FFFFD344FC8]; CORINFO_HELP_ASSIGN_REF
 M02_L00:
        mov       byte ptr [rbx+8C],1
        mov       byte ptr [rbx+8D],1
@@ -4804,27 +4814,27 @@ M02_L00:
        pop       rdi
        ret
 M02_L01:
-       call      qword ptr [7FFE990C69F0]
+       call      qword ptr [7FFFFD3469F0]
        mov       rdi,rax
        test      rdi,rdi
        je        short M02_L00
-       call      qword ptr [7FFE990C5060]
+       call      qword ptr [7FFFFD345060]
        cmp       byte ptr [rax+18E],0
        je        short M02_L00
        mov       ecx,2
-       call      qword ptr [7FFE990C6948]
+       call      qword ptr [7FFFFD346948]
        mov       rbp,rax
        lea       rcx,[rbp+10]
        mov       rdx,rdi
-       call      qword ptr [7FFE990C4FC8]; CORINFO_HELP_ASSIGN_REF
+       call      qword ptr [7FFFFD344FC8]; CORINFO_HELP_ASSIGN_REF
        lea       rcx,[rbp+18]
        mov       rdx,rsi
-       call      qword ptr [7FFE990C4FC8]; CORINFO_HELP_ASSIGN_REF
+       call      qword ptr [7FFFFD344FC8]; CORINFO_HELP_ASSIGN_REF
        mov       rcx,rbp
-       call      qword ptr [7FFE990C9FA0]
+       call      qword ptr [7FFFFD349FA0]
        lea       rcx,[rbx+58]
        mov       rdx,rax
-       call      qword ptr [7FFE990C4FC8]; CORINFO_HELP_ASSIGN_REF
+       call      qword ptr [7FFFFD344FC8]; CORINFO_HELP_ASSIGN_REF
        mov       rsi,[rbx+8]
        test      rsi,rsi
        je        short M02_L00
@@ -4835,11 +4845,11 @@ M02_L01:
        jne       short M02_L02
        mov       rcx,[rsi+10]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE990C9198]; Precode of System.Text.Json.JsonSerializerOptions.ConfigureForJsonSerializer()
+       call      qword ptr [7FFFFD349198]; Precode of System.Text.Json.JsonSerializerOptions.ConfigureForJsonSerializer()
        jmp       near ptr M02_L00
 M02_L02:
        mov       rcx,[rsi+8]
-       lea       r11,[7FFE990C4820]
+       lea       r11,[7FFFFD344820]
        cmp       [rcx],ecx
        call      qword ptr [r11]
        jmp       near ptr M02_L00
@@ -4847,11 +4857,11 @@ M02_L03:
        mov       rcx,[rbx+20]
        test      rcx,rcx
        je        short M02_L04
-       call      qword ptr [7FFE990C6A08]
+       call      qword ptr [7FFFFD346A08]
        test      rax,rax
        je        near ptr M02_L00
 M02_L04:
-       call      qword ptr [7FFE990C84A0]
+       call      qword ptr [7FFFFD3484A0]
        int       3
 ; Total bytes of code 272
 ```
@@ -4877,9 +4887,9 @@ M03_L01:
        mov       [rsp+28],ecx
        mov       rcx,rbx
        movzx     r9d,word ptr [rsp+30]
-       mov       rdx,2D321DC2D10
+       mov       rdx,17B0D652D10
        mov       r8d,1
-       call      qword ptr [7FFE33594E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
+       call      qword ptr [7FFF3A884E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
        mov       rsi,rax
        lea       rcx,[rbx+18]
        mov       rdx,rsi
@@ -4908,13 +4918,13 @@ M03_L01:
        mov       rbx,r8
        mov       rcx,[rbx+0B0]
        lea       rdx,[rbp-20]
-       call      qword ptr [7FFE3377ED78]; System.Text.Json.Utf8JsonWriterCache.RentWriterAndBuffer(System.Text.Json.JsonSerializerOptions, System.Text.Json.PooledByteBufferWriter ByRef)
+       call      qword ptr [7FFF3AA6ED78]; System.Text.Json.Utf8JsonWriterCache.RentWriterAndBuffer(System.Text.Json.JsonSerializerOptions, System.Text.Json.PooledByteBufferWriter ByRef)
        mov       rdx,rax
        mov       [rbp-50],rdx
        mov       rcx,rbx
        mov       r8,rsi
        xor       r9d,r9d
-       call      qword ptr [7FFE33634930]; System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[System.__Canon, System.Private.CoreLib]].Serialize(System.Text.Json.Utf8JsonWriter, System.__Canon ByRef, System.Object)
+       call      qword ptr [7FFF3A924930]; System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[System.__Canon, System.Private.CoreLib]].Serialize(System.Text.Json.Utf8JsonWriter, System.__Canon ByRef, System.Object)
        mov       rdx,[rbp-20]
        mov       rcx,[rdx+8]
        mov       ebx,[rdx+10]
@@ -4940,7 +4950,7 @@ M04_L02:
        mov       rcx,rsi
        jmp       short M04_L06
 M04_L03:
-       call      qword ptr [7FFE3320E9A0]
+       call      qword ptr [7FFF3A4FE9A0]
        int       3
 M04_L04:
        test      ebx,ebx
@@ -4960,7 +4970,7 @@ M04_L06:
        mov       [rbp-48],rcx
        mov       [rbp-40],edi
        lea       rcx,[rbp-48]
-       call      qword ptr [7FFE3359F1B0]; System.Text.Json.JsonReaderHelper.TranscodeHelper(System.ReadOnlySpan`1<Byte>)
+       call      qword ptr [7FFF3A88F1B0]; System.Text.Json.JsonReaderHelper.TranscodeHelper(System.ReadOnlySpan`1<Byte>)
        mov       [rbp-58],rax
        mov       rcx,rsp
        call      M04_L07
@@ -4983,7 +4993,7 @@ M04_L07:
        lea       rbp,[rbp+80]
        mov       rbx,[rbp-20]
        mov       rcx,gs:[58]
-       mov       rcx,[rcx+40]
+       mov       rcx,[rcx+38]
        cmp       dword ptr [rcx+190],4
        jl        short M04_L08
        mov       rcx,[rcx+198]
@@ -5028,7 +5038,7 @@ M04_L11:
        cmp       [rcx+8],edi
        jae       short M04_L13
 M04_L12:
-       call      qword ptr [7FFE3320E9A0]
+       call      qword ptr [7FFF3A4FE9A0]
        int       3
 M04_L13:
        add       rcx,10
@@ -5045,16 +5055,16 @@ M04_L14:
        jmp       short M04_L16
 M04_L15:
        mov       rdx,[rbp-38]
-       call      qword ptr [7FFE33105BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A3F5BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
 M04_L16:
        xor       ecx,ecx
        mov       [rbx+10],ecx
        mov       rdx,[rbx+8]
        mov       [rbx+8],rcx
-       mov       rcx,29290001E78
+       mov       rcx,13A7F801E78
        mov       rcx,[rcx]
        xor       r8d,r8d
-       call      qword ptr [7FFE335DFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
+       call      qword ptr [7FFF3A8CFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
        dec       dword ptr [rsi+18]
        add       rsp,28
        pop       rbx
@@ -5093,7 +5103,7 @@ M05_L01:
        mov       rax,rdx
        ret
 M05_L02:
-       jmp       qword ptr [7FFE330543A8]
+       jmp       qword ptr [7FFF3A3443A8]
 ; Total bytes of code 71
 ```
 ```assembly
@@ -5128,13 +5138,13 @@ M05_L02:
        lea       rdx,[rsi+0C]
        mov       r8d,edi
        add       r8,r8
-       call      qword ptr [7FFE33105B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        movsxd    r8,r14d
        lea       rcx,[r15+r8*2+0C]
        lea       rdx,[rbx+0C]
        mov       r8d,ebp
        add       r8,r8
-       call      qword ptr [7FFE33105B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,r15
        add       rsp,28
        pop       rbx
@@ -5155,7 +5165,7 @@ M06_L00:
        pop       r15
        ret
 M06_L01:
-       call      qword ptr [7FFE3320EF10]
+       call      qword ptr [7FFF3A4FEF10]
        int       3
 M06_L02:
        test      rbx,rbx
@@ -5167,7 +5177,7 @@ M06_L02:
        test      eax,eax
        je        short M06_L04
 M06_L03:
-       mov       rax,2D321DC0008
+       mov       rax,17B0D650008
        add       rsp,28
        pop       rbx
        pop       rbp
@@ -5203,22 +5213,22 @@ M06_L04:
        test      rax,rax
        je        near ptr M00_L03
        mov       [rsp+30],rax
-       call      qword ptr [7FFE335A4F90]; System.Text.Json.JsonSerializerOptions.get_Default()
+       call      qword ptr [7FFF3A884F90]; System.Text.Json.JsonSerializerOptions.get_Default()
        mov       rsi,rax
        cmp       byte ptr [rsi+8D],0
        jne       short M00_L00
        mov       rcx,rsi
-       call      qword ptr [7FFE335A5488]; System.Text.Json.JsonSerializerOptions.ConfigureForJsonSerializer()
+       call      qword ptr [7FFF3A885488]; System.Text.Json.JsonSerializerOptions.ConfigureForJsonSerializer()
 M00_L00:
        mov       rcx,rsi
-       call      qword ptr [7FFE335A4ED0]; System.Text.Json.JsonSerializerOptions.get_ObjectTypeInfo()
+       call      qword ptr [7FFF3A884ED0]; System.Text.Json.JsonSerializerOptions.get_ObjectTypeInfo()
        mov       r8,rax
        test      r8,r8
        jne       short M00_L02
 M00_L01:
        lea       rdx,[rsp+30]
        mov       rcx,offset MD_System.Text.Json.JsonSerializer.WriteString[[System.Object, System.Private.CoreLib]](System.Object ByRef, System.Text.Json.Serialization.Metadata.JsonTypeInfo`1<System.Object>)
-       call      qword ptr [7FFE3378EEB0]; System.Text.Json.JsonSerializer.WriteString[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef, System.Text.Json.Serialization.Metadata.JsonTypeInfo`1<System.__Canon>)
+       call      qword ptr [7FFF3AA6EEB0]; System.Text.Json.JsonSerializer.WriteString[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef, System.Text.Json.Serialization.Metadata.JsonTypeInfo`1<System.__Canon>)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -5235,36 +5245,36 @@ M00_L02:
        cmp       [r8],rcx
        je        short M00_L01
        mov       rdx,rax
-       call      qword ptr [7FFE330643F0]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
+       call      qword ptr [7FFF3A3443F0]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
        int       3
 M00_L03:
-       call      qword ptr [7FFE335AD590]
+       call      qword ptr [7FFF3A88D590]
        mov       ecx,0E0C
-       mov       rdx,7FFE33347DB0
+       mov       rdx,7FFF3A627D70
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,100A
-       mov       rdx,7FFE33347DB0
+       mov       rdx,7FFF3A627D70
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFE33066B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFF3A346B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,9EA
-       mov       rdx,7FFE33347DB0
+       mov       rdx,7FFF3A627D70
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFE33066B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFF3A346B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FFE335AD380]
+       call      qword ptr [7FFF3A88D380]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FFE33246670]
+       call      qword ptr [7FFF3A526670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -5273,7 +5283,7 @@ M00_L03:
 ```assembly
 ; System.Text.Json.JsonSerializerOptions.get_Default()
        sub       rsp,28
-       mov       rax,21416C01210
+       mov       rax,1A4D4007458
        mov       rax,[rax]
        test      rax,rax
        je        short M01_L01
@@ -5281,7 +5291,7 @@ M01_L00:
        add       rsp,28
        ret
 M01_L01:
-       call      qword ptr [7FFE335A5530]; System.Text.Json.JsonSerializerOptions.GetOrCreateDefaultOptionsInstance()
+       call      qword ptr [7FFF3A885530]; System.Text.Json.JsonSerializerOptions.GetOrCreateDefaultOptionsInstance()
        jmp       short M01_L00
 ; Total bytes of code 35
 ```
@@ -5293,17 +5303,17 @@ M01_L01:
        push      rbx
        sub       rsp,28
        mov       rbx,rcx
-       call      qword ptr [7FFE990C5068]
+       call      qword ptr [7FFFFD345068]
        cmp       byte ptr [rax+18F],0
        je        near ptr M02_L03
-       call      qword ptr [7FFE990C9F80]; Precode of System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.RootDefaultInstance()
+       call      qword ptr [7FFFFD349F80]; Precode of System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.RootDefaultInstance()
        mov       rsi,rax
        mov       rcx,[rbx+20]
        test      rcx,rcx
        jne       short M02_L01
        lea       rcx,[rbx+20]
        mov       rdx,rsi
-       call      qword ptr [7FFE990C4FC8]; CORINFO_HELP_ASSIGN_REF
+       call      qword ptr [7FFFFD344FC8]; CORINFO_HELP_ASSIGN_REF
 M02_L00:
        mov       byte ptr [rbx+8C],1
        mov       byte ptr [rbx+8D],1
@@ -5314,27 +5324,27 @@ M02_L00:
        pop       rdi
        ret
 M02_L01:
-       call      qword ptr [7FFE990C69F0]
+       call      qword ptr [7FFFFD3469F0]
        mov       rdi,rax
        test      rdi,rdi
        je        short M02_L00
-       call      qword ptr [7FFE990C5060]
+       call      qword ptr [7FFFFD345060]
        cmp       byte ptr [rax+18E],0
        je        short M02_L00
        mov       ecx,2
-       call      qword ptr [7FFE990C6948]
+       call      qword ptr [7FFFFD346948]
        mov       rbp,rax
        lea       rcx,[rbp+10]
        mov       rdx,rdi
-       call      qword ptr [7FFE990C4FC8]; CORINFO_HELP_ASSIGN_REF
+       call      qword ptr [7FFFFD344FC8]; CORINFO_HELP_ASSIGN_REF
        lea       rcx,[rbp+18]
        mov       rdx,rsi
-       call      qword ptr [7FFE990C4FC8]; CORINFO_HELP_ASSIGN_REF
+       call      qword ptr [7FFFFD344FC8]; CORINFO_HELP_ASSIGN_REF
        mov       rcx,rbp
-       call      qword ptr [7FFE990C9FA0]
+       call      qword ptr [7FFFFD349FA0]
        lea       rcx,[rbx+58]
        mov       rdx,rax
-       call      qword ptr [7FFE990C4FC8]; CORINFO_HELP_ASSIGN_REF
+       call      qword ptr [7FFFFD344FC8]; CORINFO_HELP_ASSIGN_REF
        mov       rsi,[rbx+8]
        test      rsi,rsi
        je        short M02_L00
@@ -5345,11 +5355,11 @@ M02_L01:
        jne       short M02_L02
        mov       rcx,[rsi+10]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE990C9198]; Precode of System.Text.Json.JsonSerializerOptions.ConfigureForJsonSerializer()
+       call      qword ptr [7FFFFD349198]; Precode of System.Text.Json.JsonSerializerOptions.ConfigureForJsonSerializer()
        jmp       near ptr M02_L00
 M02_L02:
        mov       rcx,[rsi+8]
-       lea       r11,[7FFE990C4820]
+       lea       r11,[7FFFFD344820]
        cmp       [rcx],ecx
        call      qword ptr [r11]
        jmp       near ptr M02_L00
@@ -5357,11 +5367,11 @@ M02_L03:
        mov       rcx,[rbx+20]
        test      rcx,rcx
        je        short M02_L04
-       call      qword ptr [7FFE990C6A08]
+       call      qword ptr [7FFFFD346A08]
        test      rax,rax
        je        near ptr M02_L00
 M02_L04:
-       call      qword ptr [7FFE990C84A0]
+       call      qword ptr [7FFFFD3484A0]
        int       3
 ; Total bytes of code 272
 ```
@@ -5387,9 +5397,9 @@ M03_L01:
        mov       [rsp+28],ecx
        mov       rcx,rbx
        movzx     r9d,word ptr [rsp+30]
-       mov       rdx,254A4B12D10
+       mov       rdx,1E565FE2D10
        mov       r8d,1
-       call      qword ptr [7FFE335A4E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
+       call      qword ptr [7FFF3A884E70]; System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(System.Type, Boolean, System.Nullable`1<Boolean>, Boolean, Boolean)
        mov       rsi,rax
        lea       rcx,[rbx+18]
        mov       rdx,rsi
@@ -5418,13 +5428,13 @@ M03_L01:
        mov       rbx,r8
        mov       rcx,[rbx+0B0]
        lea       rdx,[rbp-20]
-       call      qword ptr [7FFE3378EEE0]; System.Text.Json.Utf8JsonWriterCache.RentWriterAndBuffer(System.Text.Json.JsonSerializerOptions, System.Text.Json.PooledByteBufferWriter ByRef)
+       call      qword ptr [7FFF3AA6EEE0]; System.Text.Json.Utf8JsonWriterCache.RentWriterAndBuffer(System.Text.Json.JsonSerializerOptions, System.Text.Json.PooledByteBufferWriter ByRef)
        mov       rdx,rax
        mov       [rbp-50],rdx
        mov       rcx,rbx
        mov       r8,rsi
        xor       r9d,r9d
-       call      qword ptr [7FFE33644930]; System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[System.__Canon, System.Private.CoreLib]].Serialize(System.Text.Json.Utf8JsonWriter, System.__Canon ByRef, System.Object)
+       call      qword ptr [7FFF3A924930]; System.Text.Json.Serialization.Metadata.JsonTypeInfo`1[[System.__Canon, System.Private.CoreLib]].Serialize(System.Text.Json.Utf8JsonWriter, System.__Canon ByRef, System.Object)
        mov       rdx,[rbp-20]
        mov       rcx,[rdx+8]
        mov       ebx,[rdx+10]
@@ -5450,7 +5460,7 @@ M04_L02:
        mov       rcx,rsi
        jmp       short M04_L06
 M04_L03:
-       call      qword ptr [7FFE3321E9A0]
+       call      qword ptr [7FFF3A4FE9A0]
        int       3
 M04_L04:
        test      ebx,ebx
@@ -5470,7 +5480,7 @@ M04_L06:
        mov       [rbp-48],rcx
        mov       [rbp-40],edi
        lea       rcx,[rbp-48]
-       call      qword ptr [7FFE335AF1B0]; System.Text.Json.JsonReaderHelper.TranscodeHelper(System.ReadOnlySpan`1<Byte>)
+       call      qword ptr [7FFF3A88F1B0]; System.Text.Json.JsonReaderHelper.TranscodeHelper(System.ReadOnlySpan`1<Byte>)
        mov       [rbp-58],rax
        mov       rcx,rsp
        call      M04_L07
@@ -5493,7 +5503,7 @@ M04_L07:
        lea       rbp,[rbp+80]
        mov       rbx,[rbp-20]
        mov       rcx,gs:[58]
-       mov       rcx,[rcx+30]
+       mov       rcx,[rcx+38]
        cmp       dword ptr [rcx+190],4
        jl        short M04_L08
        mov       rcx,[rcx+198]
@@ -5538,7 +5548,7 @@ M04_L11:
        cmp       [rcx+8],edi
        jae       short M04_L13
 M04_L12:
-       call      qword ptr [7FFE3321E9A0]
+       call      qword ptr [7FFF3A4FE9A0]
        int       3
 M04_L13:
        add       rcx,10
@@ -5555,16 +5565,16 @@ M04_L14:
        jmp       short M04_L16
 M04_L15:
        mov       rdx,[rbp-38]
-       call      qword ptr [7FFE33115BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A3F5BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
 M04_L16:
        xor       ecx,ecx
        mov       [rbx+10],ecx
        mov       rdx,[rbx+8]
        mov       [rbx+8],rcx
-       mov       rcx,21412C01E78
+       mov       rcx,1A4D4001E78
        mov       rcx,[rcx]
        xor       r8d,r8d
-       call      qword ptr [7FFE335EFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
+       call      qword ptr [7FFF3A8CFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
        dec       dword ptr [rsi+18]
        add       rsp,28
        pop       rbx
@@ -5603,7 +5613,7 @@ M05_L01:
        mov       rax,rdx
        ret
 M05_L02:
-       jmp       qword ptr [7FFE330643A8]
+       jmp       qword ptr [7FFF3A3443A8]
 ; Total bytes of code 71
 ```
 ```assembly
@@ -5638,13 +5648,13 @@ M05_L02:
        lea       rdx,[rsi+0C]
        mov       r8d,edi
        add       r8,r8
-       call      qword ptr [7FFE33115B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        movsxd    r8,r14d
        lea       rcx,[r15+r8*2+0C]
        lea       rdx,[rbx+0C]
        mov       r8d,ebp
        add       r8,r8
-       call      qword ptr [7FFE33115B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,r15
        add       rsp,28
        pop       rbx
@@ -5665,7 +5675,7 @@ M06_L00:
        pop       r15
        ret
 M06_L01:
-       call      qword ptr [7FFE3321EF10]
+       call      qword ptr [7FFF3A4FEF10]
        int       3
 M06_L02:
        test      rbx,rbx
@@ -5677,7 +5687,7 @@ M06_L02:
        test      eax,eax
        je        short M06_L04
 M06_L03:
-       mov       rax,254A4B10008
+       mov       rax,1E565FE0008
        add       rsp,28
        pop       rbx
        pop       rbp
@@ -5708,7 +5718,7 @@ M06_L04:
        mov       [rsp+28],rax
        mov       rbx,rcx
        mov       rcx,[rbx+130]
-       call      qword ptr [7FFE3344FD68]; DotNetTips.Spargine.Core.Serialization.JsonSerialization.Serialize(System.Object)
+       call      qword ptr [7FFF3A73FD68]; DotNetTips.Spargine.Core.Serialization.JsonSerialization.Serialize(System.Object)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -5731,15 +5741,15 @@ M06_L04:
        test      rcx,rcx
        je        short M01_L02
        mov       [rsp+20],rcx
-       call      qword ptr [7FFE33594F90]; System.Text.Json.JsonSerializerOptions.get_Default()
+       call      qword ptr [7FFF3A884F90]; System.Text.Json.JsonSerializerOptions.get_Default()
        mov       rbx,rax
        cmp       byte ptr [rbx+8D],0
        jne       short M01_L00
        mov       rcx,rbx
-       call      qword ptr [7FFE33595488]; System.Text.Json.JsonSerializerOptions.ConfigureForJsonSerializer()
+       call      qword ptr [7FFF3A885488]; System.Text.Json.JsonSerializerOptions.ConfigureForJsonSerializer()
 M01_L00:
        mov       rcx,rbx
-       call      qword ptr [7FFE33594ED0]; System.Text.Json.JsonSerializerOptions.get_ObjectTypeInfo()
+       call      qword ptr [7FFF3A884ED0]; System.Text.Json.JsonSerializerOptions.get_ObjectTypeInfo()
        mov       r8,rax
        test      r8,r8
        je        short M01_L01
@@ -5749,45 +5759,45 @@ M01_L00:
 M01_L01:
        lea       rdx,[rsp+20]
        mov       rcx,offset MD_System.Text.Json.JsonSerializer.WriteString[[System.Object, System.Private.CoreLib]](System.Object ByRef, System.Text.Json.Serialization.Metadata.JsonTypeInfo`1<System.Object>)
-       call      qword ptr [7FFE3377ED48]; System.Text.Json.JsonSerializer.WriteString[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef, System.Text.Json.Serialization.Metadata.JsonTypeInfo`1<System.__Canon>)
+       call      qword ptr [7FFF3AA6EC40]; System.Text.Json.JsonSerializer.WriteString[[System.__Canon, System.Private.CoreLib]](System.__Canon ByRef, System.Text.Json.Serialization.Metadata.JsonTypeInfo`1<System.__Canon>)
        nop
        add       rsp,28
        pop       rbx
        pop       rsi
        ret
 M01_L02:
-       call      qword ptr [7FFE3359D590]
+       call      qword ptr [7FFF3A88D590]
        mov       ecx,0E0C
-       mov       rdx,7FFE33337DB0
+       mov       rdx,7FFF3A627DC8
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,100A
-       mov       rdx,7FFE33337DB0
+       mov       rdx,7FFF3A627DC8
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFE33056B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFF3A346B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,9EA
-       mov       rdx,7FFE33337DB0
+       mov       rdx,7FFF3A627DC8
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFE33056B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFF3A346B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FFE3359D380]
+       call      qword ptr [7FFF3A88D380]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FFE33236670]
+       call      qword ptr [7FFF3A526670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
 M01_L03:
        mov       rdx,rax
-       call      qword ptr [7FFE330543F0]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
+       call      qword ptr [7FFF3A3443F0]; System.Runtime.CompilerServices.CastHelpers.ChkCastClassSpecial(Void*, System.Object)
        int       3
 ; Total bytes of code 271
 ```
@@ -5801,7 +5811,7 @@ M01_L03:
        mov       [rsp+28],rax
        mov       rbx,rcx
        mov       rcx,[rbx+40]
-       call      qword ptr [7FFE334743F0]; DotNetTips.Spargine.Core.Serialization.XmlSerialization.Serialize(System.Object)
+       call      qword ptr [7FFF3A7643F0]; DotNetTips.Spargine.Core.Serialization.XmlSerialization.Serialize(System.Object)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -5855,20 +5865,20 @@ M01_L00:
        mov       r14,[rax+8]
        test      r14,r14
        jne       short M01_L01
-       mov       rcx,299C0C00438
+       mov       rcx,1E679C00438
        mov       r14,[rcx]
        test      r14,r14
        jne       short M01_L01
-       mov       rcx,299C0C00418
+       mov       rcx,1E679C00418
        mov       r14,[rcx]
        test      r14,r14
        je        near ptr M01_L14
 M01_L01:
-       mov       rcx,299C0C014E0
+       mov       rcx,1E679C014E0
        mov       rdx,[rcx]
        lea       rcx,[rsi+8]
        call      CORINFO_HELP_ASSIGN_REF
-       mov       rcx,2DA52921C08
+       mov       rcx,2270BB61C08
        mov       [rsi+10],rcx
        lea       rcx,[rsi+18]
        mov       rdx,r14
@@ -5878,18 +5888,18 @@ M01_L01:
        call      CORINFO_HELP_ASSIGN_REF
        mov       byte ptr [rsi+28],1
        mov       [rbp-30],rsi
-       mov       rcx,299CCC02170
+       mov       rcx,1E67BC023E8
        mov       r14,[rcx]
        mov       rcx,offset MT_System.Xml.XmlEncodedRawTextWriter
        call      CORINFO_HELP_NEWSFAST
        mov       r15,rax
        mov       rcx,r15
        mov       rdx,r14
-       call      qword ptr [7FFE3383C000]; System.Xml.XmlEncodedRawTextWriter..ctor(System.Xml.XmlWriterSettings)
+       call      qword ptr [7FFF3AB2C6C0]; System.Xml.XmlEncodedRawTextWriter..ctor(System.Xml.XmlWriterSettings)
        lea       rcx,[r15+48]
        mov       rdx,rsi
        call      CORINFO_HELP_ASSIGN_REF
-       mov       rcx,299C0C014A0
+       mov       rcx,1E679C014A0
        mov       rdx,[rcx]
        test      rdx,rdx
        je        near ptr M01_L08
@@ -5916,7 +5926,7 @@ M01_L04:
        mov       rcx,rdi
        mov       rdx,r15
        mov       r8,r14
-       call      qword ptr [7FFE3383CA98]; System.Xml.XmlWellFormedWriter..ctor(System.Xml.XmlWriter, System.Xml.XmlWriterSettings)
+       call      qword ptr [7FFF3AB2D158]; System.Xml.XmlWellFormedWriter..ctor(System.Xml.XmlWriter, System.Xml.XmlWriterSettings)
        mov       [rbp-38],rdi
        mov       rcx,rbx
        call      System.Object.GetType()
@@ -5927,7 +5937,7 @@ M01_L04:
        mov       rcx,r14
        mov       rdx,r15
        xor       r8d,r8d
-       call      qword ptr [7FFE33837078]; System.Xml.Serialization.XmlSerializer..ctor(System.Type, System.String)
+       call      qword ptr [7FFF3AB27AC8]; System.Xml.Serialization.XmlSerializer..ctor(System.Type, System.String)
        xor       ecx,ecx
        mov       [rsp+20],rcx
        mov       [rsp+28],rcx
@@ -5935,17 +5945,17 @@ M01_L04:
        mov       rdx,[rbp-38]
        mov       r8,rbx
        xor       r9d,r9d
-       call      qword ptr [7FFE338371B0]; System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter, System.Object, System.Xml.Serialization.XmlSerializerNamespaces, System.String, System.String)
+       call      qword ptr [7FFF3AB27C00]; System.Xml.Serialization.XmlSerializer.Serialize(System.Xml.XmlWriter, System.Object, System.Xml.Serialization.XmlSerializerNamespaces, System.String, System.String)
        mov       rcx,[rsi+20]
        cmp       [rcx],ecx
-       call      qword ptr [7FFE3329B060]; System.Text.StringBuilder.ToString()
+       call      qword ptr [7FFF3A58B060]; System.Text.StringBuilder.ToString()
        mov       rbx,rax
        mov       rdx,[rbp-38]
        mov       rcx,rdx
        mov       eax,[rcx+78]
        cmp       eax,10
        jg        near ptr M01_L10
-       mov       rdx,299CCC02100
+       mov       rdx,1E67BC02378
        mov       rdx,[rdx]
        cmp       eax,11
        jae       short M01_L05
@@ -5956,7 +5966,7 @@ M01_L05:
 M01_L06:
        mov       edx,[r15+8C]
        mov       rcx,r15
-       call      qword ptr [7FFE338421C8]; System.Xml.XmlEncodedRawTextWriter.WriteXmlDeclaration(System.Xml.XmlStandalone)
+       call      qword ptr [7FFF3AB321C8]; System.Xml.XmlEncodedRawTextWriter.WriteXmlDeclaration(System.Xml.XmlStandalone)
        mov       byte ptr [r15+9D],1
        jmp       near ptr M01_L04
 M01_L07:
@@ -5969,8 +5979,8 @@ M01_L08:
        mov       rcx,rdi
        xor       edx,edx
        xor       r8d,r8d
-       call      qword ptr [7FFE3347F138]
-       mov       rcx,299C0C014A0
+       call      qword ptr [7FFF3A76F138]
+       mov       rcx,1E679C014A0
        mov       rdx,rdi
        call      CORINFO_HELP_ASSIGN_REF
        mov       rdx,rdi
@@ -5979,7 +5989,7 @@ M01_L09:
        cmp       edi,5
        je        short M01_L11
 M01_L10:
-       call      qword ptr [7FFE33843170]; System.Xml.XmlWellFormedWriter.Close()
+       call      qword ptr [7FFF3AB33170]; System.Xml.XmlWellFormedWriter.Close()
        nop
 M01_L11:
        mov       byte ptr [rsi+28],0
@@ -5995,33 +6005,33 @@ M01_L11:
        pop       rbp
        ret
 M01_L12:
-       call      qword ptr [7FFE3358D590]
+       call      qword ptr [7FFF3A87D590]
        mov       ecx,0E0C
-       mov       rdx,7FFE33327DB0
+       mov       rdx,7FFF3A617DC8
        call      CORINFO_HELP_STRCNS
        mov       rdi,rax
        mov       ecx,100A
-       mov       rdx,7FFE33327DB0
+       mov       rdx,7FFF3A617DC8
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rdi
-       call      qword ptr [7FFE33046B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFF3A336B08]; System.String.Concat(System.String, System.String)
        mov       rsi,rax
        mov       ecx,9EA
-       mov       rdx,7FFE33327DB0
+       mov       rdx,7FFF3A617DC8
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rsi
-       call      qword ptr [7FFE33046B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFF3A336B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FFE3358D380]
+       call      qword ptr [7FFF3A87D380]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FFE33226670]
+       call      qword ptr [7FFF3A516670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
 M01_L13:
@@ -6029,7 +6039,7 @@ M01_L13:
        call      CORINFO_HELP_GETSHARED_GCTHREADSTATIC_BASE_NOCTOR_OPTIMIZED
        jmp       near ptr M01_L00
 M01_L14:
-       call      qword ptr [7FFE331B4030]; System.Globalization.CultureInfo.InitializeUserDefaultCulture()
+       call      qword ptr [7FFF3A4A4030]; System.Globalization.CultureInfo.InitializeUserDefaultCulture()
        mov       r14,rax
        jmp       near ptr M01_L01
        push      rbp
@@ -6046,7 +6056,7 @@ M01_L14:
        mov       rcx,rdx
        cmp       dword ptr [rcx+78],10
        jg        short M01_L17
-       mov       rax,299CCC02100
+       mov       rax,1E67BC02378
        mov       rax,[rax]
        mov       edx,[rcx+78]
        cmp       edx,11
@@ -6059,7 +6069,7 @@ M01_L16:
        cmp       edi,5
        je        short M01_L18
 M01_L17:
-       call      qword ptr [7FFE33843170]; System.Xml.XmlWellFormedWriter.Close()
+       call      qword ptr [7FFF3AB33170]; System.Xml.XmlWellFormedWriter.Close()
 M01_L18:
        nop
        add       rsp,38
@@ -6102,9 +6112,9 @@ M01_L18:
        push      rbx
        sub       rsp,20
        mov       rbx,rcx
-       mov       rcx,251CA2B5168
-       mov       rdx,251CA2B5120
-       call      qword ptr [7FFE3345FD50]; DotNetTips.Spargine.Core.Serialization.JsonSerialization.JsonEqual(System.String, System.String)
+       mov       rcx,1E2FDAB5168
+       mov       rdx,1E2FDAB5120
+       call      qword ptr [7FFF3A74FD50]; DotNetTips.Spargine.Core.Serialization.JsonSerialization.JsonEqual(System.String, System.String)
        mov       rcx,[rbx+18]
        mov       [rcx+4C],al
        add       rsp,20
@@ -6158,12 +6168,12 @@ M01_L02:
        movzx     ecx,word ptr [rbx+0C]
        cmp       ecx,100
        jae       short M01_L03
-       mov       rax,7FFE8E742C20
+       mov       rax,7FFF99282C20
        test      byte ptr [rcx+rax],80
        jne       near ptr M01_L11
        jmp       short M01_L04
 M01_L03:
-       call      qword ptr [7FFE33855DA0]; System.Globalization.CharUnicodeInfo.GetIsWhiteSpace(Char)
+       call      qword ptr [7FFF3AB45DA0]; System.Globalization.CharUnicodeInfo.GetIsWhiteSpace(Char)
        test      eax,eax
        jne       near ptr M01_L11
 M01_L04:
@@ -6174,12 +6184,12 @@ M01_L04:
        movzx     ecx,word ptr [rbx+rcx*2+0C]
        cmp       ecx,100
        jae       short M01_L05
-       mov       rax,7FFE8E742C20
+       mov       rax,7FFF99282C20
        test      byte ptr [rcx+rax],80
        jne       near ptr M01_L11
        jmp       short M01_L06
 M01_L05:
-       call      qword ptr [7FFE33855DA0]; System.Globalization.CharUnicodeInfo.GetIsWhiteSpace(Char)
+       call      qword ptr [7FFF3AB45DA0]; System.Globalization.CharUnicodeInfo.GetIsWhiteSpace(Char)
        test      eax,eax
        jne       near ptr M01_L11
 M01_L06:
@@ -6195,7 +6205,7 @@ M01_L06:
        mov       byte ptr [rbp-7B],0
        lea       rcx,[rbp-78]
        mov       rdx,[rbp-80]
-       call      qword ptr [7FFE33626A48]; System.Text.Json.JsonDocument.Parse(System.ReadOnlyMemory`1<Char>, System.Text.Json.JsonDocumentOptions)
+       call      qword ptr [7FFF3A916A48]; System.Text.Json.JsonDocument.Parse(System.ReadOnlyMemory`1<Char>, System.Text.Json.JsonDocumentOptions)
        mov       [rbp-0B0],rax
        test      rbx,rbx
        je        short M01_L07
@@ -6207,7 +6217,7 @@ M01_L06:
        mov       [rbp-6C],ecx
        lea       rcx,[rbp-78]
        mov       rdx,[rbp-80]
-       call      qword ptr [7FFE33626A48]; System.Text.Json.JsonDocument.Parse(System.ReadOnlyMemory`1<Char>, System.Text.Json.JsonDocumentOptions)
+       call      qword ptr [7FFF3A916A48]; System.Text.Json.JsonDocument.Parse(System.ReadOnlyMemory`1<Char>, System.Text.Json.JsonDocumentOptions)
        mov       [rbp-0B8],rax
        mov       rbx,[rbp-0B0]
        cmp       [rbx],bl
@@ -6221,17 +6231,17 @@ M01_L06:
        mov       [rbp-98],ecx
        lea       rcx,[rbp-90]
        lea       rdx,[rbp-0A0]
-       call      qword ptr [7FFE3345FD08]; DotNetTips.Spargine.Core.Serialization.JsonSerialization.JsonEqual(System.Text.Json.JsonElement, System.Text.Json.JsonElement)
+       call      qword ptr [7FFF3A74FD08]; DotNetTips.Spargine.Core.Serialization.JsonSerialization.JsonEqual(System.Text.Json.JsonElement, System.Text.Json.JsonElement)
        mov       [rbp-3C],eax
        mov       rcx,rsp
        call      M01_L14
        jmp       short M01_L08
 M01_L07:
        mov       ecx,3174
-       mov       rdx,7FFE3359ECA0
+       mov       rdx,7FFF3A88ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336A6CE8]
+       call      qword ptr [7FFF3A996CE8]
        int       3
 M01_L08:
        mov       rcx,rsp
@@ -6249,34 +6259,34 @@ M01_L08:
        pop       rbp
        ret
 M01_L09:
-       call      qword ptr [7FFE335AD620]
+       call      qword ptr [7FFF3A89D620]
        mov       r13,rax
        test      r13,r13
        jne       short M01_L10
-       call      qword ptr [7FFE335AD380]
+       call      qword ptr [7FFF3A89D380]
        mov       r13,rax
 M01_L10:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       r15,rax
        mov       rcx,r15
-       mov       rdx,251CA2B51B0
+       mov       rdx,1E2FDAB51B0
        mov       r8,r13
-       call      qword ptr [7FFE33246670]
+       call      qword ptr [7FFF3A536670]
        mov       rcx,r15
        call      CORINFO_HELP_THROW
 M01_L11:
        mov       rcx,rbx
        mov       edx,3
-       call      qword ptr [7FFE330673F0]
+       call      qword ptr [7FFF3A3573F0]
        mov       rbx,rax
        jmp       near ptr M01_L06
 M01_L12:
        mov       ecx,3174
-       mov       rdx,7FFE3359ECA0
+       mov       rdx,7FFF3A88ECA0
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE336A6CE8]
+       call      qword ptr [7FFF3A996CE8]
        int       3
 M01_L13:
        call      CORINFO_HELP_RNGCHKFAIL
@@ -6308,10 +6318,10 @@ M01_L14:
        xchg      rdx,[rsi]
        test      rdx,rdx
        je        short M01_L15
-       mov       rcx,21138401E78
+       mov       rcx,1A26BC01E78
        mov       rcx,[rcx]
        xor       r8d,r8d
-       call      qword ptr [7FFE335EFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
+       call      qword ptr [7FFF3A8DFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
        xor       ecx,ecx
        mov       [rsi+8],ecx
 M01_L15:
@@ -6330,7 +6340,7 @@ M01_L15:
        mov       edi,[rsi+8]
        cmp       edi,ebx
        jae       short M01_L16
-       call      qword ptr [7FFE3321E9A0]
+       call      qword ptr [7FFF3A50E9A0]
        int       3
 M01_L16:
        lea       rcx,[rsi+10]
@@ -6346,9 +6356,9 @@ M01_L16:
        jmp       short M01_L18
 M01_L17:
        mov       rdx,[rbp-48]
-       call      qword ptr [7FFE33115BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A405BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
 M01_L18:
-       mov       rcx,21138401E78
+       mov       rcx,1A26BC01E78
        mov       rbx,[rcx]
        lea       ecx,[rdi-1]
        or        ecx,0F
@@ -6356,14 +6366,14 @@ M01_L18:
        lzcnt     r14d,ecx
        xor       r14d,1F
        add       r14d,0FFFFFFFD
-       mov       rcx,7FFE32FA5120
+       mov       rcx,7FFF3A295120
        mov       edx,3A
        call      CORINFO_HELP_GETSHARED_GCTHREADSTATIC_BASE_DYNAMICCLASS
        mov       rcx,[rax]
        test      rcx,rcx
        jne       short M01_L19
        mov       rcx,rbx
-       call      qword ptr [7FFE33604EB8]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].InitializeTlsBucketsAndTrimming()
+       call      qword ptr [7FFF3A8F4EB8]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].InitializeTlsBucketsAndTrimming()
        mov       rcx,rax
 M01_L19:
        xor       r15d,r15d
@@ -6379,15 +6389,15 @@ M01_L19:
        mov       rcx,offset MT_System.ArgumentException
        call      CORINFO_HELP_NEWSFAST
        mov       rbx,rax
-       call      qword ptr [7FFE3356EAC0]
+       call      qword ptr [7FFF3A85EAC0]
        mov       r14,rax
        mov       ecx,1D3
-       mov       rdx,7FFE32F14000
+       mov       rdx,7FFF3A204000
        call      CORINFO_HELP_STRCNS
        mov       r8,rax
        mov       rdx,r14
        mov       rcx,rbx
-       call      qword ptr [7FFE3306F750]
+       call      qword ptr [7FFF3A35F750]
        mov       rcx,rbx
        call      CORINFO_HELP_THROW
 M01_L20:
@@ -6413,11 +6423,11 @@ M01_L20:
        jne       short M01_L21
        mov       rcx,rbx
        mov       edx,r14d
-       call      qword ptr [7FFE33604E40]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].CreatePerCorePartitions(Int32)
+       call      qword ptr [7FFF3A8F4E40]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].CreatePerCorePartitions(Int32)
 M01_L21:
        mov       r13,[rax+8]
        mov       rcx,gs:[58]
-       mov       rcx,[rcx+30]
+       mov       rcx,[rcx+40]
        cmp       dword ptr [rcx+180],3
        jl        short M01_L22
        mov       rcx,[rcx+188]
@@ -6438,7 +6448,7 @@ M01_L24:
        movzx     ecx,r10w
        test      ecx,ecx
        jne       short M01_L25
-       call      qword ptr [7FFE33876328]; System.Threading.ProcessorIdCache.RefreshCurrentProcessorId()
+       call      qword ptr [7FFF3AB66328]; System.Threading.ProcessorIdCache.RefreshCurrentProcessorId()
        jmp       short M01_L26
 M01_L25:
        mov       eax,r10d
@@ -6515,7 +6525,7 @@ M01_L32:
 M01_L33:
        mov       r13d,1
 M01_L34:
-       mov       rcx,211384005D0
+       mov       rcx,1A26BC005D0
        mov       r12,[rcx]
        cmp       byte ptr [r12+9D],0
        je        near ptr M01_L40
@@ -6532,7 +6542,7 @@ M01_L34:
        mov       r8d,[rbp-4C]
        mov       r9d,[rbp-50]
        mov       edx,3
-       call      qword ptr [7FFE33117678]
+       call      qword ptr [7FFF3A407678]
        test      r13d,r15d
        jne       short M01_L40
        mov       rcx,rsi
@@ -6560,7 +6570,7 @@ M01_L38:
        mov       [rsp+20],ecx
        mov       [rsp+28],eax
        mov       rcx,r12
-       call      qword ptr [7FFE3333F360]
+       call      qword ptr [7FFF3A62F360]
        jmp       short M01_L40
 M01_L39:
        cmp       qword ptr [rax+10],0
@@ -6571,7 +6581,7 @@ M01_L39:
        mov       rcx,rax
        test      rcx,rcx
        je        short M01_L40
-       call      qword ptr [7FFE3379CA90]; Precode of System.Text.Json.PooledByteBufferWriter.Dispose()
+       call      qword ptr [7FFF3AA8CA68]; Precode of System.Text.Json.PooledByteBufferWriter.Dispose()
 M01_L40:
        nop
        add       rsp,38
@@ -6611,10 +6621,10 @@ M01_L41:
        xchg      rdx,[rdi]
        test      rdx,rdx
        je        short M01_L42
-       mov       rcx,21138401E78
+       mov       rcx,1A26BC01E78
        mov       rcx,[rcx]
        xor       r8d,r8d
-       call      qword ptr [7FFE335EFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
+       call      qword ptr [7FFF3A8DFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
        xor       ecx,ecx
        mov       [rdi+8],ecx
 M01_L42:
@@ -6631,7 +6641,7 @@ M01_L42:
        je        short M01_L47
        cmp       [r14+8],esi
        jae       short M01_L43
-       call      qword ptr [7FFE3321E9A0]
+       call      qword ptr [7FFF3A50E9A0]
        int       3
 M01_L43:
        cmp       [r14],r14b
@@ -6648,13 +6658,13 @@ M01_L43:
        jmp       short M01_L45
 M01_L44:
        mov       rdx,[rbp-68]
-       call      qword ptr [7FFE33115BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
+       call      qword ptr [7FFF3A405BA8]; System.Buffer._ZeroMemory(Byte ByRef, UIntPtr)
 M01_L45:
-       mov       rcx,21138401E78
+       mov       rcx,1A26BC01E78
        mov       rcx,[rcx]
        mov       rdx,r14
        xor       r8d,r8d
-       call      qword ptr [7FFE335EFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
+       call      qword ptr [7FFF3A8DFD50]; System.Buffers.SharedArrayPool`1[[System.Byte, System.Private.CoreLib]].Return(Byte[], Boolean)
        jmp       short M01_L47
 M01_L46:
        cmp       qword ptr [rbx+10],0
@@ -6665,7 +6675,7 @@ M01_L46:
        mov       rcx,rax
        test      rcx,rcx
        je        short M01_L47
-       call      qword ptr [7FFE3379CA90]; Precode of System.Text.Json.PooledByteBufferWriter.Dispose()
+       call      qword ptr [7FFF3AA8CA68]; Precode of System.Text.Json.PooledByteBufferWriter.Dispose()
 M01_L47:
        nop
        add       rsp,38
