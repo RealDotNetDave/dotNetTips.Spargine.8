@@ -46,7 +46,7 @@ public static class Program
 
 			config = config.WithOption(ConfigOptions.DisableOptimizationsValidator, true);
 
-			//_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
+			_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
 			//_ = BenchmarkRunner.Run<ArrayExtensionsCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<AssemblyExtensionsBenchmark>(config);
@@ -63,10 +63,10 @@ public static class Program
 			//_ = BenchmarkRunner.Run<SortedDictionaryExtensionsBenchmark>(config);
 			//_ = BenchmarkRunner.Run<SortedSetCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<StringBuilderExtensionsCounterBenchmark>(config);
-			_ = BenchmarkRunner.Run<TypeExtensionsBenchmark>(config);
+			//_ = BenchmarkRunner.Run<TypeExtensionsBenchmark>(config);
 			//_ = BenchmarkRunner.Run<ReadOnlyCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<StringExtensionsBenchmark>(config);
-			_ = BenchmarkRunner.Run<StringExtensionsCounterBenchmark>(config);
+			//_ = BenchmarkRunner.Run<StringExtensionsCounterBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine(CompleteMessage);
 			Console.Beep();

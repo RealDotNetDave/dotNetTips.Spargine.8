@@ -5,7 +5,7 @@
 	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
 	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-	<AssemblyVersion>2024.8.71.33</AssemblyVersion>
+	<AssemblyVersion>2024.8.8.1</AssemblyVersion>
 	<Authors>David McCarter</Authors>
 	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
@@ -23,7 +23,7 @@
 	<EnablePackageValidation>true</EnablePackageValidation>
 	<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-	<FileVersion>2024.8.71.33</FileVersion>
+	<FileVersion>2024.8.8.1</FileVersion>
 	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -34,9 +34,9 @@
 	<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 	<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageReleaseNotes>
-	  --MAR 2024: Initial 8.0 release.
-	  --MAY 2024: Added FastCount to EnumerableExtensions, FastHashData to ArrayExtensions. Performance improvements.
+	<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
+--MAY 2024: Added FastCount to EnumerableExtensions, FastHashData to ArrayExtensions. Performance improvements.
+--AUG 2024: Major performance and documentation changes. New methods.
 	</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
@@ -51,7 +51,7 @@
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<TargetFramework>net8.0</TargetFramework>
 	<Title>DotNetTips.Spargine.8.Extensions</Title>
-	<Version>2024.8.71.33</Version>
+	<Version>2024.8.8.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
