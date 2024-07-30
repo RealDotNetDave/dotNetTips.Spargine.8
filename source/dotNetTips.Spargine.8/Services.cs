@@ -152,6 +152,7 @@ public static class Services
 	[Information(nameof(ServiceStatus), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ServiceControllerStatus ServiceStatus([NotNull] string serviceName)
 	{
+		//TODO: CHANGE TO USE EXCEPTIONTHROWER
 		var service = LoadService(serviceName.ArgumentNotNullOrEmpty());
 		return service is not null ? service.Status : throw new InvalidOperationException(Resources.ServiceNotFound);
 	}

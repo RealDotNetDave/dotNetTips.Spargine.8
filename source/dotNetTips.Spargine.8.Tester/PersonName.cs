@@ -45,7 +45,7 @@ public sealed record PersonName
 	/// <param name="lastName">The last name.</param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="firstName"/> or <paramref name="lastName"/> is null.</exception>
 	public PersonName(string firstName, string lastName)
-	{
+	{//TODO: CHANGE TO USE EXCEPTIONTHROWER
 		this.FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
 		this.LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
 	}

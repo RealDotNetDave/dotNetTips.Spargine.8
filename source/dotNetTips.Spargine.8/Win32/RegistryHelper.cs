@@ -69,6 +69,7 @@ public static class RegistryHelper
 	{
 		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) is false)
 		{
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			throw new PlatformNotSupportedException();
 		}
 
@@ -84,6 +85,7 @@ public static class RegistryHelper
 			RegistryHive.PerformanceData => Registry.PerformanceData.OpenSubKey(keyName),
 			RegistryHive.Users => Registry.CurrentUser.OpenSubKey(keyName),
 			_ => throw new ArgumentOutOfRangeException(nameof(registryKeyType), $"Unsupported registry hive: {registryKeyType}"),
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 		};
 	}
 

@@ -136,10 +136,8 @@ public static class JsonSerialization
 	/// It throws an <see cref="InvalidOperationException"/> if the deserialization process fails
 	/// or if the result is null, ensuring that a valid object is always returned.</remarks>
 	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json) => JsonSerializer.Deserialize<TResult>(
-			json,
-			_options) ??
-		throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
+	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json) => JsonSerializer.Deserialize<TResult>(json, _options) ??
+		throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}."); //TODO: CHANGE TO USE EXCEPTIONTHROWER
 
 	/// <summary>
 	/// Deserializes JSON content from a specified file into an object of type <typeparamref name="TResult"/>.

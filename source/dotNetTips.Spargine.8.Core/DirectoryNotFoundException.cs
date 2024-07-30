@@ -46,7 +46,7 @@ public class DirectoryNotFoundException : LoggableException, ISerializable
 	/// </summary>
 	/// <param name="directory">The directory that could not be found.</param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="directory"/> is null.</exception>
-	public DirectoryNotFoundException(DirectoryInfo directory) => this.Directory = directory ?? throw new ArgumentNullException(nameof(directory));
+	public DirectoryNotFoundException(DirectoryInfo directory) => this.Directory = directory ?? throw new ArgumentNullException(nameof(directory)); //TODO: CHANGE TO USE EXCEPTIONTHROWER
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="DirectoryNotFoundException"/> class with a specified error message and the directory that could not be found.

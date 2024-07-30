@@ -57,7 +57,7 @@ public sealed record PersonData
 		string firstName,
 		string lastName,
 		string phone)
-	{
+	{//TODO: CHANGE TO USE EXCEPTIONTHROWER
 		this.BornOn = bornOn;
 		this.CellPhone = cellPhone ?? throw new ArgumentNullException(nameof(cellPhone));
 		this.Country = country ?? throw new ArgumentNullException(nameof(country));

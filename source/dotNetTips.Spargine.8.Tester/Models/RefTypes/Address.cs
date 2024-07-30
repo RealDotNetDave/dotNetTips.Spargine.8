@@ -354,7 +354,7 @@ public sealed class Address : IAddress
 			{
 				return;
 			}
-
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			this._address1 = value.HasValue(0, 100) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.Address1),
@@ -383,7 +383,7 @@ public sealed class Address : IAddress
 			{
 				return;
 			}
-
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			this._address2 = value.HasValue(0, 100) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.Address2),
@@ -413,7 +413,7 @@ public sealed class Address : IAddress
 			{
 				return;
 			}
-
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			this._city = value.HasValue(0, 150) is false
 				? throw new ArgumentOutOfRangeException(nameof(this.City), Resources.CityLengthIsLimitedToCharacters)
 				: value;
@@ -441,7 +441,7 @@ public sealed class Address : IAddress
 			{
 				return;
 			}
-
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			this._country = value.HasValue(0, 50) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.Country),
@@ -470,7 +470,7 @@ public sealed class Address : IAddress
 			{
 				return;
 			}
-
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			this._countyProvince = value?.Length > 50
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.CountyProvince),
@@ -502,7 +502,7 @@ public sealed class Address : IAddress
 			{
 				return;
 			}
-
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			this._id = value.HasValue(1, 50) is false
 				? throw new ArgumentOutOfRangeException(nameof(this.Id), Resources.IdLengthIsLimitedTo50Characters)
 				: value;
@@ -530,7 +530,7 @@ public sealed class Address : IAddress
 			{
 				return;
 			}
-
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			this._phone = value.HasValue(0, 50) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.Phone),
@@ -560,7 +560,7 @@ public sealed class Address : IAddress
 			{
 				return;
 			}
-
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			this._postalCode = value.HasValue(0, 40) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.PostalCode),
@@ -590,7 +590,7 @@ public sealed class Address : IAddress
 			{
 				return;
 			}
-
+			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			this._state = value.HasValue(0, 60) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.State),
