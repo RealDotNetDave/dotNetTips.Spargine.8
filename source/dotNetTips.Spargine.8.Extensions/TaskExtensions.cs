@@ -4,7 +4,7 @@
 // Created          : 11-25-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-31-2024
 // ***********************************************************************
 // <copyright file="TaskExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -34,7 +34,7 @@ public static class TaskExtensions
 	/// PerformLongRunningWorkAsync().FireAndForget();
 	/// </example>
 	[Information("Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App", "David McCarter", "7/13/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
-	public static void FireAndForget([NotNull] this Task task) => _ = task.ArgumentNotNull().ContinueWith(tsk => tsk.Exception, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.Default);
+	public static void FireAndForget([NotNull] this Task task) => task.ArgumentNotNull().ContinueWith(tsk => tsk.Exception, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.Default);
 
 	/// <summary>
 	/// Fires the task and forgets it. Validates that <paramref name="task" /> is not null and handles exceptions using the provided action.
@@ -46,6 +46,6 @@ public static class TaskExtensions
 	/// SomeType.FireAsync("Test Message").FireAndForget(exAction);
 	/// </example>
 	[Information("Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App", "David McCarter", "7/13/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2022")]
-	public static void FireAndForget([NotNull] this Task task, [NotNull] Action<Exception> action) => _ = task.ArgumentNotNull().ContinueWith((tsk) => action?.Invoke(tsk.Exception), CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.Default);
+	public static void FireAndForget([NotNull] this Task task, [NotNull] Action<Exception> action) => task.ArgumentNotNull().ContinueWith((tsk) => action?.Invoke(tsk.Exception), CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.Default);
 
 }

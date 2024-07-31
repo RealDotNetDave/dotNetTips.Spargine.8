@@ -4,7 +4,7 @@
 // Created          : 01-12-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 07-31-2024
 // ***********************************************************************
 // <copyright file="TypeOfType.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -13,16 +13,6 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
-
-
-
-
-
-
-
-
-
-
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>

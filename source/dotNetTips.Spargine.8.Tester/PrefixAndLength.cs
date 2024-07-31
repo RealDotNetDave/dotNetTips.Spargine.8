@@ -4,7 +4,7 @@
 // Created          : 03-13-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-22-2024
+// Last Modified On : 07-31-2024
 // ***********************************************************************
 // <copyright file="PrefixAndLength.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -58,7 +58,7 @@ internal struct PrefixAndLength(string prefix, int length) : IEquatable<PrefixAn
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns>true if the current object is equal to the other parameter; otherwise, false.</returns>
-	public readonly bool Equals(PrefixAndLength other) => this.Prefix == other.Prefix && this.Length == other.Length;
+	public readonly bool Equals(PrefixAndLength other) => string.Equals(this.Prefix, other.Prefix, StringComparison.Ordinal) && this.Length == other.Length;
 
 	/// <summary>
 	/// Returns a hash code for this instance.

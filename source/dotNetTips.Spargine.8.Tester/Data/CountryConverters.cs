@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 07-16-2024
 // ***********************************************************************
-// <copyright file="ContryConverters.cs" company="McCarter Consulting">
+// <copyright file="CountryConverters.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Converters tailored for Country.</summary>

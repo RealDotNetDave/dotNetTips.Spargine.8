@@ -4,7 +4,7 @@
 // Created          : 03-12-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-17-2024
+// Last Modified On : 07-31-2024
 // ***********************************************************************
 // <copyright file="Countries.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -112,7 +112,7 @@ public static class Countries
 	{
 		countryName = countryName.ArgumentNotNull();
 
-		return GetCountries().FirstOrDefault(p => p.Name == countryName.GetDescription());
+		return GetCountries().FirstOrDefault(p => string.Equals(p.Name, countryName.GetDescription(), StringComparison.Ordinal));
 	}
 
 	/// <summary>

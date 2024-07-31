@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 07-31-2024
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -54,7 +54,6 @@ public static class SHA256PasswordHasher
 	/// The resulting hash can be used for securely storing passwords.</remarks>
 	private static byte[] HashPasswordWithSalt(string password, byte[] salt)
 	{
-		using var hashAlgorithm = SHA256.Create();
 		var passwordBytes = Encoding.UTF8.GetBytes(password);
 
 		// Combine salt and password bytes

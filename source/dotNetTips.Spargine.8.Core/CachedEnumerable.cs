@@ -4,7 +4,7 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-19-2024
+// Last Modified On : 07-31-2024
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -100,7 +100,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// </summary>
 	/// <exception cref="InvalidOperationException">Thrown if the enumerable is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private void CheckEnumerable() => _ = this._enumerable.CheckIsNotNull(true);
+	private void CheckEnumerable() => this._enumerable.CheckIsNotNull(true);
 
 	/// <summary>
 	/// Releases unmanaged and - optionally - managed resources.

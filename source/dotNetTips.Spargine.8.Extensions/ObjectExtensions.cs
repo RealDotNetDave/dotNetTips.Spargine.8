@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 07-31-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -51,30 +51,6 @@ public static class ObjectExtensions
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool =
 	new DefaultObjectPoolProvider().CreateStringBuilderPool();
-
-	/// <summary>
-	/// Tries to dispose items in the <see cref="IEnumerable" />.
-	/// </summary>
-	/// <param name="items">The items.</param>
-	private static void DisposeCollection(this IEnumerable items) => ProcessCollectionToDispose(items);
-
-	/// <summary>
-	/// Processes the <see cref="IEnumerable" /> to dispose.
-	/// </summary>
-	/// <param name="items">The items.</param>
-	private static void ProcessCollectionToDispose(IEnumerable items)
-	{
-		if (items.HasItems())
-		{
-			foreach (var item in items)
-			{
-				if (item is IDisposable disposeItem)
-				{
-					disposeItem.TryDispose();
-				}
-			}
-		}
-	}
 
 	/// <summary>
 	/// Converts the specified object to the specified type <typeparamref name="T" />.
