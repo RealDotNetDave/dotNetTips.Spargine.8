@@ -4,12 +4,12 @@
 // Created          : 06-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 08-01-2024
 // ***********************************************************************
 // <copyright file="NetworkHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>https:docs.microsoft.com/en-us/dotnet/api/xamarin.essentials.connectivity</summary>
+// <summary>Provides helper methods for network-related operations.</summary>
 // ***********************************************************************
 
 using System.Collections.ObjectModel;
@@ -28,8 +28,8 @@ public static class NetworkHelper
 	/// Checks the network connections and returns a read-only collection of active network interfaces.
 	/// </summary>
 	/// <returns>A read-only collection of <see cref="NetworkInterface"/> representing the active network connections.</returns>
-	[Information(nameof(CheckNetworkConnections), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public static ReadOnlyCollection<NetworkInterface> CheckNetworkConnections()
+	[Information(nameof(GetNetworkConnections), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static ReadOnlyCollection<NetworkInterface> GetNetworkConnections()
 	{
 		var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
 		var connections = new List<NetworkInterface>(networkInterfaces.Length);

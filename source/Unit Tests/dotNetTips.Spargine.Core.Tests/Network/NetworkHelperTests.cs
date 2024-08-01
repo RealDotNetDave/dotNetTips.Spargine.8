@@ -27,7 +27,7 @@ public class NetworkHelperTests
 	[TestMethod]
 	public void CheckNetworkConnections_ContainsActiveNetworkInterfaces()
 	{
-		var result = NetworkHelper.CheckNetworkConnections();
+		var result = NetworkHelper.GetNetworkConnections();
 
 		foreach (var networkInterface in result)
 		{
@@ -38,7 +38,7 @@ public class NetworkHelperTests
 	[TestMethod]
 	public void CheckNetworkConnections_ReturnsNonNullCollection()
 	{
-		var result = NetworkHelper.CheckNetworkConnections();
+		var result = NetworkHelper.GetNetworkConnections();
 
 		Assert.IsNotNull(result, "The result should not be null.");
 	}
@@ -46,7 +46,7 @@ public class NetworkHelperTests
 	[TestMethod]
 	public void CheckNetworkConnections_ReturnsReadOnlyCollection()
 	{
-		var result = NetworkHelper.CheckNetworkConnections();
+		var result = NetworkHelper.GetNetworkConnections();
 
 		Assert.IsInstanceOfType(result, typeof(ReadOnlyCollection<NetworkInterface>), "The result should be a ReadOnlyCollection.");
 	}
