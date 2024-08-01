@@ -17,6 +17,7 @@
 // </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using DotNetTips.Spargine.Core.Network;
@@ -464,6 +465,6 @@ public static class ExceptionThrower
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
 	[Information(nameof(ThrowNetworkConnectionException), author: "David McCarter", createdOn: "5/4/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
-	public static void ThrowNetworkConnectionException([AllowNull] string message, [AllowNull] NetworkConnection connection) => throw new NetworkConnectionException(message ?? Resources.ErrorNetworkConnectionIssue, connection);
+	public static void ThrowNetworkConnectionException([AllowNull] string message, [AllowNull] NetworkInterface connection) => throw new NetworkConnectionException(message ?? Resources.ErrorNetworkConnectionIssue, connection);
 
 }

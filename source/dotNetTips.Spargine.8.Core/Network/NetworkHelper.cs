@@ -12,66 +12,38 @@
 // <summary>https:docs.microsoft.com/en-us/dotnet/api/xamarin.essentials.connectivity</summary>
 // ***********************************************************************
 
-
+using System.Collections.ObjectModel;
+using System.Net.NetworkInformation;
 
 namespace DotNetTips.Spargine.Core.Network;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 /// <summary>
-/// Class NetworkHelper.
+/// Provides helper methods for network-related operations.
 /// </summary>
 public static class NetworkHelper
 {
-	//TODO: FIGURE THIS OUT
+	/// <summary>
+	/// Checks the network connections and returns a read-only collection of active network interfaces.
+	/// </summary>
+	/// <returns>A read-only collection of <see cref="NetworkInterface"/> representing the active network connections.</returns>
+	[Information(nameof(CheckNetworkConnections), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static ReadOnlyCollection<NetworkInterface> CheckNetworkConnections()
+	{
+		var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+		var connections = new List<NetworkInterface>(networkInterfaces.Length);
 
-	///// <summary>
-	///// Checks the network connection.
-	///// </summary>
-	///// <returns>NetworkConnection.</returns>
-	//[Information(nameof(CheckNetworkConnection), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	//public static NetworkConnection CheckNetworkConnection()
-	//{
-	//	var bluetooth = false;
-	//	var cellular = false;
-	//	var ethernet = false;
-	//	var unknown = false;
-	//	var wifi = false;
+		foreach (var networkInterface in networkInterfaces.AsSpan())
+		{
+			if (networkInterface.OperationalStatus == OperationalStatus.Up)
+			{
+				connections.Add(networkInterface);
+			}
+		}
 
-	//	foreach (var connection in Connectivity.ConnectionProfiles)
-	//	{
-	//		switch (connection)
-	//		{
-	//			case ConnectionProfile.Bluetooth:
-	//				{
-	//					bluetooth = true;
-	//					break;
-	//				}
-	//			case ConnectionProfile.Cellular:
-	//				{
-	//					cellular = true;
-	//					break;
-	//				}
-	//			case ConnectionProfile.Ethernet:
-	//				{
-	//					ethernet = true;
-	//					break;
-	//				}
-	//			case ConnectionProfile.Unknown:
-	//				{
-	//					unknown = true;
-	//					break;
-	//				}
-	//			case ConnectionProfile.WiFi:
-	//				{
-	//					wifi = true;
-	//					break;
-	//				}
-	//			default:
-	//				break;
-	//		}
-	//	}
+		connections.TrimExcess();
 
-	//	return new NetworkConnection(bluetooth, cellular, ethernet, unknown, wifi);
-	//}
+		return connections.AsReadOnly();
+	}
 }
