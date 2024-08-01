@@ -81,6 +81,11 @@ public static partial class RegexProcessor
 	private const string RemoveCrLfPattern = @"[\r\n]+";
 
 	/// <summary>
+	/// The pattern to remove HTML tags from a string.
+	/// </summary>
+	private const string RemoveHtmlPattern = @"</?.+?>";
+
+	/// <summary>
 	/// The pattern to remove special characters from a string.
 	/// </summary>
 	private const string RemoveSpecialCharPattern = @"[^0-9a-zA-Z]";
@@ -166,6 +171,10 @@ public static partial class RegexProcessor
 	[GeneratedRegex(MACAddressPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
 	private static partial Regex MACAddressSingleLine();
 
+	/// <summary>
+	/// The pattern to validate strings with 1 to 7 alphabetic characters.
+	/// </summary>
+	/// <returns>A <see cref="Regex"/> instance configured to validate strings with 1 to 7 alphabetic characters.</returns>
 	[GeneratedRegex(OneTo7AlphaPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
 	private static partial Regex OneTo7AlphaRegexSingleLine();
 
@@ -175,6 +184,13 @@ public static partial class RegexProcessor
 	/// <returns>System.Text.RegularExpressions.Regex.</returns>
 	[GeneratedRegex(RemoveCrLfPattern, RegexOptions.CultureInvariant | RegexOptions.RightToLeft | RegexOptions.IgnoreCase)]
 	private static partial Regex RemoveCrLfRegex();
+
+	/// <summary>
+	/// Gets a regex instance for removing HTML tags from a string.
+	/// </summary>
+	/// <returns>A <see cref="Regex"/> instance configured to remove HTML tags.</returns>
+	[GeneratedRegex(RemoveHtmlPattern, RegexOptions.CultureInvariant | RegexOptions.Multiline | RegexOptions.IgnoreCase)]
+	private static partial Regex RemoveHtmlRegex();
 
 	/// <summary>
 	/// Gets a regex instance for removing special characters from a string.
@@ -415,19 +431,37 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Removes special characters from the input string and replaces them with spaces.
+	/// Removes HTML tags from the input string and replaces them with the specified replacement string.
 	/// </summary>
 	/// <param name="input">The input string to process.</param>
-	/// <returns>The modified string with special characters replaced by spaces.</returns>
+	/// <param name="replacement">The string to replace HTML tags with. Defaults to an empty string.</param>
+	/// <returns>The modified string with HTML tags replaced by the specified replacement string.</returns>
 	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
-	public static string RemoveSpecialChar(string input)
+	public static string RemoveHtml(string input, string replacement = "")
 	{
 		if (input is null)
 		{
 			return input;
 		}
 
-		return RemoveSpecialCharRegex().Replace(input, ControlChars.Space.ToString());
+		return RemoveHtmlRegex().Replace(input, replacement);
+	}
+
+	/// <summary>
+	/// Removes special characters from the input string and replaces them with the specified replacement string.
+	/// </summary>
+	/// <param name="input">The input string to process.</param>
+	/// <param name="replacement">The string to replace special characters with. Defaults to an empty string.</param>
+	/// <returns>The modified string with special characters replaced by the specified replacement string.</returns>
+	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
+	public static string RemoveSpecialChar(string input, string replacement = "")
+	{
+		if (input is null)
+		{
+			return input;
+		}
+
+		return RemoveSpecialCharRegex().Replace(input, replacement);
 	}
 
 	/// <summary>

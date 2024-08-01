@@ -241,6 +241,30 @@ public class RegexProcessorTests
 	}
 
 	[TestMethod]
+	public void RemoveHtmlTest()
+	{
+		// Test with null input
+		var result = RegexProcessor.RemoveHtml(null);
+		Assert.IsNull(result, "Null input should return null.");
+
+		// Test with empty string
+		result = RegexProcessor.RemoveHtml(string.Empty);
+		Assert.AreEqual(string.Empty, result, "Empty string should return empty string.");
+
+		// Test with no HTML tags
+		result = RegexProcessor.RemoveHtml("dotnettips");
+		Assert.AreEqual("dotnettips", result, "String without HTML tags should remain unchanged.");
+
+		// Test with HTML tags
+		result = RegexProcessor.RemoveHtml("<p>dotnettips</p>");
+		Assert.AreEqual("dotnettips", result, "HTML tags should be removed.");
+
+		// Test with HTML tags and replacement
+		result = RegexProcessor.RemoveHtml("<p>dotnettips</p>", "_");
+		Assert.AreEqual("_dotnettips_", result, "HTML tags should be replaced with '_'.");
+	}
+
+	[TestMethod]
 	public void RemoveSpecialCharTest()
 	{
 		// Test with null input
@@ -251,17 +275,17 @@ public class RegexProcessorTests
 		result = RegexProcessor.RemoveSpecialChar(string.Empty);
 		Assert.AreEqual(string.Empty, result, "Empty string should return empty string.");
 
-		// Test with string containing special characters
-		result = RegexProcessor.RemoveSpecialChar("Hello, World!");
-		Assert.AreEqual("Hello  World ", result, "Special characters should be replaced with spaces.");
+		// Test with no special characters
+		result = RegexProcessor.RemoveSpecialChar("dotnettips");
+		Assert.AreEqual("dotnettips", result, "String without special characters should remain unchanged.");
 
-		// Test with string containing only special characters
-		result = RegexProcessor.RemoveSpecialChar("@#$%^&*()_+");
-		Assert.AreEqual("           ", result, "All special characters should be replaced with spaces.");
+		// Test with special characters
+		result = RegexProcessor.RemoveSpecialChar("dot@net!tips#");
+		Assert.AreEqual("dotnettips", result, "Special characters should be removed.");
 
-		// Test with string containing no special characters
-		result = RegexProcessor.RemoveSpecialChar("HelloWorld");
-		Assert.AreEqual("HelloWorld", result, "String with no special characters should remain unchanged.");
+		// Test with special characters and replacement
+		result = RegexProcessor.RemoveSpecialChar("dot@net!tips#", "_");
+		Assert.AreEqual("dot_net_tips_", result, "Special characters should be replaced with '_'.");
 	}
 
 	[TestMethod]
