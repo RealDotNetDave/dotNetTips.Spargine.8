@@ -63,7 +63,6 @@ public sealed class PreserveAttribute : Attribute
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="createdBy"/> or <paramref name="reason"/> is null.</exception>
 	public PreserveAttribute(PreserveReason preserveReason, string reason, string createdOn, string createdBy)
 	{
-		//TODO: CHANGE TO USE EXCEPTIONTHROWER
 		this.CreatedBy = createdBy ?? throw new ArgumentNullException(nameof(createdBy));
 		this.PreserveReason = preserveReason;
 		this.Reason = reason ?? throw new ArgumentNullException(nameof(reason));

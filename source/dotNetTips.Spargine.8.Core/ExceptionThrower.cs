@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-25-2024
+// Last Modified On : 08-01-2024
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -364,6 +364,19 @@ public static class ExceptionThrower
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
 	[Information(nameof(ThrowJsonException), author: "David McCarter", createdOn: "7/17/2024", Status = Status.New)]
 	public static void ThrowJsonException([AllowNull] string message, [AllowNull] Exception innerException) => throw new JsonException(message ?? Resources.ErrorThereWasAnErrorWithJsonSerialization, innerException);
+
+	/// <summary>
+	/// Throws a <see cref="LoggableException"/> with the specified message, inner exception, and user message.
+	/// </summary>
+	/// <param name="message">The error message that explains the reason for the exception.</param>
+	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+	/// <param name="userMessage">The user-friendly message associated with the exception.</param>
+	/// <exception cref="LoggableException">Always thrown with the specified parameters.</exception>
+	[DoesNotReturn]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
+	[Information(nameof(ThrowLoggableException), author: "David McCarter", createdOn: "8/1/2024", Status = Status.New)]
+	public static void ThrowLoggableException(string message, [AllowNull] Exception innerException = null, [AllowNull] string userMessage = "") => throw new LoggableException(message.ArgumentNotNull(), innerException, userMessage);
 
 	/// <summary>
 	/// Throws a <see cref="MessageNotQueuedException"/> with a specified error message.

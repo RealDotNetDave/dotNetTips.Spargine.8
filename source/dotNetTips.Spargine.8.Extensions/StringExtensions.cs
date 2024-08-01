@@ -261,7 +261,6 @@ public static class StringExtensions
 			{
 				foreach (var arg in args.AsSpan())
 				{
-					//TODO: ADD EXTENSION METHOD TO TEST FOR ENUM VALUES
 					_ = addLineFeed
 						? sb.AppendLine(arg)
 						: sb.Append(string.Concat(arg, delimiter));

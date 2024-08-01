@@ -77,7 +77,6 @@ public static class Countries
 		}
 		catch (JsonException ex)
 		{
-			//TODO: CHANGE TO USE EXCEPTIONTHROWER
 			// Log the exception or handle it as needed.
 			throw new InvalidOperationException("Failed to deserialize countries data.", ex);
 		}

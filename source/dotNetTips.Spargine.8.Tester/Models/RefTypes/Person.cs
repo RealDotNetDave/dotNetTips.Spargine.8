@@ -423,7 +423,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			{
 				return;
 			}
-			//TODO: CHANGE TO USE EXCEPTIONTHROWER
+
 			this._bornOn = value.ToUniversalTime() > DateTimeOffset.UtcNow
 				? throw new ArgumentOutOfRangeException(nameof(this.BornOn), Resources.PersonBornOnCannotBeInTheFuture)
 				: value;
@@ -453,7 +453,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			{
 				return;
 			}
-			//TODO: CHANGE TO USE EXCEPTIONTHROWER
+
 			this._cellPhone = value.HasValue(0, 50) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.CellPhone),
@@ -487,7 +487,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			{
 				return;
 			}
-			//TODO: CHANGE TO USE EXCEPTIONTHROWER
+
 			this._email = value.HasValue(0, 75) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.Email),
@@ -517,7 +517,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			{
 				return;
 			}
-			//TODO: CHANGE TO USE EXCEPTIONTHROWER
+
 			this._firstName = value.HasValue(0, 50) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.FirstName),
@@ -559,7 +559,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			{
 				return;
 			}
-			//TODO: CHANGE TO USE EXCEPTIONTHROWER
+
 			this._id = value.HasValue(1, 50) is false
 				? throw new ArgumentOutOfRangeException(nameof(this.Id), Resources.IdLengthIsLimitedTo50Characters)
 				: value;
@@ -587,7 +587,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			{
 				return;
 			}
-			//TODO: CHANGE TO USE EXCEPTIONTHROWER
+
 			this._lastName = value.HasValue(0, 50) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.LastName),
@@ -617,7 +617,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 			{
 				return;
 			}
-			//TODO: CHANGE TO USE EXCEPTIONTHROWER
+
 			this._phone = value.HasValue(0, 50) is false
 				? throw new ArgumentOutOfRangeException(
 					nameof(this.Phone),

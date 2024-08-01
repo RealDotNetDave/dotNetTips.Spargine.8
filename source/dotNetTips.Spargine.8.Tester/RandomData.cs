@@ -237,7 +237,6 @@ public static class RandomData
 	/// </remarks>
 	internal static void CreateFile([NotNull] string fileName, int fileLength = DefaultFileLength)
 	{
-		//TODO: OPTIMIZE AND BENCHMARK
 		const int bufferSize = 4096; // Use a buffer size of 4KB.
 		var buffer = new byte[bufferSize];
 		var iterations = fileLength / bufferSize;

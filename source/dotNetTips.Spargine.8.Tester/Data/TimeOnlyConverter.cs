@@ -51,7 +51,6 @@ public class TimeOnlyConverter(string? serializationFormat) : JsonConverter<Time
 	/// </remarks>
 	public override TimeOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
-		//TODO: CHANGE TO USE EXCEPTIONTHROWER
 		var value = reader.GetString() ?? throw new JsonException("The JSON value is null or not a valid TimeOnly representation.");
 
 		try

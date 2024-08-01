@@ -36,7 +36,6 @@ namespace DotNetTips.Spargine.Core;
 [Information(nameof(LoggableException), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 public class LoggableException : Exception
 {
-	//TODO: ADD TO EXCEPTIONTHROWER.
 
 	/// <summary>
 	/// The string builder pool used for performance optimization.

@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 08-01-2024
 // ***********************************************************************
 // <copyright file="EnumHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -118,22 +118,22 @@ public static class EnumHelper
 	/// and so on for each enumeration value.
 	/// </code>
 	/// </example>
-	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
+	[Information(nameof(GetValues), author: "David McCarter", createdOn: "1/1/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Updated)]
 	public static ReadOnlyCollection<EnumValue> GetValues<T>(bool fixNames = true, bool useXmlNames = true)
 		where T : Enum
 	{
 		var enumType = typeof(T);
 
 		// Get the enum values
-		var allValues = (int[])Enum.GetValues(enumType);
+		var allValues = ((int[])Enum.GetValues(enumType)).AsSpan();
+
+		// Retrieves a list of names for an enumeration type, converts it to an immutable array, and returns it as a span.
+		var enumNames = GetNames(enumType, fixNames, useXmlNames).ToImmutableArray().AsSpan();
 
 		// Get list of names
 		// Add values to result
-		var result = new List<EnumValue>();
+		var result = new List<EnumValue>(allValues.Length);
 
-		var enumNames = GetNames(enumType, fixNames, useXmlNames).ToImmutableArray();
-
-		//TODO: Refactor to use Span
 		for (var valueCount = 0; valueCount < allValues.Length; valueCount++)
 		{
 			result.Add(new EnumValue(allValues[valueCount], enumNames[valueCount]));
