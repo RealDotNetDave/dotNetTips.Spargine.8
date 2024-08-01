@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 08-01-2024
 // ***********************************************************************
 // <copyright file="RegexProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -79,6 +79,11 @@ public static partial class RegexProcessor
 	/// The pattern to remove carriage return and line feed characters.
 	/// </summary>
 	private const string RemoveCrLfPattern = @"[\r\n]+";
+
+	/// <summary>
+	/// The pattern to remove special characters from a string.
+	/// </summary>
+	private const string RemoveSpecialCharPattern = @"[^0-9a-zA-Z]";
 
 	/// <summary>
 	/// The pattern to replace spaces.
@@ -170,6 +175,13 @@ public static partial class RegexProcessor
 	/// <returns>System.Text.RegularExpressions.Regex.</returns>
 	[GeneratedRegex(RemoveCrLfPattern, RegexOptions.CultureInvariant | RegexOptions.RightToLeft | RegexOptions.IgnoreCase)]
 	private static partial Regex RemoveCrLfRegex();
+
+	/// <summary>
+	/// Gets a regex instance for removing special characters from a string.
+	/// </summary>
+	/// <returns>A <see cref="Regex"/> instance configured to remove special characters.</returns>
+	[GeneratedRegex(RemoveSpecialCharPattern, RegexOptions.CultureInvariant | RegexOptions.Multiline | RegexOptions.IgnoreCase)]
+	private static partial Regex RemoveSpecialCharRegex();
 
 	/// <summary>
 	/// Determins if string contains a SHA1 hashed string.
@@ -400,6 +412,22 @@ public static partial class RegexProcessor
 		}
 
 		return StringRegex().IsMatch(input);
+	}
+
+	/// <summary>
+	/// Removes special characters from the input string and replaces them with spaces.
+	/// </summary>
+	/// <param name="input">The input string to process.</param>
+	/// <returns>The modified string with special characters replaced by spaces.</returns>
+	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
+	public static string RemoveSpecialChar(string input)
+	{
+		if (input is null)
+		{
+			return input;
+		}
+
+		return RemoveSpecialCharRegex().Replace(input, ControlChars.Space.ToString());
 	}
 
 	/// <summary>

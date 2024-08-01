@@ -4,7 +4,7 @@
 // Created          : 02-05-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 08-01-2024
 // ***********************************************************************
 // <copyright file="RegexProcessorTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -238,6 +238,30 @@ public class RegexProcessorTests
 			var result = RegexProcessor.IsValidString(str);
 			Assert.IsTrue(result, $"String '{str}' should be valid.");
 		}
+	}
+
+	[TestMethod]
+	public void RemoveSpecialCharTest()
+	{
+		// Test with null input
+		var result = RegexProcessor.RemoveSpecialChar(null);
+		Assert.IsNull(result, "Null input should return null.");
+
+		// Test with empty string
+		result = RegexProcessor.RemoveSpecialChar(string.Empty);
+		Assert.AreEqual(string.Empty, result, "Empty string should return empty string.");
+
+		// Test with string containing special characters
+		result = RegexProcessor.RemoveSpecialChar("Hello, World!");
+		Assert.AreEqual("Hello  World ", result, "Special characters should be replaced with spaces.");
+
+		// Test with string containing only special characters
+		result = RegexProcessor.RemoveSpecialChar("@#$%^&*()_+");
+		Assert.AreEqual("           ", result, "All special characters should be replaced with spaces.");
+
+		// Test with string containing no special characters
+		result = RegexProcessor.RemoveSpecialChar("HelloWorld");
+		Assert.AreEqual("HelloWorld", result, "String with no special characters should remain unchanged.");
 	}
 
 	[TestMethod]
