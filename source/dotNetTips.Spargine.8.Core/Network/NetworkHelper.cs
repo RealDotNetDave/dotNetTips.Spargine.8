@@ -4,7 +4,7 @@
 // Created          : 06-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-01-2024
+// Last Modified On : 08-02-2024
 // ***********************************************************************
 // <copyright file="NetworkHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -24,6 +24,7 @@ namespace DotNetTips.Spargine.Core.Network;
 /// </summary>
 public static class NetworkHelper
 {
+
 	/// <summary>
 	/// Checks the network connections and returns a read-only collection of active network interfaces.
 	/// </summary>
@@ -45,5 +46,26 @@ public static class NetworkHelper
 		connections.TrimExcess();
 
 		return connections.AsReadOnly();
+	}
+
+	/// <summary>
+	/// Checks if the computer is connected to a Bluetooth network.
+	/// </summary>
+	/// <returns><c>true</c> if the computer is connected to a Bluetooth network; otherwise, <c>false</c>.</returns>
+	[Information(nameof(GetNetworkConnections), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static bool IsConnectedToBluetooth()
+	{
+		var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+
+		foreach (var networkInterface in networkInterfaces)
+		{
+			if (networkInterface.OperationalStatus == OperationalStatus.Up &&
+				networkInterface.Description.Contains("Bluetooth", StringComparison.OrdinalIgnoreCase))
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

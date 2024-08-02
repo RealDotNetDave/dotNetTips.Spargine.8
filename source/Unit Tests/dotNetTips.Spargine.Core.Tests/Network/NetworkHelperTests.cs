@@ -4,13 +4,14 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-28-2023
+// Last Modified On : 08-02-2024
 // ***********************************************************************
 // <copyright file="NetworkHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.NetworkInformation;
@@ -49,6 +50,31 @@ public class NetworkHelperTests
 		var result = NetworkHelper.GetNetworkConnections();
 
 		Assert.IsInstanceOfType(result, typeof(ReadOnlyCollection<NetworkInterface>), "The result should be a ReadOnlyCollection.");
+	}
+
+	[TestMethod]
+	public void IsConnectedToBluetooth_ReturnsFalseWhenNoBluetoothConnection()
+	{
+		var result = NetworkHelper.IsConnectedToBluetooth();
+
+		Assert.IsFalse(result, "The result should be false when there is no Bluetooth connection.");
+	}
+
+	[TestMethod]
+	public void IsConnectedToBluetooth_ReturnsTrueWhenBluetoothConnectionExists()
+	{
+		// This test assumes that there is a Bluetooth connection available.
+		// It may need to be adjusted based on the actual environment where the test is run.
+		var result = NetworkHelper.IsConnectedToBluetooth();
+
+		if (result)
+		{
+			Assert.IsTrue(result, "The result should be true when there is a Bluetooth connection.");
+		}
+		else
+		{
+			Assert.Inconclusive("No Bluetooth connection is available, so this test cannot be conclusively run.");
+		}
 	}
 }
 
