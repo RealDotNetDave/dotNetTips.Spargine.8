@@ -57,7 +57,7 @@ public static class NetworkHelper
 	{
 		var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
 
-		foreach (var networkInterface in networkInterfaces)
+		foreach (var networkInterface in networkInterfaces.AsSpan())
 		{
 			if (networkInterface.OperationalStatus == OperationalStatus.Up &&
 				networkInterface.Description.Contains("Bluetooth", StringComparison.OrdinalIgnoreCase))

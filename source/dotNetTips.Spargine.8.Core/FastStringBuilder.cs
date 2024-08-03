@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 08-03-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -15,7 +15,6 @@
 // </summary>
 // ***********************************************************************
 
-using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -140,7 +139,7 @@ public static class FastStringBuilder
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null.</exception>
 	/// <remarks>Example output: <code>r^wQTNvT, HcETQ, COtc\\G[U, loUR_SbL, o_HYYskfM"</code></remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineStringConcatenation")]
+	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Updated, Documentation = "https://bit.ly/SpargineStringConcatenation")]
 	public static string ConcatStrings(string delimiter = ",", bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (delimiter == null)
@@ -152,25 +151,13 @@ public static class FastStringBuilder
 
 		try
 		{
-			if (args?.Length > 0)
+			for (var index = 0; index < args.Length; index++)
 			{
-				_ = sb.Append("'0x");
+				_ = sb.Append(args[index]);
 
-				var index = 0;
-
-				//Span and FrozenSet is slower
-				foreach (var arg in args.ToImmutableArray())
+				if (index < args.Length - 1)
 				{
-					var newString = arg;
-
-					if (index < args.Length - 1 && delimiter.Length > 0)
-					{
-						newString = CombineStrings(false, arg, delimiter);
-					}
-
-					_ = addLineFeed is true ? sb.AppendLine(newString) : sb.Append(newString);
-
-					index++;
+					_ = addLineFeed ? sb.AppendLine() : sb.Append(delimiter);
 				}
 			}
 
@@ -178,6 +165,7 @@ public static class FastStringBuilder
 		}
 		finally
 		{
+			_ = sb.Clear();
 			_stringBuilderPool.Return(sb);
 		}
 	}
