@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Core.Security;
 using DotNetTips.Spargine.Extensions;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -36,6 +37,7 @@ public class TempFileManager : IDisposable
 	/// The list of temporary files managed by this instance.
 	/// </summary>
 	private readonly List<string> _files = new List<string>();
+
 	/// <summary>
 	/// Lock object for thread safety.
 	/// </summary>
@@ -54,7 +56,14 @@ public class TempFileManager : IDisposable
 	/// <returns>The path of the created temporary file.</returns>
 	private static string GenerateRandomFile()
 	{
-		return Path.GetTempFileName();
+		var tempFileName = $"{UlidGenerator.GenerateUlid()}.dntt";
+		var tempFilePath = Path.Combine(Path.GetTempPath(), tempFileName);
+
+		// Create the file to ensure it exists
+		using (File.Create(tempFilePath))
+		{ }
+
+		return tempFilePath;
 	}
 
 	/// <summary>
