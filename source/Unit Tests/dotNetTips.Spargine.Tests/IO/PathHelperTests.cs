@@ -302,6 +302,4 @@ public class PathHelperTests
 			Assert.IsTrue(separators.Contains(separator), $"The expected separator '{separator}' was not found in the PathSeparators collection.");
 		}
 	}
-
-
 }
