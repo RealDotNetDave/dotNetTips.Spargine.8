@@ -21,6 +21,7 @@ using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using DotNetTips.Spargine.Core;
@@ -388,6 +389,7 @@ public static class EnumerableExtensions
 
 	/// <summary>
 	/// Processes each item in the given collection using the specified action.
+	/// If possible, this method will use parallel processing for improved performance.
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
 	/// <param name="collection">The collection to process.</param>
@@ -408,11 +410,39 @@ public static class EnumerableExtensions
 		collection = collection.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		var processedCollection = collection.ToImmutableArray();
+		var processedCollection = collection;
 
-		foreach (var item in processedCollection)
+		//CHANGE PROCESSING DUE TO COLLECTION SIZE.
+		var size = collection.Count();
+		var itemType = collection.First().GetTypeOfType();
+
+		if (size < 4096 && processedCollection is List<T> list)
 		{
-			action(item);
+			ProcessWithForEachAsSpan(action, list);
+		}
+		else
+		{
+			ProcessWithForEachWithPartitioner(action, processedCollection);
+		}
+
+		// Processes each element in the collection using the specified action in parallel.
+		static void ProcessWithForEachWithPartitioner(Action<T> action, IEnumerable<T> processedCollection)
+		{
+			var rangePartitioner = Partitioner.Create(processedCollection);
+
+			_ = Parallel.ForEach(rangePartitioner, item =>
+			{
+				action(item);
+			});
+		}
+
+		// Processes each element in the list using the specified action.
+		static void ProcessWithForEachAsSpan(Action<T> action, List<T> processedCollection)
+		{
+			foreach (var item in CollectionsMarshal.AsSpan(processedCollection))
+			{
+				action(item);
+			}
 		}
 	}
 

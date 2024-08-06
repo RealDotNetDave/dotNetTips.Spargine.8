@@ -16,6 +16,7 @@
 // ***********************************************************************
 
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Diagnosers;
@@ -28,7 +29,6 @@ using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
-using Perfolizer.Mathematics.SignificanceTesting;
 using static BenchmarkDotNet.Attributes.JsonExporterAttribute;
 using static BenchmarkDotNet.Attributes.MarkdownExporterAttribute;
 
@@ -63,7 +63,7 @@ namespace DotNetTips.Spargine.Benchmarking;
 [GcServer(true)]
 [GitHub]
 [HtmlExporter]
-[InliningDiagnoser(false, true)]
+[InliningDiagnoser(true, true)]
 [IterationsColumn]
 [JsonExporter(indentJson: true)]
 [KurtosisColumn]
@@ -76,7 +76,7 @@ namespace DotNetTips.Spargine.Benchmarking;
 [Orderer(SummaryOrderPolicy.Method)]
 [RankColumn]
 [SkewnessColumn]
-[StatisticalTestColumn(StatisticalTestKind.Welch, showPValues: true)]
+[StatisticalTestColumn]
 [StopOnFirstError(true)]
 [ThreadingDiagnoser]
 public abstract class Benchmark
@@ -264,20 +264,21 @@ public abstract class Benchmark
 		this.TestGuid = Guid.NewGuid();
 	}
 
+
 	/// <summary>
 	/// Updates the Email property of a person object that implements the IPerson interface with a predefined test email address.
 	/// This method demonstrates how to modify properties of objects that are constrained by generic type parameters.
 	/// </summary>
-	/// <typeparam name="TAddress">The type of the address used by the person object, constrained to types that implement IAddress.</typeparam>
 	/// <param name="person">The person object whose Email property will be updated.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public virtual void Update<TAddress>(IPerson<TAddress> person) where TAddress : IAddress, new()
-	{
-		if (person is not null)
-		{
-			person.Email = TestEmailLowerCase;
-		}
-	}
+	public virtual void Update([NotNull] Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> person) => person.Email = TestEmailLowerCase;
+
+	/// <summary>
+	/// Updates the Email property of a value type person object that implements the IPerson interface with a predefined test email address.
+	/// This method demonstrates how to modify properties of value type objects that are constrained by generic type parameters.
+	/// </summary>
+	/// <param name="person">The value type person object whose Email property will be updated.</param>
+
+	public virtual void Update(Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address> person) => person.Email = TestEmailLowerCase;
 
 	/// <summary>
 	/// Updates the Email property in an <see cref="PersonRecord"/> with a predefined test email address.
@@ -285,13 +286,7 @@ public abstract class Benchmark
 	/// </summary>
 	/// <param name="person">The person record whose Email property will be updated.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public virtual void Update(PersonRecord person)
-	{
-		if (person is not null)
-		{
-			_ = person with { Email = TestEmailLowerCase };
-		}
-	}
+	public virtual void Update(PersonRecord person) => _ = person with { Email = TestEmailLowerCase };
 
 	/// <summary>
 	/// Updates the coordinates of an <see cref="ICoordinate"/> object to predefined values.
@@ -301,12 +296,9 @@ public abstract class Benchmark
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public virtual void Update(ICoordinate coord)
 	{
-		if (coord is not null)
-		{
-			coord.X = 100;
-			coord.Y = 200;
-			coord.Z = 300;
-		}
+		coord.X = 100;
+		coord.Y = 200;
+		coord.Z = 300;
 	}
 
 	/// <summary>
