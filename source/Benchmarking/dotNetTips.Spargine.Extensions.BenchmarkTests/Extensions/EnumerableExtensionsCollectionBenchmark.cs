@@ -383,7 +383,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		base.Setup();
 
 		this._personRefEnumerable = this.GetPersonRefCollection().AsEnumerable();
-		this._personRefList = this.GetPersonRefCollection().ToList();
+		this._personRefList = [.. this.GetPersonRefCollection()];
 		this._coordinateValEnumerable = this.GetCoordinateValArray().AsEnumerable();
 
 		var peopleToAdd = this._personRefEnumerable.ToList();

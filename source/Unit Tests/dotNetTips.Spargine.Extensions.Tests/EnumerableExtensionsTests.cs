@@ -11,13 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
-//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Core;
@@ -25,6 +23,8 @@ using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Extensions.Tests;
 
@@ -191,13 +191,39 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
-	public void FastProcessorTest()
+	public void FastProcessorTestRecord()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRecordCollection(10000);
 
-		people.FastProcessor((Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> person) => person.Email = TestData);
+		people.FastModifyCollection(person => person with { Email = TestData }, out var updatedCollection);
 
-		Assert.IsTrue(people.All(p => p.Email == TestData));
+		Assert.IsTrue(people.Count == updatedCollection.Count());
+
+		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
+	}
+
+	[TestMethod]
+	public void FastProcessorTestRef()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10000);
+
+		people.FastModifyCollection(person => { person.Email = TestData; return person; }, out var updatedCollection);
+
+		Assert.IsTrue(people.Count == updatedCollection.Count());
+
+		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
+	}
+
+	[TestMethod]
+	public void FastProcessorTestVal()
+	{
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(10000);
+
+		people.FastModifyCollection(person => { person.Email = TestData; return person; }, out var updatedCollection);
+
+		Assert.IsTrue(people.Count == updatedCollection.Count());
+
+		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
 	}
 
 	[TestMethod]
@@ -371,6 +397,30 @@ public class EnumerableExtensionsTests
 		var result = people.PickRandom();
 
 		Assert.IsNotNull(result);
+	}
+
+	public void ProcessWithForEachAsSpan<T>(IEnumerable<T> collection, Action<T> action)
+	{
+		// Convert IEnumerable<T> to List<T> to use CollectionsMarshal.AsSpan
+		var items = collection.ToList();
+
+		// Use CollectionsMarshal.AsSpan to get a span of the list
+		var span = CollectionsMarshal.AsSpan(items);
+
+		// Iterate over the span and apply the action
+		for (int i = 0; i < span.Length; i++)
+		{
+			action(span[i]);
+		}
+
+		// Update the original collection if it is a List<T>
+		if (collection is List<T> list)
+		{
+			for (int i = 0; i < items.Count; i++)
+			{
+				list[i] = items[i];
+			}
+		}
 	}
 
 	[TestMethod]

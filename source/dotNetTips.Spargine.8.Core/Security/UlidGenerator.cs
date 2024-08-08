@@ -35,12 +35,12 @@ public static class UlidGenerator
 	/// <summary>
 	/// The length of the random component in the ULID.
 	/// </summary>
-	private static readonly int _randomLength = 16;
+	private const int RandomLength = 16;
 
 	/// <summary>
 	/// The length of the timestamp component in the ULID.
 	/// </summary>
-	private static readonly int _timestampLength = 10;
+	private const int TimestampLength = 10;
 
 	/// <summary>
 	/// Decodes a Base32 encoded string into a byte array.
@@ -168,7 +168,7 @@ public static class UlidGenerator
 
 		var timestampBytes = new byte[8];
 
-		DecodeBase32(ulid[.._timestampLength], timestampBytes);
+		DecodeBase32(ulid[..TimestampLength], timestampBytes);
 
 		if (BitConverter.IsLittleEndian)
 		{
@@ -210,8 +210,8 @@ public static class UlidGenerator
 
 		var ulidChars = new char[26];
 
-		EncodeBase32(timestamp, ulidChars, 0, _timestampLength);
-		EncodeBase32(randomBytes, ulidChars, _timestampLength, _randomLength);
+		EncodeBase32(timestamp, ulidChars, 0, TimestampLength);
+		EncodeBase32(randomBytes, ulidChars, TimestampLength, RandomLength);
 
 		return new string(ulidChars);
 	}

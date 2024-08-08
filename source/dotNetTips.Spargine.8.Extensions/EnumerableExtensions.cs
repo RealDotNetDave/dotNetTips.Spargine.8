@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-26-2024
+// Last Modified On : 08-08-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -303,7 +303,7 @@ public static class EnumerableExtensions
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(FastAny), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(FastAny), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static bool FastAny<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
 	{
 		collection = collection.ArgumentNotNull();
@@ -312,13 +312,13 @@ public static class EnumerableExtensions
 		//FrozenSet is slower.
 		foreach (var item in collection)
 		{
-			if (predicate.Invoke(item) is false)
+			if (predicate(item))
 			{
-				return false;
+				return true;
 			}
 		}
 
-		return true;
+		return false;
 	}
 
 	/// <summary>
@@ -388,8 +388,172 @@ public static class EnumerableExtensions
 		collection.ArgumentNotNull().Count(predicate.ArgumentNotNull());
 
 	/// <summary>
+	/// Modifies a collection by applying a specified action to each element and returns the updated collection as a ReadOnlyCollection.
+	/// This method processes the collection differently based on collection type and size for optimal performance.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to be modified.</param>
+	/// <param name="action">The action to apply to each element in the collection.</param>
+	/// <param name="updatedCollection">The updated collection as a ReadOnlyCollection.</param>
+	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(FastModifyCollection), author: "David McCarter", createdOn: "8/7/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
+	public static void FastModifyCollection<T>(this IEnumerable<T> collection, Func<T, T> action, out ReadOnlyCollection<T> updatedCollection)
+	{
+		collection = collection.ArgumentNotNull();
+		action = action.ArgumentNotNull();
+
+		//CHANGE PROCESSING DUE TO COLLECTION SIZE.
+		var size = collection.Count();
+
+		if (size == 0)
+		{
+			updatedCollection = new ReadOnlyCollection<T>(Array.Empty<T>());
+			return;
+		}
+
+		var itemType = collection.First().GetTypeOfType();
+		var processedStack = new ConcurrentStack<T>();
+
+		switch (itemType)
+		{
+			case TypeExtensions.TypeOfType.Value:
+				ProcessValueType(action, collection, size, processedStack);
+				break;
+			case TypeExtensions.TypeOfType.Record:
+				ProcessRecordType(action, collection, size, processedStack);
+				break;
+			case TypeExtensions.TypeOfType.Unknown:
+			case TypeExtensions.TypeOfType.Reference:
+				ProcessReferenceType(action, collection, size, processedStack);
+				break;
+			default:
+				ExceptionThrower.ThrowInvalidOperationException($"{itemType} is not supported in {nameof(FastModifyCollection)}.");
+				break;
+		}
+
+		updatedCollection = processedStack.ToReadOnlyCollection();
+
+		// Processes each item in the provided list using the specified action.
+		// This method uses <see cref="CollectionsMarshal.AsSpan{T}(List{T})"/> for efficient iteration.
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		[Pure]
+		static void ProcessWithForEachAsSpan(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentStack<T> processedStack)
+		{
+			var list = processedCollection as List<T> ?? processedCollection.ToList();
+
+			foreach (var item in CollectionsMarshal.AsSpan(list))
+			{
+				processedStack.Push(action(item));
+			}
+		}
+
+		// Processes each item in the provided list using the specified action in parallel.
+		// This method uses a range partitioner to divide the work among multiple threads,
+		// with a maximum degree of parallelism specified by the application settings.
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		[Pure]
+		static void ProcessWithForEachWithPartitionerMax(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentStack<T> processedStack)
+		{
+			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
+			var rangePartitioner = Partitioner.Create(0, processedArray.Length);
+			ParallelOptions options = new() { MaxDegreeOfParallelism = Environment.ProcessorCount };
+
+			_ = Parallel.ForEach(rangePartitioner, options, range =>
+			{
+				for (var itemIndex = range.Item1; itemIndex < range.Item2; itemIndex++)
+				{
+					processedStack.Push(action(processedArray[itemIndex]));
+				}
+			});
+		}
+
+		// Processes the collection using a provided action and a partitioner.
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		[Pure]
+		static void ProcessWithForEachWithPartitioner(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentStack<T> processedStack)
+		{
+			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
+			var rangePartitioner = Partitioner.Create(0, processedArray.Length);
+
+			_ = Parallel.ForEach(rangePartitioner, range =>
+			{
+				for (var itemIndex = range.Item1; itemIndex < range.Item2; itemIndex++)
+				{
+					processedStack.Push(action(processedArray[itemIndex]));
+				}
+			});
+		}
+
+		// Processes each item in the processedCollection using the provided action and stores the results in the processedStack.
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		[Pure]
+		static void ProcessWithFor(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentStack<T> processedStack)
+		{
+			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
+
+			_ = Parallel.For(0, processedArray.Length, index =>
+			{
+				processedStack.Push(action(processedArray[index]));
+			});
+		}
+
+		// Processes a collection of value types using the specified action.
+		// The method chooses the appropriate processing strategy based on the size of the collection.
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		[Pure]
+		static void ProcessValueType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentStack<T> processedStack)
+		{
+			if (size is >= 2048)
+			{
+				ProcessWithFor(action, processedCollection, processedStack);
+			}
+			else
+			{
+				ProcessWithForEachAsSpan(action, processedCollection, processedStack);
+			}
+		}
+
+		// Processes a collection of record types using the specified action.
+		// The method chooses the appropriate processing strategy based on the size of the collection.
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		[Pure]
+		static void ProcessRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentStack<T> processedStack)
+		{
+			if (size is >= 512)
+			{
+				ProcessWithFor(action, processedCollection, processedStack);
+			}
+			else
+			{
+				ProcessWithForEachAsSpan(action, processedCollection, processedStack);
+			}
+		}
+
+		// Processes a collection of reference types using the specified action.
+		// The method chooses the appropriate processing strategy based on the size of the collection.
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		[Pure]
+		static void ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentStack<T> processedStack)
+		{
+			if (size is >= 4096 and < 8192)
+			{
+				ProcessWithForEachWithPartitioner(action, processedCollection, processedStack);
+			}
+			else if (size >= 8192)
+			{
+				ProcessWithForEachWithPartitionerMax(action, processedCollection, processedStack);
+			}
+			else
+			{
+				ProcessWithForEachAsSpan(action, processedCollection, processedStack);
+			}
+		}
+	}
+
+	/// <summary>
 	/// Processes each item in the given collection using the specified action.
-	/// If possible, this method will use parallel processing for improved performance.
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
 	/// <param name="collection">The collection to process.</param>
@@ -410,39 +574,9 @@ public static class EnumerableExtensions
 		collection = collection.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		var processedCollection = collection;
-
-		//CHANGE PROCESSING DUE TO COLLECTION SIZE.
-		var size = collection.Count();
-		var itemType = collection.First().GetTypeOfType();
-
-		if (size < 4096 && processedCollection is List<T> list)
+		foreach (var item in collection)
 		{
-			ProcessWithForEachAsSpan(action, list);
-		}
-		else
-		{
-			ProcessWithForEachWithPartitioner(action, processedCollection);
-		}
-
-		// Processes each element in the collection using the specified action in parallel.
-		static void ProcessWithForEachWithPartitioner(Action<T> action, IEnumerable<T> processedCollection)
-		{
-			var rangePartitioner = Partitioner.Create(processedCollection);
-
-			_ = Parallel.ForEach(rangePartitioner, item =>
-			{
-				action(item);
-			});
-		}
-
-		// Processes each element in the list using the specified action.
-		static void ProcessWithForEachAsSpan(Action<T> action, List<T> processedCollection)
-		{
-			foreach (var item in CollectionsMarshal.AsSpan(processedCollection))
-			{
-				action(item);
-			}
+			action(item);
 		}
 	}
 
@@ -635,10 +769,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static int IndexOf<T>(
-		[NotNull] this IEnumerable<T> collection,
-		[NotNull] T item,
-		[NotNull] IEqualityComparer<T> comparer)
+	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item, [NotNull] IEqualityComparer<T> comparer)
 	{
 		collection = collection.ArgumentItemsExists();
 		item = item.ArgumentNotNull();
@@ -694,8 +825,8 @@ public static class EnumerableExtensions
 	/// <returns>An <see cref="IEnumerable{T}"/> that contains the elements of the input sequence ordered according to the sort expression.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="sortExpression"/> is null.</exception>
 	/// <exception cref="ArgumentException">Thrown if <paramref name="sortExpression"/> is not a valid property name of <typeparamref name="T"/>.</exception>
-	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
 	[Information(nameof(OrderBy), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IEnumerable<T> OrderBy<T>([NotNull] this IEnumerable<T> collection, [NotNull] string sortExpression)
 	{
@@ -739,8 +870,8 @@ public static class EnumerableExtensions
 	/// <param name="keySelector">A function to extract a key from an element.</param>
 	/// <returns>An <see cref="IOrderedEnumerable{T}"/> whose elements are sorted according to a key.</returns>
 	/// <returns>IOrderedEnumerable&lt;T&gt;.</returns>
-	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
 	[Information(nameof(OrderByOrdinal), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IOrderedEnumerable<T> OrderByOrdinal<T>(this IEnumerable<T> collection, Func<T, string> keySelector)
 	{
@@ -761,25 +892,27 @@ public static class EnumerableExtensions
 	/// This method uses deferred execution to generate pages only when they are enumerated.
 	/// <see cref="ArgumentNullException"/> is thrown if <paramref name="collection"/> is null.
 	/// </remarks>
-	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
 	[Information(nameof(Page), "David McCarter", "11/21/2010", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> collection, int pageSize)
 	{
 		collection = collection.ArgumentNotNull();
 		pageSize = pageSize.EnsureMinimum(1);
 
-		using var enumerator = collection.GetEnumerator();
-		while (enumerator.MoveNext())
+		using (var enumerator = collection.GetEnumerator())
 		{
-			var currentPage = new List<T>(pageSize);
-
-			do
+			while (enumerator.MoveNext())
 			{
-				currentPage.Add(enumerator.Current);
-			} while (currentPage.Count < pageSize && enumerator.MoveNext());
+				var currentPage = new List<T>(pageSize);
 
-			yield return currentPage;
+				do
+				{
+					currentPage.Add(enumerator.Current);
+				} while (currentPage.Count < pageSize && enumerator.MoveNext());
+
+				yield return currentPage;
+			}
 		}
 	}
 
@@ -808,8 +941,8 @@ public static class EnumerableExtensions
 	/// Chunk: 7, 8, 9
 	/// Chunk: 10
 	/// </example>
-	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
 	[Information(nameof(Partition), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> collection, int pageCount)
 	{
@@ -856,10 +989,8 @@ public static class EnumerableExtensions
 		{
 			return collection.Shuffle(1).FirstOrDefault();
 		}
-		else
-		{
-			return default;
-		}
+
+		return default;
 	}
 
 	/// <summary>
@@ -945,8 +1076,10 @@ public static class EnumerableExtensions
 		while (start < items.Length)
 		{
 			var count = Math.Min(size, items.Length - start);
+
 			yield return new ArraySegment<T>(items, start, count);
-			start += size;
+
+			start += count;
 		}
 	}
 
@@ -1078,7 +1211,7 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(ToDelimitedString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb21")]
+	[Information(nameof(ToDelimitedString), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb21")]
 	public static string ToDelimitedString<T>(this IEnumerable<T> collection, char delimiter = ControlChars.Comma)
 	{
 		if (collection is null || collection.FastCount() == 0)
@@ -1091,7 +1224,7 @@ public static class EnumerableExtensions
 		try
 		{
 			//FrozenSet, ImmutableArray is slower.
-			foreach (var item in collection.ToImmutableArray())
+			foreach (var item in collection)
 			{
 				if (sb.Length > 0)
 				{
@@ -1163,8 +1296,8 @@ public static class EnumerableExtensions
 	/// <param name="collection">The collection to convert.</param>
 	/// <returns>A <see cref="LinkedList{T}"/> that contains elements from the input collection.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
 	[Information(nameof(ToLinkedList), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static LinkedList<T> ToLinkedList<T>(this IEnumerable<T> collection)
 	{
@@ -1182,8 +1315,8 @@ public static class EnumerableExtensions
 	/// <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
 	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
-	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
 	[Information(nameof(ToListAsync), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static async Task<List<T>> ToListAsync<T>(this IEnumerable<T> collection)
 	{
@@ -1199,8 +1332,8 @@ public static class EnumerableExtensions
 	/// <param name="collection">The collection to convert.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> that contains elements from the input collection.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IEnumerable<T> collection) => new(
 		collection.ArgumentNotNull().ToList());
@@ -1212,8 +1345,8 @@ public static class EnumerableExtensions
 	/// <param name="collection">The collection to convert.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> that contains elements from the input collection.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "2/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this ConcurrentBag<T> collection) => new(
 		collection.ArgumentNotNull().ToList());
@@ -1227,14 +1360,15 @@ public static class EnumerableExtensions
 	/// <param name="item">The item to insert or update in the collection.</param>
 	/// <returns>A new <see cref="IEnumerable{T}"/> with the item upserted.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
 	[Information(nameof(Upsert), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static IEnumerable<T> Upsert<T>(this IEnumerable<T> collection, T item)
 	{
 		collection = collection.ArgumentItemsExists();
 
 		var list = collection.ToList();
+
 		if (!list.Contains(item))
 		{
 			list.Add(item);

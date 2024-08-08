@@ -36,7 +36,7 @@ public class TempFileManager : IDisposable
 	/// <summary>
 	/// The list of temporary files managed by this instance.
 	/// </summary>
-	private readonly List<string> _files = new List<string>();
+	private readonly List<string> _files = [];
 
 	/// <summary>
 	/// Lock object for thread safety.
@@ -94,7 +94,7 @@ public class TempFileManager : IDisposable
 	{
 		var tempFile = GenerateRandomFile();
 
-		lock (_lock)
+		lock (this._lock)
 		{
 			this._files.Add(tempFile);
 		}
@@ -118,7 +118,7 @@ public class TempFileManager : IDisposable
 			files.Add(GenerateRandomFile());
 		}
 
-		lock (_lock)
+		lock (this._lock)
 		{
 			this._files.AddRange(files);
 		}
@@ -132,7 +132,7 @@ public class TempFileManager : IDisposable
 	[Information("Deletes all temporary files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
 	public void DeleteAllFiles()
 	{
-		lock (_lock)
+		lock (this._lock)
 		{
 			if (this._files.HasItems())
 			{
@@ -161,7 +161,7 @@ public class TempFileManager : IDisposable
 			File.Delete(file);
 		}
 
-		lock (_lock)
+		lock (this._lock)
 		{
 			_ = this._files.Remove(file);
 		}
@@ -184,7 +184,7 @@ public class TempFileManager : IDisposable
 	[Information("Gets the list of files currently being managed.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
 	public IReadOnlyCollection<string> GetManagedFiles()
 	{
-		lock (_lock)
+		lock (this._lock)
 		{
 			return this._files.AsReadOnly();
 		}

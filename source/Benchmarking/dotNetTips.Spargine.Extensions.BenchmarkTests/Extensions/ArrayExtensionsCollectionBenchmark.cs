@@ -83,7 +83,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(ArrayExtensions.GetHashCode))]
+	[Benchmark(Description = nameof(GetHashCode))]
 	[BenchmarkCategory(Categories.ReferenceType)]
 	public void ArrayHashCode_Ref()
 	{

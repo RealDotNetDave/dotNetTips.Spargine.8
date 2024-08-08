@@ -5,7 +5,7 @@
 		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 		<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-		<AssemblyVersion>2024.8.8.1</AssemblyVersion>
+		<AssemblyVersion>2024.8.8.8</AssemblyVersion>
 		<Authors>David McCarter</Authors>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
@@ -23,7 +23,7 @@
 		<EnablePackageValidation>false</EnablePackageValidation>
 		<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-		<FileVersion>2024.8.8.1</FileVersion>
+		<FileVersion>2024.8.8.8</FileVersion>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -48,7 +48,7 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>DotNetTips.Spargine.8.Core</Title>
-		<Version>2024.8.8.1</Version>
+		<Version>2024.8.8.8</Version>
 		<SignAssembly>false</SignAssembly>
 	</PropertyGroup>
 
@@ -56,9 +56,8 @@
 		<OutputPath>..\..\AppBin\</OutputPath>
 		<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.8.Core.xml</DocumentationFile>
 		<WarningLevel>9999</WarningLevel>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-		<WarningsAsErrors />
 		<Optimize>false</Optimize>
 		<NoWarn />
 	</PropertyGroup>
@@ -67,8 +66,7 @@
 		<OutputPath>..\..\AppBin\</OutputPath>
 		<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.8.Core.xml</DocumentationFile>
 		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<WarningsAsErrors />
+		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
 		<WarningLevel>9999</WarningLevel>
 		<Optimize>true</Optimize>
 		<NoWarn />

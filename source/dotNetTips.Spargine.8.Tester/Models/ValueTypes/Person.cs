@@ -364,6 +364,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	public string Email
 	{
 		readonly get => this._email;
+
 		set
 		{
 			if (string.Equals(this._email, value, StringComparison.Ordinal))
