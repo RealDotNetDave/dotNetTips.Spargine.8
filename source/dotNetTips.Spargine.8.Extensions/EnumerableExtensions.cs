@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-08-2024
+// Last Modified On : 08-09-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -414,7 +414,7 @@ public static class EnumerableExtensions
 		}
 
 		var itemType = collection.First().GetTypeOfType();
-		var processedStack = new ConcurrentStack<T>();
+		var processedStack = new ConcurrentBag<T>();
 
 		switch (itemType)
 		{
@@ -439,13 +439,16 @@ public static class EnumerableExtensions
 		// This method uses <see cref="CollectionsMarshal.AsSpan{T}(List{T})"/> for efficient iteration.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[Pure]
-		static void ProcessWithForEachAsSpan(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentStack<T> processedStack)
+		static void ProcessWithForEachAsSpan(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
 		{
-			var list = processedCollection as List<T> ?? processedCollection.ToList();
+			if (processedCollection is not List<T> list)
+			{
+				list = processedCollection.ToList();
+			}
 
 			foreach (var item in CollectionsMarshal.AsSpan(list))
 			{
-				processedStack.Push(action(item));
+				processedStack.Add(action(item));
 			}
 		}
 
@@ -454,17 +457,17 @@ public static class EnumerableExtensions
 		// with a maximum degree of parallelism specified by the application settings.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[Pure]
-		static void ProcessWithForEachWithPartitionerMax(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentStack<T> processedStack)
+		static void ProcessWithForEachWithPartitionerMax(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
 		{
 			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
 			var rangePartitioner = Partitioner.Create(0, processedArray.Length);
-			ParallelOptions options = new() { MaxDegreeOfParallelism = Environment.ProcessorCount };
+			ParallelOptions options = new() { MaxDegreeOfParallelism = App.MaxDegreeOfParallelism() };
 
 			_ = Parallel.ForEach(rangePartitioner, options, range =>
 			{
 				for (var itemIndex = range.Item1; itemIndex < range.Item2; itemIndex++)
 				{
-					processedStack.Push(action(processedArray[itemIndex]));
+					processedStack.Add(action(processedArray[itemIndex]));
 				}
 			});
 		}
@@ -472,7 +475,7 @@ public static class EnumerableExtensions
 		// Processes the collection using a provided action and a partitioner.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[Pure]
-		static void ProcessWithForEachWithPartitioner(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentStack<T> processedStack)
+		static void ProcessWithForEachWithPartitioner(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
 		{
 			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
 			var rangePartitioner = Partitioner.Create(0, processedArray.Length);
@@ -481,7 +484,7 @@ public static class EnumerableExtensions
 			{
 				for (var itemIndex = range.Item1; itemIndex < range.Item2; itemIndex++)
 				{
-					processedStack.Push(action(processedArray[itemIndex]));
+					processedStack.Add(action(processedArray[itemIndex]));
 				}
 			});
 		}
@@ -489,13 +492,13 @@ public static class EnumerableExtensions
 		// Processes each item in the processedCollection using the provided action and stores the results in the processedStack.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[Pure]
-		static void ProcessWithFor(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentStack<T> processedStack)
+		static void ProcessWithParallelFor(Func<T, T> action, in IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
 		{
 			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
 
 			_ = Parallel.For(0, processedArray.Length, index =>
 			{
-				processedStack.Push(action(processedArray[index]));
+				processedStack.Add(action(processedArray[index]));
 			});
 		}
 
@@ -503,11 +506,11 @@ public static class EnumerableExtensions
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[Pure]
-		static void ProcessValueType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentStack<T> processedStack)
+		static void ProcessValueType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentBag<T> processedStack)
 		{
 			if (size is >= 2048)
 			{
-				ProcessWithFor(action, processedCollection, processedStack);
+				ProcessWithParallelFor(action, processedCollection, processedStack);
 			}
 			else
 			{
@@ -519,11 +522,11 @@ public static class EnumerableExtensions
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[Pure]
-		static void ProcessRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentStack<T> processedStack)
+		static void ProcessRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentBag<T> processedStack)
 		{
 			if (size is >= 512)
 			{
-				ProcessWithFor(action, processedCollection, processedStack);
+				ProcessWithParallelFor(action, processedCollection, processedStack);
 			}
 			else
 			{
@@ -535,15 +538,18 @@ public static class EnumerableExtensions
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		[Pure]
-		static void ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentStack<T> processedStack)
+		static void ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentBag<T> processedStack)
 		{
-			if (size is >= 4096 and < 8192)
+			if (size >= 4096)
 			{
-				ProcessWithForEachWithPartitioner(action, processedCollection, processedStack);
-			}
-			else if (size >= 8192)
-			{
-				ProcessWithForEachWithPartitionerMax(action, processedCollection, processedStack);
+				if (size < 8192)
+				{
+					ProcessWithForEachWithPartitionerMax(action, processedCollection, processedStack);
+				}
+				else
+				{
+					ProcessWithForEachWithPartitioner(action, processedCollection, processedStack);
+				}
 			}
 			else
 			{
