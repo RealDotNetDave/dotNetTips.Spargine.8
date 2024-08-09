@@ -197,7 +197,7 @@ public class EnumerableExtensionsTests
 
 		people.FastModifyCollection(person => person with { Email = TestData }, out var updatedCollection);
 
-		Assert.IsTrue(people.Count == updatedCollection.Count());
+		Assert.IsTrue(people.Count == updatedCollection.Count);
 
 		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
 	}
@@ -209,7 +209,7 @@ public class EnumerableExtensionsTests
 
 		people.FastModifyCollection(person => { person.Email = TestData; return person; }, out var updatedCollection);
 
-		Assert.IsTrue(people.Count == updatedCollection.Count());
+		Assert.IsTrue(people.Count == updatedCollection.Count);
 
 		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
 	}
@@ -221,7 +221,7 @@ public class EnumerableExtensionsTests
 
 		people.FastModifyCollection(person => { person.Email = TestData; return person; }, out var updatedCollection);
 
-		Assert.IsTrue(people.Count == updatedCollection.Count());
+		Assert.IsTrue(people.Count == updatedCollection.Count);
 
 		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
 	}

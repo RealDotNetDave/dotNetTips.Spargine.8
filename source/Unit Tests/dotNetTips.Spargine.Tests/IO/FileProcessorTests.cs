@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-18-2024
+// Last Modified On : 08-09-2024
 // ***********************************************************************
 // <copyright file="FileProcessorTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -42,7 +42,7 @@ public class FileProcessorTests
 
 		var generateFiles = RandomData.GenerateFiles(1000, fileExtension: "processor.test");
 		var path = generateFiles.Path;
-		var files = new List<FileInfo>(generateFiles.Files.Count());
+		var files = new List<FileInfo>(generateFiles.Files.Count);
 
 		foreach (var file in generateFiles.Files)
 		{

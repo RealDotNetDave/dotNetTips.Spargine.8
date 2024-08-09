@@ -309,16 +309,8 @@ public static class EnumerableExtensions
 		collection = collection.ArgumentNotNull();
 		predicate = predicate.ArgumentNotNull();
 
-		//FrozenSet is slower.
-		foreach (var item in collection)
-		{
-			if (predicate(item))
-			{
-				return true;
-			}
-		}
-
-		return false;
+		// Use Parallel LINQ (PLINQ) for potential performance improvement on large collections.
+		return collection.AsParallel().Any(predicate);
 	}
 
 	/// <summary>
@@ -404,7 +396,7 @@ public static class EnumerableExtensions
 		collection = collection.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		//CHANGE PROCESSING DUE TO COLLECTION SIZE.
+		// Change processing due to collection size.
 		var size = collection.Count();
 
 		if (size == 0)
@@ -413,6 +405,7 @@ public static class EnumerableExtensions
 			return;
 		}
 
+		// Change processing due to collection item type.
 		var itemType = collection.First().GetTypeOfType();
 		var processedStack = new ConcurrentBag<T>();
 
@@ -496,10 +489,7 @@ public static class EnumerableExtensions
 		{
 			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
 
-			_ = Parallel.For(0, processedArray.Length, index =>
-			{
-				processedStack.Add(action(processedArray[index]));
-			});
+			_ = Parallel.For(0, processedArray.Length, index => processedStack.Add(action(processedArray[index])));
 		}
 
 		// Processes a collection of value types using the specified action.

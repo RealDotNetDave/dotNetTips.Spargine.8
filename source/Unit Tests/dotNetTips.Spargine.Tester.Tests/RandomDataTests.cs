@@ -4,7 +4,7 @@
 // Created          : 01-05-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-19-2024
+// Last Modified On : 08-09-2024
 // ***********************************************************************
 // <copyright file="RandomDataTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -156,7 +156,7 @@ public class RandomDataTests
 		var result = JsonSerializer.Deserialize(json, PersonJsonSerializerContext.Default.PersonList);
 
 		Assert.IsNotNull(result);
-		Assert.IsTrue(result.Count() == Count);
+		Assert.IsTrue(result.Count == Count);
 	}
 
 	[TestMethod]

@@ -4,9 +4,9 @@
 // Created          : 06-24-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-24-2024
+// Last Modified On : 08-09-2024
 // ***********************************************************************
-// <copyright file="DistinctConcurrentBagTests.cs" company="McCarter Consulting">
+// <copyright file="FastSortedListTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -14,8 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using DotNetTips.Spargine.Core.Collections.Generic;

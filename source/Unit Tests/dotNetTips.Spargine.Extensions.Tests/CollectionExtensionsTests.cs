@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-25-2024
+// Last Modified On : 08-09-2024
 // ***********************************************************************
 // <copyright file="CollectionExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -98,7 +98,7 @@ public class CollectionExtensionsTests
 
 		Assert.IsNotNull(people);
 
-		Assert.IsTrue(people.Count() == 5500);
+		Assert.IsTrue(people.Count == 5500);
 	}
 
 	[TestMethod]
