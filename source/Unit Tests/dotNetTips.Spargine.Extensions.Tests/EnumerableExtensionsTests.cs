@@ -191,7 +191,7 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
-	public void FastProcessorTestRecord()
+	public void FastModifyCollectionTestRecord10000()
 	{
 		var people = RandomData.GeneratePersonRecordCollection(10000);
 
@@ -203,7 +203,31 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
-	public void FastProcessorTestRef()
+	public void FastModifyCollectionTestRecord256()
+	{
+		var people = RandomData.GeneratePersonRecordCollection(256);
+
+		people.FastModifyCollection(person => person with { Email = TestData }, out var updatedCollection);
+
+		Assert.IsTrue(people.Count == updatedCollection.Count);
+
+		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
+	}
+
+	[TestMethod]
+	public void FastModifyCollectionTestRef1000()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(1000);
+
+		people.FastModifyCollection(person => { person.Email = TestData; return person; }, out var updatedCollection);
+
+		Assert.IsTrue(people.Count == updatedCollection.Count);
+
+		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
+	}
+
+	[TestMethod]
+	public void FastModifyCollectionTestRef10000()
 	{
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10000);
 
@@ -215,9 +239,33 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
-	public void FastProcessorTestVal()
+	public void FastModifyCollectionTestRef5000()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(5000);
+
+		people.FastModifyCollection(person => { person.Email = TestData; return person; }, out var updatedCollection);
+
+		Assert.IsTrue(people.Count == updatedCollection.Count);
+
+		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
+	}
+
+	[TestMethod]
+	public void FastModifyCollectionTestVal10000()
 	{
 		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(10000);
+
+		people.FastModifyCollection(person => { person.Email = TestData; return person; }, out var updatedCollection);
+
+		Assert.IsTrue(people.Count == updatedCollection.Count);
+
+		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
+	}
+
+	[TestMethod]
+	public void FastModifyCollectionTestVal1024()
+	{
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(1024);
 
 		people.FastModifyCollection(person => { person.Email = TestData; return person; }, out var updatedCollection);
 

@@ -389,7 +389,6 @@ public static class EnumerableExtensions
 	/// <param name="updatedCollection">The updated collection as a ReadOnlyCollection.</param>
 	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
 	[Information(nameof(FastModifyCollection), author: "David McCarter", createdOn: "8/7/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
 	public static void FastModifyCollection<T>(this IEnumerable<T> collection, Func<T, T> action, out ReadOnlyCollection<T> updatedCollection)
 	{
@@ -431,7 +430,6 @@ public static class EnumerableExtensions
 		// Processes each item in the provided list using the specified action.
 		// This method uses <see cref="CollectionsMarshal.AsSpan{T}(List{T})"/> for efficient iteration.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		[Pure]
 		static void ProcessWithForEachAsSpan(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
 		{
 			if (processedCollection is not List<T> list)
@@ -449,7 +447,6 @@ public static class EnumerableExtensions
 		// This method uses a range partitioner to divide the work among multiple threads,
 		// with a maximum degree of parallelism specified by the application settings.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		[Pure]
 		static void ProcessWithForEachWithPartitionerMax(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
 		{
 			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
@@ -467,7 +464,6 @@ public static class EnumerableExtensions
 
 		// Processes the collection using a provided action and a partitioner.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		[Pure]
 		static void ProcessWithForEachWithPartitioner(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
 		{
 			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
@@ -484,7 +480,6 @@ public static class EnumerableExtensions
 
 		// Processes each item in the processedCollection using the provided action and stores the results in the processedStack.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		[Pure]
 		static void ProcessWithParallelFor(Func<T, T> action, in IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
 		{
 			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
@@ -495,7 +490,6 @@ public static class EnumerableExtensions
 		// Processes a collection of value types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		[Pure]
 		static void ProcessValueType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentBag<T> processedStack)
 		{
 			if (size is >= 2048)
@@ -511,7 +505,6 @@ public static class EnumerableExtensions
 		// Processes a collection of record types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		[Pure]
 		static void ProcessRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentBag<T> processedStack)
 		{
 			if (size is >= 512)
@@ -527,7 +520,6 @@ public static class EnumerableExtensions
 		// Processes a collection of reference types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		[Pure]
 		static void ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentBag<T> processedStack)
 		{
 			if (size >= 4096)
