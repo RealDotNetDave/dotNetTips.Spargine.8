@@ -443,25 +443,6 @@ public static class EnumerableExtensions
 			}
 		}
 
-		// Processes each item in the provided list using the specified action in parallel.
-		// This method uses a range partitioner to divide the work among multiple threads,
-		// with a maximum degree of parallelism specified by the application settings.
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static void ProcessWithForEachWithPartitionerMax(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
-		{
-			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
-			var rangePartitioner = Partitioner.Create(0, processedArray.Length);
-			ParallelOptions options = new() { MaxDegreeOfParallelism = App.MaxDegreeOfParallelism() };
-
-			_ = Parallel.ForEach(rangePartitioner, options, range =>
-			{
-				for (var itemIndex = range.Item1; itemIndex < range.Item2; itemIndex++)
-				{
-					processedStack.Add(action(processedArray[itemIndex]));
-				}
-			});
-		}
-
 		// Processes the collection using a provided action and a partitioner.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void ProcessWithForEachWithPartitioner(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
@@ -524,14 +505,7 @@ public static class EnumerableExtensions
 		{
 			if (size >= 4096)
 			{
-				if (size < 8192)
-				{
-					ProcessWithForEachWithPartitionerMax(action, processedCollection, processedStack);
-				}
-				else
-				{
-					ProcessWithForEachWithPartitioner(action, processedCollection, processedStack);
-				}
+				ProcessWithForEachWithPartitioner(action, processedCollection, processedStack);
 			}
 			else
 			{
