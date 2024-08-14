@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-26-2024
+// Last Modified On : 08-14-2024
 // ***********************************************************************
 // <copyright file="MathExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -33,7 +33,7 @@ public static class MathExtensions
 	/// <param name="add">The number to add.</param>
 	/// <returns>The sum of the input value and the specified number.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Add), author: "David McCarter", createdOn: "7/19/2022", Status = Status.NeedsDocumentation, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(Add), author: "David McCarter", createdOn: "7/19/2022", Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static double Add(this int input, int add) => input + add;
 
 	/// <summary>
