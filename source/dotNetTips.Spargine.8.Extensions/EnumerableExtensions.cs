@@ -406,110 +406,118 @@ public static class EnumerableExtensions
 
 		// Change processing due to collection item type.
 		var itemType = collection.First().GetTypeOfType();
-		var processedStack = new ConcurrentBag<T>();
+		updatedCollection = default;
 
 		switch (itemType)
 		{
 			case TypeExtensions.TypeOfType.Value:
-				ProcessValueType(action, collection, size, processedStack);
+				updatedCollection = ProcessValueType(action, collection, size);
 				break;
 			case TypeExtensions.TypeOfType.Record:
-				ProcessRecordType(action, collection, size, processedStack);
+				updatedCollection = ProcessRecordType(action, collection, size);
 				break;
 			case TypeExtensions.TypeOfType.Unknown:
 			case TypeExtensions.TypeOfType.Reference:
-				ProcessReferenceType(action, collection, size, processedStack);
+				updatedCollection = ProcessReferenceType(action, collection, size);
 				break;
 			default:
 				ExceptionThrower.ThrowInvalidOperationException($"{itemType} is not supported in {nameof(FastModifyCollection)}.");
 				break;
 		}
 
-		updatedCollection = processedStack.ToReadOnlyCollection();
-
 		// Processes each item in the provided list using the specified action.
 		// This method uses <see cref="CollectionsMarshal.AsSpan{T}(List{T})"/> for efficient iteration.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static void ProcessWithForEachAsSpan(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
+		static ReadOnlyCollection<T> ProcessWithForEachAsSpan(Func<T, T> action, IEnumerable<T> collection)
 		{
-			if (processedCollection is not List<T> list)
+			if (collection is not List<T> list)
 			{
-				list = processedCollection.ToList();
+				list = collection.ToList();
 			}
+
+			var processedCollection = new List<T>(list.Count);
 
 			foreach (var item in CollectionsMarshal.AsSpan(list))
 			{
-				processedStack.Add(action(item));
+				processedCollection.Add(action(item));
 			}
+
+			return processedCollection.ToReadOnlyCollection();
 		}
 
 		// Processes the collection using a provided action and a partitioner.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static void ProcessWithForEachWithPartitioner(Func<T, T> action, IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
+		static ReadOnlyCollection<T> ProcessWithForEachWithPartitioner(Func<T, T> action, IEnumerable<T> collection)
 		{
-			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
+			var processedArray = collection as T[] ?? collection.ToArray();
 			var rangePartitioner = Partitioner.Create(0, processedArray.Length);
+			var processedBag = new ConcurrentBag<T>();
 
 			_ = Parallel.ForEach(rangePartitioner, range =>
 			{
 				for (var itemIndex = range.Item1; itemIndex < range.Item2; itemIndex++)
 				{
-					processedStack.Add(action(processedArray[itemIndex]));
+					processedBag.Add(action(processedArray[itemIndex]));
 				}
 			});
+
+			return processedBag.ToReadOnlyCollection();
 		}
 
-		// Processes each item in the processedCollection using the provided action and stores the results in the processedStack.
+		// Processes each item in the collection using the provided action and stores the results in the processedStack.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static void ProcessWithParallelFor(Func<T, T> action, in IEnumerable<T> processedCollection, ConcurrentBag<T> processedStack)
+		static ReadOnlyCollection<T> ProcessWithParallelFor(Func<T, T> action, in IEnumerable<T> collection)
 		{
-			var processedArray = processedCollection as T[] ?? processedCollection.ToArray();
+			var processedArray = collection as T[] ?? collection.ToArray();
+			var processedBag = new ConcurrentBag<T>();
 
-			_ = Parallel.For(0, processedArray.Length, index => processedStack.Add(action(processedArray[index])));
+			_ = Parallel.For(0, processedArray.Length, index => processedBag.Add(action(processedArray[index])));
+
+			return processedBag.ToReadOnlyCollection();
 		}
 
 		// Processes a collection of value types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static void ProcessValueType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentBag<T> processedStack)
+		static ReadOnlyCollection<T> ProcessValueType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
 		{
 			if (size is >= 2048)
 			{
-				ProcessWithParallelFor(action, processedCollection, processedStack);
+				return ProcessWithParallelFor(action, processedCollection);
 			}
 			else
 			{
-				ProcessWithForEachAsSpan(action, processedCollection, processedStack);
+				return ProcessWithForEachAsSpan(action, processedCollection);
 			}
 		}
 
 		// Processes a collection of record types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static void ProcessRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentBag<T> processedStack)
+		static ReadOnlyCollection<T> ProcessRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
 		{
 			if (size is >= 512)
 			{
-				ProcessWithParallelFor(action, processedCollection, processedStack);
+				return ProcessWithParallelFor(action, processedCollection);
 			}
 			else
 			{
-				ProcessWithForEachAsSpan(action, processedCollection, processedStack);
+				return ProcessWithForEachAsSpan(action, processedCollection);
 			}
 		}
 
 		// Processes a collection of reference types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static void ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection, int size, ConcurrentBag<T> processedStack)
+		static ReadOnlyCollection<T> ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
 		{
 			if (size >= 4096)
 			{
-				ProcessWithForEachWithPartitioner(action, processedCollection, processedStack);
+				return ProcessWithForEachWithPartitioner(action, processedCollection);
 			}
 			else
 			{
-				ProcessWithForEachAsSpan(action, processedCollection, processedStack);
+				return ProcessWithForEachAsSpan(action, processedCollection);
 			}
 		}
 	}
@@ -1311,7 +1319,7 @@ public static class EnumerableExtensions
 	[Pure]
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "2/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this ConcurrentBag<T> collection) => new(
-		collection.ArgumentNotNull().ToList());
+		[.. collection.ArgumentNotNull()]);
 
 	/// <summary>
 	/// Inserts or updates an item in the collection. If the item already exists, it is updated; otherwise, it is added.

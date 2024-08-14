@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-19-2024
+// Last Modified On : 08-13-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -21,6 +22,7 @@ using System.Threading.Tasks;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
+using DotNetTips.Spargine.Tester.Models.RefTypes;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -124,6 +126,24 @@ public class EnumerableExtensionsTests
 		_ = people.Create(true);
 
 		Assert.IsTrue(people.Count() == Count);
+	}
+
+	[TestMethod]
+	public void CreateNewCollectionAsParallelRefConcurrentBagComparison()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10000);
+		var updatedCollection = new ConcurrentBag<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>();
+
+		people.AsParallel().WithMergeOptions(ParallelMergeOptions.Default).ForAll(person =>
+		{
+			var updatedPerson = person;
+			updatedPerson.Email = TestData;
+			updatedCollection.Add(updatedPerson);
+		});
+
+		Assert.IsTrue(people.Count == updatedCollection.Count);
+
+		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
 	}
 
 	[TestMethod]
@@ -445,6 +465,33 @@ public class EnumerableExtensionsTests
 		var result = people.PickRandom();
 
 		Assert.IsNotNull(result);
+	}
+
+	[TestMethod]
+	public void ProcessCollectionAsParallelRefListComparison()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10000);
+
+		people.AsParallel().WithMergeOptions(ParallelMergeOptions.Default).ForAll(person =>
+		{
+			var updatedPerson = person;
+			updatedPerson.Email = TestData;
+		});
+
+		Assert.IsTrue(people.All(p => p.Email == TestData));
+	}
+
+	[TestMethod]
+	public void ProcessCollectionAsParallelValListComparison()
+	{
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(10000);
+
+		people.AsParallel().WithMergeOptions(ParallelMergeOptions.Default).ForAll(person =>
+		{
+			person.Email = TestData;
+		});
+
+		Assert.IsFalse(people.All(p => p.Email == TestData));
 	}
 
 	public void ProcessWithForEachAsSpan<T>(IEnumerable<T> collection, Action<T> action)
