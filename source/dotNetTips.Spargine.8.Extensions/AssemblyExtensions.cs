@@ -67,13 +67,23 @@ public static class AssemblyExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assembly" /> is null.</exception>
 	/// <remarks>This method is useful for scenarios where you need to work with concrete types defined in an assembly,
 	/// such as when creating instances or performing reflection-based processing.</remarks>
-	[Information(nameof(GetAllTypes), "David McCarter", "221/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
+	[Information(nameof(GetAllTypes), "David McCarter", "221/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
 	public static ReadOnlyCollection<Type> GetAllTypes([NotNull] this Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
 
-		//RECOMMENDATION FROM COPILOT IS SLOWER
-		return assembly.GetTypes().Where(p => !p.IsAbstract).ToList().AsReadOnly();
+		var types = assembly.GetTypes();
+		var result = new List<Type>(types.Length);
+
+		foreach (var type in types)
+		{
+			if (!type.IsAbstract)
+			{
+				result.Add(type);
+			}
+		}
+
+		return new ReadOnlyCollection<Type>(result);
 	}
 
 	/// <summary>
@@ -86,22 +96,22 @@ public static class AssemblyExtensions
 	/// <remarks>This method searches the assembly for types that are assignable to <typeparamref name="T" />,
 	/// are not interfaces, are not abstract, and are not generic types. It then attempts to create an instance
 	/// of each found type using the default constructor.</remarks>
-	[Information(nameof(GetInstances), "David McCarter", "1/7/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(GetInstances), "David McCarter", "1/7/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static IEnumerable<T> GetInstances<T>([NotNull] this Assembly assembly) where T : class
 	{
 		assembly = assembly.ArgumentNotNull();
 
-		var types = assembly.GetTypes()
-			.Where(x => !x.IsInterface
-			&& !x.IsAbstract && !x.IsGenericType
-			&& typeof(T).IsAssignableFrom(x));
+		var types = assembly.GetTypes();
+		var targetType = typeof(T);
 
-		//FrozenSet and recommendation from Copilot is slower.
 		foreach (var type in types)
 		{
-			if (Activator.CreateInstance(type) is T instance)
+			if (!type.IsInterface && !type.IsAbstract && !type.IsGenericType && targetType.IsAssignableFrom(type))
 			{
-				yield return instance;
+				if (Activator.CreateInstance(type) is T instance)
+				{
+					yield return instance;
+				}
 			}
 		}
 	}
@@ -115,14 +125,24 @@ public static class AssemblyExtensions
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="assembly" /> or <paramref name="type" /> is null.</exception>
 	/// <remarks>This method is useful for finding all concrete implementations or subclasses of a given type within an assembly.
 	/// Original code from: oqtane.framework</remarks>
-	[Information(nameof(GetTypes), "David McCarter", "1/7/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(GetTypes), "David McCarter", "1/7/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static ReadOnlyCollection<Type> GetTypes([NotNull] this Assembly assembly, [NotNull] Type type)
 	{
 		assembly = assembly.ArgumentNotNull();
 		type = type.ArgumentNotNull();
 
-		//RECOMMENDATION FROM COPILOT SLOWER
-		return assembly.GetTypes().Where(p => !p.IsAbstract && type.IsAssignableFrom(p)).ToList().AsReadOnly();
+		var types = assembly.GetTypes();
+		var result = new List<Type>(types.Length);
+
+		foreach (var t in types)
+		{
+			if (!t.IsAbstract && type.IsAssignableFrom(t))
+			{
+				result.Add(t);
+			}
+		}
+
+		return new ReadOnlyCollection<Type>(result);
 
 	}
 

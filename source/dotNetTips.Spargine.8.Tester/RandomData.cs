@@ -593,7 +593,7 @@ public static class RandomData
 	/// </summary>
 	/// <returns>A string representing a random last name.</returns>
 	/// <remarks>
-	/// This method selects a random last name from a predefined list using the PickRandom{TSource}System.Collections.Generic.IEnumerable{TSource} extension method on <see cref="_lastNames"/>.
+	/// This method selects a random last name from a predefined list using the PickRandom{T}System.Collections.Generic.IEnumerable{T} extension method on <see cref="_lastNames"/>.
 	/// </remarks>
 	[Information(nameof(GenerateLastName), "David McCarter", "3/11/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	public static string GenerateLastName() => _lastNames.Value.PickRandom();

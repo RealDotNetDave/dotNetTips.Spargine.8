@@ -165,7 +165,7 @@ public static class ListExtensions
 	/// <returns>A hash code representing the contents of the list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static int GenerateHashCode<T>([NotNull] this List<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
@@ -173,7 +173,7 @@ public static class ListExtensions
 		//return hash;
 		var hash = new HashCode();
 
-		foreach (var item in collection)
+		foreach (var item in CollectionsMarshal.AsSpan(collection))
 		{
 			hash.Add(item);
 		}
@@ -189,15 +189,10 @@ public static class ListExtensions
 	/// <param name="collection">The list to check.</param>
 	/// <returns><c>true</c> if the list contains one or more elements; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Information(nameof(HasItems), "David McCarter", "8/27/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
+	[Information(nameof(HasItems), "David McCarter", "8/27/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
 	public static bool HasItems<T>([NotNull] this List<T> collection)
 	{
-		if (collection is null)
-		{
-			return false;
-		}
-
-		return collection.Count > 0;
+		return collection?.Count > 0;
 	}
 
 	/// <summary>
@@ -210,7 +205,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the specified action has items; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">action</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasItems), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(HasItems), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this List<T> collection, [NotNull] Predicate<T> action)
 	{
 		if (collection.CheckIsNotNull() is false || action.CheckIsNotNull() is false)
@@ -220,6 +215,7 @@ public static class ListExtensions
 
 		return collection.TrueForAll(action.ArgumentNotNull());
 	}
+
 	/// <summary>
 	/// Determines whether the <see cref="List{T}" /> has a specified count.
 	/// Returns false if <paramref name="collection" /> is null.
@@ -252,13 +248,24 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">collection</exception>
 	/// <remarks>Original code by: @TheOtherBoz</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IndexAtLooped), author: "David McCarter", createdOn: "7/17/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(IndexAtLooped), author: "David McCarter", createdOn: "7/17/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static T IndexAtLooped<T>([NotNull] this List<T> collection, int index)
 	{
 		collection = collection.ArgumentNotNull();
 
 		var count = collection.Count;
-		var indexWrap = (int)(index - (count * Math.Floor((double)index / count)));
+
+		if (count == 0)
+		{
+			ExceptionThrower.ThrowArgumentException("Collection is empty.", nameof(collection));
+		}
+
+		var indexWrap = index % count;
+
+		if (indexWrap < 0)
+		{
+			indexWrap += count;
+		}
 
 		return collection[indexWrap];
 	}
@@ -273,7 +280,7 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">collection</exception>
 	/// <exception cref="ArgumentNullException">collectionToCheck</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsEqualTo), author: "David McCarter", createdOn: "3/22/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineMay2023", Status = Status.Available)]
+	[Information(nameof(IsEqualTo), author: "David McCarter", createdOn: "3/22/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Documentation = "https://bit.ly/SpargineMay2023", Status = Status.Available)]
 	public static bool IsEqualTo<T>([NotNull] this List<T> collection, [NotNull] List<T> collectionToCheck)
 	{
 		if (collection is null || collectionToCheck is null)
@@ -281,10 +288,20 @@ public static class ListExtensions
 			return false;
 		}
 
-		collection = collection.ArgumentNotNull(collection);
-		collectionToCheck = collectionToCheck.ArgumentNotNull(collectionToCheck);
+		if (collection.Count != collectionToCheck.Count)
+		{
+			return false;
+		}
 
-		return collection.SequenceEqual(collectionToCheck);
+		for (var index = 0; index < collection.Count; index++)
+		{
+			if (!EqualityComparer<T>.Default.Equals(collection[index], collectionToCheck[index]))
+			{
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	/// <summary>
@@ -294,20 +311,20 @@ public static class ListExtensions
 	/// <param name="collection">The collection.</param>
 	/// <param name="action">The action.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static void PerformAction<T>([NotNull] this List<T> collection, [NotNull] Action<T> action)
 	{
 		collection = collection.ArgumentNotNull();
 		action = action.ArgumentNotNull();
 
-		if (collection.IsNullOrEmpty())
+		if (collection.Count == 0)
 		{
 			return;
 		}
 
-		foreach (var item in collection)
+		for (var index = 0; index < collection.Count; index++)
 		{
-			action(item);
+			action(collection[index]);
 		}
 	}
 
@@ -431,25 +448,30 @@ public static class ListExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns>ImmutableArray&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToCollection), "David McCarter", "12/3/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this List<T> collection) => ImmutableArray.Create([.. collection.ArgumentNotNull()]);
+	[Information(nameof(ToCollection), "David McCarter", "12/3/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this List<T> collection)
+	{
+		collection = collection.ArgumentNotNull();
+
+		return ImmutableArray.CreateRange(collection);
+	}
 
 	/// <summary>
 	/// Converts the <see cref="IAsyncEnumerable{T}" /> to a <see cref="List{T}" /> in an asynchronous operation.
 	/// Validates that <paramref name="collection" /> is not null.
 	/// </summary>
-	/// <typeparam name="TSource">The type of the t source.</typeparam>
+	/// <typeparam name="T">The type of the t source.</typeparam>
 	/// <param name="collection">The list.</param>
 	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
 	/// <returns>List&lt;T&gt;.</returns>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToListAsync), "David McCarter", "12/3/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static async Task<List<TSource>> ToListAsync<TSource>([NotNull] this IAsyncEnumerable<TSource> collection, CancellationToken cancellationToken = default)
+	public static async Task<List<T>> ToListAsync<T>([NotNull] this IAsyncEnumerable<T> collection, CancellationToken cancellationToken = default)
 	{
 		collection = collection.ArgumentNotNull();
 
-		var returnList = new List<TSource>();
+		var returnList = new List<T>();
 
 		await foreach (var element in collection.WithCancellation(cancellationToken))
 		{

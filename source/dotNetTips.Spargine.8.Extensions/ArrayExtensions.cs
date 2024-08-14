@@ -440,13 +440,21 @@ public static class ArrayExtensions
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(RemoveFirst), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static T[] RemoveFirst<T>([NotNull] this T[] array)
 	{
 		array = array.ArgumentItemsExists();
 
-		return array.Skip(1).ToArray();
+		if (array.Length == 0)
+		{
+			return [];
+		}
+
+		var result = new T[array.Length - 1];
+		Array.Copy(array, 1, result, 0, array.Length - 1);
+		return result;
 	}
+
 	/// <summary>
 	/// Removes the last.
 	/// Validates that <paramref name="array" /> is not null and has items.
@@ -456,13 +464,19 @@ public static class ArrayExtensions
 	/// <returns>T[].</returns>
 	/// <exception cref="ArgumentNullException">array cannot be null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(RemoveLast), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static T[] RemoveLast<T>([NotNull] this T[] array)
 	{
-		array = array.ArgumentItemsExists();
+		if (array.Length == 0)
+		{
+			return [];
+		}
 
-		return array.SkipLast(1).ToArray();
+		var result = new T[array.Length - 1];
+		Array.Copy(array, result, array.Length - 1);
+		return result;
 	}
+
 	/// <summary>
 	/// Returns the array without duplicates.
 	/// Validates that <paramref name="array" /> is not null.
