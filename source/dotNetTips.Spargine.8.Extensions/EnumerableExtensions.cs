@@ -145,15 +145,18 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddLast), "David McCarter", "10/24/2023", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(AddLast), "David McCarter", "10/24/2023", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<T> AddLast<T>(this IEnumerable<T> collection, T item)
 	{
-		if (item is null)
+		collection = collection.ArgumentNotNull();
+		item = item.ArgumentNotNull();
+
+		foreach (var element in collection)
 		{
-			return collection;
+			yield return element;
 		}
 
-		return collection.ArgumentNotNull().Append(item);
+		yield return item;
 	}
 
 	/// <summary>
@@ -230,11 +233,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.NeedsUpdate, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
-	public static async Task<int> CountAsync<T>(
-		this IEnumerable<T> collection,
-		CancellationToken cancellationToken = default) => await Task.Run(
-		collection.ArgumentNotNull().Count,
-		cancellationToken)
+	public static async Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default) => await Task.Run(collection.ArgumentNotNull().Count, cancellationToken)
 		.ConfigureAwait(false);
 
 	/// <summary>
@@ -247,14 +246,16 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
+	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static Collection<T> Create<T>(this IEnumerable<T> items, bool ensureUnique)
 	{
 		items = items.ArgumentNotNull();
 
-		IList<T> list = ensureUnique ? new HashSet<T>(items).ToList() : new List<T>(items);
+		var collection = ensureUnique
+			? new Collection<T>(new HashSet<T>(items).ToList())
+			: new Collection<T>(new List<T>(items));
 
-		return new Collection<T>(list);
+		return collection;
 	}
 
 	/// <summary>

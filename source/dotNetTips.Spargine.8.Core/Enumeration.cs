@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-13-2024
+// Last Modified On : 08-14-2024
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -16,6 +16,7 @@
 // ***********************************************************************
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Reflection;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -110,14 +111,12 @@ public abstract record Enumeration
 	/// <returns>An instance of the enumeration type that matches the given display name.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="displayName"/> is null or empty.</exception>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
-	[Information(nameof(FromDisplayName), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
+	[Information(nameof(FromDisplayName), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static T FromDisplayName<T>([NotNull] string displayName) where T : Enumeration, new()
 	{
 		displayName = displayName.ArgumentNotNullOrEmpty();
 
-		var matchingItem = Parse<T>(displayName, predicate: item => string.Equals(item.DisplayName, displayName, StringComparison.Ordinal));
-
-		return matchingItem;
+		return Parse<T>(displayName, predicate: item => string.Equals(item.DisplayName, displayName, StringComparison.Ordinal));
 	}
 
 	/// <summary>
@@ -127,12 +126,10 @@ public abstract record Enumeration
 	/// <param name="value">The integer value of the enumeration instance.</param>
 	/// <returns>An instance of the enumeration type that matches the given integer value.</returns>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
-	[Information(nameof(FromValue), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
+	[Information(nameof(FromValue), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static T FromValue<T>(int value) where T : Enumeration, new()
 	{
-		var matchingItem = Parse<T>("Validating int.", item => item.Value == value);
-
-		return matchingItem;
+		return Parse<T>(value.ToString(CultureInfo.CurrentCulture), item => item.Value == value);
 	}
 
 	/// <summary>
@@ -140,17 +137,15 @@ public abstract record Enumeration
 	/// </summary>
 	/// <typeparam name="T">The type of enumeration to retrieve instances for.</typeparam>
 	/// <returns>An <see cref="IEnumerable{T}"/> containing all instances of the specified enumeration type.</returns>
-	[Information(nameof(GetAll), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
+	[Information(nameof(GetAll), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static IEnumerable<T> GetAll<T>() where T : Enumeration, new()
 	{
 		var type = typeof(T);
 		var fields = type.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
 
-		for (var fieldCount = 0; fieldCount < fields.Length; fieldCount++)
+		foreach (var field in fields)
 		{
-			var instance = new T();
-
-			if (fields[fieldCount].GetValue(instance) is T locatedValue)
+			if (field.GetValue(null) is T locatedValue)
 			{
 				yield return locatedValue;
 			}
