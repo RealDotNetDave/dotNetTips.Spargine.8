@@ -1,12 +1,10 @@
-
-
 // ***********************************************************************
 // Assembly         : DotNetTips.Spargine.8.Core
 // Author           : David McCarter
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-19-2024
+// Last Modified On : 08-01-2024
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -135,7 +133,7 @@ public static class JsonSerialization
 	/// <remarks>This method uses the configured <see cref="JsonSerializerOptions"/> for deserialization.
 	/// It throws an <see cref="InvalidOperationException"/> if the deserialization process fails
 	/// or if the result is null, ensuring that a valid object is always returned.</remarks>
-	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json) => JsonSerializer.Deserialize<TResult>(json, _options) ??
 		throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
 
