@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-22-2024
+// Last Modified On : 08-15-2024
 // ***********************************************************************
 // <copyright file="XmlSerialization.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -38,11 +38,13 @@ public static class XmlSerialization
 	/// <param name="xml">The XML string to deserialize.</param>
 	/// <returns>An instance of the specified type containing the deserialized data.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the xml parameter is null or empty.</exception>
-	[Information(nameof(Deserialize), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Deserialize), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Xml)] string xml)
 		where TResult : new()
 	{
-		using (var sr = new StringReader(xml.ArgumentNotNullOrEmpty(true)))
+		xml = xml.ArgumentNotNullOrEmpty(true);
+
+		using (var sr = new StringReader(xml))
 		{
 			using (var xmlReader = XmlReader.Create(sr))
 			{
@@ -58,7 +60,7 @@ public static class XmlSerialization
 	/// <param name="file">The file containing the XML to deserialize.</param>
 	/// <returns>An instance of the specified type containing the deserialized data from the file.</returns>
 	/// <exception cref="FileNotFoundException">Thrown if the specified file does not exist.</exception>
-	[Information(nameof(DeserializeFromFile), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(DeserializeFromFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : new()
 	{
 		file = file.ArgumentNotNull();
@@ -74,7 +76,7 @@ public static class XmlSerialization
 	/// <param name="obj">The object to serialize.</param>
 	/// <returns>A string containing the XML representation of the object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the obj parameter is null.</exception>
-	[Information(nameof(Serialize), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Serialize), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string Serialize([NotNull] object obj)
 	{
 		obj = obj.ArgumentNotNull();
@@ -83,9 +85,7 @@ public static class XmlSerialization
 		{
 			using (var xmlWriter = XmlWriter.Create(writer))
 			{
-				var type = obj.GetType();
-
-				var serializer = new XmlSerializer(type);
+				var serializer = new XmlSerializer(obj.GetType());
 
 				serializer.Serialize(xmlWriter, obj);
 
@@ -100,7 +100,7 @@ public static class XmlSerialization
 	/// <param name="obj">The object to serialize.</param>
 	/// <param name="file">The file to write the XML to.</param>
 	/// <exception cref="ArgumentNullException">Thrown if any parameter is null.</exception>
-	[Information(nameof(SerializeToFile), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(SerializeToFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void SerializeToFile([NotNull] object obj, [NotNull] FileInfo file)
 	{
 		obj = obj.ArgumentNotNull();
@@ -118,7 +118,13 @@ public static class XmlSerialization
 			_ = Directory.CreateDirectory(directoryName);
 		}
 
-		File.WriteAllText(file.FullName, Serialize(obj));
+		using (var writer = new StreamWriter(file.FullName))
+		{
+			using (var xmlWriter = XmlWriter.Create(writer))
+			{
+				new XmlSerializer(obj.GetType()).Serialize(xmlWriter, obj);
+			}
+		}
 	}
 
 	/// <summary>
