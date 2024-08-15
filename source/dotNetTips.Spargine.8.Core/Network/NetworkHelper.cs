@@ -29,13 +29,13 @@ public static class NetworkHelper
 	/// Checks the network connections and returns a read-only collection of active network interfaces.
 	/// </summary>
 	/// <returns>A read-only collection of <see cref="NetworkInterface"/> representing the active network connections.</returns>
-	[Information(nameof(GetNetworkConnections), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(GetNetworkConnections), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static ReadOnlyCollection<NetworkInterface> GetNetworkConnections()
 	{
 		var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
 		var connections = new List<NetworkInterface>(networkInterfaces.Length);
 
-		foreach (var networkInterface in networkInterfaces.AsSpan())
+		foreach (var networkInterface in networkInterfaces)
 		{
 			if (networkInterface.OperationalStatus == OperationalStatus.Up)
 			{
@@ -52,7 +52,7 @@ public static class NetworkHelper
 	/// Checks if the computer is connected to a Bluetooth network.
 	/// </summary>
 	/// <returns><c>true</c> if the computer is connected to a Bluetooth network; otherwise, <c>false</c>.</returns>
-	[Information(nameof(GetNetworkConnections), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(GetNetworkConnections), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static bool IsConnectedToBluetooth()
 	{
 		var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
