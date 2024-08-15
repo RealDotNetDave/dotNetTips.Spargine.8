@@ -17,6 +17,7 @@
 // </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -51,7 +52,8 @@ public static class ExecutionHelper
 	/// }, 3, 100);
 	/// </code>
 	/// </example>
-	[Information(nameof(ProgressiveRetry), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available, Documentation = "https://bit.ly/SpargineProgressiveRetry")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ProgressiveRetry), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available, Documentation = "https://bit.ly/SpargineProgressiveRetry")]
 	public static SimpleResult<int> ProgressiveRetry([NotNull] Action operation, byte retryCount = 3, int retryWaitMilliseconds = 100)
 	{
 		operation = operation.ArgumentNotNull();

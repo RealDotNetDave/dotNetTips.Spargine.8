@@ -399,10 +399,26 @@ public static class LoggingHelper
 	/// <summary>
 	/// Retrieves all Exception messages from the provided Exception, including messages from any inner exceptions.
 	/// </summary>
-	/// <param name="exception">The loggableException to retrieve messages from. Must not be null.</param>
-	/// <returns>A read-only collection of loggableException messages.</returns>
-	/// <loggableException cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</loggableException>
-	[Information(nameof(RetrieveAllExceptionMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	/// <param name="exception">The exception to retrieve messages from. Must not be null.</param>
+	/// <returns>A read-only collection of exception messages.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
+	/// <example>
+	/// <code>
+	/// try
+	/// {
+	///     // Some code that throws an exception
+	/// }
+	/// catch (Exception ex)
+	/// {
+	///     var messages = LoggingHelper.RetrieveAllExceptionMessages(ex);
+	///     foreach (var message in messages)
+	///     {
+	///         Console.WriteLine(message);
+	///     }
+	/// }
+	/// </code>
+	/// </example>
+	[Information(nameof(RetrieveAllExceptionMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static ReadOnlyCollection<string> RetrieveAllExceptionMessages(Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
@@ -422,19 +438,35 @@ public static class LoggingHelper
 	/// <summary>
 	/// Retrieves all exceptions, including inner exceptions, from the provided Exception.
 	/// </summary>
-	/// <param name="exception">The loggableException from which to retrieve all exceptions, including inner exceptions. Must not be null.</param>
+	/// <param name="exception">The exception from which to retrieve all exceptions, including inner exceptions. Must not be null.</param>
 	/// <returns>A read-only collection of all exceptions, including inner exceptions.</returns>
-	/// <loggableException cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</loggableException>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
+	/// <example>
+	/// <code>
+	/// try
+	/// {
+	///     // Some code that throws an exception
+	/// }
+	/// catch (Exception ex)
+	/// {
+	///     var exceptions = LoggingHelper.RetrieveAllExceptions(ex);
+	///     foreach (var ex in exceptions)
+	///     {
+	///         Console.WriteLine(ex.Message);
+	///     }
+	/// }
+	/// </code>
+	/// </example>
 	[Information(nameof(RetrieveAllExceptions), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static ReadOnlyCollection<Exception> RetrieveAllExceptions(Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
 
-		var collection = new List<Exception> { exception };
+		var collection = new List<Exception>();
 
-		if (exception.InnerException is not null)
+		for (var currentException = exception; currentException is not null; currentException = currentException.InnerException)
 		{
-			collection.AddRange(RetrieveAllExceptions(exception.InnerException));
+			collection.Add(currentException);
 		}
 
 		return collection.AsReadOnly();
