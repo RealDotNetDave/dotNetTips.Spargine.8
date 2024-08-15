@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-14-2024
+// Last Modified On : 08-15-2024
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -127,10 +127,7 @@ public abstract record Enumeration
 	/// <returns>An instance of the enumeration type that matches the given integer value.</returns>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
 	[Information(nameof(FromValue), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
-	public static T FromValue<T>(int value) where T : Enumeration, new()
-	{
-		return Parse<T>(value.ToString(CultureInfo.CurrentCulture), item => item.Value == value);
-	}
+	public static T FromValue<T>(int value) where T : Enumeration, new() => Parse<T>(value.ToString(CultureInfo.CurrentCulture), item => item.Value == value);
 
 	/// <summary>
 	/// Retrieves all instances of the specified enumeration type <typeparamref name="T"/>.

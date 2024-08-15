@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-14-2024
+// Last Modified On : 08-15-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -190,10 +190,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the list contains one or more elements; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(HasItems), "David McCarter", "8/27/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this List<T> collection)
-	{
-		return collection?.Count > 0;
-	}
+	public static bool HasItems<T>([NotNull] this List<T> collection) => collection?.Count > 0;
 
 	/// <summary>
 	/// Determines whether the specified <see cref="List{T}" /> has items based on the Predicate.

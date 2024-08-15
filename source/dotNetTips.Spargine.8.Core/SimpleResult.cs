@@ -100,7 +100,7 @@ public class SimpleResult<T>
 	/// Gets exceptions associated with this result.
 	/// </summary>
 	/// <returns>ReadOnlyCollection&lt;Exception&gt;.</returns>
-	public ReadOnlyCollection<Exception> Errors() => new(this._exceptions.ToList());
+	public ReadOnlyCollection<Exception> Errors() => new([.. this._exceptions]);
 
 	/// <summary>
 	/// Extracts the actual result from the specified <see cref="SimpleResult{T}"/>.

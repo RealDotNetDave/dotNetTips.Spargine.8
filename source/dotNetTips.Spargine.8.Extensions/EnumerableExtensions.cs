@@ -69,6 +69,7 @@ public static class EnumerableExtensions
 			{
 				yield return item;
 			}
+
 			yield break;
 		}
 

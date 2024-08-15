@@ -4,7 +4,7 @@
 // Created          : 03-12-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-31-2024
+// Last Modified On : 08-15-2024
 // ***********************************************************************
 // <copyright file="Countries.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -73,7 +73,7 @@ public static class Countries
 		try
 		{
 			var countries = JsonSerializer.Deserialize<Country[]>(Resources.WorldCities, _options);
-			return countries?.AsReadOnly() ?? new ReadOnlyCollection<Country>(new List<Country>());
+			return countries?.AsReadOnly() ?? new ReadOnlyCollection<Country>([]);
 		}
 		catch (JsonException ex)
 		{

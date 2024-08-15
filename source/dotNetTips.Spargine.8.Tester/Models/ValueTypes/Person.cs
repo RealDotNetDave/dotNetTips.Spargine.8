@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 07-22-2024
+// Last Modified On : 08-15-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -114,9 +114,7 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	/// <param name="id">The identifier.</param>
 	/// <param name="email">The email.</param>
 	[JsonConstructor]
-	public Person(
-		[NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
-		[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id) : this()
+	public Person([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email, [NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id) : this()
 	{
 		this.Id = id;
 		this.Email = email;
