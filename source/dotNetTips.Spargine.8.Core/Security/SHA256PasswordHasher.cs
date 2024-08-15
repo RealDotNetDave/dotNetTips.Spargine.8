@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-31-2024
+// Last Modified On : 08-15-2024
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -73,8 +73,8 @@ public static class SHA256PasswordHasher
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool FixedTimeEquals([NotNull] byte[] left, [NotNull] byte[] right)
 	{
 		left = left.ArgumentItemsExists(nameof(left));
@@ -82,7 +82,7 @@ public static class SHA256PasswordHasher
 
 		// NoOptimization because we want this method to be exactly as non-short-circuiting as written.
 		// NoInlining because the NoOptimization would get lost if the method got inlined.
-		if (left.CheckIsCondition(left.Length != right.Length))
+		if (left.Length != right.Length)
 		{
 			return false;
 		}
@@ -137,7 +137,7 @@ public static class SHA256PasswordHasher
 	/// var result = SHA256PasswordHasher.VerifyHashedPassword(hashedPassword, password);
 	/// Console.WriteLine(result == PasswordVerificationResult.Success ? "Password verified" : "Password verification failed");
 	/// </code></example>
-	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static PasswordVerificationResult VerifyHashedPassword(string hashedPassword, [NotNull] string password)
 	{
 		if (string.IsNullOrEmpty(hashedPassword))
