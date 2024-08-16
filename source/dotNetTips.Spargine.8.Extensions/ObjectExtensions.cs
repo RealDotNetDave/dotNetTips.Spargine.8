@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-14-2024
+// Last Modified On : 08-16-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -250,12 +250,11 @@ public static class ObjectExtensions
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
-	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.WIP, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Optimize, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.WIP, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static IDictionary<string, string> PropertiesToDictionary([NotNull] this object obj, [NotNull] string memberName = ControlChars.EmptyString, bool ignoreNulls = true)
 	{
 		var result = new Dictionary<string, string>();
 		memberName = memberName.ArgumentNotNull();
-
 		var objectType = obj.ArgumentNotNull().GetType();
 
 		// Reserve a special treatment for specific types by design (like string -that's a list of chars and you don't want to iterate on its items)
@@ -351,7 +350,7 @@ public static class ObjectExtensions
 	/// PersonRecord.Addresses[1].PostalCode:33385672
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PropertiesToString), author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Optimize, Documentation = "https://bit.ly/SpargineFeb2021")]
+	[Information(nameof(PropertiesToString), author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2021")]
 	public static string PropertiesToString([NotNull] this object obj, [AllowNull] string header = ControlChars.EmptyString, char keyValueSeparator = ControlChars.Colon, [NotNull] string sequenceSeparator = ControlChars.DefaultSeparator, bool ignoreNulls = true, bool includeMemberName = true)
 	{
 		obj = obj.ArgumentNotNull();
@@ -380,8 +379,8 @@ public static class ObjectExtensions
 	/// </summary>
 	/// <param name="obj">The object to convert to a string.</param>
 	/// <returns>The string representation of <paramref name="obj" /> if it is not null; otherwise, an empty string.</returns>
-	[Information(nameof(StripNull), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static string StripNull([AllowNull] this object obj) => obj is null ? string.Empty : obj.ToString();
+	[Information(nameof(StripNull), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	public static string StripNull([AllowNull] this object obj) => obj?.ToString() ?? string.Empty;
 
 	/// <summary>
 	/// Serializes the specified object to a JSON string using predefined JsonSerializerOptions.
