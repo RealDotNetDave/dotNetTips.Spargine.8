@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-14-2024
+// Last Modified On : 08-16-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -446,7 +446,7 @@ public static class EnumerableExtensions
 				list = collection.ToList();
 			}
 
-			var processedCollection = new List<T>(list.Count);
+			var processedCollection = new ReadOnlyCollectionBuilder<T>(list.Count);
 
 			foreach (var item in CollectionsMarshal.AsSpan(list))
 			{
@@ -454,25 +454,6 @@ public static class EnumerableExtensions
 			}
 
 			return processedCollection.ToReadOnlyCollection();
-		}
-
-		// Processes the collection using a provided action and a partitioner.
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static ReadOnlyCollection<T> ProcessWithForEachWithPartitioner(Func<T, T> action, IEnumerable<T> collection)
-		{
-			var processedArray = collection as T[] ?? collection.ToArray();
-			var rangePartitioner = Partitioner.Create(0, processedArray.Length);
-			var processedBag = new ConcurrentBag<T>();
-
-			_ = Parallel.ForEach(rangePartitioner, range =>
-			{
-				for (var itemIndex = range.Item1; itemIndex < range.Item2; itemIndex++)
-				{
-					processedBag.Add(action(processedArray[itemIndex]));
-				}
-			});
-
-			return processedBag.ToReadOnlyCollection();
 		}
 
 		// Processes each item in the collection using the provided action and stores the results in the processedStack.
@@ -487,14 +468,37 @@ public static class EnumerableExtensions
 			return processedBag.ToReadOnlyCollection();
 		}
 
+		// Processes each item in the collection using the provided action in parallel and returns a read-only collection of the results.
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		static ReadOnlyCollection<T> ProcessWithParallelForEach(Func<T, T> action, in IEnumerable<T> collection)
+		{
+			var processedArray = collection as T[] ?? collection.ToArray();
+			var rangePartitioner = Partitioner.Create(0, processedArray.Length);
+			var processedBag = new ConcurrentBag<T>();
+
+			_ = Parallel.ForEach(rangePartitioner, (range, state) =>
+			{
+				for (var index = range.Item1; index < range.Item2; index++)
+				{
+					processedBag.Add(action(processedArray[index]));
+				}
+			});
+
+			return processedBag.ToReadOnlyCollection();
+		}
+
 		// Processes a collection of value types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static ReadOnlyCollection<T> ProcessValueType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
 		{
-			if (size is >= 2048)
+			if (size is >= 2048 and < 8192)
 			{
 				return ProcessWithParallelFor(action, processedCollection);
+			}
+			else if (size >= 8192)
+			{
+				return ProcessWithParallelForEach(action, processedCollection);
 			}
 			else
 			{
@@ -507,9 +511,17 @@ public static class EnumerableExtensions
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static ReadOnlyCollection<T> ProcessRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
 		{
-			if (size is >= 512)
+			if (size is >= 2048 and < 4096)
 			{
 				return ProcessWithParallelFor(action, processedCollection);
+			}
+			else if (size >= 8192)
+			{
+				return ProcessWithParallelFor(action, processedCollection);
+			}
+			else if (size is >= 4096 and < 8192)
+			{
+				return ProcessWithParallelForEach(action, processedCollection);
 			}
 			else
 			{
@@ -522,14 +534,7 @@ public static class EnumerableExtensions
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static ReadOnlyCollection<T> ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
 		{
-			if (size >= 4096)
-			{
-				return ProcessWithForEachWithPartitioner(action, processedCollection);
-			}
-			else
-			{
-				return ProcessWithForEachAsSpan(action, processedCollection);
-			}
+			return ProcessWithForEachAsSpan(action, processedCollection);
 		}
 	}
 
