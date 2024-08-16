@@ -384,17 +384,17 @@ public static class EnumerableExtensions
 		collection.ArgumentNotNull().Count(predicate.ArgumentNotNull());
 
 	/// <summary>
-	/// Modifies a collection by applying a specified action to each element and returns the updated collection as a ReadOnlyCollection.
-	/// This method processes the collection differently based on collection type and size for optimal performance.
+	/// Modifies each element in the collection using the specified action and returns a read-only collection of the modified elements.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
-	/// <param name="collection">The collection to be modified.</param>
-	/// <param name="action">The action to apply to each element in the collection.</param>
-	/// <param name="updatedCollection">The updated collection as a ReadOnlyCollection.</param>
+	/// <param name="collection">The collection of elements to modify.</param>
+	/// <param name="action">The function to apply to each element in the collection.</param>
+	/// <returns>A read-only collection of the modified elements.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
 	[Information(nameof(FastModifyCollection), author: "David McCarter", createdOn: "8/7/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
-	public static void FastModifyCollection<T>(this IEnumerable<T> collection, Func<T, T> action, out ReadOnlyCollection<T> updatedCollection)
+	public static ReadOnlyCollection<T> FastModifyCollection<T>(this IEnumerable<T> collection, Func<T, T> action)
 	{
 		collection = collection.ArgumentNotNull();
 		action = action.ArgumentNotNull();
@@ -404,13 +404,12 @@ public static class EnumerableExtensions
 
 		if (size == 0)
 		{
-			updatedCollection = new ReadOnlyCollection<T>(Array.Empty<T>());
-			return;
+			return new ReadOnlyCollection<T>(Array.Empty<T>());
 		}
 
 		// Change processing due to collection item type.
 		var itemType = collection.First().GetTypeOfType();
-		updatedCollection = default;
+		ReadOnlyCollection<T> updatedCollection = default;
 
 		switch (itemType)
 		{
@@ -428,6 +427,8 @@ public static class EnumerableExtensions
 				ExceptionThrower.ThrowInvalidOperationException($"{itemType} is not supported in {nameof(FastModifyCollection)}.");
 				break;
 		}
+
+		return updatedCollection;
 
 		// Processes each item in the provided list using the specified action.
 		// This method uses <see cref="CollectionsMarshal.AsSpan{T}(List{T})"/> for efficient iteration.
