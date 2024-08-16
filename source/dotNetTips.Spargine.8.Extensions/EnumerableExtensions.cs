@@ -61,17 +61,10 @@ public static class EnumerableExtensions
 	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static IEnumerable<T> AddDistinct<T>(this IEnumerable<T> source, [NotNull] params T[] items)
 	{
+		source = source.ArgumentNotNull();
+		items = items.ArgumentNotNull();
+
 		source ??= [];
-
-		if (items == null || items.Length == 0)
-		{
-			foreach (var item in source)
-			{
-				yield return item;
-			}
-
-			yield break;
-		}
 
 		var seenItems = new HashSet<T>(source);
 
