@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-16-2024
+// Last Modified On : 08-17-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -52,7 +52,7 @@ public class EnumerableExtensionsTests
 
 		Assert.IsTrue(people.Count() == Count + 1);
 
-		people = people.AddFirst(null);
+		people = people.AddDistinct(null);
 
 		Assert.IsTrue(people.Count() == Count + 1);
 	}
@@ -492,30 +492,6 @@ public class EnumerableExtensionsTests
 		});
 
 		Assert.IsFalse(people.All(p => p.Email == TestData));
-	}
-
-	public void ProcessWithForEachAsSpan<T>(IEnumerable<T> collection, Action<T> action)
-	{
-		// Convert IEnumerable<T> to List<T> to use CollectionsMarshal.AsSpan
-		var items = collection.ToList();
-
-		// Use CollectionsMarshal.AsSpan to get a span of the list
-		var span = CollectionsMarshal.AsSpan(items);
-
-		// Iterate over the span and apply the action
-		for (int i = 0; i < span.Length; i++)
-		{
-			action(span[i]);
-		}
-
-		// Update the original collection if it is a List<T>
-		if (collection is List<T> list)
-		{
-			for (int i = 0; i < items.Count; i++)
-			{
-				list[i] = items[i];
-			}
-		}
 	}
 
 	[TestMethod]

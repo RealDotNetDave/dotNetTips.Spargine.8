@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-16-2024
+// Last Modified On : 08-17-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -61,25 +61,19 @@ public static class EnumerableExtensions
 	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static IEnumerable<T> AddDistinct<T>(this IEnumerable<T> source, [NotNull] params T[] items)
 	{
-		source = source.ArgumentNotNull();
-		items = items.ArgumentNotNull();
-
-		source ??= [];
-
-		var seenItems = new HashSet<T>(source);
-
-		foreach (var item in source)
+		if (source == null || items == null || items.Length == 0)
 		{
-			yield return item;
+			return source;
 		}
+
+		var result = new HashSet<T>(source);
 
 		foreach (var item in items)
 		{
-			if (seenItems.Add(item))
-			{
-				yield return item;
-			}
+			_ = result.Add(item);
 		}
+
+		return result;
 	}
 
 	/// <summary>
@@ -400,7 +394,7 @@ public static class EnumerableExtensions
 		action = action.ArgumentNotNull();
 
 		// Change processing due to collection size.
-		var size = collection.Count();
+		var size = collection.TryGetNonEnumeratedCount(out var count) ? count : collection.Count();
 
 		if (size == 0)
 		{
@@ -421,7 +415,7 @@ public static class EnumerableExtensions
 				break;
 			case TypeExtensions.TypeOfType.Unknown:
 			case TypeExtensions.TypeOfType.Reference:
-				updatedCollection = ProcessReferenceType(action, collection, size);
+				updatedCollection = ProcessReferenceType(action, collection);
 				break;
 			default:
 				ExceptionThrower.ThrowInvalidOperationException($"{itemType} is not supported in {nameof(FastModifyCollection)}.");
@@ -486,13 +480,13 @@ public static class EnumerableExtensions
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static ReadOnlyCollection<T> ProcessValueType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
 		{
-			if (size is >= 2048 and < 8192)
-			{
-				return ProcessWithParallelFor(action, processedCollection);
-			}
-			else if (size >= 8192)
+			if (size >= 8192)
 			{
 				return ProcessWithParallelForEach(action, processedCollection);
+			}
+			else if (size >= 2048)
+			{
+				return ProcessWithParallelFor(action, processedCollection);
 			}
 			else
 			{
@@ -505,17 +499,13 @@ public static class EnumerableExtensions
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static ReadOnlyCollection<T> ProcessRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
 		{
-			if (size is >= 2048 and < 4096)
-			{
-				return ProcessWithParallelFor(action, processedCollection);
-			}
-			else if (size >= 8192)
-			{
-				return ProcessWithParallelFor(action, processedCollection);
-			}
-			else if (size is >= 4096 and < 8192)
+			if (size >= 8192)
 			{
 				return ProcessWithParallelForEach(action, processedCollection);
+			}
+			else if (size >= 2048)
+			{
+				return ProcessWithParallelFor(action, processedCollection);
 			}
 			else
 			{
@@ -526,7 +516,7 @@ public static class EnumerableExtensions
 		// Processes a collection of reference types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static ReadOnlyCollection<T> ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
+		static ReadOnlyCollection<T> ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection)
 		{
 			return ProcessWithForEachAsSpan(action, processedCollection);
 		}

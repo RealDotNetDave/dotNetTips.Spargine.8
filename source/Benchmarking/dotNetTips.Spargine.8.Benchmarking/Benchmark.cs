@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 08-17-2024
 // ***********************************************************************
 // <copyright file="Benchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -264,6 +264,29 @@ public abstract class Benchmark
 		this.TestGuid = Guid.NewGuid();
 	}
 
+	/// <summary>
+	/// Simulates work by computing the hash code of a person object that implements the IPerson interface.
+	/// This method demonstrates how to perform operations on objects that are constrained by generic type parameters.
+	/// </summary>
+	/// <param name="person">The person object whose hash code will be computed.</param>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public virtual void SimulateWork([NotNull] Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> person) => _ = person.GetHashCode();
+
+	/// <summary>
+	/// Simulates work by computing the hash code of a value type person object that implements the IPerson interface.
+	/// This method demonstrates how to perform operations on value type objects that are constrained by generic type parameters.
+	/// </summary>
+	/// <param name="person">The value type person object whose hash code will be computed.</param>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public virtual void SimulateWork(Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address> person) => _ = person.GetHashCode();
+
+	/// <summary>
+	/// Simulates work by computing the hash code of a <see cref="PersonRecord"/> object.
+	/// This method demonstrates how to perform operations on record types.
+	/// </summary>
+	/// <param name="person">The person record whose hash code will be computed.</param>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public virtual void SimulateWork(PersonRecord person) => _ = person.GetHashCode();
 
 	/// <summary>
 	/// Updates the Email property of a person object that implements the IPerson interface with a predefined test email address.

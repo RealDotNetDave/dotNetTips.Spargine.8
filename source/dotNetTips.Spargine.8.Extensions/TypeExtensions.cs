@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 08-17-2024
 // ***********************************************************************
 // <copyright file="TypeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -315,23 +315,25 @@ public static partial class TypeExtensions
 	/// <returns>A <see cref="TypeOfType"/> value representing the type characteristics of the input object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetTypeOfType), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GetTypeOfType), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static TypeOfType GetTypeOfType([NotNull] this object obj)
 	{
-		var objType = obj?.GetType();
+		var objType = obj.GetType();
 
 		if (objType.IsValueType)
 		{
 			return TypeOfType.Value;
 		}
-		else if (objType.IsClass)
-		{
-			var members = objType.GetMember("GetHashCode");
 
-			if (members != null)
+		if (objType.IsClass)
+		{
+			var member = objType.GetMethod("GetHashCode");
+			if (member != null && member.GetCustomAttribute<CompilerGeneratedAttribute>() != null)
 			{
-				return members[0].GetCustomAttribute<CompilerGeneratedAttribute>() != null ? TypeOfType.Record : TypeOfType.Reference;
+				return TypeOfType.Record;
 			}
+
+			return TypeOfType.Reference;
 		}
 
 		return TypeOfType.Unknown;
