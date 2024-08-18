@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-17-2024
+// Last Modified On : 08-18-2024
 // ***********************************************************************
 // <copyright file="Benchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -265,41 +265,25 @@ public abstract class Benchmark
 	}
 
 	/// <summary>
-	/// Simulates work by computing the hash code of a person object that implements the IPerson interface.
+	/// Simulates work by computing the hash code of the provided item object.
 	/// This method demonstrates how to perform operations on objects that are constrained by generic type parameters.
 	/// </summary>
-	/// <param name="person">The person object whose hash code will be computed.</param>
+	/// <param name="item">The object whose hash code will be computed.</param> 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public virtual void SimulateWork([NotNull] Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> person) => _ = person.GetHashCode();
+	public virtual void SimulateWork([NotNull] object item) => _ = item?.GetHashCode();
 
 	/// <summary>
-	/// Simulates work by computing the hash code of a value type person object that implements the IPerson interface.
-	/// This method demonstrates how to perform operations on value type objects that are constrained by generic type parameters.
-	/// </summary>
-	/// <param name="person">The value type person object whose hash code will be computed.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public virtual void SimulateWork(Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address> person) => _ = person.GetHashCode();
-
-	/// <summary>
-	/// Simulates work by computing the hash code of a <see cref="PersonRecord"/> object.
-	/// This method demonstrates how to perform operations on record types.
-	/// </summary>
-	/// <param name="person">The person record whose hash code will be computed.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public virtual void SimulateWork(PersonRecord person) => _ = person.GetHashCode();
-
-	/// <summary>
-	/// Updates the Email property of a person object that implements the IPerson interface with a predefined test email address.
+	/// Updates the Email property of a item object that implements the IPerson interface with a predefined test email address.
 	/// This method demonstrates how to modify properties of objects that are constrained by generic type parameters.
 	/// </summary>
-	/// <param name="person">The person object whose Email property will be updated.</param>
+	/// <param name="person">The item object whose Email property will be updated.</param>
 	public virtual void Update([NotNull] Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> person) => person.Email = TestEmailLowerCase;
 
 	/// <summary>
-	/// Updates the Email property of a value type person object that implements the IPerson interface with a predefined test email address.
+	/// Updates the Email property of a value type item object that implements the IPerson interface with a predefined test email address.
 	/// This method demonstrates how to modify properties of value type objects that are constrained by generic type parameters.
 	/// </summary>
-	/// <param name="person">The value type person object whose Email property will be updated.</param>
+	/// <param name="person">The value type item object whose Email property will be updated.</param>
 
 	public virtual void Update(Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address> person) => person.Email = TestEmailLowerCase;
 
@@ -307,7 +291,7 @@ public abstract class Benchmark
 	/// Updates the Email property in an <see cref="PersonRecord"/> with a predefined test email address.
 	/// This method demonstrates how to modify properties of record types, specifically for benchmarking purposes.
 	/// </summary>
-	/// <param name="person">The person record whose Email property will be updated.</param>
+	/// <param name="person">The item record whose Email property will be updated.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public virtual void Update(PersonRecord person) => _ = person with { Email = TestEmailLowerCase };
 
@@ -345,7 +329,7 @@ public abstract class Benchmark
 	/// <summary>
 	/// Retrieve JSON from resources for a <see cref="IPerson{TAddress}" /> object.
 	/// </summary>
-	/// <value>The JSON test data for a person.</value>
+	/// <value>The JSON test data for a item.</value>
 	public static string JsonTestDataPerson => Resources.JsonTestDataPerson;
 
 	/// <summary>
@@ -375,19 +359,19 @@ public abstract class Benchmark
 	/// Retrieve the JSON representation of a <see cref="IPerson{TAddress}" /> object from the resources.
 	/// This property provides access to the JSON data used for testing and benchmarking purposes.
 	/// </summary>
-	/// <value>The person json.</value>
+	/// <value>The item json.</value>
 	public static string PersonJson => Resources.JsonTestDataPerson;
 
 	/// <summary>
 	/// Retrieves a randomly generated <see cref="PersonRecord"/> during startup for testing purposes.
-	/// This property provides access to a <see cref="PersonRecord"/> instance that can be used in benchmark tests to measure performance of operations involving person records.
+	/// This property provides access to a <see cref="PersonRecord"/> instance that can be used in benchmark tests to measure performance of operations involving item records.
 	/// </summary>
 	/// <value>The first <see cref="PersonRecord"/> object.</value>
 	public PersonRecord PersonRecord01 { get; private set; }
 
 	/// <summary>
 	/// Retrieves a randomly generated <see cref="PersonRecord"/> during startup for testing purposes.
-	/// This property provides access to a <see cref="PersonRecord"/> instance that can be used in benchmark tests to measure performance of operations involving person records.
+	/// This property provides access to a <see cref="PersonRecord"/> instance that can be used in benchmark tests to measure performance of operations involving item records.
 	/// </summary>
 	/// <value>The second <see cref="PersonRecord"/> object.</value>
 	public PersonRecord PersonRecord02 { get; private set; }
@@ -396,40 +380,40 @@ public abstract class Benchmark
 	/// Retrieve the JSON representation of a <see cref="PersonRecord" /> object from the resources.
 	/// This property provides access to the JSON data used for testing and benchmarking purposes.
 	/// </summary>
-	/// <value>The person record json.</value>
+	/// <value>The item record json.</value>
 	public static string PersonRecordJson => Resources.JsonTestDataPersonRecord;
 
 	/// <summary>
 	/// Retrieve the XML representation of a <see cref="PersonRecord" /> object from the resources.
 	/// This property provides access to the XML data used for testing and benchmarking purposes.
 	/// </summary>
-	/// <value>The person record XML.</value>
+	/// <value>The item record XML.</value>
 	public static string PersonRecordXml => Resources.XmlTestDataPersonRecord;
 
 	/// <summary>
 	/// Retrieves a Person{Address} reference type object for testing generated during startup.
-	/// This property provides access to a Person object instance that can be used in benchmark tests to measure performance of operations involving person objects.
+	/// This property provides access to a Person object instance that can be used in benchmark tests to measure performance of operations involving item objects.
 	/// </summary>
 	/// <value>The first Person{Address} object.</value>
 	public Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> PersonRef01 { get; private set; }
 
 	/// <summary>
 	/// Retrieves a Person{Address} reference type object for testing generated during startup.
-	/// This property provides access to a Person object instance that can be used in benchmark tests to measure performance of operations involving person objects.
+	/// This property provides access to a Person object instance that can be used in benchmark tests to measure performance of operations involving item objects.
 	/// </summary>
 	/// <value>The second Person{Address} object.</value>
 	public Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> PersonRef02 { get; private set; }
 
 	/// <summary>
 	/// Retrieves a Person{Address} value type object for testing generated during startup.
-	/// This property provides access to a Person value type instance that can be used in benchmark tests to measure performance of operations involving person value type objects.
+	/// This property provides access to a Person value type instance that can be used in benchmark tests to measure performance of operations involving item value type objects.
 	/// </summary>
 	/// <value>The first Person{Address} object.</value>
 	public Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address> PersonVal01 { get; private set; }
 
 	/// <summary>
 	/// Retrieves a Person{Address} value type object for testing generated during startup.
-	/// This property provides access to a Person value type instance that can be used in benchmark tests to measure performance of operations involving person value type objects.
+	/// This property provides access to a Person value type instance that can be used in benchmark tests to measure performance of operations involving item value type objects.
 	/// </summary>
 	/// <value>The second Person{Address} object.</value>
 	public Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address> PersonVal02 { get; private set; }
@@ -438,7 +422,7 @@ public abstract class Benchmark
 	/// Retrieve the XML representation of a <see cref="IPerson{TAddress}" /> object from the resources.
 	/// This property provides access to the XML data used for testing and benchmarking purposes.
 	/// </summary>
-	/// <value>The person XML.</value>
+	/// <value>The item XML.</value>
 	public static string PersonXml => Resources.XmlTestDataPerson;
 
 	/// <summary>
