@@ -21,7 +21,6 @@ using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using DotNetTips.Spargine.Core;
@@ -35,7 +34,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides a collection of static methods for querying objects that implement <see cref="IEnumerable{T}"/>.
 /// These extensions add functionality for adding, checking, and manipulating elements within enumerable collections.
 /// </summary>
-public static class EnumerableExtensions
+public static partial class EnumerableExtensions
 {
 	/// <summary>
 	/// Parallel options with a specified maximum degree of parallelism.
@@ -52,123 +51,6 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <returns>A random integer value.</returns>
 	private static int GenerateRandomNumber() => RandomNumberGenerator.GetInt32(int.MaxValue);
-
-	/// <summary>
-	/// Processes a collection using a provided action and returns a read-only collection.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the collection.</typeparam>
-	/// <param name="action">The action to apply to each element in the collection.</param>
-	/// <param name="collection">The collection to process.</param>
-	/// <returns>A read-only collection with the processed elements.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	[return: NotNull]
-	private static ReadOnlyCollection<T> ProcessWithCollectionsMarshallAsSpan<T>(Func<T, T> action, IEnumerable<T> collection)
-	{
-		var list = collection as List<T> ?? collection.ToList();
-		var processedBag = new ReadOnlyCollectionBuilder<T>(collection.Count());
-
-		foreach (var item in CollectionsMarshal.AsSpan(list))
-		{
-			processedBag.Add(action(item));
-		}
-
-		return processedBag.ToReadOnlyCollection();
-	}
-
-	/// <summary>
-	/// Processes a collection using a provided action and returns a read-only collection.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the collection.</typeparam>
-	/// <param name="action">The action to apply to each element in the collection.</param>
-	/// <param name="collection">The collection to process.</param>
-	/// <returns>A read-only collection with the processed elements.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	[return: NotNull]
-	private static ReadOnlyCollection<T> ProcessWithForEach<T>(Func<T, T> action, IEnumerable<T> collection)
-	{
-		var processedBag = new ConcurrentBag<T>();
-
-		_ = Parallel.ForEach(collection, person =>
-		{
-			processedBag.Add(action(person));
-		});
-
-		return processedBag.ToReadOnlyCollection();
-	}
-
-	/// <summary>
-	/// Processes a collection in parallel using a provided action and returns a read-only collection.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the collection.</typeparam>
-	/// <param name="action">The action to apply to each element in the collection.</param>
-	/// <param name="collection">The collection to process.</param>
-	/// <returns>A read-only collection with the processed elements.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	[return: NotNull]
-	private static ReadOnlyCollection<T> ProcessWithParallelFor<T>(Func<T, T> action, in IEnumerable<T> collection)
-	{
-		var processedArray = collection as T[] ?? collection.ToArray();
-		var processedBag = new ConcurrentBag<T>();
-
-		_ = Parallel.For(0, processedArray.Length, index => processedBag.Add(action(processedArray[index])));
-
-		return processedBag.ToReadOnlyCollection();
-	}
-
-	/// <summary>
-	/// Processes a collection in parallel using a provided action and returns a read-only collection.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the collection.</typeparam>
-	/// <param name="action">The action to apply to each element in the collection.</param>
-	/// <param name="collection">The collection to process.</param>
-	/// <returns>A read-only collection with the processed elements.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	[return: NotNull]
-	private static ReadOnlyCollection<T> ProcessWithParallelForEachWithPartitioner<T>(Func<T, T> action, in IEnumerable<T> collection)
-	{
-		var processedArray = collection as T[] ?? collection.ToArray();
-		var rangePartitioner = Partitioner.Create(0, processedArray.Length);
-		var processedBag = new ConcurrentBag<T>();
-
-		_ = Parallel.ForEach(rangePartitioner, (range, state) =>
-		{
-			for (var index = range.Item1; index < range.Item2; index++)
-			{
-				processedBag.Add(action(processedArray[index]));
-			}
-		});
-
-		return processedBag.ToReadOnlyCollection();
-	}
-
-	/// <summary>
-	/// Processes a collection in parallel using a provided action and a maximum degree of parallelism, and returns a read-only collection.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the collection.</typeparam>
-	/// <param name="action">The action to apply to each element in the collection.</param>
-	/// <param name="collection">The collection to process.</param>
-	/// <returns>A read-only collection with the processed elements.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	[return: NotNull]
-	private static ReadOnlyCollection<T> ProcessWithParallelForWithMaxDegreeOfParallelism<T>(Func<T, T> action, in IEnumerable<T> collection)
-	{
-		var processedArray = collection as T[] ?? collection.ToArray();
-		var processedBag = new ConcurrentBag<T>();
-
-		_ = Parallel.For(0, processedArray.Length, _parallelOptions, index => processedBag.Add(action(processedArray[index])));
-
-		return processedBag.ToReadOnlyCollection();
-	}
 
 	/// <summary>
 	/// Adds distinct items to the source enumerable collection.
@@ -498,133 +380,6 @@ public static class EnumerableExtensions
 	public static long FastCount<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate) =>
 		//COPILOT OPTIMIZATION SLOWER.
 		collection.ArgumentNotNull().Count(predicate.ArgumentNotNull());
-
-	/// <summary>
-	/// Modifies a collection in parallel using a provided action and returns a read-only collection.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the collection.</typeparam>
-	/// <param name="collection">The collection to process.</param>
-	/// <param name="action">The action to apply to each element in the collection.</param>
-	/// <returns>A read-only collection with the modified elements.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	[return: NotNull]
-	[Information(nameof(FastModifyCollection), author: "David McCarter", createdOn: "8/7/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
-	public static ReadOnlyCollection<T> FastModifyCollection<T>(this IEnumerable<T> collection, Func<T, T> action)
-	{
-		collection = collection.ArgumentNotNull();
-		action = action.ArgumentNotNull();
-
-		// Change processing due to collection size.
-		var size = collection is ICollection<T> col ? col.Count : collection.Count();
-
-		if (size == 0)
-		{
-			return new ReadOnlyCollection<T>(Array.Empty<T>());
-		}
-
-		// Change processing due to collection item type.
-		var itemType = collection.First().GetTypeOfType();
-		ReadOnlyCollection<T> updatedCollection = default;
-
-		switch (itemType)
-		{
-			case TypeExtensions.TypeOfType.Value:
-				updatedCollection = ProcessValueType(action, collection, size);
-				break;
-			case TypeExtensions.TypeOfType.Record:
-				updatedCollection = ProcessRecordType(action, collection, size);
-				break;
-			case TypeExtensions.TypeOfType.Unknown:
-			case TypeExtensions.TypeOfType.Reference:
-				updatedCollection = ProcessReferenceType(action, collection);
-				break;
-			default:
-				ExceptionThrower.ThrowInvalidOperationException($"{itemType} is not supported in {nameof(FastModifyCollection)}.");
-				break;
-		}
-
-		return updatedCollection;
-
-		// Processes a collection of value types using the specified action.
-		// The method chooses the appropriate processing strategy based on the size of the collection.
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static ReadOnlyCollection<T> ProcessValueType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
-		{
-			if (size >= 8192)
-			{
-				return ProcessWithForEach(action, processedCollection);
-			}
-			else if (size >= 2048)
-			{
-				return ProcessWithParallelFor(action, processedCollection);
-			}
-			else
-			{
-				return ProcessWithCollectionsMarshallAsSpan(action, processedCollection);
-			}
-		}
-
-		// Processes a collection of record types using the specified action.
-		// The method chooses the appropriate processing strategy based on the size of the collection.
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static ReadOnlyCollection<T> ProcessRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
-		{
-			if (size >= 8192)
-			{
-				return ProcessWithParallelForWithMaxDegreeOfParallelism(action, processedCollection);
-			}
-			else if (size >= 4096)
-			{
-				return ProcessWithParallelForEachWithPartitioner(action, processedCollection);
-			}
-			else if (size >= 2048)
-			{
-				return ProcessWithParallelFor(action, processedCollection);
-			}
-			else
-			{
-				return ProcessWithCollectionsMarshallAsSpan(action, processedCollection);
-			}
-		}
-
-		// Processes a collection of reference types using the specified action.
-		// The method chooses the appropriate processing strategy based on the size of the collection.
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static ReadOnlyCollection<T> ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection)
-		{
-			return ProcessWithCollectionsMarshallAsSpan(action, processedCollection);
-		}
-	}
-
-	/// <summary>
-	/// Processes each item in the given collection using the specified action.
-	/// </summary>
-	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
-	/// <param name="collection">The collection to process.</param>
-	/// <param name="action">The action to apply to each item in the collection.</param>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="action"/> is null.</exception>
-	/// <example>
-	/// This example shows how to use <see cref="FastProcessor{T}"/> to print each element in an array of integers.
-	/// <code>
-	/// int[] numbers = { 1, 2, 3, 4, 5 };
-	/// numbers.FastProcessor(n => Console.WriteLine(n));
-	/// </code>
-	/// </example>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "12/9/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
-	public static void FastProcessor<T>(this IEnumerable<T> collection, Action<T> action)
-	{
-		collection = collection.ArgumentNotNull();
-		action = action.ArgumentNotNull();
-
-		foreach (var item in collection)
-		{
-			action(item);
-		}
-	}
 
 	/// <summary>
 	/// Returns the first element of the sequence or a default value if the sequence contains no elements.
