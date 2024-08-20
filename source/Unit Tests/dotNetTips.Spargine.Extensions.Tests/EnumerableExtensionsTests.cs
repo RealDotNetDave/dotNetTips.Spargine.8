@@ -36,48 +36,50 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 [TestClass]
 public class EnumerableExtensionsTests
 {
-
-	private const int Count = 256;
+	private const int Count1024 = 1024;
+	private const int Count2048 = 2048;
+	private const int Count4096 = 4096;
+	private const int Count8192 = 8192;
 	private const string TestData = "TEST DATA";
 
 	[TestMethod]
 	public void AddDistinctTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 		var person1 = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
 
 		people = people.AddDistinct(person1);
 
-		Assert.IsTrue(people.Count() == Count + 1);
+		Assert.IsTrue(people.Count() == Count8192 + 1);
 
 		people = people.AddDistinct(person1);
 
-		Assert.IsTrue(people.Count() == Count + 1);
+		Assert.IsTrue(people.Count() == Count8192 + 1);
 
 		people = people.AddDistinct(null);
 
-		Assert.IsTrue(people.Count() == Count + 1);
+		Assert.IsTrue(people.Count() == Count8192 + 1);
 	}
 
 	[TestMethod]
 	public void AddFirstTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).ToList();
 		var person1 = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
 
 		people = people.AddFirst(person1);
 
-		Assert.IsTrue(people.Count == Count + 1);
+		Assert.IsTrue(people.Count == Count8192 + 1);
 
 		people = people.AddFirst(null);
 
-		Assert.IsTrue(people.Count == Count + 1);
+		Assert.IsTrue(people.Count == Count8192 + 1);
 	}
 
 	[TestMethod]
 	public void AdIfTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
 
@@ -87,15 +89,15 @@ public class EnumerableExtensionsTests
 
 		result = people.AddIf(person, false);
 
-		Assert.IsTrue(result.FastCount() == Count);
+		Assert.IsTrue(result.FastCount() == Count8192);
 	}
 
 	[TestMethod]
 	public void ContainsAnyTest()
 	{
-		var people1 = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var people1 = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).ToList();
 
-		var people2 = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count / 2);
+		var people2 = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192 / 2);
 
 		Assert.IsFalse(people1.ContainsAny(people2.ToArray()));
 
@@ -105,29 +107,29 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public async Task CountAsync()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var peopleCount = await people.CountAsync(CancellationToken.None);
 
-		Assert.IsTrue(peopleCount == Count);
+		Assert.IsTrue(peopleCount == Count8192);
 	}
 
 	[TestMethod]
 	public void CountTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
-		Assert.IsTrue(people.Count() == Count);
+		Assert.IsTrue(people.Count() == Count8192);
 	}
 
 	[TestMethod]
 	public void CreateCollectionTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		_ = people.Create(true);
 
-		Assert.IsTrue(people.Count() == Count);
+		Assert.IsTrue(people.Count() == Count8192);
 	}
 
 	[TestMethod]
@@ -159,19 +161,19 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void EnsureUniqueTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).ToList();
 
 		people.Add(people.FirstOrDefault());
 
 		var result = people.EnsureUnique().ToList();
 
-		Assert.IsTrue(result.FastCount() == Count);
+		Assert.IsTrue(result.FastCount() == Count8192);
 	}
 
 	[TestMethod]
 	public void FastAnyTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 
 		//Test Params
 		_ = Assert.ThrowsException<ArgumentNullException>(() => people.FastAny(null));
@@ -183,7 +185,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastCountPredicateTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 
 		// Test Params
 		_ = Assert.ThrowsException<ArgumentNullException>(() => people.FastCount(null));
@@ -195,9 +197,9 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastCountQuerableTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsQueryable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsQueryable();
 
-		Assert.IsTrue(people.FastCount() == Count);
+		Assert.IsTrue(people.FastCount() == Count8192);
 
 		Assert.IsTrue(people.FastCount(p => p.Age.TotalDays > 365) > 0);
 	}
@@ -205,9 +207,9 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastCountTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
-		Assert.IsTrue(people.FastCount() == Count);
+		Assert.IsTrue(people.FastCount() == Count8192);
 
 		Assert.IsTrue(people.FastCount(p => p.Age.TotalDays > 365) > 0);
 	}
@@ -215,7 +217,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastModifyCollectionTestRecord2048()
 	{
-		var people = RandomData.GeneratePersonRecordCollection(2048);
+		var people = RandomData.GeneratePersonRecordCollection(Count2048);
 
 		var updatedCollection = people.FastModifyCollection(person => person with { Email = TestData });
 
@@ -227,7 +229,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastModifyCollectionTestRecord4096()
 	{
-		var people = RandomData.GeneratePersonRecordCollection(4096);
+		var people = RandomData.GeneratePersonRecordCollection(Count4096);
 
 		var updatedCollection = people.FastModifyCollection(person => person with { Email = TestData });
 
@@ -239,7 +241,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastModifyCollectionTestRecord8192()
 	{
-		var people = RandomData.GeneratePersonRecordCollection(8192);
+		var people = RandomData.GeneratePersonRecordCollection(Count8192);
 
 		var updatedCollection = people.FastModifyCollection(person => person with { Email = TestData });
 
@@ -250,9 +252,9 @@ public class EnumerableExtensionsTests
 
 
 	[TestMethod]
-	public void FastModifyCollectionTestRef10000()
+	public void FastModifyCollectionTestRef8192()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(8192);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 
 		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
 
@@ -264,7 +266,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastModifyCollectionTestVal1024()
 	{
-		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(1024);
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count1024);
 
 		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
 
@@ -276,7 +278,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastModifyCollectionTestVal2048()
 	{
-		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(2048);
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count2048);
 
 		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
 
@@ -288,7 +290,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastModifyCollectionTestVal8192()
 	{
-		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(8192);
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count8192);
 
 		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
 
@@ -298,9 +300,39 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
+	public void FastProcessorTestRecord8192()
+	{
+		var people = RandomData.GeneratePersonRecordCollection(Count8192);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count8192);
+	}
+
+	[TestMethod]
+	public void FastProcessorTestRef8192()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count8192);
+	}
+
+	[TestMethod]
+	public void FastProcessorTestVal8192()
+	{
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count8192);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count8192);
+	}
+
+	[TestMethod]
 	public void FirstOrDefaultTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).ToList();
 		var person1 = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
 
 		people.Add(person1);
@@ -314,7 +346,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FirstOrNullTest()
 	{
-		var coordinates = RandomData.GenerateCoordinateCollection<Coordinate>(Count);
+		var coordinates = RandomData.GenerateCoordinateCollection<Coordinate>(Count8192);
 		var searchValue = coordinates.Last().X;
 
 		//Test Finding Days of over 100
@@ -337,11 +369,11 @@ public class EnumerableExtensionsTests
 	public void HasDuplicatesTest()
 	{
 		//TODO: ADD TEST METHOD TO ADD NON-DULICATES
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).ToList();
 
 		Assert.IsFalse(people.HasDuplicates());
 
-		var dups = people.Shuffle().Take(Count / 10).ToList();
+		var dups = people.Shuffle().Take(Count8192 / 10).ToList();
 
 		foreach (var person in dups)
 		{
@@ -356,7 +388,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void HasItemsTest()
 	{
-		var collection = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var collection = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 		IEnumerable<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>> nullCollection = null;
 
 		Assert.IsTrue(collection.HasItems());
@@ -367,20 +399,20 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void HasItemsWithCountTest()
 	{
-		var collection = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var collection = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 		IEnumerable<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>> nullCollection = null;
 
-		Assert.IsTrue(collection.HasItems(Count));
+		Assert.IsTrue(collection.HasItems(Count8192));
 
 		Assert.IsFalse(collection.HasItems(100));
 
-		Assert.IsFalse(nullCollection.HasItems(Count));
+		Assert.IsFalse(nullCollection.HasItems(Count8192));
 	}
 
 	[TestMethod]
 	public void IndexOfTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 		var person1 = people.Shuffle(1).First();
 
 		Assert.IsTrue(people.IndexOf(person1).IsNegative() == false);
@@ -391,7 +423,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void IsNullOrEmptyTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var result = people.IsNullOrEmpty();
 
@@ -405,7 +437,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void JoinTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var result = people.Join();
 
@@ -415,7 +447,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void ModifyCreateReadOnlyCollectionTestRecord2048()
 	{
-		var people = RandomData.GeneratePersonRecordCollection(2048).ToArray();
+		var people = RandomData.GeneratePersonRecordCollection(Count2048).ToArray();
 
 		var processedCollection = new ReadOnlyCollectionBuilder<PersonRecord>(people.Length);
 
@@ -427,7 +459,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void OrderByOrdinalTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var result = people.OrderByOrdinal(p => p.Email);
 
@@ -437,7 +469,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void OrderByTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var result = people.OrderBy("Email desc");
 
@@ -447,7 +479,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void PageTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var result = people.Page(10);
 
@@ -457,7 +489,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void PartitionTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var splitPeople = people.Partition(people.Count() / 10);
 
@@ -475,7 +507,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void PickRandomTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var result = people.PickRandom();
 
@@ -485,7 +517,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void ProcessCollectionAsParallelRefListComparison()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10000);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 
 		people.AsParallel().WithMergeOptions(ParallelMergeOptions.Default).ForAll(person =>
 		{
@@ -499,7 +531,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void ProcessCollectionAsParallelValListComparison()
 	{
-		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(10000);
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count8192);
 
 		people.AsParallel().WithMergeOptions(ParallelMergeOptions.Default).ForAll(person =>
 		{
@@ -512,9 +544,9 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void RemoveDuplicatesTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 
-		var dups = people.Shuffle().Take(Count / 10).ToList();
+		var dups = people.Shuffle().Take(Count8192 / 10).ToList();
 
 		foreach (var person in dups)
 		{
@@ -523,24 +555,24 @@ public class EnumerableExtensionsTests
 
 		var result = people.RemoveDuplicates();
 		Assert.IsTrue(result.Status == ResultStatus.Succeeded);
-		Assert.IsTrue(result.Value.Count() == Count);
+		Assert.IsTrue(result.Value.Count() == Count8192);
 	}
 
 	[TestMethod]
 	public void ShuffleTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 		List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>> nullList = null;
 
 		_ = Assert.ThrowsException<ArgumentNullException>(nullList.Shuffle);
 
-		Assert.IsTrue(people.Shuffle().Count() == Count);
+		Assert.IsTrue(people.Shuffle().Count() == Count8192);
 	}
 
 	[TestMethod]
 	public void ShuffleWithCountTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 		List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>> nullList = null;
 
 		_ = Assert.ThrowsException<ArgumentNullException>(nullList.Shuffle);
@@ -551,9 +583,9 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void SplitTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
-		var splitPeople = people.Split(Count / 10);
+		var splitPeople = people.Split(Count8192 / 10);
 
 		Assert.IsNotNull(splitPeople);
 		Assert.IsTrue(splitPeople.Count() == 11);
@@ -568,7 +600,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void StartsWithTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 		var people1 = people.Take(5);
 		var people2 = people1;
 
@@ -580,7 +612,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void StructuralSequenceEqualTest()
 	{
-		var people1 = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people1 = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 
 		var people2 = people1.Clone<List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>>();
 
@@ -592,17 +624,17 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void ToBlockingTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var result = people.ToBlockingCollection();
 
-		Assert.IsTrue(result.FastCount() == Count);
+		Assert.IsTrue(result.FastCount() == Count8192);
 	}
 
 	[TestMethod]
 	public void ToCollectionTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 
 		Assert.IsTrue(people.ToCollection().HasItems());
 	}
@@ -610,7 +642,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void ToDelimitedStringTest()
 	{
-		var words = RandomData.GenerateWords(Count, 25, 50);
+		var words = RandomData.GenerateWords(Count8192, 25, 50);
 
 		Assert.IsNotNull(words.ToDelimitedString(','));
 	}
@@ -618,7 +650,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void ToImmutableTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 
 		Assert.IsTrue(people.ToImmutable().HasItems());
 	}
@@ -626,7 +658,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void ToLinkedListTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
 
 		Assert.IsTrue(people.ToLinkedList().HasItems());
 	}
@@ -634,7 +666,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public async Task ToListAsyncTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var result = await people.ToListAsync().ConfigureAwait(false);
 
@@ -644,7 +676,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void UpsertTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192).AsEnumerable();
 
 		var personFromCollection = people.Shuffle().First();
 
@@ -656,7 +688,7 @@ public class EnumerableExtensionsTests
 
 		result = people.Upsert(personFromCollection);
 
-		Assert.IsTrue(result.FastCount() == Count);
+		Assert.IsTrue(result.FastCount() == Count8192);
 	}
 
 }
