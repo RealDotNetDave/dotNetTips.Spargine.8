@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Core;
@@ -26,7 +25,6 @@ using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using static LinqToDB.Reflection.Methods.LinqToDB.Insert;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -37,8 +35,12 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 public class EnumerableExtensionsTests
 {
 	private const int Count1024 = 1024;
+	private const int Count128 = 128;
 	private const int Count2048 = 2048;
+	private const int Count256 = 256;
 	private const int Count4096 = 4096;
+	private const int Count512 = 512;
+	private const int Count64 = 64;
 	private const int Count8192 = 8192;
 	private const string TestData = "TEST DATA";
 
@@ -300,6 +302,24 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
+	public void FastProcessorTestRecord128()
+	{
+		var people = RandomData.GeneratePersonRecordCollection(Count128);
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count128);
+	}
+
+	[TestMethod]
+	public void FastProcessorTestRecord64()
+	{
+		var people = RandomData.GeneratePersonRecordCollection(Count64);
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count64);
+	}
+
+	[TestMethod]
 	public void FastProcessorTestRecord8192()
 	{
 		var people = RandomData.GeneratePersonRecordCollection(Count8192);
@@ -310,6 +330,46 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
+	public void FastProcessorTestRef128()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count128);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count128);
+	}
+
+	[TestMethod]
+	public void FastProcessorTestRef2048()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count2048);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count2048);
+	}
+
+	[TestMethod]
+	public void FastProcessorTestRef256()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count256);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count256);
+	}
+
+	[TestMethod]
+	public void FastProcessorTestRef64()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count64);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count64);
+	}
+
+	[TestMethod]
 	public void FastProcessorTestRef8192()
 	{
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count8192);
@@ -317,6 +377,46 @@ public class EnumerableExtensionsTests
 		people.FastProcessor(person => person.GetHashCode());
 
 		Assert.IsTrue(people.Count == Count8192);
+	}
+
+	[TestMethod]
+	public void FastProcessorTestVal128()
+	{
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count128);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count128);
+	}
+
+	[TestMethod]
+	public void FastProcessorTestVal256()
+	{
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count256);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count256);
+	}
+
+	[TestMethod]
+	public void FastProcessorTestVal512()
+	{
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count512);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count512);
+	}
+
+	[TestMethod]
+	public void FastProcessorTestVal64()
+	{
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count64);
+
+		people.FastProcessor(person => person.GetHashCode());
+
+		Assert.IsTrue(people.Count == Count64);
 	}
 
 	[TestMethod]
