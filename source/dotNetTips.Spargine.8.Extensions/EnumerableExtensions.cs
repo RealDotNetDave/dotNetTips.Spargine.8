@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-17-2024
+// Last Modified On : 08-20-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -38,6 +38,11 @@ namespace DotNetTips.Spargine.Extensions;
 public static class EnumerableExtensions
 {
 	/// <summary>
+	/// Parallel options with a specified maximum degree of parallelism.
+	/// </summary>
+	private static readonly ParallelOptions _parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = App.MaxDegreeOfParallelism() };
+
+	/// <summary>
 	/// A pool of <see cref="StringBuilder"/> objects to minimize memory allocations.
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
@@ -47,6 +52,123 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <returns>A random integer value.</returns>
 	private static int GenerateRandomNumber() => RandomNumberGenerator.GetInt32(int.MaxValue);
+
+	/// <summary>
+	/// Processes a collection using a provided action and returns a read-only collection.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="action">The action to apply to each element in the collection.</param>
+	/// <param name="collection">The collection to process.</param>
+	/// <returns>A read-only collection with the processed elements.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[return: NotNull]
+	private static ReadOnlyCollection<T> ProcessWithCollectionsMarshallAsSpan<T>(Func<T, T> action, IEnumerable<T> collection)
+	{
+		var list = collection as List<T> ?? collection.ToList();
+		var processedBag = new ReadOnlyCollectionBuilder<T>(collection.Count());
+
+		foreach (var item in CollectionsMarshal.AsSpan(list))
+		{
+			processedBag.Add(action(item));
+		}
+
+		return processedBag.ToReadOnlyCollection();
+	}
+
+	/// <summary>
+	/// Processes a collection using a provided action and returns a read-only collection.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="action">The action to apply to each element in the collection.</param>
+	/// <param name="collection">The collection to process.</param>
+	/// <returns>A read-only collection with the processed elements.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[return: NotNull]
+	private static ReadOnlyCollection<T> ProcessWithForEach<T>(Func<T, T> action, IEnumerable<T> collection)
+	{
+		var processedBag = new ConcurrentBag<T>();
+
+		_ = Parallel.ForEach(collection, person =>
+		{
+			processedBag.Add(action(person));
+		});
+
+		return processedBag.ToReadOnlyCollection();
+	}
+
+	/// <summary>
+	/// Processes a collection in parallel using a provided action and returns a read-only collection.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="action">The action to apply to each element in the collection.</param>
+	/// <param name="collection">The collection to process.</param>
+	/// <returns>A read-only collection with the processed elements.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[return: NotNull]
+	private static ReadOnlyCollection<T> ProcessWithParallelFor<T>(Func<T, T> action, in IEnumerable<T> collection)
+	{
+		var processedArray = collection as T[] ?? collection.ToArray();
+		var processedBag = new ConcurrentBag<T>();
+
+		_ = Parallel.For(0, processedArray.Length, index => processedBag.Add(action(processedArray[index])));
+
+		return processedBag.ToReadOnlyCollection();
+	}
+
+	/// <summary>
+	/// Processes a collection in parallel using a provided action and returns a read-only collection.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="action">The action to apply to each element in the collection.</param>
+	/// <param name="collection">The collection to process.</param>
+	/// <returns>A read-only collection with the processed elements.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[return: NotNull]
+	private static ReadOnlyCollection<T> ProcessWithParallelForEachWithPartitioner<T>(Func<T, T> action, in IEnumerable<T> collection)
+	{
+		var processedArray = collection as T[] ?? collection.ToArray();
+		var rangePartitioner = Partitioner.Create(0, processedArray.Length);
+		var processedBag = new ConcurrentBag<T>();
+
+		_ = Parallel.ForEach(rangePartitioner, (range, state) =>
+		{
+			for (var index = range.Item1; index < range.Item2; index++)
+			{
+				processedBag.Add(action(processedArray[index]));
+			}
+		});
+
+		return processedBag.ToReadOnlyCollection();
+	}
+
+	/// <summary>
+	/// Processes a collection in parallel using a provided action and a maximum degree of parallelism, and returns a read-only collection.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="action">The action to apply to each element in the collection.</param>
+	/// <param name="collection">The collection to process.</param>
+	/// <returns>A read-only collection with the processed elements.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[return: NotNull]
+	private static ReadOnlyCollection<T> ProcessWithParallelForWithMaxDegreeOfParallelism<T>(Func<T, T> action, in IEnumerable<T> collection)
+	{
+		var processedArray = collection as T[] ?? collection.ToArray();
+		var processedBag = new ConcurrentBag<T>();
+
+		_ = Parallel.For(0, processedArray.Length, _parallelOptions, index => processedBag.Add(action(processedArray[index])));
+
+		return processedBag.ToReadOnlyCollection();
+	}
 
 	/// <summary>
 	/// Adds distinct items to the source enumerable collection.
@@ -378,15 +500,16 @@ public static class EnumerableExtensions
 		collection.ArgumentNotNull().Count(predicate.ArgumentNotNull());
 
 	/// <summary>
-	/// Modifies each element in the collection using the specified action and returns a read-only collection of the modified elements.
+	/// Modifies a collection in parallel using a provided action and returns a read-only collection.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
-	/// <param name="collection">The collection of elements to modify.</param>
-	/// <param name="action">The function to apply to each element in the collection.</param>
-	/// <returns>A read-only collection of the modified elements.</returns>
+	/// <param name="collection">The collection to process.</param>
+	/// <param name="action">The action to apply to each element in the collection.</param>
+	/// <returns>A read-only collection with the modified elements.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
+	[return: NotNull]
 	[Information(nameof(FastModifyCollection), author: "David McCarter", createdOn: "8/7/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
 	public static ReadOnlyCollection<T> FastModifyCollection<T>(this IEnumerable<T> collection, Func<T, T> action)
 	{
@@ -394,7 +517,7 @@ public static class EnumerableExtensions
 		action = action.ArgumentNotNull();
 
 		// Change processing due to collection size.
-		var size = collection.TryGetNonEnumeratedCount(out var count) ? count : collection.Count();
+		var size = collection is ICollection<T> col ? col.Count : collection.Count();
 
 		if (size == 0)
 		{
@@ -424,57 +547,6 @@ public static class EnumerableExtensions
 
 		return updatedCollection;
 
-		// Processes each item in the provided list using the specified action.
-		// This method uses <see cref="CollectionsMarshal.AsSpan{T}(List{T})"/> for efficient iteration.
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static ReadOnlyCollection<T> ProcessWithForEachAsSpan(Func<T, T> action, IEnumerable<T> collection)
-		{
-			if (collection is not List<T> list)
-			{
-				list = collection.ToList();
-			}
-
-			var processedCollection = new ReadOnlyCollectionBuilder<T>(list.Count);
-
-			foreach (var item in CollectionsMarshal.AsSpan(list))
-			{
-				processedCollection.Add(action(item));
-			}
-
-			return processedCollection.ToReadOnlyCollection();
-		}
-
-		// Processes each item in the collection using the provided action and stores the results in the processedStack.
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static ReadOnlyCollection<T> ProcessWithParallelFor(Func<T, T> action, in IEnumerable<T> collection)
-		{
-			var processedArray = collection as T[] ?? collection.ToArray();
-			var processedBag = new ConcurrentBag<T>();
-
-			_ = Parallel.For(0, processedArray.Length, index => processedBag.Add(action(processedArray[index])));
-
-			return processedBag.ToReadOnlyCollection();
-		}
-
-		// Processes each item in the collection using the provided action in parallel and returns a read-only collection of the results.
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static ReadOnlyCollection<T> ProcessWithParallelForEach(Func<T, T> action, in IEnumerable<T> collection)
-		{
-			var processedArray = collection as T[] ?? collection.ToArray();
-			var rangePartitioner = Partitioner.Create(0, processedArray.Length);
-			var processedBag = new ConcurrentBag<T>();
-
-			_ = Parallel.ForEach(rangePartitioner, (range, state) =>
-			{
-				for (var index = range.Item1; index < range.Item2; index++)
-				{
-					processedBag.Add(action(processedArray[index]));
-				}
-			});
-
-			return processedBag.ToReadOnlyCollection();
-		}
-
 		// Processes a collection of value types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -482,7 +554,7 @@ public static class EnumerableExtensions
 		{
 			if (size >= 8192)
 			{
-				return ProcessWithParallelForEach(action, processedCollection);
+				return ProcessWithForEach(action, processedCollection);
 			}
 			else if (size >= 2048)
 			{
@@ -490,7 +562,7 @@ public static class EnumerableExtensions
 			}
 			else
 			{
-				return ProcessWithForEachAsSpan(action, processedCollection);
+				return ProcessWithCollectionsMarshallAsSpan(action, processedCollection);
 			}
 		}
 
@@ -501,7 +573,11 @@ public static class EnumerableExtensions
 		{
 			if (size >= 8192)
 			{
-				return ProcessWithParallelForEach(action, processedCollection);
+				return ProcessWithParallelForWithMaxDegreeOfParallelism(action, processedCollection);
+			}
+			else if (size >= 4096)
+			{
+				return ProcessWithParallelForEachWithPartitioner(action, processedCollection);
 			}
 			else if (size >= 2048)
 			{
@@ -509,7 +585,7 @@ public static class EnumerableExtensions
 			}
 			else
 			{
-				return ProcessWithForEachAsSpan(action, processedCollection);
+				return ProcessWithCollectionsMarshallAsSpan(action, processedCollection);
 			}
 		}
 
@@ -518,7 +594,7 @@ public static class EnumerableExtensions
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static ReadOnlyCollection<T> ProcessReferenceType(Func<T, T> action, IEnumerable<T> processedCollection)
 		{
-			return ProcessWithForEachAsSpan(action, processedCollection);
+			return ProcessWithCollectionsMarshallAsSpan(action, processedCollection);
 		}
 	}
 

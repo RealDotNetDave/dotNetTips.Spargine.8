@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-17-2024
+// Last Modified On : 08-20-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -16,6 +16,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static LinqToDB.Reflection.Methods.LinqToDB.Insert;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -211,9 +213,9 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
-	public void FastModifyCollectionTestRecord10000()
+	public void FastModifyCollectionTestRecord2048()
 	{
-		var people = RandomData.GeneratePersonRecordCollection(10000);
+		var people = RandomData.GeneratePersonRecordCollection(2048);
 
 		var updatedCollection = people.FastModifyCollection(person => person with { Email = TestData });
 
@@ -223,9 +225,9 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
-	public void FastModifyCollectionTestRecord256()
+	public void FastModifyCollectionTestRecord4096()
 	{
-		var people = RandomData.GeneratePersonRecordCollection(256);
+		var people = RandomData.GeneratePersonRecordCollection(4096);
 
 		var updatedCollection = people.FastModifyCollection(person => person with { Email = TestData });
 
@@ -235,45 +237,22 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
-	public void FastModifyCollectionTestRef1000()
+	public void FastModifyCollectionTestRecord8192()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(1000);
+		var people = RandomData.GeneratePersonRecordCollection(8192);
 
-		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
+		var updatedCollection = people.FastModifyCollection(person => person with { Email = TestData });
 
 		Assert.IsTrue(people.Count == updatedCollection.Count);
 
 		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
 	}
+
 
 	[TestMethod]
 	public void FastModifyCollectionTestRef10000()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10000);
-
-		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
-
-		Assert.IsTrue(people.Count == updatedCollection.Count);
-
-		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
-	}
-
-	[TestMethod]
-	public void FastModifyCollectionTestRef5000()
-	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(5000);
-
-		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
-
-		Assert.IsTrue(people.Count == updatedCollection.Count);
-
-		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
-	}
-
-	[TestMethod]
-	public void FastModifyCollectionTestVal10000()
-	{
-		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(10000);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(8192);
 
 		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
 
@@ -286,6 +265,30 @@ public class EnumerableExtensionsTests
 	public void FastModifyCollectionTestVal1024()
 	{
 		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(1024);
+
+		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
+
+		Assert.IsTrue(people.Count == updatedCollection.Count);
+
+		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
+	}
+
+	[TestMethod]
+	public void FastModifyCollectionTestVal2048()
+	{
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(2048);
+
+		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
+
+		Assert.IsTrue(people.Count == updatedCollection.Count);
+
+		Assert.IsTrue(updatedCollection.All(p => p.Email == TestData));
+	}
+
+	[TestMethod]
+	public void FastModifyCollectionTestVal8192()
+	{
+		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(8192);
 
 		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
 
@@ -407,6 +410,18 @@ public class EnumerableExtensionsTests
 		var result = people.Join();
 
 		Assert.IsFalse(string.IsNullOrEmpty(result));
+	}
+
+	[TestMethod]
+	public void ModifyCreateReadOnlyCollectionTestRecord2048()
+	{
+		var people = RandomData.GeneratePersonRecordCollection(2048).ToArray();
+
+		var processedCollection = new ReadOnlyCollectionBuilder<PersonRecord>(people.Length);
+
+		_ = Parallel.For(0, people.Length, (index) => processedCollection.Add(people[index] with { Email = TestData }));
+
+		Assert.IsFalse(people.Length == processedCollection.Count);
 	}
 
 	[TestMethod]
