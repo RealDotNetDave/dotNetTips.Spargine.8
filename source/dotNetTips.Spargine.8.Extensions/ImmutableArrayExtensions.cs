@@ -4,7 +4,7 @@
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="ImmutableArrayExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -81,7 +81,7 @@ public static class ImmutableArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>(this ImmutableArray<T> list, int count)
+	public static bool HasItems<T>(this ImmutableArray<T> list, in int count)
 	{
 		if (list.ArgumentNotNull().IsEmpty)
 		{

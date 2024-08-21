@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="Validator.Check.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -251,7 +251,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="throwException" /> is true and the input value is outside the specified range.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(CheckIsInRange), "David McCarter", "2/3/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
-	public static bool CheckIsInRange(this int input, int lower, int upper, bool throwException = false, string errorMessage = "")
+	public static bool CheckIsInRange(this in int input, in int lower, in int upper, in bool throwException = false, string errorMessage = "")
 	{
 		var isValid = (input >= lower) && (input <= upper);
 

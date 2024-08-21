@@ -4,7 +4,7 @@
 // Created          : 08-20-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-20-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.FastProcessor.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -182,7 +182,7 @@ public static partial class EnumerableExtensions
 		// Processes a collection of value types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static void ProcessCollectionWithValueType(Action<T> action, IEnumerable<T> processedCollection, int size)
+		static void ProcessCollectionWithValueType(Action<T> action, IEnumerable<T> processedCollection, in int size)
 		{
 			if (size >= 8192)
 			{
@@ -209,7 +209,7 @@ public static partial class EnumerableExtensions
 		// Processes a collection of record types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static void ProcessCollectionWithRecordType(Action<T> action, IEnumerable<T> processedCollection, int size)
+		static void ProcessCollectionWithRecordType(Action<T> action, IEnumerable<T> processedCollection, in int size)
 		{
 			if (size >= 512)
 			{
@@ -228,7 +228,7 @@ public static partial class EnumerableExtensions
 		// Processes a collection of reference types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static void ProcessCollectionWithReferenceType(Action<T> action, IEnumerable<T> processedCollection, int size)
+		static void ProcessCollectionWithReferenceType(Action<T> action, IEnumerable<T> processedCollection, in int size)
 		{
 			if (size >= 4096)
 			{

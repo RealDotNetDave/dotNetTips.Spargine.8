@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-15-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -37,7 +37,7 @@ public static class SHA256PasswordHasher
 	/// <returns>A byte array containing the generated salt.</returns>
 	/// <remarks>This method uses a secure random number generator to produce a salt.
 	/// The salt can be used as part of a hashing function to increase the security of stored passwords.</remarks>
-	private static byte[] GenerateSalt(int byteLength)
+	private static byte[] GenerateSalt(in int byteLength)
 	{
 		var salt = RandomNumberGenerator.GetBytes(byteLength);
 

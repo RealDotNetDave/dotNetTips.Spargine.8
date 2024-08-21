@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-03-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -27,10 +27,6 @@ namespace DotNetTips.Spargine.Core.Security;
 /// </remarks>
 public static class UlidGenerator
 {
-	/// <summary>
-	/// The characters used for Base32 encoding.
-	/// </summary>
-	private static readonly char[] _base32Chars = "0123456789ABCDEFGHJKMNPQRSTVWXYZ".ToCharArray();
 
 	/// <summary>
 	/// The length of the random component in the ULID.
@@ -41,6 +37,11 @@ public static class UlidGenerator
 	/// The length of the timestamp component in the ULID.
 	/// </summary>
 	private const int TimestampLength = 10;
+
+	/// <summary>
+	/// The characters used for Base32 encoding.
+	/// </summary>
+	private static readonly char[] _base32Chars = "0123456789ABCDEFGHJKMNPQRSTVWXYZ".ToCharArray();
 
 	/// <summary>
 	/// Decodes a Base32 encoded string into a byte array.
@@ -88,7 +89,7 @@ public static class UlidGenerator
 	/// <param name="chars">The character array to store the encoded characters.</param>
 	/// <param name="charIndex">The starting index in the character array.</param>
 	/// <param name="length">The number of bytes to encode.</param>
-	private static void EncodeBase32(byte[] bytes, char[] chars, int charIndex, int length)
+	private static void EncodeBase32(byte[] bytes, char[] chars, in int charIndex, in int length)
 	{
 		var byteIndex = 0;
 		var bitIndex = 0;
@@ -187,7 +188,7 @@ public static class UlidGenerator
 	/// <returns>A read-only collection of generated ULIDs.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than or equal to zero.</exception>
 	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
-	public static ReadOnlyCollection<string> GenerateMultipleUlids(int count)
+	public static ReadOnlyCollection<string> GenerateMultipleUlids(in int count)
 	{
 		var ulids = new List<string>(count.ArgumentInRange(1, defaultValue: 1));
 

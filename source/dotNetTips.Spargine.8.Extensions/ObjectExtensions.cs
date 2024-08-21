@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-16-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -142,6 +142,15 @@ public static class ObjectExtensions
 			}
 		}
 	}
+
+	/// <summary>
+	/// Computes a fast hash code for the specified object.
+	/// </summary>
+	/// <param name="obj">The object to compute the hash code for.</param>
+	/// <returns>The hash code of the object.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(FastGetHashCode), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static int FastGetHashCode(this object obj) => RuntimeHelpers.GetHashCode(obj);
 
 	/// <summary>
 	/// Deserializes the JSON string to an object of type <typeparamref name="TResult" />.

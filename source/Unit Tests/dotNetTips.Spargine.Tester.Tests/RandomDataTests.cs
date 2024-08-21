@@ -4,7 +4,7 @@
 // Created          : 01-05-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-09-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="RandomDataTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -18,6 +18,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading.Tasks;

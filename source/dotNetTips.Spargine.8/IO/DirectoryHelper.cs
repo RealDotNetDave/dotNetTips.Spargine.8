@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-25-2024
+// Last Modified On : 08-14-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)

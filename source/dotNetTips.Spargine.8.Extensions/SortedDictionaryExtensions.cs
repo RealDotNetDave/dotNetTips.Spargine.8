@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-16-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="SortedDictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -101,7 +101,7 @@ public static class SortedDictionaryExtensions
 	/// <returns><c>true</c> if the count of items in the <paramref name="collection"/> equals the specified <paramref name="count"/>; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, int count)
+	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, in int count)
 	{
 		if (collection is null)
 		{

@@ -4,7 +4,7 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-31-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -128,7 +128,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// <param name="result">When this method returns, contains the item at the specified index, if the item is found;
 	/// otherwise, the default value for the type of the item parameter. This parameter is passed uninitialized.</param>
 	/// <returns><c>true</c> if the item at the specified index is successfully retrieved; otherwise, <c>false</c>.</returns>
-	private bool TryGetItem(int index, out T result)
+	private bool TryGetItem(in int index, out T result)
 	{
 		this.CheckEnumerable();
 

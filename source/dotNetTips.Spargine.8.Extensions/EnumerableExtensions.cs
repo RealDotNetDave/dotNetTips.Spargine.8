@@ -527,7 +527,7 @@ public static partial class EnumerableExtensions
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems(this IEnumerable collection, int count)
+	public static bool HasItems(this IEnumerable collection, in int count)
 	{
 		if (collection is null)
 		{

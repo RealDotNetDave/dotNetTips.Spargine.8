@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -46,7 +46,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="lower">Lower bound</param>
 	/// <param name="upper">Upper bound</param>
 	/// <returns>True/False</returns>
-	internal static bool CheckIsInRange(this int value, int lower, int upper) => value >= lower && value <= upper;
+	internal static bool CheckIsInRange(this in int value, in int lower, in int upper) => value >= lower && value <= upper;
 
 	/// <summary>
 	/// Determines whether [is in range] [the specified lower].

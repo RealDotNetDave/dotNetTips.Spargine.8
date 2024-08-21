@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-14-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -51,7 +51,7 @@ public static class DateTimeExtensions
 	/// <returns>DateTime.</returns>
 	[Obsolete("Use FromMilliEpochTime instead.")]
 	[Information(nameof(FromUnixTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMarch2021")]
-	public static DateTime FromUnixTime(this int unixTime)
+	public static DateTime FromUnixTime(this in int unixTime)
 	{
 		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
@@ -205,7 +205,7 @@ public static class DateTimeExtensions
 	/// <param name="timezoneFromUtc">Hours of the timezone from UTC</param>
 	/// <returns>Future date</returns>
 	[Information(nameof(LocalTimeFromUtc), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static DateTime LocalTimeFromUtc(this DateTime date, int timezoneFromUtc) => date.ToUniversalTime().AddHours(timezoneFromUtc);
+	public static DateTime LocalTimeFromUtc(this DateTime date, in int timezoneFromUtc) => date.ToUniversalTime().AddHours(timezoneFromUtc);
 
 	/// <summary>
 	/// Determines the maximum of the two <see cref="DateTime" />s.

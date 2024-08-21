@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -76,6 +76,17 @@ public class ObjectExtensionsTests : TestClass
 			Debug.WriteLine(ex.Message);
 			Assert.Fail();
 		}
+	}
+
+	[TestMethod]
+	public void FastGetHashCodeTest()
+	{
+		int[] numbers = { 1, 2, 3, 4, 5 };
+
+		var hashCode = numbers.GetHashCode();
+		var fastHashCode = numbers.FastGetHashCode();
+
+		Assert.AreEqual(hashCode, fastHashCode);
 	}
 
 	[TestMethod]

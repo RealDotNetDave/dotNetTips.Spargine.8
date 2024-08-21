@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-16-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -677,7 +677,7 @@ public static class StringExtensions
 	/// <returns>The indented string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
 	[Information(nameof(Indent), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static string Indent([NotNull] this string input, int length, char indentationCharacter)
+	public static string Indent([NotNull] this string input, in int length, char indentationCharacter)
 	{
 		if (input.CheckIsNotNull() is false || length <= 0)
 		{
@@ -1116,7 +1116,7 @@ public static class StringExtensions
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="startIndex"/> or <paramref name="length"/> is less than zero, or <paramref name="startIndex"/> + <paramref name="length"/> is greater than the length of <paramref name="input"/>.</exception>
 	[return: NotNull]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static string SubstringTrim(this string input, int startIndex, int length)
+	public static string SubstringTrim(this string input, in int startIndex, in int length)
 	{
 		if (input.IsNullOrEmpty())
 		{

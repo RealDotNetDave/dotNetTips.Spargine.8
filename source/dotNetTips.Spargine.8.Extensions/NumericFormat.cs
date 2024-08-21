@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-01-2022
+// Last Modified On : 07-15-2024
 // ***********************************************************************
 // <copyright file="NumericFormat.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.

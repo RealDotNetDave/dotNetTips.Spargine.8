@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-16-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -223,7 +223,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.WIP, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this List<T> collection, int count)
+	public static bool HasItems<T>([NotNull] this List<T> collection, in int count)
 	{
 		if (collection is null)
 		{

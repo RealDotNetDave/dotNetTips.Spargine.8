@@ -4,7 +4,7 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-04-2024
+// Last Modified On : 08-07-2024
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)

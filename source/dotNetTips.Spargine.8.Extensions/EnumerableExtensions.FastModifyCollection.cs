@@ -181,7 +181,7 @@ public static partial class EnumerableExtensions
 		// Processes a collection of value types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static ReadOnlyCollection<T> ModifyCollectionWithValueType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
+		static ReadOnlyCollection<T> ModifyCollectionWithValueType(Func<T, T> action, IEnumerable<T> processedCollection, in int size)
 		{
 			if (size >= 8192)
 			{
@@ -200,7 +200,7 @@ public static partial class EnumerableExtensions
 		// Processes a collection of record types using the specified action.
 		// The method chooses the appropriate processing strategy based on the size of the collection.
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		static ReadOnlyCollection<T> ModifyCollectionWithRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
+		static ReadOnlyCollection<T> ModifyCollectionWithRecordType(Func<T, T> action, IEnumerable<T> processedCollection, in int size)
 		{
 			if (size >= 4096)
 			{
