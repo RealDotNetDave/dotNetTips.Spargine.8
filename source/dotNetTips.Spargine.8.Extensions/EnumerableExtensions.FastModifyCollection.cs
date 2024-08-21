@@ -4,9 +4,9 @@
 // Created          : 08-20-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-20-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
-// <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
+// <copyright file="EnumerableExtensions.FastModifyCollection.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>Provides extension methods for modifying collections in parallel.</summary>
@@ -49,29 +49,6 @@ public static partial class EnumerableExtensions
 		{
 			processedBag.Add(action(item));
 		}
-
-		return processedBag.ToReadOnlyCollection();
-	}
-
-	/// <summary>
-	/// Processes a collection using a provided action and returns a read-only collection.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the collection.</typeparam>
-	/// <param name="action">The action to apply to each element in the collection.</param>
-	/// <param name="collection">The collection to process.</param>
-	/// <returns>A read-only collection with the processed elements.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when the collection or action is null.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	[return: NotNull]
-	private static ReadOnlyCollection<T> ModifyWithForEach<T>(Func<T, T> action, IEnumerable<T> collection)
-	{
-		var processedBag = new ConcurrentBag<T>();
-
-		_ = Parallel.ForEach(collection, person =>
-		{
-			processedBag.Add(action(person));
-		});
 
 		return processedBag.ToReadOnlyCollection();
 	}
@@ -126,7 +103,7 @@ public static partial class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Processes a collection in parallel using a provided action and a maximum degree of parallelism, and returns a read-only collection.
+	/// Processes a collection in parallel using a provided action and returns a read-only collection.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="action">The action to apply to each element in the collection.</param>
@@ -136,12 +113,19 @@ public static partial class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[return: NotNull]
-	private static ReadOnlyCollection<T> ModifyWithParallelForWithMaxDegreeOfParallelism<T>(Func<T, T> action, in IEnumerable<T> collection)
+	private static ReadOnlyCollection<T> ModifyWithParallelForEachWithPartitionerMaxDegreeOfParallelism<T>(Func<T, T> action, in IEnumerable<T> collection)
 	{
 		var processedArray = collection as T[] ?? collection.ToArray();
+		var rangePartitioner = Partitioner.Create(0, processedArray.Length);
 		var processedBag = new ConcurrentBag<T>();
 
-		_ = Parallel.For(0, processedArray.Length, _parallelOptions, index => processedBag.Add(action(processedArray[index])));
+		_ = Parallel.ForEach(rangePartitioner, _parallelOptions, (range, state) =>
+		{
+			for (var index = range.Item1; index < range.Item2; index++)
+			{
+				processedBag.Add(action(processedArray[index]));
+			}
+		});
 
 		return processedBag.ToReadOnlyCollection();
 	}
@@ -201,7 +185,7 @@ public static partial class EnumerableExtensions
 		{
 			if (size >= 8192)
 			{
-				return ModifyWithForEach(action, processedCollection);
+				return ModifyWithParallelForEachWithPartitionerMaxDegreeOfParallelism(action, processedCollection);
 			}
 			else if (size >= 2048)
 			{
@@ -218,11 +202,7 @@ public static partial class EnumerableExtensions
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static ReadOnlyCollection<T> ModifyCollectionWithRecordType(Func<T, T> action, IEnumerable<T> processedCollection, int size)
 		{
-			if (size >= 8192)
-			{
-				return ModifyWithParallelForWithMaxDegreeOfParallelism(action, processedCollection);
-			}
-			else if (size >= 4096)
+			if (size >= 4096)
 			{
 				return ModifyWithParallelForEachWithPartitioner(action, processedCollection);
 			}

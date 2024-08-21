@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 08-20-2024
 // ***********************************************************************
-// <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
+// <copyright file="EnumerableExtensions.FastProcessor.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary>Provides extension methods for modifying collections in parallel.</summary>
