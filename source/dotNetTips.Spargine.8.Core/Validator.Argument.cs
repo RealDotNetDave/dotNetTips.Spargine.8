@@ -4,7 +4,7 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-17-2024
+// Last Modified On : 08-21-2024
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -181,7 +181,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation of lower or upper failed.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "1/29/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static byte ArgumentInRange(this byte input, byte lower = byte.MinValue, byte upper = byte.MaxValue, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static byte ArgumentInRange(this in byte input, in byte lower = byte.MinValue, in byte upper = byte.MaxValue, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
 
@@ -205,7 +205,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "1/21/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static DateTime ArgumentInRange(this DateTime input, DateTime lower, DateTime upper, DateTime? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static DateTime ArgumentInRange(this DateTime input, in DateTime lower, in DateTime upper, in DateTime? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
 
@@ -234,7 +234,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "1/21/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static DateTimeOffset ArgumentInRange(this DateTimeOffset input, DateTimeOffset lower, DateTimeOffset upper, DateTimeOffset? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static DateTimeOffset ArgumentInRange(this DateTimeOffset input, in DateTimeOffset lower, in DateTimeOffset upper, in DateTimeOffset? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
 
@@ -263,7 +263,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static int ArgumentInRange(this int input, int lower = 0, [CallerArgumentExpression(nameof(input))] string paramName = "", int upper = int.MaxValue, int? defaultValue = null, string errorMessage = "")
+	public static int ArgumentInRange(this int input, in int lower = 0, [CallerArgumentExpression(nameof(input))] string paramName = "", in int upper = int.MaxValue, in int? defaultValue = null, string errorMessage = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
 
@@ -292,7 +292,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static double ArgumentInRange(this double input, double lower = 0, double upper = double.MaxValue, double? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static double ArgumentInRange(this double input, in double lower = 0, in double upper = double.MaxValue, in double? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
 
@@ -321,7 +321,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static long ArgumentInRange(this long input, long lower = 0, long upper = long.MaxValue, long? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static long ArgumentInRange(this long input, in long lower = 0, in long upper = long.MaxValue, in long? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
 
@@ -350,7 +350,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static decimal ArgumentInRange(this decimal input, decimal lower = 0, decimal upper = decimal.MaxValue, decimal? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static decimal ArgumentInRange(this decimal input, in decimal lower = 0, in decimal upper = decimal.MaxValue, in decimal? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
 
@@ -379,7 +379,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "2/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static DateOnly ArgumentInRange(this DateOnly input, DateOnly lower, DateOnly upper, DateOnly? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static DateOnly ArgumentInRange(this DateOnly input, in DateOnly lower, in DateOnly upper, in DateOnly? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
 
@@ -408,7 +408,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "2/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static TimeOnly ArgumentInRange(this TimeOnly input, TimeOnly lower, TimeOnly upper, TimeOnly? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static TimeOnly ArgumentInRange(this TimeOnly input, in TimeOnly lower, in TimeOnly upper, in TimeOnly? defaultValue = null, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input!.CheckIsInRange(lower, upper);
 
@@ -588,7 +588,7 @@ public static partial class Validator
 	/// <remarks>This also checks the input for null.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentItemsExists), "David McCarter", "4/4/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static IEnumerable<T> ArgumentItemsExists<T>([NotNull] this IEnumerable<T> input, long count, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static IEnumerable<T> ArgumentItemsExists<T>([NotNull] this IEnumerable<T> input, in long count, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		input = input.ArgumentNotNull();
 
@@ -651,7 +651,7 @@ public static partial class Validator
 	/// <remarks>This also checks the input for null.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentMeetsCondition), "David McCarter", "4/4/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static T ArgumentMeetsCondition<T>(this T input, bool condition, T? defaultValue = default, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static T ArgumentMeetsCondition<T>(this T input, in bool condition, T? defaultValue = default, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		var isValid = input is not null && condition;
 

@@ -64,7 +64,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="lower">The lower.</param>
 	/// <param name="upper">The upper.</param>
 	/// <returns><c>true</c> if [is in range] [the specified lower]; otherwise, <c>false</c>.</returns>
-	internal static bool CheckIsInRange(this long value, long lower, long upper) => value >= lower && value <= upper;
+	internal static bool CheckIsInRange(this in long value, in long lower, in long upper) => value >= lower && value <= upper;
 
 	/// <summary>
 	/// Determines whether [is in range] [the specified lower].
@@ -73,7 +73,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="lower">The lower.</param>
 	/// <param name="upper">The upper.</param>
 	/// <returns><c>true</c> if [is in range] [the specified lower]; otherwise, <c>false</c>.</returns>
-	internal static bool CheckIsInRange(this double value, double lower, double upper) => value >= lower && value <= upper;
+	internal static bool CheckIsInRange(this in double value, in double lower, in double upper) => value >= lower && value <= upper;
 
 	/// <summary>
 	/// Determines whether [is in range] [the specified lower].
@@ -82,7 +82,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="lower">The lower.</param>
 	/// <param name="upper">The upper.</param>
 	/// <returns><c>true</c> if [is in range] [the specified lower]; otherwise, <c>false</c>.</returns>
-	internal static bool CheckIsInRange(this decimal value, decimal lower, decimal upper) => value >= lower && value <= upper;
+	internal static bool CheckIsInRange(this in decimal value, in decimal lower, in decimal upper) => value >= lower && value <= upper;
 
 	/// <summary>
 	/// Determines whether [is email address] [the specified input].

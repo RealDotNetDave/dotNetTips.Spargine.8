@@ -44,7 +44,7 @@ public static class MathExtensions
 	/// <returns>The percentage difference between the first and second <see cref="TimeSpan" /> values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static double CalculatePercent(this TimeSpan first, TimeSpan second) => (second.TotalMilliseconds - first.TotalMilliseconds) / Math.Abs(first.TotalMilliseconds) * 100;
+	public static double CalculatePercent(this in TimeSpan first, in TimeSpan second) => (second.TotalMilliseconds - first.TotalMilliseconds) / Math.Abs(first.TotalMilliseconds) * 100;
 
 	/// <summary>
 	/// Calculates the percentage difference between two integers.
@@ -64,7 +64,7 @@ public static class MathExtensions
 	/// <returns>The percentage difference between the first and second double values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static double CalculatePercent(this double first, double second) => (second - first) / Math.Abs(first) * 100;
+	public static double CalculatePercent(this in double first, in double second) => (second - first) / Math.Abs(first) * 100;
 
 	/// <summary>
 	/// Calculates the percentage difference between two long integer values.
@@ -74,7 +74,7 @@ public static class MathExtensions
 	/// <returns>The percentage difference between the first and second long integer values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static double CalculatePercent(this long first, long second) => (second - first) / Math.Abs(first) * 100;
+	public static double CalculatePercent(this in long first, in long second) => (second - first) / Math.Abs(first) * 100;
 
 	/// <summary>
 	/// Determines whether the specified number is prime.
@@ -141,7 +141,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified double value, rounded to the specified number of fractional digits.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static int Round(this double value, in int digits) => Convert.ToInt32(Math.Round(value, digits));
+	public static int Round(this in double value, in int digits) => Convert.ToInt32(Math.Round(value, digits));
 
 	/// <summary>
 	/// Rounds the specified double value using the specified rounding convention.
@@ -152,7 +152,7 @@ public static class MathExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static int Round(this double value, MidpointRounding mode)
+	public static int Round(this in double value, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
 
@@ -167,7 +167,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified decimal value, rounded to the specified number of fractional digits.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static int Round(this decimal value, in int digits) => Convert.ToInt32(Math.Round(value, digits));
+	public static int Round(this in decimal value, in int digits) => Convert.ToInt32(Math.Round(value, digits));
 
 	/// <summary>
 	/// Rounds the specified decimal value using the specified rounding convention.
@@ -178,7 +178,7 @@ public static class MathExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static int Round(this decimal value, MidpointRounding mode)
+	public static int Round(this in decimal value, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
 
@@ -195,7 +195,7 @@ public static class MathExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static int Round(this double value, in int digits, MidpointRounding mode)
+	public static int Round(this in double value, in int digits, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
 
@@ -212,7 +212,7 @@ public static class MathExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
-	public static int Round(this decimal value, in int digits, MidpointRounding mode)
+	public static int Round(this in decimal value, in int digits, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
 

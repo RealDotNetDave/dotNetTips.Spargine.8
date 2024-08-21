@@ -442,7 +442,7 @@ public static class RandomData
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="minValue"/> is greater than <paramref name="maxValue"/>, or <paramref name="decimalPlaces"/> is negative.</exception>
 	/// <example>Output: 95.15</example>
 	[Information(nameof(GenerateDecimal), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static decimal GenerateDecimal(decimal minValue, decimal maxValue, int decimalPlaces)
+	public static decimal GenerateDecimal(in decimal minValue, in decimal maxValue, int decimalPlaces)
 	{
 		decimalPlaces = decimalPlaces.ArgumentInRange(lower: 0, defaultValue: 0);
 
