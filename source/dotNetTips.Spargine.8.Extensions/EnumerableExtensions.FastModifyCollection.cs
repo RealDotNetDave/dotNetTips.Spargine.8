@@ -42,15 +42,30 @@ public static partial class EnumerableExtensions
 	[return: NotNull]
 	private static ReadOnlyCollection<T> ModifyWithCollectionsMarshallAsSpan<T>(Func<T, T> action, IEnumerable<T> collection)
 	{
-		var list = collection as List<T> ?? collection.ToList();
-		var processedBag = new ReadOnlyCollectionBuilder<T>(list.Count);
-
-		foreach (var item in CollectionsMarshal.AsSpan(list))
+		if (collection is List<T> list)
 		{
-			processedBag.Add(action(item));
-		}
+			var span = CollectionsMarshal.AsSpan(list);
+			var processedBag = new ReadOnlyCollectionBuilder<T>(span.Length);
 
-		return processedBag.ToReadOnlyCollection();
+			for (var index = 0; index < span.Length; index++)
+			{
+				processedBag.Add(action(span[index]));
+			}
+
+			return processedBag.ToReadOnlyCollection();
+		}
+		else
+		{
+			var span = CollectionsMarshal.AsSpan(collection.ToList());
+			var processedBag = new ReadOnlyCollectionBuilder<T>(span.Length);
+
+			for (var index = 0; index < span.Length; index++)
+			{
+				processedBag.Add(action(span[index]));
+			}
+
+			return processedBag.ToReadOnlyCollection();
+		}
 	}
 
 	/// <summary>

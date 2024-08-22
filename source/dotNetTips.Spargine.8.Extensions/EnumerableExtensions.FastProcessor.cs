@@ -51,11 +51,21 @@ public static partial class EnumerableExtensions
 	[Pure]
 	private static void ProcessCollectionWithCollectionsMarshallAsSpan<T>(Action<T> action, IEnumerable<T> collection)
 	{
-		var list = collection as List<T> ?? collection.ToList();
-
-		foreach (var item in CollectionsMarshal.AsSpan(list))
+		if (collection is List<T> list)
 		{
-			action(item);
+			var span = CollectionsMarshal.AsSpan(list);
+			for (var index = 0; index < span.Length; index++)
+			{
+				action(span[index]);
+			}
+		}
+		else
+		{
+			var span = CollectionsMarshal.AsSpan(collection.ToList());
+			for (var index = 0; index < span.Length; index++)
+			{
+				action(span[index]);
+			}
 		}
 	}
 
