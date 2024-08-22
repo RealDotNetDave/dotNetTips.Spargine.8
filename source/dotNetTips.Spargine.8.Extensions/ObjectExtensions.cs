@@ -144,13 +144,30 @@ public static class ObjectExtensions
 	}
 
 	/// <summary>
-	/// Computes a fast hash code for the specified object.
+	/// Computes a fast hash code for the given object. If the object has overridden the GetHashCode method,
+	/// it uses the overridden method. Otherwise, it uses the default runtime hash code.
 	/// </summary>
-	/// <param name="obj">The object to compute the hash code for.</param>
-	/// <returns>The hash code of the object.</returns>
+	/// <param name="obj">The object for which to compute the hash code.</param>
+	/// <returns>The computed hash code.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the object is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(FastGetHashCode), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public static int FastGetHashCode(this object obj) => RuntimeHelpers.GetHashCode(obj);
+	public static int FastGetHashCode(this object obj)
+	{
+		obj = obj.ArgumentNotNull();
+
+		var type = obj.GetType();
+		var getHashCodeMethod = type.GetMethod("GetHashCode", BindingFlags.Instance | BindingFlags.Public);
+
+		if (getHashCodeMethod != null && getHashCodeMethod.DeclaringType == type)
+		{
+			return obj.GetHashCode();
+		}
+		else
+		{
+			return RuntimeHelpers.GetHashCode(obj);
+		}
+	}
 
 	/// <summary>
 	/// Deserializes the JSON string to an object of type <typeparamref name="TResult" />.

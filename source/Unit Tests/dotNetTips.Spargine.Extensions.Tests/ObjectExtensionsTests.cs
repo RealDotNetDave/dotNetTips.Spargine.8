@@ -79,12 +79,23 @@ public class ObjectExtensionsTests : TestClass
 	}
 
 	[TestMethod]
-	public void FastGetHashCodeTest()
+	public void FastGetHashCodeArrayTest()
 	{
 		int[] numbers = { 1, 2, 3, 4, 5 };
 
 		var hashCode = numbers.GetHashCode();
 		var fastHashCode = numbers.FastGetHashCode();
+
+		Assert.AreEqual(hashCode, fastHashCode);
+	}
+
+	[TestMethod]
+	public void FastGetHashCodePersonTest()
+	{
+		var person = RandomData.GeneratePersonRef<Address>();
+
+		var hashCode = person.GetHashCode();
+		var fastHashCode = person.FastGetHashCode();
 
 		Assert.AreEqual(hashCode, fastHashCode);
 	}
