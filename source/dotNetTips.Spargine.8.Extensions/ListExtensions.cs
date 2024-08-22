@@ -170,15 +170,9 @@ public static class ListExtensions
 	{
 		collection = collection.ArgumentNotNull();
 
-		//return hash;
-		var hash = new HashCode();
+		var hash = HashCode.Combine(collection);
 
-		foreach (var item in CollectionsMarshal.AsSpan(collection))
-		{
-			hash.Add(item);
-		}
-
-		return hash.ToHashCode();
+		return hash;
 
 	}
 
