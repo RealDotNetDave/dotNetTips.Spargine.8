@@ -4,7 +4,7 @@
 // Created          : 08-20-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 08-22-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.FastProcessor.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -26,36 +26,6 @@ namespace DotNetTips.Spargine.Extensions;
 /// </summary>
 public static partial class EnumerableExtensions
 {
-	private static readonly ParallelOptions _parallelOptionsTaskScheduler = new ParallelOptions { MaxDegreeOfParallelism = App.MaxDegreeOfParallelism(), TaskScheduler = TaskScheduler.Current };
-
-	/// <summary>
-	/// Processes the collection in parallel using the specified action with auto-buffered merge options.
-	/// </summary>
-	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
-	/// <param name="action">The action to apply to each item in the collection.</param>
-	/// <param name="collection">The collection to process.</param>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="action"/> is null.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	private static void ProcessCollectionWithAsParallelWithMergeOptionsAutoBuffered<T>(Action<T> action, IEnumerable<T> collection)
-	{
-		collection.AsParallel().WithMergeOptions(ParallelMergeOptions.AutoBuffered).ForAll(person => action(person));
-	}
-
-	/// <summary>
-	/// Processes the collection in parallel using the specified action with default merge options.
-	/// </summary>
-	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
-	/// <param name="action">The action to apply to each item in the collection.</param>
-	/// <param name="collection">The collection to process.</param>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="action"/> is null.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	private static void ProcessCollectionWithAsParallelWithMergeOptionsDefault<T>(Action<T> action, IEnumerable<T> collection)
-	{
-		collection.AsParallel().WithMergeOptions(ParallelMergeOptions.Default).ForAll(person => action(person));
-	}
-
 	/// <summary>
 	/// Processes the collection in parallel using the specified action with not-buffered merge options.
 	/// </summary>
@@ -90,7 +60,7 @@ public static partial class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Processes the collection using the specified action with a load-balanced partitioner for efficient parallel iteration.
+	/// Processes the collection using the specified action with a partitioner.
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
 	/// <param name="action">The action to apply to each item in the collection.</param>
@@ -98,30 +68,16 @@ public static partial class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	private static void ProcessCollectionWithForEachPartitionerLoadBallanced<T>(Action<T> action, IEnumerable<T> collection)
+	private static void ProcessCollectionWithForEachPartitioner<T>(Action<T> action, IEnumerable<T> collection)
 	{
 		var list = collection as List<T> ?? collection.ToList();
-		var rangePartitioner = Partitioner.Create(list, loadBalance: true);
+		var rangePartitioner = Partitioner.Create(list);
 
 		_ = Parallel.ForEach(rangePartitioner, person => action(person));
 	}
 
 	/// <summary>
-	/// Processes the collection using the specified action with Parallel.For for efficient parallel iteration.
-	/// </summary>
-	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
-	/// <param name="action">The action to apply to each item in the collection.</param>
-	/// <param name="collection">The collection to process.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Pure]
-	private static void ProcessCollectionWithParallelFor<T>(Action<T> action, IEnumerable<T> collection)
-	{
-		var array = collection as T[] ?? collection.ToArray();
-		_ = Parallel.For(0, array.Length, (index) => action(array[index]));
-	}
-
-	/// <summary>
-	/// Processes the collection using the specified action with Parallel.For and a custom TaskScheduler for efficient parallel iteration.
+	/// Processes the collection using the specified action with a partitioner and a maximum degree of parallelism.
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
 	/// <param name="action">The action to apply to each item in the collection.</param>
@@ -129,10 +85,12 @@ public static partial class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	private static void ProcessCollectionWithParallelForMaxDegreeOfParallelismTaskScheduler<T>(Action<T> action, IEnumerable<T> collection)
+	private static void ProcessCollectionWithForEachPartitionerMaxDegreeOfParallelism<T>(Action<T> action, IEnumerable<T> collection)
 	{
-		var array = collection as T[] ?? collection.ToArray();
-		_ = Parallel.For(0, array.Length, _parallelOptionsTaskScheduler, (index) => action(array[index]));
+		var list = collection as List<T> ?? collection.ToList();
+		var rangePartitioner = Partitioner.Create(list);
+
+		_ = Parallel.ForEach(rangePartitioner, _parallelOptions, person => action(person));
 	}
 
 	/// <summary>
@@ -184,25 +142,13 @@ public static partial class EnumerableExtensions
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void ProcessCollectionWithValueType(Action<T> action, IEnumerable<T> processedCollection, in int size)
 		{
-			if (size >= 8192)
+			if (size >= 128)
 			{
 				ProcessCollectionWithAsParallelWithMergeOptionsNotBuffered(action, processedCollection);
-			}
-			else if (size >= 1024)
-			{
-				ProcessCollectionWithParallelFor(action, processedCollection);
-			}
-			else if (size >= 512)
-			{
-				ProcessCollectionWithAsParallelWithMergeOptionsNotBuffered(action, processedCollection);
-			}
-			else if (size >= 256)
-			{
-				ProcessCollectionWithAsParallelWithMergeOptionsAutoBuffered(action, processedCollection);
 			}
 			else
 			{
-				ProcessCollectionWithAsParallelWithMergeOptionsNotBuffered(action, processedCollection);
+				ProcessCollectionWithCollectionsMarshallAsSpan(action, processedCollection);
 			}
 		}
 
@@ -211,13 +157,9 @@ public static partial class EnumerableExtensions
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void ProcessCollectionWithRecordType(Action<T> action, IEnumerable<T> processedCollection, in int size)
 		{
-			if (size >= 512)
+			if (size >= 4096)
 			{
-				ProcessCollectionWithParallelFor(action, processedCollection);
-			}
-			else if (size >= 128)
-			{
-				ProcessCollectionWithAsParallelWithMergeOptionsAutoBuffered(action, processedCollection);
+				ProcessCollectionWithForEachPartitionerMaxDegreeOfParallelism(action, processedCollection);
 			}
 			else
 			{
@@ -230,25 +172,17 @@ public static partial class EnumerableExtensions
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void ProcessCollectionWithReferenceType(Action<T> action, IEnumerable<T> processedCollection, in int size)
 		{
-			if (size >= 4096)
+			if (size >= 8192)
 			{
-				ProcessCollectionWithParallelForMaxDegreeOfParallelismTaskScheduler(action, processedCollection);
+				ProcessCollectionWithForEachPartitionerMaxDegreeOfParallelism(action, processedCollection);
 			}
-			else if (size >= 512)
+			else if (size >= 4096)
 			{
-				ProcessCollectionWithParallelFor(action, processedCollection);
-			}
-			else if (size >= 256)
-			{
-				ProcessCollectionWithAsParallelWithMergeOptionsDefault(action, processedCollection);
-			}
-			else if (size >= 128)
-			{
-				ProcessCollectionWithAsParallelWithMergeOptionsAutoBuffered(action, processedCollection);
+				ProcessCollectionWithForEachPartitioner(action, processedCollection);
 			}
 			else
 			{
-				ProcessCollectionWithForEachPartitionerLoadBallanced(action, processedCollection);
+				ProcessCollectionWithCollectionsMarshallAsSpan(action, processedCollection);
 			}
 		}
 	}

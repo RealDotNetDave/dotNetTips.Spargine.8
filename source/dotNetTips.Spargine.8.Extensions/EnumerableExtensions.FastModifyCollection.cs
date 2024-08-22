@@ -4,7 +4,7 @@
 // Created          : 08-20-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 08-22-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.FastModifyCollection.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -43,7 +43,7 @@ public static partial class EnumerableExtensions
 	private static ReadOnlyCollection<T> ModifyWithCollectionsMarshallAsSpan<T>(Func<T, T> action, IEnumerable<T> collection)
 	{
 		var list = collection as List<T> ?? collection.ToList();
-		var processedBag = new ReadOnlyCollectionBuilder<T>(collection.Count());
+		var processedBag = new ReadOnlyCollectionBuilder<T>(list.Count);
 
 		foreach (var item in CollectionsMarshal.AsSpan(list))
 		{
@@ -113,19 +113,12 @@ public static partial class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[return: NotNull]
-	private static ReadOnlyCollection<T> ModifyWithParallelForEachWithPartitionerMaxDegreeOfParallelism<T>(Func<T, T> action, in IEnumerable<T> collection)
+	private static ReadOnlyCollection<T> ModifyWithParallelForMaxDegreeOfParallelism<T>(Func<T, T> action, in IEnumerable<T> collection)
 	{
 		var processedArray = collection as T[] ?? collection.ToArray();
-		var rangePartitioner = Partitioner.Create(0, processedArray.Length);
 		var processedBag = new ConcurrentBag<T>();
 
-		_ = Parallel.ForEach(rangePartitioner, _parallelOptions, (range, state) =>
-		{
-			for (var index = range.Item1; index < range.Item2; index++)
-			{
-				processedBag.Add(action(processedArray[index]));
-			}
-		});
+		_ = Parallel.For(0, processedArray.Length, _parallelOptions, index => processedBag.Add(action(processedArray[index])));
 
 		return processedBag.ToReadOnlyCollection();
 	}
@@ -185,7 +178,7 @@ public static partial class EnumerableExtensions
 		{
 			if (size >= 8192)
 			{
-				return ModifyWithParallelForEachWithPartitionerMaxDegreeOfParallelism(action, processedCollection);
+				return ModifyWithParallelForEachWithPartitioner(action, processedCollection);
 			}
 			else if (size >= 2048)
 			{
@@ -204,7 +197,7 @@ public static partial class EnumerableExtensions
 		{
 			if (size >= 4096)
 			{
-				return ModifyWithParallelForEachWithPartitioner(action, processedCollection);
+				return ModifyWithParallelForMaxDegreeOfParallelism(action, processedCollection);
 			}
 			else if (size >= 2048)
 			{

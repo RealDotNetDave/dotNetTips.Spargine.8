@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 08-22-2024
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -71,7 +71,7 @@ public static class FileHelper
 	/// <param name="hDestinationFile">A handle to the destination file. This is an IntPtr and does not have a direct <see cref="FileInfo"/> equivalent.</param>
 	/// <param name="lpData">A pointer to application-defined data passed to the callback function. This is an IntPtr and does not have a direct .NET equivalent.</param>
 	/// <returns>A <see cref="CopyProgressResult"/> value that determines the action to take.</returns>
-	public delegate CopyProgressResult CopyProgressRoutine(in long totalFileSize, in long totalBytesTransferred, in long streamSize, in long streamBytesTransferred, in uint dwStreamNumber, CopyProgressCallbackReason dwCallbackReason, IntPtr hSourceFile, IntPtr hDestinationFile, IntPtr lpData);
+	public delegate CopyProgressResult CopyProgressRoutine(long totalFileSize, long totalBytesTransferred, long streamSize, long streamBytesTransferred, uint dwStreamNumber, CopyProgressCallbackReason dwCallbackReason, IntPtr hSourceFile, IntPtr hDestinationFile, IntPtr lpData);
 
 	/// <summary>
 	/// Retrieves a singleton instance of <see cref="HttpClient"/> for use in file operations.
