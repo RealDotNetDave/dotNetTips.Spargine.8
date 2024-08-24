@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 08-24-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -21,6 +21,7 @@ using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using DotNetTips.Spargine.Core;
@@ -36,11 +37,6 @@ namespace DotNetTips.Spargine.Extensions;
 /// </summary>
 public static partial class EnumerableExtensions
 {
-	/// <summary>
-	/// Parallel options with a specified maximum degree of parallelism.
-	/// </summary>
-	private static readonly ParallelOptions _parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = App.MaxDegreeOfParallelism() };
-
 	/// <summary>
 	/// A pool of <see cref="StringBuilder"/> objects to minimize memory allocations.
 	/// </summary>
@@ -380,6 +376,82 @@ public static partial class EnumerableExtensions
 	public static long FastCount<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate) =>
 		//COPILOT OPTIMIZATION SLOWER.
 		collection.ArgumentNotNull().Count(predicate.ArgumentNotNull());
+
+	/// <summary>
+	/// Modifies each item in the given collection using the specified function and returns a read-only collection of the modified items.
+	/// </summary>
+	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
+	/// <param name="collection">The collection to process.</param>
+	/// <param name="action">The function to apply to each item in the collection.</param>
+	/// <returns>A read-only collection of the modified items.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="action"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[return: NotNull]
+	[Information(nameof(FastModifyCollection), author: "David McCarter", createdOn: "8/7/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
+	public static ReadOnlyCollection<T> FastModifyCollection<T>(this IEnumerable<T> collection, Func<T, T> action)
+	{
+		collection = collection.ArgumentNotNull();
+		action = action.ArgumentNotNull();
+
+		if (collection is List<T> list)
+		{
+			var span = CollectionsMarshal.AsSpan(list);
+			var processedCollection = new ReadOnlyCollectionBuilder<T>(span.Length);
+
+			for (var index = 0; index < span.Length; index++)
+			{
+				processedCollection.Add(action(span[index]));
+			}
+
+			return processedCollection.ToReadOnlyCollection();
+		}
+		else
+		{
+			var span = CollectionsMarshal.AsSpan(collection.ToList());
+			var processedCollection = new ReadOnlyCollectionBuilder<T>(span.Length);
+
+			for (var index = 0; index < span.Length; index++)
+			{
+				processedCollection.Add(action(span[index]));
+			}
+
+			return processedCollection.ToReadOnlyCollection();
+		}
+	}
+
+	/// <summary>
+	/// Processes each item in the given collection using the specified action.
+	/// </summary>
+	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
+	/// <param name="collection">The collection to process.</param>
+	/// <param name="action">The action to apply to each item in the collection.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="action"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "12/9/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	public static void FastProcessor<T>(this IEnumerable<T> collection, Action<T> action)
+	{
+		collection = collection.ArgumentNotNull();
+		action = action.ArgumentNotNull();
+
+		if (collection is List<T> list)
+		{
+			var span = CollectionsMarshal.AsSpan(list);
+			for (var index = 0; index < span.Length; index++)
+			{
+				action(span[index]);
+			}
+		}
+		else
+		{
+			var span = CollectionsMarshal.AsSpan(collection.ToList());
+			for (var index = 0; index < span.Length; index++)
+			{
+				action(span[index]);
+			}
+		}
+	}
 
 	/// <summary>
 	/// Returns the first element of the sequence or a default value if the sequence contains no elements.
