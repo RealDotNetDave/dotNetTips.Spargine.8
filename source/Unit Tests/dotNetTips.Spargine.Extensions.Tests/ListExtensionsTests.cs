@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-09-2024
+// Last Modified On : 08-26-2024
 // ***********************************************************************
 // <copyright file="ListExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -221,7 +221,7 @@ public class ListExtensionsTests
 		var list = new List<int>();
 
 		// Act & Assert
-		Assert.ThrowsException<OverflowException>(() => list.IndexAtLooped(0), "Expected an ArgumentOutOfRangeException for an empty list.");
+		Assert.ThrowsException<ArgumentException>(() => list.IndexAtLooped(0), "Expected an ArgumentOutOfRangeException for an empty list.");
 	}
 
 	[TestMethod]
