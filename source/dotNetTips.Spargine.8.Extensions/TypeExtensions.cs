@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-17-2024
+// Last Modified On : 08-27-2024
 // ***********************************************************************
 // <copyright file="TypeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -315,7 +315,7 @@ public static partial class TypeExtensions
 	/// <returns>A <see cref="TypeOfType"/> value representing the type characteristics of the input object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetTypeOfType), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(GetTypeOfType), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static TypeOfType GetTypeOfType([NotNull] this object obj)
 	{
 		var objType = obj.GetType();
