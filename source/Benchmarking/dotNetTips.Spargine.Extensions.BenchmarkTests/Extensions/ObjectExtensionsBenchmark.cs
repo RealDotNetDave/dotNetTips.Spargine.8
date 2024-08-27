@@ -123,6 +123,15 @@ public class ObjectExtensionsBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(ObjectExtensions.FastGetHashCode))]
+	[BenchmarkCategory(Categories.New)]
+	public void FastGetHashCode()
+	{
+		var word = RandomData.GenerateWord(15);
+
+		this.Consume(word.FastGetHashCode());
+	}
+
 	[Benchmark(Description = nameof(ObjectExtensions.FromJson))]
 	public void FromJson()
 	{

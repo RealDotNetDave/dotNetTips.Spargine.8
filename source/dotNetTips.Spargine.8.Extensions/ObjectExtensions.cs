@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 08-27-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -151,22 +151,12 @@ public static class ObjectExtensions
 	/// <returns>The computed hash code.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the object is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastGetHashCode), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(FastGetHashCode), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static int FastGetHashCode(this object obj)
 	{
 		obj = obj.ArgumentNotNull();
 
-		var type = obj.GetType();
-		var getHashCodeMethod = type.GetMethod("GetHashCode", BindingFlags.Instance | BindingFlags.Public);
-
-		if (getHashCodeMethod != null && getHashCodeMethod.DeclaringType == type)
-		{
-			return obj.GetHashCode();
-		}
-		else
-		{
-			return RuntimeHelpers.GetHashCode(obj);
-		}
+		return RuntimeHelpers.GetHashCode(obj);
 	}
 
 	/// <summary>
