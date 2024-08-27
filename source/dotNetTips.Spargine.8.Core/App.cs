@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-27-2024
+// Last Modified On : 08-27-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -426,7 +426,7 @@ public static class App
 	/// </code>
 	/// This will output the name of the current process.
 	/// </example>
-	[Information(nameof(ProcessName), "David McCarter", "7/26/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available)]
+	[Information(nameof(ProcessName), "David McCarter", "7/26/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string ProcessName => Process.GetCurrentProcess().ProcessName;
 
 	/// <summary>
