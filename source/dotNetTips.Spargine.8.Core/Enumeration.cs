@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-15-2024
+// Last Modified On : 08-27-2024
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -31,7 +31,7 @@ namespace DotNetTips.Spargine.Core;
 /// <remarks>Original code by: Jimmy Bogard</remarks>
 [Information(nameof(Enumeration), Documentation = "http://bit.ly/SpargineFeb2021", Status = Status.Available)]
 [DebuggerDisplay(nameof(DisplayName))]
-public abstract record Enumeration
+public class Enumeration : IComparable
 {
 
 	/// <summary>
@@ -42,12 +42,12 @@ public abstract record Enumeration
 	/// <summary>
 	/// The internal storage of the enumeration value.
 	/// </summary>
-	private int _value;
+	private readonly int _value;
 
 	/// <summary>
 	/// Private constructor used to prevent the creation of the Enumeration class without providing a value and display name.
 	/// </summary>
-	private Enumeration()
+	protected Enumeration()
 	{
 	}
 
@@ -61,7 +61,7 @@ public abstract record Enumeration
 	protected Enumeration(int value, [NotNull] string displayName)
 	{
 		this._value = value;
-		this.DisplayName = displayName;
+		this._displayName = displayName;
 	}
 
 	/// <summary>
@@ -104,6 +104,49 @@ public abstract record Enumeration
 	}
 
 	/// <summary>
+	/// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+	/// </summary>
+	/// <param name="obj">An object to compare with this instance.</param>
+	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
+	/// Less than zero: This instance precedes <paramref name="obj"/> in the sort order.
+	/// Zero: This instance occurs in the same position in the sort order as <paramref name="obj"/>.
+	/// Greater than zero: This instance follows <paramref name="obj"/> in the sort order.</returns>
+	public int CompareTo(object obj)
+	{
+		ArgumentNullException.ThrowIfNull(obj);
+
+		if (obj is not Enumeration other)
+		{
+			throw new ArgumentException($"Object must be of type {nameof(Enumeration)}", nameof(obj));
+		}
+
+		return this.Value.CompareTo(other.Value);
+	}
+
+	/// <summary>
+	/// Determines whether the specified object is equal to the current enumeration instance.
+	/// </summary>
+	/// <param name="obj">The object to compare with the current enumeration instance.</param>
+	/// <returns><c>true</c> if the specified object is equal to the current enumeration instance; otherwise, <c>false</c>.</returns>
+	public override bool Equals(object obj)
+	{
+		if (obj is null)
+		{
+			return false;
+		}
+
+		if (obj is not Enumeration otherValue)
+		{
+			return false;
+		}
+
+		var typeMatches = this.GetType().Equals(obj.GetType());
+		var valueMatches = this._value.Equals(otherValue.Value);
+
+		return typeMatches && valueMatches;
+	}
+
+	/// <summary>
 	/// Returns an enumeration instance based on its display name.
 	/// </summary>
 	/// <typeparam name="T">The enumeration type.</typeparam>
@@ -127,7 +170,10 @@ public abstract record Enumeration
 	/// <returns>An instance of the enumeration type that matches the given integer value.</returns>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
 	[Information(nameof(FromValue), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
-	public static T FromValue<T>(int value) where T : Enumeration, new() => Parse<T>(value.ToString(CultureInfo.CurrentCulture), item => item.Value == value);
+	public static T FromValue<T>(int value) where T : Enumeration, new()
+	{
+		return Parse<T>(value.ToString(CultureInfo.CurrentCulture), item => item.Value == value);
+	}
 
 	/// <summary>
 	/// Retrieves all instances of the specified enumeration type <typeparamref name="T"/>.
@@ -150,6 +196,24 @@ public abstract record Enumeration
 	}
 
 	/// <summary>
+	/// Returns a hash code for the current enumeration instance.
+	/// </summary>
+	/// <returns>A hash code for the current enumeration instance.</returns>
+	public override int GetHashCode()
+	{
+		return this._value.GetHashCode();
+	}
+
+	/// <summary>
+	/// Returns the display name of the enumeration.
+	/// </summary>
+	/// <returns>The display name of the enumeration.</returns>
+	public override string ToString()
+	{
+		return this.DisplayName;
+	}
+
+	/// <summary>
 	/// Gets the display name of the enumeration.
 	/// </summary>
 	/// <value>The display name.</value>
@@ -157,7 +221,6 @@ public abstract record Enumeration
 	public string DisplayName
 	{
 		get => this._displayName;
-		init => this._displayName = value.ArgumentNotNullOrEmpty();
 	}
 
 	/// <summary>
@@ -168,7 +231,5 @@ public abstract record Enumeration
 	public int Value
 	{
 		get => this._value;
-		init => this._value = value.ArgumentInRange(lower: 0);
 	}
-
 }

@@ -22,8 +22,12 @@ namespace DotNetTips.Spargine.Extensions;
 /// Implements the <see cref="Enumeration" />
 /// </summary>
 /// <seealso cref="Enumeration" />
-public record NumericFormat : Enumeration
+public class NumericFormat : Enumeration
 {
+	/// <summary>  
+	/// Initializes a new instance of the <see cref="NumericFormat"/> class.  
+	/// </summary>  
+	private NumericFormat() { }
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="NumericFormat" /> class.

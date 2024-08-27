@@ -11,6 +11,7 @@
 // </copyright>
 // <summary>EnumHelper Tests.</summary>
 // ***********************************************************************
+using System;
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
@@ -67,5 +68,6 @@ public class EnumerationTests
 	{
 		Assert.IsNotNull(DateTimeFormat.MonthDay.Value);
 	}
+
 
 }

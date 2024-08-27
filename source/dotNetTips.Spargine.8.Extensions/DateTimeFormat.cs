@@ -23,8 +23,13 @@ namespace DotNetTips.Spargine.Extensions;
 /// </summary>
 /// <seealso cref="Enumeration" />
 [Information(nameof(DateTimeFormat), Status = Status.NeedsDocumentation)]
-public record DateTimeFormat : Enumeration
+public class DateTimeFormat : Enumeration
 {
+	/// <summary>  
+	/// Initializes a new instance of the <see cref="DateTimeFormat"/> class.  
+	/// </summary>  
+	private DateTimeFormat()
+	{ }
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="DateTimeFormat" /> class.
