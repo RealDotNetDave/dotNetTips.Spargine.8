@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 08-15-2024
+// Last Modified On : 08-28-2024
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -36,12 +36,16 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// Represents a person with various personal details. This struct is generic to allow for different types of addresses.
 /// </summary>
 /// <typeparam name="TAddress">The type of address this person can have, constrained to types that implement <see cref="IAddress"/>.</typeparam>
+/// <remarks>
+/// Initializes a new instance of the <see cref="Person{TAddress}"/> struct.
+/// </remarks>
 [DataContract(Name = "person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
 [DebuggerDisplay("{Email}")]
 [Serializable]
 [XmlRoot(ElementName = "Person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
-public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<TAddress>
+[method: EditorBrowsable(EditorBrowsableState.Never)]
+public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson<TAddress>
 	where TAddress : IAddress, new()
 {
 	/// <summary>
@@ -99,14 +103,6 @@ public struct Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<T
 	[JsonIgnore]
 	[NonSerialized]
 	private string _lastName = default;
-
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Person{TAddress}"/> struct.
-	/// </summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public Person()
-	{
-	}
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Person{TAddress}"/> struct.

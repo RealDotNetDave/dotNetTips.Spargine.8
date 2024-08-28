@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-27-2024
+// Last Modified On : 08-28-2024
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -35,16 +35,6 @@ public class Enumeration : IComparable
 {
 
 	/// <summary>
-	/// The display name of the enumeration.
-	/// </summary>
-	private readonly string _displayName;
-
-	/// <summary>
-	/// The internal storage of the enumeration value.
-	/// </summary>
-	private readonly int _value;
-
-	/// <summary>
 	/// Private constructor used to prevent the creation of the Enumeration class without providing a value and display name.
 	/// </summary>
 	protected Enumeration()
@@ -60,9 +50,65 @@ public class Enumeration : IComparable
 	[Information(nameof(Enumeration), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	protected Enumeration(int value, [NotNull] string displayName)
 	{
-		this._value = value;
-		this._displayName = displayName;
+		this.Value = value;
+		this.DisplayName = displayName;
 	}
+
+	/// <summary>
+	/// Determines whether two specified instances of <see cref="Enumeration"/> are not equal.
+	/// </summary>
+	/// <param name="left">The first <see cref="Enumeration"/> to compare.</param>
+	/// <param name="right">The second <see cref="Enumeration"/> to compare.</param>
+	/// <returns><c>true</c> if the instances are not equal; otherwise, <c>false</c>.</returns>
+	public static bool operator !=(Enumeration left, Enumeration right) => !(left == right);
+
+	/// <summary>
+	/// Determines whether the first specified instance of <see cref="Enumeration"/> is less than the second specified instance.
+	/// </summary>
+	/// <param name="left">The first <see cref="Enumeration"/> to compare.</param>
+	/// <param name="right">The second <see cref="Enumeration"/> to compare.</param>
+	/// <returns><c>true</c> if the first instance is less than the second instance; otherwise, <c>false</c>.</returns>
+	public static bool operator <(Enumeration left, Enumeration right) => left is null ? right is not null : left.CompareTo(right) < 0;
+
+	/// <summary>
+	/// Determines whether the first specified instance of <see cref="Enumeration"/> is less than or equal to the second specified instance.
+	/// </summary>
+	/// <param name="left">The first <see cref="Enumeration"/> to compare.</param>
+	/// <param name="right">The second <see cref="Enumeration"/> to compare.</param>
+	/// <returns><c>true</c> if the first instance is less than or equal to the second instance; otherwise, <c>false</c>.</returns>
+	public static bool operator <=(Enumeration left, Enumeration right) => left is null || left.CompareTo(right) <= 0;
+
+	/// <summary>
+	/// Determines whether two specified instances of <see cref="Enumeration"/> are equal.
+	/// </summary>
+	/// <param name="left">The first <see cref="Enumeration"/> to compare.</param>
+	/// <param name="right">The second <see cref="Enumeration"/> to compare.</param>
+	/// <returns><c>true</c> if the instances are equal; otherwise, <c>false</c>.</returns>
+	public static bool operator ==(Enumeration left, Enumeration right)
+	{
+		if (left is null)
+		{
+			return right is null;
+		}
+
+		return left.Equals(right);
+	}
+
+	/// <summary>
+	/// Determines whether the first specified instance of <see cref="Enumeration"/> is greater than the second specified instance.
+	/// </summary>
+	/// <param name="left">The first <see cref="Enumeration"/> to compare.</param>
+	/// <param name="right">The second <see cref="Enumeration"/> to compare.</param>
+	/// <returns><c>true</c> if the first instance is greater than the second instance; otherwise, <c>false</c>.</returns>
+	public static bool operator >(Enumeration left, Enumeration right) => left is not null && left.CompareTo(right) > 0;
+
+	/// <summary>
+	/// Determines whether the first specified instance of <see cref="Enumeration"/> is greater than or equal to the second specified instance.
+	/// </summary>
+	/// <param name="left">The first <see cref="Enumeration"/> to compare.</param>
+	/// <param name="right">The second <see cref="Enumeration"/> to compare.</param>
+	/// <returns><c>true</c> if the first instance is greater than or equal to the second instance; otherwise, <c>false</c>.</returns>
+	public static bool operator >=(Enumeration left, Enumeration right) => left is null ? right is null : left.CompareTo(right) >= 0;
 
 	/// <summary>
 	/// Parses the specified value and returns an instance of the enumeration based on a predicate.
@@ -141,7 +187,7 @@ public class Enumeration : IComparable
 		}
 
 		var typeMatches = this.GetType().Equals(obj.GetType());
-		var valueMatches = this._value.Equals(otherValue.Value);
+		var valueMatches = this.Value.Equals(otherValue.Value);
 
 		return typeMatches && valueMatches;
 	}
@@ -170,10 +216,7 @@ public class Enumeration : IComparable
 	/// <returns>An instance of the enumeration type that matches the given integer value.</returns>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
 	[Information(nameof(FromValue), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
-	public static T FromValue<T>(int value) where T : Enumeration, new()
-	{
-		return Parse<T>(value.ToString(CultureInfo.CurrentCulture), item => item.Value == value);
-	}
+	public static T FromValue<T>(int value) where T : Enumeration, new() => Parse<T>(value.ToString(CultureInfo.CurrentCulture), item => item.Value == value);
 
 	/// <summary>
 	/// Retrieves all instances of the specified enumeration type <typeparamref name="T"/>.
@@ -183,8 +226,7 @@ public class Enumeration : IComparable
 	[Information(nameof(GetAll), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static IEnumerable<T> GetAll<T>() where T : Enumeration, new()
 	{
-		var type = typeof(T);
-		var fields = type.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
+		var fields = typeof(T).GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
 
 		foreach (var field in fields)
 		{
@@ -199,37 +241,25 @@ public class Enumeration : IComparable
 	/// Returns a hash code for the current enumeration instance.
 	/// </summary>
 	/// <returns>A hash code for the current enumeration instance.</returns>
-	public override int GetHashCode()
-	{
-		return this._value.GetHashCode();
-	}
+	public override int GetHashCode() => this.Value.GetHashCode();
 
 	/// <summary>
 	/// Returns the display name of the enumeration.
 	/// </summary>
 	/// <returns>The display name of the enumeration.</returns>
-	public override string ToString()
-	{
-		return this.DisplayName;
-	}
+	public override string ToString() => this.DisplayName;
 
 	/// <summary>
 	/// Gets the display name of the enumeration.
 	/// </summary>
 	/// <value>The display name.</value>
 	[Information(nameof(DisplayName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public string DisplayName
-	{
-		get => this._displayName;
-	}
+	public string DisplayName { get; }
 
 	/// <summary>
 	/// Gets the integer value of the enumeration.
 	/// </summary>
 	/// <value>The integer value.</value>
 	[Information(nameof(Value), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public int Value
-	{
-		get => this._value;
-	}
+	public int Value { get; }
 }

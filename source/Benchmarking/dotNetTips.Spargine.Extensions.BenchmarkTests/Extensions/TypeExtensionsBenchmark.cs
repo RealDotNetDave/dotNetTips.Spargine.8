@@ -78,4 +78,13 @@ public class TypeExtensionsBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(TypeExtensions.GetTypeOfType))]
+	[BenchmarkCategory(Categories.ReferenceType, Categories.New)]
+	public void GetTypeOfType()
+	{
+		var result = typeof(Person<Address>).GetTypeOfType();
+
+		this.Consume(result);
+	}
+
 }
