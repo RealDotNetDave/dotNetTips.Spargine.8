@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 08-29-2024
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -159,7 +159,7 @@ public static class UlidGenerator
 	/// <param name="ulid">The ULID string.</param>
 	/// <returns>The extracted timestamp as a <see cref="DateTimeOffset"/>.</returns>
 	/// <exception cref="ArgumentException">Thrown if the ULID is not valid.</exception>
-	[Information("Extracts the timestamp from a given ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
+	[Information("Extracts the timestamp from a given ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
 	public static DateTimeOffset ExtractTimestamp(string ulid)
 	{
 		if (ulid == null || ulid.Length != 26)
@@ -187,7 +187,7 @@ public static class UlidGenerator
 	/// <param name="count">The number of ULIDs to generate.</param>
 	/// <returns>A read-only collection of generated ULIDs.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than or equal to zero.</exception>
-	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
+	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
 	public static ReadOnlyCollection<string> GenerateMultipleUlids(in int count)
 	{
 		var ulids = new List<string>(count.ArgumentInRange(1, defaultValue: 1));
@@ -203,7 +203,7 @@ public static class UlidGenerator
 	/// Generates a new ULID.
 	/// </summary>
 	/// <returns>A new ULID as a string.</returns>
-	[Information("Generates a new ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
+	[Information("Generates a new ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
 	public static string GenerateUlid()
 	{
 		var timestamp = GetTimestamp();

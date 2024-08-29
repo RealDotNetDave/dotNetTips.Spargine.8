@@ -4,12 +4,12 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-07-2024
+// Last Modified On : 08-29-2024
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>TempFileManager creates and maintains a list of temporary files.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using DotNetTips.Spargine.Core;

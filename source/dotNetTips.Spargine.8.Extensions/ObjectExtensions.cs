@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-27-2024
+// Last Modified On : 08-29-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -144,12 +144,10 @@ public static class ObjectExtensions
 	}
 
 	/// <summary>
-	/// Computes a fast hash code for the given object. If the object has overridden the GetHashCode method,
-	/// it uses the overridden method. Otherwise, it uses the default runtime hash code.
+	/// Computes a fast hash code for the specified object.
 	/// </summary>
-	/// <param name="obj">The object for which to compute the hash code.</param>
-	/// <returns>The computed hash code.</returns>
-	/// <exception cref="ArgumentNullException">Thrown when the object is null.</exception>
+	/// <param name="obj">The object to compute the hash code for.</param>
+	/// <returns>A fast hash code for the specified object.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(FastGetHashCode), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static int FastGetHashCode(this object obj)
