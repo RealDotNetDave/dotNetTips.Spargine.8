@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-29-2024
+// Last Modified On : 08-30-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -312,7 +312,6 @@ public static class ObjectExtensions
 		for (var propertyIndex = 0; propertyIndex < propertyCollection.Length; propertyIndex++)
 		{
 			var property = propertyCollection[propertyIndex];
-
 			var ignoreAttribute = property.GetAttribute<JsonIgnoreAttribute>();
 
 			if (ignoreAttribute == null)

@@ -4,7 +4,7 @@
 // Created          : 10-08-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 08-30-2024
 // ***********************************************************************
 // <copyright file="DataReaderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -47,7 +47,7 @@ public static class DataReaderExtensions
 	/// <param name="includeHeaderAsFirstRow">if set to <c>true</c> [include header as first row].</param>
 	/// <param name="separator">The separator.</param>
 	/// <returns>ReadOnlyCollection&lt;System.String&gt;.</returns>
-	[Information(nameof(ToCsv), author: "David McCarter", createdOn: "10/8/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ToCsv), author: "David McCarter", createdOn: "10/8/2020", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available)]
 	public static ReadOnlyCollection<string> ToCsv([NotNull] this IDataReader dataReader, bool includeHeaderAsFirstRow, char separator = ControlChars.Comma)
 	{
 		dataReader = dataReader.ArgumentNotNull();

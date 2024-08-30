@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-27-2024
+// Last Modified On : 08-30-2024
 // ***********************************************************************
 // <copyright file="NumericExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -810,7 +810,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// Input: 54928 Output: Fifty-Four Thousand Nine Hundred and Twenty-Eight"
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToWords), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToWords), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string ToWords(this int value)
 	{
 		if (value == 0)

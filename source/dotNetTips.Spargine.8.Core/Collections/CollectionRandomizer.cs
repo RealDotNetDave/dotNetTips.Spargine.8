@@ -4,7 +4,7 @@
 // Created          : 11-06-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 08-30-2024
 // ***********************************************************************
 // <copyright file="CollectionRandomizer.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -68,8 +68,8 @@ public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection,
 	private void Init()
 	{
 		//Ignore if initialized unless repeat is true.
-		if ((this._initialized && this.HasRemainingItems) ||
-			(this._initialized && this.HasRemainingItems && repeat is false))
+		if (!((!this._initialized || !this.HasRemainingItems) &&
+			(!this._initialized || !this.HasRemainingItems || repeat is true)))
 		{
 			return;
 		}

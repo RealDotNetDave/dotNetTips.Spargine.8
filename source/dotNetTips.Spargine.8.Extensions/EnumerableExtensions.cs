@@ -228,7 +228,7 @@ public static partial class EnumerableExtensions
 	[Pure]
 	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.NeedsUpdate, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static async Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default) => await Task.Run(collection.ArgumentNotNull().Count, cancellationToken)
-		.ConfigureAwait(false);
+		.ConfigureAwait(true);
 
 	/// <summary>
 	/// Creates a new <see cref="Collection{T}"/> from the specified items. Optionally ensures uniqueness of items in the collection.
