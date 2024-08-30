@@ -491,7 +491,7 @@ public static class ArrayExtensions
 	public static T[] ToDistinct<T>([NotNull] this T[] array) => array.ArgumentNotNull().Distinct().ToArray();
 
 	/// <summary>
-	/// Converts a array to <see cref="FrozenSet{T}" />.
+	/// Converts a array to <see cref="FrozenSet{T}" /> that could improve performance.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="list">The list.</param>
