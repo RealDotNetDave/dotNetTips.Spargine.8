@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-27-2024
+// Last Modified On : 08-31-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -240,16 +240,15 @@ public static partial class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
+	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static Collection<T> Create<T>(this IEnumerable<T> items, bool ensureUnique)
 	{
 		items = items.ArgumentNotNull();
 
-		var collection = ensureUnique
-			? new Collection<T>(new HashSet<T>(items).ToList())
-			: new Collection<T>(new List<T>(items));
+		//RECOMENDATION FROM COPILOT SLOWER.
+		IList<T> list = ensureUnique ? new HashSet<T>(items).ToList() : new List<T>(items);
 
-		return collection;
+		return new Collection<T>(list);
 	}
 
 	/// <summary>
@@ -301,14 +300,22 @@ public static partial class EnumerableExtensions
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(FastAny), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(FastAny), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static bool FastAny<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
 	{
 		collection = collection.ArgumentNotNull();
 		predicate = predicate.ArgumentNotNull();
 
-		// Use Parallel LINQ (PLINQ) for potential performance improvement on large collections.
-		return collection.AsParallel().Any(predicate);
+		//RECOMENDATION FROM COPILOT SLOWER.
+		foreach (var item in collection)
+		{
+			if (predicate.Invoke(item) is false)
+			{
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	/// <summary>
