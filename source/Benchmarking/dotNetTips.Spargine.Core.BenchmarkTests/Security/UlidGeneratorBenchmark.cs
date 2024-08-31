@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core.Security;
@@ -47,6 +48,15 @@ public class UlidGeneratorBenchmark : Benchmark
 	public void GenerateUlid()
 	{
 		var result = UlidGenerator.GenerateUlid;
+
+		Consume(result);
+	}
+
+	[Benchmark(Description = nameof(Guid.NewGuid))]
+	[BenchmarkCategory(Categories.New, Categories.ForComparison)]
+	public void GuidNewGuid()
+	{
+		var result = Guid.NewGuid();
 
 		Consume(result);
 	}
