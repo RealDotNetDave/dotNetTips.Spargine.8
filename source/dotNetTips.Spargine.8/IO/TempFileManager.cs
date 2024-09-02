@@ -4,7 +4,7 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-29-2024
+// Last Modified On : 09-02-2024
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -170,7 +170,7 @@ public class TempFileManager : IDisposable
 	/// <summary>
 	/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 	/// </summary>
-	[Information("Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
+	[Information("Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.", UnitTestStatus = UnitTestStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
 	public void Dispose()
 	{
 		this.Dispose(true);

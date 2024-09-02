@@ -4,7 +4,7 @@
 // Created          : 02-28-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2024
+// Last Modified On : 09-02-2024
 // ***********************************************************************
 // <copyright file="FastLoggerTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -26,53 +26,45 @@ namespace DotNetTips.Spargine.Core.Tests.Logging;
 [TestClass]
 public class FastLoggerTests
 {
-
-	private readonly ArgumentException _argumentException = new();
 	private readonly ILogger _logger = new NullLogger<FastLoggerTests>();
 
 	[TestMethod]
-	public void LogCriticalMessageTest() => this._logger.LogCriticalMessage(message: "Server is down!", exception: this._argumentException);
-
-	[TestMethod]
-	public void LogCriticalTest() => FastLogger.LogCritical(this._logger, message: "Server is down!", exception: this._argumentException);
-
-	[TestMethod]
-	public void LogDebugMessageTest()
+	public void LogCritical_ValidParameters_LogsCriticalMessage()
 	{
-		this._logger.LogDebugMessage(message: "Test Message");
+		var exception = new Exception("Test exception");
+
+		_logger.LogCritical("Test message", exception);
 	}
 
 	[TestMethod]
-	public void LogDebugTest() => FastLogger.LogDebug(this._logger, message: "Test Message");
-
-	[TestMethod]
-	public void LogErrorMesageTest() => this._logger.LogErrorMessage(message: "Test Message");
-
-	[TestMethod]
-	public void LogErrorTest() => FastLogger.LogError(this._logger, message: "Test Message");
-
-	[TestMethod]
-	public void LogExceptionMessageTest() => this._logger.LogExceptionMessage(message: "Cannot connect to database.", exception: this._argumentException);
-
-	[TestMethod]
-	public void LogInformationMessageTest() => this._logger.LogInformationMessage(message: "Test Message");
-
-	[TestMethod]
-	public void LogInformationTest() => FastLogger.LogInformation(this._logger, message: "Test Message");
-
-	[TestMethod]
-	public void LogStoredProcedureErrorTest() => this._logger.LogStoredProcedureError(storedProcedure: "Get_Customers", exception: this._argumentException);
-
-	[TestMethod]
-	public void LogTraceMessageTest()
+	public void LogDebug_ValidParameters_LogsDebugMessage()
 	{
-		this._logger.LogTraceMessage(message: "Test Message");
+		_logger.LogDebug("Test message");
 	}
 
 	[TestMethod]
-	public void LogTraceTest()
+	public void LogException_ValidParameters_LogsExceptionMessage()
 	{
-		FastLogger.LogTrace(this._logger, message: "Test Message");
+		var exception = new Exception("Test exception");
+
+		FastLogger.LogException(this._logger, "Test message", exception);
 	}
 
+	[TestMethod]
+	public void LogInformation_ValidParameters_LogsInformationMessage()
+	{
+		FastLogger.LogInformation(this._logger, "Test message");
+	}
+
+	[TestMethod]
+	public void LogTrace_ValidParameters_LogsTraceMessage()
+	{
+		FastLogger.LogTrace(this._logger, "Test message");
+	}
+
+	[TestMethod]
+	public void LogWarning_ValidParameters_LogsWarningMessage()
+	{
+		FastLogger.LogWarning(this._logger, "Test message");
+	}
 }

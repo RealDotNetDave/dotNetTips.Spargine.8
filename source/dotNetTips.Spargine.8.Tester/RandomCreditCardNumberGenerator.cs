@@ -4,7 +4,7 @@
 // Created          : 03-13-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 09-02-2024
 // ***********************************************************************
 // <copyright file="RandomCreditCardNumberGenerator.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -221,7 +221,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// The generated credit card number is random and follows the credit card companies' numbering schemes, including passing the Luhn check.
 	/// However, these numbers are not valid for real transactions but can be used for testing validation and formatting routines.
 	/// </remarks>
-	[Information(nameof(GetCreditCardNumber), BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.NeedsDocumentation)]
+	[Information(nameof(GetCreditCardNumber), BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
 	public static string GetCreditCardNumber() => GetCreditCardNumbers(1).SingleOrDefault();
 
 	/// <summary>
@@ -235,7 +235,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// The generated numbers are random and follow the credit card companies' numbering schemes, including passing the Luhn check.
 	/// However, these numbers are not valid for real transactions but can be used for testing validation and formatting routines.
 	/// </remarks>
-	[Information(nameof(GetCreditCardNumbers), BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.NeedsDocumentation)]
+	[Information(nameof(GetCreditCardNumbers), BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<string> GetCreditCardNumbers([Range(1, int.MaxValue)] int count)
 	{
 		count = count.ArgumentInRange(1);

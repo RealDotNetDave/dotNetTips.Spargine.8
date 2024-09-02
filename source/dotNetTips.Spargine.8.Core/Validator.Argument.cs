@@ -4,7 +4,7 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 09-02-2024
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -720,7 +720,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentNullException">Input cannot be null.</exception>
 	/// <remarks>This also checks the input for null.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ArgumentNotNull), "David McCarter", "10/24/2023", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
+	[Information(nameof(ArgumentNotNull), "David McCarter", "10/24/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 	public static Collection<T> ArgumentNotNull<T>([NotNull] this Collection<T> input, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		if (input is null)

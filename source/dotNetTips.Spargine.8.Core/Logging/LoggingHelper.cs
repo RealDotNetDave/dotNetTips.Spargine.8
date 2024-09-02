@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-15-2024
+// Last Modified On : 08-29-2024
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
