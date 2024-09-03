@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 09-03-2024
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -419,13 +419,13 @@ public static class RandomData
 	/// <summary>
 	/// Generates a read-only collection of random credit card numbers.
 	/// </summary>
-	/// <param name="count">The number of credit card numbers to generate. Default is 100.</param>
+	/// <param name="count">The number of credit card numbers to generate. Default is 1.</param>
 	/// <returns>A read-only collection of random credit card numbers.</returns>
 	/// <remarks>
 	/// This method leverages the <see cref="GenerateCreditCard"/> method to generate each credit card number in the collection.
 	/// </remarks>
 	[Information(nameof(GenerateCreditCard), "David McCarter", "3/13/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<string> GenerateCreditCards(int count = 100)
+	public static ReadOnlyCollection<string> GenerateCreditCards(int count = 1)
 	{
 		count = count.ArgumentInRange(1, defaultValue: 1);
 
@@ -497,12 +497,12 @@ public static class RandomData
 	/// <summary>
 	/// Generates a specified number of files with random content, each having a specified length and file extension.
 	/// </summary>
-	/// <param name="count">The number of files to generate. Default is 100.</param>
+	/// <param name="count">The number of files to generate. Default is 1.</param>
 	/// <param name="fileLength">The length of each file in characters. Default is <see cref="DefaultFileLength"/>.</param>
 	/// <param name="fileExtension">The file extension for each generated file. Default is <see cref="DefaultFileExtension"/>.</param>
 	/// <returns>A tuple containing the path where files are generated and a read-only collection of the names of the generated files.</returns>
 	[Information(nameof(GenerateFiles), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
-	public static (string Path, ReadOnlyCollection<string> Files) GenerateFiles(int count = 100, int fileLength = DefaultFileLength, string fileExtension = DefaultFileExtension)
+	public static (string Path, ReadOnlyCollection<string> Files) GenerateFiles(int count = 1, int fileLength = DefaultFileLength, string fileExtension = DefaultFileExtension)
 	{
 		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
 		fileLength = fileLength.ArgumentInRange(lower: 1, defaultValue: 1);
@@ -552,7 +552,7 @@ public static class RandomData
 	}
 
 	/// <summary>
-	/// Generates a random first name from a predefined list.
+	/// Generates a random first name from a predefined list from a pool containing over 1,800 names.
 	/// </summary>
 	/// <returns>A string representing a random first name.</returns>
 	/// <remarks>
@@ -589,7 +589,7 @@ public static class RandomData
 	public static string GenerateKey() => KeyGenerator.GenerateKey();
 
 	/// <summary>
-	/// Generates a random last name from a predefined list.
+	/// Generates a random first name from a predefined list from a pool containing over 2,000 names.
 	/// </summary>
 	/// <returns>A string representing a random last name.</returns>
 	/// <remarks>
@@ -650,7 +650,6 @@ public static class RandomData
 
 		for (var nameIndex = 0; nameIndex < count; nameIndex++)
 		{
-
 			var personName = new PersonName(_firstNames.Value.PickRandom(), _lastNames.Value.PickRandom());
 
 			if (names.AddIfNotExists(personName) is false)
@@ -709,7 +708,7 @@ public static class RandomData
 	}
 
 	/// <summary>
-	/// Generates a <see cref="Models.RefTypes.Person{TAddress}"/> object with random address data.
+	/// Generates a <see cref="Models.RefTypes.Person{TAddress}"/> object with random data.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of address, must implement <see cref="IAddress"/> and have a parameterless constructor.</typeparam>
 	/// <param name="addressCount">The number of addresses to generate for the person. Default is 2.</param>
@@ -863,7 +862,6 @@ public static class RandomData
 	/// <param name="extension">The file extension. Default is <see cref="DefaultFileExtension"/>.</param>
 	/// <returns>A random file name with the specified length and extension.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="extension"/> is null.</exception>
-	/// <example>Output: C:\\Users\\user folder Ex\\AppData\\Local\\Temp\\MSPRINYRBU.dotnettips.temp</example>
 	[Information(nameof(GenerateRandomFileName), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
 	public static string GenerateRandomFileName(int fileNameLength = 10, [NotNull] string extension = DefaultFileExtension)
 	{
@@ -896,7 +894,7 @@ public static class RandomData
 	}
 
 	/// <summary>
-	/// Generates random location data including country, state, and city.
+	/// Generates random real location data including country, state, and city.
 	/// </summary>
 	/// <returns>A tuple containing a <see cref="Country"/>, <see cref="State"/>, and <see cref="City"/>.</returns>
 	[Information(nameof(GenerateRandomLocationData), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
@@ -944,7 +942,7 @@ public static class RandomData
 	}
 
 	/// <summary>
-	/// Generates a random person's name.
+	/// Generates a random person's first and last name.
 	/// </summary>
 	/// <returns>A tuple containing the first name and last name of a person. The first name is generated using <see cref="GenerateFirstName"/> and the last name is generated using <see cref="GenerateLastName"/>.</returns>
 	[Information(nameof(GenerateRandomLocationData), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
@@ -1068,11 +1066,11 @@ public static class RandomData
 	}
 
 	/// <summary>
-	/// Generates a word with a random length within the specified range.
+	/// Generates a random word with a length between the specified minimum and maximum lengths.
 	/// </summary>
-	/// <param name="minLength">The minimum length of the word. Must be greater than 0.</param>
-	/// <param name="maxLength">The maximum length of the word. Must be greater than or equal to <paramref name="minLength"/>.</param>
-	/// <returns>A randomly generated word of length within the specified range. The characters used range from <see cref="DefaultMinCharacter"/> to <see cref="DefaultMaxCharacter"/>.</returns>
+	/// <param name="minLength">The minimum length of the word.</param>
+	/// <param name="maxLength">The maximum length of the word.</param>
+	/// <returns>A randomly generated word.</returns>
 	/// <example>Output: anvpwufadtxpfysguavguwm</example>
 	[Information(nameof(GenerateWord), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string GenerateWord(int minLength = 1, int maxLength = 1)
