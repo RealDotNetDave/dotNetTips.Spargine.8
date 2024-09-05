@@ -589,7 +589,7 @@ public static class RandomData
 	public static string GenerateKey() => KeyGenerator.GenerateKey();
 
 	/// <summary>
-	/// Generates a random first name from a predefined list from a pool containing over 2,000 names.
+	/// Generates a random last name from a predefined list from a pool containing over 2,000 names.
 	/// </summary>
 	/// <returns>A string representing a random last name.</returns>
 	/// <remarks>
@@ -856,7 +856,7 @@ public static class RandomData
 	}
 
 	/// <summary>
-	/// Generates a random file name with the specified length and extension.
+	/// Generates a random file name with the specified length and extension in the temp path.
 	/// </summary>
 	/// <param name="fileNameLength">The length of the file name. Default is 10.</param>
 	/// <param name="extension">The file extension. Default is <see cref="DefaultFileExtension"/>.</param>
