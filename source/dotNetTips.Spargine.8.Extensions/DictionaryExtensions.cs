@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-14-2024
+// Last Modified On : 09-17-2024
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -184,7 +184,7 @@ public static class DictionaryExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified action has items.
+	/// Determines whether the dictionary has any items that match the specified condition.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the t key.</typeparam>
 	/// <typeparam name="TValue">The type of the t value.</typeparam>

@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 09-14-2024
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -226,7 +226,7 @@ public static class DateTimeExtensions
 	public static DateTimeOffset Max(this in DateTimeOffset date, in DateTimeOffset compareTo) => date > compareTo ? date : compareTo;
 
 	/// <summary>
-	/// Given a date, it returns the next (specified) day of week
+	/// Given a date, it returns the next (specified) day of week.
 	/// </summary>
 	/// <param name="date">Date to process</param>
 	/// <param name="day">Day of week to find on calendar</param>

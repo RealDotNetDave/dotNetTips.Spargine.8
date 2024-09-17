@@ -23,7 +23,6 @@ using Microsoft.Extensions.ObjectPool;
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Tester;
-//TODO: MAKE PUBLIC AFTER AUG 2024
 
 /// <summary>
 /// Provides functionality to generate random credit card numbers for various card types.
@@ -36,7 +35,8 @@ namespace DotNetTips.Spargine.Tester;
 /// The generated numbers are random and follow the credit card companies' numbering schemes, including passing the Luhn check.
 /// However, these numbers are not valid for real transactions but can be used for testing validation and formatting routines.
 /// </remarks>
-internal static partial class RandomCreditCardNumberGenerator
+[Information(nameof(RandomCreditCardNumberGenerator), Status = Status.New, Documentation = "ADD URL")]
+public static partial class RandomCreditCardNumberGenerator
 {
 	/// <summary>
 	/// The string builder pool
@@ -221,7 +221,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// The generated credit card number is random and follows the credit card companies' numbering schemes, including passing the Luhn check.
 	/// However, these numbers are not valid for real transactions but can be used for testing validation and formatting routines.
 	/// </remarks>
-	[Information(nameof(GetCreditCardNumber), BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
+	[Information(nameof(GetCreditCardNumber), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
 	public static string GetCreditCardNumber() => GetCreditCardNumbers(1).SingleOrDefault();
 
 	/// <summary>
@@ -235,7 +235,7 @@ internal static partial class RandomCreditCardNumberGenerator
 	/// The generated numbers are random and follow the credit card companies' numbering schemes, including passing the Luhn check.
 	/// However, these numbers are not valid for real transactions but can be used for testing validation and formatting routines.
 	/// </remarks>
-	[Information(nameof(GetCreditCardNumbers), BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
+	[Information(nameof(GetCreditCardNumbers), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<string> GetCreditCardNumbers([Range(1, int.MaxValue)] int count)
 	{
 		count = count.ArgumentInRange(1);
