@@ -4,14 +4,13 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 09-21-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Common methods for working with file directories.</summary>
 // ***********************************************************************
-using System.Buffers.Text;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
@@ -274,7 +273,7 @@ public static class DirectoryHelper
 	/// </code>
 	/// </example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(LoadOneDriveFolders), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(LoadOneDriveFolders), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static ReadOnlyCollection<OneDriveFolder> LoadOneDriveFolders()
 	{
 		if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) is false)
@@ -298,7 +297,9 @@ public static class DirectoryHelper
 				{
 					if (accountKey.IsNotNull() && accountKey.SubKeyCount > 0)
 					{
-						for (var subKeyIndex = 0; subKeyIndex < accountKey.GetSubKeyNames().Length; subKeyIndex++)
+						var subkeyCount = accountKey.GetSubKeyNames().Length;
+
+						for (var subKeyIndex = 0; subKeyIndex < subkeyCount; subKeyIndex++)
 						{
 							using var key = accountKey.OpenSubKey(accountKey.GetSubKeyNames()[subKeyIndex]);
 
@@ -422,7 +423,7 @@ public static class DirectoryHelper
 	/// </code></example>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeDirectorySearch), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(SafeDirectorySearch), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static IEnumerable<DirectoryInfo> SafeDirectorySearch([NotNull] DirectoryInfo path, [NotNull] string searchPattern = "*.*", SearchOption searchOption = SearchOption.TopDirectoryOnly)
 	{
 		//OPTIMIZATION FROM COPILOT BREAKS CODE
@@ -438,8 +439,9 @@ public static class DirectoryHelper
 		}
 
 		var directories = path.GetDirectories(searchPattern, options);
+		var itemCount = directories.Length;
 
-		for (var index = 0; index < directories.Length; index++)
+		for (var index = 0; index < itemCount; index++)
 		{
 			yield return directories[index];
 		}
