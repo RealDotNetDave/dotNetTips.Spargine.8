@@ -4,7 +4,7 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 09-21-2024
 // ***********************************************************************
 // <copyright file="InternalMethods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -52,7 +52,9 @@ internal static class InternalMethods
 
 		try
 		{
-			for (var byteIndex = 0; byteIndex < array.Length; byteIndex++)
+			var itemCount = array.Length;
+
+			for (var byteIndex = 0; byteIndex < itemCount; byteIndex++)
 			{
 				_ = sb.Append(array[byteIndex].ToString("x2", CultureInfo.InvariantCulture));
 			}
@@ -152,7 +154,9 @@ internal static class InternalMethods
 			newMemberName = $"{memberName}{ControlChars.Dot}";
 		}
 
-		for (var index = 0; index < propertyCollection.Length; index++)
+		var propertyCount = propertyCollection.Length;
+
+		for (var index = 0; index < propertyCount; index++)
 		{
 			var property = propertyCollection[index];
 			var innerObject = property.GetValue(obj, null);
