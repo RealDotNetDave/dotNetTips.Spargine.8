@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 09-21-2024
 // ***********************************************************************
 // <copyright file="PathHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -68,8 +68,9 @@ public static class PathHelper
 	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] params string[] paths)
 	{
 		paths = paths.ArgumentItemsExists(nameof(paths));
+		var pathsCount = paths.Length;
 
-		for (var paramCount = 0; paramCount < paths.Length; paramCount++)
+		for (var paramCount = 0; paramCount < pathsCount; paramCount++)
 		{
 			paths[paramCount] = paths[paramCount].ToTrimmed();
 		}
