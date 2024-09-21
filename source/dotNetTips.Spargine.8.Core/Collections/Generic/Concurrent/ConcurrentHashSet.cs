@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-24-2024
+// Last Modified On : 09-21-2024
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -16,6 +16,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using DotNetTips.Spargine.Core.Devices;
 using DotNetTips.Spargine.Core.Internal;
 using DotNetTips.Spargine.Core.Properties;
 
@@ -101,8 +102,9 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 		}
 
 		var locks = new object[concurrencyLevel];
+		var locksLength = locks.Length;
 
-		for (var lockCount = 0; lockCount < locks.Length; lockCount++)
+		for (var lockCount = 0; lockCount < locksLength; lockCount++)
 		{
 			locks[lockCount] = new object();
 		}
@@ -707,8 +709,9 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	public IEnumerator<T> GetEnumerator()
 	{
 		var buckets = this._tables._buckets;
+		var bucketsLength = buckets.Length;
 
-		for (var i = 0; i < buckets.Length; i++)
+		for (var i = 0; i < bucketsLength; i++)
 		{
 			// The Volatile.Read ensures that the load of the fields of 'current' doesn't move before the load from buckets[i].
 			var current = Volatile.Read(ref buckets[i]);
