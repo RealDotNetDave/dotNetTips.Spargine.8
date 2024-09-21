@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-22-2024
+// Last Modified On : 09-21-2024
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -101,7 +101,9 @@ public static class FileHelper
 		using var zipFileStream = File.OpenRead(zipPath);
 		using var zipArchiveStream = new ZipArchive(zipFileStream);
 
-		for (var zipArchiveCount = 0; zipArchiveCount < zipArchiveStream.Entries.FastCount(); zipArchiveCount++)
+		var itemCount = zipArchiveStream.Entries.Count;
+
+		for (var zipArchiveCount = 0; zipArchiveCount < itemCount; zipArchiveCount++)
 		{
 			var zipArchiveEntry = zipArchiveStream.Entries[zipArchiveCount];
 
