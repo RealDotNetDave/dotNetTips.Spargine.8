@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-29-2024
+// Last Modified On : 09-21-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -135,8 +135,9 @@ public static class TypeHelper
 	{
 		// works out the derived types
 		var list = types.ToImmutableArray();
+		var itemCount = list.Length;
 
-		for (var typeCount = 0; typeCount < list.FastCount(); typeCount++)
+		for (var typeCount = 0; typeCount < itemCount; typeCount++)
 		{
 			var type = list[typeCount];
 
@@ -400,8 +401,9 @@ public static class TypeHelper
 
 		var list = files;
 		var foundTypes = new List<Type>();
+		var itemCount = list.Length;
 
-		for (var fileIndex = 0; fileIndex < list.FastCount(); fileIndex++)
+		for (var fileIndex = 0; fileIndex < itemCount; fileIndex++)
 		{
 			try
 			{
@@ -528,8 +530,9 @@ public static class TypeHelper
 		var returnValue = new Dictionary<string, string>();
 
 		var properties = input.GetType().GetAllProperties().Where(p => p.CanRead).OrderBy(p => p.Name).ToArray();
+		var itemCount = properties.Length;
 
-		for (var propertyCount = 0; propertyCount < properties.Length; propertyCount++)
+		for (var propertyCount = 0; propertyCount < itemCount; propertyCount++)
 		{
 			var propertyInfo = properties[propertyCount];
 
