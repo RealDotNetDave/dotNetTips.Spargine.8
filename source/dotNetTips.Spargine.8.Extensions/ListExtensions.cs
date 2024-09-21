@@ -284,7 +284,9 @@ public static class ListExtensions
 			return false;
 		}
 
-		for (var index = 0; index < collection.Count; index++)
+		var itemCount = collection.Count;
+
+		for (var index = 0; index < itemCount; index++)
 		{
 			if (!EqualityComparer<T>.Default.Equals(collection[index], collectionToCheck[index]))
 			{
@@ -313,7 +315,9 @@ public static class ListExtensions
 			return;
 		}
 
-		for (var index = 0; index < collection.Count; index++)
+		var itemCount = collection.Count;
+
+		for (var index = 0; index < itemCount; index++)
 		{
 			action(collection[index]);
 		}
