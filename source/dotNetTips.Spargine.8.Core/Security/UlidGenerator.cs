@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-29-2024
+// Last Modified On : 09-21-2024
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -53,8 +53,9 @@ public static class UlidGenerator
 	{
 		var byteIndex = 0;
 		var bitIndex = 0;
+		var itemCount = base32.Length;
 
-		for (var index = 0; index < base32.Length; index++)
+		for (var index = 0; index < itemCount; index++)
 		{
 			var value = Array.IndexOf(_base32Chars, base32[index]);
 
@@ -159,7 +160,7 @@ public static class UlidGenerator
 	/// <param name="ulid">The ULID string.</param>
 	/// <returns>The extracted timestamp as a <see cref="DateTimeOffset"/>.</returns>
 	/// <exception cref="ArgumentException">Thrown if the ULID is not valid.</exception>
-	[Information("Extracts the timestamp from a given ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
+	[Information("Extracts the timestamp from a given ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.New)]
 	public static DateTimeOffset ExtractTimestamp(string ulid)
 	{
 		if (ulid == null || ulid.Length != 26)
@@ -196,6 +197,7 @@ public static class UlidGenerator
 		{
 			ulids.Add(GenerateUlid());
 		}
+
 		return ulids.AsReadOnly();
 	}
 
