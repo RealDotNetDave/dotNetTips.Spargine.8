@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-30-2024
+// Last Modified On : 09-21-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -151,7 +151,8 @@ public static class FastStringBuilder
 
 		try
 		{
-			for (var index = 0; index < args.Length; index++)
+			var itemCount = args.Length;
+			for (var index = 0; index < itemCount; index++)
 			{
 				_ = sb.Append(args[index]);
 
