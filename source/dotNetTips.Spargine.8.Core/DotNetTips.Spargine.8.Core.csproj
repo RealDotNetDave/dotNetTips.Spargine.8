@@ -1,144 +1,148 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-		<AnalysisLevel>latest-recommended</AnalysisLevel>
-		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
-		<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
-		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-		<AssemblyVersion>2024.8.9.1</AssemblyVersion>
-		<Authors>David McCarter</Authors>
-		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
-		<BaseOutputPath>..\..\AppBin</BaseOutputPath>
-		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
-		<Company>David McCarter - dotNetTips.com</Company>
-		<Configurations>Debug;Release</Configurations>
-		<Copyright>McCarter Consulting (David McCarter)</Copyright>
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>embedded</DebugType>
-		<Description>Core types and helper methods for Spargine.</Description>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<EnableNETAnalyzers>true</EnableNETAnalyzers>
-		<EnablePackageValidation>false</EnablePackageValidation>
-		<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-		<FileVersion>2024.8.9.1</FileVersion>
-		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<IncludeSymbols>true</IncludeSymbols>
-		<LangVersion>latest</LangVersion>
-		<NeutralLanguage>en-US</NeutralLanguage>
-		<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
-		<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
---MAY 2024: Performance improvements.
---AUG 2024: Major performance and documentation changes. New methods.</PackageReleaseNotes>
-		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</RepositoryUrl>
-		<RootNamespace>DotNetTips.Spargine.Core</RootNamespace>
-		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
-		<RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<TargetFramework>net8.0</TargetFramework>
-		<Title>DotNetTips.Spargine.8.Core</Title>
-		<Version>2024.8.9.1</Version>
-		<SignAssembly>false</SignAssembly>
-	</PropertyGroup>
+  <PropertyGroup>
+	<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+	<AnalysisLevel>latest-recommended</AnalysisLevel>
+	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+	<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
+	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+	<AssemblyVersion>2024.8.9.1</AssemblyVersion>
+	<Authors>David McCarter</Authors>
+	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
+	<BaseOutputPath>..\..\AppBin</BaseOutputPath>
+	<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+	<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+	<Company>David McCarter - dotNetTips.com</Company>
+	<Configurations>Debug;Release</Configurations>
+	<Copyright>McCarter Consulting (David McCarter)</Copyright>
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>embedded</DebugType>
+	<Description>Core types and helper methods for Spargine.</Description>
+	<EmbedUntrackedSources>true</EmbedUntrackedSources>
+	<EnableNETAnalyzers>true</EnableNETAnalyzers>
+	<EnablePackageValidation>false</EnablePackageValidation>
+	<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
+	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+	<FileVersion>2024.8.9.1</FileVersion>
+	<GarbageCollectionAdaptationMode>1</GarbageCollectionAdaptationMode>
+	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<IncludeSymbols>true</IncludeSymbols>
+	<LangVersion>latest</LangVersion>
+	<NeutralLanguage>en-US</NeutralLanguage>
+	<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
+	<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageReleaseNotes>
+	  --MAR 2024: Initial 8.0 release.
+	  --MAY 2024: Performance improvements.
+	  --AUG 2024: Major performance and documentation changes. New methods.
+	</PackageReleaseNotes>
+	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
+	<PublishRepositoryUrl>true</PublishRepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<RepositoryUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</RepositoryUrl>
+	<RootNamespace>DotNetTips.Spargine.Core</RootNamespace>
+	<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+	<RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+	<ServerGarbageCollection>true</ServerGarbageCollection>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	<TargetFramework>net8.0</TargetFramework>
+	<Title>DotNetTips.Spargine.8.Core</Title>
+	<Version>2024.8.9.1</Version>
+	<SignAssembly>false</SignAssembly>
+  </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>..\..\AppBin\</OutputPath>
-		<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.8.Core.xml</DocumentationFile>
-		<WarningLevel>9999</WarningLevel>
-		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-		<Optimize>false</Optimize>
-		<NoWarn />
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<OutputPath>..\..\AppBin\</OutputPath>
+	<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.8.Core.xml</DocumentationFile>
+	<WarningLevel>9999</WarningLevel>
+	<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+	<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+	<Optimize>false</Optimize>
+	<NoWarn />
+  </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>..\..\AppBin\</OutputPath>
-		<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.8.Core.xml</DocumentationFile>
-		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-		<WarningLevel>9999</WarningLevel>
-		<Optimize>true</Optimize>
-		<NoWarn />
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	<OutputPath>..\..\AppBin\</OutputPath>
+	<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.8.Core.xml</DocumentationFile>
+	<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+	<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+	<WarningLevel>9999</WarningLevel>
+	<Optimize>true</Optimize>
+	<NoWarn />
+  </PropertyGroup>
 
-	<ItemGroup>
-		<Compile Remove="CachedEnumerable`1.cs" />
-		<Compile Remove="Date.cs" />
-		<Compile Remove="Security\PBKDF2PasswordHasher.cs" />
-		<Compile Remove="Serialization\BinarySerialization.cs" />
-		<Compile Remove="Web\ServiceProxy`1.cs" />
-	</ItemGroup>
+  <ItemGroup>
+	<Compile Remove="CachedEnumerable`1.cs" />
+	<Compile Remove="Date.cs" />
+	<Compile Remove="Security\PBKDF2PasswordHasher.cs" />
+	<Compile Remove="Serialization\BinarySerialization.cs" />
+	<Compile Remove="Web\ServiceProxy`1.cs" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<Content Include="dotNetTips-Spargine-Logo.ico" />
-	</ItemGroup>
+  <ItemGroup>
+	<Content Include="dotNetTips-Spargine-Logo.ico" />
+  </ItemGroup>
 
-	<ItemGroup>
-	  <None Include="..\..\README.md">
-	    <Pack>true</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	</ItemGroup>
+  <ItemGroup>
+	<None Include="..\..\README.md">
+	  <Pack>true</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+  </ItemGroup>
 
-	<ItemGroup>
-		<None Update="dotNetTips-Spargine-8-Logo.png">
-			<Pack>true</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-	</ItemGroup>
+  <ItemGroup>
+	<None Update="dotNetTips-Spargine-8-Logo.png">
+	  <Pack>true</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+  </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="IDisposableAnalyzers" Version="4.0.8">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-		<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
-		<PackageReference Include="Microsoft.SourceLink.Common" Version="8.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
-		<PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
-		<PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
-		<PackageReference Include="System.ServiceModel.Primitives" Version="8.0.0" />
-		<PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
-	</ItemGroup>
+  <ItemGroup>
+	<PackageReference Include="IDisposableAnalyzers" Version="4.0.8">
+	  <PrivateAssets>all</PrivateAssets>
+	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+	<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+	<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">
+	  <PrivateAssets>all</PrivateAssets>
+	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+	<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+	<PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+	<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+	<PackageReference Include="Microsoft.SourceLink.Common" Version="8.0.0">
+	  <PrivateAssets>all</PrivateAssets>
+	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+	<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+	  <PrivateAssets>all</PrivateAssets>
+	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+	<PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+	<PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
+	<PackageReference Include="System.Security.Principal.Windows" Version="5.0.0" />
+	<PackageReference Include="System.ServiceModel.Primitives" Version="8.0.0" />
+	<PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<Compile Update="Properties\Resources.Designer.cs">
-			<DesignTime>true</DesignTime>
-			<AutoGen>true</AutoGen>
-			<DependentUpon>Resources.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
+  <ItemGroup>
+	<Compile Update="Properties\Resources.Designer.cs">
+	  <DesignTime>true</DesignTime>
+	  <AutoGen>true</AutoGen>
+	  <DependentUpon>Resources.resx</DependentUpon>
+	</Compile>
+  </ItemGroup>
 
-	<ItemGroup>
-		<EmbeddedResource Update="Properties\Resources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-	</ItemGroup>
+  <ItemGroup>
+	<EmbeddedResource Update="Properties\Resources.resx">
+	  <Generator>ResXFileCodeGenerator</Generator>
+	  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	</EmbeddedResource>
+  </ItemGroup>
 
 </Project>

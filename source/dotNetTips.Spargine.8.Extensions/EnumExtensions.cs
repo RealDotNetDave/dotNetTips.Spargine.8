@@ -15,6 +15,7 @@ using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Runtime.Serialization;
+using System.Text;
 using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )

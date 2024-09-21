@@ -11,6 +11,7 @@
 // </copyright>
 // <summary>Common methods for working with file directories.</summary>
 // ***********************************************************************
+using System.Buffers.Text;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;

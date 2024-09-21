@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-02-2024
+// Last Modified On : 09-21-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -227,8 +227,7 @@ public static partial class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.NeedsUpdate, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
-	public static async Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default) => await Task.Run(collection.ArgumentNotNull().Count, cancellationToken)
-		.ConfigureAwait(true);
+	public static async Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default) => await Task.Run(collection.ArgumentNotNull().Count, cancellationToken).ConfigureAwait(true);
 
 	/// <summary>
 	/// Creates a new <see cref="Collection{T}"/> from the specified items. Optionally ensures uniqueness of items in the collection.
@@ -395,7 +394,7 @@ public static partial class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[return: NotNull]
-	[Information(nameof(FastModifyCollection), author: "David McCarter", createdOn: "8/7/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
+	[Information(nameof(FastModifyCollection), author: "David McCarter", createdOn: "8/7/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.New)]
 	public static ReadOnlyCollection<T> FastModifyCollection<T>(this IEnumerable<T> collection, Func<T, T> action)
 	{
 		collection = collection.ArgumentNotNull();
@@ -405,8 +404,9 @@ public static partial class EnumerableExtensions
 		{
 			var span = CollectionsMarshal.AsSpan(list);
 			var processedCollection = new ReadOnlyCollectionBuilder<T>(span.Length);
+			var itemCount = processedCollection.Count;
 
-			for (var index = 0; index < span.Length; index++)
+			for (var index = 0; index < itemCount; index++)
 			{
 				processedCollection.Add(action(span[index]));
 			}
@@ -417,8 +417,9 @@ public static partial class EnumerableExtensions
 		{
 			var span = CollectionsMarshal.AsSpan(collection.ToList());
 			var processedCollection = new ReadOnlyCollectionBuilder<T>(span.Length);
+			var itemCount = processedCollection.Count;
 
-			for (var index = 0; index < span.Length; index++)
+			for (var index = 0; index < itemCount; index++)
 			{
 				processedCollection.Add(action(span[index]));
 			}
@@ -436,7 +437,7 @@ public static partial class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "12/9/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "12/9/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static void FastProcessor<T>(this IEnumerable<T> collection, Action<T> action)
 	{
 		collection = collection.ArgumentNotNull();
@@ -445,7 +446,9 @@ public static partial class EnumerableExtensions
 		if (collection is List<T> list)
 		{
 			var span = CollectionsMarshal.AsSpan(list);
-			for (var index = 0; index < span.Length; index++)
+			var itemCount = span.Length;
+
+			for (var index = 0; index < itemCount; index++)
 			{
 				action(span[index]);
 			}
@@ -453,7 +456,9 @@ public static partial class EnumerableExtensions
 		else
 		{
 			var span = CollectionsMarshal.AsSpan(collection.ToList());
-			for (var index = 0; index < span.Length; index++)
+			var itemCount = span.Length;
+
+			for (var index = 0; index < itemCount; index++)
 			{
 				action(span[index]);
 			}
