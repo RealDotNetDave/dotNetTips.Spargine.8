@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 09-21-2024
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -88,8 +88,9 @@ public static class SHA256PasswordHasher
 		}
 
 		var byteCount = 0;
+		var leftCount = left.Length;
 
-		for (var byteIndex = 0; byteIndex < left.Length; byteIndex++)
+		for (var byteIndex = 0; byteIndex < leftCount; byteIndex++)
 		{
 			byteCount |= left[byteIndex] - right[byteIndex];
 		}
