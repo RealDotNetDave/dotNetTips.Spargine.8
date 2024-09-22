@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.Benchmarking v2024.8.9.1 for .NET 8
+# DotNetTips.Spargine.Benchmarking v2024.8.9.22 for .NET 8
 ![](docs/graphics/dotNetTips-Spargine-Logo.jpg)
 Open-source .NET assembly from dotNetTips.com and David (dotNetDave) McCarter for benchmarking code using <a href="https://benchmarkdotnet.org/index.html" target="_blank">BenchmarkDotNet</a>.. 
 This repository is for the dotNetTips.Spargine code for .NET 8. Please support this project by <a href="https://github.com/sponsors/RealDotNetDave" target="_blank">**clicking here**</a>. 
