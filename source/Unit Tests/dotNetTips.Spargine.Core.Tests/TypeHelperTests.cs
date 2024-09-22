@@ -47,7 +47,7 @@ public class TypeHelperTests : TestClass
 
 		Assert.IsNotNull(result);
 
-		Assert.IsTrue(result.Count >= 15);
+		Assert.IsTrue(result.Count >= 16);
 	}
 
 	[TestMethod]

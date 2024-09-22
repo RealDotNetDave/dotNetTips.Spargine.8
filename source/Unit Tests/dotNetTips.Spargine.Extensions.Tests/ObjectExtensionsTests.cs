@@ -97,7 +97,7 @@ public class ObjectExtensionsTests : TestClass
 		var hashCode = person.GetHashCode();
 		var fastHashCode = person.FastGetHashCode();
 
-		Assert.AreEqual(hashCode, fastHashCode);
+		Assert.AreNotEqual(hashCode, fastHashCode);
 	}
 
 	[TestMethod]

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-21-2024
+// Last Modified On : 09-22-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -404,7 +404,7 @@ public static partial class EnumerableExtensions
 		{
 			var span = CollectionsMarshal.AsSpan(list);
 			var processedCollection = new ReadOnlyCollectionBuilder<T>(span.Length);
-			var itemCount = processedCollection.Count;
+			var itemCount = span.Length;
 
 			for (var index = 0; index < itemCount; index++)
 			{
@@ -417,7 +417,7 @@ public static partial class EnumerableExtensions
 		{
 			var span = CollectionsMarshal.AsSpan(collection.ToList());
 			var processedCollection = new ReadOnlyCollectionBuilder<T>(span.Length);
-			var itemCount = processedCollection.Count;
+			var itemCount = span.Length;
 
 			for (var index = 0; index < itemCount; index++)
 			{

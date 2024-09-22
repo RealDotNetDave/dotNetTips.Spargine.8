@@ -4,7 +4,7 @@
 // Created          : 01-05-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-28-2024
+// Last Modified On : 09-22-2024
 // ***********************************************************************
 // <copyright file="RandomDataTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -252,7 +252,7 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateCreditCardsTest()
 	{
-		var result = RandomData.GenerateCreditCards();
+		var result = RandomData.GenerateCreditCards(100);
 
 		Assert.IsNotNull(result);
 		Assert.IsTrue(result.Count == 100);

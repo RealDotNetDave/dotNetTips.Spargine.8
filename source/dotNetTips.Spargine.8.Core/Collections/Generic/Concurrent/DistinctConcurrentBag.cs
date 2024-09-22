@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-14-2024
+// Last Modified On : 09-22-2024
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -75,7 +75,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 		{
 			if (this._hashCodes.Contains(hashCode) is false)
 			{
-				this.Add(item);
+				base.Add(item);
 				_ = this._hashCodes.Add(hashCode);
 			}
 		}
