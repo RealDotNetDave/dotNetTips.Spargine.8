@@ -9,6 +9,7 @@
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
+
 // <summary>Extension methods for different List collection types.</summary>
 // ***********************************************************************
 using System.Collections.Frozen;
@@ -36,7 +37,7 @@ public static class ListExtensions
 {
 
 	/// <summary>
-	/// Adds an item to the beginning of the list.
+	/// Adds an item to the beginning of the collection.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
 	/// <param name="collection">The list to which the item will be added.</param>
@@ -55,7 +56,7 @@ public static class ListExtensions
 	}
 
 	/// <summary>
-	/// Adds an item to the end of the list.
+	/// Adds an item to the end of the collection.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
 	/// <param name="collection">The list to which the item will be added.</param>
@@ -75,7 +76,7 @@ public static class ListExtensions
 	}
 
 	/// <summary>
-	/// Creates a <see cref="ReadOnlySpan{T}"/> from the <see cref="List{T}"/>.
+	/// Creates a <see cref="ReadOnlySpan{T}"/> from the <see cref="List{T}"/>. Utilizing spans can improve performance when iterating over the collection.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
 	/// <param name="list">The list to create a read-only span from.</param>
@@ -86,7 +87,7 @@ public static class ListExtensions
 	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this List<T> list) => CollectionsMarshal.AsSpan(list.ArgumentNotNull());
 
 	/// <summary>
-	/// Creates a new <see cref="Span{T}" /> using CollectionsMarshal over an input <see cref="List{T}" /> instance.
+	/// Creates a new <see cref="Span{T}" /> using CollectionsMarshal over an input <see cref="List{T}" /> instance. Utilizing spans can improve performance when iterating over the collection.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the input <see cref="List{T}" /> instance.</typeparam>
 	/// <param name="list">The input <see cref="List{T}" /> instance.</param>
@@ -128,6 +129,7 @@ public static class ListExtensions
 	/// <param name="collection">The list whose elements are copied.</param>
 	/// <returns>A new <see cref="Collection{T}"/> containing the elements of the input list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	[Obsolete("Use ToCollection() instead. Method will be removed at the end of 2024.")]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(CopyToCollection), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static Collection<T> CopyToCollection<T>([NotNull] this List<T> collection)
