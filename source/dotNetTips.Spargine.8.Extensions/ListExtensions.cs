@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-29-2024
+// Last Modified On : 09-23-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -82,8 +82,8 @@ public static class ListExtensions
 	/// <returns>A read-only span representing the list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this List<T> list) => new([.. list.ArgumentNotNull()]);
+	[Information(nameof(AsReadOnlySpan), "David McCarter", "5/30/2023", BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	public static ReadOnlySpan<T> AsReadOnlySpan<T>([NotNull] this List<T> list) => CollectionsMarshal.AsSpan(list.ArgumentNotNull());
 
 	/// <summary>
 	/// Creates a new <see cref="Span{T}" /> using CollectionsMarshal over an input <see cref="List{T}" /> instance.
@@ -110,7 +110,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if any elements were removed; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ClearNulls), author: "David McCarter", createdOn: "8/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ClearNulls), author: "David McCarter", createdOn: "8/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
 	public static bool ClearNulls<T>([NotNull] this List<T> collection)
 	{
 		if (collection is null)
@@ -118,7 +118,7 @@ public static class ListExtensions
 			return false;
 		}
 
-		return collection.DoesNotHaveItems() ? false : collection.RemoveAll(p => p is null) > 0;
+		return collection.RemoveAll(p => p is null) > 0;
 	}
 
 	/// <summary>
@@ -144,17 +144,10 @@ public static class ListExtensions
 	/// <param name="collection">The list to check.</param>
 	/// <returns><c>true</c> if the list is null or contains no elements; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool DoesNotHaveItems<T>([NotNull] this List<T> collection)
 	{
-		if (collection is null)
-		{
-			return true;
-		}
-		else
-		{
-			return collection.Count == 0;
-		}
+		return collection == null || collection.Count == 0;
 	}
 
 	/// <summary>
@@ -173,7 +166,6 @@ public static class ListExtensions
 		var hash = HashCode.Combine(collection);
 
 		return hash;
-
 	}
 
 	/// <summary>
@@ -196,7 +188,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the specified action has items; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">action</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasItems), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(HasItems), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>([NotNull] this List<T> collection, [NotNull] Predicate<T> action)
 	{
 		if (collection.CheckIsNotNull() is false || action.CheckIsNotNull() is false)
@@ -204,7 +196,7 @@ public static class ListExtensions
 			return false;
 		}
 
-		return collection.TrueForAll(action.ArgumentNotNull());
+		return collection.Exists(action);
 	}
 
 	/// <summary>
