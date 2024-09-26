@@ -4,7 +4,7 @@
 // Created          : 05-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-16-2024
+// Last Modified On : 09-26-2024
 // ***********************************************************************
 // <copyright file="StringBuilderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -51,18 +51,17 @@ public static class StringBuilderExtensions
 	}
 
 	/// <summary>
-	/// Appends the bytes.
-	/// Validates that <paramref name="sb" /> and <paramref name="bytes" /> is not null.
+	/// Appends the bytes to the <see cref="StringBuilder"/>.
+	/// Validates that <paramref name="sb" /> and <paramref name="bytes" /> are not null.
 	/// </summary>
-	/// <param name="sb">The builder.</param>
-	/// <param name="bytes">The bytes.</param>
-	/// <exception cref="ArgumentNullException">StringBuilder cannot be null.</exception>
-	/// <exception cref="ArgumentNullException">Byte collection is null or empty.</exception>
+	/// <param name="sb">The <see cref="StringBuilder"/> to append to.</param>
+	/// <param name="bytes">The byte array to append.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/> or <paramref name="bytes"/> is null.</exception>
 	/// <example>
-	///   <code>
+	/// <code>
 	/// var sb = new StringBuilder();
 	/// var byteArray = RandomData.GenerateByteArray(5);
-	/// sb.AppendBytes(byteArray)
+	/// sb.AppendBytes(byteArray);
 	/// </code>
 	/// </example>
 	[Information("Original code from efcore-master on GitHub", author: "David McCarter", createdOn: "5/26/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
@@ -84,18 +83,23 @@ public static class StringBuilderExtensions
 	}
 
 	/// <summary>
-	/// Appends the key value.
-	/// Validates that <paramref name="sb" />, <paramref name="key" /> and <paramref name="value" /> is not null.
+	/// Appends the key-value pair to the <see cref="StringBuilder"/>.
+	/// Validates that <paramref name="sb"/>, <paramref name="key"/>, and <paramref name="value"/> are not null.
 	/// </summary>
-	/// <param name="sb">The sb.</param>
-	/// <param name="key">The key.</param>
-	/// <param name="value">The value.</param>
-	/// <param name="includeQuotes">if set to <c>true</c> [include quotes].</param>
-	/// <param name="includeComma">if set to <c>true</c> [include comma].</param>
-	/// <exception cref="ArgumentNullException">sb</exception>
-	/// <exception cref="ArgumentException">key</exception>
-	/// <exception cref="ArgumentException">value</exception>
-	/// <exception cref="ArgumentException">sb</exception>
+	/// <param name="sb">The <see cref="StringBuilder"/> to append to.</param>
+	/// <param name="key">The key to append.</param>
+	/// <param name="value">The value to append.</param>
+	/// <param name="includeQuotes">If set to <c>true</c>, includes quotes around the value.</param>
+	/// <param name="includeComma">If set to <c>true</c>, includes a comma after the key-value pair.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/> or <paramref name="key"/> is null.</exception>
+	/// <exception cref="ArgumentException">Thrown if <paramref name="key"/> is empty.</exception>
+	/// <example>
+	/// <code>
+	/// var sb = new StringBuilder();
+	/// sb.AppendKeyValue("Name", "John", true, true);
+	/// Console.WriteLine(sb.ToString()); // Output: Name="John",
+	/// </code>
+	/// </example>
 	[Information("FROM .NET CORE SOURCE", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
 	public static void AppendKeyValue([NotNull] this StringBuilder sb, [NotNull] string key, string value, bool includeQuotes = true, bool includeComma = true)
 	{
@@ -216,6 +220,14 @@ public static class StringBuilderExtensions
 	/// <param name="values">The collection of values to append.</param>
 	/// <param name="joinAction">The action to perform on each element in the <paramref name="values"/> collection.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/>, <paramref name="values"/>, or <paramref name="joinAction"/> is null.</exception>
+	/// <example>
+	/// <code>
+	/// var sb = new StringBuilder();
+	/// var values = new[] { "value1", "value2", "value3" };
+	/// sb.AppendValues(",", values, value => sb.Append(value));
+	/// Console.WriteLine(sb.ToString()); // Output: value1,value2,value3
+	/// </code>
+	/// </example>
 	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues<T>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] Action<T> joinAction)
 	{
@@ -257,6 +269,14 @@ public static class StringBuilderExtensions
 	/// <param name="param">The parameter to pass to each invocation of <paramref name="joinAction"/>.</param>
 	/// <param name="joinAction">The action to perform on each element in the <paramref name="values"/> collection, which also takes <paramref name="param"/> as an argument.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/>, <paramref name="values"/>, <paramref name="param"/>, or <paramref name="joinAction"/> is null.</exception>
+	/// <example>
+	/// <code>
+	/// var sb = new StringBuilder();
+	/// var values = new[] { "value1", "value2", "value3" };
+	/// sb.AppendValues(",", values, "param", (value, param) => sb.Append(value).Append(param));
+	/// Console.WriteLine(sb.ToString()); // Output: value1param,value2param,value3param
+	/// </code>
+	/// </example>
 	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues<T, TParam>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam param, [NotNull] Action<T, TParam> joinAction)
 	{
@@ -301,6 +321,14 @@ public static class StringBuilderExtensions
 	/// <param name="param2">The second parameter to pass to each invocation of <paramref name="joinAction"/>.</param>
 	/// <param name="joinAction">The action to perform on each element in the <paramref name="values"/> collection, which also takes <paramref name="param1"/> and <paramref name="param2"/> as arguments.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/>, <paramref name="values"/>, <paramref name="param1"/>, <paramref name="param2"/>, or <paramref name="joinAction"/> is null.</exception>
+	/// <example>
+	/// <code>
+	/// var sb = new StringBuilder();
+	/// var values = new[] { "value1", "value2", "value3" };
+	/// sb.AppendValues(",", values, "param1", "param2", (sb, value, param1, param2) => sb.Append(value).Append(param1).Append(param2));
+	/// Console.WriteLine(sb.ToString()); // Output: value1param1param2,value2param1param2,value3param1param2
+	/// </code>
+	/// </example>
 	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues<T, TParam1, TParam2>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam1 param1, [NotNull] TParam2 param2, [NotNull] Action<StringBuilder, T, TParam1, TParam2> joinAction)
 	{
