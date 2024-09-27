@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-27-2024
+// Last Modified On : 09-27-2024
 // ***********************************************************************
 // <copyright file="TypeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -29,24 +29,20 @@ public static partial class TypeExtensions
 {
 
 	/// <summary>
-	/// Gets all abstract methods of the specified <see cref="Type"/>.
+	/// Gets all abstract methods of the specified type.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns>A read-only collection of <see cref="MethodInfo"/> objects representing all abstract methods of the specified type.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>A read-only collection of abstract methods.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information(nameof(GetAllAbstractMethods), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ReadOnlyCollection<MethodInfo> GetAllAbstractMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsAbstract).ToList().AsReadOnly();
 
 	/// <summary>
-	/// Gets all declared fields of the specified <see cref="Type"/>.
+	/// Gets all declared fields of the specified type.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns>An <see cref="IEnumerable{T}"/> of <see cref="FieldInfo"/> representing all declared fields of the specified type.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
-	/// <example>
-	/// Output: _address1,_address2,_bornOn,_cellPhone,_city,_country,_email,_firstName,
-	/// _homePhone,_id,_lastName,_postalCode,_state
-	/// </example>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>An enumerable collection of declared fields.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/30/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static IEnumerable<FieldInfo> GetAllDeclaredFields([NotNull] this Type type)
 	{
@@ -69,18 +65,11 @@ public static partial class TypeExtensions
 	}
 
 	/// <summary>
-	/// Gets all declared methods of the specified <see cref="Type"/>.
+	/// Gets all declared methods of the specified type.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns>An <see cref="IEnumerable{MethodInfo}"/> representing all declared methods of the specified type.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
-	/// <example>
-	/// Output: get_Address1, set_Address1, get_Address2, set_Address2, get_BornOn, set_BornOn, get_CellPhone,
-	/// set_CellPhone, get_City, set_City, get_Country, set_Country, get_Email, set_Email, get_FirstName, set_FirstName,
-	/// get_HomePhone, set_HomePhone, get_Id,set_Id, get_LastName, set_LastName, get_PostalCode, set_PostalCode,
-	/// get_State, set_State, op_GreaterThanOrEqual, op_GreaterThan, op_Equality, op_LessThanOrEqual, op_LessThan,
-	/// op_Inequality, CompareTo, Equals, Equals, GetHashCode, ToString, CalculateAge"
-	/// </example>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>An enumerable collection of declared methods.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("Original Code .NET Core source.", author: "David McCarter", createdOn: "7/30/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static IEnumerable<MethodInfo> GetAllDeclaredMethods([NotNull] this Type type)
 	{
@@ -102,11 +91,11 @@ public static partial class TypeExtensions
 	}
 
 	/// <summary>
-	/// Gets all fields of the specified <see cref="Type"/>.
+	/// Gets all fields of the specified type, including inherited fields.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns>An <see cref="IEnumerable{FieldInfo}"/> representing all fields of the specified type.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>An enumerable collection of fields.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information(nameof(GetAllFields), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static IEnumerable<FieldInfo> GetAllFields([NotNull] this Type type)
 	{
@@ -125,23 +114,24 @@ public static partial class TypeExtensions
 	}
 
 	/// <summary>
-	/// Gets all generic methods of the specified <see cref="Type"/>.
+	/// Gets all generic methods of the specified type.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns>A read-only collection of <see cref="MethodInfo"/> objects representing all generic methods of the specified type.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>A read-only collection of generic methods.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ReadOnlyCollection<MethodInfo> GetAllGenericMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsGenericMethod).ToList().AsReadOnly();
 
 	/// <summary>
-	/// Gets all methods of the specified <see cref="Type"/>.
+	/// Gets all methods of the specified type, including inherited methods.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns>An <see cref="IEnumerable{MethodInfo}"/> representing all methods of the specified type.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>An enumerable collection of methods.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static IEnumerable<MethodInfo> GetAllMethods([NotNull] this Type type)
 	{
+
 		var typeInfo = type.ArgumentNotNull().GetTypeInfo();
 
 		while (typeInfo is not null)
@@ -156,11 +146,11 @@ public static partial class TypeExtensions
 	}
 
 	/// <summary>
-	/// Gets all properties of the specified <see cref="Type"/>.
+	/// Gets all properties of the specified type, including inherited properties.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns>An <see cref="IEnumerable{PropertyInfo}"/> representing all properties of the specified type.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>An enumerable collection of properties.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static IEnumerable<PropertyInfo> GetAllProperties([NotNull] this Type type)
 	{
@@ -178,89 +168,78 @@ public static partial class TypeExtensions
 	}
 
 	/// <summary>
-	/// Gets all public methods of the specified <see cref="Type"/>.
+	/// Gets all public methods of the specified type.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns>A read-only collection of <see cref="MethodInfo"/> objects representing all public methods of the specified type.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>A read-only collection of public methods.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ReadOnlyCollection<MethodInfo> GetAllPublicMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsPublic).ToList().AsReadOnly();
 
 	/// <summary>
-	/// Gets all static methods of the specified <see cref="Type"/>.
+	/// Gets all static methods of the specified type.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns>A read-only collection of <see cref="MethodInfo"/> objects representing all static methods of the specified type.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>A read-only collection of static methods.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ReadOnlyCollection<MethodInfo> GetAllStaticMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsStatic).ToList().AsReadOnly();
 
 	/// <summary>
-	/// Retrieves a custom attribute of a specified type that is applied to a specified <see cref="Type"/>.
+	/// Gets a custom attribute of the specified type from the given type.
 	/// </summary>
-	/// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
-	/// <param name="type">The <see cref="Type"/> object to which the attribute is applied. This parameter cannot be null.</param>
-	/// <returns>A custom attribute that matches <typeparamref name="TAttribute"/>, or null if no such attribute is found.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+	/// <typeparam name="TAttribute">The type of the attribute to search for.</typeparam>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>The custom attribute of type <typeparamref name="TAttribute"/> if found; otherwise, null.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[return: MaybeNull]
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static TAttribute GetAttribute<TAttribute>([NotNull] this Type type)
 		where TAttribute : Attribute => type.ArgumentNotNull().GetTypeInfo().GetCustomAttributes(typeof(TAttribute), false).OfType<TAttribute>().FirstOrDefault();
 
 	/// <summary>
-	/// Retrieves a custom attribute of a specified type that is applied to a specified <see cref="MethodInfo"/>.
+	/// Gets a custom attribute of the specified type from the given method.
 	/// </summary>
-	/// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
-	/// <param name="methodInfo">The <see cref="MethodInfo"/> object to which the attribute is applied. This parameter cannot be null.</param>
-	/// <returns>A custom attribute that matches <typeparamref name="TAttribute"/>, or null if no such attribute is found.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="methodInfo"/> is null.</exception>
+	/// <typeparam name="TAttribute">The type of the attribute to search for.</typeparam>
+	/// <param name="methodInfo">The method to inspect.</param>
+	/// <returns>The custom attribute of type <typeparamref name="TAttribute"/> if found; otherwise, null.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the methodInfo is null.</exception>
 	[return: MaybeNull]
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static TAttribute GetAttribute<TAttribute>([NotNull] this MethodInfo methodInfo)
 		where TAttribute : Attribute => methodInfo.ArgumentNotNull().GetCustomAttributes(typeof(TAttribute), false).FirstOrDefault() as TAttribute;
 
 	/// <summary>
-	/// Retrieves a custom attribute of a specified type that is applied to a specified <see cref="PropertyInfo"/>.
+	/// Gets a custom attribute of the specified type from the given property.
 	/// </summary>
-	/// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
-	/// <param name="propertyInfo">The <see cref="PropertyInfo"/> object to which the attribute is applied. This parameter cannot be null.</param>
-	/// <returns>A custom attribute that matches <typeparamref name="TAttribute"/>, or null if no such attribute is found.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="propertyInfo"/> is null.</exception>
+	/// <typeparam name="TAttribute">The type of the attribute to search for.</typeparam>
+	/// <param name="propertyInfo">The property to inspect.</param>
+	/// <returns>The custom attribute of type <typeparamref name="TAttribute"/> if found; otherwise, null.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the propertyInfo is null.</exception>
 	[return: MaybeNull]
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static TAttribute GetAttribute<TAttribute>([NotNull] this PropertyInfo propertyInfo)
 		where TAttribute : Attribute => propertyInfo.ArgumentNotNull().GetCustomAttributes(typeof(TAttribute), false).FirstOrDefault() as TAttribute;
 
 	/// <summary>
-	/// Retrieves a custom attribute of a specified type that is applied to a specified <see cref="FieldInfo"/>.
+	/// Gets a custom attribute of the specified type from the given field.
 	/// </summary>
-	/// <typeparam name="TAttribute">The type of attribute to search for.</typeparam>
-	/// <param name="fieldInfo">The <see cref="FieldInfo"/> object to which the attribute is applied. This parameter cannot be null.</param>
-	/// <returns>A custom attribute that matches <typeparamref name="TAttribute"/>, or null if no such attribute is found.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="fieldInfo"/> is null.</exception>
+	/// <typeparam name="TAttribute">The type of the attribute to search for.</typeparam>
+	/// <param name="fieldInfo">The field to inspect.</param>
+	/// <returns>The custom attribute of type <typeparamref name="TAttribute"/> if found; otherwise, null.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the fieldInfo is null.</exception>
 	[return: MaybeNull]
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static TAttribute GetAttribute<TAttribute>([NotNull] this FieldInfo fieldInfo)
 		where TAttribute : Attribute => fieldInfo?.GetCustomAttributes(typeof(TAttribute), false).FirstOrDefault() as TAttribute;
 
 	/// <summary>
-	/// Retrieves the names of interfaces implemented by the input object, optionally filtered by specified interface names.
+	/// Gets the names of the implemented interfaces of the specified object.
 	/// </summary>
-	/// <param name="input">The object to examine. This parameter cannot be null.</param>
-	/// <param name="interfaceNames">An optional array of interface names to filter the results. If not specified, all implemented interface names are returned.</param>
-	/// <returns>A <see cref="ReadOnlyCollection{String}"/> containing the names of the implemented interfaces.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
-	/// <example>
-	/// This example shows how to use the <see cref="GetImplementedInterfaces"/> method.
-	/// <code>
-	/// var myObject = new MyClass();
-	/// var implementedInterfaces = myObject.GetImplementedInterfaces("IInterface1", "IInterface2");
-	/// foreach(var interfaceName in implementedInterfaces)
-	/// {
-	///     Console.WriteLine(interfaceName);
-	/// }
-	/// </code>
-	/// </example>
+	/// <param name="input">The object to inspect.</param>
+	/// <param name="interfaceNames">Optional interface names to filter the results.</param>
+	/// <returns>A read-only collection of implemented interface names.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the input is null.</exception>
 	[Information(nameof(GetImplementedInterfaces), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ReadOnlyCollection<string> GetImplementedInterfaces([NotNull] this object input, params string[] interfaceNames)
 	{
@@ -274,18 +253,21 @@ public static partial class TypeExtensions
 	}
 
 	/// <summary>
-	/// Retrieves detailed information about the members of the specified <see cref="Type"/> that are decorated with a specific attribute.
+	/// Gets the members of the specified type that have a custom attribute of the specified type.
 	/// </summary>
-	/// <typeparam name="TAttribute">The type of attribute to search for, where <typeparamref name="TAttribute"/> must derive from <see cref="Attribute"/>.</typeparam>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns>An array of tuples containing the name, attribute instance, privacy status, static status, and parameter type of each member decorated with <typeparamref name="TAttribute"/>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+	/// <typeparam name="TAttribute">The type of the attribute to search for.</typeparam>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns>
+	/// An array of tuples containing the member name, the custom attribute, 
+	/// a boolean indicating if the member is private, a boolean indicating if the member is static, 
+	/// and the parameter type.
+	/// </returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static (string Name, TAttribute Attribute, bool IsPrivate, bool IsStatic, Type ParameterType)[] GetTypeMembersWithAttribute<TAttribute>([NotNull] this Type type)
 		where TAttribute : Attribute
 	{
 		type = type.ArgumentNotNull();
-
 		var allFields = type.GetFields()
 						.Select(f => (f.Name,
 										Attribute: f.GetAttribute<TAttribute>(), f.IsPrivate, f.IsStatic,
@@ -309,11 +291,11 @@ public static partial class TypeExtensions
 	}
 
 	/// <summary>
-	/// Determines the type characteristics of the specified object.
+	/// Determines the type of the specified object.
 	/// </summary>
-	/// <param name="obj">The object to examine. This parameter cannot be null.</param>
-	/// <returns>A <see cref="TypeOfType"/> value representing the type characteristics of the input object.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="obj"/> is null.</exception>
+	/// <param name="obj">The object to inspect.</param>
+	/// <returns>The type of the specified object.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the obj is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(GetTypeOfType), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static TypeOfType GetTypeOfType([NotNull] this object obj)
@@ -340,22 +322,22 @@ public static partial class TypeExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified method is decorated with a specific attribute.
+	/// Determines whether the specified method has an attribute of type <typeparamref name="T"/>.
 	/// </summary>
-	/// <typeparam name="T">The type of attribute to search for, where <typeparamref name="T"/> must derive from <see cref="Attribute"/>.</typeparam>
-	/// <param name="methodInfo">The method to examine. This parameter cannot be null.</param>
-	/// <returns><c>true</c> if the attribute of type <typeparamref name="T"/> is applied to the method; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="methodInfo"/> is null.</exception>
+	/// <typeparam name="T">The type of the attribute to search for.</typeparam>
+	/// <param name="methodInfo">The method to inspect.</param>
+	/// <returns><c>true</c> if the method has the attribute; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the methodInfo is null.</exception>
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool HasAttribute<T>([NotNull] this MethodInfo methodInfo) where T : Attribute => methodInfo.ArgumentNotNull().GetAttribute<T>() is not null;
 
 	/// <summary>
-	/// Determines whether the specified <see cref="Type"/> has the specified base class.
+	/// Determines whether the specified type has the specified base class.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <param name="baseClass">The base class <see cref="Type"/> to check for. This parameter cannot be null.</param>
-	/// <returns><c>true</c> if <paramref name="type"/> has <paramref name="baseClass"/> as a base class; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="type"/> or <paramref name="baseClass"/> is null.</exception>
+	/// <param name="type">The type to inspect.</param>
+	/// <param name="baseClass">The base class to check for.</param>
+	/// <returns><c>true</c> if the type has the specified base class; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type or baseClass is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/30/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool HasBaseClass([NotNull] this Type type, [NotNull] Type baseClass)
 	{
@@ -380,11 +362,11 @@ public static partial class TypeExtensions
 	}
 
 	/// <summary>
-	/// Determines whether the specified <see cref="Type"/> has a parameterless constructor.
+	/// Determines whether the specified type has a parameterless constructor.
 	/// </summary>
-	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
-	/// <returns><c>true</c> if the <paramref name="type"/> has a parameterless constructor; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="type"/> is null.</exception>
+	/// <param name="type">The type to inspect.</param>
+	/// <returns><c>true</c> if the type has a parameterless constructor; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information(nameof(HasParameterlessConstructor), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool HasParameterlessConstructor([NotNull] this Type type) => type.ArgumentNotNull().GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, Type.EmptyTypes, null) is not null;
 
@@ -393,14 +375,15 @@ public static partial class TypeExtensions
 	/// </summary>
 	/// <param name="type">The <see cref="Type"/> to examine. This parameter cannot be null.</param>
 	/// <returns><c>true</c> if the <paramref name="type"/> implements <see cref="IEnumerable"/>; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information(nameof(HasParameterlessConstructor), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineMarch2021")]
 	public static bool IsEnumerable([NotNull] this Type type) => type.ArgumentNotNull().GetInterfaces().Any(t => t == typeof(IEnumerable));
 
 	/// <summary>
-	/// Determines whether the specified <see cref="Type"/> is nullable.
+	/// Determines whether the specified <see cref="Type"/> is a nullable type.
 	/// </summary>
 	/// <param name="type">The <see cref="Type"/> to examine. This parameter can be null.</param>
-	/// <returns><c>true</c> if the <paramref name="type"/> is nullable; otherwise, <c>false</c>.</returns>
+	/// <returns><c>true</c> if the <paramref name="type"/> is a nullable type; otherwise, <c>false</c>.</returns>
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static bool IsNullable([AllowNull] this Type type) => Nullable.GetUnderlyingType(type) is not null;
 
@@ -414,13 +397,12 @@ public static partial class TypeExtensions
 	public static bool IsStatic([NotNull] this PropertyInfo property) => (property.ArgumentNotNull().GetMethod ?? property.SetMethod).IsStatic;
 
 	/// <summary>
-	/// Returns the maximum of two <see cref="IComparable"/> objects.
+	/// Returns the maximum of two comparable objects.
 	/// </summary>
-	/// <typeparam name="T">The type of the objects being compared, which must implement <see cref="IComparable"/>.</typeparam>
+	/// <typeparam name="T">The type of the objects to compare. Must implement <see cref="IComparable"/>.</typeparam>
 	/// <param name="obj1">The first object to compare. This parameter can be null.</param>
 	/// <param name="obj2">The second object to compare. This parameter can be null.</param>
-	/// <returns>The maximum of <paramref name="obj1"/> and <paramref name="obj2"/>.</returns>
-	/// <remarks>Original code by: Jeremy Clark</remarks>
+	/// <returns>The object that is greater, or <paramref name="obj1"/> if both are equal.</returns>
 	[Information(nameof(Max), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T Max<T>([AllowNull] this T obj1, [AllowNull] T obj2) where T : IComparable => obj1.CompareTo(obj2) >= 0 ? obj1 : obj2;
 
