@@ -147,10 +147,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the list is null or contains no elements; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool DoesNotHaveItems<T>([NotNull] this List<T> collection)
-	{
-		return collection == null || collection.Count == 0;
-	}
+	public static bool DoesNotHaveItems<T>([NotNull] this List<T> collection) => collection == null || collection.Count == 0;
 
 	/// <summary>
 	/// Generates a hash code for the entire <see cref="List{T}"/> based on the hash codes of its elements.
