@@ -66,6 +66,15 @@ public class EncryptionHelperBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(EncryptionHelper.GenerateRandomKey))]
+	[BenchmarkCategory(Categories.New)]
+	public void GenerateRandomKey()
+	{
+		var result = EncryptionHelper.GenerateRandomKey();
+
+		this.Consume(result);
+	}
+
 	public override void Setup()
 	{
 		base.Setup();

@@ -196,7 +196,7 @@ public static class EncryptionHelper
 	/// It's primarily used for generating non-cryptographic keys or identifiers.
 	/// </remarks>
 	/// <example><b>Output:</b> f7f0af78003d4ab194b5a4024d02112a</example>
-	[Information(nameof(GenerateRandomKey), "David McCarter", "5/30/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(GenerateRandomKey), "David McCarter", "5/30/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static string GenerateRandomKey() => Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture);
 
 	/// <summary>
