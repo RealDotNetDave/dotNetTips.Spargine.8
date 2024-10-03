@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-28-2024
+// Last Modified On : 10-03-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -313,7 +313,6 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void HasDuplicatesTest()
 	{
-		//TODO: ADD TEST METHOD TO ADD NON-DULICATES
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
 
 		Assert.IsFalse(people.HasDuplicates());
