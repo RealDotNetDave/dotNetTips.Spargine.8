@@ -436,7 +436,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string to process.</param>
 	/// <param name="replacement">The string to replace HTML tags with. Defaults to an empty string.</param>
 	/// <returns>The modified string with HTML tags replaced by the specified replacement string.</returns>
-	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
+	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
 	public static string RemoveHtml(string input, string replacement = "")
 	{
 		if (input is null)
@@ -453,7 +453,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string to process.</param>
 	/// <param name="replacement">The string to replace special characters with. Defaults to an empty string.</param>
 	/// <returns>The modified string with special characters replaced by the specified replacement string.</returns>
-	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
+	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
 	public static string RemoveSpecialChar(string input, string replacement = "")
 	{
 		if (input is null)
