@@ -22,9 +22,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Core.Tests.Security;
 
+/// <summary>
+/// Defines test class UlidGeneratorTests.
+/// </summary>
 [TestClass]
 public class UlidGeneratorTests
 {
+	/// <summary>
+	/// Defines the test method ExtractTimestamp_ShouldReturnCorrectTimestamp.
+	/// </summary>
 	[TestMethod]
 	public void ExtractTimestamp_ShouldReturnCorrectTimestamp()
 	{
@@ -39,6 +45,9 @@ public class UlidGeneratorTests
 		Assert.IsTrue(Math.Abs((timestamp.ToUnixTimeMilliseconds() - expectedTimestamp)) > 10000);
 	}
 
+	/// <summary>
+	/// Defines the test method ExtractTimestamp_ShouldThrowArgumentException.
+	/// </summary>
 	[TestMethod]
 	[ExpectedException(typeof(ArgumentInvalidException))]
 	public void ExtractTimestamp_ShouldThrowArgumentException()
@@ -50,6 +59,9 @@ public class UlidGeneratorTests
 		UlidGenerator.ExtractTimestamp(invalidUlid);
 	}
 
+	/// <summary>
+	/// Defines the test method ExtractTimestamp_ShouldThrowArgumentNullException.
+	/// </summary>
 	[TestMethod]
 	[ExpectedException(typeof(ArgumentInvalidException))]
 	public void ExtractTimestamp_ShouldThrowArgumentNullException()
@@ -58,6 +70,9 @@ public class UlidGeneratorTests
 		UlidGenerator.ExtractTimestamp(null);
 	}
 
+	/// <summary>
+	/// Defines the test method GenerateMultipleUlids_ShouldReturnCorrectCount.
+	/// </summary>
 	[TestMethod]
 	public void GenerateMultipleUlids_ShouldReturnCorrectCount()
 	{
@@ -74,6 +89,9 @@ public class UlidGeneratorTests
 		CollectionAssert.AllItemsAreUnique(ulids);
 	}
 
+	/// <summary>
+	/// Defines the test method GenerateUlid_ShouldReturnValidUlid.
+	/// </summary>
 	[TestMethod]
 	public void GenerateUlid_ShouldReturnValidUlid()
 	{

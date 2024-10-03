@@ -4,7 +4,7 @@
 // Created          : 08-29-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-31-2024
+// Last Modified On : 10-03-2024
 // ***********************************************************************
 // <copyright file="UlidGeneratorBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -24,6 +24,16 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Security;
 
 public class UlidGeneratorBenchmark : Benchmark
 {
+
+	[Benchmark(Description = nameof(UlidGenerator.ExtractTimestamp))]
+	[BenchmarkCategory(Categories.New)]
+	public void ExtractTimestamp()
+	{
+		var ulid = UlidGenerator.GenerateUlid();
+		var result = UlidGenerator.ExtractTimestamp(ulid);
+
+		Consume(result);
+	}
 
 	[Benchmark(Description = nameof(RandomData.GenerateKey))]
 	[BenchmarkCategory(Categories.New, Categories.ForComparison)]
