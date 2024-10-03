@@ -235,14 +235,12 @@ public static partial class RegexProcessor
 	private static partial Regex UrlRegexSingleLine();
 
 	/// <summary>
-	/// Determines whether [contains word regex].
+	/// Determines whether the specified input contains a first and last name.
 	/// </summary>
-	/// <param name="input">The input.</param>
-	/// <summary>
-	/// Determines whether [contains word regex].
-	/// </summary>
-	/// <returns>Regex.</returns>
-	/// <returns>Regex.</returns>
+	/// <param name="input">The input string to check.</param>
+	/// <returns>
+	///   <c>true</c> if the input contains a first and last name; otherwise, <c>false</c>.
+	/// </returns>
 	[Information(nameof(ContainsFirstLastName), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
 	public static bool ContainsFirstLastName(string input)
 	{
