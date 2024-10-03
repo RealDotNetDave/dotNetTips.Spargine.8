@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-25-2024
+// Last Modified On : 10-03-2024
 // ***********************************************************************
 // <copyright file="UnhandledExceptionEventInformation.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -26,8 +26,6 @@ namespace DotNetTips.Spargine.Core;
 [Information(nameof(UnhandledExceptionEventInformation), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 public sealed class UnhandledExceptionEventInformation : IEventInformation
 {
-	//TODO: ADD TO EXCEPTIONTHROWER.
-
 	/// <summary>
 	/// Gets the exception that was unhandled and caused the event.
 	/// </summary>
