@@ -174,6 +174,28 @@ public class RandomDataTests
 	}
 
 	[TestMethod]
+	public void Deserialize_JsonSerilizerContext_PersonRecord_Collection_Test()
+	{
+		var json = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToJson();
+
+		var result = JsonSerializer.Deserialize(json, PersonJsonSerializerContext.Default.PersonRecordList);
+
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == Count);
+	}
+
+	[TestMethod]
+	public void Deserialize_JsonSerilizerContext_PersonVal_Collection_Test()
+	{
+		var json = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToJson();
+
+		var result = JsonSerializer.Deserialize(json, PersonJsonValSerializerContext.Default.PersonList);
+
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == Count);
+	}
+
+	[TestMethod]
 	public void GenerateAddressCollectionTest()
 	{
 		var addresses = RandomData.GenerateAddressCollection<Models.ValueTypes.Address>(

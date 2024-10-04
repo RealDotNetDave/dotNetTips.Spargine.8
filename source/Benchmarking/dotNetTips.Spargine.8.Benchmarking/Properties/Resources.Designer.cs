@@ -79,6 +79,15 @@ namespace DotNetTips.Spargine.Benchmarking.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [{&quot;addresses&quot;:[{&quot;address1&quot;:&quot;06333 nimmmrkggrtbkbomycw&quot;,&quot;address2&quot;:&quot;ngcwwwnjkcvtlllgcup 83466&quot;,&quot;city&quot;:&quot;\u00C1ngeles&quot;,&quot;country&quot;:&quot;Costa Rica&quot;,&quot;countryProvince&quot;:&quot;hecyxpupsbdyoqrtiovw&quot;,&quot;id&quot;:&quot;6d5c08f77ffa4f3fbcbcbe46bdf4b19f&quot;,&quot;phone&quot;:&quot;17811851&quot;,&quot;postalCode&quot;:&quot;40688&quot;,&quot;state&quot;:&quot;Heredia Province&quot;},{&quot;address1&quot;:&quot;51055 ayncmjrvvcqowfnfqek&quot;,&quot;address2&quot;:&quot;ecobmtuamlkrlcanmws 06508&quot;,&quot;city&quot;:&quot;San Ram\u00F3n&quot;,&quot;country&quot;:&quot;Costa Rica&quot;,&quot;countryProvince&quot;:&quot;bcgftqgbynsedgspwmjn&quot;,&quot;id&quot;:&quot;b2475b3505454f558991332d634677be&quot;,&quot;phone&quot;:&quot;26522757 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PeopleJson {
+            get {
+                return ResourceManager.GetString("PeopleJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Person xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://dotNetTips.Spargine.Tester.Models.RefTypes&quot;&gt;&lt;Addresses&gt;&lt;Address1 xmlns=&quot;http://dotNetTips.Spargine.Tester.Models.Ref&quot;&gt;kxjiphqhlkgjrfokqdxgvbtfn&lt;/Address1&gt;&lt;Address2 xmlns=&quot;http://dotNetTips.Spargine.Tester.Models.Ref&quot;&gt;bahenxmcnhmjerwstyfehdshj&lt;/Address2&gt;&lt;City xmlns=&quot;http://dotNetTips.Spargine.Tester.Models.Ref&quot; /&gt;&lt;Country xmlns=&quot;http://dotNetTips.Spar [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string XmlTestDataPerson {

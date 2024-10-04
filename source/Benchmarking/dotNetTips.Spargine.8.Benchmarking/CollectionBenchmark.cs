@@ -16,6 +16,7 @@
 // </summary>
 // ***********************************************************************
 
+using System.Text.Json;
 using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -69,6 +70,17 @@ public partial class CollectionBenchmark : Benchmark
 	/// </summary>
 	/// <returns>An array of <see cref="Tester.Models.ValueTypes.Person{TAddress}"/>.</returns>
 	protected virtual Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] GetPersonValCollectionToInsert() => this._peopleValToInsert;
+
+	/// <summary>
+	/// Loads the people reference from resources.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="count">The count.</param>
+	/// <returns>T[].</returns>
+	public static T[] LoadPeopleFromResources<T>(int count)
+	{
+		var people = JsonSerializer.Deserialize(Properties.Resources.PeopleJson, PersonJsonSerializerContext.Default.PersonList).Take(count).ToList();
+	}
 
 	/// <summary>
 	/// Setups the benchmark instance. This method is called before the benchmark runs and is responsible for initializing the collections and loading the data.

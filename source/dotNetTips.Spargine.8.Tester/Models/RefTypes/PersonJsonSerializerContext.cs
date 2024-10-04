@@ -4,7 +4,7 @@
 // Created          : 03-08-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-21-2024
+// Last Modified On : 10-04-2024
 // ***********************************************************************
 // <copyright file="PersonJsonSerializerContext.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -34,6 +34,8 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [JsonSourceGenerationOptions(IncludeFields = false)]
 [JsonSerializable(typeof(Person<Address>), TypeInfoPropertyName = "Person")]
 [JsonSerializable(typeof(List<Person<Address>>), TypeInfoPropertyName = "PersonList")]
+[JsonSerializable(typeof(PersonRecord), TypeInfoPropertyName = "PersonRecord")]
+[JsonSerializable(typeof(List<PersonRecord>), TypeInfoPropertyName = "PersonRecordList")]
 [Information(nameof(PersonJsonSerializerContext), Status = Status.NeedsDocumentation)]
 public partial class PersonJsonSerializerContext : JsonSerializerContext
 {
