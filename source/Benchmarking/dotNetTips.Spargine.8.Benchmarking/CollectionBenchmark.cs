@@ -18,7 +18,7 @@
 
 using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Core.Serialization;
-using DotNetTips.Spargine.Extensions;
+using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -117,10 +117,26 @@ public partial class CollectionBenchmark : Benchmark
 		this.LoadPersonRecordCollections();
 		this.LoadPersonCollections();
 
+		// Setup Lookups
+		var halfCount = this.MaxCount / 2;
+
+		this.PersonEmailHalf = this.GetPersonRefArray()[halfCount].Phone;
+		this.PersonEmailLast = this.GetPersonRefArray().Last().Phone;
+		this.PersonFirstNameHalf = this.GetPersonRefArray()[halfCount].FirstName;
+		this.PersonFirstNameLast = this.GetPersonRefArray().Last().FirstName;
+		this.PersonLastNameHalf = this.GetPersonRefArray()[halfCount].LastName;
+		this.PersonLastNameLast = this.GetPersonRefArray().Last().LastName;
+		this.PersonRecordLookupHalf = this.GetPersonRecordArray()[halfCount];
+		this.PersonRecordLookupLast = this.GetPersonRecordArray().Last();
+		this.PersonRefLookupHalf = this.GetPersonRefArray()[halfCount];
+		this.PersonRefLookupLast = this.GetPersonRefArray().Last();
+		this.PersonValLookupHalf = this.GetPersonValArray()[halfCount];
+		this.PersonValLookupLast = this.GetPersonValArray().Last();
+
 		// Load people objects
-		this._peopleRefToInsert = new List<Person<Address>>(this.GetPersonRefArray().Shuffle(Math.Max(2, this.MaxCount / 2))).ToArray();
-		this._peopleValToInsert = new List<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(this.GetPersonValArray().Shuffle(Math.Max(2, this.MaxCount / 2))).ToArray();
-		this._peopleRecordToInsert = new List<PersonRecord>(this.GetPersonRecordArray().Shuffle(Math.Max(2, this.MaxCount / 2))).ToArray();
+		this._peopleRefToInsert = [.. RandomData.GeneratePersonRefCollection<Address>(halfCount)];
+		this._peopleValToInsert = [.. RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(halfCount)];
+		this._peopleRecordToInsert = [.. RandomData.GeneratePersonRecordCollection(halfCount)];
 	}
 
 	/// <summary>
@@ -129,4 +145,63 @@ public partial class CollectionBenchmark : Benchmark
 	/// <value>The maximum count.</value>
 	public int MaxCount { get; internal set; }
 
+	/// <summary>
+	/// Gets the email address of a person in the middle of the collection.
+	/// </summary>
+	public string PersonEmailHalf { get; private set; }
+
+	/// <summary>
+	/// Gets the email address of the last person in the collection.
+	/// </summary>
+	public string PersonEmailLast { get; private set; }
+
+	/// <summary>
+	/// Gets the first name of a person in the middle of the collection.
+	/// </summary>
+	public string PersonFirstNameHalf { get; private set; }
+
+	/// <summary>
+	/// Gets the first name of the last person in the collection.
+	/// </summary>
+	public string PersonFirstNameLast { get; private set; }
+
+	/// <summary>
+	/// Gets the last name of a person in the middle of the collection.
+	/// </summary>
+	public string PersonLastNameHalf { get; private set; }
+
+	/// <summary>
+	/// Gets the last name of the last person in the collection.
+	/// </summary>
+	public string PersonLastNameLast { get; private set; }
+
+	/// <summary>
+	/// Gets the person record for lookup from the middle of the collection.
+	/// </summary>
+	public PersonRecord PersonRecordLookupHalf { get; private set; }
+
+	/// <summary>
+	/// Gets the person record for lookup of the last item in the collection.
+	/// </summary>
+	public PersonRecord PersonRecordLookupLast { get; private set; }
+
+	/// <summary>
+	/// Gets the reference type person for lookup from the middle of the collection.
+	/// </summary>
+	public Person<Address> PersonRefLookupHalf { get; private set; }
+
+	/// <summary>
+	/// Gets the reference type person for lookup of the last item in the collection.
+	/// </summary>
+	public Person<Address> PersonRefLookupLast { get; private set; }
+
+	/// <summary>
+	/// Gets the value type person for lookup from the middle of the collection.
+	/// </summary>
+	public Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address> PersonValLookupHalf { get; private set; }
+
+	/// <summary>
+	/// Gets the value type person for lookup of the last item in the collection.
+	/// </summary>
+	public Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address> PersonValLookupLast { get; private set; }
 }
