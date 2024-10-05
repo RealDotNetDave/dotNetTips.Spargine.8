@@ -68,6 +68,7 @@ public partial class CollectionBenchmark
 	/// Similar to <see cref="GetPersonRecordArray"/>, this method provides a fresh copy of the data for benchmark tests.
 	/// </summary>
 	/// <returns>A clone of the PersonRecord list as a Collection.</returns>
+	[Obsolete("Use GetPersonRecordArray() instead. Will be removed at the end of 2024.")]
 	public Collection<PersonRecord> GetPersonRecordCollection() => this._personRecordList.Clone<List<PersonRecord>>().ToCollection();
 
 }

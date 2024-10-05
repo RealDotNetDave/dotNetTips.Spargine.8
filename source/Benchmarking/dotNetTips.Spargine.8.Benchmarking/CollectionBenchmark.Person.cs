@@ -119,6 +119,7 @@ public partial class CollectionBenchmark
 	/// Gets the Person reference list as a collection.
 	/// </summary>
 	/// <returns>A collection of Person reference types.</returns>
+	[Obsolete("Use GetPersonRefArray() instead. Will be removed at the end of 2024.")]
 	public Collection<Person<Address>> GetPersonRefCollection() => this._personRefList.Clone<List<Person<Address>>>().ToCollection();
 
 	/// <summary>
@@ -137,6 +138,7 @@ public partial class CollectionBenchmark
 	/// Retrieves Person value types as a collection.
 	/// </summary>
 	/// <returns>A collection of Person value types.</returns>
+	[Obsolete("Use GetPersonValArray() instead. Will be removed at the end of 2024.")]
 	public Collection<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> GetPersonValCollection() => this._personValList.Clone<List<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>>().ToCollection();
 
 	/// <summary>
