@@ -4,7 +4,7 @@
 // Created          : 07-17-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="ImmutableArrayExtensionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -53,7 +53,7 @@ public class ImmutableArrayExtensionsBenchmark : SmallCollectionBenchmark
 	{
 		base.Setup();
 
-		this._personRefImmutableArray = this.GetPersonRefArray().ToImmutableArray();
+		this._personRefImmutableArray = [.. this.GetPersonRefArray()];
 	}
 
 	[Benchmark(Description = nameof(ImmutableArrayExtensions.Shuffle))]

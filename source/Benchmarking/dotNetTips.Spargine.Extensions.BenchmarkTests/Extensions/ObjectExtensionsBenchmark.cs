@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-27-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -32,9 +32,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 {
 
 	private string _peopleJson;
-	private Person<Address> _person;
 	private Collection<Person<Address>> _personCollection;
-	private PersonRecord _personRecord;
 
 	private void CheckForNullParamNormal(object input)
 	{
@@ -58,10 +56,10 @@ public class ObjectExtensionsBenchmark : Benchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(ObjectExtensions.Clone) + ": Person")]
+	[Benchmark(Description = nameof(ObjectExtensions.Clone) + ": Person-ref")]
 	public void ClonePerson()
 	{
-		var result = this._person.Clone<Person<Address>>();
+		var result = this.PersonRef01.Clone<Person<Address>>();
 
 		this.Consume(result);
 	}
@@ -85,15 +83,15 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = "Clone: PersonRecord*")]
 	public void ClonePersonRecord()
 	{
-		var result = this._personRecord with { };
+		var result = this.PersonRecord01 with { };
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(ObjectExtensions.ComputeSha256Hash) + ": Person")]
+	[Benchmark(Description = nameof(ObjectExtensions.ComputeSha256Hash) + ": Person-ref")]
 	public void ComputeSha256Hash01()
 	{
-		var result = this._person.ComputeSha256Hash();
+		var result = this.PersonRef01.ComputeSha256Hash();
 
 		this.Consume(result);
 	}
@@ -101,7 +99,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = nameof(ObjectExtensions.ComputeSha256Hash) + ": PersonRecord")]
 	public void ComputeSha256Hash02()
 	{
-		var result = this._personRecord.ComputeSha256Hash();
+		var result = this.PersonRecord01.ComputeSha256Hash();
 
 		this.Consume(result);
 	}
@@ -118,7 +116,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = "PersonRecord: Duplication with new ID")]
 	public void Duplicate01()
 	{
-		var result = this._personRecord with { Id = "12345678" };
+		var result = this.PersonRecord01 with { Id = "12345678" };
 
 		this.Consume(result);
 	}
@@ -140,10 +138,10 @@ public class ObjectExtensionsBenchmark : Benchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(ObjectExtensions.HasProperty) + ": Person")]
+	[Benchmark(Description = nameof(ObjectExtensions.HasProperty) + ": Person-ref")]
 	public void HasProperty01()
 	{
-		var result = this._person.HasProperty("City");
+		var result = this.PersonRef01.HasProperty("City");
 
 		this.Consume(result);
 	}
@@ -151,7 +149,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = nameof(ObjectExtensions.HasProperty) + ": PersonRecord")]
 	public void HasProperty02()
 	{
-		var result = this._personRecord.HasProperty("City");
+		var result = this.PersonRecord01.HasProperty("City");
 
 		this.Consume(result);
 	}
@@ -166,10 +164,10 @@ public class ObjectExtensionsBenchmark : Benchmark
 		this.Consume(testObject);
 	}
 
-	[Benchmark(Description = nameof(ObjectExtensions.IsNotNull) + ": Person")]
+	[Benchmark(Description = nameof(ObjectExtensions.IsNotNull) + ": Person-ref")]
 	public void IsNotNull01()
 	{
-		var result = this._person.IsNotNull();
+		var result = this.PersonRef01.IsNotNull();
 
 		this.Consume(result);
 	}
@@ -177,15 +175,15 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = nameof(ObjectExtensions.IsNotNull) + ": PersonRecord")]
 	public void IsNotNull02()
 	{
-		var result = this._personRecord.IsNotNull();
+		var result = this.PersonRecord01.IsNotNull();
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(ObjectExtensions.IsNull) + ": Person")]
+	[Benchmark(Description = nameof(ObjectExtensions.IsNull) + ": Person-ref")]
 	public void IsNull01()
 	{
-		var result = this._person.IsNull();
+		var result = this.PersonRef01.IsNull();
 
 		this.Consume(result);
 	}
@@ -193,7 +191,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = nameof(ObjectExtensions.IsNull) + ": PersonRecord")]
 	public void IsNull02()
 	{
-		var result = this._personRecord.IsNull();
+		var result = this.PersonRecord01.IsNull();
 
 		this.Consume(result);
 	}
@@ -201,27 +199,27 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = "PersonRecord: ToString()")]
 	public void PersonRecordToString01()
 	{
-		var person = this._personRecord;
+		var person = this.PersonRecord01;
 
 		var result = person.ToString();
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToDictionary) + ": Person-Ignore Nulls")]
+	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToDictionary) + ": Person-ref-Ignore Nulls")]
 	public void PropertiesToDictionary01()
 	{
-		var person = this._person;
+		var person = this.PersonRef01;
 
 		var result = person.PropertiesToDictionary(ignoreNulls: true);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToDictionary) + ": Person-With Nulls")]
+	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToDictionary) + ": Person-ref-With Nulls")]
 	public void PropertiesToDictionary02()
 	{
-		var person = this._person;
+		var person = this.PersonRef01;
 
 		var result = person.PropertiesToDictionary(ignoreNulls: false);
 
@@ -231,7 +229,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToDictionary) + ": PersonRecord-With Nulls")]
 	public void PropertiesToDictionary04()
 	{
-		var person = this._personRecord;
+		var person = this.PersonRecord01;
 
 		var result = person.PropertiesToDictionary(ignoreNulls: false);
 
@@ -241,27 +239,27 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToDictionary) + ": PersonRecord-Ignore Nulls")]
 	public void PropertiesToDictionary05()
 	{
-		var person = this._personRecord;
+		var person = this.PersonRecord01;
 
 		var result = person.PropertiesToDictionary(ignoreNulls: true);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToString) + ": Person-Ignore Nulls")]
+	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToString) + ": Person-ref-Ignore Nulls")]
 	public void PropertiesToString01()
 	{
-		var person = this._person;
+		var person = this.PersonRef01;
 
 		var result = person.PropertiesToString(ignoreNulls: true);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToString) + ": Person-With Nulls")]
+	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToString) + ": Person-ref-With Nulls")]
 	public void PropertiesToString02()
 	{
-		var person = this._person;
+		var person = this.PersonRef01;
 
 		var result = person.PropertiesToString(ignoreNulls: false);
 
@@ -271,7 +269,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToString) + ": PersonRecord-Ignore Nulls")]
 	public void PropertiesToString03()
 	{
-		var person = this._personRecord;
+		var person = this.PersonRecord01;
 
 		var result = person.PropertiesToString(ignoreNulls: true);
 
@@ -281,7 +279,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = nameof(ObjectExtensions.PropertiesToString) + ": PersonRecord-With Nulls")]
 	public void PropertiesToString04()
 	{
-		var person = this._personRecord;
+		var person = this.PersonRecord01;
 
 		var result = person.PropertiesToString(ignoreNulls: false);
 
@@ -292,16 +290,14 @@ public class ObjectExtensionsBenchmark : Benchmark
 	{
 		base.Setup();
 
-		this._person = RandomData.GeneratePersonRef<Address>();
-		this._personRecord = RandomData.GeneratePersonRecord();
-		this._peopleJson = this._person.ToJson();
+		this._peopleJson = this.PersonRef01.ToJson();
 		this._personCollection = RandomData.GeneratePersonRefCollection<Address>(1000).ToCollection();
 	}
 
 	[Benchmark(Description = nameof(ObjectExtensions.StripNull) + ": Person")]
 	public void StripNull()
 	{
-		var result = this._person.StripNull();
+		var result = this.PersonRef01.StripNull();
 
 		this.Consume(result);
 	}
@@ -328,7 +324,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[BenchmarkCategory(Categories.Serialization, Categories.JSON)]
 	public void ToJson01()
 	{
-		var result = this._person.ToJson();
+		var result = this.PersonRef01.ToJson();
 
 		this.Consume(result);
 	}
@@ -337,7 +333,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[BenchmarkCategory(Categories.Serialization, Categories.JSON)]
 	public void ToJson02()
 	{
-		var result = this._personRecord.ToJson();
+		var result = this.PersonRecord01.ToJson();
 
 		this.Consume(result);
 	}
@@ -346,7 +342,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[BenchmarkCategory(Categories.Serialization, Categories.JSON)]
 	public void ToJson03()
 	{
-		var result = this._person.ToJson(JsonSerializerOptions.Default);
+		var result = this.PersonRef01.ToJson(JsonSerializerOptions.Default);
 
 		this.Consume(result.Value);
 	}

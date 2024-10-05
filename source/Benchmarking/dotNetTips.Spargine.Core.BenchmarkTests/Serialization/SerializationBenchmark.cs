@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="SerializationBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -190,6 +190,7 @@ public class SerializationBenchmark : Benchmark
 	public override void Setup()
 	{
 		base.Setup();
+
 		this._jsonPersonRef = JsonSerialization.Serialize(base.PersonRef01);
 		this._jsonPersonRecord = JsonSerialization.Serialize(base.PersonRecord01);
 		this._xmlPersonRef = XmlSerialization.Serialize(base.PersonRef01);

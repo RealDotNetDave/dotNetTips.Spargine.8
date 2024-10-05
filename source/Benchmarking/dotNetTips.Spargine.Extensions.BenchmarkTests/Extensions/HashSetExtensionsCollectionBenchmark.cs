@@ -4,7 +4,7 @@
 // Created          : 06-10-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-10-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="HashSetExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -44,7 +44,7 @@ public class HashSetExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		base.Setup();
 
-		this._personRefHashSet = this.GetPersonRefCollection().ToHashSet();
+		this._personRefHashSet = [.. this.GetPersonRefCollection()];
 		this._peopleRefToAdd = this._personRefHashSet.Take(this.Count / 2).ToHashSet();
 		this._personRefToAdd = this._personRefHashSet.Last();
 

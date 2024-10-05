@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-03-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="TypeHelperBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -116,7 +116,7 @@ public class TypeHelperBenchmark : Benchmark
 			list.Add(RandomData.GenerateKey(), RandomData.GenerateKey());
 		}
 
-		this._people = RandomData.GeneratePersonRefCollection<Address>(this._collectionCount).ToList();
+		this._people = [.. RandomData.GeneratePersonRefCollection<Address>(this._collectionCount)];
 	}
 
 }

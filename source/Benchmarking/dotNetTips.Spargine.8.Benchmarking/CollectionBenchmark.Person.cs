@@ -4,7 +4,7 @@
 // Created          : 04-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -32,6 +32,10 @@ namespace DotNetTips.Spargine.Benchmarking;
 /// </summary>
 public partial class CollectionBenchmark
 {
+	/// <summary>
+	/// The maximum number of people data that can be loaded.
+	/// </summary>
+	private const int _maxPeopleDataCount = 10000;
 
 	/// <summary>
 	/// The person record dictionary.
@@ -72,20 +76,31 @@ public partial class CollectionBenchmark
 	/// </summary>
 	protected void LoadPersonCollections()
 	{
-		this._personRecordArray = RandomData.GeneratePersonRecordCollection(this.MaxCount).ToArray();
-		this._personRefArray = RandomData.GeneratePersonRefCollection<Address>(this.MaxCount).ToArray();
-		this._personValArray = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(this.MaxCount).ToArray();
-		this._personRecordList = this._personRecordArray.ToList();
-		this._personRefList = this._personRefArray.ToList();
-		this._personValList = this._personValArray.ToList();
+
+		if (this.MaxCount > _maxPeopleDataCount)
+		{
+			this._personRecordArray = [.. RandomData.GeneratePersonRecordCollection(this.MaxCount)];
+			this._personRefArray = [.. RandomData.GeneratePersonRefCollection<Address>(this.MaxCount)];
+			this._personValArray = [.. RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(this.MaxCount)];
+		}
+		else
+		{
+			this._personRecordArray = LoadPeopleRecordFromResources(this.MaxCount);
+			this._personRefArray = LoadPeopleRefFromResources(this.MaxCount);
+			this._personValArray = LoadPeopleValFromResources(this.MaxCount);
+		}
+
+		this._personRecordList = [.. this._personRecordArray];
+		this._personRefList = [.. this._personRefArray];
+		this._personValList = [.. this._personValArray];
 		this._personRecordDictionary = this._personRecordArray.ToDictionary(p => p.Id);
 		this._personRefDictionary = this._personRefArray.ToDictionary(p => p.Id);
 		this._personValDictionary = this._personValArray.ToDictionary(p => p.Id);
 
 		//Display collection counts
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Records Array Count={_personRecordArray.Length}");
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Ref Array Count={_personRefArray.Length}");
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Val Array Count={_personValArray.Length}");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Records Array Count={this._personRecordArray.Length}");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Ref Array Count={this._personRefArray.Length}");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Val Array Count={this._personValArray.Length}");
 	}
 
 	/// <summary>

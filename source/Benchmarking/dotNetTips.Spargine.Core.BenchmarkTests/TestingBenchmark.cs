@@ -4,18 +4,16 @@
 // Created          : 02-20-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="TestingBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using System.Linq;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -72,8 +70,8 @@ public class TestingBenchmark : TinyCollectionBenchmark
 
 	public override void Setup()
 	{
-		this._peopleVal = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(this.Count).ToArray();
-		this._peopleRef = RandomData.GeneratePersonRefCollection<Address>(this.Count).ToArray();
+		this._peopleVal = this.GetPersonValArray();
+		this._peopleRef = this.GetPersonRefArray();
 	}
 
 }

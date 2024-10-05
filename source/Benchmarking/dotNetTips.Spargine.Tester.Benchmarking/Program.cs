@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="Program.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -44,6 +44,7 @@ public static class Program
 			config = config.WithOption(ConfigOptions.DisableOptimizationsValidator, true);
 
 			_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
+			//_ = BenchmarkRunner.Run<RandomDataCollectionsBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine("COMPLETE!");
 			Console.Beep();

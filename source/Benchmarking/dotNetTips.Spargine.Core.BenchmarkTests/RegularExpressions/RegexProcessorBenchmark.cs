@@ -4,7 +4,7 @@
 // Created          : 06-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-03-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="RegexProcessorBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -15,7 +15,6 @@ using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core.RegularExpressions;
 using DotNetTips.Spargine.Tester;
-using Microsoft.Diagnostics.Runtime.Utilities;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
