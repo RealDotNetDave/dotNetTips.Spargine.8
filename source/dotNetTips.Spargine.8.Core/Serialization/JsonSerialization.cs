@@ -15,6 +15,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using DotNetTips.Spargine.Core.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -174,6 +175,67 @@ public static class JsonSerialization
 			}
 		}
 	}
+
+	/// <summary>  
+	/// Loads a collection of objects from a JSON string.  
+	/// </summary>  
+	/// <typeparam name="T">The type of objects to deserialize.</typeparam>  
+	/// <param name="json">The JSON string containing the collection.</param>  
+	/// <param name="count">The number of objects to deserialize from the JSON string.</param>  
+	/// <returns>An array of deserialized objects of type <typeparamref name="T"/>.</returns>  
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than 1.</exception>  
+	/// <exception cref="JsonException">Thrown if the JSON is invalid or cannot be deserialized to the specified type.</exception>  
+	[Information(nameof(LoadCollectionFromJson), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static T[] LoadCollectionFromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json, int count)
+	{
+		json = json.ArgumentNotNullOrEmpty();
+		count = count.ArgumentInRange(lower: 1, upper: count);
+
+		var items = new T[count];
+
+		using (var doc = JsonDocument.Parse(json))
+		{
+			var root = doc.RootElement;
+			for (var itemCount = 0; itemCount < count; itemCount++)
+			{
+				items[itemCount] = root[itemCount].Deserialize<T>(_options);
+			}
+		}
+
+		return items;
+	}
+
+	/// <summary>
+	/// Loads a collection of objects from a JSON string.
+	/// </summary>
+	/// <typeparam name="T">The type of objects to deserialize.</typeparam>
+	/// <param name="json">The JSON string containing the collection.</param>
+	/// <param name="count">The number of objects to deserialize from the JSON string.</param>
+	/// <param name="info">The metadata information for the type to deserialize.</param>
+	/// <returns>An array of deserialized objects of type <typeparamref name="T"/>.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than 1.</exception>
+	/// <exception cref="JsonException">Thrown if the JSON is invalid or cannot be deserialized to the specified type.</exception>
+	[Information(nameof(LoadCollectionFromJson), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static T[] LoadCollectionFromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json, int count, JsonTypeInfo info)
+	{
+		json = json.ArgumentNotNullOrEmpty();
+		count = count.ArgumentInRange(lower: 1, upper: count);
+		info = info.ArgumentNotNull();
+
+		var items = new T[count];
+
+		using (var doc = JsonDocument.Parse(json))
+		{
+			var root = doc.RootElement;
+			for (var itemCount = 0; itemCount < count; itemCount++)
+			{
+				items[itemCount] = (T)root[itemCount].Deserialize(info);
+			}
+		}
+
+		return items;
+	}
+
 
 	/// <summary>
 	/// Serializes the specified object to a JSON string.

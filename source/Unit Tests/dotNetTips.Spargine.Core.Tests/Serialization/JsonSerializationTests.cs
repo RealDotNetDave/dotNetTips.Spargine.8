@@ -32,6 +32,8 @@ namespace DotNetTips.Spargine.Core.Tests.Serialization;
 [TestClass]
 public class JsonSerializationTests
 {
+	private const int _collectionCount = 100;
+
 	[TestMethod]
 	public void JsonEqual_DifferentInputs_ReturnsFalse()
 	{
@@ -68,6 +70,34 @@ public class JsonSerializationTests
 
 		// Act and Assert
 		Assert.ThrowsException<ArgumentNullException>(() => JsonSerialization.JsonEqual(null, expected));
+	}
+
+	[TestMethod]
+	public void LoadCollectionFromJson()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Address>(_collectionCount);
+
+		//Serialize
+		var json = JsonSerialization.Serialize(people);
+
+		//Deserialize
+		var serializedPeople = JsonSerialization.LoadCollectionFromJson<Person<Address>>(json, _collectionCount);
+
+		Assert.IsNotNull(serializedPeople);
+	}
+
+	[TestMethod]
+	public void LoadCollectionFromJsonJsonInfoType()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Address>(_collectionCount);
+
+		//Serialize
+		var json = JsonSerialization.Serialize(people);
+
+		//Deserialize
+		var serializedPeople = JsonSerialization.LoadCollectionFromJson<Person<Address>>(json, _collectionCount, PersonJsonSerializerContext.Default.Person);
+
+		Assert.IsNotNull(serializedPeople);
 	}
 
 	/// <summary>
