@@ -4,7 +4,7 @@
 // Created          : 07-11-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="ReadOnlySpanBenchmark.cs" company="McCarter Consulting">
 //     David McCarter
@@ -24,24 +24,47 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 [BenchmarkCategory(Categories.Collections)]
 public class ReadOnlySpanBenchmark : SmallCollectionBenchmark
 {
-
+	private PersonRecord[] _peopleRecordArray;
+	private Spargine.Tester.Models.ValueTypes.Person<Spargine.Tester.Models.ValueTypes.Address>[] _peopleValArray;
 	private Person<Address>[] _personRefArray;
 
-	[Benchmark(Description = nameof(ReadOnlySpanExtensions.PickRandom))]
-	public void DoesNotHaveItems()
+	[Benchmark(Description = nameof(ReadOnlySpanExtensions.PickRandom) + ": record")]
+	public void PickRandomRecord()
+	{
+		var collection = new ReadOnlySpan<PersonRecord>(this._peopleRecordArray);
+
+		var result = collection.PickRandom();
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ReadOnlySpanExtensions.PickRandom) + ": ref")]
+	public void PickRandomRef()
 	{
 		var collection = new ReadOnlySpan<Person<Address>>(this._personRefArray);
 
 		var result = collection.PickRandom();
 
-		Consume(result);
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ReadOnlySpanExtensions.PickRandom) + ": val")]
+	public void PickRandomVal()
+	{
+		var collection = new ReadOnlySpan<Spargine.Tester.Models.ValueTypes.Person<Spargine.Tester.Models.ValueTypes.Address>>(this._peopleValArray);
+
+		var result = collection.PickRandom();
+
+		this.Consume(result);
 	}
 
 	public override void Setup()
 	{
 		base.Setup();
 
-		this._personRefArray = GetPersonRefArray();
+		this._personRefArray = this.GetPersonRefArray();
+		this._peopleRecordArray = this.GetPersonRecordArray();
+		this._peopleValArray = this.GetPersonValArray();
 	}
 
 }

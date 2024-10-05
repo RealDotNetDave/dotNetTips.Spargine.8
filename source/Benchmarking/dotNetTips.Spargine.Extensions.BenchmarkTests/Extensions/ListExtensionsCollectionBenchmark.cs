@@ -4,7 +4,7 @@
 // Created          : 01-09-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-27-2024
+// Last Modified On : 10-05-2024
 // ***********************************************************************
 // <copyright file="ListExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -31,10 +31,13 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 [BenchmarkCategory(Categories.Collections)]
 public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 {
+	private List<PersonRecord> _peopleRecordList;
 
 	private List<Person<Address>> _peopleRefList;
 	private List<Person<Address>> _peopleRefSubSet;
+	private List<Spargine.Tester.Models.ValueTypes.Person<Spargine.Tester.Models.ValueTypes.Address>> _peopleValList;
 	private readonly Person<Address> _person = RandomData.GeneratePersonRef<Address>();
+
 
 	[Benchmark(Description = nameof(ListExtensions.AddFirst))]
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
@@ -87,6 +90,7 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.CopyToCollection))]
+	[Obsolete]
 	public void CopyToList_CopyToCollection()
 	{
 		var result = this._peopleRefList.CopyToCollection();
@@ -103,11 +107,29 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(people.DoesNotHaveItems());
 	}
 
-	[Benchmark(Description = nameof(ListExtensions.GenerateHashCode))]
+	[Benchmark(Description = nameof(ListExtensions.GenerateHashCode) + ": record")]
 	[BenchmarkCategory(Categories.Collections)]
-	public void GenerateHashCode()
+	public void GenerateHashCodeRecord()
+	{
+		var people = this._peopleRecordList;
+
+		this.Consume(people.GenerateHashCode());
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.GenerateHashCode) + ": ref")]
+	[BenchmarkCategory(Categories.Collections)]
+	public void GenerateHashCodeRef()
 	{
 		var people = this._peopleRefList;
+
+		this.Consume(people.GenerateHashCode());
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.GenerateHashCode) + ": val")]
+	[BenchmarkCategory(Categories.Collections)]
+	public void GenerateHashCodeVal()
+	{
+		var people = this._peopleValList;
 
 		this.Consume(people.GenerateHashCode());
 	}
@@ -185,6 +207,8 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		this._peopleRefSubSet = this.GetPersonRefCollection().TakeLast(10).Clone<IEnumerable<Person<Address>>>().ToList();
 		this._peopleRefList = [.. this.GetPersonRefCollection()];
+		this._peopleRecordList = [.. this.GetPersonRecordCollection()];
+		this._peopleValList = [.. this.GetPersonValCollection()];
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.ToFrozenSet))]
