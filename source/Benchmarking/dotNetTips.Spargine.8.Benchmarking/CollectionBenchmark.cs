@@ -16,9 +16,8 @@
 // </summary>
 // ***********************************************************************
 
-using System.Text.Json;
 using BenchmarkDotNet.Loggers;
-using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Core.Serialization;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
@@ -79,18 +78,7 @@ public partial class CollectionBenchmark : Benchmark
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
 	internal static PersonRecord[] LoadPeopleRecordFromResources(int count)
 	{
-		count = count.ArgumentInRange(lower: 1, upper: _maxPeopleDataCount);
-		var items = new List<PersonRecord>(count);
-
-		using (var doc = JsonDocument.Parse(Properties.Resources.PeopleJson))
-		{
-			for (var itemCount = 0; itemCount < count; itemCount++)
-			{
-				items.Add(JsonSerializer.Deserialize(doc.RootElement[itemCount].GetRawText(), PersonJsonSerializerContext.Default.PersonRecord));
-			}
-		}
-
-		return [.. items];
+		return JsonSerialization.LoadCollectionFromJson<PersonRecord>(Properties.Resources.PeopleJson, count, PersonJsonSerializerContext.Default.PersonRecord);
 	}
 
 	/// <summary>
@@ -101,18 +89,7 @@ public partial class CollectionBenchmark : Benchmark
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
 	internal static Person<Address>[] LoadPeopleRefFromResources(int count)
 	{
-		count = count.ArgumentInRange(lower: 1, upper: _maxPeopleDataCount);
-		var items = new List<Person<Address>>(count);
-
-		using (var doc = JsonDocument.Parse(Properties.Resources.PeopleJson))
-		{
-			for (var itemCount = 0; itemCount < count; itemCount++)
-			{
-				items.Add(JsonSerializer.Deserialize(doc.RootElement[itemCount].GetRawText(), PersonJsonSerializerContext.Default.Person));
-			}
-		}
-
-		return [.. items];
+		return JsonSerialization.LoadCollectionFromJson<Person<Address>>(Properties.Resources.PeopleJson, count, PersonJsonSerializerContext.Default.Person);
 	}
 
 	/// <summary>
@@ -123,18 +100,7 @@ public partial class CollectionBenchmark : Benchmark
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
 	internal static Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] LoadPeopleValFromResources(int count)
 	{
-		count = count.ArgumentInRange(lower: 1, upper: _maxPeopleDataCount);
-		var items = new List<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(count);
-
-		using (var doc = JsonDocument.Parse(Properties.Resources.PeopleJson))
-		{
-			for (var itemCount = 0; itemCount < count; itemCount++)
-			{
-				items.Add(JsonSerializer.Deserialize(doc.RootElement[itemCount].GetRawText(), Tester.Models.ValueTypes.PersonJsonValSerializerContext.Default.Person));
-			}
-		}
-
-		return [.. items];
+		return JsonSerialization.LoadCollectionFromJson<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(Properties.Resources.PeopleJson, count, Tester.Models.ValueTypes.PersonJsonValSerializerContext.Default.Person);
 	}
 
 	/// <summary>
