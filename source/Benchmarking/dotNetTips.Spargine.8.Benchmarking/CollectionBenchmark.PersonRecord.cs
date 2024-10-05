@@ -49,8 +49,8 @@ public partial class CollectionBenchmark
 	/// </summary>
 	protected void LoadPersonRecordCollections()
 	{
-		this._personRecordList = RandomData.GeneratePersonRecordCollection(this.MaxCount).ToList();
-		this._personRecordArray = this._personRecordList.ToArray();
+		this._personRecordList = [.. RandomData.GeneratePersonRecordCollection(this.MaxCount)];
+		this._personRecordArray = [.. this._personRecordList];
 
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Record List Count = {this._personRecordList.Count}: {nameof(CollectionBenchmark)}.");
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Record Array Count = {this._personRecordArray.Length}: {nameof(CollectionBenchmark)}.");

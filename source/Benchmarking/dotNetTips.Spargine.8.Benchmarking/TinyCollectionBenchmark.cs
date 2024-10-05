@@ -43,12 +43,10 @@ public class TinyCollectionBenchmark : CollectionBenchmark
 	/// </summary>
 	public override void Setup()
 	{
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Count={this.Count}: {nameof(TinyCollectionBenchmark)} Before Setup");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Count={this.Count}: {nameof(TinyCollectionBenchmark)}");
 
 		this.MaxCount = this.Count;
 		base.Setup();
-
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Count={this.Count}: {nameof(TinyCollectionBenchmark)} After Setup");
 	}
 
 	/// <summary>

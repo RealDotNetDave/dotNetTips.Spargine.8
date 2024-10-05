@@ -42,12 +42,10 @@ public class SmallCollectionBenchmark : CollectionBenchmark
 	/// </summary>
 	public override void Setup()
 	{
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Count={this.Count}: {nameof(SmallCollectionBenchmark)} Before Setup");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Count={this.Count}: {nameof(SmallCollectionBenchmark)}");
 
 		this.MaxCount = this.Count;
 		base.Setup();
-
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Count={this.Count}: {nameof(SmallCollectionBenchmark)} After Setup");
 	}
 
 	/// <summary>

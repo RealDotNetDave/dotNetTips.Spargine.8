@@ -48,8 +48,8 @@ public partial class CollectionBenchmark
 	/// </summary>
 	protected void LoadCoordinateCollections()
 	{
-		this._coordinateArray = RandomData.GenerateCoordinateCollection<Coordinate>(this.MaxCount).ToArray();
-		this._coordinateList = this._coordinateArray.ToList();
+		this._coordinateArray = [.. RandomData.GenerateCoordinateCollection<Coordinate>(this.MaxCount)];
+		this._coordinateList = [.. this._coordinateArray];
 
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Coordinate Array Count = {this._coordinateArray.Length}: {nameof(CollectionBenchmark)}.");
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Coordinate List Count = {this._coordinateList.Count}: {nameof(CollectionBenchmark)}.");

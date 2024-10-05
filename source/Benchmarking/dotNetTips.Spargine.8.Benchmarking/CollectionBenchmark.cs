@@ -77,7 +77,7 @@ public partial class CollectionBenchmark : Benchmark
 	/// <param name="count">The number of <see cref="PersonRecord"/> objects to load. The value must be in the range of 1 to 10000.</param>
 	/// <returns>An array of <see cref="PersonRecord"/> objects.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
-	public static PersonRecord[] LoadPeopleRecordFromResources(int count)
+	internal static PersonRecord[] LoadPeopleRecordFromResources(int count)
 	{
 		count = count.ArgumentInRange(lower: 1, upper: _maxPeopleDataCount);
 		var items = new List<PersonRecord>(count);
@@ -99,7 +99,7 @@ public partial class CollectionBenchmark : Benchmark
 	/// <param name="count">The number of <see cref="Person{TAddress}"/> reference objects to load. The value must be in the range of 1 to 10000.</param>
 	/// <returns>An array of <see cref="Person{TAddress}"/> reference objects.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
-	public static Person<Address>[] LoadPeopleRefFromResources(int count)
+	internal static Person<Address>[] LoadPeopleRefFromResources(int count)
 	{
 		count = count.ArgumentInRange(lower: 1, upper: _maxPeopleDataCount);
 		var items = new List<Person<Address>>(count);
@@ -121,7 +121,7 @@ public partial class CollectionBenchmark : Benchmark
 	/// <param name="count">The number of Tester.Models.ValueTypes.Person{Tester.Models.ValueTypes.Address} value objects to load. The value must be in the range of 1 to 10000.</param>
 	/// <returns>An array of Tester.Models.ValueTypes.Person{Tester.Models.ValueTypes.Address} value objects.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
-	public static Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] LoadPeopleValFromResources(int count)
+	internal static Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] LoadPeopleValFromResources(int count)
 	{
 		count = count.ArgumentInRange(lower: 1, upper: _maxPeopleDataCount);
 		var items = new List<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(count);

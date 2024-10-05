@@ -151,6 +151,7 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"PersonRecordCollection: {this._personRecordCollection.Count}");
 
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"FIRST PERSON: {this._personRefCollection.First().Email}");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"LAST PERSON: {this._personRefCollection.Last().Email}");
 	}
 
 }

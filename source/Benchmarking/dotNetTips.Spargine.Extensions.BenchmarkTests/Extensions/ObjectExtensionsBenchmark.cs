@@ -51,7 +51,7 @@ public class ObjectExtensionsBenchmark : Benchmark
 	[Benchmark(Description = nameof(ObjectExtensions.As) + ": IPerson")]
 	public void As()
 	{
-		var result = this._person.As<IPerson<Address>>();
+		var result = this.PersonRef01.As<IPerson<Address>>();
 
 		this.Consume(result);
 	}
