@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -125,14 +126,67 @@ public class EnumerationTests
 	}
 
 	[TestMethod]
+	public void FromDisplayName_EmptyDisplayName_ThrowsArgumentNullException()
+	{
+		Assert.ThrowsException<ArgumentNullException>(() => Enumeration.FromDisplayName<NumericFormat>(string.Empty));
+	}
+
+	[TestMethod]
+	public void FromDisplayName_InvalidDisplayName_ThrowsInvalidOperationException()
+	{
+		Assert.ThrowsException<InvalidOperationException>(() => Enumeration.FromDisplayName<NumericFormat>("InvalidDisplayName"));
+	}
+
+	[TestMethod]
+	public void FromDisplayName_NullDisplayName_ThrowsArgumentNullException()
+	{
+		Assert.ThrowsException<ArgumentNullException>(() => Enumeration.FromDisplayName<NumericFormat>(null));
+	}
+
+	[TestMethod]
+	public void FromDisplayName_ValidDisplayName_ReturnsCorrectEnumeration()
+	{
+		var result = Enumeration.FromDisplayName<NumericFormat>("C");
+		Assert.AreEqual(NumericFormat.Currency, result);
+	}
+
+	[TestMethod]
+	public void FromValue_InvalidValue_ThrowsInvalidOperationException()
+	{
+		Assert.ThrowsException<InvalidOperationException>(() => Enumeration.FromValue<NumericFormat>(999));
+	}
+
+	[TestMethod]
+	public void FromValue_NegativeValue_ThrowsInvalidOperationException()
+	{
+		Assert.ThrowsException<InvalidOperationException>(() => Enumeration.FromValue<NumericFormat>(-1));
+	}
+
+	[TestMethod]
+	public void FromValue_ValidValue_ReturnsCorrectEnumeration()
+	{
+		var result = Enumeration.FromValue<NumericFormat>(1);
+		Assert.AreEqual("D", result.DisplayName);
+	}
+
+	[TestMethod]
+	public void GetAll_ReturnsAllEnumerationInstances()
+	{
+		var allNumericFormats = Enumeration.GetAll<NumericFormat>().ToList();
+		Assert.AreEqual(3, allNumericFormats.Count);
+		Assert.IsTrue(allNumericFormats.Contains(NumericFormat.Currency));
+		Assert.IsTrue(allNumericFormats.Contains(NumericFormat.Decimal));
+		Assert.IsTrue(allNumericFormats.Contains(NumericFormat.Percent));
+	}
+
+
+	[TestMethod]
 	public void GetHashCode_DifferentValue_ReturnsDifferentHashCode()
 	{
 		var numericFormat1 = NumericFormat.Currency;
 		var numericFormat2 = NumericFormat.Decimal;
 		Assert.AreNotEqual(numericFormat1.GetHashCode(), numericFormat2.GetHashCode());
 	}
-
-
 
 	[TestMethod]
 	public void GetHashCode_SameValue_ReturnsSameHashCode()
