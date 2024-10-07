@@ -43,7 +43,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [DebuggerDisplay("{Email}")]
 [Serializable]
 [XmlRoot(ElementName = "PersonRecord", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
-[Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 {
 	/// <summary>

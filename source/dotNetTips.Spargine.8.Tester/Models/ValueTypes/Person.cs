@@ -43,7 +43,7 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 [DebuggerDisplay("{Email}")]
 [Serializable]
 [XmlRoot(ElementName = "Person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
-[Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 [method: EditorBrowsable(EditorBrowsableState.Never)]
 public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson<TAddress>
 	where TAddress : IAddress, new()

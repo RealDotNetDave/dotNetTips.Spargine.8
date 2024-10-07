@@ -30,7 +30,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// facilitating ease of instantiation and flexibility in address management.
 /// </summary>
 /// <typeparam name="TAddress">The type of address, constrained to types that implement <see cref="IAddress"/> and have a parameterless constructor, allowing for flexible address management.</typeparam>
-[Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where TAddress : IAddress, new()
 {
 	/// <summary>

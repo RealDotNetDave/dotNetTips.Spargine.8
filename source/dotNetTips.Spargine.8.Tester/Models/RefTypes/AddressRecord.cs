@@ -39,7 +39,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [DebuggerDisplay("Id = {Id}, Address1 = {Address1}, City = {City}, Country = {Country}")]
 [Serializable]
 [XmlRoot(ElementName = "AddressRecord", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
-[Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public sealed record AddressRecord : IDataRecord
 {
 	/// <summary>

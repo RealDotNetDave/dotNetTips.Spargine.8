@@ -44,7 +44,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [DebuggerDisplay("{Email}")]
 [Serializable]
 [XmlRoot(ElementName = "Person", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
-[Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPerson<TAddress>
 	where TAddress : IAddress, new()
 {

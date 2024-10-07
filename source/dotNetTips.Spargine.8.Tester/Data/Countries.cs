@@ -31,6 +31,7 @@ namespace DotNetTips.Spargine.Tester.Data;
 /// Provides static methods for retrieving comprehensive data about countries, including their regions, states, and cities.
 /// Utilizes resources and serialization to efficiently manage and access country data.
 /// </summary>
+[Information(Documentation = "https://bit.ly/SpargineTester")]
 public static class Countries
 {
 
@@ -91,7 +92,7 @@ public static class Countries
 	/// It leverages lazy loading to initialize the collection only once, upon the first request.
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.Synchronized)]
-	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<Country> GetCountries()
 	{
 		_countries ??= DeserializeCountires();
@@ -106,7 +107,7 @@ public static class Countries
 	/// <returns>The <see cref="Country"/> object if found; otherwise, null.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static Country GetCountry([NotNull] CountryName countryName)
 	{
 		countryName = countryName.ArgumentNotNull();
@@ -120,7 +121,7 @@ public static class Countries
 	/// <param name="countryId">The unique identifier for the country.</param>
 	/// <returns>A <see cref="Country"/> object if found; otherwise, null.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static Country GetCountry(long countryId) => GetCountries().FirstOrDefault(p => p.Id == countryId);
 
 	/// <summary>

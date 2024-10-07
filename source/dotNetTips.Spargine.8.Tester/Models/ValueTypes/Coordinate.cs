@@ -41,7 +41,7 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 [DataContract(Name = "coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
 [Serializable]
 [XmlRoot(ElementName = "Coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
-[Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coordinate>, IComparable, IComparable<Coordinate>
 {
 	/// <summary>

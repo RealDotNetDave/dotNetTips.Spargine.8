@@ -24,7 +24,7 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// <summary>
 /// Defines a set of properties for working with coordinates in a 3D space.
 /// </summary>
-[Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public interface ICoordinate
 {
 

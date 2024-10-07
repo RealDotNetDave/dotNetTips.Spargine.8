@@ -40,7 +40,7 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 [DebuggerDisplay("Id = {Id}, Address1 = {Address1}, City = {City}, Country = {Country}")]
 [Serializable]
 [XmlRoot(ElementName = "Address", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
-[Information(Status = Status.Available, Documentation = "https://bit.ly/UnitTestRandomData7")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public struct Address : IAddress, IEquatable<Address>
 {
 	/// <summary>

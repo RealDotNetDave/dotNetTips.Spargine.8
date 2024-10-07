@@ -34,18 +34,11 @@ public class LoggingBenchmark : Benchmark
 	private ILogger<LoggingBenchmark> _logger;
 	private readonly ArgumentInvalidException _testException = new("TEST EX MESSAGE");
 
-	[Benchmark(Description = "EasyLogger.LogCritical")]
+	[Benchmark(Description = nameof(FastLogger.LogCritical))]
 	[BenchmarkCategory(Categories.Logging)]
 	public void LogCritical_EazyLogger_Benchmark()
 	{
 		FastLogger.LogCritical(logger: this._logger, message: CriticalMessage, exception: this._testException);
-	}
-
-	[Benchmark(Description = "EasyLoggerExtensions.LogCriticalMessage")]
-	[BenchmarkCategory(Categories.Logging)]
-	public void LogCritical_EazyLoggerExtensions_Benchmark()
-	{
-		this._logger.LogCriticalMessage(CriticalMessage, this._testException);
 	}
 
 	[Benchmark(Description = "ILogger.LogCritical")]
@@ -55,9 +48,9 @@ public class LoggingBenchmark : Benchmark
 		this._logger.LogCritical(100, this._testException, DebugMessage);
 	}
 
-	[Benchmark(Description = "EasyLogger.LogDebug")]
+	[Benchmark(Description = nameof(FastLogger.LogDebug))]
 	[BenchmarkCategory(Categories.Logging)]
-	public void LogDebug_EasyLogger_Benchmark()
+	public void LogDebug_FastLogger_Benchmark()
 	{
 		FastLogger.LogDebug(this._logger, DebugMessage);
 	}
@@ -69,18 +62,11 @@ public class LoggingBenchmark : Benchmark
 		this._logger.LogDebug(100, this._testException, DebugMessage);
 	}
 
-	[Benchmark(Description = "EasyLogger.LogError")]
+	[Benchmark(Description = nameof(FastLogger.LogError) + ":Error Message")]
 	[BenchmarkCategory(Categories.Logging)]
-	public void LogError_EasyLogger_Benchmark()
+	public void LogError_FastLogger_Benchmark()
 	{
 		FastLogger.LogError(logger: this._logger, message: ErrorMessage);
-	}
-
-	[Benchmark(Description = "EasyLoggerExtensions.LogErrorMessage")]
-	[BenchmarkCategory(Categories.Logging)]
-	public void LogError_EazyLoggerExtensions_Benchmark()
-	{
-		this._logger.LogErrorMessage(ErrorMessage);
 	}
 
 	[Benchmark(Description = "ILogger.LogError")]
@@ -90,32 +76,18 @@ public class LoggingBenchmark : Benchmark
 		this._logger.LogError(eventId: 100, exception: this._testException, message: ErrorMessage);
 	}
 
-	[Benchmark(Description = "EasyLogger.LogException")]
+	[Benchmark(Description = nameof(FastLogger.LogException))]
 	[BenchmarkCategory(Categories.Logging)]
-	public void LogException_EasyLogger_Benchmark()
+	public void LogException_FastLogger_Benchmark()
 	{
 		FastLogger.LogException(logger: this._logger, message: ErrorMessage, this._testException);
 	}
 
-	[Benchmark(Description = "EasyLoggerExtensions.LogExceptionMessage")]
+	[Benchmark(Description = nameof(FastLogger.LogInformation))]
 	[BenchmarkCategory(Categories.Logging)]
-	public void LogException_EazyLoggerExtensions_Benchmark()
-	{
-		this._logger.LogDebugMessage(DebugMessage);
-	}
-
-	[Benchmark(Description = "EasyLogger.LogInformation")]
-	[BenchmarkCategory(Categories.Logging)]
-	public void LogInformation_EasyLogger_Benchmark()
+	public void LogInformation_FastLogger_Benchmark()
 	{
 		FastLogger.LogInformation(this._logger, ErrorMessage);
-	}
-
-	[Benchmark(Description = "EasyLoggerExtensions.LogInformationMessage")]
-	[BenchmarkCategory(Categories.Logging)]
-	public void LogInformation_EazyLoggerExtensions_Benchmark()
-	{
-		this._logger.LogInformationMessage(InformationMessage);
 	}
 
 	[Benchmark(Description = "ILogger.LogInformation")]
@@ -125,32 +97,11 @@ public class LoggingBenchmark : Benchmark
 		this._logger.LogInformation(100, this._testException, InformationMessage);
 	}
 
-	[Benchmark(Description = "EasyLoggerExtensions.LogStoredProcedureError")]
+	[Benchmark(Description = nameof(FastLogger.LogTrace))]
 	[BenchmarkCategory(Categories.Logging)]
-	public void LogStoredProcedureError_EazyLoggerExtensions_Benchmark()
-	{
-		this._logger.LogStoredProcedureError(ErrorMessage, this._testException);
-	}
-
-	[Benchmark(Description = "EasyLoggerExtensions.LogStoredProcedureNoRecordsFound")]
-	[BenchmarkCategory(Categories.Logging)]
-	public void LogStoredProcedureNoRecordsFound_EazyLoggerExtensions_Benchmark()
-	{
-		this._logger.LogStoredProcedureNoRecordsFound("sp_load_users");
-	}
-
-	[Benchmark(Description = "EasyLogger.LogTrace")]
-	[BenchmarkCategory(Categories.Logging)]
-	public void LogTrace_EasyLogger_Benchmark()
+	public void LogTrace_FastLogger_Benchmark()
 	{
 		FastLogger.LogTrace(this._logger, TraceMessage);
-	}
-
-	[Benchmark(Description = "EasyLoggerExtensions.LogTraceMessage")]
-	[BenchmarkCategory(Categories.Logging)]
-	public void LogTrace_EazyLoggerExtensions_Benchmark()
-	{
-		this._logger.LogTraceMessage(TraceMessage);
 	}
 
 	[Benchmark(Description = "ILogger.LogTrace")]
@@ -160,18 +111,11 @@ public class LoggingBenchmark : Benchmark
 		this._logger.LogTrace(100, this._testException, TraceMessage);
 	}
 
-	[Benchmark(Description = "EasyLogger.Warning")]
+	[Benchmark(Description = nameof(FastLogger.LogWarning))]
 	[BenchmarkCategory(Categories.Logging)]
-	public void LogWarning_EasyLogger_Benchmark()
+	public void LogWarning_FastLogger_Benchmark()
 	{
 		FastLogger.LogWarning(this._logger, WarningMessage);
-	}
-
-	[Benchmark(Description = "EasyLoggerExtensions.LogWarningMessage")]
-	[BenchmarkCategory(Categories.Logging)]
-	public void LogWarning_EazyLoggerExtensions_Benchmark()
-	{
-		this._logger.LogWarningMessage(DebugMessage);
 	}
 
 	[Benchmark(Description = "ILogger.LogWarning")]
