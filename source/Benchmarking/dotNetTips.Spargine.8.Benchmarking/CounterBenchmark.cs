@@ -43,6 +43,7 @@ public abstract class CounterBenchmark : Benchmark
 	public override void Setup()
 	{
 		base.Setup();
+
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Max Count={this.MaxCount}: {nameof(CounterBenchmark)}.");
 	}
 
