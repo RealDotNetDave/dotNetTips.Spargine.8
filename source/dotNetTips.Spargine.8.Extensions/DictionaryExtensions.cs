@@ -217,7 +217,7 @@ public static class DictionaryExtensions
 	/// pfCfZQFGPWYXBlUvVHNb]ZjBO_LTbQBSCYb: pfCfZQFGPWYXBlUvVHNb]ZjBO_LTbQBSCYb,
 	/// Dnadh[d`FP^SjNeChCvVuBXuEl^yVFUbKXsaacsCpJuxAscU: Dnadh[d`FP^SjNeChCvVuBXuEl^yVFUbKXsaacsCpJuxAscU.
 	/// </example>
-	[Information(nameof(ToDelimitedString), "David McCarter", "11/03/2020", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, UnitTestStatus = UnitTestStatus.WIP, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(ToDelimitedString), "David McCarter", "11/03/2020", "11/21/2020", BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Updated, UnitTestStatus = UnitTestStatus.Completed, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static string ToDelimitedString<TKey, TValue>(this IDictionary<TKey, TValue> collection, char delimiter = ControlChars.Comma)
 	{
 		if (collection.DoesNotHaveItems())
@@ -229,7 +229,9 @@ public static class DictionaryExtensions
 
 		try
 		{
-			foreach (var item in collection)
+			var items = collection.ToFrozenDictionary();
+
+			foreach (var item in items)
 			{
 				if (sb.Length > 0)
 				{
