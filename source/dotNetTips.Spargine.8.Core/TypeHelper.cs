@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-21-2024
+// Last Modified On : 10-08-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -586,14 +586,7 @@ public static class TypeHelper
 		var sb = _stringBuilderPool.Get();
 		try
 		{
-			ProcessType(
-				sb,
-				type,
-				new DisplayNameOptions(
-					fullName,
-					includeGenericParameterNames,
-					includeGenericParameters,
-					nestedTypeDelimiter));
+			ProcessType(sb, type, new DisplayNameOptions(fullName, includeGenericParameterNames, includeGenericParameters, nestedTypeDelimiter));
 
 			return sb.ToString();
 		}
