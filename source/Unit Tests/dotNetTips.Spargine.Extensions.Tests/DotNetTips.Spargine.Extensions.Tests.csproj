@@ -2,16 +2,16 @@
 
 	<PropertyGroup>
 		<AnalysisLevel>none</AnalysisLevel>
-		<AssemblyVersion>2024.8.10.5</AssemblyVersion>
+		<AssemblyVersion>2024.8.10.8</AssemblyVersion>
 		<BaseOutputPath>..\..\..\AppBin</BaseOutputPath>
 		<EnableNETAnalyzers>false</EnableNETAnalyzers>
-		<FileVersion>2024.8.10.5</FileVersion>
+		<FileVersion>2024.8.10.8</FileVersion>
 		<IsPackable>false</IsPackable>
 		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 		<RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
 		<RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
 		<TargetFramework>net8.0</TargetFramework>
-		<Version>2024.8.10.5</Version>
+		<Version>2024.8.10.8</Version>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<OutputPath>..\..\..\AppBin</OutputPath>
