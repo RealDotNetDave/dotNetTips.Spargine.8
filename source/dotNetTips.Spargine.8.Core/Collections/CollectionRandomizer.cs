@@ -4,7 +4,7 @@
 // Created          : 11-06-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-30-2024
+// Last Modified On : 10-07-2024
 // ***********************************************************************
 // <copyright file="CollectionRandomizer.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -127,7 +127,7 @@ public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection,
 	/// <c>true</c> if this instance has remaining items; otherwise, <c>false</c>. This value will be <c>false</c>
 	/// until the first time <see cref="GetNext"/> is called and the collection is shuffled.
 	/// </value>
-	[Information(nameof(HasRemainingItems), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
+	[Information(nameof(HasRemainingItems), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.NotRequired)]
 	public bool HasRemainingItems { get; private set; }
 
 }

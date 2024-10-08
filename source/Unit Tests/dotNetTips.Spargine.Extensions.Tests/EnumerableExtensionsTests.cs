@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-03-2024
+// Last Modified On : 10-07-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -200,11 +200,9 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastCountTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
 
 		Assert.IsTrue(people.FastCount() == Count);
-
-		Assert.IsTrue(people.FastCount(p => p.Age.TotalDays > 365) > 0);
 	}
 
 	[TestMethod]

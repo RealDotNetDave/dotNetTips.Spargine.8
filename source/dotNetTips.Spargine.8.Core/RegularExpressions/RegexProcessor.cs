@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-03-2024
+// Last Modified On : 10-08-2024
 // ***********************************************************************
 // <copyright file="RegexProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -235,7 +235,7 @@ public static partial class RegexProcessor
 	private static partial Regex UrlRegexSingleLine();
 
 	/// <summary>
-	/// Determines whether the specified input contains a first and last name.
+	/// Checks if the given input contains both a first and last name.
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns>
@@ -253,7 +253,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input contains a word.
+	/// Determines if the input contains a specific word.
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input contains a word; otherwise, <c>false</c>.</returns>
@@ -269,7 +269,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input is a credit card number.
+	/// Verifies if the input is a valid credit card number.
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a credit card number; otherwise, <c>false</c>.</returns>
@@ -285,7 +285,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input is a currency code.
+	/// Checks whether the input represents a valid currency code.
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a currency code; otherwise, <c>false</c>.</returns>
@@ -301,7 +301,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input is an email address.
+	/// Validates if the input is a correctly formatted email address.
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is an email address; otherwise, <c>false</c>.</returns>
@@ -317,7 +317,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input is a GUID.
+	/// Determines whether the input is a valid GUID (Globally Unique Identifier).
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a GUID; otherwise, <c>false</c>.</returns>
@@ -333,7 +333,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input is an ISBN.
+	/// Validates whether the input is an ISBN (International Standard Book Number).
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is an ISBN; otherwise, <c>false</c>.</returns>
@@ -349,7 +349,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input is a MAC address.
+	/// Determines if the input is a valid MAC (Media Access Control) address.
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a MAC address; otherwise, <c>false</c>.</returns>
@@ -365,7 +365,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input is a SHA1 hash.
+	/// Checks if the input is a valid SHA-1 hash.
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a SHA1 hash; otherwise, <c>false</c>.</returns>
@@ -381,7 +381,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input is a URL.
+	/// Verifies if the input is a valid URL.
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a URL; otherwise, <c>false</c>.</returns>
@@ -397,7 +397,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input contains a URL domain address.
+	/// Determines whether the input contains a valid URL domain address.
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input contains a URL domain address; otherwise, <c>false</c>.</returns>
@@ -413,7 +413,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Determines whether the input is a valid string.
+	/// Checks whether the input is a valid string based on certain criteria.
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a valid string; otherwise, <c>false</c>.</returns>
@@ -429,7 +429,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Removes HTML tags from the input string and replaces them with the specified replacement string.
+	/// Removes HTML tags from the input string and replaces them with the specified replacement text.
 	/// </summary>
 	/// <param name="input">The input string to process.</param>
 	/// <param name="replacement">The string to replace HTML tags with. Defaults to an empty string.</param>
@@ -446,7 +446,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Removes special characters from the input string and replaces them with the specified replacement string.
+	/// Removes special characters from the input string, replacing them with the specified replacement text.
 	/// </summary>
 	/// <param name="input">The input string to process.</param>
 	/// <param name="replacement">The string to replace special characters with. Defaults to an empty string.</param>
@@ -463,7 +463,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Replaces carriage return and line feed characters in the input string.
+	/// Replaces carriage return (CR) and line feed (LF) characters in the input string.
 	/// </summary>
 	/// <param name="input">The input string.</param>
 	/// <param name="replacement">The replacement string (defaults to "").</param>
@@ -480,7 +480,7 @@ public static partial class RegexProcessor
 	}
 
 	/// <summary>
-	/// Replaces spaces in the input string.
+	/// Replaces spaces in the input string with the specified replacement character.
 	/// </summary>
 	/// <param name="input">The input string.</param>
 	/// <param name="replacement">The replacement string (defaults to "_").</param>

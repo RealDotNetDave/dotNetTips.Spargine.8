@@ -65,6 +65,61 @@ public class DictionaryExtensionsTests
 		Assert.IsTrue(people.FastCount() == 12);
 	}
 
+	[TestMethod]
+	public void DisposeCollectionTest()
+	{
+		var disposableItems = new Dictionary<string, MockDisposable>
+	{
+		{ "item1", new MockDisposable() },
+		{ "item2", new MockDisposable() },
+		{ "item3", new MockDisposable() }
+	};
+
+		disposableItems.DisposeCollection();
+
+		foreach (var item in disposableItems.Values)
+		{
+			Assert.IsTrue(item.IsDisposed);
+		}
+	}
+
+	[TestMethod]
+	public void DisposeCollectionWithMixedItemsTest()
+	{
+		var mixedItems = new Dictionary<string, object>
+	{
+		{ "item1", new MockDisposable() },
+		{ "item2", "value2" },
+		{ "item3", new MockDisposable() }
+	};
+
+		mixedItems.DisposeCollection();
+
+		foreach (var item in mixedItems.Values)
+		{
+			if (item is MockDisposable disposableItem)
+			{
+				Assert.IsTrue(disposableItem.IsDisposed);
+			}
+		}
+	}
+
+	[TestMethod]
+	public void DisposeCollectionWithNonDisposableItemsTest()
+	{
+		var nonDisposableItems = new Dictionary<string, string>
+	{
+		{ "item1", "value1" },
+		{ "item2", "value2" },
+		{ "item3", "value3" }
+	};
+
+		nonDisposableItems.DisposeCollection();
+
+		// No exception should be thrown, and the test should pass.
+		Assert.IsTrue(nonDisposableItems.Count == 3);
+	}
+
 	/// <summary>
 	/// Defines the test method DoesNotHaveItemsTest.
 	/// </summary>
@@ -180,6 +235,77 @@ public class DictionaryExtensionsTests
 		Assert.IsNotNull((dic as IDictionary<string, string>).ToDelimitedString(','));
 	}
 
+	[TestMethod]
+	public void ToFrozenDictionaryTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+
+		var result = people.ToFrozenDictionary();
+
+		Assert.IsTrue(result.HasItems());
+		Assert.AreEqual(people.Count, result.Count);
+		foreach (var kvp in people)
+		{
+			Assert.IsTrue(result.ContainsKey(kvp.Key));
+			Assert.AreEqual(kvp.Value, result[kvp.Key]);
+		}
+	}
+
+
+	[TestMethod]
+	public void ToFrozenDictionaryWithEmptyDictionaryTest()
+	{
+		var emptyDictionary = new Dictionary<string, Person<Address>>();
+
+		var result = emptyDictionary.ToFrozenDictionary();
+
+		Assert.IsFalse(result.HasItems());
+		Assert.AreEqual(0, result.Count);
+	}
+
+	[TestMethod]
+	public void ToFrozenDictionaryWithNullDictionaryTest()
+	{
+		Dictionary<string, Person<Address>> nullDictionary = null;
+
+		Assert.ThrowsException<ArgumentNullException>(() => nullDictionary.ToFrozenDictionary());
+	}
+
+	[TestMethod]
+	public void ToImmutableSortedDictionaryTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+
+		var result = people.ToImmutableSortedDictionary();
+
+		Assert.IsTrue(result.HasItems());
+		Assert.AreEqual(people.Count, result.Count);
+		foreach (var kvp in people)
+		{
+			Assert.IsTrue(result.ContainsKey(kvp.Key));
+			Assert.AreEqual(kvp.Value, result[kvp.Key]);
+		}
+	}
+
+	[TestMethod]
+	public void ToImmutableSortedDictionaryWithEmptyDictionaryTest()
+	{
+		var emptyDictionary = new Dictionary<string, Person<Address>>();
+
+		var result = emptyDictionary.ToImmutableSortedDictionary();
+
+		Assert.IsFalse(result.HasItems());
+		Assert.AreEqual(0, result.Count);
+	}
+
+	[TestMethod]
+	public void ToImmutableSortedDictionaryWithNullDictionaryTest()
+	{
+		Dictionary<string, Person<Address>> nullDictionary = null;
+
+		Assert.ThrowsException<ArgumentNullException>(() => nullDictionary.ToImmutableSortedDictionary());
+	}
+
 	/// <summary>
 	/// Defines the test method ToImmutableTest.
 	/// </summary>
@@ -230,4 +356,15 @@ public class DictionaryExtensionsTests
 		Assert.IsTrue(people.FastCount() == 11);
 	}
 
+}
+
+public class MockDisposable : IDisposable
+{
+
+	public void Dispose()
+	{
+		IsDisposed = true;
+	}
+
+	public bool IsDisposed { get; private set; }
 }

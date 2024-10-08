@@ -86,7 +86,7 @@ public static partial class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddFirst), "David McCarter", "10/24/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.None, Documentation = "https://bit.ly/SpargineApril2022", Status = Status.Available)]
+	[Information(nameof(AddFirst), "David McCarter", "10/24/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineApril2022", Status = Status.Available)]
 	public static IEnumerable<T> AddFirst<T>(this IEnumerable<T> collection, T item)
 	{
 		collection = collection.ArgumentNotNull();
@@ -326,7 +326,7 @@ public static partial class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(FastCount), "David McCarter", "5/21/2022", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(FastCount), "David McCarter", "5/21/2022", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static long FastCount<T>(this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentNotNull();

@@ -146,7 +146,7 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the values in the dictionary, which must implement <see cref="IDisposable"/> if they are to be disposed.</typeparam>
 	/// <param name="collection">The dictionary containing the items to dispose.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Information(nameof(DisposeCollection), "David McCarter", "11/21/2020", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
+	[Information(nameof(DisposeCollection), "David McCarter", "11/21/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> collection)
 	{
 		if (collection.HasItems())
@@ -255,7 +255,7 @@ public static class DictionaryExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>FrozenDictionary&lt;TKey, TValue&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFrozenDictionary), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToFrozenDictionary), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New, Documentation = "ADD URL")]
 	public static FrozenDictionary<TKey, TValue> ToFrozenDictionary<TKey, TValue>(this IDictionary<TKey, TValue> list) => FrozenDictionary.ToFrozenDictionary(list);
 
 	/// <summary>
@@ -279,7 +279,7 @@ public static class DictionaryExtensions
 	/// <param name="collection">The values.</param>
 	/// <returns>ImmutableSortedDictionary&lt;TKey, TValue&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToImmutableSortedDictionary), "David McCarter", "7/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToImmutableSortedDictionary), "David McCarter", "7/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New, Documentation = "ADD URL")]
 	public static ImmutableSortedDictionary<TKey, TValue> ToImmutableSortedDictionary<TKey, TValue>(this IDictionary<TKey, TValue> collection) => ImmutableSortedDictionary.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>

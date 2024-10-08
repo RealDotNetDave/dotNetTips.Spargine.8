@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-28-2024
+// Last Modified On : 10-07-2024
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -260,6 +260,6 @@ public class Enumeration : IComparable
 	/// Gets the integer value of the enumeration.
 	/// </summary>
 	/// <value>The integer value.</value>
-	[Information(nameof(Value), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(Value), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int Value { get; }
 }
