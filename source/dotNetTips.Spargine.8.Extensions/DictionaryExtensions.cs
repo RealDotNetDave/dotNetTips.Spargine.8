@@ -293,10 +293,7 @@ public static class DictionaryExtensions
 	/// <returns>ReadOnlyCollection&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/6/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
-	{
-		return new ReadOnlyCollection<KeyValuePair<TKey, TValue>>(new List<KeyValuePair<TKey, TValue>>(dictionary.ArgumentNotNull()));
-	}
+	public static ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection<TKey, TValue>(this IDictionary<TKey, TValue> dictionary) => new(new List<KeyValuePair<TKey, TValue>>(dictionary.ArgumentNotNull()));
 
 	/// <summary>
 	/// Converts <see cref="IDictionary{TKey, TValue}" /> to <see cref="ReadOnlyDictionary{TKey, TValue}" />.

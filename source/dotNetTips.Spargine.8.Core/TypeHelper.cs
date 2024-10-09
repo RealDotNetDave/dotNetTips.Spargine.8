@@ -285,10 +285,7 @@ public static class TypeHelper
 	/// </remarks>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static T Create<T>()
-		where T : class
-	{
-		return Activator.CreateInstance<T>();
-	}
+		where T : class => Activator.CreateInstance<T>();
 
 	/// <summary>
 	/// Creates an instance of the specified type <typeparamref name="T"/> using the provided parameters.

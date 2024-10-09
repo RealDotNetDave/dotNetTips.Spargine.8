@@ -236,7 +236,6 @@ public static class JsonSerialization
 		return items;
 	}
 
-
 	/// <summary>
 	/// Serializes the specified object to a JSON string.
 	/// </summary>

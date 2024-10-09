@@ -35,10 +35,7 @@ public static class ObservableCollectionExtensions
 	/// <returns><c>true</c> if the specified collection has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(DoesNotHaveItems), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool DoesNotHaveItems<T>([AllowNull] this ObservableCollection<T> collection)
-	{
-		return collection == null || collection.Count == 0;
-	}
+	public static bool DoesNotHaveItems<T>([AllowNull] this ObservableCollection<T> collection) => collection == null || collection.Count == 0;
 
 	/// <summary>
 	/// Determines whether the specified collection has items.
