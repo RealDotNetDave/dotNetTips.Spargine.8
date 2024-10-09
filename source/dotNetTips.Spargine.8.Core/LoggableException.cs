@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-25-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="LoggableException.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -22,6 +22,7 @@ using System.Reflection;
 using System.Security;
 using System.Text;
 using System.Xml.Serialization;
+using DotNetTips.Spargine.Core.Internal;
 using DotNetTips.Spargine.Core.Logging;
 using Microsoft.Extensions.ObjectPool;
 
@@ -40,8 +41,15 @@ public class LoggableException : Exception
 	/// <summary>
 	/// The string builder pool used for performance optimization.
 	/// </summary>
-	private static readonly ObjectPool<StringBuilder> _stringBuilderPool =
-		new DefaultObjectPoolProvider().CreateStringBuilderPool();
+	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
+		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
+
+
+	/// <summary>
+	/// Gets the computer information associated with the exception.
+	/// </summary>
+	/// <value>A string representing the computer information.</value>
+	private readonly ComputerInfo _computerInfo = new();
 
 	/// <summary>
 	/// Indicates whether the exception has been logged.
@@ -89,7 +97,7 @@ public class LoggableException : Exception
 	/// <returns>A string representation of the exception properties and their values.</returns>
 	private static string ReflectException([NotNull] Exception ex)
 	{
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 
 		try
 		{
@@ -119,7 +127,7 @@ public class LoggableException : Exception
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 
@@ -145,6 +153,12 @@ public class LoggableException : Exception
 
 		return errorMessages.AsReadOnly();
 	}
+
+	/// <summary>
+	/// Gets the computer information associated with the exception.
+	/// </summary>
+	/// <value>A string representing the computer information.</value>
+	public string ComputerInformation => this._computerInfo.PropertiesToString();
 
 	/// <summary>
 	/// Gets or sets a value indicating whether this instance has been logged.

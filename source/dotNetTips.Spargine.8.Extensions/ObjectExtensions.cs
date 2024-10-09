@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-03-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -49,8 +49,8 @@ public static class ObjectExtensions
 	/// <summary>
 	/// The string builder pool
 	/// </summary>
-	private static readonly ObjectPool<StringBuilder> _stringBuilderPool =
-	new DefaultObjectPoolProvider().CreateStringBuilderPool();
+	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
+		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
 
 	/// <summary>
 	/// Converts an object to a specified type, offering a clean way to cast or switch between types without throwing exceptions when dealing with mismatched types.
@@ -96,7 +96,7 @@ public static class ObjectExtensions
 		var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(obj.ToJson())).AsSpan();
 
 		// Convert byte array to a string
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 
 		try
 		{
@@ -109,7 +109,7 @@ public static class ObjectExtensions
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 

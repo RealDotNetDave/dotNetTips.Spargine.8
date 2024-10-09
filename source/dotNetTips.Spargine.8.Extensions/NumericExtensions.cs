@@ -47,8 +47,8 @@ public static class NumericExtensions
 	/// <summary>
 	/// The string builder pool
 	/// </summary>
-	private static readonly ObjectPool<StringBuilder> _stringBuilderPool =
-new DefaultObjectPoolProvider().CreateStringBuilderPool();
+	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
+		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
 
 	/// <summary>
 	/// Calculates the average of two double values.
@@ -766,7 +766,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 			ExceptionThrower.ThrowArgumentOutOfRangeException(Resources.ValueMustBeInTheRange13999, nameof(number));
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 
 		try
 		{
@@ -785,7 +785,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 
@@ -825,7 +825,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 			return $"{Resources.Minus}{ControlChars.Space}{ToWords(Math.Abs(value))}";
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 		try
 		{
 
@@ -911,7 +911,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 }

@@ -40,7 +40,8 @@ public static class ArrayExtensions
 	/// <summary>
 	/// Provides a pool of reusable <see cref="StringBuilder"/> instances.
 	/// </summary>
-	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
+	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
+		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
 
 	/// <summary>
 	/// Adds an item to the beginning of the specified array.
@@ -177,7 +178,7 @@ public static class ArrayExtensions
 			return string.Empty;
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 
 		try
 		{
@@ -190,7 +191,7 @@ public static class ArrayExtensions
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 	/// <summary>
@@ -205,7 +206,7 @@ public static class ArrayExtensions
 	{
 		array = array.ArgumentNotEmpty();
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 
 		try
 		{
@@ -218,7 +219,7 @@ public static class ArrayExtensions
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 

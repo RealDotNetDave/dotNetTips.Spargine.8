@@ -31,5 +31,15 @@ public class ComputerInfoTests
 		Assert.IsNotNull(ci);
 	}
 
+	[TestMethod]
+	public void LoggableExceptionComputerInfoTest()
+	{
+		var ex = new LoggableException();
+
+		var result = ex.ComputerInformation;
+
+		Assert.IsNotNull(result);
+	}
+
 }
 

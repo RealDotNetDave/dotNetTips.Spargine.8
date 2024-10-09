@@ -40,7 +40,8 @@ public static partial class EnumerableExtensions
 	/// <summary>
 	/// A pool of <see cref="StringBuilder"/> objects to minimize memory allocations.
 	/// </summary>
-	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
+	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
+		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
 
 	/// <summary>
 	/// Generates a random number between 0 and <see cref="int.MaxValue"/>.
@@ -1142,7 +1143,7 @@ public static partial class EnumerableExtensions
 			return string.Empty;
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 
 		try
 		{
@@ -1161,7 +1162,7 @@ public static partial class EnumerableExtensions
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 

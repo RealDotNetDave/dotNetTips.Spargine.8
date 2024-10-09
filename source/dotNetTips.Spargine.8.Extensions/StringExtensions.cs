@@ -108,7 +108,8 @@ public static class StringExtensions
 	/// <summary>
 	/// The string builder pool
 	/// </summary>
-	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
+	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
+		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
 
 	/// <summary>
 	/// The string reg ex
@@ -181,7 +182,7 @@ public static class StringExtensions
 
 		var hash = GetHash(input, hashType);
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 
 		try
 		{
@@ -194,7 +195,7 @@ public static class StringExtensions
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 
@@ -251,7 +252,7 @@ public static class StringExtensions
 			return input;
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 
 		try
 		{
@@ -271,7 +272,7 @@ public static class StringExtensions
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 
@@ -684,7 +685,7 @@ public static class StringExtensions
 			return string.Empty;
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 
 		try
 		{
@@ -707,7 +708,7 @@ public static class StringExtensions
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 

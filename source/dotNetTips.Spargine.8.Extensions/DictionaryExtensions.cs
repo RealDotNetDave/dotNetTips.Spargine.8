@@ -34,11 +34,11 @@ namespace DotNetTips.Spargine.Extensions;
 /// </summary>
 public static class DictionaryExtensions
 {
-
 	/// <summary>
 	/// The string builder pool
 	/// </summary>
-	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
+	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
+		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
 
 	/// <summary>
 	/// Processes the specified collection to dispose its items.
@@ -225,7 +225,7 @@ public static class DictionaryExtensions
 			return string.Empty;
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Value.Get();
 
 		try
 		{
@@ -245,7 +245,7 @@ public static class DictionaryExtensions
 		}
 		finally
 		{
-			_stringBuilderPool.Return(sb);
+			_stringBuilderPool.Value.Return(sb);
 		}
 	}
 
