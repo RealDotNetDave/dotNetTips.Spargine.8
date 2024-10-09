@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-14-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -341,7 +341,7 @@ public static class DateTimeExtensions
 	/// <example>
 	/// Output: Today @ 10:27:43 am
 	/// </example>
-	[Information(nameof(ToFriendlyDateString), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(ToFriendlyDateString), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static string ToFriendlyDateString(this in DateTime input)
 	{
 		string formattedDate;
@@ -382,7 +382,7 @@ public static class DateTimeExtensions
 	/// <example>
 	/// Output: Today @ 10:27:43 am
 	/// </example>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static string ToFriendlyDateString(this in DateTimeOffset input)
 	{
 		string formattedDate;

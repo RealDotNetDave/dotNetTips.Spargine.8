@@ -28,6 +28,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using DotNetTips.Spargine.Core.Properties;
@@ -130,7 +131,7 @@ public static class TypeHelper
 	/// <param name="baseType">The base type to find derived types of.</param>
 	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
 	/// <returns>An enumerable collection of types that are derived from the specified base type.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available)]
+	[Information(Status = Status.Available)]
 	private static IEnumerable<Type> LoadDerivedTypes(IEnumerable<TypeInfo> types, Type baseType, bool classOnly)
 	{
 		// works out the derived types
@@ -172,7 +173,7 @@ public static class TypeHelper
 	/// <param name="genericArguments">The array of generic arguments for the type.</param>
 	/// <param name="length">The number of generic arguments to consider.</param>
 	/// <param name="options">Display name options to customize the output.</param>
-	[Information(UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available)]
+	[Information(Status = Status.Available)]
 	private static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, in int length, DisplayNameOptions options)
 	{
 		var offset = 0;
@@ -235,7 +236,7 @@ public static class TypeHelper
 	/// <param name="builder">The <see cref="StringBuilder"/> instance used to build the display name.</param>
 	/// <param name="type">The type to process for display.</param>
 	/// <param name="options">Options that specify how the display name should be formatted.</param>
-	[Information(UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available)]
+	[Information(Status = Status.Available)]
 	private static void ProcessType(StringBuilder builder, Type type, DisplayNameOptions options)
 	{
 		if (type.IsGenericType)
@@ -282,45 +283,42 @@ public static class TypeHelper
 	/// to have a parameterless constructor. 
 	/// Original code by: Jeremy Clark
 	/// </remarks>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.NeedsDocumentation)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static T Create<T>()
 		where T : class
 	{
-		var instance = Activator.CreateInstance<T>();
-
-		return instance is not null ? instance : null;
+		return Activator.CreateInstance<T>();
 	}
 
 	/// <summary>
-	/// Creates an instance of the specified type <typeparamref name="T"/> using the provided constructor parameters.
-	/// This method dynamically invokes a constructor of <typeparamref name="T"/> that matches the types of the provided parameters.
+	/// Creates an instance of the specified type <typeparamref name="T"/> using the provided parameters.
 	/// </summary>
-	/// <typeparam name="T">The type of object to create.</typeparam>
-	/// <param name="paramArray">The parameters to pass to the constructor of <typeparamref name="T"/>.</param>
-	/// <returns>An instance of the specified type.</returns>
+	/// <typeparam name="T">The type of the instance to create. Must be a reference type.</typeparam>
+	/// <param name="paramArray">The parameters to pass to the constructor of the type <typeparamref name="T"/>.</param>
+	/// <returns>An instance of type <typeparamref name="T"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="paramArray"/> is null.</exception>
-	/// <exception cref="MissingMethodException">Thrown if a matching constructor for the specified parameters is not found.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.NeedsDocumentation)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static T Create<T>([NotNull] params object[] paramArray)
 	{
-		var instance = (T)Activator.CreateInstance(typeof(T), args: paramArray);
+		paramArray = paramArray.ArgumentNotNull();
 
-		return instance;
+		return (T)Activator.CreateInstance(typeof(T), args: paramArray);
 	}
 
 	/// <summary>
-	/// Determines whether the specified object equals the specified instance.
+	/// Determines whether the specified object is the same instance as the provided instance.
 	/// </summary>
-	/// <param name="value">The object to compare.</param>
-	/// <param name="instance">The instance to compare against.</param>
-	/// <returns><c>true</c> if <paramref name="value"/> equals <paramref name="instance"/>; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="value"/> or <paramref name="instance"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	/// <param name="value">The object to compare. Must not be null.</param>
+	/// <param name="instance">The instance to compare against. Must not be null.</param>
+	/// <returns><c>true</c> if the specified object is the same instance as the provided instance; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="value"/> or <paramref name="instance"/> is null.</exception>
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static bool DoesObjectEqualInstance([NotNull] object value, [NotNull] object instance)
 	{
-		var result = ReferenceEquals(value, instance);
+		value = value.ArgumentNotNull();
+		instance = instance.ArgumentNotNull();
 
-		return result;
+		return ReferenceEquals(value, instance);
 	}
 
 	/// <summary>
@@ -329,10 +327,10 @@ public static class TypeHelper
 	/// <param name="baseType">The base type to find derived types of.</param>
 	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
 	/// <returns>A read-only collection of types that are derived from the specified base type.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] Type baseType, bool classOnly)
 	{
-		var path = Path.GetDirectoryName(AppContext.BaseDirectory);
+		var path = AppContext.BaseDirectory;
 
 		return FindDerivedTypes(new DirectoryInfo(path), SearchOption.TopDirectoryOnly, baseType, classOnly);
 	}
@@ -462,7 +460,7 @@ public static class TypeHelper
 	/// <returns>An instance of <typeparamref name="T"/> deserialized from the JSON file.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
 	/// <exception cref="JsonException">Thrown if the JSON is invalid or the deserialization fails.</exception>
-	[Information(nameof(FromJsonFile), UnitTestStatus = UnitTestStatus.WIP, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(FromJsonFile), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static T FromJsonFile<T>([NotNull] FileInfo file)
 		where T : class
 	{
@@ -522,7 +520,8 @@ public static class TypeHelper
 	/// [LastName, H^hkKhwWggIrUCYbbxiFEJGJM]
 	/// [PostalCode, 86560656].
 	/// </example>
-	[Information(nameof(GetPropertyValues), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, OptimizationStatus = OptimizationStatus.NeedsUpdate, Documentation = "http://bit.ly/SpargineMarch2021", Status = Status.Available)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(GetPropertyValues), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Completed, Documentation = "http://bit.ly/SpargineMarch2021", Status = Status.Available)]
 	public static ReadOnlyCollection<KeyValuePair<string, string>> GetPropertyValues<T>([NotNull] in T input)
 	{
 		_ = input.ArgumentNotNull();
@@ -532,28 +531,17 @@ public static class TypeHelper
 		var properties = input.GetType().GetAllProperties().Where(p => p.CanRead).OrderBy(p => p.Name).ToArray();
 		var itemCount = properties.LongLength;
 
-		for (var propertyCount = 0; propertyCount < itemCount; propertyCount++)
+		foreach (var propertyInfo in properties)
 		{
-			var propertyInfo = properties[propertyCount];
+			var propertyValue = propertyInfo.GetValue(input);
 
-			if (string.Equals(propertyInfo.PropertyType.Name, "IDictionary", StringComparison.Ordinal))
+			if (propertyValue is IDictionary dictionary && dictionary.Count > 0)
 			{
-				var propertyValue = propertyInfo.GetValue(input) as IDictionary;
-
-				if (propertyValue?.Count > 0)
-				{
-					_ = returnValue.AddIfNotExists(new KeyValuePair<string, string>(propertyInfo.Name, propertyValue.ToDelimitedString()));
-				}
+				_ = returnValue.AddIfNotExists(new KeyValuePair<string, string>(propertyInfo.Name, dictionary.ToDelimitedString()));
 			}
-			else
+			else if (propertyValue is not null)
 			{
-				// Get property value
-				var propertyValue = propertyInfo.GetValue(input);
-
-				if (propertyValue is not null)
-				{
-					_ = returnValue.AddIfNotExists(new KeyValuePair<string, string>(propertyInfo.Name, propertyValue.ToString()));
-				}
+				_ = returnValue.AddIfNotExists(new KeyValuePair<string, string>(propertyInfo.Name, propertyValue.ToString()));
 			}
 		}
 

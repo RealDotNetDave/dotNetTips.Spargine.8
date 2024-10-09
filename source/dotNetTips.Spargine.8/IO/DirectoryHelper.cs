@@ -14,6 +14,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Security.AccessControl;
@@ -218,8 +219,9 @@ public static class DirectoryHelper
 	/// <returns>An asynchronous stream (<see cref="IAsyncEnumerable{T}" />) of collections of <see cref="FileInfo" />, where each collection represents files found in a directory.</returns>
 	/// <remarks>This method utilizes deferred execution to improve performance. Files are not loaded into memory until the asynchronous stream is iterated.</remarks>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="directories"/> or <paramref name="searchPattern"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(LoadFilesAsync), author: "David McCarter", createdOn: "3/1/2021", OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(LoadFilesAsync), author: "David McCarter", createdOn: "3/1/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static async IAsyncEnumerable<IEnumerable<FileInfo>> LoadFilesAsync([NotNull] IEnumerable<DirectoryInfo> directories, [NotNull] string searchPattern, SearchOption searchOption)
 	{
 		directories = directories.ArgumentNotNull();
@@ -230,22 +232,11 @@ public static class DirectoryHelper
 			searchOption = SearchOption.TopDirectoryOnly;
 		}
 
-		var options = new EnumerationOptions() { IgnoreInaccessible = true };
+		var options = new EnumerationOptions() { IgnoreInaccessible = true, RecurseSubdirectories = searchOption == SearchOption.AllDirectories };
 
-		if (searchOption == SearchOption.AllDirectories)
-		{
-			options.RecurseSubdirectories = true;
-		}
-
-		var tasks = directories.Select(async directory =>
-		{
-			if (directory.Exists)
-			{
-				return await Task.Run(() => directory.GetFiles(searchPattern, searchOption)).ConfigureAwait(false);
-			}
-
-			return Enumerable.Empty<FileInfo>();
-		}).ToList();
+		var tasks = directories.Where(directory => directory.Exists)
+			.Select(directory => Task.Run(() => directory.GetFiles(searchPattern, options)))
+			.ToList();
 
 		foreach (var task in tasks)
 		{

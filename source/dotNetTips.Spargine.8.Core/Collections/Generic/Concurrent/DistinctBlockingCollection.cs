@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-26-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="DistinctBlockingCollection.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// This type implements IDisposable. Make sure to call .Dispose() or use the 'using' statement
 /// to remove from memory.
 /// </remarks>
-[Information(UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available)]
+[Information(Status = Status.Available)]
 public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, ICloneable<T>, ICollection<T>
 {
 	/// <summary>

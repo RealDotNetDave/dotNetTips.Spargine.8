@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="WebHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -56,12 +56,12 @@ public static class WebHelper
 	/// This method adds a "CLIENTID" header to the request if <paramref name="clientId"/> is provided and not "NONE".
 	/// Ensure proper disposal of the task to avoid resource leaks.
 	/// </remarks>
-	[Information(nameof(DownloadStringAsync), OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(DownloadStringAsync), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static async Task<string> DownloadStringAsync([NotNull] Uri address, string clientId = "NONE")
 	{
 		address = address.ArgumentNotNull();
 
-		if (clientId.HasValue())
+		if (!string.IsNullOrEmpty(clientId) && clientId != "NONE")
 		{
 			_httpClient.DefaultRequestHeaders.Add("CLIENTID", clientId);
 		}

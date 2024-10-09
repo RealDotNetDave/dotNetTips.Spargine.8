@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-21-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -165,7 +165,7 @@ public static class FileHelper
 	/// Console.WriteLine($"Has read permission: {hasReadPermission}");
 	/// </code>
 	/// </example>
-	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestStatus = UnitTestStatus.WIP, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
+	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
 	public static bool CheckPermission([NotNull] FileInfo file, FileSystemRights permission = FileSystemRights.Read)
 	{
 		file = file.ArgumentNotNull();
@@ -228,7 +228,7 @@ public static class FileHelper
 	/// Console.WriteLine($"Copied file length: {fileLength}");
 	/// </code>
 	/// </example>
-	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.WIP, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
+	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
 	public static long CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
 		ValidateCreateDestinationDirectory(file, destination);
@@ -286,7 +286,7 @@ public static class FileHelper
 	/// Console.WriteLine($"Copy result: {result}");
 	/// </code>
 	/// </example>
-	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
+	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static bool CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, [NotNull] CopyProgressRoutine progressCallback)
 	{
 		ValidateCreateDestinationDirectory(file, destination);
@@ -361,7 +361,7 @@ public static class FileHelper
 	/// it will continue to attempt to delete the remaining files even if an error occurs. The result will contain the list of files that were
 	/// successfully deleted and any error information.
 	/// </remarks>
-	[Information(nameof(DeleteFiles), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.WIP, Documentation = "https://bit.ly/SpargineMay2024", Status = Status.Available)]
+	[Information(nameof(DeleteFiles), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineMay2024", Status = Status.Available)]
 	public static SimpleResult<ReadOnlyCollection<string>> DeleteFiles([NotNull] this ReadOnlyCollection<string> files, bool stopOnFirstError = false)
 	{
 		files = files.ArgumentNotNull();
@@ -506,7 +506,7 @@ public static class FileHelper
 	/// Console.WriteLine($"Move result: {result}");
 	/// </code>
 	/// </example>
-	[Information(nameof(MoveFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.WIP, Documentation = "https://bit.ly/SpargineMay2024", Status = Status.Available)]
+	[Information(nameof(MoveFile), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Documentation = "https://bit.ly/SpargineMay2024", Status = Status.Available)]
 	public static bool MoveFile([NotNull] FileInfo file, [NotNull] FileInfo destinationFile, FileMoveOptions fileMoveOptions = FileMoveOptions.ReplaceExisting, int retryCount = 1)
 	{
 		var fileName = file.ArgumentExists().FullName;

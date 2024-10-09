@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-03-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="NumericExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -812,7 +812,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// Input: 54928 Output: Fifty-Four Thousand Nine Hundred and Twenty-Eight"
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToWords), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToWords), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string ToWords(this int value)
 	{
 		if (value == 0)
@@ -825,35 +825,37 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 			return $"{Resources.Minus}{ControlChars.Space}{ToWords(Math.Abs(value))}";
 		}
 
-		var words = string.Empty;
-
-		if ((value / 1000000) > 0)
+		var sb = _stringBuilderPool.Get();
+		try
 		{
-			words += $"{ToWords(value / 1000000)}{ControlChars.Space}{Resources.Million}{ControlChars.Space}";
-			value %= 1000000;
-		}
 
-		if ((value / 1000) > 0)
-		{
-			words += $"{ToWords(value / 1000)}{ControlChars.Space}{Resources.Thousand}{ControlChars.Space}";
-			value %= 1000;
-		}
-
-		if ((value / 100) > 0)
-		{
-			words += $"{ToWords(value / 100)}{ControlChars.Space}{Resources.Hundred}{ControlChars.Space}";
-			value %= 100;
-		}
-
-		if (value > 0)
-		{
-			if (string.IsNullOrEmpty(words) is false)
+			if ((value / 1000000) > 0)
 			{
-				words += $"{Resources.AndLowerCase}{ControlChars.Space}";
+				_ = sb.Append($"{ToWords(value / 1000000)}{ControlChars.Space}{Resources.Million}{ControlChars.Space}");
+				value %= 1000000;
 			}
 
-			var units = new[]
+			if ((value / 1000) > 0)
 			{
+				_ = sb.Append($"{ToWords(value / 1000)}{ControlChars.Space}{Resources.Thousand}{ControlChars.Space}");
+				value %= 1000;
+			}
+
+			if ((value / 100) > 0)
+			{
+				_ = sb.Append($"{ToWords(value / 100)}{ControlChars.Space}{Resources.Hundred}{ControlChars.Space}");
+				value %= 100;
+			}
+
+			if (value > 0)
+			{
+				if (sb.Length > 0)
+				{
+					_ = sb.Append($"{Resources.AndLowerCase}{ControlChars.Space}");
+				}
+
+				var units = new[]
+				{
 				Resources.Zero,
 				Resources.One,
 				Resources.Two,
@@ -876,8 +878,8 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 				Resources.Nineteen
 			};
 
-			var tens = new[]
-			{
+				var tens = new[]
+				{
 				Resources.Zero,
 				Resources.Ten,
 				Resources.Twenty,
@@ -890,22 +892,26 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 				Resources.Ninety
 			};
 
-			if (value < 20)
-			{
-				words += units[value];
-			}
-			else
-			{
-				words += tens[value / 10];
-
-				if ((value % 10) > 0)
+				if (value < 20)
 				{
-					words += $"{ControlChars.Dash}{units[value % 10]}";
+					_ = sb.Append(units[value]);
+				}
+				else
+				{
+					_ = sb.Append(tens[value / 10]);
+
+					if ((value % 10) > 0)
+					{
+						_ = sb.Append($"{ControlChars.Dash}{units[value % 10]}");
+					}
 				}
 			}
+
+			return sb.ToString().Trim();
 		}
-
-		return words;
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
 	}
-
 }

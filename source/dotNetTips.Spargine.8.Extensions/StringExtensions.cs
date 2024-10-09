@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-26-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -1073,10 +1073,10 @@ public static class StringExtensions
 	/// This method performs an ordinal (case-sensitive and culture-insensitive) comparison.
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(StartsWithOrdinal), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, OptimizationStatus = OptimizationStatus.WIP, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(StartsWithOrdinal), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static bool StartsWithOrdinal([NotNull] this string input, [NotNull] string inputToCompare)
 	{
-		if (input is null || inputToCompare is null)
+		if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(inputToCompare))
 		{
 			return false;
 		}
@@ -1094,10 +1094,10 @@ public static class StringExtensions
 	/// This method performs a comparison using <see cref="StringComparison.OrdinalIgnoreCase"/>.
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.WIP)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
 	public static bool StartsWithOrdinalIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare)
 	{
-		if (input is null || inputToCompare is null)
+		if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(inputToCompare))
 		{
 			return false;
 		}
@@ -1114,8 +1114,9 @@ public static class StringExtensions
 	/// <param name="length">The number of characters in the substring.</param>
 	/// <returns>A string that is equivalent to the substring of length that begins at startIndex in input, but with white-space characters removed from the start and end.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="startIndex"/> or <paramref name="length"/> is less than zero, or <paramref name="startIndex"/> + <paramref name="length"/> is greater than the length of <paramref name="input"/>.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(SubstringTrim), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static string SubstringTrim(this string input, in int startIndex, in int length)
 	{
 		if (input.IsNullOrEmpty())
@@ -1128,7 +1129,7 @@ public static class StringExtensions
 			ExceptionThrower.ThrowArgumentOutOfRangeException(nameof(length));
 		}
 
-		return input.Substring(startIndex, length).Trim();
+		return input.AsSpan(startIndex, length).Trim().ToString();
 	}
 
 	/// <summary>

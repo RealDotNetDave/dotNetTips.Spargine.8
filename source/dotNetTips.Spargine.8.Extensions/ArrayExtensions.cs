@@ -408,27 +408,26 @@ public static class ArrayExtensions
 	/// <param name="action">The action to perform on each element of the array.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="values"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.WIP)]
+	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed)]
 	public static void PerformAction<T>([NotNull] this T[] values, [NotNull] Action<T> action)
 	{
-		action = action.ArgumentNotNull();
-
-		if (values.IsNullOrEmpty())
+		if (values.DoesNotHaveItems())
 		{
 			return;
 		}
 
-		if (values[0].GetTypeOfType() == TypeExtensions.TypeOfType.Record)
+		action = action.ArgumentNotNull();
+
+		if (typeof(T).IsValueType || values[0].GetTypeOfType() != TypeExtensions.TypeOfType.Record)
 		{
-			_ = Parallel.For(0, values.LongLength, (index) => action(values[index]));
-		}
-		else
-		{
-			//Span, ImmutableArray is slower.
 			foreach (var value in values)
 			{
 				action(value);
 			}
+		}
+		else
+		{
+			_ = Parallel.For(0, values.LongLength, index => action(values[index]));
 		}
 
 	}

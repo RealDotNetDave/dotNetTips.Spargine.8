@@ -29,7 +29,7 @@ namespace DotNetTips.Spargine.Core;
 /// Use for return results from methods. This type is thread-safe.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", UnitTestStatus = UnitTestStatus.WIP, Status = Core.Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
+[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Status = Core.Status.Available, Documentation = "https://bit.ly/SpargineAug23")]
 public class SimpleResult<T>
 {
 

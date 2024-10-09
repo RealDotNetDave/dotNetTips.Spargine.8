@@ -29,7 +29,7 @@ namespace DotNetTips.Spargine.Core;
 /// This allows for richer domain models with type safety, without the limitations of the built-in Enum type.
 /// </summary>
 /// <remarks>Original code by: Jimmy Bogard</remarks>
-[Information(nameof(Enumeration), UnitTestStatus = UnitTestStatus.WIP, Documentation = "http://bit.ly/SpargineFeb2021", Status = Status.Available)]
+[Information(nameof(Enumeration), Documentation = "http://bit.ly/SpargineFeb2021", Status = Status.Available)]
 [DebuggerDisplay(nameof(DisplayName))]
 public class Enumeration : IComparable
 {

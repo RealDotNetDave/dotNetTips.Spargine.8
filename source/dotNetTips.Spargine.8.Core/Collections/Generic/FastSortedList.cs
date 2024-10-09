@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-25-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="FastSortedList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic;
 /// </summary>
 /// <typeparam name="T">The type of elements in the list.</typeparam>
 /// <seealso cref="List{T}" />
-[Information(UnitTestStatus = UnitTestStatus.WIP, Status = Status.Available)]
+[Information(Status = Status.Available)]
 public class FastSortedList<T> : List<T>
 {
 
