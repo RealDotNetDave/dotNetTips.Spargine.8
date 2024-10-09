@@ -14,10 +14,12 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions.Tests.Properties;

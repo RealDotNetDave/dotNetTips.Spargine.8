@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-07-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -578,6 +578,22 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
+	public void ToFrozenTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+
+		Assert.IsTrue(people.ToFrozenSet().HasItems());
+	}
+
+	[TestMethod]
+	public void ToImmutableArrayTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+
+		Assert.IsTrue(people.ToImmutableArray().HasItems());
+	}
+
+	[TestMethod]
 	public void ToImmutableTest()
 	{
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
@@ -601,6 +617,14 @@ public class EnumerableExtensionsTests
 		var result = await people.ToListAsync().ConfigureAwait(false);
 
 		Assert.IsNotNull(result);
+	}
+
+	[TestMethod]
+	public void ToReadOnlyCollectionTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+
+		Assert.IsTrue(people.ToReadOnlyCollection().HasItems());
 	}
 
 	[TestMethod]

@@ -4,7 +4,7 @@
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="ImmutableArrayTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -15,7 +15,6 @@ using System;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -27,11 +26,12 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 [TestClass]
 public class ImmutableArrayTests
 {
+	private const int Count = 2500;
 
 	[TestMethod]
 	public void HasItemsTest01()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(2500).ToImmutable();
+		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(Count).ToImmutable();
 		ImmutableList<Coordinate> nullCollection = null;
 
 		Assert.IsTrue(collection.HasItems());
@@ -42,7 +42,7 @@ public class ImmutableArrayTests
 	[TestMethod]
 	public void HasItemsTest02()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(2500).ToImmutableArray();
+		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(Count).ToImmutableArray();
 		Func<Coordinate, bool> selector = (coordinate) => coordinate.X > 0;
 
 		Assert.IsTrue(collection.HasItems(selector));
@@ -53,7 +53,7 @@ public class ImmutableArrayTests
 	[TestMethod]
 	public void HasItemsTestWithCount()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(2500).ToImmutable();
+		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(Count).ToImmutable();
 		ImmutableList<Coordinate> nullCollection = null;
 
 		Assert.IsFalse(collection.HasItems(5));
@@ -63,10 +63,22 @@ public class ImmutableArrayTests
 	[TestMethod]
 	public void ImmutableArrayTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(2500).ToHashSet().ToImmutable();
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToHashSet().ToImmutable();
 		var copyPeople = people;
 		Assert.IsTrue(people == copyPeople);
 		Assert.IsFalse(people == copyPeople.Shuffle());
+	}
+
+
+	[TestMethod]
+	public void ShuffleTest()
+	{
+		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(Count).ToImmutableArray();
+		var result = collection.Shuffle();
+
+		Assert.IsNotNull(result);
+
+		Assert.IsTrue(result.Count() == Count);
 	}
 
 }

@@ -4,7 +4,7 @@
 // Created          : 04-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="ReadOnlySpanExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -12,6 +12,7 @@
 // <summary>Extension methods designed for ReadOnlySpan.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using DotNetTips.Spargine.Core;
 
@@ -33,15 +34,14 @@ public static class ReadOnlySpanExtensions
 	/// <param name="span">The span from which to pick a random item. Must not be empty.</param>
 	/// <returns>A single item of type <typeparamref name="T"/> randomly picked from the span.</returns>
 	/// <exception cref="ArgumentException">Thrown if <paramref name="span"/> is empty.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
-	[Information(nameof(PickRandom), "David McCarter", "6/28/2021", BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
+	[Information(nameof(PickRandom), "David McCarter", "6/28/2021", BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T PickRandom<T>([NotNull] this ReadOnlySpan<T> span)
 	{
 		span = span.ArgumentNotEmpty();
 
-		var index = RandomNumberGenerator.GetInt32(0, span.Length - 1);
-
-		return span[index];
+		return span[RandomNumberGenerator.GetInt32(0, span.Length - 1)];
 	}
 
 }

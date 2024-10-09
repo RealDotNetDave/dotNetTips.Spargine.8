@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-14-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="ExceptionExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -56,7 +56,7 @@ public static class ExceptionExtensions
 	/// <param name="canContinue">A function that determines whether to continue traversing the hierarchy from the current item.</param>
 	/// <returns>A sequence of items from the source up through the hierarchy as determined by <paramref name="nextItem"/> and <paramref name="canContinue"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/>, <paramref name="nextItem"/>, or <paramref name="canContinue"/> is null.</exception>
-	[Information(nameof(FromHierarchy), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(FromHierarchy), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
 		where TSource : Exception
 	{
@@ -177,7 +177,7 @@ public static class ExceptionExtensions
 	/// <param name="exception">The starting exception for the traversal.</param>
 	/// <returns>An exception of type <typeparamref name="T"/> if found; otherwise, null.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(TraverseFor), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(TraverseFor), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T TraverseFor<T>(this Exception exception)
 		where T : class
 	{

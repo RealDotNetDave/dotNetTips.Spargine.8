@@ -4,13 +4,14 @@
 // Created          : 08-18-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="LinqExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Extension methods tailored for LINQ.</summary>
 // ***********************************************************************
+using System.Runtime.CompilerServices;
 using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -36,7 +37,8 @@ public static class LinqExtensions
 	/// <param name="transforms">A params array of functions that represent the transformations to apply to the input query.</param>
 	/// <returns>An <see cref="IQueryable{T}"/> that has been conditionally transformed based on the provided functions.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transforms"/> is null.</exception>
-	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static IQueryable<T> If<T>(this IQueryable<T> input, bool should, params Func<IQueryable<T>, IQueryable<T>>[] transforms)
 	{
 		input = input.ArgumentNotNull();
@@ -55,7 +57,8 @@ public static class LinqExtensions
 	/// <param name="transforms">A params array of functions that represent the transformations to apply to the input sequence.</param>
 	/// <returns>An <see cref="IEnumerable{T}"/> that has been conditionally transformed based on the provided functions.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transforms"/> is null.</exception>
-	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static IEnumerable<T> If<T>(this IEnumerable<T> input, bool should, params Func<IEnumerable<T>, IEnumerable<T>>[] transforms)
 	{
 		input = input.ArgumentNotNull();

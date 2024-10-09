@@ -274,7 +274,7 @@ public static class DateTimeExtensions
 	/// <param name="input">The input.</param>
 	/// <param name="time">The time.</param>
 	/// <returns>DateTime.</returns>
-	[Information(nameof(Subtract), author: "David McCarter", createdOn: "10/9/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(Subtract), author: "David McCarter", createdOn: "10/9/2023", UnitTestStatus = UnitTestStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static DateTime Subtract(this in DateTime input, in TimeSpan time) => input.ToUniversalTime().Add(time);
 
 	/// <summary>

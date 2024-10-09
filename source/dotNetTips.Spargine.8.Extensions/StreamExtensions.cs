@@ -4,7 +4,7 @@
 // Created          : 07-22-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="StreamExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -12,6 +12,7 @@
 // <summary>Extension methods designed for Stream.</summary>
 // ***********************************************************************
 using System.Buffers;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using DotNetTips.Spargine.Core;
 
@@ -31,6 +32,7 @@ public static class StreamExtensions
 	/// Flushes and closes the specified <see cref="Stream"/>.
 	/// </summary>
 	/// <param name="stream">The <see cref="Stream"/> to flush and close.</param>
+	[Information(nameof(FlushClose), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static void FlushClose(this Stream stream)
 	{
 		if (stream is not null)
@@ -48,7 +50,8 @@ public static class StreamExtensions
 	/// <param name="destination">The memory region to fill with the data read from the stream.</param>
 	/// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
 	/// <returns>A task that represents the asynchronous read operation. The value of the TResult parameter contains the total number of bytes read into the buffer.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static ValueTask<int> ReadAsync(this Stream stream, Memory<byte> destination, CancellationToken cancellationToken = default)
 	{
 		stream = stream.ArgumentNotNull();
@@ -88,7 +91,8 @@ public static class StreamExtensions
 	/// <param name="source">The data to write to the stream.</param>
 	/// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
 	/// <returns>A <see cref="ValueTask"/> that represents the asynchronous write operation.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static ValueTask WriteAsync(this Stream stream, ReadOnlyMemory<byte> source, CancellationToken cancellationToken = default)
 	{
 		stream = stream.ArgumentNotNull();

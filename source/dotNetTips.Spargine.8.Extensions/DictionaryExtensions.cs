@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-08-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -291,16 +291,11 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the value.</typeparam>
 	/// <param name="dictionary">The dictionary.</param>
 	/// <returns>ReadOnlyCollection&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;.</returns>
-	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/6/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/6/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
 	{
-		// Convert the dictionary to a list of KeyValuePair
-		var list = new List<KeyValuePair<TKey, TValue>>(dictionary.ArgumentNotNull());
-
-		// Create a ReadOnlyCollection from the list
-		var readOnlyCollection = new ReadOnlyCollection<KeyValuePair<TKey, TValue>>(list);
-
-		return readOnlyCollection;
+		return new ReadOnlyCollection<KeyValuePair<TKey, TValue>>(new List<KeyValuePair<TKey, TValue>>(dictionary.ArgumentNotNull()));
 	}
 
 	/// <summary>
@@ -311,7 +306,7 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
 	/// <param name="collection">The values.</param>
 	/// <returns>ReadOnlyDictionary&lt;TKey, TValue&gt;.</returns>
-	[Information(nameof(ToReadOnlyDictionary), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToReadOnlyDictionary), "David McCarter", "6/3/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New, Documentation = "ADD URL")]
 	public static ReadOnlyDictionary<TKey, TValue> ToReadOnlyDictionary<TKey, TValue>(this IDictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
 
 

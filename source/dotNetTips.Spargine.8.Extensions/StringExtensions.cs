@@ -1055,7 +1055,7 @@ public static class StringExtensions
 	/// This method uses <see cref="string.Split(char[], StringSplitOptions)"/> internally with <see cref="StringSplitOptions.RemoveEmptyEntries"/> to remove empty entries.
 	/// </remarks>
 	[return: NotNull]
-	[Information(nameof(SplitRemoveEmpty), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(SplitRemoveEmpty), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> SplitRemoveEmpty([NotNull] this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();

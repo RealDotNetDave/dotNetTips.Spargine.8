@@ -226,7 +226,7 @@ public static partial class EnumerableExtensions
 	/// <remarks>Orginal code from: https://github.com/dncuug/X.PagedList/blob/master/src/X.PagedList/PagedListExtensions.cs</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.NeedsUpdate, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static async Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default)
 	{
 		_ = collection.ArgumentNotNull();
@@ -547,7 +547,7 @@ public static partial class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[return: MaybeNull]
-	[Information(nameof(FirstOrNull), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(FirstOrNull), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static T? FirstOrNull<T>(this IEnumerable<T> collection, Func<T, bool> match) where T : struct
 	{
 		collection = collection.ArgumentNotNull();
@@ -649,7 +649,7 @@ public static partial class EnumerableExtensions
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(IndexOf), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] T item)
 	{
 		_ = collection.ArgumentItemsExists();
@@ -750,7 +750,7 @@ public static partial class EnumerableExtensions
 	/// <exception cref="ArgumentException">Thrown if <paramref name="sortExpression"/> is not a valid property name of <typeparamref name="T"/>.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(OrderBy), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(OrderBy), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IEnumerable<T> OrderBy<T>([NotNull] this IEnumerable<T> collection, [NotNull] string sortExpression)
 	{
 		collection = collection.ArgumentNotNull();
@@ -795,7 +795,7 @@ public static partial class EnumerableExtensions
 	/// <returns>IOrderedEnumerable&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(OrderByOrdinal), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(OrderByOrdinal), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static IOrderedEnumerable<T> OrderByOrdinal<T>(this IEnumerable<T> collection, Func<T, string> keySelector)
 	{
 		collection = collection.ArgumentNotNull();
@@ -866,7 +866,7 @@ public static partial class EnumerableExtensions
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(Partition), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(Partition), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> collection, int pageCount)
 	{
 		collection = collection.ArgumentNotNull();
@@ -987,7 +987,7 @@ public static partial class EnumerableExtensions
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static IEnumerable<IEnumerable<T>> Split<T>(this IEnumerable<T> collection, int size)
 	{
 		collection = collection.ArgumentNotNull();
@@ -1116,7 +1116,7 @@ public static partial class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(ToCollection), "David McCarter", "4/13/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(ToCollection), "David McCarter", "4/13/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static Collection<T> ToCollection<T>(this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -1174,7 +1174,7 @@ public static partial class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New, Documentation = "ADD URL")]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New, Documentation = "ADD URL")]
 	public static FrozenSet<T> ToFrozenSet<T>(this IEnumerable<T> list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>
@@ -1194,23 +1194,23 @@ public static partial class EnumerableExtensions
 		return ImmutableList.CreateRange(collection);
 	}
 
-	///// <summary>
-	///// Converts a <see cref="IEnumerable{T}" /> to <see cref="ImmutableArray{T}" />.
-	///// Validates that <paramref name="collection" /> is not null.
-	///// </summary>
-	///// <typeparam name="T">Generic type parameter.</typeparam>
-	///// <param name="collection">The values.</param>
-	///// <returns>System.Collections.Immutable.ImmutableArray&lt;T&gt;.</returns>
-	//[Information(nameof(ToImmutable), "David McCarter", "6/7/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.None, Status = Status.New, Documentation = "ADD URL")]
-	//public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this IEnumerable<T> collection)
-	//{
-	//	if (collection.DoesNotHaveItems())
-	//	{
-	//		return [];
-	//	}
+	/// <summary>
+	/// Converts a <see cref="IEnumerable{T}" /> to <see cref="ImmutableArray{T}" />.
+	/// Validates that <paramref name="collection" /> is not null.
+	/// </summary>
+	/// <typeparam name="T">Generic type parameter.</typeparam>
+	/// <param name="collection">The values.</param>
+	/// <returns>System.Collections.Immutable.ImmutableArray&lt;T&gt;.</returns>
+	[Information(nameof(ToImmutable), "David McCarter", "6/7/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New, Documentation = "ADD URL")]
+	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this IEnumerable<T> collection)
+	{
+		if (collection.DoesNotHaveItems())
+		{
+			return [];
+		}
 
-	//	return ImmutableArray.CreateRange(collection);
-	//}
+		return ImmutableArray.CreateRange(collection);
+	}
 
 	/// <summary>
 	/// Converts an <see cref="IEnumerable{T}"/> to a <see cref="LinkedList{T}"/>.
@@ -1240,7 +1240,7 @@ public static partial class EnumerableExtensions
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(ToListAsync), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(ToListAsync), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
 	public static async Task<List<T>> ToListAsync<T>(this IEnumerable<T> collection)
 	{
 		collection = collection.ArgumentItemsExists();
@@ -1270,7 +1270,7 @@ public static partial class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(ToReadOnlyCollection), "David McCarter", "2/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
+	[Information(nameof(ToReadOnlyCollection), "David McCarter", "2/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineApril2022")]
 	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this ConcurrentBag<T> collection) => new(
 		[.. collection.ArgumentNotNull()]);
 

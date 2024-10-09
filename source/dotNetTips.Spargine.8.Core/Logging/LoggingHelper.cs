@@ -246,7 +246,7 @@ public static class LoggingHelper
 	/// It is crucial to call this method early in the application startup process to ensure all relevant domain events are logged.
 	/// The logger can only be set once. Subsequent calls to this method will be ignored.
 	/// </remarks>
-	[Information(nameof(LogAppDomainEvents), author: "David McCarter", createdOn: "7/13/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL", Status = Status.New)]
+	[Information(nameof(LogAppDomainEvents), author: "David McCarter", createdOn: "7/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL", Status = Status.New)]
 	public static void LogAppDomainEvents(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
@@ -276,7 +276,7 @@ public static class LoggingHelper
 	/// It is important to call this method early in the application startup process to ensure all first chance exceptions are logged.
 	/// The logger can only be set once. Subsequent calls to this method will be ignored.
 	/// </remarks>
-	[Information(nameof(LogAppDomainFirstChanceException), author: "David McCarter", createdOn: "10/19/2021", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineJan2022", Status = Status.Available)]
+	[Information(nameof(LogAppDomainFirstChanceException), author: "David McCarter", createdOn: "10/19/2021", UnitTestStatus = UnitTestStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineJan2022", Status = Status.Available)]
 	public static void LogAppDomainFirstChanceException(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
@@ -299,7 +299,7 @@ public static class LoggingHelper
 	/// It is important to call this method early in the application startup process to ensure all unhandled exceptions are logged.
 	/// Logger can only be set once. Subsequent calls to this method will be ignored.
 	/// </remarks>
-	[Information(nameof(LogAppDomainUnhandledException), author: "David McCarter", createdOn: "7/13/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL", Status = Status.New)]
+	[Information(nameof(LogAppDomainUnhandledException), author: "David McCarter", createdOn: "7/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL", Status = Status.New)]
 	public static void LogAppDomainUnhandledException(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();

@@ -31,13 +31,15 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 public class DictionaryExtensionsTests
 {
 
+	private const int CollectionCount = 256;
+
 	/// <summary>
 	/// Defines the test method AddIfNotExistDictionaryTest.
 	/// </summary>
 	[TestMethod]
 	public void AddIfNotExistDictionaryTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 		var newPerson = RandomData.GeneratePersonRef<Address>();
 
 		// Test parameters
@@ -55,14 +57,14 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void AddRangeDictionaryTest01()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 		var newPeople = RandomData.GeneratePersonRefCollection<Address>(2).ToDictionary(p => p.Id);
 
 		var result = people.AddRange(newPeople, true);
-		Assert.IsTrue(people.FastCount() == 12);
+		Assert.IsTrue(people.FastCount() == CollectionCount + 2);
 
 		result = people.AddRange(newPeople, true);
-		Assert.IsTrue(people.FastCount() == 12);
+		Assert.IsTrue(people.FastCount() == CollectionCount + 2);
 	}
 
 	[TestMethod]
@@ -126,7 +128,7 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void DoesNotHaveItemsTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 
 		Assert.IsFalse(people.DoesNotHaveItems());
 	}
@@ -137,9 +139,9 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void FastCountTest()
 	{
-		var people1 = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people1 = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 
-		Assert.IsTrue(people1.FastCount() == 10);
+		Assert.IsTrue(people1.FastCount() == CollectionCount);
 
 	}
 
@@ -149,7 +151,7 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void GetOrAddTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 		var newPerson = RandomData.GeneratePersonRef<Address>();
 
 		// Test Parameters
@@ -157,10 +159,10 @@ public class DictionaryExtensionsTests
 
 		// TEST
 		_ = people.GetOrAdd(newPerson.Id, newPerson);
-		Assert.IsTrue(people.FastCount() == 11);
+		Assert.IsTrue(people.FastCount() == CollectionCount + 1);
 
 		_ = people.GetOrAdd(newPerson.Id, newPerson);
-		Assert.IsTrue(people.FastCount() == 11);
+		Assert.IsTrue(people.FastCount() == CollectionCount + 1);
 	}
 
 	/// <summary>
@@ -169,7 +171,7 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void HasItemsTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 		Dictionary<string, Person<Address>> nullPeople = null;
 
 		Assert.IsTrue(people.HasItems());
@@ -183,7 +185,7 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void HasItemsTestWithFunction()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 
 		Func<KeyValuePair<string, Person<Address>>, bool> selector = p => p.Value.Email.IsNotNull();
 
@@ -196,13 +198,13 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void HasItemsWithCountTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 		Dictionary<string, Person<Address>> nullPeople = null;
 
-		Assert.IsTrue(people.HasItems(10));
+		Assert.IsTrue(people.HasItems(CollectionCount));
 		Assert.IsFalse(people.HasItems(100));
 
-		Assert.IsFalse(nullPeople.HasItems(10));
+		Assert.IsFalse(nullPeople.HasItems(CollectionCount));
 	}
 
 	/// <summary>
@@ -211,7 +213,7 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void ToConcurrentDictionaryTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 
 		var result = people.ToConcurrentDictionary();
 
@@ -223,9 +225,9 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void ToDelimitedDictionaryTest()
 	{
-		var words = RandomData.GenerateWords(10, 25, 50);
+		var words = RandomData.GenerateWords(CollectionCount, 25, 50);
 
-		var dic = new Dictionary<string, string>(10);
+		var dic = new Dictionary<string, string>(CollectionCount);
 
 		foreach (var item in words)
 		{
@@ -238,7 +240,7 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void ToFrozenDictionaryTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 
 		var result = people.ToFrozenDictionary();
 
@@ -274,7 +276,7 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void ToImmutableSortedDictionaryTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 
 		var result = people.ToImmutableSortedDictionary();
 
@@ -312,11 +314,35 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void ToImmutableTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 
 		var result = people.ToImmutable();
 
 		Assert.IsTrue(result.HasItems());
+	}
+
+	[TestMethod]
+	public void ToReadOnlyCollectionTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
+
+		var result = people.ToReadOnlyCollection();
+
+		// Test
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == CollectionCount);
+	}
+
+	[TestMethod]
+	public void ToReadOnlyDictionaryTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
+
+		var result = people.ToReadOnlyDictionary();
+
+		// Test
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == CollectionCount);
 	}
 
 	/// <summary>
@@ -325,7 +351,7 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void ToSortedDictionaryTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 
 		var result = people.ToSortedDictionary();
 
@@ -338,7 +364,7 @@ public class DictionaryExtensionsTests
 	[TestMethod]
 	public void UpsertDictionaryTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToDictionary(p => p.Id);
+		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
 		var newPerson = RandomData.GeneratePersonRef<Address>();
 		var personFromCollection = people.Shuffle().First();
 
@@ -347,13 +373,13 @@ public class DictionaryExtensionsTests
 
 		// Test
 		people.Upsert(newPerson.Id, newPerson);
-		Assert.IsTrue(people.FastCount() == 11);
+		Assert.IsTrue(people.FastCount() == CollectionCount + 1);
 
 		people.Upsert(newPerson);
-		Assert.IsTrue(people.FastCount() == 11);
+		Assert.IsTrue(people.FastCount() == CollectionCount + 1);
 
 		people.Upsert(personFromCollection.Value.Id, personFromCollection.Value);
-		Assert.IsTrue(people.FastCount() == 11);
+		Assert.IsTrue(people.FastCount() == CollectionCount + 1);
 	}
 
 }

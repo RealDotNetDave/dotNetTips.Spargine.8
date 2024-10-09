@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-26-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="ListExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -20,6 +20,8 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
@@ -33,6 +35,15 @@ public class ListExtensionsTests
 {
 
 	private const int Count = 256;
+
+	private async IAsyncEnumerable<T> GetAsyncEnumerable<T>(IEnumerable<T> items)
+	{
+		foreach (var item in items)
+		{
+			yield return item;
+			await Task.Yield();
+		}
+	}
 
 	[TestMethod]
 	public void AddIfNotExistsTwoListsTest()
@@ -699,6 +710,7 @@ public class ListExtensionsTests
 		// Assert is handled by the ExpectedException
 	}
 
+
 	[TestMethod]
 	public void ToImmutableArrayTest()
 	{
@@ -709,6 +721,52 @@ public class ListExtensionsTests
 		Assert.IsNotNull(result);
 
 		Assert.IsTrue(result.FastCount() == Count);
+	}
+
+	[TestMethod]
+	public async Task ToListAsync_WithCancellation_ShouldThrowTaskCanceledException()
+	{
+		// Arrange
+		var data = GetAsyncEnumerable(new[] { 1, 2, 3, 4, 5 });
+		var cancellationTokenSource = new CancellationTokenSource();
+		cancellationTokenSource.Cancel();
+
+		// Act & Assert
+		await Assert.ThrowsExceptionAsync<TaskCanceledException>(async () =>
+		{
+			await data.ToListAsync(cancellationTokenSource.Token);
+		});
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public async Task ToListAsync_WithNullInput_ShouldThrowArgumentNullException()
+	{
+		// Arrange
+		IAsyncEnumerable<int> data = null;
+		var cancellationToken = CancellationToken.None;
+
+		// Act
+		await data.ToListAsync(cancellationToken);
+	}
+
+	[TestMethod]
+	public async Task ToListAsync_WithValidInput_ShouldReturnList()
+	{
+		// Arrange
+		var data = GetAsyncEnumerable(new[] { 1, 2, 3, 4, 5 });
+		var cancellationToken = CancellationToken.None;
+
+		// Act
+		var result = await data.ToListAsync(cancellationToken);
+
+		// Assert
+		Assert.AreEqual(5, result.Count);
+		Assert.AreEqual(1, result[0]);
+		Assert.AreEqual(2, result[1]);
+		Assert.AreEqual(3, result[2]);
+		Assert.AreEqual(4, result[3]);
+		Assert.AreEqual(5, result[4]);
 	}
 
 	[TestMethod]

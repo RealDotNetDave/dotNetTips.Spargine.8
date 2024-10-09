@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-29-2023
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="ExceptionExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Security;
 using System.ServiceModel.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -25,6 +26,44 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 [TestClass]
 public class ExceptionExtensionsTests
 {
+
+	[TestMethod]
+	public void FromHierarchy_WithNullCanContinue_ShouldThrowArgumentNullException()
+	{
+		var ex = new Exception("Test exception");
+
+		Assert.ThrowsException<ArgumentNullException>(() => ex.FromHierarchy(e => e.InnerException, null).ToList());
+	}
+
+
+	[TestMethod]
+	public void FromHierarchy_WithNullNextItem_ShouldThrowArgumentNullException()
+	{
+		var ex = new Exception("Test exception");
+
+		Assert.ThrowsException<ArgumentNullException>(() => ex.FromHierarchy(null, e => e != null).ToList());
+	}
+
+	[TestMethod]
+	public void FromHierarchy_WithNullSource_ShouldThrowArgumentNullException()
+	{
+		Exception ex = null;
+
+		Assert.ThrowsException<ArgumentNullException>(() => ex.FromHierarchy(e => e.InnerException, e => e != null).ToList());
+	}
+
+	[TestMethod]
+	public void FromHierarchy_WithValidInput_ShouldReturnHierarchy()
+	{
+		var innerEx = new InvalidOperationException("Inner exception");
+		var ex = new Exception("Outer exception", innerEx);
+
+		var hierarchy = ex.FromHierarchy(e => e.InnerException, e => e != null).ToList();
+
+		Assert.AreEqual(2, hierarchy.Count);
+		Assert.AreEqual("Outer exception", hierarchy[0].Message);
+		Assert.AreEqual("Inner exception", hierarchy[1].Message);
+	}
 
 	[TestMethod]
 	public void GetAllMessagesTest()
@@ -77,6 +116,37 @@ public class ExceptionExtensionsTests
 
 		Assert.IsTrue(exGood.IsSecurityOrCritical());
 		Assert.IsFalse(exBad.IsSecurityOrCritical());
+	}
+
+	[TestMethod]
+	public void TraverseFor_WithMatchingType_ShouldReturnException()
+	{
+		var innerEx = new InvalidOperationException("Inner exception");
+		var ex = new Exception("Outer exception", innerEx);
+
+		var result = ex.TraverseFor<InvalidOperationException>();
+
+		Assert.IsNotNull(result);
+		Assert.AreEqual("Inner exception", result.Message);
+	}
+
+	[TestMethod]
+	public void TraverseFor_WithNonMatchingType_ShouldReturnNull()
+	{
+		var innerEx = new InvalidOperationException("Inner exception");
+		var ex = new Exception("Outer exception", innerEx);
+
+		var result = ex.TraverseFor<ArgumentNullException>();
+
+		Assert.IsNull(result);
+	}
+
+	[TestMethod]
+	public void TraverseFor_WithNullException_ShouldThrowArgumentNullException()
+	{
+		Exception ex = null;
+
+		Assert.ThrowsException<ArgumentNullException>(() => ex.TraverseFor<InvalidOperationException>());
 	}
 
 }
