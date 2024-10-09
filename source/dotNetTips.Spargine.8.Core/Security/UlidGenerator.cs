@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-03-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -102,7 +102,7 @@ public static class UlidGenerator
 			{
 				var dualByte = bytes[byteIndex] & 0xFF;
 				dualByte <<= 8;
-				if (byteIndex + 1 < bytes.Length)
+				if (byteIndex + 1 < bytes.LongLength)
 				{
 					dualByte |= bytes[byteIndex + 1] & 0xFF;
 				}

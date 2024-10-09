@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-07-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -297,7 +297,7 @@ public static class DirectoryHelper
 				{
 					if (accountKey.IsNotNull() && accountKey.SubKeyCount > 0)
 					{
-						var subkeyCount = accountKey.GetSubKeyNames().Length;
+						var subkeyCount = accountKey.GetSubKeyNames().LongLength;
 
 						for (var subKeyIndex = 0; subKeyIndex < subkeyCount; subKeyIndex++)
 						{
@@ -439,7 +439,7 @@ public static class DirectoryHelper
 		}
 
 		var directories = path.GetDirectories(searchPattern, options);
-		var itemCount = directories.Length;
+		var itemCount = directories.LongLength;
 
 		for (var index = 0; index < itemCount; index++)
 		{

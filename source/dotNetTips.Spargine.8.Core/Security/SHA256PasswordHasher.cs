@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-21-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -82,13 +82,13 @@ public static class SHA256PasswordHasher
 
 		// NoOptimization because we want this method to be exactly as non-short-circuiting as written.
 		// NoInlining because the NoOptimization would get lost if the method got inlined.
-		if (left.Length != right.Length)
+		if (left.LongLength != right.LongLength)
 		{
 			return false;
 		}
 
 		var byteCount = 0;
-		var leftCount = left.Length;
+		var leftCount = left.LongLength;
 
 		for (var byteIndex = 0; byteIndex < leftCount; byteIndex++)
 		{
@@ -146,7 +146,7 @@ public static class SHA256PasswordHasher
 			return PasswordVerificationResult.Failed;
 		}
 
-		if (Convert.FromBase64String(hashedPassword).Length < 1 + SaltSize)
+		if (Convert.FromBase64String(hashedPassword).LongLength < 1 + SaltSize)
 		{
 			return PasswordVerificationResult.Failed;
 		}

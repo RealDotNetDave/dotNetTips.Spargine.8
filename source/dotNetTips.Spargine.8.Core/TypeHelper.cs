@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-08-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -530,7 +530,7 @@ public static class TypeHelper
 		var returnValue = new Dictionary<string, string>();
 
 		var properties = input.GetType().GetAllProperties().Where(p => p.CanRead).OrderBy(p => p.Name).ToArray();
-		var itemCount = properties.Length;
+		var itemCount = properties.LongLength;
 
 		for (var propertyCount = 0; propertyCount < itemCount; propertyCount++)
 		{

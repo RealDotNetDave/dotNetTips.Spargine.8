@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-24-2024
+// Last Modified On : 10-03-2024
 // ***********************************************************************
 // <copyright file="NumericExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -146,7 +146,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 		var order = 0;
 		double len = fileSize;
-		while (len >= 1024 && order < _fileFormatSizes.Length - 1)
+		while (len >= 1024 && order < _fileFormatSizes.LongLength - 1)
 		{
 			order++;
 			len /= 1024;
@@ -165,7 +165,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	public static string FormatSize(this double fileSize)
 	{
 		var order = 0;
-		while (fileSize >= 1024 && order < _fileFormatSizes.Length - 1)
+		while (fileSize >= 1024 && order < _fileFormatSizes.LongLength - 1)
 		{
 			order++;
 			fileSize /= 1024;
@@ -770,7 +770,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 		try
 		{
-			var itemCount = _romanValues.Length;
+			var itemCount = _romanValues.LongLength;
 
 			for (var count = 0; count < itemCount; count++)
 			{

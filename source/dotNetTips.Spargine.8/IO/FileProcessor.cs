@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -102,7 +102,7 @@ public class FileProcessor
 
 		var successCount = 0;
 
-		for (var fileCount = 0; fileCount < list.Length; fileCount++)
+		for (var fileCount = 0; fileCount < list.LongLength; fileCount++)
 		{
 			var tempFile = list[fileCount];
 

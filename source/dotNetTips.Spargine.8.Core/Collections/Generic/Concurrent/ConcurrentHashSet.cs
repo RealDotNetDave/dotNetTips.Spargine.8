@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-21-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -102,14 +102,14 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 		}
 
 		var locks = new object[concurrencyLevel];
-		var locksLength = locks.Length;
+		var locksLength = locks.LongLength;
 
 		for (var lockCount = 0; lockCount < locksLength; lockCount++)
 		{
 			locks[lockCount] = new object();
 		}
 
-		var countPerLock = new int[locks.Length];
+		var countPerLock = new int[locks.LongLength];
 		var buckets = new Node[capacity];
 
 		this._tables = new Tables(buckets, locks, countPerLock);
@@ -369,7 +369,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 
 		var buckets = this._tables._buckets;
 
-		for (var bucketCount = 0; bucketCount < buckets.Length; bucketCount++)
+		for (var bucketCount = 0; bucketCount < buckets.LongLength; bucketCount++)
 		{
 			for (var current = buckets[bucketCount]; current is not null; current = current._next)
 			{
@@ -437,13 +437,13 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 			// Compute the (approx.) total size. Use an Int64 accumulation variable to avoid an overflow.
 			long approxCount = 0;
 
-			for (var tableCount = 0; tableCount < tables._countPerLock.Length; tableCount++)
+			for (var tableCount = 0; tableCount < tables._countPerLock.LongLength; tableCount++)
 			{
 				approxCount += tables._countPerLock[tableCount];
 			}
 
 			// If the bucket array is too empty, double the budget instead of resizing the table
-			if (approxCount < tables._buckets.Length / 4)
+			if (approxCount < tables._buckets.LongLength / 4)
 			{
 				this._budget = 2 * this._budget;
 
@@ -504,12 +504,12 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 			var newLocks = tables._locks;
 
 			// Add more locks
-			if (this._growLockArray && tables._locks.Length < MaxLockNumber)
+			if (this._growLockArray && tables._locks.LongLength < MaxLockNumber)
 			{
-				newLocks = new object[tables._locks.Length * 2];
+				newLocks = new object[tables._locks.LongLength * 2];
 				Array.Copy(tables._locks, 0, newLocks, 0, tables._locks.Length);
 
-				for (var tableCount = tables._locks.Length; tableCount < newLocks.Length; tableCount++)
+				for (var tableCount = tables._locks.LongLength; tableCount < newLocks.Length; tableCount++)
 				{
 					newLocks[tableCount] = new object();
 				}
@@ -519,7 +519,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 			var newCountPerLock = new int[newLocks.Length];
 
 			// Copy all data into a new table, creating new nodes for all elements
-			for (var bucketCount = 0; bucketCount < tables._buckets.Length; bucketCount++)
+			for (var bucketCount = 0; bucketCount < tables._buckets.LongLength; bucketCount++)
 			{
 				var current = tables._buckets[bucketCount];
 
@@ -681,7 +681,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 
 			var count = 0;
 
-			for (var lockCount = 0; lockCount < this._tables._locks.Length && count >= 0; lockCount++)
+			for (var lockCount = 0; lockCount < this._tables._locks.LongLength && count >= 0; lockCount++)
 			{
 				count += this._tables._countPerLock[lockCount];
 			}
@@ -709,7 +709,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	public IEnumerator<T> GetEnumerator()
 	{
 		var buckets = this._tables._buckets;
-		var bucketsLength = buckets.Length;
+		var bucketsLength = buckets.LongLength;
 
 		for (var i = 0; i < bucketsLength; i++)
 		{
@@ -849,7 +849,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 			{
 				this.AcquireAllLocks(ref acquiredLocks);
 
-				for (var counter = 0; counter < this._tables._countPerLock.Length; counter++)
+				for (var counter = 0; counter < this._tables._countPerLock.LongLength; counter++)
 				{
 					if (this._tables._countPerLock[counter] != 0)
 					{

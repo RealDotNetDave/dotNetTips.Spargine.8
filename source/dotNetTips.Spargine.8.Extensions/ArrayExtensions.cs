@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-21-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -61,9 +61,9 @@ public static class ArrayExtensions
 
 		array = array.ArgumentNotNull();
 
-		var result = new T[array.Length + 1];
+		var result = new T[array.LongLength + 1];
 		result[0] = item;
-		Array.Copy(array, 0, result, 1, array.Length);
+		Array.Copy(array, 0, result, 1, array.LongLength);
 
 		return result;
 	}
@@ -110,9 +110,9 @@ public static class ArrayExtensions
 
 		array = array.ArgumentNotNull();
 
-		var newArray = new T[array.Length + 1];
-		Array.Copy(array, newArray, array.Length);
-		newArray[array.Length] = item;
+		var newArray = new T[array.LongLength + 1];
+		Array.Copy(array, newArray, array.LongLength);
+		newArray[array.LongLength] = item;
 
 		return newArray;
 	}
@@ -246,10 +246,10 @@ public static class ArrayExtensions
 	/// <returns><c>true</c> if the array contains any of the specified items; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> or <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.NoInlining)]
-	[Information(nameof(ContainsAny), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ContainsAny), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
 	public static bool ContainsAny<T>([NotNull] this T[] array, [NotNull] params T[] items)
 	{
-		if (array is null || array.Length is 0 || items.Length is 0)
+		if (array is null || array.LongLength is 0 || items.LongLength is 0)
 		{
 			return false;
 		}
@@ -275,7 +275,7 @@ public static class ArrayExtensions
 	/// <returns><c>true</c> if the array is null or empty; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static bool DoesNotHaveItems<T>([AllowNull] this T[] array) => array == null || array.Length == 0;
+	public static bool DoesNotHaveItems<T>([AllowNull] this T[] array) => array == null || array.LongLength == 0;
 
 	/// <summary>
 	/// Gets the total number of elements in the array.
@@ -356,7 +356,7 @@ public static class ArrayExtensions
 		}
 		else
 		{
-			return array.Length > 0;
+			return array.LongLength > 0;
 		}
 	}
 	/// <summary>
@@ -396,7 +396,7 @@ public static class ArrayExtensions
 		}
 		else
 		{
-			return array.Length == count;
+			return array.LongLength == count;
 		}
 	}
 
@@ -447,13 +447,13 @@ public static class ArrayExtensions
 	{
 		array = array.ArgumentItemsExists();
 
-		if (array.Length == 0)
+		if (array.LongLength == 0)
 		{
 			return [];
 		}
 
-		var result = new T[array.Length - 1];
-		Array.Copy(array, 1, result, 0, array.Length - 1);
+		var result = new T[array.LongLength - 1];
+		Array.Copy(array, 1, result, 0, array.LongLength - 1);
 		return result;
 	}
 
@@ -469,13 +469,13 @@ public static class ArrayExtensions
 	[Information(nameof(RemoveLast), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
 	public static T[] RemoveLast<T>([NotNull] this T[] array)
 	{
-		if (array.ArgumentNotNull().Length == 0)
+		if (array.ArgumentNotNull().LongLength == 0)
 		{
 			return [];
 		}
 
-		var result = new T[array.Length - 1];
-		Array.Copy(array, result, array.Length - 1);
+		var result = new T[array.LongLength - 1];
+		Array.Copy(array, result, array.LongLength - 1);
 		return result;
 	}
 

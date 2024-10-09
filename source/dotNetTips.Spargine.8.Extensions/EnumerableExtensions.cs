@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-22-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -61,7 +61,7 @@ public static partial class EnumerableExtensions
 	[Information(nameof(AddDistinct), author: "David McCarter", createdOn: "3/22/2023", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static IEnumerable<T> AddDistinct<T>(this IEnumerable<T> source, [NotNull] params T[] items)
 	{
-		if (source == null || items == null || items.Length == 0)
+		if (source == null || items == null || items.LongLength == 0)
 		{
 			return source;
 		}

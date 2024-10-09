@@ -4,7 +4,7 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-21-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="InternalMethods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -52,7 +52,7 @@ internal static class InternalMethods
 
 		try
 		{
-			var itemCount = array.Length;
+			var itemCount = array.LongLength;
 
 			for (var byteIndex = 0; byteIndex < itemCount; byteIndex++)
 			{
@@ -154,7 +154,7 @@ internal static class InternalMethods
 			newMemberName = $"{memberName}{ControlChars.Dot}";
 		}
 
-		var propertyCount = propertyCollection.Length;
+		var propertyCount = propertyCollection.LongLength;
 
 		for (var index = 0; index < propertyCount; index++)
 		{

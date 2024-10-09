@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-21-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -93,7 +93,7 @@ public static class FastStringBuilder
 	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string CombineStrings(bool addLineFeed = false, [NotNull] params string[] args)
 	{
-		if (args == null || args.Length == 0)
+		if (args == null || args.LongLength == 0)
 		{
 			return string.Empty;
 		}
@@ -151,12 +151,12 @@ public static class FastStringBuilder
 
 		try
 		{
-			var itemCount = args.Length;
+			var itemCount = args.LongLength;
 			for (var index = 0; index < itemCount; index++)
 			{
 				_ = sb.Append(args[index]);
 
-				if (index < args.Length - 1)
+				if (index < args.LongLength - 1)
 				{
 					_ = addLineFeed ? sb.AppendLine() : sb.Append(delimiter);
 				}
