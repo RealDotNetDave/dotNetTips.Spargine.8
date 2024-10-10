@@ -49,7 +49,7 @@ public static class UlidGenerator
 	/// <param name="chars">The character array to store the encoded characters.</param>
 	/// <param name="charIndex">The starting index in the character array.</param>
 	/// <param name="length">The number of bytes to encode.</param>
-	private static void EncodeBase32(ReadOnlySpan<byte> bytes, Span<char> chars, in int charIndex, in int length)
+	private static void EncodeBase32(in ReadOnlySpan<byte> bytes, Span<char> chars, in int charIndex, in int length)
 	{
 		var byteIndex = 0;
 		var bitIndex = 0;
