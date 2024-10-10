@@ -53,34 +53,31 @@ public static class UlidGenerator
 	{
 		var byteIndex = 0;
 		var bitIndex = 0;
-		var mask = 0x1F;
+		const int mask = 0x1F;
 
-		for (var i = 0; i < length; i++)
+		for (var index = 0; index < length; index++)
 		{
 			if (bitIndex > 3)
 			{
-				var dualByte = bytes[byteIndex] & 0xFF;
-				dualByte <<= 8;
-				if (byteIndex + 1 < bytes.Length)
-				{
-					dualByte |= bytes[byteIndex + 1] & 0xFF;
-				}
+				var dualByte = (bytes[byteIndex] << 8) | (byteIndex + 1 < bytes.Length ? bytes[byteIndex + 1] : 0);
 				dualByte >>= 16 - (bitIndex + 5);
-				chars[charIndex + i] = _base32Chars[dualByte & mask];
+				chars[charIndex + index] = _base32Chars[dualByte & mask];
 				byteIndex++;
 				bitIndex = (bitIndex + 5) % 8;
 			}
 			else
 			{
-				chars[charIndex + i] = _base32Chars[(bytes[byteIndex] >> (3 - bitIndex)) & mask];
-				bitIndex = (bitIndex + 5) % 8;
-				if (bitIndex == 0)
+				chars[charIndex + index] = _base32Chars[(bytes[byteIndex] >> (3 - bitIndex)) & mask];
+				bitIndex += 5;
+				if (bitIndex >= 8)
 				{
+					bitIndex -= 8;
 					byteIndex++;
 				}
 			}
 		}
 	}
+
 
 	/// <summary>
 	/// Generates a byte array of random bytes.
