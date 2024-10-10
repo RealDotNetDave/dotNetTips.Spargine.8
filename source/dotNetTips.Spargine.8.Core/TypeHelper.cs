@@ -122,6 +122,11 @@ public static class TypeHelper
 		{
 			return false;
 		}
+		catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+		{
+			Trace.WriteLine(ex);
+			return false;
+		}
 	}
 
 	/// <summary>
@@ -628,8 +633,10 @@ public static class TypeHelper
 	/// </summary>
 	/// <param name="file">The file to check.</param>
 	/// <returns><c>true</c> if the file is a .NET assembly; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the file does not exist.</exception>
+	/// <exception cref="ArgumentNullException">Thrown when the file argument is null.</exception>
+	/// <exception cref="FileNotFoundException">Thrown when the file does not exist.</exception>
+	/// <exception cref="IOException">Thrown when an I/O error occurs.</exception>
+	/// <exception cref="UnauthorizedAccessException">Thrown when access to the file is unauthorized.</exception>
 	[Information("Orginal code by GÉRALD BARRÉ", author: "David McCarter", createdOn: "5/20/2024", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static bool IsDotNetAssembly(FileInfo file)
 	{

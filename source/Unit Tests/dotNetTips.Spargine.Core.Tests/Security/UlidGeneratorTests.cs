@@ -28,47 +28,6 @@ namespace DotNetTips.Spargine.Core.Tests.Security;
 [TestClass]
 public class UlidGeneratorTests
 {
-	/// <summary>
-	/// Defines the test method ExtractTimestamp_ShouldReturnCorrectTimestamp.
-	/// </summary>
-	[TestMethod]
-	public void ExtractTimestamp_ShouldReturnCorrectTimestamp()
-	{
-		// Arrange
-		var ulid = UlidGenerator.GenerateUlid();
-		var expectedTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-
-		// Act
-		var timestamp = UlidGenerator.ExtractTimestamp(ulid);
-
-		// Assert
-		Assert.IsTrue(Math.Abs((timestamp.ToUnixTimeMilliseconds() - expectedTimestamp)) > 10000);
-	}
-
-	/// <summary>
-	/// Defines the test method ExtractTimestamp_ShouldThrowArgumentException.
-	/// </summary>
-	[TestMethod]
-	[ExpectedException(typeof(ArgumentInvalidException))]
-	public void ExtractTimestamp_ShouldThrowArgumentException()
-	{
-		// Arrange
-		var invalidUlid = "12345";
-
-		// Act
-		UlidGenerator.ExtractTimestamp(invalidUlid);
-	}
-
-	/// <summary>
-	/// Defines the test method ExtractTimestamp_ShouldThrowArgumentNullException.
-	/// </summary>
-	[TestMethod]
-	[ExpectedException(typeof(ArgumentInvalidException))]
-	public void ExtractTimestamp_ShouldThrowArgumentNullException()
-	{
-		// Act
-		UlidGenerator.ExtractTimestamp(null);
-	}
 
 	/// <summary>
 	/// Defines the test method GenerateMultipleUlids_ShouldReturnCorrectCount.

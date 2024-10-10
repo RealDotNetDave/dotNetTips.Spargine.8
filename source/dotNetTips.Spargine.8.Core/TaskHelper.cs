@@ -54,11 +54,7 @@ public static class TaskHelper
 	{
 		task = task.ArgumentNotNull();
 
-		return _taskFactory
-						.StartNew(task, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default)
-						.Unwrap()
-						.GetAwaiter()
-						.GetResult();
+		return _taskFactory.StartNew(task, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
 	}
 
 	/// <summary>

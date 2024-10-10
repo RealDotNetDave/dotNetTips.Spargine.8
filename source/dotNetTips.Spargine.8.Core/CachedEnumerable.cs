@@ -4,7 +4,7 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 10-09-2024
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -199,22 +199,30 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	{
 		this.CheckEnumerable();
 
-		var index = 0;
-
-		while (true)
+		for (var index = 0; TryGetItem(index, out var result); index++)
 		{
-			if (this.TryGetItem(index, out var result))
-			{
-				yield return result;
-				index++;
-			}
-			else
-			{
-				// There are no more items
-				yield break;
-			}
+			yield return result;
 		}
 	}
+
+	/// <summary>
+	/// Resets the cache and re-enumerates the underlying enumerable.
+	/// </summary>
+	public void Reset()
+	{
+		lock (this._cache)
+		{
+			this._cache.Clear();
+			this._enumerated = false;
+			this._enumerator?.Dispose();
+			this._enumerator = null;
+		}
+	}
+
+	/// <summary>
+	/// Gets the count of cached items.
+	/// </summary>
+	public int Count => this._cache.Count;
 
 	/// <summary>
 	/// The underlying enumerable sequence that is being cached.
