@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-03-2024
+// Last Modified On : 10-10-2024
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -49,7 +49,7 @@ public static class UlidGenerator
 	/// <param name="chars">The character array to store the encoded characters.</param>
 	/// <param name="charIndex">The starting index in the character array.</param>
 	/// <param name="length">The number of bytes to encode.</param>
-	private static void EncodeBase32(byte[] bytes, char[] chars, int charIndex, int length)
+	private static void EncodeBase32(ReadOnlySpan<byte> bytes, Span<char> chars, in int charIndex, in int length)
 	{
 		var byteIndex = 0;
 		var bitIndex = 0;
@@ -77,7 +77,6 @@ public static class UlidGenerator
 			}
 		}
 	}
-
 
 	/// <summary>
 	/// Generates a byte array of random bytes.
@@ -135,10 +134,10 @@ public static class UlidGenerator
 	[Information("Generates a new ULID.", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.New)]
 	public static string GenerateUlid()
 	{
-		var timestamp = GetTimestamp();
-		var randomBytes = GetRandomBytes();
+		var timestamp = GetTimestamp().AsSpan();
+		var randomBytes = GetRandomBytes().AsSpan();
 
-		var ulidChars = new char[26];
+		var ulidChars = new char[26].AsSpan();
 
 		EncodeBase32(timestamp, ulidChars, 0, _timestampLength);
 		EncodeBase32(randomBytes, ulidChars, _timestampLength, _randomLength);
