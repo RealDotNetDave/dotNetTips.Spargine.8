@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 10-13-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -1077,11 +1077,6 @@ public static class StringExtensions
 	[Information(nameof(StartsWithOrdinal), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static bool StartsWithOrdinal([NotNull] this string input, [NotNull] string inputToCompare)
 	{
-		if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(inputToCompare))
-		{
-			return false;
-		}
-
 		return input.StartsWith(inputToCompare, StringComparison.Ordinal);
 	}
 

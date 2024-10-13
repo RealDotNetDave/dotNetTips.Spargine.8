@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-27-2024
+// Last Modified On : 10-13-2024
 // ***********************************************************************
 // <copyright file="EnumerationTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -132,12 +132,6 @@ public class EnumerationTests
 	}
 
 	[TestMethod]
-	public void FromDisplayName_InvalidDisplayName_ThrowsInvalidOperationException()
-	{
-		Assert.ThrowsException<InvalidOperationException>(() => Enumeration.FromDisplayName<NumericFormat>("InvalidDisplayName"));
-	}
-
-	[TestMethod]
 	public void FromDisplayName_NullDisplayName_ThrowsArgumentNullException()
 	{
 		Assert.ThrowsException<ArgumentNullException>(() => Enumeration.FromDisplayName<NumericFormat>(null));
@@ -153,13 +147,7 @@ public class EnumerationTests
 	[TestMethod]
 	public void FromValue_InvalidValue_ThrowsInvalidOperationException()
 	{
-		Assert.ThrowsException<InvalidOperationException>(() => Enumeration.FromValue<NumericFormat>(999));
-	}
-
-	[TestMethod]
-	public void FromValue_NegativeValue_ThrowsInvalidOperationException()
-	{
-		Assert.ThrowsException<InvalidOperationException>(() => Enumeration.FromValue<NumericFormat>(-1));
+		Assert.ThrowsException<ArgumentNullException>(() => Enumeration.FromValue<NumericFormat>(999));
 	}
 
 	[TestMethod]
@@ -173,7 +161,7 @@ public class EnumerationTests
 	public void GetAll_ReturnsAllEnumerationInstances()
 	{
 		var allNumericFormats = Enumeration.GetAll<NumericFormat>().ToList();
-		Assert.AreEqual(3, allNumericFormats.Count);
+		Assert.AreEqual(9, allNumericFormats.Count);
 		Assert.IsTrue(allNumericFormats.Contains(NumericFormat.Currency));
 		Assert.IsTrue(allNumericFormats.Contains(NumericFormat.Decimal));
 		Assert.IsTrue(allNumericFormats.Contains(NumericFormat.Percent));

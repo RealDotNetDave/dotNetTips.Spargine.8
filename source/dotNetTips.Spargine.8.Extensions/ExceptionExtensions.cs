@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 10-13-2024
 // ***********************************************************************
 // <copyright file="ExceptionExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -183,7 +183,15 @@ public static class ExceptionExtensions
 	{
 		exception = exception.ArgumentNotNull();
 
-		return ReferenceEquals(exception.GetType(), typeof(T)) ? exception as T : exception.InnerException.TraverseFor<T>();
-	}
+		while (exception != null)
+		{
+			if (exception is T targetException)
+			{
+				return targetException;
+			}
+			exception = exception.InnerException;
+		}
 
+		return null;
+	}
 }

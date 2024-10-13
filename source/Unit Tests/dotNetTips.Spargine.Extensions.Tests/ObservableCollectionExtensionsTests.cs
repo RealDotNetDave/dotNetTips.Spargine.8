@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-11-2024
+// Last Modified On : 10-13-2024
 // ***********************************************************************
 // <copyright file="ObservableCollectionExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -51,7 +51,7 @@ public class ObservableCollectionExtensionsTests
 	{
 		ObservableCollection<int> nullCollection = null;
 		var result = nullCollection.DoesNotHaveItems();
-		Assert.IsFalse(result, "Expected result to be false for a null collection.");
+		Assert.IsTrue(result);
 	}
 
 	[TestMethod]

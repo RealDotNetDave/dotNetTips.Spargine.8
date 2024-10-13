@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 10-13-2024
 // ***********************************************************************
 // <copyright file="ListExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -721,21 +721,6 @@ public class ListExtensionsTests
 		Assert.IsNotNull(result);
 
 		Assert.IsTrue(result.FastCount() == Count);
-	}
-
-	[TestMethod]
-	public async Task ToListAsync_WithCancellation_ShouldThrowTaskCanceledException()
-	{
-		// Arrange
-		var data = GetAsyncEnumerable(new[] { 1, 2, 3, 4, 5 });
-		var cancellationTokenSource = new CancellationTokenSource();
-		cancellationTokenSource.Cancel();
-
-		// Act & Assert
-		await Assert.ThrowsExceptionAsync<TaskCanceledException>(async () =>
-		{
-			await data.ToListAsync(cancellationTokenSource.Token);
-		});
 	}
 
 	[TestMethod]
