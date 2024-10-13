@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 10-13-2024
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -61,7 +61,7 @@ public static class EncryptionHelper
 	}
 
 	/// <summary>
-	/// Decrypts array to string using AES security.
+	/// Decrypts a string using AES security.
 	/// </summary>
 	/// <param name="cipherText">The cipher text.</param>
 	/// <param name="key">The secret key.</param>
