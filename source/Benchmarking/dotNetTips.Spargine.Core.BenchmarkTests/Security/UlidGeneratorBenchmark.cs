@@ -24,17 +24,6 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Security;
 
 public class UlidGeneratorBenchmark : Benchmark
 {
-
-	[Benchmark(Description = nameof(UlidGenerator.ExtractTimestamp))]
-	[BenchmarkCategory(Categories.New)]
-	public void ExtractTimestamp()
-	{
-		var ulid = UlidGenerator.GenerateUlid();
-		var result = UlidGenerator.ExtractTimestamp(ulid);
-
-		Consume(result);
-	}
-
 	[Benchmark(Description = nameof(RandomData.GenerateKey))]
 	[BenchmarkCategory(Categories.New, Categories.ForComparison)]
 	public void GenerateKey()
