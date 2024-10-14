@@ -13,8 +13,6 @@
 // ***********************************************************************
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
-using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -28,9 +26,6 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests;
 [BenchmarkCategory("Work in Progress")]
 public class TestingBenchmark : TinyCollectionBenchmark
 {
-
-	private Person<Address>[] _peopleRef;
-	private Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] _peopleVal;
 
 	//[Benchmark(Description = "Clone Val")]
 	//[BenchmarkCategory(Categories.New)]
@@ -50,28 +45,9 @@ public class TestingBenchmark : TinyCollectionBenchmark
 	//	this.Consume(result);
 	//}
 
-	[Benchmark(Description = "AddIf() Ref")]
-	[BenchmarkCategory(Categories.New)]
-	public void AddIf01()
-	{
-		var result = this._peopleRef.AddIf<Person<Address>>(this.PersonRef01, this._peopleRef.Length > 1);
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = "AddIf() Val")]
-	[BenchmarkCategory(Categories.New)]
-	public void AddIf02()
-	{
-		var result = this._peopleVal.AddIf(this.PersonVal01, this._peopleVal.Length > 1);
-
-		this.Consume(result);
-	}
-
 	public override void Setup()
 	{
-		this._peopleVal = this.GetPersonValArray();
-		this._peopleRef = this.GetPersonRefArray();
+
 	}
 
 }

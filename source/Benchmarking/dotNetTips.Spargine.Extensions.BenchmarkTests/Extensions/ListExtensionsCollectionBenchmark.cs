@@ -90,10 +90,11 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.CopyToCollection))]
-	[Obsolete]
 	public void CopyToList_CopyToCollection()
 	{
+#pragma warning disable CS0618 // Type or member is obsolete
 		var result = this._peopleRefList.CopyToCollection();
+#pragma warning restore CS0618 // Type or member is obsolete
 
 		this.Consume(result);
 	}

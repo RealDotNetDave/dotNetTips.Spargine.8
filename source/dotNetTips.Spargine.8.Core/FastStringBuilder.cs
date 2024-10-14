@@ -129,17 +129,14 @@ public static class FastStringBuilder
 	public static string ConcatStrings(char delimiter = ControlChars.Comma, bool addLineFeed = false, [NotNull] params string[] args) => ConcatStrings(delimiter.ToString(), addLineFeed, args);
 
 	/// <summary>
-	/// Concatenates an array of strings using a specified delimiter, optionally adding a line feed after each element.
-	/// This method leverages an object pool for <see cref="StringBuilder"/> to improve performance and reduce memory allocations.
+	/// Concats the strings.
 	/// </summary>
-	/// <param name="delimiter">The delimiter used to separate each string. If <c>null</c>, a comma (",") is used as the default delimiter.</param>
-	/// <param name="addLineFeed">If set to <c>true</c>, a line feed is added after each element, ignoring the delimiter.</param>
-	/// <param name="args">The array of strings to concatenate.</param>
-	/// <returns>A concatenated string with elements separated by the specified delimiter or line feeds based on the <paramref name="addLineFeed"/> parameter.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null.</exception>
-	/// <remarks>Example output: <code>r^wQTNvT, HcETQ, COtc\\G[U, loUR_SbL, o_HYYskfM"</code></remarks>
+	/// <param name="delimiter">The delimiter.</param>
+	/// <param name="addLineFeed">if set to <c>true</c> [add line feed].</param>
+	/// <param name="args">The arguments.</param>
+	/// <returns>System.String.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineStringConcatenation")]
+	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineStringConcatenation")]
 	public static string ConcatStrings(string delimiter = ",", bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (delimiter == null)
