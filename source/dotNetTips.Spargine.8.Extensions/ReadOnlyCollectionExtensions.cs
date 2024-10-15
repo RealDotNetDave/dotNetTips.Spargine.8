@@ -4,7 +4,7 @@
 // Created          : 04-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-16-2024
+// Last Modified On : 10-15-2024
 // ***********************************************************************
 // <copyright file="ReadOnlyCollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -57,7 +57,7 @@ public static class ReadOnlyCollectionExtensions
 	/// This method computes the hash code by aggregating the hash codes of the elements in the collection.
 	/// It ensures that the collection is not null before proceeding with the computation.
 	/// </remarks>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.NeedsDocumentation)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.NeedsDocumentation)]
 	public static int GenerateHashCode<T>([NotNull] this ReadOnlyCollection<T> collection)
 	{
 		collection = collection.ArgumentNotNull();

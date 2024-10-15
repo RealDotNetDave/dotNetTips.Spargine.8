@@ -4,7 +4,7 @@
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 10-15-2024
 // ***********************************************************************
 // <copyright file="ImmutableArrayExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -104,8 +104,7 @@ public static class ImmutableArrayExtensions
 	/// This method generates a sequence of random indices using <see cref="RandomNumberGenerator"/> to shuffle the array elements.
 	/// If the array does not contain any items, it is returned unchanged.
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Shuffle), "David McCarter", "8/27/2020", "1/21/2020", BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Shuffle), "David McCarter", "8/27/2020", "1/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ImmutableArray<T> Shuffle<T>(this ImmutableArray<T> list) => list.DoesNotHaveItems() ? list : [.. list.OrderBy(_ => RandomNumberGenerator.GetInt32(int.MinValue, int.MaxValue))];
 
 }
