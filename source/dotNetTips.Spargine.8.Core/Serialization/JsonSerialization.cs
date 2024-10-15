@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 10-15-2024
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -125,7 +125,7 @@ public static class JsonSerialization
 	}
 
 	/// <summary>
-	/// Deserializes the specified JSON string into an object of type <typeparamref name="TResult"/>.
+	/// Converts a specified JSON string into its corresponding object representation.
 	/// </summary>
 	/// <typeparam name="TResult">The type of the object to deserialize to.</typeparam>
 	/// <param name="json">The JSON string to deserialize.</param>
@@ -139,7 +139,7 @@ public static class JsonSerialization
 		throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
 
 	/// <summary>
-	/// Deserializes JSON content from a specified file into an object of type <typeparamref name="TResult"/>.
+	/// Reads JSON content from a specified file and deserializes it into an object.
 	/// </summary>
 	/// <typeparam name="TResult">The type of the object to deserialize the JSON content into.</typeparam>
 	/// <param name="file">The file containing the JSON content to deserialize.</param>
@@ -177,7 +177,7 @@ public static class JsonSerialization
 	}
 
 	/// <summary>  
-	/// Loads a collection of objects from a JSON string.  
+	/// Reads JSON content from a specified file and deserializes it into an object.   
 	/// </summary>  
 	/// <typeparam name="T">The type of objects to deserialize.</typeparam>  
 	/// <param name="json">The JSON string containing the collection.</param>  
@@ -185,7 +185,7 @@ public static class JsonSerialization
 	/// <returns>An array of deserialized objects of type <typeparamref name="T"/>.</returns>  
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than 1.</exception>  
 	/// <exception cref="JsonException">Thrown if the JSON is invalid or cannot be deserialized to the specified type.</exception>  
-	[Information(nameof(LoadCollectionFromJson), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(LoadCollectionFromJson), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static T[] LoadCollectionFromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json, int count)
 	{
 		json = json.ArgumentNotNullOrEmpty();
@@ -206,7 +206,7 @@ public static class JsonSerialization
 	}
 
 	/// <summary>
-	/// Loads a collection of objects from a JSON string.
+	/// Reads JSON content from a specified file and deserializes it into an object.
 	/// </summary>
 	/// <typeparam name="T">The type of objects to deserialize.</typeparam>
 	/// <param name="json">The JSON string containing the collection.</param>
@@ -215,7 +215,7 @@ public static class JsonSerialization
 	/// <returns>An array of deserialized objects of type <typeparamref name="T"/>.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than 1.</exception>
 	/// <exception cref="JsonException">Thrown if the JSON is invalid or cannot be deserialized to the specified type.</exception>
-	[Information(nameof(LoadCollectionFromJson), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(LoadCollectionFromJson), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static T[] LoadCollectionFromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json, int count, JsonTypeInfo info)
 	{
 		json = json.ArgumentNotNullOrEmpty();
@@ -237,7 +237,7 @@ public static class JsonSerialization
 	}
 
 	/// <summary>
-	/// Serializes the specified object to a JSON string.
+	/// Serializes an object into its JSON string representation. 
 	/// </summary>
 	/// <param name="obj">The object to serialize.</param>
 	/// <returns>A JSON string representation of the object.</returns>
@@ -249,12 +249,11 @@ public static class JsonSerialization
 	{
 		obj = obj.ArgumentNotNull();
 
-		//return JsonSerializer.Serialize(obj, _options);
 		return JsonSerializer.Serialize(obj);
 	}
 
 	/// <summary>
-	/// Serializes the specified object to a JSON file.
+	/// Serializes an object and saves it to a specified JSON.
 	/// </summary>
 	/// <param name="obj">The object to serialize.</param>
 	/// <param name="file">The file information where the JSON content will be written.</param>
@@ -265,7 +264,6 @@ public static class JsonSerialization
 	public static void SerializeToFile([NotNull] object obj, [NotNull] FileInfo file)
 	{
 		obj = obj.ArgumentNotNull();
-
 		file = file.ArgumentNotNull();
 
 		file.Directory?.Create();
