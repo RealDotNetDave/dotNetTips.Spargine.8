@@ -4,7 +4,7 @@
 // Created          : 10-03-2024
 //
 // Last Modified By : david
-// Last Modified On : 10-03-2024
+// Last Modified On : 10-15-2024
 // ***********************************************************************
 // <copyright file="InMemoryCacheBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -16,6 +16,7 @@ using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core.Cache;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
+using Address = DotNetTips.Spargine.Tester.Models.RefTypes.Address;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -23,6 +24,8 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Cache;
 
 public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 {
+	private InMemoryCache _cache;
+	private string _cacheId;
 	private Person<Address>[] _personRefArray;
 
 	[Benchmark(Description = nameof(InMemoryCache.AddCacheItem) + ": DateTimeOffset")]
@@ -71,9 +74,20 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 		this.Consume(cache.Cache.Count);
 	}
 
+	[Benchmark(Description = nameof(InMemoryCache.GetCacheItem))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void GetCacheItem()
+	{
+		this.Consume(this._cache.GetCacheItem<Person<Address>>(this._cacheId));
+	}
+
 	public override void Setup()
 	{
 		base.Setup();
 		this._personRefArray = this.GetPersonRefArray();
+		this._cache = InMemoryCache.Instance;
+		this._cache.AddCacheItem(this.PersonRef01.Id, this.PersonRef01);
+		this._cacheId = this.PersonRef01.Id;
+
 	}
 }

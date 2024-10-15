@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-08-2024
+// Last Modified On : 10-15-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Tester.Models.ValueTypes;
+using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -36,11 +36,12 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 {
 
-	private IEnumerable<Coordinate> _coordinateValEnumerable;
-	private IEnumerable<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefEnumerable;
-	private IEnumerable<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefEnumerableToAdd;
-	private List<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefList;
-	private List<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefListDups;
+	private IEnumerable<Spargine.Tester.Models.ValueTypes.Coordinate> _coordinateValEnumerable;
+	private List<PersonRecord> _personRecordList;
+	private IEnumerable<Person<Address>> _personRefEnumerable;
+	private IEnumerable<Person<Address>> _personRefEnumerableToAdd;
+	private List<Person<Address>> _personRefList;
+	private List<Person<Address>> _personRefListDups;
 
 	private static bool AnyWithPredicate<T>([NotNull] IEnumerable<T> list, [NotNull] Func<T, bool> predicate) => list.Any(predicate);
 	private static int CountWithPredicate<T>([NotNull] IEnumerable<T> list, [NotNull] Func<T, bool> predicate) => list.Count(predicate);
@@ -186,7 +187,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	[Benchmark(Description = nameof(EnumerableExtensions.DoesNotHaveItems))]
 	public void DoesNotHaveItems()
 	{
-		var people = new List<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>>().AsEnumerable();
+		var people = new List<Person<Address>>().AsEnumerable();
 
 		var result = people.DoesNotHaveItems();
 
@@ -209,6 +210,17 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	public void FastAnyWithPredicate()
 	{
 		var result = this._personRefEnumerable.FastAny(p => p.LastName.Contains('a', StringComparison.CurrentCulture));
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(EnumerableExtensions.FastModifyCollection))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void FastModifyCollection()
+	{
+		var people = this._personRecordList;
+
+		var result = people.FastModifyCollection(person => person with { Email = "TestData" });
 
 		this.Consume(result);
 	}
@@ -290,7 +302,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		var people = this._personRefEnumerable;
 		var comparer = new PersonComparer();
-		var result = people.IndexOf<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>>(people.Last(), comparer);
+		var result = people.IndexOf<Person<Address>>(people.Last(), comparer);
 
 		this.Consume(result);
 	}
@@ -298,7 +310,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	[Benchmark(Description = nameof(EnumerableExtensions.IsNullOrEmpty))]
 	public void IsNullOrEmpty()
 	{
-		var people = new List<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>>().AsEnumerable();
+		var people = new List<Person<Address>>().AsEnumerable();
 
 		var result = people.IsNullOrEmpty();
 
@@ -384,6 +396,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		this._personRefEnumerable = this.GetPersonRefCollection().AsEnumerable();
 		this._personRefList = [.. this.GetPersonRefCollection()];
+		this._personRecordList = [.. this.GetPersonRecordCollection()];
 		this._coordinateValEnumerable = this.GetCoordinateValArray().AsEnumerable();
 
 		var peopleToAdd = this._personRefEnumerable.ToList();

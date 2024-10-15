@@ -9,7 +9,7 @@
 // <copyright file="Program.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
 // </copyright>
-// <summary></summary>
+// <summary>Currently, these benchmark tests take about 12.5 hours to complete.</summary>
 // ***********************************************************************
 using System;
 using BenchmarkDotNet.Configs;
