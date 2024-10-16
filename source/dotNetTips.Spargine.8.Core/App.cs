@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-29-2024
+// Last Modified On : 10-16-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -132,7 +132,7 @@ public static class App
 	}
 
 	/// <summary>
-	/// Changes the UI culture.
+	/// Modifies the UI culture in the application, providing localized user interface adjustments.
 	/// </summary>
 	/// <param name="cultureName">Name of the culture.</param>
 	/// <example>
@@ -178,7 +178,7 @@ public static class App
 	public static ReadOnlyCollection<string> GetCultureNames(CultureTypes cultureType = CultureTypes.AllCultures) => _cultureNames ??= CultureInfo.GetCultures(cultureType).OrderBy(p => p.Name).Select(c => c.Name).ToList().AsReadOnly();
 
 	/// <summary>
-	/// Gets the environment variables as an immutable dictionary.
+	/// Fetches the environment variables for the current process.
 	/// </summary>
 	/// <returns>An immutable dictionary containing all environment variables where the key is the variable name and the value is its value.</returns>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
@@ -256,7 +256,7 @@ public static class App
 	}
 
 	/// <summary>
-	/// Kills the current process.
+	/// Terminates the current process instantly, useful in critical failure scenarios.
 	/// </summary>
 	/// <remarks>This method retrieves the name of the process that started the currently executing application,
 	/// removes the file extension to get the process name, and then calls <see cref="KillProcess" />
@@ -265,7 +265,7 @@ public static class App
 	public static void Kill() => KillProcess(Path.GetFileNameWithoutExtension(AppContext.BaseDirectory));
 
 	/// <summary>
-	/// Calculates the maximum degree of parallelism based on the number of processors.
+	/// Calculates the maximum number of tasks that can run concurrently, based on the system’s processor count.
 	/// </summary>
 	/// <returns>The maximum degree of parallelism.</returns>
 	/// <remarks>This method calculates the maximum degree of parallelism by taking 75% of the processor count, doubling it, and rounding up to the nearest whole number.
@@ -273,7 +273,7 @@ public static class App
 	public static int MaxDegreeOfParallelism() => Convert.ToInt32(Math.Ceiling(Environment.ProcessorCount * 0.75 * 2.0));
 
 	/// <summary>
-	/// Reboots the computer.
+	/// Reboots the system programmatically.
 	/// </summary>
 	/// <exception cref="PlatformNotSupportedException">Thrown when the operating system is not supported.</exception>
 	[Information(Status = Status.New, Documentation = "ADD URL")]
@@ -294,7 +294,7 @@ public static class App
 	}
 
 	/// <summary>
-	/// Loads a list of the running assembly's referenced assemblies.
+	/// Loads a list of all assemblies referenced by the running application, aiding in diagnostics or reflective operations.
 	/// </summary>
 	/// <returns>A read-only collection of strings representing the full names of all assemblies referenced by the running assembly.</returns>
 	/// <example>Example usage:
@@ -309,7 +309,7 @@ public static class App
 	public static ReadOnlyCollection<string> ReferencedAssemblies() => Assembly.GetEntryAssembly().GetReferencedAssemblies().Select(a => a.ToString()).ToList().AsReadOnly();
 
 	/// <summary>
-	/// Restarts the application with administrator privileges.
+	/// Restarts the application with elevated administrative privileges, if required by the task at hand.
 	/// </summary>
 	/// <remarks>If the current user is not an administrator, this method will attempt to restart the application with administrator privileges.
 	/// It prompts the user for permission to run as an administrator. If granted, the application restarts; otherwise, it exits.
@@ -365,7 +365,7 @@ public static class App
 	public static int CurrentThreadId => Environment.CurrentManagedThreadId;
 
 	/// <summary>
-	/// Gets the current UI culture of the application.
+	/// Retrieves the current UI culture used by the application for localization.
 	/// </summary>
 	/// <value>The current UI culture.</value>
 	/// <remarks>This property provides access to the current UI culture used by the application. It is a wrapper around <see cref="CultureInfo.CurrentUICulture" />.
@@ -374,7 +374,7 @@ public static class App
 	public static CultureInfo CurrentUICulture => CultureInfo.CurrentUICulture;
 
 	/// <summary>
-	/// Gets a string that indicates the name of the .NET installation on which an app is running.
+	/// Provides a string describing the .NET installation running the application, useful for ensuring compatibility.
 	/// </summary>
 	/// <value>The framework description.</value>
 	/// <example>Example output: ".NET 5.0.6"</example>
@@ -382,14 +382,14 @@ public static class App
 	public static string FrameworkDescription => RuntimeInformation.FrameworkDescription;
 
 	/// <summary>
-	/// Gets the installed UI culture.
+	/// Returns the default UI culture installed on the system.
 	/// </summary>
 	/// <value>The installed UI culture.</value>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static CultureInfo InstalledUICulture => CultureInfo.InstalledUICulture;
 
 	/// <summary>
-	/// Gets the platform architecture on which the current app is running.
+	/// Describes the architecture (e.g., x86, x64) of the operating system hosting the application.
 	/// </summary>
 	/// <value>The operating system platform.</value>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
@@ -410,14 +410,20 @@ public static class App
 	public static Architecture ProcessArchitecture => RuntimeInformation.ProcessArchitecture;
 
 	/// <summary>
-	/// Gets the unique identifier for the current process.
+	/// Provides the unique identifier for the current process, useful for diagnostics and logging.
 	/// </summary>
 	/// <value>The process identifier.</value>
-	[Information(nameof(ProcessId), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
+	/// <example>Example usage:
+	/// <code>
+	/// var processId = App.ProcessId;
+	/// Console.WriteLine(processId);
+	/// </code>
+	/// This will output the unique identifier of the current process.
+	/// </example>
 	public static int ProcessId => Environment.ProcessId;
 
 	/// <summary>
-	/// Gets the name of the current process.
+	/// The name of the process currently running, aiding in identification and tracking.
 	/// </summary>
 	/// <value>The name of the process.</value>
 	/// <example>Example usage:
@@ -438,17 +444,23 @@ public static class App
 	public static string ProcessPath => Environment.ProcessPath;
 
 	/// <summary>
-	/// Gets the stack trace.
+	/// Gets the stack trace for the current thread.
 	/// </summary>
-	/// <value>The stack trace.</value>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	/// <value>A string that describes the stack trace for the current thread.</value>
+	/// <remarks>
+	/// This property provides a string representation of the stack trace, which can be useful for debugging purposes.
+	/// It includes the sequence of method calls that led to the current point of execution.
+	/// </remarks>
 	public static string StackTrace => Environment.StackTrace;
 
 	/// <summary>
-	/// Gets the working set.
+	/// Gets the working set of the current process.
 	/// </summary>
-	/// <value>The working set.</value>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	/// <value>The amount of physical memory mapped to the process context.</value>
+	/// <remarks>
+	/// This property provides the size of the working set, which is the set of memory pages currently visible to the process in physical RAM.
+	/// It includes both shared and private data, such as the pages containing all the instructions that the process executes, as well as the pages containing the process's data.
+	/// </remarks>
 	public static long WorkingSet => Environment.WorkingSet;
 
 }
