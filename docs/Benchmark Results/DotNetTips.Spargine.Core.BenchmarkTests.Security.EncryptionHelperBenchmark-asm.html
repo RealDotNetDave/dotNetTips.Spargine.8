@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang='en'><head><meta charset='utf-8' /><head>
-<title>Pretty Output of DisassemblyDiagnoser for DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark-20240727-143544</title>
+<title>Pretty Output of DisassemblyDiagnoser for DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark-20241015-173739</title>
 
 <style type="text/css">
     pre { margin: 0px; }
@@ -48,7 +48,7 @@
         }
     });
 });</script>
-<h2>.NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2</h2>
+<h2>.NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</h2>
 <table><tbody>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.AesDecrypt()</th><th></th></tr>
 <tr class="">
@@ -68,7 +68,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,[rbx+120]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A72F180]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesEncrypt(System.String, Byte[], Byte[])</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF993F348]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesEncrypt(System.String, Byte[], Byte[])</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
 </tr><tr class="">
@@ -181,54 +181,58 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>cmp       ecx,100</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td id="2" class="reference" data-reference="2_M01_L04"><a href="#2_M01_L04"><pre><code>jae       short M01_L04</pre></code></a></td>
+<td></td><td id="2" class="reference" data-reference="2_M01_L03"><a href="#2_M01_L03"><pre><code>jae       short M01_L03</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rax,7FFF99282C20</pre></code></td>
+<td></td><td><pre><code>mov       ecx,ecx</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>mov       rax,7FFC58492C38</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>test      byte ptr [rcx+rax],80</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="2" class="reference" data-reference="2_M01_L69"><a href="#2_M01_L69"><pre><code>jne       near ptr M01_L69</pre></code></a></td>
+</tr><tr class="evenMap">
+<td></td><td id="2" class="reference" data-reference="2_M01_L04"><a href="#2_M01_L04"><pre><code>jmp       short M01_L04</pre></code></a></td>
 </tr><tr class="">
 <td id="2_M01_L03" class="label" data-label="2_M01_L03"><pre><code>M01_L03</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>mov       ecx,[rdi+8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9DC5800]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>dec       ecx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>cmp       ecx,[rdi+8]</pre></code></td>
-</tr><tr class="">
-<td></td><td id="2" class="reference" data-reference="2_M01_L72"><a href="#2_M01_L72"><pre><code>jae       near ptr M01_L72</pre></code></a></td>
-</tr><tr class="">
-<td></td><td><pre><code>movzx     ecx,word ptr [rdi+rcx*2+0C]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>cmp       ecx,100</pre></code></td>
-</tr><tr class="">
-<td></td><td id="2" class="reference" data-reference="2_M01_L05"><a href="#2_M01_L05"><pre><code>jae       short M01_L05</pre></code></a></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rax,7FFF99282C20</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>test      byte ptr [rcx+rax],80</pre></code></td>
+<td></td><td><pre><code>test      eax,eax</pre></code></td>
 </tr><tr class="">
 <td></td><td id="2" class="reference" data-reference="2_M01_L69"><a href="#2_M01_L69"><pre><code>jne       near ptr M01_L69</pre></code></a></td>
-</tr><tr class="">
-<td></td><td id="2" class="reference" data-reference="2_M01_L06"><a href="#2_M01_L06"><pre><code>jmp       short M01_L06</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="2_M01_L04" class="label" data-label="2_M01_L04"><pre><code>M01_L04</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3ABB7768]</pre></code></td>
+<td></td><td><pre><code>mov       ecx,[rdi+8]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>test      eax,eax</pre></code></td>
+<td></td><td><pre><code>dec       ecx</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>cmp       ecx,[rdi+8]</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td id="2" class="reference" data-reference="2_M01_L72"><a href="#2_M01_L72"><pre><code>jae       near ptr M01_L72</pre></code></a></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>movzx     ecx,word ptr [rdi+rcx*2+0C]</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>cmp       ecx,100</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td id="2" class="reference" data-reference="2_M01_L05"><a href="#2_M01_L05"><pre><code>jae       short M01_L05</pre></code></a></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>mov       ecx,ecx</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>mov       rax,7FFC58492C38</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>test      byte ptr [rcx+rax],80</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="2" class="reference" data-reference="2_M01_L69"><a href="#2_M01_L69"><pre><code>jne       near ptr M01_L69</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td id="2" class="reference" data-reference="2_M01_L03"><a href="#2_M01_L03"><pre><code>jmp       short M01_L03</pre></code></a></td>
+<td></td><td id="2" class="reference" data-reference="2_M01_L06"><a href="#2_M01_L06"><pre><code>jmp       short M01_L06</pre></code></a></td>
 </tr><tr class="">
 <td id="2_M01_L05" class="label" data-label="2_M01_L05"><pre><code>M01_L05</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3ABB7768]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9DC5800]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>test      eax,eax</pre></code></td>
 </tr><tr class="">
@@ -254,7 +258,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rax,255E2717178</pre></code></td>
+<td></td><td><pre><code>mov       rax,272D3927178</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rcx+10],rax</pre></code></td>
 </tr><tr class="">
@@ -282,7 +286,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       dword ptr [r14+2C],2</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,21554800D78</pre></code></td>
+<td></td><td><pre><code>mov       rcx,23241C05B38</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r15,[rcx]</pre></code></td>
 </tr><tr class="">
@@ -336,14 +340,14 @@
 <td id="2_M01_L09" class="label" data-label="2_M01_L09"><pre><code>M01_L09</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="2" class="reference" data-reference="2_M01_L11"><a href="#2_M01_L11"><pre><code>jmp       short M01_L11</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="2_M01_L10" class="label" data-label="2_M01_L10"><pre><code>M01_L10</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="2_M01_L11" class="label" data-label="2_M01_L11"><pre><code>M01_L11</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -354,7 +358,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_ASSIGN_REF</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,21554800D80</pre></code></td>
+<td></td><td><pre><code>mov       rcx,23241C05B40</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r15,[rcx]</pre></code></td>
 </tr><tr class="">
@@ -408,14 +412,14 @@
 <td id="2_M01_L13" class="label" data-label="2_M01_L13"><pre><code>M01_L13</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="2" class="reference" data-reference="2_M01_L15"><a href="#2_M01_L15"><pre><code>jmp       short M01_L15</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="2_M01_L14" class="label" data-label="2_M01_L14"><pre><code>M01_L14</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="2_M01_L15" class="label" data-label="2_M01_L15"><pre><code>M01_L15</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -458,7 +462,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A20</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0AE0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -466,7 +470,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A28</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0AE8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -474,7 +478,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A30</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0AF0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -579,7 +583,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,r12d</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A40</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0B00</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="evenMap">
@@ -593,7 +597,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA94660]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA4660]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -619,13 +623,13 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA94048]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA4048]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A33CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF953CED0]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="evenMap">
@@ -644,7 +648,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA94660]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA4660]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="">
@@ -670,13 +674,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA94048]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA4048]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,r15</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A33CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF953CED0]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,r15</pre></code></td>
 </tr><tr class="">
@@ -685,7 +689,7 @@
 <td id="2_M01_L20" class="label" data-label="2_M01_L20"><pre><code>M01_L20</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A4EE9A0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF96FE9D0]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>int       3</pre></code></td>
 </tr><tr class="">
@@ -701,7 +705,7 @@
 <td id="2_M01_L22" class="label" data-label="2_M01_L22"><pre><code>M01_L22</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A4EE9B8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF96FE9E8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>int       3</pre></code></td>
 </tr><tr class="">
@@ -710,20 +714,20 @@
 <tr class="">
 <td></td><td><pre><code>mov       ecx,1D75</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A1E4000</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF93E4000</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A5166E8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF97266E8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>int       3</pre></code></td>
 </tr><tr class="evenMap">
 <td id="2_M01_L24" class="label" data-label="2_M01_L24"><pre><code>M01_L24</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>mov       rbx,255E2717178</pre></code></td>
+<td></td><td><pre><code>mov       rbx,272D3927178</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="2" class="reference" data-reference="2_M01_L61"><a href="#2_M01_L61"><pre><code>jmp       near ptr M01_L61</pre></code></a></td>
 </tr><tr class="">
@@ -743,13 +747,13 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA94C90]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA4C90]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A33CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF953CED0]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="evenMap">
@@ -764,13 +768,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA94AC8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA4AC8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r14,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       ecx,4503</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A86A858</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF9A7B6E0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="">
@@ -780,7 +784,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A33F750]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF953F750]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="">
@@ -791,7 +795,7 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rbx</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A58</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0B18</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="evenMap">
@@ -802,7 +806,7 @@
 <td id="2_M01_L29" class="label" data-label="2_M01_L29"><pre><code>M01_L29</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA94AF8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA4AF8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
@@ -814,7 +818,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A60</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0B20</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -822,13 +826,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA94030]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA4030]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A33CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF953CED0]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="">
@@ -837,7 +841,7 @@
 <td id="2_M01_L30" class="label" data-label="2_M01_L30"><pre><code>M01_L30</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>mov       rbx,255E2717178</pre></code></td>
+<td></td><td><pre><code>mov       rbx,272D3927178</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="2" class="reference" data-reference="2_M01_L42"><a href="#2_M01_L42"><pre><code>jmp       near ptr M01_L42</pre></code></a></td>
 </tr><tr class="">
@@ -850,13 +854,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA94B10]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA4B10]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       ecx,44F5</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A86A858</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF9A7B6E0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="">
@@ -866,7 +870,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A33F750]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF953F750]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
@@ -886,7 +890,7 @@
 <td id="2_M01_L33" class="label" data-label="2_M01_L33"><pre><code>M01_L33</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A48</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0B08</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -904,14 +908,14 @@
 <td id="2_M01_L35" class="label" data-label="2_M01_L35"><pre><code>M01_L35</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="2" class="reference" data-reference="2_M01_L37"><a href="#2_M01_L37"><pre><code>jmp       short M01_L37</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="2_M01_L36" class="label" data-label="2_M01_L36"><pre><code>M01_L36</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="2_M01_L37" class="label" data-label="2_M01_L37"><pre><code>M01_L37</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -1000,7 +1004,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,[rbp-0C8]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,[rbp-98]</pre></code></td>
 </tr><tr class="evenMap">
@@ -1017,7 +1021,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rbx</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A50</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0B10</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="evenMap">
@@ -1045,7 +1049,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A38</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0AF8</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="evenMap">
@@ -1125,14 +1129,14 @@
 <td id="2_M01_L46" class="label" data-label="2_M01_L46"><pre><code>M01_L46</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="2" class="reference" data-reference="2_M01_L48"><a href="#2_M01_L48"><pre><code>jmp       short M01_L48</pre></code></a></td>
 </tr><tr class="">
 <td id="2_M01_L47" class="label" data-label="2_M01_L47"><pre><code>M01_L47</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="evenMap">
 <td id="2_M01_L48" class="label" data-label="2_M01_L48"><pre><code>M01_L48</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -1144,7 +1148,7 @@
 <tr class="">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A68</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0B28</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -1168,7 +1172,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       edx,r13d</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A70</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0B30</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -1180,7 +1184,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       edx,r13d</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A1F0A78</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF93F0B38</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -1288,7 +1292,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,[rbp-0D8]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,[rbp-0C0]</pre></code></td>
 </tr><tr class="">
@@ -1323,7 +1327,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>lea       rdx,[rbp-60]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA4ED00]; Interop+BCrypt.BCryptImportKey(Internal.NativeCrypto.SafeAlgorithmHandle, System.ReadOnlySpan`1<Byte>)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9C4F030]; Interop+BCrypt.BCryptImportKey(Internal.NativeCrypto.SafeAlgorithmHandle, System.ReadOnlySpan`1<Byte>)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-0F0]</pre></code></td>
 </tr><tr class="evenMap">
@@ -1403,7 +1407,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r9d,1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA6F210]; System.Security.Cryptography.CryptoStream..ctor(System.IO.Stream, System.Security.Cryptography.ICryptoTransform, System.Security.Cryptography.CryptoStreamMode, Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9C6F420]; System.Security.Cryptography.CryptoStream..ctor(System.IO.Stream, System.Security.Cryptography.ICryptoTransform, System.Security.Cryptography.CryptoStreamMode, Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       [rbp-78],r15</pre></code></td>
 </tr><tr class="evenMap">
@@ -1417,7 +1421,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       [rsp+20],r8d</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r8,215508013B8</pre></code></td>
+<td></td><td><pre><code>mov       r8,23245C013C0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r8,[r8]</pre></code></td>
 </tr><tr class="evenMap">
@@ -1427,7 +1431,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r9d,400</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A47DB60]; System.IO.StreamWriter..ctor(System.IO.Stream, System.Text.Encoding, Int32, Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF967DB78]; System.IO.StreamWriter..ctor(System.IO.Stream, System.Text.Encoding, Int32, Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
@@ -1435,7 +1439,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rdi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A46D668]; System.IO.StreamWriter.Write(System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9690198]; System.IO.StreamWriter.Write(System.String)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="evenMap">
@@ -1443,7 +1447,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A46D5D0]; System.IO.StreamWriter.Dispose(Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9690100]; System.IO.StreamWriter.Dispose(Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-80]</pre></code></td>
 </tr><tr class="evenMap">
@@ -1455,7 +1459,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA7BD00]; System.Security.Cryptography.CryptoStream.Dispose(Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9C904D0]; System.Security.Cryptography.CryptoStream.Dispose(Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,r15</pre></code></td>
 </tr><tr class="evenMap">
@@ -1510,8 +1514,6 @@
 </tr><tr class="">
 <td></td><td><pre><code>cmp       [rcx],cl</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r8d,r8d</pre></code></td>
-</tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rcx+r8+10]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rbp-0E0],rcx</pre></code></td>
@@ -1537,7 +1539,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,[rbp-0E0]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95E5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="2_M01_L61" class="label" data-label="2_M01_L61"><pre><code>M01_L61</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -1558,7 +1560,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>xor       edx,edx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A604648]; System.Convert.ToBase64String(System.ReadOnlySpan`1<Byte>, System.Base64FormattingOptions)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9804648]; System.Convert.ToBase64String(System.ReadOnlySpan`1<Byte>, System.Base64FormattingOptions)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
@@ -1582,7 +1584,7 @@
 <tr class="">
 <td></td><td><pre><code>mov       rcx,[rcx+8]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2874B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94874B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="">
@@ -1612,7 +1614,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[rcx+10]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2874B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94874B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="">
@@ -1670,17 +1672,17 @@
 <td id="2_M01_L67" class="label" data-label="2_M01_L67"><pre><code>M01_L67</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A87DEC0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A8CD68]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdi,rax</pre></code></td>
+<td></td><td><pre><code>mov       r14,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>test      rdi,rdi</pre></code></td>
+<td></td><td><pre><code>test      r14,r14</pre></code></td>
 </tr><tr class="">
 <td></td><td id="2" class="reference" data-reference="2_M01_L68"><a href="#2_M01_L68"><pre><code>jne       short M01_L68</pre></code></a></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A87DC20]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A8CAC8]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdi,rax</pre></code></td>
+<td></td><td><pre><code>mov       r14,rax</pre></code></td>
 </tr><tr class="evenMap">
 <td id="2_M01_L68" class="label" data-label="2_M01_L68"><pre><code>M01_L68</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -1689,17 +1691,17 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_NEWSFAST</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
+<td></td><td><pre><code>mov       r12,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
+<td></td><td><pre><code>mov       rcx,r12</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,255E272A588</pre></code></td>
+<td></td><td><pre><code>mov       rdx,272D393A588</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r8,rdi</pre></code></td>
+<td></td><td><pre><code>mov       r8,r14</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A516670]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9726670]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
+<td></td><td><pre><code>mov       rcx,r12</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_THROW</pre></code></td>
 </tr><tr class="">
@@ -1710,7 +1712,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       edx,3</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3373F0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95373F0]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="">
@@ -1721,19 +1723,19 @@
 <td id="2_M01_L70" class="label" data-label="2_M01_L70"><pre><code>M01_L70</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A87DE30]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A8CCD8]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       ecx,15E8</pre></code></td>
+<td></td><td><pre><code>mov       ecx,16B0</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,7FFF3A617DC8</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF981ABA8</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       ecx,100A</pre></code></td>
+<td></td><td><pre><code>mov       ecx,10A8</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,7FFF3A617DC8</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF981ABA8</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="evenMap">
@@ -1741,13 +1743,13 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A336B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9536B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       ecx,9EA</pre></code></td>
+<td></td><td><pre><code>mov       ecx,0A14</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,7FFF3A617DC8</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF981ABA8</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="evenMap">
@@ -1755,60 +1757,46 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A336B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9536B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r14,rax</pre></code></td>
+<td></td><td><pre><code>mov       r15,rax</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,offset MT_System.ArgumentNullException</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_NEWSFAST</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r12,rax</pre></code></td>
+<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A87DC20]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A8CAC8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r8,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,r14</pre></code></td>
+<td></td><td><pre><code>mov       rdx,r15</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rcx,r12</pre></code></td>
+<td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A516670]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9726670]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rcx,r12</pre></code></td>
+<td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_THROW</pre></code></td>
 </tr><tr class="">
 <td id="2_M01_L71" class="label" data-label="2_M01_L71"><pre><code>M01_L71</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A87DE30]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A8CCD8]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       ecx,15F0</pre></code></td>
+<td></td><td><pre><code>mov       ecx,16B8</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A617DC8</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       r15,rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       ecx,100A</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A617DC8</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF981ABA8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rdx,rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rcx,r15</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A336B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       ecx,9EA</pre></code></td>
+<td></td><td><pre><code>mov       ecx,10A8</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A617DC8</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF981ABA8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="">
@@ -1816,7 +1804,21 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A336B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9536B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       ecx,0A14</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rdx,7FFBF981ABA8</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rdx,rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF9536B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="">
@@ -1826,7 +1828,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A87DC20]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A8CAC8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,rax</pre></code></td>
 </tr><tr class="">
@@ -1834,7 +1836,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A516670]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9726670]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
@@ -1875,7 +1877,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A46D5D0]; System.IO.StreamWriter.Dispose(Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9690100]; System.IO.StreamWriter.Dispose(Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-80]</pre></code></td>
 </tr><tr class="evenMap">
@@ -1931,7 +1933,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA7BD00]; System.Security.Cryptography.CryptoStream.Dispose(Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9C904D0]; System.Security.Cryptography.CryptoStream.Dispose(Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-78]</pre></code></td>
 </tr><tr class="evenMap">
@@ -1991,7 +1993,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rax+8]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2874B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94874B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="evenMap">
@@ -2008,7 +2010,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[rax+10]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2874B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94874B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="">
@@ -2108,7 +2110,7 @@
 <td></td><td><pre><code>ret</pre></code></td>
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 </tbody></table>
-<h2>.NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2</h2>
+<h2>.NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</h2>
 <table><tbody>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.AesEncrypt()</th><th></th></tr>
 <tr class="">
@@ -2128,7 +2130,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,[rbx+120]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A7747B0]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesEncrypt(System.String, Byte[], Byte[])</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF994F348]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesEncrypt(System.String, Byte[], Byte[])</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
 </tr><tr class="">
@@ -2243,7 +2245,7 @@
 </tr><tr class="evenMap">
 <td></td><td id="4" class="reference" data-reference="4_M01_L03"><a href="#4_M01_L03"><pre><code>jae       short M01_L03</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rax,7FFF99282C20</pre></code></td>
+<td></td><td><pre><code>mov       rax,7FFC58492C38</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>test      byte ptr [rcx+rax],80</pre></code></td>
 </tr><tr class="evenMap">
@@ -2254,7 +2256,7 @@
 <td id="4_M01_L03" class="label" data-label="4_M01_L03"><pre><code>M01_L03</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3ABD5AB8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9DBE5F8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>test      eax,eax</pre></code></td>
 </tr><tr class="">
@@ -2277,7 +2279,7 @@
 </tr><tr class="evenMap">
 <td></td><td id="4" class="reference" data-reference="4_M01_L05"><a href="#4_M01_L05"><pre><code>jae       short M01_L05</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rax,7FFF99282C20</pre></code></td>
+<td></td><td><pre><code>mov       rax,7FFC58492C38</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>test      byte ptr [rcx+rax],80</pre></code></td>
 </tr><tr class="evenMap">
@@ -2288,7 +2290,7 @@
 <td id="4_M01_L05" class="label" data-label="4_M01_L05"><pre><code>M01_L05</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3ABD5AB8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9DBE5F8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>test      eax,eax</pre></code></td>
 </tr><tr class="">
@@ -2314,7 +2316,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rax,2D5C0CA8358</pre></code></td>
+<td></td><td><pre><code>mov       rax,307EBD27290</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rcx+10],rax</pre></code></td>
 </tr><tr class="">
@@ -2342,7 +2344,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       dword ptr [r14+2C],2</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,2952EC06D48</pre></code></td>
+<td></td><td><pre><code>mov       rcx,2C75A005B38</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r15,[rcx]</pre></code></td>
 </tr><tr class="">
@@ -2396,14 +2398,14 @@
 <td id="4_M01_L09" class="label" data-label="4_M01_L09"><pre><code>M01_L09</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="4" class="reference" data-reference="4_M01_L11"><a href="#4_M01_L11"><pre><code>jmp       short M01_L11</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="4_M01_L10" class="label" data-label="4_M01_L10"><pre><code>M01_L10</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="4_M01_L11" class="label" data-label="4_M01_L11"><pre><code>M01_L11</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -2414,7 +2416,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_ASSIGN_REF</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,2952EC06D50</pre></code></td>
+<td></td><td><pre><code>mov       rcx,2C75A005B40</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r15,[rcx]</pre></code></td>
 </tr><tr class="">
@@ -2468,14 +2470,14 @@
 <td id="4_M01_L13" class="label" data-label="4_M01_L13"><pre><code>M01_L13</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="4" class="reference" data-reference="4_M01_L15"><a href="#4_M01_L15"><pre><code>jmp       short M01_L15</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="4_M01_L14" class="label" data-label="4_M01_L14"><pre><code>M01_L14</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="4_M01_L15" class="label" data-label="4_M01_L15"><pre><code>M01_L15</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -2518,7 +2520,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A2109D8</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400A90</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -2526,7 +2528,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A2109E0</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400A98</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -2534,7 +2536,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A2109E8</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400AA0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -2639,7 +2641,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,r12d</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FFF3A2109F8</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400AB0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="evenMap">
@@ -2653,7 +2655,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB5D28]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CB46A8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -2679,13 +2681,13 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB5710]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CB4090]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A35CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF954CED0]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="evenMap">
@@ -2704,7 +2706,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB5D28]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CB46A8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="">
@@ -2730,13 +2732,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB5710]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CB4090]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,r15</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A35CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF954CED0]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,r15</pre></code></td>
 </tr><tr class="">
@@ -2745,7 +2747,7 @@
 <td id="4_M01_L20" class="label" data-label="4_M01_L20"><pre><code>M01_L20</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A50E9A0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF970E9D0]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>int       3</pre></code></td>
 </tr><tr class="">
@@ -2761,7 +2763,7 @@
 <td id="4_M01_L22" class="label" data-label="4_M01_L22"><pre><code>M01_L22</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A50E9B8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF970E9E8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>int       3</pre></code></td>
 </tr><tr class="">
@@ -2770,20 +2772,20 @@
 <tr class="">
 <td></td><td><pre><code>mov       ecx,1D75</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A204000</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF93F4000</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A5366E8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF97366E8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>int       3</pre></code></td>
 </tr><tr class="evenMap">
 <td id="4_M01_L24" class="label" data-label="4_M01_L24"><pre><code>M01_L24</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>mov       rbx,2D5C0CA8358</pre></code></td>
+<td></td><td><pre><code>mov       rbx,307EBD27290</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="4" class="reference" data-reference="4_M01_L61"><a href="#4_M01_L61"><pre><code>jmp       near ptr M01_L61</pre></code></a></td>
 </tr><tr class="">
@@ -2803,13 +2805,13 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB6358]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CB4CD8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A35CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF954CED0]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="evenMap">
@@ -2824,13 +2826,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB6190]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CB4B10]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r14,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       ecx,4503</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A88A858</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF9A8B6E0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="">
@@ -2840,7 +2842,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A35F750]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF954F750]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="">
@@ -2851,7 +2853,7 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rbx</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FFF3A210A10</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400AC8</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="evenMap">
@@ -2862,7 +2864,7 @@
 <td id="4_M01_L29" class="label" data-label="4_M01_L29"><pre><code>M01_L29</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB61C0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CB4B40]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
@@ -2874,7 +2876,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A210A18</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400AD0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -2882,13 +2884,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB56F8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CB4078]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A35CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF954CED0]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="">
@@ -2897,7 +2899,7 @@
 <td id="4_M01_L30" class="label" data-label="4_M01_L30"><pre><code>M01_L30</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>mov       rbx,2D5C0CA8358</pre></code></td>
+<td></td><td><pre><code>mov       rbx,307EBD27290</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="4" class="reference" data-reference="4_M01_L42"><a href="#4_M01_L42"><pre><code>jmp       near ptr M01_L42</pre></code></a></td>
 </tr><tr class="">
@@ -2910,13 +2912,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB61D8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CB4B58]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       ecx,44F5</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A88A858</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF9A8B6E0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="">
@@ -2926,7 +2928,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A35F750]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF954F750]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
@@ -2946,7 +2948,7 @@
 <td id="4_M01_L33" class="label" data-label="4_M01_L33"><pre><code>M01_L33</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A210A00</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400AB8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -2964,14 +2966,14 @@
 <td id="4_M01_L35" class="label" data-label="4_M01_L35"><pre><code>M01_L35</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="4" class="reference" data-reference="4_M01_L37"><a href="#4_M01_L37"><pre><code>jmp       short M01_L37</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="4_M01_L36" class="label" data-label="4_M01_L36"><pre><code>M01_L36</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="4_M01_L37" class="label" data-label="4_M01_L37"><pre><code>M01_L37</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -3060,7 +3062,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,[rbp-0C8]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,[rbp-98]</pre></code></td>
 </tr><tr class="evenMap">
@@ -3077,7 +3079,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rbx</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FFF3A210A08</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400AC0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="evenMap">
@@ -3105,7 +3107,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FFF3A2109F0</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400AA8</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="evenMap">
@@ -3185,14 +3187,14 @@
 <td id="4_M01_L46" class="label" data-label="4_M01_L46"><pre><code>M01_L46</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="4" class="reference" data-reference="4_M01_L48"><a href="#4_M01_L48"><pre><code>jmp       short M01_L48</pre></code></a></td>
 </tr><tr class="">
 <td id="4_M01_L47" class="label" data-label="4_M01_L47"><pre><code>M01_L47</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="evenMap">
 <td id="4_M01_L48" class="label" data-label="4_M01_L48"><pre><code>M01_L48</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -3204,7 +3206,7 @@
 <tr class="">
 <td></td><td><pre><code>mov       rcx,[r14]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A210A20</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400AD8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -3228,7 +3230,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       edx,r13d</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A210A28</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400AE0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -3240,7 +3242,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       edx,r13d</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FFF3A210A30</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFBF9400AE8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -3348,7 +3350,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,[rbp-0D8]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,[rbp-0C0]</pre></code></td>
 </tr><tr class="">
@@ -3383,7 +3385,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>lea       rdx,[rbp-60]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA84360]; Interop+BCrypt.BCryptImportKey(Internal.NativeCrypto.SafeAlgorithmHandle, System.ReadOnlySpan`1<Byte>)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9C5F030]; Interop+BCrypt.BCryptImportKey(Internal.NativeCrypto.SafeAlgorithmHandle, System.ReadOnlySpan`1<Byte>)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-0F0]</pre></code></td>
 </tr><tr class="evenMap">
@@ -3463,7 +3465,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r9d,1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB4BA0]; System.Security.Cryptography.CryptoStream..ctor(System.IO.Stream, System.Security.Cryptography.ICryptoTransform, System.Security.Cryptography.CryptoStreamMode, Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9C7F510]; System.Security.Cryptography.CryptoStream..ctor(System.IO.Stream, System.Security.Cryptography.ICryptoTransform, System.Security.Cryptography.CryptoStreamMode, Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       [rbp-78],r15</pre></code></td>
 </tr><tr class="evenMap">
@@ -3477,7 +3479,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       [rsp+20],r8d</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r8,2952EC013B8</pre></code></td>
+<td></td><td><pre><code>mov       r8,2C7620013C0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r8,[r8]</pre></code></td>
 </tr><tr class="evenMap">
@@ -3487,7 +3489,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r9d,400</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A49DB60]; System.IO.StreamWriter..ctor(System.IO.Stream, System.Text.Encoding, Int32, Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF968DB78]; System.IO.StreamWriter..ctor(System.IO.Stream, System.Text.Encoding, Int32, Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
@@ -3495,7 +3497,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rdi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A48D668]; System.IO.StreamWriter.Write(System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF96A0198]; System.IO.StreamWriter.Write(System.String)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="evenMap">
@@ -3503,7 +3505,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A48D5D0]; System.IO.StreamWriter.Dispose(Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF96A0100]; System.IO.StreamWriter.Dispose(Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-80]</pre></code></td>
 </tr><tr class="evenMap">
@@ -3515,7 +3517,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA9BAA8]; System.Security.Cryptography.CryptoStream.Dispose(Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA04D0]; System.Security.Cryptography.CryptoStream.Dispose(Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,r15</pre></code></td>
 </tr><tr class="evenMap">
@@ -3595,7 +3597,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,[rbp-0E0]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A405B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="4_M01_L61" class="label" data-label="4_M01_L61"><pre><code>M01_L61</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -3616,7 +3618,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>xor       edx,edx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A6BE718]; System.Convert.ToBase64String(System.ReadOnlySpan`1<Byte>, System.Base64FormattingOptions)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9814648]; System.Convert.ToBase64String(System.ReadOnlySpan`1<Byte>, System.Base64FormattingOptions)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
@@ -3640,7 +3642,7 @@
 <tr class="">
 <td></td><td><pre><code>mov       rcx,[rcx+8]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2A74B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94974B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="">
@@ -3670,7 +3672,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[rcx+10]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2A74B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94974B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="">
@@ -3728,7 +3730,7 @@
 <td id="4_M01_L67" class="label" data-label="4_M01_L67"><pre><code>M01_L67</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A89EE80]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A9CD68]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r14,rax</pre></code></td>
 </tr><tr class="">
@@ -3736,7 +3738,7 @@
 </tr><tr class="">
 <td></td><td id="4" class="reference" data-reference="4_M01_L68"><a href="#4_M01_L68"><pre><code>jne       short M01_L68</pre></code></a></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A89EBE0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A9CAC8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r14,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -3751,11 +3753,11 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,r12</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,2D5C0CBA588</pre></code></td>
+<td></td><td><pre><code>mov       rdx,307EBD3A588</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r8,r14</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A536670]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9736670]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,r12</pre></code></td>
 </tr><tr class="evenMap">
@@ -3768,7 +3770,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       edx,3</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3573F0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF95473F0]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="">
@@ -3779,19 +3781,19 @@
 <td id="4_M01_L70" class="label" data-label="4_M01_L70"><pre><code>M01_L70</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A89EDF0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A9CCD8]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       ecx,15E8</pre></code></td>
+<td></td><td><pre><code>mov       ecx,16B0</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,7FFF3A5B0F90</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF982ABE0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       ecx,100A</pre></code></td>
+<td></td><td><pre><code>mov       ecx,10A8</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,7FFF3A5B0F90</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF982ABE0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="evenMap">
@@ -3799,13 +3801,13 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A356B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9546B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       ecx,9EA</pre></code></td>
+<td></td><td><pre><code>mov       ecx,0A14</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,7FFF3A5B0F90</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF982ABE0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="evenMap">
@@ -3813,7 +3815,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rdi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A356B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9546B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r15,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -3823,7 +3825,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A89EBE0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A9CAC8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r8,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -3831,7 +3833,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A536670]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9736670]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="evenMap">
@@ -3840,19 +3842,19 @@
 <td id="4_M01_L71" class="label" data-label="4_M01_L71"><pre><code>M01_L71</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A89EDF0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A9CCD8]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       ecx,15F0</pre></code></td>
+<td></td><td><pre><code>mov       ecx,16B8</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A5B0F90</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF982ABE0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       ecx,100A</pre></code></td>
+<td></td><td><pre><code>mov       ecx,10A8</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A5B0F90</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF982ABE0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="">
@@ -3860,13 +3862,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A356B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9546B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       ecx,9EA</pre></code></td>
+<td></td><td><pre><code>mov       ecx,0A14</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,7FFF3A5B0F90</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFBF982ABE0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="">
@@ -3874,7 +3876,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A356B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9546B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="">
@@ -3884,7 +3886,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A89EBE0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A9CAC8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,rax</pre></code></td>
 </tr><tr class="">
@@ -3892,7 +3894,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A536670]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9736670]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
@@ -3933,7 +3935,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A48D5D0]; System.IO.StreamWriter.Dispose(Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF96A0100]; System.IO.StreamWriter.Dispose(Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-80]</pre></code></td>
 </tr><tr class="evenMap">
@@ -3989,7 +3991,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA9BAA8]; System.Security.Cryptography.CryptoStream.Dispose(Boolean)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CA04D0]; System.Security.Cryptography.CryptoStream.Dispose(Boolean)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-78]</pre></code></td>
 </tr><tr class="evenMap">
@@ -4049,7 +4051,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rax+8]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2A74B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94974B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="evenMap">
@@ -4066,7 +4068,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[rax+10]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2A74B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94974B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="">
@@ -4166,7 +4168,7 @@
 <td></td><td><pre><code>ret</pre></code></td>
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 </tbody></table>
-<h2>.NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2</h2>
+<h2>.NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</h2>
 <table><tbody>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.GenerateAesIV()</th><th></th></tr>
 <tr class="">
@@ -4180,7 +4182,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A73F198]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GenerateAesIV()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF997F360]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GenerateAesIV()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
 </tr><tr class="">
@@ -4256,7 +4258,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       dword ptr [rsi+2C],2</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,1BE2E806D48</pre></code></td>
+<td></td><td><pre><code>mov       rcx,2102E401B60</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,[rcx]</pre></code></td>
 </tr><tr class="">
@@ -4310,14 +4312,14 @@
 <td id="6_M01_L01" class="label" data-label="6_M01_L01"><pre><code>M01_L01</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9625BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="6" class="reference" data-reference="6_M01_L03"><a href="#6_M01_L03"><pre><code>jmp       short M01_L03</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="6_M01_L02" class="label" data-label="6_M01_L02"><pre><code>M01_L02</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9625B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="6_M01_L03" class="label" data-label="6_M01_L03"><pre><code>M01_L03</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -4328,7 +4330,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_ASSIGN_REF</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,1BE2E806D50</pre></code></td>
+<td></td><td><pre><code>mov       rcx,2102E401B68</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,[rcx]</pre></code></td>
 </tr><tr class="">
@@ -4382,14 +4384,14 @@
 <td id="6_M01_L05" class="label" data-label="6_M01_L05"><pre><code>M01_L05</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9625BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="6" class="reference" data-reference="6_M01_L07"><a href="#6_M01_L07"><pre><code>jmp       short M01_L07</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="6_M01_L06" class="label" data-label="6_M01_L06"><pre><code>M01_L06</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9625B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="6_M01_L07" class="label" data-label="6_M01_L07"><pre><code>M01_L07</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -4466,7 +4468,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       byte ptr [rbx+0C],0</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rax,7FF8196333A0</pre></code></td>
+<td></td><td><pre><code>mov       rax,7FFCC78133A0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -4475,11 +4477,11 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       byte ptr [rbx+0C],1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>cmp       dword ptr [7FFF9A1F1FDC],0</pre></code></td>
+<td></td><td><pre><code>cmp       dword ptr [7FFC594040DC],0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="6" class="reference" data-reference="6_M01_L09"><a href="#6_M01_L09"><pre><code>je        short M01_L09</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF9A1E2398]; CORINFO_HELP_STOP_FOR_GC</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC593F43A8]; CORINFO_HELP_STOP_FOR_GC</pre></code></td>
 </tr><tr class="">
 <td id="6_M01_L09" class="label" data-label="6_M01_L09"><pre><code>M01_L09</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -4582,14 +4584,14 @@
 <td id="6_M01_L13" class="label" data-label="6_M01_L13"><pre><code>M01_L13</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9625BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="6" class="reference" data-reference="6_M01_L12"><a href="#6_M01_L12"><pre><code>jmp       short M01_L12</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="6_M01_L14" class="label" data-label="6_M01_L14"><pre><code>M01_L14</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9625B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="6" class="reference" data-reference="6_M01_L12"><a href="#6_M01_L12"><pre><code>jmp       short M01_L12</pre></code></a></td>
 </tr><tr class="">
@@ -4605,7 +4607,7 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAB3EB8]; System.Security.Cryptography.AesImplementation.GenerateIV()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CD8550]; System.Security.Cryptography.AesImplementation.GenerateIV()</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="6" class="reference" data-reference="6_M01_L20"><a href="#6_M01_L20"><pre><code>jmp       short M01_L20</pre></code></a></td>
 </tr><tr class="">
@@ -4618,13 +4620,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAA4AC8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CE4AC8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A34CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF957CED0]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
@@ -4635,7 +4637,7 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       ecx,eax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA5EEB0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9C8F1E0]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -4711,14 +4713,14 @@
 <td id="6_M01_L22" class="label" data-label="6_M01_L22"><pre><code>M01_L22</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9625BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="6" class="reference" data-reference="6_M01_L24"><a href="#6_M01_L24"><pre><code>jmp       short M01_L24</pre></code></a></td>
 </tr><tr class="">
 <td id="6_M01_L23" class="label" data-label="6_M01_L23"><pre><code>M01_L23</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9625B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="evenMap">
 <td id="6_M01_L24" class="label" data-label="6_M01_L24"><pre><code>M01_L24</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -4741,7 +4743,7 @@
 </tr><tr class="evenMap">
 <td></td><td id="6" class="reference" data-reference="6_M01_L27"><a href="#6_M01_L27"><pre><code>je        short M01_L27</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2974B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94C74B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="evenMap">
@@ -4752,7 +4754,7 @@
 <tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A55C2E8]; System.GC.SuppressFinalize(System.Object)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF978C2E8]; System.GC.SuppressFinalize(System.Object)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rax,rdi</pre></code></td>
 </tr><tr class="">
@@ -4781,7 +4783,7 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rsi+8]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2974B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94C74B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="evenMap">
@@ -4821,7 +4823,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rsi+8]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2974B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94C74B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="evenMap">
@@ -4836,7 +4838,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[rsi+10]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A2974B0]; System.Array.Clear(System.Array)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94C74B0]; System.Array.Clear(System.Array)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>xor       ecx,ecx</pre></code></td>
 </tr><tr class="">
@@ -4847,7 +4849,7 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A55C2E8]; System.GC.SuppressFinalize(System.Object)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF978C2E8]; System.GC.SuppressFinalize(System.Object)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="evenMap">
@@ -4872,7 +4874,7 @@
 <td></td><td><pre><code>ret</pre></code></td>
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 </tbody></table>
-<h2>.NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2</h2>
+<h2>.NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</h2>
 <table><tbody>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.GenerateAesKey()</th><th></th></tr>
 <tr class="">
@@ -4886,7 +4888,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A73F1B0]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GenerateAesKey()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF996F378]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GenerateAesKey()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
 </tr><tr class="">
@@ -4962,7 +4964,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       dword ptr [rsi+2C],2</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,2402C806D48</pre></code></td>
+<td></td><td><pre><code>mov       rcx,13622407B30</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,[rcx]</pre></code></td>
 </tr><tr class="">
@@ -5016,14 +5018,14 @@
 <td id="8_M01_L01" class="label" data-label="8_M01_L01"><pre><code>M01_L01</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9615BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="8" class="reference" data-reference="8_M01_L03"><a href="#8_M01_L03"><pre><code>jmp       short M01_L03</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="8_M01_L02" class="label" data-label="8_M01_L02"><pre><code>M01_L02</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9615B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="8_M01_L03" class="label" data-label="8_M01_L03"><pre><code>M01_L03</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -5034,7 +5036,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>call      CORINFO_HELP_ASSIGN_REF</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,2402C806D50</pre></code></td>
+<td></td><td><pre><code>mov       rcx,13622407B38</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdi,[rcx]</pre></code></td>
 </tr><tr class="">
@@ -5088,14 +5090,14 @@
 <td id="8_M01_L05" class="label" data-label="8_M01_L05"><pre><code>M01_L05</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9615BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="8" class="reference" data-reference="8_M01_L07"><a href="#8_M01_L07"><pre><code>jmp       short M01_L07</pre></code></a></td>
 </tr><tr class="evenMap">
 <td id="8_M01_L06" class="label" data-label="8_M01_L06"><pre><code>M01_L06</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9615B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td id="8_M01_L07" class="label" data-label="8_M01_L07"><pre><code>M01_L07</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -5172,7 +5174,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       byte ptr [rbx+0C],0</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rax,7FF8196333A0</pre></code></td>
+<td></td><td><pre><code>mov       rax,7FFCC78133A0</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -5181,11 +5183,11 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       byte ptr [rbx+0C],1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>cmp       dword ptr [7FFF9A1F1FDC],0</pre></code></td>
+<td></td><td><pre><code>cmp       dword ptr [7FFC594040DC],0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="8" class="reference" data-reference="8_M01_L09"><a href="#8_M01_L09"><pre><code>je        short M01_L09</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF9A1E2398]; CORINFO_HELP_STOP_FOR_GC</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC593F43A8]; CORINFO_HELP_STOP_FOR_GC</pre></code></td>
 </tr><tr class="">
 <td id="8_M01_L09" class="label" data-label="8_M01_L09"><pre><code>M01_L09</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -5221,7 +5223,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>cmp       [rcx],cl</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A294018]; System.Object.MemberwiseClone()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94B4018]; System.Object.MemberwiseClone()</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r8,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -5286,7 +5288,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>cmp       [rcx],cl</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A294018]; System.Object.MemberwiseClone()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF94B4018]; System.Object.MemberwiseClone()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,rax</pre></code></td>
 </tr><tr class="">
@@ -5361,7 +5363,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A344C00]; System.Runtime.CompilerServices.RuntimeHelpers.GetRawObjectDataSize(System.Object)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9564C00]; System.Runtime.CompilerServices.RuntimeHelpers.GetRawObjectDataSize(System.Object)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>lea       rdx,[r15+8]</pre></code></td>
 </tr><tr class="evenMap">
@@ -5408,13 +5410,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAA4B10]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CD4B10]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A34CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF956CED0]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
@@ -5436,13 +5438,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       r12,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3AAA4B10]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CD4B10]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,r12</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A34CED0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF956CED0]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,r12</pre></code></td>
 </tr><tr class="">
@@ -5486,7 +5488,7 @@
 <tr class="">
 <td></td><td><pre><code>mov       r8,rax</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9615BD8]; System.Buffer._BulkMoveWithWriteBarrier(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="">
 <td></td><td id="8" class="reference" data-reference="8_M01_L17"><a href="#8_M01_L17"><pre><code>jmp       near ptr M01_L17</pre></code></a></td>
 </tr><tr class="evenMap">
@@ -5495,7 +5497,7 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       r8,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A3F5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9615B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="8" class="reference" data-reference="8_M01_L17"><a href="#8_M01_L17"><pre><code>jmp       near ptr M01_L17</pre></code></a></td>
 </tr><tr class="">
@@ -5515,7 +5517,7 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       ecx,eax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA5EEB0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9C7F1E0]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -5531,13 +5533,13 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-48]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA8A898]; System.Security.Cryptography.SymmetricAlgorithm.get_Key()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CAF048]; System.Security.Cryptography.SymmetricAlgorithm.get_Key()</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-48]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA8A908]; System.Security.Cryptography.SymmetricAlgorithm.Dispose()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CAF0B8]; System.Security.Cryptography.SymmetricAlgorithm.Dispose()</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rax,rbx</pre></code></td>
 </tr><tr class="evenMap">
@@ -5587,7 +5589,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,[rbp-48]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3AA8A908]; System.Security.Cryptography.SymmetricAlgorithm.Dispose()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9CAF0B8]; System.Security.Cryptography.SymmetricAlgorithm.Dispose()</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="evenMap">
@@ -5612,7 +5614,74 @@
 <td></td><td><pre><code>ret</pre></code></td>
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 </tbody></table>
-<h2>.NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2</h2>
+<h2>.NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</h2>
+<table><tbody>
+<tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.GenerateRandomKey()</th><th></th></tr>
+<tr class="">
+<td></td><td><pre><code>push      rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>sub       rsp,30</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>xor       eax,eax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF996F390]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GenerateRandomKey()</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rbx,[rbx+18]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rdx,[rsp+28]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>lea       rcx,[rbx+8]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      CORINFO_HELP_ASSIGN_REF</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>xor       eax,eax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       [rbx+8],rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>add       rsp,30</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>pop       rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>ret</pre></code></td>
+</tr><tr><td colspan="{2}">&nbsp;</td></tr>
+<tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.Security.EncryptionHelper.GenerateRandomKey()</th><th></th></tr>
+<tr class="">
+<td></td><td><pre><code>sub       rsp,38</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>xor       eax,eax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       [rsp+30],rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF9617360]; System.Guid.NewGuid()</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       r8,2604CC00428</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       r8,[r8]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rdx,2A0DED2C098</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF9617180]; System.Guid.ToString(System.String, System.IFormatProvider)</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>nop</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>add       rsp,38</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>ret</pre></code></td>
+</tr><tr><td colspan="{2}">&nbsp;</td></tr>
+</tbody></table>
+<h2>.NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</h2>
 <table><tbody>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.SimpleSHA256Decrypt()</th><th></th></tr>
 <tr class="">
@@ -5628,9 +5697,9 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,[rbx+130]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,19D5616AF90</pre></code></td>
+<td></td><td><pre><code>mov       rdx,19CC5EEAF90</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A72F1E0]; DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Decrypt(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF993F3A8]; DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Decrypt(System.String, System.String)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
 </tr><tr class="">
@@ -5653,249 +5722,6 @@
 <td></td><td><pre><code>ret</pre></code></td>
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Decrypt(System.String, System.String)</th><th></th></tr>
-<tr class="">
-<td></td><td><pre><code>push      rsi</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>push      rbx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>sub       rsp,38</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>xor       eax,eax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       [rsp+30],rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rsi,rdx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>test      rcx,rcx</pre></code></td>
-</tr><tr class="">
-<td></td><td id="10" class="reference" data-reference="10_M01_L00"><a href="#10_M01_L00"><pre><code>je        short M01_L00</pre></code></a></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       eax,[rcx+8]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>xor       edx,edx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>test      eax,eax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>sete      dl</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>test      edx,edx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>sete      dl</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>movzx     edx,dl</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>test      eax,eax</pre></code></td>
-</tr><tr class="">
-<td></td><td id="10" class="reference" data-reference="10_M01_L01"><a href="#10_M01_L01"><pre><code>jne       short M01_L01</pre></code></a></td>
-</tr><tr class="">
-<td></td><td id="10" class="reference" data-reference="10_M01_L01"><a href="#10_M01_L01"><pre><code>jmp       short M01_L01</pre></code></a></td>
-</tr><tr class="evenMap">
-<td id="10_M01_L00" class="label" data-label="10_M01_L00"><pre><code>M01_L00</pre></code></td>
-<td>&nbsp;</td></tr>
-<tr class="evenMap">
-<td></td><td><pre><code>xor       edx,edx</pre></code></td>
-</tr><tr class="">
-<td id="10_M01_L01" class="label" data-label="10_M01_L01"><pre><code>M01_L01</pre></code></td>
-<td>&nbsp;</td></tr>
-<tr class="">
-<td></td><td><pre><code>test      edx,edx</pre></code></td>
-</tr><tr class="">
-<td></td><td id="10" class="reference" data-reference="10_M01_L04"><a href="#10_M01_L04"><pre><code>je        short M01_L04</pre></code></a></td>
-</tr><tr class="">
-<td></td><td><pre><code>cmp       [rcx],ecx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A337318]; System.String.Trim()</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>test      rcx,rcx</pre></code></td>
-</tr><tr class="">
-<td></td><td id="10" class="reference" data-reference="10_M01_L02"><a href="#10_M01_L02"><pre><code>je        short M01_L02</pre></code></a></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       eax,[rcx+8]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>xor       edx,edx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>test      eax,eax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>sete      dl</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>test      edx,edx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>sete      dl</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>movzx     edx,dl</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>test      eax,eax</pre></code></td>
-</tr><tr class="">
-<td></td><td id="10" class="reference" data-reference="10_M01_L03"><a href="#10_M01_L03"><pre><code>jne       short M01_L03</pre></code></a></td>
-</tr><tr class="">
-<td></td><td id="10" class="reference" data-reference="10_M01_L03"><a href="#10_M01_L03"><pre><code>jmp       short M01_L03</pre></code></a></td>
-</tr><tr class="evenMap">
-<td id="10_M01_L02" class="label" data-label="10_M01_L02"><pre><code>M01_L02</pre></code></td>
-<td>&nbsp;</td></tr>
-<tr class="evenMap">
-<td></td><td><pre><code>xor       edx,edx</pre></code></td>
-</tr><tr class="">
-<td id="10_M01_L03" class="label" data-label="10_M01_L03"><pre><code>M01_L03</pre></code></td>
-<td>&nbsp;</td></tr>
-<tr class="">
-<td></td><td><pre><code>test      edx,edx</pre></code></td>
-</tr><tr class="">
-<td></td><td id="10" class="reference" data-reference="10_M01_L06"><a href="#10_M01_L06"><pre><code>je        short M01_L06</pre></code></a></td>
-</tr><tr class="">
-<td></td><td><pre><code>cmp       [rcx],ecx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A337318]; System.String.Trim()</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rdx,rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A72F150]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GetSHA256HashKeys(System.String)</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rdx,[rsp+28]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       r8,[rsp+30]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A72F168]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesDecrypt(System.String, Byte[], Byte[])</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>nop</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>add       rsp,38</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>pop       rbx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>pop       rsi</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>ret</pre></code></td>
-</tr><tr class="evenMap">
-<td id="10_M01_L04" class="label" data-label="10_M01_L04"><pre><code>M01_L04</pre></code></td>
-<td>&nbsp;</td></tr>
-<tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A87DEC0]</pre></code></td>
-</tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
-</tr><tr class="evenMap">
-<td></td><td><pre><code>test      rbx,rbx</pre></code></td>
-</tr><tr class="evenMap">
-<td></td><td id="10" class="reference" data-reference="10_M01_L05"><a href="#10_M01_L05"><pre><code>jne       short M01_L05</pre></code></a></td>
-</tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A87DC20]</pre></code></td>
-</tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
-</tr><tr class="">
-<td id="10_M01_L05" class="label" data-label="10_M01_L05"><pre><code>M01_L05</pre></code></td>
-<td>&nbsp;</td></tr>
-<tr class="">
-<td></td><td><pre><code>mov       rcx,offset MT_System.ArgumentNullException</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      CORINFO_HELP_NEWSFAST</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rsi,rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rdx,19D5617B0D0</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       r8,rbx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A516670]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      CORINFO_HELP_THROW</pre></code></td>
-</tr><tr class="evenMap">
-<td id="10_M01_L06" class="label" data-label="10_M01_L06"><pre><code>M01_L06</pre></code></td>
-<td>&nbsp;</td></tr>
-<tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A87DEC0]</pre></code></td>
-</tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
-</tr><tr class="evenMap">
-<td></td><td><pre><code>test      rbx,rbx</pre></code></td>
-</tr><tr class="evenMap">
-<td></td><td id="10" class="reference" data-reference="10_M01_L07"><a href="#10_M01_L07"><pre><code>jne       short M01_L07</pre></code></a></td>
-</tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A87DC20]</pre></code></td>
-</tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
-</tr><tr class="">
-<td id="10_M01_L07" class="label" data-label="10_M01_L07"><pre><code>M01_L07</pre></code></td>
-<td>&nbsp;</td></tr>
-<tr class="">
-<td></td><td><pre><code>mov       rcx,offset MT_System.ArgumentNullException</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      CORINFO_HELP_NEWSFAST</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rsi,rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rdx,19D561699C8</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       r8,rbx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A516670]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      CORINFO_HELP_THROW</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>int       3</pre></code></td>
-</tr><tr><td colspan="{2}">&nbsp;</td></tr>
-</tbody></table>
-<h2>.NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2</h2>
-<table><tbody>
-<tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.SimpleSHA256Encrypt()</th><th></th></tr>
-<tr class="">
-<td></td><td><pre><code>push      rbx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>sub       rsp,30</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>xor       eax,eax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rcx,[rbx+28]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rdx,22A9117AF90</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A74F1F8]; DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Encrypt(System.String, System.String)</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rbx,[rbx+18]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       rdx,[rsp+28]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>lea       rcx,[rbx+8]</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>call      CORINFO_HELP_ASSIGN_REF</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>xor       eax,eax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>mov       [rbx+8],rax</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>add       rsp,30</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>pop       rbx</pre></code></td>
-</tr><tr class="">
-<td></td><td><pre><code>ret</pre></code></td>
-</tr><tr><td colspan="{2}">&nbsp;</td></tr>
-<tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Encrypt(System.String, System.String)</th><th></th></tr>
 <tr class="">
 <td></td><td><pre><code>push      rsi</pre></code></td>
 </tr><tr class="">
@@ -5953,7 +5779,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>cmp       [rcx],ecx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A357318]; System.String.Trim()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9537318]; System.String.Trim()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="">
@@ -5997,13 +5823,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>cmp       [rcx],ecx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A357318]; System.String.Trim()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9537318]; System.String.Trim()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A74F150]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GetSHA256HashKeys(System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF993F318]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GetSHA256HashKeys(System.String)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
@@ -6011,7 +5837,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,[rsp+30]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A74F180]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesEncrypt(System.String, Byte[], Byte[])</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF993F330]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesDecrypt(System.String, Byte[], Byte[])</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="">
@@ -6026,7 +5852,7 @@
 <td id="12_M01_L04" class="label" data-label="12_M01_L04"><pre><code>M01_L04</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A89DEC0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A8CD68]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -6034,7 +5860,7 @@
 </tr><tr class="evenMap">
 <td></td><td id="12" class="reference" data-reference="12_M01_L05"><a href="#12_M01_L05"><pre><code>jne       short M01_L05</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A89DC20]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A8CAC8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="">
@@ -6049,11 +5875,11 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,22A9118A588</pre></code></td>
+<td></td><td><pre><code>mov       rdx,19CC5EFB138</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A536670]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9726670]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
@@ -6062,7 +5888,7 @@
 <td id="12_M01_L06" class="label" data-label="12_M01_L06"><pre><code>M01_L06</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A89DEC0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A8CD68]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -6070,7 +5896,7 @@
 </tr><tr class="evenMap">
 <td></td><td id="12" class="reference" data-reference="12_M01_L07"><a href="#12_M01_L07"><pre><code>jne       short M01_L07</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FFF3A89DC20]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9A8CAC8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="">
@@ -6085,11 +5911,254 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,22A911799C8</pre></code></td>
+<td></td><td><pre><code>mov       rdx,19CC5EE99C8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FFF3A536670]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFBF9726670]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      CORINFO_HELP_THROW</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>int       3</pre></code></td>
+</tr><tr><td colspan="{2}">&nbsp;</td></tr>
+</tbody></table>
+<h2>.NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</h2>
+<table><tbody>
+<tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.SimpleSHA256Encrypt()</th><th></th></tr>
+<tr class="">
+<td></td><td><pre><code>push      rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>sub       rsp,30</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>xor       eax,eax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rcx,[rbx+28]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rdx,283D7D0AF90</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF994F3C0]; DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Encrypt(System.String, System.String)</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rbx,[rbx+18]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rdx,[rsp+28]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>lea       rcx,[rbx+8]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      CORINFO_HELP_ASSIGN_REF</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>xor       eax,eax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       [rbx+8],rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>add       rsp,30</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>pop       rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>ret</pre></code></td>
+</tr><tr><td colspan="{2}">&nbsp;</td></tr>
+<tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Encrypt(System.String, System.String)</th><th></th></tr>
+<tr class="">
+<td></td><td><pre><code>push      rsi</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>push      rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>sub       rsp,38</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>xor       eax,eax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       [rsp+30],rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rsi,rdx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>test      rcx,rcx</pre></code></td>
+</tr><tr class="">
+<td></td><td id="14" class="reference" data-reference="14_M01_L00"><a href="#14_M01_L00"><pre><code>je        short M01_L00</pre></code></a></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       eax,[rcx+8]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>xor       edx,edx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>test      eax,eax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>sete      dl</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>test      edx,edx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>sete      dl</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>movzx     edx,dl</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>test      eax,eax</pre></code></td>
+</tr><tr class="">
+<td></td><td id="14" class="reference" data-reference="14_M01_L01"><a href="#14_M01_L01"><pre><code>jne       short M01_L01</pre></code></a></td>
+</tr><tr class="">
+<td></td><td id="14" class="reference" data-reference="14_M01_L01"><a href="#14_M01_L01"><pre><code>jmp       short M01_L01</pre></code></a></td>
+</tr><tr class="evenMap">
+<td id="14_M01_L00" class="label" data-label="14_M01_L00"><pre><code>M01_L00</pre></code></td>
+<td>&nbsp;</td></tr>
+<tr class="evenMap">
+<td></td><td><pre><code>xor       edx,edx</pre></code></td>
+</tr><tr class="">
+<td id="14_M01_L01" class="label" data-label="14_M01_L01"><pre><code>M01_L01</pre></code></td>
+<td>&nbsp;</td></tr>
+<tr class="">
+<td></td><td><pre><code>test      edx,edx</pre></code></td>
+</tr><tr class="">
+<td></td><td id="14" class="reference" data-reference="14_M01_L04"><a href="#14_M01_L04"><pre><code>je        short M01_L04</pre></code></a></td>
+</tr><tr class="">
+<td></td><td><pre><code>cmp       [rcx],ecx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF9547318]; System.String.Trim()</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>test      rcx,rcx</pre></code></td>
+</tr><tr class="">
+<td></td><td id="14" class="reference" data-reference="14_M01_L02"><a href="#14_M01_L02"><pre><code>je        short M01_L02</pre></code></a></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       eax,[rcx+8]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>xor       edx,edx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>test      eax,eax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>sete      dl</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>test      edx,edx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>sete      dl</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>movzx     edx,dl</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>test      eax,eax</pre></code></td>
+</tr><tr class="">
+<td></td><td id="14" class="reference" data-reference="14_M01_L03"><a href="#14_M01_L03"><pre><code>jne       short M01_L03</pre></code></a></td>
+</tr><tr class="">
+<td></td><td id="14" class="reference" data-reference="14_M01_L03"><a href="#14_M01_L03"><pre><code>jmp       short M01_L03</pre></code></a></td>
+</tr><tr class="evenMap">
+<td id="14_M01_L02" class="label" data-label="14_M01_L02"><pre><code>M01_L02</pre></code></td>
+<td>&nbsp;</td></tr>
+<tr class="evenMap">
+<td></td><td><pre><code>xor       edx,edx</pre></code></td>
+</tr><tr class="">
+<td id="14_M01_L03" class="label" data-label="14_M01_L03"><pre><code>M01_L03</pre></code></td>
+<td>&nbsp;</td></tr>
+<tr class="">
+<td></td><td><pre><code>test      edx,edx</pre></code></td>
+</tr><tr class="">
+<td></td><td id="14" class="reference" data-reference="14_M01_L06"><a href="#14_M01_L06"><pre><code>je        short M01_L06</pre></code></a></td>
+</tr><tr class="">
+<td></td><td><pre><code>cmp       [rcx],ecx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF9547318]; System.String.Trim()</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rdx,rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF994F318]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GetSHA256HashKeys(System.String)</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rdx,[rsp+28]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       r8,[rsp+30]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF994F348]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesEncrypt(System.String, Byte[], Byte[])</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>nop</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>add       rsp,38</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>pop       rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>pop       rsi</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>ret</pre></code></td>
+</tr><tr class="evenMap">
+<td id="14_M01_L04" class="label" data-label="14_M01_L04"><pre><code>M01_L04</pre></code></td>
+<td>&nbsp;</td></tr>
+<tr class="evenMap">
+<td></td><td><pre><code>call      qword ptr [7FFBF9A9CD68]</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>test      rbx,rbx</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td id="14" class="reference" data-reference="14_M01_L05"><a href="#14_M01_L05"><pre><code>jne       short M01_L05</pre></code></a></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>call      qword ptr [7FFBF9A9CAC8]</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
+</tr><tr class="">
+<td id="14_M01_L05" class="label" data-label="14_M01_L05"><pre><code>M01_L05</pre></code></td>
+<td>&nbsp;</td></tr>
+<tr class="">
+<td></td><td><pre><code>mov       rcx,offset MT_System.ArgumentNullException</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      CORINFO_HELP_NEWSFAST</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rsi,rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rdx,283D7D1A588</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       r8,rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF9736670]</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      CORINFO_HELP_THROW</pre></code></td>
+</tr><tr class="evenMap">
+<td id="14_M01_L06" class="label" data-label="14_M01_L06"><pre><code>M01_L06</pre></code></td>
+<td>&nbsp;</td></tr>
+<tr class="evenMap">
+<td></td><td><pre><code>call      qword ptr [7FFBF9A9CD68]</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>test      rbx,rbx</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td id="14" class="reference" data-reference="14_M01_L07"><a href="#14_M01_L07"><pre><code>jne       short M01_L07</pre></code></a></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>call      qword ptr [7FFBF9A9CAC8]</pre></code></td>
+</tr><tr class="evenMap">
+<td></td><td><pre><code>mov       rbx,rax</pre></code></td>
+</tr><tr class="">
+<td id="14_M01_L07" class="label" data-label="14_M01_L07"><pre><code>M01_L07</pre></code></td>
+<td>&nbsp;</td></tr>
+<tr class="">
+<td></td><td><pre><code>mov       rcx,offset MT_System.ArgumentNullException</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      CORINFO_HELP_NEWSFAST</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rsi,rax</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       rdx,283D7D099C8</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>mov       r8,rbx</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>call      qword ptr [7FFBF9736670]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">

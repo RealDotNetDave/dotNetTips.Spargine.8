@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Core.BenchmarkTests.TestingBenchmark-20240430-152408</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.12, Windows 10 (10.0.19045.4291/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 8.0.300-preview.24203.14
+  [Host]     : .NET 8.0.4 (8.0.424.16909), X64 RyuJIT AVX2
+  Job-NYUPWT : .NET 8.0.4 (8.0.424.16909), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Core.BenchmarkTests  Categories=**NEW**,Work in Progress  
+</code></pre>
+
+<table>
+<thead><tr><th>Method </th><th>Count</th><th>Mean  </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min   </th><th>Q1    </th><th>Median</th><th>Q3    </th><th>Max   </th><th>Op/s   </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Code Size</th><th>Gen0</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Exceptions</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;AddIf() Ref&#39;</td><td>2</td><td>2.209 ns</td><td>0.0134 ns</td><td>0.0125 ns</td><td>0.0032 ns</td><td>2.183 ns</td><td>2.201 ns</td><td>2.206 ns</td><td>2.218 ns</td><td>2.228 ns</td><td>452,713,612.4</td><td>0.0134 ns</td><td>15.00</td><td>2.201</td><td>2.000</td><td>-0.0780</td><td>3</td><td>*</td><td>No</td><td>107 B</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;AddIf() Ref&#39;</td><td>4</td><td>1.980 ns</td><td>0.0260 ns</td><td>0.0243 ns</td><td>0.0063 ns</td><td>1.923 ns</td><td>1.977 ns</td><td>1.984 ns</td><td>1.995 ns</td><td>2.002 ns</td><td>505,140,010.2</td><td>0.0260 ns</td><td>15.00</td><td>3.813</td><td>2.000</td><td>-1.4390</td><td>1</td><td>*</td><td>No</td><td>107 B</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;AddIf() Ref&#39;</td><td>8</td><td>2.202 ns</td><td>0.0135 ns</td><td>0.0126 ns</td><td>0.0033 ns</td><td>2.161 ns</td><td>2.201 ns</td><td>2.204 ns</td><td>2.209 ns</td><td>2.215 ns</td><td>454,109,334.4</td><td>0.0135 ns</td><td>15.00</td><td>7.971</td><td>2.000</td><td>-2.2637</td><td>3</td><td>*</td><td>No</td><td>107 B</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;AddIf() Ref&#39;</td><td>16</td><td>2.214 ns</td><td>0.0115 ns</td><td>0.0108 ns</td><td>0.0028 ns</td><td>2.200 ns</td><td>2.207 ns</td><td>2.213 ns</td><td>2.221 ns</td><td>2.238 ns</td><td>451,581,811.3</td><td>0.0115 ns</td><td>15.00</td><td>2.413</td><td>2.000</td><td>0.6176</td><td>3</td><td>*</td><td>No</td><td>107 B</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;AddIf() Ref&#39;</td><td>32</td><td>1.979 ns</td><td>0.0098 ns</td><td>0.0091 ns</td><td>0.0024 ns</td><td>1.963 ns</td><td>1.975 ns</td><td>1.978 ns</td><td>1.985 ns</td><td>1.997 ns</td><td>505,232,916.9</td><td>0.0098 ns</td><td>15.00</td><td>2.081</td><td>2.000</td><td>0.1236</td><td>1</td><td>*</td><td>No</td><td>107 B</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;AddIf() Ref&#39;</td><td>64</td><td>2.052 ns</td><td>0.0126 ns</td><td>0.0118 ns</td><td>0.0030 ns</td><td>2.021 ns</td><td>2.049 ns</td><td>2.053 ns</td><td>2.058 ns</td><td>2.065 ns</td><td>487,446,389.3</td><td>0.0126 ns</td><td>15.00</td><td>3.853</td><td>2.000</td><td>-1.2330</td><td>2</td><td>*</td><td>No</td><td>107 B</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;AddIf() Ref&#39;</td><td>128</td><td>1.984 ns</td><td>0.0237 ns</td><td>0.0222 ns</td><td>0.0057 ns</td><td>1.939 ns</td><td>1.975 ns</td><td>1.985 ns</td><td>1.999 ns</td><td>2.018 ns</td><td>504,108,144.0</td><td>0.0237 ns</td><td>15.00</td><td>2.500</td><td>2.000</td><td>-0.5241</td><td>1</td><td>*</td><td>No</td><td>107 B</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;AddIf() Ref&#39;</td><td>256</td><td>2.062 ns</td><td>0.0078 ns</td><td>0.0073 ns</td><td>0.0019 ns</td><td>2.043 ns</td><td>2.060 ns</td><td>2.062 ns</td><td>2.065 ns</td><td>2.073 ns</td><td>484,920,295.2</td><td>0.0078 ns</td><td>15.00</td><td>4.178</td><td>2.000</td><td>-0.8913</td><td>2</td><td>*</td><td>No</td><td>107 B</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;AddIf() Val&#39;</td><td>2</td><td>62.395 ns</td><td>0.2711 ns</td><td>0.2403 ns</td><td>0.0642 ns</td><td>61.960 ns</td><td>62.268 ns</td><td>62.406 ns</td><td>62.503 ns</td><td>62.908 ns</td><td>16,026,900.0</td><td>0.2711 ns</td><td>14.00</td><td>2.648</td><td>2.000</td><td>0.1406</td><td>4</td><td>*</td><td>No</td><td>458 B</td><td>0.0025</td><td>-</td><td>-</td><td>-</td><td>240 B</td>
+</tr><tr><td>&#39;AddIf() Val&#39;</td><td>4</td><td>89.113 ns</td><td>0.5085 ns</td><td>0.4508 ns</td><td>0.1205 ns</td><td>88.460 ns</td><td>88.809 ns</td><td>89.025 ns</td><td>89.305 ns</td><td>90.179 ns</td><td>11,221,688.2</td><td>0.5085 ns</td><td>14.00</td><td>2.861</td><td>2.000</td><td>0.6700</td><td>5</td><td>*</td><td>No</td><td>458 B</td><td>0.0042</td><td>-</td><td>-</td><td>-</td><td>384 B</td>
+</tr><tr><td>&#39;AddIf() Val&#39;</td><td>8</td><td>125.550 ns</td><td>1.4907 ns</td><td>1.3944 ns</td><td>0.3600 ns</td><td>123.364 ns</td><td>124.513 ns</td><td>125.474 ns</td><td>126.647 ns</td><td>128.527 ns</td><td>7,964,965.9</td><td>1.4907 ns</td><td>15.00</td><td>2.211</td><td>2.000</td><td>0.2931</td><td>6</td><td>*</td><td>No</td><td>458 B</td><td>0.0072</td><td>-</td><td>-</td><td>-</td><td>672 B</td>
+</tr><tr><td>&#39;AddIf() Val&#39;</td><td>16</td><td>198.516 ns</td><td>0.8265 ns</td><td>0.6901 ns</td><td>0.1914 ns</td><td>197.178 ns</td><td>198.173 ns</td><td>198.645 ns</td><td>198.909 ns</td><td>199.520 ns</td><td>5,037,382.4</td><td>0.8265 ns</td><td>13.00</td><td>2.022</td><td>2.000</td><td>-0.4473</td><td>7</td><td>*</td><td>No</td><td>458 B</td><td>0.0136</td><td>-</td><td>-</td><td>-</td><td>1248 B</td>
+</tr><tr><td>&#39;AddIf() Val&#39;</td><td>32</td><td>345.251 ns</td><td>2.2894 ns</td><td>2.1415 ns</td><td>0.5529 ns</td><td>342.410 ns</td><td>343.840 ns</td><td>344.789 ns</td><td>346.786 ns</td><td>350.694 ns</td><td>2,896,439.8</td><td>2.2894 ns</td><td>15.00</td><td>3.288</td><td>2.000</td><td>0.8876</td><td>8</td><td>*</td><td>No</td><td>458 B</td><td>0.0262</td><td>-</td><td>-</td><td>-</td><td>2400 B</td>
+</tr><tr><td>&#39;AddIf() Val&#39;</td><td>64</td><td>663.988 ns</td><td>3.8393 ns</td><td>3.4035 ns</td><td>0.9096 ns</td><td>658.563 ns</td><td>661.749 ns</td><td>664.163 ns</td><td>666.002 ns</td><td>670.954 ns</td><td>1,506,050.8</td><td>3.8393 ns</td><td>14.00</td><td>2.213</td><td>2.000</td><td>0.1391</td><td>9</td><td>*</td><td>No</td><td>458 B</td><td>0.0515</td><td>-</td><td>-</td><td>-</td><td>4704 B</td>
+</tr><tr><td>&#39;AddIf() Val&#39;</td><td>128</td><td>1,233.481 ns</td><td>9.4810 ns</td><td>8.8685 ns</td><td>2.2898 ns</td><td>1,218.160 ns</td><td>1,227.839 ns</td><td>1,236.743 ns</td><td>1,239.657 ns</td><td>1,245.185 ns</td><td>810,714.1</td><td>9.4810 ns</td><td>15.00</td><td>1.784</td><td>2.000</td><td>-0.5525</td><td>10</td><td>*</td><td>No</td><td>458 B</td><td>0.1011</td><td>-</td><td>-</td><td>-</td><td>9312 B</td>
+</tr><tr><td>&#39;AddIf() Val&#39;</td><td>256</td><td>2,543.309 ns</td><td>24.4977 ns</td><td>22.9151 ns</td><td>5.9167 ns</td><td>2,496.695 ns</td><td>2,527.832 ns</td><td>2,543.522 ns</td><td>2,555.971 ns</td><td>2,587.436 ns</td><td>393,188.5</td><td>24.4977 ns</td><td>15.00</td><td>2.459</td><td>2.000</td><td>0.0234</td><td>11</td><td>*</td><td>No</td><td>455 B</td><td>0.1984</td><td>-</td><td>-</td><td>-</td><td>18528 B</td>
+</tr></tbody></table>
+</body>
+</html>

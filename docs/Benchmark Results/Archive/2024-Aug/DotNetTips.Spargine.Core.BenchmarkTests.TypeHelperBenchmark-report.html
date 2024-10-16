@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DotNetTips.Spargine.Core.BenchmarkTests.TypeHelperBenchmark-20240430-153155</title>
+<title>DotNetTips.Spargine.Core.BenchmarkTests.TypeHelperBenchmark-20240727-134730</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,21 +13,26 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet v0.13.12, Windows 10 (10.0.19045.4291/22H2/2022Update)
+BenchmarkDotNet v0.13.12, Windows 10 (10.0.19045.4651/22H2/2022Update)
 Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
-.NET SDK 8.0.300-preview.24203.14
-  [Host]     : .NET 8.0.4 (8.0.424.16909), X64 RyuJIT AVX2
-  Job-NYUPWT : .NET 8.0.4 (8.0.424.16909), X64 RyuJIT AVX2
+.NET SDK 8.0.302
+  [Host]     : .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
+  Job-PIGZLB : .NET 8.0.7 (8.0.724.31311), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
 Namespace=DotNetTips.Spargine.Core.BenchmarkTests  
 </code></pre>
 
 <table>
-<thead><tr><th>Method                              </th><th>Categories</th><th>Mean  </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min   </th><th>Q1    </th><th>Median</th><th>Q3    </th><th>Max   </th><th>Op/s</th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Gen0</th><th>Code Size</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Exceptions</th><th>Allocated</th>
+<thead><tr><th>Method                              </th><th>Categories</th><th>Mean        </th><th>Error   </th><th>StdDev  </th><th>StdErr  </th><th>Median      </th><th>Min         </th><th>Q1          </th><th>Q3          </th><th>Max         </th><th>Op/s        </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Exceptions</th><th>Code Size</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Gen0</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>&#39;Looping Collection: Normal StringBuilder&#39;</td><td>Strings</td><td>4,000.6 ns</td><td>24.51 ns</td><td>21.73 ns</td><td>5.81 ns</td><td>3,950.2 ns</td><td>3,993.2 ns</td><td>4,005.2 ns</td><td>4,012.6 ns</td><td>4,028.3 ns</td><td>249,961.1</td><td>24.51 ns</td><td>14.00</td><td>2.751</td><td>2.000</td><td>-0.7612</td><td>1</td><td>*</td><td>No</td><td>0.1602</td><td>2,613 B</td><td>-</td><td>-</td><td>-</td><td>14.84 KB</td>
-</tr><tr><td>GetPropertyValues</td><td>Reflection</td><td>398,927.7 ns</td><td>7,705.76 ns</td><td>8,564.93 ns</td><td>1,964.93 ns</td><td>391,283.4 ns</td><td>393,326.0 ns</td><td>394,139.1 ns</td><td>404,904.2 ns</td><td>413,300.1 ns</td><td>2,506.7</td><td>7,705.76 ns</td><td>19.00</td><td>1.879</td><td>2.714</td><td>0.9029</td><td>2</td><td>*</td><td>No</td><td>-</td><td>4,076 B</td><td>-</td><td>-</td><td>-</td><td>6.39 KB</td>
+</thead><tbody><tr><td>&#39;Create: With Parameters&#39;</td><td>Strings</td><td>312.8478 ns</td><td>1.0792 ns</td><td>1.0094 ns</td><td>0.2606 ns</td><td>313.2027 ns</td><td>311.0923 ns</td><td>312.2009 ns</td><td>313.4452 ns</td><td>314.7937 ns</td><td>3,196,442.99</td><td>1.0792 ns</td><td>15.00</td><td>2.205</td><td>2.000</td><td>-0.1112</td><td>4</td><td>*</td><td>No</td><td>-</td><td>2,650 B</td><td>-</td><td>-</td><td>0.0052</td><td>504 B</td>
+</tr><tr><td>&#39;Looping Collection: Normal StringBuilder&#39;</td><td>Strings</td><td>3,983.9379 ns</td><td>15.7421 ns</td><td>13.9549 ns</td><td>3.7296 ns</td><td>3,984.0763 ns</td><td>3,961.7699 ns</td><td>3,973.4371 ns</td><td>3,995.6812 ns</td><td>4,002.0996 ns</td><td>251,007.93</td><td>15.7421 ns</td><td>14.00</td><td>1.417</td><td>2.000</td><td>-0.1919</td><td>5</td><td>*</td><td>No</td><td>-</td><td>2,614 B</td><td>-</td><td>-</td><td>0.1602</td><td>15064 B</td>
+</tr><tr><td>BuiltinTypes</td><td>Reflection</td><td>3.1266 ns</td><td>0.0230 ns</td><td>0.0215 ns</td><td>0.0055 ns</td><td>3.1279 ns</td><td>3.0857 ns</td><td>3.1158 ns</td><td>3.1436 ns</td><td>3.1530 ns</td><td>319,833,968.84</td><td>0.0230 ns</td><td>15.00</td><td>1.953</td><td>2.000</td><td>-0.5549</td><td>2</td><td>*</td><td>No</td><td>-</td><td>94 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>Create</td><td>Strings</td><td>47.4045 ns</td><td>0.2393 ns</td><td>0.2122 ns</td><td>0.0567 ns</td><td>47.3962 ns</td><td>47.0061 ns</td><td>47.3048 ns</td><td>47.5259 ns</td><td>47.8502 ns</td><td>21,095,022.13</td><td>0.2393 ns</td><td>14.00</td><td>2.599</td><td>2.000</td><td>0.0978</td><td>3</td><td>*</td><td>No</td><td>-</td><td>131 B</td><td>-</td><td>-</td><td>0.0015</td><td>144 B</td>
+</tr><tr><td>DoesObjectEqualInstance</td><td>Strings</td><td>0.0024 ns</td><td>0.0037 ns</td><td>0.0034 ns</td><td>0.0009 ns</td><td>0.0006 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0043 ns</td><td>0.0113 ns</td><td>410,899,945,914.50</td><td>0.0037 ns</td><td>15.00</td><td>3.362</td><td>2.600</td><td>1.2214</td><td>1</td><td>*</td><td>No</td><td>-</td><td>22 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>FindDerivedTypes</td><td>Reflection</td><td>18,889,336.4583 ns</td><td>57,062.9585 ns</td><td>53,376.7268 ns</td><td>13,781.8116 ns</td><td>18,900,225.0000 ns</td><td>18,764,721.8750 ns</td><td>18,851,478.1250 ns</td><td>18,915,485.9375 ns</td><td>18,988,403.1250 ns</td><td>52.94</td><td>57,062.9585 ns</td><td>15.00</td><td>2.999</td><td>2.000</td><td>-0.4048</td><td>7</td><td>*</td><td>No</td><td>-</td><td>1,100 B</td><td>-</td><td>-</td><td>-</td><td>1089090 B</td>
+</tr><tr><td>GetPropertyValues</td><td>Reflection</td><td>339,563.5938 ns</td><td>1,554.4922 ns</td><td>1,454.0730 ns</td><td>375.4400 ns</td><td>339,150.8789 ns</td><td>337,650.3906 ns</td><td>338,452.0508 ns</td><td>340,319.3848 ns</td><td>342,995.0195 ns</td><td>2,944.96</td><td>1,554.4922 ns</td><td>15.00</td><td>2.639</td><td>2.000</td><td>0.6836</td><td>6</td><td>*</td><td>No</td><td>-</td><td>3,941 B</td><td>-</td><td>-</td><td>-</td><td>6717 B</td>
 </tr></tbody></table>
 </body>
 </html>
