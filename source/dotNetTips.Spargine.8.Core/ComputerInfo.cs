@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-26-2024
+// Last Modified On : 10-23-2024
 // ***********************************************************************
 // <copyright file="ComputerInfo.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -25,7 +25,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Provides detailed information about the computer system.
 /// </summary>
-[Information(nameof(ComputerInfo), author: "David McCarter", createdOn: "10/15/2018", Status = Status.Available)]
+[Information(nameof(ComputerInfo), author: "David McCarter", createdOn: "10/15/2018", Status = Status.NeedsDocumentation)]
 [DataContract(Namespace = "dotNetTips.com/Info")]
 public sealed class ComputerInfo
 {
@@ -73,21 +73,21 @@ public sealed class ComputerInfo
 	public int CurrentSystemTickCount { get; private set; } = Environment.TickCount;
 
 	/// <summary>
-	/// Gets the current working directory.
+	/// Shows the directory from which the current process is running.
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string CurrentWorkingDirectory { get; private set; } = Environment.CurrentDirectory;
 
 	/// <summary>
-	/// Gets the framework description.
+	/// Displays a description of the .NET framework in use.
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string FrameworkDescription { get; private set; } = RuntimeInformation.FrameworkDescription;
 
 	/// <summary>
-	/// Gets the framework version.
+	/// Gets the version of the .NET framework.
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
@@ -101,7 +101,7 @@ public sealed class ComputerInfo
 	public bool HasShutdownStarted { get; private set; } = Environment.HasShutdownStarted;
 
 	/// <summary>
-	/// Gets the IP address of the computer.
+	/// Gets the IP addresses assigned to the computer.
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
@@ -136,14 +136,14 @@ public sealed class ComputerInfo
 	public ReadOnlyCollection<string> LogicalDrives { get; private set; } = Environment.GetLogicalDrives().AsReadOnly();
 
 	/// <summary>
-	/// Gets the name of the machine.
+	/// Gets the computer’s machine name.
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string MachineName { get; private set; } = Environment.MachineName;
 
 	/// <summary>
-	/// Gets the architecture of the operating system.
+	/// Gets the architecture (e.g., 64-bit or 32-bit) of the operating system.
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
@@ -185,7 +185,7 @@ public sealed class ComputerInfo
 	public int ProcessorCount { get; private set; } = Environment.ProcessorCount;
 
 	/// <summary>
-	/// Gets the system directory.
+	/// Gets the system directory path.
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
@@ -213,14 +213,14 @@ public sealed class ComputerInfo
 	public long TickCount64 { get; private set; } = Environment.TickCount64;
 
 	/// <summary>
-	/// Gets the name of the user domain.
+	/// Gets the domain name associated with the current user.
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string UserDomainName { get; private set; } = Environment.UserDomainName;
 
 	/// <summary>
-	/// Gets the name of the user.
+	/// Gets the name of the current user.
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]

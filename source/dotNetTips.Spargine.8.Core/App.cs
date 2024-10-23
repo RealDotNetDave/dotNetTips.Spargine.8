@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-16-2024
+// Last Modified On : 10-23-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -45,6 +45,8 @@ public static class App
 	/// The application information.
 	/// </summary>
 	private static readonly Lazy<AppInfo> _appInfo = new(InitAppInfo());
+
+	private static readonly ComputerInfo _computerInfo = new();
 
 	/// <summary>
 	/// The culture names
@@ -156,7 +158,7 @@ public static class App
 	/// Console.WriteLine(folderPath);
 	/// </code></example>
 	[Information(nameof(ExecutingFolder), author: "David McCarter", createdOn: "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static string ExecutingFolder() => Path.GetDirectoryName(Environment.ProcessPath);
+	public static string ExecutingFolder() => Path.GetDirectoryName(_computerInfo.CurrentWorkingDirectory);
 
 	/// <summary>
 	/// Gets the culture names based on the specified culture type.
@@ -270,7 +272,7 @@ public static class App
 	/// <returns>The maximum degree of parallelism.</returns>
 	/// <remarks>This method calculates the maximum degree of parallelism by taking 75% of the processor count, doubling it, and rounding up to the nearest whole number.
 	/// It is designed to optimize parallel operations by not overloading the system with too many concurrent tasks.</remarks>
-	public static int MaxDegreeOfParallelism() => Convert.ToInt32(Math.Ceiling(Environment.ProcessorCount * 0.75 * 2.0));
+	public static int MaxDegreeOfParallelism() => Convert.ToInt32(Math.Ceiling(_computerInfo.ProcessorCount * 0.75 * 2.0));
 
 	/// <summary>
 	/// Reboots the system programmatically.
@@ -324,7 +326,7 @@ public static class App
 
 		var processInfo = new ProcessStartInfo
 		{
-			FileName = Environment.ProcessPath,
+			FileName = _computerInfo.CurrentWorkingDirectory,
 			UseShellExecute = true,
 			Verb = "runas",
 		};
@@ -362,7 +364,7 @@ public static class App
 	/// <value>The current thread identifier.</value>
 	/// <remarks>This property provides the unique identifier of the currently executing thread. It is useful for logging, debugging, or tracking thread-specific operations.</remarks>
 	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
-	public static int CurrentThreadId => Environment.CurrentManagedThreadId;
+	public static int CurrentThreadId => _computerInfo.CurrentManagedTreadId;
 
 	/// <summary>
 	/// Retrieves the current UI culture used by the application for localization.
@@ -441,7 +443,7 @@ public static class App
 	/// </summary>
 	/// <value>The process path.</value>
 	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
-	public static string ProcessPath => Environment.ProcessPath;
+	public static string ProcessPath => _computerInfo.CurrentWorkingDirectory;
 
 	/// <summary>
 	/// Gets the stack trace for the current thread.
