@@ -4,7 +4,7 @@
 // Created          : 07-29-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-14-2024
+// Last Modified On : 10-27-2024
 // ***********************************************************************
 // <copyright file="ColorExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -36,7 +36,7 @@ public static class ColorExtensions
 	/// <param name="colors">The colors.</param>
 	/// <returns>Color.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">colors - colors</exception>
-	[Information(nameof(Average), "David McCarter", "1/1/2015", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
+	[Information(nameof(Average), "David McCarter", "1/1/2015", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static Color Average([NotNull] this IEnumerable<Color> colors)
 	{
 		colors = colors.ArgumentItemsExists();

@@ -4,7 +4,7 @@
 // Created          : 03-05-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-01-2024
+// Last Modified On : 10-27-2024
 // ***********************************************************************
 // <copyright file="NetworkConnectionException.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -25,7 +25,7 @@ namespace DotNetTips.Spargine.Core;
 /// Represents errors that occur during network interface operations.
 /// </summary>
 [Serializable]
-[Information(nameof(NetworkConnectionException), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Updated)]
+[Information(nameof(NetworkConnectionException), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 public sealed class NetworkConnectionException : LoggableException
 {
 	/// <summary>

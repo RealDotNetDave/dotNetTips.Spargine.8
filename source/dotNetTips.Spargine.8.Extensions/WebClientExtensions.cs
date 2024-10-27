@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 10-27-2024
 // ***********************************************************************
 // <copyright file="WebClientExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -38,7 +38,7 @@ public static class WebClientExtensions
 	/// <returns>An instance of type <typeparamref name="T"/> populated with data from the JSON string; otherwise, null if the JSON data is empty.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="client"/> is null.</exception>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="url"/> is null.</exception>
-	[Information(nameof(ConvertFrom), OptimizationStatus = OptimizationStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(ConvertFrom), OptimizationStatus = OptimizationStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static T ConvertFrom<T>([NotNull] this WebClient client, [NotNull] Uri url)
 		where T : class
 	{

@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-27-2024
+// Last Modified On : 10-27-2024
 // ***********************************************************************
 // <copyright file="TypeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -25,6 +25,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// <summary>
 /// Provides extension methods for <see cref="Type"/> to enhance and simplify its usage.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static partial class TypeExtensions
 {
 
@@ -297,7 +298,7 @@ public static partial class TypeExtensions
 	/// <returns>The type of the specified object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the obj is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetTypeOfType), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(GetTypeOfType), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TypeOfType GetTypeOfType([NotNull] this object obj)
 	{
 		var objType = obj.GetType();

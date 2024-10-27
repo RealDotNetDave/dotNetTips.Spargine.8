@@ -4,7 +4,7 @@
 // Created          : 06-01-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-14-2024
+// Last Modified On : 10-27-2024
 // ***********************************************************************
 // <copyright file="HttpRequestExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -30,6 +30,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// The extension methods in this class aim to simplify the process of working with the request body of <see cref="HttpRequest"/>.
 /// They provide convenient ways to access the raw body for various purposes such as logging, validation, or further processing.
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public static class HttpRequestExtensions
 {
 
@@ -41,7 +42,7 @@ public static class HttpRequestExtensions
 	/// <returns>Task&lt;System.Byte[]&gt;.</returns>
 	/// <exception cref="ArgumentNullException">request</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
-	[Information(nameof(GetRawBodyBytesAsync), "David McCarter", "11/07/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(GetRawBodyBytesAsync), "David McCarter", "11/07/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task<byte[]> GetRawBodyBytesAsync([NotNull] this HttpRequest request)
 	{
 		request = request.ArgumentNotNull();
@@ -64,7 +65,7 @@ public static class HttpRequestExtensions
 	/// <exception cref="ArgumentNullException">request</exception>
 	/// <exception cref="ArgumentNullException">encoding</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
-	[Information(nameof(GetRawBodyStringAsync), "David McCarter", "11/07/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(GetRawBodyStringAsync), "David McCarter", "11/07/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task<string> GetRawBodyStringAsync([NotNull] this HttpRequest request, [NotNull] Encoding encoding)
 	{
 		request = request.ArgumentNotNull();
@@ -86,7 +87,7 @@ public static class HttpRequestExtensions
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	/// <exception cref="ArgumentNullException">request</exception>
 	/// <remarks>Original code by Jerry Nixon</remarks>
-	[Information(nameof(TryGetBody), "David McCarter", "11/07/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(TryGetBody), "David McCarter", "11/07/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool TryGetBody<T>([NotNull] this HttpRequest request, out T value)
 	{
 		request = request.ArgumentNotNull();
@@ -120,7 +121,7 @@ public static class HttpRequestExtensions
 	/// <exception cref="ArgumentNullException">request</exception>
 	/// <exception cref="ArgumentException">HttpRequest has no body.</exception>
 	/// <remarks>Original code by Jerry Nixon</remarks>
-	[Information(nameof(TryGetBody), "David McCarter", "11/07/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.NeedsDocumentation)]
+	[Information(nameof(TryGetBody), "David McCarter", "11/07/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool TryGetBody([NotNull] this HttpRequest request, out byte[] value)
 	{
 		request = request.ArgumentNotNull();

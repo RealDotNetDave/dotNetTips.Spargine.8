@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-14-2024
+// Last Modified On : 10-27-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -48,6 +48,7 @@ namespace DotNetTips.Spargine.Core;
 /// converting objects to and from JSON. It also provides methods to get default values, hash codes, property values,
 /// and display names for types, as well as determining if a type is a built-in .NET type or if an assembly is a .NET assembly.
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public static class TypeHelper
 {
 
@@ -288,7 +289,7 @@ public static class TypeHelper
 	/// to have a parameterless constructor. 
 	/// Original code by: Jeremy Clark
 	/// </remarks>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static T Create<T>()
 		where T : class => Activator.CreateInstance<T>();
 
@@ -299,7 +300,7 @@ public static class TypeHelper
 	/// <param name="paramArray">The parameters to pass to the constructor of the type <typeparamref name="T"/>.</param>
 	/// <returns>An instance of type <typeparamref name="T"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="paramArray"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static T Create<T>([NotNull] params object[] paramArray)
 	{
 		paramArray = paramArray.ArgumentNotNull();

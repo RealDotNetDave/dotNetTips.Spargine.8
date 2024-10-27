@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 10-27-2024
 // ***********************************************************************
 // <copyright file="MathExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -22,7 +22,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for mathematical operations, enhancing the built-in Math class with additional functionality and utilities.
 /// These methods include operations such as addition, subtraction, rounding, and calculating percentages, as well as determining if a number is prime.
 /// </summary>
-[Information(Status = Status.Available)]
+[Information(Status = Status.NeedsDocumentation)]
 public static class MathExtensions
 {
 
@@ -43,7 +43,7 @@ public static class MathExtensions
 	/// <param name="second">The second <see cref="TimeSpan" /> value, to compare with the first.</param>
 	/// <returns>The percentage difference between the first and second <see cref="TimeSpan" /> values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static double CalculatePercent(this in TimeSpan first, in TimeSpan second) => (second.TotalMilliseconds - first.TotalMilliseconds) / Math.Abs(first.TotalMilliseconds) * 100;
 
 	/// <summary>
@@ -53,7 +53,7 @@ public static class MathExtensions
 	/// <param name="second">The second integer value, to compare with the first.</param>
 	/// <returns>The percentage difference between the first and second integer values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static double CalculatePercent(this in int first, in int second) => (second - first) / Math.Abs(first) * 100;
 
 	/// <summary>
@@ -63,7 +63,7 @@ public static class MathExtensions
 	/// <param name="second">The second double value, to compare with the first.</param>
 	/// <returns>The percentage difference between the first and second double values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static double CalculatePercent(this in double first, in double second) => (second - first) / Math.Abs(first) * 100;
 
 	/// <summary>
@@ -73,7 +73,7 @@ public static class MathExtensions
 	/// <param name="second">The second long integer value, to compare with the first.</param>
 	/// <returns>The percentage difference between the first and second long integer values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static double CalculatePercent(this in long first, in long second) => (second - first) / Math.Abs(first) * 100;
 
 	/// <summary>
@@ -84,7 +84,7 @@ public static class MathExtensions
 	/// <remarks>A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
 	/// This method efficiently checks for primality by eliminating divisible numbers early.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(IsPrime), author: "David McCarter", createdOn: "7/15/2022", UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(IsPrime), author: "David McCarter", createdOn: "7/15/2022", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool IsPrime(this in int number)
 	{
 		if (number < 2)
@@ -121,7 +121,7 @@ public static class MathExtensions
 	/// <param name="value">The double value to round.</param>
 	/// <returns>The integer value that is closest to the specified double value.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int Round(this in double value) => Convert.ToInt32(Math.Round(value, MidpointRounding.ToPositiveInfinity));
 
 	/// <summary>
@@ -130,7 +130,7 @@ public static class MathExtensions
 	/// <param name="value">The decimal value to round.</param>
 	/// <returns>The integer value that is closest to the specified decimal value.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int Round(this in decimal value) => Convert.ToInt32(Math.Round(value));
 
 	/// <summary>
@@ -140,7 +140,7 @@ public static class MathExtensions
 	/// <param name="digits">The number of fractional digits in the return value.</param>
 	/// <returns>The integer value that is closest to the specified double value, rounded to the specified number of fractional digits.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int Round(this in double value, in int digits) => Convert.ToInt32(Math.Round(value, digits));
 
 	/// <summary>
@@ -151,7 +151,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified double value, rounded according to the specified rounding convention.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int Round(this in double value, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
@@ -166,7 +166,7 @@ public static class MathExtensions
 	/// <param name="digits">The number of fractional digits in the return value.</param>
 	/// <returns>The integer value that is closest to the specified decimal value, rounded to the specified number of fractional digits.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int Round(this in decimal value, in int digits) => Convert.ToInt32(Math.Round(value, digits));
 
 	/// <summary>
@@ -177,7 +177,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified decimal value, rounded according to the specified rounding convention.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int Round(this in decimal value, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
@@ -194,7 +194,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified double value, rounded to the specified number of fractional digits and according to the specified rounding convention.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int Round(this in double value, in int digits, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
@@ -211,7 +211,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified decimal value, rounded to the specified number of fractional digits and according to the specified rounding convention.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int Round(this in decimal value, in int digits, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
