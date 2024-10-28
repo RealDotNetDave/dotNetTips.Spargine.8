@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System;
 using System.Collections.ObjectModel;
 using DotNetTips.Spargine.Core.Security;
 using DotNetTips.Spargine.Tester;

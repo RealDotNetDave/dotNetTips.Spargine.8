@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-10-2024
+// Last Modified On : 10-28-2024
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -27,20 +27,21 @@ namespace DotNetTips.Spargine.Core.Security;
 /// </remarks>
 public static class UlidGenerator
 {
-	/// <summary>
-	/// The characters used for Base32 encoding.
-	/// </summary>
-	private static readonly char[] _base32Chars = "0123456789ABCDEFGHJKMNPQRSTVWXYZ".ToCharArray();
 
 	/// <summary>
 	/// The length of the random component in the ULID.
 	/// </summary>
-	private static readonly int _randomLength = 16;
+	private const int RandomLength = 16;
 
 	/// <summary>
 	/// The length of the timestamp component in the ULID.
 	/// </summary>
-	private static readonly int _timestampLength = 10;
+	private const int TimestampLength = 10;
+
+	/// <summary>
+	/// The characters used for Base32 encoding.
+	/// </summary>
+	private static readonly char[] _base32Chars = "0123456789ABCDEFGHJKMNPQRSTVWXYZ".ToCharArray();
 
 	/// <summary>
 	/// Encodes a byte array into a Base32 encoded character array.
@@ -139,8 +140,8 @@ public static class UlidGenerator
 
 		var ulidChars = new char[26].AsSpan();
 
-		EncodeBase32(timestamp, ulidChars, 0, _timestampLength);
-		EncodeBase32(randomBytes, ulidChars, _timestampLength, _randomLength);
+		EncodeBase32(timestamp, ulidChars, 0, TimestampLength);
+		EncodeBase32(randomBytes, ulidChars, TimestampLength, RandomLength);
 
 		return new string(ulidChars);
 	}

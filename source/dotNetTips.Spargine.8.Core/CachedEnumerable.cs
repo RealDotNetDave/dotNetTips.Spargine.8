@@ -4,7 +4,7 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 10-28-2024
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -199,7 +199,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	{
 		this.CheckEnumerable();
 
-		for (var index = 0; TryGetItem(index, out var result); index++)
+		for (var index = 0; this.TryGetItem(index, out var result); index++)
 		{
 			yield return result;
 		}
