@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-07-2024
+// Last Modified On : 10-28-2024
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -18,6 +18,8 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
+using System.Text;
+using DotNetTips.Spargine.Core.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -33,6 +35,11 @@ namespace DotNetTips.Spargine.Core;
 [DebuggerDisplay(nameof(DisplayName))]
 public class Enumeration : IComparable
 {
+
+	/// <summary>
+	/// A composite format string used for error messages when an object is not of the expected type.
+	/// </summary>
+	private static readonly CompositeFormat ErrorObjectMustBeOfTypeFormat = CompositeFormat.Parse(Resources.ErrorObjectMustBeOfType);
 
 	/// <summary>
 	/// Private constructor used to prevent the creation of the Enumeration class without providing a value and display name.
@@ -163,7 +170,7 @@ public class Enumeration : IComparable
 
 		if (obj is not Enumeration other)
 		{
-			throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Properties.Resources.ErrorObjectMustBeOfType, nameof(Enumeration)), nameof(obj));
+			throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ErrorObjectMustBeOfTypeFormat, nameof(Enumeration)), nameof(obj));
 		}
 
 		return this.Value.CompareTo(other.Value);

@@ -177,15 +177,15 @@ public static class JsonSerialization
 		}
 	}
 
-	/// <summary>  
-	/// Reads JSON content from a specified file and deserializes it into an object.   
-	/// </summary>  
-	/// <typeparam name="T">The type of objects to deserialize.</typeparam>  
-	/// <param name="json">The JSON string containing the collection.</param>  
-	/// <param name="count">The number of objects to deserialize from the JSON string.</param>  
-	/// <returns>An array of deserialized objects of type <typeparamref name="T"/>.</returns>  
-	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than 1.</exception>  
-	/// <exception cref="JsonException">Thrown if the JSON is invalid or cannot be deserialized to the specified type.</exception>  
+	/// <summary>
+	/// Reads JSON content from a specified file and deserializes it into an object.
+	/// </summary>
+	/// <typeparam name="T">The type of objects to deserialize.</typeparam>
+	/// <param name="json">The JSON string containing the collection.</param>
+	/// <param name="count">The number of objects to deserialize from the JSON string.</param>
+	/// <returns>An array of deserialized objects of type <typeparamref name="T"/>.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than 1.</exception>
+	/// <exception cref="JsonException">Thrown if the JSON is invalid or cannot be deserialized to the specified type.</exception>
 	[Information(nameof(LoadCollectionFromJson), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static T[] LoadCollectionFromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json, int count)
 	{
@@ -238,7 +238,7 @@ public static class JsonSerialization
 	}
 
 	/// <summary>
-	/// Serializes an object into its JSON string representation. 
+	/// Serializes an object into its JSON string representation.
 	/// </summary>
 	/// <param name="obj">The object to serialize.</param>
 	/// <returns>A JSON string representation of the object.</returns>

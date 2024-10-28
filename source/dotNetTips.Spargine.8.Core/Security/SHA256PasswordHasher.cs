@@ -37,10 +37,7 @@ public static class SHA256PasswordHasher
 	/// <returns>A byte array containing the generated salt.</returns>
 	/// <remarks>This method uses a secure random number generator to produce a salt.
 	/// The salt can be used as part of a hashing function to increase the security of stored passwords.</remarks>
-	private static byte[] GenerateSalt()
-	{
-		return RandomNumberGenerator.GetBytes(SaltSize);
-	}
+	private static byte[] GenerateSalt() => RandomNumberGenerator.GetBytes(SaltSize);
 
 	/// <summary>
 	/// Hashes the specified password with the given salt using SHA256.
