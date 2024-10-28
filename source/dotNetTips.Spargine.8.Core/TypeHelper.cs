@@ -532,7 +532,6 @@ public static class TypeHelper
 		var returnValue = new Dictionary<string, string>();
 
 		var properties = input.GetType().GetAllProperties().Where(p => p.CanRead).OrderBy(p => p.Name).ToArray();
-		var itemCount = properties.LongLength;
 
 		foreach (var propertyInfo in properties)
 		{

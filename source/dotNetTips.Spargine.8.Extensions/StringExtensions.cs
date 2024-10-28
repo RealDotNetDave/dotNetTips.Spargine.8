@@ -36,6 +36,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// and performing manipulations like concatenation, extraction, and indentation. These utilities aim to simplify common string handling tasks
 /// in .NET applications.
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public static class StringExtensions
 {
 

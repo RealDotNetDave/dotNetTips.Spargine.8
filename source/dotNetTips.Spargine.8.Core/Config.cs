@@ -28,6 +28,7 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 /// <typeparam name="T">The type of the configuration object.</typeparam>
 [Serializable]
+[Information(Status = Status.NeedsDocumentation)]
 public class Config<T> where T : class, new()
 {
 

@@ -25,6 +25,7 @@ namespace DotNetTips.Spargine.Core.Logging;
 /// <summary>
 /// Provides a set of static methods for logging different levels of information to an <see cref="ILogger"/>. This includes methods for critical, debug, error, exception, information, trace, and warning messages.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static partial class FastLogger
 {
 

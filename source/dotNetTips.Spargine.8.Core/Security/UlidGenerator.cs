@@ -25,6 +25,7 @@ namespace DotNetTips.Spargine.Core.Security;
 /// <remarks>
 /// This class includes methods to generate single or multiple ULIDs, extract timestamps from ULIDs, and encode/decode ULIDs using Base32 encoding.
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public static class UlidGenerator
 {
 

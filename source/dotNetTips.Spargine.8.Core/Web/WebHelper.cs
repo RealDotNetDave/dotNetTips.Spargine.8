@@ -61,7 +61,7 @@ public static class WebHelper
 	{
 		address = address.ArgumentNotNull();
 
-		if (!string.IsNullOrEmpty(clientId) && clientId != "NONE")
+		if (!string.IsNullOrEmpty(clientId) && !string.Equals(clientId, "NONE", StringComparison.Ordinal))
 		{
 			_httpClient.DefaultRequestHeaders.Add("CLIENTID", clientId);
 		}

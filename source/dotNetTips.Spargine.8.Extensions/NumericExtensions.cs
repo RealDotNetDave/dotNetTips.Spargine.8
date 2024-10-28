@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-15-2024
+// Last Modified On : 10-28-2024
 // ***********************************************************************
 // <copyright file="NumericExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -26,6 +26,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// <summary>
 /// Provides extension methods for numeric types, offering a variety of mathematical and utility operations to enhance the functionality of the basic numeric types in .NET.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class NumericExtensions
 {
 

@@ -23,7 +23,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// These methods include conditional transformations on <see cref="IQueryable{T}"/> and <see cref="IEnumerable{T}"/>,
 /// allowing for more expressive and dynamic query composition.
 /// </summary>
-[Information(nameof(LinqExtensions), "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.Available)]
+[Information(nameof(LinqExtensions), "David McCarter", "8/18/20", ModifiedBy = "David McCarter", Status = Status.NeedsDocumentation)]
 public static class LinqExtensions
 {
 

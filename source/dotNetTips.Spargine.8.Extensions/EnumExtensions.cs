@@ -24,6 +24,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// <summary>
 /// Provides extension methods for the <see cref="Enum" /> type, enhancing enum functionality with additional utilities such as getting descriptions, parsing, and retrieving items.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class EnumExtensions
 {
 

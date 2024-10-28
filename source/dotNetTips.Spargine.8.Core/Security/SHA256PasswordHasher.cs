@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-14-2024
+// Last Modified On : 10-28-2024
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -27,21 +27,19 @@ namespace DotNetTips.Spargine.Core.Security;
 /// Provides methods for hashing passwords using the SHA256 algorithm and verifying hashed passwords.
 /// This class cannot be inherited and is designed to enhance security by incorporating salt and fixed-time comparison to mitigate common vulnerabilities.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class SHA256PasswordHasher
 {
 
 	/// <summary>
 	/// Generates a cryptographic salt of the specified byte length.
 	/// </summary>
-	/// <param name="byteLength">The length of the salt in bytes.</param>
 	/// <returns>A byte array containing the generated salt.</returns>
 	/// <remarks>This method uses a secure random number generator to produce a salt.
 	/// The salt can be used as part of a hashing function to increase the security of stored passwords.</remarks>
-	private static byte[] GenerateSalt(in int byteLength)
+	private static byte[] GenerateSalt()
 	{
-		var salt = RandomNumberGenerator.GetBytes(byteLength);
-
-		return salt;
+		return RandomNumberGenerator.GetBytes(SaltSize);
 	}
 
 	/// <summary>
@@ -54,25 +52,24 @@ public static class SHA256PasswordHasher
 	/// The resulting hash can be used for securely storing passwords.</remarks>
 	private static byte[] HashPasswordWithSalt(string password, byte[] salt)
 	{
-		var passwordBytes = Encoding.UTF8.GetBytes(password);
+		var saltAndPassword = new byte[salt.Length + (password.Length * sizeof(char))];
 
-		// Combine salt and password bytes
-		var saltAndPassword = new byte[salt.Length + passwordBytes.Length];
 		Buffer.BlockCopy(salt, 0, saltAndPassword, 0, salt.Length);
-		Buffer.BlockCopy(passwordBytes, 0, saltAndPassword, salt.Length, passwordBytes.Length);
+		_ = Encoding.UTF8.GetBytes(password, 0, password.Length, saltAndPassword, salt.Length);
 
-		// Compute and return the hash
 		return SHA256.HashData(saltAndPassword);
 	}
 
-	// In .NET Core 2.1, you can use CryptographicOperations.FixedTimeEquals
-	// https://github.com/dotnet/runtime/blob/419e949d258ecee4c40a460fb09c66d974229623/src/libraries/System.Security.Cryptography.Primitives/src/System/Security/Cryptography/CryptographicOperations.cs#L32
 	/// <summary>
-	/// Fixes the time equals.
+	/// Compares two byte arrays in a fixed-time manner to prevent timing attacks.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="left">The first byte array to compare.</param>
+	/// <param name="right">The second byte array to compare.</param>
+	/// <returns><c>true</c> if the byte arrays are equal; otherwise, <c>false</c>.</returns>
+	/// <remarks>
+	/// This method ensures that the comparison time is consistent regardless of the data in the arrays,
+	/// which helps to mitigate timing attacks that could otherwise reveal information about the data.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool FixedTimeEquals([NotNull] byte[] left, [NotNull] byte[] right)
@@ -82,20 +79,18 @@ public static class SHA256PasswordHasher
 
 		// NoOptimization because we want this method to be exactly as non-short-circuiting as written.
 		// NoInlining because the NoOptimization would get lost if the method got inlined.
-		if (left.LongLength != right.LongLength)
+		if (left.Length != right.Length)
 		{
 			return false;
 		}
 
-		var byteCount = 0;
-		var leftCount = left.LongLength;
-
-		for (var byteIndex = 0; byteIndex < leftCount; byteIndex++)
+		var result = 0;
+		for (var index = 0; index < left.Length; index++)
 		{
-			byteCount |= left[byteIndex] - right[byteIndex];
+			result |= left[index] ^ right[index];
 		}
 
-		return byteCount == 0;
+		return result == 0;
 	}
 
 	/// <summary>
@@ -112,7 +107,7 @@ public static class SHA256PasswordHasher
 		password = password.ArgumentNotNullOrEmpty();
 
 		// The salt must be unique for each password
-		var salt = GenerateSalt(SaltSize);
+		var salt = GenerateSalt();
 		var hash = HashPasswordWithSalt(password, salt);
 
 		var passwordBytes = new byte[1 + SaltSize + hash.Length];
@@ -157,9 +152,11 @@ public static class SHA256PasswordHasher
 		}
 
 		var salt = new byte[SaltSize];
+
 		Buffer.BlockCopy(Convert.FromBase64String(hashedPassword), 1, salt, 0, SaltSize);
 
 		var expectedHash = new byte[Convert.FromBase64String(hashedPassword).Length - 1 - SaltSize];
+
 		Buffer.BlockCopy(Convert.FromBase64String(hashedPassword), 1 + SaltSize, expectedHash, 0, expectedHash.Length);
 
 		var actualHash = HashPasswordWithSalt(password, salt);
