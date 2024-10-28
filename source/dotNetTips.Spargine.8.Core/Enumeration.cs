@@ -163,7 +163,7 @@ public class Enumeration : IComparable
 
 		if (obj is not Enumeration other)
 		{
-			throw new ArgumentException($"Object must be of type {nameof(Enumeration)}", nameof(obj));
+			throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Properties.Resources.ErrorObjectMustBeOfType, nameof(Enumeration)), nameof(obj));
 		}
 
 		return this.Value.CompareTo(other.Value);

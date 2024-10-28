@@ -268,6 +268,15 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Object must be of type {0}.
+        /// </summary>
+        internal static string ErrorObjectMustBeOfType {
+            get {
+                return ResourceManager.GetString("ErrorObjectMustBeOfType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Collection cannot be read-only..
         /// </summary>
         internal static string ErrorReadOnlyCollection {

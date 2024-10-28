@@ -61,15 +61,6 @@ namespace DotNetTips.Spargine.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Directory {0} does not exist or cannot be created..
-        /// </summary>
-        internal static string DirectoryDoesNotExistOrCannotBeCreated {
-            get {
-                return ResourceManager.GetString("DirectoryDoesNotExistOrCannotBeCreated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to File not found..
         /// </summary>
         internal static string FileNotFound {

@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -186,6 +186,9 @@
   <data name="ErrorObjectCannotBeNull" xml:space="preserve">
     <value>Object cannot be null. Duh!</value>
   </data>
+  <data name="ErrorObjectMustBeOfType" xml:space="preserve">
+    <value>Object must be of type {0}</value>
+  </data>
   <data name="ErrorReadOnlyCollection" xml:space="preserve">
     <value>Collection cannot be read-only.</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="ErrorTimeIsInvalidBasedOnTheMinMaxRange" xml:space="preserve">
     <value>Time is invalid based on the min/max range.</value>
+  </data>
+  <data name="ErrorUnknownIOException" xml:space="preserve">
+    <value>Unknown IO Exception.</value>
   </data>
   <data name="ErrorUriCannotBeNull" xml:space="preserve">
     <value>Uri cannot be null.</value>
@@ -248,8 +254,5 @@
   </data>
   <data name="UserUnknown" xml:space="preserve">
     <value>UNKNOWN</value>
-  </data>
-  <data name="ErrorUnknownIOException" xml:space="preserve">
-    <value>Unknown IO Exception.</value>
   </data>
 </root>
