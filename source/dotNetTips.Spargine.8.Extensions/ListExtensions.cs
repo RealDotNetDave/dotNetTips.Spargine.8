@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-15-2024
+// Last Modified On : 10-29-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -46,7 +46,7 @@ public static class ListExtensions
 	/// <param name="item">The item to add to the beginning of the list.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
 	public static List<T> AddFirst<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		if (item is null)
@@ -54,7 +54,9 @@ public static class ListExtensions
 			return collection;
 		}
 
-		return collection.ArgumentNotNull().ArgumentNotReadOnly().Prepend(item).ToList();
+		_ = collection.ArgumentNotNull().ArgumentNotReadOnly();
+		collection.Insert(0, item);
+		return collection;
 	}
 
 	/// <summary>
@@ -65,7 +67,7 @@ public static class ListExtensions
 	/// <param name="item">The item to add to the end of the list.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available)]
 	public static List<T> AddLast<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		if (item is null)
@@ -73,8 +75,9 @@ public static class ListExtensions
 			return collection;
 		}
 
-		return [.. collection.ArgumentNotNull().ArgumentNotReadOnly(), item];
-
+		_ = collection.ArgumentNotNull().ArgumentNotReadOnly();
+		collection.Add(item);
+		return collection;
 	}
 
 	/// <summary>
