@@ -36,7 +36,8 @@
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 	<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
 --MAY 2024: Performance improvements.
---AUG 2024: Major performance and documentation changes. New methods.</PackageReleaseNotes>
+--AUG 2024: Major performance and documentation changes. New methods.
+--NOV 2024: Performance improvements. Creating Person objects now uses consistant data up to 10,000 items.</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 	<Product>$(AssemblyName)</Product>

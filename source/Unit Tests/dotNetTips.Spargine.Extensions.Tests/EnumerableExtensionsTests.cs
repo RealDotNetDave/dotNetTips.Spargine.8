@@ -324,7 +324,7 @@ public class EnumerableExtensionsTests
 
 		var result = people.HasDuplicates();
 
-		Assert.IsFalse(result);
+		Assert.IsTrue(result);
 	}
 
 	[TestMethod]

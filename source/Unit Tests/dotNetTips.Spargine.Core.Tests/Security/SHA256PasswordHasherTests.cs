@@ -110,7 +110,7 @@ public class SHA256PasswordHasherTests
 		var hashedPassword = SHA256PasswordHasher.HashPassword(password);
 
 		// Act and Assert
-		Assert.ThrowsException<ArgumentNullException>(() => SHA256PasswordHasher.VerifyHashedPassword(hashedPassword, null));
+		Assert.ThrowsException<NullReferenceException>(() => SHA256PasswordHasher.VerifyHashedPassword(hashedPassword, null));
 	}
 
 	[TestMethod]

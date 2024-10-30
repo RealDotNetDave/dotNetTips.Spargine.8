@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
 	<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
 	<AnalysisLevel>latest-recommended</AnalysisLevel>
@@ -35,11 +35,10 @@
 	<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 	<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageReleaseNotes>
-	  --MAR 2024: Initial 8.0 release.
-	  --MAY 2024: Performance improvements.
-	  --AUG 2024: Major performance and documentation changes. New methods.
-	</PackageReleaseNotes>
+	<PackageReleaseNotes> --MAR 2024: Initial 8.0 release.
+--MAY 2024: Performance improvements.
+--AUG 2024: Major performance and documentation changes. New methods.
+--NOV 2024: Performance improvements. Added UlidGenerator, improvements to JSON serialization, New methods	</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>

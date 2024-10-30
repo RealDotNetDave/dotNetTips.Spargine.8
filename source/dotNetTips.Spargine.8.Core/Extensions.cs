@@ -267,6 +267,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 		{
 			count++;
 		}
+
 		return count;
 	}
 

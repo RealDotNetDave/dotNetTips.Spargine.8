@@ -37,7 +37,7 @@
 	<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
 --MAY 2024: Added FastCount to EnumerableExtensions, FastHashData to ArrayExtensions. Performance improvements.
 --AUG 2024: Major performance and documentation changes. New methods.
-	</PackageReleaseNotes>
+--NOV 2024: Performance improvements, refactoring. Added new methods to extentions</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>

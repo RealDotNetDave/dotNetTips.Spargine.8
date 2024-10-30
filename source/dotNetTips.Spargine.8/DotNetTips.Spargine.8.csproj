@@ -36,7 +36,8 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
 --MAY 2024: Added CopyFile to FileHelper.
---AUG 2024: Major performance and documentation changes. New methods.</PackageReleaseNotes>
+--AUG 2024: Major performance and documentation changes. New methods.
+--NOV 2024: Code perf improvements, refactoring. Added TempFileManager.</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
