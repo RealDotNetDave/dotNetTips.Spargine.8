@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-// <summary>Extension methods for different List collection types.</summary>
+// <summary>Provides extension methods for List{T} to enhance functionality.</summary>
 // ***********************************************************************
 using System.Collections.Frozen;
 using System.Collections.Immutable;

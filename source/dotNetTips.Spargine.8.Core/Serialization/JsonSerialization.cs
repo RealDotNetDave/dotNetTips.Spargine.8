@@ -9,9 +9,9 @@
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>Provides methods for serializing objects to JSON strings and
+// deserializing JSON strings to objects.</summary>
 // ***********************************************************************
-
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
