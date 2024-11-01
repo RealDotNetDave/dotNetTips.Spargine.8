@@ -225,7 +225,7 @@ public static partial class RandomCreditCardNumberGenerator
 	public static string GetCreditCardNumber() => GetCreditCardNumbers(1).SingleOrDefault();
 
 	/// <summary>
-	/// Generate a collection of random credit card numbers. Supported credit cards include: American Express, Diners Club, Discover, EnRoute, JCB, MasterCard, Visa, and Voyager.
+	/// Generates a collection of random credit card numbers. Supported credit cards include: American Express, Diners Club, Discover, EnRoute, JCB, MasterCard, Visa, and Voyager.
 	/// </summary>
 	/// <param name="count">The number of credit card numbers to generate. Must be at least 1.</param>
 	/// <returns>A read-only collection of generated credit card numbers.</returns>

@@ -17,6 +17,7 @@ Below is the list of current projects in this repository
         * **FileHelper**: Common methods for working with files.
         * **FileProcessor**: Facilitates file copying and deletion operations, incorporating event handling for files. Additionally, it offers the capability to delete folders.
         * **PathHelper**: Common methods for path manipulation, encompassing handling invalid filter characters, invalid path names, and path separators.
+        * **TempFileManager**: Creates and maintains a list of temporary files.
     * **Net**
         * **Http**
             * **HttpClientHelper**: Utility methods for HttpClient.
@@ -55,6 +56,7 @@ Below is the list of current projects in this repository
     * **Security**
         * **EncryptionHelper**: Provides secure encryption for strings using AES (Advanced Encryption Standard) and includes a method to validate encrypted strings. The AES encryption ensures the confidentiality and integrity of sensitive information, making it suitable for securely handling data.
         * **SHA256PasswordHasher**: Generates and verifies passwords using SHA256, a secure cryptographic hash function.
+        * **UlidGenerator**: Provides methods to generate and manipulate ULIDs (Universally Unique Lexicographically Sortable Identifiers)
     * **Serialization**
         * **JsonSerialization**: This class simplifies the process of serializing and deserializing strings to and from JSON format using the JsonSerializer. JSON serialization is a widely adopted and efficient method for storing and exchanging data in various applications and APIs.
         * **XmlSerialization**: Facilitates seamless serialization and deserialization of strings to and from the XML format.
@@ -92,7 +94,7 @@ Below is the list of current projects in this repository
     * **TypeHelper**: Provides valuable methods for type management, encompassing tasks such as loading derived types, creating new types, discovering derived types, converting JSON to objects, transforming JSON files into objects, generating instance hash codes, and listing built-in types. These functionalities empower developers to handle types effectively in diverse scenarios.
     * **Valdaitor**: Methods facilitating the validation of arguments and values, ensuring both simplicity and accuracy. In the event of encountering invalid data, an Exception will be thrown, accompanied by an appropriate error message, which can be either custom or default.
         
-*   **DotNetTips.Spargine.Extensions:** Library for common extension methods. Supported types are: Array, Assembly, Boolean, Collection, Color, DataContext, DataReader, DataTable, DateTime, Dictionary, Enumerable, Enum, Exception, Guid, HttpClient, HttpContext, HttpRequest, HttpReponseHeader, ImmutableArray, LINQ, List, Math, Numeric, Object, ObservableCollection, Process, ReadOnlyCollection, ReadOnlySpan, Socket, SortedDictionary, SortedSet, Stream, StringBuilder, String, Task, Thread, WebClient
+*   **DotNetTips.Spargine.Extensions:** Library for common extension methods. Supported types are: Array, Assembly, Boolean, Collection, Color, DataContext, DataReader, DataTable, DateTime, Dictionary, Enumerable, Enum, Exception, Guid, HashSet,  HttpClient, HttpContext, HttpRequest, HttpReponseHeader, ImmutableArray, LINQ, List, Math, Numeric, Object, ObservableCollection, Process, ReadOnlyCollection, ReadOnlySpan, Socket, SortedDictionary, SortedSet, Stream, StringBuilder, String, Task, Thread, WebClient
 *   **DotNetTips.Spargine.Tester:** Library for creating dummy data for use in unit & benchmark tests.
     * **Data**:
         * **Countries**: Methods for retrieving comprehensive data encompassing all countries worldwide, including their respective regions, states and cities.
@@ -110,6 +112,9 @@ Below is the list of current projects in this repository
             * **Coordinate**: A practical value type designed for testing and benchmarking, named "Coordinate," featuring properties X, Y, and Z. It inherits from the interface ICoordinate.
             * **ICoordinate**: An interface named "ICoordinate" with properties X, Y, and Z for coordinating values.
             * **Person**: A real-world value type crafted for testing and benchmarking, named "Person," encompassing properties such as Addresses, Age, BornOn, CellPhone, Email, FirstName, FullName, LastName, and Phone.
+    * **RandomCreditCardNumberGenerator**: Create random credit card numbers. It includes support for major credit card types such as Visa, MasterCard, American Express, and others.
+        * **GetCreditCardNumber**: Generate a single random credit card number. Supported credit cards include: American Express, Diners Club, Discover, EnRoute, JCB, MasterCard, Visa, and Voyager.
+        * **GetCreditCardNumbers**: Generates a collection of random credit card numbers. Supported credit cards include: American Express, Diners Club, Discover, EnRoute, JCB, MasterCard, Visa, and Voyager.
     * **RandomData**: Create random data for unit and benchmark testing.
         * **GenerateAddressCollection<T>**: Generate a collection of Address types that implement the IAddress interface.
         * **GenerateAddressRecordCollection**: Generate a collection of AddressRecord instances.
@@ -118,7 +123,7 @@ Below is the list of current projects in this repository
         * **GenerateCoordinate**: Create a Coordinate object that implements the  ICoordinate interface with random values.
         * **GenerateCoordinateCollection**: Create a collection of objects that implement the ICoordinate interface.
         * **GenerateCreditCardNumber**: Generate a random credit card number. Supported credit cards include: American Express, Diners Club, Discover, EnRoute, JCB, MasterCard, Visa, and Voyager.
-        * **GenerateCreditCardNumbers**: Generate a collection of random credit card numbers. Supported credit cards include: American Express, Diners Club, Discover, EnRoute, JCB, MasterCard, Visa, and Voyager.
+        * **GenerateCreditCards**: Generate a collection of random credit card numbers. Supported credit cards include: American Express, Diners Club, Discover, EnRoute, JCB, MasterCard, Visa, and Voyager.
         * **GenerateDecimal**: Generates a random decimal value.
         * **GenerateDomainExtension**: Generates a random domain extension. Example: `creditunion`
         * **GenerateEmailAddress**: Create a random email address with a random domain.
