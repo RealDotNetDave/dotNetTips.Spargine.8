@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-22-2024
+// Last Modified On : 11-03-2024
 // ***********************************************************************
 // <copyright file="EnumExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -24,7 +24,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// <summary>
 /// Provides extension methods for the <see cref="Enum" /> type, enhancing enum functionality with additional utilities such as getting descriptions, parsing, and retrieving items.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Documentation = "https://bit.ly/SpargineEnumExtensions", Status = Status.Available)]
 public static class EnumExtensions
 {
 
@@ -39,7 +39,7 @@ public static class EnumExtensions
 	/// <param name="input">The enum value to get the description for.</param>
 	/// <returns>The description of the enum value.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input" /> is null.</exception>
-	[Information(nameof(GetDescription), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(GetDescription), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string GetDescription(this Enum input)
 	{
 		input = input.ArgumentDefined();
@@ -60,7 +60,7 @@ public static class EnumExtensions
 	/// <param name="input">The enumeration to retrieve items from.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}" /> where T is a tuple of string and int, representing the description and value of each enum member.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input" /> is null.</exception>
-	[Information(nameof(GetItems), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(GetItems), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<(string Description, int Value)> GetItems(this Enum input)
 	{
 		var enumType = input.GetType();
@@ -71,7 +71,6 @@ public static class EnumExtensions
 		);
 
 		return new ReadOnlyCollection<(string Description, int Value)>(items);
-
 	}
 
 	/// <summary>
@@ -81,7 +80,7 @@ public static class EnumExtensions
 	/// <param name="name">The string representation of the enum value to parse.</param>
 	/// <returns>An enum of type <typeparamref name="T" /> corresponding to the parsed string.</returns>
 	/// <exception cref="ArgumentException">Thrown if <paramref name="name" /> is null or an empty string, or if it does not correspond to any value of <typeparamref name="T" />.</exception>
-	[Information(nameof(Parse), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineEnumerationHandling")]
+	[Information(nameof(Parse), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T Parse<T>(this string name)
 		where T : Enum
 	{
