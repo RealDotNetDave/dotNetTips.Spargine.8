@@ -9,7 +9,8 @@
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Provides methods to generate and manipulate ULIDs (Universally Unique Lexicographically Sortable Identifiers)</summary>
+// <summary>Provides methods to generate and manipulate ULIDs
+// (Universally Unique Lexicographically Sortable Identifiers)</summary>
 // ***********************************************************************
 
 using System.Collections.ObjectModel;
@@ -25,7 +26,7 @@ namespace DotNetTips.Spargine.Core.Security;
 /// <remarks>
 /// This class includes methods to generate single or multiple ULIDs, extract timestamps from ULIDs, and encode/decode ULIDs using Base32 encoding.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Documentation = "https://bit.ly/SpargineUlidGenerator", Status = Status.Available)]
 public static class UlidGenerator
 {
 
