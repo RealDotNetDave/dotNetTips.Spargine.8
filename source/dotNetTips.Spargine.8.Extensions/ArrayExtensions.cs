@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-16-2024
+// Last Modified On : 11-05-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// generating hash codes for arrays, removing elements, and more. These methods are designed to be efficient and
 /// are optimized for performance where applicable.
 /// </remarks>
-[Information(Documentation = "https://bit.ly/SpargineArrayExtensions")]
+[Information(Documentation = "https://bit.ly/SpargineArrayExtensions", Status = Status.Available)]
 public static class ArrayExtensions
 {
 

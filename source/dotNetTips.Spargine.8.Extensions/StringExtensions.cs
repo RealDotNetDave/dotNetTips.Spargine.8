@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-28-2024
+// Last Modified On : 11-06-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -36,7 +36,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// and performing manipulations like concatenation, extraction, and indentation. These utilities aim to simplify common string handling tasks
 /// in .NET applications.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Updated)]
 public static class StringExtensions
 {
 
@@ -156,6 +156,24 @@ public static class StringExtensions
 		}
 
 		return [];
+	}
+
+	/// <summary>
+	/// Calculates the size of a byte array needed to store the Base64 encoded version of the input string.
+	/// </summary>
+	/// <param name="input">The input string to be encoded.</param>
+	/// <returns>The size of the byte array needed to store the Base64 encoded string, or 0 if the input is null or empty.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CalculateByteArraySize), "David McCarter", "11/6/2024", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	public static int CalculateByteArraySize([NotNull] this string input)
+	{
+		if (input.IsNullOrEmpty())
+		{
+			return 0;
+		}
+
+		return input.Length * 3 / 4;
 	}
 
 	/// <summary>
@@ -970,8 +988,8 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Splits the input string into a <see cref="ReadOnlyCollection{T}"/> of strings, 
-	/// separated by the specified <paramref name="separator"/>. 
+	/// Splits the input string into a <see cref="ReadOnlyCollection{T}"/> of strings,
+	/// separated by the specified <paramref name="separator"/>.
 	/// The <paramref name="options"/> parameter specifies whether to include empty array elements in the array returned.
 	/// </summary>
 	/// <param name="input">The string to split.</param>
@@ -988,8 +1006,8 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Splits the input string into a <see cref="ReadOnlyCollection{String}"/> of strings, 
-	/// separated by the specified <paramref name="separator"/>. 
+	/// Splits the input string into a <see cref="ReadOnlyCollection{String}"/> of strings,
+	/// separated by the specified <paramref name="separator"/>.
 	/// The <paramref name="options"/> parameter specifies whether to include empty array elements in the array returned.
 	/// The <paramref name="count"/> parameter specifies the maximum number of substrings to return.
 	/// </summary>
@@ -1009,8 +1027,8 @@ public static class StringExtensions
 	}
 
 	/// <summary>
-	/// Splits the input string into a ReadOnlyCollection{string} of strings, 
-	/// separated by the specified <paramref name="separator"/>. 
+	/// Splits the input string into a ReadOnlyCollection{string} of strings,
+	/// separated by the specified <paramref name="separator"/>.
 	/// The <paramref name="options"/> parameter specifies whether to include empty array elements in the array returned.
 	/// The <paramref name="count"/> parameter specifies the maximum number of substrings to return.
 	/// </summary>
@@ -1142,6 +1160,30 @@ public static class StringExtensions
 		}
 
 		return Convert.ToBase64String(_encoding.GetBytes(input));
+	}
+
+	/// <summary>
+	/// Converts a Base64 encoded string to a byte span.
+	/// </summary>
+	/// <param name="input">The Base64 encoded string.</param>
+	/// <returns>A span of bytes representing the decoded Base64 string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the input string is null or empty.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ToBase64ByteSpan), "David McCarter", "11/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static Span<byte> ToBase64ByteSpan(this string input)
+	{
+		input = input.ArgumentNotNullOrEmpty();
+
+		var span = new Span<byte>(new byte[input.Length * 3 / 4]);
+
+		if (Convert.TryFromBase64String(input, span, out var bytesWritten))
+		{
+			return span.Slice(0, bytesWritten);
+		}
+		else
+		{
+			return [];
+		}
 	}
 
 	/// <summary>
