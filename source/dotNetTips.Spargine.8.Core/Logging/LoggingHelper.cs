@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-14-2024
+// Last Modified On : 11-08-2024
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -128,7 +128,7 @@ public static class LoggingHelper
 		{
 			FastLogger.LogException(_appDomainExceptionLogger, $"FirstChanceException in {AppDomain.CurrentDomain.FriendlyName}:  {e.Exception.Message}", e.Exception);
 
-			if (e.Exception is LoggableException loggableException)
+			if (e.Exception is LoggableException { HasBeenLogged: false } loggableException)
 			{
 				loggableException.HasBeenLogged = true;
 			}
@@ -229,7 +229,7 @@ public static class LoggingHelper
 			{
 				FastLogger.LogCritical(_appDomainUnhandledExceptionLogger, $"UnhandledException in {AppDomain.CurrentDomain.FriendlyName}:  {ex.Message}", ex);
 
-				if (ex is LoggableException loggableException)
+				if (ex is LoggableException { HasBeenLogged: false } loggableException)
 				{
 					loggableException.HasBeenLogged = true;
 				}
@@ -336,7 +336,7 @@ public static class LoggingHelper
 
 		var values = TypeHelper.GetPropertyValues(input: appInfo);
 
-		if (values?.FastCount() > 0)
+		if (values?.Count > 0)
 		{
 			//FrozenSet is slower.
 			foreach (var item in values.OrderBy(p => p.Key))
@@ -386,10 +386,10 @@ public static class LoggingHelper
 
 		var values = TypeHelper.GetPropertyValues(computerInfo);
 
-		if (values?.FastCount() > 0)
+		if (values?.Count > 0)
 		{
 			//FrozenSet is slower.
-			foreach (var item in values.OrderBy(p => p.Key))
+			foreach (var item in values.OrderBy(p => p.Key).ToList())
 			{
 				logger.LogDebugMessage($"{nameof(ComputerInfo)}:{item.Key} - {item.Value}");
 			}
@@ -457,16 +457,18 @@ public static class LoggingHelper
 	/// }
 	/// </code>
 	/// </example>
-	[Information(nameof(RetrieveAllExceptions), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(RetrieveAllExceptions), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static ReadOnlyCollection<Exception> RetrieveAllExceptions(Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
 
 		var collection = new List<Exception>();
+		var currentException = exception;
 
-		for (var currentException = exception; currentException is not null; currentException = currentException.InnerException)
+		while (currentException != null)
 		{
 			collection.Add(currentException);
+			currentException = currentException.InnerException;
 		}
 
 		return collection.AsReadOnly();
