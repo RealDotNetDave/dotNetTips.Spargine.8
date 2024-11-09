@@ -460,15 +460,14 @@ public static class LoggingHelper
 	[Information(nameof(RetrieveAllExceptions), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static ReadOnlyCollection<Exception> RetrieveAllExceptions(Exception exception)
 	{
+		// SUGGESION FROM COPILOT SLIGHT SLOWER.
 		exception = exception.ArgumentNotNull();
 
 		var collection = new List<Exception>();
-		var currentException = exception;
 
-		while (currentException != null)
+		for (var currentException = exception; currentException is not null; currentException = currentException.InnerException)
 		{
 			collection.Add(currentException);
-			currentException = currentException.InnerException;
 		}
 
 		return collection.AsReadOnly();
