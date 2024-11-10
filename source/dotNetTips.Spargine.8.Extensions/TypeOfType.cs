@@ -43,7 +43,7 @@ public static partial class TypeExtensions
 		/// <summary>
 		/// Represents a record type. Record types are reference types that provide built-in functionality for value-based equality.
 		/// </summary>
-		Record //TODO: ADD REQUEST TO .NET TEAM TO PROVIDE WAY TO TELL IF A CLASS IS A RECORD TYPE.
+		Record
 	}
 
 }

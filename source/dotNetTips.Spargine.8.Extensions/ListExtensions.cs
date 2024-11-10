@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-29-2024
+// Last Modified On : 11-10-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -54,9 +54,8 @@ public static class ListExtensions
 			return collection;
 		}
 
-		_ = collection.ArgumentNotNull().ArgumentNotReadOnly();
-		collection.Insert(0, item);
-		return collection;
+		// SUGGESTION FROM COPILOT CAUSED ISSUES WITH BENCHMARKING
+		return collection.ArgumentNotNull().ArgumentNotReadOnly().Prepend(item).ToList();
 	}
 
 	/// <summary>

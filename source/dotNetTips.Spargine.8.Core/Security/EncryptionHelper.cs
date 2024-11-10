@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-13-2024
+// Last Modified On : 11-09-2024
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -55,8 +55,8 @@ public static class EncryptionHelper
 		var aesKey = new byte[32];
 		var aesIV = new byte[16];
 
-		Array.Copy(hash, aesKey, aesKey.LongLength);
-		Array.Copy(hash, 0, aesIV, 0, aesIV.LongLength);
+		Buffer.BlockCopy(hash, 0, aesKey, 0, aesKey.Length);
+		Buffer.BlockCopy(hash, 0, aesIV, 0, aesIV.Length);
 
 		return (aesKey, aesIV);
 	}
@@ -215,7 +215,7 @@ public static class EncryptionHelper
 	/// Console.WriteLine(decryptedText);
 	/// </code>
 	/// </example>
-	[Information(nameof(SimpleSHA256Decrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(SimpleSHA256Decrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string SimpleSHA256Decrypt([NotNull] string cipherText, [NotNull] string key)
 	{
 		cipherText = cipherText.ArgumentNotNullOrEmpty(true);
@@ -242,7 +242,7 @@ public static class EncryptionHelper
 	/// </code>
 	/// </example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SimpleSHA256Encrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2021", Status = Status.Available)]
+	[Information(nameof(SimpleSHA256Encrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2021", Status = Status.Available)]
 	public static string SimpleSHA256Encrypt([NotNull] string plainText, [NotNull] string key)
 	{
 		plainText = plainText.ArgumentNotNullOrEmpty(true);
