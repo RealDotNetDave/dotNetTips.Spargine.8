@@ -2,16 +2,16 @@
 
   <PropertyGroup>
 	<AnalysisLevel>none</AnalysisLevel>
-	<AssemblyVersion>2024.8.11.10</AssemblyVersion>
+	<AssemblyVersion>2024.8.11.11</AssemblyVersion>
 	<BaseOutputPath>..\..\..\AppBin</BaseOutputPath>
 	<EnableNETAnalyzers>false</EnableNETAnalyzers>
-	<FileVersion>2024.8.11.10</FileVersion>
+	<FileVersion>2024.8.11.11</FileVersion>
 	<IsPackable>false</IsPackable>
 	<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 	<RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
 	<RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
 	<TargetFramework>net8.0</TargetFramework>
-	<Version>2024.8.11.10</Version>
+	<Version>2024.8.11.11</Version>
   </PropertyGroup>
 
   <ItemGroup>
