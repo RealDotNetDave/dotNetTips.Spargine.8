@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-09-2024
+// Last Modified On : 11-11-2024
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -215,7 +215,7 @@ public static class EncryptionHelper
 	/// Console.WriteLine(decryptedText);
 	/// </code>
 	/// </example>
-	[Information(nameof(SimpleSHA256Decrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(SimpleSHA256Decrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string SimpleSHA256Decrypt([NotNull] string cipherText, [NotNull] string key)
 	{
 		cipherText = cipherText.ArgumentNotNullOrEmpty(true);
@@ -242,7 +242,7 @@ public static class EncryptionHelper
 	/// </code>
 	/// </example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SimpleSHA256Encrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2021", Status = Status.Available)]
+	[Information(nameof(SimpleSHA256Encrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2021", Status = Status.Available)]
 	public static string SimpleSHA256Encrypt([NotNull] string plainText, [NotNull] string key)
 	{
 		plainText = plainText.ArgumentNotNullOrEmpty(true);

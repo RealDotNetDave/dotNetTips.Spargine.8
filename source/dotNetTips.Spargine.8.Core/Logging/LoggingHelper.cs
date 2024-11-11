@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-09-2024
+// Last Modified On : 11-11-2024
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -327,7 +327,7 @@ public static class LoggingHelper
 	/// AppInfo:FileVersion - 15.0.0
 	/// AppInfo:Title - dotNetTips.Spargine
 	/// </example>
-	[Information(nameof(LogApplicationInformation), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(LogApplicationInformation), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
 	public static void LogApplicationInformation(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
@@ -458,7 +458,7 @@ public static class LoggingHelper
 	/// }
 	/// </code>
 	/// </example>
-	[Information(nameof(RetrieveAllExceptions), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(RetrieveAllExceptions), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static ReadOnlyCollection<Exception> RetrieveAllExceptions(Exception exception)
 	{
 		// SUGGESION FROM COPILOT SLIGHT SLOWER.
