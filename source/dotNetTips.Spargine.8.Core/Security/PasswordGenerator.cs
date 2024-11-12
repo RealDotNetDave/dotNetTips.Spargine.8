@@ -43,6 +43,7 @@ public static class PasswordGenerator
 	/// <param name="length">The length of the password to generate. Must be at least 8 characters.</param>
 	/// <returns>A randomly generated password string.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the length is less than 8.</exception>
+	/// <example>Password example: ik)-qm%OomiO</example>
 	[Information(nameof(GeneratePassword), "David McCarter", "11/12/2024", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
 	public static string GeneratePassword(int length)
 	{
