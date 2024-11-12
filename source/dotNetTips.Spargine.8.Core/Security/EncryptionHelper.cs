@@ -22,6 +22,7 @@ using System.Globalization;
 using System.Runtime.Versioning;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -272,3 +273,4 @@ public static class EncryptionHelper
 	public static PasswordVerificationResult VerifySHA256HashedPassword(string hashedPassword, [NotNull] string password) => SHA256PasswordHasher.VerifyHashedPassword(hashedPassword.ArgumentNotNullOrEmpty(), password.ArgumentNotNullOrEmpty());
 
 }
+
