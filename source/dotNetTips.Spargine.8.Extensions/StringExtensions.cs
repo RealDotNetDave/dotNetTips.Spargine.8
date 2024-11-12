@@ -1178,7 +1178,7 @@ public static class StringExtensions
 
 		if (Convert.TryFromBase64String(input, span, out var bytesWritten))
 		{
-			return span.Slice(0, bytesWritten);
+			return span[..bytesWritten];
 		}
 		else
 		{
