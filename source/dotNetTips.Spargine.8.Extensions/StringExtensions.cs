@@ -362,7 +362,7 @@ public static class StringExtensions
 	/// <param name="delimiter">The character delimiter to split the string by. Default is a comma.</param>
 	/// <returns>An array of strings that were delimited by the specified character.</returns>
 	[Information(nameof(DelimitedStringToArray), "David McCarter", "8/13/2020", "8/13/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static string[] DelimitedStringToArray([NotNull] this string input, char delimiter = ControlChars.Comma)
+	public static string[] DelimitedStringToArray([NotNull] this string input, in char delimiter = ControlChars.Comma)
 	{
 		if (string.IsNullOrEmpty(input))
 		{
@@ -608,7 +608,7 @@ public static class StringExtensions
 	/// It is an extension method and cannot be called on a null instance.
 	/// </remarks>
 	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static bool HasValue([NotNull] this string input, int length)
+	public static bool HasValue([NotNull] this string input, in int length)
 	{
 		length = length.ArgumentInRange(lower: 1, upper: length);
 
@@ -655,7 +655,7 @@ public static class StringExtensions
 	/// It is an extension method and cannot be called on a null instance.
 	/// </remarks>
 	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static bool HasValue([NotNull] this string input, int minLength, int maxLength)
+	public static bool HasValue([NotNull] this string input, in int minLength, in int maxLength)
 	{
 		minLength = minLength.ArgumentInRange(lower: 0, upper: maxLength);
 		maxLength = maxLength.ArgumentInRange(lower: minLength, upper: int.MaxValue);
@@ -697,7 +697,7 @@ public static class StringExtensions
 	/// <returns>The indented string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
 	[Information(nameof(Indent), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static string Indent([NotNull] this string input, in int length, char indentationCharacter)
+	public static string Indent([NotNull] this string input, in int length, in char indentationCharacter)
 	{
 		if (input.CheckIsNotNull() is false || length <= 0)
 		{
@@ -740,7 +740,7 @@ public static class StringExtensions
 	/// This method checks if the character is a digit using <see cref="char.IsDigit(char)"/>.
 	/// </remarks>
 	[Information(nameof(IsAsciiDigit), author: "David McCarter", createdOn: "6/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static bool IsAsciiDigit(this char character) => char.IsDigit(character.ArgumentNotNull());
+	public static bool IsAsciiDigit(in this char character) => char.IsDigit(character.ArgumentNotNull());
 
 	/// <summary>
 	/// Determines whether the specified character is an ASCII letter.
@@ -751,7 +751,7 @@ public static class StringExtensions
 	/// This method checks if the character is a letter using <see cref="char.IsLetter(char)"/>.
 	/// </remarks>
 	[Information(nameof(IsAsciiLetter), author: "David McCarter", createdOn: "7/30/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static bool IsAsciiLetter(this char character) => char.IsLetter(character.ArgumentNotNull());
+	public static bool IsAsciiLetter(in this char character) => char.IsLetter(character.ArgumentNotNull());
 
 	/// <summary>
 	/// Determines whether the specified character is an ASCII letter or digit.
@@ -762,7 +762,7 @@ public static class StringExtensions
 	/// This method checks if the character is a letter or digit using <see cref="char.IsLetterOrDigit(char)"/>.
 	/// </remarks>
 	[Information(nameof(IsAsciiLetterOrDigit), author: "David McCarter", createdOn: "7/30/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static bool IsAsciiLetterOrDigit(this char character) => char.IsLetterOrDigit(character.ArgumentNotNull());
+	public static bool IsAsciiLetterOrDigit(in this char character) => char.IsLetterOrDigit(character.ArgumentNotNull());
 
 	/// <summary>
 	/// Determines whether the specified character is an ASCII whitespace character.
@@ -773,7 +773,7 @@ public static class StringExtensions
 	/// This method checks if the character is a whitespace character using <see cref="char.IsWhiteSpace(char)"/>.
 	/// </remarks>
 	[Information(nameof(IsAsciiWhitespace), author: "David McCarter", createdOn: "6/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static bool IsAsciiWhitespace(this char character) => char.IsWhiteSpace(character.ArgumentNotNull());
+	public static bool IsAsciiWhitespace(in this char character) => char.IsWhiteSpace(character.ArgumentNotNull());
 
 	/// <summary>
 	/// Determines whether the specified string is a valid credit card number.
@@ -997,7 +997,7 @@ public static class StringExtensions
 	/// <param name="separator">The character to use as a separator. <see cref="ControlChars.Comma"/> is the default.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> of strings that has been split from the input string.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, char separator = ControlChars.Comma)
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, in char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
@@ -1017,7 +1017,7 @@ public static class StringExtensions
 	/// <param name="separator">The character to use as a separator. Defaults to <see cref="ControlChars.Comma"/>.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{String}"/> of strings that has been split from the input string.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, char separator = ControlChars.Comma)
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, in char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
@@ -1038,7 +1038,7 @@ public static class StringExtensions
 	/// <param name="separator">The string to use as a separator. Defaults to <see cref="ControlChars.DefaultSeparator"/>.</param>
 	/// <returns>A ReadOnlyCollection{string} of strings that has been split from the input string.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull] string separator = ControlChars.DefaultSeparator)
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, in int count, [NotNull] string separator = ControlChars.DefaultSeparator)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
