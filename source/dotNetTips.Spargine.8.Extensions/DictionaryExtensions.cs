@@ -219,7 +219,7 @@ public static class DictionaryExtensions
 	/// Dnadh[d`FP^SjNeChCvVuBXuEl^yVFUbKXsaacsCpJuxAscU: Dnadh[d`FP^SjNeChCvVuBXuEl^yVFUbKXsaacsCpJuxAscU.
 	/// </example>
 	[Information(nameof(ToDelimitedString), "David McCarter", "11/03/2020", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public static string ToDelimitedString<TKey, TValue>(this IDictionary<TKey, TValue> collection, char delimiter = ControlChars.Comma)
+	public static string ToDelimitedString<TKey, TValue>(this IDictionary<TKey, TValue> collection, in char delimiter = ControlChars.Comma)
 	{
 		if (collection.DoesNotHaveItems())
 		{

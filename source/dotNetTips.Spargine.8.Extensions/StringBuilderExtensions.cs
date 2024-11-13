@@ -367,7 +367,7 @@ public static class StringBuilderExtensions
 	/// <param name="capacity">The new capacity to set for the <see cref="StringBuilder"/>.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/> is null.</exception>
 	[Information(nameof(ClearSetCapacity), author: "David McCarter", createdOn: "11/13/2024", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
-	public static void ClearSetCapacity([NotNull] this StringBuilder sb, int capacity)
+	public static void ClearSetCapacity([NotNull] this StringBuilder sb, in int capacity)
 	{
 		sb = sb.ArgumentNotNull();
 		sb.Clear().Capacity = capacity;
