@@ -4,7 +4,7 @@
 // Created          : 11-12-2024
 //
 // Last Modified By : david
-// Last Modified On : 11-12-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="PasswordGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -49,7 +49,7 @@ public static class PasswordGenerator
 	{
 		length = length.ArgumentInRange(8, errorMessage: "Password length must be at lease 8 characters.");
 
-		var passwordChars = _stringBuilderPool.Value.Get();
+		var passwordChars = _stringBuilderPool.Value.Get().ClearSetCapacity(length);
 
 		try
 		{

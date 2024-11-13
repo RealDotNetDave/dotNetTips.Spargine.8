@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-14-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -185,7 +185,7 @@ public static class RandomData
 		}
 
 		var format = postalFormats.PickRandom();
-		var builder = _stringBuilderPool.Get();
+		var builder = _stringBuilderPool.Get().ClearSetCapacity(format.Length);
 
 		try
 		{
@@ -622,7 +622,7 @@ public static class RandomData
 	{
 		length = length.ArgumentInRange(lower: 1, defaultValue: 1);
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Get().ClearSetCapacity(length);
 
 		try
 		{
@@ -976,7 +976,7 @@ public static class RandomData
 	[Information(nameof(GenerateRelativeUrl), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string GenerateRelativeUrl()
 	{
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Get().Clear();
 
 		try
 		{
@@ -1120,7 +1120,7 @@ public static class RandomData
 	{
 		length = length.ArgumentInRange(lower: 1, defaultValue: 1);
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Get().ClearSetCapacity(length);
 
 		try
 		{

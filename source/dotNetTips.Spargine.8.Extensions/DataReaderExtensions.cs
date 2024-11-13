@@ -4,7 +4,7 @@
 // Created          : 10-08-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="DataReaderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -55,7 +55,7 @@ public static class DataReaderExtensions
 
 		if (includeHeaderAsFirstRow)
 		{
-			var sb = _stringBuilderPool.Get();
+			var sb = _stringBuilderPool.Get().Clear();
 
 			try
 			{
@@ -82,7 +82,7 @@ public static class DataReaderExtensions
 
 		while (dataReader.Read())
 		{
-			var sb = _stringBuilderPool.Get();
+			var sb = _stringBuilderPool.Get().Clear();
 
 			try
 			{

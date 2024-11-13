@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-05-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -178,7 +178,7 @@ public static class ArrayExtensions
 			return string.Empty;
 		}
 
-		var sb = _stringBuilderPool.Value.Get();
+		var sb = _stringBuilderPool.Value.Get().Clear();
 
 		try
 		{
@@ -206,7 +206,7 @@ public static class ArrayExtensions
 	{
 		array = array.ArgumentNotEmpty();
 
-		var sb = _stringBuilderPool.Value.Get();
+		var sb = _stringBuilderPool.Value.Get().Clear();
 
 		try
 		{

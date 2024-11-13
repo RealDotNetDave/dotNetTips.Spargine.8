@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-06-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -201,7 +201,7 @@ public static class StringExtensions
 
 		var hash = GetHash(input, hashType);
 
-		var sb = _stringBuilderPool.Value.Get();
+		var sb = _stringBuilderPool.Value.Get().Clear();
 
 		try
 		{
@@ -271,7 +271,7 @@ public static class StringExtensions
 			return input;
 		}
 
-		var sb = _stringBuilderPool.Value.Get();
+		var sb = _stringBuilderPool.Value.Get().Clear();
 
 		try
 		{
@@ -704,7 +704,7 @@ public static class StringExtensions
 			return string.Empty;
 		}
 
-		var sb = _stringBuilderPool.Value.Get();
+		var sb = _stringBuilderPool.Value.Get().Clear();
 
 		try
 		{

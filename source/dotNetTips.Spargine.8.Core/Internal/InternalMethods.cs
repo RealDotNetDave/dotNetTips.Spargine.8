@@ -4,7 +4,7 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="InternalMethods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -48,7 +48,7 @@ internal static class InternalMethods
 	/// <returns>System.String.</returns>
 	internal static string BytesToString([NotNull] this byte[] array)
 	{
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Get().Clear();
 
 		try
 		{

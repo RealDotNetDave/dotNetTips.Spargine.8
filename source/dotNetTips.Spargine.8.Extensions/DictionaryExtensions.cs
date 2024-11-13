@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-27-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -226,7 +226,7 @@ public static class DictionaryExtensions
 			return string.Empty;
 		}
 
-		var sb = _stringBuilderPool.Value.Get();
+		var sb = _stringBuilderPool.Value.Get().Clear();
 
 		try
 		{

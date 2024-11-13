@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -56,7 +56,7 @@ public static class FastStringBuilder
 			return ControlChars.EmptyString;
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Get().Clear();
 
 		//Set capacity to increace performance
 		_ = sb.EnsureCapacity((bytes.Length * 2) + 3);
@@ -98,7 +98,7 @@ public static class FastStringBuilder
 			return string.Empty;
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Get().Clear();
 
 		try
 		{
@@ -144,7 +144,7 @@ public static class FastStringBuilder
 			delimiter = ControlChars.Comma.ToString();
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Get().Clear();
 
 		try
 		{
@@ -195,7 +195,7 @@ public static class FastStringBuilder
 			return ControlChars.EmptyString;
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Get().Clear();
 
 		try
 		{
@@ -231,7 +231,7 @@ public static class FastStringBuilder
 			return ControlChars.EmptyString;
 		}
 
-		var sb = _stringBuilderPool.Get();
+		var sb = _stringBuilderPool.Get().Clear();
 
 		try
 		{

@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-28-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="NumericExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -767,7 +767,7 @@ public static class NumericExtensions
 			ExceptionThrower.ThrowArgumentOutOfRangeException(Resources.ValueMustBeInTheRange13999, nameof(number));
 		}
 
-		var sb = _stringBuilderPool.Value.Get();
+		var sb = _stringBuilderPool.Value.Get().Clear();
 
 		try
 		{
@@ -826,7 +826,7 @@ public static class NumericExtensions
 			return $"{Resources.Minus}{ControlChars.Space}{ToWords(Math.Abs(value))}";
 		}
 
-		var sb = _stringBuilderPool.Value.Get();
+		var sb = _stringBuilderPool.Value.Get().Clear();
 		try
 		{
 

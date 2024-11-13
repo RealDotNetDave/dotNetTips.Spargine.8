@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="LoggableException.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -97,7 +97,7 @@ public class LoggableException : Exception
 	/// <returns>A string representation of the exception properties and their values.</returns>
 	private static string ReflectException([NotNull] Exception ex)
 	{
-		var sb = _stringBuilderPool.Value.Get();
+		var sb = _stringBuilderPool.Value.Get().Clear();
 
 		try
 		{
