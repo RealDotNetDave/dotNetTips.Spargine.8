@@ -202,7 +202,7 @@ public abstract class Benchmark
 	/// <param name="wordMinLength">The minimum length of each generated string. Defaults to 10.</param>
 	/// <param name="wordMaxLength">The maximum length of each generated string. Defaults to 15.</param>
 	/// <returns>An array of randomly generated strings of the specified count and length constraints.</returns>
-	public string[] GetStringArray(int count, int wordMinLength = 10, int wordMaxLength = 15)
+	public string[] GetStringArray(in int count, int wordMinLength = 10, int wordMaxLength = 15)
 	{
 		//Ensure maxLenth is at least +1 of minLength.
 		wordMinLength = wordMinLength.EnsureMinimum(1);
