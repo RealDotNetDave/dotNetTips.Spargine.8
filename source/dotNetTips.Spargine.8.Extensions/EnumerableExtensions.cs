@@ -247,7 +247,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Create), "David McCarter", "11/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static Collection<T> Create<T>(this IEnumerable<T> items, bool ensureUnique)
+	public static Collection<T> Create<T>(this IEnumerable<T> items, in bool ensureUnique)
 	{
 		items = items.ArgumentNotNull();
 
@@ -820,7 +820,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Page), "David McCarter", "11/21/2010", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> collection, int pageSize)
+	public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> collection, in int pageSize)
 	{
 		collection = collection.ArgumentNotNull();
 		pageSize = pageSize.EnsureMinimum(1);
@@ -967,7 +967,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Shuffle), "David McCarter", "8/26/2020", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed)]
-	public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection, int count)
+	public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection, in int count)
 	{
 		collection = collection.ArgumentNotNull();
 		count = count.EnsureMinimum(1);
@@ -990,7 +990,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static IEnumerable<IEnumerable<T>> Split<T>(this IEnumerable<T> collection, int size)
+	public static IEnumerable<IEnumerable<T>> Split<T>(this IEnumerable<T> collection, in int size)
 	{
 		collection = collection.ArgumentNotNull();
 		size = size.EnsureMinimum(1);
