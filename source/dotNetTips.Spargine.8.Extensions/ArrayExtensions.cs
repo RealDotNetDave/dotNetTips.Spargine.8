@@ -391,7 +391,7 @@ public static class ArrayExtensions
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this T[] array, int count)
+	public static bool HasItems<T>([NotNull] this T[] array, in int count)
 	{
 		if (array is null)
 		{
