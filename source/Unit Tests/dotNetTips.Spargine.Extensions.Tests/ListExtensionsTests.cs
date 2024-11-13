@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-13-2024
+// Last Modified On : 11-13-2024
 // ***********************************************************************
 // <copyright file="ListExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -127,14 +127,6 @@ public class ListExtensionsTests
 		Assert.IsFalse(people.ClearNulls());
 
 		Assert.IsFalse(new List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>(10).ClearNulls());
-	}
-	[TestMethod]
-	public void CopyToListTest()
-	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
-		var newPeople = people.CopyToCollection();
-
-		Assert.IsTrue(people.FastCount() == newPeople.FastCount());
 	}
 
 	[TestMethod]

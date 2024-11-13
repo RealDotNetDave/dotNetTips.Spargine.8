@@ -234,7 +234,7 @@ public static class ListExtensions
 	/// <remarks>Original code by: @TheOtherBoz</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IndexAtLooped), author: "David McCarter", createdOn: "7/17/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static T IndexAtLooped<T>([NotNull] this List<T> collection, in int index)
+	public static T IndexAtLooped<T>([NotNull] this List<T> collection, int index)
 	{
 		collection = collection.ArgumentNotNull();
 

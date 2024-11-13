@@ -608,7 +608,7 @@ public static class StringExtensions
 	/// It is an extension method and cannot be called on a null instance.
 	/// </remarks>
 	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static bool HasValue([NotNull] this string input, in int length)
+	public static bool HasValue([NotNull] this string input, int length)
 	{
 		length = length.ArgumentInRange(lower: 1, upper: length);
 
@@ -655,7 +655,7 @@ public static class StringExtensions
 	/// It is an extension method and cannot be called on a null instance.
 	/// </remarks>
 	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static bool HasValue([NotNull] this string input, in int minLength, in int maxLength)
+	public static bool HasValue([NotNull] this string input, int minLength, int maxLength)
 	{
 		minLength = minLength.ArgumentInRange(lower: 0, upper: maxLength);
 		maxLength = maxLength.ArgumentInRange(lower: minLength, upper: int.MaxValue);
@@ -1038,7 +1038,7 @@ public static class StringExtensions
 	/// <param name="separator">The string to use as a separator. Defaults to <see cref="ControlChars.DefaultSeparator"/>.</param>
 	/// <returns>A ReadOnlyCollection{string} of strings that has been split from the input string.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, in int count, [NotNull] string separator = ControlChars.DefaultSeparator)
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull] string separator = ControlChars.DefaultSeparator)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();

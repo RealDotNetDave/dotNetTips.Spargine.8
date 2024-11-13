@@ -61,7 +61,7 @@ public static class ThreadExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="thread"/> is null.</exception>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="waitIterations"/> is less than zero.</exception>
 	[Information(nameof(WaitUntil), OptimizationStatus = OptimizationStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public static void WaitUntil([NotNull] this Thread thread, TimeSpan interval, in int waitIterations)
+	public static void WaitUntil([NotNull] this Thread thread, TimeSpan interval, int waitIterations)
 	{
 		thread = thread.ArgumentNotNull();
 		waitIterations = waitIterations.ArgumentInRange(lower: 0);
