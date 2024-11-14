@@ -4,13 +4,15 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-28-2024
+// Last Modified On : 11-05-2024
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Provides methods to generate and manipulate ULIDs
-// (Universally Unique Lexicographically Sortable Identifiers)</summary>
+// <summary>
+// Provides methods to generate and manipulate ULIDs
+// (Universally Unique Lexicographically Sortable Identifiers)
+// </summary>
 // ***********************************************************************
 
 using System.Collections.ObjectModel;

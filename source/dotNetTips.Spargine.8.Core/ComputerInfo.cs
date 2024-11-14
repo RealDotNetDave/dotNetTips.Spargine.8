@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-23-2024
+// Last Modified On : 11-14-2024
 // ***********************************************************************
 // <copyright file="ComputerInfo.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -17,6 +17,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
+using DotNetTips.Spargine.Core.Devices;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -70,7 +71,7 @@ public sealed class ComputerInfo
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int CurrentSystemTickCount { get; private set; } = Environment.TickCount;
+	public int CurrentSystemTickCount { get; private set; } = Clock.TickCount;
 
 	/// <summary>
 	/// Shows the directory from which the current process is running.
@@ -203,14 +204,14 @@ public sealed class ComputerInfo
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int TickCount { get; private set; } = Environment.TickCount;
+	public int TickCount { get; private set; } = Clock.TickCount;
 
 	/// <summary>
 	/// Gets the system tick count as a 64-bit value.
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public long TickCount64 { get; private set; } = Environment.TickCount64;
+	public long TickCount64 { get; private set; } = Clock.TickCount64;
 
 	/// <summary>
 	/// Gets the domain name associated with the current user.

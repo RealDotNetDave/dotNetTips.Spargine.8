@@ -63,13 +63,6 @@ public static class Clock
 	public static DateTime LocalTime => DateTime.Now.ToLocalTime();
 
 	/// <summary>
-	/// Gets a value indicating whether the system supports daylight saving time.
-	/// </summary>
-	/// <value><c>true</c> if the system supports daylight saving time; otherwise, <c>false</c>.</value>
-	[Information(nameof(UtcTime), "David McCarter", "11/14/2024", Status = Status.New)]
-	public static bool SupportsDaylightSavingsTime => System.TimeZoneInfo.SupportsDaylightSavingTime;
-
-	/// <summary>
 	/// Gets the current tick count by utilizing <see cref="Environment.TickCount"/>.
 	/// </summary>
 	/// <value>The tick count since the system started.</value>
@@ -81,7 +74,7 @@ public static class Clock
 	/// </summary>
 	/// <value>The tick count since the system started as a 64-bit integer.</value>
 	[Information(nameof(TickCount64), "David McCarter", "11/14/2024", Status = Status.New)]
-	public static int TickCount64 => Environment.TickCount64;
+	public static long TickCount64 => Environment.TickCount64;
 
 	/// <summary>
 	/// Gets the UTC time by retrieving <see cref="DateTime.UtcNow"/>.

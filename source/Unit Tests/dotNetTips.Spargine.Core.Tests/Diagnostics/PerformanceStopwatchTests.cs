@@ -4,7 +4,7 @@
 // Created          : 01-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-09-2023
+// Last Modified On : 11-14-2024
 // ***********************************************************************
 // <copyright file="PerformanceStopwatchTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -14,6 +14,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
+using DotNetTips.Spargine.Core.Devices;
 using DotNetTips.Spargine.Core.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -33,7 +34,7 @@ public class PerformanceStopwatchTests
 	public void DiagnosticsLogTest()
 	{
 		var psw = PerformanceStopwatch.StartNew(title: "GetUsers()");
-		var currentTime = DateTime.UtcNow;
+		var currentTime = Clock.UtcTime;
 
 		Thread.Sleep(1000);
 
@@ -64,7 +65,7 @@ public class PerformanceStopwatchTests
 	public void StopResetLogTest()
 	{
 		var psw = PerformanceStopwatch.StartNew(nameof(StopResetLogTest));
-		var currentTime = DateTime.UtcNow;
+		var currentTime = Clock.UtcTime;
 
 		Thread.Sleep(1000);
 
@@ -77,7 +78,7 @@ public class PerformanceStopwatchTests
 	public void StopResetTest()
 	{
 		var psw = PerformanceStopwatch.StartNew();
-		var currentTime = DateTime.UtcNow;
+		var currentTime = Clock.UtcTime;
 
 		Thread.Sleep(1000);
 
@@ -90,7 +91,7 @@ public class PerformanceStopwatchTests
 	public void StopRestartLogTest()
 	{
 		var psw = PerformanceStopwatch.StartNew(nameof(StopRestartLogTest));
-		var currentTime = DateTime.UtcNow;
+		var currentTime = Clock.UtcTime;
 
 		Thread.Sleep(1000);
 
@@ -103,7 +104,7 @@ public class PerformanceStopwatchTests
 	public void StopRestartTest()
 	{
 		var psw = PerformanceStopwatch.StartNew();
-		var currentTime = DateTime.UtcNow;
+		var currentTime = Clock.UtcTime;
 
 		Thread.Sleep(1000);
 
