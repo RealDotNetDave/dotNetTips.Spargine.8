@@ -408,7 +408,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <value>The birth date and time of the person.</value>
 	/// <remarks>
 	/// This property is serialized with the name "bornOn" and is required for XML serialization.
-	/// It is marked with <see cref="MemberNotNullAttribute"/> to indicate that the backing field <c>_bornOn</c> will not be null after being set.
+	/// It is marked with MemberNotNullAttribute to indicate that the backing field <c>_bornOn</c> will not be null after being set.
 	/// </remarks>
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
