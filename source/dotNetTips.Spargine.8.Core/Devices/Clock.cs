@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 11-14-2024
 // ***********************************************************************
 // <copyright file="Clock.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -34,6 +34,14 @@ public static class Clock
 {
 
 	/// <summary>
+	/// Determines whether the specified year is a leap year.
+	/// </summary>
+	/// <param name="year">The year to check.</param>
+	/// <returns><c>true</c> if the specified year is a leap year; otherwise, <c>false</c>.</returns>
+	[Information(nameof(IsLeapYear), "David McCarter", "11/14/2024", Status = Status.New)]
+	public static bool IsLeapYear(int year) => DateTime.IsLeapYear(year);
+
+	/// <summary>
 	/// Gets the days in the current month (local time) by utilizing <see cref="DateTime.DaysInMonth(int, int)"/>.
 	/// </summary>
 	/// <value>The number of days in the current month.</value>
@@ -55,11 +63,25 @@ public static class Clock
 	public static DateTime LocalTime => DateTime.Now.ToLocalTime();
 
 	/// <summary>
+	/// Gets a value indicating whether the system supports daylight saving time.
+	/// </summary>
+	/// <value><c>true</c> if the system supports daylight saving time; otherwise, <c>false</c>.</value>
+	[Information(nameof(UtcTime), "David McCarter", "11/14/2024", Status = Status.New)]
+	public static bool SupportsDaylightSavingsTime => System.TimeZoneInfo.SupportsDaylightSavingTime;
+
+	/// <summary>
 	/// Gets the current tick count by utilizing <see cref="Environment.TickCount"/>.
 	/// </summary>
 	/// <value>The tick count since the system started.</value>
 	[Information(nameof(TickCount), "David McCarter", "11/11/2020", Status = Status.Available)]
 	public static int TickCount => Environment.TickCount;
+
+	/// <summary>
+	/// Gets the current tick count as a 64-bit integer by utilizing <see cref="Environment.TickCount64"/>.
+	/// </summary>
+	/// <value>The tick count since the system started as a 64-bit integer.</value>
+	[Information(nameof(TickCount64), "David McCarter", "11/14/2024", Status = Status.New)]
+	public static int TickCount64 => Environment.TickCount64;
 
 	/// <summary>
 	/// Gets the UTC time by retrieving <see cref="DateTime.UtcNow"/>.
