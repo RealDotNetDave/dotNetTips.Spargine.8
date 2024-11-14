@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 11-14-2024
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -153,7 +153,7 @@ public static class FastStringBuilder
 			{
 				_ = sb.Append(args[index]);
 
-				if (index < args.LongLength - 1)
+				if (index < itemCount - 1)
 				{
 					_ = addLineFeed ? sb.AppendLine() : sb.Append(delimiter);
 				}
@@ -200,7 +200,6 @@ public static class FastStringBuilder
 		try
 		{
 			action.Invoke(sb);
-
 			return sb.ToString();
 		}
 		finally
@@ -238,7 +237,6 @@ public static class FastStringBuilder
 			//FrozenDictionary, ImmutableArray and FrozenSet is slower.
 			foreach (var item in collection)
 			{
-
 				if (sb.Length > 0)
 				{
 					_ = sb.Append(delimiter);
