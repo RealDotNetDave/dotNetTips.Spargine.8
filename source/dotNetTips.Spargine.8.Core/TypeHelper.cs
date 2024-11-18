@@ -502,6 +502,41 @@ public static class TypeHelper
 	}
 
 	/// <summary>
+	/// Retrieves all members of the specified type that have the specified attribute.
+	/// </summary>
+	/// <typeparam name="TAttribute">The type of the attribute to search for.</typeparam>
+	/// <param name="type">The type to search for members with the specified attribute.</param>
+	/// <returns>An enumerable collection of members that have the specified attribute.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
+	[Information(nameof(GetMembersWithAttribute), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	public static IEnumerable<MemberInfo> GetMembersWithAttribute<TAttribute>(Type type) where TAttribute : Attribute
+	{
+		type = type.ArgumentNotNull();
+
+		var membersWithAttribute = new List<MemberInfo>();
+
+		// Check for attributes on the type itself
+		if (Attribute.IsDefined(type, typeof(TAttribute), true))
+		{
+			membersWithAttribute.Add(type);
+		}
+
+		// Define binding flags once to avoid repetition
+		var bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
+
+		// Check for attributes on the properties, methods, fields, and events of the type
+		foreach (var member in type.GetMembers(bindingFlags))
+		{
+			if (Attribute.IsDefined(member, typeof(TAttribute), true))
+			{
+				membersWithAttribute.Add(member);
+			}
+		}
+
+		return membersWithAttribute;
+	}
+
+	/// <summary>
 	/// Gets the property values of the specified object.
 	/// </summary>
 	/// <typeparam name="T">The type of the object to get property values from.</typeparam>

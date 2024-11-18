@@ -291,6 +291,7 @@ public static partial class TypeExtensions
 		return joined;
 	}
 
+
 	/// <summary>
 	/// Determines the type of the specified object.
 	/// </summary>

@@ -18,9 +18,12 @@ using System.Data;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Cache;
+using DotNetTips.Spargine.Core.Logging;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -32,7 +35,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DotNetTips.Spargine.Extensions.Tests;
 
 /// <summary>
-/// Defines test class TypeExtensionsTests.
+/// Defines attribute class TypeExtensionsTests.
 /// </summary>
 [ExcludeFromCodeCoverage]
 [TestClass]
@@ -40,7 +43,7 @@ public class TypeExtensionsTests
 {
 
 	/// <summary>
-	/// Defines the test method GetAbstractMethodsTest.
+	/// Defines the attribute method GetAbstractMethodsTest.
 	/// </summary>
 	[TestMethod]
 	public void GetAbstractMethodsTest()
@@ -71,7 +74,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetAllFieldsTest.
+	/// Defines the attribute method GetAllFieldsTest.
 	/// </summary>
 	[TestMethod]
 	public void GetAllFieldsTest()
@@ -86,7 +89,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetAllMethodsTest.
+	/// Defines the attribute method GetAllMethodsTest.
 	/// </summary>
 	[TestMethod]
 	public void GetAllMethodsTest()
@@ -101,7 +104,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetAttributeFieldTest.
+	/// Defines the attribute method GetAttributeFieldTest.
 	/// </summary>
 	[TestMethod]
 	public void GetAttributeFieldTest()
@@ -112,7 +115,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetAttributeMethodTest.
+	/// Defines the attribute method GetAttributeMethodTest.
 	/// </summary>
 	[TestMethod]
 	public void GetAttributeMethodTest()
@@ -129,7 +132,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetAttributePropertyTest.
+	/// Defines the attribute method GetAttributePropertyTest.
 	/// </summary>
 	[TestMethod]
 	public void GetAttributePropertyTest()
@@ -146,7 +149,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetAttributeTypeTest.
+	/// Defines the attribute method GetAttributeTypeTest.
 	/// </summary>
 	[TestMethod]
 	public void GetAttributeTypeTest()
@@ -161,7 +164,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetGenericMethodsTest.
+	/// Defines the attribute method GetGenericMethodsTest.
 	/// </summary>
 	[TestMethod]
 	public void GetGenericMethodsTest()
@@ -202,7 +205,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetPropertiesTest.
+	/// Defines the attribute method GetPropertiesTest.
 	/// </summary>
 	[TestMethod]
 	public void GetPropertiesTest()
@@ -213,7 +216,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetPublicMethodsTest.
+	/// Defines the attribute method GetPublicMethodsTest.
 	/// </summary>
 	[TestMethod]
 	public void GetPublicMethodsTest()
@@ -224,7 +227,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetStaticMethodsTest.
+	/// Defines the attribute method GetStaticMethodsTest.
 	/// </summary>
 	[TestMethod]
 	public void GetStaticMethodsTest()
@@ -235,12 +238,16 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method GetTypeMembersWithGivenAttributeTest.
+	/// Defines the attribute method GetTypeMembersWithGivenAttributeTest.
 	/// </summary>
 	[TestMethod]
 	public void GetTypeMembersWithGivenAttributeTest()
 	{
-		var result1 = typeof(TestType).GetTypeMembersWithAttribute<XmlIgnoreAttribute>();
+		var members = typeof(FastLogger).GetMembers(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+		var memAttrib = members.Where(member => member.GetCustomAttribute<InformationAttribute>() != null);
+
+
+		var result1 = typeof(FastLogger).GetTypeMembersWithAttribute<InformationAttribute>();
 
 		Assert.IsTrue(result1.FastCount() == 1);
 
@@ -316,7 +323,7 @@ public class TypeExtensionsTests
 	}
 
 	/// <summary>
-	/// Defines the test method IsNumericTest.
+	/// Defines the attribute method IsNumericTest.
 	/// </summary>
 	[TestMethod]
 	public void IsNumericTest()

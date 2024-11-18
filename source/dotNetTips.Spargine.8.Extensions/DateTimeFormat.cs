@@ -62,6 +62,7 @@ public class DateTimeFormat : Enumeration
 	/// Custom format. Example: 12/21/2020 3:16 PM
 	/// </summary>
 	public static readonly DateTimeFormat GeneralDateShortTime = new(4, "g");
+
 	/// <summary>
 	/// Custom format. Example: Dec 21, 2020
 	/// </summary>
