@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 11-19-2024
 // ***********************************************************************
 // <copyright file="Config.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 /// <typeparam name="T">The type of the configuration object.</typeparam>
 [Serializable]
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Documentation = "https://bit.ly/SpargineConfig", Status = Status.Available)]
 public class Config<T> where T : class, new()
 {
 

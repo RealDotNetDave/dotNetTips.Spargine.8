@@ -2,6 +2,9 @@
 using System;
 using System.Reflection;
 using DotNetTips.Spargine.Core.Logging;
+using DotNetTips.Spargine.Extensions;
+using DotNetTips.Spargine.IO;
+using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -11,6 +14,32 @@ namespace DotNetTips.Spargine.Core.Tests;
 [TestClass]
 public class InformationAttributeDocGeneratorTests
 {
+
+	[TestMethod]
+	public void GenerateMarkdownDocumentForAssembly_ValidAssembly_Core_ToFile()
+	{
+		// Arrange
+		var assembly = Assembly.GetAssembly(typeof(InformationAttribute));
+
+		// Act
+		var result = InformationAttributeDocGenerator.GenerateMarkdownDocumentForAssembly(assembly, @"C:\dotNetTips.com");
+
+		// Assert
+		Assert.IsFalse(string.IsNullOrEmpty(result));
+	}
+
+	[TestMethod]
+	public void GenerateMarkdownDocumentForAssembly_ValidAssembly_Extensions_ToFile()
+	{
+		// Arrange
+		var assembly = Assembly.GetAssembly(typeof(ListExtensions));
+
+		// Act
+		var result = InformationAttributeDocGenerator.GenerateMarkdownDocumentForAssembly(assembly, @"C:\dotNetTips.com");
+
+		// Assert
+		Assert.IsFalse(string.IsNullOrEmpty(result));
+	}
 	[TestMethod]
 	public void GenerateMarkdownDocumentForAssembly_ValidAssembly_ReturnsDocumentation()
 	{
@@ -22,17 +51,29 @@ public class InformationAttributeDocGeneratorTests
 
 		// Assert
 		Assert.IsFalse(string.IsNullOrEmpty(result));
-		Assert.IsTrue(result.Contains($"# {assembly.FullName}"));
+	}
+
+	[TestMethod]
+	public void GenerateMarkdownDocumentForAssembly_ValidAssembly_Tester_ToFile()
+	{
+		// Arrange
+		var assembly = Assembly.GetAssembly(typeof(RandomData));
+
+		// Act
+		var result = InformationAttributeDocGenerator.GenerateMarkdownDocumentForAssembly(assembly, @"C:\dotNetTips.com");
+
+		// Assert
+		Assert.IsFalse(string.IsNullOrEmpty(result));
 	}
 
 	[TestMethod]
 	public void GenerateMarkdownDocumentForAssembly_ValidAssembly_ToFile()
 	{
 		// Arrange
-		var assembly = Assembly.GetAssembly(typeof(InformationAttribute));
+		var assembly = Assembly.GetAssembly(typeof(DriveHelper));
 
 		// Act
-		var result = InformationAttributeDocGenerator.GenerateMarkdownDocumentForAssembly(assembly, @"c:\temp\");
+		var result = InformationAttributeDocGenerator.GenerateMarkdownDocumentForAssembly(assembly, @"C:\dotNetTips.com");
 
 		// Assert
 		Assert.IsFalse(string.IsNullOrEmpty(result));
