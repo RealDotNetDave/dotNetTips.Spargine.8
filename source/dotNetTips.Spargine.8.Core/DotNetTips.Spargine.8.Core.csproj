@@ -76,14 +76,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<Compile Remove="CachedEnumerable`1.cs" />
-	<Compile Remove="Date.cs" />
-	<Compile Remove="Security\PBKDF2PasswordHasher.cs" />
-	<Compile Remove="Serialization\BinarySerialization.cs" />
-	<Compile Remove="Web\ServiceProxy`1.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
 	<Content Include="dotNetTips-Spargine-Logo.ico" />
   </ItemGroup>
 

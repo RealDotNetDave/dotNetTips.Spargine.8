@@ -32,7 +32,7 @@ public class InformationAttributeDocGeneratorTests
 		var assembly = Assembly.GetAssembly(typeof(InformationAttribute));
 
 		// Act
-		var result = InformationAttributeDocGenerator.GenerateMarkdownDocumentForAssembly(assembly, @"c:\temp\markdowntext.md");
+		var result = InformationAttributeDocGenerator.GenerateMarkdownDocumentForAssembly(assembly, @"c:\temp\");
 
 		// Assert
 		Assert.IsFalse(string.IsNullOrEmpty(result));
