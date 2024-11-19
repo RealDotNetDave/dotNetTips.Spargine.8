@@ -13,15 +13,18 @@
 // ***********************************************************************
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
+using System.Text;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static DotNetTips.Spargine.Core.TypeHelper;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -237,4 +240,73 @@ public class TypeHelperTests : TestClass
 		// Assert
 		Assert.IsTrue(result);
 	}
+
+	[TestMethod]
+	public void ProcessGenericType_EmptyGenericArguments()
+	{
+		// Arrange
+		var builder = new StringBuilder();
+		var type = typeof(List<>);
+		var genericArguments = Array.Empty<Type>();
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true, nestedTypeDelimiter: '.');
+
+		// Act
+		TypeHelper.ProcessGenericType(builder, type, genericArguments, genericArguments.Length, options);
+
+		// Assert
+		var result = builder.ToString();
+		Assert.AreEqual("System.Collections.Generic.List<>", result);
+	}
+
+	[TestMethod]
+	public void ProcessGenericType_MultipleGenericArguments()
+	{
+		// Arrange
+		var builder = new StringBuilder();
+		var type = typeof(Dictionary<,>);
+		var genericArguments = new[] { typeof(string), typeof(int) };
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true, nestedTypeDelimiter: '.');
+
+		// Act
+		TypeHelper.ProcessGenericType(builder, type, genericArguments, genericArguments.Length, options);
+
+		// Assert
+		var result = builder.ToString();
+		Assert.AreEqual("System.Collections.Generic.Dictionary<String, Int32>", result);
+	}
+
+	[TestMethod]
+	public void ProcessGenericType_NestedGenericTypes()
+	{
+		// Arrange
+		var builder = new StringBuilder();
+		var type = typeof(Dictionary<,>);
+		var genericArguments = new[] { typeof(List<string>), typeof(Dictionary<int, string>) };
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true, nestedTypeDelimiter: '.');
+
+		// Act
+		TypeHelper.ProcessGenericType(builder, type, genericArguments, genericArguments.Length, options);
+
+		// Assert
+		var result = builder.ToString();
+		Assert.AreEqual("System.Collections.Generic.Dictionary<System.Collections.Generic.List<String>, System.Collections.Generic.Dictionary<Int32, String>>", result);
+	}
+
+	[TestMethod]
+	public void ProcessGenericType_SingleGenericArgument()
+	{
+		// Arrange
+		var builder = new StringBuilder();
+		var type = typeof(List<>);
+		var genericArguments = new[] { typeof(int) };
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true, nestedTypeDelimiter: '.');
+
+		// Act
+		TypeHelper.ProcessGenericType(builder, type, genericArguments, genericArguments.Length, options);
+
+		// Assert
+		var result = builder.ToString();
+		Assert.AreEqual("List<int>", result);
+	}
+
 }

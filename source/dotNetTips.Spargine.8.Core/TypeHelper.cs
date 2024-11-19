@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 11-19-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -168,71 +168,6 @@ public static class TypeHelper
 				// add it to result list
 				yield return type;
 			}
-		}
-	}
-
-	/// <summary>
-	/// Processes a generic type to construct its display name, including handling of generic arguments.
-	/// </summary>
-	/// <param name="builder">The <see cref="StringBuilder"/> used to build the display name.</param>
-	/// <param name="type">The generic type to process.</param>
-	/// <param name="genericArguments">The array of generic arguments for the type.</param>
-	/// <param name="length">The number of generic arguments to consider.</param>
-	/// <param name="options">Display name options to customize the output.</param>
-	[Information(Status = Status.Available)]
-	private static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, in int length, DisplayNameOptions options)
-	{
-		var offset = 0;
-
-		if (type.IsNested)
-		{
-			offset = type.DeclaringType.GetGenericArguments().Length;
-		}
-
-		if (options.FullName)
-		{
-			if (type.IsNested)
-			{
-				ProcessGenericType(builder, type.DeclaringType, genericArguments, offset, options);
-				_ = builder.Append(options.NestedTypeDelimiter);
-			}
-			else if (!string.IsNullOrEmpty(type.Namespace))
-			{
-				_ = builder.Append(type.Namespace);
-				_ = builder.Append(ControlChars.Dot);
-			}
-		}
-
-		var genericPartIndex = type.Name.IndexOf('`', StringComparison.Ordinal);
-		if (genericPartIndex <= 0)
-		{
-			_ = builder.Append(type.Name);
-			return;
-		}
-
-		_ = builder.Append(type.Name, 0, genericPartIndex);
-
-		if (options.IncludeGenericParameters)
-		{
-			_ = builder.Append(ControlChars.StartAngleBracket);
-
-			for (var typeCount = offset; typeCount < length; typeCount++)
-			{
-				ProcessType(builder, genericArguments[typeCount], options);
-
-				if (typeCount + 1 == length)
-				{
-					continue;
-				}
-
-				_ = builder.Append(ControlChars.Comma);
-				if (options.IncludeGenericParameterNames || !genericArguments[typeCount + 1].IsGenericParameter)
-				{
-					_ = builder.Append(ControlChars.Space);
-				}
-			}
-
-			_ = builder.Append(ControlChars.EndAngleBracket);
 		}
 	}
 
@@ -683,6 +618,75 @@ public static class TypeHelper
 	}
 
 	/// <summary>
+	/// Processes a generic type to construct its display name, including handling of generic arguments.
+	/// </summary>
+	/// <param name="builder">The <see cref="StringBuilder"/> used to build the display name.</param>
+	/// <param name="type">The generic type to process.</param>
+	/// <param name="genericArguments">The array of generic arguments for the type.</param>
+	/// <param name="length">The number of generic arguments to consider.</param>
+	/// <param name="options">Display name options to customize the output.</param>
+	[Information(nameof(ProcessGenericType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	public static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, in int length, DisplayNameOptions options)
+	{
+		builder = builder.ArgumentNotNull();
+		type = type.ArgumentNotNull();
+		genericArguments = genericArguments.ArgumentNotNull();
+
+		var offset = 0;
+
+		if (type.IsNested)
+		{
+			offset = type.DeclaringType.GetGenericArguments().Length;
+		}
+
+		if (options.FullName)
+		{
+			if (type.IsNested)
+			{
+				ProcessGenericType(builder, type.DeclaringType, genericArguments, offset, options);
+				_ = builder.Append(options.NestedTypeDelimiter);
+			}
+			else if (!string.IsNullOrEmpty(type.Namespace))
+			{
+				_ = builder.Append(type.Namespace);
+				_ = builder.Append(ControlChars.Dot);
+			}
+		}
+
+		var genericPartIndex = type.Name.IndexOf('`', StringComparison.Ordinal);
+		if (genericPartIndex <= 0)
+		{
+			_ = builder.Append(type.Name);
+			return;
+		}
+
+		_ = builder.Append(type.Name, 0, genericPartIndex);
+
+		if (options.IncludeGenericParameters)
+		{
+			_ = builder.Append(ControlChars.StartAngleBracket);
+
+			for (var typeCount = offset; typeCount < length; typeCount++)
+			{
+				ProcessType(builder, genericArguments[typeCount], options);
+
+				if (typeCount + 1 == length)
+				{
+					continue;
+				}
+
+				_ = builder.Append(ControlChars.Comma);
+				if (options.IncludeGenericParameterNames || !genericArguments[typeCount + 1].IsGenericParameter)
+				{
+					_ = builder.Append(ControlChars.Space);
+				}
+			}
+
+			_ = builder.Append(ControlChars.EndAngleBracket);
+		}
+	}
+
+	/// <summary>
 	/// Provides a dictionary mapping built-in .NET types to their string representations.
 	/// </summary>
 	public static Dictionary<Type, string> BuiltInTypeNames { get; } = new()
@@ -730,11 +734,12 @@ public static class TypeHelper
 	/// <summary>
 	/// Represents options for displaying type names.
 	/// </summary>
-	/// <param name="fullName">If true, the full name of the type is used; otherwise, the short name is used.</param>
+	/// <param name=
+	/// "fullName">If true, the full name of the type is used; otherwise, the short name is used.</param>
 	/// <param name="includeGenericParameterNames">If true, includes the names of generic parameters.</param>
 	/// <param name="includeGenericParameters">If true, includes generic parameters in the display name.</param>
 	/// <param name="nestedTypeDelimiter">The delimiter to use for nested types.</param>
-	internal readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter)
+	public readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter)
 	{
 
 		/// <summary>
