@@ -102,7 +102,7 @@ public static class TypeHelper
 	/// </summary>
 	/// <param name="stream">The stream to analyze.</param>
 	/// <returns><c>true</c> if the stream represents a .NET assembly; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsDotNetAssembly), author: "David McCarter", createdOn: "5/20/2024")]
+	[Information(nameof(IsDotNetAssembly), author: "David McCarter", createdOn: "5/20/2024", OptimizationStatus = OptimizationStatus.Completed)]
 	private static bool IsDotNetAssembly(Stream stream)
 	{
 		try
@@ -115,15 +115,18 @@ public static class TypeHelper
 			}
 
 			// If peReader.PEHeaders doesn't throw, it is a valid PEImage
-			_ = peReader.PEHeaders.CorHeader;
-
-			return peReader.GetMetadataReader().IsAssembly;
+			return peReader.PEHeaders.CorHeader != null && peReader.GetMetadataReader().IsAssembly;
 		}
 		catch (BadImageFormatException)
 		{
 			return false;
 		}
-		catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+		catch (IOException ex)
+		{
+			Trace.WriteLine(ex);
+			return false;
+		}
+		catch (UnauthorizedAccessException ex)
 		{
 			Trace.WriteLine(ex);
 			return false;
@@ -137,19 +140,11 @@ public static class TypeHelper
 	/// <param name="baseType">The base type to find derived types of.</param>
 	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
 	/// <returns>An enumerable collection of types that are derived from the specified base type.</returns>
-	[Information(Status = Status.Available)]
+	[Information(OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	private static IEnumerable<Type> LoadDerivedTypes(IEnumerable<TypeInfo> types, Type baseType, bool classOnly)
 	{
-		// works out the derived types
-		var list = types.ToImmutableArray();
-		var itemCount = list.Length;
-
-		for (var typeCount = 0; typeCount < itemCount; typeCount++)
+		foreach (var type in types)
 		{
-			var type = list[typeCount];
-
-			// if classOnly, it must be a class
-			// useful when you want to create instance
 			if (classOnly && !type.IsClass)
 			{
 				continue;
@@ -157,16 +152,14 @@ public static class TypeHelper
 
 			if (baseType.IsInterface)
 			{
-				if (type.GetInterface(baseType.FullName) is not null)
+				if (type.ImplementedInterfaces.Contains(baseType))
 				{
-					// add it to result list
-					yield return type;
+					yield return type.AsType();
 				}
 			}
 			else if (type.IsSubclassOf(baseType))
 			{
-				// add it to result list
-				yield return type;
+				yield return type.AsType();
 			}
 		}
 	}
@@ -177,7 +170,7 @@ public static class TypeHelper
 	/// <param name="builder">The <see cref="StringBuilder"/> instance used to build the display name.</param>
 	/// <param name="type">The type to process for display.</param>
 	/// <param name="options">Options that specify how the display name should be formatted.</param>
-	[Information(Status = Status.Available)]
+	[Information(OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	private static void ProcessType(StringBuilder builder, Type type, DisplayNameOptions options)
 	{
 		if (type.IsGenericType)
@@ -187,11 +180,12 @@ public static class TypeHelper
 		}
 		else if (type.IsArray)
 		{
-			ProcessType(builder, type, options);
+			ProcessType(builder, type.GetElementType(), options);
+			_ = builder.Append("[]");
 		}
-		else if (BuiltInTypeNames.ContainsKey(type))
+		else if (BuiltInTypeNames.TryGetValue(type, out var builtInName))
 		{
-			_ = builder.Append(type.Name);
+			_ = builder.Append(builtInName);
 		}
 		else if (type.IsGenericParameter)
 		{
@@ -428,7 +422,7 @@ public static class TypeHelper
 	/// <param name="instance">The instance to compute the hash code for.</param>
 	/// <returns>The computed hash code.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="instance"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static int GetInstanceHashCode([NotNull] object instance)
 	{
 		var hash = instance.ArgumentNotNull().GetType().GetRuntimeProperties().Where(p => p is not null).Select(prop => prop.GetValue(instance)).Where(value => value is not null).Aggregate(-1, (accumulator, value) => accumulator ^ value.GetHashCode());
@@ -538,12 +532,13 @@ public static class TypeHelper
 	/// <param name="includeGenericParameters">If true, includes generic parameters in the display name.</param>
 	/// <param name="nestedTypeDelimiter">The delimiter to use for nested types.</param>
 	/// <returns>The display name of the type.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/31/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/31/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string GetTypeDisplayName([NotNull] Type type, bool fullName = true, bool includeGenericParameterNames = false, bool includeGenericParameters = true, char nestedTypeDelimiter = ControlChars.Plus)
 	{
 		type = type.ArgumentNotNull();
 
 		var sb = _stringBuilderPool.Get().Clear();
+
 		try
 		{
 			ProcessType(sb, type, new DisplayNameOptions(fullName, includeGenericParameterNames, includeGenericParameters, nestedTypeDelimiter));
@@ -561,41 +556,22 @@ public static class TypeHelper
 	/// </summary>
 	/// <param name="type">The type to check.</param>
 	/// <returns><c>true</c> if the type is a built-in .NET type; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsBuiltinType), author: "David McCarter", createdOn: "11/6/2023", UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/Spargine8", Status = Status.Available)]
+	[Information(nameof(IsBuiltinType), author: "David McCarter", createdOn: "11/6/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/Spargine8", Status = Status.Available)]
 	public static bool IsBuiltinType(Type type)
 	{
-		if (type is null)
+		if (type == null)
 		{
 			return false;
 		}
 
-		// Check if the type is a primitive type
-		if (type.IsPrimitive)
+		// Check if the type is a primitive type or a simple type (string, object)
+		if (type.IsPrimitive || type == typeof(string) || type == typeof(object))
 		{
 			return true;
 		}
 
-		// Check if the type is a simple type (string, object, or dynamic)
-		if (type == typeof(string) || type == typeof(object))
-		{
-			return true;
-		}
-
-		// Check if the type is a nullable value type
-		if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-		{
-			// Get the underlying value type
-			var valueType = type.GetGenericArguments()[0];
-
-			// Check if the value type is a primitive type
-			if (valueType.IsPrimitive)
-			{
-				return true;
-			}
-		}
-
-		// Otherwise, the type is not a built-in type
-		return false;
+		// Check if the type is a nullable value type and if the underlying value type is primitive
+		return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) && type.GetGenericArguments()[0].IsPrimitive;
 	}
 
 	/// <summary>
