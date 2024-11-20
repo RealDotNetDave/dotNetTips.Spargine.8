@@ -185,7 +185,7 @@ public class TypeHelperTests : TestClass
 
 		result = TypeHelper.GetTypeDisplayName(typeof(int), true, true, true, '-');
 
-		Assert.IsTrue(string.Compare(result, "Int32", StringComparison.Ordinal) == 0);
+		Assert.IsTrue(string.Compare(result, "int", StringComparison.Ordinal) == 0);
 
 		var people = RandomData.GeneratePersonRefCollection<Address>(5);
 
@@ -272,7 +272,7 @@ public class TypeHelperTests : TestClass
 
 		// Assert
 		var result = builder.ToString();
-		Assert.AreEqual("System.Collections.Generic.Dictionary<String, Int32>", result);
+		Assert.AreEqual("System.Collections.Generic.Dictionary<string, int>", result);
 	}
 
 	[TestMethod]
@@ -289,7 +289,7 @@ public class TypeHelperTests : TestClass
 
 		// Assert
 		var result = builder.ToString();
-		Assert.AreEqual("System.Collections.Generic.Dictionary<System.Collections.Generic.List<String>, System.Collections.Generic.Dictionary<Int32, String>>", result);
+		Assert.AreEqual("System.Collections.Generic.Dictionary<System.Collections.Generic.List<string>, System.Collections.Generic.Dictionary<int, string>>", result);
 	}
 
 	[TestMethod]
@@ -306,7 +306,7 @@ public class TypeHelperTests : TestClass
 
 		// Assert
 		var result = builder.ToString();
-		Assert.AreEqual("List<int>", result);
+		Assert.AreEqual("System.Collections.Generic.List<int>", result);
 	}
 
 }

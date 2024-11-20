@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-27-2024
+// Last Modified On : 11-20-2024
 // ***********************************************************************
 // <copyright file="TypeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -254,43 +254,21 @@ public static partial class TypeExtensions
 	}
 
 	/// <summary>
-	/// Gets the members of the specified type that have a custom attribute of the specified type.
+	/// Gets all members of the specified type that have the specified attribute.
 	/// </summary>
 	/// <typeparam name="TAttribute">The type of the attribute to search for.</typeparam>
-	/// <param name="type">The type to inspect.</param>
-	/// <returns>
-	/// An array of tuples containing the member name, the custom attribute, 
-	/// a boolean indicating if the member is private, a boolean indicating if the member is static, 
-	/// and the parameter type.
-	/// </returns>
-	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
-	[Information("https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static (string Name, TAttribute Attribute, bool IsPrivate, bool IsStatic, Type ParameterType)[] GetTypeMembersWithAttribute<TAttribute>([NotNull] this Type type)
+	/// <param name="type">The type whose members are to be searched.</param>
+	/// <returns>A read-only collection of members that have the specified attribute.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the <paramref name="type"/> is null.</exception>
+	[Information("https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Updated, Documentation = "https://bit.ly/SpargineJan2022")]
+	public static ReadOnlyCollection<MemberInfo> GetTypeMembersWithAttribute<TAttribute>([NotNull] this Type type)
 		where TAttribute : Attribute
 	{
+		//CHANGED TO RETURN MEMBER INFO
 		type = type.ArgumentNotNull();
-		var allFields = type.GetFields()
-						.Select(f => (f.Name,
-										Attribute: f.GetAttribute<TAttribute>(), f.IsPrivate, f.IsStatic,
-										ParameterType: f.FieldType));
 
-		var allProperties = type.GetProperties()
-			.Select(p => (p.Name,
-							Attribute: p.GetAttribute<TAttribute>(),
-							IsPrivate: p.GetSetMethod() is null,
-							IsStatic: p.GetSetMethod() is not null && p.GetSetMethod().IsStatic, p.PropertyType));
-
-		var joined = allFields.Concat(allProperties).Where(member => member.Attribute is not null).ToArray();
-
-		//FrozenSet is slower.
-		foreach (var member in joined.Where(m => m.IsPrivate))
-		{
-			ExceptionThrower.ThrowArgumentOutOfRangeException($"Member \"{member.Name}\" must be public if it has the [{typeof(TAttribute).Name}] attribute applied to it", "Member");
-		}
-
-		return joined;
+		return TypeHelper.GetMembersWithAttribute<TAttribute>(type).ToReadOnlyCollection();
 	}
-
 
 	/// <summary>
 	/// Determines the type of the specified object.

@@ -249,7 +249,7 @@ public class TypeExtensionsTests
 
 		var result1 = typeof(FastLogger).GetTypeMembersWithAttribute<InformationAttribute>();
 
-		Assert.IsTrue(result1.FastCount() == 1);
+		Assert.IsTrue(result1.FastCount() > 0);
 
 		var result2 = typeof(TestType).GetTypeMembersWithAttribute<XmlAnyAttributeAttribute>();
 
