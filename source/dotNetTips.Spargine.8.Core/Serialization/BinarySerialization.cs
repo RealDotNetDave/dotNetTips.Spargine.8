@@ -1,10 +1,10 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : dotNetTips.Spargine.6.Core
 // Author           : David McCarter
 // Created          : 04-21-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-21-2022
+// Last Modified On : 11-20-2024
 // ***********************************************************************
 // <copyright file="BinarySerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -20,7 +20,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace DotNetTips.Spargine.Core.Serialization
 {
 	/// <summary>
-	/// Class JsonSerializer.
+	/// Provides methods for serializing and deserializing objects to and from binary format.
 	/// </summary>
 	public static class BinarySerialization
 	{

@@ -4,7 +4,7 @@
 // Created          : 07-05-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 11-20-2024
 // ***********************************************************************
 // <copyright file="LineSplitEnumerator.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -13,13 +13,6 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
-
-
-
-
-
-
-
 
 namespace DotNetTips.Spargine.Core;
 

@@ -1,17 +1,15 @@
-﻿// ***********************************************************************
+// ***********************************************************************
 // Assembly         : DotNetTips.Spargine.6.Core
 // Author           : David McCarter
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-21-2022
+// Last Modified On : 11-20-2024
 // ***********************************************************************
 // <copyright file="PBKDF2PasswordHasher.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// Original code from: https:www.meziantou.net/how-to-store-a-password-in-a-web-application.htm
-// </summary>
+// <summary>Original code from: https:www.meziantou.net/how-to-store-a-password-in-a-web-application.htm</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
@@ -22,7 +20,7 @@ using System.Security.Cryptography;
 namespace DotNetTips.Spargine.Core.Security
 {
 	/// <summary>
-	/// Class PBKDF2PasswordHasher. This class cannot be inherited.
+	/// Provides methods for hashing and verifying passwords using PBKDF2.
 	/// </summary>
 	public static class PBKDF2PasswordHasher
 	{

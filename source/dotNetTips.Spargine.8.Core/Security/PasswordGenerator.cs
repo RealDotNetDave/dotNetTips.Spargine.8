@@ -4,7 +4,7 @@
 // Created          : 11-12-2024
 //
 // Last Modified By : david
-// Last Modified On : 11-13-2024
+// Last Modified On : 11-20-2024
 // ***********************************************************************
 // <copyright file="PasswordGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -22,6 +22,7 @@ namespace DotNetTips.Spargine.Core.Security;
 
 /// <summary>
 /// Class PasswordGenerator.
+/// Provides functionality to generate random passwords with a mix of uppercase letters, lowercase letters, digits, and special characters.
 /// </summary>
 public static class PasswordGenerator
 {

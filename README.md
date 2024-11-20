@@ -55,9 +55,13 @@ Below is the list of current projects in this repository
         * **RegexProcessor**: Utility methods for common string regular expressions. Included methods: ContainsWord, IsCreditCardNumber, IsEmailAddress, IsUrl, IsISBN, and more.
     * **Security**
         * **EncryptionHelper**: Provides secure encryption for strings using AES (Advanced Encryption Standard) and includes a method to validate encrypted strings. The AES encryption ensures the confidentiality and integrity of sensitive information, making it suitable for securely handling data.
+        * **PasswordGenerator**: Provides functionality to generate random passwords with a mix of uppercase letters, lowercase letters, digits, and special characters.
         * **SHA256PasswordHasher**: Generates and verifies passwords using SHA256, a secure cryptographic hash function.
         * **UlidGenerator**: Provides methods to generate and manipulate ULIDs (Universally Unique Lexicographically Sortable Identifiers)
+        * **PBKDF2PasswordHasher**: Provides methods for hashing and verifying passwords using PBKDF2.
+        * **UlidGenerator**: Provides methods to generate and manipulate ULIDs (Universally Unique Lexicographically Sortable Identifiers)
     * **Serialization**
+        * **BinarySerialization**: Provides methods for serializing and deserializing objects to and from binary format.
         * **JsonSerialization**: This class simplifies the process of serializing and deserializing strings to and from JSON format using the JsonSerializer. JSON serialization is a widely adopted and efficient method for storing and exchanging data in various applications and APIs.
         * **XmlSerialization**: Facilitates seamless serialization and deserialization of strings to and from the XML format.
     * **Web**
@@ -72,6 +76,7 @@ Below is the list of current projects in this repository
     * **Config**: Adaptable type designed to simplify the creation of custom configuration objects, with a focus on easy disk saving in applications.
     * **ControlChars**: Contains frequently used strings and characters, including backslash, comma, dash, double quote, empty string, forward slash, quote, space, tab, underscore, and more.
     * **DirectoryNotFoundException**: Custom exception to be utilized when a directory cannot be found.
+    * **Enumeration**: Provides a base class for creating an enumeration-like class structure that supports descriptive names and associated values, offering more flexibility than the standard Enum type.
     * **EnumHelper**: Facilitates the usage of Enums by providing convenient methods such as AdjustCamelCase(), AdjustName(), GetNames(), and more.
     * **EnvironmentKey**: Enumeration for common environment keys.
     * **ExceptionThrower**: Inspired by the .NET ExceptionThrower, this tool streamlines the process of throwing exceptions effortlessly. All exceptions thrown utilize default messages, and if necessary, custom messages can also be provided.
@@ -79,10 +84,12 @@ Below is the list of current projects in this repository
     * **FastStringBuilder**: Enhances performance when using a StringBuilder by employing an ObjectPool.
     * **IDataModel**: Interface designed for model classes, enforcing the implementation of the "Id" property, which is mandatory.
     * **IDataRecord**: Interface tailored for model records, mandating the implementation of the "Id" property. Additionally, it provides functionality to convert all the properties and their data to a string representation.
+    * **InformationAttributeDocGenerator**: Generates documentation for a given type based on the InformationAttribute.
     * **InformationAttribute**: Attribute that enables the addition of informational data to methods. Properties include Author, BenchMarkStatus, CreatedOn, Description, Documentation, ModifiedBy, ModifiedOn, Status, UnitTestCoverage.
     * **InvalidEnumTypeException**: Custom exception to be utilized when a value for an Enum is invalid.
     * **InvalidValueException**: Custom exception to be used when an invalid value is encountered.
     * **KeyGenerator**: Generates unique keys using a GUID without dashes.
+    * **LineSplitEnumerator**: Initializes a new instance of the LineSplitEnumerator struct for splitting a string into lines.
     * **LoggableException**: Exception type that includes a HasBeenLogged property to prevent an exception from being logged multiple times.
     * **MessageNotQueuedException**: Custom exception to be employed when a message could not be queued.
     * **NetworkConnectionException**: Custom exception to be used when there is a network connection error.
@@ -94,7 +101,7 @@ Below is the list of current projects in this repository
     * **TypeHelper**: Provides valuable methods for type management, encompassing tasks such as loading derived types, creating new types, discovering derived types, converting JSON to objects, transforming JSON files into objects, generating instance hash codes, and listing built-in types. These functionalities empower developers to handle types effectively in diverse scenarios.
     * **Valdaitor**: Methods facilitating the validation of arguments and values, ensuring both simplicity and accuracy. In the event of encountering invalid data, an Exception will be thrown, accompanied by an appropriate error message, which can be either custom or default.
         
-*   **DotNetTips.Spargine.Extensions:** Library for common extension methods. Supported types are: Array, Assembly, Boolean, Collection, Color, DataContext, DataReader, DataTable, DateTime, Dictionary, Enumerable, Enum, Exception, Guid, HashSet,  HttpClient, HttpContext, HttpRequest, HttpReponseHeader, ImmutableArray, LINQ, List, Math, Numeric, Object, ObservableCollection, Process, ReadOnlyCollection, ReadOnlySpan, Socket, SortedDictionary, SortedSet, Stream, StringBuilder, String, Task, Thread, WebClient
+*   **DotNetTips.Spargine.Extensions:** Library for common extension methods. Supported types are: Array, Assembly, Boolean, Collection, Color, DataContext, DataReader, DataTable, DateTime, Dictionary, Enumerable, Enum, Exception, Guid, HashSet,  HttpClient, HttpContext, HttpRequest, HttpReponseHeader, ImmutableArray, LINQ, List, Math, Numeric, Object, ObservableCollection, Process, ReadOnlyCollection, ReadOnlySpan, Socket, SortedDictionary, SortedSet, Stream, StringBuilder, String, Task, Thread, Type, WebClient
 *   **DotNetTips.Spargine.Tester:** Library for creating dummy data for use in unit & benchmark tests.
     * **Data**:
         * **Countries**: Methods for retrieving comprehensive data encompassing all countries worldwide, including their respective regions, states and cities.
