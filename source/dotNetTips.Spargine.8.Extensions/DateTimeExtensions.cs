@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-05-2024
+// Last Modified On : 11-21-2024
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -43,20 +43,6 @@ public static class DateTimeExtensions
 		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
 		return epoch.AddMilliseconds(epochTime);
-	}
-
-	/// <summary>
-	/// Converts UnixTime to <see cref="DateTime" />.
-	/// </summary>
-	/// <param name="unixTime">The unix time.</param>
-	/// <returns>DateTime.</returns>
-	[Obsolete("Use FromMilliEpochTime instead.")]
-	[Information(nameof(FromUnixTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
-	public static DateTime FromUnixTime(this in int unixTime)
-	{
-		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-
-		return epoch.AddSeconds(unixTime);
 	}
 
 	/// <summary>
@@ -227,48 +213,6 @@ public static class DateTimeExtensions
 	public static DateTimeOffset Max(this in DateTimeOffset date, in DateTimeOffset compareTo) => date > compareTo ? date : compareTo;
 
 	/// <summary>
-	/// Given a date, it returns the next (specified) day of week.
-	/// </summary>
-	/// <param name="date">Date to process</param>
-	/// <param name="day">Day of week to find on calendar</param>
-	/// <returns>Future date</returns>
-	[Obsolete("Use the GetNextDayOfWeek method.")]
-	[Information(nameof(NextDayOfWeek), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static DateTime NextDayOfWeek(this DateTime date, DayOfWeek day = DayOfWeek.Monday)
-	{
-		while (true)
-		{
-			if (date.DayOfWeek == day)
-			{
-				return date;
-			}
-
-			date = date.AddDays(1);
-		}
-	}
-
-	/// <summary>
-	/// Given a date, it returns the next (specified) day of week
-	/// </summary>
-	/// <param name="date">The date.</param>
-	/// <param name="day">The day.</param>
-	/// <returns>DateTimeOffset.</returns>
-	[Obsolete("Use the GetNextDayOfWeek method.")]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static DateTimeOffset NextDayOfWeek(this DateTimeOffset date, DayOfWeek day = DayOfWeek.Monday)
-	{
-		while (true)
-		{
-			if (date.DayOfWeek == day)
-			{
-				return date;
-			}
-
-			date = date.AddDays(1);
-		}
-	}
-
-	/// <summary>
 	/// Subtracts the specified <see cref="TimeSpan" /> value from
 	/// a <see cref="DateTime" /> value.
 	/// </summary>
@@ -430,22 +374,6 @@ public static class DateTimeExtensions
 	{
 		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 		return Convert.ToInt64((date - epoch).TotalMilliseconds);
-	}
-
-	/// <summary>
-	/// Converts <see cref="DateTime" /> to UnixTime.
-	/// </summary>
-	/// <param name="date">The date.</param>
-	/// <returns>System.Int32.</returns>
-	/// <example>
-	/// Output: 1697121012
-	/// </example>
-	[Obsolete("Use the ToMilliEpochTime method.")]
-	[Information(nameof(ToUnixTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
-	public static int ToUnixTime(this in DateTime date)
-	{
-		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-		return Convert.ToInt32((date - epoch).TotalSeconds);
 	}
 
 }

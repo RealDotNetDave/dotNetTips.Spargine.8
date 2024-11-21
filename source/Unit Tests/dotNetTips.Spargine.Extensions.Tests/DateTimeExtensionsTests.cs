@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 11-21-2024
 // ***********************************************************************
 // <copyright file="DateTimeExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -91,23 +91,6 @@ public class DateTimeExtensionsTests : TestClass
 	}
 
 	/// <summary>
-	/// Defines the test method DateTimeNextDayOfTheWeekTest.
-	/// </summary>
-	[TestMethod]
-	public void DateTimeNextDayOfTheWeekTest()
-	{
-		var now = DateTime.Now;
-
-#pragma warning disable CS0618 // Type or member is obsolete
-		var result = now.NextDayOfWeek(DayOfWeek.Sunday);
-#pragma warning restore CS0618 // Type or member is obsolete
-
-		//PrintResult(result, nameof(this.DateTimeNextDayOfTheWeekTest));
-
-		Assert.IsTrue(result >= now);
-	}
-
-	/// <summary>
 	/// Defines the test method DateTimeOffsetGetLastDayOfWeekTest.
 	/// </summary>
 	[TestMethod]
@@ -186,9 +169,7 @@ public class DateTimeExtensionsTests : TestClass
 	{
 		var now = DateTimeOffset.Now;
 
-#pragma warning disable CS0618 // Type or member is obsolete
-		var result = now.NextDayOfWeek(DayOfWeek.Sunday);
-#pragma warning restore CS0618 // Type or member is obsolete
+		var result = now.GetNextDayOfWeek(DayOfWeek.Sunday);
 
 		//PrintResult(result, nameof(this.DateTimeOffsetNextDayOfTheWeekTest));
 
@@ -437,32 +418,6 @@ public class DateTimeExtensionsTests : TestClass
 		Assert.IsTrue(convertedTime >= currentTime.Subtract(new TimeSpan(0, 5, 0)));
 
 		//PrintResult(convertedTime, nameof(this.ToFromMilliEpochTimeTest));
-	}
-
-	/// <summary>
-	/// Defines the test method ToFromUnixTimeTest.
-	/// </summary>
-	[TestMethod]
-	public void ToFromUnixTimeTest()
-	{
-		var currentTime = DateTime.Now;
-
-#pragma warning disable CS0618 // Type or member is obsolete
-		var epochTime = currentTime.ToUnixTime();
-#pragma warning restore CS0618 // Type or member is obsolete
-
-		//PrintResult(epochTime, nameof(this.ToFromUnixTimeTest));
-
-		Assert.IsTrue(epochTime > 0);
-
-		// Test reverse
-#pragma warning disable CS0618 // Type or member is obsolete
-		var convertedTime = epochTime.FromUnixTime();
-#pragma warning restore CS0618 // Type or member is obsolete
-
-		Assert.IsTrue(convertedTime >= currentTime.Subtract(new TimeSpan(0, 5, 0)));
-
-		//PrintResult(convertedTime, nameof(this.ToFromUnixTimeTest));
 	}
 
 }

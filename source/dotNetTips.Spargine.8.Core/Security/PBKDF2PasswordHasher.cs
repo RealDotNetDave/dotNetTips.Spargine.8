@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-20-2024
+// Last Modified On : 11-21-2024
 // ***********************************************************************
 // <copyright file="PBKDF2PasswordHasher.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -32,7 +32,7 @@ namespace DotNetTips.Spargine.Core.Security
 		/// <param name="left">The left.</param>
 		/// <param name="right">The right.</param>
 		/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-		[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available)]
+		[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 		[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 		public static bool FixedTimeEquals([NotNull] byte[] left, [NotNull] byte[] right)
 		{
@@ -58,7 +58,7 @@ namespace DotNetTips.Spargine.Core.Security
 		/// </summary>
 		/// <param name="password">The password.</param>
 		/// <returns>System.String.</returns>
-		[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+		[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 		public static string HashPassword([NotNull] string password)
 		{
 			byte[] salt;
@@ -85,7 +85,7 @@ namespace DotNetTips.Spargine.Core.Security
 		/// <param name="hashedPassword">The hashed password.</param>
 		/// <param name="password">The password.</param>
 		/// <returns>PasswordVerificationResult.</returns>
-		[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 100, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+		[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 		public static PasswordVerificationResult VerifyHashedPassword(string hashedPassword, [NotNull] string password)
 		{
 			if (string.IsNullOrEmpty(hashedPassword))

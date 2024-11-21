@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 11-21-2024
 // ***********************************************************************
 // <copyright file="InformationAttribute.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -28,12 +28,6 @@ namespace DotNetTips.Spargine.Core;
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Delegate, Inherited = false)]
 public sealed class InformationAttribute : Attribute
 {
-
-	/// <summary>
-	/// The unit test coverage
-	/// </summary>
-	private int _unitTestCoverage;
-
 	/// <summary>
 	/// Initializes a new instance of the <see cref="InformationAttribute"/> class.
 	/// </summary>
@@ -134,33 +128,6 @@ public sealed class InformationAttribute : Attribute
 	/// Gets or sets the development status of the member.
 	/// </summary>
 	public Status Status { get; set; } = Status.NotSet;
-
-	/// <summary>
-	/// Gets or sets the unit test coverage percentage of the member.
-	/// Must be between 0 - 100.
-	/// </summary>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is not in the range of 0 - 100.</exception>
-	[Obsolete("Property will be removed at the end of 2024. Use UnitTestStatus instead.")]
-	public int UnitTestCoverage
-	{
-		get => this._unitTestCoverage;
-		set
-		{
-			if (this._unitTestCoverage == value)
-			{
-				return;
-			}
-
-			if (value.CheckIsInRange(0, 100))
-			{
-				this._unitTestCoverage = value;
-			}
-			else
-			{
-				ExceptionThrower.ThrowArgumentOutOfRangeException("Unit test coverage must be in the range of 0 - 100.");
-			}
-		}
-	}
 
 	/// <summary>
 	/// Gets or sets the unit test status of the member.

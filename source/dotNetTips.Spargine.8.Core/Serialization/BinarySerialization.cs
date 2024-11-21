@@ -4,7 +4,7 @@
 // Created          : 04-21-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-20-2024
+// Last Modified On : 11-21-2024
 // ***********************************************************************
 // <copyright file="BinarySerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -30,7 +30,7 @@ namespace DotNetTips.Spargine.Core.Serialization
 		/// <typeparam name="TResult">The type of the t result.</typeparam>
 		/// <param name="bytes">The bytes.</param>
 		/// <returns>T.</returns>
-		[Information("Orginal code from: https://www.robokiwi.com/wiki/dotnet/interop/marshaling/", author: "David McCarter", createdOn: "4/21/2022", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+		[Information("Orginal code from: https://www.robokiwi.com/wiki/dotnet/interop/marshaling/", author: "David McCarter", createdOn: "4/21/2022", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
 		public static TResult Deserialize<TResult>([NotNull] byte[] bytes)
 		{
 			bytes = bytes.ArgumentNotNull();
@@ -59,7 +59,7 @@ namespace DotNetTips.Spargine.Core.Serialization
 		/// <param name="fileName">Name of the file.</param>
 		/// <returns>TResult.</returns>
 		/// <exception cref="FileNotFoundException">File not found. Cannot deserialize from JSON.</exception>
-		[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New)]
+		[Information(nameof(DeserializeFromFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 		public static TResult DeserializeFromFile<TResult>([NotNull] string fileName) where TResult : class
 		{
 			if (File.Exists(fileName) is false)
@@ -76,7 +76,7 @@ namespace DotNetTips.Spargine.Core.Serialization
 		/// </summary>
 		/// <param name="obj">The object.</param>
 		/// <returns>System.String.</returns>
-		[Information("Orginal code from: https://www.robokiwi.com/wiki/dotnet/interop/marshaling/", author: "David McCarter", createdOn: "4/21/2020", UnitTestCoverage = 0, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+		[Information("Orginal code from: https://www.robokiwi.com/wiki/dotnet/interop/marshaling/", author: "David McCarter", createdOn: "4/21/2020", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
 		public static byte[] Serialize([NotNull] object obj)
 		{
 			obj = obj.ArgumentNotNull();
@@ -117,7 +117,7 @@ namespace DotNetTips.Spargine.Core.Serialization
 		/// </summary>
 		/// <param name="obj">The object.</param>
 		/// <param name="fileName">Name of the file.</param>
-		[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestCoverage = 0, Status = Status.New)]
+		[Information(nameof(SerializeToFile), BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 		public static void SerializeToFile([NotNull] object obj, [NotNull] string fileName)
 		{
 			obj = obj.ArgumentNotNull();

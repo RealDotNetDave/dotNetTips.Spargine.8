@@ -126,23 +126,6 @@ public static class ListExtensions
 	}
 
 	/// <summary>
-	/// Copies the elements of the <see cref="List{T}"/> to a new <see cref="Collection{T}"/>.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the list.</typeparam>
-	/// <param name="collection">The list whose elements are copied.</param>
-	/// <returns>A new <see cref="Collection{T}"/> containing the elements of the input list.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Obsolete("Use ToCollection() instead. Method will be removed at the end of 2024.")]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CopyToCollection), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static Collection<T> CopyToCollection<T>([NotNull] this List<T> collection)
-	{
-		collection = collection.ArgumentItemsExists();
-
-		return new Collection<T>(collection);
-	}
-
-	/// <summary>
 	/// Determines whether the specified <see cref="List{T}"/> does not contain any items.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
