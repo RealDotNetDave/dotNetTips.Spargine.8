@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 11-22-2024
 // ***********************************************************************
 // <copyright file="ChannelQueueCollectionBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -132,7 +132,7 @@ public class ChannelQueueCollectionBenchmark : SmallCollectionBenchmark
 			ListenToQueueAsync(channel, token)
 		};
 
-		Task.WaitAll(tasks.ToArray());
+		Task.WaitAll([.. tasks]);
 
 		this.Consume(channel.Count);
 	}

@@ -4,7 +4,7 @@
 // Created          : 04-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-05-2024
+// Last Modified On : 11-22-2024
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -114,13 +114,6 @@ public partial class CollectionBenchmark
 	/// </summary>
 	/// <returns>An array of Person reference types.</returns>
 	public Person<Address>[] GetPersonRefArray() => this._personRefArray.Clone<Person<Address>[]>();
-
-	/// <summary>
-	/// Gets the Person reference list as a collection.
-	/// </summary>
-	/// <returns>A collection of Person reference types.</returns>
-	[Obsolete("Use GetPersonRefArray() instead. Will be removed at the end of 2024.")]
-	public Collection<Person<Address>> GetPersonRefCollection() => this._personRefList.Clone<List<Person<Address>>>().ToCollection();
 
 	/// <summary>
 	/// Gets Person reference types as a dictionary.

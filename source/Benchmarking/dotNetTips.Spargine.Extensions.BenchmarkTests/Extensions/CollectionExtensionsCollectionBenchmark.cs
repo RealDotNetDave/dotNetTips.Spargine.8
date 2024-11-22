@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-05-2024
+// Last Modified On : 11-22-2024
 // ***********************************************************************
 // <copyright file="CollectionExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -85,7 +85,7 @@ public class CollectionExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		base.Setup();
 
 		this._peopleRefCollection = this.GetPersonRefArray().ToCollection();
-		this._peopleRefList = [.. this.GetPersonRefCollection()];
+		this._peopleRefList = [.. this.GetPersonRefArray()];
 	}
 
 	[Benchmark(Description = nameof(CollectionExtensions.ToFrozenSet))]

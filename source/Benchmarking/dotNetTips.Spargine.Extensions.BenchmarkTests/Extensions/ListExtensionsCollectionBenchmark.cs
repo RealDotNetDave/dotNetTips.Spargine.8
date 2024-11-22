@@ -4,7 +4,7 @@
 // Created          : 01-09-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-05-2024
+// Last Modified On : 11-22-2024
 // ***********************************************************************
 // <copyright file="ListExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -85,16 +85,6 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		var result = new Person<Address>[this._peopleRefList.Count];
 		this._peopleRefList.CopyTo(result);
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = nameof(ListExtensions.CopyToCollection))]
-	public void CopyToList_CopyToCollection()
-	{
-#pragma warning disable CS0618 // Type or member is obsolete
-		var result = this._peopleRefList.CopyToCollection();
-#pragma warning restore CS0618 // Type or member is obsolete
 
 		this.Consume(result);
 	}
@@ -206,10 +196,10 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		base.Setup();
 
-		this._peopleRefSubSet = this.GetPersonRefCollection().TakeLast(10).Clone<IEnumerable<Person<Address>>>().ToList();
-		this._peopleRefList = [.. this.GetPersonRefCollection()];
-		this._peopleRecordList = [.. this.GetPersonRecordCollection()];
-		this._peopleValList = [.. this.GetPersonValCollection()];
+		this._peopleRefSubSet = this.GetPersonRefArray().TakeLast(10).Clone<IEnumerable<Person<Address>>>().ToList();
+		this._peopleRefList = [.. this.GetPersonRefArray()];
+		this._peopleRecordList = [.. this.GetPersonRecordArray()];
+		this._peopleValList = [.. this.GetPersonValArray()];
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.ToFrozenSet))]

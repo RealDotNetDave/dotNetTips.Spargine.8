@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-05-2024
+// Last Modified On : 11-22-2024
 // ***********************************************************************
 // <copyright file="SerializationBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -196,7 +196,7 @@ public class SerializationBenchmark : Benchmark
 		this._xmlPersonRef = XmlSerialization.Serialize(base.PersonRef01);
 		this._xmlPersonRecord = XmlSerialization.Serialize(base.PersonRecord01);
 		this._jsonPersonRefList = RandomData.GeneratePersonRefCollection<Address>(100).ToJson();
-		this._personRefList = RandomData.GeneratePersonRefCollection<Address>(100).ToList();
+		this._personRefList = [.. RandomData.GeneratePersonRefCollection<Address>(100)];
 	}
 
 }

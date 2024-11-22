@@ -4,7 +4,7 @@
 // Created          : 06-01-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-03-2024
+// Last Modified On : 10-07-2024
 // ***********************************************************************
 // <copyright file="LoggingBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.

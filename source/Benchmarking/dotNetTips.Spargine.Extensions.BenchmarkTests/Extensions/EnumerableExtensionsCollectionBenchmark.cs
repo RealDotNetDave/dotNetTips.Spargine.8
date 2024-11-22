@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-15-2024
+// Last Modified On : 11-22-2024
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -394,9 +394,9 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		base.Setup();
 
-		this._personRefEnumerable = this.GetPersonRefCollection().AsEnumerable();
-		this._personRefList = [.. this.GetPersonRefCollection()];
-		this._personRecordList = [.. this.GetPersonRecordCollection()];
+		this._personRefEnumerable = this.GetPersonRefArray().AsEnumerable();
+		this._personRefList = [.. this.GetPersonRefArray()];
+		this._personRecordList = [.. this.GetPersonRecordArray()];
 		this._coordinateValEnumerable = this.GetCoordinateValArray().AsEnumerable();
 
 		var peopleToAdd = this._personRefEnumerable.ToList();

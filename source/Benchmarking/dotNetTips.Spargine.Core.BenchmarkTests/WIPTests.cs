@@ -24,6 +24,7 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests;
 /// </summary>
 public static class WIPTests
 {
+	private const string MessageFailed = "Failed";
 
 	public static void InTest01(Exception ex)
 	{
@@ -44,7 +45,7 @@ public static class WIPTests
 
 		if (result && throwException)
 		{
-			ExceptionThrower.ThrowInvalidValueException("Failed", value);
+			ExceptionThrower.ThrowInvalidValueException(MessageFailed, value);
 		}
 
 		return result;
@@ -57,7 +58,7 @@ public static class WIPTests
 
 		if (result && throwException)
 		{
-			ExceptionThrower.ThrowInvalidValueException("Failed", value);
+			ExceptionThrower.ThrowInvalidValueException(MessageFailed, value);
 		}
 
 		return result;
@@ -70,7 +71,7 @@ public static class WIPTests
 
 		if (result && throwException)
 		{
-			ExceptionThrower.ThrowInvalidValueException("Failed", value);
+			ExceptionThrower.ThrowInvalidValueException(MessageFailed, value);
 		}
 
 		return result;
@@ -89,7 +90,7 @@ public static class WIPTests
 
 		if (result && throwException)
 		{
-			ExceptionThrower.ThrowInvalidValueException("Failed", value);
+			ExceptionThrower.ThrowInvalidValueException(MessageFailed, value);
 		}
 
 		return result;
@@ -108,7 +109,7 @@ public static class WIPTests
 
 		if (result && throwException)
 		{
-			ExceptionThrower.ThrowInvalidValueException("Failed", value);
+			ExceptionThrower.ThrowInvalidValueException(MessageFailed, value);
 		}
 
 		return result;
@@ -127,7 +128,7 @@ public static class WIPTests
 
 		if (result && throwException)
 		{
-			ExceptionThrower.ThrowInvalidValueException("Failed", value);
+			ExceptionThrower.ThrowInvalidValueException(MessageFailed, value);
 		}
 
 		return result;

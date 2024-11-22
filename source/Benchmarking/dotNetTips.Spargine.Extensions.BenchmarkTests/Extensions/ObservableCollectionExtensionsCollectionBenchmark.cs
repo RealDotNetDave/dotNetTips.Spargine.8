@@ -4,7 +4,7 @@
 // Created          : 08-27-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 11-22-2024
 // ***********************************************************************
 // <copyright file="ObservableCollectionExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -69,7 +69,7 @@ public class ObservableCollectionExtensionsCollectionBenchmark : SmallCollection
 	public override void Setup()
 	{
 		base.Setup();
-		this._personRefObservableCollection = new ObservableCollection<Person<Address>>(this.GetPersonRefCollection());
+		this._personRefObservableCollection = new ObservableCollection<Person<Address>>(this.GetPersonRefArray());
 
 	}
 

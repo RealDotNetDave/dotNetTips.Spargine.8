@@ -4,7 +4,7 @@
 // Created          : 08-02-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-05-2024
+// Last Modified On : 11-22-2024
 // ***********************************************************************
 // <copyright file="RandomDataCollectionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -143,13 +143,11 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 		base.Setup();
 
 		this._coordinateCollection = this.GetCoordinateValArray().ToCollection();
-		this._personRecordCollection = this.GetPersonRecordCollection().ToCollection();
-		this._personRefCollection = this.GetPersonRefCollection();
+		this._personRecordCollection = this.GetPersonRecordArray().ToCollection();
+		this._personRefCollection = this.GetPersonRefArray().ToCollection();
 
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"PersonRefCollection: {this._personRefCollection.Count}");
-
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"PersonRecordCollection: {this._personRecordCollection.Count}");
-
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"FIRST PERSON: {this._personRefCollection.First().Email}");
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"LAST PERSON: {this._personRefCollection.Last().Email}");
 	}

@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 11-22-2024
 // ***********************************************************************
 // <copyright file="StringExtensionsCounterBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -32,8 +32,7 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 [BenchmarkCategory(Categories.Strings)]
 public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 {
-
-	private readonly string _base64String;
+	private string _base64String;
 	private string _brotilString;
 	private string _crlfString;
 	private string _gzipString;
@@ -151,8 +150,8 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 
 		this._crlfString = sb.ToString().Trim();
 		this._brotilString = this._crlfString.ToBrotliStringAsync().Result;
-		_brotilString = _crlfString.ToBrotliStringAsync().GetAwaiter().GetResult();
-		_gzipString = _crlfString.ToGZipStringAsync().GetAwaiter().GetResult();
+		this._gzipString = _crlfString.ToGZipStringAsync().GetAwaiter().GetResult();
+		this._base64String = _crlfString.ToBase64();
 	}
 
 	[Benchmark(Description = "Split")]
