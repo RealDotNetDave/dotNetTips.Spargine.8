@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-19-2024
+// Last Modified On : 11-23-2024
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -422,7 +422,7 @@ public static class TypeHelper
 	/// <param name="instance">The instance to compute the hash code for.</param>
 	/// <returns>The computed hash code.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="instance"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static int GetInstanceHashCode([NotNull] object instance)
 	{
 		var hash = instance.ArgumentNotNull().GetType().GetRuntimeProperties().Where(p => p is not null).Select(prop => prop.GetValue(instance)).Where(value => value is not null).Aggregate(-1, (accumulator, value) => accumulator ^ value.GetHashCode());

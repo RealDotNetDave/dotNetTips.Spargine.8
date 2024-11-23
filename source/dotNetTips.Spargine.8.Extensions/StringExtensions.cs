@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 11-23-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -165,7 +165,7 @@ public static class StringExtensions
 	/// <returns>The size of the byte array needed to store the Base64 encoded string, or 0 if the input is null or empty.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CalculateByteArraySize), "David McCarter", "11/6/2024", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(CalculateByteArraySize), "David McCarter", "11/6/2024", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static int CalculateByteArraySize([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1169,7 +1169,7 @@ public static class StringExtensions
 	/// <returns>A span of bytes representing the decoded Base64 string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToBase64ByteSpan), "David McCarter", "11/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(ToBase64ByteSpan), "David McCarter", "11/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static Span<byte> ToBase64ByteSpan(this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();

@@ -4,7 +4,7 @@
 // Created          : 05-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 11-23-2024
 // ***********************************************************************
 // <copyright file="StringBuilderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -366,7 +366,7 @@ public static class StringBuilderExtensions
 	/// <param name="sb">The <see cref="StringBuilder"/> to clear and set capacity for.</param>
 	/// <param name="capacity">The new capacity to set for the <see cref="StringBuilder"/>.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/> is null.</exception>
-	[Information(nameof(ClearSetCapacity), author: "David McCarter", createdOn: "11/13/2024", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(ClearSetCapacity), author: "David McCarter", createdOn: "11/13/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
 	public static StringBuilder ClearSetCapacity([NotNull] this StringBuilder sb, in int capacity)
 	{
 		sb = sb.ArgumentNotNull();

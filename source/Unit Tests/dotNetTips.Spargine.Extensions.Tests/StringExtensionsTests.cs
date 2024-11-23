@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-10-2024
+// Last Modified On : 11-23-2024
 // ***********************************************************************
 // <copyright file="StringExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -52,6 +52,49 @@ public class StringExtensionsTests
 		Assert.IsFalse(string.IsNullOrEmpty(await r2.FromBrotliStringAsync()));
 		Assert.IsFalse(string.IsNullOrEmpty(await r3.FromBrotliStringAsync()));
 		Assert.IsFalse(string.IsNullOrEmpty(await r4.FromBrotliStringAsync()));
+	}
+	[TestMethod]
+	public void CalculateByteArraySize_NullOrEmptyString_ReturnsZero()
+	{
+		// Arrange
+		string nullString = null;
+		string emptyString = string.Empty;
+
+		// Act
+		var resultForNull = StringExtensions.CalculateByteArraySize(nullString);
+		var resultForEmpty = StringExtensions.CalculateByteArraySize(emptyString);
+
+		// Assert
+		Assert.AreEqual(0, resultForNull, "Byte array size for null string should be zero.");
+		Assert.AreEqual(0, resultForEmpty, "Byte array size for empty string should be zero.");
+	}
+
+	[TestMethod]
+	public void CalculateByteArraySize_SpecialCharacters_ReturnsCorrectSize()
+	{
+		// Arrange
+		string input = "TëstStrîng";
+
+		// Act
+		var result = StringExtensions.CalculateByteArraySize(input);
+
+		// Assert
+		var expectedSize = input.Length * 3 / 4;
+		Assert.AreEqual(expectedSize, result, "Byte array size for string with special characters is incorrect.");
+	}
+
+	[TestMethod]
+	public void CalculateByteArraySize_ValidString_ReturnsCorrectSize()
+	{
+		// Arrange
+		string input = "TestString";
+
+		// Act
+		var result = StringExtensions.CalculateByteArraySize(input);
+
+		// Assert
+		var expectedSize = input.Length * 3 / 4;
+		Assert.AreEqual(expectedSize, result, "Byte array size for valid string is incorrect.");
 	}
 
 
@@ -898,6 +941,46 @@ public class StringExtensionsTests
 
 		//Test
 		Assert.IsTrue(testValue.SubstringTrim(1, 10).HasValue());
+	}
+
+	[TestMethod]
+	public void ToBase64ByteSpan_InvalidBase64String_ReturnsEmptySpan()
+	{
+		// Arrange
+		string input = "InvalidBase64String";
+
+		// Act
+		var result = StringExtensions.ToBase64ByteSpan(input);
+
+		// Assert
+		Assert.AreEqual(0, result.Length, "The byte span should be empty for an invalid Base64 string.");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void ToBase64ByteSpan_NullString_ThrowsArgumentNullException()
+	{
+		// Arrange
+		string input = null;
+
+		// Act
+		StringExtensions.ToBase64ByteSpan(input);
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
+	public void ToBase64ByteSpan_ValidBase64String_ReturnsCorrectSpan()
+	{
+		// Arrange
+		string input = "VGhpcyBpcyBhIHRlc3Qgc3RyaW5nLg=="; // "This is a test string."
+
+		// Act
+		var result = StringExtensions.ToBase64ByteSpan(input);
+
+		// Assert
+		var expectedBytes = Encoding.UTF8.GetBytes("This is a test string.");
+		CollectionAssert.AreEqual(expectedBytes, result.ToArray(), "The byte span does not match the expected byte array.");
 	}
 
 	[TestMethod]

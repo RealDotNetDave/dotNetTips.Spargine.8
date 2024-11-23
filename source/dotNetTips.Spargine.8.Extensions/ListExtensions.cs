@@ -1,19 +1,17 @@
 // ***********************************************************************
-// Assembly         : DotNetTips.Spargine.8.Extensions **
+// Assembly         : DotNetTips.Spargine.8.Extensions
 // Author           : David McCarter
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 11-23-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
 // <summary>Provides extension methods for List{T} to enhance functionality.</summary>
 // ***********************************************************************
+
 using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
@@ -25,6 +23,7 @@ using DotNetTips.Spargine.Core.Collections.Generic;
 using DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
+
 namespace DotNetTips.Spargine.Extensions;
 
 /// <summary>

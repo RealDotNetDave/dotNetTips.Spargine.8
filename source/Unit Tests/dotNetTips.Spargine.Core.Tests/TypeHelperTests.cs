@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 11-23-2024
 // ***********************************************************************
 // <copyright file="TypeHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -35,6 +35,7 @@ namespace DotNetTips.Spargine.Core.Tests;
 [Guid("5AE2E147-D4DB-4FA4-AAE4-0675C3A2DFC5")]
 public class TypeHelperTests : TestClass
 {
+
 	[TestMethod]
 	public void BuiltInTypeNames01()
 	{
@@ -143,6 +144,41 @@ public class TypeHelperTests : TestClass
 		var result = TypeHelper.GetDefault<AccessControlType>();
 
 		Assert.IsNotNull(result);
+	}
+
+	[TestMethod]
+	public void GetInstanceHashCode_EmptyObject_ReturnsHashCode()
+	{
+		// Arrange
+		var emptyObject = new { };
+
+		// Act
+		var hashCode = TypeHelper.GetInstanceHashCode(emptyObject);
+
+		// Assert
+		Assert.AreNotEqual(0, hashCode, "Hash code should not be zero.");
+	}
+
+	[TestMethod]
+	public void GetInstanceHashCode_NullObject_ThrowsArgumentNullException()
+	{
+		// Arrange
+		object nullObject = null;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.GetInstanceHashCode(nullObject), "Null object should throw ArgumentNullException.");
+	}
+	[TestMethod]
+	public void GetInstanceHashCode_ValidObject_ReturnsHashCode()
+	{
+		// Arrange
+		var person = RandomData.GeneratePersonRef<Address>();
+
+		// Act
+		var hashCode = TypeHelper.GetInstanceHashCode(person);
+
+		// Assert
+		Assert.AreNotEqual(0, hashCode, "Hash code should not be zero.");
 	}
 
 	[TestMethod]

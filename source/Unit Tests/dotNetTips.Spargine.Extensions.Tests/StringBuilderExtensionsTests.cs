@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-09-2024
+// Last Modified On : 11-23-2024
 // ***********************************************************************
 // <copyright file="StringBuilderExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -210,6 +211,62 @@ public class StringBuilderExtensionsTests
 		});
 
 		Assert.IsTrue(pool.Length > 0, "StringBuilder should contain formatted values in the pool instance.");
+	}
+
+	[TestMethod]
+	public void ClearSetCapacityNegativeCapacityTest()
+	{
+		var sb = new StringBuilder("Initial content");
+		int newCapacity = -1;
+
+		// Ensure the StringBuilder has initial content
+		Assert.IsTrue(sb.Length > 0, "StringBuilder should have initial content.");
+
+		// Call ClearSetCapacity
+		Assert.ThrowsException<ArgumentOutOfRangeException>(() => sb.ClearSetCapacity(newCapacity));
+
+		// Verify the StringBuilder is cleared
+		Assert.AreEqual(0, sb.Length, "StringBuilder should be cleared.");
+
+		// Verify the capacity is set correctly
+		Assert.IsTrue(sb.Capacity >= 0, "StringBuilder capacity should be non-negative.");
+	}
+	[TestMethod]
+	public void ClearSetCapacityTest()
+	{
+		var sb = new StringBuilder("Initial content");
+		int newCapacity = 100;
+
+		// Ensure the StringBuilder has initial content
+		Assert.IsTrue(sb.Length > 0, "StringBuilder should have initial content.");
+
+		// Call ClearSetCapacity
+		sb.ClearSetCapacity(newCapacity);
+
+		// Verify the StringBuilder is cleared
+		Assert.AreEqual(0, sb.Length, "StringBuilder should be cleared.");
+
+		// Verify the capacity is set correctly
+		Assert.AreEqual(newCapacity, sb.Capacity, "StringBuilder capacity should be set to the new value.");
+	}
+
+	[TestMethod]
+	public void ClearSetCapacityZeroCapacityTest()
+	{
+		var sb = new StringBuilder("Initial content");
+		int newCapacity = 0;
+
+		// Ensure the StringBuilder has initial content
+		Assert.IsTrue(sb.Length > 0, "StringBuilder should have initial content.");
+
+		// Call ClearSetCapacity
+		sb.ClearSetCapacity(newCapacity);
+
+		// Verify the StringBuilder is cleared
+		Assert.AreEqual(0, sb.Length, "StringBuilder should be cleared.");
+
+		// Verify the capacity is set correctly
+		Assert.AreEqual(newCapacity, sb.Capacity, "StringBuilder capacity should be set to zero.");
 	}
 
 }

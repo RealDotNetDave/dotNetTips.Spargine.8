@@ -1203,7 +1203,7 @@ public static class EnumerableExtensions
 	/// <typeparam name="T">Generic type parameter.</typeparam>
 	/// <param name="collection">The values.</param>
 	/// <returns>System.Collections.Immutable.ImmutableArray&lt;T&gt;.</returns>
-	[Information(nameof(ToImmutable), "David McCarter", "6/7/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(ToImmutable), "David McCarter", "6/7/2024", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this IEnumerable<T> collection)
 	{
 		if (collection.DoesNotHaveItems())
