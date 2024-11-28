@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-23-2024
+// Last Modified On : 11-28-2024
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -33,6 +33,7 @@ namespace DotNetTips.Spargine.Core;
 /// This class serves as a utility for accessing various application and system properties such as culture information, OS details, and processor information.
 /// It also provides methods for changing culture settings, retrieving environment variables, and managing application processes.
 /// </remarks>
+[Information(Documentation = "https://bit.ly/SpargineApp")]
 public static class App
 {
 
@@ -278,7 +279,7 @@ public static class App
 	/// Reboots the system programmatically.
 	/// </summary>
 	/// <exception cref="PlatformNotSupportedException">Thrown when the operating system is not supported.</exception>
-	[Information(Status = Status.New, Documentation = "ADD URL")]
+	[Information(Status = Status.Available)]
 	public static void RebootComputer()
 	{
 		if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))

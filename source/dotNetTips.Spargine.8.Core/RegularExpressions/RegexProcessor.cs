@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-08-2024
+// Last Modified On : 11-28-2024
 // ***********************************************************************
 // <copyright file="RegexProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -435,7 +435,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string to process.</param>
 	/// <param name="replacement">The string to replace HTML tags with. Defaults to an empty string.</param>
 	/// <returns>The modified string with HTML tags replaced by the specified replacement string.</returns>
-	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string RemoveHtml(string input, string replacement = "")
 	{
 		if (input is null)
@@ -452,7 +452,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string to process.</param>
 	/// <param name="replacement">The string to replace special characters with. Defaults to an empty string.</param>
 	/// <returns>The modified string with special characters replaced by the specified replacement string.</returns>
-	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string RemoveSpecialChar(string input, string replacement = "")
 	{
 		if (input is null)

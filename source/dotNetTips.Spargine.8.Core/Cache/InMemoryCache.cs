@@ -4,7 +4,7 @@
 // Created          : 01-13-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-03-2024
+// Last Modified On : 11-28-2024
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -49,6 +49,7 @@ namespace DotNetTips.Spargine.Core.Cache;
 /// <seealso cref="GetCacheItem{T}(string)"/>
 /// <seealso cref="Clear"/>
 [SupportedOSPlatform("windows")]
+[Information(Status = Status.NeedsDocumentation, Documentation = "")]
 public sealed class InMemoryCache
 {
 
@@ -117,7 +118,7 @@ public sealed class InMemoryCache
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key" /> is null or empty, or <paramref name="item" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, TimeSpan timeout)
 	{
 		key = key.ArgumentNotNullOrEmpty();
@@ -137,7 +138,7 @@ public sealed class InMemoryCache
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key" /> is null or empty, or <paramref name="item" /> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, DateTimeOffset timeout)
 	{
 		key = key.ArgumentNotNullOrEmpty();
@@ -153,7 +154,7 @@ public sealed class InMemoryCache
 	/// <remarks>This method is intended to remove all items from the cache, effectively resetting it.
 	/// Use with caution as this will remove all cached data.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Clear), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(Clear), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public void Clear() => this.Cache.Compact(1.0);
 
 	/// <summary>

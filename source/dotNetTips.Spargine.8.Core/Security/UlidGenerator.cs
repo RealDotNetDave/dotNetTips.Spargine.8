@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 11-28-2024
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Core.Security;
 /// <remarks>
 /// This class includes methods to generate single or multiple ULIDs, extract timestamps from ULIDs, and encode/decode ULIDs using Base32 encoding.
 /// </remarks>
-[Information(Documentation = "https://bit.ly/SpargineUlidGenerator", Status = Status.Available)]
+[Information(Documentation = "https://bit.ly/SpargineUlidGenerator")]
 public static class UlidGenerator
 {
 
@@ -120,7 +120,7 @@ public static class UlidGenerator
 	/// <param name="count">The number of ULIDs to generate.</param>
 	/// <returns>A read-only collection of generated ULIDs.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than or equal to zero.</exception>
-	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
+	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> GenerateMultipleUlids(int count)
 	{
 		var ulids = new List<string>(count.ArgumentInRange(1, defaultValue: 1));
@@ -136,7 +136,7 @@ public static class UlidGenerator
 	/// Generates a new ULID.
 	/// </summary>
 	/// <returns>A new ULID as a string.</returns>
-	[Information("Generates a new ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.New)]
+	[Information("Generates a new ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string GenerateUlid()
 	{
 		var timestamp = GetTimestamp().AsSpan();

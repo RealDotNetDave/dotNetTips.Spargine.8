@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-11-2024
+// Last Modified On : 11-28-2024
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -30,6 +30,7 @@ namespace DotNetTips.Spargine.Core.Logging;
 /// <summary>
 /// Provides utility methods for logging, including functionality to log computer information, application details, and capture all domain exceptions and events.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class LoggingHelper
 {
 
@@ -246,7 +247,7 @@ public static class LoggingHelper
 	/// It is crucial to call this method early in the application startup process to ensure all relevant domain events are logged.
 	/// The logger can only be set once. Subsequent calls to this method will be ignored.
 	/// </remarks>
-	[Information(nameof(LogAppDomainEvents), author: "David McCarter", createdOn: "7/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL", Status = Status.New)]
+	[Information(nameof(LogAppDomainEvents), author: "David McCarter", createdOn: "7/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static void LogAppDomainEvents(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
@@ -299,7 +300,7 @@ public static class LoggingHelper
 	/// It is important to call this method early in the application startup process to ensure all unhandled exceptions are logged.
 	/// Logger can only be set once. Subsequent calls to this method will be ignored.
 	/// </remarks>
-	[Information(nameof(LogAppDomainUnhandledException), author: "David McCarter", createdOn: "7/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL", Status = Status.New)]
+	[Information(nameof(LogAppDomainUnhandledException), author: "David McCarter", createdOn: "7/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL", Status = Status.Available)]
 	public static void LogAppDomainUnhandledException(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();

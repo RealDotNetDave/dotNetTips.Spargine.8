@@ -49,6 +49,17 @@ public class SHA256PasswordHasherBenchmark : Benchmark
 		Consume(hashedPassword);
 	}
 
+	[Benchmark(Description = nameof(SHA256PasswordHasher.HashPassword) + ": LONG STRING")]
+	[BenchmarkCategory(Categories.Encryption, Categories.New)]
+	public void HashTest()
+	{
+		// TESTING DUE TO EMAIL RECEIVED ABOUT HASHING MESSAGES.
+		var password = this.LongTestString;
+		var hashedPassword = SHA256PasswordHasher.HashPassword(password);
+
+		Consume(hashedPassword);
+	}
+
 	[Benchmark(Description = nameof(SHA256PasswordHasher.VerifyHashedPassword))]
 	[BenchmarkCategory(Categories.Encryption)]
 	public void VerifyHashedPassword()

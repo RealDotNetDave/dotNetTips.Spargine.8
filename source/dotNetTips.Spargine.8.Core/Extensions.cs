@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 11-28-2024
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -241,7 +241,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="sb">The <see cref="StringBuilder"/> to clear and set capacity for.</param>
 	/// <param name="capacity">The new capacity to set for the <see cref="StringBuilder"/>.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/> is null.</exception>
-	[Information(nameof(ClearSetCapacity), author: "David McCarter", createdOn: "11/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, OptimizationStatus = OptimizationStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(ClearSetCapacity), author: "David McCarter", createdOn: "11/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, OptimizationStatus = OptimizationStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static StringBuilder ClearSetCapacity([NotNull] this StringBuilder sb, int capacity)
 	{
 		sb = sb.ArgumentNotNull();

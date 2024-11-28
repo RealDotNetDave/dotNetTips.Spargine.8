@@ -4,7 +4,7 @@
 // Created          : 11-12-2024
 //
 // Last Modified By : david
-// Last Modified On : 11-23-2024
+// Last Modified On : 11-28-2024
 // ***********************************************************************
 // <copyright file="PasswordGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -24,6 +24,7 @@ namespace DotNetTips.Spargine.Core.Security;
 /// Class PasswordGenerator.
 /// Provides functionality to generate random passwords with a mix of uppercase letters, lowercase letters, digits, and special characters.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class PasswordGenerator
 {
 	private const string Digits = "0123456789";
@@ -45,7 +46,7 @@ public static class PasswordGenerator
 	/// <returns>A randomly generated password string.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the length is less than 8.</exception>
 	/// <example>Password example: ik)-qm%OomiO</example>
-	[Information(nameof(GeneratePassword), "David McCarter", "11/12/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	[Information(nameof(GeneratePassword), "David McCarter", "11/12/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.Available)]
 	public static string GeneratePassword(int length)
 	{
 		length = length.ArgumentInRange(8, errorMessage: "Password length must be at lease 8 characters.");

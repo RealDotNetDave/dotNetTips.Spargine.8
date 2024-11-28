@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-29-2024
+// Last Modified On : 11-28-2024
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -33,6 +33,7 @@ namespace DotNetTips.Spargine.Core;
 /// with a specific message, parameter name, or inner exception. This approach helps maintain consistency and readability in error handling
 /// across a project.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation, Documentation = "")]
 public static class ExceptionThrower
 {
 
@@ -342,7 +343,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowIOException), author: "David McCarter", createdOn: "7/25/2024", Status = Status.New)]
+	[Information(nameof(ThrowIOException), author: "David McCarter", createdOn: "7/25/2024", Status = Status.Available)]
 	public static void ThrowIOException([AllowNull] string message) => throw new IOException(message ?? Resources.ErrorUnknownIOException);
 
 	/// <summary>
@@ -352,7 +353,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowJsonException), author: "David McCarter", createdOn: "7/17/2024", Status = Status.New)]
+	[Information(nameof(ThrowJsonException), author: "David McCarter", createdOn: "7/17/2024", Status = Status.Available)]
 	public static void ThrowJsonException([AllowNull] string message) => throw new JsonException(message ?? Resources.ErrorThereWasAnErrorWithJsonSerialization);
 
 	/// <summary>
@@ -363,7 +364,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowJsonException), author: "David McCarter", createdOn: "7/17/2024", Status = Status.New)]
+	[Information(nameof(ThrowJsonException), author: "David McCarter", createdOn: "7/17/2024", Status = Status.Available)]
 	public static void ThrowJsonException([AllowNull] string message, [AllowNull] Exception innerException) => throw new JsonException(message ?? Resources.ErrorThereWasAnErrorWithJsonSerialization, innerException);
 
 	/// <summary>
@@ -376,7 +377,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowLoggableException), author: "David McCarter", createdOn: "8/1/2024", Status = Status.New)]
+	[Information(nameof(ThrowLoggableException), author: "David McCarter", createdOn: "8/1/2024", Status = Status.Available)]
 	public static void ThrowLoggableException(string message, [AllowNull] Exception innerException = null, [AllowNull] string userMessage = "") => throw new LoggableException(message.ArgumentNotNull(), innerException, userMessage);
 
 	/// <summary>

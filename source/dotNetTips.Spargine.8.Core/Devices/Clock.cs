@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-14-2024
+// Last Modified On : 11-28-2024
 // ***********************************************************************
 // <copyright file="Clock.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -29,7 +29,7 @@ namespace DotNetTips.Spargine.Core.Devices;
 /// Some of this code is from the Microsoft.VisualBasic.dll.
 /// </remarks>
 [ExcludeFromCodeCoverage(Justification = "Not needed due to just using the <see cref=\"DateTime\"/> type.")]
-[Information(nameof(Clock), "David McCarter", "11/11/2020", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired)]
+[Information(nameof(Clock), "David McCarter", "11/11/2020", Status = Status.NeedsDocumentation, BenchMarkStatus = BenchMarkStatus.NotRequired)]
 public static class Clock
 {
 
@@ -38,7 +38,7 @@ public static class Clock
 	/// </summary>
 	/// <param name="year">The year to check.</param>
 	/// <returns><c>true</c> if the specified year is a leap year; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsLeapYear), "David McCarter", "11/14/2024", Status = Status.New)]
+	[Information(nameof(IsLeapYear), "David McCarter", "11/14/2024", Status = Status.Available)]
 	public static bool IsLeapYear(int year) => DateTime.IsLeapYear(year);
 
 	/// <summary>
@@ -73,7 +73,7 @@ public static class Clock
 	/// Gets the current tick count as a 64-bit integer by utilizing <see cref="Environment.TickCount64"/>.
 	/// </summary>
 	/// <value>The tick count since the system started as a 64-bit integer.</value>
-	[Information(nameof(TickCount64), "David McCarter", "11/14/2024", Status = Status.New)]
+	[Information(nameof(TickCount64), "David McCarter", "11/14/2024", Status = Status.Available)]
 	public static long TickCount64 => Environment.TickCount64;
 
 	/// <summary>
