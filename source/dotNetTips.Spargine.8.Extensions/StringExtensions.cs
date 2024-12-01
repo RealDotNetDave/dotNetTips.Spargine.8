@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 12-01-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -36,7 +36,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// and performing manipulations like concatenation, extraction, and indentation. These utilities aim to simplify common string handling tasks
 /// in .NET applications.
 /// </remarks>
-[Information(Status = Status.Updated)]
+[Information(Documentation = "https://bit.ly/SpargineStringExtensions")]
 public static class StringExtensions
 {
 
@@ -182,7 +182,7 @@ public static class StringExtensions
 	/// <param name="input">The initial string to start the combination. Must not be null.</param>
 	/// <param name="args">An array of strings to combine with the initial string. Must not be null.</param>
 	/// <returns>A combined string.</returns>
-	[Information(nameof(Concat), "David McCarter", "1/3/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(Concat), "David McCarter", "1/3/2023", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string CombineToString([NotNull] this string input, [NotNull] params string[] args) => FastStringBuilder.CombineStrings(false, args.ArgumentNotNull().AddFirst(input.ArgumentNotNull()));
 
 	/// <summary>
@@ -381,7 +381,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses <see cref="string.Equals(string, string, StringComparison)"/> for comparison.
 	/// </remarks>
-	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool EqualsIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare)
 	{
 		if (input is null || inputToCompare is null)
@@ -434,7 +434,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method decodes the string using <see cref="Convert.FromBase64String(string)"/> and then converts the byte array to a string using <see cref="Encoding.UTF8"/>.
 	/// </remarks>
-	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string FromBase64([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -487,7 +487,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses <see cref="DeflateStream"/> for decompression.
 	/// </remarks>
-	[Information(nameof(FromDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(FromDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static async Task<string> FromDeflateStringAsync(this string value)
 	{
 		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
@@ -558,7 +558,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses <see cref="DeflateStream"/> for decompression, as ZLib compression is closely related to the Deflate compression algorithm.
 	/// </remarks>
-	[Information(nameof(FromZLibStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
+	[Information(nameof(FromZLibStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static async Task<string> FromZLibStringAsync(this string value)
 	{
 		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
@@ -594,7 +594,7 @@ public static class StringExtensions
 	/// This method considers a string as having a value if it is not null and contains characters other than whitespace.
 	/// Uses <see cref="string.IsNullOrWhiteSpace(string)"/> internally to check if the string is null or whitespace.
 	/// </remarks>
-	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasValue([NotNull] this string input) => input is not null && (input.Trim().Length > 0);
 
 	/// <summary>
@@ -607,7 +607,7 @@ public static class StringExtensions
 	/// This method checks if the <paramref name="input"/> string has a length equal to the specified <paramref name="length"/>.
 	/// It is an extension method and cannot be called on a null instance.
 	/// </remarks>
-	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasValue([NotNull] this string input, int length)
 	{
 		length = length.ArgumentInRange(lower: 1, upper: length);
@@ -626,7 +626,7 @@ public static class StringExtensions
 	/// Then, it compares the input string with the specified value using <see cref="string.Equals(string, string, StringComparison)"/>
 	/// with <see cref="StringComparison.Ordinal"/>.
 	/// </remarks>
-	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasValue([NotNull] this string input, [NotNull] string value) => input.HasValue() && string.Equals(input, value, StringComparison.Ordinal);
 
 	/// <summary>
@@ -640,7 +640,7 @@ public static class StringExtensions
 	/// This method first checks if the input string has any value using <see cref="HasValue(string)"/> method.
 	/// Then, it creates a new <see cref="Regex"/> instance with the specified pattern and options to perform the match.
 	/// </remarks>
-	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasValue([NotNull] this string input, [NotNull][StringSyntax(StringSyntaxAttribute.Regex)] string expression, [NotNull] RegexOptions options) => input.HasValue() && expression.HasValue() && new Regex(expression, options.ArgumentDefined()).IsMatch(input);
 
 	/// <summary>
@@ -654,7 +654,7 @@ public static class StringExtensions
 	/// This method checks if the <paramref name="input"/> string's length is between <paramref name="minLength"/> and <paramref name="maxLength"/>.
 	/// It is an extension method and cannot be called on a null instance.
 	/// </remarks>
-	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(HasValue), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool HasValue([NotNull] this string input, int minLength, int maxLength)
 	{
 		minLength = minLength.ArgumentInRange(lower: 0, upper: maxLength);
@@ -739,7 +739,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method checks if the character is a digit using <see cref="char.IsDigit(char)"/>.
 	/// </remarks>
-	[Information(nameof(IsAsciiDigit), author: "David McCarter", createdOn: "6/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsAsciiDigit), author: "David McCarter", createdOn: "6/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsAsciiDigit(in this char character) => char.IsDigit(character.ArgumentNotNull());
 
 	/// <summary>
@@ -750,7 +750,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method checks if the character is a letter using <see cref="char.IsLetter(char)"/>.
 	/// </remarks>
-	[Information(nameof(IsAsciiLetter), author: "David McCarter", createdOn: "7/30/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsAsciiLetter), author: "David McCarter", createdOn: "7/30/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsAsciiLetter(in this char character) => char.IsLetter(character.ArgumentNotNull());
 
 	/// <summary>
@@ -761,7 +761,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method checks if the character is a letter or digit using <see cref="char.IsLetterOrDigit(char)"/>.
 	/// </remarks>
-	[Information(nameof(IsAsciiLetterOrDigit), author: "David McCarter", createdOn: "7/30/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsAsciiLetterOrDigit), author: "David McCarter", createdOn: "7/30/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsAsciiLetterOrDigit(in this char character) => char.IsLetterOrDigit(character.ArgumentNotNull());
 
 	/// <summary>
@@ -772,7 +772,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method checks if the character is a whitespace character using <see cref="char.IsWhiteSpace(char)"/>.
 	/// </remarks>
-	[Information(nameof(IsAsciiWhitespace), author: "David McCarter", createdOn: "6/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsAsciiWhitespace), author: "David McCarter", createdOn: "6/10/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsAsciiWhitespace(in this char character) => char.IsWhiteSpace(character.ArgumentNotNull());
 
 	/// <summary>
@@ -784,7 +784,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the credit card number.
 	/// </remarks>
 	[return: NotNull]
-	[Information(nameof(IsCreditCardNumber), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsCreditCardNumber), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsCreditCardNumber([NotNull] this string input) => _creditCardNumberRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -795,7 +795,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses a regular expression to validate the currency code.
 	/// </remarks>
-	[Information(nameof(IsCurrencyCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(IsCurrencyCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsCurrencyCode([NotNull] this string input) => _currencyCodeRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -807,7 +807,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the domain address.
 	/// </remarks>
 	[return: NotNull]
-	[Information(nameof(IsDomainAddress), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsDomainAddress), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsDomainAddress([NotNull] this string input) => _domainAddressRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -819,7 +819,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the email address.
 	/// </remarks>
 	[return: NotNull]
-	[Information(nameof(IsEmailAddress), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsEmailAddress), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsEmailAddress([NotNull] this string input) => _emailRegEx.IsMatch(input.ArgumentNotNull());
 
 #nullable enable
@@ -844,7 +844,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses a regular expression to validate the first and last name.
 	/// </remarks>
-	[Information(nameof(IsFirstLastName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsFirstLastName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsFirstLastName([NotNull] this string input) => _firstLastNameRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -855,7 +855,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses a regular expression to validate the GUID.
 	/// </remarks>
-	[Information(nameof(IsGuid), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsGuid), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsGuid([NotNull][StringSyntax(StringSyntaxAttribute.GuidFormat)] this string input) => _guidRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -866,7 +866,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses a regular expression to validate the ISBN.
 	/// </remarks>
-	[Information(nameof(IsISBN), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsISBN), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsISBN([NotNull] this string input) => _isbnRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -877,7 +877,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses a regular expression (<see cref="_macAddressRegEx"/>) to validate the MAC address.
 	/// </remarks>
-	[Information(nameof(IsMacAddress), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsMacAddress), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static bool IsMacAddress([NotNull] this string input) => _macAddressRegEx.IsMatch(input.ArgumentNotNull());
 
 #nullable enable
@@ -902,7 +902,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses a regular expression to validate the input string.
 	/// </remarks>
-	[Information(nameof(IsOneToSevenAlpha), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(IsOneToSevenAlpha), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsOneToSevenAlpha([NotNull] this string input) => _oneTo7Alpha.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -913,7 +913,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses a regular expression to validate the input string.
 	/// </remarks>
-	[Information(nameof(IsScientific), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsScientific), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsScientific([NotNull] this string input) => _scientificRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -921,7 +921,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to validate.</param>
 	/// <returns><c>true</c> if the string matches the pattern; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsString), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsString), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsString([NotNull] this string input) => _stringRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -932,7 +932,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses a regular expression to validate the input string.
 	/// </remarks>
-	[Information(nameof(IsStringSHA1Hash), "David McCarter", "5/31/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsStringSHA1Hash), "David McCarter", "5/31/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsStringSHA1Hash([NotNull] this string input) => _sha1HashRegEx.IsMatch(input.ArgumentNotNull());
 
 	/// <summary>
@@ -943,7 +943,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses a regular expression to validate the input string.
 	/// </remarks>
-	[Information(nameof(IsUrl), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(IsUrl), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsUrl([NotNull] this string input) => _urlRegEx.Match(input.ArgumentNotNull()).Success;
 
 	/// <summary>
@@ -955,7 +955,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses a regular expression to identify and replace carriage return and line feed characters.
 	/// </remarks>
-	[Information(nameof(RemoveCRLF), "Kristine Tran", "2/1/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineMarch2021")]
+	[Information(nameof(RemoveCRLF), "Kristine Tran", "2/1/2021", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string RemoveCRLF([NotNull] this string input, [NotNull] string replacement = "")
 	{
 		if (input.IsNullOrEmpty())
@@ -1016,7 +1016,7 @@ public static class StringExtensions
 	/// <param name="count">The maximum number of substrings to return.</param>
 	/// <param name="separator">The character to use as a separator. Defaults to <see cref="ControlChars.Comma"/>.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{String}"/> of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, in char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1037,7 +1037,7 @@ public static class StringExtensions
 	/// <param name="count">The maximum number of substrings to return.</param>
 	/// <param name="separator">The string to use as a separator. Defaults to <see cref="ControlChars.DefaultSeparator"/>.</param>
 	/// <returns>A ReadOnlyCollection{string} of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull] string separator = ControlChars.DefaultSeparator)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1057,7 +1057,7 @@ public static class StringExtensions
 	/// It is particularly useful for processing multi-line strings.
 	/// </remarks>
 	[return: NotNull]
-	[Information(nameof(SplitLines), "David McCarter", "6/9/2022", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(SplitLines), "David McCarter", "6/9/2022", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed)]
 	public static LineSplitEnumerator SplitLines([NotNull] this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1093,7 +1093,7 @@ public static class StringExtensions
 	/// This method performs an ordinal (case-sensitive and culture-insensitive) comparison.
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(StartsWithOrdinal), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(StartsWithOrdinal), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static bool StartsWithOrdinal([NotNull] this string input, [NotNull] string inputToCompare) => input.StartsWith(inputToCompare, StringComparison.Ordinal);
 
 	/// <summary>
@@ -1128,7 +1128,7 @@ public static class StringExtensions
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="startIndex"/> or <paramref name="length"/> is less than zero, or <paramref name="startIndex"/> + <paramref name="length"/> is greater than the length of <paramref name="input"/>.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
-	[Information(nameof(SubstringTrim), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(SubstringTrim), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string SubstringTrim(this string input, in int startIndex, in int length)
 	{
 		if (input.IsNullOrEmpty())
@@ -1151,7 +1151,7 @@ public static class StringExtensions
 	/// <param name="input">The string to encode.</param>
 	/// <returns>A Base64 encoded string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
-	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string ToBase64([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1200,7 +1200,7 @@ public static class StringExtensions
 	/// Optimal: iw0A+I+UrMG9dHJoJzwdrIKg1dYDoCSJKErYXLOsvkcYAw==
 	/// SmallestSize: iw0A+I+UrMG9dHJoJzwdrIKg1dYDoCSJKErYXLOsvkcYAw==
 	/// </example>
-	[Information(nameof(ToBrotliStringAsync), "David McCarter", "10/24/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(ToBrotliStringAsync), "David McCarter", "10/24/2020", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
 	public static async Task<string> ToBrotliStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
 	{
 		var inputStream = new MemoryStream(Encoding.Unicode.GetBytes(input.ArgumentNotNull()));
@@ -1230,7 +1230,7 @@ public static class StringExtensions
 	/// <param name="input">The string to convert. This string cannot be null.</param>
 	/// <param name="encoding">The encoding to use for the conversion. This cannot be null. See <see cref="Encoding"/> for encoding types.</param>
 	/// <returns>A byte array representing the encoded string.</returns>
-	[Information(nameof(ToByteArray), "David McCarter", "12/21/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(ToByteArray), "David McCarter", "12/21/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static byte[] ToByteArray([NotNull] this string input, [NotNull] Encoding encoding)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1253,7 +1253,7 @@ public static class StringExtensions
 	/// Optimal: SmHIZyhh8GNIBZIhDJkMBQzFDHoMyUDRXAYAAAAA//8=
 	/// SmallestSize: SmHIZyhh8GNIBZIhDJkMBQzFDHoMyUDRXAYAAAAA//8=
 	/// </example>
-	[Information(nameof(ToDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(ToDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static async Task<string> ToDeflateStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
 	{
 		_ = input.ArgumentNotNull();
@@ -1319,7 +1319,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to trim. If this string is null, an empty string is returned.</param>
 	/// <returns>A trimmed string, or an empty string if the input is null.</returns>
-	[Information(nameof(ToTrimmed), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(ToTrimmed), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
 	public static string ToTrimmed([AllowNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
