@@ -4,7 +4,7 @@
 // Created          : 02-27-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 12-01-2024
 // ***********************************************************************
 // <copyright file="Status.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -55,4 +55,9 @@ public enum Status
 	/// Indicates that the code needs documentation.
 	/// </summary>
 	NeedsDocumentation,
+
+	/// <summary>
+	/// Indicates that the code needs its documentation updated.
+	/// </summary>
+	UpdateDocumentation,
 }
