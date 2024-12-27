@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 12-27-2024
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -117,7 +117,9 @@ public static class RandomData
 	/// <summary>
 	/// An object used for locking to ensure thread safety in certain operations.
 	/// </summary>
-	private static readonly object Lock = new();
+#pragma warning disable IDE0330
+	private static readonly object _lock = new();
+#pragma warning restore IDE0330 //TODO: REMOVE AFTER MOVING TO DOTNET 10
 
 	/// <summary>
 	/// Initializes static members of the <see cref="RandomData" /> class.
@@ -349,7 +351,7 @@ public static class RandomData
 
 		var bytes = new byte[Convert.ToInt32(sizeInKb * 1024)];
 
-		lock (Lock)
+		lock (_lock)
 		{
 			_randomNumberGenerator.GetBytes(bytes);
 		}

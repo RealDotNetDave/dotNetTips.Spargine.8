@@ -4,7 +4,7 @@
 // Created          : 06-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-25-2024
+// Last Modified On : 12-27-2024
 // ***********************************************************************
 // <copyright file="SimpleResult.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -127,7 +127,7 @@ public class SimpleResult<T>
 	/// </summary>
 	/// <param name="defaultValue">The value to be returned if this result is unsuccessful.</param>
 	/// <returns>The value, if present, otherwise <paramref name="defaultValue" />.</returns>
-	public T Or(T defaultValue) => this._exceptions.Count is 0 ? this._value : defaultValue;
+	public T Or(T defaultValue) => this._exceptions.IsEmpty ? this._value : defaultValue;
 
 	/// <summary>
 	/// Returns the value if present; otherwise return default value.

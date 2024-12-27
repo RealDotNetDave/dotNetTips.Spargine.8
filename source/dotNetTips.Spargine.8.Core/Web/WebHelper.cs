@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-27-2024
+// Last Modified On : 12-27-2024
 // ***********************************************************************
 // <copyright file="WebHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -82,7 +82,7 @@ public static class WebHelper
 	/// It can be useful for validation, logging, or setting headers in HTTP requests.
 	/// </remarks>
 	[Information(nameof(HttpHeaderNames), "David McCarter", "9/2/2020", "9/2/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
-	public static ReadOnlyCollection<string> HttpHeaderNames() => Enum.GetNames(typeof(HttpRequestHeader)).AsReadOnly();
+	public static ReadOnlyCollection<string> HttpHeaderNames() => Enum.GetNames<HttpRequestHeader>().AsReadOnly();
 
 	/// <summary>
 	/// Determines whether the specified URI is local to the server.

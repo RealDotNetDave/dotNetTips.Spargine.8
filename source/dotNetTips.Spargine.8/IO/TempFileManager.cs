@@ -4,7 +4,7 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-02-2024
+// Last Modified On : 12-27-2024
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -41,7 +41,9 @@ public class TempFileManager : IDisposable
 	/// <summary>
 	/// Lock object for thread safety.
 	/// </summary>
+#pragma warning disable IDE0330
 	private readonly object _lock = new();
+#pragma warning restore IDE0330 //TODO: REMOVE AFTER MOVING TO DOTNET 10
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="TempFileManager" /> class.
