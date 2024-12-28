@@ -38,11 +38,10 @@
 	  <ProjectReference Include="..\..\dotNetTips.Spargine.8.Tester\DotNetTips.Spargine.8.Tester.csproj" />
 	  <ProjectReference Include="..\..\dotNetTips.Spargine.8\DotNetTips.Spargine.8.csproj" />
 	</ItemGroup>
-
 	<ItemGroup>
 	  <Compile Update="Properties\Resources.Designer.cs">
-	    <DesignTime>true</DesignTime>
-	    <AutoGen>true</AutoGen>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Resources.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>

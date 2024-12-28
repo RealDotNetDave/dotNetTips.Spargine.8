@@ -4,7 +4,7 @@
 // Created          : 11-16-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 12-28-2024
 // ***********************************************************************
 // <copyright file="InformationAttributeDocGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -238,8 +238,9 @@ public static class InformationAttributeDocGenerator
 	/// Generates documentation for all types in the specified assembly and writes it to a file.
 	/// </summary>
 	/// <param name="assembly">The assembly for which to generate documentation.</param>
-	/// <param name="fileName">The name of the file to write the documentation to. If null or empty, a default file name will be used.</param>
+	/// <param name="path">The path where the documentation file will be saved.</param>
 	/// <returns>The name of the file to which the documentation was written.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assembly"/> is null.</exception>
 	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static string GenerateMarkdownDocumentForAssembly(Assembly assembly, string path)
 	{
