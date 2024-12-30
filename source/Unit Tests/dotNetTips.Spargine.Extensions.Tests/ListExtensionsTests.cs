@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 12-30-2024
 // ***********************************************************************
 // <copyright file="ListExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -89,6 +89,22 @@ public class ListExtensionsTests
 	}
 
 	[TestMethod]
+	public void AddRangeIfNotExistsTest()
+	{
+		var list = new List<int> { 1, 2, 3 };
+		var itemsToAdd = new List<int> { 3, 4, 5 };
+
+		list.AddRangeIfNotExists(itemsToAdd);
+
+		Assert.AreEqual(5, list.Count);
+		Assert.IsTrue(list.Contains(1));
+		Assert.IsTrue(list.Contains(2));
+		Assert.IsTrue(list.Contains(3));
+		Assert.IsTrue(list.Contains(4));
+		Assert.IsTrue(list.Contains(5));
+	}
+
+	[TestMethod]
 	public void AsReadOnlySpanTest()
 	{
 		// Arrange
@@ -154,6 +170,7 @@ public class ListExtensionsTests
 		// Assert
 		Assert.AreNotEqual(hashCode1, hashCode2, "Hash codes should not be equal for lists with different contents.");
 	}
+
 
 	[TestMethod]
 	public void GenerateHashCodeWithEmptyListTest()
@@ -472,17 +489,31 @@ public class ListExtensionsTests
 	[TestMethod]
 	public void RemoveFirstTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(2500).ToArray();
+		var list = new List<int> { 1, 2, 3, 2, 4 };
 
-		Assert.IsTrue(people.RemoveFirst().FastCount() == 2499);
+		var result = list.RemoveFirst(2);
+
+		Assert.IsTrue(result);
+		Assert.AreEqual(4, list.Count);
+		Assert.AreEqual(1, list[0]);
+		Assert.AreEqual(3, list[1]);
+		Assert.AreEqual(2, list[2]);
+		Assert.AreEqual(4, list[3]);
 	}
 
 	[TestMethod]
 	public void RemoveLastTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToArray();
+		var list = new List<int> { 1, 2, 3, 2, 4 };
 
-		Assert.IsTrue(people.RemoveLast().FastCount() == Count - 1);
+		var result = list.RemoveLast(2);
+
+		Assert.IsTrue(result);
+		Assert.AreEqual(4, list.Count);
+		Assert.AreEqual(1, list[0]);
+		Assert.AreEqual(2, list[1]);
+		Assert.AreEqual(3, list[2]);
+		Assert.AreEqual(4, list[3]);
 	}
 
 	[TestMethod]
@@ -501,13 +532,30 @@ public class ListExtensionsTests
 	[TestMethod]
 	public void ShuffleTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
-		List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>> nullList = null;
-		_ = Assert.ThrowsException<ArgumentNullException>(nullList.Shuffle);
+		var list = new List<int> { 1, 2, 3, 4, 5 };
+		var originalList = new List<int>(list);
 
-		var shuffleCount = people.Shuffle().FastCount();
+		list.Shuffle();
 
-		Assert.IsTrue(people.FastCount() == shuffleCount);
+		Assert.AreEqual(5, list.Count);
+		Assert.IsTrue(list.Contains(1));
+		Assert.IsTrue(list.Contains(2));
+		Assert.IsTrue(list.Contains(3));
+		Assert.IsTrue(list.Contains(4));
+		Assert.IsTrue(list.Contains(5));
+		CollectionAssert.AreNotEqual(originalList, list);
+	}
+
+	[TestMethod]
+	public void SplitTest()
+	{
+		var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		var result = list.Split(3);
+
+		Assert.AreEqual(3, result.Count);
+		CollectionAssert.AreEqual(new List<int> { 1, 2, 3 }, result[0]);
+		CollectionAssert.AreEqual(new List<int> { 4, 5, 6 }, result[1]);
+		CollectionAssert.AreEqual(new List<int> { 7, 8, 9 }, result[2]);
 	}
 
 	[TestMethod]

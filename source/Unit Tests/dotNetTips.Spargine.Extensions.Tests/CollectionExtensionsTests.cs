@@ -205,7 +205,8 @@ public class CollectionExtensionsTests
 	public void UpsertTest()
 	{
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
-		var personFromCollection = people.Shuffle().First();
+		people.Shuffle();
+		var personFromCollection = people.First();
 		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
 		var personRecords = RandomData.GeneratePersonRecordCollection(Count).ToList();
 		var personRecord = RandomData.GeneratePersonRecord();

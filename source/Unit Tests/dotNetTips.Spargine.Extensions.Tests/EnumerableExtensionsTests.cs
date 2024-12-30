@@ -315,7 +315,9 @@ public class EnumerableExtensionsTests
 
 		Assert.IsFalse(people.HasDuplicates());
 
-		var dups = people.Shuffle().Take(Count / 10).ToList();
+		people.Shuffle();
+
+		var dups = people.Take(Count / 10).ToList();
 
 		foreach (var person in dups)
 		{

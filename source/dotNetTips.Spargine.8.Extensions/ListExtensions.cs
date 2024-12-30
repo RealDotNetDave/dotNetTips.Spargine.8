@@ -85,7 +85,7 @@ public static class ListExtensions
 	/// <param name="collection">The list to which the items will be added.</param>
 	/// <param name="items">The items to add to the list.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
 	public static void AddRangeIfNotExists<T>(this List<T> collection, IEnumerable<T> items)
 	{
 		collection = collection.ArgumentNotNull();
@@ -156,54 +156,6 @@ public static class ListExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool DoesNotHaveItems<T>([NotNull] this List<T> collection) => collection == null || collection.Count == 0;
-
-	/// <summary>
-	/// Finds the index of the first item that matches the specified predicate.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the list.</typeparam>
-	/// <param name="collection">The list to search.</param>
-	/// <param name="predicate">The predicate to match.</param>
-	/// <returns>The index of the first matching item, or -1 if no match is found.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FindIndex), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
-	public static int FindIndex<T>(this List<T> collection, Predicate<T> predicate)
-	{
-		collection = collection.ArgumentNotNull();
-		predicate = predicate.ArgumentNotNull();
-
-		for (var index = 0; index < collection.Count; index++)
-		{
-			if (predicate(collection[index]))
-			{
-				return index;
-			}
-		}
-		return -1;
-	}
-
-	/// <summary>
-	/// Finds the index of the last item that matches the specified predicate.
-	/// </summary>
-	/// <typeparam name="T">The type of elements in the list.</typeparam>
-	/// <param name="collection">The list to search.</param>
-	/// <param name="predicate">The predicate to match.</param>
-	/// <returns>The index of the last matching item, or -1 if no match is found.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FindLastIndex), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
-	public static int FindLastIndex<T>(this List<T> collection, Predicate<T> predicate)
-	{
-		collection = collection.ArgumentNotNull();
-		predicate = predicate.ArgumentNotNull();
-
-		for (var index = collection.Count - 1; index >= 0; index--)
-		{
-			if (predicate(collection[index]))
-			{
-				return index;
-			}
-		}
-		return -1;
-	}
 
 	/// <summary>
 	/// Generates a hash code for the entire <see cref="List{T}"/> based on the hash codes of its elements.
@@ -426,7 +378,7 @@ public static class ListExtensions
 	/// <param name="item">The item to remove from the list.</param>
 	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(RemoveFirst), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	[Information(nameof(RemoveFirst), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
 	public static bool RemoveFirst<T>(this List<T> collection, T item)
 	{
 		collection = collection.ArgumentNotNull();
@@ -455,7 +407,7 @@ public static class ListExtensions
 	/// <param name="item">The item to remove from the list.</param>
 	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(RemoveLast), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	[Information(nameof(RemoveLast), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
 	public static bool RemoveLast<T>(this List<T> collection, T item)
 	{
 		collection = collection.ArgumentNotNull();
@@ -481,7 +433,7 @@ public static class ListExtensions
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
 	/// <param name="collection">The list to shuffle.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Shuffle), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	[Information(nameof(Shuffle), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
 	public static void Shuffle<T>(this List<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
@@ -504,7 +456,7 @@ public static class ListExtensions
 	/// <param name="size">The size of each smaller list.</param>
 	/// <returns>A list of smaller lists.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Split), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	[Information(nameof(Split), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
 	public static ReadOnlyCollection<ReadOnlyCollection<T>> Split<T>(this List<T> collection, int size)
 	{
 		collection = collection.ArgumentNotNull();
