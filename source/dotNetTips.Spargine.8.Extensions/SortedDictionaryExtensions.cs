@@ -47,10 +47,7 @@ public static class SortedDictionaryExtensions
 	/// <returns><c>true</c> if the specified dictionary has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection)
-	{
-		return collection is null ? false : collection.Count > 0;
-	}
+	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection) => collection is null ? false : collection.Count > 0;
 
 	/// <summary>
 	/// Determines whether the specified action finds any items in the <see cref="SortedDictionary{TKey, TValue}"/>.
