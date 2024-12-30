@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 12-30-2024
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -18,6 +18,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Collections.Generic;
 using DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
@@ -78,6 +79,28 @@ public static class ListExtensions
 	}
 
 	/// <summary>
+	/// Adds a range of items to the list if they do not already exist in the list.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list to which the items will be added.</param>
+	/// <param name="items">The items to add to the list.</param>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	public static void AddRangeIfNotExists<T>(this List<T> collection, IEnumerable<T> items)
+	{
+		collection = collection.ArgumentNotNull();
+		items = items.ArgumentNotNull();
+
+		foreach (var item in items)
+		{
+			if (!collection.Contains(item))
+			{
+				collection.Add(item);
+			}
+		}
+	}
+
+	/// <summary>
 	/// Creates a <see cref="ReadOnlySpan{T}"/> from the <see cref="List{T}"/>. Utilizing spans can improve performance when iterating over the collection.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
@@ -135,6 +158,54 @@ public static class ListExtensions
 	public static bool DoesNotHaveItems<T>([NotNull] this List<T> collection) => collection == null || collection.Count == 0;
 
 	/// <summary>
+	/// Finds the index of the first item that matches the specified predicate.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list to search.</param>
+	/// <param name="predicate">The predicate to match.</param>
+	/// <returns>The index of the first matching item, or -1 if no match is found.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(FindIndex), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	public static int FindIndex<T>(this List<T> collection, Predicate<T> predicate)
+	{
+		collection = collection.ArgumentNotNull();
+		predicate = predicate.ArgumentNotNull();
+
+		for (var index = 0; index < collection.Count; index++)
+		{
+			if (predicate(collection[index]))
+			{
+				return index;
+			}
+		}
+		return -1;
+	}
+
+	/// <summary>
+	/// Finds the index of the last item that matches the specified predicate.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list to search.</param>
+	/// <param name="predicate">The predicate to match.</param>
+	/// <returns>The index of the last matching item, or -1 if no match is found.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(FindLastIndex), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	public static int FindLastIndex<T>(this List<T> collection, Predicate<T> predicate)
+	{
+		collection = collection.ArgumentNotNull();
+		predicate = predicate.ArgumentNotNull();
+
+		for (var index = collection.Count - 1; index >= 0; index--)
+		{
+			if (predicate(collection[index]))
+			{
+				return index;
+			}
+		}
+		return -1;
+	}
+
+	/// <summary>
 	/// Generates a hash code for the entire <see cref="List{T}"/> based on the hash codes of its elements.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
@@ -147,7 +218,11 @@ public static class ListExtensions
 	{
 		collection = collection.ArgumentNotNull();
 
-		var hash = HashCode.Combine(collection);
+		var hash = 17;
+		foreach (var item in collection)
+		{
+			hash = (hash * 31) + (item?.GetHashCode() ?? 0);
+		}
 
 		return hash;
 	}
@@ -341,6 +416,108 @@ public static class ListExtensions
 		});
 
 		return returnValue;
+	}
+
+	/// <summary>
+	/// Removes the first occurrence of a specific item from the list.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list from which the item will be removed.</param>
+	/// <param name="item">The item to remove from the list.</param>
+	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(RemoveFirst), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	public static bool RemoveFirst<T>(this List<T> collection, T item)
+	{
+		collection = collection.ArgumentNotNull();
+
+		if (item is null)
+		{
+			return false;
+		}
+
+		var index = collection.IndexOf(item);
+
+		if (index >= 0)
+		{
+			collection.RemoveAt(index);
+			return true;
+		}
+
+		return false;
+	}
+
+	/// <summary>
+	/// Removes the last occurrence of a specific item from the list.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list from which the item will be removed.</param>
+	/// <param name="item">The item to remove from the list.</param>
+	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(RemoveLast), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	public static bool RemoveLast<T>(this List<T> collection, T item)
+	{
+		collection = collection.ArgumentNotNull();
+
+		if (item is null)
+		{
+			return false;
+		}
+
+		var index = collection.LastIndexOf(item);
+
+		if (index >= 0)
+		{
+			collection.RemoveAt(index);
+			return true;
+		}
+		return false;
+	}
+
+	/// <summary>
+	/// Shuffles the elements of the list in a random order.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list to shuffle.</param>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(Shuffle), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	public static void Shuffle<T>(this List<T> collection)
+	{
+		collection = collection.ArgumentNotNull();
+
+		var random = new byte[4];
+
+		for (var currentIndex = collection.Count - 1; currentIndex > 0; currentIndex--)
+		{
+			RandomNumberGenerator.Fill(random);
+			var randomIndex = BitConverter.ToInt32(random, 0) & (int.MaxValue % (currentIndex + 1));
+			(collection[currentIndex], collection[randomIndex]) = (collection[randomIndex], collection[currentIndex]);
+		}
+	}
+
+	/// <summary>
+	/// Splits the list into multiple smaller lists of a specified size.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list to split.</param>
+	/// <param name="size">The size of each smaller list.</param>
+	/// <returns>A list of smaller lists.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(Split), author: "David McCarter", createdOn: "12/30/2024", UnitTestStatus = UnitTestStatus.None, BenchMarkStatus = BenchMarkStatus.None, Status = Status.New)]
+	public static ReadOnlyCollection<ReadOnlyCollection<T>> Split<T>(this List<T> collection, int size)
+	{
+		collection = collection.ArgumentNotNull();
+		size = size.ArgumentInRange(lower: 1, upper: collection.Count, paramName: nameof(size));
+
+		var result = new List<ReadOnlyCollection<T>>();
+
+		for (var index = 0; index < collection.Count; index += size)
+		{
+			result.Add(new ReadOnlyCollection<T>(collection.GetRange(index, Math.Min(size, collection.Count - index))));
+		}
+
+		return new ReadOnlyCollection<ReadOnlyCollection<T>>(result);
 	}
 
 	/// <summary>
