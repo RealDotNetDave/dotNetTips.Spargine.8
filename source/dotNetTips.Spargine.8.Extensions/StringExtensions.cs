@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-01-2024
+// Last Modified On : 12-30-2024
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -1002,7 +1002,7 @@ public static class StringExtensions
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
 
-		return input.Split(new[] { separator }, options).AsReadOnly();
+		return input.Split([separator], options).AsReadOnly();
 	}
 
 	/// <summary>
@@ -1023,7 +1023,7 @@ public static class StringExtensions
 		options = options.ArgumentDefined();
 		count = count.ArgumentInRange(lower: 1);
 
-		return Array.AsReadOnly(input.Split(new[] { separator }, count, options));
+		return Array.AsReadOnly(input.Split([separator], count, options));
 	}
 
 	/// <summary>
@@ -1044,7 +1044,7 @@ public static class StringExtensions
 		options = options.ArgumentDefined();
 		count = count.ArgumentInRange(lower: 1);
 
-		return new ReadOnlyCollection<string>(input.Split(new[] { separator }, count, options));
+		return new ReadOnlyCollection<string>(input.Split([separator], count, options));
 	}
 
 	/// <summary>
@@ -1080,7 +1080,7 @@ public static class StringExtensions
 	{
 		input = input.ArgumentNotNullOrEmpty();
 
-		return input.Trim().Split(new char[] { ControlChars.Comma }, options: StringSplitOptions.RemoveEmptyEntries).AsReadOnly();
+		return input.Trim().Split([ControlChars.Comma], options: StringSplitOptions.RemoveEmptyEntries).AsReadOnly();
 	}
 
 	/// <summary>

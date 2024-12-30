@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-12-2024
+// Last Modified On : 12-30-2024
 // ***********************************************************************
 // <copyright file="SortedDictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -36,10 +36,7 @@ public static class SortedDictionaryExtensions
 	/// <param name="collection">The <see cref="SortedDictionary{TKey, TValue}"/> to check.</param>
 	/// <returns><c>true</c> if the dictionary is null or empty; otherwise, <c>false</c>.</returns>
 	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool DoesNotHaveItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection)
-	{
-		return collection is null ? true : collection.Count <= 0;
-	}
+	public static bool DoesNotHaveItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection) => collection is null ? true : collection.Count <= 0;
 
 	/// <summary>
 	/// Determines whether the specified <see cref="SortedDictionary{TKey, TValue}"/> has items.
@@ -65,10 +62,7 @@ public static class SortedDictionaryExtensions
 	/// <returns><c>true</c> if the specified action finds items that match the condition; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, [NotNull] Func<KeyValuePair<TKey, TValue>, bool> action)
-	{
-		return collection is null || action is null ? true : collection.Any(action);
-	}
+	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, [NotNull] Func<KeyValuePair<TKey, TValue>, bool> action) => collection is null || action is null ? true : collection.Any(action);
 
 	/// <summary>
 	/// Determines whether the specified count of items exists in the <see cref="SortedDictionary{TKey, TValue}"/>.
@@ -80,10 +74,7 @@ public static class SortedDictionaryExtensions
 	/// <returns><c>true</c> if the count of items in the <paramref name="collection"/> equals the specified <paramref name="count"/>; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, in int count)
-	{
-		return collection is null ? false : collection.Count == count;
-	}
+	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, in int count) => collection is null ? false : collection.Count == count;
 
 	/// <summary>
 	/// Converts the specified <see cref="SortedDictionary{TKey, TValue}"/> to an <see cref="ImmutableSortedDictionary{TKey, TValue}"/>.

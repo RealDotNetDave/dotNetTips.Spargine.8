@@ -4,7 +4,7 @@
 // Created          : 11-16-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 12-30-2024
 // ***********************************************************************
 // <copyright file="InformationAttributeDocGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -37,7 +37,7 @@ public static class InformationAttributeDocGenerator
 	/// Generates a documentation string for the specified type based on the InformationAttribute.
 	/// </summary>
 	/// <param name="type">The type for which to generate documentation.</param>
-	/// <returns>A string containing the generated documentation.</returns>
+	/// <param name="sb">The StringBuilder to append the documentation to.</param>
 	private static void GenerateDocument(Type type, StringBuilder sb)
 	{
 		type = type.ArgumentNotNull();
@@ -74,7 +74,7 @@ public static class InformationAttributeDocGenerator
 		//Get InfomationAttribute data
 		var info = memberInfo.GetCustomAttribute<InformationAttribute>();
 
-		if (memberInfo.MemberType != System.Reflection.MemberTypes.TypeInfo)
+		if (memberInfo.MemberType != MemberTypes.TypeInfo)
 		{
 			_ = sb.AppendLine(CultureInfo.CurrentCulture, $"### {GetMemberSignature(memberInfo)}");
 			_ = sb.AppendLine();
@@ -238,7 +238,7 @@ public static class InformationAttributeDocGenerator
 	/// Generates documentation for all types in the specified assembly and writes it to a file.
 	/// </summary>
 	/// <param name="assembly">The assembly for which to generate documentation.</param>
-	/// <param name="fileName">The name of the file to write the documentation to. If null or empty, a default file name will be used.</param>
+	/// <param name="path">The path where the documentation file will be saved.</param>
 	/// <returns>The name of the file to which the documentation was written.</returns>
 	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static string GenerateMarkdownDocumentForAssembly(Assembly assembly, string path)
