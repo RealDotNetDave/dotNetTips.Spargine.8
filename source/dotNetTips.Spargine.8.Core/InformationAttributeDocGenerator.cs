@@ -4,7 +4,7 @@
 // Created          : 11-16-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-28-2024
+// Last Modified On : 11-23-2024
 // ***********************************************************************
 // <copyright file="InformationAttributeDocGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -37,7 +37,7 @@ public static class InformationAttributeDocGenerator
 	/// Generates a documentation string for the specified type based on the InformationAttribute.
 	/// </summary>
 	/// <param name="type">The type for which to generate documentation.</param>
-	/// <returns>A string containing the generated documentation.</returns>
+	/// <param name="sb">The StringBuilder to append the documentation to.</param>
 	private static void GenerateDocument(Type type, StringBuilder sb)
 	{
 		type = type.ArgumentNotNull();
@@ -74,7 +74,7 @@ public static class InformationAttributeDocGenerator
 		//Get InfomationAttribute data
 		var info = memberInfo.GetCustomAttribute<InformationAttribute>();
 
-		if (memberInfo.MemberType != System.Reflection.MemberTypes.TypeInfo)
+		if (memberInfo.MemberType != MemberTypes.TypeInfo)
 		{
 			_ = sb.AppendLine(CultureInfo.CurrentCulture, $"### {GetMemberSignature(memberInfo)}");
 			_ = sb.AppendLine();
