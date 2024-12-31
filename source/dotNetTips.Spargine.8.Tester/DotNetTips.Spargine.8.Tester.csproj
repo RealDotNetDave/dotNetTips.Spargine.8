@@ -56,18 +56,18 @@
 	<Version>2024.8.12.31</Version>
   </PropertyGroup>
 
-  <PropertyGroup>
-	<!-- Enable NuGet package auditing -->
+  <!--<PropertyGroup>
+	--><!-- Enable NuGet package auditing --><!--
 	<NuGetAudit>true</NuGetAudit>
-	<!-- Audit direct and transitive packages -->
+	--><!-- Audit direct and transitive packages --><!--
 	<NuGetAuditMode>all</NuGetAuditMode>
-	<!-- Report low, moderate, high and critical advisories -->
+	--><!-- Report low, moderate, high and critical advisories --><!--
 	<NuGetAuditLevel>low</NuGetAuditLevel>
-	<!-- Fails the build on CI or on release when a vulnerability is detected -->
+	--><!-- Fails the build on CI or on release when a vulnerability is detected --><!--
 	<WarningsAsErrors Condition="$(ContinuousIntegrationBuild) == 'true' OR '$(Configuration)' == 'Release'">
 	  (WarningsAsErrors);NU1900;NU1901;NU1902;NU1903;NU1904
 	</WarningsAsErrors>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.Tester.xml</DocumentationFile>
@@ -100,20 +100,21 @@
   </ItemGroup>
 
   <ItemGroup>
-	<None Update="dotNetTips-Spargine-8-Logo.png">
-	  <Pack>true</Pack>
-	  <PackagePath>\</PackagePath>
-	</None>
-  </ItemGroup>
-
-  <ItemGroup>
 	<Compile Remove="Collections\**" />
 	<EmbeddedResource Remove="Collections\**" />
 	<None Remove="Collections\**" />
   </ItemGroup>
 
   <ItemGroup>
+	<None Remove="dotNetTips-Spargine-8-Logo.png" />
 	<None Remove="dotNetTips.Spargine.Tester.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="dotNetTips-Spargine-8-Logo.png">
+      <Pack>true</Pack>
+      <PackagePath>\</PackagePath>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

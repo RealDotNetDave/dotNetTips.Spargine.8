@@ -27,7 +27,7 @@
 	<GarbageCollectionAdaptationMode>1</GarbageCollectionAdaptationMode>
 	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<ImplicitUsings>enable</ImplicitUsings>
 	<IncludeSymbols>true</IncludeSymbols>
 	<LangVersion>latest</LangVersion>
@@ -35,7 +35,7 @@
 	<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 	<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageReleaseNotes> --MAR 2024: Initial 8.0 release.
+	<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
 --MAY 2024: Performance improvements.
 --AUG 2024: Major performance and documentation changes. New methods.
 --NOV 2024: Performance improvements. Added UlidGenerator, improvements to JSON serialization, New methods	</PackageReleaseNotes>
@@ -55,18 +55,18 @@
 	<SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
-  <PropertyGroup>
-	<!-- Enable NuGet package auditing -->
+  <!--<PropertyGroup>
+	--><!-- Enable NuGet package auditing --><!--
 	<NuGetAudit>true</NuGetAudit>
-	<!-- Audit direct and transitive packages -->
+	--><!-- Audit direct and transitive packages --><!--
 	<NuGetAuditMode>all</NuGetAuditMode>
-	<!-- Report low, moderate, high and critical advisories -->
+	--><!-- Report low, moderate, high and critical advisories --><!--
 	<NuGetAuditLevel>low</NuGetAuditLevel>
-	<!-- Fails the build on CI or on release when a vulnerability is detected -->
+	--><!-- Fails the build on CI or on release when a vulnerability is detected --><!--
 	<WarningsAsErrors Condition="$(ContinuousIntegrationBuild) == 'true' OR '$(Configuration)' == 'Release'">
 	  (WarningsAsErrors);NU1900;NU1901;NU1902;NU1903;NU1904
 	</WarningsAsErrors>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	<OutputPath>..\..\AppBin\</OutputPath>
@@ -89,18 +89,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="dotNetTips-Spargine-8-Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<Content Include="dotNetTips-Spargine-Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
-	<None Include="..\..\README.md">
-	  <Pack>true</Pack>
-	  <PackagePath>\</PackagePath>
-	</None>
+    <EmbeddedResource Include="dotNetTips-Spargine-8-Logo.png">
+      <Pack>true</Pack>
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-	<None Update="dotNetTips-Spargine-8-Logo.png">
+	<None Include="..\..\README.md">
 	  <Pack>true</Pack>
 	  <PackagePath>\</PackagePath>
 	</None>

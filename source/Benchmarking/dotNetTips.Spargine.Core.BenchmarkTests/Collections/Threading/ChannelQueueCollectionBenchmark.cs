@@ -64,7 +64,7 @@ public class ChannelQueueCollectionBenchmark : SmallCollectionBenchmark
 	/// <returns>A Task representing the asynchronous operation.</returns>
 	private static async Task ListenToQueueAsync(ChannelQueue<Person<Address>> channel, CancellationToken token)
 	{
-		await foreach (var item in channel.ListenAsync(token))
+		await foreach (var item in channel.ListenAsync(token).ConfigureAwait(false))
 		{
 			Trace.WriteLine(item.Email);
 		}

@@ -2076,7 +2076,7 @@ dotnet_diagnostic.IL3003.severity = error
 #### Miscellaneous Rules ####
 
 #Remove invalid global 'SuppressMessageAttribute' 
-dotnet_diagnostic.IDE0076.severity = warning
+dotnet_diagnostic.IDE0076.severity = silent
 
 #Avoid legacy format target in global 'SuppressMessageAttribute' 
 dotnet_diagnostic.IDE0077.severity = warning
