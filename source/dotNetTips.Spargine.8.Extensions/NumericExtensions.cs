@@ -827,6 +827,7 @@ public static class NumericExtensions
 		}
 
 		var sb = _stringBuilderPool.Value.Get().Clear();
+
 		try
 		{
 

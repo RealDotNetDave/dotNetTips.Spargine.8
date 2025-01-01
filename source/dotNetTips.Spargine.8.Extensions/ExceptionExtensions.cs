@@ -189,6 +189,7 @@ public static class ExceptionExtensions
 			{
 				return targetException;
 			}
+
 			exception = exception.InnerException;
 		}
 

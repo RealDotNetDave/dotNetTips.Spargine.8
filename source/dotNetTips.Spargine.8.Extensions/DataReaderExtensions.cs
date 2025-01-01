@@ -4,7 +4,7 @@
 // Created          : 10-08-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 01-01-2025
 // ***********************************************************************
 // <copyright file="DataReaderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -39,20 +39,14 @@ public static class DataReaderExtensions
 	new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	/// <summary>
-	/// Converts <see cref="IDataReader" /> to CSV format using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
-	/// Validates that <paramref name="dataReader" /> is not null
+	/// Adds the header row to the CSV output if specified.
 	/// </summary>
 	/// <param name="dataReader">The data reader.</param>
 	/// <param name="includeHeaderAsFirstRow">if set to <c>true</c> [include header as first row].</param>
 	/// <param name="separator">The separator.</param>
-	/// <returns>ReadOnlyCollection&lt;System.String&gt;.</returns>
-	[Information(nameof(ToCsv), author: "David McCarter", createdOn: "10/8/2020", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available)]
-	public static ReadOnlyCollection<string> ToCsv([NotNull] this IDataReader dataReader, bool includeHeaderAsFirstRow, char separator = ControlChars.Comma)
+	/// <param name="convertedRows">The list of converted rows.</param>
+	private static void AddHeaderRowToCsv(IDataReader dataReader, bool includeHeaderAsFirstRow, char separator, List<string> convertedRows)
 	{
-		dataReader = dataReader.ArgumentNotNull();
-
-		var convertedRows = new List<string>();
-
 		if (includeHeaderAsFirstRow)
 		{
 			var sb = _stringBuilderPool.Get().Clear();
@@ -79,6 +73,24 @@ public static class DataReaderExtensions
 				_stringBuilderPool.Return(sb);
 			}
 		}
+	}
+
+	/// <summary>
+	/// Converts <see cref="IDataReader" /> to CSV format using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
+	/// Validates that <paramref name="dataReader" /> is not null
+	/// </summary>
+	/// <param name="dataReader">The data reader.</param>
+	/// <param name="includeHeaderAsFirstRow">if set to <c>true</c> [include header as first row].</param>
+	/// <param name="separator">The separator.</param>
+	/// <returns>ReadOnlyCollection&lt;System.String&gt;.</returns>
+	[Information(nameof(ToCsv), author: "David McCarter", createdOn: "10/8/2020", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Benchmark, Status = Status.Available)]
+	public static ReadOnlyCollection<string> ToCsv([NotNull] this IDataReader dataReader, bool includeHeaderAsFirstRow, char separator = ControlChars.Comma)
+	{
+		dataReader = dataReader.ArgumentNotNull();
+
+		var convertedRows = new List<string>();
+
+		AddHeaderRowToCsv(dataReader, includeHeaderAsFirstRow, separator, convertedRows);
 
 		while (dataReader.Read())
 		{
@@ -125,5 +137,4 @@ public static class DataReaderExtensions
 
 		return convertedRows.AsReadOnly();
 	}
-
 }
