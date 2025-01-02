@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="TypeHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -14,9 +14,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Text;
@@ -179,6 +182,41 @@ public class TypeHelperTests : TestClass
 
 		// Assert
 		Assert.AreNotEqual(0, hashCode, "Hash code should not be zero.");
+	}
+
+	[TestMethod]
+	public void GetMembersWithAttribute_WithNoAttributes_ReturnsEmpty()
+	{
+		// Arrange
+		var type = typeof(DataTable);
+
+		// Act
+		var members = TypeHelper.GetMembersWithAttribute<InformationAttribute>(type);
+
+		// Assert
+		Assert.IsNotNull(members);
+		Assert.IsFalse(members.Any());
+	}
+
+	[TestMethod]
+	public void GetMembersWithAttribute_WithNullType_ThrowsArgumentNullException()
+	{
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.GetMembersWithAttribute<InformationAttribute>(null));
+	}
+
+	[TestMethod]
+	public void GetMembersWithAttribute_WithValidType_ReturnsMembersWithAttribute()
+	{
+		// Arrange
+		var type = typeof(Person<Address>);
+
+		// Act
+		var members = TypeHelper.GetMembersWithAttribute<InformationAttribute>(type);
+
+		// Assert
+		Assert.IsNotNull(members);
+		Assert.IsTrue(members.Any());
 	}
 
 	[TestMethod]

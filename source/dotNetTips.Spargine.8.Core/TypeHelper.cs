@@ -437,7 +437,7 @@ public static class TypeHelper
 	/// <param name="type">The type to search for members with the specified attribute.</param>
 	/// <returns>An enumerable collection of members that have the specified attribute.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
-	[Information(nameof(GetMembersWithAttribute), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
+	[Information(nameof(GetMembersWithAttribute), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
 	public static IEnumerable<MemberInfo> GetMembersWithAttribute<TAttribute>(Type type) where TAttribute : Attribute
 	{
 		type = type.ArgumentNotNull();
