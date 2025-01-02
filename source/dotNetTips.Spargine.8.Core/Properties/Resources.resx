@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -254,5 +254,11 @@
   </data>
   <data name="UserUnknown" xml:space="preserve">
     <value>UNKNOWN</value>
+  </data>
+  <data name="AESEncryptionFailed" xml:space="preserve">
+    <value>AES Encryption failed.</value>
+  </data>
+  <data name="AESDecryptionFailed" xml:space="preserve">
+    <value>AES Decryption Failed.</value>
   </data>
 </root>

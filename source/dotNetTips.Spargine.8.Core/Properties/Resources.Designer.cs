@@ -61,6 +61,24 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AES Decryption Failed..
+        /// </summary>
+        internal static string AESDecryptionFailed {
+            get {
+                return ResourceManager.GetString("AESDecryptionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AES Encryption failed..
+        /// </summary>
+        internal static string AESEncryptionFailed {
+            get {
+                return ResourceManager.GetString("AESEncryptionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Argument cannot be null..
         /// </summary>
         internal static string ErrorArgumentNull {

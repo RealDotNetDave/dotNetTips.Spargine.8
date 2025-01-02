@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-11-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -22,7 +22,7 @@ using System.Globalization;
 using System.Runtime.Versioning;
 using System.Security.Cryptography;
 using System.Text;
-using Microsoft.Extensions.ObjectPool;
+using DotNetTips.Spargine.Core.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -49,10 +49,7 @@ public static class EncryptionHelper
 	/// </remarks>
 	private static (byte[] key, byte[] iv) GetSHA256HashKeys([NotNull] string key)
 	{
-		var encoding = Encoding.ASCII;
-
-		var hash = SHA256.HashData(encoding.GetBytes(key));
-
+		var hash = SHA256.HashData(Encoding.ASCII.GetBytes(key));
 		var aesKey = new byte[32];
 		var aesIV = new byte[16];
 
@@ -65,10 +62,10 @@ public static class EncryptionHelper
 	/// <summary>
 	/// Decrypts a string using AES security.
 	/// </summary>
-	/// <param name="cipherText">The cipher text.</param>
-	/// <param name="key">The secret key.</param>
-	/// <param name="iv">The initialization vector.</param>
-	/// <returns>System.String.</returns>
+	/// <param name="cipherText">The cipher text to decrypt.</param>
+	/// <param name="key">The secret key used for decryption. Must be 256 bits (32 bytes) long.</param>
+	/// <param name="iv">The initialization vector used for decryption. Must be 128 bits (16 bytes) long.</param>
+	/// <returns>The decrypted string.</returns>
 	/// <example>
 	/// Here is how you can use the <see cref="AesDecrypt"/> method:
 	/// <code>
@@ -76,6 +73,8 @@ public static class EncryptionHelper
 	/// Console.WriteLine(decryptedString);
 	/// </code>
 	/// </example>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="cipherText"/>, <paramref name="key"/>, or <paramref name="iv"/> is null.</exception>
+	/// <exception cref="InvalidOperationException">Thrown when decryption fails.</exception>
 	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string AesDecrypt(string cipherText, byte[] key, byte[] iv)
 	{
@@ -83,26 +82,33 @@ public static class EncryptionHelper
 		key = key.ArgumentNotNull();
 		iv = iv.ArgumentNotNull();
 
-		// Create AesManaged.
-		using (var aes = Aes.Create())
+		try
 		{
-			// Create a decryptor.
-			using (var decryptor = aes.CreateDecryptor(key, iv))
+			// Create AesManaged.
+			using (var aes = Aes.Create())
 			{
-				// Create the streams used for decryption.
-				using (var ms = new MemoryStream(Convert.FromBase64String(cipherText)))
+				// Create a decryptor.
+				using (var decryptor = aes.CreateDecryptor(key, iv))
 				{
-					// Create crypto stream.
-					using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
+					// Create the streams used for decryption.
+					using (var ms = new MemoryStream(Convert.FromBase64String(cipherText)))
 					{
-						// Read crypto stream.
-						using (var reader = new StreamReader(cs))
+						// Create crypto stream.
+						using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
 						{
-							return reader.ReadToEnd();
+							// Read crypto stream.
+							using (var reader = new StreamReader(cs))
+							{
+								return reader.ReadToEnd();
+							}
 						}
 					}
 				}
 			}
+		}
+		catch (CryptographicException ex)
+		{
+			throw new InvalidOperationException(Resources.AESDecryptionFailed, ex);
 		}
 	}
 
@@ -122,6 +128,8 @@ public static class EncryptionHelper
 	/// Console.WriteLine(encryptedString);
 	/// </code>
 	/// </example>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="plainText"/>, <paramref name="key"/>, or <paramref name="iv"/> is null.</exception>
+	/// <exception cref="InvalidOperationException">Thrown when encryption fails.</exception>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(AesEncrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
 	public static string AesEncrypt([NotNull] string plainText, [NotNull] byte[] key, [NotNull] byte[] iv)
@@ -130,26 +138,33 @@ public static class EncryptionHelper
 		key = key.ArgumentNotNull();
 		iv = iv.ArgumentNotNull();
 
-		// Create MemoryStream
-		using (var ms = new MemoryStream())
+		try
 		{
-			// Create encryptor
-			using (var aesCng = new AesCng())
+			// Create MemoryStream
+			using (var ms = new MemoryStream())
 			{
-				// Create crypto stream using the CryptoStream class. This class is the key to encryption
-				// and encrypts and decrypts data from any given stream. In this case, we will pass a memory stream
-				// to encrypt
-				using (var cs = new CryptoStream(ms, aesCng.CreateEncryptor(key, iv), CryptoStreamMode.Write))
+				// Create encryptor
+				using (var aesCng = new AesCng())
 				{
-					// Create StreamWriter and write data to a stream
-					using (var sw = new StreamWriter(cs))
+					// Create crypto stream using the CryptoStream class. This class is the key to encryption
+					// and encrypts and decrypts data from any given stream. In this case, we will pass a memory stream
+					// to encrypt
+					using (var cs = new CryptoStream(ms, aesCng.CreateEncryptor(key, iv), CryptoStreamMode.Write))
 					{
-						sw.Write(plainText);
+						// Create StreamWriter and write data to a stream
+						using (var sw = new StreamWriter(cs))
+						{
+							sw.Write(plainText);
+						}
 					}
-				}
 
-				return Convert.ToBase64String(ms.ToArray());
+					return Convert.ToBase64String(ms.ToArray());
+				}
 			}
+		}
+		catch (CryptographicException ex)
+		{
+			throw new InvalidOperationException(Resources.AESEncryptionFailed, ex);
 		}
 	}
 
