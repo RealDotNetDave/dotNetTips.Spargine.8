@@ -4,7 +4,7 @@
 // Created          : 08-03-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-14-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="StringExtensionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -533,6 +533,15 @@ public class StringExtensionsBenchmark : Benchmark
 		var result = this.LongTestString.ToBase64();
 
 		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.ToBase64ByteSpan))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void ToBase64ToBase64ByteSpan()
+	{
+		var result = this.LongTestString.ToBase64ByteSpan();
+
+		this.Consume(result.ToArray());
 	}
 
 	[Benchmark(Description = nameof(StringExtensions.ToByteArray) + ": ASCII")]

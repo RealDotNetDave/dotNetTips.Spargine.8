@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-30-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -1169,7 +1169,7 @@ public static class StringExtensions
 	/// <returns>A span of bytes representing the decoded Base64 string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToBase64ByteSpan), "David McCarter", "11/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(ToBase64ByteSpan), "David McCarter", "11/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static Span<byte> ToBase64ByteSpan(this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();

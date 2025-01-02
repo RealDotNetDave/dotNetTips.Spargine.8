@@ -102,5 +102,4 @@ public class EncryptionHelperBenchmark : Benchmark
 
 		this.Consume(result);
 	}
-
 }

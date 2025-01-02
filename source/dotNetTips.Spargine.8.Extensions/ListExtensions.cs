@@ -66,7 +66,7 @@ public static class ListExtensions
 	/// <param name="item">The item to add to the end of the list.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
 	public static List<T> AddLast<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		if (item is null)
@@ -75,6 +75,7 @@ public static class ListExtensions
 		}
 
 		collection.ArgumentNotNull().Add(item);
+
 		return collection;
 	}
 
@@ -85,7 +86,7 @@ public static class ListExtensions
 	/// <param name="collection">The list to which the items will be added.</param>
 	/// <param name="items">The items to add to the list.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
+	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.New)]
 	public static void AddRangeIfNotExists<T>(this List<T> collection, IEnumerable<T> items)
 	{
 		collection = collection.ArgumentNotNull();
@@ -378,7 +379,7 @@ public static class ListExtensions
 	/// <param name="item">The item to remove from the list.</param>
 	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(RemoveFirst), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
+	[Information(nameof(RemoveFirst), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.New)]
 	public static bool RemoveFirst<T>(this List<T> collection, T item)
 	{
 		collection = collection.ArgumentNotNull();
@@ -407,7 +408,7 @@ public static class ListExtensions
 	/// <param name="item">The item to remove from the list.</param>
 	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(RemoveLast), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
+	[Information(nameof(RemoveLast), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.New)]
 	public static bool RemoveLast<T>(this List<T> collection, T item)
 	{
 		collection = collection.ArgumentNotNull();
@@ -433,7 +434,7 @@ public static class ListExtensions
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
 	/// <param name="collection">The list to shuffle.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Shuffle), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
+	[Information(nameof(Shuffle), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.New)]
 	public static void Shuffle<T>(this List<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
@@ -456,7 +457,7 @@ public static class ListExtensions
 	/// <param name="size">The size of each smaller list.</param>
 	/// <returns>A list of smaller lists.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Split), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
+	[Information(nameof(Split), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.New)]
 	public static ReadOnlyCollection<ReadOnlyCollection<T>> Split<T>(this List<T> collection, int size)
 	{
 		collection = collection.ArgumentNotNull();

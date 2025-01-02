@@ -21,6 +21,7 @@ using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
+using static DotNetTips.Spargine.Core.TypeHelper;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -104,6 +105,20 @@ public class TypeHelperBenchmark : Benchmark
 		var result = TypeHelper.GetPropertyValues(person);
 
 		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(TypeHelper.ProcessGenericType))]
+	[BenchmarkCategory(Categories.Reflection, Categories.New)]
+	public void ProcessGenericType()
+	{
+		var builder = new StringBuilder();
+		var type = typeof(List<>);
+		var genericArguments = Array.Empty<Type>();
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true, nestedTypeDelimiter: '.');
+
+		TypeHelper.ProcessGenericType(builder, type, genericArguments, genericArguments.Length, options);
+
+		Consume(builder.ToString());
 	}
 
 	public override void Setup()

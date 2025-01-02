@@ -48,6 +48,28 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(ListExtensions.AddLast))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void AddLast()
+	{
+		var result = this._peopleRefList.AddLast(this._person);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.AddRangeIfNotExists))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void AddRangeIfNotExists()
+	{
+		var people = this._peopleRefList;
+		var peopleToAdd = this._peopleRefSubSet;
+		peopleToAdd.Add(RandomData.GeneratePersonRef<Address>());
+
+		people.AddRangeIfNotExists(peopleToAdd);
+
+		this.Consume(people.Count);
+	}
+
 	[Benchmark(Description = nameof(ListExtensions.AsReadOnlySpan))]
 	public void AsReadOnlySpan()
 	{
@@ -192,6 +214,24 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(sb.ToString());
 	}
 
+	[Benchmark(Description = nameof(ListExtensions.RemoveFirst))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void RemoveFirst()
+	{
+		var result = this._peopleRefList.RemoveFirst(this._peopleRefList.First());
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.RemoveLast))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void RemoveLast()
+	{
+		var result = this._peopleRefList.RemoveLast(this._peopleRefList.Last());
+
+		this.Consume(result);
+	}
+
 	public override void Setup()
 	{
 		base.Setup();
@@ -200,6 +240,24 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this._peopleRefList = [.. this.GetPersonRefArray()];
 		this._peopleRecordList = [.. this.GetPersonRecordArray()];
 		this._peopleValList = [.. this.GetPersonValArray()];
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.Shuffle))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void Shuffle()
+	{
+		this._peopleRefList.Shuffle();
+
+		this.Consume(this._peopleRefList);
+	}
+
+	[Benchmark(Description = nameof(ListExtensions.Split))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void Split()
+	{
+		var result = this._peopleRefList.Split(_peopleRefList.Count / 2);
+
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.ToFrozenSet))]

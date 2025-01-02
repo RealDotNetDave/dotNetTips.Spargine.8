@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -437,7 +437,7 @@ public static class TypeHelper
 	/// <param name="type">The type to search for members with the specified attribute.</param>
 	/// <returns>An enumerable collection of members that have the specified attribute.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
-	[Information(nameof(GetMembersWithAttribute), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
+	[Information(nameof(GetMembersWithAttribute), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
 	public static IEnumerable<MemberInfo> GetMembersWithAttribute<TAttribute>(Type type) where TAttribute : Attribute
 	{
 		type = type.ArgumentNotNull();
@@ -601,7 +601,7 @@ public static class TypeHelper
 	/// <param name="genericArguments">The array of generic arguments for the type.</param>
 	/// <param name="length">The number of generic arguments to consider.</param>
 	/// <param name="options">Display name options to customize the output.</param>
-	[Information(nameof(ProcessGenericType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.Available)]
+	[Information(nameof(ProcessGenericType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
 	public static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, in int length, DisplayNameOptions options)
 	{
 		builder = builder.ArgumentNotNull();

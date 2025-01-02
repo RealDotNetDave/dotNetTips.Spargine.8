@@ -4,7 +4,7 @@
 // Created          : 10-09-2024
 //
 // Last Modified By : david
-// Last Modified On : 10-09-2024
+// Last Modified On : 10-28-2024
 // ***********************************************************************
 // <copyright file="StreamExtensionsTests.cs" company="DotNetTips.Spargine.Extensions.Tests">
 //     Copyright (c) . All rights reserved.

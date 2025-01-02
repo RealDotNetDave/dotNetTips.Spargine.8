@@ -4,7 +4,7 @@
 // Created          : 07-22-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="StreamExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -32,7 +32,7 @@ public static class StreamExtensions
 	/// Flushes and closes the specified <see cref="Stream"/>.
 	/// </summary>
 	/// <param name="stream">The <see cref="Stream"/> to flush and close.</param>
-	[Information(nameof(FlushClose), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.None, Status = Status.Available)]
+	[Information(nameof(FlushClose), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static void FlushClose(this Stream stream)
 	{
 		if (stream is not null)
@@ -51,7 +51,7 @@ public static class StreamExtensions
 	/// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
 	/// <returns>A task that represents the asynchronous read operation. The value of the TResult parameter contains the total number of bytes read into the buffer.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.None, Status = Status.Available)]
 	public static ValueTask<int> ReadAsync(this Stream stream, Memory<byte> destination, CancellationToken cancellationToken = default)
 	{
 		stream = stream.ArgumentNotNull();
