@@ -36,7 +36,7 @@ public static class ReadOnlySpanExtensions
 	/// <exception cref="ArgumentException">Thrown if <paramref name="span"/> is empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
-	[Information(nameof(PickRandom), "David McCarter", "6/28/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(PickRandom), "David McCarter", "6/28/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T PickRandom<T>([NotNull] this ReadOnlySpan<T> span)
 	{
 		span = span.ArgumentNotEmpty();

@@ -4,9 +4,9 @@
 // Created          : 02-27-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
-// <copyright file="BenchMarkStatus.cs" company="McCarter Consulting">
+// <copyright file="BenchmarkStatus.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Enumeration for benchmark status utilized in InformationAttribute.</summary>
@@ -20,8 +20,8 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Defines the benchmark status for a component or method, indicating the current state of performance testing.
 /// </summary>
-[Information(description: "For use in InformationAttribute.", author: "David McCarter", createdOn: "7/29/2020", BenchMarkStatus = NotRequired, Status = Status.Available)]
-public enum BenchMarkStatus
+[Information(description: "For use in InformationAttribute.", author: "David McCarter", createdOn: "7/29/2020", BenchmarkStatus = NotRequired, Status = Status.Available)]
+public enum BenchmarkStatus
 {
 	/// <summary>
 	/// Indicates that no benchmark has been conducted.

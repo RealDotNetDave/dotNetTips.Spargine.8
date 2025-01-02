@@ -4,14 +4,14 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-21-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="InformationAttribute.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary>
 // Attribute that enables the addition of informational data to methods.
-// Properties include Author, BenchMarkStatus, CreatedOn, Description,
+// Properties include Author, BenchmarkStatus, CreatedOn, Description,
 // Documentation, ModifiedBy, ModifiedOn, Status, UnitTestCoverage.
 // </summary>
 // ***********************************************************************
@@ -88,11 +88,10 @@ public sealed class InformationAttribute : Attribute
 	/// </summary>
 	public string Author { get; }
 
-	//TODO: FIX CASE AT THE END OF 2024
 	/// <summary>
 	/// Gets or sets the benchmark status of the member.
 	/// </summary>
-	public BenchMarkStatus BenchMarkStatus { get; set; } = BenchMarkStatus.None;
+	public BenchmarkStatus BenchmarkStatus { get; set; } = BenchmarkStatus.None;
 
 	/// <summary>
 	/// Gets the creation date of the member.

@@ -207,7 +207,7 @@ public class Enumeration : IComparable
 	/// <returns>An instance of the enumeration type that matches the given display name.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="displayName"/> is null or empty.</exception>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
-	[Information(nameof(FromDisplayName), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
+	[Information(nameof(FromDisplayName), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static T FromDisplayName<T>([NotNull] string displayName) where T : Enumeration
 	{
 		displayName = displayName.ArgumentNotNullOrEmpty();
@@ -222,7 +222,7 @@ public class Enumeration : IComparable
 	/// <param name="value">The integer value of the enumeration instance.</param>
 	/// <returns>An instance of the enumeration type that matches the given integer value.</returns>
 	/// <exception cref="InvalidOperationException">Thrown when no matching enumeration instance is found.</exception>
-	[Information(nameof(FromValue), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
+	[Information(nameof(FromValue), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static T FromValue<T>(int value) where T : Enumeration => Parse<T>(value.ToString(CultureInfo.CurrentCulture), item => item.Value == value);
 
 	/// <summary>
@@ -230,7 +230,7 @@ public class Enumeration : IComparable
 	/// </summary>
 	/// <typeparam name="T">The type of enumeration to retrieve instances for.</typeparam>
 	/// <returns>An <see cref="IEnumerable{T}"/> containing all instances of the specified enumeration type.</returns>
-	[Information(nameof(GetAll), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
+	[Information(nameof(GetAll), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Documentation = "https://bit.ly/SpargineEnumerationHandling", Status = Status.Available)]
 	public static IEnumerable<T> GetAll<T>() where T : Enumeration
 	{
 		var fields = typeof(T).GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);

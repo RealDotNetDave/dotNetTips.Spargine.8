@@ -215,7 +215,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns><c>true</c> if the item was added to the collection; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	/// <exception cref="ArgumentReadOnlyException">Thrown if <paramref name="collection"/> is read-only.</exception>
-	[Information(nameof(AddIfNotExists), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(AddIfNotExists), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool AddIfNotExists<T>([NotNull] this ICollection<T> collection, [NotNull] T item)
 	{
 		if (item is null)
@@ -241,7 +241,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="sb">The <see cref="StringBuilder"/> to clear and set capacity for.</param>
 	/// <param name="capacity">The new capacity to set for the <see cref="StringBuilder"/>.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/> is null.</exception>
-	[Information(nameof(ClearSetCapacity), author: "David McCarter", createdOn: "11/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, OptimizationStatus = OptimizationStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(ClearSetCapacity), author: "David McCarter", createdOn: "11/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static StringBuilder ClearSetCapacity([NotNull] this StringBuilder sb, int capacity)
 	{
 		sb = sb.ArgumentNotNull();
@@ -255,7 +255,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="collection">The collection to count the elements of.</param>
 	/// <returns>The number of elements in the collection.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
-	[Information(nameof(Count), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Count), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int Count(this IEnumerable collection)
 	{
 		if (collection is null)

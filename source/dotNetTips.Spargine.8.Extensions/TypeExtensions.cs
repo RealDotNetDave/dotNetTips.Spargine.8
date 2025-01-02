@@ -97,7 +97,7 @@ public static partial class TypeExtensions
 	/// <param name="type">The type to inspect.</param>
 	/// <returns>An enumerable collection of fields.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
-	[Information(nameof(GetAllFields), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(GetAllFields), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static IEnumerable<FieldInfo> GetAllFields([NotNull] this Type type)
 	{
 		var typeTypeInfo = type?.GetTypeInfo();
@@ -277,7 +277,7 @@ public static partial class TypeExtensions
 	/// <returns>The type of the specified object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the obj is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetTypeOfType), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GetTypeOfType), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TypeOfType GetTypeOfType([NotNull] this object obj)
 	{
 		var objType = obj.GetType();

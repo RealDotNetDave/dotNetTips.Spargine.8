@@ -91,7 +91,7 @@ public class TempFileManager : IDisposable
 	/// Creates a new temporary file.
 	/// </summary>
 	/// <returns>The path of the created temporary file.</returns>
-	[Information("Creates a new temporary file.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
+	[Information("Creates a new temporary file.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	public string CreateFile()
 	{
 		var tempFile = GenerateRandomFile();
@@ -109,7 +109,7 @@ public class TempFileManager : IDisposable
 	/// </summary>
 	/// <param name="count">The number of temporary files to create.</param>
 	/// <returns>A read-only collection of the paths of the created temporary files.</returns>
-	[Information("Creates multiple temp files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
+	[Information("Creates multiple temp files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	public ReadOnlyCollection<string> CreateFiles(int count)
 	{
 		count = count.ArgumentInRange(1);
@@ -131,7 +131,7 @@ public class TempFileManager : IDisposable
 	/// <summary>
 	/// Deletes all temporary files.
 	/// </summary>
-	[Information("Deletes all temporary files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
+	[Information("Deletes all temporary files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	public void DeleteAllFiles()
 	{
 		lock (this._lock)
@@ -150,7 +150,7 @@ public class TempFileManager : IDisposable
 	/// Deletes a temporary file.
 	/// </summary>
 	/// <param name="file">The file.</param>
-	[Information("Deletes a temporary file.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
+	[Information("Deletes a temporary file.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	public void DeleteFile(string file)
 	{
 		if (file.IsNullOrEmpty())
@@ -172,7 +172,7 @@ public class TempFileManager : IDisposable
 	/// <summary>
 	/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 	/// </summary>
-	[Information("Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.", UnitTestStatus = UnitTestStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
+	[Information("Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.", UnitTestStatus = UnitTestStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	public void Dispose()
 	{
 		this.Dispose(true);
@@ -183,7 +183,7 @@ public class TempFileManager : IDisposable
 	/// Gets the list of files currently being managed.
 	/// </summary>
 	/// <returns>A read-only collection of the paths of the managed temporary files.</returns>
-	[Information("Gets the list of files currently being managed.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
+	[Information("Gets the list of files currently being managed.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	public IReadOnlyCollection<string> GetManagedFiles()
 	{
 		lock (this._lock)

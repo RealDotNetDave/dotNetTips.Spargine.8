@@ -63,13 +63,13 @@ public class ValidatorCheckTests
 	[TestMethod]
 	public void CheckIsDefinedEnumTest()
 	{
-		var value = BenchMarkStatus.Completed;
+		var value = BenchmarkStatus.Completed;
 
 		// Good test
 		Assert.IsTrue(value.CheckIsDefined());
 
 		// Test Exception throwing.
-		_ = Assert.ThrowsException<InvalidValueException<Enum>>(() => ((BenchMarkStatus)100).CheckIsDefined(true));
+		_ = Assert.ThrowsException<InvalidValueException<Enum>>(() => ((BenchmarkStatus)100).CheckIsDefined(true));
 	}
 
 	[TestMethod]

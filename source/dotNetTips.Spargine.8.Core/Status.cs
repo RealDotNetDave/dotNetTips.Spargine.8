@@ -23,7 +23,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Defines the availability status for use in the InformationAttribute.
 /// </summary>
-[Information(description: "For use in InformationAttribute.", author: "David McCarter", createdOn: "7/29/2020", BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Available)]
+[Information(description: "For use in InformationAttribute.", author: "David McCarter", createdOn: "7/29/2020", BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Available)]
 public enum Status
 {
 	/// <summary>

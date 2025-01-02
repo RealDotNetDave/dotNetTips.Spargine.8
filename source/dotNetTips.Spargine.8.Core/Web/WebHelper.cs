@@ -56,7 +56,7 @@ public static class WebHelper
 	/// This method adds a "CLIENTID" header to the request if <paramref name="clientId"/> is provided and not "NONE".
 	/// Ensure proper disposal of the task to avoid resource leaks.
 	/// </remarks>
-	[Information(nameof(DownloadStringAsync), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(DownloadStringAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static async Task<string> DownloadStringAsync([NotNull] Uri address, string clientId = "NONE")
 	{
 		address = address.ArgumentNotNull();
@@ -81,7 +81,7 @@ public static class WebHelper
 	/// This method provides a convenient way to access all standard HTTP header names as defined by the .NET framework.
 	/// It can be useful for validation, logging, or setting headers in HTTP requests.
 	/// </remarks>
-	[Information(nameof(HttpHeaderNames), "David McCarter", "9/2/2020", "9/2/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(HttpHeaderNames), "David McCarter", "9/2/2020", "9/2/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<string> HttpHeaderNames() => Enum.GetNames<HttpRequestHeader>().AsReadOnly();
 
 	/// <summary>
@@ -94,7 +94,7 @@ public static class WebHelper
 	/// This method is useful for validating whether a given URI points to a resource on the same server,
 	/// which can be important for security and resource access decisions.
 	/// </remarks>
-	[Information(nameof(IsLocalUri), author: "David McCarter", createdOn: "9/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(IsLocalUri), author: "David McCarter", createdOn: "9/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static bool IsLocalUri([NotNull] string path, [NotNull] HttpRequest request)
 	{
 		path = path.ArgumentNotNullOrEmpty(true);

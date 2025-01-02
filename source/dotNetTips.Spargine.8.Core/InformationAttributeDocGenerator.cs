@@ -83,7 +83,7 @@ public static class InformationAttributeDocGenerator
 		//Display main statuses first
 		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Status:** {info.Status}");
 		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Optimization Status:** {info.OptimizationStatus}");
-		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **BenchMarkStatus:** {info.BenchMarkStatus}");
+		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **BenchMarkStatus:** {info.BenchmarkStatus}");
 		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Unit Test Status:** {info.UnitTestStatus}");
 
 		if (info.Author.HasValue())
@@ -204,7 +204,7 @@ public static class InformationAttributeDocGenerator
 	/// </summary>
 	/// <param name="assembly">The assembly for which to generate documentation.</param>
 	/// <returns>A string containing the generated documentation for the entire assembly.</returns>
-	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchmarkStatus = BenchmarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static string GenerateMarkdownDocumentForAssembly(Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
@@ -241,7 +241,7 @@ public static class InformationAttributeDocGenerator
 	/// <param name="path">The path where the documentation file will be saved.</param>
 	/// <returns>The name of the file to which the documentation was written.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assembly"/> is null.</exception>
-	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchMarkStatus = BenchMarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchmarkStatus = BenchmarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static string GenerateMarkdownDocumentForAssembly(Assembly assembly, string path)
 	{
 		var result = GenerateMarkdownDocumentForAssembly(assembly);

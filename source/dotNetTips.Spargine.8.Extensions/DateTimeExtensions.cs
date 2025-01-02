@@ -37,7 +37,7 @@ public static class DateTimeExtensions
 	/// </summary>
 	/// <param name="epochTime">The Epoch time.</param>
 	/// <returns>DateTime.</returns>
-	[Information(nameof(FromMilliEpochTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(FromMilliEpochTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static DateTime FromMilliEpochTime(this in long epochTime)
 	{
 		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -369,7 +369,7 @@ public static class DateTimeExtensions
 	/// <remarks>In computing, an epoch is a date and time from which a computer measures system time.
 	/// For instance, Unix and POSIX measure time as the number of seconds that have passed
 	/// since 1 January 1970 00:00:00 UT, a point in time known as the Unix epoch.</remarks>
-	[Information(nameof(ToMilliEpochTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(ToMilliEpochTime), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static long ToMilliEpochTime(this in DateTime date)
 	{
 		var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);

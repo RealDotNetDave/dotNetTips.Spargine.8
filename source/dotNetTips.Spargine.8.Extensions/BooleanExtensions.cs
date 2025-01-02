@@ -36,7 +36,7 @@ public static class BooleanExtensions
 	/// <param name="value">if set to <c>true</c> [value].</param>
 	/// <returns>System.String.</returns>
 	[ExcludeFromCodeCoverage]
-	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", Status = Status.Available, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "ADD URL")]
+	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", Status = Status.Available, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "ADD URL")]
 	public static string ToLowerCase(this bool value) => value ? Resources.TrueLowerCase : Resources.FalseLowerCase;
 
 }

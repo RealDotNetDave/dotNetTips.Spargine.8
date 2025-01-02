@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="DriveHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -46,7 +46,7 @@ public static class DriveHelper
 	/// It's important to ensure that the <paramref name="drive"/> parameter is not null or empty to avoid runtime errors.
 	/// </remarks>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(GetDriveSerialNumber), author: "David McCarter", createdOn: "9/6/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://dotnettips.wordpress.com/2007/12/14/finding-a-drives-serial-number/", Status = Status.Available)]
+	[Information(nameof(GetDriveSerialNumber), author: "David McCarter", createdOn: "9/6/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://dotnettips.wordpress.com/2007/12/14/finding-a-drives-serial-number/", Status = Status.Available)]
 	public static string GetDriveSerialNumber([NotNull][DisallowNull] string drive)
 	{
 		drive = drive.ArgumentNotNullOrEmpty();
@@ -84,7 +84,7 @@ public static class DriveHelper
 	/// </remarks>
 	/// <example>Result Example - [0]: {C:\}</example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(GetFixedDrives), author: "David McCarter", createdOn: "9/6/2020", OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
+	[Information(nameof(GetFixedDrives), author: "David McCarter", createdOn: "9/6/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
 	public static ReadOnlyCollection<DriveInfo> GetFixedDrives() => DriveInfo.GetDrives()
 					.Where(p => p.DriveType == DriveType.Fixed && p.IsReady)
 					.Distinct()
@@ -99,7 +99,7 @@ public static class DriveHelper
 	/// This method filters the drives returned by <see cref="DriveInfo.GetDrives"/> to include only those that are removable and ready.
 	/// </remarks>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(GetRemovableDrives), author: "David McCarter", createdOn: "9/6/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
+	[Information(nameof(GetRemovableDrives), author: "David McCarter", createdOn: "9/6/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
 	public static ReadOnlyCollection<DriveInfo> GetRemovableDrives() => DriveInfo.GetDrives()
 					.Where(p => p.DriveType == DriveType.Removable && p.IsReady)
 					.Distinct()

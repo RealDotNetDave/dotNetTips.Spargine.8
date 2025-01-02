@@ -34,7 +34,7 @@ public static class HashSetExtensions
 	/// <param name="collection">The hash set to which the item may be added.</param>
 	/// <param name="item">The item to add to the hash set.</param>
 	/// <param name="condition">The condition that determines whether the item should be added.</param>
-	[Information(nameof(AddIf), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(AddIf), "David McCarter", "5/2/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void AddIf<T>(this HashSet<T> collection, T item, bool condition)
 	{
 		collection = collection.ArgumentNotNull();
@@ -54,7 +54,7 @@ public static class HashSetExtensions
 	/// <param name="collection">The hash set to convert.</param>
 	/// <returns>A new instance of <see cref="ConcurrentHashSet{T}" /> containing all elements from the original hash set.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
-	[Information(nameof(ToConcurrentHashSet), "David McCarter", "12/3/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(ToConcurrentHashSet), "David McCarter", "12/3/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static ConcurrentHashSet<T> ToConcurrentHashSet<T>(this HashSet<T> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -66,7 +66,7 @@ public static class HashSetExtensions
 	/// <param name="collection">The hash set to convert.</param>
 	/// <returns>An <see cref="ImmutableHashSet{T}" /> containing all elements from the original hash set.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
-	[Information(nameof(ToImmutableHashSet), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ToImmutableHashSet), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ImmutableHashSet<T> ToImmutableHashSet<T>(this HashSet<T> collection) => ImmutableHashSet.CreateRange(collection.ArgumentNotNull());
 
 	/// <summary>
@@ -78,7 +78,7 @@ public static class HashSetExtensions
 	/// <param name="collection">The hash set where the item will be upserted.</param>
 	/// <param name="item">The item to upsert into the hash set.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> or <paramref name="item" /> is null.</exception>
-	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void Upsert<T>(this HashSet<T> collection, T item)
 	{
 		collection = collection.ArgumentNotNull();

@@ -43,7 +43,7 @@ public static class CachedEnumerable
 	/// <param name="enumerable">The enumerable to cache.</param>
 	/// <returns>A <see cref="CachedEnumerable{T}"/> that caches the results of enumerating the specified enumerable.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="enumerable"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static CachedEnumerable<T> Create<T>([NotNull] IEnumerable<T> enumerable)
 	{
 		enumerable = enumerable.ArgumentNotNull();

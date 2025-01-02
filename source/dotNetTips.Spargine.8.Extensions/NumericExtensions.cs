@@ -813,7 +813,7 @@ public static class NumericExtensions
 	/// Input: 54928 Output: Fifty-Four Thousand Nine Hundred and Twenty-Eight"
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToWords), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ToWords), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string ToWords(this int value)
 	{
 		if (value == 0)

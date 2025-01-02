@@ -64,7 +64,7 @@ public static class StringBuilderExtensions
 	/// sb.AppendBytes(byteArray);
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub", author: "David McCarter", createdOn: "5/26/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", author: "David McCarter", createdOn: "5/26/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static void AppendBytes([NotNull] this StringBuilder sb, [NotNull] byte[] bytes)
 	{
 		if (bytes is null)
@@ -100,7 +100,7 @@ public static class StringBuilderExtensions
 	/// Console.WriteLine(sb.ToString()); // Output: Name="John",
 	/// </code>
 	/// </example>
-	[Information("FROM .NET CORE SOURCE", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("FROM .NET CORE SOURCE", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static void AppendKeyValue([NotNull] this StringBuilder sb, [NotNull] string key, string value, bool includeQuotes = true, bool includeComma = true)
 	{
 		sb = sb.ArgumentNotNull();
@@ -165,7 +165,7 @@ public static class StringBuilderExtensions
 	/// sb.AppendValues(",", values);
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub.", author: "David McCarter", createdOn: "7/1/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub.", author: "David McCarter", createdOn: "7/1/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<string> values)
 	{
 		sb = sb.ArgumentNotNull();
@@ -195,7 +195,7 @@ public static class StringBuilderExtensions
 	/// Console.WriteLine(sb.ToString()); // Output: value1,value2,value3
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues([NotNull] this StringBuilder sb, string separator, [NotNull] params string[] values)
 	{
 		sb = sb.ArgumentNotNull();
@@ -228,7 +228,7 @@ public static class StringBuilderExtensions
 	/// Console.WriteLine(sb.ToString()); // Output: value1,value2,value3
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues<T>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] Action<T> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -277,7 +277,7 @@ public static class StringBuilderExtensions
 	/// Console.WriteLine(sb.ToString()); // Output: value1param,value2param,value3param
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues<T, TParam>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam param, [NotNull] Action<T, TParam> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -329,7 +329,7 @@ public static class StringBuilderExtensions
 	/// Console.WriteLine(sb.ToString()); // Output: value1param1param2,value2param1param2,value3param1param2
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Original code from efcore-master on GitHub", "David McCarter", "5/26/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static void AppendValues<T, TParam1, TParam2>([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<T> values, [NotNull] TParam1 param1, [NotNull] TParam2 param2, [NotNull] Action<StringBuilder, T, TParam1, TParam2> joinAction)
 	{
 		sb = sb.ArgumentNotNull();
@@ -366,7 +366,7 @@ public static class StringBuilderExtensions
 	/// <param name="sb">The <see cref="StringBuilder"/> to clear and set capacity for.</param>
 	/// <param name="capacity">The new capacity to set for the <see cref="StringBuilder"/>.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="sb"/> is null.</exception>
-	[Information(nameof(ClearSetCapacity), author: "David McCarter", createdOn: "11/13/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NotRequired, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(ClearSetCapacity), author: "David McCarter", createdOn: "11/13/2024", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	public static StringBuilder ClearSetCapacity([NotNull] this StringBuilder sb, in int capacity)
 	{
 		sb = sb.ArgumentNotNull();

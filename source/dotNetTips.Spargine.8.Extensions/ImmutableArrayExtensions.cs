@@ -36,7 +36,7 @@ public static class ImmutableArrayExtensions
 	/// <returns><c>true</c> if the array contains one or more elements; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.NoInlining)]
-	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>(this ImmutableArray<T> collection)
 	{
 		if (collection.ArgumentNotNull().IsEmpty)
@@ -58,7 +58,7 @@ public static class ImmutableArrayExtensions
 	/// <returns><c>true</c> if one or more elements in the <see cref="ImmutableArray{T}"/> match the condition defined by the specified predicate; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>(this ImmutableArray<T> list, Func<T, bool> action)
 	{
 		if (list.ArgumentNotNull().IsEmpty || action is null)
@@ -80,7 +80,7 @@ public static class ImmutableArrayExtensions
 	/// <returns><c>true</c> if the array contains exactly <paramref name="count"/> items; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
+	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
 	public static bool HasItems<T>(this ImmutableArray<T> list, in int count)
 	{
 		if (list.ArgumentNotNull().IsEmpty)
@@ -104,7 +104,7 @@ public static class ImmutableArrayExtensions
 	/// This method generates a sequence of random indices using <see cref="RandomNumberGenerator"/> to shuffle the array elements.
 	/// If the array does not contain any items, it is returned unchanged.
 	/// </remarks>
-	[Information(nameof(Shuffle), "David McCarter", "8/27/2020", "1/21/2020", BenchMarkStatus = BenchMarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Shuffle), "David McCarter", "8/27/2020", "1/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ImmutableArray<T> Shuffle<T>(this ImmutableArray<T> list) => list.DoesNotHaveItems() ? list : [.. list.OrderBy(_ => RandomNumberGenerator.GetInt32(int.MinValue, int.MaxValue))];
 
 }

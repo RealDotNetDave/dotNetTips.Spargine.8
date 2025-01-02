@@ -609,7 +609,7 @@ public class ValidatorArgumentTests
 	[TestMethod]
 	public void ArgumentIsDefinedEnumTest()
 	{
-		var value = BenchMarkStatus.Completed;
+		var value = BenchmarkStatus.Completed;
 
 		try
 		{
@@ -622,7 +622,7 @@ public class ValidatorArgumentTests
 			Assert.Fail();
 		}
 
-		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(() => ((BenchMarkStatus)100).ArgumentDefined());
+		_ = Assert.ThrowsException<ArgumentOutOfRangeException>(() => ((BenchmarkStatus)100).ArgumentDefined());
 	}
 
 	[TestMethod]

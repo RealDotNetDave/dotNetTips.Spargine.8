@@ -30,7 +30,7 @@ public static class NetworkHelper
 	/// Checks the network connections and returns a read-only collection of active network interfaces.
 	/// </summary>
 	/// <returns>A read-only collection of <see cref="NetworkInterface"/> representing the active network connections.</returns>
-	[Information(nameof(GetNetworkConnections), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GetNetworkConnections), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<NetworkInterface> GetNetworkConnections()
 	{
 		var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
@@ -53,7 +53,7 @@ public static class NetworkHelper
 	/// Checks if the computer is connected to a Bluetooth network.
 	/// </summary>
 	/// <returns><c>true</c> if the computer is connected to a Bluetooth network; otherwise, <c>false</c>.</returns>
-	[Information(nameof(GetNetworkConnections), OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GetNetworkConnections), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsConnectedToBluetooth()
 	{
 		var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();

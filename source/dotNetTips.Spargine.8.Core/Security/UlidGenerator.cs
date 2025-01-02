@@ -120,7 +120,7 @@ public static class UlidGenerator
 	/// <param name="count">The number of ULIDs to generate.</param>
 	/// <returns>A read-only collection of generated ULIDs.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than or equal to zero.</exception>
-	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> GenerateMultipleUlids(int count)
 	{
 		var ulids = new List<string>(count.ArgumentInRange(1, defaultValue: 1));
@@ -136,7 +136,7 @@ public static class UlidGenerator
 	/// Generates a new ULID.
 	/// </summary>
 	/// <returns>A new ULID as a string.</returns>
-	[Information("Generates a new ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchMarkStatus = BenchMarkStatus.Completed, Status = Status.Available)]
+	[Information("Generates a new ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string GenerateUlid()
 	{
 		var timestamp = GetTimestamp().AsSpan();

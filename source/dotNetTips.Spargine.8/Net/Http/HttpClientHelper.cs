@@ -58,7 +58,7 @@ public static class HttpClientHelper
 	/// <remarks>
 	/// This method creates a new <see cref="CancellationTokenSource"/> internally to manage cancellation.
 	/// </remarks>
-	[Information(nameof(GetHttpResponseAsync), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(GetHttpResponseAsync), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static async Task<HttpResponseMessage> GetHttpResponseAsync(Uri url)
 	{
 		url = url.ArgumentNotNull<Uri>();
@@ -86,7 +86,7 @@ public static class HttpClientHelper
 	/// </code></example>
 	/// <remarks>Original code by: Máňa Píchová.</remarks>
 	[DefaultValue(null)]
-	[Information(nameof(GetHttpResponseAsync), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(GetHttpResponseAsync), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static async Task<HttpResponseMessage> GetHttpResponseAsync([NotNull] Uri url, [NotNull] CancellationTokenSource cancellationToken)
 	{
 		url = url.ArgumentNotNull<Uri>();
@@ -133,7 +133,7 @@ public static class HttpClientHelper
 	/// // Use the stream
 	/// </code></example>
 	[DefaultValue(null)]
-	[Information(nameof(GetHttpResponseAsync), UnitTestStatus = UnitTestStatus.Completed, BenchMarkStatus = BenchMarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(GetHttpResponseAsync), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static async Task<Stream> GetStreamAsync(Uri url)
 	{
 		url = url.ArgumentNotNull<Uri>();
