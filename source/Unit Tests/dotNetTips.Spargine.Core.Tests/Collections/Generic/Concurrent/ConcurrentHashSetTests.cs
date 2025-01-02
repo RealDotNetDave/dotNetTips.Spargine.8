@@ -353,6 +353,66 @@ public class ConcurrentHashSetTests
 	}
 
 	[TestMethod]
+	[ExpectedException(typeof(ArgumentException))]
+	public void CopyTo_WithInsufficientArraySpace_ThrowsArgumentException()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<int> { 1, 2, 3 };
+		var array = new int[2];
+
+		// Act
+		set.CopyTo(array, 0);
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentOutOfRangeException))]
+	public void CopyTo_WithNegativeArrayIndex_ThrowsArgumentOutOfRangeException()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<int> { 1, 2, 3 };
+		var array = new int[5];
+
+		// Act
+		set.CopyTo(array, -1);
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void CopyTo_WithNullArray_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<int> { 1, 2, 3 };
+
+		// Act
+		set.CopyTo(null, 0);
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
+	public void CopyTo_WithValidArray_CopiesElementsCorrectly()
+	{
+		// Arrange
+		var set = new ConcurrentHashSet<int> { 1, 2, 3 };
+		var array = new int[5];
+
+		// Act
+		set.CopyTo(array, 1);
+
+		// Assert
+		Assert.AreEqual(0, array[0]);
+		Assert.AreEqual(1, array[1]);
+		Assert.AreEqual(2, array[2]);
+		Assert.AreEqual(3, array[3]);
+		Assert.AreEqual(0, array[4]);
+	}
+
+
+	[TestMethod]
 	public void Count_AfterAddingDuplicateItem_RemainsUnchanged()
 	{
 		var hashSet = new ConcurrentHashSet<int> { 1, 2, 3 };
@@ -409,7 +469,7 @@ public class ConcurrentHashSetTests
 		var items = new List<int>();
 
 		// Explicitly cast to IEnumerable<T> to use the explicit interface implementation
-		IEnumerable<int> enumerable = hashSet;
+		var enumerable = hashSet;
 		foreach (var item in enumerable)
 		{
 			items.Add(item);

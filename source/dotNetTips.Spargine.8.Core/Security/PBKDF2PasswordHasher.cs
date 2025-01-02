@@ -32,8 +32,8 @@ public static class PBKDF2PasswordHasher
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", BenchmarkStatus = BenchmarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool FixedTimeEquals([NotNull] byte[] left, [NotNull] byte[] right)
 	{
 		// NoOptimization because we want this method to be exactly as non-short-circuiting as written.
@@ -58,7 +58,7 @@ public static class PBKDF2PasswordHasher
 	/// </summary>
 	/// <param name="password">The password.</param>
 	/// <returns>System.String.</returns>
-	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", BenchmarkStatus = BenchmarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string HashPassword([NotNull] string password)
 	{
 		byte[] salt;

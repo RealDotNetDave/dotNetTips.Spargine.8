@@ -40,6 +40,7 @@ public class InformationAttributeDocGeneratorTests
 		// Assert
 		Assert.IsFalse(string.IsNullOrEmpty(result));
 	}
+
 	[TestMethod]
 	public void GenerateMarkdownDocumentForAssembly_ValidAssembly_ReturnsDocumentation()
 	{

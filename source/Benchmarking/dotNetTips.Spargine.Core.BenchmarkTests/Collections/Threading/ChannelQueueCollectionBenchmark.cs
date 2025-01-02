@@ -159,10 +159,6 @@ public class ChannelQueueCollectionBenchmark : SmallCollectionBenchmark
 		}
 	}
 
-	/// <summary>
-	/// Write read asynchronous i enumerable as an asynchronous operation.
-	/// </summary>
-	/// <returns>A Task representing the asynchronous operation.</returns>
 	[Benchmark(Description = "Write & Read Async: IEnumerable")]
 	[BenchmarkCategory(Categories.Async)]
 	public async Task WriteReadAsyncIEnumerableAsync()
