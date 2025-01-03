@@ -364,7 +364,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	private void CopyToItems([NotNull] T[] array, int index)
 	{
 		array = array.ArgumentNotNull();
-		index = index.ArgumentInRange(1);
+		index = index.ArgumentInRange(0);
 
 		var buckets = this._tables._buckets;
 

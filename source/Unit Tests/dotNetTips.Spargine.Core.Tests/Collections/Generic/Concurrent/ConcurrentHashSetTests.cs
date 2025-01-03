@@ -315,7 +315,7 @@ public class ConcurrentHashSetTests
 		string[] array = new string[5]; // Larger than set, with offset
 
 		// Act
-		(set as ICollection<string>).CopyTo(array, 2);
+		set.CopyTo(array, 2);
 
 		// Assert
 		Assert.IsNull(array[0]);

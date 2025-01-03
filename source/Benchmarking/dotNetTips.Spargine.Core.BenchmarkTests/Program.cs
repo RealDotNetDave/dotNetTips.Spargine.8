@@ -18,6 +18,7 @@ using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
+using DotNetTips.Spargine.Core.BenchmarkTests.Collections.Generic.Concurrent;
 using Perfolizer.Horology;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -44,7 +45,7 @@ public class Program
 
 			_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
-			//_ = BenchmarkRunner.Run<SHA256PasswordHasherBenchmark>(config);
+			//_ = BenchmarkRunner.Run<ConcurrentHashSetCollectionBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine("COMPLETE!");
 			Console.Beep();

@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 01-03-2025
 // ***********************************************************************
 // <copyright file="ConcurrentHashSetCollectionBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -53,7 +53,7 @@ public class ConcurrentHashSetCollectionBenchmark : SmallCollectionBenchmark
 	public void CopyTo()
 	{
 		var people = this._personRefConcurrentHashSet;
-		var array = new Person<Address>[5];
+		var array = new Person<Address>[people.Count];
 
 		people.CopyTo(array, 0);
 
@@ -62,7 +62,7 @@ public class ConcurrentHashSetCollectionBenchmark : SmallCollectionBenchmark
 
 	[Benchmark(Description = nameof(ConcurrentHashSet<Person<Address>>.Count))]
 	[BenchmarkCategory(Categories.Async, Categories.New)]
-	public void Count()
+	public void CountPeople()
 	{
 		var people = this._personRefConcurrentHashSet;
 

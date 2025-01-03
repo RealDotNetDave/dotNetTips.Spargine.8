@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-05-2024
+// Last Modified On : 01-03-2025
 // ***********************************************************************
 // <copyright file="TypeHelperBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -93,6 +93,17 @@ public class TypeHelperBenchmark : Benchmark
 	{
 		var result = TypeHelper.FindDerivedTypes(AppDomain.CurrentDomain, typeof(MulticastDelegate), true);
 		Consume(result);
+	}
+
+	[Benchmark(Description = nameof(TypeHelper.GetMembersWithAttribute))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void GetMembersWithAttribute()
+	{
+		var type = typeof(Person<Address>);
+
+		var result = TypeHelper.GetMembersWithAttribute<InformationAttribute>(type);
+
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(TypeHelper.GetPropertyValues))]
