@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 01-03-2025
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Core.Security;
 /// and verifying hashed passwords. It leverages AES (Advanced Encryption Standard) for encryption tasks and SHA256 for hashing,
 /// ensuring a high level of security for sensitive data handling.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Documentation = "https://bit.ly/SpargineEncryptionHelper", Status = Status.Available)]
 public static class EncryptionHelper
 {
 
@@ -75,7 +75,7 @@ public static class EncryptionHelper
 	/// </example>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="cipherText"/>, <paramref name="key"/>, or <paramref name="iv"/> is null.</exception>
 	/// <exception cref="InvalidOperationException">Thrown when decryption fails.</exception>
-	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string AesDecrypt(string cipherText, byte[] key, byte[] iv)
 	{
 		cipherText = cipherText.ArgumentNotNull();
@@ -131,7 +131,7 @@ public static class EncryptionHelper
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="plainText"/>, <paramref name="key"/>, or <paramref name="iv"/> is null.</exception>
 	/// <exception cref="InvalidOperationException">Thrown when encryption fails.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(AesEncrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(AesEncrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string AesEncrypt([NotNull] string plainText, [NotNull] byte[] key, [NotNull] byte[] iv)
 	{
 		plainText = plainText.ArgumentNotNullOrEmpty(true);
@@ -213,7 +213,7 @@ public static class EncryptionHelper
 	/// It's primarily used for generating non-cryptographic keys or identifiers.
 	/// </remarks>
 	/// <example><b>Output:</b> f7f0af78003d4ab194b5a4024d02112a</example>
-	[Information(nameof(GenerateRandomKey), "David McCarter", "5/30/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(GenerateRandomKey), "David McCarter", "5/30/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string GenerateRandomKey() => Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture);
 
 	/// <summary>
@@ -231,7 +231,7 @@ public static class EncryptionHelper
 	/// Console.WriteLine(decryptedText);
 	/// </code>
 	/// </example>
-	[Information(nameof(SimpleSHA256Decrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineSep2021")]
+	[Information(nameof(SimpleSHA256Decrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string SimpleSHA256Decrypt([NotNull] string cipherText, [NotNull] string key)
 	{
 		cipherText = cipherText.ArgumentNotNullOrEmpty(true);
@@ -258,7 +258,7 @@ public static class EncryptionHelper
 	/// </code>
 	/// </example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SimpleSHA256Encrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2021", Status = Status.Available)]
+	[Information(nameof(SimpleSHA256Encrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed)]
 	public static string SimpleSHA256Encrypt([NotNull] string plainText, [NotNull] string key)
 	{
 		plainText = plainText.ArgumentNotNullOrEmpty(true);
@@ -284,7 +284,7 @@ public static class EncryptionHelper
 	/// Console.WriteLine(result);
 	/// </code>
 	/// </example>
-	[Information(nameof(VerifySHA256HashedPassword), "David McCarter", "10/13/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022", BenchmarkStatus = BenchmarkStatus.Completed)]
+	[Information(nameof(VerifySHA256HashedPassword), "David McCarter", "10/13/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, BenchmarkStatus = BenchmarkStatus.Completed)]
 	public static PasswordVerificationResult VerifySHA256HashedPassword(string hashedPassword, [NotNull] string password) => SHA256PasswordHasher.VerifyHashedPassword(hashedPassword.ArgumentNotNullOrEmpty(), password.ArgumentNotNullOrEmpty());
 
 }

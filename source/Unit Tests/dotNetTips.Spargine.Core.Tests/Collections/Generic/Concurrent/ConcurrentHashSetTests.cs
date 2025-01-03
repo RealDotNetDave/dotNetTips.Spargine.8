@@ -4,7 +4,7 @@
 // Created          : 12-06-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-28-2024
+// Last Modified On : 01-03-2025
 // ***********************************************************************
 // <copyright file="ConcurrentHashSetTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -353,7 +353,7 @@ public class ConcurrentHashSetTests
 	}
 
 	[TestMethod]
-	[ExpectedException(typeof(ArgumentException))]
+	[ExpectedException(typeof(ArgumentInvalidException))]
 	public void CopyTo_WithInsufficientArraySpace_ThrowsArgumentException()
 	{
 		// Arrange

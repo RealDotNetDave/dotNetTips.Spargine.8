@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 01-03-2025
 // ***********************************************************************
 // <copyright file="RegexProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Core.RegularExpressions;
 /// methods for validating and processing strings against common patterns such as
 /// email addresses, URLs, credit card numbers, and more.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Documentation = "https://bit.ly/SpargineRegexProcessor", Status = Status.Available)]
 public static partial class RegexProcessor
 {
 
@@ -242,7 +242,7 @@ public static partial class RegexProcessor
 	/// <returns>
 	///   <c>true</c> if the input contains a first and last name; otherwise, <c>false</c>.
 	/// </returns>
-	[Information(nameof(ContainsFirstLastName), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(ContainsFirstLastName), "David McCarter", "3/16/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool ContainsFirstLastName(string input)
 	{
 		if (input is null)
@@ -354,7 +354,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a MAC address; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsMACAddress), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsMACAddress), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool IsMACAddress(string input)
 	{
 		if (input is null)
@@ -370,7 +370,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a SHA1 hash; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsSHA1Hash), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsSHA1Hash), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool IsSHA1Hash(string input)
 	{
 		if (input is null)
@@ -402,7 +402,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input contains a URL domain address; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsUrlDomainAddress), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsUrlDomainAddress), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool IsUrlDomainAddress(string input)
 	{
 		if (input is null)
@@ -418,7 +418,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a valid string; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsValidString), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(IsValidString), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool IsValidString(string input)
 	{
 		if (input is null)
@@ -469,7 +469,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string.</param>
 	/// <param name="replacement">The replacement string (defaults to "").</param>
 	/// <returns>The modified string.</returns>
-	[Information(nameof(ReplaceCrLf), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(ReplaceCrLf), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string ReplaceCrLf(string input, string replacement = "")
 	{
 		if (input is null || replacement is null)
