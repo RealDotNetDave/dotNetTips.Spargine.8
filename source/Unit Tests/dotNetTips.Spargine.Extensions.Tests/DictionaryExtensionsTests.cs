@@ -322,6 +322,54 @@ public class DictionaryExtensionsTests
 	}
 
 	[TestMethod]
+	public void ToLookup_WithExistingKey_ReturnsValue()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>
+	{
+		{ "key1", 1 },
+		{ "key2", 2 }
+	};
+		var lookup = dictionary.ToLookupWithDefault(0);
+
+		// Act
+		var result = lookup("key1");
+
+		// Assert
+		Assert.AreEqual(1, result);
+	}
+
+	[TestMethod]
+	public void ToLookup_WithNonExistingKey_ReturnsDefaultValue()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>
+	{
+		{ "key1", 1 },
+		{ "key2", 2 }
+	};
+		var lookup = dictionary.ToLookupWithDefault(0);
+
+		// Act
+		var result = lookup("key3");
+
+		// Assert
+		Assert.AreEqual(0, result);
+	}
+
+	[TestMethod]
+	public void ToLookup_WithNullDictionary_ThrowsArgumentNullException()
+	{
+		// Arrange
+		Dictionary<string, int> dictionary = null;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => dictionary.ToLookupWithDefault(0));
+	}
+
+
+
+	[TestMethod]
 	public void ToReadOnlyCollectionTest()
 	{
 		var people = RandomData.GeneratePersonRefCollection<Address>(CollectionCount).ToDictionary(p => p.Id);
@@ -356,6 +404,70 @@ public class DictionaryExtensionsTests
 		var result = people.ToSortedDictionary();
 
 		Assert.IsTrue(result.HasItems());
+	}
+
+	[TestMethod]
+	public void TryGetKey_WithExistingKey_ReturnsValue()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>
+	{
+		{ "key1", 1 },
+		{ "key2", 2 }
+	};
+		Func<string, int> func = key => 0;
+
+		// Act
+		var result = dictionary.TryGetValue("key1", func);
+
+		// Assert
+		Assert.AreEqual(1, result);
+	}
+
+	[TestMethod]
+	public void TryGetKey_WithNonExistingKey_AddsAndReturnsValue()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>
+	{
+		{ "key1", 1 },
+		{ "key2", 2 }
+	};
+		Func<string, int> func = key => 3;
+
+		// Act
+		var result = dictionary.TryGetValue("key3", func);
+
+		// Assert
+		Assert.AreEqual(3, result);
+		Assert.IsTrue(dictionary.ContainsKey("key3"));
+		Assert.AreEqual(3, dictionary["key3"]);
+	}
+
+	[TestMethod]
+	public void TryGetKey_WithNullDictionary_ThrowsArgumentNullException()
+	{
+		// Arrange
+		Dictionary<string, int> dictionary = null;
+		Func<string, int> func = key => 0;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => dictionary.TryGetValue("key1", func));
+	}
+
+	[TestMethod]
+	public void TryGetKey_WithNullFunc_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>
+	{
+		{ "key1", 1 },
+		{ "key2", 2 }
+	};
+		Func<string, int> func = null;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => dictionary.TryGetValue("key3", func));
 	}
 
 	/// <summary>

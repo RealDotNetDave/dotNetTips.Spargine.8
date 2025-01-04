@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 01-04-2025
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -35,9 +35,9 @@ namespace DotNetTips.Spargine.Extensions;
 /// converting lists to various collection types, performing actions on list elements, and more. These methods
 /// are designed to extend the capabilities of <see cref="List{T}"/> and simplify common operations.
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public static class ListExtensions
 {
-
 	/// <summary>
 	/// Adds an item to the beginning of the collection.
 	/// </summary>
@@ -166,18 +166,19 @@ public static class ListExtensions
 	/// <returns>A hash code representing the contents of the list.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static int GenerateHashCode<T>([NotNull] this List<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
 
-		var hash = 17;
-		foreach (var item in collection)
+		// CODE SUGGESTED BY COPILOT FAILS WITH PERSONRECORD
+		var hash = new HashCode();
+		foreach (var item in CollectionsMarshal.AsSpan(collection))
 		{
-			hash = (hash * 31) + (item?.GetHashCode() ?? 0);
+			hash.Add(item);
 		}
 
-		return hash;
+		return hash.ToHashCode();
 	}
 
 	/// <summary>
@@ -538,7 +539,7 @@ public static class ListExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>FrozenSet&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "ADD URL", Status = Status.New)]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this List<T> list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>

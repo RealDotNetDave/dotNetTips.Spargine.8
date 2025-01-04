@@ -98,7 +98,7 @@ public static class NumericExtensions
 	/// <returns>The equivalent number of megabytes as a double.</returns>
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToMegabytes), "David McCarter", "7/9/2024", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(BytesToMegabytes), "David McCarter", "7/9/2024", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static double BytesToMegabytes(this long bytes)
 	{
 		bytes = bytes.ArgumentInRange(0);

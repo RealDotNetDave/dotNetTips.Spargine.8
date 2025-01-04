@@ -35,7 +35,7 @@ namespace DotNetTips.Spargine.Tester;
 /// The generated numbers are random and follow the credit card companies' numbering schemes, including passing the Luhn check.
 /// However, these numbers are not valid for real transactions but can be used for testing validation and formatting routines.
 /// </remarks>
-[Information(nameof(RandomCreditCardNumberGenerator), Status = Status.New, Documentation = "https://bit.ly/SpargineTester")]
+[Information(nameof(RandomCreditCardNumberGenerator), Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public static partial class RandomCreditCardNumberGenerator
 {
 	/// <summary>
