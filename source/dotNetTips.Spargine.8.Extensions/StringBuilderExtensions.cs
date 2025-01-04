@@ -4,7 +4,7 @@
 // Created          : 05-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="StringBuilderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)

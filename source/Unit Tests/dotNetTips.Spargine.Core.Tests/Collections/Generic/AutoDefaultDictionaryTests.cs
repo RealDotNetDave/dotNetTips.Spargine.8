@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : DotNetTips.Spargine.Core.Tests
+// Author           : David McCarter
+// Created          : 01-04-2025
+//
+// Last Modified By : David McCarter
+// Last Modified On : 01-04-2025
+// ***********************************************************************
+// <copyright file="AutoDefaultDictionaryTests.cs" company="DotNetTips.Spargine.Core.Tests">
+//     Copyright (c) McCarter Consulting. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;

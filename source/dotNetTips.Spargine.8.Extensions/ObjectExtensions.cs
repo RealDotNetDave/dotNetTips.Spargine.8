@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
