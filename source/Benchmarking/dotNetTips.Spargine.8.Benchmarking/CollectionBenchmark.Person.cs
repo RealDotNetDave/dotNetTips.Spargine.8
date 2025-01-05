@@ -4,7 +4,7 @@
 // Created          : 04-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-22-2024
+// Last Modified On : 01-05-2025
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -104,38 +104,38 @@ public partial class CollectionBenchmark
 	}
 
 	/// <summary>
-	/// Gets a dictionary for PersonRecord.
+	/// Gets a cloned dictionary for PersonRecord.
 	/// </summary>
 	/// <returns>A dictionary of PersonRecord indexed by string.</returns>
 	public Dictionary<string, PersonRecord> GetPersonRecordDictionary() => this._personRecordDictionary.Clone<Dictionary<string, PersonRecord>>();
 
 	/// <summary>
-	/// Gets Person reference array.
+	/// Gets clone of Person reference array.
 	/// </summary>
 	/// <returns>An array of Person reference types.</returns>
 	public Person<Address>[] GetPersonRefArray() => this._personRefArray.Clone<Person<Address>[]>();
 
 	/// <summary>
-	/// Gets Person reference types as a dictionary.
+	/// Gets clone of Person reference types as a dictionary.
 	/// </summary>
 	/// <returns>A dictionary of Person reference types indexed by string.</returns>
 	public Dictionary<string, Person<Address>> GetPersonRefDictionary() => this._personRefDictionary.Clone<Dictionary<string, Person<Address>>>();
 
 	/// <summary>
-	/// Gets Person value types as an array.
+	/// Gets  clone of Person value types as an array.
 	/// </summary>
 	/// <returns>An array of Person value types.</returns>
 	public Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] GetPersonValArray() => this._personValArray.Clone<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[]>();
 
 	/// <summary>
-	/// Retrieves Person value types as a collection.
+	/// Retrieves clone of Person value types as a collection.
 	/// </summary>
 	/// <returns>A collection of Person value types.</returns>
 	[Obsolete("Use GetPersonValArray() instead. Will be removed at the end of 2024.")]
 	public Collection<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> GetPersonValCollection() => this._personValList.Clone<List<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>>().ToCollection();
 
 	/// <summary>
-	/// Gets the person value dictionary.
+	/// Gets clone of person value dictionary.
 	/// </summary>
 	public Dictionary<string, Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>> GetPersonValDictionary() => this._personValDictionary.Clone<Dictionary<string, Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>>();
 

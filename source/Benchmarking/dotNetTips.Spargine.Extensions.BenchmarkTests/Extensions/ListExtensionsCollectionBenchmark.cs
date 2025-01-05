@@ -4,7 +4,7 @@
 // Created          : 01-09-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 01-05-2025
 // ***********************************************************************
 // <copyright file="ListExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -19,10 +19,12 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
+using Microsoft.Diagnostics.Runtime.Utilities;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -32,12 +34,10 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 {
 	private List<PersonRecord> _peopleRecordList;
-
 	private List<Person<Address>> _peopleRefList;
 	private List<Person<Address>> _peopleRefSubSet;
 	private List<Spargine.Tester.Models.ValueTypes.Person<Spargine.Tester.Models.ValueTypes.Address>> _peopleValList;
 	private readonly Person<Address> _person = RandomData.GeneratePersonRef<Address>();
-
 
 	[Benchmark(Description = nameof(ListExtensions.AddFirst))]
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
@@ -63,7 +63,6 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		var people = this._peopleRefList;
 		var peopleToAdd = this._peopleRefSubSet;
-		peopleToAdd.Add(RandomData.GeneratePersonRef<Address>());
 
 		people.AddRangeIfNotExists(peopleToAdd);
 
@@ -88,6 +87,15 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		var collection = people.AsSpan();
 
 		this.Consume(collection.Length);
+	}
+
+	public override void Cleanup()
+	{
+		base.Cleanup();
+
+		ConsoleLogger.Default.WriteLine($"Ref List Count={this._peopleRefList.Count}");
+		ConsoleLogger.Default.WriteLine($"Record List Count={this._peopleRecordList.Count}");
+		ConsoleLogger.Default.WriteLine($"Val List Count={this._peopleValList.Count}");
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.ClearNulls))]
@@ -236,10 +244,11 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		base.Setup();
 
-		this._peopleRefSubSet = this.GetPersonRefArray().TakeLast(10).Clone<IEnumerable<Person<Address>>>().ToList();
-		this._peopleRefList = [.. this.GetPersonRefArray()];
 		this._peopleRecordList = [.. this.GetPersonRecordArray()];
+		this._peopleRefList = [.. this.GetPersonRefArray()];
+		this._peopleRefSubSet = this.GetPersonRefArray().TakeLast(10).ToList();
 		this._peopleValList = [.. this.GetPersonValArray()];
+
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.Shuffle))]

@@ -4,7 +4,7 @@
 // Created          : 04-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 01-05-2025
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.Coordinate.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -56,14 +56,14 @@ public partial class CollectionBenchmark
 	}
 
 	/// <summary>
-	/// Gets a copy of the Coordinate array. This method ensures that benchmarks operate on a fresh copy of the data,
+	/// Gets a clone of the Coordinate array. This method ensures that benchmarks operate on a fresh copy of the data,
 	/// preventing modifications from affecting subsequent benchmark runs.
 	/// </summary>
 	/// <returns>A clone of the Coordinate array.</returns>
 	public Coordinate[] GetCoordinateValArray() => this._coordinateArray.Clone<Coordinate[]>();
 
 	/// <summary>
-	/// Gets a copy of the Coordinate list as a <see cref="Collection{T}"/>.
+	/// Gets a clone of the Coordinate list as a <see cref="Collection{T}"/>.
 	/// Similar to <see cref="GetCoordinateValArray"/>, this method provides a fresh copy of the data for benchmark tests.
 	/// </summary>
 	/// <returns>A clone of the Coordinate list as a Collection.</returns>

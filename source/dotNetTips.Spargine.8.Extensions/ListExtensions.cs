@@ -54,8 +54,13 @@ public static class ListExtensions
 			return collection;
 		}
 
-		// SUGGESTION FROM COPILOT CAUSED ISSUES WITH BENCHMARKING
-		return collection.ArgumentNotNull().ArgumentNotReadOnly().Prepend(item).ToList();
+		//return collection.ArgumentNotNull().ArgumentNotReadOnly().Prepend(item).ToList();
+
+		_ = collection.ArgumentNotNull().ArgumentNotReadOnly();
+
+		collection.Insert(0, item);
+
+		return collection;
 	}
 
 	/// <summary>
@@ -74,7 +79,9 @@ public static class ListExtensions
 			return collection;
 		}
 
-		collection.ArgumentNotNull().Add(item);
+		_ = collection.ArgumentNotNull().ArgumentNotReadOnly();
+
+		collection.Add(item);
 
 		return collection;
 	}
