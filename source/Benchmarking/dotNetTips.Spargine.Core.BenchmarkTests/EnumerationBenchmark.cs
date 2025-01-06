@@ -28,7 +28,7 @@ public class EnumerationBenchmark : Benchmark
 	{
 		var result = Enumeration.FromDisplayName<NumericFormat>("C");
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(Enumeration.FromValue))]
@@ -36,7 +36,7 @@ public class EnumerationBenchmark : Benchmark
 	{
 		var result = Enumeration.FromValue<NumericFormat>(1);
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(Enumeration.GetAll))]
@@ -44,6 +44,6 @@ public class EnumerationBenchmark : Benchmark
 	{
 		var result = Enumeration.GetAll<NumericFormat>().ToList();
 
-		Consume(result);
+		this.Consume(result);
 	}
 }

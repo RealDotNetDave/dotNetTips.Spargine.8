@@ -134,7 +134,7 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 		base.Setup();
 
 		//Create lines of text.
-		var sb = new StringBuilder(Count * 70);
+		var sb = new StringBuilder(this.Count * 70);
 
 		for (var lineCount = 0; lineCount < this.Count; lineCount++)
 		{
@@ -150,8 +150,8 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 
 		this._crlfString = sb.ToString().Trim();
 		this._brotilString = this._crlfString.ToBrotliStringAsync().Result;
-		this._gzipString = _crlfString.ToGZipStringAsync().GetAwaiter().GetResult();
-		this._base64String = _crlfString.ToBase64();
+		this._gzipString = this._crlfString.ToGZipStringAsync().GetAwaiter().GetResult();
+		this._base64String = this._crlfString.ToBase64();
 	}
 
 	[Benchmark(Description = "Split")]

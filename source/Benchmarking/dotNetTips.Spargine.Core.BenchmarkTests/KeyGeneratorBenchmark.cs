@@ -26,7 +26,7 @@ public class KeyGeneratorBenchmark : Benchmark
 	{
 		var result = KeyGenerator.GenerateKey();
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(KeyGenerator.GenerateKey) + ": With Prefix")]
@@ -35,6 +35,6 @@ public class KeyGeneratorBenchmark : Benchmark
 	{
 		var result = KeyGenerator.GenerateKey("TEST");
 
-		Consume(result);
+		this.Consume(result);
 	}
 }

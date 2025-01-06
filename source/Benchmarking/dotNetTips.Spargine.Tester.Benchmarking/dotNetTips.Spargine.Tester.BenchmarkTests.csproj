@@ -37,8 +37,8 @@
 	<ItemGroup>
 	  <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
 	  <PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.14.0" />
-	  <PackageReference Include="DotNetTips.Spargine.8" Version="2025.8.1.5" />
-	  <PackageReference Include="DotNetTips.Spargine.8.Tester" Version="2025.8.1.5" />
+	  <PackageReference Include="DotNetTips.Spargine.8" Version="2025.8.1.6" />
+	  <PackageReference Include="DotNetTips.Spargine.8.Tester" Version="2025.8.1.6" />
 	</ItemGroup>
 
 	<ItemGroup>

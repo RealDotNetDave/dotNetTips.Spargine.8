@@ -4,7 +4,7 @@
 // Created          : 01-09-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-05-2025
+// Last Modified On : 01-06-2025
 // ***********************************************************************
 // <copyright file="ListExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -19,7 +19,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Tester;
@@ -42,18 +41,22 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void AddFirst()
 	{
-		var result = this._peopleRefList.AddFirst(this._person);
+		var people = this._peopleRefList;
 
-		this.Consume(result);
+		people.AddFirst(this._person);
+
+		this.Consume(people);
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.AddLast))]
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void AddLast()
 	{
-		var result = this._peopleRefList.AddLast(this._person);
+		var people = this._peopleRefList;
 
-		this.Consume(result);
+		people.AddLast(this._person);
+
+		this.Consume(people);
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.AddRangeIfNotExists))]
@@ -63,9 +66,9 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		var people = this._peopleRefList;
 		var peopleToAdd = this._peopleRefSubSet;
 
-		people.AddRangeIfNotExists(peopleToAdd);
+		var modifiedPeople = people.AddRangeIfNotExists(peopleToAdd);
 
-		this.Consume(people.Count);
+		this.Consume(modifiedPeople);
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.AsReadOnlySpan))]
@@ -262,7 +265,7 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void Split()
 	{
-		var result = this._peopleRefList.Split(_peopleRefList.Count / 2);
+		var result = this._peopleRefList.Split(this._peopleRefList.Count / 2);
 
 		this.Consume(result);
 	}

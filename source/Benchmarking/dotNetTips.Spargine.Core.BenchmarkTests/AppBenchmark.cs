@@ -26,7 +26,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.AppInfo;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -34,7 +34,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.CurrentCulture;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -42,7 +42,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.CurrentThreadId;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -50,7 +50,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.CurrentUICulture;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -58,7 +58,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.ExecutingFolder;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -66,7 +66,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.GetCultureNames;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -74,7 +74,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.GetEnvironmentVariables;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -82,7 +82,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.GetProcessorInformation;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -90,7 +90,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.InstalledUICulture;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -98,7 +98,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.IsRunning;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -106,7 +106,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.IsRunningFromAspNet;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -114,7 +114,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.IsUserAdministrator;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -122,7 +122,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.MaxDegreeOfParallelism;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -130,7 +130,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.OSArchitecture;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -138,7 +138,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.OSDescription;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -146,7 +146,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.ProcessArchitecture;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -154,7 +154,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.ProcessId;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -162,7 +162,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.ProcessName;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -170,7 +170,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.ProcessPath;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -178,7 +178,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.ReferencedAssemblies;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -186,7 +186,7 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.StackTrace;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark]
@@ -194,6 +194,6 @@ public class AppBenchmark : Benchmark
 	{
 		var result = App.WorkingSet;
 
-		Consume(result);
+		this.Consume(result);
 	}
 }

@@ -30,7 +30,7 @@ public class UlidGeneratorBenchmark : Benchmark
 	{
 		var result = RandomData.GenerateKey();
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(UlidGenerator.GenerateMultipleUlids))]
@@ -39,7 +39,7 @@ public class UlidGeneratorBenchmark : Benchmark
 	{
 		var result = UlidGenerator.GenerateMultipleUlids(256);
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(UlidGenerator.GenerateUlid))]
@@ -48,7 +48,7 @@ public class UlidGeneratorBenchmark : Benchmark
 	{
 		var result = UlidGenerator.GenerateUlid;
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(Guid.NewGuid))]
@@ -57,7 +57,7 @@ public class UlidGeneratorBenchmark : Benchmark
 	{
 		var result = Guid.NewGuid();
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	public override void Setup()

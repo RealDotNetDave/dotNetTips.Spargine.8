@@ -28,6 +28,6 @@ public class PasswordGeneratorBenchmark : Benchmark
 	{
 		var result = PasswordGenerator.GeneratePassword(12);
 
-		Consume(result);
+		this.Consume(result);
 	}
 }

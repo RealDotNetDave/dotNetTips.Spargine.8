@@ -92,7 +92,7 @@ public class TypeHelperBenchmark : Benchmark
 	public void FindDerivedTypes()
 	{
 		var result = TypeHelper.FindDerivedTypes(AppDomain.CurrentDomain, typeof(MulticastDelegate), true);
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(TypeHelper.GetMembersWithAttribute))]
@@ -128,7 +128,7 @@ public class TypeHelperBenchmark : Benchmark
 
 		TypeHelper.ProcessGenericType(builder, type, genericArguments, genericArguments.Length, options);
 
-		Consume(builder.ToString());
+		this.Consume(builder.ToString());
 	}
 
 	public override void Setup()

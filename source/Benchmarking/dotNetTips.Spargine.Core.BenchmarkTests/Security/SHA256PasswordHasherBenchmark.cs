@@ -36,7 +36,7 @@ public class SHA256PasswordHasherBenchmark : Benchmark
 		// Act
 		var result = SHA256PasswordHasher.FixedTimeEquals(left, right);
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(SHA256PasswordHasher.HashPassword))]
@@ -46,7 +46,7 @@ public class SHA256PasswordHasherBenchmark : Benchmark
 		var password = "TestPassword";
 		var hashedPassword = SHA256PasswordHasher.HashPassword(password);
 
-		Consume(hashedPassword);
+		this.Consume(hashedPassword);
 	}
 
 	[Benchmark(Description = nameof(SHA256PasswordHasher.HashPassword) + ": LONG STRING")]
@@ -57,7 +57,7 @@ public class SHA256PasswordHasherBenchmark : Benchmark
 		var password = this.LongTestString;
 		var hashedPassword = SHA256PasswordHasher.HashPassword(password);
 
-		Consume(hashedPassword);
+		this.Consume(hashedPassword);
 	}
 
 	[Benchmark(Description = nameof(SHA256PasswordHasher.VerifyHashedPassword))]
@@ -69,7 +69,7 @@ public class SHA256PasswordHasherBenchmark : Benchmark
 
 		var result = SHA256PasswordHasher.VerifyHashedPassword(hashedPassword, password);
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 }

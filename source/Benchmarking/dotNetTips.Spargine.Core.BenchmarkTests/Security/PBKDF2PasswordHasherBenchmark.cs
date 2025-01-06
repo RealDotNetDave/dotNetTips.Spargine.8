@@ -38,7 +38,7 @@ public class PBKDF2PasswordHasherBenchmark : Benchmark
 		// Act
 		var result = PBKDF2PasswordHasher.FixedTimeEquals(left, right);
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(PBKDF2PasswordHasher.HashPassword))]
@@ -47,7 +47,7 @@ public class PBKDF2PasswordHasherBenchmark : Benchmark
 	{
 		var result = PBKDF2PasswordHasher.HashPassword(Password);
 
-		Consume(result);
+		this.Consume(result);
 	}
 
 	public override void Setup()
@@ -63,6 +63,6 @@ public class PBKDF2PasswordHasherBenchmark : Benchmark
 	{
 		var result = PBKDF2PasswordHasher.VerifyHashedPassword(this._hashedPassword, Password);
 
-		Consume(result);
+		this.Consume(result);
 	}
 }
