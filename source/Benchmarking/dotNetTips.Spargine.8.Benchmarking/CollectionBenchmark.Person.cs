@@ -122,7 +122,7 @@ public partial class CollectionBenchmark
 	public Dictionary<string, Person<Address>> GetPersonRefDictionary() => this._personRefDictionary.Clone<Dictionary<string, Person<Address>>>();
 
 	/// <summary>
-	/// Gets  clone of Person value types as an array.
+	/// Gets clone of Person value types as an array.
 	/// </summary>
 	/// <returns>An array of Person value types.</returns>
 	public Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] GetPersonValArray() => this._personValArray.Clone<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[]>();

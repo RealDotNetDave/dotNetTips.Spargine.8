@@ -24,7 +24,6 @@ using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
-using Microsoft.Diagnostics.Runtime.Utilities;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -87,15 +86,6 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		var collection = people.AsSpan();
 
 		this.Consume(collection.Length);
-	}
-
-	public override void Cleanup()
-	{
-		base.Cleanup();
-
-		ConsoleLogger.Default.WriteLine($"Ref List Count={this._peopleRefList.Count}");
-		ConsoleLogger.Default.WriteLine($"Record List Count={this._peopleRecordList.Count}");
-		ConsoleLogger.Default.WriteLine($"Val List Count={this._peopleValList.Count}");
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.ClearNulls))]
@@ -205,6 +195,14 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		var people = this._peopleRefList;
 
 		this.Consume(people.IsEqualTo(this._peopleRefList));
+	}
+
+	[IterationCleanup]
+	public void IterationCleanup()
+	{
+		this._peopleRecordList = [.. this.GetPersonRecordArray()];
+		this._peopleRefList = [.. this.GetPersonRefArray()];
+		this._peopleValList = [.. this.GetPersonValArray()];
 	}
 
 	[Benchmark(Description = nameof(ListExtensions.PerformAction) + " :Ref")]

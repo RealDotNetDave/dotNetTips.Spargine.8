@@ -74,11 +74,11 @@ public class ListExtensionsTests
 		Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> nullPerson = null;
 
 		// Test List
-		_ = peopleList.AddLast(nullPerson);
+		peopleList.AddLast(nullPerson);
 
 		Assert.IsTrue(peopleList.FastCount() == Count);
 
-		peopleList = peopleList.AddLast(person);
+		peopleList.AddLast(person);
 
 		Assert.IsTrue(peopleList.Last().Equals(person));
 

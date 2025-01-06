@@ -47,11 +47,11 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static List<T> AddFirst<T>([NotNull] this List<T> collection, [NotNull] T item)
+	public static void AddFirst<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		if (item is null)
 		{
-			return collection;
+			return;
 		}
 
 		//return collection.ArgumentNotNull().ArgumentNotReadOnly().Prepend(item).ToList();
@@ -59,8 +59,6 @@ public static class ListExtensions
 		_ = collection.ArgumentNotNull().ArgumentNotReadOnly();
 
 		collection.Insert(0, item);
-
-		return collection;
 	}
 
 	/// <summary>
@@ -72,18 +70,16 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static List<T> AddLast<T>([NotNull] this List<T> collection, [NotNull] T item)
+	public static void AddLast<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		if (item is null)
 		{
-			return collection;
+			return;
 		}
 
 		_ = collection.ArgumentNotNull().ArgumentNotReadOnly();
 
 		collection.Add(item);
-
-		return collection;
 	}
 
 	/// <summary>
@@ -92,9 +88,11 @@ public static class ListExtensions
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
 	/// <param name="collection">The list to which the items will be added.</param>
 	/// <param name="items">The items to add to the list.</param>
+	/// <returns>The updated list with the items added if they did not already exist.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.New)]
-	public static void AddRangeIfNotExists<T>(this List<T> collection, IEnumerable<T> items)
+	public static List<T> AddRangeIfNotExists<T>(this List<T> collection, IEnumerable<T> items)
 	{
 		collection = collection.ArgumentNotNull();
 		items = items.ArgumentNotNull();
@@ -106,6 +104,8 @@ public static class ListExtensions
 				collection.Add(item);
 			}
 		}
+
+		return collection;
 	}
 
 	/// <summary>

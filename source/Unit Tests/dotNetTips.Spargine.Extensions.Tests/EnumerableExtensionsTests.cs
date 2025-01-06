@@ -60,11 +60,11 @@ public class EnumerableExtensionsTests
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
 		var person1 = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
 
-		people = people.AddFirst(person1);
+		people.AddFirst(person1);
 
 		Assert.IsTrue(people.Count == Count + 1);
 
-		people = people.AddFirst(null);
+		people.AddFirst(null);
 
 		Assert.IsTrue(people.Count == Count + 1);
 	}
@@ -321,7 +321,7 @@ public class EnumerableExtensionsTests
 
 		foreach (var person in dups)
 		{
-			_ = people.AddLast(person);
+			people.AddLast(person);
 		}
 
 		var result = people.HasDuplicates();
