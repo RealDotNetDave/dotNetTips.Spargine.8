@@ -1,4 +1,4 @@
-# DotNetTips.Spargine for Microsoft .NET 8: v2025.8.1.5 
+# DotNetTips.Spargine for Microsoft .NET 8: v2025.8.1.6 
 ![Spargine 8](docs/Graphics/SPARGINE-8-BANNER.png)
 
 Open-source .NET assemblies from dotNetTips.com and **<a href="https://dotnettips.wordpress.com/about/" target="_blank">David (dotNetDave) McCarter</a>**. 
