@@ -4,7 +4,7 @@
 // Created          : 11-16-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 01-06-2025
 // ***********************************************************************
 // <copyright file="InformationAttributeDocGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -204,7 +204,7 @@ public static class InformationAttributeDocGenerator
 	/// </summary>
 	/// <param name="assembly">The assembly for which to generate documentation.</param>
 	/// <returns>A string containing the generated documentation for the entire assembly.</returns>
-	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static string GenerateMarkdownDocumentForAssembly(Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
