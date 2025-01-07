@@ -4,7 +4,7 @@
 // Created          : 01-09-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-12-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensionsCollectionBenchmark.cs" company="DotNetTips.Spargine.Extensions.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -30,10 +30,10 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 [BenchmarkCategory(Categories.Collections)]
 public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 {
+	private KeyValuePair<string, Person<Address>> _personRef;
 
 	private Dictionary<string, Person<Address>> _personRefDictionary;
 	private Dictionary<string, Person<Address>> _personRefDictionaryToInsert;
-
 
 	[Benchmark(Description = nameof(DictionaryExtensions.AddRange))]
 	public void AddRange()
@@ -72,6 +72,7 @@ public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		this._personRefDictionary = this.GetPersonRefDictionary();
 		this._personRefDictionaryToInsert = RandomData.GeneratePersonRefCollection<Address>(this.Count / 2).ToDictionary(p => p.Id);
+		this._personRef = this._personRefDictionary.Last();
 	}
 
 	[Benchmark(Description = nameof(DictionaryExtensions.ToConcurrentDictionary))]
@@ -138,6 +139,17 @@ public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		var people = this._personRefDictionary.ToSortedDictionary();
 
 		this.Consume(people);
+	}
+
+	[Benchmark(Description = nameof(DictionaryExtensions.TryGetValue))]
+	[BenchmarkCategory(Categories.New)]
+	public void TryGetValue()
+	{
+		var people = this._personRefDictionary;
+
+		_ = people.TryGetValue(this._personRef.Key, out var person);
+
+		this.Consume(person);
 	}
 
 	[Benchmark(Description = nameof(DictionaryExtensions.Upsert))]
