@@ -36,6 +36,7 @@ Below is the list of current projects in this repository
                 * **ConcurrentHashSet**: Represents a thread-safe, hash-based unique collection.
                 * **DistinctBlockingCollection**: A custom thread-safe collection type designed for multi-threading tasks, ensuring uniqueness for all items in the collection.
                 * **DistinctConcurrentBag**: Inherits from ConcurrentBag<T> and ensures that all items in the bag are unique.
+            * **AutoDefaultDictionary**: The AutoDefaultDictionary is a specialized dictionary type that automatically returns a predefined default value when a key is not found. This eliminates the need for explicit error handling or null checks when accessing non-existent keys.
             * **FastSortedList**: Custom Collection Class for `<T>`. Items within this collection are sorted only upon request.
             * **ObservableList**: Custom Observable Collection Class for `<T>`. Includes the following events: CollectionChanged, PropertyChanged, PropertyChanging.
         * **CollectionRandomizer**: Designed to shuffle a collection either once or endlessly. Enables users to retrieve items using the GetNext() method.

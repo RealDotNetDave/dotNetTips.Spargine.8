@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-03-2025
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -354,6 +354,99 @@ public class EnumerableExtensionsTests
 	}
 
 	[TestMethod]
+	public void IndexOf_WithComparer_FindsCorrectIndex()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var person = people[Count / 2];
+		var comparer = new PersonComparer();
+
+		var index = people.IndexOf(person, comparer);
+
+		Assert.AreEqual(Count / 2, index);
+	}
+
+	[TestMethod]
+	public void IndexOf_WithComparer_ReturnsNegativeOneWhenNotFound()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+		var comparer = new PersonComparer();
+
+		var index = people.IndexOf(person, comparer);
+
+		Assert.AreEqual(-1, index);
+	}
+
+	[TestMethod]
+	public void IndexOf_WithComparer_ThrowsArgumentNullException_WhenCollectionIsNull()
+	{
+		List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>> nullCollection = null;
+		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+		var comparer = new PersonComparer();
+
+		Assert.ThrowsException<ArgumentNullException>(() => nullCollection.IndexOf(person, comparer));
+	}
+
+	[TestMethod]
+	public void IndexOf_WithComparer_ThrowsArgumentNullException_WhenComparerIsNull()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+		IEqualityComparer<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>> nullComparer = null;
+
+		Assert.ThrowsException<ArgumentNullException>(() => people.IndexOf(person, nullComparer));
+	}
+
+
+
+	[TestMethod]
+	public void IndexOf_WithComparer_ThrowsArgumentNullException_WhenItemIsNull()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> nullPerson = null;
+		var comparer = new PersonComparer();
+
+		Assert.ThrowsException<ArgumentNullException>(() => people.IndexOf(nullPerson, comparer));
+	}
+
+	[TestMethod]
+	public void IndexOf_WithPredicate_FindsCorrectIndex()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var person = people[Count / 2];
+
+		var index = people.IndexOf(p => p.Equals(person));
+
+		Assert.AreEqual(Count / 2, index);
+	}
+
+	[TestMethod]
+	public void IndexOf_WithPredicate_ReturnsNegativeOneWhenNotFound()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
+
+		var index = people.IndexOf(p => p.FirstName == "NonExistentName");
+
+		Assert.AreEqual(-1, index);
+	}
+
+	[TestMethod]
+	public void IndexOf_WithPredicate_ThrowsArgumentNullException_WhenCollectionIsNull()
+	{
+		List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>> nullCollection = null;
+
+		Assert.ThrowsException<ArgumentNullException>(() => nullCollection.IndexOf(p => p.FirstName == "Test"));
+	}
+
+	[TestMethod]
+	public void IndexOf_WithPredicate_ThrowsArgumentNullException_WhenPredicateIsNull()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+
+		Assert.ThrowsException<ArgumentNullException>(() => people.IndexOf(predicate: null));
+	}
+
+	[TestMethod]
 	public void IndexOfTest()
 	{
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
@@ -488,6 +581,102 @@ public class EnumerableExtensionsTests
 		var result = people.RemoveDuplicates();
 		Assert.IsTrue(result.Status == ResultStatus.Succeeded);
 		Assert.IsTrue(result.Value.Count() == Count);
+	}
+
+	[TestMethod]
+	public void ReplaceIf_ReplacesElementsCorrectly()
+	{
+		var numbers = new List<int> { 1, 2, 3, 4, 5 };
+		var result = numbers.ReplaceIf((x, index) => x % 2 == 0, 0).ToList();
+
+		var expected = new List<int> { 1, 0, 3, 0, 5 };
+		CollectionAssert.AreEqual(expected, result);
+	}
+
+	[TestMethod]
+	public void ReplaceIf_ThrowsArgumentNullException_WhenCollectionIsNull()
+	{
+		List<int> nullCollection = null;
+
+		Assert.ThrowsException<ArgumentNullException>(() => nullCollection.ReplaceIf((x, index) => x % 2 == 0, 0).ToList());
+	}
+
+	[TestMethod]
+	public void ReplaceIf_ThrowsArgumentNullException_WhenPredicateIsNull()
+	{
+		var numbers = new List<int> { 1, 2, 3, 4, 5 };
+
+		Assert.ThrowsException<ArgumentNullException>(() => numbers.ReplaceIf(null, 0).ToList());
+	}
+
+	[TestMethod]
+	public void ReplaceIf_WithComplexType_ReplacesElementsCorrectly()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var replacementPerson = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+		var result = people.ReplaceIf((p, index) => index % 2 == 0, replacementPerson).ToList();
+
+		for (int i = 0; i < result.Count; i += 2)
+		{
+			Assert.AreEqual(replacementPerson, result[i]);
+		}
+	}
+
+	[TestMethod]
+	public void ReplaceIf_WithEmptyCollection_ReturnsEmptyCollection()
+	{
+		var emptyList = new List<int>();
+		var result = emptyList.ReplaceIf((x, index) => x % 2 == 0, 0).ToList();
+
+		Assert.AreEqual(0, result.Count);
+	}
+
+
+
+	[TestMethod]
+	public void Scan_AppliesAccumulatorFunctionCorrectly()
+	{
+		var numbers = Enumerable.Range(1, 5);
+		var result = numbers.Scan(0, (acc, x) => acc + x).ToList();
+
+		var expected = new List<int> { 0, 1, 3, 6, 10, 15 };
+		CollectionAssert.AreEqual(expected, result);
+	}
+
+	[TestMethod]
+	public void Scan_ThrowsArgumentNullException_WhenPredicateIsNull()
+	{
+		var numbers = Enumerable.Range(1, 5);
+
+		Assert.ThrowsException<ArgumentNullException>(() => numbers.Scan(0, null).ToList());
+	}
+
+	[TestMethod]
+	public void Scan_ThrowsArgumentNullException_WhenSourceIsNull()
+	{
+		IEnumerable<int> nullSource = null;
+
+		Assert.ThrowsException<ArgumentNullException>(() => nullSource.Scan(0, (acc, x) => acc + x).ToList());
+	}
+
+	[TestMethod]
+	public void Scan_WithComplexType_AppliesAccumulatorFunctionCorrectly()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var result = people.Scan(new Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>(), (acc, p) => p).ToList();
+
+		Assert.AreEqual(Count + 1, result.Count);
+		Assert.AreEqual(people.Last(), result.Last());
+	}
+
+	[TestMethod]
+	public void Scan_WithEmptySource_ReturnsSeedOnly()
+	{
+		var emptyList = new List<int>();
+		var result = emptyList.Scan(0, (acc, x) => acc + x).ToList();
+
+		var expected = new List<int> { 0 };
+		CollectionAssert.AreEqual(expected, result);
 	}
 
 	[TestMethod]

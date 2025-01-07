@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-12-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -49,6 +49,28 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <returns>A random integer value.</returns>
 	private static int GenerateRandomNumber() => RandomNumberGenerator.GetInt32(int.MaxValue);
+
+	/// <summary>
+	/// Applies an accumulator function over a sequence. The specified seed value is used as the initial accumulator value, and the specified function is used to select the result value.
+	/// </summary>
+	/// <typeparam name="T1">The type of the elements of the source sequence.</typeparam>
+	/// <typeparam name="T2">The type of the accumulator value.</typeparam>
+	/// <param name="source">An <see cref="IEnumerable{T1}"/> to aggregate over.</param>
+	/// <param name="seed">The initial accumulator value.</param>
+	/// <param name="predicate">An accumulator function to be invoked on each element.</param>
+	/// <returns>An <see cref="IEnumerable{T2}"/> containing the accumulated values.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="predicate"/> is null.</exception>
+	private static IEnumerable<T2> ScanIterator<T1, T2>(IEnumerable<T1> source, T2 seed, Func<T2, T1, T2> predicate)
+	{
+		var current = seed;
+		yield return current;
+
+		foreach (var item in source)
+		{
+			current = predicate(current, item);
+			yield return current;
+		}
+	}
 
 	/// <summary>
 	/// Adds distinct items to the source enumerable collection.
@@ -673,6 +695,27 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
+	/// Finds the index of the first occurrence of an item in the collection that matches the specified predicate.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to search.</param>
+	/// <param name="predicate">The predicate to match against the elements of the collection.</param>
+	/// <returns>The zero-based index of the first occurrence of an item that matches the predicate within the entire collection, if found; otherwise, -1.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="predicate"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information("Original code by Simon Painter.", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate)
+	{
+		collection = collection.ArgumentNotNull();
+		predicate = predicate.ArgumentNotNull();
+
+		var result = collection.Select((value, index) => (value, index)).FirstOrDefault(value => predicate(value.value));
+
+		return result.Equals(default((T x, int i))) ? -1 : result.index;
+	}
+
+	/// <summary>
 	/// Finds the index of the first occurrence of an item in the collection using a specified comparer.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
@@ -715,13 +758,13 @@ public static class EnumerableExtensions
 	[Pure]
 	[Information(nameof(IsNullOrEmpty), "David McCarter", "1/7/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsNullOrEmpty([AllowNull] this IEnumerable collection) => collection.IsNull() ||
-		collection.GetEnumerator().MoveNext() is false;
+	collection.GetEnumerator().MoveNext() is false;
 
 	/// <summary>
 	/// Concatenates the members of a collection, using the specified separator between each member.
 	/// </summary>
 	/// <param name="collection">The collection of objects to concatenate.</param>
-	/// <param name="separator">The string to use as a separator. <see cref="ControlChars.DefaultSeparator"/> is used if this parameter is not specified.</param>
+	/// <param name="separator">The string to use as a separator. <see cref="ControlChars.DefaultSeparator"/> is used if source parameter is not specified.</param>
 	/// <returns>A string that consists of the members of <paramref name="collection"/> delimited by the <paramref name="separator"/> string. If <paramref name="collection"/> has no members, the method returns <see cref="string.Empty"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="separator"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -874,7 +917,7 @@ public static class EnumerableExtensions
 		collection = collection.ArgumentNotNull();
 		pageCount = pageCount.EnsureMinimum(1);
 
-		// Cache this to avoid evaluating it twice
+		// Cache source to avoid evaluating it twice
 		var count = collection.Count();
 
 		if (count < pageCount)
@@ -933,6 +976,45 @@ public static class EnumerableExtensions
 		items = items.ArgumentNotNull();
 
 		return new SimpleResult<IEnumerable<T>>(new HashSet<T>(items).AsEnumerable());
+	}
+
+	/// <summary>
+	/// Replaces elements in the collection based on a specified condition.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to process.</param>
+	/// <param name="predicate">A function that determines whether an element should be replaced, based on the element and its index.</param>
+	/// <param name="replacement">The replacement value for elements that meet the condition.</param>
+	/// <returns>A new collection with elements replaced based on the specified condition.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="predicate"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, OptimizationStatus = OptimizationStatus.None, Status = Status.New)]
+	public static IEnumerable<T> ReplaceIf<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, int, bool> predicate, T replacement)
+	{
+		collection = collection.ArgumentNotNull();
+		predicate = predicate.ArgumentNotNull();
+
+		return collection.Select((obj, pos) => predicate(obj, pos) ? replacement : obj);
+	}
+
+	/// <summary>
+	/// Applies an accumulator function over a sequence. The specified seed value is used as the initial accumulator value, and the specified function is used to select the result value.
+	/// </summary>
+	/// <typeparam name="T1">The type of the elements of the source sequence.</typeparam>
+	/// <typeparam name="T2">The type of the accumulator value.</typeparam>
+	/// <param name="source">An <see cref="IEnumerable{T1}"/> to aggregate over.</param>
+	/// <param name="seed">The initial accumulator value.</param>
+	/// <param name="predicate">An accumulator function to be invoked on each element.</param>
+	/// <returns>An <see cref="IEnumerable{T2}"/> containing the accumulated values.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="predicate"/> is null.</exception>
+	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, OptimizationStatus = OptimizationStatus.None, Status = Status.New)]
+	public static IEnumerable<T2> Scan<T1, T2>([NotNull] this IEnumerable<T1> source, [NotNull] T2 seed, [NotNull] Func<T2, T1, T2> predicate)
+	{
+		source = source.ArgumentNotNull();
+		predicate = predicate.ArgumentNotNull();
+
+		return ScanIterator(source, seed, predicate);
 	}
 
 	/// <summary>
@@ -1301,7 +1383,7 @@ public static class EnumerableExtensions
 
 		// Assuming 'item' already exists and 'list' contains unique items,
 		// an 'else' block here would handle updating the existing item.
-		// The specifics of this operation would depend on the requirements.
+		// The specifics of source operation would depend on the requirements.
 		return list;
 	}
 }
