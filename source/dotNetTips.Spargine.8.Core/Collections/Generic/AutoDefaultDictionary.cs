@@ -4,12 +4,16 @@
 // Created          : 01-03-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-04-2025
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="AutoDefaultDictionary.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>
+// The `AutoDefaultDictionary` class can be used in scenarios
+// where a default value is needed for missing keys, reducing the need
+// for explicit checks and handling of missing keys.
+//</ summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -37,31 +41,21 @@ public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISe
 	/// Initializes a new instance of the <see cref="AutoDefaultDictionary{TKey, TValue}"/> class with the default value for <typeparamref name="TValue"/>.
 	/// </summary>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public AutoDefaultDictionary()
-	{
-		this._defaultValue = default;
-	}
+	public AutoDefaultDictionary() => this._defaultValue = default;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AutoDefaultDictionary{TKey, TValue}"/> class with the specified default value for <typeparamref name="TValue"/>.
 	/// </summary>
 	/// <param name="defaultValue">The default value to return when a key is not found in the dictionary.</param>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public AutoDefaultDictionary(TValue defaultValue)
-	{
-		this._defaultValue = defaultValue;
-
-	}
+	public AutoDefaultDictionary(TValue defaultValue) => this._defaultValue = defaultValue;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AutoDefaultDictionary{TKey, TValue}"/> class with the specified comparer.
 	/// </summary>
 	/// <param name="comparer">The comparer to use when comparing keys.</param>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public AutoDefaultDictionary(IEqualityComparer<TKey> comparer) : base(comparer)
-	{
-		this._defaultValue = default;
-	}
+	public AutoDefaultDictionary(IEqualityComparer<TKey> comparer) : base(comparer) => this._defaultValue = default;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AutoDefaultDictionary{TKey, TValue}"/> class with the specified dictionary and default value.
@@ -69,10 +63,7 @@ public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISe
 	/// <param name="dictionary">The dictionary to initialize with.</param>
 	/// <param name="defaultValue">The default value to return when a key is not found in the dictionary.</param>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public AutoDefaultDictionary(IDictionary<TKey, TValue> dictionary, TValue defaultValue) : base(dictionary)
-	{
-		this._defaultValue = defaultValue;
-	}
+	public AutoDefaultDictionary(IDictionary<TKey, TValue> dictionary, TValue defaultValue) : base(dictionary) => this._defaultValue = defaultValue;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AutoDefaultDictionary{TKey, TValue}"/> class with the specified key-value pair collection and default value.
@@ -80,10 +71,7 @@ public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISe
 	/// <param name="keyValuePairs">The key-value pairs to initialize with.</param>
 	/// <param name="defaultValue">The default value to return when a key is not found in the dictionary.</param>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public AutoDefaultDictionary(IEnumerable<KeyValuePair<TKey, TValue>> keyValuePairs, TValue defaultValue) : base(keyValuePairs.ToDictionary(kvp => kvp.Key, kvp => kvp.Value))
-	{
-		this._defaultValue = defaultValue;
-	}
+	public AutoDefaultDictionary(IEnumerable<KeyValuePair<TKey, TValue>> keyValuePairs, TValue defaultValue) : base(keyValuePairs.ToDictionary(kvp => kvp.Key, kvp => kvp.Value)) => this._defaultValue = defaultValue;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AutoDefaultDictionary{TKey, TValue}"/> class with the specified default value and comparer.
@@ -91,10 +79,7 @@ public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISe
 	/// <param name="defaultValue">The default value to return when a key is not found in the dictionary.</param>
 	/// <param name="comparer">The comparer to use when comparing keys.</param>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public AutoDefaultDictionary(TValue defaultValue, IEqualityComparer<TKey> comparer) : base(comparer)
-	{
-		this._defaultValue = defaultValue;
-	}
+	public AutoDefaultDictionary(TValue defaultValue, IEqualityComparer<TKey> comparer) : base(comparer) => this._defaultValue = defaultValue;
 
 	/// <summary>
 	/// Gets or sets the value associated with the specified key. If the key does not exist, the default value is returned and added to the dictionary.

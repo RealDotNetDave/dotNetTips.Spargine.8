@@ -4,14 +4,15 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
-// Provides methods to generate and manipulate ULIDs
-// (Universally Unique Lexicographically Sortable Identifiers)
+// The `UlidGenerator` class can be used to generate unique identifiers
+// that are lexicographically sortable, making them useful for
+// databases and other systems that benefit from ordered unique identifiers.
 // </summary>
 // ***********************************************************************
 
