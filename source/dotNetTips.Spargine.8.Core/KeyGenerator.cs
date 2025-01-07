@@ -4,7 +4,7 @@
 // Created          : 05-30-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-03-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="KeyGenerator.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -39,6 +39,6 @@ public static class KeyGenerator
 	/// <returns>A unique key as a string with the specified prefix.</returns>
 	/// <example>Example: DataRecordf7f0af78003d4ab194b5a4024d02112a</example>
 	[Information(nameof(GenerateKey), "David McCarter", "5/30/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
-	public static string GenerateKey([NotNull] string prefix) => $"{prefix.ArgumentNotNull()}{Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture)}";
+	public static string GenerateKey([NotNull] in string prefix) => $"{prefix.ArgumentNotNull()}{Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture)}";
 
 }

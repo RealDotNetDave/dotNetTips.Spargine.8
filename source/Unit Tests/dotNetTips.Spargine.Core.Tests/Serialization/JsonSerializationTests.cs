@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="JsonSerializationTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -178,4 +178,3 @@ public class JsonSerializationTests
 			() => JsonSerialization.DeserializeFromFile<Person<Address>>(new FileInfo($"{fileName}.bogus")));
 	}
 }
-

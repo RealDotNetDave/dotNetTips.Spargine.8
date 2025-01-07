@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-26-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -47,7 +47,7 @@ public static class SHA256PasswordHasher
 	/// <returns>A byte array containing the hashed password combined with the salt.</returns>
 	/// <remarks>This method combines the password and salt before applying the SHA256 hashing algorithm.
 	/// The resulting hash can be used for securely storing passwords.</remarks>
-	private static byte[] HashPasswordWithSalt(string password, byte[] salt)
+	private static byte[] HashPasswordWithSalt(in string password, in byte[] salt)
 	{
 		var saltAndPassword = new byte[salt.Length + (password.Length * sizeof(char))];
 
@@ -131,7 +131,7 @@ public static class SHA256PasswordHasher
 	/// Console.WriteLine(result == PasswordVerificationResult.Success ? "Password verified" : "Password verification failed");
 	/// </code></example>
 	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static PasswordVerificationResult VerifyHashedPassword(string hashedPassword, [NotNull] string password)
+	public static PasswordVerificationResult VerifyHashedPassword(in string hashedPassword, [NotNull] in string password)
 	{
 		if (string.IsNullOrEmpty(hashedPassword))
 		{

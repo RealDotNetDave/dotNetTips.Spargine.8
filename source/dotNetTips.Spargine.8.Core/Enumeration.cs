@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-28-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -126,7 +126,7 @@ public class Enumeration : IComparable
 	/// <returns>An instance of the enumeration that matches the predicate.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the predicate is null.</exception>
 	/// <exception cref="InvalidOperationException">Thrown when no matching item is found.</exception>
-	private static T Parse<T>(string description, [NotNull] Func<T, bool> predicate) where T : Enumeration
+	private static T Parse<T>(in string description, [NotNull] in Func<T, bool> predicate) where T : Enumeration
 	{
 		var matchingItem = GetAll<T>().FirstOrDefault(predicate);
 

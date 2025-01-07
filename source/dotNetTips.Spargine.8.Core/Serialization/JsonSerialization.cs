@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-04-2025
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -52,7 +52,7 @@ public static class JsonSerialization
 	/// including objects, arrays, and primitive values. It is designed to handle complex JSON structures
 	/// and can be used for testing and validation purposes.
 	/// </remarks>
-	private static bool JsonEqual(JsonElement expected, JsonElement actual)
+	private static bool JsonEqual(in JsonElement expected, in JsonElement actual)
 	{
 		var valueKind = expected.ValueKind;
 
@@ -138,8 +138,13 @@ public static class JsonSerialization
 	/// It throws an <see cref="InvalidOperationException"/> if the deserialization process fails
 	/// or if the result is null, ensuring that a valid object is always returned.</remarks>
 	[Information(nameof(Deserialize), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json) => JsonSerializer.Deserialize<TResult>(json, _options) ??
-		throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
+	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json)
+	{
+		json = json.ArgumentNotNullOrEmpty();
+
+		return JsonSerializer.Deserialize<TResult>(json, _options) ??
+				throw new InvalidOperationException($"Failed to deserialize the JSON string to {typeof(TResult)}.");
+	}
 
 	/// <summary>
 	/// Reads JSON content from a specified file and deserializes it into an object.
@@ -151,6 +156,8 @@ public static class JsonSerialization
 	[Information(nameof(DeserializeFromFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TResult DeserializeFromFile<TResult>([NotNull] FileInfo file) where TResult : class
 	{
+		file = file.ArgumentNotNull();
+
 		if (file.Exists is false)
 		{
 			ExceptionThrower.ThrowFileNotFoundException(Resources.FileNotFoundCannotDeserializeFromJSON, file.FullName);
@@ -166,7 +173,7 @@ public static class JsonSerialization
 	/// <param name="expected">The expected.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool JsonEqual([NotNull] string actual, string expected)
+	public static bool JsonEqual([NotNull] string actual, in string expected)
 	{
 		actual = actual.ArgumentNotNullOrEmpty();
 

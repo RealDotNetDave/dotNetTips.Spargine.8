@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-06-2025
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -103,7 +103,7 @@ public static class TypeHelper
 	/// <param name="stream">The stream to analyze.</param>
 	/// <returns><c>true</c> if the stream represents a .NET assembly; otherwise, <c>false</c>.</returns>
 	[Information(nameof(IsDotNetAssembly), author: "David McCarter", createdOn: "5/20/2024", OptimizationStatus = OptimizationStatus.Completed)]
-	private static bool IsDotNetAssembly(Stream stream)
+	private static bool IsDotNetAssembly(in Stream stream)
 	{
 		try
 		{
@@ -171,7 +171,7 @@ public static class TypeHelper
 	/// <param name="type">The type to process for display.</param>
 	/// <param name="options">Options that specify how the display name should be formatted.</param>
 	[Information(OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	private static void ProcessType(StringBuilder builder, Type type, DisplayNameOptions options)
+	private static void ProcessType(in StringBuilder builder, in Type type, in DisplayNameOptions options)
 	{
 		if (type.IsGenericType)
 		{
@@ -262,6 +262,8 @@ public static class TypeHelper
 	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] Type baseType, bool classOnly)
 	{
+		baseType = baseType.ArgumentNotNull();
+
 		var path = AppContext.BaseDirectory;
 
 		return FindDerivedTypes(new DirectoryInfo(path), SearchOption.TopDirectoryOnly, baseType, classOnly);
@@ -381,7 +383,7 @@ public static class TypeHelper
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="json"/> is null or empty.</exception>
 	/// <exception cref="JsonException">Thrown if the JSON is invalid or the deserialization fails.</exception>
 	[Information(nameof(FromJson), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static T FromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json)
+	public static T FromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] in string json)
 		where T : class => JsonSerializer.Deserialize<T>(json);
 
 	/// <summary>
@@ -521,7 +523,7 @@ public static class TypeHelper
 	/// <param name="fullName">If true, the full name of the type is returned; otherwise, the short name is returned.</param>
 	/// <returns>The display name of the type of the specified object.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/31/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static string GetTypeDisplayName([NotNull] object item, bool fullName = true) => item is null ? null : GetTypeDisplayName(item.GetType(), fullName);
+	public static string GetTypeDisplayName([NotNull] in object item, bool fullName = true) => item is null ? null : GetTypeDisplayName(item.GetType(), fullName);
 
 	/// <summary>
 	/// Gets the display name of the specified type.
@@ -557,7 +559,7 @@ public static class TypeHelper
 	/// <param name="type">The type to check.</param>
 	/// <returns><c>true</c> if the type is a built-in .NET type; otherwise, <c>false</c>.</returns>
 	[Information(nameof(IsBuiltinType), author: "David McCarter", createdOn: "11/6/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/Spargine8", Status = Status.Available)]
-	public static bool IsBuiltinType(Type type)
+	public static bool IsBuiltinType(in Type type)
 	{
 		if (type == null)
 		{
