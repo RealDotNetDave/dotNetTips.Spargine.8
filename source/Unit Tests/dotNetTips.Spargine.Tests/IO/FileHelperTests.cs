@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-25-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="FileHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Versioning;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Core.Devices;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
 using DotNetTips.Spargine.Tester;
@@ -77,7 +78,7 @@ public class FileHelperTests
 	public void DeleteFiles_Full_Test()
 	{
 		//Generate temp files
-		var files = RandomData.GenerateFiles(FileCount, FileLength, $"{nameof(this.DeleteFiles_Full_Test)}.{DateTime.Now.Ticks}");
+		var files = RandomData.GenerateFiles(FileCount, FileLength, $"{nameof(this.DeleteFiles_Full_Test)}.{Clock.LocalTime.Ticks}");
 
 		//Delete files
 		var result = FileHelper.DeleteFiles(files.Files);
@@ -94,7 +95,7 @@ public class FileHelperTests
 	public void DeleteFiles_Partial_Test()
 	{
 		//Generate temp files
-		var files = RandomData.GenerateFiles(FileCount, FileLength, $"{nameof(this.DeleteFiles_Partial_Test)}.{DateTime.Now.Ticks}");
+		var files = RandomData.GenerateFiles(FileCount, FileLength, $"{nameof(this.DeleteFiles_Partial_Test)}.{Clock.LocalTime.Ticks}");
 
 		//Set files to read only
 		foreach (var file in files.Files.Shuffle(2))
@@ -127,7 +128,7 @@ public class FileHelperTests
 	public void DeleteFiles_StopOnFirstError_Test()
 	{
 		//Generate temp files
-		var files = RandomData.GenerateFiles(FileCount, FileLength, $"{nameof(this.DeleteFiles_StopOnFirstError_Test)}.{DateTime.Now.Ticks}");
+		var files = RandomData.GenerateFiles(FileCount, FileLength, $"{nameof(this.DeleteFiles_StopOnFirstError_Test)}.{Clock.LocalTime.Ticks}");
 
 		//Set files to read only
 		foreach (var file in files.Files.Shuffle(2))

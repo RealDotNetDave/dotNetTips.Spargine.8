@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="Clock.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -60,7 +60,7 @@ public static class Clock
 	/// </summary>
 	/// <value>The local time.</value>
 	[Information(nameof(LocalTime), "David McCarter", "11/11/2020", Status = Status.Available)]
-	public static DateTime LocalTime => DateTime.Now.ToLocalTime();
+	public static DateTime LocalTime => DateTime.Now;
 
 	/// <summary>
 	/// Gets the current tick count by utilizing <see cref="Environment.TickCount"/>.

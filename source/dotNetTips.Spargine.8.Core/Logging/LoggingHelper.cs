@@ -21,6 +21,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
+using DotNetTips.Spargine.Core.Devices;
 using Microsoft.Extensions.Logging;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -263,7 +264,7 @@ public static class LoggingHelper
 			AppDomain.CurrentDomain.ResourceResolve += CurrentDomain_ResourceResolve;
 			AppDomain.CurrentDomain.TypeResolve += CurrentDomain_TypeResolve;
 
-			FastLogger.LogInformation(logger, $"Starting to capture all domain events on {DateTime.UtcNow} UTC");
+			FastLogger.LogInformation(logger, $"Starting to capture all domain events on {Clock.UtcTime} UTC");
 		}
 	}
 
@@ -287,7 +288,7 @@ public static class LoggingHelper
 			_appDomainExceptionLogger = logger;
 			AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
 
-			FastLogger.LogInformation(logger, $"Starting to capture all exceptions on {DateTime.UtcNow} UTC");
+			FastLogger.LogInformation(logger, $"Starting to capture all exceptions on {Clock.UtcTime} UTC");
 		}
 	}
 
@@ -310,7 +311,7 @@ public static class LoggingHelper
 			_appDomainUnhandledExceptionLogger = logger;
 			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-			FastLogger.LogInformation(logger, $"Starting to capture unhandled exceptions on {DateTime.UtcNow} UTC");
+			FastLogger.LogInformation(logger, $"Starting to capture unhandled exceptions on {Clock.UtcTime} UTC");
 		}
 	}
 

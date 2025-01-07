@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="ThreadExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Core.Devices;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -66,9 +67,9 @@ public static class ThreadExtensions
 		thread = thread.ArgumentNotNull();
 		waitIterations = waitIterations.ArgumentInRange(lower: 0);
 
-		var stopAt = DateTime.Now.Add(interval);
+		var stopAt = Clock.LocalTime.Add(interval);
 
-		while (thread.IsAlive && DateTime.Now < stopAt)
+		while (thread.IsAlive && Clock.LocalTime < stopAt)
 		{
 			Thread.SpinWait(waitIterations);
 		}

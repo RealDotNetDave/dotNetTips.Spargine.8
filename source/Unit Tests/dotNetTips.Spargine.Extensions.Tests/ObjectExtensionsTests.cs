@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-21-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="ObjectExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -17,6 +17,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text.Json;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Core.Devices;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -149,7 +150,7 @@ public class ObjectExtensionsTests : TestClass
 			Id = RandomData.GenerateKey(),
 			Person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>(),
 			PersonRecord = RandomData.GeneratePersonRecord(),
-			Today = DateTime.Now
+			Today = Clock.LocalTime
 		};
 
 		var result = personProper.PropertiesToDictionary(memberName: $"Person-{personProper.Id}", ignoreNulls: true);

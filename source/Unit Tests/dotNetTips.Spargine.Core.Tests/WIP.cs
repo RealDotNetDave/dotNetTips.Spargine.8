@@ -4,7 +4,7 @@
 // Created          : 05-05-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-05-2023
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="WIP.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -17,6 +17,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using DotNetTips.Spargine.Core.Devices;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -52,7 +53,7 @@ public class WIP
 
 		Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-HK");
 
-		var result = string.Format(CultureInfo.CurrentCulture, "The time is now: {0}.", DateTime.Now);
+		var result = string.Format(CultureInfo.CurrentCulture, "The time is now: {0}.", Clock.LocalTime);
 
 		Assert.IsNotNull(result);
 	}

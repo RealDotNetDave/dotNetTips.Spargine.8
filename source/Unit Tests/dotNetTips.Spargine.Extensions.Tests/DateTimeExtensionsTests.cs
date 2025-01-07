@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-21-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="DateTimeExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.Diagnostics.CodeAnalysis;
+using DotNetTips.Spargine.Core.Devices;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -36,7 +37,7 @@ public class DateTimeExtensionsTests : TestClass
 	[TestMethod]
 	public void DateTimeIntersectsTest()
 	{
-		var now = DateTime.Now;
+		var now = Clock.LocalTime;
 
 		var result = now.Intersects(endDate: now.AddDays(100), intersectingStartDate: now.AddDays(1), intersectingEndDate: now.AddDays(10));
 
@@ -51,7 +52,7 @@ public class DateTimeExtensionsTests : TestClass
 	[TestMethod]
 	public void DateTimeIsInRangeTest()
 	{
-		var now = DateTime.Now;
+		var now = Clock.LocalTime;
 
 		var result = now.IsInRange(beginningTime: new DateTime(1970), endTime: now.AddDays(10));
 
@@ -66,7 +67,7 @@ public class DateTimeExtensionsTests : TestClass
 	[TestMethod]
 	public void DateTimeLocalTimeFromUtcTest()
 	{
-		var now = DateTime.Now;
+		var now = Clock.LocalTime;
 
 		var result = now.LocalTimeFromUtc(timezoneFromUtc: -5);
 
@@ -81,7 +82,7 @@ public class DateTimeExtensionsTests : TestClass
 	[TestMethod]
 	public void DateTimeMaxTest()
 	{
-		var now = DateTime.Now;
+		var now = Clock.LocalTime;
 
 		var result = now.Max(now.Subtract(new TimeSpan(1, 0, 0, 0)));
 
@@ -100,7 +101,7 @@ public class DateTimeExtensionsTests : TestClass
 
 		//PrintResult(result, nameof(this.DateTimeOffsetGetLastDayOfWeekTest));
 
-		Assert.IsTrue(result <= DateTime.Now);
+		Assert.IsTrue(result <= Clock.LocalTime);
 	}
 
 	/// <summary>
@@ -113,7 +114,7 @@ public class DateTimeExtensionsTests : TestClass
 
 		//PrintResult(result, nameof(this.DateTimeOffsetGetNextDayOfWeekTest));
 
-		Assert.IsTrue(result >= DateTime.Now);
+		Assert.IsTrue(result >= Clock.LocalTime);
 	}
 
 	/// <summary>
@@ -195,7 +196,7 @@ public class DateTimeExtensionsTests : TestClass
 	[TestMethod]
 	public void DateTimeToFormattedStringTest()
 	{
-		var now = DateTime.Now;
+		var now = Clock.LocalTime;
 
 		var result = now.ToFormattedString(DateTimeFormat.FullDateLongTime);
 
@@ -306,7 +307,7 @@ public class DateTimeExtensionsTests : TestClass
 	[TestMethod]
 	public void DateTimeToFriendlyStringTest()
 	{
-		var result = DateTime.Now.ToFriendlyDateString();
+		var result = Clock.LocalTime.ToFriendlyDateString();
 
 		//PrintResult(result, nameof(this.DateTimeToFriendlyStringTest));
 
@@ -345,7 +346,7 @@ public class DateTimeExtensionsTests : TestClass
 	[TestMethod]
 	public void IsInRangeThrowsExceptionTestDateTime()
 	{
-		var now = DateTime.Now;
+		var now = Clock.LocalTime;
 
 		var result1 = now.IsInRangeThrowsException(now.Subtract(new TimeSpan(days: 1, hours: 0, minutes: 0, seconds: 0)), now.AddDays(value: 1), paramName: "TEST");
 
@@ -405,7 +406,7 @@ public class DateTimeExtensionsTests : TestClass
 	[TestMethod]
 	public void ToFromMilliEpochTimeTest()
 	{
-		var currentTime = DateTime.Now;
+		var currentTime = Clock.LocalTime;
 		var epochTime = currentTime.ToMilliEpochTime();
 
 		//PrintResult(epochTime, nameof(this.ToFromMilliEpochTimeTest));

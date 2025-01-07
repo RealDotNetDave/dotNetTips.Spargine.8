@@ -4,7 +4,7 @@
 // Created          : 11-24-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-24-2024
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="ThreadExtensionsTests.cs" company="DotNetTips.Spargine.Extensions.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -14,6 +14,7 @@
 
 using System;
 using System.Threading;
+using DotNetTips.Spargine.Core.Devices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -104,9 +105,9 @@ public class ThreadExtensionsTests
 		var interval = TimeSpan.FromTicks(1000);
 
 		// Act
-		var startTime = TimeSpan.FromTicks(DateTime.Now.Ticks);
+		var startTime = TimeSpan.FromTicks(Clock.LocalTime.Ticks);
 		thread.WaitUntil(interval);
-		var endTime = TimeSpan.FromTicks(DateTime.Now.Ticks);
+		var endTime = TimeSpan.FromTicks(Clock.LocalTime.Ticks);
 
 		// Assert
 		Assert.IsTrue(endTime - startTime >= interval, "The method should wait for at least the specified interval.");
@@ -121,10 +122,10 @@ public class ThreadExtensionsTests
 		var waitIterations = 1000;
 
 		// Act
-		var startTime = DateTime.Now;
+		var startTime = Clock.LocalTime;
 		thread.WaitUntil(interval, waitIterations);
 
-		var endTime = DateTime.Now;
+		var endTime = Clock.LocalTime;
 
 		// Assert
 		Assert.IsTrue(endTime.Ticks - startTime.Ticks >= interval.Ticks, "The method should wait for at least the specified interval.");
