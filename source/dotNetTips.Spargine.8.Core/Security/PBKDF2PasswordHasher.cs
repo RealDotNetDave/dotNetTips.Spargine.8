@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-06-2025
+// Last Modified On : 01-07-2025
 // ***********************************************************************
 // <copyright file="PBKDF2PasswordHasher.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -36,6 +36,9 @@ public static class PBKDF2PasswordHasher
 	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool FixedTimeEquals([NotNull] byte[] left, [NotNull] byte[] right)
 	{
+		left = left.ArgumentItemsExists(nameof(left));
+		right = right.ArgumentItemsExists(nameof(right));
+
 		// NoOptimization because we want this method to be exactly as non-short-circuiting as written.
 		// NoInlining because the NoOptimization would get lost if the method got inlined.
 		if (left.Length != right.Length)
@@ -43,14 +46,7 @@ public static class PBKDF2PasswordHasher
 			return false;
 		}
 
-		var returnValue = 0;
-
-		for (var byteCount = 0; byteCount < left.Length; byteCount++)
-		{
-			returnValue |= left[byteCount] - right[byteCount];
-		}
-
-		return returnValue == 0;
+		return CryptographicOperations.FixedTimeEquals(left, right);
 	}
 
 	/// <summary>
@@ -61,12 +57,13 @@ public static class PBKDF2PasswordHasher
 	[Information(nameof(HashPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static string HashPassword([NotNull] string password)
 	{
-		byte[] salt;
+		password = password.ArgumentNotNull();
+
+		var salt = RandomNumberGenerator.GetBytes(SaltSize);
 		byte[] bytes;
 
-		using (var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, SaltSize, Pbkdf2IterCount, HashAlgorithmName))
+		using (var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, salt, Pbkdf2IterCount, HashAlgorithmName))
 		{
-			salt = rfc2898DeriveBytes.Salt;
 			bytes = rfc2898DeriveBytes.GetBytes(Pbkdf2SubkeyLength);
 		}
 
@@ -95,7 +92,7 @@ public static class PBKDF2PasswordHasher
 
 		var passwordBytes = Convert.FromBase64String(hashedPassword);
 
-		if (passwordBytes.Length < 1)
+		if (passwordBytes.Length < 1 + SaltSize + Pbkdf2SubkeyLength)
 		{
 			return PasswordVerificationResult.Failed;
 		}
@@ -108,20 +105,19 @@ public static class PBKDF2PasswordHasher
 		}
 
 		var salt = new byte[SaltSize];
-
 		Buffer.BlockCopy(passwordBytes, 1, salt, 0, SaltSize);
-		var subKey = new byte[Pbkdf2SubkeyLength];
 
+		var subKey = new byte[Pbkdf2SubkeyLength];
 		Buffer.BlockCopy(passwordBytes, 1 + SaltSize, subKey, 0, Pbkdf2SubkeyLength);
 
 		byte[] bytes;
-
 		using (var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, salt, Pbkdf2IterCount, HashAlgorithmName))
 		{
 			bytes = rfc2898DeriveBytes.GetBytes(Pbkdf2SubkeyLength);
 		}
 
-		return FixedTimeEquals(subKey, bytes) ? PasswordVerificationResult.Success : PasswordVerificationResult.Failed;
+		return CryptographicOperations.FixedTimeEquals(subKey, bytes) ? PasswordVerificationResult.Success : PasswordVerificationResult.Failed;
+
 	}
 
 	/// <summary>
