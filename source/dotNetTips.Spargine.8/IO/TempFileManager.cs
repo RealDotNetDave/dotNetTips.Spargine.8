@@ -4,13 +4,16 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-04-2025
+// Last Modified On : 01-08-2025
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>TempFileManager creates and maintains a list of temporary files.</summary>
+// <summary>
+// TempFileManager creates and maintains a list of temporary files.
+// </summary>
 // ***********************************************************************
+using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Security;
@@ -36,15 +39,7 @@ public class TempFileManager : IDisposable
 	/// <summary>
 	/// The list of temporary files managed by this instance.
 	/// </summary>
-	private readonly List<string> _files = [];
-
-	/// <summary>
-	/// Lock object for thread safety.
-	/// </summary>
-#pragma warning disable IDE0330
-	private readonly object _lock = new();
-#pragma warning restore IDE0330 //TODO: REMOVE AFTER MOVING TO DOTNET 10
-
+	private readonly ConcurrentBag<string> _files = [];
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="TempFileManager" /> class.
@@ -95,14 +90,10 @@ public class TempFileManager : IDisposable
 	[Information("Creates a new temporary file.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public string CreateFile()
 	{
-		var tempFile = GenerateRandomFile();
+		var file = GenerateRandomFile();
+		this._files.Add(file);
 
-		lock (this._lock)
-		{
-			this._files.Add(tempFile);
-		}
-
-		return tempFile;
+		return file;
 	}
 
 	/// <summary>
@@ -114,19 +105,16 @@ public class TempFileManager : IDisposable
 	public ReadOnlyCollection<string> CreateFiles(int count)
 	{
 		count = count.ArgumentInRange(1);
-		var files = new List<string>(count);
+		var files = new ConcurrentBag<string>();
 
-		for (var fileCount = 0; fileCount < count; fileCount++)
+		_ = Parallel.For(0, count, _ =>
 		{
-			files.Add(GenerateRandomFile());
-		}
+			var file = GenerateRandomFile();
+			files.Add(file);
+			this._files.Add(file);
+		});
 
-		lock (this._lock)
-		{
-			this._files.AddRange(files);
-		}
-
-		return files.ToReadOnlyCollection();
+		return files.ToList().AsReadOnly();
 	}
 
 	/// <summary>
@@ -135,16 +123,10 @@ public class TempFileManager : IDisposable
 	[Information("Deletes all temporary files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void DeleteAllFiles()
 	{
-		lock (this._lock)
-		{
-			if (this._files.HasItems())
-			{
-				foreach (var fileName in this._files.ToList())
-				{
-					this.DeleteFile(fileName);
-				}
-			}
-		}
+		_ = Parallel.ForEach(this._files, DeleteFile);
+
+		while (this._files.TryTake(out _))
+		{ }
 	}
 
 	/// <summary>
@@ -159,15 +141,9 @@ public class TempFileManager : IDisposable
 			return;
 		}
 
-		if (File.Exists(file))
-		{
-			File.Delete(file);
-		}
+		File.Delete(file);
 
-		lock (this._lock)
-		{
-			_ = this._files.Remove(file);
-		}
+		_ = _files.TryTake(out _);
 	}
 
 	/// <summary>
@@ -187,9 +163,6 @@ public class TempFileManager : IDisposable
 	[Information("Gets the list of files currently being managed.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public IReadOnlyCollection<string> GetManagedFiles()
 	{
-		lock (this._lock)
-		{
-			return this._files.AsReadOnly();
-		}
+		return this._files.ToList().AsReadOnly();
 	}
 }

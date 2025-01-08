@@ -158,7 +158,6 @@ public class DirectoryHelperTests
 	{
 		// Arrange
 		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var directory = Directory.CreateDirectory(tempDirectoryPath);
 
 		// Act
 		DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath));
@@ -174,7 +173,6 @@ public class DirectoryHelperTests
 	{
 		// Arrange
 		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var directory = Directory.CreateDirectory(tempDirectoryPath);
 
 		// Simulate a condition that would initially prevent deletion, such as a temporary lock by another process
 		// For testing purposes, this is simulated by a short delay within the test, as actual process locking is complex and flaky in automated tests
