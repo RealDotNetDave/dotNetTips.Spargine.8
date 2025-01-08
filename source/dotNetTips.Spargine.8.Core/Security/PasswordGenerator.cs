@@ -4,7 +4,7 @@
 // Created          : 11-12-2024
 //
 // Last Modified By : david
-// Last Modified On : 01-06-2025
+// Last Modified On : 01-08-2025
 // ***********************************************************************
 // <copyright file="PasswordGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)

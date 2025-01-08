@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 01-08-2025
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -53,8 +53,8 @@ public static class EncryptionHelper
 		var aesKey = new byte[32];
 		var aesIV = new byte[16];
 
-		Buffer.BlockCopy(hash, 0, aesKey, 0, aesKey.Length);
-		Buffer.BlockCopy(hash, 0, aesIV, 0, aesIV.Length);
+		hash.AsSpan(0, aesKey.Length).CopyTo(aesKey);
+		hash.AsSpan(0, aesIV.Length).CopyTo(aesIV);
 
 		return (aesKey, aesIV);
 	}

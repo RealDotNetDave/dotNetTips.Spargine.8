@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 01-08-2025
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -43,11 +43,14 @@ public static class App
 	private const string TempAspFiles = "\\Temporary ASP.NET Files\\";
 
 	/// <summary>
-	/// The application information.
+	/// Application information.
 	/// </summary>
 	private static readonly Lazy<AppInfo> _appInfo = new(InitAppInfo());
 
-	private static readonly ComputerInfo _computerInfo = new();
+	/// <summary>
+	/// Computer information.
+	/// </summary>
+	private static readonly Lazy<ComputerInfo> _computerInfo = new(() => new ComputerInfo());
 
 	/// <summary>
 	/// The culture names
@@ -159,7 +162,7 @@ public static class App
 	/// Console.WriteLine(folderPath);
 	/// </code></example>
 	[Information(nameof(ExecutingFolder), author: "David McCarter", createdOn: "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static string ExecutingFolder() => Path.GetDirectoryName(_computerInfo.CurrentWorkingDirectory);
+	public static string ExecutingFolder() => Path.GetDirectoryName(_computerInfo.Value.CurrentWorkingDirectory);
 
 	/// <summary>
 	/// Gets the culture names based on the specified culture type.
@@ -232,7 +235,7 @@ public static class App
 	/// <returns><c>true</c> if the application is already running; otherwise, <c>false</c>.</returns>
 	/// <remarks>This method checks if there are any processes with the same name as the current process. If more than one is found, it indicates that the application is already running.</remarks>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static bool IsRunning() => Process.GetProcessesByName(ProcessName).FastCount() > 0;
+	public static bool IsRunning() => Process.GetProcessesByName(ProcessName).Count() > 0;
 
 	/// <summary>
 	/// Checks to see if the current application is running from an ASP.NET context.
@@ -273,7 +276,7 @@ public static class App
 	/// <returns>The maximum degree of parallelism.</returns>
 	/// <remarks>This method calculates the maximum degree of parallelism by taking 75% of the processor count, doubling it, and rounding up to the nearest whole number.
 	/// It is designed to optimize parallel operations by not overloading the system with too many concurrent tasks.</remarks>
-	public static int MaxDegreeOfParallelism() => Convert.ToInt32(Math.Ceiling(_computerInfo.ProcessorCount * 0.75 * 2.0));
+	public static int MaxDegreeOfParallelism() => Convert.ToInt32(Math.Ceiling(_computerInfo.Value.ProcessorCount * 0.75 * 2.0));
 
 	/// <summary>
 	/// Reboots the system programmatically.
@@ -327,13 +330,14 @@ public static class App
 
 		var processInfo = new ProcessStartInfo
 		{
-			FileName = _computerInfo.CurrentWorkingDirectory,
+			FileName = _computerInfo.Value.CurrentWorkingDirectory,
 			UseShellExecute = true,
 			Verb = "runas",
 		};
 
 		_ = Process.Start(processInfo);
 
+		Environment.ExitCode = 0;
 		Environment.Exit(0);
 	}
 
@@ -365,7 +369,7 @@ public static class App
 	/// <value>The current thread identifier.</value>
 	/// <remarks>This property provides the unique identifier of the currently executing thread. It is useful for logging, debugging, or tracking thread-specific operations.</remarks>
 	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
-	public static int CurrentThreadId => _computerInfo.CurrentManagedTreadId;
+	public static int CurrentThreadId => _computerInfo.Value.CurrentManagedTreadId;
 
 	/// <summary>
 	/// Retrieves the current UI culture used by the application for localization.
@@ -444,7 +448,7 @@ public static class App
 	/// </summary>
 	/// <value>The process path.</value>
 	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
-	public static string ProcessPath => _computerInfo.CurrentWorkingDirectory;
+	public static string ProcessPath => _computerInfo.Value.CurrentWorkingDirectory;
 
 	/// <summary>
 	/// Gets the stack trace for the current thread.
