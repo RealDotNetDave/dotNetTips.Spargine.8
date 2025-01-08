@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 01-08-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -294,7 +294,7 @@ public static class DictionaryExtensions
 	/// <param name="defaultValue">The default value to return if the key is not found.</param>
 	/// <returns>A function that takes a key and returns the corresponding value or the default value if the key is not found.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Information("Original code by Simon Painter.", author: "David McCarter", createdOn: "1/3/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information("Original code by Simon Painter.", author: "David McCarter", createdOn: "1/3/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static Func<TKey, TValue> ToLookupWithDefault<TKey, TValue>(this IDictionary<TKey, TValue> collection, TValue defaultValue)
 	where TKey : notnull
 	{

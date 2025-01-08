@@ -9,11 +9,7 @@
 // <copyright file="AutoDefaultDictionary.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// The `AutoDefaultDictionary` class can be used in scenarios
-// where a default value is needed for missing keys, reducing the need
-// for explicit checks and handling of missing keys.
-//</ summary>
+// <summary></summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -92,17 +88,14 @@ public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISe
 	{
 		get
 		{
-			if (!TryGetValue(key, out var val))
+			if (!this.TryGetValue(key, out var value))
 			{
-				val = this._defaultValue;
-				this.Add(key, val);
+				value = this._defaultValue;
+				this.Add(key, value);
 			}
 
-			return val;
+			return value;
 		}
-		set
-		{
-			base[key] = value;
-		}
+		set => base[key] = value;
 	}
 }

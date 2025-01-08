@@ -13,7 +13,6 @@
 // ***********************************************************************
 
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
@@ -34,6 +33,8 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Serialization;
 [BenchmarkCategory(Categories.Serialization)]
 public class SerializationBenchmark : Benchmark
 {
+
+	private const int Count = 100;
 
 	private string _jsonPersonRecord;
 	private string _jsonPersonRef;
@@ -119,6 +120,24 @@ public class SerializationBenchmark : Benchmark
 		base.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(JsonSerialization.LoadCollectionFromJson) + ": JSON=People")]
+	[BenchmarkCategory(Categories.JSON, Categories.New)]
+	public void LoadCollectionFromJson_People()
+	{
+		var result = JsonSerialization.LoadCollectionFromJson<Person<Address>>(this._jsonPersonRefList, Count);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(JsonSerialization.LoadCollectionFromJson) + ": JSON=People, SerializerContext")]
+	[BenchmarkCategory(Categories.JSON, Categories.New)]
+	public void LoadCollectionFromJson_People_SerializerContext()
+	{
+		var result = JsonSerialization.LoadCollectionFromJson<Person<Address>>(_jsonPersonRefList, Count, PersonJsonSerializerContext.Default.Person);
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = "Serialize JSON: JsonSerializer + Generator - Person")]
 	[BenchmarkCategory(Categories.JSON, Categories.New, "JsonSerializer")]
 	public void Serialize_Json_JsonSerializer_Generator_Person()
@@ -195,7 +214,7 @@ public class SerializationBenchmark : Benchmark
 		this._jsonPersonRecord = JsonSerialization.Serialize(base.PersonRecord01);
 		this._xmlPersonRef = XmlSerialization.Serialize(base.PersonRef01);
 		this._xmlPersonRecord = XmlSerialization.Serialize(base.PersonRecord01);
-		this._jsonPersonRefList = RandomData.GeneratePersonRefCollection<Address>(100).ToJson();
+		this._jsonPersonRefList = RandomData.GeneratePersonRefCollection<Address>(Count).ToJson();
 		this._personRefList = [.. RandomData.GeneratePersonRefCollection<Address>(100)];
 	}
 

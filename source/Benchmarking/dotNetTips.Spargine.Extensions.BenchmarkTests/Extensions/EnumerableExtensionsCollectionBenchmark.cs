@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-22-2024
+// Last Modified On : 01-08-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -22,6 +22,7 @@ using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
+using DotNetTips.Spargine.Tester.Models.ValueTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -36,12 +37,14 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 {
 
-	private IEnumerable<Spargine.Tester.Models.ValueTypes.Coordinate> _coordinateValEnumerable;
+	private IEnumerable<Coordinate> _coordinateValEnumerable;
 	private List<PersonRecord> _personRecordList;
-	private IEnumerable<Person<Address>> _personRefEnumerable;
-	private IEnumerable<Person<Address>> _personRefEnumerableToAdd;
-	private List<Person<Address>> _personRefList;
-	private List<Person<Address>> _personRefListDups;
+	private IEnumerable<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefEnumerable;
+	private IEnumerable<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefEnumerableToAdd;
+	private string _personRefId;
+	private Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address> _personRefLast;
+	private List<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefList;
+	private List<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>> _personRefListDups;
 
 	private static bool AnyWithPredicate<T>([NotNull] IEnumerable<T> list, [NotNull] Func<T, bool> predicate) => list.Any(predicate);
 	private static int CountWithPredicate<T>([NotNull] IEnumerable<T> list, [NotNull] Func<T, bool> predicate) => list.Count(predicate);
@@ -187,7 +190,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	[Benchmark(Description = nameof(EnumerableExtensions.DoesNotHaveItems))]
 	public void DoesNotHaveItems()
 	{
-		var people = new List<Person<Address>>().AsEnumerable();
+		var people = new List<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>>().AsEnumerable();
 
 		var result = people.DoesNotHaveItems();
 
@@ -292,7 +295,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	public void IndexOf()
 	{
 		var people = this._personRefEnumerable;
-		var result = people.IndexOf(people.Last());
+		var result = people.IndexOf(_personRefLast);
 
 		this.Consume(result);
 	}
@@ -302,7 +305,18 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		var people = this._personRefEnumerable;
 		var comparer = new PersonComparer();
-		var result = people.IndexOf<Person<Address>>(people.Last(), comparer);
+		var result = people.IndexOf(_personRefLast, comparer);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(EnumerableExtensions.IndexOf) + ": Predicate")]
+	[BenchmarkCategory(Categories.New)]
+
+	public void IndexOfPredicate()
+	{
+		var people = this._personRefEnumerable;
+		var result = people.IndexOf(p => p.Equals(this._personRefLast));
 
 		this.Consume(result);
 	}
@@ -310,7 +324,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	[Benchmark(Description = nameof(EnumerableExtensions.IsNullOrEmpty))]
 	public void IsNullOrEmpty()
 	{
-		var people = new List<Person<Address>>().AsEnumerable();
+		var people = new List<Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>>().AsEnumerable();
 
 		var result = people.IsNullOrEmpty();
 
@@ -390,6 +404,27 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result.Value);
 	}
 
+	[Benchmark(Description = nameof(EnumerableExtensions.ReplaceIf))]
+	[BenchmarkCategory(Categories.New)]
+	public void ReplaceIf()
+	{
+		var people = this._personRefEnumerable;
+		var result = people.ReplaceIf((p, index) => p.Id == this._personRefId, this._personRefLast);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(EnumerableExtensions.Scan))]
+	[BenchmarkCategory(Categories.New)]
+	public void Scan()
+	{
+		var people = this._personRefEnumerable;
+
+		var result = people.Scan(new Spargine.Tester.Models.RefTypes.Person<Spargine.Tester.Models.RefTypes.Address>(), (acc, p) => p);
+
+		this.Consume(result);
+	}
+
 	public override void Setup()
 	{
 		base.Setup();
@@ -398,6 +433,9 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this._personRefList = [.. this.GetPersonRefArray()];
 		this._personRecordList = [.. this.GetPersonRecordArray()];
 		this._coordinateValEnumerable = this.GetCoordinateValArray().AsEnumerable();
+
+		this._personRefLast = _personRefList.Last();
+		this._personRefId = _personRefList[this.Count / 2].Id;
 
 		var peopleToAdd = this._personRefEnumerable.ToList();
 		peopleToAdd.AddRange(this.GetPersonRefCollectionToInsert().Take(this.Count / 10));

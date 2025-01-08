@@ -117,6 +117,17 @@ public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(people);
 	}
 
+	[Benchmark(Description = nameof(DictionaryExtensions.ToLookupWithDefault))]
+	[BenchmarkCategory(Categories.New)]
+	public void ToLookupWithDefault()
+	{
+		var people = this._personRefDictionary;
+
+		var result = people.ToLookupWithDefault(this._personRef.Value)("INVALID");
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(DictionaryExtensions.ToReadOnlyCollection))]
 	public void ToReadOnlyCollection()
 	{

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 01-08-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -704,7 +704,7 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="predicate"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information("Original code by Simon Painter.", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.None, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information("Original code by Simon Painter.", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate)
 	{
 		collection = collection.ArgumentNotNull();
@@ -989,7 +989,7 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="predicate"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, OptimizationStatus = OptimizationStatus.None, Status = Status.New)]
+	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.None, Status = Status.New)]
 	public static IEnumerable<T> ReplaceIf<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, int, bool> predicate, T replacement)
 	{
 		collection = collection.ArgumentNotNull();
@@ -1008,7 +1008,7 @@ public static class EnumerableExtensions
 	/// <param name="predicate">An accumulator function to be invoked on each element.</param>
 	/// <returns>An <see cref="IEnumerable{T2}"/> containing the accumulated values.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="predicate"/> is null.</exception>
-	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, OptimizationStatus = OptimizationStatus.None, Status = Status.New)]
+	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.None, Status = Status.New)]
 	public static IEnumerable<T2> Scan<T1, T2>([NotNull] this IEnumerable<T1> source, [NotNull] T2 seed, [NotNull] Func<T2, T1, T2> predicate)
 	{
 		source = source.ArgumentNotNull();
