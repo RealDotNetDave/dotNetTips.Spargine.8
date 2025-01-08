@@ -4,7 +4,7 @@
 // Created          : 11-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-27-2024
+// Last Modified On : 01-08-2025
 // ***********************************************************************
 // <copyright file="AppTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -74,7 +74,6 @@ public class AppTests
 	public void ChangeCulture_WithCultureInfoToSameCulture_DoesNotThrowException()
 	{
 		// Arrange
-		var originalCulture = CultureInfo.CurrentCulture;
 		var testCultureInfo = new CultureInfo(CultureInfo.CurrentCulture.Name);
 
 		// Act & Assert

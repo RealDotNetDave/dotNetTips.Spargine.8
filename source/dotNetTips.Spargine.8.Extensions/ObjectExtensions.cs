@@ -132,7 +132,7 @@ public static class ObjectExtensions
 		{
 			if (field.FieldType.IsAssignableTo(typeof(IDisposable)) && field.GetValue(obj) is IDisposable disposableField)
 			{
-				disposableField.Dispose();
+				disposableField.TryDispose();
 			}
 		}
 	}

@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-19-2024
+// Last Modified On : 01-08-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -131,7 +131,7 @@ public class DirectoryHelperTests
 	{
 		// Arrange
 		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var directory = Directory.CreateDirectory(tempDirectoryPath);
+
 		using (var stream = File.Create(Path.Combine(tempDirectoryPath, "tempFile.txt")))
 		{
 			// Act

@@ -4,7 +4,7 @@
 // Created          : 01-05-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-22-2024
+// Last Modified On : 01-08-2025
 // ***********************************************************************
 // <copyright file="RandomDataTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -110,8 +110,6 @@ public class RandomDataTests
 			}
 
 			Assert.IsTrue(newPeople.FastCount() == Count);
-
-			var test = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToDictionary(p => p.Id);
 		}
 		catch (Exception ex)
 		{
