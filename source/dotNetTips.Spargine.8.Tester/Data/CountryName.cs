@@ -4,7 +4,7 @@
 // Created          : 12-28-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-16-2024
+// Last Modified On : 01-09-2025
 // ***********************************************************************
 // <copyright file="CountryName.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -17,6 +17,8 @@ using System.Runtime.Serialization;
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Tester.Data;
+
+//TODO: AFTER FEB 2025 RELEASE, MOVE ALL COUNTRY DATA TO NEW ASSEMBLY.
 
 /// <summary>
 /// Represents the names of countries.
