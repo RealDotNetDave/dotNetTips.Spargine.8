@@ -17,7 +17,7 @@
 
 using System.Diagnostics;
 using System.Runtime.Serialization;
-using DotNetTips.Spargine.Tester.Data;
+using DotNetTips.Spargine.Core.Data.Models;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 

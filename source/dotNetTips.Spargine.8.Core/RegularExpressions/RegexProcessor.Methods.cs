@@ -18,6 +18,8 @@
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
+using System.Text.RegularExpressions;
+
 namespace DotNetTips.Spargine.Core.RegularExpressions;
 
 public static partial class RegexProcessor
@@ -55,6 +57,34 @@ public static partial class RegexProcessor
 		}
 
 		return ContainsWordRegex().IsMatch(input);
+	}
+
+	/// <summary>
+	/// Extracts all numeric characters from the input string.
+	/// </summary>
+	/// <param name="input">The input string to extract numbers from.</param>
+	/// <returns>A string containing all numeric characters extracted from the input.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
+	[Information(nameof(GetNumbers), UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public static string GetNumbers(in string input)
+	{
+		ArgumentNullException.ThrowIfNull(input);
+
+		var sb = _stringBuilderPool.Value.Get().Clear();
+
+		try
+		{
+			foreach (Match match in ExtractNumbersRegexSingleLine().Matches(input))
+			{
+				_ = sb.Append(match.Value);
+			}
+
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Value.Return(sb);
+		}
 	}
 
 	/// <summary>

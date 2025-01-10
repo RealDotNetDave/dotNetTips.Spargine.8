@@ -491,5 +491,15 @@ namespace DotNetTips.Spargine.Core.Properties {
                 return ResourceManager.GetString("UserUnknown", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WorldCities {
+            get {
+                object obj = ResourceManager.GetObject("WorldCities", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

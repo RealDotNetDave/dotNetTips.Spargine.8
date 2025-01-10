@@ -11,9 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Core.Tests;
@@ -46,6 +48,81 @@ public class RegexProcessorTests
 		result = RegexProcessor.ContainsWord("Sevendust");
 
 		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void GetNumbers_EmptyInput_ReturnsEmptyString()
+	{
+		// Arrange
+		var input = string.Empty;
+
+		// Act
+		var result = RegexProcessor.GetNumbers(input);
+
+		// Assert
+		Assert.AreEqual(string.Empty, result);
+	}
+
+	[TestMethod]
+	public void GetNumbers_InputWithNoNumbers_ReturnsEmptyString()
+	{
+		// Arrange
+		var input = "abcdef";
+
+		// Act
+		var result = RegexProcessor.GetNumbers(input);
+
+		// Assert
+		Assert.AreEqual(string.Empty, result);
+	}
+
+	[TestMethod]
+	public void GetNumbers_InputWithSpaces_ReturnsNumbers()
+	{
+		// Arrange
+		var input = "a 1 b 2 c 3";
+
+		// Act
+		var result = RegexProcessor.GetNumbers(input);
+
+		// Assert
+		Assert.AreEqual("123", result);
+	}
+
+	[TestMethod]
+	public void GetNumbers_InputWithSpecialCharacters_ReturnsNumbers()
+	{
+		// Arrange
+		var input = "a 1!b2@c 3#";
+
+		// Act
+		var result = RegexProcessor.GetNumbers(input);
+
+		// Assert
+		Assert.AreEqual("123", result);
+	}
+
+	[TestMethod]
+	public void GetNumbers_NullInput_ThrowsArgumentNullException()
+	{
+		// Arrange
+		string input = null;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => RegexProcessor.GetNumbers(input));
+	}
+
+	[TestMethod]
+	public void GetNumbers_ValidInput_ReturnsNumbers()
+	{
+		// Arrange
+		var input = "abc123def456";
+
+		// Act
+		var result = RegexProcessor.GetNumbers(input);
+
+		// Assert
+		Assert.AreEqual("123456", result);
 	}
 
 	[TestMethod]

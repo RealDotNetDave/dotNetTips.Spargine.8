@@ -22,9 +22,9 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Core.Data;
 using DotNetTips.Spargine.Core.Serialization;
 using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Tester.Data;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -536,7 +536,7 @@ public class RandomDataTests
 	[TestMethod]
 	public void GeneratePhoneNumber_Country_Test_Random()
 	{
-		var country = Countries.GetCountries().Shuffle().FirstOrDefault();
+		var country = CountryRepository.GetCountries().Shuffle().FirstOrDefault();
 
 		var stringValue = RandomData.GeneratePhoneNumber(country, true);
 

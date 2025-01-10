@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-27-2024
+// Last Modified On : 01-10-2025
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -19,8 +19,9 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Core.Data;
+using DotNetTips.Spargine.Core.Data.Models;
 using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Tester.Data;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using DotNetTips.Spargine.Tester.Properties;
@@ -81,7 +82,7 @@ public static class RandomData
 	/// <summary>
 	/// A lazy-loaded read-only collection of countries.
 	/// </summary>
-	private static readonly Lazy<ReadOnlyCollection<Country>> _countries = new(Countries.GetCountries());
+	private static readonly Lazy<ReadOnlyCollection<Country>> _countries = new(CountryRepository.GetCountries());
 
 	/// <summary>
 	/// A lazy-loaded array of domain extensions.
@@ -99,6 +100,14 @@ public static class RandomData
 	private static readonly Lazy<ReadOnlyCollection<string>> _lastNames = new(Resources.LastNames.Split(Core.ControlChars.Comma, StringSplitOptions.TrimEntries).ToReadOnlyCollection());
 
 	/// <summary>
+	/// An object used for locking to ensure thread safety in certain operations.
+	/// </summary>
+#pragma warning disable IDE0330
+	private static readonly object _lock = new();
+#pragma warning restore IDE0330 //TODO: REMOVE AFTER MOVING TO DOTNET 10
+
+
+	/// <summary>
 	/// A cache for postal formats, keyed by country.
 	/// </summary>
 	private static readonly Dictionary<Country, string[]> _postalFormatsCache = [];
@@ -113,13 +122,6 @@ public static class RandomData
 	/// An object pool for reusing instances of StringBuilder, reducing allocations.
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
-
-	/// <summary>
-	/// An object used for locking to ensure thread safety in certain operations.
-	/// </summary>
-#pragma warning disable IDE0330
-	private static readonly object _lock = new();
-#pragma warning restore IDE0330 //TODO: REMOVE AFTER MOVING TO DOTNET 10
 
 	/// <summary>
 	/// Initializes static members of the <see cref="RandomData" /> class.
@@ -324,7 +326,7 @@ public static class RandomData
 
 		var addresses = new List<AddressRecord>(count);
 
-		var addressCollection = GenerateAddressCollection<Address>(Countries.GetCountry(country).ArgumentNotNull(paramName: country.GetDescription()), count, addressLength, countyProvinceLength);
+		var addressCollection = GenerateAddressCollection<Address>(CountryRepository.GetCountry(country).ArgumentNotNull(paramName: country.GetDescription()), count, addressLength, countyProvinceLength);
 
 		foreach (var address in addressCollection)
 		{
@@ -843,7 +845,7 @@ public static class RandomData
 	{
 		country = country.ArgumentNotNull();
 
-		return includeCountryCode ? $"{country.PhoneCode}-{GenerateNumber(country.PhoneNumberLength)}" : GenerateNumber(country.PhoneNumberLength);
+		return includeCountryCode ? $"{country.PhoneCode.Split(Core.ControlChars.Comma).PickRandom()}-{GenerateNumber(country.PhoneNumberLength)}" : GenerateNumber(country.PhoneNumberLength);
 	}
 
 	/// <summary>
@@ -864,9 +866,9 @@ public static class RandomData
 		countryName = countryName.ArgumentDefined();
 
 		//Lookup Country
-		var country = Countries.GetCountry(countryName);
+		var country = CountryRepository.GetCountry(countryName);
 
-		return includeCountryCode ? $"{country.PhoneCode}-{GenerateNumber(country.PhoneNumberLength)}" : GenerateNumber(country.PhoneNumberLength);
+		return includeCountryCode ? $"{country.PhoneCode.Split(Core.ControlChars.Comma).PickRandom()}-{GenerateNumber(country.PhoneNumberLength)}" : GenerateNumber(country.PhoneNumberLength);
 	}
 
 	/// <summary>

@@ -18,7 +18,9 @@
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
+using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.Extensions.ObjectPool;
 
 namespace DotNetTips.Spargine.Core.RegularExpressions;
 
@@ -55,6 +57,11 @@ public static partial class RegexProcessor
 	/// The pattern to validate email addresses.
 	/// </summary>
 	private const string EmailPattern = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+
+	/// <summary>
+	/// The pattern to extract numbers from a string.
+	/// </summary>
+	private const string ExtractNumbersPattern = @"\d+";
 
 	/// <summary>
 	/// The pattern to validate GUIDs.
@@ -132,6 +139,12 @@ public static partial class RegexProcessor
 	private const string UrlPattern = @"(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?";
 
 	/// <summary>
+	/// The string builder pool
+	/// </summary>
+	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
+		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
+
+	/// <summary>
 	/// Determines whether [contains word regex].
 	/// </summary>
 	/// <returns>Regex.</returns>
@@ -158,6 +171,13 @@ public static partial class RegexProcessor
 	/// <returns>Regex.</returns>
 	[GeneratedRegex(EmailPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
 	private static partial Regex EmailAddressRegexSingleLine();
+
+	/// <summary>
+	/// Gets a regex instance for extracting numbers from a string.
+	/// </summary>
+	/// <returns>A <see cref="Regex"/> instance configured to extract numbers.</returns>
+	[GeneratedRegex(ExtractNumbersPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
+	private static partial Regex ExtractNumbersRegexSingleLine();
 
 	/// <summary>
 	/// Determins if the string contains a first and last name.

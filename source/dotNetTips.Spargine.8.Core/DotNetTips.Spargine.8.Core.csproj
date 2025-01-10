@@ -38,7 +38,8 @@
 	<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
 --MAY 2024: Performance improvements.
 --AUG 2024: Major performance and documentation changes. New methods.
---NOV 2024: Performance improvements. Added UlidGenerator, improvements to JSON serialization, New methods	</PackageReleaseNotes>
+--NOV 2024: Performance improvements. Added UlidGenerator, improvements to JSON serialization, New methods
+--FEB 2025: Moved Country data from the Tester assembly.</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -152,6 +153,10 @@
 	  <Generator>ResXFileCodeGenerator</Generator>
 	  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	</EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Models\" />
   </ItemGroup>
 
 </Project>
