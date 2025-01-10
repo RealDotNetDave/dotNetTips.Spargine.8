@@ -93,7 +93,7 @@ public static class CountryRepository
 	/// It leverages lazy loading to initialize the collection only once, upon the first request.
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.Synchronized)]
-	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static ReadOnlyCollection<Country> GetCountries()
 	{
 		_countries ??= DeserializeCountires();
@@ -108,7 +108,7 @@ public static class CountryRepository
 	/// <returns>The <see cref="Country"/> object if codeFound; otherwise, null.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static Country GetCountry([NotNull] CountryName countryName)
 	{
 		countryName = countryName.ArgumentNotNull();
@@ -122,8 +122,21 @@ public static class CountryRepository
 	/// <param name="countryId">The unique identifier for the country.</param>
 	/// <returns>A <see cref="Country"/> object if codeFound; otherwise, null.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static Country GetCountry(long countryId) => GetCountries().FirstOrDefault(p => p.Id == countryId);
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
+	public static Country GetCountry(long countryId)
+	{
+		var countries = GetCountries();
+
+		foreach (var country in countries)
+		{
+			if (country.Id == countryId)
+			{
+				return country;
+			}
+		}
+
+		return null;
+	}
 
 	/// <summary>
 	/// Validates the phone number for a given country.
@@ -195,5 +208,4 @@ public static class CountryRepository
 	/// The serializer options configured for JSON operations within the CountryRepository class.
 	/// </summary>
 	private static readonly JsonSerializerOptions _options = ConfigureSerializerOptions();
-
 }

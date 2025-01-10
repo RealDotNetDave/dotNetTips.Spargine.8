@@ -507,8 +507,8 @@ public enum CountryName
 	/// <summary>
 	/// The gambia the
 	/// </summary>
-	[EnumMember(Value = "Gambia The")]
-	GambiaThe,
+	[EnumMember(Value = "The Gambia")]
+	TheGambia,
 
 	/// <summary>
 	/// The georgia
