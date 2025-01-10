@@ -197,24 +197,3 @@ public static class CountryRepository
 	private static readonly JsonSerializerOptions _options = ConfigureSerializerOptions();
 
 }
-
-/// <summary>
-/// Represents the state of a postal code validation.
-/// </summary>
-public enum PostalCodeState
-{
-	/// <summary>
-	/// The postal code is invalid.
-	/// </summary>
-	Invalid,
-
-	/// <summary>
-	/// The postal code state is unknown.
-	/// </summary>
-	Unknown,
-
-	/// <summary>
-	/// The postal code is valid.
-	/// </summary>
-	Valid,
-}
