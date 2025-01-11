@@ -4,7 +4,7 @@
 // Created          : 08-02-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-22-2024
+// Last Modified On : 01-11-2025
 // ***********************************************************************
 // <copyright file="RandomDataCollectionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -17,8 +17,9 @@ using System.Linq;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Benchmarking;
+using DotNetTips.Spargine.Core.Data;
+using DotNetTips.Spargine.Core.Data.Models;
 using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Tester.Data;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 
@@ -36,7 +37,7 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 	private Collection<Coordinate> _coordinateCollection;
 	private Collection<PersonRecord> _personRecordCollection;
 	private Collection<Models.RefTypes.Person<Models.RefTypes.Address>> _personRefCollection;
-	private readonly Country DefaultCountry = Countries.GetCountry(CountryName.UnitedStates);
+	private readonly Country DefaultCountry = CountryRepository.GetCountry(CountryName.UnitedStates);
 
 	[Benchmark(Description = nameof(Coordinate) + ":OrderBy()")]
 	[BenchmarkCategory(Categories.New, Categories.ValueType)]

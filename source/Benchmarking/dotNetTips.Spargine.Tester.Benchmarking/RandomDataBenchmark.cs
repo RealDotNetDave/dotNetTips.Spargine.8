@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-23-2024
+// Last Modified On : 01-11-2025
 // ***********************************************************************
 // <copyright file="RandomDataBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -16,8 +16,8 @@ using System;
 using System.IO;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
+using DotNetTips.Spargine.Core.Data;
 using DotNetTips.Spargine.IO;
-using DotNetTips.Spargine.Tester.Data;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )

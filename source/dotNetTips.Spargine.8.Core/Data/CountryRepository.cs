@@ -4,7 +4,7 @@
 // Created          : 01-10-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-10-2025
+// Last Modified On : 01-11-2025
 // ***********************************************************************
 // <copyright file="CountryRepository.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -70,7 +70,7 @@ public static class CountryRepository
 	/// <returns>A read-only collection of <see cref="Country"/> objects.</returns>
 	/// <exception cref="InvalidOperationException">Thrown when deserialization fails due to invalid JSON format.</exception>
 	[MethodImpl(MethodImplOptions.NoInlining)]
-	private static ReadOnlyCollection<Country> DeserializeCountires()
+	private static ReadOnlyCollection<Country> DeserializeCountries()
 	{
 		try
 		{
@@ -93,10 +93,10 @@ public static class CountryRepository
 	/// It leverages lazy loading to initialize the collection only once, upon the first request.
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.Synchronized)]
-	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
+	[Information(nameof(GetCountries), "David McCarter", "3/24/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<Country> GetCountries()
 	{
-		_countries ??= DeserializeCountires();
+		_countries ??= DeserializeCountries();
 
 		return _countries;
 	}
@@ -108,7 +108,7 @@ public static class CountryRepository
 	/// <returns>The <see cref="Country"/> object if codeFound; otherwise, null.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static Country GetCountry([NotNull] CountryName countryName)
 	{
 		countryName = countryName.ArgumentNotNull();
@@ -122,7 +122,7 @@ public static class CountryRepository
 	/// <param name="countryId">The unique identifier for the country.</param>
 	/// <returns>A <see cref="Country"/> object if codeFound; otherwise, null.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static Country GetCountry(long countryId)
 	{
 		var countries = GetCountries();
@@ -147,7 +147,7 @@ public static class CountryRepository
 	/// <returns><c>true</c> if the phone number is valid for the specified country; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ValidatePhoneNumber), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	[Information(nameof(ValidatePhoneNumber), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static bool ValidatePhoneNumber([NotNull] CountryName countryName, in string phoneNumber, bool validateCountryCode = false)
 	{
 		var country = GetCountry(countryName.ArgumentNotNull());
@@ -191,7 +191,7 @@ public static class CountryRepository
 	/// </returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ValidatePostalCode), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	[Information(nameof(ValidatePostalCode), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static PostalCodeState ValidatePostalCode([NotNull] CountryName countryName, in string postalCode)
 	{
 		var country = GetCountry(countryName.ArgumentNotNull());

@@ -57,6 +57,7 @@
   </PropertyGroup>
 
   <!--<PropertyGroup>
+  https://www.meziantou.net/enable-nuget-auditing-for-your-dotnet-projects.htm
 	<NuGetAudit>true</NuGetAudit>
 	<NuGetAuditMode>all</NuGetAuditMode>
 	<NuGetAuditLevel>low</NuGetAuditLevel>
