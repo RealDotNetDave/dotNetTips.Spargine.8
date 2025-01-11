@@ -2,16 +2,16 @@
 
 	<PropertyGroup>
 		<AnalysisLevel>none</AnalysisLevel>
-		<AssemblyVersion>2025.8.1.8</AssemblyVersion>
+		<AssemblyVersion>2025.8.1.11</AssemblyVersion>
 		<BaseOutputPath>..\..\..\AppBin</BaseOutputPath>
 		<EnableNETAnalyzers>false</EnableNETAnalyzers>
-		<FileVersion>2025.8.1.8</FileVersion>
+		<FileVersion>2025.8.1.11</FileVersion>
 		<IsPackable>false</IsPackable>
 		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 		<RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
 		<RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
 	  <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-		<Version>2025.8.1.8</Version>
+		<Version>2025.8.1.11</Version>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<OutputPath>..\..\..\AppBin</OutputPath>
@@ -23,9 +23,9 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.10" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-		<PackageReference Include="MSTest.TestAdapter" Version="3.6.3" />
-		<PackageReference Include="MSTest.TestFramework" Version="3.6.3" />
-		<PackageReference Include="coverlet.collector" Version="6.0.2">
+		<PackageReference Include="MSTest.TestAdapter" Version="3.7.0" />
+		<PackageReference Include="MSTest.TestFramework" Version="3.7.0" />
+		<PackageReference Include="coverlet.collector" Version="6.0.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

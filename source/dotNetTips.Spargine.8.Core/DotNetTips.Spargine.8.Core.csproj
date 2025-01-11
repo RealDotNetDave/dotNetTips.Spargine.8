@@ -5,7 +5,7 @@
 	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
 	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-	<AssemblyVersion>2025.8.1.8</AssemblyVersion>
+	<AssemblyVersion>2025.8.1.11</AssemblyVersion>
 	<Authors>David McCarter</Authors>
 	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
@@ -23,7 +23,7 @@
 	<EnablePackageValidation>false</EnablePackageValidation>
 	<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-	<FileVersion>2025.8.1.8</FileVersion>
+	<FileVersion>2025.8.1.11</FileVersion>
 	<GarbageCollectionAdaptationMode>1</GarbageCollectionAdaptationMode>
 	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -52,18 +52,14 @@
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 	<Title>DotNetTips.Spargine.8.Core</Title>
-	<Version>2025.8.1.8</Version>
+	<Version>2025.8.1.11</Version>
 	<SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <!--<PropertyGroup>
-	--><!-- Enable NuGet package auditing --><!--
 	<NuGetAudit>true</NuGetAudit>
-	--><!-- Audit direct and transitive packages --><!--
 	<NuGetAuditMode>all</NuGetAuditMode>
-	--><!-- Report low, moderate, high and critical advisories --><!--
 	<NuGetAuditLevel>low</NuGetAuditLevel>
-	--><!-- Fails the build on CI or on release when a vulnerability is detected --><!--
 	<WarningsAsErrors Condition="$(ContinuousIntegrationBuild) == 'true' OR '$(Configuration)' == 'Release'">
 	  (WarningsAsErrors);NU1900;NU1901;NU1902;NU1903;NU1904
 	</WarningsAsErrors>
