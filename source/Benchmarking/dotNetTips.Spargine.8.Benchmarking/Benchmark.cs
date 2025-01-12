@@ -186,12 +186,13 @@ public abstract class Benchmark
 	{
 		sizeInKb = sizeInKb.EnsureMinimum(1);
 
-		if (this._byteArrayCache.ContainsKey(sizeInKb) is false)
+		if (!_byteArrayCache.TryGetValue(sizeInKb, out var byteArray))
 		{
-			this._byteArrayCache.Add(sizeInKb, RandomData.GenerateByteArray(sizeInKb));
+			byteArray = RandomData.GenerateByteArray(sizeInKb);
+			_byteArrayCache[sizeInKb] = byteArray;
 		}
 
-		return this._byteArrayCache[sizeInKb];
+		return byteArray;
 	}
 
 	/// <summary>
@@ -210,12 +211,14 @@ public abstract class Benchmark
 
 		var key = $"{count}-{wordMinLength}-{wordMaxLength}";
 
-		if (this._stringArrayCache.ContainsKey(key) is false)
+		if (!_stringArrayCache.TryGetValue(key, out var stringArray))
 		{
-			this._stringArrayCache.Add(key, [.. RandomData.GenerateWords(count, wordMinLength, wordMaxLength)]);
+			stringArray = [.. RandomData.GenerateWords(count, wordMinLength, wordMaxLength)];
+
+			_stringArrayCache[key] = stringArray;
 		}
 
-		return this._stringArrayCache[key];
+		return stringArray;
 	}
 
 	/// <summary>

@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-05-2024
+// Last Modified On : 01-12-2025
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -76,10 +76,7 @@ public partial class CollectionBenchmark : Benchmark
 	/// <param name="count">The number of <see cref="PersonRecord"/> objects to load. The value must be in the range of 1 to 10000.</param>
 	/// <returns>An array of <see cref="PersonRecord"/> objects.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
-	internal static PersonRecord[] LoadPeopleRecordFromResources(int count)
-	{
-		return JsonSerialization.LoadCollectionFromJson<PersonRecord>(Properties.Resources.PeopleJson, count, PersonJsonSerializerContext.Default.PersonRecord);
-	}
+	internal static PersonRecord[] LoadPeopleRecordFromResources(int count) => JsonSerialization.LoadCollectionFromJson<PersonRecord>(Properties.Resources.PeopleJson, count, PersonJsonSerializerContext.Default.PersonRecord);
 
 	/// <summary>
 	/// Loads a specified number of <see cref="Person{TAddress}"/> reference objects from embedded resources.
@@ -87,10 +84,7 @@ public partial class CollectionBenchmark : Benchmark
 	/// <param name="count">The number of <see cref="Person{TAddress}"/> reference objects to load. The value must be in the range of 1 to 10000.</param>
 	/// <returns>An array of <see cref="Person{TAddress}"/> reference objects.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
-	internal static Person<Address>[] LoadPeopleRefFromResources(int count)
-	{
-		return JsonSerialization.LoadCollectionFromJson<Person<Address>>(Properties.Resources.PeopleJson, count, PersonJsonSerializerContext.Default.Person);
-	}
+	internal static Person<Address>[] LoadPeopleRefFromResources(int count) => JsonSerialization.LoadCollectionFromJson<Person<Address>>(Properties.Resources.PeopleJson, count, PersonJsonSerializerContext.Default.Person);
 
 	/// <summary>
 	/// Loads a specified number of Tester.Models.ValueTypes.Person{Tester.Models.ValueTypes.Address} value objects from embedded resources.
@@ -98,10 +92,7 @@ public partial class CollectionBenchmark : Benchmark
 	/// <param name="count">The number of Tester.Models.ValueTypes.Person{Tester.Models.ValueTypes.Address} value objects to load. The value must be in the range of 1 to 10000.</param>
 	/// <returns>An array of Tester.Models.ValueTypes.Person{Tester.Models.ValueTypes.Address} value objects.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
-	internal static Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] LoadPeopleValFromResources(int count)
-	{
-		return JsonSerialization.LoadCollectionFromJson<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(Properties.Resources.PeopleJson, count, Tester.Models.ValueTypes.PersonJsonValSerializerContext.Default.Person);
-	}
+	internal static Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] LoadPeopleValFromResources(int count) => JsonSerialization.LoadCollectionFromJson<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(Properties.Resources.PeopleJson, count, Tester.Models.ValueTypes.PersonJsonValSerializerContext.Default.Person);
 
 	/// <summary>
 	/// Setups the benchmark instance. This method is called before the benchmark runs and is responsible for initializing the collections and loading the data.
