@@ -20,7 +20,6 @@ using DotNetTips.Spargine.Core.Data;
 
 namespace DotNetTips.Spargine.Core.BenchmarkTests.Data;
 
-[BenchmarkCategory(Categories.New)]
 public class CountryRepositoryBenchmark : Benchmark
 {
 	[Benchmark(Description = nameof(CountryRepository.GetCountries))]

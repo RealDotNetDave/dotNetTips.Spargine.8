@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-12-2025
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -121,6 +121,7 @@ public static class UlidGenerator
 		{
 			ulids.Add(GenerateUlid());
 		}
+
 		return ulids.AsReadOnly();
 	}
 
