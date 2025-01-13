@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System.Collections;
 using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
@@ -26,19 +27,85 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Collections;
 /// Implements the <see cref="CounterBenchmark" />
 /// </summary>
 /// <seealso cref="CounterBenchmark" />
-[BenchmarkCategory(Categories.Async)]
+[BenchmarkCategory(Categories.Collections)]
 public class FastSortedListBenchmark : SmallCollectionBenchmark
 {
-	private List<Person<Address>> _personRefList;
+	private Person<Address>[] _peopleRefArrayToInsert;
+	private Dictionary<string, Person<Address>> _peopleRefDictionaryToInsert;
+
+	private void GenerateData()
+	{
+		this._peopleRefArrayToInsert = this.GetPersonRefArray();
+		this._peopleRefDictionaryToInsert = this.GetPersonRefDictionary();
+	}
+
+	[Benchmark(Description = nameof(FastSortedList<Person<Address>>.Add) + ": New FastSortedList + Sort")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void Add_FastSortedList()
+	{
+		var people = new FastSortedList<Person<Address>>();
+
+		foreach (var person in this._peopleRefArrayToInsert)
+		{
+			people.Add(person);
+		}
+
+		people.Sort();
+
+		this.Consume(people.Count);
+	}
+
+	[Benchmark(Description = nameof(SortedList.Add) + ": New SortedList")]
+	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
+	public void Add_SortedList()
+	{
+		var people = new SortedList<string, Person<Address>>();
+
+		foreach (var person in this._peopleRefDictionaryToInsert)
+		{
+			people.Add(person.Key, person.Value);
+		}
+
+		this.Consume(people.Count);
+	}
+
+	[Benchmark(Description = nameof(FastSortedList<Person<Address>>.AddRange) + ": New FastSortedList + Sort")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void AddRange_FastSortedList()
+	{
+		var people = new FastSortedList<Person<Address>>();
+
+		people.AddRange(this._peopleRefArrayToInsert);
+
+		people.Sort();
+
+		this.Consume(people.Count);
+	}
+
+	[Benchmark(Description = nameof(FastSortedList<Person<Address>>) + ": Create + Sort")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void Create_FastSortedList()
+	{
+		var people = new FastSortedList<Person<Address>>(this._peopleRefArrayToInsert);
+
+		people.Sort();
+
+		this.Consume(people.Count);
+	}
+
+	[Benchmark(Description = nameof(SortedList<string, Person<Address>>) + ": Create")]
+	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
+	public void Create_SortedList()
+	{
+		var people = new SortedList<string, Person<Address>>(this._peopleRefDictionaryToInsert);
+
+		this.Consume(people.Count);
+	}
 
 	public override void Setup()
 	{
 		base.Setup();
 
-		// Create Hash Set
-		this._personRefList = new List<Person<Address>>(this.GetPersonRefArray());
+		this.GenerateData();
 	}
-
-	[Benchmark(Description = nameof(FastSortedList.Add))]
-	[BenchmarkCategory(Categories.Async, Categories.New)]
 }
