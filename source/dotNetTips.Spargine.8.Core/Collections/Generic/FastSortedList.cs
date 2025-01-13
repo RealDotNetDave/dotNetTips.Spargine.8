@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 01-13-2025
 // ***********************************************************************
 // <copyright file="FastSortedList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -27,9 +27,18 @@ namespace DotNetTips.Spargine.Core.Collections.Generic;
 /// </summary>
 /// <typeparam name="T">The type of elements in the list.</typeparam>
 /// <seealso cref="List{T}" />
-[Information(Status = Status.Available)]
+[Information(Status = Status.NeedsDocumentation)]
 public class FastSortedList<T> : List<T>
 {
+	/// <summary>
+	/// The comparer used for sorting the list.
+	/// </summary>
+	private readonly IComparer<T> _comparer;
+
+	/// <summary>
+	/// Lock object for thread safety.
+	/// </summary>
+	private readonly object _lock = new();
 
 	/// <summary>
 	/// True or False if the list has been sorted.
@@ -39,18 +48,39 @@ public class FastSortedList<T> : List<T>
 	/// <summary>
 	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class.
 	/// </summary>
+	/// <remarks>
+	/// This constructor initializes the list with the default comparer for the type <typeparamref name="T"/>.
+	/// </remarks>
+	/// <seealso cref="FastSortedList{T}(IComparer{T})"/>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public FastSortedList()
+	public FastSortedList() : this(Comparer<T>.Default)
 	{
 	}
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class.
 	/// </summary>
-	/// <param name="collection">The collection whose elements are copied to the new list.</param>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	/// <param name="comparer">The comparer to use for sorting.</param>
+	/// <remarks>
+	/// This constructor allows the user to specify a custom comparer for sorting the elements in the list.
+	/// </remarks>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public FastSortedList([NotNull] IEnumerable<T> collection) : base(collection)
+	public FastSortedList(IComparer<T> comparer)
+	{
+		_comparer = comparer;
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class.
+	/// </summary>
+	/// <param name="collection">The collection whose elements are copied to the new list.</param>
+	/// <remarks>
+	/// This constructor initializes the list with the elements from the specified collection and uses the default comparer for the type <typeparamref name="T"/>.
+	/// </remarks>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	/// <seealso cref="FastSortedList{T}(IEnumerable{T}, IComparer{T})"/>
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
+	public FastSortedList([NotNull] IEnumerable<T> collection) : this(collection, Comparer<T>.Default)
 	{
 	}
 
@@ -58,9 +88,42 @@ public class FastSortedList<T> : List<T>
 	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class that is empty and has the specified initial capacity.
 	/// </summary>
 	/// <param name="capacity">The number of elements that the new list, derived from <see cref="List{T}"/>, can initially store.</param>
+	/// <remarks>
+	/// This constructor initializes the list with the specified initial capacity and uses the default comparer for the type <typeparamref name="T"/>.
+	/// </remarks>
+	/// <seealso cref="FastSortedList{T}(int, IComparer{T})"/>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public FastSortedList(int capacity) : base(capacity)
+	public FastSortedList(int capacity) : this(capacity, Comparer<T>.Default)
 	{
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class.
+	/// </summary>
+	/// <param name="collection">The collection whose elements are copied to the new list.</param>
+	/// <param name="comparer">The comparer to use for sorting.</param>
+	/// <remarks>
+	/// This constructor initializes the list with the elements from the specified collection and uses the specified comparer for sorting.
+	/// </remarks>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
+	public FastSortedList([NotNull] IEnumerable<T> collection, IComparer<T> comparer) : base(collection)
+	{
+		_comparer = comparer;
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class that is empty and has the specified initial capacity.
+	/// </summary>
+	/// <param name="capacity">The number of elements that the new list, derived from <see cref="List{T}"/>, can initially store.</param>
+	/// <param name="comparer">The comparer to use for sorting.</param>
+	/// <remarks>
+	/// This constructor initializes the list with the specified initial capacity and uses the specified comparer for sorting.
+	/// </remarks>
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
+	public FastSortedList(int capacity, IComparer<T> comparer) : base(capacity)
+	{
+		_comparer = comparer;
 	}
 
 	/// <summary>
@@ -70,10 +133,20 @@ public class FastSortedList<T> : List<T>
 	[Information(Status = Status.Available)]
 	private void SortCollection()
 	{
-		if (this._sorted is false)
+		if (_sorted)
 		{
-			this.Sort();
-			this._sorted = true;
+			return;
+		}
+
+		lock (_lock)
+		{
+			if (_sorted)
+			{
+				return;
+			}
+
+			this.Sort(_comparer);
+			_sorted = true;
 		}
 	}
 
@@ -83,7 +156,7 @@ public class FastSortedList<T> : List<T>
 	/// <param name="item">The object to be added to the end of the <see cref="FastSortedList{T}"/>. The value can be <see langword="null" /> for reference types.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public new void Add(T item)
+	public new void Add([NotNull] T item)
 	{
 		item = item.ArgumentNotNull();
 
@@ -97,10 +170,20 @@ public class FastSortedList<T> : List<T>
 	/// <param name="items">The items to add to the end of the <see cref="FastSortedList{T}"/>. The collection itself cannot be null, but it can contain elements that are <see langword="null" /> for reference types.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null, indicating that the collection of items cannot be null.</exception>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public new void AddRange(IEnumerable<T> items)
+	public new void AddRange([NotNull] IEnumerable<T> items)
 	{
 		base.AddRange(items.ArgumentNotNull());
 		this._sorted = false;
+	}
+
+	/// <summary>
+	/// Removes all elements from the <see cref="FastSortedList{T}"/>.
+	/// </summary>
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
+	public new void Clear()
+	{
+		base.Clear();
+		_sorted = false;
 	}
 
 	/// <summary>
@@ -113,6 +196,27 @@ public class FastSortedList<T> : List<T>
 	{
 		this.SortCollection();
 		return base.GetEnumerator();
+	}
+
+	/// <summary>
+	/// Removes the first occurrence of a specific object from the <see cref="FastSortedList{T}"/>.
+	/// </summary>
+	/// <param name="item">The object to remove from the <see cref="FastSortedList{T}"/>. The value can be <see langword="null" /> for reference types.</param>
+	/// <returns><see langword="true" /> if <paramref name="item"/> is successfully removed; otherwise, <see langword="false" />. This method also returns <see langword="false" /> if <paramref name="item"/> was not found in the <see cref="FastSortedList{T}"/>.</returns>
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
+	public new bool Remove([NotNull] T item)
+	{
+		return base.Remove(item);
+	}
+
+	/// <summary>
+	/// Removes the element at the specified index of the <see cref="FastSortedList{T}"/>.
+	/// </summary>
+	/// <param name="index">The zero-based index of the element to remove.</param>
+	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
+	public new void RemoveAt(int index)
+	{
+		base.RemoveAt(index);
 	}
 
 	/// <summary>
@@ -129,7 +233,7 @@ public class FastSortedList<T> : List<T>
 	}
 
 	/// <summary>
-	/// Converts the <see cref="FastSortedList{T}"/> to an immutable list.
+	/// Converts the <see cref="FastSortedList{T}"/> to an <see cref="ImmutableList{T}"/>.
 	/// This method ensures the collection is sorted before converting, if it has not been sorted already.
 	/// </summary>
 	/// <returns>An <see cref="IImmutableList{T}"/> containing the elements of the <see cref="FastSortedList{T}"/>.</returns>
@@ -153,5 +257,4 @@ public class FastSortedList<T> : List<T>
 
 		return new List<T>(base.ToArray());
 	}
-
 }

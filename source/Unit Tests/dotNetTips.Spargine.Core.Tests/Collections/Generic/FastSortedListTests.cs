@@ -70,6 +70,14 @@ public class FastSortedListTests
 		// Verify the list capacity has increased
 		Assert.IsTrue(list.Capacity > capacity, "List capacity should increase when adding more items than its initial capacity.");
 	}
+
+	[TestMethod]
+	public void Add_NullItem_ShouldThrowArgumentNullException()
+	{
+		var list = new FastSortedList<string>();
+
+		Assert.ThrowsException<ArgumentNullException>(() => list.Add(null), "Adding a null item should throw ArgumentNullException.");
+	}
 	[TestMethod]
 	public void Add_ShouldMarkUnsorted()
 	{
@@ -85,6 +93,14 @@ public class FastSortedListTests
 	}
 
 	[TestMethod]
+	public void AddRange_NullCollection_ShouldThrowArgumentNullException()
+	{
+		var list = new FastSortedList<int>();
+
+		Assert.ThrowsException<ArgumentNullException>(() => list.AddRange(null), "Adding a null collection should throw ArgumentNullException.");
+	}
+
+	[TestMethod]
 	public void AddRange_ShouldMarkUnsorted()
 	{
 		var list = new FastSortedList<int>();
@@ -95,6 +111,19 @@ public class FastSortedListTests
 		var isSorted = (bool)sortedField.GetValue(list);
 
 		Assert.IsFalse(isSorted, "List should be marked as unsorted after adding a range of items.");
+	}
+
+	[TestMethod]
+	public void Clear_ShouldMarkUnsorted()
+	{
+		var list = new FastSortedList<int> { 1, 2, 3 };
+		list.Clear();
+
+		// Accessing the private _sorted field to verify it's set to false after clearing the list
+		var sortedField = typeof(FastSortedList<int>).GetField("_sorted", BindingFlags.NonPublic | BindingFlags.Instance);
+		var isSorted = (bool)sortedField.GetValue(list);
+
+		Assert.IsFalse(isSorted, "List should be marked as unsorted after clearing.");
 	}
 
 	[TestMethod]
@@ -113,6 +142,16 @@ public class FastSortedListTests
 		var list = new FastSortedList<int>(capacity);
 
 		// Verify the list's capacity is set as expected
+		Assert.AreEqual(capacity, list.Capacity, "List capacity should match the specified capacity.");
+	}
+
+	[TestMethod]
+	public void Constructor_WithCapacityAndComparer_ShouldInitializeCorrectly()
+	{
+		int capacity = 5;
+		var comparer = Comparer<int>.Create((x, y) => y.CompareTo(x)); // Descending order
+		var list = new FastSortedList<int>(capacity, comparer);
+
 		Assert.AreEqual(capacity, list.Capacity, "List capacity should match the specified capacity.");
 	}
 
@@ -155,6 +194,33 @@ public class FastSortedListTests
 	}
 
 	[TestMethod]
+	public void Constructor_WithCollectionAndComparer_ShouldUseCustomComparer()
+	{
+		var collection = new List<int> { 1, 3, 2 };
+		var comparer = Comparer<int>.Create((x, y) => y.CompareTo(x)); // Descending order
+		var list = new FastSortedList<int>(collection, comparer);
+
+		var array = list.ToArray();
+
+		Assert.IsTrue(array.SequenceEqual(new[] { 3, 2, 1 }), "List should be sorted using the custom comparer.");
+	}
+
+	[TestMethod]
+	public void Constructor_WithComparer_ShouldUseCustomComparer()
+	{
+		var comparer = Comparer<int>.Create((x, y) => y.CompareTo(x)); // Descending order
+		var list = new FastSortedList<int>(comparer);
+
+		list.Add(1);
+		list.Add(3);
+		list.Add(2);
+
+		var array = list.ToArray();
+
+		Assert.IsTrue(array.SequenceEqual(new[] { 3, 2, 1 }), "List should be sorted using the custom comparer.");
+	}
+
+	[TestMethod]
 	public void GetEnumerator_ShouldSort()
 	{
 		var list = new FastSortedList<int> { 5, 3, 4, 1, 2 };
@@ -165,6 +231,32 @@ public class FastSortedListTests
 		firstItem = enumerator.Current;
 
 		Assert.AreEqual(1, firstItem, "GetEnumerator should sort the list before returning the enumerator.");
+	}
+
+	[TestMethod]
+	public void Remove_ShouldMarkUnsorted()
+	{
+		var list = new FastSortedList<int> { 1, 2, 3 };
+		list.Remove(2);
+
+		// Accessing the private _sorted field to verify it's set to false after removing an item
+		var sortedField = typeof(FastSortedList<int>).GetField("_sorted", BindingFlags.NonPublic | BindingFlags.Instance);
+		var isSorted = (bool)sortedField.GetValue(list);
+
+		Assert.IsFalse(isSorted, "List should be marked as unsorted after removing an item.");
+	}
+
+	[TestMethod]
+	public void RemoveAt_ShouldMarkUnsorted()
+	{
+		var list = new FastSortedList<int> { 1, 2, 3 };
+		list.RemoveAt(1);
+
+		// Accessing the private _sorted field to verify it's set to false after removing an item by index
+		var sortedField = typeof(FastSortedList<int>).GetField("_sorted", BindingFlags.NonPublic | BindingFlags.Instance);
+		var isSorted = (bool)sortedField.GetValue(list);
+
+		Assert.IsFalse(isSorted, "List should be marked as unsorted after removing an item by index.");
 	}
 
 	[TestMethod]
