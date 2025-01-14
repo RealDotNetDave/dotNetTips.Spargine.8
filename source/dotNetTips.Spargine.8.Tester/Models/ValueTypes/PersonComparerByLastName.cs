@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 01-14-2025
 // ***********************************************************************
-// <copyright file="PersonAddressComparer.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="PersonComparerByLastName.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
@@ -19,10 +19,10 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 
 /// <summary>
-/// Provides a comparison for <see cref="Person{Address}"/> objects based on their first names.
+/// Provides a comparison for <see cref="Person{Address}"/> objects based on their last names.
 /// </summary>
 [Information(Status = Status.New)]
-public class PersonAddressComparer : IComparer<Person<Address>>
+public class PersonComparerByLastName : IComparer<Person<Address>>
 {
 	/// <summary>
 	/// Compares two <see cref="Person{Address}"/> objects and returns a value indicating whether one is less than, equal to, or greater than the other.
@@ -45,6 +45,6 @@ public class PersonAddressComparer : IComparer<Person<Address>>
 	/// </returns>
 	public int Compare(Person<Address> x, Person<Address> y)
 	{
-		return string.Compare(x.FirstName, y.FirstName, StringComparison.Ordinal);
+		return string.Compare(x.LastName, y.LastName, StringComparison.Ordinal);
 	}
 }

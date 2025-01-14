@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 01-14-2025
 // ***********************************************************************
-// <copyright file="PersonAddressKeyValuePairComparer.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="PersonAddressComparerByLastName.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
@@ -16,13 +16,13 @@ using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
-namespace DotNetTips.Spargine.Tester.Models.RefTypes;
+namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 
 /// <summary>
 /// Provides a comparison for <see cref="KeyValuePair{TKey, TValue}"/> objects where the value is a <see cref="Person{Address}"/>.
 /// </summary>
 [Information(Status = Status.New)]
-public class PersonAddressKeyValuePairComparer : IComparer<KeyValuePair<string, Person<Address>>>
+public class PersonAddressComparerByLastName : IComparer<KeyValuePair<string, Person<Address>>>
 {
 	/// <summary>
 	/// Compares two <see cref="KeyValuePair{TKey, TValue}"/> objects and returns a value indicating whether one is less than, equal to, or greater than the other.
@@ -45,6 +45,6 @@ public class PersonAddressKeyValuePairComparer : IComparer<KeyValuePair<string, 
 	/// </returns>
 	public int Compare(KeyValuePair<string, Person<Address>> x, KeyValuePair<string, Person<Address>> y)
 	{
-		return string.Compare(x.Value.FirstName, y.Value.FirstName, StringComparison.Ordinal);
+		return string.Compare(x.Value.LastName, y.Value.LastName, StringComparison.Ordinal);
 	}
 }
