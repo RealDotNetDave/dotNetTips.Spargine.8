@@ -4,7 +4,7 @@
 // Created          : 01-13-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-13-2025
+// Last Modified On : 01-14-2025
 // ***********************************************************************
 // <copyright file="FastSortedListAddRemoveBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -53,7 +53,7 @@ public class FastSortedListAddRemoveBenchmark : SmallCollectionBenchmark
 	{
 		var people = new FastSortedList<Person<Address>>();
 
-		_ = people.Remove(_lastPersonRefFastSortedList);
+		_ = people.Remove(this._lastPersonRefFastSortedList);
 
 		this.Consume(people.Count);
 	}

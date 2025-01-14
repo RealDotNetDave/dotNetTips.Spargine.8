@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-05-2025
+// Last Modified On : 01-14-2025
 // ***********************************************************************
 // <copyright file="Benchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -15,6 +15,7 @@
 // </summary>
 // ***********************************************************************
 
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
@@ -140,12 +141,21 @@ public abstract class Benchmark
 	/// <summary>
 	/// Caches byte arrays of various sizes to avoid regenerating them for each benchmark iteration.
 	/// </summary>
-	private readonly Dictionary<int, byte[]> _byteArrayCache = [];
+	private readonly ReadOnlyDictionary<int, byte[]> _byteArrayCache;
 
 	/// <summary>
 	/// Caches string arrays of various configurations to avoid regenerating them for each benchmark iteration.
 	/// </summary>
-	private readonly Dictionary<string, string[]> _stringArrayCache = [];
+	private readonly ReadOnlyDictionary<string, string[]> _stringArrayCache;
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="Benchmark"/> class.
+	/// </summary>
+	protected Benchmark()
+	{
+		this._byteArrayCache = new ReadOnlyDictionary<int, byte[]>(new Dictionary<int, byte[]>());
+		this._stringArrayCache = new ReadOnlyDictionary<string, string[]>(new Dictionary<string, string[]>());
+	}
 
 	/// <summary>
 	/// Gets the consumer used for consuming objects in benchmark operations.
@@ -186,10 +196,10 @@ public abstract class Benchmark
 	{
 		sizeInKb = sizeInKb.EnsureMinimum(1);
 
-		if (!_byteArrayCache.TryGetValue(sizeInKb, out var byteArray))
+		if (!this._byteArrayCache.TryGetValue(sizeInKb, out var byteArray))
 		{
 			byteArray = RandomData.GenerateByteArray(sizeInKb);
-			_byteArrayCache[sizeInKb] = byteArray;
+			_ = this._byteArrayCache.AddIfNotExists(sizeInKb, byteArray);
 		}
 
 		return byteArray;
@@ -211,11 +221,11 @@ public abstract class Benchmark
 
 		var key = $"{count}-{wordMinLength}-{wordMaxLength}";
 
-		if (!_stringArrayCache.TryGetValue(key, out var stringArray))
+		if (!this._stringArrayCache.TryGetValue(key, out var stringArray))
 		{
 			stringArray = [.. RandomData.GenerateWords(count, wordMinLength, wordMaxLength)];
 
-			_stringArrayCache[key] = stringArray;
+			_ = this._stringArrayCache.AddIfNotExists(key, stringArray);
 		}
 
 		return stringArray;

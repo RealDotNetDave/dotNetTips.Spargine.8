@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-14-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -295,7 +295,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	public void IndexOf()
 	{
 		var people = this._personRefEnumerable;
-		var result = people.IndexOf(_personRefLast);
+		var result = people.IndexOf(this._personRefLast);
 
 		this.Consume(result);
 	}
@@ -305,7 +305,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	{
 		var people = this._personRefEnumerable;
 		var comparer = new PersonComparer();
-		var result = people.IndexOf(_personRefLast, comparer);
+		var result = people.IndexOf(this._personRefLast, comparer);
 
 		this.Consume(result);
 	}
@@ -434,8 +434,8 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this._personRecordList = [.. this.GetPersonRecordArray()];
 		this._coordinateValEnumerable = this.GetCoordinateValArray().AsEnumerable();
 
-		this._personRefLast = _personRefList.Last();
-		this._personRefId = _personRefList[this.Count / 2].Id;
+		this._personRefLast = this._personRefList.Last();
+		this._personRefId = this._personRefList[this.Count / 2].Id;
 
 		var peopleToAdd = this._personRefEnumerable.ToList();
 		peopleToAdd.AddRange(this.GetPersonRefCollectionToInsert().Take(this.Count / 10));

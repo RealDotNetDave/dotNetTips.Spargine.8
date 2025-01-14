@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-22-2024
+// Last Modified On : 01-14-2025
 // ***********************************************************************
 // <copyright file="SerializationBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -133,7 +133,7 @@ public class SerializationBenchmark : Benchmark
 	[BenchmarkCategory(Categories.JSON, Categories.New)]
 	public void LoadCollectionFromJson_People_SerializerContext()
 	{
-		var result = JsonSerialization.LoadCollectionFromJson<Person<Address>>(_jsonPersonRefList, Count, PersonJsonSerializerContext.Default.Person);
+		var result = JsonSerialization.LoadCollectionFromJson<Person<Address>>(this._jsonPersonRefList, Count, PersonJsonSerializerContext.Default.Person);
 
 		this.Consume(result);
 	}
