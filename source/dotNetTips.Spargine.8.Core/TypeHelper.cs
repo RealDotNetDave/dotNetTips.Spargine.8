@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 01-14-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -20,11 +20,14 @@
 // ***********************************************************************
 
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Numerics;
 using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
@@ -55,7 +58,12 @@ public static class TypeHelper
 	/// <summary>
 	/// A read-only collection of built-in .NET types. This collection is used internally to check if a type is a built-in .NET type.
 	/// </summary>
-	private static ReadOnlyCollection<Type> _builtinTypes;
+	private static HashSet<Type> _builtinTypes;
+
+	/// <summary>
+	/// A static field to cache the built-in .NET types.
+	/// </summary>
+	private static Dictionary<Type, string> _cachedBuiltInTypes;
 
 	/// <summary>
 	/// Provides a pool of reusable <see cref="StringBuilder"/> instances to reduce allocations and improve performance.
@@ -94,7 +102,7 @@ public static class TypeHelper
 			}
 		}
 
-		_builtinTypes = builtinTypes.AsReadOnly();
+		_builtinTypes = new HashSet<Type>(builtinTypes);
 	}
 
 	/// <summary>
@@ -183,10 +191,6 @@ public static class TypeHelper
 			ProcessType(builder, type.GetElementType(), options);
 			_ = builder.Append("[]");
 		}
-		else if (BuiltInTypeNames.TryGetValue(type, out var builtInName))
-		{
-			_ = builder.Append(builtInName);
-		}
 		else if (type.IsGenericParameter)
 		{
 			if (options.IncludeGenericParameterNames)
@@ -204,6 +208,89 @@ public static class TypeHelper
 				_ = builder.Replace(ControlChars.Plus, options.NestedTypeDelimiter, builder.Length - name.Length, name.Length);
 			}
 		}
+	}
+
+	/// <summary>
+	/// Dynamically lists all built-in .NET types.
+	/// </summary>
+	/// <returns>A dictionary of built-in .NET types and their string representations.</returns>
+	/// <remarks>
+	/// This method gathers a comprehensive list of built-in .NET types, including primitive types,
+	/// common types, and types from the System namespace. The results are cached to improve performance
+	/// on subsequent calls.
+	/// </remarks>
+	/// <example>
+	/// <code>
+	/// var builtInTypes = TypeHelper.BuiltInTypeNames();
+	/// foreach (var type in builtInTypes)
+	/// {
+	///     Console.WriteLine($"{type.Key}: {type.Value}");
+	/// }
+	/// </code>
+	/// </example>
+	[Information(nameof(BuiltInTypeNames), author: "David McCarter", createdOn: "11/6/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/Spargine8", Status = Status.Available)]
+	public static Dictionary<Type, string> BuiltInTypeNames()
+	{
+		// Check if the cache is already populated
+		if (_cachedBuiltInTypes != null)
+		{
+			return _cachedBuiltInTypes;
+		}
+
+		var builtInTypes = new Dictionary<Type, string>();
+
+		// Add primitive types
+		var primitiveTypes = new[]
+		{
+				typeof(bool), typeof(byte), typeof(char), typeof(decimal), typeof(double),
+				typeof(float), typeof(int), typeof(long), typeof(sbyte), typeof(short),
+				typeof(uint), typeof(ulong), typeof(ushort)
+			};
+
+		var options = new DisplayNameOptions(fullName: false, includeGenericParameterNames: true, includeGenericParameters: true);
+
+		foreach (var type in primitiveTypes)
+		{
+			builtInTypes[type] = GetTypeDisplayName(type, options);
+		}
+
+		// Add other common built-in types
+		var commonTypes = new[]
+		{
+				typeof(string), typeof(object), typeof(DateTime), typeof(DateTimeOffset),
+				typeof(TimeSpan), typeof(Guid), typeof(Uri), typeof(BigInteger), typeof(Half),
+				typeof(IntPtr), typeof(UIntPtr), typeof(DateTimeKind), typeof(Nullable<>),
+				typeof(ValueTuple), typeof(Tuple), typeof(Span<>), typeof(ReadOnlySpan<>),
+				typeof(Memory<>), typeof(ReadOnlyMemory<>), typeof(ArraySegment<>),
+				typeof(KeyValuePair<,>), typeof(List<>), typeof(Dictionary<,>), typeof(HashSet<>),
+				typeof(Queue<>), typeof(Stack<>), typeof(LinkedList<>), typeof(SortedList<,>),
+				typeof(SortedDictionary<,>), typeof(SortedSet<>), typeof(ConcurrentDictionary<,>),
+				typeof(ConcurrentQueue<>), typeof(ConcurrentStack<>), typeof(BlockingCollection<>),
+				typeof(ObservableCollection<>), typeof(ReadOnlyCollection<>), typeof(ReadOnlyDictionary<,>),
+				typeof(ReadOnlyObservableCollection<>), typeof(ImmutableArray<>), typeof(ImmutableList<>),
+				typeof(ImmutableDictionary<,>), typeof(ImmutableHashSet<>), typeof(ImmutableQueue<>),
+				typeof(ImmutableStack<>), typeof(ImmutableSortedDictionary<,>), typeof(ImmutableSortedSet<>)
+			};
+
+		foreach (var type in commonTypes)
+		{
+			builtInTypes[type] = GetTypeDisplayName(type, includeGenericParameterNames: true, includeGenericParameters: true);
+		}
+
+		// Add types from the System namespace
+		var systemTypes = Assembly.GetAssembly(typeof(int)).GetTypes()
+			.Where(t => t.Namespace == "System" && t.IsPublic && !t.IsGenericType)
+			.ToList();
+
+		foreach (var type in systemTypes)
+		{
+			builtInTypes[type] = GetTypeDisplayName(type, includeGenericParameterNames: true, includeGenericParameters: true);
+		}
+
+		// Cache the result
+		_cachedBuiltInTypes = builtInTypes;
+
+		return builtInTypes;
 	}
 
 	/// <summary>
@@ -346,7 +433,7 @@ public static class TypeHelper
 					var assembly = Assembly.LoadFrom(fileName);
 					var exportedTypes = assembly.ExportedTypes.Where(p => p.BaseType is not null).ToImmutableArray();
 
-					if (exportedTypes.FastCount() > 0)
+					if (exportedTypes.Count() > 0)
 					{
 						var containsBaseType = exportedTypes.Any(p => string.Equals(p.BaseType.FullName, baseType.FullName, StringComparison.Ordinal));
 
@@ -526,6 +613,31 @@ public static class TypeHelper
 	public static string GetTypeDisplayName([NotNull] in object item, bool fullName = true) => item is null ? null : GetTypeDisplayName(item.GetType(), fullName);
 
 	/// <summary>
+	/// Gets the display name of the specified type using the provided display options.
+	/// </summary>
+	/// <param name="type">The type to get the display name for.</param>
+	/// <param name="options">The display options to use for formatting the display name.</param>
+	/// <returns>The display name of the type.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.New)]
+	public static string GetTypeDisplayName([NotNull] Type type, DisplayNameOptions options)
+	{
+		type = type.ArgumentNotNull();
+
+		var sb = _stringBuilderPool.Get().Clear();
+
+		try
+		{
+			ProcessType(sb, type, options);
+
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
+	}
+
+	/// <summary>
 	/// Gets the display name of the specified type.
 	/// </summary>
 	/// <param name="type">The type to get the display name for.</param>
@@ -559,22 +671,7 @@ public static class TypeHelper
 	/// <param name="type">The type to check.</param>
 	/// <returns><c>true</c> if the type is a built-in .NET type; otherwise, <c>false</c>.</returns>
 	[Information(nameof(IsBuiltinType), author: "David McCarter", createdOn: "11/6/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/Spargine8", Status = Status.Available)]
-	public static bool IsBuiltinType(in Type type)
-	{
-		if (type == null)
-		{
-			return false;
-		}
-
-		// Check if the type is a primitive type or a simple type (string, object)
-		if (type.IsPrimitive || type == typeof(string) || type == typeof(object))
-		{
-			return true;
-		}
-
-		// Check if the type is a nullable value type and if the underlying value type is primitive
-		return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) && type.GetGenericArguments()[0].IsPrimitive;
-	}
+	public static bool IsBuiltinType(in Type type) => type != null && BuiltInTypeNames().ContainsKey(type);
 
 	/// <summary>
 	/// Determines whether the specified file is a .NET assembly.
@@ -665,34 +762,6 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Provides a dictionary mapping built-in .NET types to their string representations.
-	/// </summary>
-	public static Dictionary<Type, string> BuiltInTypeNames { get; } = new()
-	{
-		{ typeof(bool), "bool" },
-		{ typeof(byte), "byte" },
-		{ typeof(char), "char" },
-		{ typeof(DateTime), "datetime" },
-		{ typeof(DateTimeOffset), "datetimeoffset" },
-		{ typeof(decimal), "decimal" },
-		{ typeof(double), "double" },
-		{ typeof(float), "float" },
-		{ typeof(int), "int" },
-		{ typeof(long), "long" },
-		{ typeof(object), "object" },
-		{ typeof(sbyte), "sbyte" },
-		{ typeof(short), "short" },
-		{ typeof(string), "string" },
-		{ typeof(TimeSpan), "timespan" },
-		{ typeof(uint), "uint" },
-		{ typeof(ulong), "ulong" },
-		{ typeof(ushort), "ushort" },
-		{ typeof(void), "void" },
-		{ typeof(TimeOnly), "timeonly" },
-		{ typeof(DateOnly), "dateonly" },
-	};
-
-	/// <summary>
 	/// Gets a read-only collection of built-in .NET types.
 	/// </summary>
 	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/Spargine8", Status = Status.Available)]
@@ -700,12 +769,12 @@ public static class TypeHelper
 	{
 		get
 		{
-			if (_builtinTypes is null)
+			if (_builtinTypes == null)
 			{
 				ComputeBuiltinTypes();
 			}
 
-			return _builtinTypes;
+			return _builtinTypes.ToList().AsReadOnly();
 		}
 	}
 
@@ -717,7 +786,7 @@ public static class TypeHelper
 	/// <param name="includeGenericParameterNames">If true, includes the names of generic parameters.</param>
 	/// <param name="includeGenericParameters">If true, includes generic parameters in the display name.</param>
 	/// <param name="nestedTypeDelimiter">The delimiter to use for nested types.</param>
-	public readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter)
+	public readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter = ControlChars.Plus)
 	{
 
 		/// <summary>

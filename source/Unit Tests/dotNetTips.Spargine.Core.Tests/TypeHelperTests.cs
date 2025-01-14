@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 01-14-2025
 // ***********************************************************************
 // <copyright file="TypeHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -42,7 +42,7 @@ public class TypeHelperTests : TestClass
 	[TestMethod]
 	public void BuiltInTypeNames01()
 	{
-		var result = TypeHelper.BuiltInTypeNames;
+		var result = TypeHelper.BuiltInTypeNames().Values;
 
 		Assert.IsTrue(result.HasItems());
 	}

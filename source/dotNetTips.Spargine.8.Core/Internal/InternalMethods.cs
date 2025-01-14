@@ -119,7 +119,7 @@ internal static class InternalMethods
 		var objectType = obj.GetType();
 
 		// Reserve a special treatment for specific types by design (like string -that's a list of chars and you don't want to iterate on its items)
-		if (TypeHelper.BuiltInTypeNames.ContainsKey(objectType))
+		if (TypeHelper.BuiltInTypeNames().ContainsKey(objectType))
 		{
 			result.Add(memberName, obj.ToString());
 			return result;
