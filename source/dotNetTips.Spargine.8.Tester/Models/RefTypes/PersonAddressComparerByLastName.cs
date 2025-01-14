@@ -19,7 +19,7 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 
 /// <summary>
-/// Provides a comparison for <see cref="KeyValuePair{TKey, TValue}"/> objects where the value is a <see cref="Person{Address}"/>.
+/// Provides a comparison for <see cref="KeyValuePair{TKey, TValue}"/> objects where the value is a <see cref="Person{Address}"/> based on their last names.
 /// </summary>
 [Information(Status = Status.New)]
 public class PersonAddressComparerByLastName : IComparer<KeyValuePair<string, Person<Address>>>
