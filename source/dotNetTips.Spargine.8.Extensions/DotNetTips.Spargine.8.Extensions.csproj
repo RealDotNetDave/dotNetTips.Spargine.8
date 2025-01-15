@@ -100,12 +100,12 @@
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
 	<PackageReference Include="linq2db" Version="5.4.1" />
-	<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
 	<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
-	<PackageReference Include="Microsoft.Extensions.ObjectPool" Version="9.0.0" />
+	<PackageReference Include="Microsoft.Extensions.ObjectPool" Version="9.0.1" />
 	<PackageReference Include="Microsoft.SourceLink.Common" Version="8.0.0">
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -114,7 +114,7 @@
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
-	<PackageReference Include="System.Collections.Immutable" Version="9.0.0" />
+	<PackageReference Include="System.Collections.Immutable" Version="9.0.1" />
 	<PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
 
