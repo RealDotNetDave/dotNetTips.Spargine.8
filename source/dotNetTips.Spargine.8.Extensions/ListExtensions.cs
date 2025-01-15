@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-15-2025
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -538,6 +538,18 @@ public static class ListExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToFastSortedList), "David McCarter", "10/21/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineJan2022", Status = Status.Available)]
 	public static FastSortedList<T> ToFastSortedList<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
+
+	/// <summary>
+	/// Converts the <see cref="List{T}"/> to a <see cref="FastSortedList{T}"/> using the specified comparer.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the list.</typeparam>
+	/// <param name="collection">The list to convert.</param>
+	/// <param name="comparer">The comparer to use for sorting the elements in the <see cref="FastSortedList{T}"/>.</param>
+	/// <returns>A <see cref="FastSortedList{T}"/> containing the elements from the original list, sorted according to the specified comparer.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="comparer"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ToFastSortedList), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static FastSortedList<T> ToFastSortedList<T>([NotNull] this List<T> collection, IComparer<T> comparer) => new(collection.ArgumentNotNull(), comparer.ArgumentNotNull());
 
 	/// <summary>
 	/// Converts a <see cref="List{T}" /> to <see cref="FrozenSet{T}" />.

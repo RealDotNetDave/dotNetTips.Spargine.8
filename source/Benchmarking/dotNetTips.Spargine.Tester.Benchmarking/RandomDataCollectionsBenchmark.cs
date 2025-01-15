@@ -39,15 +39,6 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 	private Collection<Models.RefTypes.Person<Models.RefTypes.Address>> _personRefCollection;
 	private readonly Country DefaultCountry = CountryRepository.GetCountry(CountryName.UnitedStates);
 
-	[Benchmark(Description = nameof(Coordinate) + ":OrderBy()")]
-	[BenchmarkCategory(Categories.New, Categories.ValueType)]
-	public void CoordinateOrderByBenchmark()
-	{
-		var result = this._personRecordCollection.OrderBy(p => p.Id);
-
-		this.Consume(result);
-	}
-
 	[Benchmark(Description = nameof(RandomData.GenerateAddressCollection))]
 	[BenchmarkCategory(Categories.New)]
 	public void GenerateAddressCollectionRef()
@@ -125,7 +116,17 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 	[BenchmarkCategory(Categories.New)]
 	public void PersonOrderByBenchmark()
 	{
-		var result = this._personRefCollection.OrderBy(p => p.Id);
+		var result = this._personRefCollection.OrderBy(p => p.LastName);
+
+		this.Consume(result);
+	}
+
+
+	[Benchmark(Description = nameof(Coordinate) + ":OrderBy()")]
+	[BenchmarkCategory(Categories.New, Categories.RecordType)]
+	public void PersonRecordOrderByBenchmark()
+	{
+		var result = this._personRecordCollection.OrderBy(p => p.LastName);
 
 		this.Consume(result);
 	}
@@ -134,7 +135,7 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 	[BenchmarkCategory(Categories.New)]
 	public void PersonValOrderByBenchmark()
 	{
-		var result = this._personRecordCollection.OrderBy(p => p.Id);
+		var result = this._personRecordCollection.OrderBy(p => p.LastName);
 
 		this.Consume(result);
 	}

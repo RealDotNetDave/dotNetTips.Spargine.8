@@ -344,23 +344,23 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	[Benchmark(Description = nameof(EnumerableExtensions.OrderBy))]
 	public void OrderBy()
 	{
-		var result = this._personRefEnumerable.OrderBy(p => p.FirstName);
+		var result = this._personRefEnumerable.OrderBy(p => p.LastName);
 
 		this.Consume(result);
 	}
-
-	//[Benchmark(Description = nameof(EnumerableExtensions.OrderBy) + ": With Sort Expression")]
-	//public void OrderBy()
-	//{
-	//	var result = this._personRefEnumerable.OrderBy("City desc");
-
-	//	this.Consume(result);
-	//}
 
 	[Benchmark(Description = nameof(EnumerableExtensions.OrderByOrdinal))]
 	public void OrderByOrdinal()
 	{
 		var result = this._personRefEnumerable.OrderByOrdinal(p => p.FirstName);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(EnumerableExtensions.OrderBy) + ": With Sort Expression")]
+	public void OrderBySortExpression()
+	{
+		var result = this._personRefEnumerable.OrderBy("Email desc");
 
 		this.Consume(result);
 	}

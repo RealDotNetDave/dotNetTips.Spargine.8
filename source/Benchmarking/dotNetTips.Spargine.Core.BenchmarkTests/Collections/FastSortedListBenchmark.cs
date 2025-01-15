@@ -4,7 +4,7 @@
 // Created          : 03-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-03-2024
+// Last Modified On : 01-15-2025
 // ***********************************************************************
 // <copyright file="FastSortedListBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -55,6 +55,22 @@ public class FastSortedListBenchmark : SmallCollectionBenchmark
 		this.Consume(people.Count);
 	}
 
+	[Benchmark(Description = nameof(FastSortedList<Person<Address>>.Add) + ": New FastSortedList with Comparer(LastName) + Sort")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void Add_FastSortedList_Comparer()
+	{
+		var people = new FastSortedList<Person<Address>>(new PersonComparerByLastName());
+
+		foreach (var person in this._peopleRefArrayToInsert)
+		{
+			people.Add(person);
+		}
+
+		people.Sort();
+
+		this.Consume(people.Count);
+	}
+
 	[Benchmark(Description = nameof(SortedList.Add) + ": New SortedList")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
 	public void Add_SortedList()
@@ -82,6 +98,20 @@ public class FastSortedListBenchmark : SmallCollectionBenchmark
 		this.Consume(people.Count);
 	}
 
+
+	[Benchmark(Description = nameof(FastSortedList<Person<Address>>.AddRange) + ": New FastSortedList with Comparer(LastName) + Sort")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void AddRangeFastSortedListComparer()
+	{
+		var people = new FastSortedList<Person<Address>>(new PersonComparerByLastName());
+
+		people.AddRange(this._peopleRefArrayToInsert);
+
+		people.Sort();
+
+		this.Consume(people.Count);
+	}
+
 	[Benchmark(Description = nameof(FastSortedList<Person<Address>>) + ": Create + Sort")]
 	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void Create_FastSortedList()
@@ -98,6 +128,17 @@ public class FastSortedListBenchmark : SmallCollectionBenchmark
 	public void Create_SortedList()
 	{
 		var people = new SortedList<string, Person<Address>>(this._peopleRefDictionaryToInsert);
+
+		this.Consume(people.Count);
+	}
+
+	[Benchmark(Description = nameof(FastSortedList<Person<Address>>) + ": Create with Comparer(LastName) + Sort")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void CreateFastSortedListComparer()
+	{
+		var people = new FastSortedList<Person<Address>>(this._peopleRefArrayToInsert, new PersonComparerByLastName());
+
+		people.Sort();
 
 		this.Consume(people.Count);
 	}

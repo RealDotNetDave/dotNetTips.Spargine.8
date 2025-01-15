@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-15-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -336,6 +336,18 @@ public static class DictionaryExtensions
 	/// <returns>SortedDictionary&lt;TKey, TValue&gt;.</returns>
 	[Information(nameof(ToSortedDictionary), "David McCarter", "6/27/2022", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static SortedDictionary<TKey, TValue> ToSortedDictionary<TKey, TValue>(this IDictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
+
+	/// <summary>
+	/// Converts a <see cref="IDictionary{TKey, TValue}" /> to a <see cref="SortedDictionary{TKey, TValue}" /> using the specified comparer.
+	/// </summary>
+	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+	/// <param name="collection">The dictionary to convert.</param>
+	/// <param name="comparer">The comparer to use for sorting the keys.</param>
+	/// <returns>A <see cref="SortedDictionary{TKey, TValue}" /> containing the elements from the original dictionary, sorted according to the specified comparer.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="comparer"/> is null.</exception>
+	[Information(nameof(ToSortedDictionary), BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static SortedDictionary<TKey, TValue> ToSortedDictionary<TKey, TValue>(this IDictionary<TKey, TValue> collection, IComparer<TKey> comparer) => new(collection.ArgumentNotNull(), comparer.ArgumentNotNull());
 
 	/// <summary>
 	/// Tries to get the value associated with the specified key. If the key does not exist, the specified function is used to generate a value, which is then added to the dictionary.

@@ -28,11 +28,18 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Collections;
 public class FastSortedListAddRemoveBenchmark : SmallCollectionBenchmark
 {
 	private Person<Address> _lastPersonRefFastSortedList;
+	private Person<Address> _lastPersonRefFastSortedListComparer;
 	private int _lastPersonRefFastSortedListIndex;
+	private int _lastPersonRefFastSortedListIndexComparer;
 	private KeyValuePair<string, Person<Address>> _lastPersonRefSortedList;
+	private KeyValuePair<string, Person<Address>> _lastPersonRefSortedListComparer;
 	private int _lastPersonRefSortedListIndex;
+	private int _lastPersonRefSortedListIndexComparer;
 	private FastSortedList<Person<Address>> _personRefFastSortedList;
+	private FastSortedList<Person<Address>> _personRefFastSortedListComparer;
 	private SortedList<string, Person<Address>> _personRefSortedList;
+
+	private SortedList<string, Person<Address>> _personRefSortedListComparer;
 
 	private void GenerateData()
 	{
@@ -41,10 +48,20 @@ public class FastSortedListAddRemoveBenchmark : SmallCollectionBenchmark
 		this._lastPersonRefFastSortedListIndex = this._personRefFastSortedList.LastIndexOf(this._personRefFastSortedList.Last());
 		this._lastPersonRefFastSortedList = this._personRefFastSortedList[^1];
 
-		//SortedList
+		// FastSortedList Comparer
+		this._personRefFastSortedListComparer = new FastSortedList<Person<Address>>(this.GetPersonRefArray(), new PersonComparerByLastName());
+		this._lastPersonRefFastSortedListIndexComparer = this._personRefFastSortedListComparer.LastIndexOf(this._personRefFastSortedList.Last());
+		this._lastPersonRefFastSortedListComparer = this._personRefFastSortedListComparer[^1];
+
+		// SortedList
 		this._personRefSortedList = new SortedList<string, Person<Address>>(this.GetPersonRefDictionary());
 		this._lastPersonRefSortedListIndex = this._personRefSortedList.IndexOfValue(this._personRefSortedList.Last().Value);
 		this._lastPersonRefSortedList = this._personRefSortedList.Last();
+
+		// SortedList Comparer
+		this._personRefSortedListComparer = new SortedList<string, Person<Address>>(this.GetPersonRefDictionary(), Comparer<string>.Create((x, y) => new PersonAddressComparerByLastName().Compare(new KeyValuePair<string, Person<Address>>(x, null), new KeyValuePair<string, Person<Address>>(y, null))));
+		this._lastPersonRefSortedListIndexComparer = this._personRefSortedListComparer.IndexOfValue(this._personRefSortedList.Last().Value);
+		this._lastPersonRefSortedListComparer = this._personRefSortedListComparer.Last();
 	}
 
 	[Benchmark(Description = nameof(FastSortedList<Person<Address>>.Remove))]
@@ -76,6 +93,28 @@ public class FastSortedListAddRemoveBenchmark : SmallCollectionBenchmark
 		var people = this._personRefSortedList;
 
 		people.RemoveAt(this._lastPersonRefSortedListIndex);
+
+		this.Consume(people.Count);
+	}
+
+	[Benchmark(Description = nameof(FastSortedList<Person<Address>>.RemoveAt) + ": Comparer(LastName)")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void RemoveAtFastSortedListComparer()
+	{
+		var people = this._personRefFastSortedListComparer;
+
+		people.RemoveAt(this._lastPersonRefFastSortedListIndexComparer);
+
+		this.Consume(people.Count);
+	}
+
+	[Benchmark(Description = nameof(SortedList.RemoveAt) + ": With Comparer(LastName)")]
+	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
+	public void RemoveAtSortedListComparer()
+	{
+		var people = this._personRefSortedListComparer;
+
+		people.RemoveAt(this._lastPersonRefSortedListIndexComparer);
 
 		this.Consume(people.Count);
 	}
