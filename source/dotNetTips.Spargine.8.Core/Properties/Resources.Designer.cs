@@ -385,6 +385,15 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to deserialize countries data..
+        /// </summary>
+        internal static string FailedToDeserializeCountriesData {
+            get {
+                return ResourceManager.GetString("FailedToDeserializeCountriesData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File not found. Cannot deserialize from JSON..
         /// </summary>
         internal static string FileNotFoundCannotDeserializeFromJSON {

@@ -80,7 +80,7 @@ public static class CountryRepository
 		catch (JsonException ex)
 		{
 			// Log the exception or handle it as needed.
-			throw new InvalidOperationException("Failed to deserialize countries data.", ex);
+			throw new InvalidOperationException(Resources.FailedToDeserializeCountriesData, ex);
 		}
 	}
 
