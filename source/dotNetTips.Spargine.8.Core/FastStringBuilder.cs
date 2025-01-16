@@ -149,6 +149,7 @@ public static class FastStringBuilder
 		try
 		{
 			var itemCount = args.LongLength;
+
 			for (var index = 0; index < itemCount; index++)
 			{
 				_ = sb.Append(args[index]);

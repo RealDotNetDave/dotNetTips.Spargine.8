@@ -317,7 +317,7 @@ public static class ListExtensions
 	/// <param name="collection">The collection.</param>
 	/// <param name="action">The action.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed)]
 	public static void PerformAction<T>([NotNull] this List<T> collection, [NotNull] Action<T> action)
 	{
 		collection = collection.ArgumentNotNull();
@@ -328,11 +328,9 @@ public static class ListExtensions
 			return;
 		}
 
-		var itemCount = collection.Count;
-
-		for (var index = 0; index < itemCount; index++)
+		foreach (var item in collection.AsSpan())
 		{
-			action(collection[index]);
+			action(item);
 		}
 	}
 
@@ -434,6 +432,7 @@ public static class ListExtensions
 			collection.RemoveAt(index);
 			return true;
 		}
+
 		return false;
 	}
 

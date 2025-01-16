@@ -206,6 +206,7 @@ public static class JsonSerialization
 		using (var doc = JsonDocument.Parse(json))
 		{
 			var root = doc.RootElement;
+
 			for (var itemCount = 0; itemCount < count; itemCount++)
 			{
 				items[itemCount] = root[itemCount].Deserialize<T>(_options);
