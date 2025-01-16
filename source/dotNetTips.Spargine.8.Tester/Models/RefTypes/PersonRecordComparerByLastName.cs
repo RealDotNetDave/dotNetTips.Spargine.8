@@ -4,7 +4,7 @@
 // Created          : 01-15-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-15-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="PersonRecordComparerByLastName.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -22,7 +22,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// Provides a comparer for <see cref="PersonRecord"/> objects that compares them by their last names.
 /// </summary>
 [Information(Status = Status.New)]
-public class PersonRecordComparerByLastName : IComparer<PersonRecord>
+public sealed class PersonRecordComparerByLastName : IComparer<PersonRecord>
 {
 	/// <summary>
 	/// Compares two <see cref="PersonRecord"/> objects by their last names.

@@ -4,7 +4,7 @@
 // Created          : 01-14-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-14-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="PersonComparerByLastName.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -22,7 +22,7 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// Provides a comparison for <see cref="Person{Address}"/> objects based on their last names.
 /// </summary>
 [Information(Status = Status.New)]
-public class PersonComparerByLastName : IComparer<Person<Address>>
+public sealed class PersonComparerByLastName : IComparer<Person<Address>>
 {
 	/// <summary>
 	/// Compares two <see cref="Person{Address}"/> objects and returns a value indicating whether one is less than, equal to, or greater than the other.

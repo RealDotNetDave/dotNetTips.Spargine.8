@@ -4,7 +4,7 @@
 // Created          : 01-14-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-14-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="PersonAddressComparerByLastName.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -22,7 +22,7 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// Provides a comparison for <see cref="KeyValuePair{TKey, TValue}"/> objects where the value is a <see cref="Person{Address}"/>.
 /// </summary>
 [Information(Status = Status.New)]
-public class PersonAddressComparerByLastName : IComparer<KeyValuePair<string, Person<Address>>>
+public sealed class PersonAddressComparerByLastName : IComparer<KeyValuePair<string, Person<Address>>>
 {
 	/// <summary>
 	/// Compares two <see cref="KeyValuePair{TKey, TValue}"/> objects and returns a value indicating whether one is less than, equal to, or greater than the other.
