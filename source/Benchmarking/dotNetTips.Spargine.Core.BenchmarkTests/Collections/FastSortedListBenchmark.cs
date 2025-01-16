@@ -66,8 +66,6 @@ public class FastSortedListBenchmark : SmallCollectionBenchmark
 			people.Add(person);
 		}
 
-		people.Sort();
-
 		this.Consume(people.Count);
 	}
 
@@ -107,8 +105,6 @@ public class FastSortedListBenchmark : SmallCollectionBenchmark
 
 		people.AddRange(this._peopleRefArrayToInsert);
 
-		people.Sort();
-
 		this.Consume(people.Count);
 	}
 
@@ -137,8 +133,6 @@ public class FastSortedListBenchmark : SmallCollectionBenchmark
 	public void CreateFastSortedListComparer()
 	{
 		var people = new FastSortedList<Person<Address>>(this._peopleRefArrayToInsert, new PersonComparerByLastName());
-
-		people.Sort();
 
 		this.Consume(people.Count);
 	}

@@ -346,7 +346,7 @@ public static class DictionaryExtensions
 	/// <param name="comparer">The comparer to use for sorting the keys.</param>
 	/// <returns>A <see cref="SortedDictionary{TKey, TValue}" /> containing the elements from the original dictionary, sorted according to the specified comparer.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="comparer"/> is null.</exception>
-	[Information(nameof(ToSortedDictionary), BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(ToSortedDictionary), BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static SortedDictionary<TKey, TValue> ToSortedDictionary<TKey, TValue>(this IDictionary<TKey, TValue> collection, IComparer<TKey> comparer) => new(collection.ArgumentNotNull(), comparer.ArgumentNotNull());
 
 	/// <summary>

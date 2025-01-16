@@ -683,6 +683,78 @@ public class ListExtensionsTests
 	}
 
 	[TestMethod]
+	public void ToFastSortedList_WithCustomComparer_ShouldReturnSortedList()
+	{
+		// Arrange
+		var list = new List<string> { "apple", "banana", "cherry" };
+		var comparer = Comparer<string>.Create((x, y) => y.CompareTo(x)); // Reverse order
+
+		// Act
+		var result = list.ToFastSortedList(comparer);
+
+		// Assert
+		Assert.IsNotNull(result, "Result should not be null.");
+		Assert.AreEqual(list.Count, result.Count, "Resulting list should have the same count as the source list.");
+		CollectionAssert.AreEqual(new List<string> { "cherry", "banana", "apple" }, result, "Resulting list should be sorted in reverse order.");
+	}
+
+	[TestMethod]
+	public void ToFastSortedList_WithEmptyList_ShouldReturnEmptyList()
+	{
+		// Arrange
+		var list = new List<int>();
+
+		// Act
+		var result = list.ToFastSortedList();
+
+		// Assert
+		Assert.IsNotNull(result, "Result should not be null.");
+		Assert.AreEqual(0, result.Count, "Resulting list should be empty.");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void ToFastSortedList_WithNullComparer_ShouldThrowArgumentNullException()
+	{
+		// Arrange
+		var list = new List<int> { 1, 2, 3 };
+		IComparer<int> comparer = null;
+
+		// Act
+		var result = list.ToFastSortedList(comparer);
+
+		// Assert is handled by the ExpectedException
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void ToFastSortedList_WithNullList_ShouldThrowArgumentNullException()
+	{
+		// Arrange
+		List<int> list = null;
+
+		// Act
+		var result = list.ToFastSortedList();
+
+		// Assert is handled by the ExpectedException
+	}
+
+	[TestMethod]
+	public void ToFastSortedList_WithValidList_ShouldReturnSortedList()
+	{
+		// Arrange
+		var list = new List<int> { 5, 3, 1, 4, 2 };
+
+		// Act
+		var result = list.ToFastSortedList();
+
+		// Assert
+		Assert.IsNotNull(result, "Result should not be null.");
+		Assert.AreEqual(list.Count, result.Count, "Resulting list should have the same count as the source list.");
+		CollectionAssert.AreEqual(new List<int> { 1, 2, 3, 4, 5 }, result, "Resulting list should be sorted.");
+	}
+
+	[TestMethod]
 	public void ToFastSortedListTest()
 	{
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
@@ -693,7 +765,6 @@ public class ListExtensionsTests
 
 		Assert.IsTrue(result.FastCount() == Count);
 	}
-
 
 
 	[TestMethod]

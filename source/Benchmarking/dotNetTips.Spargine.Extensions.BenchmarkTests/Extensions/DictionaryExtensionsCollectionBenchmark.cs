@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
+using DotNetTips.Spargine.Core.Collections.Generic;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
@@ -140,6 +141,14 @@ public class DictionaryExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	public void ToReadOnlyDictionary()
 	{
 		var people = this._personRefDictionary.ToReadOnlyDictionary();
+
+		this.Consume(people);
+	}
+
+	[Benchmark(Description = nameof(DictionaryExtensions.ToSortedDictionary) + ": Comparer")]
+	public void ToSortedDictionaryComparerTest()
+	{
+		var people = this._personRefDictionary.ToSortedDictionary(new OrdinalStringComparer());
 
 		this.Consume(people);
 	}

@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-15-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="RegexProcessor.Methods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -65,7 +65,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string to extract numbers from.</param>
 	/// <returns>A string containing all numeric characters extracted from the input.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
-	[Information(nameof(GetNumbers), UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(GetNumbers), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static string GetNumbers(in string input)
 	{
 		ArgumentNullException.ThrowIfNull(input);
