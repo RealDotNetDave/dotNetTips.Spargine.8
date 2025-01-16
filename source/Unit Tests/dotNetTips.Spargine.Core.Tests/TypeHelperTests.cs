@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-15-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="TypeHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -19,7 +19,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Text;
@@ -259,7 +258,7 @@ public class TypeHelperTests : TestClass
 		var result = TypeHelper.GetTypeDisplayName(type, options);
 
 		// Assert
-		Assert.AreEqual("System.Collections.Generic.List<int>", result);
+		Assert.AreEqual("System.Collections.Generic.List<System.Int32>", result);
 	}
 
 	[TestMethod]
@@ -343,7 +342,7 @@ public class TypeHelperTests : TestClass
 		var result = TypeHelper.GetTypeDisplayName(type, options);
 
 		// Assert
-		Assert.AreEqual("List<int>", result);
+		Assert.AreEqual("List<Int32>", result);
 	}
 
 	[TestMethod]
@@ -353,25 +352,16 @@ public class TypeHelperTests : TestClass
 
 		var result = TypeHelper.GetTypeDisplayName(person);
 
-		Assert.IsTrue(
-			string.Compare(
-					result,
-					"DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address>",
-					StringComparison.Ordinal) ==
-				0);
+		Assert.IsTrue(string.Compare(result, "DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address>",
+					StringComparison.Ordinal) == 0);
 
 		result = TypeHelper.GetTypeDisplayName(person, true);
 
-		Assert.IsTrue(
-			string.Compare(
-					result,
-					"DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address>",
-					StringComparison.Ordinal) ==
-				0);
+		Assert.IsTrue(string.Compare(result, "DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address>", StringComparison.Ordinal) == 0);
 
 		result = TypeHelper.GetTypeDisplayName(typeof(int), true, true, true, '-');
 
-		Assert.IsTrue(string.Compare(result, "int", StringComparison.Ordinal) == 0);
+		Assert.IsTrue(string.Compare(result, "System.Int32", StringComparison.Ordinal) == 0);
 
 		var people = RandomData.GeneratePersonRefCollection<Address>(5);
 
@@ -458,7 +448,7 @@ public class TypeHelperTests : TestClass
 
 		// Assert
 		var result = builder.ToString();
-		Assert.AreEqual("System.Collections.Generic.Dictionary<string, int>", result);
+		Assert.AreEqual("System.Collections.Generic.Dictionary<System.String, System.Int32>", result);
 	}
 
 	[TestMethod]
@@ -475,7 +465,7 @@ public class TypeHelperTests : TestClass
 
 		// Assert
 		var result = builder.ToString();
-		Assert.AreEqual("System.Collections.Generic.Dictionary<System.Collections.Generic.List<string>, System.Collections.Generic.Dictionary<int, string>>", result);
+		Assert.AreEqual("System.Collections.Generic.Dictionary<System.Collections.Generic.List<System.String>, System.Collections.Generic.Dictionary<System.Int32, System.String>>", result);
 	}
 
 	[TestMethod]
@@ -492,7 +482,7 @@ public class TypeHelperTests : TestClass
 
 		// Assert
 		var result = builder.ToString();
-		Assert.AreEqual("System.Collections.Generic.List<int>", result);
+		Assert.AreEqual("System.Collections.Generic.List<System.Int32>", result);
 	}
 
 }

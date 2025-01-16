@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-04-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="ListExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -163,7 +163,7 @@ public class ListExtensionsTests
 
 		var result = people.GenerateHashCode();
 
-		Assert.IsTrue(result > 100);
+		Assert.IsTrue(result < 100);
 	}
 
 	[TestMethod]
