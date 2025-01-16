@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-15-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -32,7 +32,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// This includes methods for adding or updating entries, converting dictionaries to various forms,
 /// disposing dictionary items, and more.
 /// </summary>
-[Information(Documentation = "https://bit.ly/SpargineDictionaryExtensions")]
+[Information(Documentation = "https://bit.ly/SpargineDictionaryExtensions", Status = Status.UpdateDocumentation)]
 public static class DictionaryExtensions
 {
 	/// <summary>
@@ -346,7 +346,7 @@ public static class DictionaryExtensions
 	/// <param name="comparer">The comparer to use for sorting the keys.</param>
 	/// <returns>A <see cref="SortedDictionary{TKey, TValue}" /> containing the elements from the original dictionary, sorted according to the specified comparer.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="comparer"/> is null.</exception>
-	[Information(nameof(ToSortedDictionary), BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(ToSortedDictionary), BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static SortedDictionary<TKey, TValue> ToSortedDictionary<TKey, TValue>(this IDictionary<TKey, TValue> collection, IComparer<TKey> comparer) => new(collection.ArgumentNotNull(), comparer.ArgumentNotNull());
 
 	/// <summary>

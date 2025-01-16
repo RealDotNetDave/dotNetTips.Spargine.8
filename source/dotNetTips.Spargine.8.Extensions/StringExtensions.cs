@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -36,7 +36,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// and performing manipulations like concatenation, extraction, and indentation. These utilities aim to simplify common string handling tasks
 /// in .NET applications.
 /// </remarks>
-[Information(Documentation = "https://bit.ly/SpargineStringExtensions", Status = Status.Available)]
+[Information(Documentation = "https://bit.ly/SpargineStringExtensions", Status = Status.UpdateDocumentation)]
 public static class StringExtensions
 {
 

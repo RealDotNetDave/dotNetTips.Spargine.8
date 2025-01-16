@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-09-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="RegexProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -29,7 +29,7 @@ namespace DotNetTips.Spargine.Core.RegularExpressions;
 /// methods for validating and processing strings against common patterns such as
 /// email addresses, URLs, credit card numbers, and more.
 /// </summary>
-[Information(Documentation = "https://bit.ly/SpargineRegexProcessor", Status = Status.Available)]
+[Information(Documentation = "https://bit.ly/SpargineRegexProcessor", Status = Status.UpdateDocumentation)]
 public static partial class RegexProcessor
 {
 

@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-14-2025
+// Last Modified On : 01-15-2025
 // ***********************************************************************
 // <copyright file="TypeHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -232,6 +232,118 @@ public class TypeHelperTests : TestClass
 		result = TypeHelper.GetPropertyValues(exTest);
 
 		Assert.IsTrue(result.Count > 1);
+	}
+
+	[TestMethod]
+	public void GetTypeDisplayName_WithArrayType_ReturnsArrayTypeName()
+	{
+		// Arrange
+		var type = typeof(int[]);
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true);
+
+		// Act
+		var result = TypeHelper.GetTypeDisplayName(type, options);
+
+		// Assert
+		Assert.AreEqual("System.Int32[]", result);
+	}
+
+	[TestMethod]
+	public void GetTypeDisplayName_WithFullNameOption_ReturnsFullName()
+	{
+		// Arrange
+		var type = typeof(List<int>);
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true);
+
+		// Act
+		var result = TypeHelper.GetTypeDisplayName(type, options);
+
+		// Assert
+		Assert.AreEqual("System.Collections.Generic.List<int>", result);
+	}
+
+	[TestMethod]
+	public void GetTypeDisplayName_WithGenericParameterNames_ReturnsNames()
+	{
+		// Arrange
+		var type = typeof(Dictionary<,>);
+		var options = new DisplayNameOptions(fullName: false, includeGenericParameterNames: true, includeGenericParameters: true);
+
+		// Act
+		var result = TypeHelper.GetTypeDisplayName(type, options);
+
+		// Assert
+		Assert.AreEqual("Dictionary<TKey, TValue>", result);
+	}
+
+	[TestMethod]
+	public void GetTypeDisplayName_WithGenericParameterNamesAndFullName_ReturnsFullNameWithParameterNames()
+	{
+		// Arrange
+		var type = typeof(Dictionary<,>);
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: true, includeGenericParameters: true);
+
+		// Act
+		var result = TypeHelper.GetTypeDisplayName(type, options);
+
+		// Assert
+		Assert.AreEqual("System.Collections.Generic.Dictionary<TKey, TValue>", result);
+	}
+
+	[TestMethod]
+	public void GetTypeDisplayName_WithGenericType_ReturnsGenericTypeName()
+	{
+		// Arrange
+		var type = typeof(Dictionary<int, List<string>>);
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true);
+
+		// Act
+		var result = TypeHelper.GetTypeDisplayName(type, options);
+
+		// Assert
+		Assert.AreEqual("System.Collections.Generic.Dictionary<System.Int32, System.Collections.Generic.List<System.String>>", result);
+	}
+
+	[TestMethod]
+	public void GetTypeDisplayName_WithNestedGenericType_ReturnsNestedGenericTypeName()
+	{
+		// Arrange
+		var type = typeof(Dictionary<int, List<Dictionary<string, int>>>);
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true);
+
+		// Act
+		var result = TypeHelper.GetTypeDisplayName(type, options);
+
+		// Assert
+		Assert.AreEqual("System.Collections.Generic.Dictionary<System.Int32, System.Collections.Generic.List<System.Collections.Generic.Dictionary<System.String, System.Int32>>>", result);
+	}
+
+	[TestMethod]
+	public void GetTypeDisplayName_WithNestedTypeDelimiter_ReturnsCustomDelimiter()
+	{
+		// Arrange
+		var type = typeof(Dictionary<int, List<string>>);
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true, nestedTypeDelimiter: '.');
+
+		// Act
+		var result = TypeHelper.GetTypeDisplayName(type, options);
+
+		// Assert
+		Assert.AreEqual("System.Collections.Generic.Dictionary<System.Int32, System.Collections.Generic.List<System.String>>", result);
+	}
+
+	[TestMethod]
+	public void GetTypeDisplayName_WithShortNameOption_ReturnsShortName()
+	{
+		// Arrange
+		var type = typeof(List<int>);
+		var options = new DisplayNameOptions(fullName: false, includeGenericParameterNames: false, includeGenericParameters: true);
+
+		// Act
+		var result = TypeHelper.GetTypeDisplayName(type, options);
+
+		// Assert
+		Assert.AreEqual("List<int>", result);
 	}
 
 	[TestMethod]

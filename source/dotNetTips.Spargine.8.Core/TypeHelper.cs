@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-14-2025
+// Last Modified On : 01-15-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -618,7 +618,7 @@ public static class TypeHelper
 	/// <param name="type">The type to get the display name for.</param>
 	/// <param name="options">The display options to use for formatting the display name.</param>
 	/// <returns>The display name of the type.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, Status = Status.New)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static string GetTypeDisplayName([NotNull] Type type, DisplayNameOptions options)
 	{
 		type = type.ArgumentNotNull();

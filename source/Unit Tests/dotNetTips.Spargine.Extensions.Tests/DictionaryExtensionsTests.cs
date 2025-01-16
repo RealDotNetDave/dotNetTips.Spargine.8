@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-09-2024
+// Last Modified On : 01-15-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -393,6 +393,90 @@ public class DictionaryExtensionsTests
 		Assert.IsTrue(result.Count == CollectionCount);
 	}
 
+	[TestMethod]
+	public void ToSortedDictionary_WithCustomComparer_ReturnsSortedDictionary()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>
+	{
+		{ "b", 2 },
+		{ "a", 1 },
+		{ "c", 3 }
+	};
+		var comparer = Comparer<string>.Create((x, y) => string.Compare(y, x, StringComparison.Ordinal));
+
+		// Act
+		var result = dictionary.ToSortedDictionary(comparer);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(3, result.Count);
+		CollectionAssert.AreEqual(new[] { "c", "b", "a" }, result.Keys.ToArray());
+	}
+
+	[TestMethod]
+	public void ToSortedDictionary_WithDefaultComparer_ReturnsSortedDictionary()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>
+	{
+		{ "b", 2 },
+		{ "a", 1 },
+		{ "c", 3 }
+	};
+		var comparer = Comparer<string>.Default;
+
+		// Act
+		var result = dictionary.ToSortedDictionary(comparer);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(3, result.Count);
+		CollectionAssert.AreEqual(new[] { "a", "b", "c" }, result.Keys.ToArray());
+	}
+
+	[TestMethod]
+	public void ToSortedDictionary_WithEmptyDictionary_ReturnsEmptySortedDictionary()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>();
+		var comparer = Comparer<string>.Default;
+
+		// Act
+		var result = dictionary.ToSortedDictionary(comparer);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(0, result.Count);
+	}
+
+	[TestMethod]
+	public void ToSortedDictionary_WithNullComparer_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>
+	{
+		{ "b", 2 },
+		{ "a", 1 },
+		{ "c", 3 }
+	};
+		IComparer<string> comparer = null;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => dictionary.ToSortedDictionary(comparer));
+	}
+
+	[TestMethod]
+	public void ToSortedDictionary_WithNullDictionary_ThrowsArgumentNullException()
+	{
+		// Arrange
+		Dictionary<string, int> dictionary = null;
+		var comparer = Comparer<string>.Default;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => dictionary.ToSortedDictionary(comparer));
+	}
+
 	/// <summary>
 	/// Defines the test method ToSortedDictionaryTest.
 	/// </summary>
@@ -405,6 +489,7 @@ public class DictionaryExtensionsTests
 
 		Assert.IsTrue(result.HasItems());
 	}
+
 
 	[TestMethod]
 	public void TryGetKey_WithExistingKey_ReturnsValue()

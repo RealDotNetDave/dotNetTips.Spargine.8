@@ -40,6 +40,15 @@ public class RegexProcessorBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(RegexProcessor.GetNumbers))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void GetNumbers()
+	{
+		var result = RegexProcessor.GetNumbers("97988AAAAA!78213479");
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(RegexProcessor.IsCreditCardNumber))]
 	[BenchmarkCategory(Categories.Strings)]
 	public void IsCreditCardNumber()
@@ -72,6 +81,24 @@ public class RegexProcessorBenchmark : Benchmark
 	public void IsGuid()
 	{
 		var result = RegexProcessor.IsGuid("19C908E3-B4C0-47AA-87E9-C93379E1E264");
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RegexProcessor.IsIPv4Address))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void IsIPv4Address()
+	{
+		var result = RegexProcessor.IsIPv4Address("192.168.1.1");
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RegexProcessor.IsIPv6Address))]
+	[BenchmarkCategory(Categories.Strings)]
+	public void IsIPv6Address()
+	{
+		var result = RegexProcessor.IsIPv6Address("2001:0db8:85a3:0000:0000:8a2e:0370:7334");
 
 		this.Consume(result);
 	}

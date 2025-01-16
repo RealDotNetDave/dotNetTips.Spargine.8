@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-09-2025
+// Last Modified On : 01-15-2025
 // ***********************************************************************
 // <copyright file="RegexProcessor.Methods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -65,7 +65,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string to extract numbers from.</param>
 	/// <returns>A string containing all numeric characters extracted from the input.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
-	[Information(nameof(GetNumbers), UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	[Information(nameof(GetNumbers), UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static string GetNumbers(in string input)
 	{
 		ArgumentNullException.ThrowIfNull(input);
@@ -156,7 +156,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a valid IPv4 address; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsIPv4Address), "David McCarter", "10/10/2023", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	[Information(nameof(IsIPv4Address), "David McCarter", "10/10/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static bool IsIPv4Address(in string input)
 	{
 		if (input is null)
@@ -172,7 +172,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a valid IPv6 address; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsIPv6Address), "David McCarter", "10/10/2023", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	[Information(nameof(IsIPv6Address), "David McCarter", "10/10/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static bool IsIPv6Address(in string input)
 	{
 		if (input is null)
@@ -182,8 +182,6 @@ public static partial class RegexProcessor
 
 		return IPv6AddressRegex().IsMatch(input);
 	}
-
-
 
 	/// <summary>
 	/// Validates whether the input is an ISBN (International Standard Book Number).

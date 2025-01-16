@@ -117,6 +117,18 @@ public class TypeHelperBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(TypeHelper.GetTypeDisplayName))]
+	[BenchmarkCategory(Categories.Reflection, Categories.New)]
+	public void GetTypeDisplayName()
+	{
+		var type = typeof(int[]);
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true);
+
+		var result = TypeHelper.GetTypeDisplayName(type, options);
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(TypeHelper.ProcessGenericType))]
 	[BenchmarkCategory(Categories.Reflection, Categories.New)]
 	public void ProcessGenericType()

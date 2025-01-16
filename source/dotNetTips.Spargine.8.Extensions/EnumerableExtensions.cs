@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -35,7 +35,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides a collection of static methods for querying objects that implement <see cref="IEnumerable{T}"/>.
 /// These extensions add functionality for adding, checking, and manipulating elements within enumerable collections.
 /// </summary>
-[Information(Documentation = "https://bit.ly/SpargineEnumerableExtensions")]
+[Information(Documentation = "https://bit.ly/SpargineEnumerableExtensions", Status = Status.UpdateDocumentation)]
 public static class EnumerableExtensions
 {
 	/// <summary>

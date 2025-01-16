@@ -4,7 +4,7 @@
 // Created          : 05-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-04-2025
+// Last Modified On : 01-16-2025
 // ***********************************************************************
 // <copyright file="StringBuilderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -26,7 +26,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// <remarks>
 /// This class includes methods for appending key-value pairs, bytes, and collections with various formatting options.
 /// </remarks>
-[Information(nameof(StringBuilderExtensions), "David McCarter", "5/26/2020", "7/29/2020", Status = Status.Available)]
+[Information(nameof(StringBuilderExtensions), "David McCarter", "5/26/2020", "7/29/2020", Status = Status.NeedsDocumentation)]
 public static class StringBuilderExtensions
 {
 
