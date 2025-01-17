@@ -91,6 +91,8 @@ public static class ListExtensions
 	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static List<T> AddRangeIfNotExists<T>([NotNull] this List<T> collection, [NotNull] IEnumerable<T> items)
 	{
+		// TODO: CHANGE TO VOID AT THE END OF 2025 TO WORK LIKE ADDRANGE
+
 		collection = collection.ArgumentNotNull();
 		items = items.ArgumentNotNull();
 

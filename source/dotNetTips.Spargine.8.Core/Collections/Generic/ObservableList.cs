@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 01-17-2025
 // ***********************************************************************
 // <copyright file="ObservableList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -205,6 +205,8 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public virtual bool Add(T item)
 	{
+		// TODO: CHANGE TO VOID AT THE END OF 2025 TO WORK LIKE ADD
+
 		if (item is null)
 		{
 			return false;

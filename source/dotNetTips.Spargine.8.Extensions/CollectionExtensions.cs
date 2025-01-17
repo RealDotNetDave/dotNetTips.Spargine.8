@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 01-17-2025
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -158,6 +158,9 @@ public static class CollectionExtensions
 	[Information(nameof(AddRange), "David McCarter", "11/7/2023", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static bool AddRange<T>([NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> items, bool ensureUnique = true)
 	{
+		// TODO: CHANGE TO VOID AT THE END OF 2025 TO WORK LIKE ADDRANGE
+		// TODO: ADD ADDRANGEIFNOTEXISTS
+
 		items = items.ArgumentNotNull();
 		collection = collection.ArgumentNotNull().ArgumentNotReadOnly();
 
