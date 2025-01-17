@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-16-2025
+// Last Modified On : 01-17-2025
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -53,9 +53,6 @@ public static class ListExtensions
 		{
 			return;
 		}
-
-		//return collection.ArgumentNotNull().ArgumentNotReadOnly().Prepend(item).ToList();
-
 		_ = collection.ArgumentNotNull().ArgumentNotReadOnly();
 
 		collection.Insert(0, item);
@@ -92,7 +89,7 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public static List<T> AddRangeIfNotExists<T>(this List<T> collection, IEnumerable<T> items)
+	public static List<T> AddRangeIfNotExists<T>([NotNull] this List<T> collection, [NotNull] IEnumerable<T> items)
 	{
 		collection = collection.ArgumentNotNull();
 		items = items.ArgumentNotNull();
@@ -387,7 +384,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(RemoveFirst), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public static bool RemoveFirst<T>(this List<T> collection, T item)
+	public static bool RemoveFirst<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		collection = collection.ArgumentNotNull();
 
@@ -416,7 +413,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(RemoveLast), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public static bool RemoveLast<T>(this List<T> collection, T item)
+	public static bool RemoveLast<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		collection = collection.ArgumentNotNull();
 
@@ -443,7 +440,7 @@ public static class ListExtensions
 	/// <param name="collection">The list to shuffle.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Shuffle), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public static void Shuffle<T>(this List<T> collection)
+	public static void Shuffle<T>([NotNull] this List<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
 
@@ -466,7 +463,7 @@ public static class ListExtensions
 	/// <returns>A list of smaller lists.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Split), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public static ReadOnlyCollection<ReadOnlyCollection<T>> Split<T>(this List<T> collection, int size)
+	public static ReadOnlyCollection<ReadOnlyCollection<T>> Split<T>([NotNull] this List<T> collection, int size)
 	{
 		collection = collection.ArgumentNotNull();
 		size = size.ArgumentInRange(lower: 1, upper: collection.Count, paramName: nameof(size));
@@ -549,7 +546,7 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="comparer"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToFastSortedList), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public static FastSortedList<T> ToFastSortedList<T>([NotNull] this List<T> collection, IComparer<T> comparer) => new(collection.ArgumentNotNull(), comparer.ArgumentNotNull());
+	public static FastSortedList<T> ToFastSortedList<T>([NotNull] this List<T> collection, [NotNull] IComparer<T> comparer) => new(collection.ArgumentNotNull(), comparer.ArgumentNotNull());
 
 	/// <summary>
 	/// Converts a <see cref="List{T}" /> to <see cref="FrozenSet{T}" />.
