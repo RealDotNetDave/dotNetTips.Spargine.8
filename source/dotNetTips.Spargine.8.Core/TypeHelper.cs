@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-15-2025
+// Last Modified On : 01-17-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -786,8 +786,52 @@ public static class TypeHelper
 	/// <param name="includeGenericParameterNames">If true, includes the names of generic parameters.</param>
 	/// <param name="includeGenericParameters">If true, includes generic parameters in the display name.</param>
 	/// <param name="nestedTypeDelimiter">The delimiter to use for nested types.</param>
-	public readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter = ControlChars.Plus)
+	public readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter = ControlChars.Plus) : IEquatable<DisplayNameOptions>
 	{
+
+		/// <summary>
+		/// Determines whether two <see cref="DisplayNameOptions"/> instances are not equal.
+		/// </summary>
+		/// <param name="left">The first <see cref="DisplayNameOptions"/> instance to compare.</param>
+		/// <param name="right">The second <see cref="DisplayNameOptions"/> instance to compare.</param>
+		/// <returns><c>true</c> if the specified <see cref="DisplayNameOptions"/> instances are not equal; otherwise, <c>false</c>.</returns>
+		public static bool operator !=(DisplayNameOptions left, DisplayNameOptions right) => !(left == right);
+
+		/// <summary>
+		/// Determines whether two <see cref="DisplayNameOptions"/> instances are equal.
+		/// </summary>
+		/// <param name="left">The first <see cref="DisplayNameOptions"/> instance to compare.</param>
+		/// <param name="right">The second <see cref="DisplayNameOptions"/> instance to compare.</param>
+		/// <returns><c>true</c> if the specified <see cref="DisplayNameOptions"/> instances are equal; otherwise, <c>false</c>.</returns>
+		public static bool operator ==(DisplayNameOptions left, DisplayNameOptions right) => left.Equals(right);
+
+		/// <summary>
+		/// Determines whether the specified object is equal to the current object.
+		/// </summary>
+		/// <param name="obj">The object to compare with the current object.</param>
+		/// <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+		public override bool Equals([NotNullWhen(true)] object obj) => base.Equals(obj);
+
+		/// <summary>
+		/// Determines whether the specified <see cref="DisplayNameOptions"/> instance is equal to the current instance.
+		/// </summary>
+		/// <param name="other">The <see cref="DisplayNameOptions"/> instance to compare with the current instance.</param>
+		/// <returns><c>true</c> if the specified <see cref="DisplayNameOptions"/> instance is equal to the current instance; otherwise, <c>false</c>.</returns>
+		public bool Equals(DisplayNameOptions other) => this.FullName == other.FullName &&
+				   this.IncludeGenericParameterNames == other.IncludeGenericParameterNames &&
+				   this.IncludeGenericParameters == other.IncludeGenericParameters &&
+				   this.NestedTypeDelimiter == other.NestedTypeDelimiter;
+
+		/// <summary>
+		/// Returns the hash code for the current object.
+		/// </summary>
+		/// <returns>A hash code for the current object.</returns>
+		public override int GetHashCode() => base.GetHashCode();
+		/// <summary>
+		/// Returns a string that represents the current object.
+		/// </summary>
+		/// <returns>A string that represents the current object.</returns>
+		public override string ToString() => base.ToString();
 
 		/// <summary>
 		/// Gets a value indicating whether the full name of the type is used.
@@ -808,7 +852,6 @@ public static class TypeHelper
 		/// Gets the delimiter used for nested types in the type's display name.
 		/// </summary>
 		public char NestedTypeDelimiter { get; } = nestedTypeDelimiter;
-
 	}
 
 }

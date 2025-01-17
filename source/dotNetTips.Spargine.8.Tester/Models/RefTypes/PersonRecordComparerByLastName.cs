@@ -4,7 +4,7 @@
 // Created          : 01-15-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-16-2025
+// Last Modified On : 01-17-2025
 // ***********************************************************************
 // <copyright file="PersonRecordComparerByLastName.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -35,8 +35,5 @@ public sealed class PersonRecordComparerByLastName : IComparer<PersonRecord>
 	/// Zero: <paramref name="x"/> equals <paramref name="y"/>.
 	/// Greater than zero: <paramref name="x"/> is greater than <paramref name="y"/>.
 	/// </returns>
-	public int Compare(PersonRecord x, PersonRecord y)
-	{
-		return string.Compare(x?.LastName, y?.LastName, StringComparison.Ordinal);
-	}
+	public int Compare(PersonRecord x, PersonRecord y) => string.Compare(x?.LastName, y?.LastName, StringComparison.Ordinal);
 }

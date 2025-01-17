@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-13-2025
+// Last Modified On : 01-17-2025
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -101,10 +101,7 @@ public static class UlidGenerator
 	/// Gets the current timestamp in milliseconds since the Unix epoch.
 	/// </summary>
 	/// <returns>A byte array representing the current timestamp.</returns>
-	private static byte[] GetTimestamp()
-	{
-		return BitConverter.GetBytes(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
-	}
+	private static byte[] GetTimestamp() => BitConverter.GetBytes(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
 
 	/// <summary>
 	/// Generates multiple ULIDs based on the specified count.

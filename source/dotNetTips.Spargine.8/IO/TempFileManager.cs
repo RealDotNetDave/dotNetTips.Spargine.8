@@ -4,14 +4,12 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-17-2025
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>
-// TempFileManager creates and maintains a list of temporary files.
-// </summary>
+// <summary>TempFileManager creates and maintains a list of temporary files.</summary>
 // ***********************************************************************
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
@@ -123,7 +121,7 @@ public class TempFileManager : IDisposable
 	[Information("Deletes all temporary files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void DeleteAllFiles()
 	{
-		_ = Parallel.ForEach(this._files, DeleteFile);
+		_ = Parallel.ForEach(this._files, this.DeleteFile);
 
 		while (this._files.TryTake(out _))
 		{ }
@@ -143,7 +141,7 @@ public class TempFileManager : IDisposable
 
 		File.Delete(file);
 
-		_ = _files.TryTake(out _);
+		_ = this._files.TryTake(out _);
 	}
 
 	/// <summary>
@@ -161,8 +159,5 @@ public class TempFileManager : IDisposable
 	/// </summary>
 	/// <returns>A read-only collection of the paths of the managed temporary files.</returns>
 	[Information("Gets the list of files currently being managed.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public IReadOnlyCollection<string> GetManagedFiles()
-	{
-		return this._files.ToList().AsReadOnly();
-	}
+	public IReadOnlyCollection<string> GetManagedFiles() => this._files.ToList().AsReadOnly();
 }

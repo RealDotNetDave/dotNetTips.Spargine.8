@@ -4,9 +4,9 @@
 // Created          : 01-14-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-14-2025
+// Last Modified On : 01-17-2025
 // ***********************************************************************
-// <copyright file="StringKeyComparer.cs" company="David McCarter - dotNetTips.com">
+// <copyright file="OrdinalStringComparer.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
@@ -41,8 +41,5 @@ public class OrdinalStringComparer : IComparer<string>
 	/// </item>
 	/// </list>
 	/// </returns>
-	public int Compare(string x, string y)
-	{
-		return string.Compare(x, y, StringComparison.Ordinal);
-	}
+	public int Compare(string x, string y) => string.Compare(x, y, StringComparison.Ordinal);
 }
