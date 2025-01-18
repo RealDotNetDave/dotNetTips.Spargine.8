@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-16-2025
+// Last Modified On : 01-18-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -20,8 +20,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Core.RegularExpressions;
 using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Extensions.Properties;
 using Microsoft.Extensions.ObjectPool;
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -39,88 +39,18 @@ namespace DotNetTips.Spargine.Extensions;
 [Information(Documentation = "https://bit.ly/SpargineStringExtensions", Status = Status.UpdateDocumentation)]
 public static class StringExtensions
 {
-
-	/// <summary>
-	/// The credit card number reg ex
-	/// </summary>
-	private static readonly Regex _creditCardNumberRegEx = new(Resources.RegexCreditCard, RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.Compiled);
-
-	/// <summary>
-	/// The currency code reg ex
-	/// </summary>
-	private static readonly Regex _currencyCodeRegEx = new(Resources.RegexCurrencyCode, RegexOptions.Compiled | RegexOptions.Singleline);
-
-	/// <summary>
-	/// The domain address reg ex
-	/// </summary>
-	private static readonly Regex _domainAddressRegEx = new(Resources.RegexDomain, RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
-
-	/// <summary>
-	/// The email reg ex
-	/// </summary>
-	private static readonly Regex _emailRegEx = new(Resources.RegexEmail, RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
-
 	/// <summary>
 	/// Provides a static instance of the <see cref="ASCIIEncoding"/> class for use throughout the StringExtensions class.
 	/// This encoding is used for operations that require ASCII character encoding.
 	/// </summary>
 	private static readonly ASCIIEncoding _encoding = new();
 
-	/// <summary>
-	/// The first last name reg ex
-	/// </summary>
-	private static readonly Regex _firstLastNameRegEx = new(Resources.RegexFirstLastName, RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
-
-	/// <summary>
-	/// The is unique identifier regex
-	/// </summary>
-	private static readonly Regex _guidRegEx = new(@"^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
-
-	/// <summary>
-	/// The isbn reg ex
-	/// </summary>
-	private static readonly Regex _isbnRegEx = new(Resources.RegexISBN, RegexOptions.Compiled | RegexOptions.Singleline);
-
-	/// <summary>
-	/// The is mac address regex
-	/// </summary>
-	private static readonly Regex _macAddressRegEx = new("^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-
-	/// <summary>
-	/// The one to7 alpha
-	/// </summary>
-	private static readonly Regex _oneTo7Alpha = new(Resources.RegexOneToSevenAlpha, RegexOptions.Compiled | RegexOptions.Singleline);
-
-	/// <summary>
-	/// The remove cr lf reg ex
-	/// </summary>
-	private static readonly Regex _removeCrLfRegEx = new(@"[\r\n]+", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-
-	/// <summary>
-	/// The scientific reg ex
-	/// </summary>
-	private static readonly Regex _scientificRegEx = new(Resources.RegexScientific, RegexOptions.Compiled | RegexOptions.Singleline);
-
-	/// <summary>
-	/// The sha1 hash reg ex
-	/// </summary>
-	private static readonly Regex _sha1HashRegEx = new(pattern: @"\b([a-fA-F0-9]{40})\b", RegexOptions.Compiled | RegexOptions.Singleline);
 
 	/// <summary>
 	/// The string builder pool
 	/// </summary>
 	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
 		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
-
-	/// <summary>
-	/// The string reg ex
-	/// </summary>
-	private static readonly Regex _stringRegEx = new(Resources.RegexString, RegexOptions.IgnoreCase | RegexOptions.Compiled);
-
-	/// <summary>
-	/// The URL reg ex
-	/// </summary>
-	private static readonly Regex _urlRegEx = new(Resources.RegexUrl, RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
 
 	/// <summary>
 	/// Computes the hash of the given input string using the specified hash algorithm.
@@ -785,7 +715,7 @@ public static class StringExtensions
 	/// </remarks>
 	[return: NotNull]
 	[Information(nameof(IsCreditCardNumber), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsCreditCardNumber([NotNull] this string input) => _creditCardNumberRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsCreditCardNumber([NotNull] this string input) => RegexProcessor.IsCreditCardNumber(input);
 
 	/// <summary>
 	/// Determines whether the specified string is a valid currency code.
@@ -796,7 +726,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the currency code.
 	/// </remarks>
 	[Information(nameof(IsCurrencyCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsCurrencyCode([NotNull] this string input) => _currencyCodeRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsCurrencyCode([NotNull] this string input) => RegexProcessor.IsCurrencyCode(input);
 
 	/// <summary>
 	/// Determines whether the specified string is a valid domain address.
@@ -808,7 +738,7 @@ public static class StringExtensions
 	/// </remarks>
 	[return: NotNull]
 	[Information(nameof(IsDomainAddress), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsDomainAddress([NotNull] this string input) => _domainAddressRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsDomainAddress([NotNull] this string input) => RegexProcessor.IsUrlDomainAddress(input);
 
 	/// <summary>
 	/// Determines whether the specified string is a valid email address.
@@ -820,7 +750,7 @@ public static class StringExtensions
 	/// </remarks>
 	[return: NotNull]
 	[Information(nameof(IsEmailAddress), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsEmailAddress([NotNull] this string input) => _emailRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsEmailAddress([NotNull] this string input) => RegexProcessor.IsEmailAddress(input);
 
 #nullable enable
 	/// <summary>
@@ -845,7 +775,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the first and last name.
 	/// </remarks>
 	[Information(nameof(IsFirstLastName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsFirstLastName([NotNull] this string input) => _firstLastNameRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsFirstLastName([NotNull] this string input) => RegexProcessor.ContainsFirstLastName(input);
 
 	/// <summary>
 	/// Determines whether the specified string is a valid GUID.
@@ -856,7 +786,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the GUID.
 	/// </remarks>
 	[Information(nameof(IsGuid), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool IsGuid([NotNull][StringSyntax(StringSyntaxAttribute.GuidFormat)] this string input) => _guidRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsGuid([NotNull][StringSyntax(StringSyntaxAttribute.GuidFormat)] this string input) => RegexProcessor.IsGuid(input);
 
 	/// <summary>
 	/// Determines whether the specified string is a valid International Standard Book Number (ISBN).
@@ -867,18 +797,15 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the ISBN.
 	/// </remarks>
 	[Information(nameof(IsISBN), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsISBN([NotNull] this string input) => _isbnRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsISBN([NotNull] this string input) => RegexProcessor.IsISBN(input);
 
 	/// <summary>
 	/// Determines whether the specified string is a valid MAC address.
 	/// </summary>
 	/// <param name="input">The string to validate as a MAC address.</param>
 	/// <returns><c>true</c> if the <paramref name="input"/> is a valid MAC address; otherwise, <c>false</c>.</returns>
-	/// <remarks>
-	/// This method uses a regular expression (<see cref="_macAddressRegEx"/>) to validate the MAC address.
-	/// </remarks>
 	[Information(nameof(IsMacAddress), "David McCarter", "3/24/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool IsMacAddress([NotNull] this string input) => _macAddressRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsMacAddress([NotNull] this string input) => RegexProcessor.IsMACAddress(input);
 
 #nullable enable
 	/// <summary>
@@ -903,7 +830,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the input string.
 	/// </remarks>
 	[Information(nameof(IsOneToSevenAlpha), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsOneToSevenAlpha([NotNull] this string input) => _oneTo7Alpha.IsMatch(input.ArgumentNotNull());
+	public static bool IsOneToSevenAlpha([NotNull] this string input) => RegexProcessor.IsOneToSevenAlpha(input);
 
 	/// <summary>
 	/// Determines whether the specified string is in scientific notation.
@@ -914,15 +841,15 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the input string.
 	/// </remarks>
 	[Information(nameof(IsScientific), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsScientific([NotNull] this string input) => _scientificRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsScientific([NotNull] this string input) => RegexProcessor.IsScientific(input);
 
 	/// <summary>
-	/// Determines whether the specified string matches the pattern defined in <see cref="_stringRegEx"/>.
+	/// Determines whether the specified string matches the pattern defined in the regular expression.
 	/// </summary>
 	/// <param name="input">The string to validate.</param>
 	/// <returns><c>true</c> if the string matches the pattern; otherwise, <c>false</c>.</returns>
 	[Information(nameof(IsString), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsString([NotNull] this string input) => _stringRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsString([NotNull] this string input) => RegexProcessor.IsValidString(input);
 
 	/// <summary>
 	/// Determines whether the specified string is a valid SHA1 hash.
@@ -933,7 +860,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the input string.
 	/// </remarks>
 	[Information(nameof(IsStringSHA1Hash), "David McCarter", "5/31/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsStringSHA1Hash([NotNull] this string input) => _sha1HashRegEx.IsMatch(input.ArgumentNotNull());
+	public static bool IsStringSHA1Hash([NotNull] this string input) => RegexProcessor.IsSHA1Hash(input);
 
 	/// <summary>
 	/// Determines whether the specified string is a valid URL.
@@ -944,7 +871,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to validate the input string.
 	/// </remarks>
 	[Information(nameof(IsUrl), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsUrl([NotNull] this string input) => _urlRegEx.Match(input.ArgumentNotNull()).Success;
+	public static bool IsUrl([NotNull] this string input) => RegexProcessor.IsUrl(input);
 
 	/// <summary>
 	/// Removes all carriage return and line feed characters from the specified string.
@@ -956,15 +883,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to identify and replace carriage return and line feed characters.
 	/// </remarks>
 	[Information(nameof(RemoveCRLF), "Kristine Tran", "2/1/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string RemoveCRLF([NotNull] this string input, [NotNull] string replacement = "")
-	{
-		if (input.IsNullOrEmpty())
-		{
-			return ControlChars.EmptyString;
-		}
-
-		return _removeCrLfRegEx.Replace(input, replacement);
-	}
+	public static string RemoveCRLF([NotNull] this string input, [NotNull] string replacement = "") => RegexProcessor.ReplaceCrLf(input, replacement);
 
 	/// <summary>
 	/// Replaces all occurrences of an ellipsis (...) in the specified string with a period (.).

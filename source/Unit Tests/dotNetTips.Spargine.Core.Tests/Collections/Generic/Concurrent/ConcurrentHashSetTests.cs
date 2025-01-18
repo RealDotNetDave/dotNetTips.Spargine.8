@@ -334,7 +334,7 @@ public class ConcurrentHashSetTests
 		string[] array = new string[3];
 
 		// Act
-		((ICollection<string>)set).CopyTo(array, -1);
+		(set as ICollection<string>).CopyTo(array, -1);
 
 		// Assert is handled by ExpectedException
 	}

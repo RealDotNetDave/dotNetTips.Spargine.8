@@ -62,7 +62,7 @@ public class CachedEnumerableTests
 		IEnumerable<int> numbers = null;
 
 		// Act
-		var cachedEnumerable = CachedEnumerable.Create(numbers);
+		_ = CachedEnumerable.Create(numbers);
 
 		// This line should not be executed
 		Assert.Fail("Expected an ArgumentNullException to be thrown when creating a CachedEnumerable from a null IEnumerable.");

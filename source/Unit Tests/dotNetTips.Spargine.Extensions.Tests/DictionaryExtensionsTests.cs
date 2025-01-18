@@ -234,7 +234,7 @@ public class DictionaryExtensionsTests
 			dic.Add(item, item);
 		}
 
-		Assert.IsNotNull(((IDictionary<string, string>)dic).ToDelimitedString(','));
+		Assert.IsNotNull((dic as IDictionary<string, string>).ToDelimitedString(','));
 	}
 
 	[TestMethod]

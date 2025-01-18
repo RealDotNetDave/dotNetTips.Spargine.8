@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-16-2025
+// Last Modified On : 01-18-2025
 // ***********************************************************************
 // <copyright file="RegexProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -41,7 +41,7 @@ public static partial class RegexProcessor
 	/// <summary>
 	/// The pattern to check if the input contains a word.
 	/// </summary>
-	private const string ContainsWordPattern = @"^\b[a-zA-Z0-9_]+\b$";
+	private const string ContainsWordPattern = @"^\b[a-zA-Z_]+\b$";
 
 	/// <summary>
 	/// The pattern to validate credit card numbers.
@@ -117,6 +117,11 @@ public static partial class RegexProcessor
 	/// The pattern to replace spaces.
 	/// </summary>
 	private const string ReplaceSpacesPattern = @"\s+";
+
+	/// <summary>
+	/// The pattern to match scientific notation numbers.
+	/// </summary>
+	private const string ScientificPattern = @"\b-?[1-9](?:\.\d+)?[Ee][-+]?\d+\b";
 
 	/// <summary>
 	/// The pattern to validate SHA1 hashes.
@@ -255,6 +260,9 @@ public static partial class RegexProcessor
 	/// <returns>A <see cref="Regex"/> instance configured to remove special characters.</returns>
 	[GeneratedRegex(RemoveSpecialCharPattern, RegexOptions.CultureInvariant | RegexOptions.Multiline | RegexOptions.IgnoreCase)]
 	private static partial Regex RemoveSpecialCharRegex();
+
+	[GeneratedRegex(ScientificPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
+	private static partial Regex ScientificRegexSingleLine();
 
 	/// <summary>
 	/// Determins if string contains a SHA1 hashed string.

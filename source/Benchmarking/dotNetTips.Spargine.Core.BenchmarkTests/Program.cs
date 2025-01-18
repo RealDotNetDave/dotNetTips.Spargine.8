@@ -43,10 +43,10 @@ public class Program
 
 			config = config.WithOption(ConfigOptions.DisableOptimizationsValidator, true);
 
-			//_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
+			_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
-			_ = BenchmarkRunner.Run<FastSortedListBenchmark>(config);
-			_ = BenchmarkRunner.Run<FastSortedListAddRemoveBenchmark>(config);
+			//_ = BenchmarkRunner.Run<FastStringBuilderCounterBenchmark>(config);
+			//_ = BenchmarkRunner.Run<FastSortedListAddRemoveBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine("COMPLETE!");
 			Console.Beep();

@@ -1,7 +1,4 @@
-
-using System;
 using System.Reflection;
-using DotNetTips.Spargine.Core.Logging;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
 using DotNetTips.Spargine.Tester;

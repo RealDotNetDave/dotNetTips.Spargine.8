@@ -223,37 +223,6 @@
   <data name="PB" xml:space="preserve">
     <value>PB</value>
   </data>
-  <data name="RegexCreditCard" xml:space="preserve">
-    <value>^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$</value>
-  </data>
-  <data name="RegexCurrencyCode" xml:space="preserve">
-    <value>^[a-zA-Z]{3}$</value>
-  </data>
-  <data name="RegexDomain" xml:space="preserve">
-    <value>^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$</value>
-  </data>
-  <data name="RegexEmail" xml:space="preserve">
-    <value>\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*</value>
-  </data>
-  <data name="RegexFirstLastName" xml:space="preserve">
-    <value>^[\p{Lu}\p{M}][\p{L}\p{M},.'-]+(?: [\p{L}\p{M},.'-]+)*$</value>
-  </data>
-  <data name="RegexISBN" xml:space="preserve">
-    <value>^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$</value>
-    <comment>ISBN Regex</comment>
-  </data>
-  <data name="RegexOneToSevenAlpha" xml:space="preserve">
-    <value>^[a-zA-Z]{1,7}$</value>
-  </data>
-  <data name="RegexScientific" xml:space="preserve">
-    <value>\b-?[1-9](?:\.\d+)?[Ee][-+]?\d+\b</value>
-  </data>
-  <data name="RegexString" xml:space="preserve">
-    <value>^(\w|\W)+$</value>
-  </data>
-  <data name="RegexUrl" xml:space="preserve">
-    <value>(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;amp;:/~\+#]*[\w\-\@?^=%&amp;amp;/~\+#])?</value>
-  </data>
   <data name="Seven" xml:space="preserve">
     <value>Seven</value>
   </data>

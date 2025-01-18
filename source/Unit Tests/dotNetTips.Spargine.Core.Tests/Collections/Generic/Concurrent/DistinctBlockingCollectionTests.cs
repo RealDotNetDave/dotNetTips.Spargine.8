@@ -186,7 +186,7 @@ public class DistinctBlockingCollectionTests
 	[ExpectedException(typeof(ArgumentOutOfRangeException))]
 	public void ConstructorWithBoundedCapacityNegativeTest()
 	{
-		var collection = new DistinctBlockingCollection<string>(-1);
+		_ = new DistinctBlockingCollection<string>(-1);
 	}
 
 	/// <summary>

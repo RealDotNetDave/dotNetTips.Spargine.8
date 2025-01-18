@@ -15,7 +15,6 @@
 // </summary>
 // ***********************************************************************
 
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
@@ -141,20 +140,20 @@ public abstract class Benchmark
 	/// <summary>
 	/// Caches byte arrays of various sizes to avoid regenerating them for each benchmark iteration.
 	/// </summary>
-	private readonly ReadOnlyDictionary<int, byte[]> _byteArrayCache;
+	private Dictionary<int, byte[]> _byteArrayCache;
 
 	/// <summary>
 	/// Caches string arrays of various configurations to avoid regenerating them for each benchmark iteration.
 	/// </summary>
-	private readonly ReadOnlyDictionary<string, string[]> _stringArrayCache;
+	private Dictionary<string, string[]> _stringArrayCache;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Benchmark"/> class.
 	/// </summary>
 	protected Benchmark()
 	{
-		this._byteArrayCache = new ReadOnlyDictionary<int, byte[]>(new Dictionary<int, byte[]>());
-		this._stringArrayCache = new ReadOnlyDictionary<string, string[]>(new Dictionary<string, string[]>());
+		this._byteArrayCache = new Dictionary<int, byte[]>(new Dictionary<int, byte[]>());
+		this._stringArrayCache = new Dictionary<string, string[]>(new Dictionary<string, string[]>());
 	}
 
 	/// <summary>
@@ -196,10 +195,10 @@ public abstract class Benchmark
 	{
 		sizeInKb = sizeInKb.EnsureMinimum(1);
 
-		if (!this._byteArrayCache.TryGetValue(sizeInKb, out var byteArray))
+		if (!_byteArrayCache.TryGetValue(sizeInKb, out var byteArray))
 		{
 			byteArray = RandomData.GenerateByteArray(sizeInKb);
-			_ = this._byteArrayCache.AddIfNotExists(sizeInKb, byteArray);
+			this._byteArrayCache[sizeInKb] = byteArray;
 		}
 
 		return byteArray;

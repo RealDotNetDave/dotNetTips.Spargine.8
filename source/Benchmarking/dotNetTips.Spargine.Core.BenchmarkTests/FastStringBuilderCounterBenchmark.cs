@@ -18,6 +18,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Tester;
 using Microsoft.Extensions.ObjectPool;
@@ -34,11 +35,9 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests;
 [BenchmarkCategory(Categories.Strings)]
 public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 {
-
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 	private byte[] _byteArray;
-	private IEnumerable<byte> _bytes1Kb;
 	private Dictionary<string, string> _wordDictionary;
 	private string[] _words;
 
@@ -55,11 +54,6 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
 	public void BytesToString_Comparison()
 	{
-		if (this._byteArray is null)
-		{
-			return;
-		}
-
 		var sb = new StringBuilder();
 
 		_ = sb.Capacity = this._byteArray.Length * 2;
@@ -181,10 +175,11 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	{
 		base.Setup();
 
-		this._bytes1Kb = this.GetByteArray(this.Count).AsEnumerable();
 		this._byteArray = this.GetByteArray(this.Count);
 		this._words = [.. RandomData.GenerateWords(this.Count, 10, 10)];
 		this._wordDictionary = RandomData.GenerateWords(this.Count, 10, 10).ToDictionary(x => RandomData.GenerateKey(), y => y);
+
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"ByteArray: {_byteArray.Length}.");
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString))]

@@ -106,13 +106,14 @@ public class PathHelperTests
 	[TestMethod]
 	public void EnsureTrailingSlash_WithForwardSlash_ReturnsPathWithCorrectTrailingSlash()
 	{
-		var pathWithForwardSlash = "C:/TestPath/";
+		var pathWithForwardSlash = "C:/TestPath";
 		// Dynamically determine the expected trailing character based on the current platform
 		var expected = $"C:/TestPath{Path.DirectorySeparatorChar}";
 
 		var result = PathHelper.EnsureTrailingSlash(pathWithForwardSlash);
 
 		// This assertion now respects the system's directory separator character
+		Assert.IsTrue(result == expected);
 	}
 
 	[TestMethod]

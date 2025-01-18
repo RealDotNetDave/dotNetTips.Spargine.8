@@ -68,7 +68,7 @@ public class ChannelQueueTests
 	[ExpectedException(typeof(ArgumentOutOfRangeException))]
 	public void Constructor_NegativeCapacity_ThrowsArgumentOutOfRangeException()
 	{
-		var channel = new ChannelQueue<int>(-1);
+		_ = new ChannelQueue<int>(-1);
 	}
 
 	[TestMethod]
