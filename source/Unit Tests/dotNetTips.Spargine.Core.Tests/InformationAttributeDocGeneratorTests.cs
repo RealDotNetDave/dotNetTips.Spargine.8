@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : DotNetTips.Spargine.Core.Tests
+// Author           : David McCarter
+// Created          : 11-16-2024
+//
+// Last Modified By : David McCarter
+// Last Modified On : 01-18-2025
+// ***********************************************************************
+// <copyright file="InformationAttributeDocGeneratorTests.cs" company="DotNetTips.Spargine.Core.Tests">
+//     Copyright (c) McCarter Consulting. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System.Reflection;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
