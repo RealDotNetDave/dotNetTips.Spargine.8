@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-18-2025
+// Last Modified On : 01-19-2025
 // ***********************************************************************
 // <copyright file="RegexProcessor.Methods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -316,7 +316,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string to process.</param>
 	/// <param name="replacement">The string to replace HTML tags with. Defaults to an empty string.</param>
 	/// <returns>The modified string with HTML tags replaced by the specified replacement string.</returns>
-	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(RemoveHtml), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string RemoveHtml(in string input, in string replacement = "")
 	{
 		if (input is null)
@@ -377,6 +377,4 @@ public static partial class RegexProcessor
 
 		return SpacesRegex().Replace(input, replacement);
 	}
-
-
 }
