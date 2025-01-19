@@ -195,7 +195,7 @@ public abstract class Benchmark
 	{
 		sizeInKb = sizeInKb.EnsureMinimum(1);
 
-		if (!_byteArrayCache.TryGetValue(sizeInKb, out var byteArray))
+		if (!this._byteArrayCache.TryGetValue(sizeInKb, out var byteArray))
 		{
 			byteArray = RandomData.GenerateByteArray(sizeInKb);
 			this._byteArrayCache[sizeInKb] = byteArray;

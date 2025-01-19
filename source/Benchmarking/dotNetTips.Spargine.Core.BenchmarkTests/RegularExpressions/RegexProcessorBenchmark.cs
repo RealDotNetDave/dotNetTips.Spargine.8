@@ -49,6 +49,24 @@ public class RegexProcessorBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(RegexProcessor.IsOneToSevenAlpha))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void IsOneToSevenAlpha()
+	{
+		var result = RegexProcessor.GetNumbers("abcdefg");
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(RegexProcessor.IsScientific))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void IsScientific()
+	{
+		var result = RegexProcessor.IsScientific("1.23E+10");
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(RegexProcessor.IsCreditCardNumber))]
 	[BenchmarkCategory(Categories.Strings)]
 	public void IsCreditCardNumber()

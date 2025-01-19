@@ -200,8 +200,8 @@ public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(people.IsEqualTo(this._peopleRefList));
 	}
 
-	[IterationCleanup]
-	public void IterationCleanup()
+	[IterationSetup]
+	public void IterationSetup()
 	{
 		this._peopleRecordList = [.. this.GetPersonRecordArray()];
 		this._peopleRefList = [.. this.GetPersonRefArray()];

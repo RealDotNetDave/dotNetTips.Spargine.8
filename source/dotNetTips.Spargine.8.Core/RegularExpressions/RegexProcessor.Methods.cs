@@ -219,7 +219,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input contains only alphabetic characters and has a length between 1 and 7 characters; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsOneToSevenAlpha), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
+	[Information(nameof(IsOneToSevenAlpha), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static bool IsOneToSevenAlpha(in string input)
 	{
 		if (input is null)
@@ -235,7 +235,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is in scientific notation; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsScientific), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.New)]
+	[Information(nameof(IsScientific), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static bool IsScientific(in string input)
 	{
 		if (input is null)
