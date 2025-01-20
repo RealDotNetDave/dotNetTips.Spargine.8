@@ -52,15 +52,14 @@ namespace DotNetTips.Spargine.Core.Cache;
 [Information(Status = Status.NeedsDocumentation, Documentation = "")]
 public sealed class InMemoryCache
 {
-
-	/// <summary>
-	/// The default timeout duration for cache items, in minutes.
-	/// </summary>
-	/// <remarks>
-	/// This value is used as the default expiration time for items added to the cache without a specified timeout.
-	/// See <see cref="AddCacheItem{T}(string, T)"/> and <see cref="CreateCache"/> for how this value is applied.
-	/// </remarks>
-	private const int TimeoutMinutes = 20;
+	/// <summary>  
+	/// The default timeout duration for cache items, in minutes.  
+	/// </summary>  
+	/// <remarks>  
+	/// This value is used as the default expiration time for items added to the cache without a specified timeout.  
+	/// See <see cref="AddCacheItem{T}(string, T)"/> and <see cref="CreateCache"/> for how this value is applied.  
+	/// </remarks>  
+	private readonly TimeSpan _timeoutInMinutes = TimeSpan.FromMinutes(20);
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="InMemoryCache"/> class. The cache is created with default settings.
@@ -72,7 +71,7 @@ public sealed class InMemoryCache
 	/// </summary>
 	/// <returns>A new instance of <see cref="MemoryCache"/> configured with a compaction percentage and a default expiration policy.</returns>
 	/// <remarks>
-	/// The cache is configured to compact by 50% when the size limit is exceeded. The default expiration time for each cache entry is set through the <see cref="TimeoutMinutes"/> constant.
+	/// The cache is configured to compact by 50% when the size limit is exceeded. The default expiration time for each cache entry is set to 20 minutes.
 	/// </remarks>
 	private static MemoryCache CreateCache()
 	{
@@ -99,7 +98,7 @@ public sealed class InMemoryCache
 		item = item.ArgumentNotNull();
 
 		var cacheEntryOptions = new MemoryCacheEntryOptions()
-			.SetAbsoluteExpiration(TimeSpan.FromMinutes(TimeoutMinutes));
+			.SetAbsoluteExpiration(_timeoutInMinutes);
 
 		_ = this.Cache.Set(item.Id.ToString(), item, cacheEntryOptions);
 	}
@@ -117,7 +116,7 @@ public sealed class InMemoryCache
 		item = item.ArgumentNotNull();
 
 		var cacheEntryOptions = new MemoryCacheEntryOptions()
-			.SetAbsoluteExpiration(TimeSpan.FromMinutes(TimeoutMinutes));
+			.SetAbsoluteExpiration(_timeoutInMinutes);
 
 		_ = this.Cache.Set(item.Id.ToString(), item, cacheEntryOptions);
 	}
@@ -138,7 +137,7 @@ public sealed class InMemoryCache
 		item = item.ArgumentNotNull();
 
 		var cacheEntryOptions = new MemoryCacheEntryOptions()
-			.SetAbsoluteExpiration(TimeSpan.FromMinutes(TimeoutMinutes)); // Sets the item to expire 20 minutes from now
+			.SetAbsoluteExpiration(_timeoutInMinutes); // Sets the item to expire 20 minutes from now
 
 		_ = this.Cache.Set(key, item, cacheEntryOptions);
 	}
