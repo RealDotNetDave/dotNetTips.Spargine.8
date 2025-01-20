@@ -4,7 +4,7 @@
 // Created          : 01-13-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 01-20-2025
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -149,6 +149,50 @@ public sealed class InMemoryCache
 	}
 
 	/// <summary>
+	/// Asynchronously adds an item to the cache with a timeout of 20 minutes.
+	/// </summary>
+	/// <typeparam name="T">The type of the item to be added to the cache.</typeparam>
+	/// <param name="key">The key associated with the cache item. This key is used to retrieve the item later.</param>
+	/// <param name="item">The item to add to the cache. This can be of any type.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key"/> is null or empty, or <paramref name="item"/> is null.</exception>
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public async Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item)
+	{
+		await Task.Run(() => this.AddCacheItem(key, item)).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Asynchronously adds an item to the cache with a custom timeout.
+	/// </summary>
+	/// <typeparam name="T">The type of the item to be added to the cache.</typeparam>
+	/// <param name="key">The key associated with the cache item. This key is used to retrieve the item later.</param>
+	/// <param name="item">The item to add to the cache. This can be of any type.</param>
+	/// <param name="timeout">The custom timeout for the cache item.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key"/> is null or empty, or <paramref name="item"/> is null.</exception>
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public async Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item, TimeSpan timeout)
+	{
+		await Task.Run(() => this.AddCacheItem(key, item, timeout)).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Asynchronously adds an item to the cache with a custom expiration time.
+	/// </summary>
+	/// <typeparam name="T">The type of the item to be added to the cache.</typeparam>
+	/// <param name="key">The key associated with the cache item. This key is used to retrieve the item later.</param>
+	/// <param name="item">The item to add to the cache. This can be of any type.</param>
+	/// <param name="timeout">The custom expiration time for the cache item.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key"/> is null or empty, or <paramref name="item"/> is null.</exception>
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public async Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item, DateTimeOffset timeout)
+	{
+		await Task.Run(() => this.AddCacheItem(key, item, timeout)).ConfigureAwait(false);
+	}
+
+	/// <summary>
 	/// Clears all items from the cache.
 	/// </summary>
 	/// <remarks>This method is intended to remove all items from the cache, effectively resetting it.
@@ -156,6 +200,32 @@ public sealed class InMemoryCache
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Clear), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public void Clear() => this.Cache.Compact(1.0);
+
+	/// <summary>
+	/// Determines whether the cache contains an item with the specified key.
+	/// </summary>
+	/// <param name="key">The key of the item to locate in the cache.</param>
+	/// <returns><c>true</c> if the cache contains an item with the specified key; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="key"/> is null or empty.</exception>
+	[Information(nameof(ContainsKey), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public bool ContainsKey([NotNull] string key)
+	{
+		key = key.ArgumentNotNullOrEmpty();
+		return this.Cache.TryGetValue(key, out _);
+	}
+
+	/// <summary>
+	/// Gets all keys currently stored in the cache.
+	/// </summary>
+	/// <returns>An enumerable collection of keys in the cache.</returns>
+	/// <remarks>
+	/// This method provides a way to retrieve all keys currently stored in the cache. It can be useful for debugging and monitoring purposes.
+	/// </remarks>
+	[Information(nameof(GetAllKeys), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public IEnumerable<string> GetAllKeys()
+	{
+		return this.Cache.Keys.Select(p => p.ToString());
+	}
 
 	/// <summary>
 	/// Gets the cache item associated with the specified key.
@@ -181,6 +251,43 @@ public sealed class InMemoryCache
 		}
 
 		return default!;
+	}
+
+	/// <summary>
+	/// Asynchronously gets the cache item associated with the specified key.
+	/// </summary>
+	/// <typeparam name="T">The type of the item stored in the cache.</typeparam>
+	/// <param name="key">The key of the item to retrieve from the cache.</param>
+	/// <returns>A task that represents the asynchronous operation. The task result contains the item of type <typeparamref name="T"/> if found; otherwise, the default value of type <typeparamref name="T"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="key"/> is null or empty.</exception>
+	/// <remarks>
+	/// Retrieves an item from the cache using the specified key asynchronously. If the item is found, it is returned; otherwise, the default value for type <typeparamref name="T"/> is returned.
+	/// This method utilizes the <see cref="MemoryCache.TryGetValue"/> method to attempt to retrieve the item.
+	/// </remarks>
+	[Information(nameof(GetCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public async Task<T> GetCacheItemAsync<T>([NotNull] string key)
+	{
+		return await Task.Run(() => this.GetCacheItem<T>(key)).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Removes the cache item associated with the specified key.
+	/// </summary>
+	/// <param name="key">The key of the item to remove from the cache.</param>
+	/// <returns><c>true</c> if the item is successfully removed; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="key"/> is null or empty.</exception>
+	[Information(nameof(RemoveCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public bool RemoveCacheItem([NotNull] string key)
+	{
+		key = key.ArgumentNotNullOrEmpty();
+
+		if (this.Cache.TryGetValue(key, out _))
+		{
+			this.Cache.Remove(key);
+			return true;
+		}
+
+		return false;
 	}
 
 	/// <summary>
