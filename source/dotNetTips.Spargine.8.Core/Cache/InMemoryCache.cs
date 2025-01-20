@@ -88,15 +88,50 @@ public sealed class InMemoryCache
 	/// Adds an item to the cache with a timeout of 20 minutes.
 	/// </summary>
 	/// <typeparam name="T">The type of the item to be added to the cache.</typeparam>
+	/// <typeparam name="TKey">The type of the identifier for the data model.</typeparam>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataModel{T, TKey}"/>.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public void AddCacheItem<T, TKey>([NotNull] IDataModel<T, TKey> item)
+	{
+		item = item.ArgumentNotNull();
+
+		var cacheEntryOptions = new MemoryCacheEntryOptions()
+			.SetAbsoluteExpiration(TimeSpan.FromMinutes(TimeoutMinutes));
+
+		_ = this.Cache.Set(item.Id.ToString(), item, cacheEntryOptions);
+	}
+
+	/// <summary>
+	/// Adds an item to the cache with a timeout of 20 minutes.
+	/// </summary>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataRecord"/>.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public void AddCacheItem([NotNull] IDataRecord item)
+	{
+		item = item.ArgumentNotNull();
+
+		var cacheEntryOptions = new MemoryCacheEntryOptions()
+			.SetAbsoluteExpiration(TimeSpan.FromMinutes(TimeoutMinutes));
+
+		_ = this.Cache.Set(item.Id.ToString(), item, cacheEntryOptions);
+	}
+
+	/// <summary>
+	/// Adds an item to the cache with a timeout of 20 minutes.
+	/// </summary>
+	/// <typeparam name="T">The type of the item to be added to the cache.</typeparam>
 	/// <param name="key">The key associated with the cache item. This key is used to retrieve the item later.</param>
 	/// <param name="item">The item to add to the cache. This can be of any type.</param>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key"/> is null or empty, or <paramref name="item"/> is null.</exception>
-	/// <remarks>
-	/// This method utilizes MemoryCache.Set to add the item to the cache with an absolute expiration time set through MemoryCacheEntryOptions.SetAbsoluteExpiration.
-	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddCacheItem), "David McCarter", "1/16/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/16/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item)
 	{
 		key = key.ArgumentNotNullOrEmpty();
@@ -106,6 +141,81 @@ public sealed class InMemoryCache
 			.SetAbsoluteExpiration(TimeSpan.FromMinutes(TimeoutMinutes)); // Sets the item to expire 20 minutes from now
 
 		_ = this.Cache.Set(key, item, cacheEntryOptions);
+	}
+
+	/// <summary>
+	/// Adds an item to the cache with a custom expiration time.
+	/// </summary>
+	/// <typeparam name="T">The type of the item to be added to the cache.</typeparam>
+	/// <typeparam name="TKey">The type of the identifier for the data model.</typeparam>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataModel{T, TKey}"/>.</param>
+	/// <param name="timeout">The custom expiration time for the cache item.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public void AddCacheItem<T, TKey>([NotNull] IDataModel<T, TKey> item, DateTimeOffset timeout)
+	{
+		item = item.ArgumentNotNull();
+
+		_ = this.Cache.Set(item.Id.ToString(), item, new MemoryCacheEntryOptions()
+			.SetAbsoluteExpiration(timeout));
+	}
+
+	/// <summary>
+	/// Adds an item to the cache with a custom expiration time.
+	/// </summary>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataRecord"/>.</param>
+	/// <param name="timeout">The custom expiration time for the cache item.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	/// <remarks>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public void AddCacheItem([NotNull] IDataRecord item, DateTimeOffset timeout)
+	{
+		item = item.ArgumentNotNull();
+
+		_ = this.Cache.Set(item.Id.ToString(), item, new MemoryCacheEntryOptions()
+			.SetAbsoluteExpiration(timeout));
+	}
+
+	/// <summary>
+	/// Adds an item to the cache with a custom expiration time.
+	/// </summary>
+	/// <typeparam name="T">The type of the item to be added to the cache.</typeparam>
+	/// <typeparam name="TKey">The type of the identifier for the data model.</typeparam>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataModel{T, TKey}"/>.</param>
+	/// <param name="timeout">The custom expiration time for the cache item.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	/// <remarks>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public void AddCacheItem<T, TKey>([NotNull] IDataModel<T, TKey> item, TimeSpan timeout)
+	{
+		item = item.ArgumentNotNull();
+
+		_ = this.Cache.Set(item.Id.ToString(), item, new MemoryCacheEntryOptions()
+			.SetAbsoluteExpiration(timeout));
+	}
+
+	/// <summary>
+	/// Adds an item to the cache with a custom expiration time.
+	/// </summary>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataRecord"/>.</param>
+	/// <param name="timeout">The custom expiration time for the cache item.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	/// <remarks>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public void AddCacheItem([NotNull] IDataRecord item, TimeSpan timeout)
+	{
+		item = item.ArgumentNotNull();
+
+		_ = this.Cache.Set(item.Id.ToString(), item, new MemoryCacheEntryOptions()
+			.SetAbsoluteExpiration(timeout));
 	}
 
 	/// <summary>
@@ -146,6 +256,90 @@ public sealed class InMemoryCache
 
 		_ = this.Cache.Set(key, item, new MemoryCacheEntryOptions()
 			.SetAbsoluteExpiration(timeout));
+	}
+
+	/// <summary>
+	/// Asynchronously adds an item to the cache with a timeout of 20 minutes.
+	/// </summary>
+	/// <typeparam name="T">The type of the item to be added to the cache.</typeparam>
+	/// <typeparam name="TKey">The type of the identifier for the data model.</typeparam>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataModel{T, TKey}"/>.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	/// <remarks>
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public async Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item)
+	{
+		await Task.Run(() => this.AddCacheItem(item)).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Asynchronously adds an item to the cache with a timeout of 20 minutes.
+	/// </summary>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataRecord"/>.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public async Task AddCacheItemAsync([NotNull] IDataRecord item)
+	{
+		await Task.Run(() => this.AddCacheItem(item)).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Asynchronously adds an item to the cache with a custom timeout.
+	/// </summary>
+	/// <typeparam name="T">The type of the item to be added to the cache.</typeparam>
+	/// <typeparam name="TKey">The type of the identifier for the data model.</typeparam>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataModel{T, TKey}"/>.</param>
+	/// <param name="timeout">The custom timeout for the cache item.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public async Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item, TimeSpan timeout)
+	{
+		await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Asynchronously adds an item to the cache with a custom expiration time.
+	/// </summary>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataRecord"/>.</param>
+	/// <param name="timeout">The custom expiration time for the cache item.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public async Task AddCacheItemAsync([NotNull] IDataRecord item, TimeSpan timeout)
+	{
+		await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Asynchronously adds an item to the cache with a custom expiration time.
+	/// </summary>
+	/// <typeparam name="T">The type of the item to be added to the cache.</typeparam>
+	/// <typeparam name="TKey">The type of the identifier for the data model.</typeparam>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataModel{T, TKey}"/>.</param>
+	/// <param name="timeout">The custom expiration time for the cache item.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public async Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item, DateTimeOffset timeout)
+	{
+		await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
+	}
+
+	/// <summary>
+	/// Asynchronously adds an item to the cache with a custom expiration time.
+	/// </summary>
+	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataRecord"/>.</param>
+	/// <param name="timeout">The custom expiration time for the cache item.</param>
+	/// <returns>A task that represents the asynchronous operation.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
+	/// <remarks>
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public async Task AddCacheItemAsync([NotNull] IDataRecord item, DateTimeOffset timeout)
+	{
+		await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
 	}
 
 	/// <summary>

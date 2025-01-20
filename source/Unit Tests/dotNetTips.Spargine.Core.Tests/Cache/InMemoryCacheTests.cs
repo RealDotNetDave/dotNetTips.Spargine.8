@@ -39,6 +39,22 @@ public class InMemoryCacheTests
 
 	[TestMethod]
 	[ExpectedException(typeof(ArgumentNullException))]
+	public void AddCacheItem_NullIDataModelItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		cache.AddCacheItem<IDataModel<string, string>, string>(null);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void AddCacheItem_NullIDataRecordItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		cache.AddCacheItem(null as IDataRecord);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
 	public void AddCacheItem_NullItem_ThrowsArgumentNullException()
 	{
 		var cache = InMemoryCache.Instance;
@@ -51,6 +67,38 @@ public class InMemoryCacheTests
 	{
 		var cache = InMemoryCache.Instance;
 		cache.AddCacheItem<Person<Address>>(null, RandomData.GeneratePersonRef<Address>());
+	}
+
+	[TestMethod]
+	public void AddCacheItem_ValidIDataModelItem_ItemAdded()
+	{
+		var cache = InMemoryCache.Instance;
+		var item = RandomData.GeneratePersonRef<Address>();
+
+		cache.AddCacheItem<Person<Address>, string>(item);
+
+		var cachedItem = cache.GetCacheItem<Person<Address>>(item.Id);
+
+		Assert.IsNotNull(cachedItem, "Cached item should not be null.");
+		Assert.AreEqual(item.Id, cachedItem.Id, "Cached item ID should match the original item's ID.");
+
+		cache.Clear(); // Cleanup after test
+	}
+
+	[TestMethod]
+	public void AddCacheItem_ValidIDataRecordItem_ItemAdded()
+	{
+		var cache = InMemoryCache.Instance;
+		var item = RandomData.GeneratePersonRef<Address>();
+
+		cache.AddCacheItem<Person<Address>, string>(item);
+
+		var cachedItem = cache.GetCacheItem<Person<Address>>(item.Id);
+
+		Assert.IsNotNull(cachedItem, "Cached item should not be null.");
+		Assert.AreEqual(item.Id, cachedItem.Id, "Cached item ID should match the original item's ID.");
+
+		cache.Clear(); // Cleanup after test
 	}
 
 	[TestMethod]
@@ -95,6 +143,24 @@ public class InMemoryCacheTests
 
 	[TestMethod]
 	[ExpectedException(typeof(ArgumentNullException))]
+	public void AddCacheItem_WithCustomExpirationDateTime_NullIDataModelItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+		cache.AddCacheItem<IDataModel<string, string>, string>(null, futureDate);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void AddCacheItem_WithCustomExpirationDateTime_NullIDataRecordItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+		cache.AddCacheItem(null as IDataRecord, futureDate);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
 	public void AddCacheItem_WithCustomExpirationDateTime_NullItem_ThrowsArgumentNullException()
 	{
 		var cache = InMemoryCache.Instance;
@@ -109,6 +175,42 @@ public class InMemoryCacheTests
 		var cache = InMemoryCache.Instance;
 		var futureDate = DateTimeOffset.Now.AddMinutes(30);
 		cache.AddCacheItem<Person<Address>>(null, RandomData.GeneratePersonRef<Address>(), futureDate);
+	}
+
+
+
+	[TestMethod]
+	public void AddCacheItem_WithCustomExpirationDateTime_ValidIDataModelItem_ItemAdded()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+		var item = RandomData.GeneratePersonRef<Address>();
+
+		cache.AddCacheItem<Person<Address>, string>(item);
+
+		var cachedItem = cache.GetCacheItem<Person<Address>>(item.Id);
+
+		Assert.IsNotNull(cachedItem, "Cached item should not be null.");
+		Assert.AreEqual(item.Id, cachedItem.Id, "Cached item ID should match the original item's ID.");
+
+		cache.Clear(); // Cleanup after test
+	}
+
+	[TestMethod]
+	public void AddCacheItem_WithCustomExpirationDateTime_ValidIDataRecordItem_ItemAdded()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+		var item = RandomData.GeneratePersonRef<Address>();
+
+		cache.AddCacheItem<Person<Address>, string>(item);
+
+		var cachedItem = cache.GetCacheItem<Person<Address>>(item.Id);
+
+		Assert.IsNotNull(cachedItem, "Cached item should not be null.");
+		Assert.AreEqual(item.Id, cachedItem.Id, "Cached item ID should match the original item's ID.");
+
+		cache.Clear(); // Cleanup after test
 	}
 
 	[TestMethod]
@@ -138,6 +240,22 @@ public class InMemoryCacheTests
 
 	[TestMethod]
 	[ExpectedException(typeof(ArgumentNullException))]
+	public void AddCacheItem_WithCustomTimeout_NullIDataModelItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		cache.AddCacheItem<IDataModel<string, string>, string>(null, TimeSpan.FromMinutes(30));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void AddCacheItem_WithCustomTimeout_NullIDataRecordItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		cache.AddCacheItem(null as IDataRecord, TimeSpan.FromMinutes(30));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
 	public void AddCacheItem_WithCustomTimeout_NullItem_ThrowsArgumentNullException()
 	{
 		var cache = InMemoryCache.Instance;
@@ -150,6 +268,59 @@ public class InMemoryCacheTests
 	{
 		var cache = InMemoryCache.Instance;
 		cache.AddCacheItem<Person<Address>>(null, RandomData.GeneratePersonRef<Address>(), TimeSpan.FromMinutes(30));
+	}
+
+	[TestMethod]
+	public void AddCacheItem_WithCustomTimeout_ValidIDataModelItem_ItemAdded()
+	{
+		var cache = InMemoryCache.Instance;
+		var timeout = TimeSpan.FromMinutes(30);
+		var item = RandomData.GeneratePersonRef<Address>();
+
+		cache.AddCacheItem<Person<Address>, string>(item);
+
+		var cachedItem = cache.GetCacheItem<Person<Address>>(item.Id);
+
+		Assert.IsNotNull(cachedItem, "Cached item should not be null.");
+		Assert.AreEqual(item.Id, cachedItem.Id, "Cached item ID should match the original item's ID.");
+
+		cache.Clear(); // Cleanup after test
+	}
+
+	[TestMethod]
+	public void AddCacheItem_WithCustomTimeout_ValidIDataRecordItem_ItemAdded()
+	{
+		var cache = InMemoryCache.Instance;
+		var timeout = TimeSpan.FromMinutes(30);
+		var item = RandomData.GeneratePersonRef<Address>();
+
+		cache.AddCacheItem<Person<Address>, string>(item);
+
+		var cachedItem = cache.GetCacheItem<Person<Address>>(item.Id);
+
+		Assert.IsNotNull(cachedItem, "Cached item should not be null.");
+		Assert.AreEqual(item.Id, cachedItem.Id, "Cached item ID should match the original item's ID.");
+
+		cache.Clear(); // Cleanup after test
+	}
+
+	// Add the following code to the existing test file: source/Unit Tests/dotNetTips.Spargine.Core.Tests/Cache/InMemoryCacheTests.cs
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public async Task AddCacheItemAsync_NullIDataModelItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		await cache.AddCacheItemAsync<IDataModel<string, string>, string>(null);
+	}
+
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public async Task AddCacheItemAsync_NullIDataRecordItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		await cache.AddCacheItemAsync(null as IDataRecord);
 	}
 
 	[TestMethod]
@@ -166,6 +337,22 @@ public class InMemoryCacheTests
 	{
 		var cache = InMemoryCache.Instance;
 		await cache.AddCacheItemAsync<Person<Address>>(null, RandomData.GeneratePersonRef<Address>());
+	}
+
+	[TestMethod]
+	public async Task AddCacheItemAsync_ValidIDataRecordItem_ItemAdded()
+	{
+		var cache = InMemoryCache.Instance;
+		var item = RandomData.GeneratePersonRecord();
+
+		await cache.AddCacheItemAsync(item);
+
+		var cachedItem = cache.GetCacheItem<PersonRecord>(item.Id);
+
+		Assert.IsNotNull(cachedItem, "Cached item should not be null.");
+		Assert.AreEqual(item.Id, cachedItem.Id, "Cached item ID should match the original item's ID.");
+
+		cache.Clear(); // Cleanup after test
 	}
 
 	[TestMethod]
@@ -201,6 +388,25 @@ public class InMemoryCacheTests
 
 	[TestMethod]
 	[ExpectedException(typeof(ArgumentNullException))]
+	public async Task AddCacheItemAsync_WithCustomExpirationDateTime_NullIDataModelItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+		await cache.AddCacheItemAsync<IDataModel<string, string>, string>(null, futureDate);
+	}
+
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public async Task AddCacheItemAsync_WithCustomExpirationDateTime_NullIDataRecordItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+		await cache.AddCacheItemAsync(null as IDataRecord, futureDate);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
 	public async Task AddCacheItemAsync_WithCustomExpirationDateTime_NullItem_ThrowsArgumentNullException()
 	{
 		var cache = InMemoryCache.Instance;
@@ -215,6 +421,23 @@ public class InMemoryCacheTests
 		var cache = InMemoryCache.Instance;
 		var futureDate = DateTimeOffset.Now.AddMinutes(30);
 		await cache.AddCacheItemAsync<Person<Address>>(null, RandomData.GeneratePersonRef<Address>(), futureDate);
+	}
+
+	[TestMethod]
+	public async Task AddCacheItemAsync_WithCustomExpirationDateTime_ValidIDataRecordItem_ItemAdded()
+	{
+		var cache = InMemoryCache.Instance;
+		var item = RandomData.GeneratePersonRecord();
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+
+		await cache.AddCacheItemAsync(item, futureDate);
+
+		var cachedItem = cache.GetCacheItem<PersonRecord>(item.Id);
+
+		Assert.IsNotNull(cachedItem, "Cached item should not be null.");
+		Assert.AreEqual(item.Id, cachedItem.Id, "Cached item ID should match the original item's ID.");
+
+		cache.Clear(); // Cleanup after test
 	}
 
 	[TestMethod]
@@ -236,6 +459,22 @@ public class InMemoryCacheTests
 
 	[TestMethod]
 	[ExpectedException(typeof(ArgumentNullException))]
+	public async Task AddCacheItemAsync_WithCustomTimeout_NullIDataModelItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		await cache.AddCacheItemAsync<IDataModel<string, string>, string>(null, TimeSpan.FromMinutes(30));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public async Task AddCacheItemAsync_WithCustomTimeout_NullIDataRecordItem_ThrowsArgumentNullException()
+	{
+		var cache = InMemoryCache.Instance;
+		await cache.AddCacheItemAsync(null as IDataRecord, TimeSpan.FromMinutes(30));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
 	public async Task AddCacheItemAsync_WithCustomTimeout_NullItem_ThrowsArgumentNullException()
 	{
 		var cache = InMemoryCache.Instance;
@@ -248,6 +487,23 @@ public class InMemoryCacheTests
 	{
 		var cache = InMemoryCache.Instance;
 		await cache.AddCacheItemAsync<Person<Address>>(null, RandomData.GeneratePersonRef<Address>(), TimeSpan.FromMinutes(30));
+	}
+
+	[TestMethod]
+	public async Task AddCacheItemAsync_WithCustomTimeout_ValidIDataRecordItem_ItemAdded()
+	{
+		var cache = InMemoryCache.Instance;
+		var item = RandomData.GeneratePersonRecord();
+		var timeout = TimeSpan.FromMinutes(30);
+
+		await cache.AddCacheItemAsync(item, timeout);
+
+		var cachedItem = cache.GetCacheItem<PersonRecord>(item.Id);
+
+		Assert.IsNotNull(cachedItem, "Cached item should not be null.");
+		Assert.AreEqual(item.Id, cachedItem.Id, "Cached item ID should match the original item's ID.");
+
+		cache.Clear(); // Cleanup after test
 	}
 
 
@@ -350,6 +606,7 @@ public class InMemoryCacheTests
 		cache.Clear(); // Ensure cache is empty before test
 		Assert.AreEqual(0, InMemoryCache.Count, "Cache count should be 0 initially.");
 	}
+
 	[TestMethod]
 	public void CreateInstanceTest()
 	{
@@ -394,7 +651,6 @@ public class InMemoryCacheTests
 		var cache = InMemoryCache.Instance;
 		cache.GetCacheItem<Person<Address>>(null);
 	}
-
 
 	[TestMethod]
 	public void GetCacheItem_ValidKey_ReturnsItem()
