@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 01-21-2025
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -54,7 +54,10 @@ public sealed class PerformanceStopwatch : Stopwatch
 	{
 		var formattedMessage = string.Concat(this.Title, message, $" Time: {result.TotalMilliseconds} ms");
 
-		this._diagnostics.Add(formattedMessage);
+		lock (this._diagnostics)
+		{
+			this._diagnostics.Add(formattedMessage);
+		}
 
 		return formattedMessage;
 	}
@@ -69,7 +72,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	{
 		if (title.HasValue())
 		{
-			title = string.Concat(title, ControlChars.Colon);
+			title = $"{title}{ControlChars.Colon}";
 		}
 		var sw = new PerformanceStopwatch(title);
 
@@ -109,7 +112,15 @@ public sealed class PerformanceStopwatch : Stopwatch
 
 		var result = this.StopReset();
 
-		logger.WriteInformationMessage(this.CreateMessage(message, result));
+		try
+		{
+			logger.WriteInformationMessage(this.CreateMessage(message, result));
+		}
+		catch (Exception ex)
+		{
+			// Handle or log the exception as needed
+			throw new InvalidOperationException("An error occurred while logging the message.", ex);
+		}
 
 		return result;
 	}
@@ -143,7 +154,15 @@ public sealed class PerformanceStopwatch : Stopwatch
 	{
 		var result = this.StopRestart();
 
-		logger.WriteInformationMessage(this.CreateMessage(message, result));
+		try
+		{
+			logger.WriteInformationMessage(this.CreateMessage(message, result));
+		}
+		catch (Exception ex)
+		{
+			// Handle or log the exception as needed
+			throw new InvalidOperationException("An error occurred while logging the message.", ex);
+		}
 
 		return result;
 	}
@@ -152,7 +171,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// Returns a <see cref="string"/> that represents all the logged messages.
 	/// </summary>
 	/// <returns>A <see cref="string"/> that concatenates all the logged diagnostic messages.</returns>
-	public override string ToString() => FastStringBuilder.CombineStrings(true, [.. this.Diagnostics]);
+	public override string ToString() => FastStringBuilder.CombineStrings(true, [.. this._diagnostics]);
 
 	/// <summary>
 	/// Gets the logged messages as a read-only collection.
@@ -163,7 +182,16 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// GetUsers():Load users from database. Time: 1013.02 ms
 	/// GetUsers():Save users to database.Time: 1013.7925 ms
 	/// </example>
-	public ReadOnlyCollection<string> Diagnostics => this._diagnostics.AsReadOnly();
+	public ReadOnlyCollection<string> Diagnostics
+	{
+		get
+		{
+			lock (this._diagnostics)
+			{
+				return this._diagnostics.AsReadOnly();
+			}
+		}
+	}
 
 	/// <summary>
 	/// Gets the title of the <see cref="PerformanceStopwatch"/>.
