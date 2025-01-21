@@ -450,4 +450,32 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 		return readOnlyCollection;
 	}
 
+	/// <summary>
+	/// Calculates the total character count from a string array.
+	/// </summary>
+	/// <param name="args">The array of strings to calculate the character count from.</param>
+	/// <returns>The total character count of all strings in the array.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(CalculateStringCount), "David McCarter", "11/14/2024")]
+	public static int CalculateStringCount([NotNull] this string[] args)
+	{
+		if (args == null)
+		{
+			return 0;
+		}
+
+		var totalLength = 0;
+
+		foreach (var arg in args)
+		{
+			if (arg != null)
+			{
+				totalLength += arg.Length;
+			}
+		}
+
+		return totalLength;
+	}
+
 }
