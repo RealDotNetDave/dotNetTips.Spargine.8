@@ -4,7 +4,7 @@
 // Created          : 11-12-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-24-2024
+// Last Modified On : 01-21-2025
 // ***********************************************************************
 // <copyright file="ChannelQueue.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -26,9 +26,14 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// Thread-Safe queue using <see cref="Channel{T}"/>.
 /// </summary>
 /// <typeparam name="T">The type of items stored in the queue.</typeparam>
-[Information("Queue using Channel<T>.", "David McCarter", "7/26/2021")]
+[Information("Queue using Channel<T>.", "David McCarter", "7/26/2021", Status = Status.NeedsDocumentation)]
 public sealed class ChannelQueue<T>
 {
+
+	/// <summary>
+	/// The timeout duration for the cancellation token.
+	/// </summary>
+	private readonly TimeSpan _cancellationTimeout;
 
 	/// <summary>
 	/// The channel used for storing items.
@@ -45,7 +50,23 @@ public sealed class ChannelQueue<T>
 	/// </summary>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public ChannelQueue() => this._channel = Channel.CreateUnbounded<T>();
+	public ChannelQueue()
+	{
+		this._channel = Channel.CreateUnbounded<T>();
+		this._cancellationTimeout = TimeSpan.FromMinutes(5);
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="ChannelQueue{T}"/> class with an unbounded capacity.
+	/// </summary>
+	/// <param name="cancellationTimeout">The timeout for the cancellation token.</param>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	public ChannelQueue(TimeSpan? cancellationTimeout = null)
+	{
+		this._channel = Channel.CreateUnbounded<T>();
+		this._cancellationTimeout = cancellationTimeout ?? TimeSpan.FromMinutes(5);
+	}
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ChannelQueue{T}"/> class with a specified capacity.
@@ -53,7 +74,24 @@ public sealed class ChannelQueue<T>
 	/// <param name="capacity">The capacity of the <see cref="Channel{T}"/>.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public ChannelQueue(int capacity) => this._channel = Channel.CreateBounded<T>(capacity);
+	public ChannelQueue(int capacity)
+	{
+		this._channel = Channel.CreateBounded<T>(capacity);
+		this._cancellationTimeout = TimeSpan.FromMinutes(5);
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="ChannelQueue{T}"/> class with a specified capacity.
+	/// </summary>
+	/// <param name="capacity">The capacity of the <see cref="Channel{T}"/>.</param>
+	/// <param name="cancellationTimeout">The timeout for the cancellation token.</param>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public ChannelQueue(int capacity, TimeSpan? cancellationTimeout = null)
+	{
+		this._channel = Channel.CreateBounded<T>(capacity);
+		this._cancellationTimeout = cancellationTimeout ?? TimeSpan.FromMinutes(5);
+	}
 
 	/// <summary>
 	/// Reads all items from the Channel as an asynchronous operation.
@@ -68,7 +106,7 @@ public sealed class ChannelQueue<T>
 		// Ensure the cancellation token is linked with any existing tokens with a reasonable timeout to allow for graceful shutdowns
 		using (var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken))
 		{
-			linkedCts.CancelAfter(TimeSpan.FromMinutes(5)); // Adjust the timeout as necessary for your application
+			linkedCts.CancelAfter(this._cancellationTimeout);
 
 			await foreach (var item in this._channel.Reader.ReadAllAsync(linkedCts.Token).ConfigureAwait(false))
 			{
@@ -100,7 +138,21 @@ public sealed class ChannelQueue<T>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ReadAsync), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public async Task<T> ReadAsync(CancellationToken cancellationToken = default) => await this._channel.Reader.ReadAsync(cancellationToken).ConfigureAwait(false);
+	public async Task<T> ReadAsync(CancellationToken cancellationToken = default)
+	{
+		try
+		{
+			return await this._channel.Reader.ReadAsync(cancellationToken).ConfigureAwait(false);
+		}
+		catch (OperationCanceledException)
+		{
+			throw;
+		}
+		catch (Exception ex)
+		{
+			throw new InvalidOperationException("An error occurred while reading from the channel.", ex);
+		}
+	}
 
 	/// <summary>
 	/// Writes an item to the Channel as an asynchronous operation.
@@ -116,8 +168,17 @@ public sealed class ChannelQueue<T>
 	{
 		item = item.ArgumentNotNull();
 
-		await this._channel.Writer.WriteAsync(item, cancellationToken).ConfigureAwait(false);
+		try
+		{
+			await this._channel.Writer.WriteAsync(item, cancellationToken).ConfigureAwait(false);
+		}
+		catch (Exception ex)
+		{
+			throw new InvalidOperationException("An error occurred while writing to the channel.", ex);
+		}
 	}
+
+	// ...
 
 	/// <summary>
 	/// Write a collection to the Channel as an asynchronous operation.
@@ -138,14 +199,22 @@ public sealed class ChannelQueue<T>
 	{
 		items = items.ArgumentNotNull();
 
-		foreach (var item in items.Where(p => p is not null))
+		try
 		{
-			await this._channel.Writer.WriteAsync(item, cancellationToken).ConfigureAwait(false);
-		}
+			foreach (var item in items)
+			{
+				await this._channel.Writer.WriteAsync(item, cancellationToken).ConfigureAwait(false);
+			}
 
-		if (lockQueue)
+			if (lockQueue)
+			{
+				_ = this.Lock();
+			}
+		}
+		catch (Exception ex)
 		{
-			_ = this.Lock();
+			// Log or handle the exception as needed
+			throw new InvalidOperationException("An error occurred while writing to the channel.", ex);
 		}
 	}
 
