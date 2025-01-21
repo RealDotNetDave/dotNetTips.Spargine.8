@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 01-21-2025
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -18,7 +18,6 @@
 // </summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
 using DotNetTips.Spargine.Core.Devices;
@@ -61,6 +60,7 @@ public static class LoggingHelper
 	/// It is set through the <see cref="LogAppDomainUnhandledException(ILogger)"/> method.
 	/// </remarks>
 	private static ILogger _appDomainUnhandledExceptionLogger;
+	private static readonly object _lock = new();
 
 	/// <summary>
 	/// Handles the <see cref="AppDomain.AssemblyLoad"/> event. Logs the loaded assembly information using the application domain events logger.
@@ -253,18 +253,21 @@ public static class LoggingHelper
 	{
 		logger = logger.ArgumentNotNull();
 
-		if (_appDomainEventsLogger is null)
+		lock (_lock)
 		{
-			_appDomainEventsLogger = logger;
-			AppDomain.CurrentDomain.AssemblyLoad += CurrentDomain_AssemblyLoad;
-			AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
-			AppDomain.CurrentDomain.DomainUnload += CurrentDomain_DomainUnload;
-			AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
-			AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += CurrentDomain_ReflectionOnlyAssemblyResolve;
-			AppDomain.CurrentDomain.ResourceResolve += CurrentDomain_ResourceResolve;
-			AppDomain.CurrentDomain.TypeResolve += CurrentDomain_TypeResolve;
+			if (_appDomainEventsLogger is null)
+			{
+				_appDomainEventsLogger = logger;
+				AppDomain.CurrentDomain.AssemblyLoad += CurrentDomain_AssemblyLoad;
+				AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+				AppDomain.CurrentDomain.DomainUnload += CurrentDomain_DomainUnload;
+				AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
+				AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += CurrentDomain_ReflectionOnlyAssemblyResolve;
+				AppDomain.CurrentDomain.ResourceResolve += CurrentDomain_ResourceResolve;
+				AppDomain.CurrentDomain.TypeResolve += CurrentDomain_TypeResolve;
 
-			FastLogger.LogInformation(logger, $"Starting to capture all domain events on {Clock.UtcTime} UTC");
+				FastLogger.LogInformation(logger, $"Starting to capture all domain events on {Clock.UtcTime} UTC");
+			}
 		}
 	}
 
@@ -283,12 +286,15 @@ public static class LoggingHelper
 	{
 		logger = logger.ArgumentNotNull();
 
-		if (_appDomainExceptionLogger is null)
+		lock (_lock)
 		{
-			_appDomainExceptionLogger = logger;
-			AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
+			if (_appDomainExceptionLogger is null)
+			{
+				_appDomainExceptionLogger = logger;
+				AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
 
-			FastLogger.LogInformation(logger, $"Starting to capture all exceptions on {Clock.UtcTime} UTC");
+				FastLogger.LogInformation(logger, $"Starting to capture all exceptions on {Clock.UtcTime} UTC");
+			}
 		}
 	}
 
@@ -306,12 +312,15 @@ public static class LoggingHelper
 	{
 		logger = logger.ArgumentNotNull();
 
-		if (_appDomainUnhandledExceptionLogger is not null)
+		lock (_lock)
 		{
-			_appDomainUnhandledExceptionLogger = logger;
-			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+			if (_appDomainUnhandledExceptionLogger is null)
+			{
+				_appDomainUnhandledExceptionLogger = logger;
+				AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-			FastLogger.LogInformation(logger, $"Starting to capture unhandled exceptions on {Clock.UtcTime} UTC");
+				FastLogger.LogInformation(logger, $"Starting to capture unhandled exceptions on {Clock.UtcTime} UTC");
+			}
 		}
 	}
 
@@ -341,7 +350,7 @@ public static class LoggingHelper
 		if (values?.Count > 0)
 		{
 			//FrozenSet is slower.
-			var items = values.OrderBy(p => p.Key).ToList();
+			var items = values.OrderBy(p => p.Key);
 			foreach (var item in items)
 			{
 				FastLogger.LogInformation(logger, $"{nameof(AppInfo)}:{item.Key} - {item.Value}");
@@ -392,7 +401,7 @@ public static class LoggingHelper
 		if (values?.Count > 0)
 		{
 			//FrozenSet is slower.
-			foreach (var item in values.OrderBy(p => p.Key).ToList())
+			foreach (var item in values.OrderBy(p => p.Key))
 			{
 				logger.LogDebugMessage($"{nameof(ComputerInfo)}:{item.Key} - {item.Value}");
 			}
@@ -421,19 +430,14 @@ public static class LoggingHelper
 	/// }
 	/// </code>
 	/// </example>
-	[Information(nameof(RetrieveAllExceptionMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(RetrieveAllExceptionMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static ReadOnlyCollection<string> RetrieveAllExceptionMessages(Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
 
 		var exceptions = RetrieveAllExceptions(exception);
 
-		var messages = new List<string>(exceptions.Count);
-
-		foreach (var ex in exceptions)
-		{
-			messages.Add(ex.Message);
-		}
+		var messages = exceptions.Select(ex => ex.Message).ToList();
 
 		return messages.AsReadOnly();
 	}
