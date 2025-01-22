@@ -16,7 +16,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core.Collections.Generic;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -42,12 +41,6 @@ public class FastSortedListAddRemoveBenchmark : SmallCollectionBenchmark
 
 	private SortedList<string, Person<Address>> _personRefSortedListComparer;
 
-	[IterationCleanup]
-	public void IterationCleanup()
-	{
-		this.GenerateData();
-	}
-
 	private void GenerateData()
 	{
 		// FastSortedList
@@ -71,6 +64,12 @@ public class FastSortedListAddRemoveBenchmark : SmallCollectionBenchmark
 		this._lastPersonRefSortedListComparer = this._personRefSortedListComparer.Last();
 
 		//ConsoleLogger.Default.WriteLine(LogKind.Info, $"SL Index: {this._lastPersonRefSortedListIndex}.");
+	}
+
+	[IterationCleanup]
+	public void IterationCleanup()
+	{
+		this.GenerateData();
 	}
 
 	[Benchmark(Description = nameof(FastSortedList<Person<Address>>.Remove))]

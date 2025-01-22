@@ -327,10 +327,10 @@ public static class ListExtensions
 			return;
 		}
 
-		// USING ASSPAN SLOWED PERFORMANCE
-		for (var itemIndex = 0; itemIndex < collection.Count; itemIndex++)
+		// USING ASSPAN AND USING FOR SLOWED PERFORMANCE
+		foreach (var item in collection.AsSpan())
 		{
-			action(collection[itemIndex]);
+			action(item);
 		}
 	}
 

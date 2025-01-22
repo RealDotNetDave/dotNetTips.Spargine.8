@@ -4,7 +4,7 @@
 // Created          : 10-03-2024
 //
 // Last Modified By : david
-// Last Modified On : 10-15-2024
+// Last Modified On : 01-21-2025
 // ***********************************************************************
 // <copyright file="InMemoryCacheBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core.Cache;
@@ -26,7 +27,140 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 {
 	private InMemoryCache _cache;
 	private string _cacheId;
+
+	private PersonRecord[] _personRecordArray;
 	private Person<Address>[] _personRefArray;
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItem))]
+	[BenchmarkCategory(Categories.Collections)]
+	public void AddCacheItem()
+	{
+		var cache = InMemoryCache.Instance;
+
+		foreach (var item in this._personRefArray)
+		{
+			cache.AddCacheItem(item.Email, item);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync))]
+	[BenchmarkCategory(Categories.Collections)]
+	public async Task AddCacheItemAsync()
+	{
+		var cache = InMemoryCache.Instance;
+
+		foreach (var item in this._personRefArray)
+		{
+			await cache.AddCacheItemAsync(item.Email, item).ConfigureAwait(false);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": DateTimeOffset")]
+	[BenchmarkCategory(Categories.Collections)]
+	public async Task AddCacheItemAsyncDateTimeOffset()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+
+		foreach (var item in this._personRefArray)
+		{
+			await cache.AddCacheItemAsync(item.Email, item, futureDate).ConfigureAwait(false);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": DataTimeOffset - IDataModel")]
+	[BenchmarkCategory(Categories.Collections)]
+	public async Task AddCacheItemAsyncDateTimeOffsetIDataModel()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+
+		foreach (var item in this._personRefArray)
+		{
+			await cache.AddCacheItemAsync<Person<Address>, string>(item, futureDate).ConfigureAwait(false);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": DataTimeOffset - IDataRecord")]
+	[BenchmarkCategory(Categories.Collections)]
+	public async Task AddCacheItemAsyncDateTimeOffsetIDataRecord()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+
+		foreach (var item in this._personRecordArray)
+		{
+			await cache.AddCacheItemAsync(item, futureDate).ConfigureAwait(false);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": IDataModel")]
+	[BenchmarkCategory(Categories.Collections)]
+	public async Task AddCacheItemAsyncIDataModel()
+	{
+		var cache = InMemoryCache.Instance;
+
+		foreach (var item in this._personRefArray)
+		{
+			await cache.AddCacheItemAsync<Person<Address>, string>(item).ConfigureAwait(false);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": IDataRecord")]
+	[BenchmarkCategory(Categories.Collections)]
+	public async Task AddCacheItemAsyncIDataRecord()
+	{
+		var cache = InMemoryCache.Instance;
+
+		foreach (var item in this._personRecordArray)
+		{
+			await cache.AddCacheItemAsync(item).ConfigureAwait(false);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": Timespan")]
+	[BenchmarkCategory(Categories.Collections)]
+	public async Task AddCacheItemAsyncTimeSpan()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = TimeSpan.FromSeconds(5);
+
+		foreach (var item in this._personRefArray)
+		{
+			await cache.AddCacheItemAsync(item.Email, item, futureDate).ConfigureAwait(false);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": TimeSpan - IDataRecord")]
+	[BenchmarkCategory(Categories.Collections)]
+	public async Task AddCacheItemAsyncTimeSpanIDataRecord()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = TimeSpan.FromSeconds(5);
+
+		foreach (var item in this._personRecordArray)
+		{
+			await cache.AddCacheItemAsync(item, futureDate).ConfigureAwait(false);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
 
 	[Benchmark(Description = nameof(InMemoryCache.AddCacheItem) + ": DateTimeOffset")]
 	[BenchmarkCategory(Categories.Collections)]
@@ -43,15 +177,89 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 		this.Consume(cache.Cache.Count);
 	}
 
-	[Benchmark(Description = nameof(InMemoryCache.AddCacheItem) + ": Timespan")]
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItem) + ": DataTimeOffset - IDataModel")]
 	[BenchmarkCategory(Categories.Collections)]
-	public void AddCacheItemTimeSpan()
+	public void AddCacheItemDateTimeOffsetIDataModel()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+
+		foreach (var item in this._personRefArray)
+		{
+			cache.AddCacheItem<Person<Address>, string>(item, futureDate);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItem) + ": DataTimeOffset - IDataRecord")]
+	[BenchmarkCategory(Categories.Collections)]
+	public void AddCacheItemDateTimeOffsetIDataRecord()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = DateTimeOffset.Now.AddMinutes(30);
+
+		foreach (var item in this._personRecordArray)
+		{
+			cache.AddCacheItem(item, futureDate);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItem) + ": IDataModel")]
+	[BenchmarkCategory(Categories.Collections)]
+	public void AddCacheItemIDataModel()
 	{
 		var cache = InMemoryCache.Instance;
 
 		foreach (var item in this._personRefArray)
 		{
-			cache.AddCacheItem(item.Email, item, TimeSpan.FromSeconds(5));
+			cache.AddCacheItem<Person<Address>, string>(item);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItem) + ": IDataRecord")]
+	[BenchmarkCategory(Categories.Collections)]
+	public void AddCacheItemIDataRecord()
+	{
+		var cache = InMemoryCache.Instance;
+
+		foreach (var item in this._personRecordArray)
+		{
+			cache.AddCacheItem(item);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItem) + ": Timespan")]
+	[BenchmarkCategory(Categories.Collections)]
+	public void AddCacheItemTimeSpan()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = TimeSpan.FromSeconds(5);
+
+		foreach (var item in this._personRefArray)
+		{
+			cache.AddCacheItem(item.Email, item, futureDate);
+		}
+
+		this.Consume(cache.Cache.Count);
+	}
+
+	[Benchmark(Description = nameof(InMemoryCache.AddCacheItem) + ": TimeSpan - IDataRecord")]
+	[BenchmarkCategory(Categories.Collections)]
+	public void AddCacheItemTimeSpanIDataRecord()
+	{
+		var cache = InMemoryCache.Instance;
+		var futureDate = TimeSpan.FromSeconds(5);
+
+		foreach (var item in this._personRecordArray)
+		{
+			cache.AddCacheItem(item, futureDate);
 		}
 
 		this.Consume(cache.Cache.Count);
@@ -81,13 +289,20 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 		this.Consume(this._cache.GetCacheItem<Person<Address>>(this._cacheId));
 	}
 
+	[Benchmark(Description = nameof(InMemoryCache.GetCacheItemAsync))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public async Task GetCacheItemAsync()
+	{
+		this.Consume(await this._cache.GetCacheItemAsync<Person<Address>>(this._cacheId).ConfigureAwait(false));
+	}
+
 	public override void Setup()
 	{
 		base.Setup();
 		this._personRefArray = this.GetPersonRefArray();
+		this._personRecordArray = this.GetPersonRecordArray();
 		this._cache = InMemoryCache.Instance;
 		this._cache.AddCacheItem(this.PersonRef01.Id, this.PersonRef01);
 		this._cacheId = this.PersonRef01.Id;
-
 	}
 }

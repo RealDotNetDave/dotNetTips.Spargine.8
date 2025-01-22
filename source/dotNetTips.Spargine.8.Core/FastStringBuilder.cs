@@ -90,7 +90,7 @@ public static class FastStringBuilder
 	/// <returns>A combined string with or without line feeds after each element based on <paramref name="addLineFeed"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string CombineStrings(bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (args == null || args.LongLength == 0)
@@ -98,7 +98,7 @@ public static class FastStringBuilder
 			return string.Empty;
 		}
 
-		var sb = _stringBuilderPool.Get().ClearSetCapacity(args.CalculateStringCount());
+		var sb = _stringBuilderPool.Get().Clear();
 
 		try
 		{
@@ -136,7 +136,7 @@ public static class FastStringBuilder
 	/// <param name="args">The arguments.</param>
 	/// <returns>System.String.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineStringConcatenation")]
+	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineStringConcatenation")]
 	public static string ConcatStrings(string delimiter = ",", bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (delimiter == null)
@@ -144,7 +144,7 @@ public static class FastStringBuilder
 			delimiter = ControlChars.Comma.ToString();
 		}
 
-		var sb = _stringBuilderPool.Get().ClearSetCapacity(args.CalculateStringCount() + (delimiter.Length * args.Length));
+		var sb = _stringBuilderPool.Get().Clear();
 
 		try
 		{

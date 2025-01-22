@@ -498,7 +498,7 @@ public static class RandomData
 	/// </remarks>
 	/// <example>Output: C:\\Users\\user folder\\AppData\\Roaming\\UnitTest.test</example>
 	[Information(nameof(GenerateFile), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static string GenerateFile(string fileName, int fileLength = DefaultFileLength)
+	public static string GenerateFile([NotNull] string fileName, int fileLength = DefaultFileLength)
 	{
 		fileName = fileName.ArgumentNotNullOrEmpty(trim: true);
 		fileLength = fileLength.ArgumentInRange(lower: 1, defaultValue: 1);
