@@ -34,6 +34,7 @@ namespace DotNetTips.Spargine.Core;
 /// attempts the provided operation multiple times with increasing delay intervals, improving the robustness of applications
 /// in unstable network conditions.
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public static class ExecutionHelper
 {
 

@@ -38,7 +38,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// These methods are designed to extend the capabilities of all objects and simplify common operations related to serialization,
 /// reflection, and memory management.
 /// </remarks>
-[Information(Documentation = "https://bit.ly/SpargineObjectExtensions", Status = Status.Available)]
+[Information(Documentation = "https://bit.ly/SpargineObjectExtensions", Status = Status.UpdateDocumentation)]
 public static class ObjectExtensions
 {
 

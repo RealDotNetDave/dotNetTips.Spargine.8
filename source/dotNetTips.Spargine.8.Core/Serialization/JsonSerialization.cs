@@ -29,7 +29,7 @@ namespace DotNetTips.Spargine.Core.Serialization;
 /// Utilizes the System.Text.Json namespace for efficient processing. This class supports custom serialization
 /// options and aims to simplify the use of JSON serialization in .NET applications.
 /// </summary>
-[Information(Documentation = "https://bit.ly/SpargineJsonSerialization")]
+[Information(Documentation = "https://bit.ly/SpargineJsonSerialization", Status = Status.UpdateDocumentation)]
 public static class JsonSerialization
 {
 	/// <summary>
