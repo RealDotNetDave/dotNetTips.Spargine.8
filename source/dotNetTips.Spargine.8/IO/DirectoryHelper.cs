@@ -551,5 +551,4 @@ public static class DirectoryHelper
 			file.Attributes = FileAttributes.Normal;
 		}
 	}
-
 }

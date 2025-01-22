@@ -280,7 +280,7 @@ public class FileProcessor
 			{
 				try
 				{
-					listItem.Delete(recursive: true);
+					DirectoryHelper.DeleteDirectory(listItem, 5);
 
 					successCount++;
 
