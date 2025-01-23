@@ -19,7 +19,7 @@ using DotNetTips.Spargine.Core;
 namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 
 /// <summary>
-/// Provides equality comparison for <see cref="PersonRecord"/> objects based on their email addresses.
+/// Provides equality comparison for <see cref="PersonRecord"/> objects based on the email address.
 /// </summary>
 [Information(Status = Status.New)]
 public sealed class PersonRecordEmailEqualityComparer : IEqualityComparer<PersonRecord>
