@@ -4,7 +4,7 @@
 // Created          : 01-03-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 01-24-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilderTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -52,7 +52,7 @@ public class FastStringBuilderTests
 	{
 		var testData = RandomData.GenerateByteArray(1);
 
-		var result = FastStringBuilder.BytesToString(testData);
+		var result = FastStringBuilder.BytesToString(ref testData);
 
 		Assert.IsNotNull(result);
 
