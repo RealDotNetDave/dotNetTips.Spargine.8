@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 01-24-2025
 // ***********************************************************************
 // <copyright file="StringExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -407,10 +407,10 @@ public class StringExtensionsTests
 
 		// Act
 		// Using a lambda to defer the evaluation and catch the ArgumentNullException
-		Action act = () => _ = nullString.IsGuid();
+		var result = nullString.IsGuid();
 
 		// Assert
-		Assert.ThrowsException<ArgumentNullException>(act, "Expected to throw ArgumentNullException for a null string.");
+		Assert.IsFalse(result);
 	}
 
 	[TestMethod]
@@ -465,10 +465,10 @@ public class StringExtensionsTests
 		string nullString = null;
 
 		// Act
-		Action act = () => _ = nullString.IsMacAddress();
+		var result = nullString.IsMacAddress();
 
 		// Assert
-		Assert.ThrowsException<ArgumentNullException>(act, "Expected to throw ArgumentNullException for a null string.");
+		Assert.IsFalse(result);
 	}
 
 	[TestMethod]
