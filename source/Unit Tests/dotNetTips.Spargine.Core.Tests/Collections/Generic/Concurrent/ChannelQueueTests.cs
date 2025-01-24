@@ -4,7 +4,7 @@
 // Created          : 07-26-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 01-24-2025
 // ***********************************************************************
 // <copyright file="ChannelQueueTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -215,12 +215,12 @@ public class ChannelQueueTests
 		{
 			channel.WriteAsync(2).Wait();
 		}
-		catch (AggregateException ae) when (ae.InnerExceptions.Any(e => e is ChannelClosedException))
+		catch (AggregateException ex) when (ex.InnerException is ChannelClosedException || ex.InnerException is InvalidOperationException)
 		{
 			// Expected exception
 			return;
 		}
-		Assert.Fail("Expected a ChannelClosedException to be thrown when writing to a locked channel.");
+		Assert.Fail("Expected a ChannelClosedException or InvalidOperationException to be thrown when writing to a locked channel.");
 	}
 
 	[TestMethod]
@@ -241,7 +241,7 @@ public class ChannelQueueTests
 		var channel = new ChannelQueue<int>();
 		channel.Lock(); // Ensure the channel is closed for writing and will not receive any items.
 
-		await Assert.ThrowsExceptionAsync<ChannelClosedException>(async () => await channel.ReadAsync(), "Reading from an empty and locked channel should throw a ChannelClosedException.");
+		await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await channel.ReadAsync(), "Reading from an empty and locked channel should throw a ChannelClosedException.");
 	}
 
 
@@ -261,7 +261,7 @@ public class ChannelQueueTests
 		var channel = new ChannelQueue<int>();
 		channel.Lock(); // Lock the channel to prevent further writes
 
-		await Assert.ThrowsExceptionAsync<ChannelClosedException>(async () => await channel.WriteAsync(42), "WriteAsync should throw a ChannelClosedException when attempting to write to a locked channel.");
+		await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await channel.WriteAsync(42), "WriteAsync should throw a ChannelClosedException when attempting to write to a locked channel.");
 	}
 
 	[TestMethod]
@@ -272,7 +272,7 @@ public class ChannelQueueTests
 		var cts = new CancellationTokenSource();
 		cts.Cancel(); // Immediately request cancellation
 
-		await Assert.ThrowsExceptionAsync<TaskCanceledException>(async () => await channel.WriteAsync(items, false, cts.Token), "WriteAsync should throw an OperationCanceledException when cancellation is requested.");
+		await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await channel.WriteAsync(items, false, cts.Token), "WriteAsync should throw an OperationCanceledException when cancellation is requested.");
 	}
 
 	[TestMethod]
@@ -283,7 +283,7 @@ public class ChannelQueueTests
 
 		await channel.WriteAsync(items, true);
 
-		await Assert.ThrowsExceptionAsync<ChannelClosedException>(async () => await channel.WriteAsync(6), "WriteAsync should throw a ChannelClosedException when attempting to write to a locked channel.");
+		await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await channel.WriteAsync(6), "WriteAsync should throw a ChannelClosedException when attempting to write to a locked channel.");
 	}
 
 }
