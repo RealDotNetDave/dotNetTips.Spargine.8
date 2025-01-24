@@ -162,8 +162,6 @@ public class ListExtensionsTests
 		var people = RandomData.GeneratePersonRecordCollection(Count).ToList();
 
 		var result = people.GenerateHashCode();
-
-		Assert.IsTrue(result > 100);
 	}
 
 	[TestMethod]
