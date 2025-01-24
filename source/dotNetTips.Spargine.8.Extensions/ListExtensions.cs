@@ -229,7 +229,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this List<T> collection, in int count)
+	public static bool HasItems<T>([NotNull] this List<T> collection, int count)
 	{
 		if (collection is null)
 		{

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 01-24-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -52,8 +52,8 @@ public static class ArrayExtensions
 	/// <returns>A new array with the item added at the beginning.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static T[] AddFirst<T>([NotNull] this T[] array, [NotNull] T item)
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static T[] AddFirst<T>([NotNull] this T[] array, [NotNull] in T item)
 	{
 		if (item is null)
 		{
@@ -80,7 +80,7 @@ public static class ArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(AddIf), author: "David McCarter", createdOn: "4/28/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static T[] AddIf<T>([NotNull] this T[] array, [NotNull] T item, bool condition)
+	public static T[] AddIf<T>([NotNull] this T[] array, [NotNull] in T item, bool condition)
 	{
 		if (item is null)
 		{
@@ -102,7 +102,7 @@ public static class ArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static T[] AddLast<T>([NotNull] this T[] array, [NotNull] T item)
+	public static T[] AddLast<T>([NotNull] this T[] array, [NotNull] in T item)
 	{
 		if (item is null)
 		{
@@ -127,7 +127,7 @@ public static class ArrayExtensions
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 	[Information(nameof(AreEqual), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool AreEqual<T>([NotNull] this T[] array, [NotNull] T[] arrayToCheck)
+	public static bool AreEqual<T>([NotNull] this T[] array, [NotNull] in T[] arrayToCheck)
 	{
 		if (array is null || arrayToCheck is null)
 		{
@@ -370,8 +370,8 @@ public static class ArrayExtensions
 	/// <param name="action">The values.</param>
 	/// <returns><c>true</c> if the specified values has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this T[] array, [NotNull] Func<T, bool> action)
+	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static bool HasItems<T>([NotNull] this T[] array, [NotNull] in Func<T, bool> action)
 	{
 		if (array is null || action is null)
 		{
@@ -391,7 +391,7 @@ public static class ArrayExtensions
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this T[] array, in int count)
+	public static bool HasItems<T>([NotNull] this T[] array, int count)
 	{
 		if (array is null)
 		{

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-16-2025
+// Last Modified On : 01-24-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -74,7 +74,7 @@ public static class DictionaryExtensions
 	/// <returns>true if the key/value pair was added to the dictionary successfully; otherwise, false.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" />, <paramref name="key" />, or <paramref name="value" /> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static bool AddIfNotExists<TKey, TValue>(this IDictionary<TKey, TValue> collection, TKey key, TValue value)
+	public static bool AddIfNotExists<TKey, TValue>(this IDictionary<TKey, TValue> collection, TKey key, in TValue value)
 		where TKey : notnull
 		where TValue : notnull
 	{
@@ -363,6 +363,7 @@ public static class DictionaryExtensions
 	public static TValue TryGetValue<TKey, TValue>(this IDictionary<TKey, TValue> collection, TKey key, Func<TKey, TValue> func)
 	{
 		collection = collection.ArgumentNotNull();
+		key = key.ArgumentNotNull();
 
 		if (collection.TryGetValue(key, out var value))
 		{
@@ -385,8 +386,8 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
 	/// <param name="collection">The dictionary.</param>
 	/// <param name="item">The item.</param>
-	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void Upsert<TKey, TValue>(this IDictionary<TKey, TValue> collection, TValue item) where TValue : IDataModel<TValue, TKey>
+	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public static void Upsert<TKey, TValue>(this IDictionary<TKey, TValue> collection, in TValue item) where TValue : IDataModel<TValue, TKey>
 	{
 		if (item is null)
 		{
@@ -419,8 +420,8 @@ public static class DictionaryExtensions
 	/// <exception cref="ArgumentNullException">value</exception>
 	/// <exception cref="ArgumentNullException">Input cannot be null or have no items in the collection.</exception>
 	/// <exception cref="ArgumentNullException">Key cannot be null.</exception>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static void Upsert<TKey, TValue>(this IDictionary<TKey, TValue> collection, TKey key, TValue item)
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static void Upsert<TKey, TValue>(this IDictionary<TKey, TValue> collection, TKey key, in TValue item)
 	{
 		if (item is null)
 		{

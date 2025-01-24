@@ -81,7 +81,7 @@ public static class ImmutableArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>(this ImmutableArray<T> list, in int count)
+	public static bool HasItems<T>(this ImmutableArray<T> list, int count)
 	{
 		if (list.ArgumentNotNull().IsEmpty)
 		{

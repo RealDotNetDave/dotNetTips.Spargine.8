@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-13-2024
+// Last Modified On : 01-01-2025
 // ***********************************************************************
 // <copyright file="ExceptionExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -79,7 +79,7 @@ public static class ExceptionExtensions
 	/// <returns>A string containing all exception messages, separated by the specified separator.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information(nameof(GetAllMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static string GetAllMessages(this Exception exception, char separator = ControlChars.Comma)
+	public static string GetAllMessages(this Exception exception, in char separator = ControlChars.Comma)
 	{
 		exception = exception.ArgumentNotNull();
 

@@ -56,7 +56,7 @@ public static class CollectionExtensions
 	/// </code>
 	/// </example>
 	[Information(nameof(AddIf), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void AddIf<T>([NotNull] this ICollection<T> collection, [NotNull] T item, bool condition)
+	public static void AddIf<T>([NotNull] this ICollection<T> collection, [NotNull] in T item, bool condition)
 	{
 		if (item is null)
 		{
@@ -81,7 +81,7 @@ public static class CollectionExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	/// <exception cref="ArgumentReadOnlyException">Thrown if <paramref name="collection"/> is read-only.</exception>
 	[Information(nameof(AddIfNotExists), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool AddIfNotExists<T>([NotNull] this ICollection<T> collection, [NotNull] T item)
+	public static bool AddIfNotExists<T>([NotNull] this ICollection<T> collection, [NotNull] in T item)
 	{
 		if (item is null)
 		{
@@ -118,7 +118,7 @@ public static class CollectionExtensions
 	/// </code>
 	/// </example>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static bool AddIfNotExists<T>([NotNull] this ICollection<T> collection, [NotNull] T item, IEqualityComparer<T> comparer)
+	public static bool AddIfNotExists<T>([NotNull] this ICollection<T> collection, [NotNull] in T item, in IEqualityComparer<T> comparer)
 	{
 		if (item is null)
 		{
@@ -300,7 +300,7 @@ public static class CollectionExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="item"/> is null.</exception>
 	/// <exception cref="ArgumentReadOnlyException">Thrown if <paramref name="collection"/> is read-only.</exception>
 	[Information(nameof(Upsert), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void Upsert<T>([NotNull] this ICollection<T> collection, [NotNull] T item)
+	public static void Upsert<T>([NotNull] this ICollection<T> collection, [NotNull] in T item)
 	{
 		if (item is null)
 		{
@@ -363,7 +363,7 @@ public static class CollectionExtensions
 	/// It is a convenient way to update an existing item or add a new item without having to manually check for its existence.
 	/// </remarks>
 	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void Upsert([NotNull] this ICollection<IDataRecord> collection, [NotNull] IDataRecord item)
+	public static void Upsert([NotNull] this ICollection<IDataRecord> collection, [NotNull] in IDataRecord item)
 	{
 		if (item is null)
 		{
