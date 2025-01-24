@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8.Extensions - 2025.8.1.15
+# DotNetTips.Spargine.8.Extensions - 2025.8.1.23
 
 ## ArrayExtensions
 
@@ -8,18 +8,18 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineArrayExtensions
 
-### T[] AddFirst(T[] array, T item)
+### T[] AddFirst(T[] array, T& item)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### T[] AddIf(T[] array, T item, Boolean condition)
+### T[] AddIf(T[] array, T& item, Boolean condition)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -30,7 +30,7 @@
 * **Description:** AddIf
 * **Modified By:** David McCarter
 
-### T[] AddLast(T[] array, T item)
+### T[] AddLast(T[] array, T& item)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -41,7 +41,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### Boolean AreEqual(T[] array, T[] arrayToCheck)
+### Boolean AreEqual(T[] array, T[]& arrayToCheck)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -184,18 +184,18 @@
 * **Description:** HasItems
 * **Modified By:** David McCarter
 
-### Boolean HasItems(T[] array, Func<T, Boolean> action)
+### Boolean HasItems(T[] array, Func`2& action)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 6/15/2022
 * **Description:** HasItems
 * **Modified By:** David McCarter
 
-### Boolean HasItems(T[] array, Int32& count)
+### Boolean HasItems(T[] array, Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -368,7 +368,7 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineCollectionExtensions
 
-### Void AddIf(ICollection<T> collection, T item, Boolean condition)
+### Void AddIf(ICollection<T> collection, T& item, Boolean condition)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -379,7 +379,7 @@
 * **Description:** AddIf
 * **Modified By:** David McCarter
 
-### Boolean AddIfNotExists(ICollection<T> collection, T item)
+### Boolean AddIfNotExists(ICollection<T> collection, T& item)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -390,7 +390,7 @@
 * **Description:** AddIfNotExists
 * **Modified By:** David McCarter
 
-### Boolean AddIfNotExists(ICollection<T> collection, T item, IEqualityComparer<T> comparer)
+### Boolean AddIfNotExists(ICollection<T> collection, T& item, IEqualityComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -478,7 +478,7 @@
 * **Description:** ToFrozenSet
 * **Modified By:** David McCarter
 
-### Void Upsert(ICollection<T> collection, T item)
+### Void Upsert(ICollection<T> collection, T& item)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -500,7 +500,7 @@
 * **Description:** Upsert
 * **Modified By:** David McCarter
 
-### Void Upsert(ICollection<IDataRecord> collection, IDataRecord item)
+### Void Upsert(ICollection<IDataRecord> collection, IDataRecord& item)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -842,7 +842,7 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineDictionaryExtensions
 
-### Boolean AddIfNotExists(IDictionary<TKey, TValue> collection, TKey key, TValue value)
+### Boolean AddIfNotExists(IDictionary<TKey, TValue> collection, TKey key, TValue& value)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1000,7 +1000,7 @@
 
 * **Status:** New
 * **Optimization Status:** None
-* **BenchMarkStatus:** Benchmark
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToSortedDictionary
@@ -1016,22 +1016,22 @@
 * **Description:** Original code by Simon Painter.
 * **Modified By:** David McCarter
 
-### Void Upsert(IDictionary<TKey, TValue> collection, TValue item)
+### Void Upsert(IDictionary<TKey, TValue> collection, TValue& item)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 5/2/2021
 * **Description:** Upsert
 * **Modified By:** David McCarter
 
-### Void Upsert(IDictionary<TKey, TValue> collection, TKey key, TValue item)
+### Void Upsert(IDictionary<TKey, TValue> collection, TKey key, TValue& item)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
@@ -1673,7 +1673,7 @@
 * **Author:** UNKNOWN
 * **Description:** FromHierarchy
 
-### String GetAllMessages(Exception exception, Char separator)
+### String GetAllMessages(Exception exception, Char& separator)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -1929,7 +1929,7 @@
 * **Documentation:** https://bit.ly/SpargineAug2022
 * **Modified By:** David McCarter
 
-### Boolean HasItems(ImmutableArray<T> list, Int32& count)
+### Boolean HasItems(ImmutableArray<T> list, Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2105,7 +2105,7 @@
 * **Description:** HasItems
 * **Modified By:** David McCarter
 
-### Boolean HasItems(List<T> collection, Int32& count)
+### Boolean HasItems(List<T> collection, Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -2142,7 +2142,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/4/2023
@@ -2252,8 +2252,8 @@
 
 * **Status:** New
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Benchmark
-* **Unit Test Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToFastSortedList
 
@@ -3043,7 +3043,7 @@
 *****
 ## ObjectExtensions
 
-* **Status:** Available
+* **Status:** UpdateDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -3105,11 +3105,11 @@
 * **Description:** FromJson
 * **Modified By:** David McCarter
 
-### Boolean HasProperty(Object obj, String propertyName)
+### Boolean HasProperty(Object obj, String& propertyName)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** HasProperty
@@ -3181,11 +3181,11 @@
 * **Author:** UNKNOWN
 * **Description:** ToJson
 
-### SimpleResult<String> ToJson(Object obj, JsonSerializerOptions options)
+### SimpleResult<String> ToJson(Object obj, JsonSerializerOptions& options)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToJson
@@ -4660,4 +4660,4 @@
 * **Description:** ConvertFrom
 
 *****
-**Generated by Spargine - dotNetTips.com on 1/16/2025 5:02:28 PM UTC**
+**Generated by Spargine - dotNetTips.com on 1/24/2025 7:53:35 PM UTC**

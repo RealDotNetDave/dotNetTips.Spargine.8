@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8.Core - 2025.8.1.15
+# DotNetTips.Spargine.8.Core - 2025.8.1.23
 
 ## ApiLibraries
 
@@ -1044,7 +1044,12 @@
 *****
 ## ExecutionHelper
 
-### SimpleResult<Int32> ProgressiveRetry(Action operation, Byte retryCount, Int32 retryWaitMilliseconds)
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### SimpleResult<Int32> ProgressiveRetry(Action operation, Byte retryCount, Int32 retryWaitMilliseconds, ILogger logger)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -1054,14 +1059,110 @@
 * **Description:** ProgressiveRetry
 * **Documentation:** https://bit.ly/SpargineProgressiveRetry
 
+### Task<SimpleResult<Int32>> ProgressiveRetryAsync(Func<Task> operation, Byte retryCount, Int32 retryWaitMilliseconds, ILogger logger, CancellationToken cancellationToken)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** NotRequired
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** ProgressiveRetryAsync
+
+*****
+## Extensions
+
+### Boolean AddIfNotExists(ICollection<T> collection, T item)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** NotRequired
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/21/2020
+* **Description:** AddIfNotExists
+* **Modified By:** David McCarter
+
+### Int32 CalculateStringCount(String[] args)
+
+* **Status:** NotSet
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/14/2024
+* **Description:** CalculateStringCount
+* **Modified By:** David McCarter
+
+### StringBuilder ClearSetCapacity(StringBuilder sb, Int32 capacity)
+
+* **Status:** Available
+* **Optimization Status:** NotRequired
+* **BenchMarkStatus:** NotRequired
+* **Unit Test Status:** NotRequired
+* **Author:** David McCarter
+* **CreatedOn:** 11/13/2024
+* **Description:** ClearSetCapacity
+* **Modified By:** David McCarter
+
+### Int32 Count(IEnumerable collection)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/21/2020
+* **Description:** Count
+* **Modified By:** David McCarter
+
+### Int64 FastCount(IEnumerable<T> collection)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/21/2022
+* **Description:** FastCount
+* **Modified By:** David McCarter
+
+### IEnumerable<TSource> FromHierarchy(TSource source, Func<TSource, TSource> nextItem)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** FromHierarchy
+
+### Boolean HasValue(String input, Int32 minLength, Int32 maxLength)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** HasValue
+
+### ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection(IDictionary<TKey, TValue> dictionary)
+
+* **Status:** NotSet
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/6/2023
+* **Description:** ToReadOnlyCollection
+* **Modified By:** David McCarter
+
 *****
 ## FastStringBuilder
 
-### String BytesToString(Byte[] bytes)
+### String BytesToString(Byte[]& bytes)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 2/18/2021
@@ -1105,11 +1206,11 @@
 * **Documentation:** https://bit.ly/SpargineStringConcatenation
 * **Modified By:** David McCarter
 
-### String PerformAction(Action<StringBuilder> action)
+### String PerformAction(Action`1& action)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 12/23/2022
@@ -1117,11 +1218,11 @@
 * **Documentation:** https://bit.ly/SpargineFeb2023
 * **Modified By:** David McCarter
 
-### String ToDelimitedString(Dictionary<TKey, TValue> collection, Char delimiter)
+### String ToDelimitedString(Dictionary`2& collection, Char delimiter)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/1/2021
@@ -2275,7 +2376,7 @@
 *****
 ## JsonSerialization
 
-* **Status:** NotSet
+* **Status:** UpdateDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -2670,7 +2771,7 @@
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** GetNumbers
 
@@ -2762,6 +2863,24 @@
 * **Description:** IsMACAddress
 * **Modified By:** David McCarter
 
+### Boolean IsOneToSevenAlpha(String& input)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** IsOneToSevenAlpha
+
+### Boolean IsScientific(String& input)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** IsScientific
+
 ### Boolean IsSHA1Hash(String& input)
 
 * **Status:** Available
@@ -2814,7 +2933,7 @@
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 8/1/2024
-* **Description:** RemoveSpecialChar
+* **Description:** RemoveHtml
 * **Modified By:** David McCarter
 
 ### String RemoveSpecialChar(String& input, String& replacement)
@@ -3824,7 +3943,7 @@
 *****
 ## ChannelQueue<T>
 
-* **Status:** NotSet
+* **Status:** NeedsDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -3844,12 +3963,34 @@
 * **Description:** ChannelQueue
 * **Modified By:** David McCarter
 
+### ChannelQueue<T> (Nullable<TimeSpan> cancellationTimeout)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** NotRequired
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** ChannelQueue
+* **Modified By:** David McCarter
+
 ### ChannelQueue<T> (Int32 capacity)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** NotRequired
 * **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** ChannelQueue
+* **Modified By:** David McCarter
+
+### ChannelQueue<T> (Int32 capacity, Nullable<TimeSpan> cancellationTimeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** NotRequired
+* **Unit Test Status:** None
 * **Author:** David McCarter
 * **CreatedOn:** 7/26/2021
 * **Description:** ChannelQueue
@@ -4189,6 +4330,28 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
+### Void AddCacheItem(IDataModel<T, TKey> item)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### Void AddCacheItem(IDataRecord item)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
 ### Void AddCacheItem(String key, T item)
 
 * **Status:** Available
@@ -4197,6 +4360,50 @@
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/16/2021
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### Void AddCacheItem(IDataModel<T, TKey> item, DateTimeOffset timeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### Void AddCacheItem(IDataRecord item, DateTimeOffset timeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### Void AddCacheItem(IDataModel<T, TKey> item, TimeSpan timeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### Void AddCacheItem(IDataRecord item, TimeSpan timeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
 * **Description:** AddCacheItem
 * **Modified By:** David McCarter
 
@@ -4222,6 +4429,105 @@
 * **Description:** AddCacheItem
 * **Modified By:** David McCarter
 
+### Task AddCacheItemAsync(IDataModel<T, TKey> item)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### Task AddCacheItemAsync(IDataRecord item)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### Task AddCacheItemAsync(IDataModel<T, TKey> item, TimeSpan timeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### Task AddCacheItemAsync(IDataRecord item, TimeSpan timeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### Task AddCacheItemAsync(IDataModel<T, TKey> item, DateTimeOffset timeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### Task AddCacheItemAsync(IDataRecord item, DateTimeOffset timeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### Task AddCacheItemAsync(String key, T item)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### Task AddCacheItemAsync(String key, T item, TimeSpan timeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### Task AddCacheItemAsync(String key, T item, DateTimeOffset timeout)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
 ### MemoryCache Cache { get; set; }
 
 * **Status:** Available
@@ -4244,6 +4550,17 @@
 * **Description:** Clear
 * **Modified By:** David McCarter
 
+### Boolean ContainsKey(String key)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** ContainsKey
+* **Modified By:** David McCarter
+
 ### Int32 Count { get; set; }
 
 * **Status:** Available
@@ -4253,6 +4570,17 @@
 * **Author:** David McCarter
 * **CreatedOn:** 1/16/2021
 * **Description:** Count
+* **Modified By:** David McCarter
+
+### IEnumerable<String> GetAllKeys()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** GetAllKeys
 * **Modified By:** David McCarter
 
 ### T GetCacheItem(String key)
@@ -4266,6 +4594,17 @@
 * **Description:** GetCacheItem
 * **Modified By:** David McCarter
 
+### Task<T> GetCacheItemAsync(String key)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** GetCacheItemAsync
+* **Modified By:** David McCarter
+
 ### InMemoryCache Instance { get; set; }
 
 * **Status:** Available
@@ -4277,5 +4616,16 @@
 * **Description:** Instance
 * **Modified By:** David McCarter
 
+### Boolean RemoveCacheItem(String key)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** RemoveCacheItem
+* **Modified By:** David McCarter
+
 *****
-**Generated by Spargine - dotNetTips.com on 1/16/2025 5:02:28 PM UTC**
+**Generated by Spargine - dotNetTips.com on 1/24/2025 7:53:35 PM UTC**
