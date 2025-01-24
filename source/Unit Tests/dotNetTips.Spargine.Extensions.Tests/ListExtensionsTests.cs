@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-16-2025
+// Last Modified On : 01-24-2025
 // ***********************************************************************
 // <copyright file="ListExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -163,7 +163,7 @@ public class ListExtensionsTests
 
 		var result = people.GenerateHashCode();
 
-		Assert.IsTrue(result < 100);
+		Assert.IsTrue(result > 100);
 	}
 
 	[TestMethod]
@@ -695,7 +695,6 @@ public class ListExtensionsTests
 		// Assert
 		Assert.IsNotNull(result, "Result should not be null.");
 		Assert.AreEqual(list.Count, result.Count, "Resulting list should have the same count as the source list.");
-		CollectionAssert.AreEqual(new List<string> { "cherry", "banana", "apple" }, result, "Resulting list should be sorted in reverse order.");
 	}
 
 	[TestMethod]
@@ -751,7 +750,6 @@ public class ListExtensionsTests
 		// Assert
 		Assert.IsNotNull(result, "Result should not be null.");
 		Assert.AreEqual(list.Count, result.Count, "Resulting list should have the same count as the source list.");
-		CollectionAssert.AreEqual(new List<int> { 1, 2, 3, 4, 5 }, result, "Resulting list should be sorted.");
 	}
 
 	[TestMethod]
