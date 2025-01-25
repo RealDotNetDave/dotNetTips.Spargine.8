@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-24-2025
+// Last Modified On : 01-25-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -52,7 +52,7 @@ public static class ArrayExtensions
 	/// <returns>A new array with the item added at the beginning.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static T[] AddFirst<T>([NotNull] this T[] array, [NotNull] in T item)
 	{
 		if (item is null)
@@ -310,11 +310,11 @@ public static class ArrayExtensions
 	}
 
 	/// <summary>
-	/// Processes each element in the array with the specified action.
+	/// Processes each element in the array with the specified actionFunction.
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the array.</typeparam>
 	/// <param name="array">The array to process.</param>
-	/// <param name="action">The action to apply to each element of the array.</param>
+	/// <param name="action">The actionFunction to apply to each element of the array.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(FastProcessor), author: "David McCarter", createdOn: "11/8/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
@@ -367,19 +367,19 @@ public static class ArrayExtensions
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="array">The array.</param>
-	/// <param name="action">The values.</param>
+	/// <param name="actionFunction">The value.</param>
 	/// <returns><c>true</c> if the specified values has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this T[] array, [NotNull] in Func<T, bool> action)
+	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	public static bool HasItems<T>([NotNull] this T[] array, [NotNull] in Func<T, bool> actionFunction)
 	{
-		if (array is null || action is null)
+		if (array is null || actionFunction is null)
 		{
 			return false;
 		}
 		else
 		{
-			return array.Any(action);
+			return array.Any(actionFunction);
 		}
 	}
 	/// <summary>
@@ -404,11 +404,11 @@ public static class ArrayExtensions
 	}
 
 	/// <summary>
-	/// Performs the specified action on each element of the array.
+	/// Performs the specified actionFunction on each element of the array.
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the array.</typeparam>
-	/// <param name="values">The array of elements to perform the action on.</param>
-	/// <param name="action">The action to perform on each element of the array.</param>
+	/// <param name="values">The array of elements to perform the actionFunction on.</param>
+	/// <param name="action">The actionFunction to perform on each element of the array.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="values"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed)]

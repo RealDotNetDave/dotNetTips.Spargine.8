@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-20241016-003428</title>
+<title>DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-20250125-043157</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,20 +13,20 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5011/22H2/2022Update)
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5371/22H2/2022Update)
 Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
-.NET SDK 8.0.403
-  [Host]     : .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2
-  Job-QYBNOF : .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2
+.NET SDK 9.0.102
+  [Host]     : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+  Job-QFIUKL : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
 Namespace=DotNetTips.Spargine.Extensions.BenchmarkTests  Categories=**FOR COMPARISON**  
 </code></pre>
 
 <table>
-<thead><tr><th>Method  </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Median</th><th>Min</th><th>Q1</th><th>Q3 </th><th>Max</th><th>Op/s         </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Exceptions</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Code Size</th><th>Allocated</th>
+<thead><tr><th>Method  </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min</th><th>Q1 </th><th>Median</th><th>Q3 </th><th>Max</th><th>Op/s     </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Exceptions</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Code Size</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>&#39;Equals: Guid&#39;</td><td>0.0006 ns</td><td>0.0016 ns</td><td>0.0013 ns</td><td>0.0004 ns</td><td>0.0 ns</td><td>0.0 ns</td><td>0.0 ns</td><td>0.0004 ns</td><td>0.0048 ns</td><td>1,753,202,003,567.0</td><td>6.500 ns</td><td>13.00</td><td>7.488</td><td>2.222</td><td>2.348</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>42 B</td><td>-</td>
+</thead><tbody><tr><td>&#39;Equals: Guid&#39;</td><td>0.2353 ns</td><td>0.0028 ns</td><td>0.0027 ns</td><td>0.0007 ns</td><td>0.2304 ns</td><td>0.2335 ns</td><td>0.2350 ns</td><td>0.2371 ns</td><td>0.2398 ns</td><td>4,250,331,560.7</td><td>7.500 ns</td><td>15.00</td><td>1.872</td><td>2.000</td><td>-0.0206</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>42 B</td><td>-</td>
 </tr></tbody></table>
 </body>
 </html>

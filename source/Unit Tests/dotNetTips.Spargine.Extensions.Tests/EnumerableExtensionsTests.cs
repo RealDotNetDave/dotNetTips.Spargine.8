@@ -443,7 +443,7 @@ public class EnumerableExtensionsTests
 	{
 		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
 
-		Assert.ThrowsException<ArgumentNullException>(() => people.IndexOf(predicate: null));
+		Assert.ThrowsException<ArgumentNullException>(() => people.IndexOf(accumulatorPredicate: null));
 	}
 
 	[TestMethod]

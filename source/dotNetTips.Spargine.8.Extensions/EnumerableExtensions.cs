@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-16-2025
+// Last Modified On : 01-25-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -51,23 +51,23 @@ public static class EnumerableExtensions
 	private static int GenerateRandomNumber() => RandomNumberGenerator.GetInt32(int.MaxValue);
 
 	/// <summary>
-	/// Applies an accumulator function over a sequence. The specified seed value is used as the initial accumulator value, and the specified function is used to select the result value.
+	/// Applies an accumulator accumulatorFunction over a sequence. The specified seed value is used as the initial accumulator value, and the specified accumulatorFunction is used to select the result value.
 	/// </summary>
 	/// <typeparam name="T1">The type of the elements of the source sequence.</typeparam>
 	/// <typeparam name="T2">The type of the accumulator value.</typeparam>
 	/// <param name="source">An <see cref="IEnumerable{T1}"/> to aggregate over.</param>
 	/// <param name="seed">The initial accumulator value.</param>
-	/// <param name="predicate">An accumulator function to be invoked on each element.</param>
+	/// <param name="accumulatorFunction">An accumulator accumulatorFunction to be invoked on each element.</param>
 	/// <returns>An <see cref="IEnumerable{T2}"/> containing the accumulated values.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="predicate"/> is null.</exception>
-	private static IEnumerable<T2> ScanIterator<T1, T2>(IEnumerable<T1> source, T2 seed, Func<T2, T1, T2> predicate)
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="accumulatorFunction"/> is null.</exception>
+	private static IEnumerable<T2> ScanIterator<T1, T2>(IEnumerable<T1> source, T2 seed, Func<T2, T1, T2> accumulatorFunction)
 	{
 		var current = seed;
 		yield return current;
 
 		foreach (var item in source)
 		{
-			current = predicate(current, item);
+			current = accumulatorFunction(current, item);
 			yield return current;
 		}
 	}
@@ -314,10 +314,10 @@ public static class EnumerableExtensions
 	/// Determines whether any element of a sequence satisfies a condition.
 	/// </summary>
 	/// <typeparam name="T">The type of the elements of <paramref name="collection"/>.</typeparam>
-	/// <param name="collection">The <see cref="IEnumerable{T}"/> to apply the predicate to.</param>
-	/// <param name="predicate">A function to test each element for a condition.</param>
-	/// <returns>true if any elements in the source sequence pass the test in the specified predicate; otherwise, false.</returns>
-	/// <exception cref="ArgumentNullException"><paramref name="collection"/> or <paramref name="predicate"/> is null.</exception>
+	/// <param name="collection">The <see cref="IEnumerable{T}"/> to apply the accumulatorFunction to.</param>
+	/// <param name="accumulatorPredicate">A accumulatorFunction to test each element for a condition.</param>
+	/// <returns>true if any elements in the source sequence pass the test in the specified accumulatorFunction; otherwise, false.</returns>
+	/// <exception cref="ArgumentNullException"><paramref name="collection"/> or <paramref name="accumulatorPredicate"/> is null.</exception>
 	/// <example>
 	/// This example shows how to use <see cref="FastAny{T}"/> to quickly check if any elements in an array satisfy a condition.
 	/// <code>
@@ -329,15 +329,15 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(FastAny), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool FastAny<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
+	public static bool FastAny<T>(this IEnumerable<T> collection, Func<T, bool> accumulatorPredicate)
 	{
 		collection = collection.ArgumentNotNull();
-		predicate = predicate.ArgumentNotNull();
+		accumulatorPredicate = accumulatorPredicate.ArgumentNotNull();
 
 		//RECOMENDATION FROM COPILOT SLOWER.
 		foreach (var item in collection)
 		{
-			if (predicate.Invoke(item) is false)
+			if (accumulatorPredicate.Invoke(item) is false)
 			{
 				return false;
 			}
@@ -399,8 +399,8 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to count elements from.</param>
-	/// <param name="predicate">A function to test each element for a condition.</param>
-	/// <returns>The number of elements in the collection that satisfy the condition in the predicate function.</returns>
+	/// <param name="accumulatorPredicate">A accumulatorFunction to test each element for a condition.</param>
+	/// <returns>The number of elements in the collection that satisfy the condition in the accumulatorFunction accumulatorFunction.</returns>
 	/// <remarks>
 	/// This method is optimized for performance and should be used over <see cref="Enumerable.Count{TSource}(IEnumerable{TSource}, Func{TSource, bool})"/>
 	/// when working with large collections or performance-critical code.
@@ -408,16 +408,16 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(FastCount), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static long FastCount<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate) =>
+	public static long FastCount<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> accumulatorPredicate) =>
 		//COPILOT OPTIMIZATION SLOWER.
-		collection.ArgumentNotNull().Count(predicate.ArgumentNotNull());
+		collection.ArgumentNotNull().Count(accumulatorPredicate.ArgumentNotNull());
 
 	/// <summary>
-	/// Modifies each item in the given collection using the specified function and returns a read-only collection of the modified items.
+	/// Modifies each item in the given collection using the specified accumulatorFunction and returns a read-only collection of the modified items.
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
 	/// <param name="collection">The collection to process.</param>
-	/// <param name="action">The function to apply to each item in the collection.</param>
+	/// <param name="action">The accumulatorFunction to apply to each item in the collection.</param>
 	/// <returns>A read-only collection of the modified items.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="action"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -522,10 +522,10 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <typeparam name="T">The type of the elements of <paramref name="list"/>.</typeparam>
 	/// <param name="list">An <see cref="IEnumerable{T}"/> to search.</param>
-	/// <param name="predicate">A function to test each element for a condition.</param>
+	/// <param name="accumulatorPredicate">A accumulatorFunction to test each element for a condition.</param>
 	/// <param name="alternate">The default value to return if no element satisfies the condition.</param>
-	/// <returns>The first element in the sequence that passes the test in the specified predicate function or <paramref name="alternate"/> if no such element is found.</returns>
-	/// <exception cref="ArgumentNullException"><paramref name="list"/> or <paramref name="predicate"/> is null.</exception>
+	/// <returns>The first element in the sequence that passes the test in the specified accumulatorFunction accumulatorFunction or <paramref name="alternate"/> if no such element is found.</returns>
+	/// <exception cref="ArgumentNullException"><paramref name="list"/> or <paramref name="accumulatorPredicate"/> is null.</exception>
 	/// <example>
 	/// This example shows how to use FirstOrDefault{T}" to find the first element greater than 3 or return -1 if no such element exists.
 	/// <code>
@@ -537,14 +537,14 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(FirstOrDefault), "David McCarter", "11/21/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static T FirstOrDefault<T>(this IEnumerable<T> list, Func<T, bool> predicate, T alternate)
+	public static T FirstOrDefault<T>(this IEnumerable<T> list, Func<T, bool> accumulatorPredicate, T alternate)
 	{
 		list = list.ArgumentNotNull();
-		predicate = predicate.ArgumentNotNull();
+		accumulatorPredicate = accumulatorPredicate.ArgumentNotNull();
 
 		foreach (var item in list)
 		{
-			if (predicate(item))
+			if (accumulatorPredicate(item))
 			{
 				return item;
 			}
@@ -558,8 +558,8 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
 	/// <param name="collection">The collection to search.</param>
-	/// <param name="match">The predicate to match against the elements of the collection.</param>
-	/// <returns>The first element that matches the condition defined by <paramref name="match"/>, or null if no such element is found.</returns>
+	/// <param name="accumulatorPredicate">The accumulatorFunction to accumulatorPredicate against the elements of the collection.</param>
+	/// <returns>The first element that matches the condition defined by <paramref name="accumulatorPredicate"/>, or null if no such element is found.</returns>
 	/// <example>
 	/// This example shows how to use <see cref="FirstOrNull{T}"/> to find the first element in an array of integers that is greater than 10, or null if no such element exists.
 	/// <code>
@@ -572,14 +572,14 @@ public static class EnumerableExtensions
 	[Pure]
 	[return: MaybeNull]
 	[Information(nameof(FirstOrNull), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static T? FirstOrNull<T>(this IEnumerable<T> collection, Func<T, bool> match) where T : struct
+	public static T? FirstOrNull<T>(this IEnumerable<T> collection, Func<T, bool> accumulatorPredicate) where T : struct
 	{
 		collection = collection.ArgumentNotNull();
-		match = match.ArgumentNotNull();
+		accumulatorPredicate = accumulatorPredicate.ArgumentNotNull();
 
 		foreach (var item in collection)
 		{
-			if (match(item))
+			if (accumulatorPredicate(item))
 			{
 				return item;
 			}
@@ -695,22 +695,22 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Finds the index of the first occurrence of an item in the collection that matches the specified predicate.
+	/// Finds the index of the first occurrence of an item in the collection that matches the specified accumulatorFunction.
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to search.</param>
-	/// <param name="predicate">The predicate to match against the elements of the collection.</param>
-	/// <returns>The zero-based index of the first occurrence of an item that matches the predicate within the entire collection, if found; otherwise, -1.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="predicate"/> is null.</exception>
+	/// <param name="accumulatorPredicate">The accumulatorFunction to accumulatorPredicate against the elements of the collection.</param>
+	/// <returns>The zero-based index of the first occurrence of an item that matches the accumulatorFunction within the entire collection, if found; otherwise, -1.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="accumulatorPredicate"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information("Original code by Simon Painter.", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> predicate)
+	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> accumulatorPredicate)
 	{
 		collection = collection.ArgumentNotNull();
-		predicate = predicate.ArgumentNotNull();
+		accumulatorPredicate = accumulatorPredicate.ArgumentNotNull();
 
-		var result = collection.Select((value, index) => (value, index)).FirstOrDefault(value => predicate(value.value));
+		var result = collection.Select((value, index) => (value, index)).FirstOrDefault(value => accumulatorPredicate(value.value));
 
 		return result.Equals(default((T x, int i))) ? -1 : result.index;
 	}
@@ -835,18 +835,18 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <typeparam name="T">The type of the elements in the collection.</typeparam>
 	/// <param name="collection">The collection to order.</param>
-	/// <param name="keySelector">A function to extract a key from an element.</param>
+	/// <param name="accumulatorFunction">A accumulatorFunction to extract a key from an element.</param>
 	/// <returns>An <see cref="IOrderedEnumerable{T}"/> whose elements are sorted according to a key.</returns>
 	/// <returns>IOrderedEnumerable&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(OrderByOrdinal), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static IOrderedEnumerable<T> OrderByOrdinal<T>(this IEnumerable<T> collection, Func<T, string> keySelector)
+	public static IOrderedEnumerable<T> OrderByOrdinal<T>(this IEnumerable<T> collection, Func<T, string> accumulatorFunction)
 	{
 		collection = collection.ArgumentNotNull();
-		keySelector = keySelector.ArgumentNotNull();
+		accumulatorFunction = accumulatorFunction.ArgumentNotNull();
 
-		return collection.OrderBy(keySelector, StringComparer.Ordinal);
+		return collection.OrderBy(accumulatorFunction, StringComparer.Ordinal);
 	}
 
 	/// <summary>
@@ -983,38 +983,38 @@ public static class EnumerableExtensions
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the collection.</typeparam>
 	/// <param name="collection">The collection to process.</param>
-	/// <param name="predicate">A function that determines whether an element should be replaced, based on the element and its index.</param>
+	/// <param name="accumulatorPredicate">A accumulatorFunction that determines whether an element should be replaced, based on the element and its index.</param>
 	/// <param name="replacement">The replacement value for elements that meet the condition.</param>
 	/// <returns>A new collection with elements replaced based on the specified condition.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="predicate"/> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="accumulatorPredicate"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.None, Status = Status.New)]
-	public static IEnumerable<T> ReplaceIf<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, int, bool> predicate, T replacement)
+	public static IEnumerable<T> ReplaceIf<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, int, bool> accumulatorPredicate, T replacement)
 	{
 		collection = collection.ArgumentNotNull();
-		predicate = predicate.ArgumentNotNull();
+		accumulatorPredicate = accumulatorPredicate.ArgumentNotNull();
 
-		return collection.Select((obj, pos) => predicate(obj, pos) ? replacement : obj);
+		return collection.Select((obj, pos) => accumulatorPredicate(obj, pos) ? replacement : obj);
 	}
 
 	/// <summary>
-	/// Applies an accumulator function over a sequence. The specified seed value is used as the initial accumulator value, and the specified function is used to select the result value.
+	/// Applies an accumulator accumulatorFunction over a sequence. The specified seed value is used as the initial accumulator value, and the specified accumulatorFunction is used to select the result value.
 	/// </summary>
 	/// <typeparam name="T1">The type of the elements of the source sequence.</typeparam>
 	/// <typeparam name="T2">The type of the accumulator value.</typeparam>
 	/// <param name="source">An <see cref="IEnumerable{T1}"/> to aggregate over.</param>
 	/// <param name="seed">The initial accumulator value.</param>
-	/// <param name="predicate">An accumulator function to be invoked on each element.</param>
+	/// <param name="accumulatorFunction">An accumulator accumulatorFunction to be invoked on each element.</param>
 	/// <returns>An <see cref="IEnumerable{T2}"/> containing the accumulated values.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="predicate"/> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="accumulatorFunction"/> is null.</exception>
 	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.None, Status = Status.New)]
-	public static IEnumerable<T2> Scan<T1, T2>([NotNull] this IEnumerable<T1> source, [NotNull] T2 seed, [NotNull] Func<T2, T1, T2> predicate)
+	public static IEnumerable<T2> Scan<T1, T2>([NotNull] this IEnumerable<T1> source, [NotNull] T2 seed, [NotNull] Func<T2, T1, T2> accumulatorFunction)
 	{
 		source = source.ArgumentNotNull();
-		predicate = predicate.ArgumentNotNull();
+		accumulatorFunction = accumulatorFunction.ArgumentNotNull();
 
-		return ScanIterator(source, seed, predicate);
+		return ScanIterator(source, seed, accumulatorFunction);
 	}
 
 	/// <summary>

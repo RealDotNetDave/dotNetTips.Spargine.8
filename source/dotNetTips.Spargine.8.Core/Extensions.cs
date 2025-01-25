@@ -186,40 +186,40 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// </summary>
 	/// <typeparam name="TSource">The type of the source exception, must derive from <see cref="Exception"/>.</typeparam>
 	/// <param name="source">The source exception to start traversing from.</param>
-	/// <param name="nextItem">A delegate that defines the method to retrieve the next exception in the hierarchy.</param>
+	/// <param name="nextItemFunction">A delegate that defines the method to retrieve the next exception in the hierarchy.</param>
 	/// <returns>An <see cref="IEnumerable{TSource}"/> that represents the hierarchy of exceptions.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="nextItem"/> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="nextItemFunction"/> is null.</exception>
 	[Information(nameof(FromHierarchy), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	internal static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem) where TSource : Exception
+	internal static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItemFunction) where TSource : Exception
 	{
 		source = source.ArgumentNotNull();
-		nextItem = nextItem.ArgumentNotNull();
+		nextItemFunction = nextItemFunction.ArgumentNotNull();
 
-		return FromHierarchy(source, nextItem, s => s is not null);
+		return FromHierarchy(source, nextItemFunction, s => s is not null);
 	}
 
 	/// <summary>
-	/// Returns the hierarchy from the source, validating that <paramref name="source"/>, <paramref name="nextItem"/>, and <paramref name="canContinue"/> are not null.
-	/// This method allows traversing a hierarchy (e.g., of exceptions) by repeatedly applying <paramref name="nextItem"/> to get the next item in the hierarchy,
+	/// Returns the hierarchy from the source, validating that <paramref name="source"/>, <paramref name="nextItemFunction"/>, and <paramref name="canContinue"/> are not null.
+	/// This method allows traversing a hierarchy (e.g., of exceptions) by repeatedly applying <paramref name="nextItemFunction"/> to get the next item in the hierarchy,
 	/// until <paramref name="canContinue"/> returns false.
 	/// </summary>
 	/// <typeparam name="TSource">The type of the source items in the hierarchy.</typeparam>
 	/// <param name="source">The starting item in the hierarchy.</param>
-	/// <param name="nextItem">A function to get the next item in the hierarchy from the current item.</param>
+	/// <param name="nextItemFunction">A function to get the next item in the hierarchy from the current item.</param>
 	/// <param name="canContinue">A function that determines whether to continue traversing the hierarchy from the current item.</param>
-	/// <returns>A sequence of items from the source up through the hierarchy as determined by <paramref name="nextItem"/> and <paramref name="canContinue"/>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/>, <paramref name="nextItem"/>, or <paramref name="canContinue"/> is null.</exception>
-	internal static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
+	/// <returns>A sequence of items from the source up through the hierarchy as determined by <paramref name="nextItemFunction"/> and <paramref name="canContinue"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/>, <paramref name="nextItemFunction"/>, or <paramref name="canContinue"/> is null.</exception>
+	internal static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItemFunction, Func<TSource, bool> canContinue)
 		where TSource : Exception
 	{
 		source = source.ArgumentNotNull();
-		nextItem = nextItem.ArgumentNotNull();
+		nextItemFunction = nextItemFunction.ArgumentNotNull();
 		canContinue = canContinue.ArgumentNotNull();
 
 		while (source != null && canContinue(source))
 		{
 			yield return source;
-			source = nextItem(source);
+			source = nextItemFunction(source);
 		}
 	}
 

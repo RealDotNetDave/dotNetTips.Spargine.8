@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20241015-164516</title>
+<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250124-181352</title>
 
 <style type="text/css">
     table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -14,14 +14,14 @@
 <body>
 <table>
 <thead>
-<tr><th colspan="6">DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20241015-164516</th></tr>
+<tr><th colspan="6">DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250124-181352</th></tr>
 <tr>
-<th>CheckItemsExists_NoValidation .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</th>
-<th>CheckItemsExists_Validation_Inlining .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</th>
-<th>CheckItemsExists_Validation .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</th>
-<th>ArgumentNotNullOrEmpty_NoValidation .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</th>
-<th>ArgumentNotNullOrEmpty_Validation_Inlining .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</th>
-<th>ArgumentNotNullOrEmpty_Validation .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2</th>
+<th>CheckItemsExists_NoValidation .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2</th>
+<th>CheckItemsExists_Validation_Inlining .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2</th>
+<th>CheckItemsExists_Validation .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2</th>
+<th>ArgumentNotNullOrEmpty_NoValidation .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2</th>
+<th>ArgumentNotNullOrEmpty_Validation_Inlining .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2</th>
+<th>ArgumentNotNullOrEmpty_Validation .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2</th>
 </tr>
 </thead>
 <tbody>
@@ -53,9 +53,9 @@ mov       [rsp+20],rax
 mov       rbx,rcx
 mov       rsi,[rbx+118]
 test      rsi,rsi
-je        short 00007FFBF9DA1DD5
+je        short 00007FF94D329725
 mov       rcx,rsi
-call      qword ptr [7FFBF9B1C210]
+call      qword ptr [7FF94D2256C8]
 mov       [rsp+20],rsi
 mov       rbx,[rbx+18]
 mov       rdx,[rsp+20]
@@ -74,16 +74,16 @@ push      rbx
 sub       rsp,28
 mov       rbx,rcx
 test      rbx,rbx
-je        near ptr 00007FFBF9DA1D76
+je        near ptr 00007FF94D3298F6
 mov       rdx,rbx
 mov       rcx,offset MT_System.Collections.ICollection
-call      qword ptr [7FFBF9534348]
+call      qword ptr [7FF94CB74348]
 mov       rcx,rax
 test      rcx,rcx
-je        short 00007FFBF9DA1D0A
+je        short 00007FF94D32988A
 mov       rax,offset MT_System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
 cmp       [rcx],rax
-jne       near ptr 00007FFBF9DA1D7F
+jne       near ptr 00007FF94D3298FF
 mov       eax,[rcx+10]
 add       rsp,28
 pop       rbx
@@ -91,28 +91,28 @@ pop       rsi
 ret
 mov       rdx,rbx
 mov       rcx,offset MT_System.Collections.Generic.ICollection`1[[System.Object, System.Private.CoreLib]]
-call      qword ptr [7FFBF9534348]
+call      qword ptr [7FF94CB74348]
 test      rax,rax
-je        short 00007FFBF9DA1D38
+je        short 00007FF94D3298B8
 mov       rcx,rax
-mov       r11,7FFBF93F09B0
+mov       r11,7FF94CA30990
 add       rsp,28
 pop       rbx
 pop       rsi
 jmp       qword ptr [r11]
 xor       esi,esi
 mov       rcx,rbx
-mov       r11,7FFBF93F09A0
+mov       r11,7FF94CA30980
 call      qword ptr [r11]
 mov       rbx,rax
-jmp       short 00007FFBF9DA1D54
+jmp       short 00007FF94D3298D4
 add       esi,1
-jo        short 00007FFBF9DA1D71
+jo        short 00007FF94D3298F1
 mov       rcx,rbx
-mov       r11,7FFBF93F09A8
+mov       r11,7FF94CA30988
 call      qword ptr [r11]
 test      eax,eax
-jne       short 00007FFBF9DA1D4F
+jne       short 00007FF94D3298CF
 mov       eax,esi
 add       rsp,28
 pop       rbx
@@ -124,7 +124,7 @@ add       rsp,28
 pop       rbx
 pop       rsi
 ret
-mov       r11,7FFBF93F09B8
+mov       r11,7FF94CA30998
 add       rsp,28
 pop       rbx
 pop       rsi
@@ -141,9 +141,9 @@ mov       [rsp+20],rax
 mov       rbx,rcx
 mov       rsi,[rbx+118]
 test      rsi,rsi
-je        short 00007FFBF9DFA495
+je        short 00007FF94D3098A5
 mov       rcx,rsi
-call      qword ptr [7FFBF9B1F930]
+call      qword ptr [7FF94D205380]
 mov       [rsp+20],rsi
 mov       rbx,[rbx+18]
 mov       rdx,[rsp+20]
@@ -162,16 +162,16 @@ push      rbx
 sub       rsp,28
 mov       rbx,rcx
 test      rbx,rbx
-je        near ptr 00007FFBF9DFA736
+je        near ptr 00007FF94D309B36
 mov       rdx,rbx
 mov       rcx,offset MT_System.Collections.ICollection
-call      qword ptr [7FFBF9564348]
+call      qword ptr [7FF94CB54348]
 mov       rcx,rax
 test      rcx,rcx
-je        short 00007FFBF9DFA6CA
+je        short 00007FF94D309ACA
 mov       rax,offset MT_System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
 cmp       [rcx],rax
-jne       near ptr 00007FFBF9DFA73F
+jne       near ptr 00007FF94D309B3F
 mov       eax,[rcx+10]
 add       rsp,28
 pop       rbx
@@ -179,28 +179,28 @@ pop       rsi
 ret
 mov       rdx,rbx
 mov       rcx,offset MT_System.Collections.Generic.ICollection`1[[System.Object, System.Private.CoreLib]]
-call      qword ptr [7FFBF9564348]
+call      qword ptr [7FF94CB54348]
 test      rax,rax
-je        short 00007FFBF9DFA6F8
+je        short 00007FF94D309AF8
 mov       rcx,rax
-mov       r11,7FFBF94209B0
+mov       r11,7FF94CA10990
 add       rsp,28
 pop       rbx
 pop       rsi
 jmp       qword ptr [r11]
 xor       esi,esi
 mov       rcx,rbx
-mov       r11,7FFBF94209A0
+mov       r11,7FF94CA10980
 call      qword ptr [r11]
 mov       rbx,rax
-jmp       short 00007FFBF9DFA714
+jmp       short 00007FF94D309B14
 add       esi,1
-jo        short 00007FFBF9DFA731
+jo        short 00007FF94D309B31
 mov       rcx,rbx
-mov       r11,7FFBF94209A8
+mov       r11,7FF94CA10988
 call      qword ptr [r11]
 test      eax,eax
-jne       short 00007FFBF9DFA70F
+jne       short 00007FF94D309B0F
 mov       eax,esi
 add       rsp,28
 pop       rbx
@@ -212,7 +212,7 @@ add       rsp,28
 pop       rbx
 pop       rsi
 ret
-mov       r11,7FFBF94209B8
+mov       r11,7FF94CA10998
 add       rsp,28
 pop       rbx
 pop       rsi
@@ -223,7 +223,7 @@ jmp       qword ptr [r11]
 DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark.ArgumentNotNullOrEmpty_NoValidation()
 push      rbx
 sub       rsp,10
-mov       rdx,2471F95AB58
+mov       rdx,29BF9DA3B88
 mov       [rsp+8],rdx
 mov       rbx,[rcx+18]
 mov       rdx,[rsp+8]
@@ -244,10 +244,10 @@ sub       rsp,28
 xor       eax,eax
 mov       [rsp+20],rax
 mov       rbx,rcx
-mov       rsi,2263147AB58
-mov       rcx,2263147AB58
+mov       rsi,25615063B88
+mov       rcx,25615063B88
 cmp       [rcx],ecx
-call      qword ptr [7FFBF9537318]
+call      qword ptr [7FF94CB67318]
 mov       [rsp+20],rsi
 mov       rbx,[rbx+18]
 mov       rdx,[rsp+20]
@@ -267,29 +267,29 @@ sub       rsp,28
 mov       rbx,rcx
 mov       esi,[rbx+8]
 test      esi,esi
-je        short 00007FFBF9DCB775
+je        short 00007FF94D318D25
 movzx     ecx,word ptr [rbx+0C]
 cmp       ecx,100
-jae       short 00007FFBF9DCB73E
-mov       rax,7FFC58492C38
+jae       short 00007FF94D318CEE
+mov       rax,7FF9689B2E50
 test      byte ptr [rcx+rax],80
-jne       short 00007FFBF9DCB77F
-jmp       short 00007FFBF9DCB748
-call      qword ptr [7FFBF9D3F4B0]
+jne       short 00007FF94D318D2F
+jmp       short 00007FF94D318CF8
+call      qword ptr [7FF94D43CEA0]
 test      eax,eax
-jne       short 00007FFBF9DCB77F
+jne       short 00007FF94D318D2F
 dec       esi
 mov       ecx,esi
 movzx     ecx,word ptr [rbx+rcx*2+0C]
 cmp       ecx,100
-jae       short 00007FFBF9DCB76B
-mov       rax,7FFC58492C38
+jae       short 00007FF94D318D1B
+mov       rax,7FF9689B2E50
 test      byte ptr [rcx+rax],80
-jne       short 00007FFBF9DCB77F
-jmp       short 00007FFBF9DCB775
-call      qword ptr [7FFBF9D3F4B0]
+jne       short 00007FF94D318D2F
+jmp       short 00007FF94D318D25
+call      qword ptr [7FF94D43CEA0]
 test      eax,eax
-jne       short 00007FFBF9DCB77F
+jne       short 00007FF94D318D2F
 mov       rax,rbx
 add       rsp,28
 pop       rbx
@@ -297,7 +297,7 @@ pop       rsi
 ret
 mov       rcx,rbx
 mov       edx,3
-call      qword ptr [7FFBF95373F0]
+call      qword ptr [7FF94CB673F0]
 nop
 add       rsp,28
 pop       rbx
@@ -313,10 +313,10 @@ sub       rsp,28
 xor       eax,eax
 mov       [rsp+20],rax
 mov       rbx,rcx
-mov       rsi,26395D6AB58
-mov       rcx,26395D6AB58
+mov       rsi,23D69493B88
+mov       rcx,23D69493B88
 cmp       [rcx],ecx
-call      qword ptr [7FFBF9567318]
+call      qword ptr [7FF94CB67318]
 mov       [rsp+20],rsi
 mov       rbx,[rbx+18]
 mov       rdx,[rsp+20]
@@ -336,29 +336,29 @@ sub       rsp,28
 mov       rbx,rcx
 mov       esi,[rbx+8]
 test      esi,esi
-je        short 00007FFBF9DFA385
+je        short 00007FF94D3195D5
 movzx     ecx,word ptr [rbx+0C]
 cmp       ecx,100
-jae       short 00007FFBF9DFA34E
-mov       rax,7FFC58492C38
+jae       short 00007FF94D31959E
+mov       rax,7FF9689B2E50
 test      byte ptr [rcx+rax],80
-jne       short 00007FFBF9DFA38F
-jmp       short 00007FFBF9DFA358
-call      qword ptr [7FFBF9D7E4C0]
+jne       short 00007FF94D3195DF
+jmp       short 00007FF94D3195A8
+call      qword ptr [7FF94D43CEA0]
 test      eax,eax
-jne       short 00007FFBF9DFA38F
+jne       short 00007FF94D3195DF
 dec       esi
 mov       ecx,esi
 movzx     ecx,word ptr [rbx+rcx*2+0C]
 cmp       ecx,100
-jae       short 00007FFBF9DFA37B
-mov       rax,7FFC58492C38
+jae       short 00007FF94D3195CB
+mov       rax,7FF9689B2E50
 test      byte ptr [rcx+rax],80
-jne       short 00007FFBF9DFA38F
-jmp       short 00007FFBF9DFA385
-call      qword ptr [7FFBF9D7E4C0]
+jne       short 00007FF94D3195DF
+jmp       short 00007FF94D3195D5
+call      qword ptr [7FF94D43CEA0]
 test      eax,eax
-jne       short 00007FFBF9DFA38F
+jne       short 00007FF94D3195DF
 mov       rax,rbx
 add       rsp,28
 pop       rbx
@@ -366,7 +366,7 @@ pop       rsi
 ret
 mov       rcx,rbx
 mov       edx,3
-call      qword ptr [7FFBF95673F0]
+call      qword ptr [7FF94CB673F0]
 nop
 add       rsp,28
 pop       rbx

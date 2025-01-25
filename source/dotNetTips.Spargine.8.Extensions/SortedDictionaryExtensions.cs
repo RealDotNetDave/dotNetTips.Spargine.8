@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 01-25-2025
 // ***********************************************************************
 // <copyright file="SortedDictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -50,16 +50,16 @@ public static class SortedDictionaryExtensions
 	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection) => collection is null ? false : collection.Count > 0;
 
 	/// <summary>
-	/// Determines whether the specified action finds any items in the <see cref="SortedDictionary{TKey, TValue}"/>.
+	/// Determines whether the specified actionPredicate finds any items in the <see cref="SortedDictionary{TKey, TValue}"/>.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
 	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
 	/// <param name="collection">The <see cref="SortedDictionary{TKey, TValue}"/> to check.</param>
-	/// <param name="action">The action to test each item in the <paramref name="collection"/>.</param>
-	/// <returns><c>true</c> if the specified action finds items that match the condition; otherwise, <c>false</c>.</returns>
+	/// <param name="actionPredicate">The actionPredicate to test each item in the <paramref name="collection"/>.</param>
+	/// <returns><c>true</c> if the specified actionPredicate finds items that match the condition; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, [NotNull] Func<KeyValuePair<TKey, TValue>, bool> action) => collection is null || action is null ? true : collection.Any(action);
+	public static bool HasItems<TKey, TValue>([NotNull] this SortedDictionary<TKey, TValue> collection, [NotNull] Func<KeyValuePair<TKey, TValue>, bool> actionPredicate) => collection is null || actionPredicate is null ? true : collection.Any(actionPredicate);
 
 	/// <summary>
 	/// Determines whether the specified count of items exists in the <see cref="SortedDictionary{TKey, TValue}"/>.

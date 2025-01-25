@@ -316,7 +316,7 @@ public static class ListExtensions
 	/// <param name="collection">The collection.</param>
 	/// <param name="action">The action.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(PerformAction), "David McCarter", "1/4/2023", Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed)]
 	public static void PerformAction<T>([NotNull] this List<T> collection, [NotNull] Action<T> action)
 	{
 		collection = collection.ArgumentNotNull();
@@ -328,7 +328,7 @@ public static class ListExtensions
 		}
 
 		// USING ASSPAN AND USING FOR SLOWED PERFORMANCE
-		foreach (var item in collection.AsSpan())
+		foreach (var item in collection)
 		{
 			action(item);
 		}
@@ -337,32 +337,32 @@ public static class ListExtensions
 	/// <summary>
 	/// Groups the elements of a <see cref="List{T}" /> sequence according to a specified firstKey selector function and rotates the unique
 	/// collection  from the secondKey selector function into multiple collection  in the output, and performs aggregations.
-	/// Validates that <paramref name="collection" />, <paramref name="firstKeySelector" />,
-	/// <paramref name="secondKeySelector" />, <paramref name="aggregate" /> is not null.
+	/// Validates that <paramref name="collection" />, <paramref name="firstKeySelectorFunction" />,
+	/// <paramref name="secondKeySelectorFunction" />, <paramref name="aggregateFunction" /> is not null.
 	/// </summary>
 	/// <typeparam name="TSource">The type of the t list.</typeparam>
 	/// <typeparam name="TFirstKey">The type of the t first key.</typeparam>
 	/// <typeparam name="TSecondKey">The type of the t second key.</typeparam>
 	/// <typeparam name="TValue">The type of the t value.</typeparam>
 	/// <param name="collection">The list.</param>
-	/// <param name="firstKeySelector">The first key selector.</param>
-	/// <param name="secondKeySelector">The second key selector.</param>
-	/// <param name="aggregate">The aggregate.</param>
+	/// <param name="firstKeySelectorFunction">The first key selector.</param>
+	/// <param name="secondKeySelectorFunction">The second key selector.</param>
+	/// <param name="aggregateFunction">The aggregateFunction.</param>
 	/// <returns>Dictionary&lt;TFirstKey, Dictionary&lt;TSecondKey, TValue&gt;&gt;.</returns>
-	/// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value. or list - Aggregate cannot be null. or firstKeySelector -
-	/// First key selector cannot be null. or secondKeySelector - Second key selector cannot be null.</exception>
+	/// <exception cref="ArgumentNullException">list - Source cannot be null or have a 0 value. or list - Aggregate cannot be null. or firstKeySelectorFunction -
+	/// First key selector cannot be null. or secondKeySelectorFunction - Second key selector cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Pivot), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>([NotNull] this IEnumerable<TSource> collection, [NotNull] Func<TSource, TFirstKey> firstKeySelector, [NotNull] Func<TSource, TSecondKey> secondKeySelector, [NotNull] Func<IEnumerable<TSource>, TValue> aggregate)
+	public static Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot<TSource, TFirstKey, TSecondKey, TValue>([NotNull] this IEnumerable<TSource> collection, [NotNull] Func<TSource, TFirstKey> firstKeySelectorFunction, [NotNull] Func<TSource, TSecondKey> secondKeySelectorFunction, [NotNull] Func<IEnumerable<TSource>, TValue> aggregateFunction)
 	{
 		collection = collection.ArgumentNotNull();
-		firstKeySelector = firstKeySelector.ArgumentNotNull();
-		secondKeySelector = secondKeySelector.ArgumentNotNull();
-		aggregate = aggregate.ArgumentNotNull();
+		firstKeySelectorFunction = firstKeySelectorFunction.ArgumentNotNull();
+		secondKeySelectorFunction = secondKeySelectorFunction.ArgumentNotNull();
+		aggregateFunction = aggregateFunction.ArgumentNotNull();
 
 		var returnValue = new Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>>();
 
-		var lookup = collection.ToLookup(firstKeySelector).ToList();
+		var lookup = collection.ToLookup(firstKeySelectorFunction).ToList();
 
 		lookup.ForEach(item =>
 		{
@@ -370,9 +370,9 @@ public static class ListExtensions
 
 			returnValue.Add(item.Key, collection);
 
-			var secondLookup = item.ToLookup(secondKeySelector).ToList();
+			var secondLookup = item.ToLookup(secondKeySelectorFunction).ToList();
 
-			secondLookup.ForEach(subitem => collection.Add(subitem.Key, aggregate.Invoke(subitem)));
+			secondLookup.ForEach(subitem => collection.Add(subitem.Key, aggregateFunction.Invoke(subitem)));
 		});
 
 		return returnValue;

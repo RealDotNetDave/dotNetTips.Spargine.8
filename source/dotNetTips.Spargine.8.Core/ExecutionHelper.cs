@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-21-2025
+// Last Modified On : 01-25-2025
 // ***********************************************************************
 // <copyright file="ExecutionHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -31,7 +31,7 @@ namespace DotNetTips.Spargine.Core;
 /// <remarks>
 /// This class provides methods to execute operations with retry logic, which is useful for handling transient faults,
 /// especially in network communication or external service calls. The <see cref="ProgressiveRetry"/> method, for example,
-/// attempts the provided operation multiple times with increasing delay intervals, improving the robustness of applications
+/// attempts the provided function multiple times with increasing delay intervals, improving the robustness of applications
 /// in unstable network conditions.
 /// </remarks>
 [Information(Status = Status.NeedsDocumentation)]
@@ -42,13 +42,13 @@ public static class ExecutionHelper
 	/// Provides utility methods for executing operations with retry logic, allowing for progressive delays between retries.
 	/// This can be particularly useful for handling transient faults in network communication or external service calls.
 	/// </summary>
-	/// <param name="operation">The operation to execute. Must not be null.</param>
+	/// <param name="operation">The function to execute. Must not be null.</param>
 	/// <param name="retryCount">The maximum number of retry attempts.</param>
 	/// <param name="retryWaitMilliseconds">The initial wait time in milliseconds before the first retry. This wait time increases progressively with each retry.</param>
 	/// <param name="logger">Optional logger to log retry attempts and failures.</param>
-	/// <returns>A SimpleResult{int} object that contains the result of the operation and the number of attempts made.</returns>
+	/// <returns>A SimpleResult{int} object that contains the result of the function and the number of attempts made.</returns>
 	/// <example>
-	/// This example shows how to use the <see cref="ProgressiveRetry"/> method to attempt an operation up to 3 times with a progressive delay.
+	/// This example shows how to use the <see cref="ProgressiveRetry"/> method to attempt an function up to 3 times with a progressive delay.
 	/// <code>
 	/// var result = ExecutionHelper.ProgressiveRetry(() =>
 	/// {
@@ -94,16 +94,16 @@ public static class ExecutionHelper
 	}
 
 	/// <summary>
-	/// Executes an operation with retry logic asynchronously, allowing for progressive delays between retries.
+	/// Executes an function with retry logic asynchronously, allowing for progressive delays between retries.
 	/// </summary>
-	/// <param name="operation">The operation to execute. Must not be null.</param>
+	/// <param name="function">The function to execute. Must not be null.</param>
 	/// <param name="retryCount">The maximum number of retry attempts.</param>
 	/// <param name="retryWaitMilliseconds">The initial wait time in milliseconds before the first retry. This wait time increases progressively with each retry.</param>
-	/// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
+	/// <param name="cancellationToken">The cancellation token to cancel the function.</param>
 	/// <param name="logger">Optional logger to log retry attempts and failures.</param>
-	/// <returns>A SimpleResult{int} object that contains the result of the operation and the number of attempts made.</returns>
+	/// <returns>A SimpleResult{int} object that contains the result of the function and the number of attempts made.</returns>
 	/// <example>
-	/// This example shows how to use the <see cref="ProgressiveRetryAsync"/> method to attempt an operation up to 3 times with a progressive delay.
+	/// This example shows how to use the <see cref="ProgressiveRetryAsync"/> method to attempt an function up to 3 times with a progressive delay.
 	/// <code>
 	/// var result = await ExecutionHelper.ProgressiveRetryAsync(async () =>
 	/// {
@@ -113,9 +113,9 @@ public static class ExecutionHelper
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ProgressiveRetryAsync), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
-	public static async Task<SimpleResult<int>> ProgressiveRetryAsync([NotNull] Func<Task> operation, byte retryCount = 3, int retryWaitMilliseconds = 100, ILogger logger = null, CancellationToken cancellationToken = default)
+	public static async Task<SimpleResult<int>> ProgressiveRetryAsync([NotNull] Func<Task> function, byte retryCount = 3, int retryWaitMilliseconds = 100, ILogger logger = null, CancellationToken cancellationToken = default)
 	{
-		operation = operation.ArgumentNotNull();
+		function = function.ArgumentNotNull();
 		retryCount = retryCount.ArgumentInRange(lower: 1, upper: byte.MaxValue);
 		retryWaitMilliseconds = retryWaitMilliseconds.ArgumentInRange(lower: 1);
 
@@ -129,7 +129,7 @@ public static class ExecutionHelper
 				attempts++;
 				result.SetValue(attempts);
 
-				await operation().ConfigureAwait(false);
+				await function().ConfigureAwait(false);
 
 				return result;
 			}

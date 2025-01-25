@@ -4,7 +4,7 @@
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-15-2024
+// Last Modified On : 01-25-2025
 // ***********************************************************************
 // <copyright file="ImmutableArrayExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -54,20 +54,20 @@ public static class ImmutableArrayExtensions
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the array.</typeparam>
 	/// <param name="list">The immutable array to check.</param>
-	/// <param name="action">The predicate that defines the conditions of the elements to search for.</param>
+	/// <param name="actionPredicate">The predicate that defines the conditions of the elements to search for.</param>
 	/// <returns><c>true</c> if one or more elements in the <see cref="ImmutableArray{T}"/> match the condition defined by the specified predicate; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> or <paramref name="action"/> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> or <paramref name="actionPredicate"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>(this ImmutableArray<T> list, Func<T, bool> action)
+	public static bool HasItems<T>(this ImmutableArray<T> list, Func<T, bool> actionPredicate)
 	{
-		if (list.ArgumentNotNull().IsEmpty || action is null)
+		if (list.ArgumentNotNull().IsEmpty || actionPredicate is null)
 		{
 			return false;
 		}
 		else
 		{
-			return list.Any(action);
+			return list.Any(actionPredicate);
 		}
 	}
 

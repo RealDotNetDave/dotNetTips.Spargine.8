@@ -4,7 +4,7 @@
 // Created          : 08-18-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 01-25-2025
 // ***********************************************************************
 // <copyright file="LinqExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -34,17 +34,17 @@ public static class LinqExtensions
 	/// <typeparam name="T">The type of the elements in the <see cref="IQueryable{T}"/>.</typeparam>
 	/// <param name="input">The input query to transform.</param>
 	/// <param name="should">A boolean value indicating whether the transformations should be applied.</param>
-	/// <param name="transforms">A params array of functions that represent the transformations to apply to the input query.</param>
+	/// <param name="transformsFunction">A params array of functions that represent the transformations to apply to the input query.</param>
 	/// <returns>An <see cref="IQueryable{T}"/> that has been conditionally transformed based on the provided functions.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transforms"/> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transformsFunction"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static IQueryable<T> If<T>(this IQueryable<T> input, bool should, params Func<IQueryable<T>, IQueryable<T>>[] transforms)
+	public static IQueryable<T> If<T>(this IQueryable<T> input, bool should, params Func<IQueryable<T>, IQueryable<T>>[] transformsFunction)
 	{
 		input = input.ArgumentNotNull();
-		transforms = transforms.ArgumentItemsExists();
+		transformsFunction = transformsFunction.ArgumentItemsExists();
 
-		return should ? transforms.Aggregate(input, (current, transform) => transform(current)) : input;
+		return should ? transformsFunction.Aggregate(input, (current, transform) => transform(current)) : input;
 	}
 
 	/// <summary>
@@ -54,17 +54,17 @@ public static class LinqExtensions
 	/// <typeparam name="T">The type of the elements in the <see cref="IEnumerable{T}"/>.</typeparam>
 	/// <param name="input">The input sequence to transform.</param>
 	/// <param name="should">A boolean value indicating whether the transformations should be applied.</param>
-	/// <param name="transforms">A params array of functions that represent the transformations to apply to the input sequence.</param>
+	/// <param name="transformsFunction">A params array of functions that represent the transformations to apply to the input sequence.</param>
 	/// <returns>An <see cref="IEnumerable{T}"/> that has been conditionally transformed based on the provided functions.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transforms"/> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> or <paramref name="transformsFunction"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine", "David McCarter", "8/18/20", ModifiedBy = "David McCarter", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static IEnumerable<T> If<T>(this IEnumerable<T> input, bool should, params Func<IEnumerable<T>, IEnumerable<T>>[] transforms)
+	public static IEnumerable<T> If<T>(this IEnumerable<T> input, bool should, params Func<IEnumerable<T>, IEnumerable<T>>[] transformsFunction)
 	{
 		input = input.ArgumentNotNull();
-		transforms = transforms.ArgumentItemsExists();
+		transformsFunction = transformsFunction.ArgumentItemsExists();
 
-		return should ? transforms.Aggregate(input, (current, transform) => transform(current)) : input;
+		return should ? transformsFunction.Aggregate(input, (current, transform) => transform(current)) : input;
 	}
 
 }

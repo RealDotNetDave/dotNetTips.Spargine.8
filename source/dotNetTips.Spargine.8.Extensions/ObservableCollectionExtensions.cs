@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-15-2024
+// Last Modified On : 01-25-2025
 // ***********************************************************************
 // <copyright file="ObservableCollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -62,19 +62,19 @@ public static class ObservableCollectionExtensions
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="collection">The collection.</param>
-	/// <param name="action">The action.</param>
+	/// <param name="actionPredicate">The actionPredicate.</param>
 	/// <returns>bool.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection, [NotNull] Func<T, bool> action)
+	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection, [NotNull] Func<T, bool> actionPredicate)
 	{
-		if (collection is null || action is null)
+		if (collection is null || actionPredicate is null)
 		{
 			return false;
 		}
 		else
 		{
-			return collection.Any(action);
+			return collection.Any(actionPredicate);
 		}
 	}
 

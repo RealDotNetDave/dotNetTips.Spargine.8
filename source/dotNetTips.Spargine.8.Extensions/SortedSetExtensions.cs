@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-15-2025
+// Last Modified On : 01-25-2025
 // ***********************************************************************
 // <copyright file="SortedSetExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -75,19 +75,19 @@ public static class SortedSetExtensions
 	/// </summary>
 	/// <typeparam name="T">The type of elements in the set.</typeparam>
 	/// <param name="collection">The collection to check.</param>
-	/// <param name="action">The predicate to apply to each element. Each element is passed to the <see cref="Func{T, TResult}"/> to determine if it matches the condition.</param>
+	/// <param name="actionPredicate">The predicate to apply to each element. Each element is passed to the <see cref="Func{T, TResult}"/> to determine if it matches the condition.</param>
 	/// <returns><c>true</c> if any elements in the specified collection match the condition defined by the specified predicate; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this SortedSet<T> collection, [NotNull] Func<T, bool> action)
+	public static bool HasItems<T>([NotNull] this SortedSet<T> collection, [NotNull] Func<T, bool> actionPredicate)
 	{
-		if (collection is null || action is null)
+		if (collection is null || actionPredicate is null)
 		{
 			return false;
 		}
 		else
 		{
-			return collection.Any(action);
+			return collection.Any(actionPredicate);
 		}
 	}
 

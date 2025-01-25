@@ -174,7 +174,7 @@ public static class ObjectExtensions
 	/// <param name="propertyName">The name of the property to search for.</param>
 	/// <returns><c>true</c> if the property exists; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(HasProperty), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information(nameof(HasProperty), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool HasProperty([NotNull] this object obj, [NotNull] in string propertyName) => obj.GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic) != null;
 
 	/// <summary>
@@ -412,7 +412,7 @@ public static class ObjectExtensions
 	/// <param name="options">The options to use for serialization, or null to use default options.</param>
 	/// <returns>A <see cref="SimpleResult{T}"/> containing the JSON string representation of the object and a flag indicating success.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToJson), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information(nameof(ToJson), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static SimpleResult<string> ToJson([NotNull] this object obj, [AllowNull] in JsonSerializerOptions options = null)
 	{
 		obj = obj.ArgumentNotNull();

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Core.BenchmarkTests.TypeHelperBenchmark-20241015-164206</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5011/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 8.0.403
+  [Host]     : .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2
+  Job-BXAHQI : .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Core.BenchmarkTests  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                              </th><th>Categories</th><th>Mean     </th><th>Error  </th><th>StdDev </th><th>StdErr </th><th>Min      </th><th>Q1       </th><th>Median   </th><th>Q3       </th><th>Max      </th><th>Op/s     </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Exceptions</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Gen0</th><th>Code Size</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;Create: With Parameters&#39;</td><td>Strings</td><td>317.0628 ns</td><td>1.8096 ns</td><td>1.5111 ns</td><td>0.4191 ns</td><td>314.6659 ns</td><td>315.8813 ns</td><td>316.7984 ns</td><td>317.7456 ns</td><td>320.1329 ns</td><td>3,153,949.4</td><td>6.290 ns</td><td>13.00</td><td>2.130</td><td>2.000</td><td>0.3677</td><td>4</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>0.0052</td><td>469 B</td><td>504 B</td>
+</tr><tr><td>&#39;Looping Collection: Normal StringBuilder&#39;</td><td>Strings</td><td>3,996.5718 ns</td><td>37.3155 ns</td><td>33.0792 ns</td><td>8.8408 ns</td><td>3,945.3041 ns</td><td>3,963.8592 ns</td><td>4,005.6038 ns</td><td>4,025.0673 ns</td><td>4,038.6086 ns</td><td>250,214.4</td><td>2.580 ns</td><td>14.00</td><td>1.321</td><td>2.000</td><td>-0.2185</td><td>5</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>0.1602</td><td>2,690 B</td><td>15160 B</td>
+</tr><tr><td>BuiltinTypes</td><td>Reflection</td><td>3.1283 ns</td><td>0.0111 ns</td><td>0.0092 ns</td><td>0.0026 ns</td><td>3.1083 ns</td><td>3.1233 ns</td><td>3.1289 ns</td><td>3.1320 ns</td><td>3.1455 ns</td><td>319,660,301.3</td><td>6.499 ns</td><td>13.00</td><td>2.930</td><td>2.000</td><td>-0.2333</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>94 B</td><td>-</td>
+</tr><tr><td>Create</td><td>Strings</td><td>46.2961 ns</td><td>0.2175 ns</td><td>0.1816 ns</td><td>0.0504 ns</td><td>46.0353 ns</td><td>46.1691 ns</td><td>46.2779 ns</td><td>46.4063 ns</td><td>46.6889 ns</td><td>21,600,079.6</td><td>6.475 ns</td><td>13.00</td><td>2.350</td><td>2.000</td><td>0.4595</td><td>3</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>0.0015</td><td>141 B</td><td>144 B</td>
+</tr><tr><td>DoesObjectEqualInstance</td><td>Strings</td><td>0.9507 ns</td><td>0.0076 ns</td><td>0.0063 ns</td><td>0.0017 ns</td><td>0.9424 ns</td><td>0.9473 ns</td><td>0.9497 ns</td><td>0.9523 ns</td><td>0.9636 ns</td><td>1,051,898,107.9</td><td>6.499 ns</td><td>13.00</td><td>2.672</td><td>2.000</td><td>0.8293</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>363 B</td><td>-</td>
+</tr><tr><td>FindDerivedTypes</td><td>Reflection</td><td>889,329.6549 ns</td><td>7,298.2542 ns</td><td>6,826.7915 ns</td><td>1,762.6700 ns</td><td>881,062.3047 ns</td><td>884,991.3086 ns</td><td>887,359.3750 ns</td><td>892,216.5527 ns</td><td>901,270.8984 ns</td><td>1,124.4</td><td>-873.835 ns</td><td>15.00</td><td>1.937</td><td>2.000</td><td>0.5649</td><td>7</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>2.9297</td><td>1,100 B</td><td>290761 B</td>
+</tr><tr><td>GetPropertyValues</td><td>Reflection</td><td>357,262.1175 ns</td><td>2,443.0435 ns</td><td>1,907.3677 ns</td><td>550.6096 ns</td><td>354,322.9004 ns</td><td>355,438.4766 ns</td><td>357,401.7090 ns</td><td>358,489.8438 ns</td><td>360,076.6113 ns</td><td>2,799.1</td><td>-269.305 ns</td><td>12.00</td><td>1.531</td><td>2.000</td><td>-0.0317</td><td>6</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>25,471 B</td><td>6294 B</td>
+</tr></tbody></table>
+</body>
+</html>

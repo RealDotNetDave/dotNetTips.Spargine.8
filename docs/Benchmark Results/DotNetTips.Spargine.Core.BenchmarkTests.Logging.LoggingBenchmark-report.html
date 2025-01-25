@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark-20241015-172101</title>
+<title>DotNetTips.Spargine.Core.BenchmarkTests.Logging.LoggingBenchmark-20250124-204518</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,32 +13,32 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5011/22H2/2022Update)
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5371/22H2/2022Update)
 Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
-.NET SDK 8.0.403
-  [Host]     : .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2
-  Job-BXAHQI : .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2
+.NET SDK 9.0.102
+  [Host]     : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+  Job-VPTVLS : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
 Namespace=DotNetTips.Spargine.Core.BenchmarkTests.Logging  Categories=LOGGING  
 </code></pre>
 
 <table>
-<thead><tr><th>Method            </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Median</th><th>Min</th><th>Q1 </th><th>Q3 </th><th>Max</th><th>Op/s   </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Code Size</th><th>Exceptions</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Allocated</th>
+<thead><tr><th>Method            </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Median</th><th>Min</th><th>Q1 </th><th>Q3 </th><th>Max</th><th>Op/s   </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Exceptions</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Code Size</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>&#39;LogError:Error Message&#39;</td><td>1.945 ns</td><td>0.0635 ns</td><td>0.0705 ns</td><td>0.0162 ns</td><td>1.925 ns</td><td>1.911 ns</td><td>1.921 ns</td><td>1.938 ns</td><td>2.231 ns</td><td>514,162,808.7</td><td>9.492 ns</td><td>19.00</td><td>14.160</td><td>2.000</td><td>3.4699</td><td>1</td><td>*</td><td>No</td><td>340 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>ILogger.LogCritical</td><td>20.776 ns</td><td>0.1441 ns</td><td>0.1348 ns</td><td>0.0348 ns</td><td>20.743 ns</td><td>20.630 ns</td><td>20.668 ns</td><td>20.826 ns</td><td>21.057 ns</td><td>48,133,379.7</td><td>7.483 ns</td><td>15.00</td><td>2.362</td><td>2.000</td><td>0.8114</td><td>2</td><td>*</td><td>No</td><td>313 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>ILogger.LogDebug</td><td>20.669 ns</td><td>0.1159 ns</td><td>0.1027 ns</td><td>0.0275 ns</td><td>20.668 ns</td><td>20.478 ns</td><td>20.636 ns</td><td>20.721 ns</td><td>20.849 ns</td><td>48,381,035.2</td><td>6.986 ns</td><td>14.00</td><td>2.147</td><td>2.000</td><td>-0.1474</td><td>2</td><td>*</td><td>No</td><td>313 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>ILogger.LogError</td><td>20.936 ns</td><td>0.0613 ns</td><td>0.0544 ns</td><td>0.0145 ns</td><td>20.929 ns</td><td>20.861 ns</td><td>20.901 ns</td><td>20.967 ns</td><td>21.058 ns</td><td>47,764,005.7</td><td>6.993 ns</td><td>14.00</td><td>2.468</td><td>2.000</td><td>0.5927</td><td>2</td><td>*</td><td>No</td><td>313 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>ILogger.LogInformation</td><td>21.412 ns</td><td>0.0570 ns</td><td>0.0476 ns</td><td>0.0132 ns</td><td>21.419 ns</td><td>21.329 ns</td><td>21.382 ns</td><td>21.445 ns</td><td>21.484 ns</td><td>46,702,898.4</td><td>6.493 ns</td><td>13.00</td><td>1.781</td><td>2.000</td><td>-0.2411</td><td>2</td><td>*</td><td>No</td><td>313 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>ILogger.LogTrace</td><td>20.976 ns</td><td>0.0905 ns</td><td>0.0846 ns</td><td>0.0218 ns</td><td>20.970 ns</td><td>20.840 ns</td><td>20.918 ns</td><td>21.030 ns</td><td>21.139 ns</td><td>47,673,862.6</td><td>7.489 ns</td><td>15.00</td><td>2.027</td><td>2.000</td><td>0.3655</td><td>2</td><td>*</td><td>No</td><td>310 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>ILogger.LogWarning</td><td>21.348 ns</td><td>0.1491 ns</td><td>0.1395 ns</td><td>0.0360 ns</td><td>21.298 ns</td><td>21.157 ns</td><td>21.254 ns</td><td>21.428 ns</td><td>21.626 ns</td><td>46,843,505.4</td><td>7.482 ns</td><td>15.00</td><td>2.137</td><td>2.000</td><td>0.5266</td><td>2</td><td>*</td><td>No</td><td>313 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>LogCritical</td><td>2.311 ns</td><td>0.0743 ns</td><td>0.0912 ns</td><td>0.0194 ns</td><td>2.375 ns</td><td>2.188 ns</td><td>2.202 ns</td><td>2.384 ns</td><td>2.408 ns</td><td>432,667,226.9</td><td>10.990 ns</td><td>22.00</td><td>1.125</td><td>3.385</td><td>-0.3632</td><td>1</td><td>*</td><td>No</td><td>350 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>LogDebug</td><td>1.976 ns</td><td>0.0082 ns</td><td>0.0068 ns</td><td>0.0019 ns</td><td>1.977 ns</td><td>1.966 ns</td><td>1.973 ns</td><td>1.979 ns</td><td>1.992 ns</td><td>505,948,807.6</td><td>6.499 ns</td><td>13.00</td><td>2.745</td><td>2.000</td><td>0.5014</td><td>1</td><td>*</td><td>No</td><td>340 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>LogException</td><td>2.200 ns</td><td>0.0106 ns</td><td>0.0088 ns</td><td>0.0025 ns</td><td>2.201 ns</td><td>2.184 ns</td><td>2.196 ns</td><td>2.203 ns</td><td>2.219 ns</td><td>454,493,065.1</td><td>6.499 ns</td><td>13.00</td><td>2.727</td><td>2.000</td><td>0.3811</td><td>1</td><td>*</td><td>No</td><td>350 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>LogInformation</td><td>1.972 ns</td><td>0.0075 ns</td><td>0.0066 ns</td><td>0.0018 ns</td><td>1.972 ns</td><td>1.962 ns</td><td>1.967 ns</td><td>1.975 ns</td><td>1.984 ns</td><td>507,114,135.5</td><td>6.999 ns</td><td>14.00</td><td>1.874</td><td>2.000</td><td>0.0327</td><td>1</td><td>*</td><td>No</td><td>340 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>LogTrace</td><td>2.169 ns</td><td>0.0718 ns</td><td>0.0908 ns</td><td>0.0189 ns</td><td>2.209 ns</td><td>1.971 ns</td><td>2.204 ns</td><td>2.212 ns</td><td>2.223 ns</td><td>461,089,015.7</td><td>11.491 ns</td><td>23.00</td><td>3.609</td><td>2.000</td><td>-1.5994</td><td>1</td><td>*</td><td>No</td><td>331 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>LogWarning</td><td>2.134 ns</td><td>0.0723 ns</td><td>0.1147 ns</td><td>0.0200 ns</td><td>2.203 ns</td><td>1.964 ns</td><td>1.979 ns</td><td>2.211 ns</td><td>2.277 ns</td><td>468,568,291.5</td><td>16.490 ns</td><td>33.00</td><td>1.452</td><td>3.000</td><td>-0.6284</td><td>1</td><td>*</td><td>No</td><td>340 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</thead><tbody><tr><td>&#39;LogError:Error Message&#39;</td><td>1.979 ns</td><td>0.0498 ns</td><td>0.0465 ns</td><td>0.0120 ns</td><td>2.015 ns</td><td>1.924 ns</td><td>1.931 ns</td><td>2.022 ns</td><td>2.026 ns</td><td>505,195,104.8</td><td>7.494 ns</td><td>15.00</td><td>0.9166</td><td>2.000</td><td>-0.1250</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>340 B</td><td>-</td>
+</tr><tr><td>ILogger.LogCritical</td><td>22.768 ns</td><td>0.0839 ns</td><td>0.0744 ns</td><td>0.0199 ns</td><td>22.750 ns</td><td>22.634 ns</td><td>22.719 ns</td><td>22.810 ns</td><td>22.925 ns</td><td>43,920,882.8</td><td>6.990 ns</td><td>14.00</td><td>2.4775</td><td>2.000</td><td>0.3437</td><td>5</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>313 B</td><td>-</td>
+</tr><tr><td>ILogger.LogDebug</td><td>20.883 ns</td><td>0.0283 ns</td><td>0.0251 ns</td><td>0.0067 ns</td><td>20.884 ns</td><td>20.844 ns</td><td>20.863 ns</td><td>20.897 ns</td><td>20.930 ns</td><td>47,885,182.4</td><td>6.997 ns</td><td>14.00</td><td>1.8879</td><td>2.000</td><td>0.1696</td><td>4</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>313 B</td><td>-</td>
+</tr><tr><td>ILogger.LogError</td><td>21.832 ns</td><td>0.0550 ns</td><td>0.0487 ns</td><td>0.0130 ns</td><td>21.848 ns</td><td>21.728 ns</td><td>21.804 ns</td><td>21.866 ns</td><td>21.887 ns</td><td>45,805,366.1</td><td>6.993 ns</td><td>14.00</td><td>2.1411</td><td>2.000</td><td>-0.6879</td><td>5</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>313 B</td><td>-</td>
+</tr><tr><td>ILogger.LogInformation</td><td>23.554 ns</td><td>0.4952 ns</td><td>0.9055 ns</td><td>0.1397 ns</td><td>24.039 ns</td><td>21.989 ns</td><td>22.713 ns</td><td>24.070 ns</td><td>24.497 ns</td><td>42,456,050.6</td><td>20.930 ns</td><td>42.00</td><td>2.0778</td><td>2.710</td><td>-1.0094</td><td>5</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>313 B</td><td>-</td>
+</tr><tr><td>ILogger.LogTrace</td><td>22.054 ns</td><td>0.2554 ns</td><td>0.2389 ns</td><td>0.0617 ns</td><td>21.924 ns</td><td>21.819 ns</td><td>21.885 ns</td><td>22.280 ns</td><td>22.546 ns</td><td>45,343,872.8</td><td>7.469 ns</td><td>15.00</td><td>1.8546</td><td>2.000</td><td>0.7286</td><td>5</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>310 B</td><td>-</td>
+</tr><tr><td>ILogger.LogWarning</td><td>20.558 ns</td><td>0.0549 ns</td><td>0.0487 ns</td><td>0.0130 ns</td><td>20.552 ns</td><td>20.456 ns</td><td>20.535 ns</td><td>20.579 ns</td><td>20.663 ns</td><td>48,643,029.2</td><td>6.993 ns</td><td>14.00</td><td>3.1299</td><td>2.000</td><td>0.1134</td><td>4</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>313 B</td><td>-</td>
+</tr><tr><td>LogCritical</td><td>4.124 ns</td><td>0.2417 ns</td><td>0.7012 ns</td><td>0.0712 ns</td><td>4.373 ns</td><td>2.146 ns</td><td>4.360 ns</td><td>4.378 ns</td><td>4.407 ns</td><td>242,464,647.7</td><td>48.464 ns</td><td>97.00</td><td>6.8128</td><td>2.000</td><td>-2.4015</td><td>3</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>350 B</td><td>-</td>
+</tr><tr><td>LogDebug</td><td>1.951 ns</td><td>0.0248 ns</td><td>0.0232 ns</td><td>0.0060 ns</td><td>1.951 ns</td><td>1.923 ns</td><td>1.929 ns</td><td>1.972 ns</td><td>1.985 ns</td><td>512,508,779.8</td><td>7.497 ns</td><td>15.00</td><td>1.1381</td><td>2.000</td><td>0.0566</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>340 B</td><td>-</td>
+</tr><tr><td>LogException</td><td>2.156 ns</td><td>0.0047 ns</td><td>0.0039 ns</td><td>0.0011 ns</td><td>2.155 ns</td><td>2.151 ns</td><td>2.154 ns</td><td>2.159 ns</td><td>2.165 ns</td><td>463,718,603.2</td><td>6.499 ns</td><td>13.00</td><td>2.2863</td><td>2.000</td><td>0.6946</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>350 B</td><td>-</td>
+</tr><tr><td>LogInformation</td><td>1.981 ns</td><td>0.0044 ns</td><td>0.0039 ns</td><td>0.0010 ns</td><td>1.981 ns</td><td>1.975 ns</td><td>1.979 ns</td><td>1.985 ns</td><td>1.988 ns</td><td>504,693,791.6</td><td>6.999 ns</td><td>14.00</td><td>1.7866</td><td>2.000</td><td>0.0797</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>340 B</td><td>-</td>
+</tr><tr><td>LogTrace</td><td>1.928 ns</td><td>0.0053 ns</td><td>0.0047 ns</td><td>0.0013 ns</td><td>1.928 ns</td><td>1.918 ns</td><td>1.926 ns</td><td>1.931 ns</td><td>1.937 ns</td><td>518,602,544.7</td><td>6.999 ns</td><td>14.00</td><td>2.5220</td><td>2.000</td><td>-0.1503</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>331 B</td><td>-</td>
+</tr><tr><td>LogWarning</td><td>1.925 ns</td><td>0.0058 ns</td><td>0.0054 ns</td><td>0.0014 ns</td><td>1.926 ns</td><td>1.916 ns</td><td>1.921 ns</td><td>1.928 ns</td><td>1.939 ns</td><td>519,407,061.5</td><td>7.499 ns</td><td>15.00</td><td>3.2419</td><td>2.000</td><td>0.5203</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>340 B</td><td>-</td>
 </tr></tbody></table>
 </body>
 </html>

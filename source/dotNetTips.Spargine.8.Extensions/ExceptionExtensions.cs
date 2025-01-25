@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-01-2025
+// Last Modified On : 01-25-2025
 // ***********************************************************************
 // <copyright file="ExceptionExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -33,38 +33,38 @@ public static class ExceptionExtensions
 	/// </summary>
 	/// <typeparam name="TSource">The type of the source exception, must derive from <see cref="Exception"/>.</typeparam>
 	/// <param name="source">The source exception to start traversing from.</param>
-	/// <param name="nextItem">A delegate that defines the method to retrieve the next exception in the hierarchy.</param>
+	/// <param name="accumulatorFunction">A delegate that defines the method to retrieve the next exception in the hierarchy.</param>
 	/// <returns>An <see cref="IEnumerable{TSource}"/> that represents the hierarchy of exceptions.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="nextItem"/> is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="accumulatorFunction"/> is null.</exception>
 	[Information(nameof(FromHierarchy), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem) where TSource : Exception
+	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> accumulatorFunction) where TSource : Exception
 	{
 		source = source.ArgumentNotNull();
-		nextItem = nextItem.ArgumentNotNull();
+		accumulatorFunction = accumulatorFunction.ArgumentNotNull();
 
-		return FromHierarchy(source, nextItem, s => s is not null);
+		return FromHierarchy(source, accumulatorFunction, s => s is not null);
 	}
 
 	/// <summary>
-	/// Returns the hierarchy from the source, validating that <paramref name="source"/>, <paramref name="nextItem"/>, and <paramref name="canContinue"/> are not null.
+	/// Returns the hierarchy from the source, validating that <paramref name="source"/>, <paramref name="nextItem"/>, and <paramref name="canContinuePreducate"/> are not null.
 	/// This method allows traversing a hierarchy (e.g., of exceptions) by repeatedly applying <paramref name="nextItem"/> to get the next item in the hierarchy,
-	/// until <paramref name="canContinue"/> returns false.
+	/// until <paramref name="canContinuePreducate"/> returns false.
 	/// </summary>
 	/// <typeparam name="TSource">The type of the source items in the hierarchy.</typeparam>
 	/// <param name="source">The starting item in the hierarchy.</param>
 	/// <param name="nextItem">A function to get the next item in the hierarchy from the current item.</param>
-	/// <param name="canContinue">A function that determines whether to continue traversing the hierarchy from the current item.</param>
-	/// <returns>A sequence of items from the source up through the hierarchy as determined by <paramref name="nextItem"/> and <paramref name="canContinue"/>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/>, <paramref name="nextItem"/>, or <paramref name="canContinue"/> is null.</exception>
+	/// <param name="canContinuePreducate">A function that determines whether to continue traversing the hierarchy from the current item.</param>
+	/// <returns>A sequence of items from the source up through the hierarchy as determined by <paramref name="nextItem"/> and <paramref name="canContinuePreducate"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/>, <paramref name="nextItem"/>, or <paramref name="canContinuePreducate"/> is null.</exception>
 	[Information(nameof(FromHierarchy), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinue)
+	public static IEnumerable<TSource> FromHierarchy<TSource>(this TSource source, Func<TSource, TSource> nextItem, Func<TSource, bool> canContinuePreducate)
 		where TSource : Exception
 	{
 		source = source.ArgumentNotNull();
 		nextItem = nextItem.ArgumentNotNull();
-		canContinue = canContinue.ArgumentNotNull();
+		canContinuePreducate = canContinuePreducate.ArgumentNotNull();
 
-		while (source != null && canContinue(source))
+		while (source != null && canContinuePreducate(source))
 		{
 			yield return source;
 			source = nextItem(source);
