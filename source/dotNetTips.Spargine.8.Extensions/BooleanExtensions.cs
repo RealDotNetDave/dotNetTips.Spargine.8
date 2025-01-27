@@ -26,7 +26,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// This class includes methods for converting boolean values to strings in various formats, such as lowercase,
 /// which can be particularly useful for generating user-friendly display strings or for serialization purposes.
 /// </remarks>
-[Information(nameof(BooleanExtensions), author: "David McCarter", createdOn: "7/15/2020")]
+[Information(nameof(BooleanExtensions), Status = Status.Available)]
 public static class BooleanExtensions
 {
 

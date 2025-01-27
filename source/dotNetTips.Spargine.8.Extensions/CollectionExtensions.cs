@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-17-2025
+// Last Modified On : 01-24-2025
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// They include features such as adding items conditionally, ensuring items are unique before adding them, and converting collections to different types.
 /// These utilities can significantly reduce boilerplate code and improve performance in scenarios involving collection manipulation.
 /// </remarks>
-[Information(Documentation = "https://bit.ly/SpargineCollectionExtensions")]
+[Information(Documentation = "https://bit.ly/SpargineCollectionExtensions", Status = Status.Available)]
 public static class CollectionExtensions
 {
 

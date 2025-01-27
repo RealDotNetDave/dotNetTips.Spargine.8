@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-21-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// This class includes methods for converting between Unix epoch time and <see cref="DateTime"/>, finding the next or last day of the week from a given date, checking if a date range intersects with another, and more.
 /// These methods are designed to simplify common date and time operations, making code more readable and efficient.
 /// </remarks>
-[Information(Documentation = "https://bit.ly/SpargineDateTimeExtensions")]
+[Information(Documentation = "https://bit.ly/SpargineDateTimeExtensions", Status = Status.Available)]
 public static class DateTimeExtensions
 {
 

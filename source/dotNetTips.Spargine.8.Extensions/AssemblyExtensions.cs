@@ -4,7 +4,7 @@
 // Created          : 01-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-15-2024
+// Last Modified On : 01-02-2025
 // ***********************************************************************
 // <copyright file="AssemblyExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -29,7 +29,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// making it easier to perform tasks such as getting all types, interfaces, or instances of a specific type within an assembly,
 /// and filtering them based on various criteria. These methods are designed to simplify common reflection-based tasks.
 /// </remarks>
-[Information(Documentation = "https://bit.ly/SpargineAssemblyExtensions")]
+[Information(Documentation = "https://bit.ly/SpargineAssemblyExtensions", Status = Status.Available)]
 public static class AssemblyExtensions
 {
 
