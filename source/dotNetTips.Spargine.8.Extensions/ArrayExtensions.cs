@@ -194,6 +194,7 @@ public static class ArrayExtensions
 			_stringBuilderPool.Value.Return(sb);
 		}
 	}
+
 	/// <summary>
 	/// Converts byte array to a string using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
 	/// Validates that <paramref name="array" /> is not null.

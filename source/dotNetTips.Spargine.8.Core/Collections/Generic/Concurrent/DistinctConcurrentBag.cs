@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 01-27-2025
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -94,7 +94,12 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 			return false;
 		}
 
-		return this.Contains(item);
+		var hashCode = item.GetHashCode();
+
+		lock (this._lock)
+		{
+			return this._hashCodes.Contains(hashCode);
+		}
 	}
 
 	/// <summary>

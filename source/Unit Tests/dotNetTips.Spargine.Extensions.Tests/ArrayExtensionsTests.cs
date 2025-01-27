@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-02-2024
+// Last Modified On : 01-27-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -31,6 +32,16 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 public class ArrayExtensionsTests
 {
 
+	[TestMethod]
+	public void AddFirstNullTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10).ToArray();
+
+		var result = people.AddFirst(null);
+
+		Assert.IsTrue(result.FastCount() == 10);
+	}
+
 	/// <summary>
 	/// Defines the test method AddFirstTest.
 	/// </summary>
@@ -43,6 +54,16 @@ public class ArrayExtensionsTests
 		var result = people.AddFirst(person);
 
 		Assert.IsTrue(result.FastCount() == 11);
+	}
+
+	[TestMethod]
+	public void AddIfNullTest()
+	{
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10).ToArray();
+
+		var result = people.AddIf(null, people.Length == 10);
+
+		Assert.IsTrue(result.FastCount() == 10);
 	}
 
 	/// <summary>
@@ -340,6 +361,53 @@ public class ArrayExtensionsTests
 		Assert.IsTrue(result.Count == 10);
 	}
 
+	[TestMethod]
+	public void Upsert_ExistingItem_UpdatesArray()
+	{
+		// Arrange
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10).ToArray();
+		var existingPerson = people.First();
+		existingPerson.Phone = "1234567890"; // Modify a property to check for update
+
+		// Act
+		var result = people.Upsert(existingPerson);
+
+		// Assert
+		Assert.AreEqual(people.Length, result.Length, "The length of the array should remain unchanged when upserting an existing item.");
+		Assert.AreEqual("1234567890", result.First().Phone, "The existing item should be updated in the array.");
+	}
+
+	[TestMethod]
+	public void Upsert_ExistingItemById_UpdatesArray()
+	{
+		// Arrange
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10).ToArray();
+		var existingPerson = people.First();
+		existingPerson.Phone = "1234567890"; // Modify a property to check for update
+
+		// Act
+		var result = people.Upsert(existingPerson);
+
+		// Assert
+		Assert.AreEqual(people.Length, result.Length, "The length of the array should remain unchanged when upserting an existing item.");
+		Assert.AreEqual("1234567890", result.First(p => p.Id == existingPerson.Id).Phone, "The existing item should be updated in the array.");
+	}
+
+	[TestMethod]
+	public void Upsert_NewItem_AddsToArray()
+	{
+		// Arrange
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10).ToArray();
+		var newPerson = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+
+		// Act
+		var result = people.Upsert(newPerson);
+
+		// Assert
+		Assert.AreEqual(people.Length + 1, result.Length, "The length of the array should increase by one when upserting a new item.");
+		Assert.IsTrue(result.Contains(newPerson), "The new item should be present in the array after upserting.");
+	}
+
 	//[TestMethod]
 	//public void PerformActionTest_Record()
 	//{
@@ -381,5 +449,4 @@ public class ArrayExtensionsTests
 
 		Assert.IsTrue(result.FastCount() == 10);
 	}
-
 }

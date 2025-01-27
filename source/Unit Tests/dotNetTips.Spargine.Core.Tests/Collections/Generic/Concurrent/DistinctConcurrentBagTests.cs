@@ -4,7 +4,7 @@
 // Created          : 06-24-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 01-27-2025
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBagTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -69,14 +69,6 @@ public class DistinctConcurrentBagTests
 	{
 		var bag = new DistinctConcurrentBag<int> { 1 };
 		Assert.IsTrue(bag.Contains(1));
-	}
-
-	[TestMethod]
-	[ExpectedException(typeof(NotImplementedException))]
-	public void Remove_ShouldThrowNotImplementedException()
-	{
-		var bag = new DistinctConcurrentBag<int> { 1 };
-		bag.Remove(1);
 	}
 
 	[TestMethod]

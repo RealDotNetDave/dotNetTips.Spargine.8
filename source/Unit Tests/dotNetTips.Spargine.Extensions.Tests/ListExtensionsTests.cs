@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-24-2025
+// Last Modified On : 01-27-2025
 // ***********************************************************************
 // <copyright file="ListExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -143,6 +143,76 @@ public class ListExtensionsTests
 		Assert.IsFalse(people.ClearNulls());
 
 		Assert.IsFalse(new List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>(10).ClearNulls());
+	}
+
+	[TestMethod]
+	public void ClearNulls_WithAllNulls_ReturnsTrue()
+	{
+		// Arrange
+		var collection = new List<string> { null, null, null };
+
+		// Act
+		var result = collection.ClearNulls();
+
+		// Assert
+		Assert.IsTrue(result, "Expected true when clearing nulls from a collection with all nulls.");
+		Assert.AreEqual(0, collection.Count, "Expected the collection count to be zero after clearing all nulls.");
+	}
+
+	[TestMethod]
+	public void ClearNulls_WithEmptyCollection_ReturnsFalse()
+	{
+		// Arrange
+		var collection = new List<string>();
+
+		// Act
+		var result = collection.ClearNulls();
+
+		// Assert
+		Assert.IsFalse(result, "Expected false when clearing nulls from an empty collection.");
+		Assert.AreEqual(0, collection.Count, "Expected the collection count to remain zero.");
+	}
+
+	[TestMethod]
+	public void ClearNulls_WithNoNulls_ReturnsFalse()
+	{
+		// Arrange
+		var collection = new List<string> { "item1", "item2", "item3" };
+
+		// Act
+		var result = collection.ClearNulls();
+
+		// Assert
+		Assert.IsFalse(result, "Expected false when clearing nulls from a collection with no nulls.");
+		Assert.AreEqual(3, collection.Count, "Expected the collection count to remain unchanged.");
+	}
+
+	[TestMethod]
+	public void ClearNulls_WithNullCollection_ReturnsFalse()
+	{
+		// Arrange
+		List<string> nullCollection = null;
+
+		// Act
+		var result = nullCollection.ClearNulls();
+
+		// Assert
+		Assert.IsFalse(result, "Expected false when clearing nulls from a null collection.");
+	}
+
+	[TestMethod]
+	public void ClearNulls_WithNulls_ReturnsTrue()
+	{
+		// Arrange
+		var collection = new List<string> { "item1", null, "item2", null, "item3" };
+
+		// Act
+		var result = collection.ClearNulls();
+
+		// Assert
+		Assert.IsTrue(result, "Expected true when clearing nulls from a collection with nulls.");
+		Assert.AreEqual(3, collection.Count, "Expected the collection count to be reduced by the number of nulls.");
+		Assert.IsFalse(collection.Contains(null), "Expected the collection to no longer contain nulls.");
 	}
 
 	[TestMethod]
