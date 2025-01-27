@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Extensions.BenchmarkTests.Tester.RandomDataBenchmark-20250127-012720</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5371/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 9.0.102
+  [Host]     : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+  Job-TMHTGD : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Extensions.BenchmarkTests.Tester  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                        </th><th>Mean  </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min   </th><th>Q1    </th><th>Median</th><th>Q3    </th><th>Max   </th><th>Op/s</th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Exceptions</th><th>Code Size</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Gen0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;Creating: Person&#39;</td><td>341,524.2 ns</td><td>3,420.8 ns</td><td>3,199.8 ns</td><td>826.2 ns</td><td>335,173.3 ns</td><td>340,938.9 ns</td><td>341,917.5 ns</td><td>343,159.4 ns</td><td>346,111.2 ns</td><td>2,928.0</td><td>-405.6 ns</td><td>15.00</td><td>2.285</td><td>2.000</td><td>-0.5573</td><td>1</td><td>*</td><td>No</td><td>-</td><td>22,135 B</td><td>-</td><td>-</td><td>-</td><td>4.27 KB</td>
+</tr><tr><td>&#39;Creating: Person&#39;</td><td>338,190.0 ns</td><td>3,648.4 ns</td><td>3,412.7 ns</td><td>881.2 ns</td><td>333,491.7 ns</td><td>334,249.6 ns</td><td>338,974.8 ns</td><td>340,339.5 ns</td><td>344,930.2 ns</td><td>2,956.9</td><td>-433.1 ns</td><td>15.00</td><td>1.882</td><td>2.000</td><td>-0.0118</td><td>1</td><td>*</td><td>No</td><td>-</td><td>22,177 B</td><td>-</td><td>-</td><td>-</td><td>4.28 KB</td>
+</tr><tr><td>&#39;Creating: PersonRecord&#39;</td><td>339,963.7 ns</td><td>2,422.0 ns</td><td>2,265.6 ns</td><td>585.0 ns</td><td>333,722.0 ns</td><td>339,876.0 ns</td><td>340,694.3 ns</td><td>341,179.9 ns</td><td>341,920.2 ns</td><td>2,941.5</td><td>-285.0 ns</td><td>15.00</td><td>4.621</td><td>2.000</td><td>-1.6440</td><td>1</td><td>*</td><td>No</td><td>-</td><td>26,054 B</td><td>-</td><td>-</td><td>-</td><td>4.68 KB</td>
+</tr><tr><td>&#39;PropertiesToString(): Person&#39;</td><td>408,561.7 ns</td><td>1,145.2 ns</td><td>1,015.2 ns</td><td>271.3 ns</td><td>407,254.0 ns</td><td>407,747.5 ns</td><td>408,504.9 ns</td><td>409,133.8 ns</td><td>410,736.3 ns</td><td>2,447.6</td><td>-128.7 ns</td><td>14.00</td><td>2.180</td><td>2.000</td><td>0.4191</td><td>2</td><td>*</td><td>No</td><td>-</td><td>28,268 B</td><td>-</td><td>-</td><td>-</td><td>85.36 KB</td>
+</tr><tr><td>&#39;PropertiesToString(): PersonRecord&#39;</td><td>450,252.1 ns</td><td>7,676.6 ns</td><td>6,805.1 ns</td><td>1,818.7 ns</td><td>445,447.3 ns</td><td>445,911.0 ns</td><td>447,374.0 ns</td><td>449,262.2 ns</td><td>464,546.0 ns</td><td>2,221.0</td><td>-902.4 ns</td><td>14.00</td><td>2.592</td><td>2.000</td><td>1.1908</td><td>3</td><td>*</td><td>No</td><td>-</td><td>33,454 B</td><td>-</td><td>-</td><td>0.9766</td><td>89 KB</td>
+</tr></tbody></table>
+</body>
+</html>

@@ -175,7 +175,7 @@ M00_L01:
        sub       rsp,20
        mov       rbx,rcx
        mov       rsi,[rbx+278]
-       mov       r8,1BD5CC0D100
+       mov       r8,20F3940B108
        mov       r8,[r8]
        test      r8,r8
        je        short M00_L02
@@ -186,7 +186,7 @@ M00_L00:
        je        short M00_L03
        mov       rdx,rsi
        mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
-       call      qword ptr [7FF95D587258]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+       call      qword ptr [7FFE28CA7348]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
 M00_L01:
        mov       rcx,[rbx+18]
        mov       [rcx+4C],al
@@ -199,12 +199,12 @@ M00_L02:
        mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
        call      CORINFO_HELP_NEWSFAST
        mov       rdi,rax
-       mov       rdx,1BD5CC0D0F8
+       mov       rdx,20F3940B100
        mov       rdx,[rdx]
        mov       rcx,rdi
        mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       call      qword ptr [7FF95CAC4210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       mov       rcx,1BD5CC0D100
+       call      qword ptr [7FFE281E4210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       mov       rcx,20F3940B108
        mov       rdx,rdi
        call      CORINFO_HELP_ASSIGN_REF
        mov       r8,rdi
@@ -271,13 +271,13 @@ M01_L02:
        mov       [rbp-68],rdi
        cmp       [rdi],dil
        lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
+       mov       rax,7FFEF0CC5380
        call      rax
        mov       rbx,[rbp-48]
-       mov       rdx,1BD5CC001C8
+       mov       rdx,20F3D4001C8
        mov       rdi,[rdx]
        sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
+       cmp       dword ptr [7FFE880B40DC],0
        jne       near ptr M01_L09
 M01_L03:
        mov       edx,0B2D05E00
@@ -301,9 +301,9 @@ M01_L04:
        sub       r8,rdx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D643CD8]
+       vdivsd    xmm0,xmm0,[7FFE28D63CF8]
        xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D643CE0]
+       vucomisd  xmm0,qword ptr [7FFE28D63D00]
        seta      r15b
        test      r15d,r15d
        mov       rax,[rbp-60]
@@ -311,16 +311,16 @@ M01_L04:
        je        near ptr M01_L12
        jmp       near ptr M01_L22
 M01_L05:
-       call      qword ptr [7FF95CDC5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       call      qword ptr [7FFE284E5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
        mov       rbx,rax
        jmp       near ptr M01_L04
 M01_L06:
        mov       rcx,rax
-       mov       r11,7FF95C981070
+       mov       r11,7FFE280A1070
        call      qword ptr [r11]
        jmp       near ptr M01_L20
 M01_L07:
-       call      qword ptr [7FF95CDC5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       call      qword ptr [7FFE284E5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
        mov       rbx,rax
        jmp       near ptr M01_L16
 M01_L08:
@@ -331,7 +331,7 @@ M01_L09:
        jmp       near ptr M01_L03
 M01_L10:
        mov       rcx,rsi
-       mov       rdx,7FF95D576B48
+       mov       rdx,7FFE28C96C08
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L02
@@ -350,7 +350,7 @@ M01_L12:
        lea       rcx,[rax+8]
        add       rcx,8
        mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D587A50]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       call      qword ptr [7FFE28CA7B40]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
        test      eax,eax
        je        near ptr M01_L26
        jmp       near ptr M01_L01
@@ -371,13 +371,13 @@ M01_L14:
        mov       [rbp-68],rdi
        cmp       [rdi],dil
        lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
+       mov       rax,7FFEF0CC5380
        call      rax
        mov       rbx,[rbp-48]
-       mov       rdx,1BD5CC001C8
+       mov       rdx,20F3D4001C8
        mov       rdi,[rdx]
        sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
+       cmp       dword ptr [7FFE880B40DC],0
        jne       near ptr M01_L08
 M01_L15:
        mov       edx,0B2D05E00
@@ -402,9 +402,9 @@ M01_L16:
        sub       r8,rcx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D643CD8]
+       vdivsd    xmm0,xmm0,[7FFE28D63CF8]
        xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D643CE0]
+       vucomisd  xmm0,qword ptr [7FFE28D63D00]
        seta      r15b
        test      r15d,r15d
        mov       rax,[rbp-60]
@@ -413,7 +413,7 @@ M01_L16:
        jmp       near ptr M01_L22
 M01_L17:
        mov       rcx,rsi
-       mov       rdx,7FF95D576B48
+       mov       rdx,7FFE28C96C08
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L14
@@ -435,14 +435,14 @@ M01_L19:
        lea       rcx,[rax+8]
        add       rcx,8
        mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D587A50]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       call      qword ptr [7FFE28CA7B40]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
 M01_L20:
        test      eax,eax
        je        short M01_L26
        jmp       near ptr M01_L13
 M01_L21:
        mov       rcx,rsi
-       mov       rdx,7FF95D576A70
+       mov       rdx,7FFE28C96B30
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L00
@@ -462,11 +462,11 @@ M01_L23:
        ret
 M01_L24:
        mov       ecx,10
-       call      qword ptr [7FF95CD54F30]
+       call      qword ptr [7FFE28474F30]
        int       3
 M01_L25:
        mov       ecx,0C
-       call      qword ptr [7FF95CD54F30]
+       call      qword ptr [7FFE28474F30]
        int       3
 M01_L26:
        mov       rcx,rsp
@@ -474,7 +474,7 @@ M01_L26:
        jmp       short M01_L28
 M01_L27:
        mov       rcx,rax
-       mov       r11,7FF95C981078
+       mov       r11,7FFE280A1078
        call      qword ptr [r11]
        jmp       short M01_L23
 M01_L28:
@@ -502,419 +502,11 @@ M01_L29:
        cmp       qword ptr [rbp-60],0
        je        short M01_L30
        mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       mov       rax,[rbp-60]
-       cmp       [rax],rcx
+       mov       r11,[rbp-60]
+       cmp       [r11],rcx
        je        short M01_L30
-       mov       rcx,[rbp-60]
-       mov       r11,7FF95C981078
-       call      qword ptr [r11]
-M01_L30:
-       nop
-       add       rsp,28
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-; Total bytes of code 1174
-```
-```assembly
-; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       push      rbx
-       sub       rsp,20
-       vzeroupper
-       mov       rbx,[rdx+8]
-       cmp       [rbx],bl
-       call      qword ptr [7FF95CDC5B90]; System.DateTime.get_UtcNow()
-       mov       rcx,[rbx+48]
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rax,rdx
-       mov       rdx,4000000000000000
-       or        rax,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rcx,rdx
-       mov       rdx,4000000000000000
-       or        rcx,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rax,rdx
-       and       rcx,rdx
-       sub       rax,rcx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,rax
-       vdivsd    xmm0,xmm0,[7FF95D644728]
-       xor       eax,eax
-       vucomisd  xmm0,qword ptr [7FF95D644730]
-       seta      al
-       add       rsp,20
-       pop       rbx
-       ret
-; Total bytes of code 131
-```
-```assembly
-; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       push      rsi
-       push      rbx
-       sub       rsp,28
-       mov       rbx,rcx
-       mov       rsi,r8
-       test      rdx,rdx
-       je        short M03_L00
-       lea       rcx,[rbx+8]
-       call      CORINFO_HELP_ASSIGN_REF
-       mov       [rbx+18],rsi
-       add       rsp,28
-       pop       rbx
-       pop       rsi
-       ret
-M03_L00:
-       call      qword ptr [7FF95CAC41F8]
-       int       3
-; Total bytes of code 44
-```
-
-## .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
-```assembly
-; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark.HaveItemsWithPredicate()
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,20
-       mov       rbx,rcx
-       mov       rsi,[rbx+278]
-       mov       r8,196EA80B108
-       mov       r8,[r8]
-       test      r8,r8
-       je        short M00_L02
-       test      rsi,rsi
-       je        short M00_L03
-M00_L00:
-       test      r8,r8
-       je        short M00_L03
-       mov       rdx,rsi
-       mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
-       call      qword ptr [7FF95D55D350]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
-M00_L01:
-       mov       rcx,[rbx+18]
-       mov       [rcx+4C],al
-       add       rsp,20
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       ret
-M00_L02:
-       mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
-       call      CORINFO_HELP_NEWSFAST
-       mov       rdi,rax
-       mov       rdx,196EA80B100
-       mov       rdx,[rdx]
-       mov       rcx,rdi
-       mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       call      qword ptr [7FF95CA94210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       mov       rcx,196EA80B108
-       mov       rdx,rdi
-       call      CORINFO_HELP_ASSIGN_REF
-       mov       r8,rdi
-       test      rsi,rsi
-       jne       short M00_L00
-M00_L03:
-       mov       eax,1
-       jmp       short M00_L01
-; Total bytes of code 162
-```
-```assembly
-; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,68
-       vzeroupper
-       lea       rbp,[rsp+90]
-       xor       eax,eax
-       mov       [rbp-58],rax
-       vxorps    xmm4,xmm4,xmm4
-       vmovdqa   xmmword ptr [rbp-50],xmm4
-       vmovdqa   xmmword ptr [rbp-40],xmm4
-       mov       [rbp-70],rsp
-       mov       [rbp-30],rcx
-       mov       rsi,rcx
-       mov       rdi,rdx
-       mov       rbx,r8
-       test      rdi,rdi
-       je        near ptr M01_L24
-       test      rbx,rbx
-       je        near ptr M01_L25
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+10]
-       test      r11,r11
-       je        near ptr M01_L21
-M01_L00:
-       mov       rcx,rdi
-       call      qword ptr [r11]
-       mov       [rbp-60],rax
-       test      rax,rax
-       je        near ptr M01_L19
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       near ptr M01_L19
-       jmp       near ptr M01_L12
-M01_L01:
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+18]
-       test      r11,r11
-       je        near ptr M01_L10
-M01_L02:
-       lea       rdx,[rbp-40]
-       mov       rcx,[rbp-60]
-       call      qword ptr [r11]
-       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       mov       [rbp+20],rbx
-       cmp       [rbx+18],rcx
-       jne       near ptr M01_L11
-       mov       rdi,[rbp-38]
-       mov       [rbp-68],rdi
-       cmp       [rdi],dil
-       lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
-       call      rax
-       mov       rbx,[rbp-48]
-       mov       rdx,196EE8001C8
-       mov       rdi,[rdx]
-       sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
-       jne       near ptr M01_L09
-M01_L03:
-       mov       edx,0B2D05E00
-       cmp       rbx,rdx
-       jae       near ptr M01_L05
-       add       rbx,[rdi+10]
-M01_L04:
-       mov       rdi,[rbp-68]
-       mov       r14,[rdi+48]
-       mov       rax,3FFFFFFFFFFFFFFF
-       and       rax,rbx
-       mov       r8,4000000000000000
-       or        rax,r8
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rdx,r14
-       or        rdx,r8
-       mov       r8,3FFFFFFFFFFFFFFF
-       and       r8,rax
-       mov       rcx,3FFFFFFFFFFFFFFF
-       and       rdx,rcx
-       sub       r8,rdx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D614478]
-       xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D614480]
-       seta      r15b
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       mov       rbx,[rbp+20]
-       je        near ptr M01_L12
-       jmp       near ptr M01_L22
-M01_L05:
-       call      qword ptr [7FF95CD95C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
-       mov       rbx,rax
-       jmp       near ptr M01_L04
-M01_L06:
-       mov       rcx,rax
-       mov       r11,7FF95C951070
-       call      qword ptr [r11]
-       jmp       near ptr M01_L20
-M01_L07:
-       call      qword ptr [7FF95CD95C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
-       mov       rbx,rax
-       jmp       near ptr M01_L16
-M01_L08:
-       call      CORINFO_HELP_POLL_GC
-       jmp       near ptr M01_L15
-M01_L09:
-       call      CORINFO_HELP_POLL_GC
-       jmp       near ptr M01_L03
-M01_L10:
-       mov       rcx,rsi
-       mov       rdx,7FF95D548A78
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L02
-M01_L11:
-       vmovdqu   xmm0,xmmword ptr [rbp-40]
-       vmovdqu   xmmword ptr [rbp-58],xmm0
-       lea       rdx,[rbp-58]
-       mov       rbx,[rbp+20]
-       mov       rcx,[rbx+8]
-       call      qword ptr [rbx+18]
-       mov       r15d,eax
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       jne       near ptr M01_L22
-M01_L12:
-       lea       rcx,[rax+8]
-       add       rcx,8
-       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D55DB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
-       test      eax,eax
-       je        near ptr M01_L26
-       jmp       near ptr M01_L01
-M01_L13:
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+18]
-       test      r11,r11
-       je        near ptr M01_L17
-M01_L14:
-       lea       rdx,[rbp-40]
-       mov       rcx,[rbp-60]
-       call      qword ptr [r11]
-       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       mov       [rbp+20],rbx
-       cmp       [rbx+18],rcx
-       jne       near ptr M01_L18
-       mov       rdi,[rbp-38]
-       mov       [rbp-68],rdi
-       cmp       [rdi],dil
-       lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
-       call      rax
-       mov       rbx,[rbp-48]
-       mov       rdx,196EE8001C8
-       mov       rdi,[rdx]
-       sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
-       jne       near ptr M01_L08
-M01_L15:
-       mov       edx,0B2D05E00
-       cmp       rbx,rdx
-       jae       near ptr M01_L07
-       add       rbx,[rdi+10]
-M01_L16:
-       mov       rdi,[rbp-68]
-       mov       r14,[rdi+48]
-       mov       rax,3FFFFFFFFFFFFFFF
-       and       rax,rbx
-       mov       rdx,4000000000000000
-       or        rax,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rdx,r14
-       mov       rcx,4000000000000000
-       or        rdx,rcx
-       mov       r8,3FFFFFFFFFFFFFFF
-       and       r8,rax
-       mov       rcx,3FFFFFFFFFFFFFFF
-       and       rcx,rdx
-       sub       r8,rcx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D614478]
-       xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D614480]
-       seta      r15b
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       mov       rbx,[rbp+20]
-       je        short M01_L19
-       jmp       near ptr M01_L22
-M01_L17:
-       mov       rcx,rsi
-       mov       rdx,7FF95D548A78
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L14
-M01_L18:
-       vmovdqu   xmm0,xmmword ptr [rbp-40]
-       vmovdqu   xmmword ptr [rbp-58],xmm0
-       lea       rdx,[rbp-58]
-       mov       rbx,[rbp+20]
-       mov       rcx,[rbx+8]
-       call      qword ptr [rbx+18]
-       mov       r15d,eax
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       jne       short M01_L22
-M01_L19:
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       near ptr M01_L06
-       lea       rcx,[rax+8]
-       add       rcx,8
-       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D55DB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
-M01_L20:
-       test      eax,eax
-       je        short M01_L26
-       jmp       near ptr M01_L13
-M01_L21:
-       mov       rcx,rsi
-       mov       rdx,7FF95D5489A0
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L00
-M01_L22:
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       short M01_L27
-M01_L23:
-       mov       eax,1
-       add       rsp,68
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-M01_L24:
-       mov       ecx,10
-       call      qword ptr [7FF95CD24F30]
-       int       3
-M01_L25:
-       mov       ecx,0C
-       call      qword ptr [7FF95CD24F30]
-       int       3
-M01_L26:
-       mov       rcx,rsp
-       call      M01_L29
-       jmp       short M01_L28
-M01_L27:
-       mov       rcx,rax
-       mov       r11,7FF95C951078
-       call      qword ptr [r11]
-       jmp       short M01_L23
-M01_L28:
-       xor       eax,eax
-       add       rsp,68
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-M01_L29:
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,28
-       vzeroupper
-       mov       rbp,[rcx+20]
-       mov       [rsp+20],rbp
-       lea       rbp,[rbp+90]
-       cmp       qword ptr [rbp-60],0
-       je        short M01_L30
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       mov       rax,[rbp-60]
-       cmp       [rax],rcx
-       je        short M01_L30
-       mov       rcx,rax
-       mov       r11,7FF95C951078
+       mov       rcx,r11
+       mov       r11,7FFE280A1078
        call      qword ptr [r11]
 M01_L30:
        nop
@@ -935,7 +527,7 @@ M01_L30:
        vzeroupper
        mov       rbx,[rdx+8]
        cmp       [rbx],bl
-       call      qword ptr [7FF95CD95B90]; System.DateTime.get_UtcNow()
+       call      qword ptr [7FFE284E5B90]; System.DateTime.get_UtcNow()
        mov       rcx,[rbx+48]
        mov       rdx,3FFFFFFFFFFFFFFF
        and       rax,rdx
@@ -951,9 +543,9 @@ M01_L30:
        sub       rax,rcx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,rax
-       vdivsd    xmm0,xmm0,[7FF95D614EC8]
+       vdivsd    xmm0,xmm0,[7FFE28D64748]
        xor       eax,eax
-       vucomisd  xmm0,qword ptr [7FF95D614ED0]
+       vucomisd  xmm0,qword ptr [7FFE28D64750]
        seta      al
        add       rsp,20
        pop       rbx
@@ -977,7 +569,7 @@ M01_L30:
        pop       rsi
        ret
 M03_L00:
-       call      qword ptr [7FF95CA941F8]
+       call      qword ptr [7FFE281E41F8]
        int       3
 ; Total bytes of code 44
 ```
@@ -991,7 +583,7 @@ M03_L00:
        sub       rsp,20
        mov       rbx,rcx
        mov       rsi,[rbx+278]
-       mov       r8,1B04300D100
+       mov       r8,1FB0E80D100
        mov       r8,[r8]
        test      r8,r8
        je        short M00_L02
@@ -1002,7 +594,7 @@ M00_L00:
        je        short M00_L03
        mov       rdx,rsi
        mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
-       call      qword ptr [7FF95D56C948]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+       call      qword ptr [7FFE28CCD350]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
 M00_L01:
        mov       rcx,[rbx+18]
        mov       [rcx+4C],al
@@ -1015,12 +607,420 @@ M00_L02:
        mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
        call      CORINFO_HELP_NEWSFAST
        mov       rdi,rax
-       mov       rdx,1B04300D0F8
+       mov       rdx,1FB0E80D0F8
        mov       rdx,[rdx]
        mov       rcx,rdi
        mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       call      qword ptr [7FF95CAA4210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       mov       rcx,1B04300D100
+       call      qword ptr [7FFE28204210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       mov       rcx,1FB0E80D100
+       mov       rdx,rdi
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       r8,rdi
+       test      rsi,rsi
+       jne       short M00_L00
+M00_L03:
+       mov       eax,1
+       jmp       short M00_L01
+; Total bytes of code 162
+```
+```assembly
+; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,68
+       vzeroupper
+       lea       rbp,[rsp+90]
+       xor       eax,eax
+       mov       [rbp-58],rax
+       vxorps    xmm4,xmm4,xmm4
+       vmovdqa   xmmword ptr [rbp-50],xmm4
+       vmovdqa   xmmword ptr [rbp-40],xmm4
+       mov       [rbp-70],rsp
+       mov       [rbp-30],rcx
+       mov       rsi,rcx
+       mov       rdi,rdx
+       mov       rbx,r8
+       test      rdi,rdi
+       je        near ptr M01_L24
+       test      rbx,rbx
+       je        near ptr M01_L25
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+10]
+       test      r11,r11
+       je        near ptr M01_L21
+M01_L00:
+       mov       rcx,rdi
+       call      qword ptr [r11]
+       mov       [rbp-60],rax
+       test      rax,rax
+       je        near ptr M01_L19
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       jne       near ptr M01_L19
+       jmp       near ptr M01_L12
+M01_L01:
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+18]
+       test      r11,r11
+       je        near ptr M01_L10
+M01_L02:
+       lea       rdx,[rbp-40]
+       mov       rcx,[rbp-60]
+       call      qword ptr [r11]
+       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       mov       [rbp+20],rbx
+       cmp       [rbx+18],rcx
+       jne       near ptr M01_L11
+       mov       rdi,[rbp-38]
+       mov       [rbp-68],rdi
+       cmp       [rdi],dil
+       lea       rcx,[rbp-48]
+       mov       rax,7FFEF0CC5380
+       call      rax
+       mov       rbx,[rbp-48]
+       mov       rdx,1FB0E8001C8
+       mov       rdi,[rdx]
+       sub       rbx,[rdi+8]
+       cmp       dword ptr [7FFE880B40DC],0
+       jne       near ptr M01_L09
+M01_L03:
+       mov       edx,0B2D05E00
+       cmp       rbx,rdx
+       jae       near ptr M01_L05
+       add       rbx,[rdi+10]
+M01_L04:
+       mov       rdi,[rbp-68]
+       mov       r14,[rdi+48]
+       mov       rax,3FFFFFFFFFFFFFFF
+       and       rax,rbx
+       mov       r8,4000000000000000
+       or        rax,r8
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rdx,r14
+       or        rdx,r8
+       mov       r8,3FFFFFFFFFFFFFFF
+       and       r8,rax
+       mov       rcx,3FFFFFFFFFFFFFFF
+       and       rdx,rcx
+       sub       r8,rdx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,r8
+       vdivsd    xmm0,xmm0,[7FFE28D84398]
+       xor       r15d,r15d
+       vucomisd  xmm0,qword ptr [7FFE28D843A0]
+       seta      r15b
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       mov       rbx,[rbp+20]
+       je        near ptr M01_L12
+       jmp       near ptr M01_L22
+M01_L05:
+       call      qword ptr [7FFE28505C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       mov       rbx,rax
+       jmp       near ptr M01_L04
+M01_L06:
+       mov       rcx,rax
+       mov       r11,7FFE280C1070
+       call      qword ptr [r11]
+       jmp       near ptr M01_L20
+M01_L07:
+       call      qword ptr [7FFE28505C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       mov       rbx,rax
+       jmp       near ptr M01_L16
+M01_L08:
+       call      CORINFO_HELP_POLL_GC
+       jmp       near ptr M01_L15
+M01_L09:
+       call      CORINFO_HELP_POLL_GC
+       jmp       near ptr M01_L03
+M01_L10:
+       mov       rcx,rsi
+       mov       rdx,7FFE28CB8A78
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L02
+M01_L11:
+       vmovdqu   xmm0,xmmword ptr [rbp-40]
+       vmovdqu   xmmword ptr [rbp-58],xmm0
+       lea       rdx,[rbp-58]
+       mov       rbx,[rbp+20]
+       mov       rcx,[rbx+8]
+       call      qword ptr [rbx+18]
+       mov       r15d,eax
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       jne       near ptr M01_L22
+M01_L12:
+       lea       rcx,[rax+8]
+       add       rcx,8
+       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
+       call      qword ptr [7FFE28CCDB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       test      eax,eax
+       je        near ptr M01_L26
+       jmp       near ptr M01_L01
+M01_L13:
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+18]
+       test      r11,r11
+       je        near ptr M01_L17
+M01_L14:
+       lea       rdx,[rbp-40]
+       mov       rcx,[rbp-60]
+       call      qword ptr [r11]
+       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       mov       [rbp+20],rbx
+       cmp       [rbx+18],rcx
+       jne       near ptr M01_L18
+       mov       rdi,[rbp-38]
+       mov       [rbp-68],rdi
+       cmp       [rdi],dil
+       lea       rcx,[rbp-48]
+       mov       rax,7FFEF0CC5380
+       call      rax
+       mov       rbx,[rbp-48]
+       mov       rdx,1FB0E8001C8
+       mov       rdi,[rdx]
+       sub       rbx,[rdi+8]
+       cmp       dword ptr [7FFE880B40DC],0
+       jne       near ptr M01_L08
+M01_L15:
+       mov       edx,0B2D05E00
+       cmp       rbx,rdx
+       jae       near ptr M01_L07
+       add       rbx,[rdi+10]
+M01_L16:
+       mov       rdi,[rbp-68]
+       mov       r14,[rdi+48]
+       mov       rax,3FFFFFFFFFFFFFFF
+       and       rax,rbx
+       mov       rdx,4000000000000000
+       or        rax,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rdx,r14
+       mov       rcx,4000000000000000
+       or        rdx,rcx
+       mov       r8,3FFFFFFFFFFFFFFF
+       and       r8,rax
+       mov       rcx,3FFFFFFFFFFFFFFF
+       and       rcx,rdx
+       sub       r8,rcx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,r8
+       vdivsd    xmm0,xmm0,[7FFE28D84398]
+       xor       r15d,r15d
+       vucomisd  xmm0,qword ptr [7FFE28D843A0]
+       seta      r15b
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       mov       rbx,[rbp+20]
+       je        short M01_L19
+       jmp       near ptr M01_L22
+M01_L17:
+       mov       rcx,rsi
+       mov       rdx,7FFE28CB8A78
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L14
+M01_L18:
+       vmovdqu   xmm0,xmmword ptr [rbp-40]
+       vmovdqu   xmmword ptr [rbp-58],xmm0
+       lea       rdx,[rbp-58]
+       mov       rbx,[rbp+20]
+       mov       rcx,[rbx+8]
+       call      qword ptr [rbx+18]
+       mov       r15d,eax
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       jne       short M01_L22
+M01_L19:
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       jne       near ptr M01_L06
+       lea       rcx,[rax+8]
+       add       rcx,8
+       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
+       call      qword ptr [7FFE28CCDB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+M01_L20:
+       test      eax,eax
+       je        short M01_L26
+       jmp       near ptr M01_L13
+M01_L21:
+       mov       rcx,rsi
+       mov       rdx,7FFE28CB89A0
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L00
+M01_L22:
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       jne       short M01_L27
+M01_L23:
+       mov       eax,1
+       add       rsp,68
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M01_L24:
+       mov       ecx,10
+       call      qword ptr [7FFE28494F30]
+       int       3
+M01_L25:
+       mov       ecx,0C
+       call      qword ptr [7FFE28494F30]
+       int       3
+M01_L26:
+       mov       rcx,rsp
+       call      M01_L29
+       jmp       short M01_L28
+M01_L27:
+       mov       rcx,rax
+       mov       r11,7FFE280C1078
+       call      qword ptr [r11]
+       jmp       short M01_L23
+M01_L28:
+       xor       eax,eax
+       add       rsp,68
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M01_L29:
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,28
+       vzeroupper
+       mov       rbp,[rcx+20]
+       mov       [rsp+20],rbp
+       lea       rbp,[rbp+90]
+       cmp       qword ptr [rbp-60],0
+       je        short M01_L30
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       mov       rax,[rbp-60]
+       cmp       [rax],rcx
+       je        short M01_L30
+       mov       rcx,[rbp-60]
+       mov       r11,7FFE280C1078
+       call      qword ptr [r11]
+M01_L30:
+       nop
+       add       rsp,28
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 1174
+```
+```assembly
+; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       push      rbx
+       sub       rsp,20
+       vzeroupper
+       mov       rbx,[rdx+8]
+       cmp       [rbx],bl
+       call      qword ptr [7FFE28505B90]; System.DateTime.get_UtcNow()
+       mov       rcx,[rbx+48]
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rax,rdx
+       mov       rdx,4000000000000000
+       or        rax,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rcx,rdx
+       mov       rdx,4000000000000000
+       or        rcx,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rax,rdx
+       and       rcx,rdx
+       sub       rax,rcx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,rax
+       vdivsd    xmm0,xmm0,[7FFE28D84DE8]
+       xor       eax,eax
+       vucomisd  xmm0,qword ptr [7FFE28D84DF0]
+       seta      al
+       add       rsp,20
+       pop       rbx
+       ret
+; Total bytes of code 131
+```
+```assembly
+; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       push      rsi
+       push      rbx
+       sub       rsp,28
+       mov       rbx,rcx
+       mov       rsi,r8
+       test      rdx,rdx
+       je        short M03_L00
+       lea       rcx,[rbx+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbx+18],rsi
+       add       rsp,28
+       pop       rbx
+       pop       rsi
+       ret
+M03_L00:
+       call      qword ptr [7FFE282041F8]
+       int       3
+; Total bytes of code 44
+```
+
+## .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+```assembly
+; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark.HaveItemsWithPredicate()
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,20
+       mov       rbx,rcx
+       mov       rsi,[rbx+278]
+       mov       r8,2315600D100
+       mov       r8,[r8]
+       test      r8,r8
+       je        short M00_L02
+       test      rsi,rsi
+       je        short M00_L03
+M00_L00:
+       test      r8,r8
+       je        short M00_L03
+       mov       rdx,rsi
+       mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
+       call      qword ptr [7FFE28CCD350]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+M00_L01:
+       mov       rcx,[rbx+18]
+       mov       [rcx+4C],al
+       add       rsp,20
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       ret
+M00_L02:
+       mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
+       call      CORINFO_HELP_NEWSFAST
+       mov       rdi,rax
+       mov       rdx,2315600D0F8
+       mov       rdx,[rdx]
+       mov       rcx,rdi
+       mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       call      qword ptr [7FFE28204210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       mov       rcx,2315600D100
        mov       rdx,rdi
        call      CORINFO_HELP_ASSIGN_REF
        mov       r8,rdi
@@ -1087,13 +1087,13 @@ M01_L02:
        mov       [rbp-68],rdi
        cmp       [rdi],dil
        lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
+       mov       rax,7FFEF0CC5380
        call      rax
        mov       rbx,[rbp-48]
-       mov       rdx,1B0430001C8
+       mov       rdx,231560001C8
        mov       rdi,[rdx]
        sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
+       cmp       dword ptr [7FFE880B40DC],0
        jne       near ptr M01_L09
 M01_L03:
        mov       edx,0B2D05E00
@@ -1117,9 +1117,9 @@ M01_L04:
        sub       r8,rdx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D624558]
+       vdivsd    xmm0,xmm0,[7FFE28D84518]
        xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D624560]
+       vucomisd  xmm0,qword ptr [7FFE28D84520]
        seta      r15b
        test      r15d,r15d
        mov       rax,[rbp-60]
@@ -1127,16 +1127,16 @@ M01_L04:
        je        near ptr M01_L12
        jmp       near ptr M01_L23
 M01_L05:
-       call      qword ptr [7FF95CDA5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       call      qword ptr [7FFE28505C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
        mov       rbx,rax
        jmp       near ptr M01_L04
 M01_L06:
        mov       rcx,rax
-       mov       r11,7FF95C961070
+       mov       r11,7FFE280C1070
        call      qword ptr [r11]
        jmp       near ptr M01_L20
 M01_L07:
-       call      qword ptr [7FF95CDA5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       call      qword ptr [7FFE28505C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
        mov       rbx,rax
        jmp       near ptr M01_L16
 M01_L08:
@@ -1147,7 +1147,7 @@ M01_L09:
        jmp       near ptr M01_L03
 M01_L10:
        mov       rcx,rsi
-       mov       rdx,7FF95D558968
+       mov       rdx,7FFE28CB8A78
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L02
@@ -1166,7 +1166,7 @@ M01_L12:
        lea       rcx,[rax+8]
        add       rcx,8
        mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D56D140]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       call      qword ptr [7FFE28CCDB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
        test      eax,eax
        je        near ptr M01_L27
        jmp       near ptr M01_L01
@@ -1187,13 +1187,13 @@ M01_L14:
        mov       [rbp-68],rdi
        cmp       [rdi],dil
        lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
+       mov       rax,7FFEF0CC5380
        call      rax
        mov       rbx,[rbp-48]
-       mov       rdx,1B0430001C8
+       mov       rdx,231560001C8
        mov       rdi,[rdx]
        sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
+       cmp       dword ptr [7FFE880B40DC],0
        jne       near ptr M01_L08
 M01_L15:
        mov       edx,0B2D05E00
@@ -1218,9 +1218,9 @@ M01_L16:
        sub       r8,rcx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D624558]
+       vdivsd    xmm0,xmm0,[7FFE28D84518]
        xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D624560]
+       vucomisd  xmm0,qword ptr [7FFE28D84520]
        seta      r15b
        test      r15d,r15d
        mov       rax,[rbp-60]
@@ -1229,7 +1229,7 @@ M01_L16:
        jmp       near ptr M01_L23
 M01_L17:
        mov       rcx,rsi
-       mov       rdx,7FF95D558968
+       mov       rdx,7FFE28CB8A78
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L14
@@ -1251,14 +1251,14 @@ M01_L19:
        lea       rcx,[rax+8]
        add       rcx,8
        mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D56D140]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       call      qword ptr [7FFE28CCDB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
 M01_L20:
        test      eax,eax
        je        short M01_L27
        jmp       near ptr M01_L13
 M01_L21:
        mov       rcx,rsi
-       mov       rdx,7FF95D558890
+       mov       rdx,7FFE28CB89A0
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L00
@@ -1277,7 +1277,7 @@ M01_L23:
        cmp       [rax],rcx
        je        short M01_L22
        mov       rcx,rax
-       mov       r11,7FF95C961078
+       mov       r11,7FFE280C1078
        call      qword ptr [r11]
        jmp       short M01_L22
 M01_L24:
@@ -1292,11 +1292,11 @@ M01_L24:
        ret
 M01_L25:
        mov       ecx,10
-       call      qword ptr [7FF95CD34F30]
+       call      qword ptr [7FFE28494F30]
        int       3
 M01_L26:
        mov       ecx,0C
-       call      qword ptr [7FF95CD34F30]
+       call      qword ptr [7FFE28494F30]
        int       3
 M01_L27:
        mov       rcx,rsp
@@ -1321,7 +1321,7 @@ M01_L28:
        cmp       [r11],rcx
        je        short M01_L29
        mov       rcx,r11
-       mov       r11,7FF95C961078
+       mov       r11,7FFE280C1078
        call      qword ptr [r11]
 M01_L29:
        nop
@@ -1342,7 +1342,7 @@ M01_L29:
        vzeroupper
        mov       rbx,[rdx+8]
        cmp       [rbx],bl
-       call      qword ptr [7FF95CDA5B90]; System.DateTime.get_UtcNow()
+       call      qword ptr [7FFE28505B90]; System.DateTime.get_UtcNow()
        mov       rcx,[rbx+48]
        mov       rdx,3FFFFFFFFFFFFFFF
        and       rax,rdx
@@ -1358,9 +1358,9 @@ M01_L29:
        sub       rax,rcx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,rax
-       vdivsd    xmm0,xmm0,[7FF95D624FA8]
+       vdivsd    xmm0,xmm0,[7FFE28D84F68]
        xor       eax,eax
-       vucomisd  xmm0,qword ptr [7FF95D624FB0]
+       vucomisd  xmm0,qword ptr [7FFE28D84F70]
        seta      al
        add       rsp,20
        pop       rbx
@@ -1384,7 +1384,7 @@ M01_L29:
        pop       rsi
        ret
 M03_L00:
-       call      qword ptr [7FF95CAA41F8]
+       call      qword ptr [7FFE282041F8]
        int       3
 ; Total bytes of code 44
 ```
@@ -1398,7 +1398,7 @@ M03_L00:
        sub       rsp,20
        mov       rbx,rcx
        mov       rsi,[rbx+278]
-       mov       r8,237ADC0D100
+       mov       r8,293FEC0D100
        mov       r8,[r8]
        test      r8,r8
        je        short M00_L02
@@ -1409,7 +1409,7 @@ M00_L00:
        je        short M00_L03
        mov       rdx,rsi
        mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
-       call      qword ptr [7FF95D54C228]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+       call      qword ptr [7FFE28CED350]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
 M00_L01:
        mov       rcx,[rbx+18]
        mov       [rcx+4C],al
@@ -1422,1236 +1422,12 @@ M00_L02:
        mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
        call      CORINFO_HELP_NEWSFAST
        mov       rdi,rax
-       mov       rdx,237ADC0D0F8
+       mov       rdx,293FEC0D0F8
        mov       rdx,[rdx]
        mov       rcx,rdi
        mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       call      qword ptr [7FF95CA84210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       mov       rcx,237ADC0D100
-       mov       rdx,rdi
-       call      CORINFO_HELP_ASSIGN_REF
-       mov       r8,rdi
-       test      rsi,rsi
-       jne       short M00_L00
-M00_L03:
-       mov       eax,1
-       jmp       short M00_L01
-; Total bytes of code 162
-```
-```assembly
-; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,68
-       vzeroupper
-       lea       rbp,[rsp+90]
-       xor       eax,eax
-       mov       [rbp-58],rax
-       vxorps    xmm4,xmm4,xmm4
-       vmovdqa   xmmword ptr [rbp-50],xmm4
-       vmovdqa   xmmword ptr [rbp-40],xmm4
-       mov       [rbp-70],rsp
-       mov       [rbp-30],rcx
-       mov       rsi,rcx
-       mov       rdi,rdx
-       mov       rbx,r8
-       test      rdi,rdi
-       je        near ptr M01_L24
-       test      rbx,rbx
-       je        near ptr M01_L25
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+10]
-       test      r11,r11
-       je        near ptr M01_L21
-M01_L00:
-       mov       rcx,rdi
-       call      qword ptr [r11]
-       mov       [rbp-60],rax
-       test      rax,rax
-       je        near ptr M01_L19
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       near ptr M01_L19
-       jmp       near ptr M01_L12
-M01_L01:
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+18]
-       test      r11,r11
-       je        near ptr M01_L10
-M01_L02:
-       lea       rdx,[rbp-40]
-       mov       rcx,[rbp-60]
-       call      qword ptr [r11]
-       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       mov       [rbp+20],rbx
-       cmp       [rbx+18],rcx
-       jne       near ptr M01_L11
-       mov       rdi,[rbp-38]
-       mov       [rbp-68],rdi
-       cmp       [rdi],dil
-       lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
-       call      rax
-       mov       rbx,[rbp-48]
-       mov       rdx,237ADC001C8
-       mov       rdi,[rdx]
-       sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
-       jne       near ptr M01_L09
-M01_L03:
-       mov       edx,0B2D05E00
-       cmp       rbx,rdx
-       jae       near ptr M01_L05
-       add       rbx,[rdi+10]
-M01_L04:
-       mov       rdi,[rbp-68]
-       mov       r14,[rdi+48]
-       mov       rax,3FFFFFFFFFFFFFFF
-       and       rax,rbx
-       mov       r8,4000000000000000
-       or        rax,r8
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rdx,r14
-       or        rdx,r8
-       mov       r8,3FFFFFFFFFFFFFFF
-       and       r8,rax
-       mov       rcx,3FFFFFFFFFFFFFFF
-       and       rdx,rcx
-       sub       r8,rdx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D6045B8]
-       xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D6045C0]
-       seta      r15b
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       mov       rbx,[rbp+20]
-       je        near ptr M01_L12
-       jmp       near ptr M01_L22
-M01_L05:
-       call      qword ptr [7FF95CD85C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
-       mov       rbx,rax
-       jmp       near ptr M01_L04
-M01_L06:
-       mov       rcx,rax
-       mov       r11,7FF95C941070
-       call      qword ptr [r11]
-       jmp       near ptr M01_L20
-M01_L07:
-       call      qword ptr [7FF95CD85C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
-       mov       rbx,rax
-       jmp       near ptr M01_L16
-M01_L08:
-       call      CORINFO_HELP_POLL_GC
-       jmp       near ptr M01_L15
-M01_L09:
-       call      CORINFO_HELP_POLL_GC
-       jmp       near ptr M01_L03
-M01_L10:
-       mov       rcx,rsi
-       mov       rdx,7FF95D538968
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L02
-M01_L11:
-       vmovdqu   xmm0,xmmword ptr [rbp-40]
-       vmovdqu   xmmword ptr [rbp-58],xmm0
-       lea       rdx,[rbp-58]
-       mov       rbx,[rbp+20]
-       mov       rcx,[rbx+8]
-       call      qword ptr [rbx+18]
-       mov       r15d,eax
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       jne       near ptr M01_L22
-M01_L12:
-       lea       rcx,[rax+8]
-       add       rcx,8
-       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D54CA20]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
-       test      eax,eax
-       je        near ptr M01_L26
-       jmp       near ptr M01_L01
-M01_L13:
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+18]
-       test      r11,r11
-       je        near ptr M01_L17
-M01_L14:
-       lea       rdx,[rbp-40]
-       mov       rcx,[rbp-60]
-       call      qword ptr [r11]
-       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       mov       [rbp+20],rbx
-       cmp       [rbx+18],rcx
-       jne       near ptr M01_L18
-       mov       rdi,[rbp-38]
-       mov       [rbp-68],rdi
-       cmp       [rdi],dil
-       lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
-       call      rax
-       mov       rbx,[rbp-48]
-       mov       rdx,237ADC001C8
-       mov       rdi,[rdx]
-       sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
-       jne       near ptr M01_L08
-M01_L15:
-       mov       edx,0B2D05E00
-       cmp       rbx,rdx
-       jae       near ptr M01_L07
-       add       rbx,[rdi+10]
-M01_L16:
-       mov       rdi,[rbp-68]
-       mov       r14,[rdi+48]
-       mov       rax,3FFFFFFFFFFFFFFF
-       and       rax,rbx
-       mov       rdx,4000000000000000
-       or        rax,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rdx,r14
-       mov       rcx,4000000000000000
-       or        rdx,rcx
-       mov       r8,3FFFFFFFFFFFFFFF
-       and       r8,rax
-       mov       rcx,3FFFFFFFFFFFFFFF
-       and       rcx,rdx
-       sub       r8,rcx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D6045B8]
-       xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D6045C0]
-       seta      r15b
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       mov       rbx,[rbp+20]
-       je        short M01_L19
-       jmp       near ptr M01_L22
-M01_L17:
-       mov       rcx,rsi
-       mov       rdx,7FF95D538968
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L14
-M01_L18:
-       vmovdqu   xmm0,xmmword ptr [rbp-40]
-       vmovdqu   xmmword ptr [rbp-58],xmm0
-       lea       rdx,[rbp-58]
-       mov       rbx,[rbp+20]
-       mov       rcx,[rbx+8]
-       call      qword ptr [rbx+18]
-       mov       r15d,eax
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       jne       short M01_L22
-M01_L19:
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       near ptr M01_L06
-       lea       rcx,[rax+8]
-       add       rcx,8
-       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D54CA20]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
-M01_L20:
-       test      eax,eax
-       je        short M01_L26
-       jmp       near ptr M01_L13
-M01_L21:
-       mov       rcx,rsi
-       mov       rdx,7FF95D538890
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L00
-M01_L22:
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       short M01_L27
-M01_L23:
-       mov       eax,1
-       add       rsp,68
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-M01_L24:
-       mov       ecx,10
-       call      qword ptr [7FF95CD14F30]
-       int       3
-M01_L25:
-       mov       ecx,0C
-       call      qword ptr [7FF95CD14F30]
-       int       3
-M01_L26:
-       mov       rcx,rsp
-       call      M01_L29
-       jmp       short M01_L28
-M01_L27:
-       mov       rcx,rax
-       mov       r11,7FF95C941078
-       call      qword ptr [r11]
-       jmp       short M01_L23
-M01_L28:
-       xor       eax,eax
-       add       rsp,68
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-M01_L29:
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,28
-       vzeroupper
-       mov       rbp,[rcx+20]
-       mov       [rsp+20],rbp
-       lea       rbp,[rbp+90]
-       cmp       qword ptr [rbp-60],0
-       je        short M01_L30
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       mov       rax,[rbp-60]
-       cmp       [rax],rcx
-       je        short M01_L30
-       mov       rcx,[rbp-60]
-       mov       r11,7FF95C941078
-       call      qword ptr [r11]
-M01_L30:
-       nop
-       add       rsp,28
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-; Total bytes of code 1174
-```
-```assembly
-; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       push      rbx
-       sub       rsp,20
-       vzeroupper
-       mov       rbx,[rdx+8]
-       cmp       [rbx],bl
-       call      qword ptr [7FF95CD85B90]; System.DateTime.get_UtcNow()
-       mov       rcx,[rbx+48]
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rax,rdx
-       mov       rdx,4000000000000000
-       or        rax,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rcx,rdx
-       mov       rdx,4000000000000000
-       or        rcx,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rax,rdx
-       and       rcx,rdx
-       sub       rax,rcx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,rax
-       vdivsd    xmm0,xmm0,[7FF95D605008]
-       xor       eax,eax
-       vucomisd  xmm0,qword ptr [7FF95D605010]
-       seta      al
-       add       rsp,20
-       pop       rbx
-       ret
-; Total bytes of code 131
-```
-```assembly
-; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       push      rsi
-       push      rbx
-       sub       rsp,28
-       mov       rbx,rcx
-       mov       rsi,r8
-       test      rdx,rdx
-       je        short M03_L00
-       lea       rcx,[rbx+8]
-       call      CORINFO_HELP_ASSIGN_REF
-       mov       [rbx+18],rsi
-       add       rsp,28
-       pop       rbx
-       pop       rsi
-       ret
-M03_L00:
-       call      qword ptr [7FF95CA841F8]
-       int       3
-; Total bytes of code 44
-```
-
-## .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
-```assembly
-; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark.HaveItemsWithPredicate()
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,20
-       mov       rbx,rcx
-       mov       rsi,[rbx+278]
-       mov       r8,15B1140D100
-       mov       r8,[r8]
-       test      r8,r8
-       je        short M00_L02
-       test      rsi,rsi
-       je        short M00_L03
-M00_L00:
-       test      r8,r8
-       je        short M00_L03
-       mov       rdx,rsi
-       mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
-       call      qword ptr [7FF95D57D350]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
-M00_L01:
-       mov       rcx,[rbx+18]
-       mov       [rcx+4C],al
-       add       rsp,20
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       ret
-M00_L02:
-       mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
-       call      CORINFO_HELP_NEWSFAST
-       mov       rdi,rax
-       mov       rdx,15B1140D0F8
-       mov       rdx,[rdx]
-       mov       rcx,rdi
-       mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       call      qword ptr [7FF95CAB4210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       mov       rcx,15B1140D100
-       mov       rdx,rdi
-       call      CORINFO_HELP_ASSIGN_REF
-       mov       r8,rdi
-       test      rsi,rsi
-       jne       short M00_L00
-M00_L03:
-       mov       eax,1
-       jmp       short M00_L01
-; Total bytes of code 162
-```
-```assembly
-; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,68
-       vzeroupper
-       lea       rbp,[rsp+90]
-       xor       eax,eax
-       mov       [rbp-58],rax
-       vxorps    xmm4,xmm4,xmm4
-       vmovdqa   xmmword ptr [rbp-50],xmm4
-       vmovdqa   xmmword ptr [rbp-40],xmm4
-       mov       [rbp-70],rsp
-       mov       [rbp-30],rcx
-       mov       rsi,rcx
-       mov       rdi,rdx
-       mov       rbx,r8
-       test      rdi,rdi
-       je        near ptr M01_L24
-       test      rbx,rbx
-       je        near ptr M01_L25
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+10]
-       test      r11,r11
-       je        near ptr M01_L21
-M01_L00:
-       mov       rcx,rdi
-       call      qword ptr [r11]
-       mov       [rbp-60],rax
-       test      rax,rax
-       je        near ptr M01_L19
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       near ptr M01_L19
-       jmp       near ptr M01_L12
-M01_L01:
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+18]
-       test      r11,r11
-       je        near ptr M01_L10
-M01_L02:
-       lea       rdx,[rbp-40]
-       mov       rcx,[rbp-60]
-       call      qword ptr [r11]
-       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       mov       [rbp+20],rbx
-       cmp       [rbx+18],rcx
-       jne       near ptr M01_L11
-       mov       rdi,[rbp-38]
-       mov       [rbp-68],rdi
-       cmp       [rdi],dil
-       lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
-       call      rax
-       mov       rbx,[rbp-48]
-       mov       rdx,15B114001C8
-       mov       rdi,[rdx]
-       sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
-       jne       near ptr M01_L09
-M01_L03:
-       mov       edx,0B2D05E00
-       cmp       rbx,rdx
-       jae       near ptr M01_L05
-       add       rbx,[rdi+10]
-M01_L04:
-       mov       rdi,[rbp-68]
-       mov       r14,[rdi+48]
-       mov       rax,3FFFFFFFFFFFFFFF
-       and       rax,rbx
-       mov       r8,4000000000000000
-       or        rax,r8
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rdx,r14
-       or        rdx,r8
-       mov       r8,3FFFFFFFFFFFFFFF
-       and       r8,rax
-       mov       rcx,3FFFFFFFFFFFFFFF
-       and       rdx,rcx
-       sub       r8,rdx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D635278]
-       xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D635280]
-       seta      r15b
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       mov       rbx,[rbp+20]
-       je        near ptr M01_L12
-       jmp       near ptr M01_L22
-M01_L05:
-       call      qword ptr [7FF95CDB5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
-       mov       rbx,rax
-       jmp       near ptr M01_L04
-M01_L06:
-       mov       rcx,rax
-       mov       r11,7FF95C971070
-       call      qword ptr [r11]
-       jmp       near ptr M01_L20
-M01_L07:
-       call      qword ptr [7FF95CDB5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
-       mov       rbx,rax
-       jmp       near ptr M01_L16
-M01_L08:
-       call      CORINFO_HELP_POLL_GC
-       jmp       near ptr M01_L15
-M01_L09:
-       call      CORINFO_HELP_POLL_GC
-       jmp       near ptr M01_L03
-M01_L10:
-       mov       rcx,rsi
-       mov       rdx,7FF95D569068
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L02
-M01_L11:
-       vmovdqu   xmm0,xmmword ptr [rbp-40]
-       vmovdqu   xmmword ptr [rbp-58],xmm0
-       lea       rdx,[rbp-58]
-       mov       rbx,[rbp+20]
-       mov       rcx,[rbx+8]
-       call      qword ptr [rbx+18]
-       mov       r15d,eax
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       jne       near ptr M01_L22
-M01_L12:
-       lea       rcx,[rax+8]
-       add       rcx,8
-       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D57DB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
-       test      eax,eax
-       je        near ptr M01_L26
-       jmp       near ptr M01_L01
-M01_L13:
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+18]
-       test      r11,r11
-       je        near ptr M01_L17
-M01_L14:
-       lea       rdx,[rbp-40]
-       mov       rcx,[rbp-60]
-       call      qword ptr [r11]
-       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       mov       [rbp+20],rbx
-       cmp       [rbx+18],rcx
-       jne       near ptr M01_L18
-       mov       rdi,[rbp-38]
-       mov       [rbp-68],rdi
-       cmp       [rdi],dil
-       lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
-       call      rax
-       mov       rbx,[rbp-48]
-       mov       rdx,15B114001C8
-       mov       rdi,[rdx]
-       sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
-       jne       near ptr M01_L08
-M01_L15:
-       mov       edx,0B2D05E00
-       cmp       rbx,rdx
-       jae       near ptr M01_L07
-       add       rbx,[rdi+10]
-M01_L16:
-       mov       rdi,[rbp-68]
-       mov       r14,[rdi+48]
-       mov       rax,3FFFFFFFFFFFFFFF
-       and       rax,rbx
-       mov       rdx,4000000000000000
-       or        rax,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rdx,r14
-       mov       rcx,4000000000000000
-       or        rdx,rcx
-       mov       r8,3FFFFFFFFFFFFFFF
-       and       r8,rax
-       mov       rcx,3FFFFFFFFFFFFFFF
-       and       rcx,rdx
-       sub       r8,rcx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D635278]
-       xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D635280]
-       seta      r15b
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       mov       rbx,[rbp+20]
-       je        short M01_L19
-       jmp       near ptr M01_L22
-M01_L17:
-       mov       rcx,rsi
-       mov       rdx,7FF95D569068
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L14
-M01_L18:
-       vmovdqu   xmm0,xmmword ptr [rbp-40]
-       vmovdqu   xmmword ptr [rbp-58],xmm0
-       lea       rdx,[rbp-58]
-       mov       rbx,[rbp+20]
-       mov       rcx,[rbx+8]
-       call      qword ptr [rbx+18]
-       mov       r15d,eax
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       jne       short M01_L22
-M01_L19:
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       near ptr M01_L06
-       lea       rcx,[rax+8]
-       add       rcx,8
-       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D57DB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
-M01_L20:
-       test      eax,eax
-       je        short M01_L26
-       jmp       near ptr M01_L13
-M01_L21:
-       mov       rcx,rsi
-       mov       rdx,7FF95D568F90
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L00
-M01_L22:
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       short M01_L27
-M01_L23:
-       mov       eax,1
-       add       rsp,68
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-M01_L24:
-       mov       ecx,10
-       call      qword ptr [7FF95CD44F30]
-       int       3
-M01_L25:
-       mov       ecx,0C
-       call      qword ptr [7FF95CD44F30]
-       int       3
-M01_L26:
-       mov       rcx,rsp
-       call      M01_L29
-       jmp       short M01_L28
-M01_L27:
-       mov       rcx,rax
-       mov       r11,7FF95C971078
-       call      qword ptr [r11]
-       jmp       short M01_L23
-M01_L28:
-       xor       eax,eax
-       add       rsp,68
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-M01_L29:
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,28
-       vzeroupper
-       mov       rbp,[rcx+20]
-       mov       [rsp+20],rbp
-       lea       rbp,[rbp+90]
-       cmp       qword ptr [rbp-60],0
-       je        short M01_L30
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       mov       rax,[rbp-60]
-       cmp       [rax],rcx
-       je        short M01_L30
-       mov       rcx,[rbp-60]
-       mov       r11,7FF95C971078
-       call      qword ptr [r11]
-M01_L30:
-       nop
-       add       rsp,28
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-; Total bytes of code 1174
-```
-```assembly
-; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       push      rbx
-       sub       rsp,20
-       vzeroupper
-       mov       rbx,[rdx+8]
-       cmp       [rbx],bl
-       call      qword ptr [7FF95CDB5B90]; System.DateTime.get_UtcNow()
-       mov       rcx,[rbx+48]
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rax,rdx
-       mov       rdx,4000000000000000
-       or        rax,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rcx,rdx
-       mov       rdx,4000000000000000
-       or        rcx,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rax,rdx
-       and       rcx,rdx
-       sub       rax,rcx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,rax
-       vdivsd    xmm0,xmm0,[7FF95D635CC8]
-       xor       eax,eax
-       vucomisd  xmm0,qword ptr [7FF95D635CD0]
-       seta      al
-       add       rsp,20
-       pop       rbx
-       ret
-; Total bytes of code 131
-```
-```assembly
-; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       push      rsi
-       push      rbx
-       sub       rsp,28
-       mov       rbx,rcx
-       mov       rsi,r8
-       test      rdx,rdx
-       je        short M03_L00
-       lea       rcx,[rbx+8]
-       call      CORINFO_HELP_ASSIGN_REF
-       mov       [rbx+18],rsi
-       add       rsp,28
-       pop       rbx
-       pop       rsi
-       ret
-M03_L00:
-       call      qword ptr [7FF95CAB41F8]
-       int       3
-; Total bytes of code 44
-```
-
-## .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
-```assembly
-; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark.HaveItemsWithPredicate()
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,20
-       mov       rbx,rcx
-       mov       rsi,[rbx+278]
-       mov       r8,2137240B108
-       mov       r8,[r8]
-       test      r8,r8
-       je        short M00_L02
-       test      rsi,rsi
-       je        short M00_L03
-M00_L00:
-       test      r8,r8
-       je        short M00_L03
-       mov       rdx,rsi
-       mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
-       call      qword ptr [7FF95D57F588]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
-M00_L01:
-       mov       rcx,[rbx+18]
-       mov       [rcx+4C],al
-       add       rsp,20
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       ret
-M00_L02:
-       mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
-       call      CORINFO_HELP_NEWSFAST
-       mov       rdi,rax
-       mov       rdx,2137240B100
-       mov       rdx,[rdx]
-       mov       rcx,rdi
-       mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       call      qword ptr [7FF95CA84210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       mov       rcx,2137240B108
-       mov       rdx,rdi
-       call      CORINFO_HELP_ASSIGN_REF
-       mov       r8,rdi
-       test      rsi,rsi
-       jne       short M00_L00
-M00_L03:
-       mov       eax,1
-       jmp       short M00_L01
-; Total bytes of code 162
-```
-```assembly
-; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,68
-       vzeroupper
-       lea       rbp,[rsp+90]
-       xor       eax,eax
-       mov       [rbp-58],rax
-       vxorps    xmm4,xmm4,xmm4
-       vmovdqa   xmmword ptr [rbp-50],xmm4
-       vmovdqa   xmmword ptr [rbp-40],xmm4
-       mov       [rbp-70],rsp
-       mov       [rbp-30],rcx
-       mov       rsi,rcx
-       mov       rdi,rdx
-       mov       rbx,r8
-       test      rdi,rdi
-       je        near ptr M01_L24
-       test      rbx,rbx
-       je        near ptr M01_L25
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+10]
-       test      r11,r11
-       je        near ptr M01_L21
-M01_L00:
-       mov       rcx,rdi
-       call      qword ptr [r11]
-       mov       [rbp-60],rax
-       test      rax,rax
-       je        near ptr M01_L19
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       near ptr M01_L19
-       jmp       near ptr M01_L12
-M01_L01:
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+18]
-       test      r11,r11
-       je        near ptr M01_L10
-M01_L02:
-       lea       rdx,[rbp-40]
-       mov       rcx,[rbp-60]
-       call      qword ptr [r11]
-       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       mov       [rbp+20],rbx
-       cmp       [rbx+18],rcx
-       jne       near ptr M01_L11
-       mov       rdi,[rbp-38]
-       mov       [rbp-68],rdi
-       cmp       [rdi],dil
-       lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
-       call      rax
-       mov       rbx,[rbp-48]
-       mov       rdx,213764001C8
-       mov       rdi,[rdx]
-       sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
-       jne       near ptr M01_L09
-M01_L03:
-       mov       edx,0B2D05E00
-       cmp       rbx,rdx
-       jae       near ptr M01_L05
-       add       rbx,[rdi+10]
-M01_L04:
-       mov       rdi,[rbp-68]
-       mov       r14,[rdi+48]
-       mov       rax,3FFFFFFFFFFFFFFF
-       and       rax,rbx
-       mov       r8,4000000000000000
-       or        rax,r8
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rdx,r14
-       or        rdx,r8
-       mov       r8,3FFFFFFFFFFFFFFF
-       and       r8,rax
-       mov       rcx,3FFFFFFFFFFFFFFF
-       and       rdx,rcx
-       sub       r8,rdx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D6294F8]
-       xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D629500]
-       seta      r15b
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       mov       rbx,[rbp+20]
-       je        near ptr M01_L12
-       jmp       near ptr M01_L22
-M01_L05:
-       call      qword ptr [7FF95CD85C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
-       mov       rbx,rax
-       jmp       near ptr M01_L04
-M01_L06:
-       mov       rcx,rax
-       mov       r11,7FF95C941270
-       call      qword ptr [r11]
-       jmp       near ptr M01_L20
-M01_L07:
-       call      qword ptr [7FF95CD85C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
-       mov       rbx,rax
-       jmp       near ptr M01_L16
-M01_L08:
-       call      CORINFO_HELP_POLL_GC
-       jmp       near ptr M01_L15
-M01_L09:
-       call      CORINFO_HELP_POLL_GC
-       jmp       near ptr M01_L03
-M01_L10:
-       mov       rcx,rsi
-       mov       rdx,7FF95D595C68
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L02
-M01_L11:
-       vmovdqu   xmm0,xmmword ptr [rbp-40]
-       vmovdqu   xmmword ptr [rbp-58],xmm0
-       lea       rdx,[rbp-58]
-       mov       rbx,[rbp+20]
-       mov       rcx,[rbx+8]
-       call      qword ptr [rbx+18]
-       mov       r15d,eax
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       jne       near ptr M01_L22
-M01_L12:
-       lea       rcx,[rax+8]
-       add       rcx,8
-       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D57FD80]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
-       test      eax,eax
-       je        near ptr M01_L26
-       jmp       near ptr M01_L01
-M01_L13:
-       mov       rcx,[rsi+10]
-       mov       r11,[rcx+18]
-       test      r11,r11
-       je        near ptr M01_L17
-M01_L14:
-       lea       rdx,[rbp-40]
-       mov       rcx,[rbp-60]
-       call      qword ptr [r11]
-       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       mov       [rbp+20],rbx
-       cmp       [rbx+18],rcx
-       jne       near ptr M01_L18
-       mov       rdi,[rbp-38]
-       mov       [rbp-68],rdi
-       cmp       [rdi],dil
-       lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
-       call      rax
-       mov       rbx,[rbp-48]
-       mov       rdx,213764001C8
-       mov       rdi,[rdx]
-       sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
-       jne       near ptr M01_L08
-M01_L15:
-       mov       edx,0B2D05E00
-       cmp       rbx,rdx
-       jae       near ptr M01_L07
-       add       rbx,[rdi+10]
-M01_L16:
-       mov       rdi,[rbp-68]
-       mov       r14,[rdi+48]
-       mov       rax,3FFFFFFFFFFFFFFF
-       and       rax,rbx
-       mov       rdx,4000000000000000
-       or        rax,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rdx,r14
-       mov       rcx,4000000000000000
-       or        rdx,rcx
-       mov       r8,3FFFFFFFFFFFFFFF
-       and       r8,rax
-       mov       rcx,3FFFFFFFFFFFFFFF
-       and       rcx,rdx
-       sub       r8,rcx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D6294F8]
-       xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D629500]
-       seta      r15b
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       mov       rbx,[rbp+20]
-       je        short M01_L19
-       jmp       near ptr M01_L22
-M01_L17:
-       mov       rcx,rsi
-       mov       rdx,7FF95D595C68
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L14
-M01_L18:
-       vmovdqu   xmm0,xmmword ptr [rbp-40]
-       vmovdqu   xmmword ptr [rbp-58],xmm0
-       lea       rdx,[rbp-58]
-       mov       rbx,[rbp+20]
-       mov       rcx,[rbx+8]
-       call      qword ptr [rbx+18]
-       mov       r15d,eax
-       test      r15d,r15d
-       mov       rax,[rbp-60]
-       jne       short M01_L22
-M01_L19:
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       near ptr M01_L06
-       lea       rcx,[rax+8]
-       add       rcx,8
-       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D57FD80]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
-M01_L20:
-       test      eax,eax
-       je        short M01_L26
-       jmp       near ptr M01_L13
-M01_L21:
-       mov       rcx,rsi
-       mov       rdx,7FF95D595B90
-       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
-       mov       r11,rax
-       jmp       near ptr M01_L00
-M01_L22:
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       cmp       [rax],rcx
-       jne       short M01_L27
-M01_L23:
-       mov       eax,1
-       add       rsp,68
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-M01_L24:
-       mov       ecx,10
-       call      qword ptr [7FF95CD14F30]
-       int       3
-M01_L25:
-       mov       ecx,0C
-       call      qword ptr [7FF95CD14F30]
-       int       3
-M01_L26:
-       mov       rcx,rsp
-       call      M01_L29
-       jmp       short M01_L28
-M01_L27:
-       mov       rcx,rax
-       mov       r11,7FF95C941278
-       call      qword ptr [r11]
-       jmp       short M01_L23
-M01_L28:
-       xor       eax,eax
-       add       rsp,68
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-M01_L29:
-       push      rbp
-       push      r15
-       push      r14
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,28
-       vzeroupper
-       mov       rbp,[rcx+20]
-       mov       [rsp+20],rbp
-       lea       rbp,[rbp+90]
-       cmp       qword ptr [rbp-60],0
-       je        short M01_L30
-       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
-       mov       rax,[rbp-60]
-       cmp       [rax],rcx
-       je        short M01_L30
-       mov       rcx,[rbp-60]
-       mov       r11,7FF95C941278
-       call      qword ptr [r11]
-M01_L30:
-       nop
-       add       rsp,28
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       pop       r14
-       pop       r15
-       pop       rbp
-       ret
-; Total bytes of code 1174
-```
-```assembly
-; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       push      rbx
-       sub       rsp,20
-       vzeroupper
-       mov       rbx,[rdx+8]
-       cmp       [rbx],bl
-       call      qword ptr [7FF95CD85B90]; System.DateTime.get_UtcNow()
-       mov       rcx,[rbx+48]
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rax,rdx
-       mov       rdx,4000000000000000
-       or        rax,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rcx,rdx
-       mov       rdx,4000000000000000
-       or        rcx,rdx
-       mov       rdx,3FFFFFFFFFFFFFFF
-       and       rax,rdx
-       and       rcx,rdx
-       sub       rax,rcx
-       vxorps    xmm0,xmm0,xmm0
-       vcvtsi2sd xmm0,xmm0,rax
-       vdivsd    xmm0,xmm0,[7FF95D629F48]
-       xor       eax,eax
-       vucomisd  xmm0,qword ptr [7FF95D629F50]
-       seta      al
-       add       rsp,20
-       pop       rbx
-       ret
-; Total bytes of code 131
-```
-```assembly
-; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       push      rsi
-       push      rbx
-       sub       rsp,28
-       mov       rbx,rcx
-       mov       rsi,r8
-       test      rdx,rdx
-       je        short M03_L00
-       lea       rcx,[rbx+8]
-       call      CORINFO_HELP_ASSIGN_REF
-       mov       [rbx+18],rsi
-       add       rsp,28
-       pop       rbx
-       pop       rsi
-       ret
-M03_L00:
-       call      qword ptr [7FF95CA841F8]
-       int       3
-; Total bytes of code 44
-```
-
-## .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
-```assembly
-; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark.HaveItemsWithPredicate()
-       push      rdi
-       push      rsi
-       push      rbx
-       sub       rsp,20
-       mov       rbx,rcx
-       mov       rsi,[rbx+278]
-       mov       r8,1758B00D100
-       mov       r8,[r8]
-       test      r8,r8
-       je        short M00_L02
-       test      rsi,rsi
-       je        short M00_L03
-M00_L00:
-       test      r8,r8
-       je        short M00_L03
-       mov       rdx,rsi
-       mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
-       call      qword ptr [7FF95D665A70]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
-M00_L01:
-       mov       rcx,[rbx+18]
-       mov       [rcx+4C],al
-       add       rsp,20
-       pop       rbx
-       pop       rsi
-       pop       rdi
-       ret
-M00_L02:
-       mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
-       call      CORINFO_HELP_NEWSFAST
-       mov       rdi,rax
-       mov       rdx,1758B00D0F8
-       mov       rdx,[rdx]
-       mov       rcx,rdi
-       mov       r8,7FF95D661920
-       call      qword ptr [7FF95CAA4210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       mov       rcx,1758B00D100
+       call      qword ptr [7FFE28224210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       mov       rcx,293FEC0D100
        mov       rdx,rdi
        call      CORINFO_HELP_ASSIGN_REF
        mov       r8,rdi
@@ -2710,7 +1486,7 @@ M01_L02:
        lea       rdx,[rbp-40]
        mov       rcx,[rbp-60]
        call      qword ptr [r11]
-       mov       rcx,7FF95D661920
+       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
        mov       [rbp+20],rbx
        cmp       [rbx+18],rcx
        jne       near ptr M01_L11
@@ -2718,13 +1494,13 @@ M01_L02:
        mov       [rbp-68],rdi
        cmp       [rdi],dil
        lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
+       mov       rax,7FFEF0CC5380
        call      rax
        mov       rbx,[rbp-48]
-       mov       rdx,1758B0001C8
+       mov       rdx,293FEC001C8
        mov       rdi,[rdx]
        sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
+       cmp       dword ptr [7FFE880B40DC],0
        jne       near ptr M01_L09
 M01_L03:
        mov       edx,0B2D05E00
@@ -2748,9 +1524,9 @@ M01_L04:
        sub       r8,rdx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D5DAEF8]
+       vdivsd    xmm0,xmm0,[7FFE28DA4558]
        xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D5DAF00]
+       vucomisd  xmm0,qword ptr [7FFE28DA4560]
        seta      r15b
        test      r15d,r15d
        mov       rax,[rbp-60]
@@ -2758,16 +1534,16 @@ M01_L04:
        je        near ptr M01_L12
        jmp       near ptr M01_L23
 M01_L05:
-       call      qword ptr [7FF95CDA5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       call      qword ptr [7FFE28525C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
        mov       rbx,rax
        jmp       near ptr M01_L04
 M01_L06:
        mov       rcx,rax
-       mov       r11,7FF95C9617C8
+       mov       r11,7FFE280E1070
        call      qword ptr [r11]
        jmp       near ptr M01_L20
 M01_L07:
-       call      qword ptr [7FF95CDA5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       call      qword ptr [7FFE28525C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
        mov       rbx,rax
        jmp       near ptr M01_L16
 M01_L08:
@@ -2778,7 +1554,7 @@ M01_L09:
        jmp       near ptr M01_L03
 M01_L10:
        mov       rcx,rsi
-       mov       rdx,7FF95D64B318
+       mov       rdx,7FFE28CD8A78
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L02
@@ -2797,7 +1573,7 @@ M01_L12:
        lea       rcx,[rax+8]
        add       rcx,8
        mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D666268]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       call      qword ptr [7FFE28CEDB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
        test      eax,eax
        je        near ptr M01_L27
        jmp       near ptr M01_L01
@@ -2810,7 +1586,7 @@ M01_L14:
        lea       rdx,[rbp-40]
        mov       rcx,[rbp-60]
        call      qword ptr [r11]
-       mov       rcx,7FF95D661920
+       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
        mov       [rbp+20],rbx
        cmp       [rbx+18],rcx
        jne       near ptr M01_L18
@@ -2818,13 +1594,13 @@ M01_L14:
        mov       [rbp-68],rdi
        cmp       [rdi],dil
        lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
+       mov       rax,7FFEF0CC5380
        call      rax
        mov       rbx,[rbp-48]
-       mov       rdx,1758B0001C8
+       mov       rdx,293FEC001C8
        mov       rdi,[rdx]
        sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
+       cmp       dword ptr [7FFE880B40DC],0
        jne       near ptr M01_L08
 M01_L15:
        mov       edx,0B2D05E00
@@ -2849,9 +1625,9 @@ M01_L16:
        sub       r8,rcx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D5DAEF8]
+       vdivsd    xmm0,xmm0,[7FFE28DA4558]
        xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D5DAF00]
+       vucomisd  xmm0,qword ptr [7FFE28DA4560]
        seta      r15b
        test      r15d,r15d
        mov       rax,[rbp-60]
@@ -2860,7 +1636,7 @@ M01_L16:
        jmp       near ptr M01_L23
 M01_L17:
        mov       rcx,rsi
-       mov       rdx,7FF95D64B318
+       mov       rdx,7FFE28CD8A78
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L14
@@ -2882,14 +1658,14 @@ M01_L19:
        lea       rcx,[rax+8]
        add       rcx,8
        mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D666268]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       call      qword ptr [7FFE28CEDB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
 M01_L20:
        test      eax,eax
        je        short M01_L27
        jmp       near ptr M01_L13
 M01_L21:
        mov       rcx,rsi
-       mov       rdx,7FF95D64B240
+       mov       rdx,7FFE28CD89A0
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L00
@@ -2908,7 +1684,7 @@ M01_L23:
        cmp       [rax],rcx
        je        short M01_L22
        mov       rcx,rax
-       mov       r11,7FF95C9617D0
+       mov       r11,7FFE280E1078
        call      qword ptr [r11]
        jmp       short M01_L22
 M01_L24:
@@ -2923,11 +1699,11 @@ M01_L24:
        ret
 M01_L25:
        mov       ecx,10
-       call      qword ptr [7FF95CD34F30]
+       call      qword ptr [7FFE284B4F30]
        int       3
 M01_L26:
        mov       ecx,0C
-       call      qword ptr [7FF95CD34F30]
+       call      qword ptr [7FFE284B4F30]
        int       3
 M01_L27:
        mov       rcx,rsp
@@ -2952,7 +1728,7 @@ M01_L28:
        cmp       [r11],rcx
        je        short M01_L29
        mov       rcx,r11
-       mov       r11,7FF95C9617D0
+       mov       r11,7FFE280E1078
        call      qword ptr [r11]
 M01_L29:
        nop
@@ -2967,6 +1743,38 @@ M01_L29:
 ; Total bytes of code 1173
 ```
 ```assembly
+; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       push      rbx
+       sub       rsp,20
+       vzeroupper
+       mov       rbx,[rdx+8]
+       cmp       [rbx],bl
+       call      qword ptr [7FFE28525B90]; System.DateTime.get_UtcNow()
+       mov       rcx,[rbx+48]
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rax,rdx
+       mov       rdx,4000000000000000
+       or        rax,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rcx,rdx
+       mov       rdx,4000000000000000
+       or        rcx,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rax,rdx
+       and       rcx,rdx
+       sub       rax,rcx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,rax
+       vdivsd    xmm0,xmm0,[7FFE28DA4FA8]
+       xor       eax,eax
+       vucomisd  xmm0,qword ptr [7FFE28DA4FB0]
+       seta      al
+       add       rsp,20
+       pop       rbx
+       ret
+; Total bytes of code 131
+```
+```assembly
 ; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
        push      rsi
        push      rbx
@@ -2974,7 +1782,7 @@ M01_L29:
        mov       rbx,rcx
        mov       rsi,r8
        test      rdx,rdx
-       je        short M02_L00
+       je        short M03_L00
        lea       rcx,[rbx+8]
        call      CORINFO_HELP_ASSIGN_REF
        mov       [rbx+18],rsi
@@ -2982,8 +1790,8 @@ M01_L29:
        pop       rbx
        pop       rsi
        ret
-M02_L00:
-       call      qword ptr [7FF95CAA41F8]
+M03_L00:
+       call      qword ptr [7FFE282241F8]
        int       3
 ; Total bytes of code 44
 ```
@@ -2997,7 +1805,7 @@ M02_L00:
        sub       rsp,20
        mov       rbx,rcx
        mov       rsi,[rbx+278]
-       mov       r8,1EE6F40B108
+       mov       r8,1FABA40D100
        mov       r8,[r8]
        test      r8,r8
        je        short M00_L02
@@ -3008,7 +1816,7 @@ M00_L00:
        je        short M00_L03
        mov       rdx,rsi
        mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
-       call      qword ptr [7FF95D71C318]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+       call      qword ptr [7FFE28CAD350]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
 M00_L01:
        mov       rcx,[rbx+18]
        mov       [rcx+4C],al
@@ -3021,12 +1829,420 @@ M00_L02:
        mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
        call      CORINFO_HELP_NEWSFAST
        mov       rdi,rax
-       mov       rdx,1EE6F40B100
+       mov       rdx,1FABA40D0F8
        mov       rdx,[rdx]
        mov       rcx,rdi
        mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
-       call      qword ptr [7FF95CAA4210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       mov       rcx,1EE6F40B108
+       call      qword ptr [7FFE281E4210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       mov       rcx,1FABA40D100
+       mov       rdx,rdi
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       r8,rdi
+       test      rsi,rsi
+       jne       short M00_L00
+M00_L03:
+       mov       eax,1
+       jmp       short M00_L01
+; Total bytes of code 162
+```
+```assembly
+; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,68
+       vzeroupper
+       lea       rbp,[rsp+90]
+       xor       eax,eax
+       mov       [rbp-58],rax
+       vxorps    xmm4,xmm4,xmm4
+       vmovdqa   xmmword ptr [rbp-50],xmm4
+       vmovdqa   xmmword ptr [rbp-40],xmm4
+       mov       [rbp-70],rsp
+       mov       [rbp-30],rcx
+       mov       rsi,rcx
+       mov       rdi,rdx
+       mov       rbx,r8
+       test      rdi,rdi
+       je        near ptr M01_L24
+       test      rbx,rbx
+       je        near ptr M01_L25
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+10]
+       test      r11,r11
+       je        near ptr M01_L21
+M01_L00:
+       mov       rcx,rdi
+       call      qword ptr [r11]
+       mov       [rbp-60],rax
+       test      rax,rax
+       je        near ptr M01_L19
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       jne       near ptr M01_L19
+       jmp       near ptr M01_L12
+M01_L01:
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+18]
+       test      r11,r11
+       je        near ptr M01_L10
+M01_L02:
+       lea       rdx,[rbp-40]
+       mov       rcx,[rbp-60]
+       call      qword ptr [r11]
+       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       mov       [rbp+20],rbx
+       cmp       [rbx+18],rcx
+       jne       near ptr M01_L11
+       mov       rdi,[rbp-38]
+       mov       [rbp-68],rdi
+       cmp       [rdi],dil
+       lea       rcx,[rbp-48]
+       mov       rax,7FFEF0CC5380
+       call      rax
+       mov       rbx,[rbp-48]
+       mov       rdx,1FABA4001C8
+       mov       rdi,[rdx]
+       sub       rbx,[rdi+8]
+       cmp       dword ptr [7FFE880B40DC],0
+       jne       near ptr M01_L09
+M01_L03:
+       mov       edx,0B2D05E00
+       cmp       rbx,rdx
+       jae       near ptr M01_L05
+       add       rbx,[rdi+10]
+M01_L04:
+       mov       rdi,[rbp-68]
+       mov       r14,[rdi+48]
+       mov       rax,3FFFFFFFFFFFFFFF
+       and       rax,rbx
+       mov       r8,4000000000000000
+       or        rax,r8
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rdx,r14
+       or        rdx,r8
+       mov       r8,3FFFFFFFFFFFFFFF
+       and       r8,rax
+       mov       rcx,3FFFFFFFFFFFFFFF
+       and       rdx,rcx
+       sub       r8,rdx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,r8
+       vdivsd    xmm0,xmm0,[7FFE28D64C38]
+       xor       r15d,r15d
+       vucomisd  xmm0,qword ptr [7FFE28D64C40]
+       seta      r15b
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       mov       rbx,[rbp+20]
+       je        near ptr M01_L12
+       jmp       near ptr M01_L22
+M01_L05:
+       call      qword ptr [7FFE284E5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       mov       rbx,rax
+       jmp       near ptr M01_L04
+M01_L06:
+       mov       rcx,rax
+       mov       r11,7FFE280A1070
+       call      qword ptr [r11]
+       jmp       near ptr M01_L20
+M01_L07:
+       call      qword ptr [7FFE284E5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       mov       rbx,rax
+       jmp       near ptr M01_L16
+M01_L08:
+       call      CORINFO_HELP_POLL_GC
+       jmp       near ptr M01_L15
+M01_L09:
+       call      CORINFO_HELP_POLL_GC
+       jmp       near ptr M01_L03
+M01_L10:
+       mov       rcx,rsi
+       mov       rdx,7FFE28C99068
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L02
+M01_L11:
+       vmovdqu   xmm0,xmmword ptr [rbp-40]
+       vmovdqu   xmmword ptr [rbp-58],xmm0
+       lea       rdx,[rbp-58]
+       mov       rbx,[rbp+20]
+       mov       rcx,[rbx+8]
+       call      qword ptr [rbx+18]
+       mov       r15d,eax
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       jne       near ptr M01_L22
+M01_L12:
+       lea       rcx,[rax+8]
+       add       rcx,8
+       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
+       call      qword ptr [7FFE28CADB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       test      eax,eax
+       je        near ptr M01_L26
+       jmp       near ptr M01_L01
+M01_L13:
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+18]
+       test      r11,r11
+       je        near ptr M01_L17
+M01_L14:
+       lea       rdx,[rbp-40]
+       mov       rcx,[rbp-60]
+       call      qword ptr [r11]
+       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       mov       [rbp+20],rbx
+       cmp       [rbx+18],rcx
+       jne       near ptr M01_L18
+       mov       rdi,[rbp-38]
+       mov       [rbp-68],rdi
+       cmp       [rdi],dil
+       lea       rcx,[rbp-48]
+       mov       rax,7FFEF0CC5380
+       call      rax
+       mov       rbx,[rbp-48]
+       mov       rdx,1FABA4001C8
+       mov       rdi,[rdx]
+       sub       rbx,[rdi+8]
+       cmp       dword ptr [7FFE880B40DC],0
+       jne       near ptr M01_L08
+M01_L15:
+       mov       edx,0B2D05E00
+       cmp       rbx,rdx
+       jae       near ptr M01_L07
+       add       rbx,[rdi+10]
+M01_L16:
+       mov       rdi,[rbp-68]
+       mov       r14,[rdi+48]
+       mov       rax,3FFFFFFFFFFFFFFF
+       and       rax,rbx
+       mov       rdx,4000000000000000
+       or        rax,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rdx,r14
+       mov       rcx,4000000000000000
+       or        rdx,rcx
+       mov       r8,3FFFFFFFFFFFFFFF
+       and       r8,rax
+       mov       rcx,3FFFFFFFFFFFFFFF
+       and       rcx,rdx
+       sub       r8,rcx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,r8
+       vdivsd    xmm0,xmm0,[7FFE28D64C38]
+       xor       r15d,r15d
+       vucomisd  xmm0,qword ptr [7FFE28D64C40]
+       seta      r15b
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       mov       rbx,[rbp+20]
+       je        short M01_L19
+       jmp       near ptr M01_L22
+M01_L17:
+       mov       rcx,rsi
+       mov       rdx,7FFE28C99068
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L14
+M01_L18:
+       vmovdqu   xmm0,xmmword ptr [rbp-40]
+       vmovdqu   xmmword ptr [rbp-58],xmm0
+       lea       rdx,[rbp-58]
+       mov       rbx,[rbp+20]
+       mov       rcx,[rbx+8]
+       call      qword ptr [rbx+18]
+       mov       r15d,eax
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       jne       short M01_L22
+M01_L19:
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       jne       near ptr M01_L06
+       lea       rcx,[rax+8]
+       add       rcx,8
+       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
+       call      qword ptr [7FFE28CADB48]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+M01_L20:
+       test      eax,eax
+       je        short M01_L26
+       jmp       near ptr M01_L13
+M01_L21:
+       mov       rcx,rsi
+       mov       rdx,7FFE28C98F90
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L00
+M01_L22:
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       jne       short M01_L27
+M01_L23:
+       mov       eax,1
+       add       rsp,68
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M01_L24:
+       mov       ecx,10
+       call      qword ptr [7FFE28474F30]
+       int       3
+M01_L25:
+       mov       ecx,0C
+       call      qword ptr [7FFE28474F30]
+       int       3
+M01_L26:
+       mov       rcx,rsp
+       call      M01_L29
+       jmp       short M01_L28
+M01_L27:
+       mov       rcx,rax
+       mov       r11,7FFE280A1078
+       call      qword ptr [r11]
+       jmp       short M01_L23
+M01_L28:
+       xor       eax,eax
+       add       rsp,68
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M01_L29:
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,28
+       vzeroupper
+       mov       rbp,[rcx+20]
+       mov       [rsp+20],rbp
+       lea       rbp,[rbp+90]
+       cmp       qword ptr [rbp-60],0
+       je        short M01_L30
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       mov       rax,[rbp-60]
+       cmp       [rax],rcx
+       je        short M01_L30
+       mov       rcx,[rbp-60]
+       mov       r11,7FFE280A1078
+       call      qword ptr [r11]
+M01_L30:
+       nop
+       add       rsp,28
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 1174
+```
+```assembly
+; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       push      rbx
+       sub       rsp,20
+       vzeroupper
+       mov       rbx,[rdx+8]
+       cmp       [rbx],bl
+       call      qword ptr [7FFE284E5B90]; System.DateTime.get_UtcNow()
+       mov       rcx,[rbx+48]
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rax,rdx
+       mov       rdx,4000000000000000
+       or        rax,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rcx,rdx
+       mov       rdx,4000000000000000
+       or        rcx,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rax,rdx
+       and       rcx,rdx
+       sub       rax,rcx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,rax
+       vdivsd    xmm0,xmm0,[7FFE28D65688]
+       xor       eax,eax
+       vucomisd  xmm0,qword ptr [7FFE28D65690]
+       seta      al
+       add       rsp,20
+       pop       rbx
+       ret
+; Total bytes of code 131
+```
+```assembly
+; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       push      rsi
+       push      rbx
+       sub       rsp,28
+       mov       rbx,rcx
+       mov       rsi,r8
+       test      rdx,rdx
+       je        short M03_L00
+       lea       rcx,[rbx+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbx+18],rsi
+       add       rsp,28
+       pop       rbx
+       pop       rsi
+       ret
+M03_L00:
+       call      qword ptr [7FFE281E41F8]
+       int       3
+; Total bytes of code 44
+```
+
+## .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+```assembly
+; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark.HaveItemsWithPredicate()
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,20
+       mov       rbx,rcx
+       mov       rsi,[rbx+278]
+       mov       r8,1DABB00D100
+       mov       r8,[r8]
+       test      r8,r8
+       je        short M00_L02
+       test      rsi,rsi
+       je        short M00_L03
+M00_L00:
+       test      r8,r8
+       je        short M00_L03
+       mov       rdx,rsi
+       mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
+       call      qword ptr [7FFE28CEDA70]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+M00_L01:
+       mov       rcx,[rbx+18]
+       mov       [rcx+4C],al
+       add       rsp,20
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       ret
+M00_L02:
+       mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
+       call      CORINFO_HELP_NEWSFAST
+       mov       rdi,rax
+       mov       rdx,1DABB00D0F8
+       mov       rdx,[rdx]
+       mov       rcx,rdi
+       mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       call      qword ptr [7FFE281E4210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       mov       rcx,1DABB00D100
        mov       rdx,rdi
        call      CORINFO_HELP_ASSIGN_REF
        mov       r8,rdi
@@ -3093,13 +2309,13 @@ M01_L02:
        mov       [rbp-68],rdi
        cmp       [rdi],dil
        lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
+       mov       rax,7FFEF0CC5380
        call      rax
        mov       rbx,[rbp-48]
-       mov       rdx,1EE734001C8
+       mov       rdx,1DABB0001C8
        mov       rdi,[rdx]
        sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
+       cmp       dword ptr [7FFE880B40DC],0
        jne       near ptr M01_L09
 M01_L03:
        mov       edx,0B2D05E00
@@ -3123,9 +2339,9 @@ M01_L04:
        sub       r8,rdx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D7AEF58]
+       vdivsd    xmm0,xmm0,[7FFE28D882D8]
        xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D7AEF60]
+       vucomisd  xmm0,qword ptr [7FFE28D882E0]
        seta      r15b
        test      r15d,r15d
        mov       rax,[rbp-60]
@@ -3133,16 +2349,16 @@ M01_L04:
        je        near ptr M01_L12
        jmp       near ptr M01_L23
 M01_L05:
-       call      qword ptr [7FF95CDA5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       call      qword ptr [7FFE284E5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
        mov       rbx,rax
        jmp       near ptr M01_L04
 M01_L06:
        mov       rcx,rax
-       mov       r11,7FF95C961998
+       mov       r11,7FFE280A1260
        call      qword ptr [r11]
        jmp       near ptr M01_L20
 M01_L07:
-       call      qword ptr [7FF95CDA5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       call      qword ptr [7FFE284E5C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
        mov       rbx,rax
        jmp       near ptr M01_L16
 M01_L08:
@@ -3153,7 +2369,7 @@ M01_L09:
        jmp       near ptr M01_L03
 M01_L10:
        mov       rcx,rsi
-       mov       rdx,7FF95D724C78
+       mov       rdx,7FFE28CF4558
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L02
@@ -3172,7 +2388,7 @@ M01_L12:
        lea       rcx,[rax+8]
        add       rcx,8
        mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D71CB10]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       call      qword ptr [7FFE28CEE268]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
        test      eax,eax
        je        near ptr M01_L27
        jmp       near ptr M01_L01
@@ -3193,13 +2409,13 @@ M01_L14:
        mov       [rbp-68],rdi
        cmp       [rdi],dil
        lea       rcx,[rbp-48]
-       mov       rax,7FF9EDF35380
+       mov       rax,7FFEF0CC5380
        call      rax
        mov       rbx,[rbp-48]
-       mov       rdx,1EE734001C8
+       mov       rdx,1DABB0001C8
        mov       rdi,[rdx]
        sub       rbx,[rdi+8]
-       cmp       dword ptr [7FF9BC9540DC],0
+       cmp       dword ptr [7FFE880B40DC],0
        jne       near ptr M01_L08
 M01_L15:
        mov       edx,0B2D05E00
@@ -3224,9 +2440,9 @@ M01_L16:
        sub       r8,rcx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,r8
-       vdivsd    xmm0,xmm0,[7FF95D7AEF58]
+       vdivsd    xmm0,xmm0,[7FFE28D882D8]
        xor       r15d,r15d
-       vucomisd  xmm0,qword ptr [7FF95D7AEF60]
+       vucomisd  xmm0,qword ptr [7FFE28D882E0]
        seta      r15b
        test      r15d,r15d
        mov       rax,[rbp-60]
@@ -3235,7 +2451,7 @@ M01_L16:
        jmp       near ptr M01_L23
 M01_L17:
        mov       rcx,rsi
-       mov       rdx,7FF95D724C78
+       mov       rdx,7FFE28CF4558
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L14
@@ -3257,14 +2473,14 @@ M01_L19:
        lea       rcx,[rax+8]
        add       rcx,8
        mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
-       call      qword ptr [7FF95D71CB10]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       call      qword ptr [7FFE28CEE268]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
 M01_L20:
        test      eax,eax
        je        short M01_L27
        jmp       near ptr M01_L13
 M01_L21:
        mov       rcx,rsi
-       mov       rdx,7FF95D724BA0
+       mov       rdx,7FFE28CF4480
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r11,rax
        jmp       near ptr M01_L00
@@ -3283,7 +2499,7 @@ M01_L23:
        cmp       [rax],rcx
        je        short M01_L22
        mov       rcx,rax
-       mov       r11,7FF95C9619A0
+       mov       r11,7FFE280A1268
        call      qword ptr [r11]
        jmp       short M01_L22
 M01_L24:
@@ -3298,11 +2514,11 @@ M01_L24:
        ret
 M01_L25:
        mov       ecx,10
-       call      qword ptr [7FF95CD34F30]
+       call      qword ptr [7FFE28474F30]
        int       3
 M01_L26:
        mov       ecx,0C
-       call      qword ptr [7FF95CD34F30]
+       call      qword ptr [7FFE28474F30]
        int       3
 M01_L27:
        mov       rcx,rsp
@@ -3327,7 +2543,7 @@ M01_L28:
        cmp       [r11],rcx
        je        short M01_L29
        mov       rcx,r11
-       mov       r11,7FF95C9619A0
+       mov       r11,7FFE280A1268
        call      qword ptr [r11]
 M01_L29:
        nop
@@ -3348,7 +2564,7 @@ M01_L29:
        vzeroupper
        mov       rbx,[rdx+8]
        cmp       [rbx],bl
-       call      qword ptr [7FF95CDA5B90]; System.DateTime.get_UtcNow()
+       call      qword ptr [7FFE284E5B90]; System.DateTime.get_UtcNow()
        mov       rcx,[rbx+48]
        mov       rdx,3FFFFFFFFFFFFFFF
        and       rax,rdx
@@ -3364,9 +2580,9 @@ M01_L29:
        sub       rax,rcx
        vxorps    xmm0,xmm0,xmm0
        vcvtsi2sd xmm0,xmm0,rax
-       vdivsd    xmm0,xmm0,[7FF95D7AF9A8]
+       vdivsd    xmm0,xmm0,[7FFE28D88D28]
        xor       eax,eax
-       vucomisd  xmm0,qword ptr [7FF95D7AF9B0]
+       vucomisd  xmm0,qword ptr [7FFE28D88D30]
        seta      al
        add       rsp,20
        pop       rbx
@@ -3390,7 +2606,821 @@ M01_L29:
        pop       rsi
        ret
 M03_L00:
-       call      qword ptr [7FF95CAA41F8]
+       call      qword ptr [7FFE281E41F8]
+       int       3
+; Total bytes of code 44
+```
+
+## .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+```assembly
+; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark.HaveItemsWithPredicate()
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,20
+       mov       rbx,rcx
+       mov       rsi,[rbx+278]
+       mov       r8,271B900D100
+       mov       r8,[r8]
+       test      r8,r8
+       je        short M00_L02
+       test      rsi,rsi
+       je        short M00_L03
+M00_L00:
+       test      r8,r8
+       je        short M00_L03
+       mov       rdx,rsi
+       mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
+       call      qword ptr [7FFE28DD7300]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+M00_L01:
+       mov       rcx,[rbx+18]
+       mov       [rcx+4C],al
+       add       rsp,20
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       ret
+M00_L02:
+       mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
+       call      CORINFO_HELP_NEWSFAST
+       mov       rdi,rax
+       mov       rdx,271B900D0F8
+       mov       rdx,[rdx]
+       mov       rcx,rdi
+       mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       call      qword ptr [7FFE28214210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       mov       rcx,271B900D100
+       mov       rdx,rdi
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       r8,rdi
+       test      rsi,rsi
+       jne       short M00_L00
+M00_L03:
+       mov       eax,1
+       jmp       short M00_L01
+; Total bytes of code 162
+```
+```assembly
+; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,68
+       vzeroupper
+       lea       rbp,[rsp+90]
+       xor       eax,eax
+       mov       [rbp-58],rax
+       vxorps    xmm4,xmm4,xmm4
+       vmovdqa   xmmword ptr [rbp-50],xmm4
+       vmovdqa   xmmword ptr [rbp-40],xmm4
+       mov       [rbp-70],rsp
+       mov       [rbp-30],rcx
+       mov       rsi,rcx
+       mov       rdi,rdx
+       mov       rbx,r8
+       test      rdi,rdi
+       je        near ptr M01_L25
+       test      rbx,rbx
+       je        near ptr M01_L26
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+10]
+       test      r11,r11
+       je        near ptr M01_L21
+M01_L00:
+       mov       rcx,rdi
+       call      qword ptr [r11]
+       mov       [rbp-60],rax
+       test      rax,rax
+       je        near ptr M01_L19
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       jne       near ptr M01_L19
+       jmp       near ptr M01_L12
+M01_L01:
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+18]
+       test      r11,r11
+       je        near ptr M01_L10
+M01_L02:
+       lea       rdx,[rbp-40]
+       mov       rcx,[rbp-60]
+       call      qword ptr [r11]
+       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       mov       [rbp+20],rbx
+       cmp       [rbx+18],rcx
+       jne       near ptr M01_L11
+       mov       rdi,[rbp-38]
+       mov       [rbp-68],rdi
+       cmp       [rdi],dil
+       lea       rcx,[rbp-48]
+       mov       rax,7FFEF0CC5380
+       call      rax
+       mov       rbx,[rbp-48]
+       mov       rdx,271B90001C8
+       mov       rdi,[rdx]
+       sub       rbx,[rdi+8]
+       cmp       dword ptr [7FFE880B40DC],0
+       jne       near ptr M01_L09
+M01_L03:
+       mov       edx,0B2D05E00
+       cmp       rbx,rdx
+       jae       near ptr M01_L05
+       add       rbx,[rdi+10]
+M01_L04:
+       mov       rdi,[rbp-68]
+       mov       r14,[rdi+48]
+       mov       rax,3FFFFFFFFFFFFFFF
+       and       rax,rbx
+       mov       r8,4000000000000000
+       or        rax,r8
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rdx,r14
+       or        rdx,r8
+       mov       r8,3FFFFFFFFFFFFFFF
+       and       r8,rax
+       mov       rcx,3FFFFFFFFFFFFFFF
+       and       rdx,rcx
+       sub       r8,rdx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,r8
+       vdivsd    xmm0,xmm0,[7FFE28F50E78]
+       xor       r15d,r15d
+       vucomisd  xmm0,qword ptr [7FFE28F50E80]
+       seta      r15b
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       mov       rbx,[rbp+20]
+       je        near ptr M01_L12
+       jmp       near ptr M01_L23
+M01_L05:
+       call      qword ptr [7FFE28515C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       mov       rbx,rax
+       jmp       near ptr M01_L04
+M01_L06:
+       mov       rcx,rax
+       mov       r11,7FFE280D17D0
+       call      qword ptr [r11]
+       jmp       near ptr M01_L20
+M01_L07:
+       call      qword ptr [7FFE28515C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       mov       rbx,rax
+       jmp       near ptr M01_L16
+M01_L08:
+       call      CORINFO_HELP_POLL_GC
+       jmp       near ptr M01_L15
+M01_L09:
+       call      CORINFO_HELP_POLL_GC
+       jmp       near ptr M01_L03
+M01_L10:
+       mov       rcx,rsi
+       mov       rdx,7FFE28DB9C10
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L02
+M01_L11:
+       vmovdqu   xmm0,xmmword ptr [rbp-40]
+       vmovdqu   xmmword ptr [rbp-58],xmm0
+       lea       rdx,[rbp-58]
+       mov       rbx,[rbp+20]
+       mov       rcx,[rbx+8]
+       call      qword ptr [rbx+18]
+       mov       r15d,eax
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       jne       near ptr M01_L23
+M01_L12:
+       lea       rcx,[rax+8]
+       add       rcx,8
+       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
+       call      qword ptr [7FFE28DD7AF8]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       test      eax,eax
+       je        near ptr M01_L27
+       jmp       near ptr M01_L01
+M01_L13:
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+18]
+       test      r11,r11
+       je        near ptr M01_L17
+M01_L14:
+       lea       rdx,[rbp-40]
+       mov       rcx,[rbp-60]
+       call      qword ptr [r11]
+       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       mov       [rbp+20],rbx
+       cmp       [rbx+18],rcx
+       jne       near ptr M01_L18
+       mov       rdi,[rbp-38]
+       mov       [rbp-68],rdi
+       cmp       [rdi],dil
+       lea       rcx,[rbp-48]
+       mov       rax,7FFEF0CC5380
+       call      rax
+       mov       rbx,[rbp-48]
+       mov       rdx,271B90001C8
+       mov       rdi,[rdx]
+       sub       rbx,[rdi+8]
+       cmp       dword ptr [7FFE880B40DC],0
+       jne       near ptr M01_L08
+M01_L15:
+       mov       edx,0B2D05E00
+       cmp       rbx,rdx
+       jae       near ptr M01_L07
+       add       rbx,[rdi+10]
+M01_L16:
+       mov       rdi,[rbp-68]
+       mov       r14,[rdi+48]
+       mov       rax,3FFFFFFFFFFFFFFF
+       and       rax,rbx
+       mov       rdx,4000000000000000
+       or        rax,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rdx,r14
+       mov       rcx,4000000000000000
+       or        rdx,rcx
+       mov       r8,3FFFFFFFFFFFFFFF
+       and       r8,rax
+       mov       rcx,3FFFFFFFFFFFFFFF
+       and       rcx,rdx
+       sub       r8,rcx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,r8
+       vdivsd    xmm0,xmm0,[7FFE28F50E78]
+       xor       r15d,r15d
+       vucomisd  xmm0,qword ptr [7FFE28F50E80]
+       seta      r15b
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       mov       rbx,[rbp+20]
+       je        short M01_L19
+       jmp       near ptr M01_L23
+M01_L17:
+       mov       rcx,rsi
+       mov       rdx,7FFE28DB9C10
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L14
+M01_L18:
+       vmovdqu   xmm0,xmmword ptr [rbp-40]
+       vmovdqu   xmmword ptr [rbp-58],xmm0
+       lea       rdx,[rbp-58]
+       mov       rbx,[rbp+20]
+       mov       rcx,[rbx+8]
+       call      qword ptr [rbx+18]
+       mov       r15d,eax
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       jne       short M01_L23
+M01_L19:
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       jne       near ptr M01_L06
+       lea       rcx,[rax+8]
+       add       rcx,8
+       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
+       call      qword ptr [7FFE28DD7AF8]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+M01_L20:
+       test      eax,eax
+       je        short M01_L27
+       jmp       near ptr M01_L13
+M01_L21:
+       mov       rcx,rsi
+       mov       rdx,7FFE28DB9B38
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L00
+M01_L22:
+       mov       eax,1
+       add       rsp,68
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M01_L23:
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       je        short M01_L22
+       mov       rcx,rax
+       mov       r11,7FFE280D17D8
+       call      qword ptr [r11]
+       jmp       short M01_L22
+M01_L24:
+       xor       eax,eax
+       add       rsp,68
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M01_L25:
+       mov       ecx,10
+       call      qword ptr [7FFE284A4F30]
+       int       3
+M01_L26:
+       mov       ecx,0C
+       call      qword ptr [7FFE284A4F30]
+       int       3
+M01_L27:
+       mov       rcx,rsp
+       call      M01_L28
+       jmp       short M01_L24
+M01_L28:
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,28
+       vzeroupper
+       mov       rbp,[rcx+20]
+       mov       [rsp+20],rbp
+       lea       rbp,[rbp+90]
+       cmp       qword ptr [rbp-60],0
+       je        short M01_L29
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       mov       r11,[rbp-60]
+       cmp       [r11],rcx
+       je        short M01_L29
+       mov       rcx,r11
+       mov       r11,7FFE280D17D8
+       call      qword ptr [r11]
+M01_L29:
+       nop
+       add       rsp,28
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 1173
+```
+```assembly
+; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       push      rbx
+       sub       rsp,20
+       vzeroupper
+       mov       rbx,[rdx+8]
+       cmp       [rbx],bl
+       call      qword ptr [7FFE28515B90]; System.DateTime.get_UtcNow()
+       mov       rcx,[rbx+48]
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rax,rdx
+       mov       rdx,4000000000000000
+       or        rax,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rcx,rdx
+       mov       rdx,4000000000000000
+       or        rcx,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rax,rdx
+       and       rcx,rdx
+       sub       rax,rcx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,rax
+       vdivsd    xmm0,xmm0,[7FFE28F51938]
+       xor       eax,eax
+       vucomisd  xmm0,qword ptr [7FFE28F51940]
+       seta      al
+       add       rsp,20
+       pop       rbx
+       ret
+; Total bytes of code 131
+```
+```assembly
+; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       push      rsi
+       push      rbx
+       sub       rsp,28
+       mov       rbx,rcx
+       mov       rsi,r8
+       test      rdx,rdx
+       je        short M03_L00
+       lea       rcx,[rbx+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbx+18],rsi
+       add       rsp,28
+       pop       rbx
+       pop       rsi
+       ret
+M03_L00:
+       call      qword ptr [7FFE282141F8]
+       int       3
+; Total bytes of code 44
+```
+
+## .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+```assembly
+; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark.HaveItemsWithPredicate()
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,20
+       mov       rbx,rcx
+       mov       rsi,[rbx+278]
+       mov       r8,2515F80D100
+       mov       r8,[r8]
+       test      r8,r8
+       je        short M00_L02
+       test      rsi,rsi
+       je        short M00_L03
+M00_L00:
+       test      r8,r8
+       je        short M00_L03
+       mov       rdx,rsi
+       mov       rcx,offset MD_System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>,Boolean>)
+       call      qword ptr [7FFE28E8C948]; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+M00_L01:
+       mov       rcx,[rbx+18]
+       mov       [rcx+4C],al
+       add       rsp,20
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       ret
+M00_L02:
+       mov       rcx,offset MT_System.Func`2[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib],[System.Boolean, System.Private.CoreLib]]
+       call      CORINFO_HELP_NEWSFAST
+       mov       rdi,rax
+       mov       rdx,2515F80D0F8
+       mov       rdx,[rdx]
+       mov       rcx,rdi
+       mov       r8,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       call      qword ptr [7FFE28214210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       mov       rcx,2515F80D100
+       mov       rdx,rdi
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       r8,rdi
+       test      rsi,rsi
+       jne       short M00_L00
+M00_L03:
+       mov       eax,1
+       jmp       short M00_L01
+; Total bytes of code 162
+```
+```assembly
+; System.Linq.Enumerable.Any[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]](System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, System.Func`2<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>,Boolean>)
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,68
+       vzeroupper
+       lea       rbp,[rsp+90]
+       xor       eax,eax
+       mov       [rbp-58],rax
+       vxorps    xmm4,xmm4,xmm4
+       vmovdqa   xmmword ptr [rbp-50],xmm4
+       vmovdqa   xmmword ptr [rbp-40],xmm4
+       mov       [rbp-70],rsp
+       mov       [rbp-30],rcx
+       mov       rsi,rcx
+       mov       rdi,rdx
+       mov       rbx,r8
+       test      rdi,rdi
+       je        near ptr M01_L25
+       test      rbx,rbx
+       je        near ptr M01_L26
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+10]
+       test      r11,r11
+       je        near ptr M01_L21
+M01_L00:
+       mov       rcx,rdi
+       call      qword ptr [r11]
+       mov       [rbp-60],rax
+       test      rax,rax
+       je        near ptr M01_L19
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       jne       near ptr M01_L19
+       jmp       near ptr M01_L12
+M01_L01:
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+18]
+       test      r11,r11
+       je        near ptr M01_L10
+M01_L02:
+       lea       rdx,[rbp-40]
+       mov       rcx,[rbp-60]
+       call      qword ptr [r11]
+       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       mov       [rbp+20],rbx
+       cmp       [rbx+18],rcx
+       jne       near ptr M01_L11
+       mov       rdi,[rbp-38]
+       mov       [rbp-68],rdi
+       cmp       [rdi],dil
+       lea       rcx,[rbp-48]
+       mov       rax,7FFEF0CC5380
+       call      rax
+       mov       rbx,[rbp-48]
+       mov       rdx,2515F8001C8
+       mov       rdi,[rdx]
+       sub       rbx,[rdi+8]
+       cmp       dword ptr [7FFE880B40DC],0
+       jne       near ptr M01_L09
+M01_L03:
+       mov       edx,0B2D05E00
+       cmp       rbx,rdx
+       jae       near ptr M01_L05
+       add       rbx,[rdi+10]
+M01_L04:
+       mov       rdi,[rbp-68]
+       mov       r14,[rdi+48]
+       mov       rax,3FFFFFFFFFFFFFFF
+       and       rax,rbx
+       mov       r8,4000000000000000
+       or        rax,r8
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rdx,r14
+       or        rdx,r8
+       mov       r8,3FFFFFFFFFFFFFFF
+       and       r8,rax
+       mov       rcx,3FFFFFFFFFFFFFFF
+       and       rdx,rcx
+       sub       r8,rdx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,r8
+       vdivsd    xmm0,xmm0,[7FFE28F1EE98]
+       xor       r15d,r15d
+       vucomisd  xmm0,qword ptr [7FFE28F1EEA0]
+       seta      r15b
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       mov       rbx,[rbp+20]
+       je        near ptr M01_L12
+       jmp       near ptr M01_L23
+M01_L05:
+       call      qword ptr [7FFE28515C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       mov       rbx,rax
+       jmp       near ptr M01_L04
+M01_L06:
+       mov       rcx,rax
+       mov       r11,7FFE280D1AB0
+       call      qword ptr [r11]
+       jmp       near ptr M01_L20
+M01_L07:
+       call      qword ptr [7FFE28515C38]; System.DateTime.UpdateLeapSecondCacheAndReturnUtcNow()
+       mov       rbx,rax
+       jmp       near ptr M01_L16
+M01_L08:
+       call      CORINFO_HELP_POLL_GC
+       jmp       near ptr M01_L15
+M01_L09:
+       call      CORINFO_HELP_POLL_GC
+       jmp       near ptr M01_L03
+M01_L10:
+       mov       rcx,rsi
+       mov       rdx,7FFE28E94990
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L02
+M01_L11:
+       vmovdqu   xmm0,xmmword ptr [rbp-40]
+       vmovdqu   xmmword ptr [rbp-58],xmm0
+       lea       rdx,[rbp-58]
+       mov       rbx,[rbp+20]
+       mov       rcx,[rbx+8]
+       call      qword ptr [rbx+18]
+       mov       r15d,eax
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       jne       near ptr M01_L23
+M01_L12:
+       lea       rcx,[rax+8]
+       add       rcx,8
+       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
+       call      qword ptr [7FFE28E8D140]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+       test      eax,eax
+       je        near ptr M01_L27
+       jmp       near ptr M01_L01
+M01_L13:
+       mov       rcx,[rsi+10]
+       mov       r11,[rcx+18]
+       test      r11,r11
+       je        near ptr M01_L17
+M01_L14:
+       lea       rdx,[rbp-40]
+       mov       rcx,[rbp-60]
+       call      qword ptr [r11]
+       mov       rcx,offset DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       mov       [rbp+20],rbx
+       cmp       [rbx+18],rcx
+       jne       near ptr M01_L18
+       mov       rdi,[rbp-38]
+       mov       [rbp-68],rdi
+       cmp       [rdi],dil
+       lea       rcx,[rbp-48]
+       mov       rax,7FFEF0CC5380
+       call      rax
+       mov       rbx,[rbp-48]
+       mov       rdx,2515F8001C8
+       mov       rdi,[rdx]
+       sub       rbx,[rdi+8]
+       cmp       dword ptr [7FFE880B40DC],0
+       jne       near ptr M01_L08
+M01_L15:
+       mov       edx,0B2D05E00
+       cmp       rbx,rdx
+       jae       near ptr M01_L07
+       add       rbx,[rdi+10]
+M01_L16:
+       mov       rdi,[rbp-68]
+       mov       r14,[rdi+48]
+       mov       rax,3FFFFFFFFFFFFFFF
+       and       rax,rbx
+       mov       rdx,4000000000000000
+       or        rax,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rdx,r14
+       mov       rcx,4000000000000000
+       or        rdx,rcx
+       mov       r8,3FFFFFFFFFFFFFFF
+       and       r8,rax
+       mov       rcx,3FFFFFFFFFFFFFFF
+       and       rcx,rdx
+       sub       r8,rcx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,r8
+       vdivsd    xmm0,xmm0,[7FFE28F1EE98]
+       xor       r15d,r15d
+       vucomisd  xmm0,qword ptr [7FFE28F1EEA0]
+       seta      r15b
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       mov       rbx,[rbp+20]
+       je        short M01_L19
+       jmp       near ptr M01_L23
+M01_L17:
+       mov       rcx,rsi
+       mov       rdx,7FFE28E94990
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L14
+M01_L18:
+       vmovdqu   xmm0,xmmword ptr [rbp-40]
+       vmovdqu   xmmword ptr [rbp-58],xmm0
+       lea       rdx,[rbp-58]
+       mov       rbx,[rbp+20]
+       mov       rcx,[rbx+8]
+       call      qword ptr [rbx+18]
+       mov       r15d,eax
+       test      r15d,r15d
+       mov       rax,[rbp-60]
+       jne       short M01_L23
+M01_L19:
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       jne       near ptr M01_L06
+       lea       rcx,[rax+8]
+       add       rcx,8
+       mov       rdx,offset MT_System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]], System.Private.CoreLib]]
+       call      qword ptr [7FFE28E8D140]; System.Collections.Generic.SortedSet`1+Enumerator[[System.Collections.Generic.KeyValuePair`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]], System.Private.CoreLib]].MoveNext()
+M01_L20:
+       test      eax,eax
+       je        short M01_L27
+       jmp       near ptr M01_L13
+M01_L21:
+       mov       rcx,rsi
+       mov       rdx,7FFE28E948B8
+       call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
+       mov       r11,rax
+       jmp       near ptr M01_L00
+M01_L22:
+       mov       eax,1
+       add       rsp,68
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M01_L23:
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       cmp       [rax],rcx
+       je        short M01_L22
+       mov       rcx,rax
+       mov       r11,7FFE280D1AB8
+       call      qword ptr [r11]
+       jmp       short M01_L22
+M01_L24:
+       xor       eax,eax
+       add       rsp,68
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+M01_L25:
+       mov       ecx,10
+       call      qword ptr [7FFE284A4F30]
+       int       3
+M01_L26:
+       mov       ecx,0C
+       call      qword ptr [7FFE284A4F30]
+       int       3
+M01_L27:
+       mov       rcx,rsp
+       call      M01_L28
+       jmp       short M01_L24
+M01_L28:
+       push      rbp
+       push      r15
+       push      r14
+       push      rdi
+       push      rsi
+       push      rbx
+       sub       rsp,28
+       vzeroupper
+       mov       rbp,[rcx+20]
+       mov       [rsp+20],rbp
+       lea       rbp,[rbp+90]
+       cmp       qword ptr [rbp-60],0
+       je        short M01_L29
+       mov       rcx,offset MT_System.Collections.Generic.SortedDictionary`2+Enumerator[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       mov       r11,[rbp-60]
+       cmp       [r11],rcx
+       je        short M01_L29
+       mov       rcx,r11
+       mov       r11,7FFE280D1AB8
+       call      qword ptr [r11]
+M01_L29:
+       nop
+       add       rsp,28
+       pop       rbx
+       pop       rsi
+       pop       rdi
+       pop       r14
+       pop       r15
+       pop       rbp
+       ret
+; Total bytes of code 1173
+```
+```assembly
+; DotNetTips.Spargine.Extensions.BenchmarkTests.SortedDictionaryExtensionsBenchmark+<>c.<HaveItemsWithPredicate>b__4_0(System.Collections.Generic.KeyValuePair`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>)
+       push      rbx
+       sub       rsp,20
+       vzeroupper
+       mov       rbx,[rdx+8]
+       cmp       [rbx],bl
+       call      qword ptr [7FFE28515B90]; System.DateTime.get_UtcNow()
+       mov       rcx,[rbx+48]
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rax,rdx
+       mov       rdx,4000000000000000
+       or        rax,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rcx,rdx
+       mov       rdx,4000000000000000
+       or        rcx,rdx
+       mov       rdx,3FFFFFFFFFFFFFFF
+       and       rax,rdx
+       and       rcx,rdx
+       sub       rax,rcx
+       vxorps    xmm0,xmm0,xmm0
+       vcvtsi2sd xmm0,xmm0,rax
+       vdivsd    xmm0,xmm0,[7FFE28F1F8E8]
+       xor       eax,eax
+       vucomisd  xmm0,qword ptr [7FFE28F1F8F0]
+       seta      al
+       add       rsp,20
+       pop       rbx
+       ret
+; Total bytes of code 131
+```
+```assembly
+; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       push      rsi
+       push      rbx
+       sub       rsp,28
+       mov       rbx,rcx
+       mov       rsi,r8
+       test      rdx,rdx
+       je        short M03_L00
+       lea       rcx,[rbx+8]
+       call      CORINFO_HELP_ASSIGN_REF
+       mov       [rbx+18],rsi
+       add       rsp,28
+       pop       rbx
+       pop       rsi
+       ret
+M03_L00:
+       call      qword ptr [7FFE282141F8]
        int       3
 ; Total bytes of code 44
 ```
@@ -3727,11 +3757,11 @@ M00_L01:
        mov       rdx,[rbx+278]
        test      rdx,rdx
        je        short M00_L00
-       mov       rcx,1D4D5001FE8
+       mov       rcx,1F9CC801FE8
        mov       rcx,[rcx]
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FF95D567EE8]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
+       call      qword ptr [7FFE28CD7EE8]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
        mov       [rsp+20],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -3744,33 +3774,33 @@ M00_L01:
        pop       rsi
        ret
 M00_L00:
-       call      qword ptr [7FF95D025980]
+       call      qword ptr [7FFE28795980]
        mov       ecx,49
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE28714B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE35108
+       mov       rdx,7FFE285A5108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28216B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE28714B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28216B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D025770]
+       call      qword ptr [7FFE28795770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD36670]
+       call      qword ptr [7FFE284A6670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -3803,7 +3833,7 @@ M00_L00:
        jne       short M01_L00
        movzx     r8d,sil
        mov       rdx,rbx
-       call      qword ptr [7FF95D567F18]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
+       call      qword ptr [7FFE28CD7F18]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
        nop
        add       rsp,80
        pop       rbx
@@ -3824,7 +3854,7 @@ M01_L00:
        jmp       short M01_L02
 M01_L01:
        mov       rcx,rdx
-       mov       rdx,7FF95D5917E0
+       mov       rdx,7FFE28D017E0
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L02:
@@ -3843,7 +3873,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rdx
-       mov       rdx,7FF95D591800
+       mov       rdx,7FFE28D01800
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L05:
@@ -3864,7 +3894,7 @@ M01_L05:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D56D560]
+       call      qword ptr [7FFE28CDD560]
        jmp       short M01_L07
 M01_L06:
        mov       rdx,[rbp-30]
@@ -3879,7 +3909,7 @@ M01_L06:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D56D578]
+       call      qword ptr [7FFE28CDD578]
 M01_L07:
        cmp       byte ptr [rbp-38],0
        je        short M01_L08
@@ -3891,7 +3921,7 @@ M01_L07:
        mov       [rbp-1C],ecx
 M01_L08:
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C9610C8
+       mov       r11,7FFE280D10C8
        call      qword ptr [r11]
        test      eax,eax
        jne       near ptr M01_L03
@@ -3901,7 +3931,7 @@ M01_L08:
        mov       rcx,[rbp+10]
        mov       rdx,[rbp-48]
        mov       r8d,[rbp-1C]
-       call      qword ptr [7FF95D567F00]
+       call      qword ptr [7FFE28CD7F00]
        nop
        add       rsp,80
        pop       rbx
@@ -3910,10 +3940,10 @@ M01_L08:
        ret
 M01_L09:
        mov       ecx,40B
-       mov       rdx,7FF95D574A78
+       mov       rdx,7FFE28CE4A78
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FF95D56DDE8]
+       call      qword ptr [7FFE28CDDDE8]
        int       3
 M01_L10:
        push      rbp
@@ -3926,7 +3956,7 @@ M01_L10:
        cmp       qword ptr [rbp-50],0
        je        short M01_L11
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C9610D0
+       mov       r11,7FFE280D10D0
        call      qword ptr [r11]
 M01_L11:
        nop
@@ -3969,13 +3999,13 @@ M01_L11:
        lea       rdx,[rsi+0C]
        mov       r8d,edi
        add       r8,r8
-       call      qword ptr [7FF95CB55B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282C5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        movsxd    r8,r14d
        lea       rcx,[r15+r8*2+0C]
        lea       rdx,[rbx+0C]
        mov       r8d,ebp
        add       r8,r8
-       call      qword ptr [7FF95CB55B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282C5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,r15
        add       rsp,28
        pop       rbx
@@ -3996,7 +4026,7 @@ M02_L00:
        pop       r15
        ret
 M02_L01:
-       call      qword ptr [7FF95CD0EF40]
+       call      qword ptr [7FFE2847EF40]
        int       3
 M02_L02:
        test      rbx,rbx
@@ -4008,7 +4038,7 @@ M02_L02:
        test      eax,eax
        je        short M02_L04
 M02_L03:
-       mov       rax,21562FD0008
+       mov       rax,23A5E6A0008
        add       rsp,28
        pop       rbx
        pop       rbp
@@ -4042,11 +4072,11 @@ M02_L04:
        mov       rdx,[rbx+278]
        test      rdx,rdx
        je        short M00_L00
-       mov       rcx,1DCA3001FE8
+       mov       rcx,25764401FE8
        mov       rcx,[rcx]
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FF95D54DFE0]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
+       call      qword ptr [7FFE28CBDFE0]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
        mov       [rsp+20],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -4059,33 +4089,33 @@ M02_L04:
        pop       rsi
        ret
 M00_L00:
-       call      qword ptr [7FF95D005980]
+       call      qword ptr [7FFE28775980]
        mov       ecx,49
-       mov       rdx,7FF95CF84B30
+       mov       rdx,7FFE286F4B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE15108
+       mov       rdx,7FFE28585108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CA86B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281F6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CF84B30
+       mov       rdx,7FFE286F4B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CA86B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281F6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D005770]
+       call      qword ptr [7FFE28775770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD16670]
+       call      qword ptr [7FFE28486670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -4118,7 +4148,7 @@ M00_L00:
        jne       short M01_L00
        movzx     r8d,sil
        mov       rdx,rbx
-       call      qword ptr [7FF95D54E010]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
+       call      qword ptr [7FFE28CBE010]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
        nop
        add       rsp,80
        pop       rbx
@@ -4139,7 +4169,7 @@ M01_L00:
        jmp       short M01_L02
 M01_L01:
        mov       rcx,rdx
-       mov       rdx,7FF95D5717E0
+       mov       rdx,7FFE28CE17E0
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L02:
@@ -4158,7 +4188,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rdx
-       mov       rdx,7FF95D571800
+       mov       rdx,7FFE28CE1800
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L05:
@@ -4179,7 +4209,7 @@ M01_L05:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D54F5A0]
+       call      qword ptr [7FFE28CBF5A0]
        jmp       short M01_L07
 M01_L06:
        mov       rdx,[rbp-30]
@@ -4194,7 +4224,7 @@ M01_L06:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D54F5B8]
+       call      qword ptr [7FFE28CBF5B8]
 M01_L07:
        cmp       byte ptr [rbp-38],0
        je        short M01_L08
@@ -4206,7 +4236,7 @@ M01_L07:
        mov       [rbp-1C],ecx
 M01_L08:
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C940FA8
+       mov       r11,7FFE280B0FA8
        call      qword ptr [r11]
        test      eax,eax
        jne       near ptr M01_L03
@@ -4216,7 +4246,7 @@ M01_L08:
        mov       rcx,[rbp+10]
        mov       rdx,[rbp-48]
        mov       r8d,[rbp-1C]
-       call      qword ptr [7FF95D54DFF8]
+       call      qword ptr [7FFE28CBDFF8]
        nop
        add       rsp,80
        pop       rbx
@@ -4225,10 +4255,10 @@ M01_L08:
        ret
 M01_L09:
        mov       ecx,40B
-       mov       rdx,7FF95D558C58
+       mov       rdx,7FFE28CC8C58
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FF95D54FE28]
+       call      qword ptr [7FFE28CBFE28]
        int       3
 M01_L10:
        push      rbp
@@ -4241,7 +4271,7 @@ M01_L10:
        cmp       qword ptr [rbp-50],0
        je        short M01_L11
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C940FB0
+       mov       r11,7FFE280B0FB0
        call      qword ptr [r11]
 M01_L11:
        nop
@@ -4284,13 +4314,13 @@ M01_L11:
        lea       rdx,[rsi+0C]
        mov       r8d,edi
        add       r8,r8
-       call      qword ptr [7FF95CB35B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282A5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        movsxd    r8,r14d
        lea       rcx,[r15+r8*2+0C]
        lea       rdx,[rbx+0C]
        mov       r8d,ebp
        add       r8,r8
-       call      qword ptr [7FF95CB35B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282A5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,r15
        add       rsp,28
        pop       rbx
@@ -4311,7 +4341,7 @@ M02_L00:
        pop       r15
        ret
 M02_L01:
-       call      qword ptr [7FF95CCEEF40]
+       call      qword ptr [7FFE2845EF40]
        int       3
 M02_L02:
        test      rbx,rbx
@@ -4323,7 +4353,7 @@ M02_L02:
        test      eax,eax
        je        short M02_L04
 M02_L03:
-       mov       rax,21D30D50008
+       mov       rax,297F6420008
        add       rsp,28
        pop       rbx
        pop       rbp
@@ -4357,11 +4387,11 @@ M02_L04:
        mov       rdx,[rbx+278]
        test      rdx,rdx
        je        short M00_L00
-       mov       rcx,18576801FE8
+       mov       rcx,231AD801FE8
        mov       rcx,[rcx]
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FF95D55D5D8]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
+       call      qword ptr [7FFE28CCD5D8]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
        mov       [rsp+20],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -4374,33 +4404,33 @@ M02_L04:
        pop       rsi
        ret
 M00_L00:
-       call      qword ptr [7FF95D015980]
+       call      qword ptr [7FFE28785980]
        mov       ecx,49
-       mov       rdx,7FF95CF931F8
+       mov       rdx,7FFE28704B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CD8E320
+       mov       rdx,7FFE28595108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CA96B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28206B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CF931F8
+       mov       rdx,7FFE28704B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CA96B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28206B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D015770]
+       call      qword ptr [7FFE28785770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD26670]
+       call      qword ptr [7FFE28496670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -4433,7 +4463,7 @@ M00_L00:
        jne       short M01_L00
        movzx     r8d,sil
        mov       rdx,rbx
-       call      qword ptr [7FF95D55D608]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
+       call      qword ptr [7FFE28CCD608]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
        nop
        add       rsp,80
        pop       rbx
@@ -4454,7 +4484,7 @@ M01_L00:
        jmp       short M01_L02
 M01_L01:
        mov       rcx,rdx
-       mov       rdx,7FF95D5817E0
+       mov       rdx,7FFE28CF17E0
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L02:
@@ -4473,7 +4503,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rdx
-       mov       rdx,7FF95D581800
+       mov       rdx,7FFE28CF1800
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L05:
@@ -4494,7 +4524,7 @@ M01_L05:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D55EB98]
+       call      qword ptr [7FFE28CCEB98]
        jmp       short M01_L07
 M01_L06:
        mov       rdx,[rbp-30]
@@ -4509,7 +4539,7 @@ M01_L06:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D55EBB0]
+       call      qword ptr [7FFE28CCEBB0]
 M01_L07:
        cmp       byte ptr [rbp-38],0
        je        short M01_L08
@@ -4521,7 +4551,7 @@ M01_L07:
        mov       [rbp-1C],ecx
 M01_L08:
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C950FA8
+       mov       r11,7FFE280C0FA8
        call      qword ptr [r11]
        test      eax,eax
        jne       near ptr M01_L03
@@ -4531,7 +4561,7 @@ M01_L08:
        mov       rcx,[rbp+10]
        mov       rdx,[rbp-48]
        mov       r8d,[rbp-1C]
-       call      qword ptr [7FF95D55D5F0]
+       call      qword ptr [7FFE28CCD5F0]
        nop
        add       rsp,80
        pop       rbx
@@ -4540,10 +4570,10 @@ M01_L08:
        ret
 M01_L09:
        mov       ecx,40B
-       mov       rdx,7FF95D565E08
+       mov       rdx,7FFE28CD8888
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FF95D55F420]
+       call      qword ptr [7FFE28CCF420]
        int       3
 M01_L10:
        push      rbp
@@ -4556,7 +4586,7 @@ M01_L10:
        cmp       qword ptr [rbp-50],0
        je        short M01_L11
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C950FB0
+       mov       r11,7FFE280C0FB0
        call      qword ptr [r11]
 M01_L11:
        nop
@@ -4599,13 +4629,13 @@ M01_L11:
        lea       rdx,[rsi+0C]
        mov       r8d,edi
        add       r8,r8
-       call      qword ptr [7FF95CB45B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282B5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        movsxd    r8,r14d
        lea       rcx,[r15+r8*2+0C]
        lea       rdx,[rbx+0C]
        mov       r8d,ebp
        add       r8,r8
-       call      qword ptr [7FF95CB45B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282B5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,r15
        add       rsp,28
        pop       rbx
@@ -4626,7 +4656,7 @@ M02_L00:
        pop       r15
        ret
 M02_L01:
-       call      qword ptr [7FF95CCFEF40]
+       call      qword ptr [7FFE2846EF40]
        int       3
 M02_L02:
        test      rbx,rbx
@@ -4638,7 +4668,7 @@ M02_L02:
        test      eax,eax
        je        short M02_L04
 M02_L03:
-       mov       rax,1C604730008
+       mov       rax,2723B610008
        add       rsp,28
        pop       rbx
        pop       rbp
@@ -4672,11 +4702,11 @@ M02_L04:
        mov       rdx,[rbx+278]
        test      rdx,rdx
        je        short M00_L00
-       mov       rcx,2C06B801FE8
+       mov       rcx,1A867001FE8
        mov       rcx,[rcx]
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FF95D57CEB8]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
+       call      qword ptr [7FFE28CDD5D8]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
        mov       [rsp+20],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -4689,33 +4719,33 @@ M02_L04:
        pop       rsi
        ret
 M00_L00:
-       call      qword ptr [7FF95D044438]
+       call      qword ptr [7FFE28795980]
        mov       ecx,49
-       mov       rdx,7FF95CFB4628
+       mov       rdx,7FFE28714B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE450F0
+       mov       rdx,7FFE285A5108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAB6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28216B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFB4628
+       mov       rdx,7FFE28714B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAB6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28216B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D044228]
+       call      qword ptr [7FFE28795770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD46670]
+       call      qword ptr [7FFE284A6670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -4748,7 +4778,7 @@ M00_L00:
        jne       short M01_L00
        movzx     r8d,sil
        mov       rdx,rbx
-       call      qword ptr [7FF95D57CEE8]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
+       call      qword ptr [7FFE28CDD608]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
        nop
        add       rsp,80
        pop       rbx
@@ -4769,7 +4799,7 @@ M01_L00:
        jmp       short M01_L02
 M01_L01:
        mov       rcx,rdx
-       mov       rdx,7FF95D5A17E0
+       mov       rdx,7FFE28D017E0
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L02:
@@ -4788,7 +4818,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rdx
-       mov       rdx,7FF95D5A1800
+       mov       rdx,7FFE28D01800
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L05:
@@ -4809,7 +4839,7 @@ M01_L05:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D57E478]
+       call      qword ptr [7FFE28CDEB98]
        jmp       short M01_L07
 M01_L06:
        mov       rdx,[rbp-30]
@@ -4824,7 +4854,7 @@ M01_L06:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D57E490]
+       call      qword ptr [7FFE28CDEBB0]
 M01_L07:
        cmp       byte ptr [rbp-38],0
        je        short M01_L08
@@ -4836,7 +4866,7 @@ M01_L07:
        mov       [rbp-1C],ecx
 M01_L08:
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C970FA8
+       mov       r11,7FFE280D0FA8
        call      qword ptr [r11]
        test      eax,eax
        jne       near ptr M01_L03
@@ -4846,7 +4876,7 @@ M01_L08:
        mov       rcx,[rbp+10]
        mov       rdx,[rbp-48]
        mov       r8d,[rbp-1C]
-       call      qword ptr [7FF95D57CED0]
+       call      qword ptr [7FFE28CDD5F0]
        nop
        add       rsp,80
        pop       rbx
@@ -4855,10 +4885,10 @@ M01_L08:
        ret
 M01_L09:
        mov       ecx,40B
-       mov       rdx,7FF95D588888
+       mov       rdx,7FFE28CE8888
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FF95D57ED00]
+       call      qword ptr [7FFE28CDF420]
        int       3
 M01_L10:
        push      rbp
@@ -4871,7 +4901,7 @@ M01_L10:
        cmp       qword ptr [rbp-50],0
        je        short M01_L11
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C970FB0
+       mov       r11,7FFE280D0FB0
        call      qword ptr [r11]
 M01_L11:
        nop
@@ -4914,13 +4944,13 @@ M01_L11:
        lea       rdx,[rsi+0C]
        mov       r8d,edi
        add       r8,r8
-       call      qword ptr [7FF95CB65B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282C5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        movsxd    r8,r14d
        lea       rcx,[r15+r8*2+0C]
        lea       rdx,[rbx+0C]
        mov       r8d,ebp
        add       r8,r8
-       call      qword ptr [7FF95CB65B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282C5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,r15
        add       rsp,28
        pop       rbx
@@ -4941,7 +4971,7 @@ M02_L00:
        pop       r15
        ret
 M02_L01:
-       call      qword ptr [7FF95CD1EF40]
+       call      qword ptr [7FFE2847EF40]
        int       3
 M02_L02:
        test      rbx,rbx
@@ -4953,7 +4983,7 @@ M02_L02:
        test      eax,eax
        je        short M02_L04
 M02_L03:
-       mov       rax,300FD7F0008
+       mov       rax,1E8F8F70008
        add       rsp,28
        pop       rbx
        pop       rbp
@@ -4987,11 +5017,11 @@ M02_L04:
        mov       rdx,[rbx+278]
        test      rdx,rdx
        je        short M00_L00
-       mov       rcx,1D109401FE8
+       mov       rcx,2A7E3C01FE8
        mov       rcx,[rcx]
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FF95D56DFE0]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
+       call      qword ptr [7FFE28CEDFE0]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
        mov       [rsp+20],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -5004,33 +5034,33 @@ M02_L04:
        pop       rsi
        ret
 M00_L00:
-       call      qword ptr [7FF95D025980]
+       call      qword ptr [7FFE287A5980]
        mov       ecx,49
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE28724B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE35108
+       mov       rdx,7FFE285B5108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28226B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE28724B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28226B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D025770]
+       call      qword ptr [7FFE287A5770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD36670]
+       call      qword ptr [7FFE284B6670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -5063,7 +5093,7 @@ M00_L00:
        jne       short M01_L00
        movzx     r8d,sil
        mov       rdx,rbx
-       call      qword ptr [7FF95D56E010]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
+       call      qword ptr [7FFE28CEE010]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
        nop
        add       rsp,80
        pop       rbx
@@ -5084,7 +5114,7 @@ M01_L00:
        jmp       short M01_L02
 M01_L01:
        mov       rcx,rdx
-       mov       rdx,7FF95D5917E0
+       mov       rdx,7FFE28D117E0
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L02:
@@ -5103,7 +5133,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rdx
-       mov       rdx,7FF95D591800
+       mov       rdx,7FFE28D11800
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L05:
@@ -5124,7 +5154,7 @@ M01_L05:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D56F5A0]
+       call      qword ptr [7FFE28CEF5A0]
        jmp       short M01_L07
 M01_L06:
        mov       rdx,[rbp-30]
@@ -5139,7 +5169,7 @@ M01_L06:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D56F5B8]
+       call      qword ptr [7FFE28CEF5B8]
 M01_L07:
        cmp       byte ptr [rbp-38],0
        je        short M01_L08
@@ -5151,7 +5181,7 @@ M01_L07:
        mov       [rbp-1C],ecx
 M01_L08:
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C960FA8
+       mov       r11,7FFE280E0FB0
        call      qword ptr [r11]
        test      eax,eax
        jne       near ptr M01_L03
@@ -5161,7 +5191,7 @@ M01_L08:
        mov       rcx,[rbp+10]
        mov       rdx,[rbp-48]
        mov       r8d,[rbp-1C]
-       call      qword ptr [7FF95D56DFF8]
+       call      qword ptr [7FFE28CEDFF8]
        nop
        add       rsp,80
        pop       rbx
@@ -5170,10 +5200,10 @@ M01_L08:
        ret
 M01_L09:
        mov       ecx,40B
-       mov       rdx,7FF95D578C58
+       mov       rdx,7FFE28CF8C58
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FF95D56FE28]
+       call      qword ptr [7FFE28CEFE28]
        int       3
 M01_L10:
        push      rbp
@@ -5186,7 +5216,7 @@ M01_L10:
        cmp       qword ptr [rbp-50],0
        je        short M01_L11
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C960FB0
+       mov       r11,7FFE280E0FB8
        call      qword ptr [r11]
 M01_L11:
        nop
@@ -5229,13 +5259,13 @@ M01_L11:
        lea       rdx,[rsi+0C]
        mov       r8d,edi
        add       r8,r8
-       call      qword ptr [7FF95CB55B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282D5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        movsxd    r8,r14d
        lea       rcx,[r15+r8*2+0C]
        lea       rdx,[rbx+0C]
        mov       r8d,ebp
        add       r8,r8
-       call      qword ptr [7FF95CB55B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282D5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,r15
        add       rsp,28
        pop       rbx
@@ -5256,7 +5286,7 @@ M02_L00:
        pop       r15
        ret
 M02_L01:
-       call      qword ptr [7FF95CD0EF40]
+       call      qword ptr [7FFE2848EF40]
        int       3
 M02_L02:
        test      rbx,rbx
@@ -5268,7 +5298,7 @@ M02_L02:
        test      eax,eax
        je        short M02_L04
 M02_L03:
-       mov       rax,2119B3B0008
+       mov       rax,2E875BB0008
        add       rsp,28
        pop       rbx
        pop       rbp
@@ -5302,11 +5332,11 @@ M02_L04:
        mov       rdx,[rbx+278]
        test      rdx,rdx
        je        short M00_L00
-       mov       rcx,180C3C01FE8
+       mov       rcx,21A35401FE8
        mov       rcx,[rcx]
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FF95D55DFE0]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
+       call      qword ptr [7FFE28CEE970]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
        mov       [rsp+20],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -5319,33 +5349,33 @@ M02_L04:
        pop       rsi
        ret
 M00_L00:
-       call      qword ptr [7FF95D015980]
+       call      qword ptr [7FFE28775980]
        mov       ecx,49
-       mov       rdx,7FF95CF94B30
+       mov       rdx,7FFE286F4B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE25108
+       mov       rdx,7FFE28585108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CA96B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281F6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CF94B30
+       mov       rdx,7FFE286F4B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CA96B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281F6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D015770]
+       call      qword ptr [7FFE28775770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD26670]
+       call      qword ptr [7FFE28486670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -5378,7 +5408,7 @@ M00_L00:
        jne       short M01_L00
        movzx     r8d,sil
        mov       rdx,rbx
-       call      qword ptr [7FF95D55E010]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
+       call      qword ptr [7FFE28CEE9A0]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
        nop
        add       rsp,80
        pop       rbx
@@ -5399,7 +5429,7 @@ M01_L00:
        jmp       short M01_L02
 M01_L01:
        mov       rcx,rdx
-       mov       rdx,7FF95D5817E0
+       mov       rdx,7FFE28D14CF8
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L02:
@@ -5418,7 +5448,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rdx
-       mov       rdx,7FF95D581800
+       mov       rdx,7FFE28D14D18
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L05:
@@ -5439,7 +5469,7 @@ M01_L05:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D55F5A0]
+       call      qword ptr [7FFE28D341F8]
        jmp       short M01_L07
 M01_L06:
        mov       rdx,[rbp-30]
@@ -5454,7 +5484,7 @@ M01_L06:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D55F5B8]
+       call      qword ptr [7FFE28D34210]
 M01_L07:
        cmp       byte ptr [rbp-38],0
        je        short M01_L08
@@ -5466,7 +5496,7 @@ M01_L07:
        mov       [rbp-1C],ecx
 M01_L08:
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C950FB0
+       mov       r11,7FFE280B1198
        call      qword ptr [r11]
        test      eax,eax
        jne       near ptr M01_L03
@@ -5476,7 +5506,7 @@ M01_L08:
        mov       rcx,[rbp+10]
        mov       rdx,[rbp-48]
        mov       r8d,[rbp-1C]
-       call      qword ptr [7FF95D55DFF8]
+       call      qword ptr [7FFE28CEE988]
        nop
        add       rsp,80
        pop       rbx
@@ -5485,10 +5515,10 @@ M01_L08:
        ret
 M01_L09:
        mov       ecx,40B
-       mov       rdx,7FF95D568C58
+       mov       rdx,7FFE28CFD628
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FF95D55FE28]
+       call      qword ptr [7FFE28D34A80]
        int       3
 M01_L10:
        push      rbp
@@ -5501,7 +5531,7 @@ M01_L10:
        cmp       qword ptr [rbp-50],0
        je        short M01_L11
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C950FB8
+       mov       r11,7FFE280B11A0
        call      qword ptr [r11]
 M01_L11:
        nop
@@ -5544,13 +5574,13 @@ M01_L11:
        lea       rdx,[rsi+0C]
        mov       r8d,edi
        add       r8,r8
-       call      qword ptr [7FF95CB45B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282A5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        movsxd    r8,r14d
        lea       rcx,[r15+r8*2+0C]
        lea       rdx,[rbx+0C]
        mov       r8d,ebp
        add       r8,r8
-       call      qword ptr [7FF95CB45B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282A5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,r15
        add       rsp,28
        pop       rbx
@@ -5571,7 +5601,7 @@ M02_L00:
        pop       r15
        ret
 M02_L01:
-       call      qword ptr [7FF95CCFEF40]
+       call      qword ptr [7FFE2845EF40]
        int       3
 M02_L02:
        test      rbx,rbx
@@ -5583,7 +5613,7 @@ M02_L02:
        test      eax,eax
        je        short M02_L04
 M02_L03:
-       mov       rax,1C155A60008
+       mov       rax,25AC7130008
        add       rsp,28
        pop       rbx
        pop       rbp
@@ -5617,11 +5647,11 @@ M02_L04:
        mov       rdx,[rbx+278]
        test      rdx,rdx
        je        short M00_L00
-       mov       rcx,27DFAC02010
+       mov       rcx,29FB6001FF8
        mov       rcx,[rcx]
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FF95D666700]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
+       call      qword ptr [7FFE28DE6970]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
        mov       [rsp+20],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -5634,33 +5664,33 @@ M02_L04:
        pop       rsi
        ret
 M00_L00:
-       call      qword ptr [7FF95D025980]
+       call      qword ptr [7FFE287A5980]
        mov       ecx,49
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE28724B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE35108
+       mov       rdx,7FFE285B5108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28226B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE28724B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28226B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D025770]
+       call      qword ptr [7FFE287A5770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD36670]
+       call      qword ptr [7FFE284B6670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -5693,7 +5723,7 @@ M00_L00:
        jne       short M01_L00
        movzx     r8d,sil
        mov       rdx,rbx
-       call      qword ptr [7FF95D666730]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
+       call      qword ptr [7FFE28DE69A0]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
        nop
        add       rsp,80
        pop       rbx
@@ -5714,7 +5744,7 @@ M01_L00:
        jmp       short M01_L02
 M01_L01:
        mov       rcx,rdx
-       mov       rdx,7FF95D6917E0
+       mov       rdx,7FFE28E017E0
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L02:
@@ -5733,7 +5763,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rdx
-       mov       rdx,7FF95D691800
+       mov       rdx,7FFE28E01800
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L05:
@@ -5754,7 +5784,7 @@ M01_L05:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D667CC0]
+       call      qword ptr [7FFE28DEC1F8]
        jmp       short M01_L07
 M01_L06:
        mov       rdx,[rbp-30]
@@ -5769,7 +5799,7 @@ M01_L06:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D667CD8]
+       call      qword ptr [7FFE28DEC210]
 M01_L07:
        cmp       byte ptr [rbp-38],0
        je        short M01_L08
@@ -5781,7 +5811,7 @@ M01_L07:
        mov       [rbp-1C],ecx
 M01_L08:
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C961840
+       mov       r11,7FFE280E1820
        call      qword ptr [r11]
        test      eax,eax
        jne       near ptr M01_L03
@@ -5791,7 +5821,7 @@ M01_L08:
        mov       rcx,[rbp+10]
        mov       rdx,[rbp-48]
        mov       r8d,[rbp-1C]
-       call      qword ptr [7FF95D666718]
+       call      qword ptr [7FFE28DE6988]
        nop
        add       rsp,80
        pop       rbx
@@ -5800,10 +5830,10 @@ M01_L08:
        ret
 M01_L09:
        mov       ecx,40B
-       mov       rdx,7FF95D65B7B8
+       mov       rdx,7FFE28DDA078
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FF95D66C600]
+       call      qword ptr [7FFE28DECA80]
        int       3
 M01_L10:
        push      rbp
@@ -5816,7 +5846,7 @@ M01_L10:
        cmp       qword ptr [rbp-50],0
        je        short M01_L11
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C961848
+       mov       r11,7FFE280E1828
        call      qword ptr [r11]
 M01_L11:
        nop
@@ -5859,13 +5889,13 @@ M01_L11:
        lea       rdx,[rsi+0C]
        mov       r8d,edi
        add       r8,r8
-       call      qword ptr [7FF95CB55B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282D5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        movsxd    r8,r14d
        lea       rcx,[r15+r8*2+0C]
        lea       rdx,[rbx+0C]
        mov       r8d,ebp
        add       r8,r8
-       call      qword ptr [7FF95CB55B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282D5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,r15
        add       rsp,28
        pop       rbx
@@ -5886,7 +5916,7 @@ M02_L00:
        pop       r15
        ret
 M02_L01:
-       call      qword ptr [7FF95CD0EF40]
+       call      qword ptr [7FFE2848EF40]
        int       3
 M02_L02:
        test      rbx,rbx
@@ -5898,7 +5928,7 @@ M02_L02:
        test      eax,eax
        je        short M02_L04
 M02_L03:
-       mov       rax,2BE8C9A0008
+       mov       rax,2E047DF0008
        add       rsp,28
        pop       rbx
        pop       rbp
@@ -5932,11 +5962,11 @@ M02_L04:
        mov       rdx,[rbx+278]
        test      rdx,rdx
        je        short M00_L00
-       mov       rcx,20570C10528
+       mov       rcx,15171012520
        mov       rcx,[rcx]
        xor       r8d,r8d
        xor       r9d,r9d
-       call      qword ptr [7FF95D71CFA8]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
+       call      qword ptr [7FFE28E6D5D8]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].AddRange(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean, Boolean)
        mov       [rsp+20],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -5949,33 +5979,33 @@ M02_L04:
        pop       rsi
        ret
 M00_L00:
-       call      qword ptr [7FF95D025980]
+       call      qword ptr [7FFE28775980]
        mov       ecx,49
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE286F4B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE35108
+       mov       rdx,7FFE28585108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281F6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE286F4B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281F6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D025770]
+       call      qword ptr [7FFE28775770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD36670]
+       call      qword ptr [7FFE28486670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -6008,7 +6038,7 @@ M00_L00:
        jne       short M01_L00
        movzx     r8d,sil
        mov       rdx,rbx
-       call      qword ptr [7FF95D71CFD8]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
+       call      qword ptr [7FFE28E6D608]; System.Collections.Immutable.ImmutableSortedDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].FillFromEmpty(System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.__Canon,System.__Canon>>, Boolean)
        nop
        add       rsp,80
        pop       rbx
@@ -6029,7 +6059,7 @@ M01_L00:
        jmp       short M01_L02
 M01_L01:
        mov       rcx,rdx
-       mov       rdx,7FF95D7473D0
+       mov       rdx,7FFE28E973D0
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L02:
@@ -6048,7 +6078,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rdx
-       mov       rdx,7FF95D7473F0
+       mov       rdx,7FFE28E973F0
        call      CORINFO_HELP_RUNTIMEHANDLE_CLASS
        mov       r11,rax
 M01_L05:
@@ -6069,7 +6099,7 @@ M01_L05:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D71E568]
+       call      qword ptr [7FFE28E6EB98]
        jmp       short M01_L07
 M01_L06:
        mov       rdx,[rbp-30]
@@ -6084,7 +6114,7 @@ M01_L06:
        mov       rcx,[rbp-48]
        mov       r8,[rbp-28]
        cmp       [rcx],ecx
-       call      qword ptr [7FF95D71E580]
+       call      qword ptr [7FFE28E6EBB0]
 M01_L07:
        cmp       byte ptr [rbp-38],0
        je        short M01_L08
@@ -6096,7 +6126,7 @@ M01_L07:
        mov       [rbp-1C],ecx
 M01_L08:
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C961A00
+       mov       r11,7FFE280B19E0
        call      qword ptr [r11]
        test      eax,eax
        jne       near ptr M01_L03
@@ -6106,7 +6136,7 @@ M01_L08:
        mov       rcx,[rbp+10]
        mov       rdx,[rbp-48]
        mov       r8d,[rbp-1C]
-       call      qword ptr [7FF95D71CFC0]
+       call      qword ptr [7FFE28E6D5F0]
        nop
        add       rsp,80
        pop       rbx
@@ -6115,10 +6145,10 @@ M01_L08:
        ret
 M01_L09:
        mov       ecx,40B
-       mov       rdx,7FF95D738D20
+       mov       rdx,7FFE28E891A8
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FF95D71EDF0]
+       call      qword ptr [7FFE28E6F420]
        int       3
 M01_L10:
        push      rbp
@@ -6131,7 +6161,7 @@ M01_L10:
        cmp       qword ptr [rbp-50],0
        je        short M01_L11
        mov       rcx,[rbp-50]
-       mov       r11,7FF95C961A08
+       mov       r11,7FFE280B19E8
        call      qword ptr [r11]
 M01_L11:
        nop
@@ -6174,13 +6204,13 @@ M01_L11:
        lea       rdx,[rsi+0C]
        mov       r8d,edi
        add       r8,r8
-       call      qword ptr [7FF95CB55B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282A5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        movsxd    r8,r14d
        lea       rcx,[r15+r8*2+0C]
        lea       rdx,[rbx+0C]
        mov       r8d,ebp
        add       r8,r8
-       call      qword ptr [7FF95CB55B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE282A5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,r15
        add       rsp,28
        pop       rbx
@@ -6201,7 +6231,7 @@ M02_L00:
        pop       r15
        ret
 M02_L01:
-       call      qword ptr [7FF95CD0EF40]
+       call      qword ptr [7FFE2845EF40]
        int       3
 M02_L02:
        test      rbx,rbx
@@ -6213,7 +6243,7 @@ M02_L02:
        test      eax,eax
        je        short M02_L04
 M02_L03:
-       mov       rax,24602B50008
+       mov       rax,19203040008
        add       rsp,28
        pop       rbx
        pop       rbp
@@ -6250,7 +6280,7 @@ M02_L04:
        lea       r8,[rsp+30]
        mov       rdx,rsi
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.IDictionary`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address> ByRef)
-       call      qword ptr [7FF95D5670D8]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
+       call      qword ptr [7FFE28CA70D8]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
        mov       [rsp+28],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -6290,7 +6320,7 @@ M02_L04:
        jmp       short M01_L01
 M01_L00:
        mov       rcx,rbx
-       mov       rdx,7FF95D556650
+       mov       rdx,7FFE28C96650
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r14,rax
 M01_L01:
@@ -6302,7 +6332,7 @@ M01_L01:
        jmp       short M01_L03
 M01_L02:
        mov       rcx,rbx
-       mov       rdx,7FF95D556668
+       mov       rdx,7FFE28C96668
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L03:
@@ -6326,7 +6356,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rbx
-       mov       rdx,7FF95D556720
+       mov       rdx,7FFE28C96720
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L05:
@@ -6346,7 +6376,7 @@ M01_L06:
        jmp       short M01_L08
 M01_L07:
        mov       rcx,rbx
-       mov       rdx,7FF95D556680
+       mov       rdx,7FFE28C96680
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r15,rax
 M01_L08:
@@ -6379,33 +6409,33 @@ M01_L09:
        pop       r15
        ret
 M01_L10:
-       call      qword ptr [7FF95D025980]
+       call      qword ptr [7FFE28765980]
        mov       ecx,49
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE286E4B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE35108
+       mov       rdx,7FFE28575108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281E6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE286E4B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281E6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D025770]
+       call      qword ptr [7FFE28765770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD36670]
+       call      qword ptr [7FFE28476670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -6427,7 +6457,7 @@ M01_L10:
        lea       r8,[rsp+30]
        mov       rdx,rsi
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.IDictionary`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address> ByRef)
-       call      qword ptr [7FF95D54D1D0]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
+       call      qword ptr [7FFE28CDD1D0]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
        mov       [rsp+28],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -6467,7 +6497,7 @@ M01_L10:
        jmp       short M01_L01
 M01_L00:
        mov       rcx,rbx
-       mov       rdx,7FF95D5384F0
+       mov       rdx,7FFE28CC8580
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r14,rax
 M01_L01:
@@ -6479,7 +6509,7 @@ M01_L01:
        jmp       short M01_L03
 M01_L02:
        mov       rcx,rbx
-       mov       rdx,7FF95D538508
+       mov       rdx,7FFE28CC8598
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L03:
@@ -6503,7 +6533,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rbx
-       mov       rdx,7FF95D5385C0
+       mov       rdx,7FFE28CC8650
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L05:
@@ -6523,7 +6553,7 @@ M01_L06:
        jmp       short M01_L08
 M01_L07:
        mov       rcx,rbx
-       mov       rdx,7FF95D538520
+       mov       rdx,7FFE28CC85B0
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r15,rax
 M01_L08:
@@ -6556,33 +6586,33 @@ M01_L09:
        pop       r15
        ret
 M01_L10:
-       call      qword ptr [7FF95D005980]
+       call      qword ptr [7FFE28795980]
        mov       ecx,49
-       mov       rdx,7FF95CF84B30
+       mov       rdx,7FFE28714B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE15108
+       mov       rdx,7FFE285A5108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CA86B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28216B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CF84B30
+       mov       rdx,7FFE28714B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CA86B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28216B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D005770]
+       call      qword ptr [7FFE28795770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD16670]
+       call      qword ptr [7FFE284A6670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -6604,7 +6634,7 @@ M01_L10:
        lea       r8,[rsp+30]
        mov       rdx,rsi
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.IDictionary`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address> ByRef)
-       call      qword ptr [7FF95D57D1D0]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
+       call      qword ptr [7FFE28CCD1D0]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
        mov       [rsp+28],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -6644,7 +6674,7 @@ M01_L10:
        jmp       short M01_L01
 M01_L00:
        mov       rcx,rbx
-       mov       rdx,7FF95D568580
+       mov       rdx,7FFE28CB85C8
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r14,rax
 M01_L01:
@@ -6656,7 +6686,7 @@ M01_L01:
        jmp       short M01_L03
 M01_L02:
        mov       rcx,rbx
-       mov       rdx,7FF95D568598
+       mov       rdx,7FFE28CB85E0
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L03:
@@ -6680,7 +6710,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rbx
-       mov       rdx,7FF95D568650
+       mov       rdx,7FFE28CB8698
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L05:
@@ -6700,7 +6730,7 @@ M01_L06:
        jmp       short M01_L08
 M01_L07:
        mov       rcx,rbx
-       mov       rdx,7FF95D5685B0
+       mov       rdx,7FFE28CB85F8
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r15,rax
 M01_L08:
@@ -6733,33 +6763,33 @@ M01_L09:
        pop       r15
        ret
 M01_L10:
-       call      qword ptr [7FF95D035980]
+       call      qword ptr [7FFE28785980]
        mov       ecx,49
-       mov       rdx,7FF95CFB4B30
+       mov       rdx,7FFE28704B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE45108
+       mov       rdx,7FFE28595108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAB6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28206B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFB4B30
+       mov       rdx,7FFE28704B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAB6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28206B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D035770]
+       call      qword ptr [7FFE28785770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD46670]
+       call      qword ptr [7FFE28496670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -6781,7 +6811,7 @@ M01_L10:
        lea       r8,[rsp+30]
        mov       rdx,rsi
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.IDictionary`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address> ByRef)
-       call      qword ptr [7FF95D56C7C8]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
+       call      qword ptr [7FFE28CCD1D0]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
        mov       [rsp+28],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -6821,7 +6851,7 @@ M01_L10:
        jmp       short M01_L01
 M01_L00:
        mov       rcx,rbx
-       mov       rdx,7FF95D5584B8
+       mov       rdx,7FFE28CB8640
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r14,rax
 M01_L01:
@@ -6833,7 +6863,7 @@ M01_L01:
        jmp       short M01_L03
 M01_L02:
        mov       rcx,rbx
-       mov       rdx,7FF95D5584D0
+       mov       rdx,7FFE28CB8658
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L03:
@@ -6857,7 +6887,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rbx
-       mov       rdx,7FF95D558588
+       mov       rdx,7FFE28CB8710
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L05:
@@ -6877,7 +6907,7 @@ M01_L06:
        jmp       short M01_L08
 M01_L07:
        mov       rcx,rbx
-       mov       rdx,7FF95D5584E8
+       mov       rdx,7FFE28CB8670
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r15,rax
 M01_L08:
@@ -6910,33 +6940,33 @@ M01_L09:
        pop       r15
        ret
 M01_L10:
-       call      qword ptr [7FF95D025980]
+       call      qword ptr [7FFE28785980]
        mov       ecx,49
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE28704B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE35108
+       mov       rdx,7FFE28595108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28206B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE28704B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28206B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D025770]
+       call      qword ptr [7FFE28785770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD36670]
+       call      qword ptr [7FFE28496670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -6958,7 +6988,7 @@ M01_L10:
        lea       r8,[rsp+30]
        mov       rdx,rsi
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.IDictionary`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address> ByRef)
-       call      qword ptr [7FF95D57D1D0]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
+       call      qword ptr [7FFE28CCC0A8]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
        mov       [rsp+28],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -6998,7 +7028,7 @@ M01_L10:
        jmp       short M01_L01
 M01_L00:
        mov       rcx,rbx
-       mov       rdx,7FF95D568BC0
+       mov       rdx,7FFE28CB8A60
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r14,rax
 M01_L01:
@@ -7010,7 +7040,7 @@ M01_L01:
        jmp       short M01_L03
 M01_L02:
        mov       rcx,rbx
-       mov       rdx,7FF95D568BD8
+       mov       rdx,7FFE28CB8A78
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L03:
@@ -7034,7 +7064,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rbx
-       mov       rdx,7FF95D568C90
+       mov       rdx,7FFE28CB8B30
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L05:
@@ -7054,7 +7084,7 @@ M01_L06:
        jmp       short M01_L08
 M01_L07:
        mov       rcx,rbx
-       mov       rdx,7FF95D568BF0
+       mov       rdx,7FFE28CB8A90
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r15,rax
 M01_L08:
@@ -7087,33 +7117,33 @@ M01_L09:
        pop       r15
        ret
 M01_L10:
-       call      qword ptr [7FF95D035980]
+       call      qword ptr [7FFE28794438]
        mov       ecx,49
-       mov       rdx,7FF95CFB4B30
+       mov       rdx,7FFE28704628
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE45108
+       mov       rdx,7FFE28594D28
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAB6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28206B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFB4B30
+       mov       rdx,7FFE28704628
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAB6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28206B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D035770]
+       call      qword ptr [7FFE28794228]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD46670]
+       call      qword ptr [7FFE28496670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -7135,7 +7165,7 @@ M01_L10:
        lea       r8,[rsp+30]
        mov       rdx,rsi
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.IDictionary`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address> ByRef)
-       call      qword ptr [7FF95D596E98]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
+       call      qword ptr [7FFE28CDF0D8]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
        mov       [rsp+28],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -7175,7 +7205,7 @@ M01_L10:
        jmp       short M01_L01
 M01_L00:
        mov       rcx,rbx
-       mov       rdx,7FF95D5B0558
+       mov       rdx,7FFE28CF4CD8
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r14,rax
 M01_L01:
@@ -7187,7 +7217,7 @@ M01_L01:
        jmp       short M01_L03
 M01_L02:
        mov       rcx,rbx
-       mov       rdx,7FF95D5B0570
+       mov       rdx,7FFE28CF4CF0
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L03:
@@ -7211,7 +7241,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rbx
-       mov       rdx,7FF95D5B0628
+       mov       rdx,7FFE28CF4DA8
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L05:
@@ -7231,7 +7261,7 @@ M01_L06:
        jmp       short M01_L08
 M01_L07:
        mov       rcx,rbx
-       mov       rdx,7FF95D5B0588
+       mov       rdx,7FFE28CF4D08
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r15,rax
 M01_L08:
@@ -7264,33 +7294,33 @@ M01_L09:
        pop       r15
        ret
 M01_L10:
-       call      qword ptr [7FF95D025980]
+       call      qword ptr [7FFE28765980]
        mov       ecx,49
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE286E4B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE35108
+       mov       rdx,7FFE28575108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281E6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFA4B30
+       mov       rdx,7FFE286E4B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281E6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D025770]
+       call      qword ptr [7FFE28765770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD36670]
+       call      qword ptr [7FFE28476670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -7312,7 +7342,7 @@ M01_L10:
        lea       r8,[rsp+30]
        mov       rdx,rsi
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.IDictionary`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address> ByRef)
-       call      qword ptr [7FF95D66C0A8]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
+       call      qword ptr [7FFE28DA58F0]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
        mov       [rsp+28],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -7352,7 +7382,7 @@ M01_L10:
        jmp       short M01_L01
 M01_L00:
        mov       rcx,rbx
-       mov       rdx,7FF95D64F790
+       mov       rdx,7FFE28D8B240
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r14,rax
 M01_L01:
@@ -7364,7 +7394,7 @@ M01_L01:
        jmp       short M01_L03
 M01_L02:
        mov       rcx,rbx
-       mov       rdx,7FF95D64F7A8
+       mov       rdx,7FFE28D8B258
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L03:
@@ -7388,7 +7418,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rbx
-       mov       rdx,7FF95D64F860
+       mov       rdx,7FFE28D8B310
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L05:
@@ -7408,7 +7438,7 @@ M01_L06:
        jmp       short M01_L08
 M01_L07:
        mov       rcx,rbx
-       mov       rdx,7FF95D64F7C0
+       mov       rdx,7FFE28D8B270
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r15,rax
 M01_L08:
@@ -7441,33 +7471,33 @@ M01_L09:
        pop       r15
        ret
 M01_L10:
-       call      qword ptr [7FF95D015980]
+       call      qword ptr [7FFE28765980]
        mov       ecx,49
-       mov       rdx,7FF95CF94B30
+       mov       rdx,7FFE286E4B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE25108
+       mov       rdx,7FFE28575108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CA96B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281E6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CF94B30
+       mov       rdx,7FFE286E4B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CA96B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE281E6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D015770]
+       call      qword ptr [7FFE28765770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD26670]
+       call      qword ptr [7FFE28476670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -7489,7 +7519,7 @@ M01_L10:
        lea       r8,[rsp+30]
        mov       rdx,rsi
        mov       rcx,offset MD_DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.String, System.Private.CoreLib],[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]](System.Collections.Generic.IDictionary`2<System.String,DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>, DotNetTips.Spargine.Tester.Models.RefTypes.Person`1<DotNetTips.Spargine.Tester.Models.RefTypes.Address> ByRef)
-       call      qword ptr [7FF95D71C7C8]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
+       call      qword ptr [7FFE28E8C198]; DotNetTips.Spargine.Extensions.DictionaryExtensions.Upsert[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]](System.Collections.Generic.IDictionary`2<System.__Canon,System.__Canon>, System.__Canon ByRef)
        mov       [rsp+28],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -7529,7 +7559,7 @@ M01_L10:
        jmp       short M01_L01
 M01_L00:
        mov       rcx,rbx
-       mov       rdx,7FF95D724408
+       mov       rdx,7FFE28E94418
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r14,rax
 M01_L01:
@@ -7541,7 +7571,7 @@ M01_L01:
        jmp       short M01_L03
 M01_L02:
        mov       rcx,rbx
-       mov       rdx,7FF95D724420
+       mov       rdx,7FFE28E94430
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L03:
@@ -7565,7 +7595,7 @@ M01_L03:
        jmp       short M01_L05
 M01_L04:
        mov       rcx,rbx
-       mov       rdx,7FF95D7244D8
+       mov       rdx,7FFE28E944E8
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r13,rax
 M01_L05:
@@ -7585,7 +7615,7 @@ M01_L06:
        jmp       short M01_L08
 M01_L07:
        mov       rcx,rbx
-       mov       rdx,7FF95D724438
+       mov       rdx,7FFE28E94448
        call      CORINFO_HELP_RUNTIMEHANDLE_METHOD
        mov       r15,rax
 M01_L08:
@@ -7618,33 +7648,33 @@ M01_L09:
        pop       r15
        ret
 M01_L10:
-       call      qword ptr [7FF95D034438]
+       call      qword ptr [7FFE28795980]
        mov       ecx,49
-       mov       rdx,7FF95CFA3AA0
+       mov       rdx,7FFE28714B30
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1464
-       mov       rdx,7FF95CE34C28
+       mov       rdx,7FFE285A5108
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28216B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,1
-       mov       rdx,7FF95CFA3AA0
+       mov       rdx,7FFE28714B30
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FF95CAA6B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFE28216B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FF95D034228]
+       call      qword ptr [7FFE28795770]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FF95CD36670]
+       call      qword ptr [7FFE284A6670]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
