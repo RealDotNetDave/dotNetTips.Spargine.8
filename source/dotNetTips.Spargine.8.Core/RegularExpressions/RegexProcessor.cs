@@ -41,7 +41,7 @@ public static partial class RegexProcessor
 	/// <summary>
 	/// The pattern to check if the input contains a word.
 	/// </summary>
-	private const string ContainsWordPattern = @"^\b[a-zA-Z_]+\b$";
+	private const string ContainsWordPattern = @"\b[a-zA-Z]+\b";
 
 	/// <summary>
 	/// The pattern to validate credit card numbers.

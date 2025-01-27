@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2025
+// Last Modified On : 01-27-2025
 // ***********************************************************************
 // <copyright file="RegexProcessor.Methods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -57,6 +57,8 @@ public static partial class RegexProcessor
 
 		return ContainsWordRegex().IsMatch(input);
 	}
+
+
 
 	/// <summary>
 	/// Extracts all numeric characters from the input string.

@@ -4,7 +4,7 @@
 // Created          : 02-05-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-18-2025
+// Last Modified On : 01-27-2025
 // ***********************************************************************
 // <copyright file="RegexProcessorTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -15,6 +15,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core.RegularExpressions;
 using DotNetTips.Spargine.Extensions;
+using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -34,6 +35,16 @@ public class RegexProcessorTests
 
 		// Act
 		var result = RegexProcessor.ContainsFirstLastName(input);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void ContainsFirstLastName_NullInput_ReturnsFalse()
+	{
+		// Act
+		var result = RegexProcessor.ContainsFirstLastName(null);
 
 		// Assert
 		Assert.IsFalse(result);
@@ -69,7 +80,7 @@ public class RegexProcessorTests
 	public void ContainsWord_InvalidInput_ReturnsFalse()
 	{
 		// Arrange
-		var input = "123";
+		var input = "1234567890";
 
 		// Act
 		var result = RegexProcessor.ContainsWord(input);
@@ -79,10 +90,19 @@ public class RegexProcessorTests
 	}
 
 	[TestMethod]
+	public void ContainsWord_NullInput_ReturnsFalse()
+	{
+		// Act
+		var result = RegexProcessor.ContainsWord(null);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+	[TestMethod]
 	public void ContainsWord_ValidInput_ReturnsTrue()
 	{
 		// Arrange
-		var input = "word";
+		var input = "This is a test string.";
 
 		// Act
 		var result = RegexProcessor.ContainsWord(input);
@@ -182,26 +202,53 @@ public class RegexProcessorTests
 	public void IsCreditCardNumber_InvalidInput_ReturnsFalse()
 	{
 		// Arrange
-		var input = "1234-5678-9012-3456";
+		var invalidCard1 = "1234567890123456"; // Example of an invalid card number
+		var invalidCard2 = "411111111111111"; // Invalid length
+		var invalidCard3 = "550000000000000X"; // Contains non-numeric character
 
 		// Act
-		var result = RegexProcessor.IsCreditCardNumber(input);
+		var result1 = invalidCard1.IsCreditCardNumber();
+		var result2 = invalidCard2.IsCreditCardNumber();
+		var result3 = invalidCard3.IsCreditCardNumber();
 
 		// Assert
-		Assert.IsFalse(result);
+		Assert.IsFalse(result1);
+		Assert.IsFalse(result2);
+		Assert.IsFalse(result3);
 	}
 
+	[TestMethod]
+	public void IsCreditCardNumber_NullOrEmptyInput_ReturnsFalse()
+	{
+		// Arrange
+		string nullInput = null;
+		var emptyInput = string.Empty;
+
+		// Act
+		var resultForNull = nullInput.IsCreditCardNumber();
+		var resultForEmpty = emptyInput.IsCreditCardNumber();
+
+		// Assert
+		Assert.IsFalse(resultForNull);
+		Assert.IsFalse(resultForEmpty);
+	}
 	[TestMethod]
 	public void IsCreditCardNumber_ValidInput_ReturnsTrue()
 	{
 		// Arrange
-		var input = "4111-1111-1111-1111";
+		var validVisa = "4111111111111111"; // Example of a valid Visa card number
+		var validMasterCard = "5500000000000004"; // Example of a valid MasterCard number
+		var validAmex = "340000000000009"; // Example of a valid American Express card number
 
 		// Act
-		var result = RegexProcessor.IsCreditCardNumber(input);
+		var resultVisa = validVisa.IsCreditCardNumber();
+		var resultMasterCard = validMasterCard.IsCreditCardNumber();
+		var resultAmex = validAmex.IsCreditCardNumber();
 
 		// Assert
-		Assert.IsTrue(result);
+		Assert.IsTrue(resultVisa);
+		Assert.IsTrue(resultMasterCard);
+		Assert.IsTrue(resultAmex);
 	}
 
 	[TestMethod]
@@ -220,23 +267,39 @@ public class RegexProcessorTests
 	public void IsCurrencyCode_InvalidInput_ReturnsFalse()
 	{
 		// Arrange
-		var input = "US";
+		var badCode = RandomData.GenerateWord(5);
 
 		// Act
-		var result = RegexProcessor.IsCurrencyCode(input);
+		var result = badCode.IsCurrencyCode();
 
 		// Assert
 		Assert.IsFalse(result);
 	}
 
 	[TestMethod]
+	public void IsCurrencyCode_NullOrEmptyInput_ReturnsFalse()
+	{
+		// Arrange
+		string nullInput = null;
+		var emptyInput = string.Empty;
+
+		// Act
+		var resultForNull = nullInput.IsCurrencyCode();
+		var resultForEmpty = emptyInput.IsCurrencyCode();
+
+		// Assert
+		Assert.IsFalse(resultForNull);
+		Assert.IsFalse(resultForEmpty);
+	}
+
+	[TestMethod]
 	public void IsCurrencyCode_ValidInput_ReturnsTrue()
 	{
 		// Arrange
-		var input = "USD";
+		var goodCode = "USD";
 
 		// Act
-		var result = RegexProcessor.IsCurrencyCode(input);
+		var result = goodCode.IsCurrencyCode();
 
 		// Assert
 		Assert.IsTrue(result);
@@ -258,26 +321,54 @@ public class RegexProcessorTests
 	public void IsEmailAddress_InvalidInput_ReturnsFalse()
 	{
 		// Arrange
-		var input = "test@.com";
+		var invalidEmail1 = "plainaddress";
+		var invalidEmail2 = "@missinglocalpart.com";
+		var invalidEmail3 = "username@.com"; // Missing domain
 
 		// Act
-		var result = RegexProcessor.IsEmailAddress(input);
+		var result1 = invalidEmail1.IsEmailAddress();
+		var result2 = invalidEmail2.IsEmailAddress();
+		var result3 = invalidEmail3.IsEmailAddress();
 
 		// Assert
-		Assert.IsFalse(result);
+		Assert.IsFalse(result1);
+		Assert.IsFalse(result2);
+		Assert.IsFalse(result3);
+	}
+
+	[TestMethod]
+	public void IsEmailAddress_NullOrEmptyInput_ReturnsFalse()
+	{
+		// Arrange
+		string nullInput = null;
+		var emptyInput = string.Empty;
+
+		// Act
+		var resultForNull = nullInput.IsEmailAddress();
+		var resultForEmpty = emptyInput.IsEmailAddress();
+
+		// Assert
+		Assert.IsFalse(resultForNull);
+		Assert.IsFalse(resultForEmpty);
 	}
 
 	[TestMethod]
 	public void IsEmailAddress_ValidInput_ReturnsTrue()
 	{
 		// Arrange
-		var input = "test@example.com";
+		var validEmail1 = "test@example.com";
+		var validEmail2 = "user.name+tag+sorting@example.com";
+		var validEmail3 = "x@example.com"; // One-letter local-part
 
 		// Act
-		var result = RegexProcessor.IsEmailAddress(input);
+		var result1 = validEmail1.IsEmailAddress();
+		var result2 = validEmail2.IsEmailAddress();
+		var result3 = validEmail3.IsEmailAddress();
 
 		// Assert
-		Assert.IsTrue(result);
+		Assert.IsTrue(result1);
+		Assert.IsTrue(result2);
+		Assert.IsTrue(result3);
 	}
 
 	[TestMethod]
@@ -510,26 +601,45 @@ public class RegexProcessorTests
 	public void IsISBN_InvalidInput_ReturnsFalse()
 	{
 		// Arrange
-		var input = "978-3-16-148410-";
+		var invalidISBN = "12345a67890"; // Example of an invalid ISBN
 
 		// Act
-		var result = RegexProcessor.IsISBN(input);
+		var result = invalidISBN.IsISBN();
 
 		// Assert
 		Assert.IsFalse(result);
 	}
 
 	[TestMethod]
+	public void IsISBN_NullOrEmptyInput_ReturnsFalse()
+	{
+		// Arrange
+		string nullInput = null;
+		var emptyInput = string.Empty;
+
+		// Act
+		var resultForNull = nullInput.IsISBN();
+		var resultForEmpty = emptyInput.IsISBN();
+
+		// Assert
+		Assert.IsFalse(resultForNull);
+		Assert.IsFalse(resultForEmpty);
+	}
+
+	[TestMethod]
 	public void IsISBN_ValidInput_ReturnsTrue()
 	{
 		// Arrange
-		var input = "978-3-16-148410-0";
+		var validISBN10 = "0-306-40615-2"; // Example of a valid ISBN-10
+		var validISBN13 = "978-3-16-148410-0"; // Example of a valid ISBN-13
 
 		// Act
-		var result = RegexProcessor.IsISBN(input);
+		var result10 = validISBN10.IsISBN();
+		var result13 = validISBN13.IsISBN();
 
 		// Assert
-		Assert.IsTrue(result);
+		Assert.IsTrue(result10);
+		Assert.IsTrue(result13);
 	}
 
 	[TestMethod]
@@ -588,23 +698,42 @@ public class RegexProcessorTests
 	public void IsOneToSevenAlpha_InvalidInput_ReturnsFalse()
 	{
 		// Arrange
-		var input = "abcdefgh";
+		var invalidInput1 = "abcdefgh"; // More than 7 characters
+		var invalidInput2 = "abc123"; // Contains non-alphabetic characters
 
 		// Act
-		var result = RegexProcessor.IsOneToSevenAlpha(input);
+		var result1 = invalidInput1.IsOneToSevenAlpha();
+		var result2 = invalidInput2.IsOneToSevenAlpha();
 
 		// Assert
-		Assert.IsFalse(result);
+		Assert.IsFalse(result1);
+		Assert.IsFalse(result2);
+	}
+
+	[TestMethod]
+	public void IsOneToSevenAlpha_NullOrEmptyInput_ReturnsFalse()
+	{
+		// Arrange
+		string nullInput = null;
+		var emptyInput = string.Empty;
+
+		// Act
+		var resultForNull = nullInput.IsOneToSevenAlpha();
+		var resultForEmpty = emptyInput.IsOneToSevenAlpha();
+
+		// Assert
+		Assert.IsFalse(resultForNull);
+		Assert.IsFalse(resultForEmpty);
 	}
 
 	[TestMethod]
 	public void IsOneToSevenAlpha_ValidInput_ReturnsTrue()
 	{
 		// Arrange
-		var input = "abcdefg";
+		var validInput = "abcdefg"; // Example of a valid input
 
 		// Act
-		var result = RegexProcessor.IsOneToSevenAlpha(input);
+		var result = validInput.IsOneToSevenAlpha();
 
 		// Assert
 		Assert.IsTrue(result);
@@ -705,26 +834,48 @@ public class RegexProcessorTests
 	public void IsSHA1Hash_InvalidInput_ReturnsFalse()
 	{
 		// Arrange
-		var input = "a9993e364706816aba3e25717850c26c9cd0d89";
+		var invalidSHA1Hash1 = "1234567890abcdef1234567890abcdef1234567"; // Invalid length
+		var invalidSHA1Hash2 = "g94a8fe5ccb19ba61c4c0873d391e987982fbbd3"; // Contains non-hex character
 
 		// Act
-		var result = RegexProcessor.IsSHA1Hash(input);
+		var result1 = RegexProcessor.IsSHA1Hash(invalidSHA1Hash1);
+		var result2 = RegexProcessor.IsSHA1Hash(invalidSHA1Hash2);
 
 		// Assert
-		Assert.IsFalse(result);
+		Assert.IsFalse(result1);
+		Assert.IsFalse(result2);
+	}
+
+	[TestMethod]
+	public void IsSHA1Hash_NullOrEmptyInput_ReturnsFalse()
+	{
+		// Arrange
+		string nullInput = null;
+		var emptyInput = string.Empty;
+
+		// Act
+		var resultForNull = RegexProcessor.IsSHA1Hash(nullInput);
+		var resultForEmpty = RegexProcessor.IsSHA1Hash(emptyInput);
+
+		// Assert
+		Assert.IsFalse(resultForNull);
+		Assert.IsFalse(resultForEmpty);
 	}
 
 	[TestMethod]
 	public void IsSHA1Hash_ValidInput_ReturnsTrue()
 	{
 		// Arrange
-		var input = "a9993e364706816aba3e25717850c26c9cd0d89d";
+		var validSHA1Hash1 = "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3"; // Example of a valid SHA-1 hash
+		var validSHA1Hash2 = "da39a3ee5e6b4b0d3255bfef95601890afd80709"; // Example of a valid SHA-1 hash
 
 		// Act
-		var result = RegexProcessor.IsSHA1Hash(input);
+		var result1 = RegexProcessor.IsSHA1Hash(validSHA1Hash1);
+		var result2 = RegexProcessor.IsSHA1Hash(validSHA1Hash2);
 
 		// Assert
-		Assert.IsTrue(result);
+		Assert.IsTrue(result1);
+		Assert.IsTrue(result2);
 	}
 
 	[TestMethod]
@@ -743,26 +894,54 @@ public class RegexProcessorTests
 	public void IsUrl_InvalidInput_ReturnsFalse()
 	{
 		// Arrange
-		var input = "htp://example.com";
+		var invalidUrl1 = "htp://example.com"; // Invalid scheme
+		var invalidUrl2 = "http://"; // Incomplete URL
+		var invalidUrl3 = "example.com"; // Missing scheme
 
 		// Act
-		var result = RegexProcessor.IsUrl(input);
+		var result1 = invalidUrl1.IsUrl();
+		var result2 = invalidUrl2.IsUrl();
+		var result3 = invalidUrl3.IsUrl();
 
 		// Assert
-		Assert.IsFalse(result);
+		Assert.IsFalse(result1);
+		Assert.IsFalse(result2);
+		Assert.IsFalse(result3);
+	}
+
+	[TestMethod]
+	public void IsUrl_NullOrEmptyInput_ReturnsFalse()
+	{
+		// Arrange
+		string nullInput = null;
+		var emptyInput = string.Empty;
+
+		// Act
+		var resultForNull = nullInput.IsUrl();
+		var resultForEmpty = emptyInput.IsUrl();
+
+		// Assert
+		Assert.IsFalse(resultForNull);
+		Assert.IsFalse(resultForEmpty);
 	}
 
 	[TestMethod]
 	public void IsUrl_ValidInput_ReturnsTrue()
 	{
 		// Arrange
-		var input = "https://example.com";
+		var validUrl1 = "http://www.example.com";
+		var validUrl2 = "https://example.com";
+		var validUrl3 = "ftp://example.com";
 
 		// Act
-		var result = RegexProcessor.IsUrl(input);
+		var result1 = validUrl1.IsUrl();
+		var result2 = validUrl2.IsUrl();
+		var result3 = validUrl3.IsUrl();
 
 		// Assert
-		Assert.IsTrue(result);
+		Assert.IsTrue(result1);
+		Assert.IsTrue(result2);
+		Assert.IsTrue(result3);
 	}
 
 	[TestMethod]
@@ -995,6 +1174,47 @@ public class RegexProcessorTests
 		// Test with special characters and replacement
 		result = RegexProcessor.RemoveSpecialChar("dot@net!tips#", "_");
 		Assert.AreEqual("dot_net_tips_", result, "Special characters should be replaced with '_'.");
+	}
+
+	[TestMethod]
+	public void ReplaceCrLf_EmptyReplacement_ReturnsStringWithoutCrLf()
+	{
+		// Arrange
+		var input = "Line1\r\nLine2\r\nLine3";
+		var replacement = string.Empty;
+
+		// Act
+		var result = RegexProcessor.ReplaceCrLf(input, replacement);
+
+		// Assert
+		Assert.AreEqual("Line1Line2Line3", result);
+	}
+
+	[TestMethod]
+	public void ReplaceCrLf_NullInput_ReturnsNull()
+	{
+		// Arrange
+		string nullInput = null;
+		var replacement = " ";
+
+		// Act
+		var result = RegexProcessor.ReplaceCrLf(nullInput, replacement);
+
+		// Assert
+		Assert.IsNull(result);
+	}
+	[TestMethod]
+	public void ReplaceCrLf_ValidInput_ReturnsModifiedString()
+	{
+		// Arrange
+		var input = "Line1\r\nLine2\r\nLine3";
+		var replacement = " ";
+
+		// Act
+		var result = RegexProcessor.ReplaceCrLf(input, replacement);
+
+		// Assert
+		Assert.AreEqual("Line1 Line2 Line3", result);
 	}
 
 	[TestMethod]
