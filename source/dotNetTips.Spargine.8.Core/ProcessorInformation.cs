@@ -29,6 +29,7 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// <param name="left">The first instance to compare.</param>
 	/// <param name="right">The second instance to compare.</param>
 	/// <returns><c>true</c> if the instances are not equal; otherwise, <c>false</c>.</returns>
+	[Information("!=", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator !=(ProcessorInformation left, ProcessorInformation right) => !(left == right);
 
 	/// <summary>
@@ -37,6 +38,7 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// <param name="left">The first instance to compare.</param>
 	/// <param name="right">The second instance to compare.</param>
 	/// <returns><c>true</c> if the instances are equal; otherwise, <c>false</c>.</returns>
+	[Information("==", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator ==(ProcessorInformation left, ProcessorInformation right) => left.Equals(right);
 
 	/// <summary>
@@ -44,6 +46,7 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
 	/// <returns><c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.</returns>
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public override readonly bool Equals(object obj) => obj is ProcessorInformation information && this.Equals(information);
 
 	/// <summary>
@@ -51,6 +54,7 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><c>true</c> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <c>false</c>.</returns>
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public readonly bool Equals(ProcessorInformation other)
 	{
 		return this.PageSize == other.PageSize && this.MinimumApplicationAddress.Equals(other.MinimumApplicationAddress) && this.MaximumApplicationAddress.Equals(other.MaximumApplicationAddress) && this.ActiveProcessorMask.Equals(other.ActiveProcessorMask) && this.NumberOfProcessors == other.NumberOfProcessors && this.ProcessorArchitecture == other.ProcessorArchitecture && this.AllocationGranularity == other.AllocationGranularity && this.ProcessorLevel == other.ProcessorLevel && this.ProcessorRevision == other.ProcessorRevision;
@@ -60,6 +64,7 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// Returns a hash code for this instance.
 	/// </summary>
 	/// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+	[Information(nameof(GetHashCode), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public override readonly int GetHashCode()
 	{
 		var hash = new HashCode();

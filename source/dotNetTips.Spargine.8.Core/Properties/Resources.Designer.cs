@@ -178,7 +178,7 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guid is Nulll or Empty..
+        ///   Looks up a localized string similar to Guid is Null or Empty..
         /// </summary>
         internal static string ErrorGuidIsNullOrEmpty {
             get {
@@ -232,7 +232,7 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Value..
+        ///   Looks up a localized string similar to Invalid value..
         /// </summary>
         internal static string ErrorInvalidValue {
             get {
@@ -286,7 +286,7 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Object must be of type {0}.
+        ///   Looks up a localized string similar to Object must be of type {0}..
         /// </summary>
         internal static string ErrorObjectMustBeOfType {
             get {
@@ -475,7 +475,7 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There was an issue adding an item in the collection.
+        ///   Looks up a localized string similar to There was an issue adding an item in the collection..
         /// </summary>
         internal static string ThereWasAnIssueAddingAnItemInTheCollection {
             get {

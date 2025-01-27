@@ -4,9 +4,9 @@
 // Created          : 11-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-06-2024
+// Last Modified On : 01-27-2025
 // ***********************************************************************
-// <copyright file="ValidatorArgumentTests.cs" company="McCarter Consulting">
+// <copyright file="ValidatorTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -31,7 +31,7 @@ namespace DotNetTips.Spargine.Core.Tests;
 
 [ExcludeFromCodeCoverage]
 [TestClass]
-public class ValidatorArgumentTests
+public class ValidatorTests
 {
 	private const string BadEmail = "BAD@EMAIL";
 	private const string GoodEmail = "fakeemail@google.com";
@@ -626,6 +626,64 @@ public class ValidatorArgumentTests
 	}
 
 	[TestMethod]
+	public void ArgumentItemsExists_IReadOnlyCollection_EmptyCollection_ThrowsArgumentNullException()
+	{
+		// Arrange
+		IReadOnlyCollection<int> input = new List<int>().AsReadOnly();
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => Validator.ArgumentItemsExists(input));
+	}
+
+	[TestMethod]
+	public void ArgumentItemsExists_IReadOnlyCollection_NullInput_ThrowsArgumentNullException()
+	{
+		// Arrange
+		IReadOnlyCollection<int> input = null;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => Validator.ArgumentItemsExists(input));
+	}
+
+	[TestMethod]
+	public void ArgumentItemsExists_IReadOnlyCollection_ValidCollection_ReturnsInput()
+	{
+		// Arrange
+		IReadOnlyCollection<int> input = new List<int> { 1, 2, 3 }.AsReadOnly();
+
+		// Act
+		var result = Validator.ArgumentItemsExists(input);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(input, result);
+	}
+
+	[TestMethod]
+	public void ArgumentItemsExists_IReadOnlyCollection_WithErrorMessage_ThrowsArgumentNullException()
+	{
+		// Arrange
+		IReadOnlyCollection<int> input = new List<int>().AsReadOnly();
+		var errorMessage = "Custom error message";
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<ArgumentNullException>(() => Validator.ArgumentItemsExists(input, errorMessage));
+		Assert.IsTrue(ex.Message.Contains(errorMessage));
+	}
+
+	[TestMethod]
+	public void ArgumentItemsExists_IReadOnlyCollection_WithParamName_ThrowsArgumentNullException()
+	{
+		// Arrange
+		IReadOnlyCollection<int> input = new List<int>().AsReadOnly();
+		var paramName = "input";
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<ArgumentNullException>(() => Validator.ArgumentItemsExists(input, paramName: paramName));
+		Assert.IsTrue(ex.Message.Contains(paramName));
+	}
+
+	[TestMethod]
 	public void ArgumentItemsExistsArrayTest()
 	{
 		try
@@ -986,6 +1044,122 @@ public class ValidatorArgumentTests
 	}
 
 	[TestMethod]
+	public void ArgumentNotReadOnly_ICollection_NullInput_ThrowsArgumentNullException()
+	{
+		// Arrange
+		ICollection<int> input = null;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentReadOnlyException>(() => Validator.ArgumentNotReadOnly(input));
+	}
+
+	[TestMethod]
+	public void ArgumentNotReadOnly_ICollection_ReadOnlyCollection_ThrowsArgumentReadOnlyException()
+	{
+		// Arrange
+		ICollection<int> input = new List<int>().AsReadOnly();
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentReadOnlyException>(() => Validator.ArgumentNotReadOnly(input));
+	}
+
+	[TestMethod]
+	public void ArgumentNotReadOnly_ICollection_ValidCollection_ReturnsInput()
+	{
+		// Arrange
+		ICollection<int> input = new List<int> { 1, 2, 3 };
+
+		// Act
+		var result = Validator.ArgumentNotReadOnly(input);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(input, result);
+	}
+
+	[TestMethod]
+	public void ArgumentNotReadOnly_ICollection_WithErrorMessage_ThrowsArgumentReadOnlyException()
+	{
+		// Arrange
+		ICollection<int> input = new List<int>().AsReadOnly();
+		var errorMessage = "Custom error message";
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<ArgumentReadOnlyException>(() => Validator.ArgumentNotReadOnly(input, errorMessage));
+		Assert.IsTrue(ex.Message.Contains(errorMessage));
+	}
+
+	[TestMethod]
+	public void ArgumentNotReadOnly_ICollection_WithParamName_ThrowsArgumentReadOnlyException()
+	{
+		// Arrange
+		ICollection<int> input = new List<int>().AsReadOnly();
+		var paramName = "input";
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<ArgumentReadOnlyException>(() => Validator.ArgumentNotReadOnly(input, paramName: paramName));
+		Assert.IsTrue(ex.Message.Contains(paramName));
+	}
+
+	[TestMethod]
+	public void ArgumentNotReadOnly_IList_NullInput_ThrowsArgumentNullException()
+	{
+		// Arrange
+		IList<int> input = null;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentReadOnlyException>(() => Validator.ArgumentNotReadOnly(input));
+	}
+
+	[TestMethod]
+	public void ArgumentNotReadOnly_IList_ReadOnlyList_ThrowsArgumentReadOnlyException()
+	{
+		// Arrange
+		IList<int> input = new List<int>().AsReadOnly();
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentReadOnlyException>(() => Validator.ArgumentNotReadOnly(input));
+	}
+
+	[TestMethod]
+	public void ArgumentNotReadOnly_IList_ValidList_ReturnsInput()
+	{
+		// Arrange
+		IList<int> input = new List<int> { 1, 2, 3 };
+
+		// Act
+		var result = Validator.ArgumentNotReadOnly(input);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(input, result);
+	}
+
+	[TestMethod]
+	public void ArgumentNotReadOnly_IList_WithErrorMessage_ThrowsArgumentReadOnlyException()
+	{
+		// Arrange
+		IList<int> input = new List<int>().AsReadOnly();
+		var errorMessage = "Custom error message";
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<ArgumentReadOnlyException>(() => Validator.ArgumentNotReadOnly(input, errorMessage));
+		Assert.IsTrue(ex.Message.Contains(errorMessage));
+	}
+
+	[TestMethod]
+	public void ArgumentNotReadOnly_IList_WithParamName_ThrowsArgumentReadOnlyException()
+	{
+		// Arrange
+		IList<int> input = new List<int>().AsReadOnly();
+		var paramName = "input";
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<ArgumentReadOnlyException>(() => Validator.ArgumentNotReadOnly(input, paramName: paramName));
+		Assert.IsTrue(ex.Message.Contains(paramName));
+	}
+
+	[TestMethod]
 	public void ArgumentNotReadOnlyListTest()
 	{
 		var people = RandomData.GeneratePersonRefCollection<Address>(10).ToList();
@@ -998,6 +1172,330 @@ public class ValidatorArgumentTests
 		{
 			Assert.Fail();
 		}
+	}
+
+	[TestMethod]
+	public void CheckEquals_NullExpectedType_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var input = typeof(string);
+		Type expectedType = null;
+
+		// Act & Assert
+		Assert.ThrowsException<InvalidValueException<Type>>(() => Validator.CheckEquals(input, expectedType, true));
+	}
+
+	[TestMethod]
+	public void CheckEquals_NullInput_ThrowsArgumentNullException()
+	{
+		// Arrange
+		Type input = null;
+		var expectedType = typeof(string);
+
+		// Act & Assert
+		Assert.ThrowsException<InvalidValueException<Type>>(() => Validator.CheckEquals(input, expectedType, true));
+	}
+
+	[TestMethod]
+	public void CheckEquals_TypesDoNotMatch_ReturnsFalse()
+	{
+		// Arrange
+		var input = typeof(string);
+		var expectedType = typeof(int);
+
+		// Act
+		var result = Validator.CheckEquals(input, expectedType);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void CheckEquals_TypesDoNotMatch_ThrowsException()
+	{
+		// Arrange
+		var input = typeof(string);
+		var expectedType = typeof(int);
+		var errorMessage = "Types do not match";
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<InvalidValueException<Type>>(() => Validator.CheckEquals(input, expectedType, true, errorMessage));
+		Assert.IsTrue(ex.Message.Contains(errorMessage));
+	}
+
+	[TestMethod]
+	public void CheckEquals_TypesMatch_DoesNotThrowException()
+	{
+		// Arrange
+		var input = typeof(string);
+		var expectedType = typeof(string);
+
+		// Act & Assert
+		Validator.CheckEquals(input, expectedType, true);
+
+		// No exception means the test passed.
+	}
+
+	[TestMethod]
+	public void CheckEquals_TypesMatch_ReturnsTrue()
+	{
+		// Arrange
+		var input = typeof(string);
+		var expectedType = typeof(string);
+
+		// Act
+		var result = Validator.CheckEquals(input, expectedType);
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void CheckEquals_WithDefaultErrorMessage_ThrowsException()
+	{
+		// Arrange
+		var input = typeof(string);
+		var expectedType = typeof(int);
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<InvalidValueException<Type>>(() => Validator.CheckEquals(input, expectedType, true));
+		Assert.IsTrue(ex.Message.Contains("Invalid type"));
+	}
+
+	[TestMethod]
+	public void CheckIsCondition_ConditionFalse_ReturnsFalse()
+	{
+		// Arrange
+		var input = 5;
+		var condition = false;
+
+		// Act
+		var result = Validator.CheckIsCondition(input, condition);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void CheckIsCondition_ConditionFalse_ThrowsException()
+	{
+		// Arrange
+		var input = 5;
+		var condition = false;
+		var errorMessage = "Condition not met";
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<InvalidValueException<object>>(() => Validator.CheckIsCondition(input, condition, true, errorMessage));
+		Assert.IsTrue(ex.Message.Contains(errorMessage));
+	}
+
+	[TestMethod]
+	public void CheckIsCondition_ConditionTrue_DoesNotThrowException()
+	{
+		// Arrange
+		var input = 5;
+		var condition = true;
+
+		// Act & Assert
+		Validator.CheckIsCondition(input, condition, true);
+
+		// No exception means the test passed.
+	}
+
+	[TestMethod]
+	public void CheckIsCondition_ConditionTrue_ReturnsTrue()
+	{
+		// Arrange
+		var input = 5;
+		var condition = true;
+
+		// Act
+		var result = Validator.CheckIsCondition(input, condition);
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void CheckIsCondition_NullInput_ThrowsArgumentNullException()
+	{
+		// Arrange
+		string input = null;
+		var condition = true;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => Validator.CheckIsCondition(input, condition));
+	}
+
+	[TestMethod]
+	public void CheckIsCondition_WithDefaultErrorMessage_ThrowsException()
+	{
+		// Arrange
+		var input = 5;
+		var condition = false;
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<InvalidValueException<object>>(() => Validator.CheckIsCondition(input, condition, true));
+		Assert.IsTrue(ex.Message.Contains("Invalid value"));
+	}
+
+	[TestMethod]
+	public void CheckIsDefined_EnumValueDefined_DoesNotThrowException()
+	{
+		// Arrange
+		var input = TestEnum.Value1;
+
+		// Act & Assert
+		Validator.CheckIsDefined(input, true);
+
+		// No exception means the test passed.
+	}
+
+	[TestMethod]
+	public void CheckIsDefined_EnumValueDefined_ReturnsTrue()
+	{
+		// Arrange
+		var input = TestEnum.Value1;
+
+		// Act
+		var result = Validator.CheckIsDefined(input);
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void CheckIsDefined_EnumValueNotDefined_ReturnsFalse()
+	{
+		// Arrange
+		var input = (TestEnum)999;
+
+		// Act
+		var result = Validator.CheckIsDefined(input);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void CheckIsDefined_EnumValueNotDefined_ThrowsException()
+	{
+		// Arrange
+		var input = (TestEnum)999;
+		var errorMessage = "Enum value is not defined";
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<InvalidValueException<Enum>>(() => Validator.CheckIsDefined(input, true, errorMessage));
+		Assert.IsTrue(ex.Message.Contains(errorMessage));
+	}
+
+	[TestMethod]
+	public void CheckIsDefined_NullInput_ThrowsArgumentNullException()
+	{
+		// Arrange
+		TestEnum? input = null;
+
+		// Act & Assert
+		Assert.ThrowsException<InvalidValueException<Enum>>(() => Validator.CheckIsDefined(input, true));
+	}
+
+	[TestMethod]
+	public void CheckIsDefined_WithDefaultErrorMessage_ThrowsException()
+	{
+		// Arrange
+		var input = (TestEnum)999;
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<InvalidValueException<Enum>>(() => Validator.CheckIsDefined(input, true));
+		Assert.IsTrue(ex.Message.Contains("The value is not defined in the Enum."));
+	}
+
+	[TestMethod]
+	public void CheckIsNotEmpty_Guid_Empty_ReturnsFalse()
+	{
+		// Arrange
+		var input = Guid.Empty;
+
+		// Act
+		var result = Validator.CheckIsNotEmpty(input);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void CheckIsNotEmpty_Guid_Empty_ThrowsException()
+	{
+		// Arrange
+		var input = Guid.Empty;
+		var errorMessage = "GUID is empty";
+
+		// Act & Assert
+		var ex = Assert.ThrowsException<InvalidOperationException>(() => Validator.CheckIsNotEmpty(input, true, errorMessage));
+		Assert.IsTrue(ex.Message.Contains(errorMessage));
+	}
+
+	[TestMethod]
+	public void CheckIsNotEmpty_Guid_NotEmpty_DoesNotThrowException()
+	{
+		// Arrange
+		var input = Guid.NewGuid();
+
+		// Act & Assert
+		Validator.CheckIsNotEmpty(input, true);
+
+		// No exception means the test passed.
+	}
+
+	[TestMethod]
+	public void CheckIsNotEmpty_Guid_NotEmpty_ReturnsTrue()
+	{
+		// Arrange
+		var input = Guid.NewGuid();
+
+		// Act
+		var result = Validator.CheckIsNotEmpty(input);
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void CheckIsNotEmpty_ReadOnlySpan_Empty_ReturnsFalse()
+	{
+		// Arrange
+		var input = new ReadOnlySpan<int>(Array.Empty<int>());
+
+		// Act
+		var result = Validator.CheckIsNotEmpty(input);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void CheckIsNotEmpty_ReadOnlySpan_NotEmpty_DoesNotThrowException()
+	{
+		// Arrange
+		var input = new ReadOnlySpan<int>(new[] { 1, 2, 3 });
+
+		// Act & Assert
+		Validator.CheckIsNotEmpty(input, true);
+
+		// No exception means the test passed.
+	}
+
+	[TestMethod]
+	public void CheckIsNotEmpty_ReadOnlySpan_NotEmpty_ReturnsTrue()
+	{
+		// Arrange
+		var input = new ReadOnlySpan<int>(new[] { 1, 2, 3 });
+
+		// Act
+		var result = Validator.CheckIsNotEmpty(input);
+
+		// Assert
+		Assert.IsTrue(result);
 	}
 
 	[TestMethod]
@@ -1023,5 +1521,11 @@ public class ValidatorArgumentTests
 		Validator.ArgumentNotNull(collection, errorMessage, paramName: nameof(collection));
 
 		// Assert is handled by ExpectedException
+	}
+
+	public enum TestEnum
+	{
+		Value1,
+		Value2
 	}
 }
