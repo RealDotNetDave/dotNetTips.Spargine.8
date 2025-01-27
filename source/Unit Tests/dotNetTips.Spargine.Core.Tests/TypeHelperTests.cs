@@ -22,10 +22,12 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Text;
+using System.Text.Json;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
 using static DotNetTips.Spargine.Core.TypeHelper;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -91,6 +93,49 @@ public class TypeHelperTests : TestClass
 	}
 
 	[TestMethod]
+	public void FindDerivedTypes_AppDomain_NullBaseType_ThrowsArgumentNullException()
+	{
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.FindDerivedTypes(AppDomain.CurrentDomain, null, true));
+	}
+
+	[TestMethod]
+	public void FindDerivedTypes_AppDomain_NullDomain_ThrowsArgumentNullException()
+	{
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.FindDerivedTypes(null, typeof(Exception), true));
+	}
+
+	[TestMethod]
+	public void FindDerivedTypes_AppDomain_ValidBaseType_ReturnsDerivedTypes()
+	{
+		// Act
+		var result = TypeHelper.FindDerivedTypes(AppDomain.CurrentDomain, typeof(Exception), true);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count > 0);
+	}
+
+	[TestMethod]
+	public void FindDerivedTypes_CurrentlyLoadedAssemblies_NullBaseType_ThrowsArgumentNullException()
+	{
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.FindDerivedTypes(null, true));
+	}
+
+	[TestMethod]
+	public void FindDerivedTypes_CurrentlyLoadedAssemblies_ValidBaseType_ReturnsDerivedTypes()
+	{
+		// Act
+		var result = TypeHelper.FindDerivedTypes(typeof(Exception), true);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count > 0);
+	}
+
+	[TestMethod]
 	public void FindDerivedTypes_Directory()
 	{
 		var result = TypeHelper.FindDerivedTypes(
@@ -100,6 +145,27 @@ public class TypeHelperTests : TestClass
 			true);
 
 		Assert.IsTrue(result.HasItems());
+	}
+
+	[TestMethod]
+	public void FindDerivedTypes_Directory_InvalidPath_ThrowsDirectoryNotFoundException()
+	{
+		// Act & Assert
+		Assert.ThrowsException<DirectoryNotFoundException>(() => TypeHelper.FindDerivedTypes(new DirectoryInfo(@"C:\InvalidPath"), SearchOption.AllDirectories, typeof(Exception), true));
+	}
+
+	[TestMethod]
+	public void FindDerivedTypes_Directory_NullBaseType_ThrowsArgumentNullException()
+	{
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.FindDerivedTypes(new DirectoryInfo(App.ExecutingFolder()), SearchOption.AllDirectories, null, true));
+	}
+
+	[TestMethod]
+	public void FindDerivedTypes_Directory_NullPath_ThrowsArgumentNullException()
+	{
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.FindDerivedTypes(null, SearchOption.AllDirectories, typeof(Exception), true));
 	}
 
 	[TestMethod]
@@ -125,6 +191,61 @@ public class TypeHelperTests : TestClass
 		var json = person.ToJson();
 
 		Assert.IsNotNull(TypeHelper.FromJson<Person<Address>>(json));
+	}
+
+	[TestMethod]
+	public void FromJsonFile_InvalidJson_ThrowsJsonException()
+	{
+		// Arrange
+		var invalidJson = "{ invalid json }";
+		var fileName = Path.GetTempFileName();
+		File.WriteAllText(fileName, invalidJson);
+		var fileInfo = new FileInfo(fileName);
+
+		// Act & Assert
+		Assert.ThrowsException<JsonException>(() => TypeHelper.FromJsonFile<Person<Address>>(fileInfo));
+
+		// Cleanup
+		File.Delete(fileName);
+	}
+
+	[TestMethod]
+	public void FromJsonFile_NonExistentFile_ThrowsFileNotFoundException()
+	{
+		// Arrange
+		var fileInfo = new FileInfo(@"C:\nonexistentfile.json");
+
+		// Act & Assert
+		Assert.ThrowsException<FileNotFoundException>(() => TypeHelper.FromJsonFile<Person<Address>>(fileInfo));
+	}
+
+	[TestMethod]
+	public void FromJsonFile_NullFile_ThrowsArgumentNullException()
+	{
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.FromJsonFile<Person<Address>>(null));
+	}
+
+	[TestMethod]
+	public void FromJsonFile_ValidJson_ReturnsDeserializedObject()
+	{
+		// Arrange
+		var person = RandomData.GeneratePersonRef<Address>();
+		var json = person.ToJson();
+		var fileName = Path.GetTempFileName();
+		File.WriteAllText(fileName, json);
+		var fileInfo = new FileInfo(fileName);
+
+		// Act
+		var result = TypeHelper.FromJsonFile<Person<Address>>(fileInfo);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(person.Id, result.Id);
+		Assert.AreEqual(person.Email, result.Email);
+
+		// Cleanup
+		File.Delete(fileName);
 	}
 
 	[TestMethod]
@@ -170,6 +291,7 @@ public class TypeHelperTests : TestClass
 		// Act & Assert
 		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.GetInstanceHashCode(nullObject), "Null object should throw ArgumentNullException.");
 	}
+
 	[TestMethod]
 	public void GetInstanceHashCode_ValidObject_ReturnsHashCode()
 	{
@@ -231,6 +353,87 @@ public class TypeHelperTests : TestClass
 		result = TypeHelper.GetPropertyValues(exTest);
 
 		Assert.IsTrue(result.Count > 1);
+	}
+
+	[TestMethod]
+	public void GetPropertyValues_EmptyObject_ReturnsEmptyCollection()
+	{
+		// Arrange
+		var emptyObject = new { };
+
+		// Act
+		var result = TypeHelper.GetPropertyValues(emptyObject);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(0, result.Count);
+	}
+
+	[TestMethod]
+	public void GetPropertyValues_NullInput_ThrowsArgumentNullException()
+	{
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.GetPropertyValues<object>(null));
+	}
+
+	[TestMethod]
+	public void GetPropertyValues_ObjectWithComplexProperty_ReturnsComplexPropertyAsString()
+	{
+		// Arrange
+		var complexObject = new { Address = new { Street = "123 Main St", City = "Anytown" } };
+
+		// Act
+		var result = TypeHelper.GetPropertyValues(complexObject);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(1, result.Count);
+		Assert.IsTrue(result.Any(kv => kv.Key == "Address" && kv.Value.Contains("Street") && kv.Value.Contains("City")));
+	}
+
+	[TestMethod]
+	public void GetPropertyValues_ObjectWithDictionaryProperty_ReturnsDictionaryAsString()
+	{
+		// Arrange
+		var objectWithDictionary = new { Data = new Dictionary<string, int> { { "Key1", 1 }, { "Key2", 2 } } };
+
+		// Act
+		var result = TypeHelper.GetPropertyValues(objectWithDictionary);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(1, result.Count);
+		Assert.IsTrue(result.Any(kv => kv.Key == "Data" && kv.Value == "Key1: 1,Key2: 2"));
+	}
+
+	[TestMethod]
+	public void GetPropertyValues_ObjectWithNullProperty_ReturnsNullAsString()
+	{
+		// Arrange
+		var objectWithNullProperty = new { Name = (string)null };
+
+		// Act
+		var result = TypeHelper.GetPropertyValues(objectWithNullProperty);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(0, result.Count);
+	}
+
+	[TestMethod]
+	public void GetPropertyValues_SimpleObject_ReturnsPropertyValues()
+	{
+		// Arrange
+		var simpleObject = new { Name = "Test", Age = 30 };
+
+		// Act
+		var result = TypeHelper.GetPropertyValues(simpleObject);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.AreEqual(2, result.Count);
+		Assert.IsTrue(result.Any(kv => kv.Key == "Name" && kv.Value == "Test"));
+		Assert.IsTrue(result.Any(kv => kv.Key == "Age" && kv.Value == "30"));
 	}
 
 	[TestMethod]
@@ -391,6 +594,19 @@ public class TypeHelperTests : TestClass
 	}
 
 	[TestMethod]
+	public void IsDotNetAssembly_BadImageFormatException_ReturnsFalse()
+	{
+		// Arrange
+		var fileInfo = new FileInfo(@"C:\Windows\System32\ntdll.dll");
+
+		// Act
+		var result = TypeHelper.IsDotNetAssembly(fileInfo);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
 	public void IsDotNetAssembly_InvalidAssembly_ReturnsFalse()
 	{
 		// Arrange
@@ -404,7 +620,61 @@ public class TypeHelperTests : TestClass
 	}
 
 	[TestMethod]
+	public void IsDotNetAssembly_InvalidDotNetAssembly_ReturnsFalse()
+	{
+		// Arrange
+		var fileInfo = new FileInfo(@"C:\Windows\System32\kernel32.dll");
+
+		// Act
+		var result = TypeHelper.IsDotNetAssembly(fileInfo);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void IsDotNetAssembly_IOException_FileNotFoundException()
+	{
+		// Arrange
+		var fileInfo = new FileInfo(@"C:\Windows\System32\config\SYSTEM");
+
+		// Act & Assert
+		Assert.ThrowsException<FileNotFoundException>(() => TypeHelper.IsDotNetAssembly(fileInfo));
+	}
+
+	[TestMethod]
+	public void IsDotNetAssembly_NonExistentFile_ThrowsFileNotFoundException()
+	{
+		// Arrange
+		var fileInfo = new FileInfo(@"C:\nonexistentfile.dll");
+
+		// Act & Assert
+		Assert.ThrowsException<FileNotFoundException>(() => TypeHelper.IsDotNetAssembly(fileInfo));
+	}
+
+	[TestMethod]
+	public void IsDotNetAssembly_NullFile_ThrowsArgumentNullException()
+	{
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => TypeHelper.IsDotNetAssembly(null));
+	}
+
+	[TestMethod]
 	public void IsDotNetAssembly_ValidAssembly_ReturnsTrue()
+	{
+		// Arrange
+		var assemblyPath = Assembly.GetExecutingAssembly().Location;
+		var fileInfo = new FileInfo(assemblyPath);
+
+		// Act
+		var result = TypeHelper.IsDotNetAssembly(fileInfo);
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void IsDotNetAssembly_ValidDotNetAssembly_ReturnsTrue()
 	{
 		// Arrange
 		var assemblyPath = Assembly.GetExecutingAssembly().Location;
@@ -485,4 +755,37 @@ public class TypeHelperTests : TestClass
 		Assert.AreEqual("System.Collections.Generic.List<System.Int32>", result);
 	}
 
+	[TestMethod]
+	public void ProcessGenericType_WithArrayGenericArgument()
+	{
+		// Arrange
+		var builder = new StringBuilder();
+		var type = typeof(List<>);
+		var genericArguments = new[] { typeof(int[]) };
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true);
+
+		// Act
+		TypeHelper.ProcessGenericType(builder, type, genericArguments, genericArguments.Length, options);
+
+		// Assert
+		var result = builder.ToString();
+		Assert.AreEqual("System.Collections.Generic.List<System.Int32[]>", result);
+	}
+
+	[TestMethod]
+	public void ProcessGenericType_WithNestedGenericTypeAndCustomDelimiter()
+	{
+		// Arrange
+		var builder = new StringBuilder();
+		var type = typeof(Dictionary<,>);
+		var genericArguments = new[] { typeof(List<string>), typeof(Dictionary<int, string>) };
+		var options = new DisplayNameOptions(fullName: true, includeGenericParameterNames: false, includeGenericParameters: true, nestedTypeDelimiter: '.');
+
+		// Act
+		TypeHelper.ProcessGenericType(builder, type, genericArguments, genericArguments.Length, options);
+
+		// Assert
+		var result = builder.ToString();
+		Assert.AreEqual("System.Collections.Generic.Dictionary<System.Collections.Generic.List<System.String>, System.Collections.Generic.Dictionary<System.Int32, System.String>>", result);
+	}
 }
