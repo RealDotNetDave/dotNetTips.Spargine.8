@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-17-2025
+// Last Modified On : 01-27-2025
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -29,7 +29,7 @@ namespace DotNetTips.Spargine.Core.Security;
 /// <remarks>
 /// This class includes methods to generate single or multiple ULIDs, extract timestamps from ULIDs, and encode/decode ULIDs using Base32 encoding.
 /// </remarks>
-[Information(Documentation = "https://bit.ly/SpargineUlidGenerator")]
+[Information(Documentation = "https://bit.ly/SpargineUlidGenerator", Status = Status.Available)]
 public static class UlidGenerator
 {
 

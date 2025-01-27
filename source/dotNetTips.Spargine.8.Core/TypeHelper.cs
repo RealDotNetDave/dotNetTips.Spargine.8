@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-17-2025
+// Last Modified On : 01-27-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -75,7 +75,6 @@ public static class TypeHelper
 	/// Computes and initializes the list of built-in .NET types that are considered primitive for the purposes of this utility class.
 	/// This method populates the <see cref="_builtinTypes"/> collection with types that are commonly used and recognized as fundamental types within .NET applications.
 	/// </summary>
-	[Information(nameof(ComputeBuiltinTypes), author: "David McCarter", createdOn: "11/6/2023")]
 	private static void ComputeBuiltinTypes()
 	{
 		// Get all the assemblies loaded in the current app domain
@@ -110,7 +109,7 @@ public static class TypeHelper
 	/// </summary>
 	/// <param name="stream">The stream to analyze.</param>
 	/// <returns><c>true</c> if the stream represents a .NET assembly; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsDotNetAssembly), author: "David McCarter", createdOn: "5/20/2024", OptimizationStatus = OptimizationStatus.Completed)]
+	[Information(nameof(IsDotNetAssembly), author: "David McCarter", createdOn: "5/20/2024", OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	private static bool IsDotNetAssembly(in Stream stream)
 	{
 		try

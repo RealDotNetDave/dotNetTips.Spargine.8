@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Core;
 /// This class serves as a utility for accessing various application and system properties such as culture information, OS details, and processor information.
 /// It also provides methods for changing culture settings, retrieving environment variables, and managing application processes.
 /// </remarks>
-[Information(Documentation = "https://bit.ly/SpargineApp")]
+[Information(Documentation = "https://bit.ly/SpargineApp", Status = Status.Available)]
 public static class App
 {
 

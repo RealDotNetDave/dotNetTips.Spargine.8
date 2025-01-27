@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-27-2025
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -258,7 +258,7 @@ public static class EncryptionHelper
 	/// </code>
 	/// </example>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SimpleSHA256Encrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed)]
+	[Information(nameof(SimpleSHA256Encrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string SimpleSHA256Encrypt([NotNull] string plainText, [NotNull] string key)
 	{
 		plainText = plainText.ArgumentNotNullOrEmpty(true);

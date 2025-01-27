@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-22-2025
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
