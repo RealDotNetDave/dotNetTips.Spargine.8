@@ -35,6 +35,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// converting lists to various collection types, performing actions on list elements, and more. These methods
 /// are designed to extend the capabilities of <see cref="List{T}"/> and simplify common operations.
 /// </remarks>
+[ExcludeFromCodeCoverage]
 [Information(Status = Status.NeedsDocumentation)]
 public static class ListExtensions
 {
