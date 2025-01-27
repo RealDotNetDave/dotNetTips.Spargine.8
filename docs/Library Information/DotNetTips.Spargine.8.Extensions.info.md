@@ -1,8 +1,8 @@
-# DotNetTips.Spargine.8.Extensions - 2025.8.1.23
+# DotNetTips.Spargine.8.Extensions - 2025.8.1.27
 
 ## ArrayExtensions
 
-* **Status:** NotSet
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -12,7 +12,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
@@ -184,11 +184,11 @@
 * **Description:** HasItems
 * **Modified By:** David McCarter
 
-### Boolean HasItems(T[] array, Func`2& action)
+### Boolean HasItems(T[] array, Func`2& actionFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** CheckPerformance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 6/15/2022
@@ -286,7 +286,7 @@
 *****
 ## AssemblyExtensions
 
-* **Status:** NotSet
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -338,14 +338,12 @@
 *****
 ## BooleanExtensions
 
-* **Status:** NotSet
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/15/2020
+* **Author:** UNKNOWN
 * **Description:** BooleanExtensions
-* **Modified By:** David McCarter
 
 ### String ToLowerCase(Boolean value)
 
@@ -362,7 +360,7 @@
 *****
 ## CollectionExtensions
 
-* **Status:** NotSet
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -581,7 +579,7 @@
 *****
 ## DateTimeExtensions
 
-* **Status:** NotSet
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -836,7 +834,7 @@
 *****
 ## DictionaryExtensions
 
-* **Status:** UpdateDocumentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -853,7 +851,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### Boolean AddRange(IDictionary<TKey, TValue> collection, IEnumerable<T> items, Func<T, TKey> key, Func<T, TValue> value)
+### Boolean AddRange(IDictionary<TKey, TValue> collection, IEnumerable<T> items, Func<T, TKey> keyFunction, Func<T, TValue> valueFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -886,7 +884,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### Boolean HasItems(IDictionary<TKey, TValue> collection, Func<KeyValuePair<TKey, TValue>, Boolean> action)
+### Boolean HasItems(IDictionary<TKey, TValue> collection, Func<KeyValuePair<TKey, TValue>, Boolean> actionPredicate)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1005,7 +1003,7 @@
 * **Author:** UNKNOWN
 * **Description:** ToSortedDictionary
 
-### TValue TryGetValue(IDictionary<TKey, TValue> collection, TKey key, Func<TKey, TValue> func)
+### TValue TryGetValue(IDictionary<TKey, TValue> collection, TKey key, Func<TKey, TValue> valueFunction)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -1031,7 +1029,7 @@
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** CheckPerformance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
@@ -1055,7 +1053,7 @@
 *****
 ## EnumerableExtensions
 
-* **Status:** UpdateDocumentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -1171,7 +1169,7 @@
 * **Description:** EnsureUnique
 * **Modified By:** David McCarter
 
-### Boolean FastAny(IEnumerable<T> collection, Func<T, Boolean> predicate)
+### Boolean FastAny(IEnumerable<T> collection, Func<T, Boolean> accumulatorPredicate)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -1204,7 +1202,7 @@
 * **Description:** FastCount
 * **Modified By:** David McCarter
 
-### Int64 FastCount(IEnumerable<T> collection, Func<T, Boolean> predicate)
+### Int64 FastCount(IEnumerable<T> collection, Func<T, Boolean> accumulatorPredicate)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -1248,7 +1246,7 @@
 * **Description:** FirstOrDefault
 * **Modified By:** David McCarter
 
-### T FirstOrDefault(IEnumerable<T> list, Func<T, Boolean> predicate, T alternate)
+### T FirstOrDefault(IEnumerable<T> list, Func<T, Boolean> accumulatorPredicate, T alternate)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -1259,7 +1257,7 @@
 * **Description:** FirstOrDefault
 * **Modified By:** David McCarter
 
-### Nullable<T> FirstOrNull(IEnumerable<T> collection, Func<T, Boolean> match)
+### Nullable<T> FirstOrNull(IEnumerable<T> collection, Func<T, Boolean> accumulatorPredicate)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -1314,7 +1312,7 @@
 * **Description:** IndexOf
 * **Modified By:** David McCarter
 
-### Int32 IndexOf(IEnumerable<T> collection, Func<T, Boolean> predicate)
+### Int32 IndexOf(IEnumerable<T> collection, Func<T, Boolean> accumulatorPredicate)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -1367,7 +1365,7 @@
 * **Description:** OrderBy
 * **Modified By:** David McCarter
 
-### IOrderedEnumerable<T> OrderByOrdinal(IEnumerable<T> collection, Func<T, String> keySelector)
+### IOrderedEnumerable<T> OrderByOrdinal(IEnumerable<T> collection, Func<T, String> accumulatorFunction)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -1422,7 +1420,7 @@
 * **Description:** RemoveDuplicates
 * **Modified By:** David McCarter
 
-### IEnumerable<T> ReplaceIf(IEnumerable<T> collection, Func<T, Int32, Boolean> predicate, T replacement)
+### IEnumerable<T> ReplaceIf(IEnumerable<T> collection, Func<T, Int32, Boolean> accumulatorPredicate, T replacement)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -1431,7 +1429,7 @@
 * **Author:** UNKNOWN
 * **Description:** Original code by Simon Painter.
 
-### IEnumerable<T2> Scan(IEnumerable<T1> source, T2 seed, Func<T2, T1, T2> predicate)
+### IEnumerable<T2> Scan(IEnumerable<T1> source, T2 seed, Func<T2, T1, T2> accumulatorFunction)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -1655,7 +1653,7 @@
 *****
 ## ExceptionExtensions
 
-### IEnumerable<TSource> FromHierarchy(TSource source, Func<TSource, TSource> nextItem)
+### IEnumerable<TSource> FromHierarchy(TSource source, Func<TSource, TSource> accumulatorFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1664,7 +1662,7 @@
 * **Author:** UNKNOWN
 * **Description:** FromHierarchy
 
-### IEnumerable<TSource> FromHierarchy(TSource source, Func<TSource, TSource> nextItem, Func<TSource, Boolean> canContinue)
+### IEnumerable<TSource> FromHierarchy(TSource source, Func<TSource, TSource> nextItem, Func<TSource, Boolean> canContinuePreducate)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1917,7 +1915,7 @@
 * **Documentation:** https://bit.ly/SpargineAug2022
 * **Modified By:** David McCarter
 
-### Boolean HasItems(ImmutableArray<T> list, Func<T, Boolean> action)
+### Boolean HasItems(ImmutableArray<T> list, Func<T, Boolean> actionPredicate)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1965,7 +1963,7 @@
 * **Documentation:** https://bit.ly/SpargineListExtensions
 * **Modified By:** David McCarter
 
-### IQueryable<T> If(IQueryable<T> input, Boolean should, Func`2[] transforms)
+### IQueryable<T> If(IQueryable<T> input, Boolean should, Func`2[] transformsFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1976,7 +1974,7 @@
 * **Description:** Original code from https://github.com/exceptionnotfound/ConditionalLinqQueryEngine
 * **Modified By:** David McCarter
 
-### IEnumerable<T> If(IEnumerable<T> input, Boolean should, Func`2[] transforms)
+### IEnumerable<T> If(IEnumerable<T> input, Boolean should, Func`2[] transformsFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2142,14 +2140,14 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/4/2023
 * **Description:** PerformAction
 * **Modified By:** David McCarter
 
-### Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot(IEnumerable<TSource> collection, Func<TSource, TFirstKey> firstKeySelector, Func<TSource, TSecondKey> secondKeySelector, Func<IEnumerable<TSource>, TValue> aggregate)
+### Dictionary<TFirstKey, Dictionary<TSecondKey, TValue>> Pivot(IEnumerable<TSource> collection, Func<TSource, TFirstKey> firstKeySelectorFunction, Func<TSource, TSecondKey> secondKeySelectorFunction, Func<IEnumerable<TSource>, TValue> aggregateFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3043,7 +3041,7 @@
 *****
 ## ObjectExtensions
 
-* **Status:** UpdateDocumentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -3109,7 +3107,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** HasProperty
@@ -3185,7 +3183,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToJson
@@ -3244,7 +3242,7 @@
 * **Documentation:** https://bit.ly/SpargineAug2022
 * **Modified By:** David McCarter
 
-### Boolean HasItems(ObservableCollection<T> collection, Func<T, Boolean> action)
+### Boolean HasItems(ObservableCollection<T> collection, Func<T, Boolean> actionPredicate)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3357,7 +3355,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### Boolean HasItems(ReadOnlyCollection<T> collection, Func<T, Boolean> action)
+### Boolean HasItems(ReadOnlyCollection<T> collection, Func<T, Boolean> actionPredicate)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3455,7 +3453,7 @@
 * **Documentation:** https://bit.ly/SpargineAug2022
 * **Modified By:** David McCarter
 
-### Boolean HasItems(SortedDictionary<TKey, TValue> collection, Func<KeyValuePair<TKey, TValue>, Boolean> action)
+### Boolean HasItems(SortedDictionary<TKey, TValue> collection, Func<KeyValuePair<TKey, TValue>, Boolean> actionPredicate)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -3529,7 +3527,7 @@
 * **Documentation:** https://bit.ly/SpargineAug2022
 * **Modified By:** David McCarter
 
-### Boolean HasItems(SortedSet<T> collection, Func<T, Boolean> action)
+### Boolean HasItems(SortedSet<T> collection, Func<T, Boolean> actionPredicate)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3678,7 +3676,7 @@
 *****
 ## StringExtensions
 
-* **Status:** UpdateDocumentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -4660,4 +4658,4 @@
 * **Description:** ConvertFrom
 
 *****
-**Generated by Spargine - dotNetTips.com on 1/24/2025 7:53:35 PM UTC**
+**Generated by Spargine - dotNetTips.com on 1/27/2025 5:05:02 PM UTC**

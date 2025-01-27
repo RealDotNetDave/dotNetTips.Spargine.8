@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8.Core - 2025.8.1.23
+# DotNetTips.Spargine.8.Core - 2025.8.1.27
 
 ## ApiLibraries
 
@@ -14,7 +14,7 @@
 *****
 ## App
 
-* **Status:** NotSet
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -1059,7 +1059,7 @@
 * **Description:** ProgressiveRetry
 * **Documentation:** https://bit.ly/SpargineProgressiveRetry
 
-### Task<SimpleResult<Int32>> ProgressiveRetryAsync(Func<Task> operation, Byte retryCount, Int32 retryWaitMilliseconds, ILogger logger, CancellationToken cancellationToken)
+### Task<SimpleResult<Int32>> ProgressiveRetryAsync(Func<Task> function, Byte retryCount, Int32 retryWaitMilliseconds, ILogger logger, CancellationToken cancellationToken)
 
 * **Status:** New
 * **Optimization Status:** Completed
@@ -1126,7 +1126,7 @@
 * **Description:** FastCount
 * **Modified By:** David McCarter
 
-### IEnumerable<TSource> FromHierarchy(TSource source, Func<TSource, TSource> nextItem)
+### IEnumerable<TSource> FromHierarchy(TSource source, Func<TSource, TSource> nextItemFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1162,7 +1162,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 2/18/2021
@@ -1210,7 +1210,7 @@
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** CheckPerformance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 12/23/2022
@@ -1222,7 +1222,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/1/2021
@@ -1453,7 +1453,7 @@
 *****
 ## TaskHelper
 
-### Void RunSync(Func<Task> task)
+### Void RunSync(Func<Task> taskFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1465,7 +1465,7 @@
 * **Documentation:** https://bit.ly/SpargineSep2022
 * **Modified By:** David McCarter
 
-### TResult RunSync(Func<Task<TResult>> task)
+### TResult RunSync(Func<Task<TResult>> taskFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1477,7 +1477,7 @@
 * **Documentation:** https://bit.ly/SpargineSep2022
 * **Modified By:** David McCarter
 
-### TResult RunSync(Func<Task<TResult>> func, CancellationToken cancellationToken, TaskCreationOptions taskCreation, TaskContinuationOptions taskContinuation, TaskScheduler taskScheduler)
+### TResult RunSync(Func<Task<TResult>> taskFunction, CancellationToken cancellationToken, TaskCreationOptions taskCreation, TaskContinuationOptions taskContinuation, TaskScheduler taskScheduler)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1489,7 +1489,7 @@
 * **Documentation:** https://bit.ly/SpargineSep2022
 * **Modified By:** David McCarter
 
-### Void RunSync(Func<Task> task, CancellationToken cancellationToken, TaskCreationOptions taskCreation, TaskContinuationOptions taskContinuation, TaskScheduler taskScheduler)
+### Void RunSync(Func<Task> taskFunction, CancellationToken cancellationToken, TaskCreationOptions taskCreation, TaskContinuationOptions taskContinuation, TaskScheduler taskScheduler)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1531,17 +1531,6 @@
 * **CreatedOn:** 11/6/2023
 * **Description:** BuiltinTypes
 * **Documentation:** https://bit.ly/Spargine8
-* **Modified By:** David McCarter
-
-### Void ComputeBuiltinTypes()
-
-* **Status:** NotSet
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/6/2023
-* **Description:** ComputeBuiltinTypes
 * **Modified By:** David McCarter
 
 ### T Create()
@@ -1689,7 +1678,7 @@
 
 ### Boolean IsDotNetAssembly(Stream& stream)
 
-* **Status:** NotSet
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -2376,7 +2365,7 @@
 *****
 ## JsonSerialization
 
-* **Status:** UpdateDocumentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -2589,7 +2578,7 @@
 
 ### String SimpleSHA256Encrypt(String plainText, String key)
 
-* **Status:** NotSet
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -2711,7 +2700,7 @@
 *****
 ## UlidGenerator
 
-* **Status:** NotSet
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -2738,7 +2727,7 @@
 *****
 ## RegexProcessor
 
-* **Status:** UpdateDocumentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -4628,4 +4617,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 1/24/2025 7:53:35 PM UTC**
+**Generated by Spargine - dotNetTips.com on 1/27/2025 5:05:02 PM UTC**
