@@ -123,6 +123,65 @@ public class AppTests
 	}
 
 	[TestMethod]
+	public void GetCultureNames_ReturnsAllCultureNames()
+	{
+		// Act
+		var cultureNames = App.GetCultureNames();
+
+		// Assert
+		Assert.IsNotNull(cultureNames);
+		Assert.IsTrue(cultureNames.Count > 0);
+		Assert.IsTrue(cultureNames.Contains("en-US"));
+	}
+
+	[TestMethod]
+	public void GetCultureNames_ReturnsInstalledWin32Cultures()
+	{
+		// Act
+		var cultureNames = App.GetCultureNames(CultureTypes.InstalledWin32Cultures);
+
+		// Assert
+		Assert.IsNotNull(cultureNames);
+		Assert.IsTrue(cultureNames.Count > 0);
+		Assert.IsTrue(cultureNames.Contains("en-US"));
+	}
+
+	[TestMethod]
+	public void GetCultureNames_ReturnsNeutralCultureNames()
+	{
+		// Act
+		var cultureNames = App.GetCultureNames(CultureTypes.NeutralCultures);
+
+		// Assert
+		Assert.IsNotNull(cultureNames);
+		Assert.IsTrue(cultureNames.Count > 0);
+		Assert.IsTrue(cultureNames.Contains("en"));
+	}
+
+	[TestMethod]
+	public void GetCultureNames_ReturnsSpecificCultureNames()
+	{
+		// Act
+		var cultureNames = App.GetCultureNames(CultureTypes.SpecificCultures);
+
+		// Assert
+		Assert.IsNotNull(cultureNames);
+		Assert.IsTrue(cultureNames.Count > 0);
+		Assert.IsTrue(cultureNames.Contains("en-US"));
+	}
+
+	[TestMethod]
+	public void GetCultureNames_ReturnsUserCustomCultureNames()
+	{
+		// Act
+		var cultureNames = App.GetCultureNames(CultureTypes.UserCustomCulture);
+
+		// Assert
+		Assert.IsNotNull(cultureNames);
+		Assert.IsTrue(cultureNames.Count >= 0); // User custom cultures might be empty
+	}
+
+	[TestMethod]
 	public void GetCultureTest()
 	{
 		var result = App.CurrentCulture;
@@ -239,7 +298,6 @@ public class AppTests
 
 		Assert.IsTrue(result.FastCount() > 0);
 	}
-
 }
 
 public class GlobalConfig
