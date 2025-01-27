@@ -35,7 +35,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides a collection of static methods for querying objects that implement <see cref="IEnumerable{T}"/>.
 /// These extensions add functionality for adding, checking, and manipulating elements within enumerable collections.
 /// </summary>
-[Information(Documentation = "https://bit.ly/SpargineEnumerableExtensions", Status = Status.UpdateDocumentation)]
+[Information(Documentation = "https://bit.ly/SpargineEnumerableExtensions", Status = Status.Available)]
 public static class EnumerableExtensions
 {
 	/// <summary>

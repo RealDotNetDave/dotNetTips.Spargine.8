@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-25-2025
+// Last Modified On : 01-27-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -32,7 +32,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// This includes methods for adding or updating entries, converting dictionaries to various forms,
 /// disposing dictionary items, and more.
 /// </summary>
-[Information(Documentation = "https://bit.ly/SpargineDictionaryExtensions", Status = Status.UpdateDocumentation)]
+[Information(Documentation = "https://bit.ly/SpargineDictionaryExtensions", Status = Status.Available)]
 public static class DictionaryExtensions
 {
 	/// <summary>
