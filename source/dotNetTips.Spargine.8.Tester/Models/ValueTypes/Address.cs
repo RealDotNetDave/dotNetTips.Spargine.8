@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-23-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -120,7 +120,8 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="id">The unique identifier for the address.</param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="id"/> is null.</exception>
 	[JsonConstructor]
-	public Address([NotNull] string id) => this.Id = id;
+	[Information(nameof(Address), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public Address([NotNull] string id) => this.Id = id.ArgumentNotNull();
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AddressRecord"/> class.
@@ -134,16 +135,8 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="country">The country.</param>
 	/// <param name="postalCode">The postal code.</param>
 	/// <param name="phone">The phone.</param>
-	public Address(
-		[NotNull] string id,
-		string address1,
-		string address2,
-		string city,
-		string state,
-		string countyProvince,
-		string country,
-		string postalCode,
-		string phone) : this(id)
+	[Information(nameof(Address), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public Address([NotNull] string id, string address1, string address2, string city, string state, string countyProvince, string country, string postalCode, string phone) : this(id)
 	{
 		this.Address1 = address1;
 		this.Address2 = address2;
@@ -161,6 +154,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information("!=", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator !=(Address left, Address right) => !(left == right);
 
 	/// <summary>
@@ -169,6 +163,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information("<", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator <(Address left, Address right) => left.CompareTo(right) < 0;
 
 	/// <summary>
@@ -177,6 +172,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information("<=", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator <=(Address left, Address right) => left.CompareTo(right) <= 0;
 
 	/// <summary>
@@ -185,6 +181,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information("==", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator ==(Address left, Address right) => left.Equals(right);
 
 	/// <summary>
@@ -193,6 +190,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information(">", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator >(Address left, Address right) => left.CompareTo(right) > 0;
 
 	/// <summary>
@@ -201,6 +199,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information(">=", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator >=(Address left, Address right) => left.CompareTo(right) >= 0;
 
 	/// <summary>
@@ -209,6 +208,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="other">An object to compare with this instance.</param>
 	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
 	/// <list type="table"><listheader><term>Value</term><description>Meaning</description></listheader><item><term>Less than zero</term><description>This instance precedes <paramref name="other"/> in the sort order.</description></item><item><term>Zero</term><description>This instance occurs in the same position in the sort order as <paramref name="other"/>.</description></item><item><term>Greater than zero</term><description>This instance follows <paramref name="other"/> in the sort order.</description></item></list></returns>
+	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	readonly int IComparable<IAddress>.CompareTo(IAddress other)
 	{
 		if (other is null)
@@ -224,6 +224,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// </summary>
 	/// <param name="address">The address.</param>
 	/// <returns>System.Int32.</returns>
+	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public readonly int CompareTo(Address address) => this.CompareTo(address);
 
 	/// <summary>
@@ -231,27 +232,31 @@ public struct Address : IAddress, IEquatable<Address>
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
 	/// <returns><c>true</c> if the specified <see cref="object"/> is equal to this instance; otherwise, <c>false</c>.</returns>
-	public override readonly bool Equals(object obj) => this.Equals(obj);
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	public override readonly bool Equals(object obj) => base.Equals(obj);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><see langword="true"/> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <see langword="false"/>.</returns>
-	public readonly bool Equals([NotNull] IAddress other) => this.Equals(other);
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	public readonly bool Equals([NotNull] IAddress other) => base.Equals(other);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><see langword="true"/> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <see langword="false"/>.</returns>
-	public readonly bool Equals(Address other) => this.Equals(other);
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public readonly bool Equals(Address other) => base.Equals(other);
 
 	/// <summary>
 	/// Returns a hash code for this instance.
 	/// </summary>
 	/// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
 	[DebuggerStepThrough]
+	[Information(nameof(GetHashCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public override readonly int GetHashCode()
 	{
 		var hash = new HashCode();
@@ -272,6 +277,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// </summary>
 	/// <param name="address">The address.</param>
 	/// <returns>Address.</returns>
+	[Information(nameof(ToAddress), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static Address ToAddress([NotNull] AddressRecord address)
 	{
 		return new(address.ArgumentNotNull().Id)
@@ -286,11 +292,13 @@ public struct Address : IAddress, IEquatable<Address>
 			State = address.State,
 		};
 	}
+
 	/// <summary>
 	/// Returns a <see cref="string"/> that represents this instance.
 	/// </summary>
 	/// <returns>A <see cref="string"/> that represents this instance.</returns>
 	[DebuggerStepThrough]
+	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public override readonly string ToString() => this.PropertiesToString();
 
 	/// <summary>
@@ -304,6 +312,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[JsonPropertyName("address1")]
 	[MaxLength(100, ErrorMessage = "Address1 cannot exceed 100 characters.")]
 	[XmlElement("Address1")]
+	[Information(nameof(Address1), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Address1
 	{
 		readonly get => this._address1;
@@ -333,6 +342,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[JsonPropertyName("address2")]
 	[MaxLength(100, ErrorMessage = "Address2 cannot exceed 100 characters.")]
 	[XmlElement("Address2")]
+	[Information(nameof(Address2), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Address2
 	{
 		readonly get => this._address2;
@@ -362,6 +372,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[JsonPropertyName("city")]
 	[MaxLength(150, ErrorMessage = "City cannot exceed 150 characters.")]
 	[XmlElement("City")]
+	[Information(nameof(City), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string City
 	{
 		readonly get => this._city;
@@ -389,6 +400,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[JsonPropertyName("country")]
 	[MaxLength(50, ErrorMessage = "Country cannot exceed 50 characters.")]
 	[XmlElement("Country")]
+	[Information(nameof(Country), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Country
 	{
 		readonly get => this._country;
@@ -418,6 +430,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[JsonPropertyName("countyProvince")]
 	[MaxLength(50, ErrorMessage = "CountyProvince cannot exceed 50 characters.")]
 	[XmlElement("CountyProvince")]
+	[Information(nameof(CountyProvince), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string CountyProvince
 	{
 		readonly get => this._countyProvince;
@@ -448,6 +461,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[MaxLength(50, ErrorMessage = "Id cannot exceed 50 characters.")]
 	[Required(ErrorMessage = "Id is required.")]
 	[XmlElement("Id", IsNullable = false)]
+	[Information(nameof(Id), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Id
 	{
 		readonly get => this._id;
@@ -476,6 +490,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[JsonPropertyName("phone")]
 	[MaxLength(50, ErrorMessage = "Phone number cannot exceed 50 characters.")]
 	[XmlElement("Phone")]
+	[Information(nameof(Phone), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Phone
 	{
 		readonly get => this._phone;
@@ -505,6 +520,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[JsonPropertyName("postalCode")]
 	[MaxLength(40, ErrorMessage = "Postal code cannot exceed 40 characters.")]
 	[XmlElement("PostalCode")]
+	[Information(nameof(PostalCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string PostalCode
 	{
 		readonly get => this._postalCode;
@@ -534,6 +550,7 @@ public struct Address : IAddress, IEquatable<Address>
 	[JsonPropertyName("state")]
 	[MaxLength(60, ErrorMessage = "State cannot exceed 60 characters.")]
 	[XmlElement("State")]
+	[Information(nameof(State), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string State
 	{
 		readonly get => this._state;
