@@ -14,6 +14,7 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
@@ -37,6 +38,23 @@ public sealed class ComputerInfo
 	/// </summary>
 	public ComputerInfo()
 	{
+	}
+
+	/// <summary>
+	/// Determines whether the network is available.
+	/// </summary>
+	/// <returns><c>true</c> if the network is available; otherwise, <c>false</c>.</returns>
+	/// <remarks>
+	/// This method checks all network interfaces to determine if any are operational and not virtual or loopback interfaces.
+	/// </remarks>
+	[Information(nameof(IsNetworkAvailable), OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static bool IsNetworkAvailable()
+	{
+		return NetworkInterface.GetAllNetworkInterfaces()
+			.Where(i => i.OperationalStatus == OperationalStatus.Up)
+			.Select(i => i.Description.ToUpperInvariant())
+			.Where(n => !n.Contains("VIRTUALBOX", StringComparison.OrdinalIgnoreCase))
+			.Any(n => !n.Contains("LOOPBACK", StringComparison.OrdinalIgnoreCase));
 	}
 
 	/// <summary>
@@ -227,5 +245,4 @@ public sealed class ComputerInfo
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string UserName { get; private set; } = Environment.UserName;
-
 }

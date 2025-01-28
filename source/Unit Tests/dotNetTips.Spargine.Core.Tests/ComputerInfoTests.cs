@@ -11,7 +11,9 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Net.NetworkInformation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -32,6 +34,16 @@ public class ComputerInfoTests
 	}
 
 	[TestMethod]
+	public void IsNetworkAvailable_NetworkIsAvailable_ReturnsTrue()
+	{
+		// Act
+		var result = ComputerInfo.IsNetworkAvailable();
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
 	public void LoggableExceptionComputerInfoTest()
 	{
 		var ex = new LoggableException();
@@ -40,6 +52,5 @@ public class ComputerInfoTests
 
 		Assert.IsNotNull(result);
 	}
-
 }
 
