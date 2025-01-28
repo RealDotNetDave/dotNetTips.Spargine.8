@@ -123,8 +123,8 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[Information(nameof(Person<TAddress>), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public Person([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email, [NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
 	{
-		this.Email = email.ArgumentNotNull();
-		this.Id = id.ArgumentNotNull();
+		this.Email = email.ArgumentNotNullOrEmpty();
+		this.Id = id.ArgumentNotNullOrEmpty();
 	}
 
 	/// <summary>

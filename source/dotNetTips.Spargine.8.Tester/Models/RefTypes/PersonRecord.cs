@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-30-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -118,12 +118,11 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <param name="id">The unique identifier for the person. Must not exceed 50 characters.</param>
 	/// <exception cref="ValidationException">Thrown if the email or id does not meet the specified criteria.</exception>
 	[JsonConstructor]
-	public PersonRecord(
-		[NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
-		[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
+	[Information(nameof(PersonRecord), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public PersonRecord([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email, [NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
 	{
-		this.Email = email;
-		this.Id = id;
+		this.Email = email.ArgumentNotNullOrEmpty();
+		this.Id = id.ArgumentNotNullOrEmpty();
 	}
 
 	/// <summary>
@@ -132,6 +131,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
 	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
 	/// <returns><c>true</c> if the left instance is less than the right instance; otherwise, <c>false</c>.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator <(PersonRecord left, PersonRecord right) => left is null
 		? right is not null
 		: left.CompareTo(right) < 0;
@@ -142,6 +142,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
 	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
 	/// <returns><c>true</c> if the left instance is less than or equal to the right instance; otherwise, <c>false</c>.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator <=(PersonRecord left, PersonRecord right) => left is null || left.CompareTo(right) <= 0;
 
 	/// <summary>
@@ -150,6 +151,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
 	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
 	/// <returns><c>true</c> if the left instance is greater than the right instance; otherwise, <c>false</c>.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator >(PersonRecord left, PersonRecord right) => left is not null &&
 		left.CompareTo(right) > 0;
 
@@ -159,6 +161,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <param name="left">The left <see cref="PersonRecord"/> instance.</param>
 	/// <param name="right">The right <see cref="PersonRecord"/> instance.</param>
 	/// <returns><c>true</c> if the left instance is greater than or equal to the right instance; otherwise, <c>false</c>.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator >=(PersonRecord left, PersonRecord right) => left is null
 		? right is null
 		: left.CompareTo(right) >= 0;
@@ -167,6 +170,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// Calculates the age of the person based on their birth date and the current UTC date.
 	/// </summary>
 	/// <returns>The age of the person as a <see cref="TimeSpan"/>.</returns>
+	[Information(nameof(CalculateAge), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public TimeSpan CalculateAge() => DateTimeOffset.UtcNow.Subtract(this.BornOn);
 
 	/// <summary>
@@ -177,6 +181,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// Less than zero: This instance precedes <paramref name="other"/> in the sort order. 
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>. 
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
+	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public int CompareTo([NotNull] PersonRecord other)
 	{
 		if (other is null)
@@ -194,6 +199,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <returns>A <see cref="PersonRecord"/> that represents the converted person.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
 	[return: NotNull]
+	[Information(nameof(ToPersonRecord), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static PersonRecord ToPersonRecord([NotNull] ValueTypes.Person<ValueTypes.Address> person)
 	{
 		person = person.ArgumentNotNull();
@@ -227,6 +233,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <returns>A <see cref="PersonRecord"/> that represents the converted person.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
 	[return: NotNull]
+	[Information(nameof(ToPersonRecord), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static PersonRecord ToPersonRecord([NotNull] Person<Address> person)
 	{
 		person = person.ArgumentNotNull();
@@ -257,6 +264,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// Converts the person record to a string representation, utilizing the PropertiesToString method for detailed output.
 	/// </summary>
 	/// <returns>A string representation of the person record.</returns>
+	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public override string ToString() => this.PropertiesToString();
 
 	/// <summary>
@@ -266,6 +274,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
 	[XmlIgnore]
+	[Information(nameof(Addresses), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public Collection<AddressRecord> Addresses
 	{
 		get => this._addresses;
@@ -291,6 +300,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[JsonIgnore]
 	[XmlArray("Addresses")]
+	[Information(nameof(AddressesSerilization), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public Collection<AddressRecord> AddressesSerilization
 	{
 		get => this._addresses;
@@ -317,6 +327,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
+	[Information(nameof(Age), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public TimeSpan Age => this.CalculateAge();
 
 	/// <summary>
@@ -327,6 +338,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
 	[XmlElement("BornOn")]
+	[Information(nameof(BornOn), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public DateTimeOffset BornOn
 	{
 		get => this._bornOn;
@@ -357,6 +369,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[MaxLength(50, ErrorMessage = "Cell phone number cannot exceed 50 characters.")]
 	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
 	[XmlElement("CellPhone")]
+	[Information(nameof(CellPhone), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string CellPhone
 	{
 		get => this._cellPhone;
@@ -390,6 +403,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[JsonPropertyName("email")]
 	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
 	[XmlElement("Email", IsNullable = false)]
+	[Information(nameof(Email), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Email
 	{
 		get => this._email;
@@ -422,6 +436,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[JsonPropertyName("firstName")]
 	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
 	[XmlElement("FirstName")]
+	[Information(nameof(FirstName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string FirstName
 	{
 		get => this._firstName;
@@ -447,6 +462,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
+	[Information(nameof(FullName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string FullName => $"{this.FirstName} {this.LastName}";
 
 	/// <summary>
@@ -463,6 +479,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
 	[ReadOnly(true)]
 	[XmlElement("Id", IsNullable = false)]
+	[Information(nameof(Id), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Id
 	{
 		get => this._id;
@@ -494,6 +511,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[JsonPropertyName("lastName")]
 	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
 	[XmlElement("LastName")]
+	[Information(nameof(LastName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string LastName
 	{
 		get => this._lastName;
@@ -524,6 +542,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
 	[XmlElement("Phone")]
+	[Information(nameof(Phone), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string Phone
 	{
 		get => this._phone;
