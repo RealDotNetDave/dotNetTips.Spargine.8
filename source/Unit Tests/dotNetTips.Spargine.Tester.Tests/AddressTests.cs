@@ -14,7 +14,6 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
