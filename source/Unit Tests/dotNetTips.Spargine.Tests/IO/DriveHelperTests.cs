@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Versioning;
 using DotNetTips.Spargine.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -20,6 +21,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 namespace DotNetTips.Spargine.Tests.IO;
 
+[ExcludeFromCodeCoverage]
 [TestClass]
 public class DriveHelperTests
 {
