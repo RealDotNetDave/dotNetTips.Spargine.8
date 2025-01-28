@@ -4,7 +4,7 @@
 // Created          : 01-05-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="RandomDataTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -194,6 +194,45 @@ public class RandomDataTests
 	}
 
 	[TestMethod]
+	public void GenerateAddressCollection_DefaultParameters_ReturnsAddresses()
+	{
+		// Arrange
+		var country = RandomData.GenerateRandomLocationData().country;
+
+		// Act
+		var result = RandomData.GenerateAddressCollection<Models.RefTypes.Address>(country);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == 2);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void GenerateAddressCollection_InvalidCountry_ThrowsException()
+	{
+		// Act
+		RandomData.GenerateAddressCollection<Models.RefTypes.Address>(null);
+	}
+
+	[TestMethod]
+	public void GenerateAddressCollection_SpecifiedParameters_ReturnsAddresses()
+	{
+		// Arrange
+		var country = RandomData.GenerateRandomLocationData().country;
+		int count = 5;
+		int addressLength = 50;
+		int countyProvinceLength = 30;
+
+		// Act
+		var result = RandomData.GenerateAddressCollection<Models.RefTypes.Address>(country, count, addressLength, countyProvinceLength);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == count);
+	}
+
+	[TestMethod]
 	public void GenerateAddressCollectionTest()
 	{
 		var addresses = RandomData.GenerateAddressCollection<Models.ValueTypes.Address>(
@@ -312,6 +351,60 @@ public class RandomDataTests
 	}
 
 	[TestMethod]
+	public void GenerateFiles_DefaultParameters_ReturnsFiles()
+	{
+		// Act
+		var result = RandomData.GenerateFiles();
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsNotNull(result.Path);
+		Assert.IsTrue(result.Files.Count == 1);
+
+		// Clean up
+		DeleteFiles(result.Files);
+	}
+
+	[TestMethod]
+	public void GenerateFiles_SpecifiedParameters_ReturnsFiles()
+	{
+		// Arrange
+		int count = 5;
+		int fileLength = 1024;
+		string fileExtension = "test";
+
+		// Act
+		var result = RandomData.GenerateFiles(count, fileLength, fileExtension);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsNotNull(result.Path);
+		Assert.IsTrue(result.Files.Count == count);
+
+		// Clean up
+		DeleteFiles(result.Files);
+	}
+
+	[TestMethod]
+	public void GenerateFiles_WithPath_ReturnsFiles()
+	{
+		// Arrange
+		string path = Path.GetTempPath();
+		int count = 5;
+		int fileLength = 1024;
+
+		// Act
+		var result = RandomData.GenerateFiles(path, count, fileLength);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == count);
+
+		// Clean up
+		DeleteFiles(result);
+	}
+
+	[TestMethod]
 	public void GenerateFilesTest()
 	{
 		var files = RandomData.GenerateFiles(Count, FileLength);
@@ -338,6 +431,7 @@ public class RandomDataTests
 
 		this.DeleteFiles(files.Files);
 	}
+
 
 	[TestMethod]
 	public void GenerateFilesWithPathTest()
@@ -414,6 +508,31 @@ public class RandomDataTests
 		Assert.IsNotNull(stringValue);
 
 		Assert.IsTrue(stringValue.Length == 15);
+	}
+
+	[TestMethod]
+	public void GeneratePersonNames_DefaultParameters_ReturnsPersonNames()
+	{
+		// Act
+		var result = RandomData.GeneratePersonNames();
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == 1);
+	}
+
+	[TestMethod]
+	public void GeneratePersonNames_SpecifiedParameters_ReturnsPersonNames()
+	{
+		// Arrange
+		int count = 5;
+
+		// Act
+		var result = RandomData.GeneratePersonNames(count);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == count);
 	}
 
 	[TestMethod]

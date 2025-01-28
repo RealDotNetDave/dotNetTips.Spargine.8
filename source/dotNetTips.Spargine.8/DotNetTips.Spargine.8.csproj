@@ -138,4 +138,15 @@
 		</EmbeddedResource>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="WinData\" />
+	</ItemGroup>
+
+  <!--<ItemGroup>
+	<Reference Include="Windows">
+	  <HintPath>$(SystemRoot)\System32\WinMetadata\Windows.winmd</HintPath>
+	</Reference>
+  </ItemGroup>-->
+
+
 </Project>
