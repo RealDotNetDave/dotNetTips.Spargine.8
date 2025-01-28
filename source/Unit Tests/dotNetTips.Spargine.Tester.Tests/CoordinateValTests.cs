@@ -6,7 +6,7 @@
 // Last Modified By : David McCarter
 // Last Modified On : 01-28-2025
 // ***********************************************************************
-// <copyright file="CoordinateTests.cs" company="DotNetTips.Spargine.Tester.Tests">
+// <copyright file="CoordinateValTests.cs" company="DotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -24,7 +24,7 @@ namespace DotNetTips.Spargine.Tester.Tests;
 
 [ExcludeFromCodeCoverage]
 [TestClass]
-public class CoordinateTests
+public class CoordinateValTests
 {
 
 	[TestMethod]

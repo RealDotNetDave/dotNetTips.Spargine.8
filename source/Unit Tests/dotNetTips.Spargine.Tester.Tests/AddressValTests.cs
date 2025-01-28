@@ -6,13 +6,14 @@
 // Last Modified By : David McCarter
 // Last Modified On : 01-28-2025
 // ***********************************************************************
-// <copyright file="AddressTests.cs" company="DotNetTips.Spargine.Tester.Tests">
+// <copyright file="AddressValTests.cs" company="DotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 
 using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
@@ -24,7 +25,7 @@ namespace DotNetTips.Spargine.Tester.Tests;
 
 [ExcludeFromCodeCoverage]
 [TestClass]
-public class AddressTests
+public class AddressValTests
 {
 
 	[TestMethod]

@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-14-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -120,12 +120,11 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="email">The email address of the person.</param>
 	/// <exception cref="ValidationException">Thrown when <paramref name="id"/> or <paramref name="email"/> is null or empty.</exception>
 	[JsonConstructor]
-	public Person(
-		[NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email,
-		[NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
+	[Information(nameof(Person<TAddress>), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public Person([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email, [NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
 	{
-		this.Email = email;
-		this.Id = id;
+		this.Email = email.ArgumentNotNull();
+		this.Id = id.ArgumentNotNull();
 	}
 
 	/// <summary>
@@ -134,6 +133,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="left">The first instance of <see cref="Person{TAddress}"/>.</param>
 	/// <param name="right">The second instance of <see cref="Person{TAddress}"/>.</param>
 	/// <returns>true if <paramref name="left"/> and <paramref name="right"/> do not represent the same value; otherwise, false.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator !=(Person<TAddress> left, Person<TAddress> right) => !(left == right);
 
 	/// <summary>
@@ -142,6 +142,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
 	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
 	/// <returns>true if the left instance is less than the right instance; otherwise, false.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator <(Person<TAddress> left, Person<TAddress> right) => left is null
 		? right is not null
 		: left.CompareTo(right) < 0;
@@ -152,6 +153,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
 	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
 	/// <returns>true if the left instance is less than or equal to the right instance; otherwise, false.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator <=(Person<TAddress> left, Person<TAddress> right) => left is null ||
 		left.CompareTo(right) <= 0;
 
@@ -161,6 +163,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
 	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
 	/// <returns>true if both instances are null or if they represent the same value; otherwise, false.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator ==(Person<TAddress> left, Person<TAddress> right) => left is null
 		? right is null
 		: left.Equals(right);
@@ -171,6 +174,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
 	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
 	/// <returns>true if the left instance is greater than the right instance; otherwise, false.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator >(Person<TAddress> left, Person<TAddress> right) => left is not null &&
 		left.CompareTo(right) > 0;
 
@@ -180,6 +184,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
 	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
 	/// <returns>true if the left instance is greater than or equal to the right instance; otherwise, false.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator >=(Person<TAddress> left, Person<TAddress> right) => left is null
 		? right is null
 		: left.CompareTo(right) >= 0;
@@ -188,6 +193,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// Calculates the age of the person based on their birth date and the current UTC date.
 	/// </summary>
 	/// <returns>The age of the person as a <see cref="TimeSpan"/>.</returns>
+	[Information(nameof(CalculateAge), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public TimeSpan CalculateAge() => DateTimeOffset.UtcNow.Subtract(this.BornOn);
 
 	/// <summary>
@@ -200,6 +206,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
 	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
+	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public int CompareTo([NotNull] Person<TAddress> other)
 	{
 		if (other is null)
@@ -220,6 +227,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
 	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
+	[Information(nameof(CalculateAge), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public int CompareTo([DisallowNull] IPerson<TAddress> other)
 	{
 		if (other is null)
@@ -235,6 +243,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
 	/// <returns><c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.</returns>
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public override bool Equals(object obj) => ReferenceEquals(this, obj);
 
 	/// <summary>
@@ -243,6 +252,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="other">The <see cref="Person{TAddress}"/> to compare with the current <see cref="Person{TAddress}"/>.</param>
 	/// <returns><c>true</c> if the specified <see cref="Person{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>; otherwise, <c>false</c>.</returns>
 	[EditorBrowsable(EditorBrowsableState.Never)]
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public bool Equals([NotNull] Person<TAddress> other) => ReferenceEquals(this, other);
 
 	/// <summary>
@@ -251,26 +261,15 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="other">The <see cref="IPerson{TAddress}"/> to compare with the current <see cref="Person{TAddress}"/>.</param>
 	/// <returns><c>true</c> if the specified <see cref="IPerson{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>; otherwise, <c>false</c>.</returns>
 	[EditorBrowsable(EditorBrowsableState.Never)]
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public bool Equals([NotNull] IPerson<TAddress> other) => ReferenceEquals(this, other);
 
 	/// <summary>
 	/// Returns a hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
 	/// </summary>
 	/// <returns>A hash code for this instance.</returns>
-	public override int GetHashCode()
-	{
-		var hash = new HashCode();
-		hash.Add(this.Addresses);
-		hash.Add(this.BornOn);
-		hash.Add(this.CellPhone);
-		hash.Add(this.Email);
-		hash.Add(this.FirstName);
-		hash.Add(this.Phone);
-		hash.Add(this.Id);
-		hash.Add(this.LastName);
-
-		return hash.ToHashCode();
-	}
+	[Information(nameof(GetHashCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public override int GetHashCode() => HashCode.Combine(this.Id, this.Email, this.FirstName, this.LastName);
 
 	/// <summary>
 	/// Converts to <see cref="ValueTypes.Person{TAddress}"/> to <see cref="Person{TAddress}"/>.
@@ -278,6 +277,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="person">The person.</param>
 	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.Person.</returns>
 	[return: NotNull]
+	[Information(nameof(ToPerson), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static Person<Address> ToPerson([NotNull] ValueTypes.Person<ValueTypes.Address> person)
 	{
 		person = person.ArgumentNotNull();
@@ -310,6 +310,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="person">The <see cref="PersonRecord"/> to convert.</param>
 	/// <returns>A new instance of <see cref="Person{TAddress}"/> based on the provided <see cref="PersonRecord"/>.</returns>
 	[return: NotNull]
+	[Information(nameof(ToPerson), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static Person<Address> ToPerson([NotNull] PersonRecord person)
 	{
 		person = person.ArgumentNotNull();
@@ -339,6 +340,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// </summary>
 	/// <returns>A string that represents the current object.</returns>
 	[DebuggerStepThrough]
+	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public override string ToString() => this.PropertiesToString();
 
 	/// <summary>
@@ -352,6 +354,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
 	[XmlIgnore]
+	[Information(nameof(Addresses), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public Collection<TAddress> Addresses
 	{
 		get => this._addresses;
@@ -376,6 +379,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[JsonIgnore]
 	[XmlArray("Addresses")]
+	[Information(nameof(AddressesSerilization), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public Collection<TAddress> AddressesSerilization
 	{
 		get => this._addresses;
@@ -400,6 +404,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
+	[Information(nameof(CalculateAge), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public TimeSpan Age => this.CalculateAge();
 
 	/// <summary>
@@ -413,6 +418,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
 	[XmlElement("BornOn")]
+	[Information(nameof(BornOn), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public DateTimeOffset BornOn
 	{
 		get => this._bornOn;
@@ -443,6 +449,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[MaxLength(50, ErrorMessage = "Cell phone number cannot exceed 50 characters.")]
 	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
 	[XmlElement("CellPhone")]
+	[Information(nameof(CellPhone), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string CellPhone
 	{
 		get => this._cellPhone;
@@ -477,6 +484,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[JsonPropertyName("email")]
 	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
 	[XmlElement("Email", IsNullable = false)]
+	[Information(nameof(Email), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Email
 	{
 		get => this._email;
@@ -508,6 +516,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[JsonPropertyName("firstName")]
 	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
 	[XmlElement("FirstName")]
+	[Information(nameof(FirstName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string FirstName
 	{
 		get => this._firstName;
@@ -533,6 +542,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
+	[Information(nameof(FullName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string FullName => $"{this.FirstName} {this.LastName}";
 
 	/// <summary>
@@ -549,6 +559,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
 	[ReadOnly(true)]
 	[XmlElement("Id", IsNullable = false)]
+	[Information(nameof(Id), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Id
 	{
 		get => this._id;
@@ -578,6 +589,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[JsonPropertyName("lastName")]
 	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
 	[XmlElement("LastName")]
+	[Information(nameof(LastName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string LastName
 	{
 		get => this._lastName;
@@ -608,6 +620,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
 	[XmlElement("Phone")]
+	[Information(nameof(Phone), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string Phone
 	{
 		get => this._phone;

@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 08-28-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -110,10 +110,11 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <param name="id">The identifier.</param>
 	/// <param name="email">The email.</param>
 	[JsonConstructor]
+	[Information(nameof(Person<TAddress>), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public Person([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email, [NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id) : this()
 	{
-		this.Id = id;
-		this.Email = email;
+		this.Id = id.ArgumentNotNull();
+		this.Email = email.ArgumentNotNull();
 	}
 
 	/// <summary>
@@ -122,6 +123,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator !=(Person<TAddress> left, Person<TAddress> right) => !(left == right);
 
 	/// <summary>
@@ -130,6 +132,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator <(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) < 0;
 
 	/// <summary>
@@ -138,6 +141,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator <=(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) <= 0;
 
 	/// <summary>
@@ -146,6 +150,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator ==(Person<TAddress> left, Person<TAddress> right) => left.Equals(right);
 
 	/// <summary>
@@ -154,6 +159,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator >(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) > 0;
 
 	/// <summary>
@@ -162,12 +168,14 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static bool operator >=(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) >= 0;
 
 	/// <summary>
 	/// Calculates the age of the person based on their birth date and the current UTC date.
 	/// </summary>
 	/// <returns>The age of the person as a <see cref="TimeSpan"/>.</returns>
+	[Information(nameof(CalculateAge), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public readonly TimeSpan CalculateAge() => DateTimeOffset.UtcNow.Subtract(this.BornOn);
 
 	/// <summary>
@@ -179,10 +187,8 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// Less than zero: This instance precedes <paramref name="other"/> in the sort order.
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
-	public readonly int CompareTo(Person<TAddress> other) => string.Compare(
-		this._id,
-		other._id,
-		StringComparison.OrdinalIgnoreCase);
+	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	public readonly int CompareTo(Person<TAddress> other) => string.Compare(this._id, other._id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Compares this instance with a specified <see cref="IPerson{TAddress}"/> object and indicates whether this instance
@@ -194,6 +200,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
 	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
+	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public readonly int CompareTo([NotNull] IPerson<TAddress> other)
 	{
 		if (other is null)
@@ -209,6 +216,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><see langword="true"/> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <see langword="false"/>.</returns>
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public readonly bool Equals([NotNull] Person<TAddress> other) => Equals(this, other);
 
 	/// <summary>
@@ -216,6 +224,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
 	/// <returns><c>true</c> if the specified <see cref="object"/> is equal to this instance; otherwise, <c>false</c>.</returns>
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public override readonly bool Equals([NotNull] object obj) => base.Equals(obj);
 
 	/// <summary>
@@ -223,18 +232,21 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><see langword="true"/> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <see langword="false"/>.</returns>
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public readonly bool Equals([NotNull] IPerson<TAddress> other) => base.Equals(other);
 
 	/// <summary>
 	/// Returns a hash code for this instance.
 	/// </summary>
 	/// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
-	public override readonly int GetHashCode() => base.GetHashCode();
+	[Information(nameof(GetHashCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public override readonly int GetHashCode() => HashCode.Combine(this.Id, this.Email, this.FirstName, this.LastName);
 
 	/// <summary>
 	/// Returns a <see cref="string"/> that represents this instance.
 	/// </summary>
 	/// <returns>A <see cref="string"/> that represents this instance.</returns>
+	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public override readonly string ToString() => this.As<IPerson<TAddress>>().PropertiesToString();
 
 	/// <summary>
@@ -244,6 +256,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
 	[XmlIgnore]
+	[Information(nameof(Addresses), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public Collection<TAddress> Addresses
 	{
 		readonly get => this._addresses;
@@ -268,6 +281,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[XmlArray("Addresses")]
 	[JsonIgnore]
+	[Information(nameof(AddressesSerilization), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public Collection<TAddress> AddressesSerilization
 	{
 		readonly get => this._addresses;
@@ -291,6 +305,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <value>The age.</value>
 	[JsonIgnore]
 	[XmlIgnore]
+	[Information(nameof(Age), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public readonly TimeSpan Age => this.CalculateAge();
 
 	/// <summary>
@@ -301,6 +316,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[DataMember(Name = "bornOn", IsRequired = false)]
 	[JsonPropertyName("bornOn")]
 	[XmlElement("BornOn")]
+	[Information(nameof(BornOn), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public DateTimeOffset BornOn
 	{
 		readonly get => this._bornOn;
@@ -327,6 +343,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[MaxLength(50, ErrorMessage = "Cell phone number cannot exceed 50 characters.")]
 	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
 	[XmlElement("CellPhone")]
+	[Information(nameof(CellPhone), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string CellPhone
 	{
 		readonly get => this._cellPhone;
@@ -355,6 +372,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[JsonPropertyName("email")]
 	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
 	[XmlElement("Email", IsNullable = false)]
+	[Information(nameof(Email), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Email
 	{
 		readonly get => this._email;
@@ -383,6 +401,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[JsonPropertyName("firstName")]
 	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
 	[XmlElement("FirstName")]
+	[Information(nameof(FirstName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string FirstName
 	{
 		readonly get => this._firstName;
@@ -408,6 +427,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
+	[Information(nameof(FullName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public readonly string FullName => $"{this.FirstName} {this.LastName}";
 
 	/// <summary>
@@ -421,6 +441,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[ReadOnly(true)]
 	[Required(ErrorMessage = "Id is required.")]
 	[XmlElement("Id", IsNullable = false)]
+	[Information(nameof(Id), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Id
 	{
 		readonly get => this._id;
@@ -447,6 +468,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[JsonPropertyName("lastName")]
 	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
 	[XmlElement("LastName", IsNullable = false)]
+	[Information(nameof(LastName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string LastName
 	{
 		readonly get => this._lastName;
@@ -474,6 +496,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
 	[XmlElement("HomePhone")]
+	[Information(nameof(Phone), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string Phone
 	{
 		readonly get => this._phone;
