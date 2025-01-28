@@ -17,6 +17,7 @@
 
 using System.Diagnostics;
 using System.Runtime.Serialization;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Data.Models;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -49,14 +50,8 @@ public sealed record PersonData
 	/// <param name="lastName">The last name. Cannot be null.</param>
 	/// <param name="phone">The phone number. Cannot be null.</param>
 	/// <exception cref="ArgumentNullException">Thrown when a required argument is null.</exception>
-	public PersonData(
-		DateTimeOffset bornOn,
-		string cellPhone,
-		Country country,
-		string email,
-		string firstName,
-		string lastName,
-		string phone)
+	[Information(nameof(PersonData), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public PersonData(DateTimeOffset bornOn, string cellPhone, Country country, string email, string firstName, string lastName, string phone)
 	{
 		this.BornOn = bornOn;
 		this.CellPhone = cellPhone ?? throw new ArgumentNullException(nameof(cellPhone));
