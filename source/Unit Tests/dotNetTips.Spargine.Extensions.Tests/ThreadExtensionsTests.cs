@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using DotNetTips.Spargine.Core.Devices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,7 +22,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Extensions.Tests;
 
-
+[ExcludeFromCodeCoverage]
 [TestClass]
 public class ThreadExtensionsTests
 {

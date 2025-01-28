@@ -12,12 +12,14 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Tester.Tests;
 
+[ExcludeFromCodeCoverage]
 [TestClass]
 public class RandomCreditCardNumberGeneratorTests
 {

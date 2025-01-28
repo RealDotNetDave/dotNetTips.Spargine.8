@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
@@ -23,9 +24,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Core.Tests.Collections.Generic.Concurrent;
 
-/// <summary>
-/// Defines test class DistinctBlockingCollectionTests.
-/// </summary>
+[ExcludeFromCodeCoverage]
 [TestClass]
 public class DistinctBlockingCollectionTests
 {

@@ -23,9 +23,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Extensions.Tests;
 
-/// <summary>
-/// Defines test class DictionaryExtensionsTests.
-/// </summary>
 [ExcludeFromCodeCoverage]
 [TestClass]
 public class DictionaryExtensionsTests

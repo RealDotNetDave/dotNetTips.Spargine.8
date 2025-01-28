@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-25-2025
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -542,7 +542,7 @@ public static class ArrayExtensions
 	/// <returns>A new array with the IDataRecord inserted or updated.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the array or item is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Upsert), author: "David McCarter", createdOn: "5/2/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Upsert), author: "David McCarter", createdOn: "5/2/2021", UnitTestStatus = UnitTestStatus.WIP, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static IDataRecord[] Upsert([NotNull] this IDataRecord[] array, [NotNull] IDataRecord item)
 	{
 		if (item is null)

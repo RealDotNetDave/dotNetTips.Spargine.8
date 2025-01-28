@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core.Security;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,9 +22,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Core.Tests.Security;
 
-/// <summary>
-/// Defines test class UlidGeneratorTests.
-/// </summary>
+[ExcludeFromCodeCoverage]
 [TestClass]
 public class UlidGeneratorTests
 {

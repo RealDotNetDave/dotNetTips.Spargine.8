@@ -28,9 +28,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Extensions.Tests;
 
-/// <summary>
-/// Defines test class StringExtensionsTests.
-/// </summary>
 [ExcludeFromCodeCoverage]
 [TestClass]
 public class StringExtensionsTests

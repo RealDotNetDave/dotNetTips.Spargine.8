@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
@@ -21,6 +22,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Core.Tests;
 
+[ExcludeFromCodeCoverage]
 [TestClass]
 public class InformationAttributeDocGeneratorTests
 {

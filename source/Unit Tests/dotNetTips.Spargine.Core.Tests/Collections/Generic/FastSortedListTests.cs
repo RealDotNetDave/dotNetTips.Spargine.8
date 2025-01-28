@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using DotNetTips.Spargine.Core.Collections.Generic;
@@ -23,6 +24,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Core.Tests.Collections.Generic;
 
+[ExcludeFromCodeCoverage]
 [TestClass]
 public class FastSortedListTests
 {

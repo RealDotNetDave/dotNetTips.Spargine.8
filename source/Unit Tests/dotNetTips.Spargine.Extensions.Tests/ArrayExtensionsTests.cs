@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-27-2025
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -24,9 +24,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Extensions.Tests;
 
-/// <summary>
-/// Defines test class ArrayExtensionsTests.
-/// </summary>
 [ExcludeFromCodeCoverage]
 [TestClass]
 public class ArrayExtensionsTests
@@ -97,6 +94,76 @@ public class ArrayExtensionsTests
 		Assert.IsTrue(result.AddLast(null).FastCount() == 11);
 	}
 
+	[TestMethod]
+	public void AreEqual_BothNullArrays_ReturnsFalse()
+	{
+		// Arrange
+		int[] array1 = null;
+		int[] array2 = null;
+
+		// Act
+		var result = array1.AreEqual(array2);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void AreEqual_DifferentArrays_ReturnsFalse()
+	{
+		// Arrange
+		var array1 = new[] { 1, 2, 3, 4, 5 };
+		var array2 = new[] { 1, 2, 3, 4, 6 };
+
+		// Act
+		var result = array1.AreEqual(array2);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void AreEqual_DifferentLengths_ReturnsFalse()
+	{
+		// Arrange
+		var array1 = new[] { 1, 2, 3, 4, 5 };
+		var array2 = new[] { 1, 2, 3, 4 };
+
+		// Act
+		var result = array1.AreEqual(array2);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void AreEqual_NullArray_ReturnsFalse()
+	{
+		// Arrange
+		int[] array1 = null;
+		var array2 = new[] { 1, 2, 3, 4, 5 };
+
+		// Act
+		var result = array1.AreEqual(array2);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void AreEqual_SameArrays_ReturnsTrue()
+	{
+		// Arrange
+		var array1 = new[] { 1, 2, 3, 4, 5 };
+		var array2 = new[] { 1, 2, 3, 4, 5 };
+
+		// Act
+		var result = array1.AreEqual(array2);
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
 	/// <summary>
 	/// Defines the test method AreEqualTest.
 	/// </summary>
@@ -113,6 +180,7 @@ public class ArrayExtensionsTests
 
 		Assert.IsFalse(people1.AreEqual(arrayToCheck: null));
 	}
+
 
 	[TestMethod]
 	public void AsReadOnlySpanTest()
@@ -133,6 +201,32 @@ public class ArrayExtensionsTests
 
 		Assert.IsNotNull(result);
 		Assert.IsTrue(result.Count == 10);
+	}
+
+	[TestMethod]
+	public void BytesToString_EmptyByteArray_ReturnsEmptyString()
+	{
+		// Arrange
+		var byteArray = new byte[0];
+
+		// Act
+		var result = byteArray.BytesToString();
+
+		// Assert
+		Assert.AreEqual(string.Empty, result);
+	}
+
+	[TestMethod]
+	public void BytesToString_ValidByteArray_ReturnsHexString()
+	{
+		// Arrange
+		var byteArray = new byte[] { 0x0F, 0xA0, 0xB1, 0xC2 };
+
+		// Act
+		var result = byteArray.BytesToString();
+
+		// Assert
+		Assert.AreEqual("0fa0b1c2", result);
 	}
 
 	/// <summary>
@@ -173,6 +267,118 @@ public class ArrayExtensionsTests
 		var result = people.Clone<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>();
 
 		Assert.IsTrue(people.AreEqual(result));
+	}
+
+	[TestMethod]
+	public void ContainsAny_DifferentStringComparison_ReturnsFalse()
+	{
+		// Arrange
+		var input = "Hello, World!";
+		var characters = new[] { "H", "W" };
+
+		// Act
+		var result = input.ContainsAny(StringComparison.Ordinal, characters);
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void ContainsAny_DifferentStringComparison_ReturnsTrue()
+	{
+		// Arrange
+		var input = "Hello, World!";
+		var characters = new[] { "h", "w" };
+
+		// Act
+		var result = input.ContainsAny(StringComparison.Ordinal, characters);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void ContainsAny_EmptyCharacters_ReturnsFalse()
+	{
+		// Arrange
+		var input = "Hello, World!";
+		var characters = new string[0];
+
+		// Act
+		var result = input.ContainsAny(StringComparison.OrdinalIgnoreCase, characters);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void ContainsAny_EmptyInput_ReturnsFalse()
+	{
+		// Arrange
+		var input = string.Empty;
+		var characters = new[] { "H", "W" };
+
+		// Act
+		var result = input.ContainsAny(StringComparison.OrdinalIgnoreCase, characters);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void ContainsAny_NullCharacters_ReturnsFalse()
+	{
+		// Arrange
+		var input = "Hello, World!";
+		string[] characters = null;
+
+		// Act
+		var result = input.ContainsAny(StringComparison.OrdinalIgnoreCase, characters);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void ContainsAny_NullInput_ReturnsFalse()
+	{
+		// Arrange
+		string input = null;
+		var characters = new[] { "H", "W" };
+
+		// Act
+		var result = input.ContainsAny(StringComparison.OrdinalIgnoreCase, characters);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void ContainsAny_ValidInput_ReturnsFalse()
+	{
+		// Arrange
+		var input = "Hello, World!";
+		var characters = new[] { "X", "Y" };
+
+		// Act
+		var result = input.ContainsAny(StringComparison.OrdinalIgnoreCase, characters);
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void ContainsAny_ValidInput_ReturnsTrue()
+	{
+		// Arrange
+		var input = "Hello, World!";
+		var characters = new[] { "H", "W" };
+
+		// Act
+		var result = input.ContainsAny(StringComparison.OrdinalIgnoreCase, characters);
+
+		// Assert
+		Assert.IsTrue(result);
 	}
 
 	/// <summary>
@@ -296,6 +502,67 @@ public class ArrayExtensionsTests
 		Assert.IsFalse(nullCollection.HasItems(null));
 	}
 
+	[TestMethod]
+	public void PerformAction_ActionWithMultipleAppends_ReturnsConcatenatedString()
+	{
+		// Arrange
+		Action<StringBuilder> action = sb =>
+		{
+			sb.Append("First part. ");
+			sb.Append("Second part. ");
+			sb.Append("Third part.");
+		};
+
+		// Act
+		var result = FastStringBuilder.PerformAction(action);
+
+		// Assert
+		Assert.AreEqual("First part. Second part. Third part.", result);
+	}
+
+	[TestMethod]
+	public void PerformAction_EmptyAction_ReturnsEmptyString()
+	{
+		// Arrange
+		Action<StringBuilder> action = sb => { };
+
+		// Act
+		var result = FastStringBuilder.PerformAction(action);
+
+		// Assert
+		Assert.AreEqual(string.Empty, result);
+	}
+
+	[TestMethod]
+	public void PerformAction_NullAction_ReturnsEmptyString()
+	{
+		// Arrange
+		Action<StringBuilder> action = null;
+
+		// Act
+		var result = FastStringBuilder.PerformAction(action);
+
+		// Assert
+		Assert.AreEqual(string.Empty, result);
+	}
+
+	[TestMethod]
+	public void PerformAction_ValidAction_ReturnsExpectedString()
+	{
+		// Arrange
+		Action<StringBuilder> action = sb =>
+		{
+			sb.Append("Hello, ");
+			sb.Append("world!");
+		};
+
+		// Act
+		var result = FastStringBuilder.PerformAction(action);
+
+		// Assert
+		Assert.AreEqual("Hello, world!", result);
+	}
+
 	/// <summary>
 	/// Defines the test method PerformActionTest_Ref.
 	/// </summary>
@@ -322,6 +589,95 @@ public class ArrayExtensionsTests
 		people.PerformAction((person) => _ = sb.Append($"{person.ToString()}|"));
 
 		Assert.IsTrue(sb.Length > 100);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void RemoveFirst_NullArray_ThrowsArgumentNullException()
+	{
+		// Arrange
+		int[] array = null;
+
+		// Act
+		_ = array.RemoveFirst();
+	}
+
+	[TestMethod]
+	public void RemoveFirst_SingleElementArray_ReturnsEmptyArray()
+	{
+		// Arrange
+		var array = new[] { 1 };
+
+		// Act
+		var result = array.RemoveFirst();
+
+		// Assert
+		Assert.AreEqual(0, result.Length);
+	}
+
+	[TestMethod]
+	public void RemoveFirst_ValidArray_RemovesFirstElement()
+	{
+		// Arrange
+		var array = new[] { 1, 2, 3, 4, 5 };
+
+		// Act
+		var result = array.RemoveFirst();
+
+		// Assert
+		Assert.AreEqual(4, result.Length);
+		CollectionAssert.AreEqual(new[] { 2, 3, 4, 5 }, result);
+	}
+
+	[TestMethod]
+	public void RemoveLast_EmptyArray_ReturnsEmptyArray()
+	{
+		// Arrange
+		var array = new int[0];
+
+		// Act
+		var result = array.RemoveLast();
+
+		// Assert
+		Assert.AreEqual(0, result.Length);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void RemoveLast_NullArray_ThrowsArgumentNullException()
+	{
+		// Arrange
+		int[] array = null;
+
+		// Act
+		_ = array.RemoveLast();
+	}
+
+	[TestMethod]
+	public void RemoveLast_SingleElementArray_ReturnsEmptyArray()
+	{
+		// Arrange
+		var array = new[] { 1 };
+
+		// Act
+		var result = array.RemoveLast();
+
+		// Assert
+		Assert.AreEqual(0, result.Length);
+	}
+
+	[TestMethod]
+	public void RemoveLast_ValidArray_RemovesLastElement()
+	{
+		// Arrange
+		var array = new[] { 1, 2, 3, 4, 5 };
+
+		// Act
+		var result = array.RemoveLast();
+
+		// Assert
+		Assert.AreEqual(4, result.Length);
+		CollectionAssert.AreEqual(new[] { 1, 2, 3, 4 }, result);
 	}
 
 	/// <summary>
@@ -408,19 +764,17 @@ public class ArrayExtensionsTests
 		Assert.IsTrue(result.Contains(newPerson), "The new item should be present in the array after upserting.");
 	}
 
-	//[TestMethod]
-	//public void PerformActionTest_Record()
-	//{
-	//	var words = RandomData.GeneratePersonRecordCollection(10).ToArray();
-	//	var sb = new StringBuilder();
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void Upsert_NullArray_ThrowsArgumentNullException()
+	{
+		// Arrange
+		IDataRecord[] records = null;
+		var newRecord = new TestDataRecord { Id = "1", Name = "Record1" };
 
-	//	words.PerformAction((person) =>
-	//	{
-	//		sb.Append($"{person.ToString()}|");
-	//	});
-
-	//	Assert.IsTrue(sb.Length > 100);
-	//}
+		// Act
+		_ = records.Upsert(newRecord);
+	}
 
 	/// <summary>
 	/// Defines the test method UpsertTest01.
@@ -448,5 +802,17 @@ public class ArrayExtensionsTests
 		result = people.Upsert(null);
 
 		Assert.IsTrue(result.FastCount() == 10);
+	}
+
+	public record TestDataRecord : IDataRecord
+	{
+
+		public string AllPropertiesToString()
+		{
+			return $"Id: {Id}, Name: {Name}";
+		}
+
+		public string Id { get; init; }
+		public string Name { get; init; }
 	}
 }

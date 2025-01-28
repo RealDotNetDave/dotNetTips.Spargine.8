@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using DotNetTips.Spargine.Core.Security;
 using DotNetTips.Spargine.Tester;
@@ -22,6 +23,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Core.Tests.Security;
 
+[ExcludeFromCodeCoverage]
 [TestClass]
 public class PasswordGeneratorTests
 {

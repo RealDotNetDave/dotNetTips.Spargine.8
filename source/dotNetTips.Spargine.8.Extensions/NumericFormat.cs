@@ -11,6 +11,7 @@
 // </copyright>
 // <summary>Class that provides common formats for numbers.</summary>
 // ***********************************************************************
+using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -26,7 +27,8 @@ public class NumericFormat : Enumeration
 {
 	/// <summary>  
 	/// Initializes a new instance of the <see cref="NumericFormat"/> class.  
-	/// </summary>  
+	/// </summary>
+	[ExcludeFromCodeCoverage]
 	private NumericFormat() { }
 
 	/// <summary>

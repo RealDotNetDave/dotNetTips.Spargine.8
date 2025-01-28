@@ -21,9 +21,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Extensions.Tests;
 
-/// <summary>
-/// Defines test class TaskExtensionsTests.
-/// </summary>
 [ExcludeFromCodeCoverage]
 [TestClass]
 public class TaskExtensionsTests

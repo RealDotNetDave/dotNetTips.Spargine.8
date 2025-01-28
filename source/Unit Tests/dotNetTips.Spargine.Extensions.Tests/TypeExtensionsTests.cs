@@ -34,9 +34,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Extensions.Tests;
 
-/// <summary>
-/// Defines attribute class TypeExtensionsTests.
-/// </summary>
 [ExcludeFromCodeCoverage]
 [TestClass]
 public class TypeExtensionsTests

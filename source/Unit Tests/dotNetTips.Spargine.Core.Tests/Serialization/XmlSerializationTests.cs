@@ -25,9 +25,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Core.Tests.Serialization;
 
-/// <summary>
-/// Defines test class XmlSerializationTests.
-/// </summary>
 [ExcludeFromCodeCoverage]
 [TestClass]
 public class XmlSerializationTests

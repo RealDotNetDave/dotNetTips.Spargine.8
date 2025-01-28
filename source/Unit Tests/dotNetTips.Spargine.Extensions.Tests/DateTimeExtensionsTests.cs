@@ -21,11 +21,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Extensions.Tests;
 
-/// <summary>
-/// Defines test class DateTimeExtensionsTests.
-/// Implements the <see cref="TestClass" />
-/// </summary>
-/// <seealso cref="TestClass" />
 [ExcludeFromCodeCoverage]
 [TestClass]
 public class DateTimeExtensionsTests : TestClass

@@ -45,6 +45,7 @@ public class AddressRecordRefTests
 		// Act
 		_ = new AddressRecord(null, address1, address2, city, state, countyProvince, country, postalCode, phone);
 	}
+
 	[TestMethod]
 	public void AddressRecord_Constructor_ValidParameters_CreatesInstance()
 	{

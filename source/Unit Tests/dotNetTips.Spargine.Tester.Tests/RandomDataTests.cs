@@ -33,9 +33,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Tester.Tests;
 
-/// <summary>
-/// Defines test class RandomDataTests.
-/// </summary>
 [ExcludeFromCodeCoverage]
 [TestClass]
 public class RandomDataTests
