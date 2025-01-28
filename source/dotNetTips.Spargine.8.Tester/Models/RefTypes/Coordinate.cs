@@ -10,23 +10,24 @@
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>
-// A practical value type designed for testing and benchmarking,
+// A practical reference type designed for testing and benchmarking,
 // named "Coordinate," featuring properties X, Y, and Z.
 // It inherits from the interface ICoordinate.
 // </summary>
 // ***********************************************************************
+
 using System.Globalization;
 using System.Runtime.Serialization;
+using System.Text;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Tester.Models.RefTypes;
 using DotNetTips.Spargine.Tester.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
-namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
+namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 
 /// <summary>
 /// Represents a 3D coordinate with X, Y, and Z integer values.
@@ -39,12 +40,18 @@ namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
 /// It implements <see cref="ICoordinate"/>, <see cref="IEquatable{Coordinate}"/>,
 /// <see cref="IComparable"/>, and <see cref="IComparable{Coordinate}"/> interfaces.
 /// </remarks>
-[DataContract(Name = "coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
+[DataContract(Name = "coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [Serializable]
-[XmlRoot(ElementName = "Coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Val")]
-[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
+[XmlRoot(ElementName = "Coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
+[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coordinate>, IComparable, IComparable<Coordinate>
 {
+
+	/// <summary>
+	/// The format string used to indicate that an object is not of the expected type.
+	/// </summary>
+	private static readonly CompositeFormat _objectIsNotTypeFormat = CompositeFormat.Parse(Resources.ObjectIsNotType);
+
 	/// <summary>
 	/// Implements the inequality operator. Checks if two <see cref="Coordinate"/> instances are not equal.
 	/// </summary>
@@ -114,7 +121,7 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 		if (obj is not Coordinate)
 		{
 			ExceptionThrower.ThrowArgumentInvalidException(
-				string.Format(CultureInfo.CurrentCulture, Resources.ObjectIsNotType, nameof(obj), nameof(Coordinate)),
+				string.Format(CultureInfo.CurrentCulture, _objectIsNotTypeFormat),
 				nameof(obj));
 		}
 

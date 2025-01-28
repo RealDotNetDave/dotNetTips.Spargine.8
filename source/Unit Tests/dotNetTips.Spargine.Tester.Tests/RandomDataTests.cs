@@ -291,7 +291,7 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateCoordinateCollectionTest()
 	{
-		var coordinates = RandomData.GenerateCoordinateCollection<Coordinate>(Count);
+		var coordinates = RandomData.GenerateCoordinateCollection<Models.RefTypes.Coordinate>(Count);
 
 		Assert.IsNotNull(coordinates);
 
@@ -301,7 +301,7 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateCoordinateTest()
 	{
-		var coordinate = RandomData.GenerateCoordinate<Coordinate>();
+		var coordinate = RandomData.GenerateCoordinate<Models.RefTypes.Coordinate>();
 
 		Assert.IsNotNull(coordinate);
 

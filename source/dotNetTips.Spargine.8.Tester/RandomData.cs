@@ -23,7 +23,6 @@ using DotNetTips.Spargine.Core.Data;
 using DotNetTips.Spargine.Core.Data.Models;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
-using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using DotNetTips.Spargine.Tester.Properties;
 using Microsoft.Extensions.ObjectPool;
 using Microsoft.VisualBasic;

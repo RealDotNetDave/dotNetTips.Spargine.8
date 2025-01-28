@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 09-30-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="TypeExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -196,8 +196,8 @@ public class TypeExtensionsTests
 	[TestMethod]
 	public void GetMaxTest()
 	{
-		var cord1 = RandomData.GenerateCoordinate<Coordinate>();
-		var cord2 = RandomData.GenerateCoordinate<Coordinate>();
+		var cord1 = RandomData.GenerateCoordinate<Tester.Models.RefTypes.Coordinate>();
+		var cord2 = RandomData.GenerateCoordinate<Tester.Models.RefTypes.Coordinate>();
 
 		var result = cord1.Max(cord2);
 

@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-09-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="CollectionExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -104,7 +104,7 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void AsReadOnlySpanTest()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(Count).ToCollection().AsReadOnlySpan();
+		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.RefTypes.Coordinate>(Count).ToCollection().AsReadOnlySpan();
 
 		Assert.IsTrue(collection.Length == Count);
 	}
@@ -112,7 +112,7 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void AsSpanTest()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(Count).ToCollection().AsSpan();
+		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.RefTypes.Coordinate>(Count).ToCollection().AsSpan();
 
 		Assert.IsTrue(collection.Length == Count);
 	}
@@ -131,8 +131,8 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void HasItemsTest()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(Count).ToCollection();
-		Collection<Coordinate> nullCollection = null;
+		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.RefTypes.Coordinate>(Count).ToCollection();
+		Collection<Tester.Models.RefTypes.Coordinate> nullCollection = null;
 
 		Assert.IsTrue(collection.HasItems());
 
@@ -142,8 +142,8 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void HasItemsTestWithCount()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(Count).ToCollection();
-		Collection<Coordinate> nullCollection = null;
+		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.RefTypes.Coordinate>(Count).ToCollection();
+		Collection<Tester.Models.RefTypes.Coordinate> nullCollection = null;
 
 		Assert.IsFalse(collection.HasItems(5));
 
@@ -153,7 +153,7 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void ToFrozenTest()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Coordinate>(Count).ToCollection().ToFrozenSet();
+		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.RefTypes.Coordinate>(Count).ToCollection().ToFrozenSet();
 
 		Assert.IsTrue(collection.Count == Count);
 	}

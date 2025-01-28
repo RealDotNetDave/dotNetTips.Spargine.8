@@ -19,7 +19,7 @@
 
 using DotNetTips.Spargine.Core;
 
-namespace DotNetTips.Spargine.Tester.Models.ValueTypes;
+namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 
 /// <summary>
 /// Defines a set of properties for working with coordinates in a 3D space.
