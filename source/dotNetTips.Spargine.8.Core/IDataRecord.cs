@@ -35,6 +35,7 @@ public interface IDataRecord
 	/// </summary>
 	/// <returns>A string that represents all the properties and their values of the implementing class.</returns>
 	/// <remarks>This method uses reflection to iterate over all properties.</remarks>
+	[Information(nameof(AllPropertiesToString), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public sealed string AllPropertiesToString() => this.PropertiesToString();
 
 	/// <summary>

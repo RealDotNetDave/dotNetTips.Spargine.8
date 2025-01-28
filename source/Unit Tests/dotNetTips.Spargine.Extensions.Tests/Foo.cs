@@ -14,11 +14,11 @@
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace DotNetTips.Spargine.Extensions.Tests;
 
-/// <summary>
-/// Class Foo.
-/// </summary>
+[ExcludeFromCodeCoverage]
 internal class Foo
 {
 	/// <summary>

@@ -4,7 +4,7 @@
 // Created          : 07-05-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-20-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="LineSplitEntry.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -37,6 +37,7 @@ public readonly ref struct LineSplitEntry(ReadOnlySpan<char> line, ReadOnlySpan<
 	/// </summary>
 	/// <param name="entry">The line split entry.</param>
 	/// <returns>The line content as a ReadOnlySpan&lt;char&gt;.</returns>
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static implicit operator ReadOnlySpan<char>(LineSplitEntry entry) => entry.Line;
 
 	/// <summary>
@@ -44,6 +45,7 @@ public readonly ref struct LineSplitEntry(ReadOnlySpan<char> line, ReadOnlySpan<
 	/// </summary>
 	/// <param name="line">When this method returns, contains the line content.</param>
 	/// <param name="separator">When this method returns, contains the line terminator.</param>
+	[Information(nameof(Deconstruct), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public void Deconstruct(out ReadOnlySpan<char> line, out ReadOnlySpan<char> separator)
 	{
 		line = this.Line;
@@ -55,18 +57,21 @@ public readonly ref struct LineSplitEntry(ReadOnlySpan<char> line, ReadOnlySpan<
 	/// </summary>
 	/// <param name="entry">The line split entry.</param>
 	/// <returns>A <see cref="ReadOnlySpan{Char}"/> that contains the line content.</returns>
+	[Information(nameof(ToReadOnlySpan), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlySpan<char> ToReadOnlySpan(LineSplitEntry entry) => entry.Line;
 
 	/// <summary>
 	/// Gets the content of the line, excluding any line terminator.
 	/// </summary>
 	/// <value>The line content.</value>
+	[Information(nameof(Line), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ReadOnlySpan<char> Line { get; } = line;
 
 	/// <summary>
 	/// Gets the line terminator found after the line content.
 	/// </summary>
 	/// <value>The line terminator.</value>
+	[Information(nameof(Separator), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ReadOnlySpan<char> Separator { get; } = separator;
 
 }

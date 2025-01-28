@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -267,5 +267,29 @@
   </data>
   <data name="FailedToDeserializeCountriesData" xml:space="preserve">
     <value>Failed to deserialize countries data.</value>
+  </data>
+  <data name="AnErrorOccurredWhileWritingToTheChannel" xml:space="preserve">
+    <value>An error occurred while writing to the channel.</value>
+  </data>
+  <data name="DateTextIsNullOrEmpty" xml:space="preserve">
+    <value>Date text is null or empty.</value>
+  </data>
+  <data name="InvalidDateFormat" xml:space="preserve">
+    <value>Invalid date format.</value>
+  </data>
+  <data name="AnErrorOccurredWhileWritingToTheChannel1" xml:space="preserve">
+    <value>An error occurred while writing to the channel.</value>
+  </data>
+  <data name="AnErrorOccurredWhileReadingFromTheChannel" xml:space="preserve">
+    <value>An error occurred while reading from the channel.</value>
+  </data>
+  <data name="TheJSONValueIsNullOrNotAValidTimeOnlyRepre" xml:space="preserve">
+    <value>The JSON value is null or not a valid TimeOnly representation.</value>
+  </data>
+  <data name="AnErrorOccurredWhileLoggingTheMessage" xml:space="preserve">
+    <value>An error occurred while logging the message.</value>
+  </data>
+  <data name="AnErrorOccurredWhileLoggingTheMessage1" xml:space="preserve">
+    <value>An error occurred while logging the message.</value>
   </data>
 </root>

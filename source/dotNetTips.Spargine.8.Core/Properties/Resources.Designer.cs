@@ -79,6 +79,60 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while logging the message..
+        /// </summary>
+        internal static string AnErrorOccurredWhileLoggingTheMessage {
+            get {
+                return ResourceManager.GetString("AnErrorOccurredWhileLoggingTheMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while logging the message..
+        /// </summary>
+        internal static string AnErrorOccurredWhileLoggingTheMessage1 {
+            get {
+                return ResourceManager.GetString("AnErrorOccurredWhileLoggingTheMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while reading from the channel..
+        /// </summary>
+        internal static string AnErrorOccurredWhileReadingFromTheChannel {
+            get {
+                return ResourceManager.GetString("AnErrorOccurredWhileReadingFromTheChannel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while writing to the channel..
+        /// </summary>
+        internal static string AnErrorOccurredWhileWritingToTheChannel {
+            get {
+                return ResourceManager.GetString("AnErrorOccurredWhileWritingToTheChannel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while writing to the channel..
+        /// </summary>
+        internal static string AnErrorOccurredWhileWritingToTheChannel1 {
+            get {
+                return ResourceManager.GetString("AnErrorOccurredWhileWritingToTheChannel1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date text is null or empty..
+        /// </summary>
+        internal static string DateTextIsNullOrEmpty {
+            get {
+                return ResourceManager.GetString("DateTextIsNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Argument cannot be null..
         /// </summary>
         internal static string ErrorArgumentNull {
@@ -412,6 +466,15 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid date format..
+        /// </summary>
+        internal static string InvalidDateFormat {
+            get {
+                return ResourceManager.GetString("InvalidDateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go to dotNetTips.com for help..
         /// </summary>
         internal static string MessageGoToDotNetTipsComForHelp {
@@ -471,6 +534,15 @@ namespace DotNetTips.Spargine.Core.Properties {
         internal static string TheIndexIsEqualToOrGreaterThanTheLengthOfInput {
             get {
                 return ResourceManager.GetString("TheIndexIsEqualToOrGreaterThanTheLengthOfInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The JSON value is null or not a valid TimeOnly representation..
+        /// </summary>
+        internal static string TheJSONValueIsNullOrNotAValidTimeOnlyRepre {
+            get {
+                return ResourceManager.GetString("TheJSONValueIsNullOrNotAValidTimeOnlyRepre", resourceCulture);
             }
         }
         

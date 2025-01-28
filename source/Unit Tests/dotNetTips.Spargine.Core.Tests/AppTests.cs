@@ -315,6 +315,7 @@ public class AppTests
 	}
 }
 
+[ExcludeFromCodeCoverage]
 public class GlobalConfig
 {
 
@@ -324,6 +325,7 @@ public class GlobalConfig
 
 }
 
+[ExcludeFromCodeCoverage]
 public class AppConfig : Config<GlobalConfig>
 {
 
@@ -331,9 +333,9 @@ public class AppConfig : Config<GlobalConfig>
 
 }
 
+[ExcludeFromCodeCoverage]
 public class Values
 {
-
 	public int Count1 { get; set; }
 	public int Count2 { get; set; }
 

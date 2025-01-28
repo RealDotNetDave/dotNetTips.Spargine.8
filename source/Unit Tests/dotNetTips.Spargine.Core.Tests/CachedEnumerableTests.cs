@@ -4,7 +4,7 @@
 // Created          : 06-24-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-24-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="CachedEnumerableTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -26,6 +26,97 @@ namespace DotNetTips.Spargine.Core.Tests;
 [TestClass]
 public class CachedEnumerableTests
 {
+
+	[TestMethod]
+	public void CachedEnumerable_Count_ShouldReturnCachedItemCount()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Range(1, 5);
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		var countBeforeEnumeration = cachedEnumerable.Count;
+		var firstIteration = cachedEnumerable.ToList();
+		var countAfterEnumeration = cachedEnumerable.Count;
+
+		// Assert
+		Assert.AreEqual(0, countBeforeEnumeration, "Count before enumeration should be 0.");
+		Assert.AreEqual(firstIteration.Count, countAfterEnumeration, "Count after enumeration should match the number of items in the enumerable.");
+	}
+
+	[TestMethod]
+	public void CachedEnumerable_Dispose_ShouldReleaseResources()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Range(1, 5);
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		cachedEnumerable.Dispose();
+
+		// Assert
+		Assert.ThrowsException<ObjectDisposedException>(() => cachedEnumerable.ToList(), "Accessing the cached enumerable after disposal should throw an ObjectDisposedException.");
+	}
+
+	[TestMethod]
+	public void CachedEnumerable_EnumerateAfterReset_ShouldReEnumerate()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Range(1, 5);
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		var firstIteration = cachedEnumerable.ToList();
+		cachedEnumerable.Reset();
+		var secondIteration = cachedEnumerable.ToList();
+
+		// Assert
+		CollectionAssert.AreEqual(firstIteration, secondIteration, "The items in both iterations should be the same after reset.");
+	}
+
+	[TestMethod]
+	public void CachedEnumerable_EnumerateEmptyEnumerable_ShouldReturnEmpty()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Empty<int>();
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		var result = cachedEnumerable.ToList();
+
+		// Assert
+		Assert.AreEqual(0, result.Count, "Enumerating an empty enumerable should return an empty list.");
+	}
+	[TestMethod]
+	public void CachedEnumerable_EnumerateMultipleTimes_ShouldReturnSameResults()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Range(1, 5);
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		var firstIteration = cachedEnumerable.ToList();
+		var secondIteration = cachedEnumerable.ToList();
+
+		// Assert
+		CollectionAssert.AreEqual(firstIteration, secondIteration, "The items in both iterations should be the same, indicating they were cached.");
+	}
+
+	[TestMethod]
+	public void CachedEnumerable_Reset_ShouldClearCache()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Range(1, 5);
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		var firstIteration = cachedEnumerable.ToList();
+		cachedEnumerable.Reset();
+		var secondIteration = cachedEnumerable.ToList();
+
+		// Assert
+		CollectionAssert.AreEqual(firstIteration, secondIteration, "The items in both iterations should be the same after reset.");
+	}
 
 	[TestMethod]
 	public void Create_FromEnumerable_ShouldCacheItems()

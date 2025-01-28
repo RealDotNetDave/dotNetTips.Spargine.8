@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Xml.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,19 +22,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTips.Spargine.Extensions.Tests;
 
-/// <summary>
-/// Class TestType.
-/// </summary>
+[ExcludeFromCodeCoverage]
 [XmlRoot]
 public class TestType
 {
-	/// <summary>
-	/// Gets or sets the name of the user.
-	/// </summary>
-	/// <value>The name of the user.</value>
-	[XmlIgnore]
-	[DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-	public string UserName { get; set; }
 
 	/// <summary>
 	/// Gets the name.
@@ -62,6 +54,14 @@ public class TestType
 	{
 		//Do Nothing
 	}
+
+	/// <summary>
+	/// Gets or sets the name of the user.
+	/// </summary>
+	/// <value>The name of the user.</value>
+	[XmlIgnore]
+	[DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
+	public string UserName { get; set; }
 
 }
 

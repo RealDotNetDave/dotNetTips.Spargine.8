@@ -26,6 +26,7 @@ namespace DotNetTips.Spargine.Core.Tests;
 /// Implements the <see cref="IEqualityComparer{Person{Address}}" />
 /// </summary>
 /// <seealso cref="IEqualityComparer{Person{Address}}" />
+[ExcludeFromCodeCoverage]
 public class PersonComparer : IEqualityComparer<Person<Address>>
 {
 

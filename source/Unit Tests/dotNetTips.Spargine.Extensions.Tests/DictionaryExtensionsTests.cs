@@ -578,6 +578,7 @@ public class DictionaryExtensionsTests
 
 }
 
+[ExcludeFromCodeCoverage]
 public class MockDisposable : IDisposable
 {
 

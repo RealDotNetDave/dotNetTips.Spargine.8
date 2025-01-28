@@ -14,6 +14,7 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DotNetTips.Spargine.Core.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -54,7 +55,7 @@ public class DateOnlyConverter(string? serializationFormat) : JsonConverter<Date
 		}
 		catch (FormatException e)
 		{
-			ExceptionThrower.ThrowJsonException("Invalid date format.", e);
+			ExceptionThrower.ThrowJsonException(Resources.InvalidDateFormat, e);
 		}
 
 		return default;

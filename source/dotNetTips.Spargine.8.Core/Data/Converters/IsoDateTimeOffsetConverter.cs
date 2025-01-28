@@ -15,6 +15,7 @@
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DotNetTips.Spargine.Core.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -82,7 +83,7 @@ internal sealed class IsoDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
 		}
 		else
 		{
-			ExceptionThrower.ThrowJsonException("Date text is null or empty.");
+			ExceptionThrower.ThrowJsonException(Resources.DateTextIsNullOrEmpty);
 		}
 
 		return default;

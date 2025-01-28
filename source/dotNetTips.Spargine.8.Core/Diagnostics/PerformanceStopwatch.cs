@@ -19,6 +19,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core.Internal;
+using DotNetTips.Spargine.Core.Properties;
 using Microsoft.Extensions.Logging;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -119,7 +120,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 		catch (Exception ex)
 		{
 			// Handle or log the exception as needed
-			throw new InvalidOperationException("An error occurred while logging the message.", ex);
+			throw new InvalidOperationException(Resources.AnErrorOccurredWhileLoggingTheMessage, ex);
 		}
 
 		return result;
@@ -161,7 +162,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 		catch (Exception ex)
 		{
 			// Handle or log the exception as needed
-			throw new InvalidOperationException("An error occurred while logging the message.", ex);
+			throw new InvalidOperationException(Resources.AnErrorOccurredWhileLoggingTheMessage, ex);
 		}
 
 		return result;

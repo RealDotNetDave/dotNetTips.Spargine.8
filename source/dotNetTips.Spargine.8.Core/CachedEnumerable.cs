@@ -4,7 +4,7 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-28-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -93,6 +93,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// Returns an enumerator that iterates through the collection.
 	/// </summary>
 	/// <returns>An enumerator that can be used to iterate through the collection.</returns>
+	[Information(nameof(IEnumerable.GetEnumerator), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
 	/// <summary>
@@ -128,6 +129,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// <param name="result">When this method returns, contains the item at the specified index, if the item is found;
 	/// otherwise, the default value for the type of the item parameter. This parameter is passed uninitialized.</param>
 	/// <returns><c>true</c> if the item at the specified index is successfully retrieved; otherwise, <c>false</c>.</returns>
+	[Information(nameof(TryGetItem), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	private bool TryGetItem(in int index, out T result)
 	{
 		this.CheckEnumerable();
@@ -195,6 +197,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// Returns an enumerator that iterates through the collection.
 	/// </summary>
 	/// <returns>An enumerator that can be used to iterate through the collection.</returns>
+	[Information(nameof(IEnumerable<T>.GetEnumerator), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public IEnumerator<T> GetEnumerator()
 	{
 		this.CheckEnumerable();
@@ -208,6 +211,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// <summary>
 	/// Resets the cache and re-enumerates the underlying enumerable.
 	/// </summary>
+	[Information(nameof(Reset), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public void Reset()
 	{
 		lock (this._cache)
@@ -222,6 +226,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// <summary>
 	/// Gets the count of cached items.
 	/// </summary>
+	[Information(nameof(Count), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int Count => this._cache.Count;
 
 	/// <summary>

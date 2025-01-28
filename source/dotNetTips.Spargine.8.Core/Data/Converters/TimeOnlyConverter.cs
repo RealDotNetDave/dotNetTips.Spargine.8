@@ -14,6 +14,7 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DotNetTips.Spargine.Core.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -50,7 +51,7 @@ public class TimeOnlyConverter(string? serializationFormat) : JsonConverter<Time
 	/// </remarks>
 	public override TimeOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
-		var value = reader.GetString() ?? throw new JsonException("The JSON value is null or not a valid TimeOnly representation.");
+		var value = reader.GetString() ?? throw new JsonException(Resources.TheJSONValueIsNullOrNotAValidTimeOnlyRepre);
 
 		try
 		{

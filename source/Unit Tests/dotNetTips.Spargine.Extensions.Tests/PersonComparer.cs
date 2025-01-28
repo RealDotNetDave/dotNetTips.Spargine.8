@@ -26,6 +26,7 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 /// Implements the <see cref="IEqualityComparer{PersonProper}" />
 /// </summary>
 /// <seealso cref="IEqualityComparer{PersonProper}" />
+[ExcludeFromCodeCoverage]
 public class PersonComparer : IEqualityComparer<Person<Address>>
 {
 
@@ -51,6 +52,7 @@ public class PersonComparer : IEqualityComparer<Person<Address>>
 /// Implements the <see cref="IEqualityComparer{Models.RefTypes.PersonRecord}" />
 /// </summary>
 /// <seealso cref="IEqualityComparer{Models.RefTypes.PersonRecord}" />
+[ExcludeFromCodeCoverage]
 public class PersonRecordComparer : IEqualityComparer<PersonRecord>
 {
 

@@ -17,6 +17,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Threading.Channels;
+using DotNetTips.Spargine.Core.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -150,7 +151,7 @@ public sealed class ChannelQueue<T>
 		}
 		catch (Exception ex)
 		{
-			throw new InvalidOperationException("An error occurred while reading from the channel.", ex);
+			throw new InvalidOperationException(Resources.AnErrorOccurredWhileReadingFromTheChannel, ex);
 		}
 	}
 
@@ -174,7 +175,7 @@ public sealed class ChannelQueue<T>
 		}
 		catch (Exception ex)
 		{
-			throw new InvalidOperationException("An error occurred while writing to the channel.", ex);
+			throw new InvalidOperationException(Resources.AnErrorOccurredWhileWritingToTheChannel, ex);
 		}
 	}
 
@@ -214,7 +215,7 @@ public sealed class ChannelQueue<T>
 		catch (Exception ex)
 		{
 			// Log or handle the exception as needed
-			throw new InvalidOperationException("An error occurred while writing to the channel.", ex);
+			throw new InvalidOperationException(Resources.AnErrorOccurredWhileWritingToTheChannel, ex);
 		}
 	}
 
