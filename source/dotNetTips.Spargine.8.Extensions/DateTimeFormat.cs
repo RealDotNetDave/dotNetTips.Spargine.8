@@ -11,6 +11,7 @@
 // </copyright>
 // <summary>Class that offers common date and time formats.</summary>
 // ***********************************************************************
+using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -27,7 +28,8 @@ public class DateTimeFormat : Enumeration
 {
 	/// <summary>  
 	/// Initializes a new instance of the <see cref="DateTimeFormat"/> class.  
-	/// </summary>  
+	/// </summary>
+	[ExcludeFromCodeCoverage]
 	private DateTimeFormat()
 	{ }
 

@@ -44,6 +44,7 @@ public class Enumeration : IComparable
 	/// <summary>
 	/// Private constructor used to prevent the creation of the Enumeration class without providing a value and display name.
 	/// </summary>
+	[ExcludeFromCodeCoverage]
 	protected Enumeration()
 	{
 	}

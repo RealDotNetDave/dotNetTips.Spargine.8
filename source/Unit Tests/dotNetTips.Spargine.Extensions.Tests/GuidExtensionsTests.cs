@@ -4,7 +4,7 @@
 // Created          : 07-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="GuidExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -34,4 +34,56 @@ public class GuidExtensionsTests
 		Assert.IsNotNull(result);
 	}
 
+	[TestMethod]
+	public void ToDigits_EmptyGuid_ReturnsEmptyString()
+	{
+		// Arrange
+		var guid = Guid.Empty;
+
+		// Act
+		var result = guid.ToDigits();
+
+		// Assert
+		Assert.AreEqual(string.Empty, result);
+	}
+
+	[TestMethod]
+	public void ToDigits_ValidGuid_CorrectFormat()
+	{
+		// Arrange
+		var guid = Guid.NewGuid();
+
+		// Act
+		var result = guid.ToDigits();
+
+		// Assert
+		Assert.IsTrue(Guid.TryParseExact(result, "N", out _));
+	}
+
+	[TestMethod]
+	public void ToDigits_ValidGuid_NotEmptyString()
+	{
+		// Arrange
+		var guid = Guid.NewGuid();
+
+		// Act
+		var result = guid.ToDigits();
+
+		// Assert
+		Assert.IsFalse(string.IsNullOrEmpty(result));
+	}
+
+	[TestMethod]
+	public void ToDigits_ValidGuid_ReturnsStringWithoutDashes()
+	{
+		// Arrange
+		var guid = Guid.NewGuid();
+
+		// Act
+		var result = guid.ToDigits();
+
+		// Assert
+		Assert.AreEqual(32, result.Length);
+		Assert.IsFalse(result.Contains('-'));
+	}
 }

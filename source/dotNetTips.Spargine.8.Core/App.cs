@@ -274,8 +274,9 @@ public static class App
 	/// Calculates the maximum number of tasks that can run concurrently, based on the system’s processor count.
 	/// </summary>
 	/// <returns>The maximum degree of parallelism.</returns>
-	/// <remarks>This method calculates the maximum degree of parallelism by taking 75% of the processor count, doubling it, and rounding up to the nearest whole number.
+	/// <remarks>This method calculates the maximm degree of parallelism by taking 75% of the processor count, doubling it, and rounding up to the nearest whole number.
 	/// It is designed to optimize parallel operations by not overloading the system with too many concurrent tasks.</remarks>
+	[Information(nameof(MaxDegreeOfParallelism), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int MaxDegreeOfParallelism() => Convert.ToInt32(Math.Ceiling(_computerInfo.Value.ProcessorCount * 0.75 * 2.0));
 
 	/// <summary>

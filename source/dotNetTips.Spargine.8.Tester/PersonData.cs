@@ -4,7 +4,7 @@
 // Created          : 12-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-22-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="PersonData.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -16,6 +16,7 @@
 // ***********************************************************************
 
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Data.Models;
@@ -35,6 +36,7 @@ public sealed record PersonData
 	/// <summary>
 	/// Initializes a new instance of the <see cref="PersonData"/> class.
 	/// </summary>
+	[ExcludeFromCodeCoverage]
 	public PersonData()
 	{
 	}

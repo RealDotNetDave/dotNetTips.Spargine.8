@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -20,7 +20,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
-using DotNetTips.Spargine.Core.Network;
 using DotNetTips.Spargine.Core.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -33,7 +32,7 @@ namespace DotNetTips.Spargine.Core;
 /// with a specific message, parameter name, or inner exception. This approach helps maintain consistency and readability in error handling
 /// across a project.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation, Documentation = "")]
+[Information(Status = Status.UpdateDocumentation, Documentation = "https://bit.ly/SpargineExThrow")]
 public static class ExceptionThrower
 {
 
@@ -44,6 +43,7 @@ public static class ExceptionThrower
 	/// <param name="defaultValue">The default value to return if the string is null. This parameter is allowed to be null.</param>
 	/// <returns>The original string if it is not null; otherwise, the default value.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(DefaultIfNull), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string DefaultIfNull(this string value, [AllowNull] string defaultValue) => value ?? defaultValue;
 
 	/// <summary>
@@ -54,7 +54,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information("Optimized ThrowArgumentException method for better performance and clarity.", author: "David McCarter", createdOn: "10/10/2023", OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineExThrow", Status = Status.Available)]
+	[Information("Optimized ThrowArgumentException method for better performance and clarity.", author: "David McCarter", createdOn: "10/10/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentException([AllowNull] string message, [NotNull] string paramName) => throw new ArgumentException(message ?? Resources.ErrorInvalidArgument, paramName);
 
 	/// <summary>
@@ -67,7 +67,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information("Optimized ThrowArgumentException method for better performance and clarity.", author: "David McCarter", createdOn: "10/10/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information("Optimized ThrowArgumentException method for better performance and clarity.", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentException([AllowNull] string message, [AllowNull] Exception innerException) => throw new ArgumentException(message ?? Resources.ErrorInvalidArgument, innerException);
 
 	/// <summary>
@@ -79,7 +79,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentInvalidException), author: "David McCarter", createdOn: "8/13/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentInvalidException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentInvalidException([AllowNull] string message, [NotNull] string paramName) => throw new ArgumentInvalidException(message ?? Resources.ErrorInvalidArgument, paramName);
 
 	/// <summary>
@@ -92,7 +92,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentInvalidException), author: "David McCarter", createdOn: "8/13/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentInvalidException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
 	public static void ThrowArgumentInvalidException([AllowNull] string message, [NotNull] string paramName, [AllowNull] Exception innerException) => throw new ArgumentInvalidException(message ?? Resources.ErrorInvalidArgument, paramName, innerException);
 
 	/// <summary>
@@ -103,7 +103,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentNullException), author: "David McCarter", createdOn: "8/12/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentNullException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
 	public static void ThrowArgumentNullException([NotNull] string paramName) => throw new ArgumentNullException(paramName, Resources.ErrorArgumentNull);
 
 	/// <summary>
@@ -115,7 +115,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentNullException), author: "David McCarter", createdOn: "7/30/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentNullException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentNullException([AllowNull] string message, [NotNull] string paramName) => throw new ArgumentNullException(paramName, message ?? Resources.ErrorArgumentNull);
 
 	/// <summary>
@@ -127,7 +127,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentNullException), author: "David McCarter", createdOn: "7/30/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentNullException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentNullException([AllowNull] string message, [AllowNull] Exception innerException) => throw new ArgumentNullException(message ?? Resources.ErrorArgumentNull, innerException);
 
 	/// <summary>
@@ -138,7 +138,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentOutOfRangeException), author: "David McCarter", createdOn: "9/5/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentOutOfRangeException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentOutOfRangeException([NotNull] string paramName) => throw new ArgumentOutOfRangeException(paramName, Resources.ErrorArgumentOutOfRange);
 
 	/// <summary>
@@ -150,7 +150,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentOutOfRangeException), author: "David McCarter", createdOn: "9/5/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentOutOfRangeException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentOutOfRangeException([AllowNull] string message, [NotNull] string paramName) => throw new ArgumentOutOfRangeException(paramName, message ?? Resources.ErrorArgumentOutOfRange);
 
 	/// <summary>
@@ -163,7 +163,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentOutOfRangeException), author: "David McCarter", createdOn: "9/5/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentOutOfRangeException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentOutOfRangeException([AllowNull] string message, [AllowNull] Exception innerException) => throw new ArgumentOutOfRangeException(message ?? Resources.ErrorArgumentOutOfRange, innerException);
 
 	/// <summary>
@@ -175,7 +175,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentReadOnlyException), author: "David McCarter", createdOn: "7/30/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentReadOnlyException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentReadOnlyException([AllowNull] string message, [NotNull] string paramName) => throw new ArgumentReadOnlyException(message ?? Resources.ErrorReadOnlyCollection, paramName);
 
 	/// <summary>
@@ -187,7 +187,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowDirectoryNotFoundException), author: "David McCarter", createdOn: "8/13/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowDirectoryNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowDirectoryNotFoundException([AllowNull] string message, [NotNull] DirectoryInfo directory) => throw new DirectoryNotFoundException(message ?? Resources.ErrorDirectoryNotFound, directory.ArgumentNotNull());
 
 	/// <summary>
@@ -199,7 +199,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowDirectoryNotFoundException), author: "David McCarter", createdOn: "8/13/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowDirectoryNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void ThrowDirectoryNotFoundException([AllowNull] string message, [AllowNull] Exception innerException) => throw new ArgumentInvalidException(message ?? Resources.ErrorDirectoryNotFound, innerException);
 
 	/// <summary>
@@ -211,7 +211,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowFileNotFoundException), author: "David McCarter", createdOn: "11/11/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void ThrowFileNotFoundException([AllowNull] string message, [AllowNull] Exception innerException) => throw new FileNotFoundException(message ?? Resources.ErrorFileNotFound, innerException);
 
 	/// <summary>
@@ -223,7 +223,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowFileNotFoundException), author: "David McCarter", createdOn: "11/11/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowFileNotFoundException([AllowNull] string message, [NotNull] string fileName)
 	{
 		throw new FileNotFoundException(message ?? Resources.ErrorFileNotFound, fileName.ArgumentNotNullOrEmpty(true));
@@ -239,7 +239,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowFileNotFoundException), author: "David McCarter", createdOn: "11/11/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowFileNotFoundException([AllowNull] string message, [NotNull] string fileName, [AllowNull] Exception innerException)
 	{
 		throw new FileNotFoundException(message ?? Resources.ErrorFileNotFound, fileName.ArgumentNotNullOrEmpty(true), innerException);
@@ -253,7 +253,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowInvalidCastException), author: "David McCarter", createdOn: "11/11/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowInvalidCastException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowInvalidCastException([AllowNull] string message, [NotNull] string paramName) => throw new InvalidCastException($"{message ?? Resources.ErrorInvalidCast} ParamName: {paramName}");
 
 	/// <summary>
@@ -265,7 +265,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowInvalidCastException), author: "David McCarter", createdOn: "11/11/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowInvalidCastException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowInvalidCastException([AllowNull] string message, [AllowNull] Exception innerException) => throw new InvalidCastException(message ?? Resources.ErrorInvalidCast, innerException);
 
 	/// <summary>
@@ -275,7 +275,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowInvalidEnumTypeException), author: "David McCarter", createdOn: "7/30/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowInvalidEnumTypeException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowInvalidEnumTypeException([AllowNull] string message) => throw new InvalidEnumTypeException(message ?? Resources.ErrorInvalidEnumType);
 
 	/// <summary>
@@ -286,7 +286,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowInvalidEnumTypeException), author: "David McCarter", createdOn: "11/11/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowInvalidEnumTypeException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowInvalidEnumTypeException([AllowNull] string message, [AllowNull] Exception innerException) => throw new InvalidCastException(message ?? Resources.ErrorInvalidEnumType, innerException);
 
 	/// <summary>
@@ -296,7 +296,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/30/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information("From .NET Core source.", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowInvalidOperationException([AllowNull] string message) => throw new InvalidOperationException(message ?? Resources.ErrorInvalidOperation);
 
 	/// <summary>
@@ -307,7 +307,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/30/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information("From .NET Core source.", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowInvalidOperationException([AllowNull] string message, [AllowNull] Exception innerException) => throw new InvalidOperationException(message ?? Resources.ErrorInvalidOperation);
 
 	/// <summary>
@@ -319,7 +319,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowInvalidValueException), author: "David McCarter", createdOn: "2/10/2021", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowInvalidValueException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowInvalidValueException<TValue>([AllowNull] string message, [NotNull] TValue value) => throw new InvalidValueException<TValue>(message ?? Resources.ErrorInvalidValue, value: value);
 
 	/// <summary>
@@ -332,7 +332,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowInvalidValueException), author: "David McCarter", createdOn: "2/10/2021", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowInvalidValueException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowInvalidValueException<TValue>([AllowNull] string message, [NotNull] TValue value, [AllowNull] Exception innerException) => throw new InvalidValueException<TValue>(message ?? Resources.ErrorInvalidValue, value: value, innerException: innerException);
 
 	/// <summary>
@@ -343,7 +343,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowIOException), author: "David McCarter", createdOn: "7/25/2024", Status = Status.Available)]
+	[Information(nameof(ThrowIOException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowIOException([AllowNull] string message) => throw new IOException(message ?? Resources.ErrorUnknownIOException);
 
 	/// <summary>
@@ -353,7 +353,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowJsonException), author: "David McCarter", createdOn: "7/17/2024", Status = Status.Available)]
+	[Information(nameof(ThrowJsonException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowJsonException([AllowNull] string message) => throw new JsonException(message ?? Resources.ErrorThereWasAnErrorWithJsonSerialization);
 
 	/// <summary>
@@ -364,7 +364,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowJsonException), author: "David McCarter", createdOn: "7/17/2024", Status = Status.Available)]
+	[Information(nameof(ThrowJsonException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowJsonException([AllowNull] string message, [AllowNull] Exception innerException) => throw new JsonException(message ?? Resources.ErrorThereWasAnErrorWithJsonSerialization, innerException);
 
 	/// <summary>
@@ -377,7 +377,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowLoggableException), author: "David McCarter", createdOn: "8/1/2024", Status = Status.Available)]
+	[Information(nameof(ThrowLoggableException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowLoggableException(string message, [AllowNull] Exception innerException = null, [AllowNull] string userMessage = "") => throw new LoggableException(message.ArgumentNotNull(), innerException, userMessage);
 
 	/// <summary>
@@ -387,7 +387,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowMessageNotQueuedException), author: "David McCarter", createdOn: "5/4/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowMessageNotQueuedException([AllowNull] string message) => throw new MessageNotQueuedException(message ?? Resources.ErrorMessageNotQueued);
 
 	/// <summary>
@@ -398,7 +398,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowMessageNotQueuedException), author: "David McCarter", createdOn: "5/4/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowMessageNotQueuedException([AllowNull] string message, [AllowNull] Exception innerException) => throw new MessageNotQueuedException(message ?? Resources.ErrorMessageNotQueued, innerException);
 
 	/// <summary>
@@ -409,7 +409,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowMessageNotQueuedException), author: "David McCarter", createdOn: "5/4/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void ThrowMessageNotQueuedException([AllowNull] string message, [AllowNull] string messageId) => throw new MessageNotQueuedException(message ?? Resources.ErrorMessageNotQueued, messageId);
 
 	/// <summary>
@@ -421,7 +421,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowMessageNotQueuedException), author: "David McCarter", createdOn: "5/4/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void ThrowMessageNotQueuedException([AllowNull] string message, [AllowNull] Exception ex, [AllowNull] string userMessage) => throw new MessageNotQueuedException(message ?? Resources.ErrorMessageNotQueued, ex, userMessage);
 
 	/// <summary>
@@ -433,7 +433,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowMessageNotQueuedException), author: "David McCarter", createdOn: "5/4/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void ThrowMessageNotQueuedException([AllowNull] string message, [AllowNull] string messageId, [AllowNull] Exception innerException) => throw new MessageNotQueuedException(message ?? Resources.ErrorMessageNotQueued, messageId, innerException);
 
 	/// <summary>
@@ -443,7 +443,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowNetworkConnectionException), author: "David McCarter", createdOn: "5/4/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowNetworkConnectionException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowNetworkConnectionException([AllowNull] string message) => throw new NetworkConnectionException(message ?? Resources.ErrorNetworkConnectionIssue);
 
 	/// <summary>
@@ -454,7 +454,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowNetworkConnectionException), author: "David McCarter", createdOn: "5/4/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowNetworkConnectionException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowNetworkConnectionException([AllowNull] string message, [AllowNull] Exception innerException) => throw new NetworkConnectionException(message ?? Resources.ErrorNetworkConnectionIssue, innerException);
 
 	/// <summary>
@@ -465,7 +465,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowNetworkConnectionException), author: "David McCarter", createdOn: "5/4/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowNetworkConnectionException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void ThrowNetworkConnectionException([AllowNull] string message, [AllowNull] NetworkInterface connection) => throw new NetworkConnectionException(message ?? Resources.ErrorNetworkConnectionIssue, connection);
 
 }

@@ -16,6 +16,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Security;
 using System.ServiceModel.Security;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -88,6 +89,97 @@ public class ExceptionExtensionsTests
 
 		Assert.IsTrue(messages.HasItems());
 	}
+
+	[TestMethod]
+	public void IsCritical_AccessViolationException_ReturnsTrue()
+	{
+		// Arrange
+		var exception = new AccessViolationException();
+
+		// Act
+		var result = exception.IsCritical();
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void IsCritical_ArgumentNullException_ReturnsFalse()
+	{
+		// Arrange
+		var exception = new ArgumentNullException();
+
+		// Act
+		var result = exception.IsCritical();
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void IsCritical_IndexOutOfRangeException_ReturnsTrue()
+	{
+		// Arrange
+		var exception = new IndexOutOfRangeException();
+
+		// Act
+		var result = exception.IsCritical();
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void IsCritical_NullException_ReturnsFalse()
+	{
+		// Arrange
+		Exception exception = null;
+
+		// Act
+		var result = exception.IsCritical();
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void IsCritical_NullReferenceException_ReturnsTrue()
+	{
+		// Arrange
+		var exception = new NullReferenceException();
+
+		// Act
+		var result = exception.IsCritical();
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void IsCritical_OutOfMemoryException_ReturnsTrue()
+	{
+		// Arrange
+		var exception = new OutOfMemoryException();
+
+		// Act
+		var result = exception.IsCritical();
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
+	public void IsCritical_StackOverflowException_ReturnsTrue()
+	{
+		// Arrange
+		var exception = new StackOverflowException();
+
+		// Act
+		var result = exception.IsCritical();
+
+		// Assert
+		Assert.IsTrue(result);
+	}
 	[TestMethod]
 	public void IsCriticalTest()
 	{
@@ -99,6 +191,44 @@ public class ExceptionExtensionsTests
 	}
 
 	[TestMethod]
+	public void IsFatal_ArgumentNullException_ReturnsFalse()
+	{
+		// Arrange
+		var exception = new ArgumentNullException();
+
+		// Act
+		var result = exception.IsFatal();
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void IsFatal_NullException_ReturnsFalse()
+	{
+		// Arrange
+		Exception exception = null;
+
+		// Act
+		var result = exception.IsFatal();
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+	[TestMethod]
+	public void IsFatal_OutOfMemoryException_ReturnsTrue()
+	{
+		// Arrange
+		var exception = new OutOfMemoryException();
+
+		// Act
+		var result = exception.IsFatal();
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+
+	[TestMethod]
 	public void IsFatalTest()
 	{
 		var exGood = new OutOfMemoryException();
@@ -106,6 +236,57 @@ public class ExceptionExtensionsTests
 
 		Assert.IsTrue(exGood.IsFatal());
 		Assert.IsFalse(exBad.IsFatal());
+	}
+
+	[TestMethod]
+	public void IsSecurityOrCritical_ArgumentNullException_ReturnsFalse()
+	{
+		// Arrange
+		var exception = new ArgumentNullException();
+
+		// Act
+		var result = exception.IsSecurityOrCritical();
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void IsSecurityOrCritical_NullException_ReturnsFalse()
+	{
+		// Arrange
+		Exception exception = null;
+
+		// Act
+		var result = exception.IsSecurityOrCritical();
+
+		// Assert
+		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void IsSecurityOrCritical_NullReferenceException_ReturnsTrue()
+	{
+		// Arrange
+		var exception = new NullReferenceException();
+
+		// Act
+		var result = exception.IsSecurityOrCritical();
+
+		// Assert
+		Assert.IsTrue(result);
+	}
+	[TestMethod]
+	public void IsSecurityOrCritical_SecurityException_ReturnsTrue()
+	{
+		// Arrange
+		var exception = new SecurityException();
+
+		// Act
+		var result = exception.IsSecurityOrCritical();
+
+		// Assert
+		Assert.IsTrue(result);
 	}
 
 	[TestMethod]

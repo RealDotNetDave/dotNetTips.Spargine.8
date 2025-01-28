@@ -4,7 +4,7 @@
 // Created          : 11-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="AppTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -15,6 +15,7 @@ using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IO;
 using System.Runtime.InteropServices;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
@@ -264,6 +265,20 @@ public class AppTests
 		var result = App.IsUserAdministrator();
 
 		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void MaxDegreeOfParallelism_ValidProcessorCount_ReturnsExpectedValue()
+	{
+		// Arrange
+		var processorCount = Environment.ProcessorCount;
+		var expectedValue = Convert.ToInt32(Math.Ceiling(processorCount * 0.75 * 2.0));
+
+		// Act
+		var result = App.MaxDegreeOfParallelism();
+
+		// Assert
+		Assert.AreEqual(expectedValue, result);
 	}
 
 	[TestMethod]
