@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="ApiLibraries.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -25,7 +25,6 @@ namespace DotNetTips.Spargine.Core;
 [Information(nameof(ApiLibraries), "David McCarter", "3/24/2023", Status = Status.Available)]
 public static class ApiLibraries
 {
-
 	/// <summary>
 	/// ADs Router Layer DLL
 	/// </summary>
@@ -67,6 +66,11 @@ public static class ApiLibraries
 	public const string CryptUI = "cryptui.dll";
 
 	/// <summary>
+	/// Debugging Helper API
+	/// </summary>
+	public const string Dbghelp = "dbghelp.dll";
+
+	/// <summary>
 	/// DNS Client API DLL
 	/// </summary>
 	public const string Dnsapi = "dnsapi.dll";
@@ -75,6 +79,10 @@ public static class ApiLibraries
 	/// DS Setup Client DLL
 	/// </summary>
 	public const string Dsrole = "dsrole.dll";
+	/// <summary>
+	/// Desktop Window Manager API
+	/// </summary>
+	public const string Dwmapi = "dwmapi.dll";
 
 	/// <summary>
 	/// Windows Graphics Device Interface
@@ -110,6 +118,11 @@ public static class ApiLibraries
 	/// Net Logon Client DLL
 	/// </summary>
 	public const string Logoncli = "logoncli.dll";
+
+	/// <summary>
+	/// Multiple Provider Router API
+	/// </summary>
+	public const string Mpr = "mpr.dll";
 
 	/// <summary>
 	/// Microsoft implementation of the IETF QUIC protocol
@@ -162,14 +175,34 @@ public static class ApiLibraries
 	public const string Pdh = "pdh.dll";
 
 	/// <summary>
+	/// Power Profile API
+	/// </summary>
+	public const string Powrprof = "powrprof.dll";
+
+	/// <summary>
+	/// Process Status API
+	/// </summary>
+	public const string Psapi = "psapi.dll";
+
+	/// <summary>
 	/// Security Support Provider Interface
 	/// </summary>
 	public const string Secur32 = "secur32.dll";
 
 	/// <summary>
+	/// Setup API
+	/// </summary>
+	public const string Setupapi = "setupapi.dll";
+
+	/// <summary>
 	/// Windows Shell API
 	/// </summary>
 	public const string Shell32 = "shell32.dll";
+
+	/// <summary>
+	/// Shell Light-weight Utility API
+	/// </summary>
+	public const string Shlwapi = "shlwapi.dll";
 
 	/// <summary>
 	/// Security Support Provider Interface
@@ -185,6 +218,16 @@ public static class ApiLibraries
 	/// Windows User API Client DLL
 	/// </summary>
 	public const string User32 = "user32.dll";
+
+	/// <summary>
+	/// User Environment API
+	/// </summary>
+	public const string Userenv = "userenv.dll";
+
+	/// <summary>
+	/// Theme Manager API
+	/// </summary>
+	public const string UxTheme = "uxtheme.dll";
 
 	/// <summary>
 	/// Version Checking and File Installation Libraries
@@ -205,6 +248,11 @@ public static class ApiLibraries
 	/// Windows HTTP Services
 	/// </summary>
 	public const string WinHttp = "winhttp.dll";
+
+	/// <summary>
+	/// Windows Internet API
+	/// </summary>
+	public const string Wininet = "wininet.dll";
 
 	/// <summary>
 	/// MCI API DLL
