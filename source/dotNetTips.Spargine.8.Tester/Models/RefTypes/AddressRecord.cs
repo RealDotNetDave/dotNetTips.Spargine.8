@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-23-2024
+// Last Modified On : 01-28-2025
 // ***********************************************************************
 // <copyright file="AddressRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -120,7 +120,8 @@ public sealed record AddressRecord : IDataRecord
 	/// <param name="id">The unique identifier for the address record.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="id"/> is null.</exception>
 	[JsonConstructor]
-	public AddressRecord([NotNull] string id) => this.Id = id;
+	[Information(nameof(AddressRecord), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public AddressRecord([NotNull] string id) => this.Id = id.ArgumentNotNull();
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AddressRecord"/> class with specified details.
@@ -135,16 +136,8 @@ public sealed record AddressRecord : IDataRecord
 	/// <param name="postalCode">The postal code of the address.</param>
 	/// <param name="phone">The phone number associated with the address (optional).</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="id"/> is null.</exception>
-	public AddressRecord(
-		[NotNull] string id,
-		string address1,
-		string address2,
-		string city,
-		string state,
-		string countyProvince,
-		string country,
-		string postalCode,
-		string phone) : this(id)
+	[Information(nameof(AddressRecord), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public AddressRecord([NotNull] string id, string address1, string address2, string city, string state, string countyProvince, string country, string postalCode, string phone) : this(id)
 	{
 		this.Address1 = address1;
 		this.Address2 = address2;
@@ -162,6 +155,7 @@ public sealed record AddressRecord : IDataRecord
 	/// <param name="address">The address object to convert.</param>
 	/// <returns>An instance of <see cref="AddressRecord"/> initialized with values from the provided <see cref="Address"/> object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
+	[Information(nameof(ToAddress), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static AddressRecord ToAddress([NotNull] Address address) => new(address.ArgumentNotNull().Id)
 	{
 		Address1 = address.Address1,
@@ -180,6 +174,7 @@ public sealed record AddressRecord : IDataRecord
 	/// <param name="address">The <see cref="ValueTypes.Address"/> object to convert.</param>
 	/// <returns>An instance of <see cref="AddressRecord"/> initialized with values from the provided <see cref="ValueTypes.Address"/> object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
+	[Information(nameof(ToAddress), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static AddressRecord ToAddress([NotNull] ValueTypes.Address address) => new(address.ArgumentNotNull().Id)
 	{
 		Address1 = address.Address1,
@@ -203,6 +198,7 @@ public sealed record AddressRecord : IDataRecord
 	[JsonPropertyName("address1")]
 	[MaxLength(100, ErrorMessage = "Address1 cannot exceed 100 characters.")]
 	[XmlElement("Address1")]
+	[Information(nameof(Address1), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Address1
 	{
 		get => this._address1;
@@ -233,6 +229,7 @@ public sealed record AddressRecord : IDataRecord
 	[JsonPropertyName("address2")]
 	[MaxLength(100, ErrorMessage = "Address2 cannot exceed 100 characters.")]
 	[XmlElement("Address2")]
+	[Information(nameof(Address2), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Address2
 	{
 		get => this._address2;
@@ -263,6 +260,7 @@ public sealed record AddressRecord : IDataRecord
 	[JsonPropertyName("city")]
 	[MaxLength(150, ErrorMessage = "City cannot exceed 150 characters.")]
 	[XmlElement("City")]
+	[Information(nameof(City), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string City
 	{
 		get => this._city;
@@ -291,6 +289,7 @@ public sealed record AddressRecord : IDataRecord
 	[JsonPropertyName("country")]
 	[MaxLength(50, ErrorMessage = "Country cannot exceed 50 characters.")]
 	[XmlElement("Country")]
+	[Information(nameof(Country), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Country
 	{
 		get => this._country;
@@ -320,6 +319,7 @@ public sealed record AddressRecord : IDataRecord
 	[JsonPropertyName("countryProvince")]
 	[MaxLength(50, ErrorMessage = "CountyProvince cannot exceed 50 characters.")]
 	[XmlElement("CountyProvince")]
+	[Information(nameof(CountyProvince), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string CountyProvince
 	{
 		get => this._countyProvince;
@@ -352,6 +352,7 @@ public sealed record AddressRecord : IDataRecord
 	[ReadOnly(true)]
 	[Required(ErrorMessage = "Id is required.")]
 	[XmlElement("Id", IsNullable = false)]
+	[Information(nameof(Id), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Id
 	{
 		get => this._id;
@@ -380,6 +381,7 @@ public sealed record AddressRecord : IDataRecord
 	[JsonPropertyName("phone")]
 	[MaxLength(50, ErrorMessage = "Phone number cannot exceed 50 characters.")]
 	[XmlElement("Phone")]
+	[Information(nameof(Phone), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Phone
 	{
 		get => this._phone;
@@ -410,6 +412,7 @@ public sealed record AddressRecord : IDataRecord
 	[JsonPropertyName("postalCode")]
 	[MaxLength(40, ErrorMessage = "Postal code cannot exceed 40 characters.")]
 	[XmlElement("PostalCode")]
+	[Information(nameof(PostalCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string PostalCode
 	{
 		get => this._postalCode;
@@ -440,6 +443,7 @@ public sealed record AddressRecord : IDataRecord
 	[JsonPropertyName("state")]
 	[MaxLength(60, ErrorMessage = "State cannot exceed 60 characters.")]
 	[XmlElement("State")]
+	[Information(nameof(State), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string State
 	{
 		get => this._state;
