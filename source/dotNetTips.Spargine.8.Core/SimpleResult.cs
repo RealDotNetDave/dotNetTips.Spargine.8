@@ -4,7 +4,7 @@
 // Created          : 06-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-27-2024
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="SimpleResult.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -15,11 +15,7 @@
 // handling various outcomes.
 // </summary>
 // ***********************************************************************
-using System.Collections.Concurrent;
-using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
-using System.Runtime.ExceptionServices;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -28,6 +24,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Represents extension methods for type <see cref="SimpleResult{T}" />.
 /// </summary>
+[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Status = Status.NeedsDocumentation)]
 public static class SimpleResult
 {
 

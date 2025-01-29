@@ -60,7 +60,7 @@ public class SimpleResult<T>
 	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public SimpleResult(T value)
 	{
-		_value = value;
+		_value = value.ArgumentNotNull();
 		_valueSet = true;
 	}
 
@@ -152,7 +152,7 @@ public class SimpleResult<T>
 	[Information(nameof(SetValue), UnitTestStatus = UnitTestStatus.None, Status = Core.Status.Available)]
 	public void SetValue(T value)
 	{
-		this._value = value;
+		this._value = value.ArgumentNotNull();
 		this._valueSet = true;
 	}
 
