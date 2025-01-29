@@ -4,7 +4,7 @@
 // Created          : 02-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="IDataRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -35,7 +35,7 @@ public interface IDataRecord
 	/// </summary>
 	/// <returns>A string that represents all the properties and their values of the implementing class.</returns>
 	/// <remarks>This method uses reflection to iterate over all properties.</remarks>
-	[Information(nameof(AllPropertiesToString), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(AllPropertiesToString), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.Available)]
 	public sealed string AllPropertiesToString() => this.PropertiesToString();
 
 	/// <summary>

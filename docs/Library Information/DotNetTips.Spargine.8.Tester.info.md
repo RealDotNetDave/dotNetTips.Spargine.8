@@ -1,5 +1,65 @@
 # DotNetTips.Spargine.8.Tester - 2025.8.1.27
 
+## PersonData
+
+### PersonData (DateTimeOffset bornOn, String cellPhone, Country country, String email, String firstName, String lastName, String phone)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** PersonData
+
+*****
+## PersonName
+
+### PersonName ()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** PersonName
+
+### PersonName (String firstName, String lastName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** PersonName
+
+### String FirstName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** FirstName
+
+### String FullName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** FullName
+
+### String LastName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** LastName
+
+*****
 ## RandomCreditCardNumberGenerator
 
 * **Status:** Available
@@ -555,23 +615,362 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineTester
 
+### Address (String id)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Address
+
+### Address (String id, String address1, String address2, String city, String state, String countyProvince, String country, String postalCode, String phone)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Address
+
+### String Address1 { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Address1
+
+### String Address2 { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Address2
+
+### String City { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** City
+
+### Int32 CompareTo(Address address)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+### String Country { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Country
+
+### String CountyProvince { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** CountyProvince
+
+### Boolean Equals(Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Boolean Equals(IAddress other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Boolean Equals(Address other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** GetHashCode
+
+### String Id { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Id
+
+### Boolean op_Equality(Address left, Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** ==
+
+### Boolean op_GreaterThan(Address left, Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** >
+
+### Boolean op_GreaterThanOrEqual(Address left, Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** >=
+
+### Boolean op_Inequality(Address left, Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** !=
+
+### Boolean op_LessThan(Address left, Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** <
+
+### Boolean op_LessThanOrEqual(Address left, Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** <=
+
+### String Phone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Phone
+
+### String PostalCode { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** PostalCode
+
+### String State { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** State
+
+### Int32 System.IComparable<DotNetTips.Spargine.Tester.Models.RefTypes.IAddress>.CompareTo(IAddress other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+### Address ToAddress(AddressRecord address)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** ToAddress
+
+### String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** ToString
+
 *****
 ## Coordinate
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Documentation:** https://bit.ly/SpargineTester
 
-*****
-## ICoordinate
+### Int32 CompareTo(Object obj)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineTester
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+### Int32 CompareTo(Coordinate other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+### Boolean Equals(Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Boolean Equals(Coordinate other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** GetHashCode
+
+### Boolean op_Equality(Coordinate cord1, Coordinate cord2)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### Boolean op_GreaterThan(Coordinate left, Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_GreaterThanOrEqual(Coordinate left, Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### Boolean op_Inequality(Coordinate cord1, Coordinate cord2)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### Boolean op_LessThan(Coordinate left, Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_LessThanOrEqual(Coordinate left, Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** ToString
+
+### Int32 X { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** X
+
+### Int32 Y { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Y
+
+### Int32 Z { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Z
 
 *****
 ## Person<TAddress>
@@ -581,6 +980,228 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineTester
+
+### Person<TAddress> (String email, String id)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Person
+
+### Collection<TAddress> Addresses { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Addresses
+
+### Collection<TAddress> AddressesSerilization { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** AddressesSerilization
+
+### TimeSpan Age { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Age
+
+### DateTimeOffset BornOn { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** BornOn
+
+### TimeSpan CalculateAge()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** CalculateAge
+
+### String CellPhone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CellPhone
+
+### Int32 CompareTo(Person<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+### Int32 CompareTo(IPerson<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+### String Email { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Email
+
+### Boolean Equals(Person<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Boolean Equals(Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Boolean Equals(IPerson<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### String FirstName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** FirstName
+
+### String FullName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** FullName
+
+### Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** GetHashCode
+
+### String Id { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Id
+
+### String LastName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** LastName
+
+### Boolean op_Equality(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_GreaterThan(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_GreaterThanOrEqual(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_Inequality(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### Boolean op_LessThan(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_LessThanOrEqual(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### String Phone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Phone
+
+### String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** ToString
 
 *****
 ## PersonAddressComparerByLastName
@@ -633,8 +1254,275 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineTester
 
+### Int32 CompareTo(Address address)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
 *****
 ## AddressRecord
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+### AddressRecord (String id)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** AddressRecord
+
+### AddressRecord (String id, String address1, String address2, String city, String state, String countyProvince, String country, String postalCode, String phone)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** AddressRecord
+
+### String Address1 { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Address1
+
+### String Address2 { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Address2
+
+### String City { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** City
+
+### String Country { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Country
+
+### String CountyProvince { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** CountyProvince
+
+### String Id { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Id
+
+### String Phone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Phone
+
+### String PostalCode { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** PostalCode
+
+### String State { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** State
+
+### AddressRecord ToAddress(Address address)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** ToAddress
+
+### AddressRecord ToAddress(Address address)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** ToAddress
+
+*****
+## Coordinate
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+### Int32 CompareTo(Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+### Int32 CompareTo(Coordinate other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+### Boolean Equals(Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Boolean Equals(Coordinate other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** GetHashCode
+
+### Boolean op_Equality(Coordinate cord1, Coordinate cord2)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### Boolean op_GreaterThan(Coordinate left, Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_GreaterThanOrEqual(Coordinate left, Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### Boolean op_Inequality(Coordinate cord1, Coordinate cord2)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### Boolean op_LessThan(Coordinate left, Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_LessThanOrEqual(Coordinate left, Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** ToString
+
+### Int32 X { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** X
+
+### Int32 Y { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Y
+
+### Int32 Z { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Z
+
+*****
+## ICoordinate
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -659,6 +1547,246 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineTester
+
+### Person<TAddress> (String email, String id)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Person
+
+### Collection<TAddress> Addresses { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Addresses
+
+### Collection<TAddress> AddressesSerilization { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** AddressesSerilization
+
+### TimeSpan Age { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CalculateAge
+
+### DateTimeOffset BornOn { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** BornOn
+
+### TimeSpan CalculateAge()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** CalculateAge
+
+### String CellPhone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CellPhone
+
+### Int32 CompareTo(Person<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+### Int32 CompareTo(IPerson<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CalculateAge
+
+### String Email { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Email
+
+### Boolean Equals(Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Boolean Equals(Person<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Boolean Equals(IPerson<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### String FirstName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** FirstName
+
+### String FullName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** FullName
+
+### Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** GetHashCode
+
+### String Id { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Id
+
+### String LastName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** LastName
+
+### Boolean op_Equality(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_GreaterThan(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_GreaterThanOrEqual(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_Inequality(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### Boolean op_LessThan(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_LessThanOrEqual(Person<TAddress> left, Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### String Phone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Phone
+
+### Person<Address> ToPerson(Person<Address> person)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** ToPerson
+
+### Person<Address> ToPerson(PersonRecord person)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** ToPerson
+
+### String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** ToString
 
 *****
 ## PersonAddressComparerByLastName
@@ -711,6 +1839,187 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineTester
 
+### PersonRecord (String email, String id)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** PersonRecord
+
+### Collection<AddressRecord> Addresses { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Addresses
+
+### Collection<AddressRecord> AddressesSerilization { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** AddressesSerilization
+
+### TimeSpan Age { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Age
+
+### DateTimeOffset BornOn { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** BornOn
+
+### TimeSpan CalculateAge()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CalculateAge
+
+### String CellPhone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CellPhone
+
+### Int32 CompareTo(PersonRecord other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+### String Email { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Email
+
+### String FirstName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** FirstName
+
+### String FullName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** FullName
+
+### String Id { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Id
+
+### String LastName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** LastName
+
+### Boolean op_GreaterThan(PersonRecord left, PersonRecord right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_GreaterThanOrEqual(PersonRecord left, PersonRecord right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_LessThan(PersonRecord left, PersonRecord right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### Boolean op_LessThanOrEqual(PersonRecord left, PersonRecord right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### String Phone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Phone
+
+### PersonRecord ToPersonRecord(Person<Address> person)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** ToPersonRecord
+
+### PersonRecord ToPersonRecord(Person<Address> person)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** ToPersonRecord
+
+### String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** ToString
+
 *****
 ## PersonRecordComparerByLastName
 
@@ -728,4 +2037,4 @@
 * **Unit Test Status:** None
 
 *****
-**Generated by Spargine - dotNetTips.com on 1/27/2025 5:05:02 PM UTC**
+**Generated by Spargine - dotNetTips.com on 1/29/2025 5:00:53 PM UTC**

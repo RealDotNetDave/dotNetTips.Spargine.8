@@ -172,6 +172,15 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineJun2021
 
+### Int32 MaxDegreeOfParallelism()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** MaxDegreeOfParallelism
+
 ### Architecture OSArchitecture { get; set; }
 
 * **Status:** Available
@@ -301,6 +310,51 @@
 * **Author:** UNKNOWN
 * **Description:** CachedEnumerable
 
+### Int32 Count { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Count
+
+### IEnumerator<T> GetEnumerator()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** GetEnumerator
+
+### Void Reset()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Reset
+
+### IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** GetEnumerator
+
+### Boolean TryGetItem(Int32& index, T& result)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** TryGetItem
+
 *****
 ## ComputerInfo
 
@@ -397,6 +451,15 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
+
+### Boolean IsNetworkAvailable()
+
+* **Status:** New
+* **Optimization Status:** Optimize
+* **BenchMarkStatus:** Benchmark
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** IsNetworkAvailable
 
 ### Boolean IsUserInteractive { get; set; }
 
@@ -608,21 +671,30 @@
 *****
 ## ExceptionThrower
 
-* **Status:** NeedsDocumentation
+* **Status:** UpdateDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineExThrow
+
+### String DefaultIfNull(String value, String defaultValue)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** DefaultIfNull
 
 ### Void ThrowArgumentException(String message, String paramName)
 
 * **Status:** Available
-* **Optimization Status:** Completed
+* **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 10/10/2023
 * **Description:** Optimized ThrowArgumentException method for better performance and clarity.
-* **Documentation:** https://bit.ly/SpargineExThrow
 * **Modified By:** David McCarter
 
 ### Void ThrowArgumentException(String message, Exception innerException)
@@ -630,132 +702,101 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 10/10/2023
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** Optimized ThrowArgumentException method for better performance and clarity.
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowArgumentInvalidException(String message, String paramName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 8/13/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowArgumentInvalidException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowArgumentInvalidException(String message, String paramName, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 8/13/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowArgumentInvalidException
 * **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowArgumentNullException(String paramName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 8/12/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowArgumentNullException
 * **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowArgumentNullException(String message, String paramName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/30/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowArgumentNullException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowArgumentNullException(String message, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/30/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowArgumentNullException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowArgumentOutOfRangeException(String paramName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 9/5/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowArgumentOutOfRangeException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowArgumentOutOfRangeException(String message, String paramName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 9/5/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowArgumentOutOfRangeException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowArgumentOutOfRangeException(String message, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 9/5/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowArgumentOutOfRangeException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowArgumentReadOnlyException(String message, String paramName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/30/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowArgumentReadOnlyException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowDirectoryNotFoundException(String message, DirectoryInfo directory)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 8/13/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowDirectoryNotFoundException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowDirectoryNotFoundException(String message, Exception innerException)
 
@@ -763,11 +804,8 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 8/13/2020
+* **Author:** UNKNOWN
 * **Description:** ThrowDirectoryNotFoundException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowFileNotFoundException(String message, Exception innerException)
 
@@ -775,199 +813,152 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
+* **Author:** UNKNOWN
 * **Description:** ThrowFileNotFoundException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowFileNotFoundException(String message, String fileName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowFileNotFoundException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowFileNotFoundException(String message, String fileName, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowFileNotFoundException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowInvalidCastException(String message, String paramName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowInvalidCastException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowInvalidCastException(String message, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowInvalidCastException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowInvalidEnumTypeException(String message)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/30/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowInvalidEnumTypeException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowInvalidEnumTypeException(String message, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowInvalidEnumTypeException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowInvalidOperationException(String message)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/30/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** From .NET Core source.
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowInvalidOperationException(String message, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/30/2020
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** From .NET Core source.
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowInvalidValueException(String message, TValue value)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 2/10/2021
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowInvalidValueException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowInvalidValueException(String message, TValue value, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 2/10/2021
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowInvalidValueException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowIOException(String message)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/25/2024
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowIOException
-* **Modified By:** David McCarter
 
 ### Void ThrowJsonException(String message)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/17/2024
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowJsonException
-* **Modified By:** David McCarter
 
 ### Void ThrowJsonException(String message, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/17/2024
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowJsonException
-* **Modified By:** David McCarter
 
 ### Void ThrowLoggableException(String message, Exception innerException, String userMessage)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 8/1/2024
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowLoggableException
-* **Modified By:** David McCarter
 
 ### Void ThrowMessageNotQueuedException(String message)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 5/4/2023
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowMessageNotQueuedException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowMessageNotQueuedException(String message, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 5/4/2023
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowMessageNotQueuedException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowMessageNotQueuedException(String message, String messageId)
 
@@ -975,11 +966,8 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 5/4/2023
+* **Author:** UNKNOWN
 * **Description:** ThrowMessageNotQueuedException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowMessageNotQueuedException(String message, Exception ex, String userMessage)
 
@@ -987,11 +975,8 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 5/4/2023
+* **Author:** UNKNOWN
 * **Description:** ThrowMessageNotQueuedException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowMessageNotQueuedException(String message, String messageId, Exception innerException)
 
@@ -999,35 +984,26 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 5/4/2023
+* **Author:** UNKNOWN
 * **Description:** ThrowMessageNotQueuedException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowNetworkConnectionException(String message)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 5/4/2023
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowNetworkConnectionException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowNetworkConnectionException(String message, Exception innerException)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 5/4/2023
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
 * **Description:** ThrowNetworkConnectionException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 ### Void ThrowNetworkConnectionException(String message, NetworkInterface connection)
 
@@ -1035,11 +1011,8 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 5/4/2023
+* **Author:** UNKNOWN
 * **Description:** ThrowNetworkConnectionException
-* **Documentation:** https://bit.ly/SpargineExThrow
-* **Modified By:** David McCarter
 
 *****
 ## ExecutionHelper
@@ -1255,6 +1228,15 @@
 * **Documentation:** http://bit.ly/SpargineMarch2021
 * **Modified By:** David McCarter
 
+### String AllPropertiesToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** AllPropertiesToString
+
 *****
 ## InformationAttributeDocGenerator
 
@@ -1345,6 +1327,49 @@
 * **Documentation:** https://www.meziantou.net/split-a-string-into-lines-without-allocation.htm
 * **Modified By:** David McCarter
 
+### Void Deconstruct(ReadOnlySpan`1& line, ReadOnlySpan`1& separator)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Deconstruct
+
+### ReadOnlySpan<Char> Line { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Line
+
+### ReadOnlySpan<Char> op_Implicit(LineSplitEntry entry)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### ReadOnlySpan<Char> Separator { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Separator
+
+### ReadOnlySpan<Char> ToReadOnlySpan(LineSplitEntry entry)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** ToReadOnlySpan
+
 *****
 ## LineSplitEnumerator
 
@@ -1412,6 +1437,75 @@
 * **Description:** PreserveAttribute
 * **Documentation:** https://bit.ly/SpargineMay2023
 * **Modified By:** David McCarter
+
+*****
+## ProcessorInformation
+
+### Boolean Equals(Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Boolean Equals(ProcessorInformation other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** Equals
+
+### Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** GetHashCode
+
+### Boolean op_Equality(ProcessorInformation left, ProcessorInformation right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** ==
+
+### Boolean op_Inequality(ProcessorInformation left, ProcessorInformation right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** !=
+
+*****
+## SimpleResult
+
+### SimpleResult<T> FromException(Exception e)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** FromException
+
+### SimpleResult<T> FromValue(T value)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** FromValue
 
 *****
 ## SimpleResult<T>
@@ -4617,4 +4711,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 1/27/2025 5:05:02 PM UTC**
+**Generated by Spargine - dotNetTips.com on 1/29/2025 5:00:53 PM UTC**

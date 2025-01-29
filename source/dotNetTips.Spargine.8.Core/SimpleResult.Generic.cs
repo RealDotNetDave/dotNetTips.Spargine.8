@@ -1,7 +1,7 @@
 // ***********************************************************************
 // Assembly         : DotNetTips.Spargine.8.Core
 // Author           : David McCarter
-// Created          : 01-28-2025
+// Created          : 01-29-2025
 //
 // Last Modified By : David McCarter
 // Last Modified On : 01-29-2025
@@ -29,6 +29,7 @@ namespace DotNetTips.Spargine.Core;
 [Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Status = Core.Status.NeedsDocumentation)]
 public class SimpleResult<T>
 {
+
 	/// <summary>
 	/// The collection of exceptions associated with this result.
 	/// </summary>
@@ -38,6 +39,11 @@ public class SimpleResult<T>
 	/// The value associated with this result.
 	/// </summary>
 	private T _value;
+
+	/// <summary>
+	/// Indicates whether the value has been set for this result.
+	/// </summary>
+	private bool _valueSet;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="SimpleResult{T}" /> class.
@@ -51,26 +57,27 @@ public class SimpleResult<T>
 	/// Initializes a new successful result.
 	/// </summary>
 	/// <param name="value">The value to be stored as result.</param>
-	public SimpleResult(T value) => this.SetValue(value);
+	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
+	public SimpleResult(T value)
+	{
+		_value = value;
+		_valueSet = true;
+	}
 
 	/// <summary>
 	/// Initializes a new unsuccessful result.
 	/// </summary>
 	/// <param name="error">The exception representing error. Cannot be <see langword="null" />.</param>
-	public SimpleResult(Exception error) => this.AddException(error);
+	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.None, Status = Core.Status.Available)]
+	public SimpleResult(Exception error) => AddException(error);
 
 	/// <summary>
 	/// Generates the exception messages.
 	/// </summary>
 	/// <returns>A string containing all exception messages.</returns>
 	[return: NotNull]
-	private string GenerateExceptionMessages() => FastStringBuilder.PerformAction((builder) =>
-		   {
-			   foreach (var exception in this._exceptions)
-			   {
-				   _ = builder.AppendLine(exception.GetAllMessages());
-			   }
-		   });
+	private string GenerateExceptionMessages() => string.Join(Environment.NewLine, _exceptions.Select(e => e.GetAllMessages()));
+
 
 	/// <summary>
 	/// Gets the reference to the value associated with the specified result.
@@ -86,6 +93,7 @@ public class SimpleResult<T>
 	/// </summary>
 	/// <param name="error">The exception to add. Cannot be <see langword="null"/>.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="error"/> is <see langword="null"/>.</exception>
+	[Information(nameof(AddException), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public void AddException([NotNull] Exception error)
 	{
 		error = error.ArgumentNotNull();
@@ -97,6 +105,7 @@ public class SimpleResult<T>
 	/// Gets exceptions associated with this result.
 	/// </summary>
 	/// <returns>ReadOnlyCollection&lt;Exception&gt;.</returns>
+	[Information(nameof(Errors), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public ReadOnlyCollection<Exception> Errors() => new([.. this._exceptions]);
 
 	/// <summary>
@@ -105,13 +114,15 @@ public class SimpleResult<T>
 	/// <param name="result">The result object containing the value.</param>
 	/// <returns>The value of type <typeparamref name="T"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="result"/> is <see langword="null"/>.</exception>
+	[Information(nameof(FromResult), UnitTestStatus = UnitTestStatus.None, Status = Core.Status.Available)]
 	public static T FromResult([NotNull] in SimpleResult<T> result) => result.ArgumentNotNull().Value;
 
 	/// <summary>
 	/// Returns the error messages, including the InnerException, if any.
 	/// </summary>
 	/// <returns>A string containing all error messages.</returns>
-	public string GetErrorMessages() => this.GenerateExceptionMessages();
+	[Information(nameof(GetErrorMessages), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
+	public string GetErrorMessages() => GenerateExceptionMessages();
 
 	/// <summary>
 	/// Gets the hash code for the current instance.
@@ -124,35 +135,44 @@ public class SimpleResult<T>
 	/// </summary>
 	/// <param name="defaultValue">The value to be returned if this result is unsuccessful.</param>
 	/// <returns>The value, if present, otherwise <paramref name="defaultValue" />.</returns>
+	[Information(nameof(Or), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public T Or(T defaultValue) => this._exceptions.IsEmpty ? this._value : defaultValue;
 
 	/// <summary>
 	/// Returns the value if present; otherwise return default value.
 	/// </summary>
 	/// <returns>The value, if present, otherwise <c>default</c>.</returns>
+	[Information(nameof(OrDefault), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public T OrDefault() => this._value;
 
 	/// <summary>
 	/// Sets the value associated with this result.
 	/// </summary>
 	/// <param name="value">The value to be set.</param>
-	public void SetValue(T value) => this._value = value;
+	[Information(nameof(SetValue), UnitTestStatus = UnitTestStatus.None, Status = Core.Status.Available)]
+	public void SetValue(T value)
+	{
+		this._value = value;
+		this._valueSet = true;
+	}
 
 	/// <summary>
 	/// Returns the error message or the string representation of the value.
 	/// </summary>
 	/// <returns>The textual representation of this object.</returns>
-	public override string ToString() => this._exceptions.IsEmpty ? this._value?.ToString() ?? string.Empty : this.GenerateExceptionMessages();
+	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
+	public override string ToString() => this._exceptions.IsEmpty ? this._value?.ToString() ?? string.Empty : GenerateExceptionMessages();
 
 	/// <summary>
 	/// Attempts to extract value if it is present.
 	/// </summary>
 	/// <param name="value">Extracted value.</param>
 	/// <returns><see langword="true" /> if value is present; otherwise, <see langword="false" />.</returns>
+	[Information(nameof(TryGet), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public bool TryGet(out T value)
 	{
 		value = this._value;
-		return !this._exceptions.IsEmpty;
+		return _valueSet;
 	}
 
 	/// <summary>
@@ -163,15 +183,17 @@ public class SimpleResult<T>
 	/// <see cref="ResultStatus.PartialSuccess"/> if there are exceptions but a value is present;
 	/// otherwise, <see cref="ResultStatus.Failed"/>.
 	/// </value>>
+	[Information(nameof(Status), UnitTestStatus = UnitTestStatus.WIP, Status = Core.Status.Available)]
 	public ResultStatus Status
 	{
 		get
 		{
-			if (this._exceptions.IsEmpty)
+			if (this._valueSet && this._exceptions.IsEmpty)
 			{
 				return ResultStatus.Succeeded;
 			}
-			return this._value is not null ? ResultStatus.PartialSuccess : ResultStatus.Failed;
+
+			return this._valueSet ? ResultStatus.PartialSuccess : ResultStatus.Failed;
 		}
 	}
 
@@ -179,6 +201,7 @@ public class SimpleResult<T>
 	/// Gets the value associated with this result.
 	/// </summary>
 	/// <value>The value of type <typeparamref name="T"/>.</value>
+	[Information(nameof(Value), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public T Value => this._value;
 
 }
