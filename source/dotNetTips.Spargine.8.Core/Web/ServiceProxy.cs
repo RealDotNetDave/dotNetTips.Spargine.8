@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="ServiceProxy.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -14,6 +14,7 @@
 // ICommunicationObject, enabling communication with such objects.
 // </summary>
 // ***********************************************************************
+
 using System.Diagnostics.CodeAnalysis;
 using System.ServiceModel;
 using System.ServiceModel.Description;

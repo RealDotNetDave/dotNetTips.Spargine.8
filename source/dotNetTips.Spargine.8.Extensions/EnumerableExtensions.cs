@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-25-2025
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -597,7 +597,7 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(HasDuplicates), author: "David McCarter", createdOn: "7/3/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
+	[Information(nameof(HasDuplicates), author: "David McCarter", createdOn: "7/3/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static bool HasDuplicates<T>(this IEnumerable<T> items)
 	{
 		if (items.DoesNotHaveItems())
@@ -688,6 +688,7 @@ public static class EnumerableExtensions
 			{
 				return index;
 			}
+
 			index++;
 		}
 

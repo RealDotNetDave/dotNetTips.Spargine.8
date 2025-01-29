@@ -4,7 +4,7 @@
 // Created          : 01-13-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-21-2025
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -99,7 +99,7 @@ public sealed class InMemoryCache
 
 
 		_ = this.Cache.Set(item.Id.ToString(), item, new MemoryCacheEntryOptions()
-			.SetAbsoluteExpiration(_timeoutInMinutes));
+			.SetAbsoluteExpiration(this._timeoutInMinutes));
 	}
 
 	/// <summary>
@@ -115,7 +115,7 @@ public sealed class InMemoryCache
 		item = item.ArgumentNotNull();
 
 		_ = this.Cache.Set(item.Id.ToString(), item, new MemoryCacheEntryOptions()
-			.SetAbsoluteExpiration(_timeoutInMinutes));
+			.SetAbsoluteExpiration(this._timeoutInMinutes));
 	}
 
 	/// <summary>
@@ -134,7 +134,7 @@ public sealed class InMemoryCache
 		item = item.ArgumentNotNull();
 
 		_ = this.Cache.Set(key, item, new MemoryCacheEntryOptions()
-			.SetAbsoluteExpiration(_timeoutInMinutes));
+			.SetAbsoluteExpiration(this._timeoutInMinutes));
 	}
 
 	/// <summary>
@@ -162,7 +162,6 @@ public sealed class InMemoryCache
 	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataRecord"/>.</param>
 	/// <param name="timeout">The custom expiration time for the cache item.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	/// <remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
@@ -182,7 +181,6 @@ public sealed class InMemoryCache
 	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataModel{T, TKey}"/>.</param>
 	/// <param name="timeout">The custom expiration time for the cache item.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	/// <remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
@@ -200,7 +198,6 @@ public sealed class InMemoryCache
 	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataRecord"/>.</param>
 	/// <param name="timeout">The custom expiration time for the cache item.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	/// <remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
@@ -260,12 +257,8 @@ public sealed class InMemoryCache
 	/// <param name="item">The item to add to the cache. This must implement <see cref="IDataModel{T, TKey}"/>.</param>
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	/// <remarks>
 	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public async Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item)
-	{
-		await Task.Run(() => this.AddCacheItem(item)).ConfigureAwait(false);
-	}
+	public async Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item) => await Task.Run(() => this.AddCacheItem(item)).ConfigureAwait(false);
 
 	/// <summary>
 	/// Asynchronously adds an item to the cache with a timeout of 20 minutes.
@@ -274,10 +267,7 @@ public sealed class InMemoryCache
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public async Task AddCacheItemAsync([NotNull] IDataRecord item)
-	{
-		await Task.Run(() => this.AddCacheItem(item)).ConfigureAwait(false);
-	}
+	public async Task AddCacheItemAsync([NotNull] IDataRecord item) => await Task.Run(() => this.AddCacheItem(item)).ConfigureAwait(false);
 
 	/// <summary>
 	/// Asynchronously adds an item to the cache with a custom timeout.
@@ -289,10 +279,7 @@ public sealed class InMemoryCache
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public async Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item, TimeSpan timeout)
-	{
-		await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
-	}
+	public async Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item, TimeSpan timeout) => await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
 
 	/// <summary>
 	/// Asynchronously adds an item to the cache with a custom expiration time.
@@ -302,10 +289,7 @@ public sealed class InMemoryCache
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public async Task AddCacheItemAsync([NotNull] IDataRecord item, TimeSpan timeout)
-	{
-		await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
-	}
+	public async Task AddCacheItemAsync([NotNull] IDataRecord item, TimeSpan timeout) => await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
 
 	/// <summary>
 	/// Asynchronously adds an item to the cache with a custom expiration time.
@@ -317,10 +301,7 @@ public sealed class InMemoryCache
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public async Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item, DateTimeOffset timeout)
-	{
-		await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
-	}
+	public async Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item, DateTimeOffset timeout) => await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
 
 	/// <summary>
 	/// Asynchronously adds an item to the cache with a custom expiration time.
@@ -329,12 +310,8 @@ public sealed class InMemoryCache
 	/// <param name="timeout">The custom expiration time for the cache item.</param>
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	/// <remarks>
 	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public async Task AddCacheItemAsync([NotNull] IDataRecord item, DateTimeOffset timeout)
-	{
-		await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
-	}
+	public async Task AddCacheItemAsync([NotNull] IDataRecord item, DateTimeOffset timeout) => await Task.Run(() => this.AddCacheItem(item, timeout)).ConfigureAwait(false);
 
 	/// <summary>
 	/// Asynchronously adds an item to the cache with a timeout of 20 minutes.
@@ -345,10 +322,7 @@ public sealed class InMemoryCache
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key"/> is null or empty, or <paramref name="item"/> is null.</exception>
 	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public async Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item)
-	{
-		await Task.Run(() => this.AddCacheItem(key, item)).ConfigureAwait(false);
-	}
+	public async Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item) => await Task.Run(() => this.AddCacheItem(key, item)).ConfigureAwait(false);
 
 	/// <summary>
 	/// Asynchronously adds an item to the cache with a custom timeout.
@@ -360,10 +334,7 @@ public sealed class InMemoryCache
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key"/> is null or empty, or <paramref name="item"/> is null.</exception>
 	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public async Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item, TimeSpan timeout)
-	{
-		await Task.Run(() => this.AddCacheItem(key, item, timeout)).ConfigureAwait(false);
-	}
+	public async Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item, TimeSpan timeout) => await Task.Run(() => this.AddCacheItem(key, item, timeout)).ConfigureAwait(false);
 
 	/// <summary>
 	/// Asynchronously adds an item to the cache with a custom expiration time.
@@ -375,10 +346,7 @@ public sealed class InMemoryCache
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key"/> is null or empty, or <paramref name="item"/> is null.</exception>
 	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public async Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item, DateTimeOffset timeout)
-	{
-		await Task.Run(() => this.AddCacheItem(key, item, timeout)).ConfigureAwait(false);
-	}
+	public async Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item, DateTimeOffset timeout) => await Task.Run(() => this.AddCacheItem(key, item, timeout)).ConfigureAwait(false);
 
 	/// <summary>
 	/// Clears all items from the cache.
@@ -410,10 +378,7 @@ public sealed class InMemoryCache
 	/// This method provides a way to retrieve all keys currently stored in the cache. It can be useful for debugging and monitoring purposes.
 	/// </remarks>
 	[Information(nameof(GetAllKeys), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public IEnumerable<string> GetAllKeys()
-	{
-		return this.Cache.Keys.Select(p => p.ToString());
-	}
+	public IEnumerable<string> GetAllKeys() => this.Cache.Keys.Select(p => p.ToString());
 
 	/// <summary>
 	/// Gets the cache item associated with the specified key.
@@ -453,10 +418,7 @@ public sealed class InMemoryCache
 	/// This method utilizes the <see cref="MemoryCache.TryGetValue"/> method to attempt to retrieve the item.
 	/// </remarks>
 	[Information(nameof(GetCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public async Task<T> GetCacheItemAsync<T>([NotNull] string key)
-	{
-		return await Task.Run(() => this.GetCacheItem<T>(key)).ConfigureAwait(false);
-	}
+	public async Task<T> GetCacheItemAsync<T>([NotNull] string key) => await Task.Run(() => this.GetCacheItem<T>(key)).ConfigureAwait(false);
 
 	/// <summary>
 	/// Removes the cache item associated with the specified key.

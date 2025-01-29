@@ -4,7 +4,7 @@
 // Created          : 01-23-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-23-2025
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="PersonEmailEqualityComparer.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -50,8 +50,5 @@ public sealed class PersonEmailEqualityComparer : IEqualityComparer<Person<Addre
 	/// </summary>
 	/// <param name="obj">The <see cref="Person{Address}"/> for which a hash code is to be returned.</param>
 	/// <returns>A hash code for the specified <see cref="Person{Address}"/>.</returns>
-	public int GetHashCode(Person<Address> obj)
-	{
-		return obj?.Email?.GetHashCode(StringComparison.OrdinalIgnoreCase) ?? 0;
-	}
+	public int GetHashCode(Person<Address> obj) => obj?.Email?.GetHashCode(StringComparison.OrdinalIgnoreCase) ?? 0;
 }

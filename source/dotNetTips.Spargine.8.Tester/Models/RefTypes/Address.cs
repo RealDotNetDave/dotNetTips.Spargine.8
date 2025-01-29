@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-23-2024
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="Address.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -252,6 +252,7 @@ public sealed class Address : IAddress
 	/// </item>
 	/// </list>
 	/// </returns>
+	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int CompareTo(Address address) => this.CompareTo(address);
 
 	/// <summary>

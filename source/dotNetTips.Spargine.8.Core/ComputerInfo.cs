@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-30-2024
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="ComputerInfo.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -48,14 +48,11 @@ public sealed class ComputerInfo
 	/// This method checks all network interfaces to determine if any are operational and not virtual or loopback interfaces.
 	/// </remarks>
 	[Information(nameof(IsNetworkAvailable), OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public static bool IsNetworkAvailable()
-	{
-		return NetworkInterface.GetAllNetworkInterfaces()
+	public static bool IsNetworkAvailable() => NetworkInterface.GetAllNetworkInterfaces()
 			.Where(i => i.OperationalStatus == OperationalStatus.Up)
 			.Select(i => i.Description.ToUpperInvariant())
 			.Where(n => !n.Contains("VIRTUALBOX", StringComparison.OrdinalIgnoreCase))
 			.Any(n => !n.Contains("LOOPBACK", StringComparison.OrdinalIgnoreCase));
-	}
 
 	/// <summary>
 	/// Gets the computer culture in three-letter ISO language name format.

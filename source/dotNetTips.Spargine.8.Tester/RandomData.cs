@@ -718,16 +718,16 @@ public static class RandomData
 	}
 
 	/// <summary>
-	/// Generates a <see cref="Models.RefTypes.Person{TAddress}"/> object with random data.
+	/// Generates a <see cref="Person{TAddress}"/> object with random data.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of address, must implement <see cref="IAddress"/> and have a parameterless constructor.</typeparam>
 	/// <param name="addressCount">The number of addresses to generate for the person. Default is 2.</param>
 	/// <param name="addressLength">The length of each address line. Default is 25.</param>
 	/// <param name="countyProvinceLength">The length of the county or province name. Default is 20.</param>
-	/// <returns>A <see cref="Models.RefTypes.Person{TAddress}"/> object populated with random address data.</returns>
+	/// <returns>A <see cref="Person{TAddress}"/> object populated with random address data.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(GeneratePersonRef), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static Models.RefTypes.Person<TAddress> GeneratePersonRef<TAddress>(int addressCount = 2, int addressLength = 25, int countyProvinceLength = 20) where TAddress : IAddress, new()
+	public static Person<TAddress> GeneratePersonRef<TAddress>(int addressCount = 2, int addressLength = 25, int countyProvinceLength = 20) where TAddress : IAddress, new()
 	{
 		addressCount = addressCount.ArgumentInRange(lower: 0, defaultValue: 2);
 		addressLength = addressLength.ArgumentInRange(lower: 5, upper: 100);
@@ -735,7 +735,7 @@ public static class RandomData
 
 		var personData = GenerateRandomPersonData();
 
-		var person = new Models.RefTypes.Person<TAddress>()
+		var person = new Person<TAddress>()
 		{
 			Addresses = GenerateAddressCollection<TAddress>(personData.Country, addressCount, addressLength, countyProvinceLength),
 			BornOn = personData.BornOn,
@@ -751,18 +751,18 @@ public static class RandomData
 	}
 
 	/// <summary>
-	/// Generates a read-only collection of <see cref="Models.RefTypes.Person{TAddress}"/> objects.
+	/// Generates a read-only collection of <see cref="Person{TAddress}"/> objects.
 	/// </summary>
 	/// <typeparam name="TAddress">The type of address, must implement <see cref="IAddress"/> and have a parameterless constructor.</typeparam>
-	/// <param name="count">The number of <see cref="Models.RefTypes.Person{TAddress}"/> objects to generate. Default is 1.</param>
-	/// <returns>A read-only collection of <see cref="Models.RefTypes.Person{TAddress}"/> objects.</returns>
+	/// <param name="count">The number of <see cref="Person{TAddress}"/> objects to generate. Default is 1.</param>
+	/// <returns>A read-only collection of <see cref="Person{TAddress}"/> objects.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(GeneratePersonRefCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<Models.RefTypes.Person<TAddress>> GeneratePersonRefCollection<TAddress>(int count = 1) where TAddress : IAddress, new()
+	public static ReadOnlyCollection<Person<TAddress>> GeneratePersonRefCollection<TAddress>(int count = 1) where TAddress : IAddress, new()
 	{
 		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
 
-		var people = new List<Models.RefTypes.Person<TAddress>>(count);
+		var people = new List<Person<TAddress>>(count);
 
 		for (var index = 0; index < count; index++)
 		{

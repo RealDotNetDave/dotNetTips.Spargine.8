@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-27-2025
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -278,7 +278,7 @@ public static class TypeHelper
 
 		// Add types from the System namespace
 		var systemTypes = Assembly.GetAssembly(typeof(int)).GetTypes()
-			.Where(t => t.Namespace == "System" && t.IsPublic && !t.IsGenericType)
+			.Where(t => string.Compare(t.Namespace, "System", StringComparison.Ordinal) == 0 && t.IsPublic && !t.IsGenericType)
 			.ToList();
 
 		foreach (var type in systemTypes)

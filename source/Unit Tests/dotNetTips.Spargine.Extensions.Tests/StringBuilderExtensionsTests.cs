@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-23-2024
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="StringBuilderExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -30,6 +30,16 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 [TestClass]
 public class StringBuilderExtensionsTests
 {
+
+	[TestMethod]
+	public void AppendBytesNullTest()
+	{
+		var sb = new StringBuilder();
+
+		sb.AppendBytes(null);
+
+		Assert.IsTrue(sb.Length == 0);
+	}
 
 	[TestMethod]
 	public void AppendBytesTest()

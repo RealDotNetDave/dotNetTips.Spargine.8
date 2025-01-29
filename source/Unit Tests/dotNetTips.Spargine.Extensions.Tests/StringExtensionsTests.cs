@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-24-2025
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="StringExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -192,15 +192,25 @@ public class StringExtensionsTests
 	}
 
 	[TestMethod]
+	public void DelimitedStringToArrayEmptyTest()
+	{
+		var inputString = string.Empty;
+
+		var result = inputString.DelimitedStringToArray();
+
+		Assert.IsTrue(result.Count() == 0);
+	}
+
+	[TestMethod]
 	public void DelimitedStringToArrayTest()
 	{
 		var inputString = "Microsoft .NET, Visual Studio, Azure";
 
 		var result = inputString.DelimitedStringToArray();
 
-		Assert.IsTrue(result.FastCount() == 3);
+		Assert.IsTrue(result.Count() == 3);
 
-		Assert.IsTrue(result.FastCount() == 3);
+		Assert.IsTrue(result.Count() == 3);
 	}
 
 	[TestMethod]
@@ -530,6 +540,110 @@ public class StringExtensionsTests
 	public void IsScientificTest()
 	{
 		Assert.IsFalse("6.5 ✕ 10^8".IsScientific());
+	}
+
+	[TestMethod]
+	public void IsStringSHA1Hash_EmptyString_ReturnsFalse()
+	{
+		// Arrange
+		var emptyString = string.Empty;
+
+		// Act
+		var result = emptyString.IsStringSHA1Hash();
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for an empty string.");
+	}
+
+	[TestMethod]
+	public void IsStringSHA1Hash_InvalidSHA1Hash_ReturnsFalse()
+	{
+		// Arrange
+		var invalidSHA1Hash = "invalidSHA1Hash";
+
+		// Act
+		var result = invalidSHA1Hash.IsStringSHA1Hash();
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for an invalid SHA1 hash.");
+	}
+
+	[TestMethod]
+	public void IsStringSHA1Hash_LongString_ReturnsFalse()
+	{
+		// Arrange
+		var longString = new string('a', 50);
+
+		// Act
+		var result = longString.IsStringSHA1Hash();
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for a long string.");
+	}
+
+	[TestMethod]
+	public void IsStringSHA1Hash_NullString_ReturnsFalse()
+	{
+		// Arrange
+		string nullString = null;
+
+		// Act
+		var result = nullString.IsStringSHA1Hash();
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for a null string.");
+	}
+
+	[TestMethod]
+	public void IsStringSHA1Hash_ShortString_ReturnsFalse()
+	{
+		// Arrange
+		var shortString = "12345";
+
+		// Act
+		var result = shortString.IsStringSHA1Hash();
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for a short string.");
+	}
+
+	[TestMethod]
+	public void IsStringSHA1Hash_ValidSHA1Hash_ReturnsTrue()
+	{
+		// Arrange
+		var validSHA1Hash = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"; // SHA1 hash for "password"
+
+		// Act
+		var result = validSHA1Hash.IsStringSHA1Hash();
+
+		// Assert
+		Assert.IsTrue(result, "Expected to return true for a valid SHA1 hash.");
+	}
+
+	[TestMethod]
+	public void IsStringSHA1Hash_ValidSHA1HashWithMixedCase_ReturnsTrue()
+	{
+		// Arrange
+		var validSHA1HashMixedCase = "5bAa61E4c9B93F3F0682250B6Cf8331B7Ee68Fd8"; // SHA1 hash for "password" in mixed case
+
+		// Act
+		var result = validSHA1HashMixedCase.IsStringSHA1Hash();
+
+		// Assert
+		Assert.IsTrue(result, "Expected to return true for a valid SHA1 hash in mixed case.");
+	}
+
+	[TestMethod]
+	public void IsStringSHA1Hash_ValidSHA1HashWithUpperCase_ReturnsTrue()
+	{
+		// Arrange
+		var validSHA1HashUpperCase = "5BAA61E4C9B93F3F0682250B6CF8331B7EE68FD8"; // SHA1 hash for "password" in upper case
+
+		// Act
+		var result = validSHA1HashUpperCase.IsStringSHA1Hash();
+
+		// Assert
+		Assert.IsTrue(result, "Expected to return true for a valid SHA1 hash in upper case.");
 	}
 
 	[TestMethod]

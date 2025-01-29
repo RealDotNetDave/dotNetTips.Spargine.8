@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -224,7 +224,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// </summary>
 	/// <param name="address">The address.</param>
 	/// <returns>System.Int32.</returns>
-	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public readonly int CompareTo(Address address) => this.CompareTo(address);
 
 	/// <summary>

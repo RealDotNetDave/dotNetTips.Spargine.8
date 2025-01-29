@@ -1,7 +1,7 @@
 ####################################################################################################
 # dotNetDave's (David McCarter) Editor Config - dotNetTips.com
 # Updates to this file are posted quarterly at: https://bit.ly/EditorConfig5
-# Updated November 1, 2024
+# Updated February 1, 2025
 # NEW code performance book is available at: https://bit.ly/DotNetCodePerf4
 # NEW coding standards book is available at: https://bit.ly/CodingStandards8
 # Rockin' the Code World with dotNetDave: https://bit.ly/RockinCodeWorldShows
@@ -767,6 +767,12 @@ dotnet_diagnostic.CA1869.severity = warning
 # Cache and reuse 'JsonSerializerOptions' instances ****
 dotnet_diagnostic.CA1870.severity = warning
 
+# Do not pass a nullable struct to'ArgumentNullException.ThrowIfNull
+dotnet_diagnostic.CA1871.severity = warning
+
+# Prefer 'Convert.ToHexString'and 'Convert.ToHexStringLower' overcall chains based on'BitConverter.ToString'
+dotnet_diagnostic.CA1872.severity = warning
+
 # Use Span<T>.Clear() instead of Span<T>.Fill()  ****
 dotnet_analyzer_diagnostic.category-Performance.severity = error
 
@@ -916,6 +922,9 @@ dotnet_diagnostic.SYSLIB0047.severity = error
 # RSA.EncryptValue and DecryptValue are obsolete
 dotnet_diagnostic.SYSLIB0048.severity = error
 
+#  JsonSerializerOptions.AddContext is obsolete
+dotnet_diagnostic.SYSLIB0048.severity = error
+
 # Formatter-based serialization is obsolete
 dotnet_diagnostic.SYSLIB0050.severity = error
 
@@ -927,6 +936,24 @@ dotnet_diagnostic.SYSLIB0052.severity = error
 
 # AesGcm should indicate the required tag size
 dotnet_diagnostic.SYSLIB0053.severity = warning
+
+# Thread.VolatileRead and Thread.VolatileWrite are obsolete
+dotnet_diagnostic.SYSLIB0054.severity = warning
+
+# AdvSimd.ShiftRightLogicalRoundedNarrowingSaturate* methods with signed parameters are obsolete
+dotnet_diagnostic.SYSLIB0056.severity = warning
+
+# Assembly.LoadFrom that takes an AssemblyHashAlgorithm is obsolete.
+dotnet_diagnostic.SYSLIB0056.severity = warning
+
+# SYSLIB0057: X509Certificate2 and X509Certificate constructors for binary and file content are obsolete
+dotnet_diagnostic.SYSLIB0057.severity = warning
+
+#  The KeyExchangeAlgorithm, KeyExchangeStrength, CipherAlgorithm, CipherAlgorithmStrength, HashAlgorithm, and HashStrength properties of SslStream are obsolete. 
+dotnet_diagnostic.SYSLIB0058.severity = warning
+
+#  SystemEvents.EventsThreadShutdown callbacks aren't run before the process exits
+dotnet_diagnostic.SYSLIB0059.severity = warning
 
 # Logging method names can't start with an underscore
 dotnet_diagnostic.SYSLIB1001.severity = error
@@ -1004,6 +1031,9 @@ dotnet_diagnostic.SYSLIB1031.severity = error
 dotnet_diagnostic.SYSLIB1032.severity = error
 
 # System.Text.Json source generator encountered a type with multiple [JsonConstructor] annotations
+dotnet_diagnostic.SYSLIB1033.severity = warning
+
+# JsonSourceGenerator encountered a [JsonStringEnumConverter] annotation
 dotnet_diagnostic.SYSLIB1033.severity = warning
 
 # System.Text.Json source generator encountered a type with multiple [JsonExtensionData] annotations
@@ -1099,6 +1129,42 @@ dotnet_diagnostic.SYSLIB1090.severity = error
 # Method is declared in different partial declaration than the GeneratedComInterface attribute. 
 dotnet_diagnostic.SYSLIB1091.severity = error
 
+# Usage of LibraryImport or GeneratedComInterface attribute does not follow recommendation.
+dotnet_diagnostic.SYSLIB1092.severity = error
+
+# Analysis for COM interface generation has failed.
+dotnet_diagnostic.SYSLIB1093.severity = error
+
+# The base COM interface failed to generate source. Code will not be generated for this interface
+dotnet_diagnostic.SYSLIB1094.severity = error
+
+#  Invalid GeneratedComClassAttribute usage.
+dotnet_diagnostic.SYSLIB1095.severity = error
+
+#  Use GeneratedComInterfaceAttribute instead of ComImportAttribute to generate COM marshalling code at compile time
+dotnet_diagnostic.SYSLIB1096.severity = error
+
+# This type implements at least one type with the GeneratedComInterfaceAttribute attribute. 
+dotnet_diagnostic.SYSLIB1097.severity = error
+
+#  .NET COM hosting with EnableComHosting only supports built-in COM interop. 
+dotnet_diagnostic.SYSLIB1098.severity = error
+
+#  COM Interop APIs on System.Runtime.InteropServices.Marshal do not support source-generated COM and will fail at run time.
+dotnet_diagnostic.SYSLIB1099.severity = error
+
+#  Can't use ValidateObjectMembersAttribute or ValidateEnumeratedItemsAttribute on fields or properties with open generic types.
+dotnet_diagnostic.SYSLIB1201.severity = error
+
+# A member type has no fields or properties to validate.
+dotnet_diagnostic.SYSLIB1202.severity = error
+
+# A type has no fields or properties to validate
+dotnet_diagnostic.SYSLIB1203.severity = error
+
+# Deriving from a GeneratedComInterface-attributed interface defined in another assembly is not supported
+dotnet_diagnostic.SYSLIB1230.severity = error
+
 # Type is not supported. 
 dotnet_diagnostic.SYSLIB1100.severity = error
 
@@ -1107,6 +1173,12 @@ dotnet_diagnostic.SYSLIB1101.severity = error
 
 # Project's language version must be at least C# 11.
 dotnet_diagnostic.SYSLIB1102.severity = error
+
+#  Value types are invalid inputs to configuration 'Bind' methods.
+dotnet_diagnostic.SYSLIB1103.severity = error
+
+# Generator cannot determine the target configuration type.
+dotnet_diagnostic.SYSLIB1104.severity = error
 
 dotnet_diagnostic.RemoveUnnecessaryImportsFixable.severity = warning
 
@@ -1159,6 +1231,12 @@ dotnet_diagnostic.CA2020.severity = warning
 
 # Do not call Enumerable.Cast<T> or Enumerable.OfType<T> with incompatible types
 dotnet_diagnostic.CA2021.severity = warning
+
+# Avoid inexact read withStream.Read
+dotnet_diagnostic.CA2022.severity = warning
+
+# Do not useStreamReader.EndOfStream in asyncmethods
+dotnet_diagnostic.CA2022.severity = warning
 
 #### Security Rules ####
 
@@ -1581,6 +1659,14 @@ dotnet_diagnostic.CA2260.severity = warning
 # Do not use ConfigureAwaitOptions.SuppressThrowing with Task<TResult>
 dotnet_diagnostic.CA2261.severity = warning
 
+# Do not pass a non-nullable value to 'ArgumentNullException.ThrowIfNull'
+dotnet_diagnostic.CA2264.severity = warning
+
+# Do not compare Span<T> to null or default
+dotnet_diagnostic.CA2265.severity = warning
+
+
+
 #### Language Rules ####
 
 # this and Me preferences
@@ -1853,8 +1939,29 @@ dotnet_sort_system_directives_first = true
 # Naming rule violation
 dotnet_diagnostic.IDE1006.severity = silent
 
+#Use collection expression for array
+dotnet_diagnostic.IDE0300.severity = warning
+
 # Use collection expression for empty 
 dotnet_diagnostic.IDE0301.severity = warning
+
+# Use collection expression for stackalloc
+dotnet_diagnostic.IDE0302.severity = warning
+
+# Use collection expression for Create()
+dotnet_diagnostic.IDE0303.severity = warning
+
+# Use collection expression for builder
+dotnet_diagnostic.IDE0304.severity = warning
+
+# Use collection expression for fluent
+dotnet_diagnostic.IDE0305.severity = warning
+
+# Make anonymous function static
+dotnet_diagnostic.IDE0320.severity = warning
+
+# Prefer 'System.Threading.Lock'
+dotnet_diagnostic.IDE0330.severity = warning
 
 dotnet_naming_rule.public_members_must_be_capitalized.severity = warning
 dotnet_naming_rule.public_members_must_be_capitalized.style = camel_case
@@ -2072,6 +2179,9 @@ dotnet_diagnostic.IL3002.severity = error
 
 # RequiresAssemblyFilesAttribute annotations must match across all interface implementations or overrides.
 dotnet_diagnostic.IL3003.severity = error
+
+# RequiresAssemblyFilesAttribute cannot be placed directly on applicationentry point.
+dotnet_diagnostic.IL3005.severity = error
 
 #### Miscellaneous Rules ####
 
@@ -2468,6 +2578,26 @@ dotnet_diagnostic.CS9035.severity = none #this should be warning or error
 
 # [src/{VisualStudio}/**/*.{cs,vb}]
 visual_basic_style_prefer_simplified_object_creation = all : suggestion
+
+# Visual Basic Rules
+[*.{vb}]
+# Remove ByVal
+dotnet_diagnostic.IDE0081.severity = warning
+
+# Use pattern matching (IsNot operator)
+dotnet_diagnostic.IDE0084.severity = warning
+
+# JSON Rules
+[*.{cs,vb}]
+#Invalid JSON pattern
+dotnet_diagnostic.JSON001.severity = suggestion
+# Probable JSON string detected
+dotnet_diagnostic.JSON002.severity = suggestion
+
+# REGEX
+[*.{cs,vb}]
+# Invalid regex pattern
+dotnet_diagnostic.RE0001.severity = warning
 
 [*.g.cs]
 # Missing XML comment for publicly visible type or member 'Type_or_Member'

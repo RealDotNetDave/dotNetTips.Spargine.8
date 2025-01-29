@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -306,6 +306,14 @@ public class EnumerableExtensionsTests
 		Assert.IsTrue(testValue.ToDelimitedString(',').HasItems());
 		Assert.IsTrue(testValue.ToDelimitedString().HasItems());
 		Assert.IsTrue(string.Empty.ToDelimitedString().DoesNotHaveItems());
+	}
+
+	[TestMethod]
+	public void HasDuplicatesEmptyTest()
+	{
+		IEnumerable<string> strings = new List<string>();
+
+		Assert.IsFalse(strings.HasDuplicates());
 	}
 
 	[TestMethod]

@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="SimpleResult.Generic.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -51,13 +51,13 @@ public class SimpleResult<T>
 	/// Initializes a new successful result.
 	/// </summary>
 	/// <param name="value">The value to be stored as result.</param>
-	public SimpleResult(T value) => SetValue(value);
+	public SimpleResult(T value) => this.SetValue(value);
 
 	/// <summary>
 	/// Initializes a new unsuccessful result.
 	/// </summary>
 	/// <param name="error">The exception representing error. Cannot be <see langword="null" />.</param>
-	public SimpleResult(Exception error) => AddException(error);
+	public SimpleResult(Exception error) => this.AddException(error);
 
 	/// <summary>
 	/// Generates the exception messages.
@@ -111,7 +111,7 @@ public class SimpleResult<T>
 	/// Returns the error messages, including the InnerException, if any.
 	/// </summary>
 	/// <returns>A string containing all error messages.</returns>
-	public string GetErrorMessages() => GenerateExceptionMessages();
+	public string GetErrorMessages() => this.GenerateExceptionMessages();
 
 	/// <summary>
 	/// Gets the hash code for the current instance.
@@ -142,7 +142,7 @@ public class SimpleResult<T>
 	/// Returns the error message or the string representation of the value.
 	/// </summary>
 	/// <returns>The textual representation of this object.</returns>
-	public override string ToString() => this._exceptions.IsEmpty ? this._value?.ToString() ?? string.Empty : GenerateExceptionMessages();
+	public override string ToString() => this._exceptions.IsEmpty ? this._value?.ToString() ?? string.Empty : this.GenerateExceptionMessages();
 
 	/// <summary>
 	/// Attempts to extract value if it is present.
