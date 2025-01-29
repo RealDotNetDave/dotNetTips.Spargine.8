@@ -4,7 +4,7 @@
 // Created          : 10-03-2024
 //
 // Last Modified By : david
-// Last Modified On : 01-21-2025
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="InMemoryCacheBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -61,7 +61,7 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 
 	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": DateTimeOffset")]
 	[BenchmarkCategory(Categories.Collections)]
-	public async Task AddCacheItemAsyncDateTimeOffset()
+	public async Task AddCacheItemAsyncDateTimeOffsetAsync()
 	{
 		var cache = InMemoryCache.Instance;
 		var futureDate = DateTimeOffset.Now.AddMinutes(30);
@@ -76,7 +76,7 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 
 	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": DataTimeOffset - IDataModel")]
 	[BenchmarkCategory(Categories.Collections)]
-	public async Task AddCacheItemAsyncDateTimeOffsetIDataModel()
+	public async Task AddCacheItemAsyncDateTimeOffsetIDataModelAsync()
 	{
 		var cache = InMemoryCache.Instance;
 		var futureDate = DateTimeOffset.Now.AddMinutes(30);
@@ -91,7 +91,7 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 
 	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": DataTimeOffset - IDataRecord")]
 	[BenchmarkCategory(Categories.Collections)]
-	public async Task AddCacheItemAsyncDateTimeOffsetIDataRecord()
+	public async Task AddCacheItemAsyncDateTimeOffsetIDataRecordAsync()
 	{
 		var cache = InMemoryCache.Instance;
 		var futureDate = DateTimeOffset.Now.AddMinutes(30);
@@ -106,7 +106,7 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 
 	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": IDataModel")]
 	[BenchmarkCategory(Categories.Collections)]
-	public async Task AddCacheItemAsyncIDataModel()
+	public async Task AddCacheItemAsyncIDataModelAsync()
 	{
 		var cache = InMemoryCache.Instance;
 
@@ -120,7 +120,7 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 
 	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": IDataRecord")]
 	[BenchmarkCategory(Categories.Collections)]
-	public async Task AddCacheItemAsyncIDataRecord()
+	public async Task AddCacheItemAsyncIDataRecordAsync()
 	{
 		var cache = InMemoryCache.Instance;
 
@@ -134,7 +134,7 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 
 	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": Timespan")]
 	[BenchmarkCategory(Categories.Collections)]
-	public async Task AddCacheItemAsyncTimeSpan()
+	public async Task AddCacheItemAsyncTimeSpanAsync()
 	{
 		var cache = InMemoryCache.Instance;
 		var futureDate = TimeSpan.FromSeconds(5);
@@ -149,7 +149,7 @@ public class InMemoryCacheBenchmark : SmallCollectionBenchmark
 
 	[Benchmark(Description = nameof(InMemoryCache.AddCacheItemAsync) + ": TimeSpan - IDataRecord")]
 	[BenchmarkCategory(Categories.Collections)]
-	public async Task AddCacheItemAsyncTimeSpanIDataRecord()
+	public async Task AddCacheItemAsyncTimeSpanIDataRecordAsync()
 	{
 		var cache = InMemoryCache.Instance;
 		var futureDate = TimeSpan.FromSeconds(5);

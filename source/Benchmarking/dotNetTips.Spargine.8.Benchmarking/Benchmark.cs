@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-14-2025
+// Last Modified On : 01-29-2025
 // ***********************************************************************
 // <copyright file="Benchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -140,12 +140,12 @@ public abstract class Benchmark
 	/// <summary>
 	/// Caches byte arrays of various sizes to avoid regenerating them for each benchmark iteration.
 	/// </summary>
-	private Dictionary<int, byte[]> _byteArrayCache;
+	private readonly Dictionary<int, byte[]> _byteArrayCache;
 
 	/// <summary>
 	/// Caches string arrays of various configurations to avoid regenerating them for each benchmark iteration.
 	/// </summary>
-	private Dictionary<string, string[]> _stringArrayCache;
+	private readonly Dictionary<string, string[]> _stringArrayCache;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Benchmark"/> class.
@@ -182,9 +182,10 @@ public abstract class Benchmark
 	/// </summary>
 	/// <typeparam name="T">The type of the object to consume.</typeparam>
 	/// <param name="obj">The object to consume.</param>
+	/// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
 	/// <returns>A Task representing the asynchronous operation.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public async Task ConsumeAsync<T>(T obj) => await Task.Run(() => this.Consumer.Consume(obj)).ConfigureAwait(false);
+	public Task ConsumeAsync<T>(T obj, CancellationToken cancellationToken = default) => Task.Run(() => this.Consumer.Consume(obj), cancellationToken);
 
 	/// <summary>
 	/// Generates a random byte array of a specified size in kilobytes. If the byte array of the requested size has already been generated, it retrieves the cached version to avoid regeneration.
