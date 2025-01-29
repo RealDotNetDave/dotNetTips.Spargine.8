@@ -225,7 +225,10 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="address">The address.</param>
 	/// <returns>System.Int32.</returns>
 	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public readonly int CompareTo(Address address) => this.CompareTo(address);
+	public int CompareTo(Address address)
+	{
+		return string.Compare(this.Id, address.Id, StringComparison.OrdinalIgnoreCase);
+	}
 
 	/// <summary>
 	/// Determines whether the specified <see cref="object"/> is equal to this instance.

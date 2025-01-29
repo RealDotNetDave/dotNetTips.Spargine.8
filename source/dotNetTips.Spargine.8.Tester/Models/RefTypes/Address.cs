@@ -253,7 +253,15 @@ public sealed class Address : IAddress
 	/// </list>
 	/// </returns>
 	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int CompareTo(Address address) => this.CompareTo(address);
+	public int CompareTo(Address address)
+	{
+		if (address is null)
+		{
+			return 1;
+		}
+
+		return string.Compare(this.Id, address.Id, StringComparison.OrdinalIgnoreCase);
+	}
 
 	/// <summary>
 	/// Determines whether the specified <see cref="IAddress"/> is equal to the current <see cref="Address"/>.
