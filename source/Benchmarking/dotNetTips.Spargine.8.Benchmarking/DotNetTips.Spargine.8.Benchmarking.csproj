@@ -35,9 +35,12 @@
 		<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
---AUG  2024: Performance changes.
---NOV 2024: Performance changes, refactoring.</PackageReleaseNotes>
+		<PackageReleaseNotes>
+		  --MAR 2024: Initial 8.0 release.
+		  --AUG 2024: Performance changes.
+		  --NOV 2024: Performance changes, refactoring.
+		  --FEB 2025: Performance changes, refactoring.
+		</PackageReleaseNotes>
 		<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<RepositoryType>git</RepositoryType>
