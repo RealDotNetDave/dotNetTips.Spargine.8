@@ -28,6 +28,7 @@ namespace DotNetTips.Spargine.IO;
 /// This class offers a variety of static methods to assist with common path manipulation tasks such as combining paths, ensuring paths end with a directory separator,
 /// and validating paths for invalid characters. It is designed to simplify file system operations by abstracting complex checks and operations into straightforward method calls.
 /// </remarks>
+[Information(nameof(PathHelper), Status = Status.NeedsDocumentation)]
 public static class PathHelper
 {
 

@@ -563,7 +563,7 @@ public static class FileHelper
 	/// await FileHelper.UnGZipAsync(sourceFile, destinationDir);
 	/// </code>
 	/// </example>
-	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	/// <remarks>Make sure to call .Dispose on Task</remarks>
 	[Information(nameof(UnGZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task UnGZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{

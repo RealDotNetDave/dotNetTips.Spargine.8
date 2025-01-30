@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8.Core - 2025.8.1.27
+# DotNetTips.Spargine.8.Core - 2025.8.1.30
 
 ## ApiLibraries
 
@@ -1233,7 +1233,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** AllPropertiesToString
 
@@ -1489,23 +1489,32 @@
 *****
 ## SimpleResult
 
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 6/20/2023
+* **Description:** SimpleResult
+* **Modified By:** David McCarter
+
 ### SimpleResult<T> FromException(Exception e)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
 * **Author:** UNKNOWN
-* **Description:** FromException
+* **Description:** SimpleResult
 
 ### SimpleResult<T> FromValue(T value)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
 * **Author:** UNKNOWN
-* **Description:** FromValue
+* **Description:** SimpleResult
 
 *****
 ## SimpleResult<T>
@@ -1518,6 +1527,123 @@
 * **CreatedOn:** 6/20/2023
 * **Description:** SimpleResult
 * **Modified By:** David McCarter
+
+### SimpleResult<T> (T value)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** SimpleResult
+
+### SimpleResult<T> (Exception error)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** SimpleResult
+
+### Void AddException(Exception error)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** AddException
+
+### ReadOnlyCollection<Exception> Errors()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Errors
+
+### T FromResult(SimpleResult`1& result)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** FromResult
+
+### String GetErrorMessages()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** GetErrorMessages
+
+### T Or(T defaultValue)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Or
+
+### T OrDefault()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** OrDefault
+
+### Void SetValue(T value)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** SetValue
+
+### ResultStatus Status { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** WIP
+* **Author:** UNKNOWN
+* **Description:** Status
+
+### String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** ToString
+
+### Boolean TryGet(T& value)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** TryGet
+
+### T Value { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** Value
 
 *****
 ## Singleton<T>
@@ -2425,7 +2551,7 @@
 * **Author:** UNKNOWN
 * **Description:** From dotNetTips.Utility
 
-### Task<String> DownloadStringAsync(Uri address, String clientId)
+### Task<String> DownloadStringAsync(Uri address, String clientId, CancellationToken cancellationToken)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -4512,7 +4638,7 @@
 * **Description:** AddCacheItem
 * **Modified By:** David McCarter
 
-### Task AddCacheItemAsync(IDataModel<T, TKey> item)
+### Task AddCacheItemAsync(IDataRecord item, CancellationToken cancellationToken)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4523,7 +4649,7 @@
 * **Description:** AddCacheItemAsync
 * **Modified By:** David McCarter
 
-### Task AddCacheItemAsync(IDataRecord item)
+### Task AddCacheItemAsync(IDataModel<T, TKey> item, CancellationToken cancelationToken)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4534,7 +4660,7 @@
 * **Description:** AddCacheItemAsync
 * **Modified By:** David McCarter
 
-### Task AddCacheItemAsync(IDataModel<T, TKey> item, TimeSpan timeout)
+### Task AddCacheItemAsync(IDataRecord item, DateTimeOffset timeout, CancellationToken cancellationToken)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4545,7 +4671,7 @@
 * **Description:** AddCacheItemAsync
 * **Modified By:** David McCarter
 
-### Task AddCacheItemAsync(IDataRecord item, TimeSpan timeout)
+### Task AddCacheItemAsync(String key, T item, CancellationToken cancellationToken)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4556,7 +4682,7 @@
 * **Description:** AddCacheItemAsync
 * **Modified By:** David McCarter
 
-### Task AddCacheItemAsync(IDataModel<T, TKey> item, DateTimeOffset timeout)
+### Task AddCacheItemAsync(IDataModel<T, TKey> item, TimeSpan timeout, CancellationToken cancellationToken)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4567,7 +4693,7 @@
 * **Description:** AddCacheItemAsync
 * **Modified By:** David McCarter
 
-### Task AddCacheItemAsync(IDataRecord item, DateTimeOffset timeout)
+### Task AddCacheItemAsync(IDataRecord item, TimeSpan timeout, CancellationToken cancellationToken)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4578,7 +4704,7 @@
 * **Description:** AddCacheItemAsync
 * **Modified By:** David McCarter
 
-### Task AddCacheItemAsync(String key, T item)
+### Task AddCacheItemAsync(IDataModel<T, TKey> item, DateTimeOffset timeout, CancellationToken cancellationToken)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4589,7 +4715,7 @@
 * **Description:** AddCacheItemAsync
 * **Modified By:** David McCarter
 
-### Task AddCacheItemAsync(String key, T item, TimeSpan timeout)
+### Task AddCacheItemAsync(String key, T item, TimeSpan timeout, CancellationToken cancellationToken)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4600,7 +4726,7 @@
 * **Description:** AddCacheItemAsync
 * **Modified By:** David McCarter
 
-### Task AddCacheItemAsync(String key, T item, DateTimeOffset timeout)
+### Task AddCacheItemAsync(String key, T item, DateTimeOffset timeout, CancellationToken cancellationToken)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4677,7 +4803,7 @@
 * **Description:** GetCacheItem
 * **Modified By:** David McCarter
 
-### Task<T> GetCacheItemAsync(String key)
+### Task<T> GetCacheItemAsync(String key, CancellationToken cancellationToken)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4711,4 +4837,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 1/29/2025 5:00:53 PM UTC**
+**Generated by Spargine - dotNetTips.com on 1/30/2025 6:59:50 PM UTC**
