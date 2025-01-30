@@ -347,6 +347,18 @@ public static class ExceptionThrower
 	public static void ThrowIOException([AllowNull] string message) => throw new IOException(message ?? Resources.ErrorUnknownIOException);
 
 	/// <summary>
+	/// Throws an <see cref="IOException"/> with the specified message and inner exception.
+	/// </summary>
+	/// <param name="message">The message that describes the error. Can be null.</param>
+	/// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+	/// <exception cref="IOException">Always thrown with the specified message and inner exception.</exception>
+	[DoesNotReturn]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
+	[Information(nameof(ThrowIOException), UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static void ThrowIOException([AllowNull] string message, Exception innerException) => throw new IOException(message ?? Resources.ErrorUnknownIOException, innerException);
+
+	/// <summary>
 	/// Throws a <see cref="JsonException"/> with a specified error message.
 	/// </summary>
 	/// <param name="message">The error message that explains the reason for the exception. If the message is null, a default message from resources is used.</param>

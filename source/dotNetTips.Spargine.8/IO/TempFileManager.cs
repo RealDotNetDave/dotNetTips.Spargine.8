@@ -4,7 +4,7 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-17-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,9 +13,11 @@
 // ***********************************************************************
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Security;
 using DotNetTips.Spargine.Extensions;
+using DotNetTips.Spargine.Properties;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -26,7 +28,7 @@ namespace DotNetTips.Spargine.IO;
 /// </summary>
 /// <seealso cref="IDisposable" />
 [Information(nameof(TempFileManager), "David McCarter", "8/4/2024", Status = Status.NeedsDocumentation)]
-public class TempFileManager : IDisposable
+public class TempFileManager : IDisposable, IAsyncDisposable
 {
 
 	/// <summary>
@@ -42,8 +44,28 @@ public class TempFileManager : IDisposable
 	/// <summary>
 	/// Initializes a new instance of the <see cref="TempFileManager" /> class.
 	/// </summary>
+	[ExcludeFromCodeCoverage]
 	public TempFileManager()
 	{
+	}
+
+	/// <summary>
+	/// Finalizes an instance of the <see cref="TempFileManager"/> class.
+	/// </summary>
+	~TempFileManager()
+	{
+		this.Dispose(false);
+	}
+
+	/// <summary>
+	/// Asynchronously performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+	/// </summary>
+	/// <returns>A task that represents the asynchronous dispose operation.</returns>
+	[Information(nameof(IAsyncDisposable.DisposeAsync), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	async ValueTask IAsyncDisposable.DisposeAsync()
+	{
+		await Task.Run(() => this.Dispose(true)).ConfigureAwait(false);
+		GC.SuppressFinalize(this);
 	}
 
 	/// <summary>
@@ -52,12 +74,18 @@ public class TempFileManager : IDisposable
 	/// <returns>The path of the created temporary file.</returns>
 	private static string GenerateRandomFile()
 	{
-		var tempFileName = $"{UlidGenerator.GenerateUlid()}.dntt";
-		var tempFilePath = Path.Combine(Path.GetTempPath(), tempFileName);
+		var tempFilePath = Path.Combine(Path.GetTempPath(), $"{UlidGenerator.GenerateUlid()}.dntt");
 
-		// Create the file to ensure it exists
-		using (File.Create(tempFilePath))
-		{ }
+		try
+		{
+			// Create the file to ensure it exists
+			File.Create(tempFilePath).Dispose();
+		}
+		catch (Exception ex)
+		{
+			// Log or handle the exception as needed
+			ExceptionThrower.ThrowIOException(Resources.FailedToCreateTemporaryFile, ex);
+		}
 
 		return tempFilePath;
 	}
@@ -121,27 +149,8 @@ public class TempFileManager : IDisposable
 	[Information("Deletes all temporary files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void DeleteAllFiles()
 	{
-		_ = Parallel.ForEach(this._files, this.DeleteFile);
-
-		while (this._files.TryTake(out _))
-		{ }
-	}
-
-	/// <summary>
-	/// Deletes a temporary file.
-	/// </summary>
-	/// <param name="file">The file.</param>
-	[Information("Deletes a temporary file.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public void DeleteFile(string file)
-	{
-		if (file.IsNullOrEmpty())
-		{
-			return;
-		}
-
-		File.Delete(file);
-
-		_ = this._files.TryTake(out _);
+		_ = FileHelper.DeleteFiles(this._files.ToReadOnlyCollection());
+		this._files.Clear();
 	}
 
 	/// <summary>

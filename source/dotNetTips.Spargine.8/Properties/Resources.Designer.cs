@@ -70,6 +70,15 @@ namespace DotNetTips.Spargine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to create temporary file..
+        /// </summary>
+        internal static string FailedToCreateTemporaryFile {
+            get {
+                return ResourceManager.GetString("FailedToCreateTemporaryFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File not found..
         /// </summary>
         internal static string FileNotFound {

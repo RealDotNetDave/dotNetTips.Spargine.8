@@ -79,23 +79,6 @@ public class TempFileManagerTests
 	}
 
 	[TestMethod]
-	public void DeleteFile_ShouldRemoveFileFromList()
-	{
-		// Arrange
-		using (var manager = new TempFileManager())
-		{
-			var filePath = manager.CreateFile();
-
-			// Act
-			manager.DeleteFile(filePath);
-
-			// Assert
-			Assert.IsFalse(File.Exists(filePath));
-			Assert.IsFalse(manager.GetManagedFiles().Contains(filePath));
-		}
-	}
-
-	[TestMethod]
 	public void Dispose_ShouldReleaseResources()
 	{
 		// Arrange
