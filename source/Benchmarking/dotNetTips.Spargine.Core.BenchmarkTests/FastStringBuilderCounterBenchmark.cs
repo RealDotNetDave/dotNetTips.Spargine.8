@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-05-2024
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilderCounterBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -45,7 +44,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	[BenchmarkCategory(Categories.Collections)]
 	public void BytesToString()
 	{
-		var result = FastStringBuilder.BytesToString(this._byteArray);
+		var result = FastStringBuilder.BytesToString(ref this._byteArray);
 
 		this.Consume(result);
 	}
@@ -86,7 +85,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 
 		foreach (var arg in this._words)
 		{
-			_ = sb.Append(arg + ControlChars.EmptyString);
+			_ = sb.Append(string.Format(CultureInfo.InvariantCulture, "{0}{1}", arg, ControlChars.EmptyString));
 		}
 
 		base.Consume(sb.ToString());
@@ -111,7 +110,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		{
 			var line = this._words[argumentIndex];
 
-			_ = sb.AppendLine(line + ControlChars.Comma);
+			_ = sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "{0}{1}", line, ControlChars.Comma));
 		}
 
 		this.Consume(sb.ToString());
@@ -121,13 +120,13 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	[BenchmarkCategory(Categories.Collections)]
 	public void PerformAction()
 	{
-		Action<StringBuilder> action = (StringBuilder sb) =>
+		void action(StringBuilder sb)
 		{
 			for (var index = 0; index < this._words.Length; index++)
 			{
 				_ = sb.Append(this._words[index]);
 			}
-		};
+		}
 
 		var result = FastStringBuilder.PerformAction(action);
 
@@ -155,13 +154,13 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	{
 		var sb = _stringBuilderPool.Get();
 
-		Action<StringBuilder> action = (sb) =>
+		void action(StringBuilder sb)
 		{
 			for (var index = 0; index < this._words.Length; index++)
 			{
 				_ = sb.Append(this._words[index]);
 			}
-		};
+		}
 
 		var result = FastStringBuilder.PerformAction(action);
 
@@ -179,7 +178,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this._words = [.. RandomData.GenerateWords(this.Count, 10, 10)];
 		this._wordDictionary = RandomData.GenerateWords(this.Count, 10, 10).ToDictionary(x => RandomData.GenerateKey(), y => y);
 
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"ByteArray: {_byteArray.Length}.");
+		ConsoleLogger.Default.WriteLine(LogKind.Info, $"ByteArray: {this._byteArray.Length}.");
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString))]

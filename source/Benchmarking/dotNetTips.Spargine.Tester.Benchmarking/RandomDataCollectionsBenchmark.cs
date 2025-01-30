@@ -4,7 +4,7 @@
 // Created          : 08-02-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-11-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="RandomDataCollectionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -21,7 +21,6 @@ using DotNetTips.Spargine.Core.Data;
 using DotNetTips.Spargine.Core.Data.Models;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
-using DotNetTips.Spargine.Tester.Models.ValueTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -34,16 +33,16 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 {
 	private const CountryName DefaultCountryName = CountryName.UnitedStates;
 
-	private Collection<Coordinate> _coordinateCollection;
+	private Collection<Models.ValueTypes.Coordinate> _coordinateCollection;
 	private Collection<PersonRecord> _personRecordCollection;
-	private Collection<Models.RefTypes.Person<Models.RefTypes.Address>> _personRefCollection;
+	private Collection<Person<Address>> _personRefCollection;
 	private readonly Country DefaultCountry = CountryRepository.GetCountry(CountryName.UnitedStates);
 
 	[Benchmark(Description = nameof(RandomData.GenerateAddressCollection))]
 	[BenchmarkCategory(Categories.New)]
 	public void GenerateAddressCollectionRef()
 	{
-		var result = RandomData.GenerateAddressCollection<Models.RefTypes.Address>(this.DefaultCountry);
+		var result = RandomData.GenerateAddressCollection<Address>(this.DefaultCountry);
 
 		this.Consume(result);
 	}
@@ -98,7 +97,7 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 	[BenchmarkCategory(Categories.New)]
 	public void GeneratePersonRefCollection()
 	{
-		var result = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(this.Count);
+		var result = RandomData.GeneratePersonRefCollection<Address>(this.Count);
 
 		this.Consume(result);
 	}
