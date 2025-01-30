@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -26,7 +26,6 @@ using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Numerics;
 using System.Reflection;
 using System.Reflection.Metadata;
@@ -278,7 +277,7 @@ public static class TypeHelper
 
 		// Add types from the System namespace
 		var systemTypes = Assembly.GetAssembly(typeof(int)).GetTypes()
-			.Where(t => string.Compare(t.Namespace, "System", StringComparison.Ordinal) == 0 && t.IsPublic && !t.IsGenericType)
+			.Where(t => string.Equals(t.Namespace, "System", StringComparison.Ordinal) && t.IsPublic && !t.IsGenericType)
 			.ToList();
 
 		foreach (var type in systemTypes)

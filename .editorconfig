@@ -90,6 +90,17 @@ dotnet_naming_rule.non_private_static_fields_should_be_pascal_case.severity = wa
 dotnet_naming_rule.non_private_static_fields_should_be_pascal_case.style = non_private_static_field_style
 dotnet_naming_rule.non_private_static_fields_should_be_pascal_case.symbols = non_private_static_fields
 
+dotnet_naming_rule.private_fields_style.severity = warning
+
+dotnet_naming_rule.private_fields_style.symbols = private_fields
+
+dotnet_naming_rule.private_fields_style.style = camel_case
+
+dotnet_naming_rule.private_fields.severity = warning
+
+dotnet_naming_rule.private_fields.symbols = private_fields
+dotnet_naming_rule.private_fields.style = camel_case_underscore
+
 dotnet_naming_symbols.non_private_static_fields.applicable_accessibilities = public, protected, internal, protected_internal, private_protected
 dotnet_naming_symbols.non_private_static_fields.applicable_kinds = field
 dotnet_naming_symbols.non_private_static_fields.required_modifiers = static
@@ -588,6 +599,12 @@ dotnet_code_quality.require_explicit_visibility = true
 dotnet_code_quality.require_variable_declaration_for_explicit_type = false
 dotnet_code_quality.require_explicit_type_arguments = true
 
+dotnet_enable_roslyn_analyzers = true
+
+dotnet_code_quality.enableNETAnalyzers = true
+
+dotnet_code_quality.enable_nullable_reference_types = true
+
 #### Performance ####
 
 # Use Literals Where Appropriate
@@ -625,7 +642,7 @@ dotnet_diagnostic.CA1820.severity = warning
 dotnet_diagnostic.CA1821.severity = error
 
 # Mark members as static
-dotnet_diagnostic.CA1822.severity = suggestion
+dotnet_diagnostic.CA1822.severity = warning
 
 # Avoid unused private fields
 dotnet_diagnostic.CA1823.severity = error
@@ -778,6 +795,9 @@ dotnet_analyzer_diagnostic.category-Performance.severity = error
 
 # The UTF-7 encoding is insecure
 dotnet_diagnostic.SYSLIB0001.severity = error
+
+dotnet_diagnostic.PERF001.severity = warning 
+
 
 #### Obsolete ####
 
@@ -1376,7 +1396,7 @@ dotnet_diagnostic.CA3077.severity = warning
 dotnet_diagnostic.CA3147.severity = warning
 
 # Do Not Use Weak Cryptographic Algorithms
-dotnet_diagnostic.CA5350.severity = error
+dotnet_diagnostic.CA5350.severity = warning
 
 # Do Not Use Broken Cryptographic Algorithms
 dotnet_diagnostic.CA5351.severity = error
@@ -1525,6 +1545,8 @@ dotnet_diagnostic.CA5404.severity = error
 # Do not always skip token validation in delegates
 dotnet_diagnostic.CA5405.severity = error
 
+dotnet_diagnostic.SEC001.severity = error
+
 #### Usage Rules ####
 
 # Review unused parameters
@@ -1664,8 +1686,6 @@ dotnet_diagnostic.CA2264.severity = warning
 
 # Do not compare Span<T> to null or default
 dotnet_diagnostic.CA2265.severity = warning
-
-
 
 #### Language Rules ####
 
@@ -2505,16 +2525,17 @@ csharp_style_expression_bodied_constructors = true:warning
 csharp_style_expression_bodied_indexers = true:warning
 csharp_style_expression_bodied_lambdas = true:warning
 csharp_style_expression_bodied_local_functions = true:warning
-csharp_style_expression_bodied_methods = true:warning
+csharp_style_expression_bodied_methods = true:suggestion
 csharp_style_expression_bodied_operators = true:warning
 csharp_style_expression_bodied_properties = true:warning
 
 # Pattern matching preferences
-csharp_style_pattern_matching_over_as_with_null_check = true:warning
+csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
 csharp_style_pattern_matching_over_is_with_cast_check = true:warning
 csharp_style_prefer_not_pattern = true:warning
 csharp_style_prefer_pattern_matching = true:warning
 csharp_style_prefer_switch_expression = true:warning
+csharp_style_prefer_explicit_this = true:warning
 
 # "Null" checking preferences
 csharp_style_conditional_delegate_call = true:warning
@@ -2591,6 +2612,7 @@ dotnet_diagnostic.IDE0084.severity = warning
 [*.{cs,vb}]
 #Invalid JSON pattern
 dotnet_diagnostic.JSON001.severity = suggestion
+
 # Probable JSON string detected
 dotnet_diagnostic.JSON002.severity = suggestion
 
@@ -2602,7 +2624,6 @@ dotnet_diagnostic.RE0001.severity = warning
 [*.g.cs]
 # Missing XML comment for publicly visible type or member 'Type_or_Member'
 dotnet_diagnostic.CS1591.severity = none
-
 
 ### Sources ###
 # https://github.com/dotnet/roslyn-analyzers/blob/main/src/NetAnalyzers/Microsoft.CodeAnalysis.NetAnalyzers.md

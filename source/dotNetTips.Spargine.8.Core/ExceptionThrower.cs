@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
