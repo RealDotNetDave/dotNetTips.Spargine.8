@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="Benchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -25,10 +25,10 @@ using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Order;
 using DotNetTips.Spargine.Benchmarking.Properties;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
-using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using static BenchmarkDotNet.Attributes.JsonExporterAttribute;
 using static BenchmarkDotNet.Attributes.MarkdownExporterAttribute;
 
@@ -269,8 +269,8 @@ public abstract class Benchmark
 		this.Coordinate02 = RandomData.GenerateCoordinate<Coordinate>();
 		this.PersonRecord01 = RandomData.GeneratePersonRecord();
 		this.PersonRecord02 = RandomData.GeneratePersonRecord();
-		this.PersonRef01 = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
-		this.PersonRef02 = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+		this.PersonRef01 = RandomData.GeneratePersonRef<Address>();
+		this.PersonRef02 = RandomData.GeneratePersonRef<Address>();
 		this.PersonVal01 = RandomData.GeneratePersonVal<Tester.Models.ValueTypes.Address>();
 		this.PersonVal02 = RandomData.GeneratePersonVal<Tester.Models.ValueTypes.Address>();
 		this.StringToTrim = $"          {this.LongTestString}          ";
@@ -290,7 +290,7 @@ public abstract class Benchmark
 	/// This method demonstrates how to modify properties of objects that are constrained by generic type parameters.
 	/// </summary>
 	/// <param name="person">The item object whose Email property will be updated.</param>
-	public virtual void Update([NotNull] Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> person) => person.Email = TestEmailLowerCase;
+	public virtual void Update([NotNull] Person<Address> person) => person.Email = TestEmailLowerCase;
 
 	/// <summary>
 	/// Updates the Email property of a value type item object that implements the IPerson interface with a predefined test email address.
@@ -316,6 +316,8 @@ public abstract class Benchmark
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public virtual void Update(ICoordinate coord)
 	{
+		coord = coord.ArgumentNotNull();
+
 		coord.X = 100;
 		coord.Y = 200;
 		coord.Z = 300;
@@ -408,14 +410,14 @@ public abstract class Benchmark
 	/// This property provides access to a Person object instance that can be used in benchmark tests to measure performance of operations involving item objects.
 	/// </summary>
 	/// <value>The first Person{Address} object.</value>
-	public Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> PersonRef01 { get; private set; }
+	public Person<Address> PersonRef01 { get; private set; }
 
 	/// <summary>
 	/// Retrieves a Person{Address} reference type object for testing generated during startup.
 	/// This property provides access to a Person object instance that can be used in benchmark tests to measure performance of operations involving item objects.
 	/// </summary>
 	/// <value>The second Person{Address} object.</value>
-	public Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> PersonRef02 { get; private set; }
+	public Person<Address> PersonRef02 { get; private set; }
 
 	/// <summary>
 	/// Retrieves a Person{Address} value type object for testing generated during startup.
