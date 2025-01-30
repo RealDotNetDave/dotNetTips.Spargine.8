@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-27-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -109,15 +109,12 @@ public static class UlidGenerator
 	/// <param name="count">The number of ULIDs to generate.</param>
 	/// <returns>A read-only collection of generated ULIDs.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than or equal to zero.</exception>
-	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
 	public static ReadOnlyCollection<string> GenerateMultipleUlids(int count)
 	{
 		var ulids = new List<string>(count.ArgumentInRange(1, defaultValue: 1));
 
-		for (var index = 0; index < count; index++)
-		{
-			ulids.Add(GenerateUlid());
-		}
+		_ = Parallel.For(0, count, index => ulids[index] = GenerateUlid());
 
 		return ulids.AsReadOnly();
 	}
@@ -129,13 +126,10 @@ public static class UlidGenerator
 	[Information("Generates a new ULID.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string GenerateUlid()
 	{
-		var timestamp = GetTimestamp().AsSpan();
-		var randomBytes = GetRandomBytes().AsSpan();
-
 		var ulidChars = new char[26].AsSpan();
 
-		EncodeBase32(timestamp, ulidChars, 0, TimestampLength);
-		EncodeBase32(randomBytes, ulidChars, TimestampLength, RandomLength);
+		EncodeBase32(GetTimestamp().AsSpan(), ulidChars, 0, TimestampLength);
+		EncodeBase32(GetRandomBytes().AsSpan(), ulidChars, TimestampLength, RandomLength);
 
 		return new string(ulidChars);
 	}

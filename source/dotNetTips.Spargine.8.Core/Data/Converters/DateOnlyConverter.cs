@@ -4,7 +4,7 @@
 // Created          : 01-10-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-10-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="DateOnlyConverter.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -49,6 +49,7 @@ public class DateOnlyConverter(string? serializationFormat) : JsonConverter<Date
 	public override DateOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
 		var value = reader.GetString();
+
 		try
 		{
 			return DateOnly.Parse(value!, IsoDateTimeOffsetConverter.Singleton.Culture);

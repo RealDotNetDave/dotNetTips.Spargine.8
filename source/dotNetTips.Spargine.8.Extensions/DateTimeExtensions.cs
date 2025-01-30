@@ -289,6 +289,11 @@ public static class DateTimeExtensions
 	[Information(nameof(ToFriendlyDateString), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string ToFriendlyDateString(this in DateTime input)
 	{
+		return FormatFriendlyDateString(input);
+	}
+
+	private static string FormatFriendlyDateString(DateTime input)
+	{
 		string formattedDate;
 
 		if (input.Date == DateTime.Today)
