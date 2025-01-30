@@ -4,7 +4,7 @@
 // Created          : 01-11-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="HttpClientHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -15,6 +15,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net;
+using System.Text;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Properties;
 
@@ -31,8 +32,14 @@ namespace DotNetTips.Spargine.Net.Http;
 /// to be used statically, with a shared instance of <see cref="HttpClient"/> that is configured with a default timeout value. This approach helps to
 /// avoid the common pitfalls associated with managing the lifecycle of <see cref="HttpClient"/> instances.
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public static class HttpClientHelper
 {
+
+	/// <summary>
+	/// The format string used to indicate that a resource was not found.
+	/// </summary>
+	private static readonly CompositeFormat _resourceWasNotFound = CompositeFormat.Parse(Resources.ResourceWasNotFound);
 
 	/// <summary>
 	/// The HttpClient instance used for making HTTP requests. Configured with a 20-second timeout.
@@ -46,6 +53,7 @@ public static class HttpClientHelper
 	/// Asynchronously gets an HTTP response for the specified URL.
 	/// </summary>
 	/// <param name="url">The URL to get the response from.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous operation and contains the <see cref="HttpResponseMessage"/>.</returns>
 	/// <example>
 	/// Here is how you can use the GetHttpResponseAsync method:
@@ -58,15 +66,14 @@ public static class HttpClientHelper
 	/// <remarks>
 	/// This method creates a new <see cref="CancellationTokenSource"/> internally to manage cancellation.
 	/// </remarks>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="url"/> is null.</exception>
+	/// <exception cref="InvalidOperationException">Thrown if the operation is canceled or times out.</exception>
 	[Information(nameof(GetHttpResponseAsync), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static async Task<HttpResponseMessage> GetHttpResponseAsync(Uri url)
+	public static async Task<HttpResponseMessage> GetHttpResponseAsync(Uri url, CancellationToken cancellationToken = default)
 	{
 		url = url.ArgumentNotNull<Uri>();
 
-		using (var cts = new CancellationTokenSource())
-		{
-			return await GetHttpResponseAsync(url, cts).ConfigureAwait(false);
-		}
+		return await GetHttpResponseAsync(url, cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -124,51 +131,51 @@ public static class HttpClientHelper
 	/// Asynchronously retrieves a stream from the specified URL.
 	/// </summary>
 	/// <param name="url">The URL to retrieve the stream from.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous operation and contains the stream from the specified URL.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="url"/> is null.</exception>
+	/// <exception cref="InvalidOperationException">Thrown if the operation is canceled or times out.</exception>
 	/// <example>
 	/// Here is how you can use the GetStreamAsync method:
 	/// <code>
 	/// Uri url = new Uri("https://example.com");
 	/// Stream stream = await HttpClientHelper.GetStreamAsync(url);
 	/// // Use the stream
-	/// </code></example>
+	/// </code>
+	/// </example>
 	[DefaultValue(null)]
 	[Information(nameof(GetHttpResponseAsync), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static async Task<Stream> GetStreamAsync(Uri url)
+	public static async Task<Stream> GetStreamAsync(Uri url, CancellationToken cancellationToken = default)
 	{
 		url = url.ArgumentNotNull<Uri>();
 
-		using (var cts = new CancellationTokenSource())
+		try
 		{
-			try
-			{
-				// Pass in the token.
-				var response = await Client.GetStreamAsync(url, cts.Token).ConfigureAwait(continueOnCapturedContext: false);
+			// Pass in the token.
+			var response = await Client.GetStreamAsync(url, cancellationToken).ConfigureAwait(continueOnCapturedContext: false);
 
-				return response;
-			}
-			catch (TaskCanceledException ex) when (cts.IsCancellationRequested)
-			{
-				// If the token has been canceled, it is not a timeout.
-				// Handle cancellation.
-				ExceptionThrower.ThrowInvalidOperationException(message: Resources.TheOperationHasBeenCanceled, ex);
-			}
-			catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
-			{
-				// Handle timeout.
-				ExceptionThrower.ThrowInvalidOperationException(message: Resources.TheOperationHasTimedOut, ex);
-			}
-			catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
-			{
-				// Handle 404
-				ExceptionThrower.ThrowInvalidOperationException(message: string.Format(CultureInfo.CurrentCulture, Resources.ResourceWasNotFound, url), ex);
-			}
-			catch (HttpRequestException ex)
-			{
-				// Handle 404
-				ExceptionThrower.ThrowInvalidOperationException(message: string.Format(CultureInfo.CurrentCulture, Resources.ResourceWasNotFound, url), ex);
-			}
-
+			return response;
+		}
+		catch (TaskCanceledException ex) when (cancellationToken.IsCancellationRequested)
+		{
+			// If the token has been canceled, it is not a timeout.
+			// Handle cancellation.
+			ExceptionThrower.ThrowInvalidOperationException(message: Resources.TheOperationHasBeenCanceled, ex);
+		}
+		catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
+		{
+			// Handle timeout.
+			ExceptionThrower.ThrowInvalidOperationException(message: Resources.TheOperationHasTimedOut, ex);
+		}
+		catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+		{
+			// Handle 404
+			ExceptionThrower.ThrowInvalidOperationException(message: string.Format(CultureInfo.CurrentCulture, _resourceWasNotFound, url), ex);
+		}
+		catch (HttpRequestException ex)
+		{
+			// Handle 404
+			ExceptionThrower.ThrowInvalidOperationException(message: string.Format(CultureInfo.CurrentCulture, _resourceWasNotFound, url), ex);
 		}
 
 		return null;

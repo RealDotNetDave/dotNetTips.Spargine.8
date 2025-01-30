@@ -141,4 +141,7 @@
   <data name="TheDirectoryForTheFileCannotBeTheSameAsThe" xml:space="preserve">
     <value>The directory for the file cannot be the same as the destination.</value>
   </data>
+  <data name="ErrorInvalidFilePathZipArchive" xml:space="preserve">
+    <value>Invalid file path in zip archive.</value>
+  </data>
 </root>

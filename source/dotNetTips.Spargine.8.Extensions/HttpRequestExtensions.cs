@@ -4,7 +4,7 @@
 // Created          : 06-01-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-27-2024
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="HttpRequestExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -39,17 +39,18 @@ public static class HttpRequestExtensions
 	/// Validates that <paramref name="request" /> is not null.
 	/// </summary>
 	/// <param name="request">The request.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>Task&lt;System.Byte[]&gt;.</returns>
-	/// <exception cref="ArgumentNullException">request</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="request"/> is null.</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(GetRawBodyBytesAsync), "David McCarter", "11/07/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public static async Task<byte[]> GetRawBodyBytesAsync([NotNull] this HttpRequest request)
+	public static async Task<byte[]> GetRawBodyBytesAsync([NotNull] this HttpRequest request, CancellationToken cancellationToken = default)
 	{
 		request = request.ArgumentNotNull();
 
 		using (var ms = new MemoryStream(2048))
 		{
-			await request.Body.CopyToAsync(ms, CancellationToken.None).ConfigureAwait(false);
+			await request.Body.CopyToAsync(ms, cancellationToken).ConfigureAwait(false);
 
 			return ms.ToArray();
 		}
@@ -61,19 +62,19 @@ public static class HttpRequestExtensions
 	/// </summary>
 	/// <param name="request">Request instance to apply to.</param>
 	/// <param name="encoding">Optional - Encoding, defaults to UTF8.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>Task&lt;System.String&gt;.</returns>
-	/// <exception cref="ArgumentNullException">request</exception>
-	/// <exception cref="ArgumentNullException">encoding</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="request"/> or <paramref name="encoding"/> is null.</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(GetRawBodyStringAsync), "David McCarter", "11/07/2023", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public static async Task<string> GetRawBodyStringAsync([NotNull] this HttpRequest request, [NotNull] Encoding encoding)
+	public static async Task<string> GetRawBodyStringAsync([NotNull] this HttpRequest request, [NotNull] Encoding encoding, CancellationToken cancellationToken = default)
 	{
 		request = request.ArgumentNotNull();
 		encoding = encoding.ArgumentNotNull();
 
 		using (var reader = new StreamReader(request.Body, encoding))
 		{
-			return await reader.ReadToEndAsync().ConfigureAwait(false);
+			return await reader.ReadToEndAsync(cancellationToken).ConfigureAwait(false);
 		}
 	}
 

@@ -4,7 +4,7 @@
 // Created          : 01-29-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="SimpleResult.Generic.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -60,8 +60,8 @@ public class SimpleResult<T>
 	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public SimpleResult(T value)
 	{
-		_value = value.ArgumentNotNull();
-		_valueSet = true;
+		this._value = value.ArgumentNotNull();
+		this._valueSet = true;
 	}
 
 	/// <summary>
@@ -69,14 +69,14 @@ public class SimpleResult<T>
 	/// </summary>
 	/// <param name="error">The exception representing error. Cannot be <see langword="null" />.</param>
 	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.None, Status = Core.Status.Available)]
-	public SimpleResult(Exception error) => AddException(error);
+	public SimpleResult(Exception error) => this.AddException(error);
 
 	/// <summary>
 	/// Generates the exception messages.
 	/// </summary>
 	/// <returns>A string containing all exception messages.</returns>
 	[return: NotNull]
-	private string GenerateExceptionMessages() => string.Join(Environment.NewLine, _exceptions.Select(e => e.GetAllMessages()));
+	private string GenerateExceptionMessages() => string.Join(Environment.NewLine, this._exceptions.Select(e => e.GetAllMessages()));
 
 
 	/// <summary>
@@ -122,7 +122,7 @@ public class SimpleResult<T>
 	/// </summary>
 	/// <returns>A string containing all error messages.</returns>
 	[Information(nameof(GetErrorMessages), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
-	public string GetErrorMessages() => GenerateExceptionMessages();
+	public string GetErrorMessages() => this.GenerateExceptionMessages();
 
 	/// <summary>
 	/// Gets the hash code for the current instance.
@@ -161,7 +161,7 @@ public class SimpleResult<T>
 	/// </summary>
 	/// <returns>The textual representation of this object.</returns>
 	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
-	public override string ToString() => this._exceptions.IsEmpty ? this._value?.ToString() ?? string.Empty : GenerateExceptionMessages();
+	public override string ToString() => this._exceptions.IsEmpty ? this._value?.ToString() ?? string.Empty : this.GenerateExceptionMessages();
 
 	/// <summary>
 	/// Attempts to extract value if it is present.
@@ -172,7 +172,7 @@ public class SimpleResult<T>
 	public bool TryGet(out T value)
 	{
 		value = this._value;
-		return _valueSet;
+		return this._valueSet;
 	}
 
 	/// <summary>

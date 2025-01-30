@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -39,7 +39,7 @@ namespace DotNetTips.Spargine.IO;
 /// intended for use on Windows platforms only.
 /// </remarks>
 [SupportedOSPlatform("windows")]
-[Information(nameof(FileHelper), "David McCarter", "2/11/2017", Status = Status.Available)]
+[Information(nameof(FileHelper), Status = Status.NeedsDocumentation)]
 public static class FileHelper
 {
 
@@ -88,6 +88,7 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="zipPath">The path to the zip file. Must not be null or empty.</param>
 	/// <param name="expandedDirectoryPath">The path to the directory where the contents of the zip file will be extracted. Must not be null or empty.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="zipPath"/> or <paramref name="expandedDirectoryPath"/> is null or empty.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the zip file specified by <paramref name="zipPath"/> does not exist.</exception>
@@ -96,7 +97,7 @@ public static class FileHelper
 	/// Make sure to call .Dispose on Task
 	/// </remarks>
 	[Information(nameof(UnWinZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	private static async Task UnWinZipAsync([NotNull] string zipPath, [NotNull] string expandedDirectoryPath)
+	private static async Task UnWinZipAsync([NotNull] string zipPath, [NotNull] string expandedDirectoryPath, CancellationToken cancellationToken = default)
 	{
 		using var zipFileStream = File.OpenRead(zipPath);
 		using var zipArchiveStream = new ZipArchive(zipFileStream);
@@ -114,13 +115,19 @@ public static class FileHelper
 
 			var extractedFilePath = Path.Combine(expandedDirectoryPath, zipArchiveEntry.FullName);
 
+			// Sanitize the extracted file path to prevent directory traversal attacks
+			if (!extractedFilePath.StartsWith(Path.GetFullPath(expandedDirectoryPath), StringComparison.OrdinalIgnoreCase))
+			{
+				ExceptionThrower.ThrowInvalidOperationException(Resources.ErrorInvalidFilePathZipArchive);
+			}
+
 			_ = Directory.CreateDirectory(Path.GetDirectoryName(extractedFilePath));
 
 			using (var zipStream = zipArchiveEntry.Open())
 			{
 				using (var extractedFileStream = File.OpenWrite(extractedFilePath))
 				{
-					await zipStream.CopyToAsync(extractedFileStream, CancellationToken.None).ConfigureAwait(false);
+					await zipStream.CopyToAsync(extractedFileStream, cancellationToken).ConfigureAwait(false);
 				}
 			}
 		}
@@ -309,6 +316,7 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="file">The file <see cref="FileInfo"/> object representing the file to copy. Must not be null.</param>
 	/// <param name="destination">The destination <see cref="DirectoryInfo"/> where the file should be copied to. Must not be null.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A Task{long} representing the asynchronous operation that completes with the size of the copied file in bytes.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destination"/> is null.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
@@ -323,7 +331,7 @@ public static class FileHelper
 	/// </code>
 	/// </example>
 	[Information(nameof(CopyFileAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Documentation = "https://dotnettips.wordpress.com/2020/11/17/coding-faster-with-the-dotnettips-utility-november-2020-update", Status = Status.Available)]
-	public static async Task<long> CopyFileAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
+	public static async Task<long> CopyFileAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
 		ValidateCreateDestinationDirectory(file, destination);
 
@@ -342,8 +350,8 @@ public static class FileHelper
 
 			using (var destinationStream = File.Create(newFileName))
 			{
-				await sourceStream.CopyToAsync(destinationStream, CancellationToken.None).ConfigureAwait(false);
-				await destinationStream.FlushAsync(CancellationToken.None).ConfigureAwait(false);
+				await sourceStream.CopyToAsync(destinationStream, cancellationToken).ConfigureAwait(false);
+				await destinationStream.FlushAsync(cancellationToken).ConfigureAwait(false);
 			}
 		}
 
@@ -407,6 +415,7 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="remoteUri">The <see cref="Uri"/> of the remote file to download. Must not be null.</param>
 	/// <param name="destination">The <see cref="DirectoryInfo"/> representing the destination directory where the unzipped files will be stored. Must not be null.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="remoteUri"/> or <paramref name="destination"/> is null.</exception>
 	/// <exception cref="WebException">Thrown if an error occurs during the download.</exception>
@@ -420,15 +429,15 @@ public static class FileHelper
 	/// </code>
 	/// </example>
 	[Information(nameof(DownloadFileFromWebAndUnzipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static async Task DownloadFileFromWebAndUnzipAsync([NotNull] Uri remoteUri, [NotNull] DirectoryInfo destination)
+	public static async Task DownloadFileFromWebAndUnzipAsync([NotNull] Uri remoteUri, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
 		_ = destination.ArgumentNotNull().CheckExists();
 
 		var tempDownloadPath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}{Path.GetExtension(remoteUri.ToString())}");
 
-		await DownloadFileFromWebAsync(remoteUri, destination).ConfigureAwait(false);
+		await DownloadFileFromWebAsync(remoteUri, destination, cancellationToken).ConfigureAwait(false);
 
-		await UnZipAsync(new FileInfo(tempDownloadPath), destination, true).ConfigureAwait(false);
+		await UnZipAsync(new FileInfo(tempDownloadPath), destination, true, cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -436,6 +445,7 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="remoteUri">The <see cref="Uri"/> of the remote file to download. Must not be null.</param>
 	/// <param name="destination">The <see cref="DirectoryInfo"/> representing the destination directory where the downloaded file will be saved. Must not be null.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous download operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="remoteUri"/> or <paramref name="destination"/> is null.</exception>
 	/// <exception cref="WebException">Thrown if an error occurs during the download.</exception>
@@ -449,7 +459,7 @@ public static class FileHelper
 	/// </code>
 	/// </example>
 	[Information(nameof(DownloadFileFromWebAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
-	public static async Task DownloadFileFromWebAsync([NotNull] Uri remoteUri, [NotNull] DirectoryInfo destination)
+	public static async Task DownloadFileFromWebAsync([NotNull] Uri remoteUri, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
 		remoteUri = remoteUri.ArgumentNotNull();
 
@@ -464,12 +474,12 @@ public static class FileHelper
 		{
 			using (var localStream = File.Create(pathName))
 			{
-				using (var stream = await client.GetStreamAsync(remoteUri, CancellationToken.None).ConfigureAwait(false))
+				using (var stream = await client.GetStreamAsync(remoteUri, cancellationToken).ConfigureAwait(false))
 				{
-					await stream.CopyToAsync(localStream, CancellationToken.None).ConfigureAwait(false);
+					await stream.CopyToAsync(localStream, cancellationToken).ConfigureAwait(false);
 				}
 
-				await localStream.FlushAsync(CancellationToken.None).ConfigureAwait(false);
+				await localStream.FlushAsync(cancellationToken).ConfigureAwait(false);
 			}
 		}
 	}
@@ -541,6 +551,7 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="file">The file <see cref="FileInfo"/> representing the GZip file to decompress. Must not be null.</param>
 	/// <param name="destination">The destination <see cref="DirectoryInfo"/> where the decompressed files will be stored. Must not be null.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous decompression operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destination"/> is null.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
@@ -554,7 +565,7 @@ public static class FileHelper
 	/// </example>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(UnGZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public static async Task UnGZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
+	public static async Task UnGZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
 		ValidateCreateDestinationDirectory(file, destination);
 
@@ -566,7 +577,7 @@ public static class FileHelper
 			{
 				using (var targetFileStream = File.OpenWrite(destinationPath))
 				{
-					await expandedStream.CopyToAsync(targetFileStream).ConfigureAwait(false);
+					await expandedStream.CopyToAsync(targetFileStream, cancellationToken).ConfigureAwait(false);
 				}
 			}
 		}
@@ -578,6 +589,7 @@ public static class FileHelper
 	/// <param name="file">The file <see cref="FileInfo"/> representing the GZip file to decompress. Must not be null.</param>
 	/// <param name="destination">The destination <see cref="DirectoryInfo"/> where the decompressed files will be stored. Must not be null.</param>
 	/// <param name="deleteGZipFile">Specifies whether to delete the GZip file after decompression.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous decompression operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destination"/> is null.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
@@ -591,11 +603,11 @@ public static class FileHelper
 	/// </example>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(UnGZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public static async Task UnGZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, bool deleteGZipFile)
+	public static async Task UnGZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, bool deleteGZipFile, CancellationToken cancellationToken = default)
 	{
 		ValidateCreateDestinationDirectory(file, destination);
 
-		await UnGZipAsync(file, destination).ConfigureAwait(false);
+		await UnGZipAsync(file, destination, cancellationToken).ConfigureAwait(false);
 
 		if (deleteGZipFile)
 		{
@@ -608,6 +620,7 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="file">The <see cref="FileInfo"/> representing the zip file to decompress. Must not be null.</param>
 	/// <param name="destination">The <see cref="DirectoryInfo"/> representing the destination directory where the unzipped files will be stored. Must not be null.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous decompression operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destination"/> is null.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the zip file does not exist.</exception>
@@ -622,13 +635,13 @@ public static class FileHelper
 	/// </example>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(UnZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public static async Task UnZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
+	public static async Task UnZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
 		ValidateCreateDestinationDirectory(file, destination);
 
 		var fileName = file.FullName;
 
-		await UnWinZipAsync(fileName, destination.FullName).ConfigureAwait(false);
+		await UnWinZipAsync(fileName, destination.FullName, cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -637,9 +650,10 @@ public static class FileHelper
 	/// <param name="file">The <see cref="FileInfo"/> representing the zip file to decompress. Must not be null.</param>
 	/// <param name="destination">The <see cref="DirectoryInfo"/> representing the destination directory where the unzipped files will be stored. Must not be null.</param>
 	/// <param name="deleteZipFile">Specifies whether to delete the zip file after decompression.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous decompression operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destination"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the file does not exist.</exception>
 	/// <example>
 	/// Here is how you can use the UnZipAsync method:
 	/// <code>
@@ -649,11 +663,11 @@ public static class FileHelper
 	/// </code>
 	/// </example>
 	[Information(nameof(UnZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public static async Task UnZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, bool deleteZipFile)
+	public static async Task UnZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, bool deleteZipFile, CancellationToken cancellationToken = default)
 	{
 		ValidateCreateDestinationDirectory(file, destination);
 
-		await UnZipAsync(file, destination).ConfigureAwait(false);
+		await UnZipAsync(file, destination, cancellationToken).ConfigureAwait(false);
 
 		if (deleteZipFile)
 		{

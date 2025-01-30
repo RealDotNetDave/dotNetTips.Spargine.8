@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -251,11 +251,11 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(CountAsync), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static async Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default)
+	public static Task<int> CountAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default)
 	{
-		_ = collection.ArgumentNotNull();
+		collection = collection.ArgumentNotNull();
 
-		return await Task.Run(collection.Count, cancellationToken).ConfigureAwait(false);
+		return Task.Run(collection.Count, cancellationToken);
 	}
 
 	/// <summary>
@@ -1318,19 +1318,19 @@ public static class EnumerableExtensions
 	/// Creates a <see cref="List{T}"/> from the <see cref="IEnumerable{T}"/>.
 	/// Validates that <paramref name="collection"/> is not null.
 	/// </summary>
-	/// <typeparam name="T">Generic type parameter.</typeparam>
-	/// <param name="collection">The list.</param>
-	/// <returns>Task&lt;List&lt;T&gt;&gt;.</returns>
-	/// <exception cref="ArgumentNullException">List cannot be null or empty.</exception>
-	/// <remarks>Make sure to call .Dispose on Task,</remarks>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to convert.</param>
+	/// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+	/// <returns>A task that represents the asynchronous operation. The task result contains a <see cref="List{T}"/> that contains elements from the input collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(ToListAsync), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static async Task<List<T>> ToListAsync<T>(this IEnumerable<T> collection)
+	public static Task<List<T>> ToListAsync<T>(this IEnumerable<T> collection, CancellationToken cancellationToken = default)
 	{
 		collection = collection.ArgumentItemsExists();
 
-		return await Task.Run(() => collection.ToList(), CancellationToken.None).ConfigureAwait(false);
+		return Task.Run(() => collection.ToList(), cancellationToken);
 	}
 
 	/// <summary>

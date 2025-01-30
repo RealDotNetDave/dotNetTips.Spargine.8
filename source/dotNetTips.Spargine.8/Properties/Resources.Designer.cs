@@ -61,6 +61,15 @@ namespace DotNetTips.Spargine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid file path in zip archive..
+        /// </summary>
+        internal static string ErrorInvalidFilePathZipArchive {
+            get {
+                return ResourceManager.GetString("ErrorInvalidFilePathZipArchive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File not found..
         /// </summary>
         internal static string FileNotFound {

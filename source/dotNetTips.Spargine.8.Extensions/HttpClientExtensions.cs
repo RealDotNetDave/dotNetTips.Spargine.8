@@ -4,7 +4,7 @@
 // Created          : 07-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="HttpClientExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -28,32 +28,33 @@ namespace DotNetTips.Spargine.Extensions;
 /// For example, the <see cref="GetAndDeserializeAsync{T}"/> method streamlines the process of sending a GET request, checking the response status,
 /// reading the response content as a string, and deserializing it into an instance of a type.
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public static class HttpClientExtensions
 {
 
 	/// <summary>
-	/// Gets and deserializes the <see cref="HttpClient" />.
-	/// Validates that <paramref name="client" />, <paramref name="url" />
-	/// and <paramref name="options" /> is not null.
+	/// Sends a GET request to the specified URL and deserializes the JSON response into an instance of the specified type.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="client">The client.</param>
-	/// <param name="url">The URL.</param>
-	/// <param name="options">The options.</param>
-	/// <returns>T.</returns>
+	/// <typeparam name="T">The type to deserialize the JSON response into.</typeparam>
+	/// <param name="client">The <see cref="HttpClient"/> instance to send the request.</param>
+	/// <param name="url">The URL to send the GET request to.</param>
+	/// <param name="options">The <see cref="JsonSerializerOptions"/> to use for deserialization.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
+	/// <returns>A task that represents the asynchronous operation. The task result contains the deserialized object of type <typeparamref name="T"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="client"/>, <paramref name="url"/>, or <paramref name="options"/> is null.</exception>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information("Original code from: https://ardalis.com/keep-tests-short-and-dry-with-extensions", "David McCarter", "7/13/2021", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public static async Task<T> GetAndDeserializeAsync<T>([NotNull] this HttpClient client, [NotNull] Uri url, [NotNull] JsonSerializerOptions options)
+	public static async Task<T> GetAndDeserializeAsync<T>([NotNull] this HttpClient client, [NotNull] Uri url, [NotNull] JsonSerializerOptions options, CancellationToken cancellationToken = default)
 	{
 		client = client.ArgumentNotNull();
 		url = url.ArgumentNotNull();
 		options = options.ArgumentNotNull();
 
-		using (var response = await client.GetAsync(new Uri(url.PathAndQuery), CancellationToken.None).ConfigureAwait(false))
+		using (var response = await client.GetAsync(new Uri(url.PathAndQuery), cancellationToken).ConfigureAwait(false))
 		{
 			_ = response.EnsureSuccessStatusCode();
 
-			var stringResponse = await response.Content.ReadAsStringAsync(CancellationToken.None).ConfigureAwait(false);
+			var stringResponse = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
 			return JsonSerializer.Deserialize<T>(stringResponse, options);
 		}

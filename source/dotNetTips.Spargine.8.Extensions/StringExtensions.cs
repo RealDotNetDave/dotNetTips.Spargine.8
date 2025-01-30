@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-18-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -379,13 +379,14 @@ public static class StringExtensions
 	/// Decompresses a Brotli compressed string asynchronously.
 	/// </summary>
 	/// <param name="value">The Brotli compressed string.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous decompression operation. The value of the TResult parameter contains the decompressed string.</returns>
 	/// <remarks>
 	/// This method uses <see cref="BrotliStream"/> for decompression.
 	/// Original code from: https://khalidabuhakmeh.com/compress-strings-with-dotnet-and-csharp
 	/// </remarks>
 	[Information(nameof(FromBrotliStringAsync), "David McCarter", "10/24/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static async Task<string> FromBrotliStringAsync(this string value)
+	public static async Task<string> FromBrotliStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
 		var input = new MemoryStream(Convert.FromBase64String(value.ArgumentNotNull()));
 
@@ -399,7 +400,7 @@ public static class StringExtensions
 					{
 						await using (stream.ConfigureAwait(false))
 						{
-							await stream.CopyToAsync(output).ConfigureAwait(false);
+							await stream.CopyToAsync(output, cancellationToken).ConfigureAwait(false);
 
 							return Encoding.Unicode.GetString(output.ToArray());
 						}
@@ -413,12 +414,13 @@ public static class StringExtensions
 	/// Decompresses a Deflate compressed string asynchronously.
 	/// </summary>
 	/// <param name="value">The Deflate compressed string.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous decompression operation. The value of the TResult parameter contains the decompressed string.</returns>
 	/// <remarks>
 	/// This method uses <see cref="DeflateStream"/> for decompression.
 	/// </remarks>
 	[Information(nameof(FromDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static async Task<string> FromDeflateStringAsync(this string value)
+	public static async Task<string> FromDeflateStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
 		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
 		var input = new MemoryStream(bytes);
@@ -433,8 +435,8 @@ public static class StringExtensions
 					{
 						await using (stream.ConfigureAwait(false))
 						{
-							await stream.CopyToAsync(output, CancellationToken.None).ConfigureAwait(false);
-							await stream.FlushAsync(CancellationToken.None).ConfigureAwait(false);
+							await stream.CopyToAsync(output, cancellationToken).ConfigureAwait(false);
+							await stream.FlushAsync(cancellationToken).ConfigureAwait(false);
 
 							return Encoding.Unicode.GetString(output.ToArray());
 						}
@@ -448,13 +450,14 @@ public static class StringExtensions
 	/// Decompresses a GZip compressed string asynchronously.
 	/// </summary>
 	/// <param name="value">The GZip compressed string.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous decompression operation. The value of the TResult parameter contains the decompressed string.</returns>
 	/// <remarks>
 	/// This method uses <see cref="GZipStream"/> for decompression.
 	/// Original code from: https://khalidabuhakmeh.com/compress-strings-with-dotnet-and-csharp
 	/// </remarks>
 	[Information(nameof(FromGZipStringAsync), "David McCarter", "10/24/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static async Task<string> FromGZipStringAsync(this string value)
+	public static async Task<string> FromGZipStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
 		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
 		var input = new MemoryStream(bytes);
@@ -469,8 +472,8 @@ public static class StringExtensions
 					{
 						await using (stream.ConfigureAwait(false))
 						{
-							await stream.CopyToAsync(output, CancellationToken.None).ConfigureAwait(false);
-							await stream.FlushAsync(CancellationToken.None).ConfigureAwait(false);
+							await stream.CopyToAsync(output, cancellationToken).ConfigureAwait(false);
+							await stream.FlushAsync(cancellationToken).ConfigureAwait(false);
 
 							return Encoding.Unicode.GetString(output.ToArray());
 						}
@@ -484,12 +487,13 @@ public static class StringExtensions
 	/// Decompresses a ZLib compressed string asynchronously.
 	/// </summary>
 	/// <param name="value">The ZLib compressed string.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous decompression operation. The value of the TResult parameter contains the decompressed string.</returns>
 	/// <remarks>
 	/// This method uses <see cref="DeflateStream"/> for decompression, as ZLib compression is closely related to the Deflate compression algorithm.
 	/// </remarks>
 	[Information(nameof(FromZLibStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static async Task<string> FromZLibStringAsync(this string value)
+	public static async Task<string> FromZLibStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
 		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
 		var input = new MemoryStream(bytes);
@@ -504,8 +508,8 @@ public static class StringExtensions
 					{
 						await using (stream.ConfigureAwait(false))
 						{
-							await stream.CopyToAsync(output, CancellationToken.None).ConfigureAwait(false);
-							await stream.FlushAsync(CancellationToken.None).ConfigureAwait(false);
+							await stream.CopyToAsync(output, cancellationToken).ConfigureAwait(false);
+							await stream.FlushAsync(cancellationToken).ConfigureAwait(false);
 
 							return Encoding.Unicode.GetString(output.ToArray());
 						}
@@ -1110,6 +1114,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to compress. This string cannot be null.</param>
 	/// <param name="level">The compression level to use. Defaults to <see cref="CompressionLevel.Fastest"/>.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task{String}"/> representing the asynchronous operation, which upon completion, yields the Brotli compressed string.</returns>
 	/// <example>
 	/// Input: "dotNetTips.com"
@@ -1120,7 +1125,7 @@ public static class StringExtensions
 	/// SmallestSize: iw0A+I+UrMG9dHJoJzwdrIKg1dYDoCSJKErYXLOsvkcYAw==
 	/// </example>
 	[Information(nameof(ToBrotliStringAsync), "David McCarter", "10/24/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static async Task<string> ToBrotliStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
+	public static async Task<string> ToBrotliStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest, CancellationToken cancellationToken = default)
 	{
 		var inputStream = new MemoryStream(Encoding.Unicode.GetBytes(input.ArgumentNotNull()));
 
@@ -1134,8 +1139,8 @@ public static class StringExtensions
 
 				await using (brotliStream.ConfigureAwait(continueOnCapturedContext: false))
 				{
-					await inputStream.CopyToAsync(brotliStream, CancellationToken.None).ConfigureAwait(continueOnCapturedContext: false);
-					await brotliStream.FlushAsync(CancellationToken.None).ConfigureAwait(continueOnCapturedContext: false);
+					await inputStream.CopyToAsync(brotliStream, cancellationToken).ConfigureAwait(continueOnCapturedContext: false);
+					await brotliStream.FlushAsync(cancellationToken).ConfigureAwait(continueOnCapturedContext: false);
 
 					return Convert.ToBase64String(outputStream.ToArray());
 				}
@@ -1163,6 +1168,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to compress. This string cannot be null.</param>
 	/// <param name="level">The compression level to use. Defaults to <see cref="CompressionLevel.Fastest"/>.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task{String}"/> representing the asynchronous operation, which upon completion, yields the Deflate compressed string.</returns>
 	/// <example>
 	/// Input: "dotNetTips.com"
@@ -1173,7 +1179,7 @@ public static class StringExtensions
 	/// SmallestSize: SmHIZyhh8GNIBZIhDJkMBQzFDHoMyUDRXAYAAAAA//8=
 	/// </example>
 	[Information(nameof(ToDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	public static async Task<string> ToDeflateStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
+	public static async Task<string> ToDeflateStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest, CancellationToken cancellationToken = default)
 	{
 		_ = input.ArgumentNotNull();
 
@@ -1181,7 +1187,7 @@ public static class StringExtensions
 		using var outputMemoryStream = new MemoryStream();
 		using (var deflateStream = new DeflateStream(outputMemoryStream, level, true))
 		{
-			await inputMemoryStream.CopyToAsync(deflateStream).ConfigureAwait(false);
+			await inputMemoryStream.CopyToAsync(deflateStream, cancellationToken).ConfigureAwait(false);
 		}
 
 		return Convert.ToBase64String(outputMemoryStream.ToArray());
@@ -1192,6 +1198,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to compress. This string cannot be null.</param>
 	/// <param name="level">The compression level to use. Defaults to <see cref="CompressionLevel.Fastest"/>.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task{String}"/> representing the asynchronous operation, which upon completion, yields the GZip compressed string.</returns>
 	/// <example>
 	/// Input: "dotNetTips.com"
@@ -1203,7 +1210,7 @@ public static class StringExtensions
 	/// </example>
 	/// <remarks>Make sure to call .Dispose on Task,</remarks>
 	[Information(nameof(ToGZipStringAsync), "David McCarter", "10/24/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static async Task<string> ToGZipStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
+	public static async Task<string> ToGZipStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest, CancellationToken cancellationToken = default)
 	{
 		_ = input.ArgumentNotNull();
 
@@ -1211,7 +1218,7 @@ public static class StringExtensions
 		using var outputMemoryStream = new MemoryStream();
 		using (var gzipStream = new GZipStream(outputMemoryStream, level, true))
 		{
-			await inputMemoryStream.CopyToAsync(gzipStream).ConfigureAwait(false);
+			await inputMemoryStream.CopyToAsync(gzipStream, cancellationToken).ConfigureAwait(false);
 		}
 
 		return Convert.ToBase64String(outputMemoryStream.ToArray());
@@ -1254,6 +1261,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="input">The string to compress. This string cannot be null.</param>
 	/// <param name="level">The compression level to use. Defaults to <see cref="CompressionLevel.Fastest"/>.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>A <see cref="Task{String}"/> representing the asynchronous operation, which upon completion, yields the ZLib compressed string.</returns>
 	/// <example>
 	/// Input: "dotNetTips.com"
@@ -1264,15 +1272,15 @@ public static class StringExtensions
 	/// SmallestSize: eNpKYchnKGHwY0gFkiEMmQwFDMUMegzJQNFcBgAAAAD//w==
 	/// </example>
 	[Information(nameof(ToZLibStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static async Task<string> ToZLibStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest)
+	public static async Task<string> ToZLibStringAsync([NotNull] this string input, CompressionLevel level = CompressionLevel.Fastest, CancellationToken cancellationToken = default)
 	{
-		_ = input.ArgumentNotNull();
+		input = input.ArgumentNotNull();
 
 		using var inputMemoryStream = new MemoryStream(Encoding.UTF8.GetBytes(input));
 		using var outputMemoryStream = new MemoryStream();
 		using (var zlibStream = new ZLibStream(outputMemoryStream, level, true))
 		{
-			await inputMemoryStream.CopyToAsync(zlibStream).ConfigureAwait(false);
+			await inputMemoryStream.CopyToAsync(zlibStream, cancellationToken).ConfigureAwait(false);
 		}
 
 		return Convert.ToBase64String(outputMemoryStream.ToArray());

@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -217,13 +217,14 @@ public static class DirectoryHelper
 	/// <param name="directories">The directories from which files are to be loaded.</param>
 	/// <param name="searchPattern">The search pattern to match against the names of files in <paramref name="directories" />.</param>
 	/// <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or should include all subdirectories.</param>
+	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
 	/// <returns>An asynchronous stream (<see cref="IAsyncEnumerable{T}" />) of collections of <see cref="FileInfo" />, where each collection represents files found in a directory.</returns>
 	/// <remarks>This method utilizes deferred execution to improve performance. Files are not loaded into memory until the asynchronous stream is iterated.</remarks>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="directories"/> or <paramref name="searchPattern"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(LoadFilesAsync), author: "David McCarter", createdOn: "3/1/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static async IAsyncEnumerable<IEnumerable<FileInfo>> LoadFilesAsync([NotNull] IEnumerable<DirectoryInfo> directories, [NotNull] string searchPattern, SearchOption searchOption)
+	public static async IAsyncEnumerable<IEnumerable<FileInfo>> LoadFilesAsync([NotNull] IEnumerable<DirectoryInfo> directories, [NotNull] string searchPattern, SearchOption searchOption, [EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
 		directories = directories.ArgumentNotNull();
 		searchPattern = searchPattern.ArgumentNotNull();
@@ -236,7 +237,7 @@ public static class DirectoryHelper
 		var options = new EnumerationOptions() { IgnoreInaccessible = true, RecurseSubdirectories = searchOption == SearchOption.AllDirectories };
 
 		var tasks = directories.Where(directory => directory.Exists)
-			.Select(directory => Task.Run(() => directory.GetFiles(searchPattern, options)))
+			.Select(directory => Task.Run(() => directory.GetFiles(searchPattern, options), cancellationToken))
 			.ToList();
 
 		foreach (var task in tasks)
@@ -244,6 +245,7 @@ public static class DirectoryHelper
 			yield return await task.ConfigureAwait(false);
 		}
 	}
+
 
 	/// <summary>
 	/// Loads the OneDrive folders for the current user.
