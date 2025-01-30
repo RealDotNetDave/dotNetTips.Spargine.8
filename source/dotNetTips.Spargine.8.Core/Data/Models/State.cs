@@ -4,13 +4,14 @@
 // Created          : 01-10-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-10-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="State.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -26,6 +27,7 @@ namespace DotNetTips.Spargine.Core.Data.Models;
 [Serializable]
 public sealed class State
 {
+	private Collection<City> _cities;
 
 	/// <summary>
 	/// Gets or sets the cities within the state.
@@ -34,7 +36,11 @@ public sealed class State
 	[DataMember(Name = "cities")]
 	[MaybeNull]
 	[JsonPropertyName("cities")]
-	public City[] Cities { get; set; }
+	public Collection<City> Cities
+	{
+		get => this._cities ??= [];
+		set => this._cities = value;
+	}
 
 	/// <summary>
 	/// Gets or sets the country that all instances of the state belong to.

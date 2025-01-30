@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -225,10 +225,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="address">The address.</param>
 	/// <returns>System.Int32.</returns>
 	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int CompareTo(Address address)
-	{
-		return string.Compare(this.Id, address.Id, StringComparison.OrdinalIgnoreCase);
-	}
+	public int CompareTo(Address address) => string.Compare(this.Id, address.Id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Determines whether the specified <see cref="object"/> is equal to this instance.

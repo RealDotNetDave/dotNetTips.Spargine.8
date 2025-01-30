@@ -4,7 +4,7 @@
 // Created          : 01-10-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-10-2025
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="Country.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -27,6 +28,16 @@ namespace DotNetTips.Spargine.Core.Data.Models;
 [Serializable]
 public sealed class Country
 {
+
+	/// <summary>
+	/// The collection of states within the country.
+	/// </summary>
+	private Collection<State> _states;
+
+	/// <summary>
+	/// The collection of timezones associated with the country.
+	/// </summary>
+	private Collection<Timezone> _timezones;
 
 	/// <summary>
 	/// Gets or sets the capital city of the country.
@@ -187,8 +198,11 @@ public sealed class Country
 	[MaybeNull]
 	[JsonPropertyName("states")]
 	[DataMember(Name = "states")]
-	public State[] States { get; set; }
-
+	public Collection<State> States
+	{
+		get => this._states ??= [];
+		set => this._states = value;
+	}
 	/// <summary>
 	/// Gets or sets the subregion where the country is located, which is a smaller part of the geographical region.
 	/// </summary>
@@ -204,7 +218,11 @@ public sealed class Country
 	[DataMember(Name = "timezones")]
 	[JsonPropertyName("timezones")]
 	[MaybeNull]
-	public Timezone[] Timezones { get; set; }
+	public Collection<Timezone> Timezones
+	{
+		get => this._timezones ??= [];
+		set => this._timezones = value;
+	}
 
 	/// <summary>
 	/// Gets or sets the Top-Level Domain (TLD) of the country.

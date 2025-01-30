@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-27-2024
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="WebHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -49,6 +49,7 @@ public static class WebHelper
 	/// </summary>
 	/// <param name="address">The URI from which to download the string content. Must not be null.</param>
 	/// <param name="clientId">Optional. The client identifier to be added to the request headers. If not specified, defaults to "NONE".</param>
+	/// <param name="cancellationToken">A cancellationToken token to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous download operation. The task result contains the downloaded string content.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
 	/// <exception cref="HttpRequestException">Thrown if the request fails due to an underlying issue such as network connectivity, DNS failure, server certificate validation, or timeout.</exception>
@@ -57,7 +58,7 @@ public static class WebHelper
 	/// Ensure proper disposal of the task to avoid resource leaks.
 	/// </remarks>
 	[Information(nameof(DownloadStringAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static async Task<string> DownloadStringAsync([NotNull] Uri address, string clientId = "NONE")
+	public static async Task<string> DownloadStringAsync([NotNull] Uri address, string clientId = "NONE", CancellationToken cancellationToken = default)
 	{
 		address = address.ArgumentNotNull();
 
@@ -67,9 +68,9 @@ public static class WebHelper
 		}
 
 		// Download the data
-		using (var response = await _httpClient.GetAsync(address, CancellationToken.None).ConfigureAwait(false))
+		using (var response = await _httpClient.GetAsync(address, cancellationToken).ConfigureAwait(false))
 		{
-			return await response.Content.ReadAsStringAsync(CancellationToken.None).ConfigureAwait(false);
+			return await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 		}
 	}
 
