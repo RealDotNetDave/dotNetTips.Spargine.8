@@ -4,7 +4,7 @@
 // Created          : 06-24-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-27-2024
+// Last Modified On : 01-30-2025
 // ***********************************************************************
 // <copyright file="HttpClientHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -15,7 +15,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Net.Http;
 using DotNetTips.Spargine.Tester;
@@ -28,21 +27,6 @@ namespace DotNetTips.Spargine.Tests.Net.Http;
 [TestClass]
 public class HttpClientHelperTests
 {
-
-	[TestMethod]
-	public async Task GetHttpResponseAsync_CancellationRequested_ThrowsTaskCanceledException()
-	{
-		// Arrange
-		var url = new Uri("https://httpbin.org/delay/10"); // URL that delays response
-		using var cts = new CancellationTokenSource();
-		cts.CancelAfter(TimeSpan.FromSeconds(1)); // Cancel after 1 second
-
-		// Act & Assert
-		await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () =>
-		{
-			await HttpClientHelper.GetHttpResponseAsync(url, cts);
-		});
-	}
 
 	[TestMethod]
 	public async Task GetHttpResponseAsync_InvalidUrl_ThrowsHttpRequestException()

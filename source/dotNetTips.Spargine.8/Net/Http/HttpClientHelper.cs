@@ -50,33 +50,6 @@ public static class HttpClientHelper
 	};
 
 	/// <summary>
-	/// Asynchronously gets an HTTP response for the specified URL.
-	/// </summary>
-	/// <param name="url">The URL to get the response from.</param>
-	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
-	/// <returns>A task that represents the asynchronous operation and contains the <see cref="HttpResponseMessage"/>.</returns>
-	/// <example>
-	/// Here is how you can use the GetHttpResponseAsync method:
-	/// <code>
-	/// Uri url = new Uri("https://example.com");
-	/// HttpResponseMessage response = await HttpClientHelper.GetHttpResponseAsync(url);
-	/// Console.WriteLine(response.StatusCode);
-	/// </code>
-	/// </example>
-	/// <remarks>
-	/// This method creates a new <see cref="CancellationTokenSource"/> internally to manage cancellation.
-	/// </remarks>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="url"/> is null.</exception>
-	/// <exception cref="InvalidOperationException">Thrown if the operation is canceled or times out.</exception>
-	[Information(nameof(GetHttpResponseAsync), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static async Task<HttpResponseMessage> GetHttpResponseAsync(Uri url, CancellationToken cancellationToken = default)
-	{
-		url = url.ArgumentNotNull<Uri>();
-
-		return await GetHttpResponseAsync(url, cancellationToken).ConfigureAwait(false);
-	}
-
-	/// <summary>
 	/// Asynchronously gets an HTTP response for the specified URL using a cancellation token.
 	/// </summary>
 	/// <param name="url">The URL to get the response from.</param>
@@ -94,14 +67,14 @@ public static class HttpClientHelper
 	/// <remarks>Original code by: Máňa Píchová.</remarks>
 	[DefaultValue(null)]
 	[Information(nameof(GetHttpResponseAsync), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static async Task<HttpResponseMessage> GetHttpResponseAsync([NotNull] Uri url, [NotNull] CancellationTokenSource cancellationToken)
+	public static async Task<HttpResponseMessage> GetHttpResponseAsync([NotNull] Uri url, CancellationToken cancellationToken = default)
 	{
 		url = url.ArgumentNotNull<Uri>();
 
 		try
 		{
 			// Pass in the token.
-			var response = await Client.GetAsync(url, cancellationToken.Token).ConfigureAwait(continueOnCapturedContext: false);
+			var response = await Client.GetAsync(url, cancellationToken: cancellationToken).ConfigureAwait(continueOnCapturedContext: false);
 
 			_ = response.EnsureSuccessStatusCode();
 
@@ -121,7 +94,7 @@ public static class HttpClientHelper
 		catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
 		{
 			// Handle 404
-			ExceptionThrower.ThrowInvalidOperationException(message: string.Format(CultureInfo.CurrentCulture, Resources.ResourceWasNotFound, url), ex);
+			ExceptionThrower.ThrowInvalidOperationException(message: string.Format(CultureInfo.CurrentCulture, _resourceWasNotFound, url), ex);
 		}
 
 		return null;
