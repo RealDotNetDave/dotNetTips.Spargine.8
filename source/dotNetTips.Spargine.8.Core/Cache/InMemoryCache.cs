@@ -130,11 +130,11 @@ public sealed class InMemoryCache
 	[Information(nameof(AddCacheItem), "David McCarter", "1/16/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item)
 	{
-		key = key.ArgumentNotNullOrEmpty();
-		item = item.ArgumentNotNull();
-
-		_ = this.Cache.Set(key, item, new MemoryCacheEntryOptions()
-			.SetAbsoluteExpiration(this._timeoutInMinutes));
+		_ = this.Cache.Set(
+			key.ArgumentNotNullOrEmpty(),
+			item.ArgumentNotNull(),
+			new MemoryCacheEntryOptions().SetAbsoluteExpiration(this._timeoutInMinutes)
+		);
 	}
 
 	/// <summary>
@@ -222,11 +222,11 @@ public sealed class InMemoryCache
 	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, TimeSpan timeout)
 	{
-		key = key.ArgumentNotNullOrEmpty();
-		item = item.ArgumentNotNull();
-
-		_ = this.Cache.Set(key, item, new MemoryCacheEntryOptions()
-			.SetAbsoluteExpiration(timeout));
+		_ = this.Cache.Set(
+			key.ArgumentNotNullOrEmpty(),
+			item.ArgumentNotNull(),
+			new MemoryCacheEntryOptions().SetAbsoluteExpiration(timeout)
+		);
 	}
 
 	/// <summary>
@@ -242,11 +242,11 @@ public sealed class InMemoryCache
 	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, DateTimeOffset timeout)
 	{
-		key = key.ArgumentNotNullOrEmpty();
-		item = item.ArgumentNotNull();
-
-		_ = this.Cache.Set(key, item, new MemoryCacheEntryOptions()
-			.SetAbsoluteExpiration(timeout));
+		_ = this.Cache.Set(
+			key.ArgumentNotNullOrEmpty(),
+			item.ArgumentNotNull(),
+			new MemoryCacheEntryOptions().SetAbsoluteExpiration(timeout)
+		);
 	}
 
 	/// <summary>
@@ -405,9 +405,7 @@ public sealed class InMemoryCache
 	[Information(nameof(GetCacheItem), "David McCarter", "1/16/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public T GetCacheItem<T>([NotNull] string key)
 	{
-		key = key.ArgumentNotNullOrEmpty();
-
-		if (this.Cache.TryGetValue(key, out T item))
+		if (this.Cache.TryGetValue(key.ArgumentNotNullOrEmpty(), out T item))
 		{
 			return item;
 		}

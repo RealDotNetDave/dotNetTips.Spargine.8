@@ -112,7 +112,7 @@
   <ItemGroup>
 	<PackageReference Include="IDisposableAnalyzers" Version="4.0.8">
 	  <PrivateAssets>all</PrivateAssets>
-	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
 	<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
 	<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">

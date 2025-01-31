@@ -26,7 +26,8 @@ namespace DotNetTips.Spargine.Core.Collections.Generic;
 [Serializable]
 [Information("Original Code by Simon Painter", Status = Status.New)]
 public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializable
-	where TKey : notnull
+		where TKey : notnull
+		where TValue : notnull
 {
 	/// <summary>
 	/// The default value to return when a key is not found in the dictionary.

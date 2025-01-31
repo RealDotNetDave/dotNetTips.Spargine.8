@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-27-2025
+// Last Modified On : 01-31-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -149,11 +149,10 @@ public static class DictionaryExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(nameof(DisposeCollection), "David McCarter", "11/21/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> collection)
+		where TKey : notnull
+		where TValue : notnull
 	{
-		if (collection.HasItems())
-		{
-			ProcessCollectionToDispose(collection.Select(p => p.Value));
-		}
+		ProcessCollectionToDispose(collection.Select(p => p.Value));
 	}
 
 	/// <summary>
@@ -361,6 +360,8 @@ public static class DictionaryExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="valueFunction"/> is null.</exception>
 	[Information("Original code by Simon Painter.", author: "David McCarter", createdOn: "1/3/2025", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static TValue TryGetValue<TKey, TValue>(this IDictionary<TKey, TValue> collection, TKey key, Func<TKey, TValue> valueFunction)
+		where TKey : notnull
+		where TValue : notnull
 	{
 		collection = collection.ArgumentNotNull();
 		key = key.ArgumentNotNull();
@@ -386,7 +387,7 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the t valueFunction.</typeparam>
 	/// <param name="collection">The dictionary.</param>
 	/// <param name="item">The item.</param>
-	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Upsert), "David McCarter", "5/2/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void Upsert<TKey, TValue>(this IDictionary<TKey, TValue> collection, in TValue item) where TValue : IDataModel<TValue, TKey>
 	{
 		if (item is null)
