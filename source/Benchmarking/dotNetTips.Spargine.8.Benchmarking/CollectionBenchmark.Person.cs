@@ -40,6 +40,7 @@ public partial class CollectionBenchmark
 	/// The person record dictionary.
 	/// </summary>
 	private Dictionary<string, PersonRecord> _personRecordDictionary;
+
 	/// <summary>
 	/// The person reference array.
 	/// </summary>
