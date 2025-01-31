@@ -4,7 +4,7 @@
 // Created          : 07-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 01-31-2025
 // ***********************************************************************
 // <copyright file="SmallCollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -34,7 +34,7 @@ public class SmallCollectionBenchmark : CollectionBenchmark
 	/// Initializes a new instance of the <see cref="SmallCollectionBenchmark"/> class with a maximum count of 2,048.
 	/// This constructor also logs the maximum count information using the <see cref="ConsoleLogger"/>.
 	/// </summary>
-	public SmallCollectionBenchmark() : base(2048) => ConsoleLogger.Default.WriteLine(LogKind.Info, $"Max Count={this.MaxCount}: {nameof(SmallCollectionBenchmark)}.");
+	public SmallCollectionBenchmark() : base(2048) => LogInfo($"Max Count={this.MaxCount}: {nameof(SmallCollectionBenchmark)}.");
 
 	/// <summary>
 	/// Performs setup operations specific to SmallCollectionBenchmark. This includes logging the current count before and after the base setup is called,
@@ -42,7 +42,7 @@ public class SmallCollectionBenchmark : CollectionBenchmark
 	/// </summary>
 	public override void Setup()
 	{
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Count={this.Count}: {nameof(SmallCollectionBenchmark)}");
+		LogInfo($"Count={this.Count}: {nameof(SmallCollectionBenchmark)}");
 
 		this.MaxCount = this.Count;
 		base.Setup();

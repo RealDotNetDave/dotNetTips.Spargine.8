@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 01-31-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilderCounterBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -17,7 +17,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Tester;
 using Microsoft.Extensions.ObjectPool;
@@ -178,7 +177,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this._words = [.. RandomData.GenerateWords(this.Count, 10, 10)];
 		this._wordDictionary = RandomData.GenerateWords(this.Count, 10, 10).ToDictionary(x => RandomData.GenerateKey(), y => y);
 
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"ByteArray: {this._byteArray.Length}.");
+		LogInfo($"ByteArray: {this._byteArray.Length}.");
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString))]

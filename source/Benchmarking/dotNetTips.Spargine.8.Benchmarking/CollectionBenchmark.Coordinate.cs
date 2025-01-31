@@ -4,7 +4,7 @@
 // Created          : 04-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-05-2025
+// Last Modified On : 01-31-2025
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.Coordinate.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -16,7 +16,6 @@
 // ***********************************************************************
 
 using System.Collections.ObjectModel;
-using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
@@ -51,8 +50,8 @@ public partial class CollectionBenchmark
 		this._coordinateArray = [.. RandomData.GenerateCoordinateCollection<Coordinate>(this.MaxCount)];
 		this._coordinateList = [.. this._coordinateArray];
 
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Coordinate Array Count = {this._coordinateArray.Length}: {nameof(CollectionBenchmark)}.");
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Coordinate List Count = {this._coordinateList.Count}: {nameof(CollectionBenchmark)}.");
+		LogInfo($"Coordinate Array Count = {this._coordinateArray.Length}: {nameof(CollectionBenchmark)}.");
+		LogInfo($"Coordinate List Count = {this._coordinateList.Count}: {nameof(CollectionBenchmark)}.");
 	}
 
 	/// <summary>

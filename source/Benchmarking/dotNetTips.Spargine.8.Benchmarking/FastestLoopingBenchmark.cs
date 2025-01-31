@@ -4,7 +4,7 @@
 // Created          : 04-01-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-05-2024
+// Last Modified On : 01-31-2025
 // ***********************************************************************
 // <copyright file="FastestLoopingBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -13,7 +13,6 @@
 // ***********************************************************************
 
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Loggers;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -30,7 +29,7 @@ public class FastestLoopingBenchmark : CollectionBenchmark
 	/// Initializes a new instance of the <see cref="FastestLoopingBenchmark"/> class with a predefined maximum count.
 	/// This constructor logs the maximum count to the console for informational purposes.
 	/// </summary>
-	public FastestLoopingBenchmark() : base(8192) => ConsoleLogger.Default.WriteLine(LogKind.Info, $"Max Count={this.MaxCount}: {nameof(FastestLoopingBenchmark)}.");
+	public FastestLoopingBenchmark() : base(8192) => LogInfo($"Max Count={this.MaxCount}: {nameof(FastestLoopingBenchmark)}.");
 
 	/// <summary>
 	/// Gets or sets the collection count for the benchmark. This value determines the size of the collection to be used in the benchmark tests.

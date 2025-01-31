@@ -4,7 +4,7 @@
 // Created          : 08-02-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 01-31-2025
 // ***********************************************************************
 // <copyright file="RandomDataCollectionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -15,7 +15,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core.Data;
 using DotNetTips.Spargine.Core.Data.Models;
@@ -147,10 +146,10 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 		this._personRecordCollection = this.GetPersonRecordArray().ToCollection();
 		this._personRefCollection = this.GetPersonRefArray().ToCollection();
 
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"PersonRefCollection: {this._personRefCollection.Count}");
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"PersonRecordCollection: {this._personRecordCollection.Count}");
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"FIRST PERSON: {this._personRefCollection.First().Email}");
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"LAST PERSON: {this._personRefCollection.Last().Email}");
+		LogInfo($"PersonRefCollection: {this._personRefCollection.Count}");
+		LogInfo($"PersonRecordCollection: {this._personRecordCollection.Count}");
+		LogInfo($"FIRST PERSON: {this._personRefCollection.First().Email}");
+		LogInfo($"LAST PERSON: {this._personRefCollection.Last().Email}");
 	}
 
 }

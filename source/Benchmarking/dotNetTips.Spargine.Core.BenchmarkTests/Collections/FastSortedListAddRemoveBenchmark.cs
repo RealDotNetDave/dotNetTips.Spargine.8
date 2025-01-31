@@ -4,7 +4,7 @@
 // Created          : 01-13-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-14-2025
+// Last Modified On : 01-31-2025
 // ***********************************************************************
 // <copyright file="FastSortedListAddRemoveBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -63,7 +63,7 @@ public class FastSortedListAddRemoveBenchmark : SmallCollectionBenchmark
 		this._lastPersonRefSortedListIndexComparer = this._personRefSortedListComparer.Count - 1;
 		this._lastPersonRefSortedListComparer = this._personRefSortedListComparer.Last();
 
-		//ConsoleLogger.Default.WriteLine(LogKind.Info, $"SL Index: {this._lastPersonRefSortedListIndex}.");
+		//LogInfo($"SL Index: {this._lastPersonRefSortedListIndex}.");
 	}
 
 	[IterationCleanup]

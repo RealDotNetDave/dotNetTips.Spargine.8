@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 01-31-2025
 // ***********************************************************************
 // <copyright file="Benchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -161,6 +161,31 @@ public abstract class Benchmark
 	/// </summary>
 	/// <value>The consumer instance.</value>
 	private Consumer Consumer { get; } = new();
+
+	/// <summary>
+	/// Logs an error message.
+	/// </summary>
+	/// <param name="message">The message to log.</param>
+	protected static void LogError(string message) => LogMessage(LogKind.Error, message);
+
+	/// <summary>
+	/// Logs an informational message.
+	/// </summary>
+	/// <param name="message">The message to log.</param>
+	protected static void LogInfo(string message) => LogMessage(LogKind.Info, message);
+
+	/// <summary>
+	/// Logs a message with the specified log kind.
+	/// </summary>
+	/// <param name="logKind">The kind of log message.</param>
+	/// <param name="message">The message to log.</param>
+	protected static void LogMessage(LogKind logKind, string message) => ConsoleLogger.Default.WriteLine(logKind, message);
+
+	/// <summary>
+	/// Logs a warning message.
+	/// </summary>
+	/// <param name="message">The message to log.</param>
+	protected static void LogWarning(string message) => LogMessage(LogKind.Warning, message);
 
 	/// <summary>
 	/// Performs cleanup operations. This method should be called at the end of benchmark runs.

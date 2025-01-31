@@ -4,7 +4,7 @@
 // Created          : 04-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-05-2025
+// Last Modified On : 01-31-2025
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -17,7 +17,6 @@
 // ***********************************************************************
 
 using System.Collections.ObjectModel;
-using BenchmarkDotNet.Loggers;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -98,9 +97,9 @@ public partial class CollectionBenchmark
 		this._personValDictionary = this._personValArray.ToDictionary(p => p.Id);
 
 		//Display collection counts
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Records Array Count={this._personRecordArray.Length}");
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Ref Array Count={this._personRefArray.Length}");
-		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Val Array Count={this._personValArray.Length}");
+		LogInfo($"Records Array Count={this._personRecordArray.Length}");
+		LogInfo($"Ref Array Count={this._personRefArray.Length}");
+		LogInfo($"Val Array Count={this._personValArray.Length}");
 	}
 
 	/// <summary>
