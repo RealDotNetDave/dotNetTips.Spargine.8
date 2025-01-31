@@ -215,9 +215,9 @@ public abstract class Benchmark
 	/// <summary>
 	/// Generates a random byte array of a specified size in kilobytes. If the byte array of the requested size has already been generated, it retrieves the cached version to avoid regeneration.
 	/// </summary>
-	/// <param name="sizeInKb">The size of the byte array to generate, in kilobytes.</param>
+	/// <param name="sizeInKb">The size of the byte array to generate, in kilobytes. Defaults to 1.</param>
 	/// <returns>A byte array of the specified size.</returns>
-	public byte[] GetByteArray(int sizeInKb)
+	public byte[] GetByteArray(int sizeInKb = 1)
 	{
 		sizeInKb = sizeInKb.EnsureMinimum(1);
 
