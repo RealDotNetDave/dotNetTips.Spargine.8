@@ -22,6 +22,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for <see cref="Task"/> to enhance asynchronous programming.
 /// These methods include functionality for fire-and-forget tasks, allowing tasks to run in the background without awaiting their completion, and handling exceptions that occur within these tasks.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class TaskExtensions
 {
 

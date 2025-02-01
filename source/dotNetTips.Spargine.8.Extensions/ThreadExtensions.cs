@@ -23,6 +23,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for <see cref="Thread"/> to enhance thread operations.
 /// These methods include setting thread priority and implementing wait mechanisms without the need for timers.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class ThreadExtensions
 {
 

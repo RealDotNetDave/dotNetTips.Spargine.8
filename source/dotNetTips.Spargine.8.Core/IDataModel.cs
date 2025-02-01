@@ -28,6 +28,7 @@ namespace DotNetTips.Spargine.Core;
 /// <typeparam name="TKey">The type of the identifier for the data model.</typeparam>
 /// <seealso cref="IComparable{T}" />
 /// <seealso cref="IEquatable{T}" />
+[Information(Status = Status.NeedsDocumentation)]
 public interface IDataModel<T, TKey> : IComparable<T>, IEquatable<T>
 {
 	// TODO: REMOVE TKEY AND USE STRING SINCE IS SEEMS TO BE THE STANDARD AT THE END OF 2025.

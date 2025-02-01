@@ -24,6 +24,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for enhancing the functionality of the <see cref="Exception"/> class.
 /// These methods include getting all messages, checking if an exception is critical or fatal, and more.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class ExceptionExtensions
 {
 

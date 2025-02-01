@@ -29,6 +29,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// These extension methods include setting process priority, running processes with custom arguments and handling their output, and more.
 /// They are designed to simplify common tasks related to process management in .NET applications.
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public static class ProcessExtensions
 {
 

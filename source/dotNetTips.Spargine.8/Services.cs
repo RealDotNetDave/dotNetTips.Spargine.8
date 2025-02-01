@@ -35,6 +35,7 @@ namespace DotNetTips.Spargine;
 /// library, which provides a wide range of utilities and helper methods for .NET developers.
 /// </remarks>
 [SupportedOSPlatform("windows")]
+[Information(Status = Status.NeedsDocumentation)]
 public static class Services
 {
 

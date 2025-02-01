@@ -26,7 +26,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// with additional utility methods. These methods include binding to an anonymous port, forcing
 /// non-blocking mode, and attempting connections with a timeout.
 /// </summary>
-[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", Status = Status.Available)]
+[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", Status = Status.NeedsDocumentation)]
 public static class SocketExtensions
 {
 

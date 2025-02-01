@@ -30,7 +30,7 @@ namespace DotNetTips.Spargine.Core.Diagnostics;
 /// </summary>
 /// <seealso cref="Stopwatch"/>
 [ExcludeFromCodeCoverage(Justification = "Primarily used for diagnostics and performance measurement, not business logic.")]
-[Information(nameof(PerformanceStopwatch), "David McCarter", "11/11/2020", Status = Status.Available, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "bit.ly/SpargineFeb2023")]
+[Information(nameof(PerformanceStopwatch), "David McCarter", "11/11/2020", Status = Status.NeedsDocumentation, Documentation = "https://bit.ly/SpargineFeb2023")]
 public sealed class PerformanceStopwatch : Stopwatch
 {
 

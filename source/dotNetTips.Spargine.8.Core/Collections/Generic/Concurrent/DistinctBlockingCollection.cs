@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// This type implements IDisposable. Make sure to call .Dispose() or use the 'using' statement
 /// to remove from memory.
 /// </remarks>
-[Information(Status = Status.Available)]
+[Information(Status = Status.NeedsDocumentation)]
 public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, ICloneable<T>, ICollection<T>
 {
 	/// <summary>

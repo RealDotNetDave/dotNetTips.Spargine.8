@@ -29,6 +29,7 @@ namespace DotNetTips.Spargine.Win32;
 /// It includes functionality for getting registry keys based on predefined constants for common registry paths and simplifies the process of checking for platform compatibility.
 /// </remarks>
 [SupportedOSPlatform("windows")]
+[Information(Status = Status.NeedsDocumentation)]
 public static class RegistryHelper
 {
 

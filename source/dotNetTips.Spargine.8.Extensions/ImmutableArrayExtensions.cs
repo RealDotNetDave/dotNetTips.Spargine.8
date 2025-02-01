@@ -25,6 +25,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for <see cref="ImmutableArray{T}"/> to enhance usability and functionality.
 /// These methods include checks for item presence, conditional actions, count comparisons, and item shuffling.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class ImmutableArrayExtensions
 {
 

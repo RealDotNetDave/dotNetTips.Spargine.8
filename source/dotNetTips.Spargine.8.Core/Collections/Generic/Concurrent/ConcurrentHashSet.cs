@@ -31,7 +31,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// This implementation provides atomic operations for adding, removing, and checking for elements, making it suitable for concurrent scenarios.
 /// </remarks>
 [DebuggerDisplay("Count = {Count}")]
-[Information(Status = Status.Available)]
+[Information(Status = Status.NeedsDocumentation)]
 public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T>
 {
 	/// <summary>

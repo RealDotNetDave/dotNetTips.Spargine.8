@@ -25,6 +25,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// with additional utility methods. These methods include checking for items, converting to immutable collections,
 /// and upsert operations.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class SortedDictionaryExtensions
 {
 

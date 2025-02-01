@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Core;
 /// without re-enumerating the underlying sequence. This approach is particularly useful for expensive enumerations
 /// that do not change between iterations.
 /// </remarks>
-[Information(nameof(CachedEnumerable), OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
+[Information(nameof(CachedEnumerable), OptimizationStatus = OptimizationStatus.Completed, Status = Status.NeedsDocumentation)]
 public static class CachedEnumerable
 {
 	/// <summary>

@@ -30,7 +30,7 @@ namespace DotNetTips.Spargine.Core.Data;
 /// Provides static methods for retrieving comprehensive data about countries, including their regions, states, and cities.
 /// Utilizes resources and serialization to efficiently manage and access country data.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public static class CountryRepository
 {
 	/// <summary>

@@ -21,7 +21,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-using DotNetTips.Spargine.Core.Devices;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -31,6 +30,7 @@ namespace DotNetTips.Spargine.Core;
 /// Provides utility methods for working with enumerations, such as converting between names and values,
 /// adjusting naming conventions, and extracting metadata. This class cannot be inherited.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class EnumHelper
 {
 

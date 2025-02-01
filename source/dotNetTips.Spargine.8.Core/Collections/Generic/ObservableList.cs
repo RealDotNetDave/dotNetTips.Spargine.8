@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic;
 /// This collection also implements the <see cref="ISet{T}"/> interface, providing set operations.
 /// </summary>
 /// <typeparam name="T">The type of elements in the list.</typeparam>
-[Information("From .NET EF Core source.", author: "David McCarter", createdOn: "7/31/2020", Status = Status.Available)]
+[Information("From .NET EF Core source.", author: "David McCarter", createdOn: "7/31/2020", Status = Status.NeedsDocumentation)]
 public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollectionChanged, INotifyPropertyChanged, INotifyPropertyChanging
 {
 	/// <summary>

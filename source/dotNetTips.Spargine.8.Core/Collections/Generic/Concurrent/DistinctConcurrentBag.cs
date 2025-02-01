@@ -30,7 +30,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// </remarks>
 /// <seealso cref="ConcurrentBag{T}" />
 /// <seealso cref="ICollection{T}" />
-[Information(Status = Status.Available)]
+[Information(Status = Status.NeedsDocumentation)]
 public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 {
 

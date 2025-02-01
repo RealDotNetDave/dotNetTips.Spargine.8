@@ -22,6 +22,7 @@ namespace DotNetTips.Spargine.Core.Logging;
 /// <summary>
 /// Extension methods for <see cref="ILogger"/> to simplify logging with enriched messages including the calling method's name.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static partial class FastLoggerExtensions
 {
 

@@ -39,7 +39,7 @@ namespace DotNetTips.Spargine.IO;
 /// intended for use on Windows platforms only.
 /// </remarks>
 [SupportedOSPlatform("windows")]
-[Information(nameof(FileHelper), Status = Status.NeedsDocumentation)]
+[Information(nameof(FileHelper), Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public static class FileHelper
 {
 

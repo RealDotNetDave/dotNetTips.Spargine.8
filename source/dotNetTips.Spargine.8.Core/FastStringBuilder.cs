@@ -32,6 +32,7 @@ namespace DotNetTips.Spargine.Core;
 /// This class leverages an ObjectPool of StringBuilder instances to minimize the overhead of creating and disposing StringBuilder objects,
 /// which can lead to significant performance improvements in scenarios where string manipulation is frequent.
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public static class FastStringBuilder
 {
 

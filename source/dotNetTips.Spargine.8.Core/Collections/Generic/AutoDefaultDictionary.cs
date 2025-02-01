@@ -24,7 +24,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic;
 /// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
 /// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
 [Serializable]
-[Information("Original Code by Simon Painter", Status = Status.Available)]
+[Information("Original Code by Simon Painter", Status = Status.NeedsDocumentation)]
 public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializable
 		where TKey : notnull
 		where TValue : notnull

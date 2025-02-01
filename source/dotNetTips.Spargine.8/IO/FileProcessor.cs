@@ -50,6 +50,7 @@ namespace DotNetTips.Spargine.IO;
 /// fileProcessor.CopyFiles(filesToCopy, destinationDir);
 /// </code>
 /// </remarks>
+[Information(Status = Status.NeedsDocumentation)]
 public class FileProcessor
 {
 

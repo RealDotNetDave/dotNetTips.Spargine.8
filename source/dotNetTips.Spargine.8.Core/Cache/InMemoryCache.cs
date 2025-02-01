@@ -49,7 +49,7 @@ namespace DotNetTips.Spargine.Core.Cache;
 /// <seealso cref="GetCacheItem{T}(string)"/>
 /// <seealso cref="Clear"/>
 [SupportedOSPlatform("windows")]
-[Information(Status = Status.NeedsDocumentation, Documentation = "")]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public sealed class InMemoryCache
 {
 	/// <summary>  

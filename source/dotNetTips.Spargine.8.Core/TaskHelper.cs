@@ -20,6 +20,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Provides utility methods for synchronously running asynchronous tasks. This includes methods for running tasks without awaiting them (fire and forget) and for running tasks with return values synchronously.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class TaskHelper
 {
 

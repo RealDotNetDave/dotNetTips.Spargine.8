@@ -31,6 +31,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Class to validate method parameters.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static partial class Validator
 {
 

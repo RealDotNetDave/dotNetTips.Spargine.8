@@ -252,6 +252,14 @@
 * **Documentation:** https://bit.ly/SpargineJun2021
 
 *****
+## AppInfo
+
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
 ## ArgumentInvalidException
 
 * **Status:** Available
@@ -286,7 +294,7 @@
 *****
 ## CachedEnumerable
 
-* **Status:** Available
+* **Status:** NeedsDocumentation
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -603,7 +611,6 @@
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** AbsoluteDifference
-* **Documentation:** https://bit.ly/SpargineEnumerationHandling
 
 ### String DisplayName { get; set; }
 
@@ -622,7 +629,6 @@
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** FromDisplayName
-* **Documentation:** https://bit.ly/SpargineEnumerationHandling
 
 ### T FromValue(Int32 value)
 
@@ -632,7 +638,6 @@
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** FromValue
-* **Documentation:** https://bit.ly/SpargineEnumerationHandling
 
 ### IEnumerable<T> GetAll()
 
@@ -642,7 +647,6 @@
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** GetAll
-* **Documentation:** https://bit.ly/SpargineEnumerationHandling
 
 ### Int32 Value { get; set; }
 
@@ -655,6 +659,11 @@
 
 *****
 ## EnumHelper
+
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
 
 ### ReadOnlyCollection<EnumValue> GetValues(Boolean fixNames, Boolean useXmlNames)
 
@@ -1140,6 +1149,11 @@
 *****
 ## FastStringBuilder
 
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
 ### String BytesToString(Byte[]& bytes)
 
 * **Status:** Available
@@ -1225,16 +1239,23 @@
 * **Modified By:** David McCarter
 
 *****
+## IDataModel<T, TKey>
+
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
 ## IDataRecord
 
-* **Status:** Available
+* **Status:** NeedsDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** NotRequired
 * **Unit Test Status:** None
 * **Author:** David McCarter
 * **CreatedOn:** 3/4/2021
 * **Description:** IDataRecord
-* **Documentation:** http://bit.ly/SpargineMarch2021
 * **Modified By:** David McCarter
 
 ### String AllPropertiesToString()
@@ -1298,6 +1319,11 @@
 
 *****
 ## KeyGenerator
+
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
 
 ### String GenerateKey()
 
@@ -1682,6 +1708,11 @@
 *****
 ## TaskHelper
 
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
 ### Void RunSync(Func<Task> taskFunction)
 
 * **Status:** Available
@@ -1975,6 +2006,11 @@
 
 *****
 ## Validator
+
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
 
 ### T ArgumentDefined(T input, String errorMessage, String paramName)
 
@@ -2672,6 +2708,11 @@
 *****
 ## XmlSerialization
 
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
 ### TResult Deserialize(String xml)
 
 * **Status:** Available
@@ -3192,7 +3233,7 @@
 *****
 ## HttpEventListener
 
-* **Status:** Available
+* **Status:** NeedsDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
@@ -3333,6 +3374,11 @@
 
 *****
 ## FastLoggerExtensions
+
+* **Status:** NeedsDocumentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
 
 ### Void LogCriticalMessage(ILogger logger, String message, Exception exception, String methodName)
 
@@ -3532,14 +3578,14 @@
 *****
 ## PerformanceStopwatch
 
-* **Status:** Available
+* **Status:** NeedsDocumentation
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** None
 * **Author:** David McCarter
 * **CreatedOn:** 11/11/2020
 * **Description:** PerformanceStopwatch
-* **Documentation:** bit.ly/SpargineFeb2023
+* **Documentation:** https://bit.ly/SpargineFeb2023
 * **Modified By:** David McCarter
 
 ### PerformanceStopwatch StartNew(String title)
@@ -3693,6 +3739,7 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
+* **Documentation:** ADD URL
 
 ### ReadOnlyCollection<Country> GetCountries()
 
@@ -3748,7 +3795,7 @@
 *****
 ## CollectionRandomizer<T>
 
-* **Status:** Available
+* **Status:** NeedsDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -3782,7 +3829,7 @@
 *****
 ## AutoDefaultDictionary<TKey, TValue>
 
-* **Status:** Available
+* **Status:** NeedsDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -3961,7 +4008,7 @@
 *****
 ## ObservableList<T>
 
-* **Status:** Available
+* **Status:** NeedsDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -4285,7 +4332,7 @@
 *****
 ## ConcurrentHashSet<T>
 
-* **Status:** Available
+* **Status:** NeedsDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -4480,7 +4527,7 @@
 *****
 ## DistinctBlockingCollection<T>
 
-* **Status:** Available
+* **Status:** NeedsDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -4488,7 +4535,7 @@
 *****
 ## DistinctConcurrentBag<T>
 
-* **Status:** Available
+* **Status:** NeedsDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -4549,6 +4596,7 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
+* **Documentation:** ADD URL
 
 ### Void AddCacheItem(IDataModel<T, TKey> item)
 
@@ -4848,4 +4896,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 2/1/2025 2:43:02 PM UTC**
+**Generated by Spargine - dotNetTips.com on 2/1/2025 5:39:36 PM UTC**
