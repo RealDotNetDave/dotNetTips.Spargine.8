@@ -30,7 +30,7 @@
        test      rsi,rsi
        je        short M00_L00
        mov       rcx,rsi
-       call      qword ptr [7FF94D2256C8]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
+       call      qword ptr [7FFE5CB97DC8]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
 M00_L00:
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
@@ -55,7 +55,7 @@ M00_L00:
        je        near ptr M01_L05
        mov       rdx,rbx
        mov       rcx,offset MT_System.Collections.ICollection
-       call      qword ptr [7FF94CB74348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
+       call      qword ptr [7FFE5C4E4348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
        mov       rcx,rax
        test      rcx,rcx
        je        short M01_L00
@@ -70,11 +70,11 @@ M00_L00:
 M01_L00:
        mov       rdx,rbx
        mov       rcx,offset MT_System.Collections.Generic.ICollection`1[[System.Object, System.Private.CoreLib]]
-       call      qword ptr [7FF94CB74348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
+       call      qword ptr [7FFE5C4E4348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
        test      rax,rax
        je        short M01_L01
        mov       rcx,rax
-       mov       r11,7FF94CA30990
+       mov       r11,7FFE5C3A0A80
        add       rsp,28
        pop       rbx
        pop       rsi
@@ -82,7 +82,7 @@ M01_L00:
 M01_L01:
        xor       esi,esi
        mov       rcx,rbx
-       mov       r11,7FF94CA30980
+       mov       r11,7FFE5C3A0A70
        call      qword ptr [r11]
        mov       rbx,rax
        jmp       short M01_L03
@@ -91,7 +91,7 @@ M01_L02:
        jo        short M01_L04
 M01_L03:
        mov       rcx,rbx
-       mov       r11,7FF94CA30988
+       mov       r11,7FFE5C3A0A78
        call      qword ptr [r11]
        test      eax,eax
        jne       short M01_L02
@@ -109,7 +109,7 @@ M01_L05:
        pop       rsi
        ret
 M01_L06:
-       mov       r11,7FF94CA30998
+       mov       r11,7FFE5C3A0A88
        add       rsp,28
        pop       rbx
        pop       rsi
@@ -130,7 +130,7 @@ M01_L06:
        test      rsi,rsi
        je        short M00_L00
        mov       rcx,rsi
-       call      qword ptr [7FF94D205380]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
+       call      qword ptr [7FFE5CB8C0A8]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
 M00_L00:
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
@@ -155,7 +155,7 @@ M00_L00:
        je        near ptr M01_L05
        mov       rdx,rbx
        mov       rcx,offset MT_System.Collections.ICollection
-       call      qword ptr [7FF94CB54348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
+       call      qword ptr [7FFE5C4D4348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
        mov       rcx,rax
        test      rcx,rcx
        je        short M01_L00
@@ -170,11 +170,11 @@ M00_L00:
 M01_L00:
        mov       rdx,rbx
        mov       rcx,offset MT_System.Collections.Generic.ICollection`1[[System.Object, System.Private.CoreLib]]
-       call      qword ptr [7FF94CB54348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
+       call      qword ptr [7FFE5C4D4348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
        test      rax,rax
        je        short M01_L01
        mov       rcx,rax
-       mov       r11,7FF94CA10990
+       mov       r11,7FFE5C390A80
        add       rsp,28
        pop       rbx
        pop       rsi
@@ -182,7 +182,7 @@ M01_L00:
 M01_L01:
        xor       esi,esi
        mov       rcx,rbx
-       mov       r11,7FF94CA10980
+       mov       r11,7FFE5C390A70
        call      qword ptr [r11]
        mov       rbx,rax
        jmp       short M01_L03
@@ -191,7 +191,7 @@ M01_L02:
        jo        short M01_L04
 M01_L03:
        mov       rcx,rbx
-       mov       r11,7FF94CA10988
+       mov       r11,7FFE5C390A78
        call      qword ptr [r11]
        test      eax,eax
        jne       short M01_L02
@@ -209,7 +209,7 @@ M01_L05:
        pop       rsi
        ret
 M01_L06:
-       mov       r11,7FF94CA10998
+       mov       r11,7FFE5C390A88
        add       rsp,28
        pop       rbx
        pop       rsi
@@ -222,7 +222,7 @@ M01_L06:
 ; DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark.ArgumentNotNullOrEmpty_NoValidation()
        push      rbx
        sub       rsp,10
-       mov       rdx,29BF9DA3B88
+       mov       rdx,247B0734380
        mov       [rsp+8],rdx
        mov       rbx,[rcx+18]
        mov       rdx,[rsp+8]
@@ -245,10 +245,10 @@ M01_L06:
        xor       eax,eax
        mov       [rsp+20],rax
        mov       rbx,rcx
-       mov       rsi,25615063B88
-       mov       rcx,25615063B88
+       mov       rsi,1BB5F8E4380
+       mov       rcx,1BB5F8E4380
        cmp       [rcx],ecx
-       call      qword ptr [7FF94CB67318]; System.String.Trim()
+       call      qword ptr [7FFE5C4E7318]; System.String.Trim()
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -274,12 +274,12 @@ M01_L06:
        movzx     ecx,word ptr [rbx+0C]
        cmp       ecx,100
        jae       short M01_L00
-       mov       rax,7FF9689B2E50
+       mov       rax,7FFE78C52E50
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L01
 M01_L00:
-       call      qword ptr [7FF94D43CEA0]
+       call      qword ptr [7FFE5CDBDAE8]
        test      eax,eax
        jne       short M01_L04
 M01_L01:
@@ -288,12 +288,12 @@ M01_L01:
        movzx     ecx,word ptr [rbx+rcx*2+0C]
        cmp       ecx,100
        jae       short M01_L02
-       mov       rax,7FF9689B2E50
+       mov       rax,7FFE78C52E50
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L03
 M01_L02:
-       call      qword ptr [7FF94D43CEA0]
+       call      qword ptr [7FFE5CDBDAE8]
        test      eax,eax
        jne       short M01_L04
 M01_L03:
@@ -305,7 +305,7 @@ M01_L03:
 M01_L04:
        mov       rcx,rbx
        mov       edx,3
-       call      qword ptr [7FF94CB673F0]
+       call      qword ptr [7FFE5C4E73F0]
        nop
        add       rsp,28
        pop       rbx
@@ -323,10 +323,10 @@ M01_L04:
        xor       eax,eax
        mov       [rsp+20],rax
        mov       rbx,rcx
-       mov       rsi,23D69493B88
-       mov       rcx,23D69493B88
+       mov       rsi,2C498864380
+       mov       rcx,2C498864380
        cmp       [rcx],ecx
-       call      qword ptr [7FF94CB67318]; System.String.Trim()
+       call      qword ptr [7FFE5C4F7318]; System.String.Trim()
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -352,12 +352,12 @@ M01_L04:
        movzx     ecx,word ptr [rbx+0C]
        cmp       ecx,100
        jae       short M01_L00
-       mov       rax,7FF9689B2E50
+       mov       rax,7FFE78C52E50
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L01
 M01_L00:
-       call      qword ptr [7FF94D43CEA0]
+       call      qword ptr [7FFE5CDCDAE8]
        test      eax,eax
        jne       short M01_L04
 M01_L01:
@@ -366,12 +366,12 @@ M01_L01:
        movzx     ecx,word ptr [rbx+rcx*2+0C]
        cmp       ecx,100
        jae       short M01_L02
-       mov       rax,7FF9689B2E50
+       mov       rax,7FFE78C52E50
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L03
 M01_L02:
-       call      qword ptr [7FF94D43CEA0]
+       call      qword ptr [7FFE5CDCDAE8]
        test      eax,eax
        jne       short M01_L04
 M01_L03:
@@ -383,7 +383,7 @@ M01_L03:
 M01_L04:
        mov       rcx,rbx
        mov       edx,3
-       call      qword ptr [7FF94CB673F0]
+       call      qword ptr [7FFE5C4F73F0]
        nop
        add       rsp,28
        pop       rbx

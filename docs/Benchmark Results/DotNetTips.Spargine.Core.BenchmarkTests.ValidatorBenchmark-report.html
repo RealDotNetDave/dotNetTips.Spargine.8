@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250124-181352</title>
+<title>DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250131-133255</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -17,7 +17,7 @@ BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5371/22H2/2022Update)
 Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
 .NET SDK 9.0.102
   [Host]     : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
-  Job-VPTVLS : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+  Job-FLPXNP : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
 Namespace=DotNetTips.Spargine.Core.BenchmarkTests  
@@ -26,12 +26,12 @@ Namespace=DotNetTips.Spargine.Core.BenchmarkTests
 <table>
 <thead><tr><th>Method                                         </th><th>Categories                     </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min</th><th>Q1</th><th>Median</th><th>Q3</th><th>Max</th><th>Op/s   </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Exceptions</th><th>Code Size</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>&#39;Validating Collection: No Validation&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>2.184 ns</td><td>0.0146 ns</td><td>0.0136 ns</td><td>0.0035 ns</td><td>2.156 ns</td><td>2.175 ns</td><td>2.183 ns</td><td>2.195 ns</td><td>2.207 ns</td><td>457,971,694.9</td><td>7.498 ns</td><td>15.00</td><td>2.101</td><td>2.000</td><td>-0.1102</td><td>2</td><td>*</td><td>No</td><td>-</td><td>47 B</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>&#39;Validating Collection: Validation + Inlining&#39;</td><td>Validation,**NEW**</td><td>5.526 ns</td><td>0.0234 ns</td><td>0.0219 ns</td><td>0.0056 ns</td><td>5.485 ns</td><td>5.509 ns</td><td>5.522 ns</td><td>5.543 ns</td><td>5.567 ns</td><td>180,962,348.8</td><td>7.497 ns</td><td>15.00</td><td>2.175</td><td>2.000</td><td>0.1639</td><td>5</td><td>*</td><td>No</td><td>-</td><td>283 B</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>&#39;Validating Collection: Validation&#39;</td><td>Validation,**NEW**</td><td>5.463 ns</td><td>0.0177 ns</td><td>0.0148 ns</td><td>0.0041 ns</td><td>5.436 ns</td><td>5.459 ns</td><td>5.462 ns</td><td>5.469 ns</td><td>5.492 ns</td><td>183,055,521.8</td><td>6.498 ns</td><td>13.00</td><td>2.482</td><td>2.000</td><td>0.0366</td><td>5</td><td>*</td><td>No</td><td>-</td><td>283 B</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>&#39;Validating Empty/Null String: No Validation&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>1.664 ns</td><td>0.0094 ns</td><td>0.0083 ns</td><td>0.0022 ns</td><td>1.653 ns</td><td>1.660 ns</td><td>1.662 ns</td><td>1.667 ns</td><td>1.682 ns</td><td>600,894,514.2</td><td>6.999 ns</td><td>14.00</td><td>2.606</td><td>2.000</td><td>0.7592</td><td>1</td><td>*</td><td>No</td><td>-</td><td>50 B</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>&#39;Validating Empty/Null String: Validation + Inlining&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>3.329 ns</td><td>0.0211 ns</td><td>0.0197 ns</td><td>0.0051 ns</td><td>3.304 ns</td><td>3.316 ns</td><td>3.327 ns</td><td>3.338 ns</td><td>3.369 ns</td><td>300,387,731.0</td><td>7.497 ns</td><td>15.00</td><td>2.308</td><td>2.000</td><td>0.6249</td><td>3</td><td>*</td><td>No</td><td>-</td><td>213 B</td><td>-</td><td>-</td><td>-</td>
-</tr><tr><td>&#39;Validating Empty/Null String: Validation&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>3.604 ns</td><td>0.0129 ns</td><td>0.0121 ns</td><td>0.0031 ns</td><td>3.582 ns</td><td>3.599 ns</td><td>3.605 ns</td><td>3.609 ns</td><td>3.624 ns</td><td>277,431,291.4</td><td>7.498 ns</td><td>15.00</td><td>2.412</td><td>2.000</td><td>-0.2209</td><td>4</td><td>*</td><td>No</td><td>-</td><td>213 B</td><td>-</td><td>-</td><td>-</td>
+</thead><tbody><tr><td>&#39;Validating Collection: No Validation&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>1.756 ns</td><td>0.0105 ns</td><td>0.0093 ns</td><td>0.0025 ns</td><td>1.744 ns</td><td>1.750 ns</td><td>1.753 ns</td><td>1.758 ns</td><td>1.776 ns</td><td>569,478,278.2</td><td>6.999 ns</td><td>14.00</td><td>2.798</td><td>2.000</td><td>1.0139</td><td>1</td><td>*</td><td>No</td><td>-</td><td>47 B</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;Validating Collection: Validation + Inlining&#39;</td><td>Validation,**NEW**</td><td>5.527 ns</td><td>0.0242 ns</td><td>0.0214 ns</td><td>0.0057 ns</td><td>5.483 ns</td><td>5.519 ns</td><td>5.528 ns</td><td>5.541 ns</td><td>5.558 ns</td><td>180,933,407.9</td><td>6.997 ns</td><td>14.00</td><td>2.226</td><td>2.000</td><td>-0.3958</td><td>5</td><td>*</td><td>No</td><td>-</td><td>283 B</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;Validating Collection: Validation&#39;</td><td>Validation,**NEW**</td><td>5.287 ns</td><td>0.0267 ns</td><td>0.0237 ns</td><td>0.0063 ns</td><td>5.225 ns</td><td>5.281 ns</td><td>5.286 ns</td><td>5.298 ns</td><td>5.330 ns</td><td>189,148,356.2</td><td>6.997 ns</td><td>14.00</td><td>4.165</td><td>2.000</td><td>-0.7379</td><td>4</td><td>*</td><td>No</td><td>-</td><td>283 B</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;Validating Empty/Null String: No Validation&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>1.884 ns</td><td>0.0062 ns</td><td>0.0049 ns</td><td>0.0014 ns</td><td>1.874 ns</td><td>1.880 ns</td><td>1.885 ns</td><td>1.887 ns</td><td>1.891 ns</td><td>530,909,488.6</td><td>5.999 ns</td><td>12.00</td><td>1.828</td><td>2.000</td><td>-0.4233</td><td>2</td><td>*</td><td>No</td><td>-</td><td>50 B</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;Validating Empty/Null String: Validation + Inlining&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>3.437 ns</td><td>0.0328 ns</td><td>0.0274 ns</td><td>0.0076 ns</td><td>3.381 ns</td><td>3.432 ns</td><td>3.439 ns</td><td>3.453 ns</td><td>3.476 ns</td><td>290,963,104.2</td><td>6.496 ns</td><td>13.00</td><td>2.501</td><td>2.000</td><td>-0.6491</td><td>3</td><td>*</td><td>No</td><td>-</td><td>213 B</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;Validating Empty/Null String: Validation&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>3.361 ns</td><td>0.0191 ns</td><td>0.0159 ns</td><td>0.0044 ns</td><td>3.340 ns</td><td>3.352 ns</td><td>3.360 ns</td><td>3.367 ns</td><td>3.401 ns</td><td>297,529,816.5</td><td>6.498 ns</td><td>13.00</td><td>3.657</td><td>2.000</td><td>0.9762</td><td>3</td><td>*</td><td>No</td><td>-</td><td>213 B</td><td>-</td><td>-</td><td>-</td>
 </tr></tbody></table>
 </body>
 </html>
