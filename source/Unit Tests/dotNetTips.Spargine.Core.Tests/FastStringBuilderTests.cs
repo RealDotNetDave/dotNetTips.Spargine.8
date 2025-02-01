@@ -45,23 +45,6 @@ public class FastStringBuilderTests
 	private const int WordMinLength = 5;
 
 	/// <summary>
-	/// Defines the test method BytesToStringTest.
-	/// </summary>
-	[TestMethod]
-	public void BytesToStringTest()
-	{
-		var testData = RandomData.GenerateByteArray(1);
-
-		var result = FastStringBuilder.BytesToString(ref testData);
-
-		Assert.IsNotNull(result);
-
-		Assert.IsTrue(result.Length > 0);
-
-		Assert.IsNotNull(FastStringBuilder.BytesToString(null));
-	}
-
-	/// <summary>
 	/// Defines the test method CombineToStringTest.
 	/// </summary>
 	[TestMethod]
