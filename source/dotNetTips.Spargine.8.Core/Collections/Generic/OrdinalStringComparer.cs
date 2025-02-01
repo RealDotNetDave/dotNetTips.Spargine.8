@@ -14,12 +14,13 @@
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
+
 namespace DotNetTips.Spargine.Core.Collections.Generic;
 
 /// <summary>
 /// Provides a comparison for <see cref="string"/> objects using ordinal comparison.
 /// </summary>
-[Information(Status = Status.New)]
+[Information(Status = Status.Available)]
 public class OrdinalStringComparer : IComparer<string>
 {
 	/// <summary>

@@ -705,7 +705,7 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="accumulatorPredicate"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information("Original code by Simon Painter.", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information("Original code by Simon Painter.", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int IndexOf<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, bool> accumulatorPredicate)
 	{
 		collection = collection.ArgumentNotNull();
@@ -990,7 +990,7 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="accumulatorPredicate"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.None, Status = Status.New)]
+	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.None, Status = Status.Available)]
 	public static IEnumerable<T> ReplaceIf<T>([NotNull] this IEnumerable<T> collection, [NotNull] Func<T, int, bool> accumulatorPredicate, T replacement)
 	{
 		collection = collection.ArgumentNotNull();
@@ -1009,7 +1009,7 @@ public static class EnumerableExtensions
 	/// <param name="accumulatorFunction">An accumulator accumulatorFunction to be invoked on each element.</param>
 	/// <returns>An <see cref="IEnumerable{T2}"/> containing the accumulated values.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="accumulatorFunction"/> is null.</exception>
-	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.None, Status = Status.New)]
+	[Information("Original code by Simon Painter.", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.None, Status = Status.Available)]
 	public static IEnumerable<T2> Scan<T1, T2>([NotNull] this IEnumerable<T1> source, [NotNull] T2 seed, [NotNull] Func<T2, T1, T2> accumulatorFunction)
 	{
 		source = source.ArgumentNotNull();

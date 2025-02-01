@@ -146,7 +146,7 @@ public static class ObjectExtensions
 	/// <param name="obj">The object to compute the hash code for.</param>
 	/// <returns>A fast hash code for the specified object.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastGetHashCode), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(FastGetHashCode), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int FastGetHashCode(this object obj)
 	{
 		obj = obj.ArgumentNotNull();

@@ -95,7 +95,7 @@ public static class StringExtensions
 	/// <returns>The size of the byte array needed to store the Base64 encoded string, or 0 if the input is null or empty.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CalculateByteArraySize), "David McCarter", "11/6/2024", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(CalculateByteArraySize), "David McCarter", "11/6/2024", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static int CalculateByteArraySize([NotNull] this string input)
 	{
 		if (input.IsNullOrEmpty())
@@ -1092,7 +1092,7 @@ public static class StringExtensions
 	/// <returns>A span of bytes representing the decoded Base64 string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToBase64ByteSpan), "David McCarter", "11/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(ToBase64ByteSpan), "David McCarter", "11/5/2024", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static Span<byte> ToBase64ByteSpan(this string input)
 	{
 		input = input.ArgumentNotNullOrEmpty();

@@ -917,7 +917,7 @@
 
 ### Void ThrowIOException(String message, Exception innerException)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -1043,7 +1043,7 @@
 
 ### Task<SimpleResult<Int32>> ProgressiveRetryAsync(Func<Task> function, Byte retryCount, Int32 retryWaitMilliseconds, ILogger logger, CancellationToken cancellationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** NotRequired
 * **Unit Test Status:** None
@@ -1249,14 +1249,14 @@
 *****
 ## InformationAttributeDocGenerator
 
-* **Status:** NeedsDocumentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
 ### String GenerateMarkdownDocumentForAssembly(Assembly assembly)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -1267,7 +1267,7 @@
 
 ### String GenerateMarkdownDocumentForAssembly(Assembly assembly, String path)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** NotRequired
 * **Unit Test Status:** Completed
@@ -1844,7 +1844,7 @@
 
 ### IEnumerable<MemberInfo> GetMembersWithAttribute(Type type)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -1877,7 +1877,7 @@
 
 ### String GetTypeDisplayName(Type type, DisplayNameOptions options)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Optimize
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -2633,7 +2633,7 @@
 
 ### T[] LoadCollectionFromJson(String json, Int32 count)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -2960,6 +2960,8 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
+* **Author:** UNKNOWN
+* **Description:** RegexProcessor.Methods
 * **Documentation:** https://bit.ly/SpargineRegexProcessor
 
 ### Boolean ContainsFirstLastName(String& input)
@@ -2986,7 +2988,7 @@
 
 ### String GetNumbers(String& input)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -3039,7 +3041,7 @@
 
 ### Boolean IsIPv4Address(String& input)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -3050,7 +3052,7 @@
 
 ### Boolean IsIPv6Address(String& input)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -3083,7 +3085,7 @@
 
 ### Boolean IsOneToSevenAlpha(String& input)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -3092,7 +3094,7 @@
 
 ### Boolean IsScientific(String& input)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -3727,7 +3729,7 @@
 
 ### Boolean ValidatePhoneNumber(CountryName countryName, String& phoneNumber, Boolean validateCountryCode)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -3736,7 +3738,7 @@
 
 ### PostalCodeState ValidatePostalCode(CountryName countryName, String& postalCode)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -3780,7 +3782,7 @@
 *****
 ## AutoDefaultDictionary<TKey, TValue>
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -3789,49 +3791,49 @@
 
 ### AutoDefaultDictionary<TKey, TValue> ()
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
 ### AutoDefaultDictionary<TKey, TValue> (TValue defaultValue)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
 ### AutoDefaultDictionary<TKey, TValue> (IEqualityComparer<TKey> comparer)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
 ### AutoDefaultDictionary<TKey, TValue> (IDictionary<TKey, TValue> dictionary, TValue defaultValue)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
 ### AutoDefaultDictionary<TKey, TValue> (IEnumerable<KeyValuePair<TKey, TValue>> keyValuePairs, TValue defaultValue)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
 ### AutoDefaultDictionary<TKey, TValue> (TValue defaultValue, IEqualityComparer<TKey> comparer)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
 ### TValue Item { get; set; }
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
@@ -4153,7 +4155,7 @@
 *****
 ## OrdinalStringComparer
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -4205,7 +4207,7 @@
 
 ### ChannelQueue<T> (Int32 capacity, Nullable<TimeSpan> cancellationTimeout)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** NotRequired
 * **Unit Test Status:** None
@@ -4550,7 +4552,7 @@
 
 ### Void AddCacheItem(IDataModel<T, TKey> item)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4561,7 +4563,7 @@
 
 ### Void AddCacheItem(IDataRecord item)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4583,7 +4585,7 @@
 
 ### Void AddCacheItem(IDataModel<T, TKey> item, DateTimeOffset timeout)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4594,7 +4596,7 @@
 
 ### Void AddCacheItem(IDataRecord item, DateTimeOffset timeout)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4605,7 +4607,7 @@
 
 ### Void AddCacheItem(IDataModel<T, TKey> item, TimeSpan timeout)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4616,7 +4618,7 @@
 
 ### Void AddCacheItem(IDataRecord item, TimeSpan timeout)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4649,7 +4651,7 @@
 
 ### Task AddCacheItemAsync(IDataRecord item, CancellationToken cancellationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4660,7 +4662,7 @@
 
 ### Task AddCacheItemAsync(IDataModel<T, TKey> item, CancellationToken cancelationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4671,7 +4673,7 @@
 
 ### Task AddCacheItemAsync(IDataRecord item, DateTimeOffset timeout, CancellationToken cancellationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4682,7 +4684,7 @@
 
 ### Task AddCacheItemAsync(String key, T item, CancellationToken cancellationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4693,7 +4695,7 @@
 
 ### Task AddCacheItemAsync(IDataModel<T, TKey> item, TimeSpan timeout, CancellationToken cancellationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4704,7 +4706,7 @@
 
 ### Task AddCacheItemAsync(IDataRecord item, TimeSpan timeout, CancellationToken cancellationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4715,7 +4717,7 @@
 
 ### Task AddCacheItemAsync(IDataModel<T, TKey> item, DateTimeOffset timeout, CancellationToken cancellationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4726,7 +4728,7 @@
 
 ### Task AddCacheItemAsync(String key, T item, TimeSpan timeout, CancellationToken cancellationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4737,7 +4739,7 @@
 
 ### Task AddCacheItemAsync(String key, T item, DateTimeOffset timeout, CancellationToken cancellationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4770,7 +4772,7 @@
 
 ### Boolean ContainsKey(String key)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4792,7 +4794,7 @@
 
 ### IEnumerable<String> GetAllKeys()
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4814,7 +4816,7 @@
 
 ### Task<T> GetCacheItemAsync(String key, CancellationToken cancellationToken)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4836,7 +4838,7 @@
 
 ### Boolean RemoveCacheItem(String key)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -4846,4 +4848,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 2/1/2025 12:43:42 AM UTC**
+**Generated by Spargine - dotNetTips.com on 2/1/2025 2:43:02 PM UTC**

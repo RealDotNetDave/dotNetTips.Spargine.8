@@ -89,7 +89,7 @@ public static class ListExtensions
 	/// <returns>The updated list with the items added if they did not already exist.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static List<T> AddRangeIfNotExists<T>([NotNull] this List<T> collection, [NotNull] IEnumerable<T> items)
 	{
 		// TODO: CHANGE TO VOID AT THE END OF 2025 TO WORK LIKE ADDRANGE
@@ -387,7 +387,7 @@ public static class ListExtensions
 	/// <param name="item">The item to remove from the list.</param>
 	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(RemoveFirst), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(RemoveFirst), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool RemoveFirst<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		collection = collection.ArgumentNotNull();
@@ -416,7 +416,7 @@ public static class ListExtensions
 	/// <param name="item">The item to remove from the list.</param>
 	/// <returns><c>true</c> if the item was successfully removed; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(RemoveLast), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(RemoveLast), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool RemoveLast<T>([NotNull] this List<T> collection, [NotNull] T item)
 	{
 		collection = collection.ArgumentNotNull();
@@ -443,7 +443,7 @@ public static class ListExtensions
 	/// <typeparam name="T">The type of elements in the list.</typeparam>
 	/// <param name="collection">The list to shuffle.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Shuffle), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(Shuffle), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static void Shuffle<T>([NotNull] this List<T> collection)
 	{
 		collection = collection.ArgumentNotNull();
@@ -466,7 +466,7 @@ public static class ListExtensions
 	/// <param name="size">The size of each smaller list.</param>
 	/// <returns>A list of smaller lists.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Split), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(Split), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<ReadOnlyCollection<T>> Split<T>([NotNull] this List<T> collection, int size)
 	{
 		collection = collection.ArgumentNotNull();
@@ -549,7 +549,7 @@ public static class ListExtensions
 	/// <returns>A <see cref="FastSortedList{T}"/> containing the elements from the original list, sorted according to the specified comparer.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="comparer"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFastSortedList), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(ToFastSortedList), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static FastSortedList<T> ToFastSortedList<T>([NotNull] this List<T> collection, [NotNull] IComparer<T> comparer) => new(collection.ArgumentNotNull(), comparer.ArgumentNotNull());
 
 	/// <summary>
@@ -559,7 +559,7 @@ public static class ListExtensions
 	/// <param name="list">The list.</param>
 	/// <returns>FrozenSet&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(ToFrozenSet), "David McCarter", "6/3/2024", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static FrozenSet<T> ToFrozenSet<T>([NotNull] this List<T> list) => FrozenSet.ToFrozenSet(list);
 
 	/// <summary>

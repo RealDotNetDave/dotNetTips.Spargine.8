@@ -21,7 +21,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// <summary>
 /// Provides a comparer for <see cref="PersonRecord"/> objects that compares them by their last names.
 /// </summary>
-[Information(Status = Status.New)]
+[Information(Status = Status.Available)]
 public sealed class PersonRecordComparerByLastName : IComparer<PersonRecord>
 {
 	/// <summary>

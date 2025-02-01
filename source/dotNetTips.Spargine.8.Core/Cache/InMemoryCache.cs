@@ -92,7 +92,7 @@ public sealed class InMemoryCache
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem<T, TKey>([NotNull] IDataModel<T, TKey> item)
 	{
 		item = item.ArgumentNotNull();
@@ -109,7 +109,7 @@ public sealed class InMemoryCache
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem([NotNull] IDataRecord item)
 	{
 		item = item.ArgumentNotNull();
@@ -147,7 +147,7 @@ public sealed class InMemoryCache
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem<T, TKey>([NotNull] IDataModel<T, TKey> item, DateTimeOffset timeout)
 	{
 		item = item.ArgumentNotNull();
@@ -164,7 +164,7 @@ public sealed class InMemoryCache
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem([NotNull] IDataRecord item, DateTimeOffset timeout)
 	{
 		item = item.ArgumentNotNull();
@@ -183,7 +183,7 @@ public sealed class InMemoryCache
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem<T, TKey>([NotNull] IDataModel<T, TKey> item, TimeSpan timeout)
 	{
 		item = item.ArgumentNotNull();
@@ -200,7 +200,7 @@ public sealed class InMemoryCache
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public void AddCacheItem([NotNull] IDataRecord item, TimeSpan timeout)
 	{
 		item = item.ArgumentNotNull();
@@ -256,7 +256,7 @@ public sealed class InMemoryCache
 	/// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public Task AddCacheItemAsync([NotNull] IDataRecord item, CancellationToken cancellationToken = default) => Task.Run(() => this.AddCacheItem(item), cancellationToken);
 
 	/// <summary>
@@ -268,7 +268,7 @@ public sealed class InMemoryCache
 	/// <param name="cancelationToken">A cancellation token to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item, CancellationToken cancelationToken = default) => Task.Run(() => this.AddCacheItem(item), cancelationToken);
 
 	/// <summary>
@@ -279,7 +279,7 @@ public sealed class InMemoryCache
 	/// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public Task AddCacheItemAsync([NotNull] IDataRecord item, DateTimeOffset timeout, CancellationToken cancellationToken = default) => Task.Run(() => this.AddCacheItem(item, timeout), cancellationToken);
 
 	/// <summary>
@@ -291,7 +291,7 @@ public sealed class InMemoryCache
 	/// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key"/> is null or empty, or <paramref name="item"/> is null.</exception>
-	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item, CancellationToken cancellationToken = default) => Task.Run(() => this.AddCacheItem(key, item), cancellationToken);
 
 	/// <summary>
@@ -304,7 +304,7 @@ public sealed class InMemoryCache
 	/// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item, TimeSpan timeout, CancellationToken cancellationToken = default) => Task.Run(() => this.AddCacheItem(item, timeout), cancellationToken);
 
 	/// <summary>
@@ -315,7 +315,7 @@ public sealed class InMemoryCache
 	/// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public Task AddCacheItemAsync([NotNull] IDataRecord item, TimeSpan timeout, CancellationToken cancellationToken = default) => Task.Run(() => this.AddCacheItem(item, timeout), cancellationToken);
 
 	/// <summary>
@@ -328,7 +328,7 @@ public sealed class InMemoryCache
 	/// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="item"/> is null.</exception>
-	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public Task AddCacheItemAsync<T, TKey>([NotNull] IDataModel<T, TKey> item, DateTimeOffset timeout, CancellationToken cancellationToken = default) => Task.Run(() => this.AddCacheItem(item, timeout), cancellationToken);
 
 	/// <summary>
@@ -341,7 +341,7 @@ public sealed class InMemoryCache
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key"/> is null or empty, or <paramref name="item"/> is null.</exception>
-	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item, TimeSpan timeout, CancellationToken cancellationToken = default) => Task.Run(() => this.AddCacheItem(key, item, timeout), cancellationToken);
 
 	/// <summary>
@@ -354,7 +354,7 @@ public sealed class InMemoryCache
 	/// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
 	/// <returns>A task that represents the asynchronous operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if either <paramref name="key"/> is null or empty, or <paramref name="item"/> is null.</exception>
-	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public Task AddCacheItemAsync<T>([NotNull] string key, [NotNull] T item, DateTimeOffset timeout, CancellationToken cancellationToken = default) => Task.Run(() => this.AddCacheItem(key, item, timeout), cancellationToken);
 
 	/// <summary>
@@ -372,7 +372,7 @@ public sealed class InMemoryCache
 	/// <param name="key">The key of the item to locate in the cache.</param>
 	/// <returns><c>true</c> if the cache contains an item with the specified key; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="key"/> is null or empty.</exception>
-	[Information(nameof(ContainsKey), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(ContainsKey), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public bool ContainsKey([NotNull] string key)
 	{
 		key = key.ArgumentNotNullOrEmpty();
@@ -386,7 +386,7 @@ public sealed class InMemoryCache
 	/// <remarks>
 	/// This method provides a way to retrieve all keys currently stored in the cache. It can be useful for debugging and monitoring purposes.
 	/// </remarks>
-	[Information(nameof(GetAllKeys), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(GetAllKeys), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public IEnumerable<string> GetAllKeys() => this.Cache.Keys.Select(p => p.ToString());
 
 	/// <summary>
@@ -425,7 +425,7 @@ public sealed class InMemoryCache
 	/// Retrieves an item from the cache using the specified key asynchronously. If the item is found, it is returned; otherwise, the default value for type <typeparamref name="T"/> is returned.
 	/// This method utilizes the <see cref="MemoryCache.TryGetValue"/> method to attempt to retrieve the item.
 	/// </remarks>
-	[Information(nameof(GetCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(GetCacheItemAsync), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public Task<T> GetCacheItemAsync<T>([NotNull] string key, CancellationToken cancellationToken = default) => Task.Run(() => this.GetCacheItem<T>(key), cancellationToken);
 
 	/// <summary>
@@ -434,7 +434,7 @@ public sealed class InMemoryCache
 	/// <param name="key">The key of the item to remove from the cache.</param>
 	/// <returns><c>true</c> if the item is successfully removed; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="key"/> is null or empty.</exception>
-	[Information(nameof(RemoveCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(RemoveCacheItem), "David McCarter", "1/20/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public bool RemoveCacheItem([NotNull] string key)
 	{
 		key = key.ArgumentNotNullOrEmpty();

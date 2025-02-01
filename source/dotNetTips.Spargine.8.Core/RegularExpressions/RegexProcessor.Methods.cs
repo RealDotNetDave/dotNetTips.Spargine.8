@@ -16,12 +16,13 @@
 // </summary>
 // ***********************************************************************
 
-//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
-
 using System.Text.RegularExpressions;
+
+//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Core.RegularExpressions;
 
+[Information("RegexProcessor.Methods", Documentation = "https://bit.ly/SpargineRegexProcessor", Status = Status.Available)]
 public static partial class RegexProcessor
 {
 	/// <summary>
@@ -66,7 +67,7 @@ public static partial class RegexProcessor
 	/// <param name="input">The input string to extract numbers from.</param>
 	/// <returns>A string containing all numeric characters extracted from the input.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
-	[Information(nameof(GetNumbers), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(GetNumbers), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string GetNumbers(in string input)
 	{
 		ArgumentNullException.ThrowIfNull(input);
@@ -157,7 +158,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a valid IPv4 address; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsIPv4Address), "David McCarter", "10/10/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(IsIPv4Address), "David McCarter", "10/10/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool IsIPv4Address(in string input)
 	{
 		if (input is null)
@@ -173,7 +174,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is a valid IPv6 address; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsIPv6Address), "David McCarter", "10/10/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(IsIPv6Address), "David McCarter", "10/10/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool IsIPv6Address(in string input)
 	{
 		if (input is null)
@@ -221,7 +222,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input contains only alphabetic characters and has a length between 1 and 7 characters; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsOneToSevenAlpha), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(IsOneToSevenAlpha), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool IsOneToSevenAlpha(in string input)
 	{
 		if (input is null)
@@ -237,7 +238,7 @@ public static partial class RegexProcessor
 	/// </summary>
 	/// <param name="input">The input string to check.</param>
 	/// <returns><c>true</c> if the input is in scientific notation; otherwise, <c>false</c>.</returns>
-	[Information(nameof(IsScientific), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(IsScientific), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool IsScientific(in string input)
 	{
 		if (input is null)

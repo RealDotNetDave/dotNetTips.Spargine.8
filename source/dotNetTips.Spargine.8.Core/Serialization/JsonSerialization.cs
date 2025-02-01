@@ -195,7 +195,7 @@ public static class JsonSerialization
 	/// <returns>An array of deserialized objects of type <typeparamref name="T"/>.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than 1.</exception>
 	/// <exception cref="JsonException">Thrown if the JSON is invalid or cannot be deserialized to the specified type.</exception>
-	[Information(nameof(LoadCollectionFromJson), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(LoadCollectionFromJson), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static T[] LoadCollectionFromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json, int count)
 	{
 		json = json.ArgumentNotNullOrEmpty();

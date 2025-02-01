@@ -29,7 +29,6 @@ namespace DotNetTips.Spargine.Core.RegularExpressions;
 /// methods for validating and processing strings against common patterns such as
 /// email addresses, URLs, credit card numbers, and more.
 /// </summary>
-[Information(Documentation = "https://bit.ly/SpargineRegexProcessor", Status = Status.Available)]
 public static partial class RegexProcessor
 {
 

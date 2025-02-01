@@ -524,7 +524,7 @@ public static class TypeHelper
 	/// <param name="type">The type to search for members with the specified attribute.</param>
 	/// <returns>An enumerable collection of members that have the specified attribute.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
-	[Information(nameof(GetMembersWithAttribute), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(GetMembersWithAttribute), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static IEnumerable<MemberInfo> GetMembersWithAttribute<TAttribute>(Type type) where TAttribute : Attribute
 	{
 		type = type.ArgumentNotNull();
@@ -616,7 +616,7 @@ public static class TypeHelper
 	/// <param name="type">The type to get the display name for.</param>
 	/// <param name="options">The display options to use for formatting the display name.</param>
 	/// <returns>The display name of the type.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string GetTypeDisplayName([NotNull] Type type, DisplayNameOptions options)
 	{
 		type = type.ArgumentNotNull();

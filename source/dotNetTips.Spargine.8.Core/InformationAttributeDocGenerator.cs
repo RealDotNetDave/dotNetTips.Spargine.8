@@ -24,7 +24,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Generates documentation for a given type based on the InformationAttribute.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation, Documentation = "")]
+[Information(Status = Status.Available)]
 public static class InformationAttributeDocGenerator
 {
 	/// <summary>
@@ -204,7 +204,7 @@ public static class InformationAttributeDocGenerator
 	/// </summary>
 	/// <param name="assembly">The assembly for which to generate documentation.</param>
 	/// <returns>A string containing the generated documentation for the entire assembly.</returns>
-	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string GenerateMarkdownDocumentForAssembly(Assembly assembly)
 	{
 		assembly = assembly.ArgumentNotNull();
@@ -241,7 +241,7 @@ public static class InformationAttributeDocGenerator
 	/// <param name="path">The path where the documentation file will be saved.</param>
 	/// <returns>The name of the file to which the documentation was written.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assembly"/> is null.</exception>
-	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(GenerateMarkdownDocumentForAssembly), "David McCarter", "11/18/2024", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string GenerateMarkdownDocumentForAssembly(Assembly assembly, string path)
 	{
 		var result = GenerateMarkdownDocumentForAssembly(assembly);

@@ -112,7 +112,7 @@ public static class ExecutionHelper
 	/// </code>
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ProgressiveRetryAsync), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(ProgressiveRetryAsync), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static async Task<SimpleResult<int>> ProgressiveRetryAsync([NotNull] Func<Task> function, byte retryCount = 3, int retryWaitMilliseconds = 100, ILogger logger = null, CancellationToken cancellationToken = default)
 	{
 		function = function.ArgumentNotNull();

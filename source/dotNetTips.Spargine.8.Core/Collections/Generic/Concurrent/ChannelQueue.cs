@@ -87,7 +87,7 @@ public sealed class ChannelQueue<T>
 	/// <param name="capacity">The capacity of the <see cref="Channel{T}"/>.</param>
 	/// <param name="cancellationTimeout">The timeout for the cancellation token.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public ChannelQueue(int capacity, TimeSpan? cancellationTimeout = null)
 	{
 		this._channel = Channel.CreateBounded<T>(capacity);

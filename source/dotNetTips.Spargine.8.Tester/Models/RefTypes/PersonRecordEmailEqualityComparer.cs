@@ -21,7 +21,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// <summary>
 /// Provides equality comparison for <see cref="PersonRecord"/> objects based on the email address.
 /// </summary>
-[Information(Status = Status.New)]
+[Information(Status = Status.Available)]
 public sealed class PersonRecordEmailEqualityComparer : IEqualityComparer<PersonRecord>
 {
 	/// <summary>

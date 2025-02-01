@@ -355,7 +355,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowIOException), UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(ThrowIOException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void ThrowIOException([AllowNull] string message, Exception innerException) => throw new IOException(message ?? Resources.ErrorUnknownIOException, innerException);
 
 	/// <summary>
