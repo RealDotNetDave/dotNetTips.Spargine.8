@@ -155,7 +155,7 @@ public sealed record AddressRecord : IDataRecord
 	/// <param name="address">The address object to convert.</param>
 	/// <returns>An instance of <see cref="AddressRecord"/> initialized with values from the provided <see cref="Address"/> object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
-	[Information(nameof(ToAddress), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ToAddress), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static AddressRecord ToAddress([NotNull] Address address) => new(address.ArgumentNotNull().Id)
 	{
 		Address1 = address.Address1,
@@ -174,7 +174,7 @@ public sealed record AddressRecord : IDataRecord
 	/// <param name="address">The <see cref="ValueTypes.Address"/> object to convert.</param>
 	/// <returns>An instance of <see cref="AddressRecord"/> initialized with values from the provided <see cref="ValueTypes.Address"/> object.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
-	[Information(nameof(ToAddress), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ToAddress), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static AddressRecord ToAddress([NotNull] ValueTypes.Address address) => new(address.ArgumentNotNull().Id)
 	{
 		Address1 = address.Address1,

@@ -13,9 +13,7 @@
 // ***********************************************************************
 
 using System;
-using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
-using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -199,4 +197,49 @@ public class AddressRecordRefTests
 		Assert.AreEqual(postalCode, addressRecord.PostalCode);
 		Assert.AreEqual(phone, addressRecord.Phone);
 	}
+
+	[TestMethod]
+	public void AddressRecord_ToAddress_ConvertsFromAddress()
+	{
+		// Arrange
+		var address = new Address("123", "123 Main St", "Apt 4B", "Anytown", "CA", "AnyCounty", "USA", "12345", "555-1234");
+
+		// Act
+		var addressRecord = AddressRecord.ToAddress(address);
+
+		// Assert
+		Assert.IsNotNull(addressRecord);
+		Assert.AreEqual(address.Id, addressRecord.Id);
+		Assert.AreEqual(address.Address1, addressRecord.Address1);
+		Assert.AreEqual(address.Address2, addressRecord.Address2);
+		Assert.AreEqual(address.City, addressRecord.City);
+		Assert.AreEqual(address.State, addressRecord.State);
+		Assert.AreEqual(address.CountyProvince, addressRecord.CountyProvince);
+		Assert.AreEqual(address.Country, addressRecord.Country);
+		Assert.AreEqual(address.PostalCode, addressRecord.PostalCode);
+		Assert.AreEqual(address.Phone, addressRecord.Phone);
+	}
+
+	[TestMethod]
+	public void AddressRecord_ToAddress_ConvertsFromValueTypesAddress()
+	{
+		// Arrange
+		var address = new Models.ValueTypes.Address("123", "123 Main St", "Apt 4B", "Anytown", "CA", "AnyCounty", "USA", "12345", "555-1234");
+
+		// Act
+		var addressRecord = AddressRecord.ToAddress(address);
+
+		// Assert
+		Assert.IsNotNull(addressRecord);
+		Assert.AreEqual(address.Id, addressRecord.Id);
+		Assert.AreEqual(address.Address1, addressRecord.Address1);
+		Assert.AreEqual(address.Address2, addressRecord.Address2);
+		Assert.AreEqual(address.City, addressRecord.City);
+		Assert.AreEqual(address.State, addressRecord.State);
+		Assert.AreEqual(address.CountyProvince, addressRecord.CountyProvince);
+		Assert.AreEqual(address.Country, addressRecord.Country);
+		Assert.AreEqual(address.PostalCode, addressRecord.PostalCode);
+		Assert.AreEqual(address.Phone, addressRecord.Phone);
+	}
+
 }
