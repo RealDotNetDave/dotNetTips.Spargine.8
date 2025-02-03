@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 02-03-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrowerTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -15,6 +15,8 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -167,6 +169,30 @@ public class ExceptionThrowerTests
 	}
 
 	[TestMethod]
+	[ExpectedException(typeof(FileNotFoundException))]
+	public void ThrowFileNotFoundException_WithNullInnerException_ThrowsFileNotFoundException()
+	{
+		// Act
+		ExceptionThrower.ThrowFileNotFoundException("Test message", (Exception)null);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(FileNotFoundException))]
+	public void ThrowFileNotFoundException_WithNullMessage_ThrowsFileNotFoundException()
+	{
+		// Act
+		ExceptionThrower.ThrowFileNotFoundException(null, new Exception("Inner exception"));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(FileNotFoundException))]
+	public void ThrowFileNotFoundException_WithNullMessageAndInnerException_ThrowsFileNotFoundException()
+	{
+		// Act
+		ExceptionThrower.ThrowFileNotFoundException(null, (Exception)null);
+	}
+
+	[TestMethod]
 	[ExpectedException(typeof(InvalidCastException))]
 	public void ThrowInvalidCastException_WithInnerException_ThrowsInvalidCastException()
 	{
@@ -224,10 +250,42 @@ public class ExceptionThrowerTests
 
 	[TestMethod]
 	[ExpectedException(typeof(IOException))]
+	public void ThrowIOException_WithInnerException_ThrowsIOException()
+	{
+		// Act
+		ExceptionThrower.ThrowIOException("Test message", new Exception("Inner exception"));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(IOException))]
 	public void ThrowIOException_WithMessage_ThrowsIOException()
 	{
 		// Act
 		ExceptionThrower.ThrowIOException("Test message");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(IOException))]
+	public void ThrowIOException_WithNullInnerException_ThrowsIOException()
+	{
+		// Act
+		ExceptionThrower.ThrowIOException("Test message", null);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(IOException))]
+	public void ThrowIOException_WithNullMessage_ThrowsIOException()
+	{
+		// Act
+		ExceptionThrower.ThrowIOException(null, new Exception("Inner exception"));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(IOException))]
+	public void ThrowIOException_WithNullMessageAndInnerException_ThrowsIOException()
+	{
+		// Act
+		ExceptionThrower.ThrowIOException(null, null);
 	}
 
 	[TestMethod]
@@ -264,10 +322,138 @@ public class ExceptionThrowerTests
 
 	[TestMethod]
 	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithInnerExceptionAndUserMessage_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException("Test message", new Exception("Inner exception"), "User message");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
 	public void ThrowMessageNotQueuedException_WithMessage_ThrowsMessageNotQueuedException()
 	{
 		// Act
 		ExceptionThrower.ThrowMessageNotQueuedException("Test message");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithMessageAndInnerExceptionAndNullUserMessage_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException("Test message", new Exception("Inner exception"), null);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithMessageAndMessageIdAndNullInnerException_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException("Test message", "messageId", null);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithMessageAndNullInnerExceptionAndUserMessage_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException("Test message", null, "User message");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithMessageAndNullMessageIdAndInnerException_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException("Test message", null, new Exception("Inner exception"));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithMessageId_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException("Test message", "messageId");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithMessageIdAndInnerException_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException("Test message", "messageId", new Exception("Inner exception"));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithNullMessage_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException(null, "messageId");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithNullMessageAndInnerExceptionAndNullUserMessage_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException(null, new Exception("Inner exception"), null);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithNullMessageAndInnerExceptionAndUserMessage_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException(null, new Exception("Inner exception"), "User message");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithNullMessageAndMessageId_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException(null, (string)null);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithNullMessageAndMessageIdAndInnerException_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException(null, "messageId", new Exception("Inner exception"));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithNullMessageAndMessageIdAndNullInnerException_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException(null, "messageId", null);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithNullMessageAndNullInnerExceptionAndUserMessage_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException(null, null, "User message");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithNullMessageAndNullMessageIdAndInnerException_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException(null, null, new Exception("Inner exception"));
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(MessageNotQueuedException))]
+	public void ThrowMessageNotQueuedException_WithNullMessageId_ThrowsMessageNotQueuedException()
+	{
+		// Act
+		ExceptionThrower.ThrowMessageNotQueuedException("Test message", (string)null);
 	}
 
 	[TestMethod]
@@ -284,5 +470,27 @@ public class ExceptionThrowerTests
 	{
 		// Act
 		ExceptionThrower.ThrowNetworkConnectionException("Test message");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(NetworkConnectionException))]
+	public void ThrowNetworkConnectionException_WithMessageAndNetworkInterface_ThrowsNetworkConnectionException()
+	{
+		// Arrange
+		var networkInterface = NetworkInterface.GetAllNetworkInterfaces().FirstOrDefault();
+
+		// Act
+		ExceptionThrower.ThrowNetworkConnectionException("Test message", networkInterface);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(NetworkConnectionException))]
+	public void ThrowNetworkConnectionException_WithNullMessageAndNetworkInterface_ThrowsNetworkConnectionException()
+	{
+		// Arrange
+		var networkInterface = NetworkInterface.GetAllNetworkInterfaces().FirstOrDefault();
+
+		// Act
+		ExceptionThrower.ThrowNetworkConnectionException(null, networkInterface);
 	}
 }

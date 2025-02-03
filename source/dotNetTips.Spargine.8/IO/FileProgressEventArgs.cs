@@ -15,8 +15,6 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 
-
-
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
@@ -28,7 +26,7 @@ namespace DotNetTips.Spargine.IO;
 /// <seealso cref="EventArgs" />
 public sealed class FileProgressEventArgs : EventArgs
 {
-
+	//TODO: RENAME IN V10 SINCE THIS ISN'T ONLY FOR FILES.
 	/// <summary>
 	/// Initializes a new instance of the <see cref="FileProgressEventArgs" /> class.
 	/// </summary>

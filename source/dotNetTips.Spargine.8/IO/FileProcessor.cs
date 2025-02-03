@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 02-02-2025
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -50,7 +50,7 @@ namespace DotNetTips.Spargine.IO;
 /// fileProcessor.CopyFiles(filesToCopy, destinationDir);
 /// </code>
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public class FileProcessor
 {
 
@@ -281,7 +281,7 @@ public class FileProcessor
 			{
 				try
 				{
-					DirectoryHelper.DeleteDirectory(listItem, 5);
+					DirectoryHelper.DeleteDirectory(listItem, 1);
 
 					successCount++;
 

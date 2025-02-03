@@ -23,7 +23,7 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 [Serializable]
 [ExcludeFromCodeCoverage(Justification = "Model class with no validation.")]
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Documentation = "https://bit.ly/SpargineApp", Status = Status.Available)]
 public record AppInfo
 {
 	/// <summary>

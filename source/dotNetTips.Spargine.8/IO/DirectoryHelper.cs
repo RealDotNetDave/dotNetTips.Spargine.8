@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 02-02-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -199,16 +199,16 @@ public static class DirectoryHelper
 			}
 			catch (IOException) when (tries >= retries)
 			{
-				Thread.Sleep(sleep);
+				throw;
 			}
 			catch (UnauthorizedAccessException) when (tries >= retries)
 			{
-				Thread.Sleep(sleep);
+				throw;
 			}
 		}
 		while (retries > tries);
 
-		ExceptionThrower.ThrowIOException($"Failed to delete directory: {path.FullName} after {retries} retries.");
+		//ExceptionThrower.ThrowIOException($"Failed to delete directory: {path.FullName} after {retries} retries.");
 	}
 
 	/// <summary>

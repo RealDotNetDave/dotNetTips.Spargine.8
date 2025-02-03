@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 02-03-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -199,7 +199,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowDirectoryNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ThrowDirectoryNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowDirectoryNotFoundException([AllowNull] string message, [AllowNull] Exception innerException) => throw new ArgumentInvalidException(message ?? Resources.ErrorDirectoryNotFound, innerException);
 
 	/// <summary>
@@ -211,7 +211,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ThrowFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowFileNotFoundException([AllowNull] string message, [AllowNull] Exception innerException) => throw new FileNotFoundException(message ?? Resources.ErrorFileNotFound, innerException);
 
 	/// <summary>
@@ -355,7 +355,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowIOException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ThrowIOException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowIOException([AllowNull] string message, Exception innerException) => throw new IOException(message ?? Resources.ErrorUnknownIOException, innerException);
 
 	/// <summary>
@@ -421,7 +421,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowMessageNotQueuedException([AllowNull] string message, [AllowNull] string messageId) => throw new MessageNotQueuedException(message ?? Resources.ErrorMessageNotQueued, messageId);
 
 	/// <summary>
@@ -433,7 +433,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowMessageNotQueuedException([AllowNull] string message, [AllowNull] Exception ex, [AllowNull] string userMessage) => throw new MessageNotQueuedException(message ?? Resources.ErrorMessageNotQueued, ex, userMessage);
 
 	/// <summary>
@@ -445,7 +445,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ThrowMessageNotQueuedException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowMessageNotQueuedException([AllowNull] string message, [AllowNull] string messageId, [AllowNull] Exception innerException) => throw new MessageNotQueuedException(message ?? Resources.ErrorMessageNotQueued, messageId, innerException);
 
 	/// <summary>
@@ -477,7 +477,7 @@ public static class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowNetworkConnectionException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ThrowNetworkConnectionException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowNetworkConnectionException([AllowNull] string message, [AllowNull] NetworkInterface connection) => throw new NetworkConnectionException(message ?? Resources.ErrorNetworkConnectionIssue, connection);
 
 }
