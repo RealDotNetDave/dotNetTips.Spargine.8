@@ -4,7 +4,7 @@
 // Created          : 06-04-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 02-04-2025
 // ***********************************************************************
 // <copyright file="Coordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -43,7 +43,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [DataContract(Name = "coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [Serializable]
 [XmlRoot(ElementName = "Coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
-[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coordinate>, IComparable, IComparable<Coordinate>
 {
 
@@ -67,7 +67,7 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
 	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
 	/// <returns><c>true</c> if the first instance is less than the second; otherwise, <c>false</c>.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator <(Coordinate left, Coordinate right) => left.CompareTo(right) < 0;
 
 	/// <summary>
@@ -76,7 +76,7 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
 	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
 	/// <returns><c>true</c> if the first instance is less than or equal to the second; otherwise, <c>false</c>.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator <=(Coordinate left, Coordinate right) => left.CompareTo(right) <= 0;
 
 	/// <summary>
@@ -94,7 +94,7 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
 	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
 	/// <returns><c>true</c> if the first instance is greater than the second; otherwise, <c>false</c>.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator >(Coordinate left, Coordinate right) => left.CompareTo(right) > 0;
 
 	/// <summary>
@@ -115,14 +115,13 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="obj"/>.
 	/// Greater than zero: This instance follows <paramref name="obj"/> in the sort order.</returns>
 	/// <exception cref="ArgumentException">Thrown when <paramref name="obj"/> is not of type <see cref="Coordinate"/>.</exception>
-	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public readonly int CompareTo(object obj)
 	{
 		if (obj is not Coordinate)
 		{
 			ExceptionThrower.ThrowArgumentInvalidException(
-				string.Format(CultureInfo.CurrentCulture, _objectIsNotTypeFormat),
-				nameof(obj));
+				string.Format(CultureInfo.CurrentCulture, _objectIsNotTypeFormat, obj?.GetType().Name, nameof(Coordinate)), nameof(obj));
 		}
 
 		return this.CompareTo((Coordinate)obj);
@@ -165,7 +164,7 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
 	/// <returns><c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.</returns>
-	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public override readonly bool Equals(object obj) => obj is Coordinate proper && this.Equals(proper);
 
 	/// <summary>
@@ -180,7 +179,7 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	/// Returns a hash code for this instance.
 	/// </summary>
 	/// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
-	[Information(nameof(GetHashCode), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GetHashCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public override readonly int GetHashCode() => HashCode.Combine(this.X, this.Y, this.Z);
 
 	/// <summary>
