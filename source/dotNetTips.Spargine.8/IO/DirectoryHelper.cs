@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-02-2025
+// Last Modified On : 02-04-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -207,8 +207,6 @@ public static class DirectoryHelper
 			}
 		}
 		while (retries > tries);
-
-		//ExceptionThrower.ThrowIOException($"Failed to delete directory: {path.FullName} after {retries} retries.");
 	}
 
 	/// <summary>
@@ -543,12 +541,9 @@ public static class DirectoryHelper
 	{
 		path = path.ArgumentExists();
 
-		foreach (var directory in path.GetDirectories())
-		{
-			SetFileAttributesToNormal(directory);
-		}
+		var options = new EnumerationOptions { IgnoreInaccessible = true, ReturnSpecialDirectories = false, RecurseSubdirectories = true };
 
-		foreach (var file in path.GetFiles())
+		foreach (var file in path.GetFiles("*.*", options))
 		{
 			file.Attributes = FileAttributes.Normal;
 		}

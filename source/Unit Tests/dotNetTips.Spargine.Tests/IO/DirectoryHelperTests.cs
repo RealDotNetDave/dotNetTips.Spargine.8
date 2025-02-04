@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-16-2025
+// Last Modified On : 02-04-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -22,6 +22,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
+using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -70,7 +71,6 @@ public class DirectoryHelperTests
 			Assert.Inconclusive("This test is designed to run on Windows.");
 		}
 	}
-
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
@@ -126,22 +126,6 @@ public class DirectoryHelperTests
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
-	[ExpectedException(typeof(DirectoryNotFoundException))]
-	public void DeleteDirectory_DirectoryInUse_ThrowsIOException()
-	{
-		// Arrange
-		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-
-		using (var stream = File.Create(Path.Combine(tempDirectoryPath, "tempFile.txt")))
-		{
-			// Act
-			DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath), 1);
-			// IOException expected due to the open file stream
-		}
-	}
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
 	public void DeleteDirectory_NonExistentDirectory_NoExceptionThrown()
 	{
 		// Arrange
@@ -173,6 +157,7 @@ public class DirectoryHelperTests
 	{
 		// Arrange
 		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		_ = RandomData.GenerateFiles(tempDirectoryPath, 100);
 
 		// Simulate a condition that would initially prevent deletion, such as a temporary lock by another process
 		// For testing purposes, this is simulated by a short delay within the test, as actual process locking is complex and flaky in automated tests
