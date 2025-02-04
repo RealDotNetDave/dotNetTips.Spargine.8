@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 02-04-2025
 // ***********************************************************************
 // <copyright file="PersonValTests.cs" company="DotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -13,7 +13,6 @@
 // ***********************************************************************
 
 using System;
-using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
@@ -27,7 +26,6 @@ namespace DotNetTips.Spargine.Tester.Tests;
 [TestClass]
 public class PersonValTests
 {
-
 	[TestMethod]
 	public void Person_CalculateAge_ReturnsCorrectAge()
 	{
@@ -42,6 +40,50 @@ public class PersonValTests
 
 		// Assert
 		Assert.AreEqual(expectedAge.Days, age.Days);
+	}
+
+	[TestMethod]
+	public void Person_CalculateAge_ShouldReturnExpectedResults()
+	{
+		// Arrange
+		var bornOn = new DateTimeOffset(new DateTime(1990, 1, 1));
+		var person = new Person<Address>("test@example.com", "123") { BornOn = bornOn };
+		var expectedAge = DateTimeOffset.UtcNow.Subtract(bornOn);
+
+		// Act
+		var age = person.CalculateAge();
+
+		// Assert
+		Assert.AreEqual(expectedAge.Days, age.Days);
+	}
+
+	[TestMethod]
+	public void Person_CompareTo_ValidPerson_ShouldReturnExpectedResults()
+	{
+		// Arrange
+		var person1 = new Person<Address>("test1@example.com", "123");
+		var person2 = new Person<Address>("test1@example.com", "123");
+		var person3 = new Person<Address>("test2@example.com", "124");
+
+		// Act & Assert
+		Assert.AreEqual(0, person1.CompareTo(person2));
+		Assert.IsTrue(person1.CompareTo(person3) < 0);
+		Assert.IsTrue(person3.CompareTo(person1) > 0);
+	}
+
+	[TestMethod]
+	public void Person_ComparisonOperators_ShouldReturnExpectedResults()
+	{
+		// Arrange
+		var person1 = new Person<Address>("test1@example.com", "123");
+		var person2 = new Person<Address>("test1@example.com", "123");
+		var person3 = new Person<Address>("test2@example.com", "124");
+
+		// Act & Assert
+		Assert.IsTrue(person1 <= person2);
+		Assert.IsTrue(person1 >= person2);
+		Assert.IsTrue(person1 < person3);
+		Assert.IsTrue(person3 > person1);
 	}
 
 	[TestMethod]
@@ -67,6 +109,21 @@ public class PersonValTests
 	}
 
 	[TestMethod]
+	public void Person_Constructor_ShouldInitializeProperties()
+	{
+		// Arrange
+		var id = "123";
+		var email = "test@example.com";
+
+		// Act
+		var person = new Person<Address>(email, id);
+
+		// Assert
+		Assert.AreEqual(id, person.Id);
+		Assert.AreEqual(email, person.Email);
+	}
+
+	[TestMethod]
 	public void Person_Constructor_ValidParameters_CreatesInstance()
 	{
 		// Arrange
@@ -83,6 +140,23 @@ public class PersonValTests
 	}
 
 	[TestMethod]
+	public void Person_EqualityOperators_ShouldReturnExpectedResults()
+	{
+		var age = DateTime.UtcNow;
+
+		// Arrange
+		var person1 = new Person<Address>("test1@example.com", "123") { BornOn = age };
+		var person2 = new Person<Address>("test1@example.com", "123") { BornOn = age };
+		var person3 = new Person<Address>("test2@example.com", "124") { BornOn = age };
+
+		// Act & Assert
+		Assert.IsFalse(person1 == person2);
+		Assert.IsFalse(person1 == person3);
+		Assert.IsTrue(person1 != person2);
+		Assert.IsTrue(person1 != person3);
+	}
+
+	[TestMethod]
 	public void Person_Equals_DifferentValues_ReturnsFalse()
 	{
 		// Arrange
@@ -94,6 +168,20 @@ public class PersonValTests
 
 		// Assert
 		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void Person_Equals_ShouldReturnExpectedResults()
+	{
+		// Arrange
+		var person1 = new Person<Address>("test1@example.com", "123");
+		var person2 = new Person<Address>("test1@example.com", "123");
+		var person3 = new Person<Address>("test2@example.com", "124");
+
+		// Act & Assert
+		Assert.IsFalse(person1.Equals(person2));
+		Assert.IsFalse(person1.Equals(person3));
+		Assert.IsFalse(person1.Equals(null));
 	}
 
 	[TestMethod]
@@ -127,6 +215,19 @@ public class PersonValTests
 	}
 
 	[TestMethod]
+	public void Person_GetHashCode_ShouldReturnExpectedResults()
+	{
+		// Arrange
+		var person1 = new Person<Address>("test1@example.com", "123");
+		var person2 = new Person<Address>("test1@example.com", "123");
+		var person3 = new Person<Address>("test2@example.com", "124");
+
+		// Act & Assert
+		Assert.AreEqual(person1.GetHashCode(), person2.GetHashCode());
+		Assert.AreNotEqual(person1.GetHashCode(), person3.GetHashCode());
+	}
+
+	[TestMethod]
 	public void Person_OperatorNotEquals_DifferentValues_ReturnsTrue()
 	{
 		// Arrange
@@ -140,13 +241,12 @@ public class PersonValTests
 		Assert.IsTrue(result);
 	}
 
-
 	[TestMethod]
 	public void Person_ToString_ReturnsCorrectString()
 	{
 		// Arrange
 		var person = new Person<Address>("test@example.com", "123");
-		var expectedString = person.PropertiesToString();
+		var expectedString = person.PropertiesToString(includeMemberName: false);
 
 		// Act
 		var result = person.ToString();
@@ -154,4 +254,19 @@ public class PersonValTests
 		// Assert
 		Assert.AreEqual(expectedString, result);
 	}
+
+	[TestMethod]
+	public void Person_ToString_ShouldReturnExpectedResults()
+	{
+		// Arrange
+		var person = new Person<Address>("test@example.com", "123");
+		var expectedString = "BornOn:1/1/0001 12:00:00 AM +00:00, Email:test@example.com, Id:123";
+
+		// Act
+		var result = person.ToString();
+
+		// Assert
+		Assert.AreEqual(expectedString, result);
+	}
+
 }
