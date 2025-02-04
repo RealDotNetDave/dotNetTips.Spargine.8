@@ -187,7 +187,7 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	/// </summary>
 	/// <returns>A string representation of the current <see cref="Coordinate"/>, including its X, Y, and Z values.</returns>
 	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public override readonly string ToString() => this.PropertiesToString();
+	public override string ToString() => this.PropertiesToString(includeMemberName: false);
 
 	/// <summary>
 	/// Gets or sets the x coordinate.

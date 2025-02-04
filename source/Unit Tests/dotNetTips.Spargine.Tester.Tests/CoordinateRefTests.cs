@@ -321,7 +321,7 @@ public class CoordinateRefTests
 	{
 		// Arrange
 		var coord = new Coordinate(1, 2, 3);
-		var expectedString = "Coordinate.X:1, Coordinate.Y:2, Coordinate.Z:3";
+		var expectedString = "X:1, Y:2, Z:3";
 
 		// Act
 		var result = coord.ToString();

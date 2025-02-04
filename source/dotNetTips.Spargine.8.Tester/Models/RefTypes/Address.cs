@@ -341,7 +341,7 @@ public sealed class Address : IAddress
 	/// </summary>
 	/// <returns>A <see cref="string"/> that represents this instance.</returns>
 	[DebuggerStepThrough]
-	public override string ToString() => this.PropertiesToString();
+	public override string ToString() => this.PropertiesToString(includeMemberName: false);
 
 	/// <summary>
 	/// Gets or sets the first line of the address.

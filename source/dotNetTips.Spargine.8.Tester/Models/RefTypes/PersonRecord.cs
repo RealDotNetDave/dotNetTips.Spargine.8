@@ -265,7 +265,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// </summary>
 	/// <returns>A string representation of the person record.</returns>
 	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public override string ToString() => this.PropertiesToString();
+	public override string ToString() => this.PropertiesToString(includeMemberName: false);
 
 	/// <summary>
 	/// Gets or sets the collection of addresses associated with the person.

@@ -299,7 +299,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <returns>A <see cref="string"/> that represents this instance.</returns>
 	[DebuggerStepThrough]
 	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public override readonly string ToString() => this.PropertiesToString();
+	public override string ToString() => this.PropertiesToString(includeMemberName: false);
 
 	/// <summary>
 	/// Gets or sets the Address1.

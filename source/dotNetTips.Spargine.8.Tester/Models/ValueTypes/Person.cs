@@ -247,7 +247,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// </summary>
 	/// <returns>A <see cref="string"/> that represents this instance.</returns>
 	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public override readonly string ToString() => this.As<IPerson<TAddress>>().PropertiesToString();
+	public override string ToString() => this.PropertiesToString(includeMemberName: false);
 
 	/// <summary>
 	/// Gets a collection of <see cref="Address"/> for a Person.
