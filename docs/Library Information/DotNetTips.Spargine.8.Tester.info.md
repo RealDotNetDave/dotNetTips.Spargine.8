@@ -701,7 +701,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** Equals
 
@@ -746,7 +746,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** >
 
@@ -755,7 +755,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** >=
 
@@ -773,7 +773,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** <
 
@@ -782,7 +782,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** <=
 
@@ -827,7 +827,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToAddress
 
@@ -854,7 +854,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CompareTo
 
@@ -872,7 +872,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** Equals
 
@@ -890,7 +890,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** GetHashCode
 
@@ -906,7 +906,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_GreaterThanOrEqual(Coordinate left, Coordinate right)
 
@@ -927,14 +927,14 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_LessThanOrEqual(Coordinate left, Coordinate right)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### String ToString()
 
@@ -1004,7 +1004,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** AddressesSerilization
 
@@ -1040,7 +1040,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CellPhone
 
@@ -1049,7 +1049,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CompareTo
 
@@ -1094,7 +1094,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** Equals
 
@@ -1103,7 +1103,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** FirstName
 
@@ -1112,7 +1112,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** FullName
 
@@ -1139,7 +1139,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** LastName
 
@@ -1148,21 +1148,21 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_GreaterThan(Person<TAddress> left, Person<TAddress> right)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_GreaterThanOrEqual(Person<TAddress> left, Person<TAddress> right)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_Inequality(Person<TAddress> left, Person<TAddress> right)
 
@@ -1176,21 +1176,21 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_LessThanOrEqual(Person<TAddress> left, Person<TAddress> right)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### String Phone { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** Phone
 
@@ -1376,7 +1376,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToAddress
 
@@ -1385,7 +1385,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToAddress
 
@@ -1403,7 +1403,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CompareTo
 
@@ -1421,7 +1421,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** Equals
 
@@ -1439,7 +1439,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** GetHashCode
 
@@ -1455,7 +1455,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_GreaterThanOrEqual(Coordinate left, Coordinate right)
 
@@ -1476,14 +1476,14 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_LessThanOrEqual(Coordinate left, Coordinate right)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### String ToString()
 
@@ -1562,7 +1562,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** Addresses
 
@@ -1571,7 +1571,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** AddressesSerilization
 
@@ -1580,7 +1580,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CalculateAge
 
@@ -1607,7 +1607,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CellPhone
 
@@ -1616,7 +1616,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CompareTo
 
@@ -1643,7 +1643,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** Equals
 
@@ -1670,7 +1670,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** FirstName
 
@@ -1706,7 +1706,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** LastName
 
@@ -1715,14 +1715,14 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_GreaterThan(Person<TAddress> left, Person<TAddress> right)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_GreaterThanOrEqual(Person<TAddress> left, Person<TAddress> right)
 
@@ -1743,21 +1743,21 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_LessThanOrEqual(Person<TAddress> left, Person<TAddress> right)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### String Phone { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** Phone
 
@@ -1766,7 +1766,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToPerson
 
@@ -1775,7 +1775,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToPerson
 
@@ -1853,7 +1853,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** Addresses
 
@@ -1862,7 +1862,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** AddressesSerilization
 
@@ -1880,7 +1880,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** BornOn
 
@@ -1889,7 +1889,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CalculateAge
 
@@ -1898,7 +1898,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CellPhone
 
@@ -1907,7 +1907,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CompareTo
 
@@ -1925,7 +1925,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** FirstName
 
@@ -1934,7 +1934,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** FullName
 
@@ -1952,7 +1952,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** LastName
 
@@ -1961,35 +1961,35 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_GreaterThanOrEqual(PersonRecord left, PersonRecord right)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_LessThan(PersonRecord left, PersonRecord right)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### Boolean op_LessThanOrEqual(PersonRecord left, PersonRecord right)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 
 ### String Phone { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** Phone
 
@@ -1998,7 +1998,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToPersonRecord
 
@@ -2007,7 +2007,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToPersonRecord
 
@@ -2016,7 +2016,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** ToString
 
@@ -2037,4 +2037,4 @@
 * **Unit Test Status:** None
 
 *****
-**Generated by Spargine - dotNetTips.com on 2/1/2025 5:39:36 PM UTC**
+**Generated by Spargine - dotNetTips.com on 2/4/2025 9:10:10 PM UTC**
