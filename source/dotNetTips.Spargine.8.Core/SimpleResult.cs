@@ -4,7 +4,7 @@
 // Created          : 06-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 02-04-2025
 // ***********************************************************************
 // <copyright file="SimpleResult.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -34,7 +34,7 @@ public static class SimpleResult
 	/// <typeparam name="T">The type of the value.</typeparam>
 	/// <param name="e">The exception to be placed to the container.</param>
 	/// <returns>The exception encapsulated by <see cref="SimpleResult{T}" />.</returns>
-	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static SimpleResult<T> FromException<T>([NotNull] Exception e) => new(e);
 
 	/// <summary>
@@ -43,6 +43,6 @@ public static class SimpleResult
 	/// <typeparam name="T">The type of the value.</typeparam>
 	/// <param name="value">The value to be placed to the container.</param>
 	/// <returns>The value encapsulated by <see cref="SimpleResult{T}" />.</returns>
-	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static SimpleResult<T> FromValue<T>([NotNull] T value) => new(value);
 }
