@@ -23,7 +23,6 @@ using System.Threading.Tasks;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
 using DotNetTips.Spargine.Tester;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 namespace DotNetTips.Spargine.Tests.IO;
@@ -32,7 +31,6 @@ namespace DotNetTips.Spargine.Tests.IO;
 [TestClass]
 public class DirectoryHelperTests
 {
-
 	[TestMethod]
 	public void AppDataFolder_ReturnsCorrectPathOnMacOS()
 	{

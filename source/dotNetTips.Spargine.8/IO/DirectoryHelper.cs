@@ -153,8 +153,8 @@ public static class DirectoryHelper
 	/// <summary>
 	/// Deletes the directory with retry.
 	/// </summary>
-	/// <param name="path">The directory.</param>
-	/// <param name="retries">Number of retries.</param>
+	/// <param name="path">The directory to delete.</param>
+	/// <param name="retries">Number of retries in case of failure. Default is 10.</param>
 	/// <example>
 	/// This example shows how to call the <see cref="DeleteDirectory" /> method.
 	/// <code>
@@ -164,49 +164,25 @@ public static class DirectoryHelper
 	/// <remarks>Checks for the <see cref="IOException" /> and <see cref="UnauthorizedAccessException" />.</remarks>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> is null.</exception>
 	/// <exception cref="IOException">Thrown when the directory could not be deleted after the specified number of retries.</exception>
+	/// <exception cref="UnauthorizedAccessException">Thrown when the directory could not be deleted due to unauthorized access after the specified number of retries.</exception>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void DeleteDirectory([NotNull] DirectoryInfo path, int retries = 10)
+	public static void DeleteDirectory([NotNull] DirectoryInfo path, byte retries = 10)
 	{
+		//TODO: FOR VERSION 10, RETURN SIMPLERESULT.
+
 		if (path.Exists is false)
 		{
 			return;
 		}
 
-		retries = Math.Max(1, retries);
-		var tries = 0;
+		retries = retries.ArgumentInRange(1, upper: 250);
 
-		do
-		{
-			tries++;
-			var sleep = (retries + 1) * 10;
+		// On some systems, directories/files created are created with attributes
+		// that prevent them from being deleted. Set those attributes to be normal
+		SetFileAttributesToNormal(path);
 
-			if (tries > 1)
-			{
-				// If something has a transient lock on the file waiting may resolve the issue
-				Thread.Sleep(sleep);
-			}
-
-			try
-			{
-				// On some systems, directories/files created are created with attributes
-				// that prevent them from being deleted. Set those attributes to be normal
-				SetFileAttributesToNormal(path);
-
-				path.Delete(true);
-
-				return;
-			}
-			catch (IOException) when (tries >= retries)
-			{
-				throw;
-			}
-			catch (UnauthorizedAccessException) when (tries >= retries)
-			{
-				throw;
-			}
-		}
-		while (retries > tries);
+		_ = ExecutionHelper.ProgressiveRetry(() => path.Delete(true), retryCount: retries, retryWaitMilliseconds: 2);
 	}
 
 	/// <summary>
