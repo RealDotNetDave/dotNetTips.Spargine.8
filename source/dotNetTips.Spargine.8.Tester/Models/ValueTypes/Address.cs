@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 02-04-2025
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -163,7 +163,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
-	[Information("<", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information("<", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator <(Address left, Address right) => left.CompareTo(right) < 0;
 
 	/// <summary>
@@ -172,7 +172,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
-	[Information("<=", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information("<=", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator <=(Address left, Address right) => left.CompareTo(right) <= 0;
 
 	/// <summary>
@@ -190,7 +190,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
-	[Information(">", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(">", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator >(Address left, Address right) => left.CompareTo(right) > 0;
 
 	/// <summary>
@@ -199,7 +199,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <param name="left">The left.</param>
 	/// <param name="right">The right.</param>
 	/// <returns>The result of the operator.</returns>
-	[Information(">=", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(">=", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator >=(Address left, Address right) => left.CompareTo(right) >= 0;
 
 	/// <summary>
@@ -240,7 +240,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><see langword="true"/> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <see langword="false"/>.</returns>
-	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public readonly bool Equals([NotNull] IAddress other) => base.Equals(other);
 
 	/// <summary>
@@ -277,7 +277,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// </summary>
 	/// <param name="address">The address.</param>
 	/// <returns>Address.</returns>
-	[Information(nameof(ToAddress), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(ToAddress), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static Address ToAddress([NotNull] AddressRecord address)
 	{
 		return new(address.ArgumentNotNull().Id)
