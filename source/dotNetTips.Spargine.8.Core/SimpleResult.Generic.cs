@@ -4,7 +4,7 @@
 // Created          : 01-29-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 02-04-2025
 // ***********************************************************************
 // <copyright file="SimpleResult.Generic.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -68,7 +68,7 @@ public class SimpleResult<T>
 	/// Initializes a new unsuccessful result.
 	/// </summary>
 	/// <param name="error">The exception representing error. Cannot be <see langword="null" />.</param>
-	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.None, Status = Core.Status.Available)]
+	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public SimpleResult(Exception error) => this.AddException(error);
 
 	/// <summary>
@@ -114,7 +114,7 @@ public class SimpleResult<T>
 	/// <param name="result">The result object containing the value.</param>
 	/// <returns>The value of type <typeparamref name="T"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="result"/> is <see langword="null"/>.</exception>
-	[Information(nameof(FromResult), UnitTestStatus = UnitTestStatus.None, Status = Core.Status.Available)]
+	[Information(nameof(FromResult), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public static T FromResult([NotNull] in SimpleResult<T> result) => result.ArgumentNotNull().Value;
 
 	/// <summary>
@@ -149,7 +149,7 @@ public class SimpleResult<T>
 	/// Sets the value associated with this result.
 	/// </summary>
 	/// <param name="value">The value to be set.</param>
-	[Information(nameof(SetValue), UnitTestStatus = UnitTestStatus.None, Status = Core.Status.Available)]
+	[Information(nameof(SetValue), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public void SetValue(T value)
 	{
 		this._value = value.ArgumentNotNull();

@@ -4,7 +4,7 @@
 // Created          : 06-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 02-04-2025
 // ***********************************************************************
 // <copyright file="SimpleResultTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -46,6 +46,31 @@ public class SimpleResultTests
 		var result = SimpleResult.FromException<string>(ex);
 
 		Assert.IsTrue(result.Status == ResultStatus.Failed);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void FromResult_NullSimpleResult_ThrowsArgumentNullException()
+	{
+		// Arrange
+		SimpleResult<int> simpleResult = null;
+
+		// Act
+		_ = SimpleResult<int>.FromResult(simpleResult);
+	}
+
+	[TestMethod]
+	public void FromResult_ValidSimpleResult_ReturnsValue()
+	{
+		// Arrange
+		var expectedValue = 42;
+		var simpleResult = new SimpleResult<int>(expectedValue);
+
+		// Act
+		var result = SimpleResult<int>.FromResult(simpleResult);
+
+		// Assert
+		Assert.AreEqual(expectedValue, result);
 	}
 
 	[TestMethod]
