@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 02-04-2025
 // ***********************************************************************
 // <copyright file="LineSplitEntryTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -57,6 +57,51 @@ public class LineSplitEntryTests
 	}
 
 	[TestMethod]
+	public void LineSplitEntry_ImplicitConversion_EmptyLine_ShouldReturnEmpty()
+	{
+		// Arrange
+		var line = ReadOnlySpan<char>.Empty;
+		var separator = "\n".AsSpan();
+		var entry = new LineSplitEntry(line, separator);
+
+		// Act
+		ReadOnlySpan<char> result = entry;
+
+		// Assert
+		Assert.AreEqual(line.ToString(), result.ToString());
+	}
+
+	[TestMethod]
+	public void LineSplitEntry_ImplicitConversion_EmptyLineAndSeparator_ShouldReturnEmpty()
+	{
+		// Arrange
+		var line = ReadOnlySpan<char>.Empty;
+		var separator = ReadOnlySpan<char>.Empty;
+		var entry = new LineSplitEntry(line, separator);
+
+		// Act
+		ReadOnlySpan<char> result = entry;
+
+		// Assert
+		Assert.AreEqual(line.ToString(), result.ToString());
+	}
+
+	[TestMethod]
+	public void LineSplitEntry_ImplicitConversion_EmptySeparator_ShouldReturnLine()
+	{
+		// Arrange
+		var line = "This is a line".AsSpan();
+		var separator = ReadOnlySpan<char>.Empty;
+		var entry = new LineSplitEntry(line, separator);
+
+		// Act
+		ReadOnlySpan<char> result = entry;
+
+		// Assert
+		Assert.AreEqual(line.ToString(), result.ToString());
+	}
+
+	[TestMethod]
 	public void LineSplitEntry_ImplicitConversion_ShouldReturnLine()
 	{
 		// Arrange
@@ -85,4 +130,6 @@ public class LineSplitEntryTests
 		// Assert
 		Assert.AreEqual(line.ToString(), result.ToString());
 	}
+
+
 }

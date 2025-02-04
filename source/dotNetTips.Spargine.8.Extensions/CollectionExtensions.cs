@@ -158,9 +158,6 @@ public static class CollectionExtensions
 	[Information(nameof(AddRange), "David McCarter", "11/7/2023", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static bool AddRange<T>([NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> items, bool ensureUnique = true)
 	{
-		// TODO: CHANGE TO VOID AT THE END OF 2025 TO WORK LIKE ADDRANGE
-		// TODO: ADD ADDRANGEIFNOTEXISTS
-
 		items = items.ArgumentNotNull();
 		collection = collection.ArgumentNotNull().ArgumentNotReadOnly();
 
