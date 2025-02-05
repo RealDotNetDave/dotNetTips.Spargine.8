@@ -398,3 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 /.cr
 /AppBin
+/source/NDependOut/SourceFiles.zip
+/source/NDependOut/2022_05/01_10_09/SourceFiles.zip

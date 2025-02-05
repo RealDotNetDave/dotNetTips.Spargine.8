@@ -111,7 +111,8 @@ public class JsonSerializationTests
 		Assert.IsTrue(string.IsNullOrEmpty(json) is false);
 
 		//Deserialize
-		var serializedPerson = JsonSerialization.Deserialize<Person<Address>>(Resources.JsonPersonProper);
+//		var serializedPerson = JsonSerialization.Deserialize<Person<Address>>(Resources.JsonPersonProper);
+		var serializedPerson = JsonSerialization.Deserialize<Person<Address>>(json);
 
 		Assert.IsNotNull(serializedPerson);
 	}
