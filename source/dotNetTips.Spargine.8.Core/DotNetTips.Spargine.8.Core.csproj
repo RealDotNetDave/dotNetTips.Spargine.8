@@ -73,7 +73,7 @@
 	<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
 	<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 	<Optimize>false</Optimize>
-	<NoWarn />
+	<NoWarn>IDE0055</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -83,7 +83,7 @@
 	<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
 	<WarningLevel>9999</WarningLevel>
 	<Optimize>true</Optimize>
-	<NoWarn />
+	<NoWarn>IDE0055</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

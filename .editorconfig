@@ -39,7 +39,7 @@ dotnet_analyzer_diagnostic.severity = warning
 indent_size = 4
 csharp_using_directive_placement = outside_namespace:warning
 csharp_prefer_simple_using_statement = false:silent
-csharp_prefer_braces = true:error
+csharp_prefer_braces = true:warning
 csharp_style_namespace_declarations = file_scoped:warning
 csharp_prefer_system_threading_lock = true:suggestion
 csharp_style_expression_bodied_methods = true:suggestion
@@ -50,7 +50,6 @@ csharp_style_expression_bodied_indexers = true:warning
 csharp_style_expression_bodied_accessors = true:warning
 csharp_style_expression_bodied_lambdas = true:warning
 csharp_style_expression_bodied_local_functions = true:warning
-csharp_space_around_binary_operators = before_and_after
 csharp_style_throw_expression = true:warning
 csharp_style_prefer_null_check_over_type_check = true:warning
 csharp_prefer_simple_default_expression = true:warning
@@ -127,7 +126,6 @@ indent_style = tab
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules#net-style-rules
 [*.{cs,csx,cake,vb,vbx}]
 
-
 # Non-private static fields are PascalCase
 dotnet_naming_rule.non_private_static_fields_should_be_pascal_case.severity = warning
 dotnet_naming_rule.non_private_static_fields_should_be_pascal_case.style = non_private_static_field_style
@@ -197,6 +195,9 @@ dotnet_diagnostic.IDE0071.severity = warning
 
 # Allow multiple blank lines
 dotnet_diagnostic.IDE2000.severity = silent
+
+dotnet_diagnostic.IDE0055.severity = none
+
 
 # All public/protected/protected_internal constant fields must be PascalCase
 # https://docs.microsoft.com/dotnet/standard/design-guidelines/field
@@ -1993,9 +1994,7 @@ dotnet_diagnostic.IDE0073.severity = warning
 file_header_template = unset
 
 # Fix formatting
-#dotnet_diagnostic.IDE0055.severity = warning
-dotnet_diagnostic.IDE0055.severity = silent
-
+dotnet_diagnostic.IDE0055.severity = warning
 
 # Organize usings
 dotnet_separate_import_directive_groups = false
