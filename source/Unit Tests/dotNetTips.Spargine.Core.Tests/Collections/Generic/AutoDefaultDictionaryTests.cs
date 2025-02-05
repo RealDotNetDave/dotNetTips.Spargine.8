@@ -12,10 +12,12 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using DotNetTips.Spargine.Core.Collections.Generic;
+using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -41,6 +43,16 @@ public class AutoDefaultDictionaryTests
 
 		// Assert
 		Assert.IsNull(value);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(KeyNotFoundException))]
+	public void DefaultConstructor_ShouldFailLikeStdDictionary()
+	{
+		var dictionary = new AutoDefaultDictionary<int, string>();
+		// Act
+		var value = dictionary[1];
+
 	}
 
 	[TestMethod]
@@ -96,18 +108,42 @@ public class AutoDefaultDictionaryTests
 	}
 
 
-
+	/// <summary>
+	/// This probably should be split into several test methods.
+	/// </summary>
 	[TestMethod]
-	public void DefaultConstructor_ShouldInitializeWithDefaultValue()
+	public void ConstructorDelegate_ShouldInitializeWithReturnedValue()
 	{
 		// Arrange
-		var dictionary = new AutoDefaultDictionary<int, string>();
+		var callsToDelegate = 0;
+		var dictionary = new AutoDefaultDictionary<int, string>(key =>
+		{
+			callsToDelegate++;
+			return key.RoundToPowerOf2().ToString();
+		});
+		dictionary[2] = "two";		// value not affected by delegate
 
 		// Act
-		var value = dictionary[1];
+		var value5 = dictionary[5];				// Should be counted in callsToDelegate
+		var value10 = dictionary[10];			// Should be counted in callsToDelegate
+		var value100 = dictionary[100];		// Should be counted in callsToDelegate
+		var value2 = dictionary[2];				// Should NOT be counted in callsToDelegate   (directly added)
+		var value10a = dictionary[10];			// Should NOT be counted in callsToDelegate   (Added by previous lookup)
+
+		// Make many calls to added item.   Should NOT be counted in callsToDelegate
+		var value5a = dictionary[5] + dictionary[5] + dictionary[5];
+
 
 		// Assert
-		Assert.IsNull(value);
+		Assert.AreEqual("8", value5);
+		Assert.AreEqual("16", value10);
+		Assert.AreEqual("128", value100);
+		Assert.AreEqual(value10a, value10);
+		Assert.AreEqual("two", value2);
+		Assert.AreEqual("888",  value5a);
+
+		Assert.AreEqual(3, callsToDelegate);
+		Assert.AreEqual(4, dictionary.Count);
 	}
 
 	[TestMethod]
