@@ -257,7 +257,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	[Benchmark(Description = nameof(EnumerableExtensions.FirstOrNull))]
 	public void FirstOrNull()
 	{
-		var result = this._coordinateValEnumerable.FirstOrNull(p => p.X == this.Coordinate01.X);
+		var result = this._coordinateValEnumerable.FirstOrNull(p => p.X == this.CoordinateVal01.X);
 
 		this.Consume(result);
 	}

@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 02-05-2025
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -145,7 +145,6 @@ public static class FileHelper
 		destination = destination.ArgumentNotNull();
 
 		//Ensure the file directory and destination are not the same.
-
 		if (file.Directory.FullName.Equals(destination.FullName, StringComparison.OrdinalIgnoreCase))
 		{
 			ExceptionThrower.ThrowInvalidOperationException(Resources.TheDirectoryForTheFileCannotBeTheSameAsThe);
@@ -235,14 +234,14 @@ public static class FileHelper
 	/// Console.WriteLine($"Copied file length: {fileLength}");
 	/// </code>
 	/// </example>
-	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
+	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
 	public static long CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
 		ValidateCreateDestinationDirectory(file, destination);
 
-		var fileName = file.ArgumentExists().FullName;
+		var fileName = file.FullName;
 
-		if (destination.ArgumentNotNull().CheckExists(createDirectory: true))
+		if (destination.CheckExists(createDirectory: true))
 		{
 			var destinationName = destination.FullName;
 
@@ -490,10 +489,14 @@ public static class FileHelper
 	/// <param name="file">The <see cref="FileInfo"/> object representing the file to check. Must not be null.</param>
 	/// <returns><c>true</c> if the file name contains any invalid characters; otherwise, <c>false</c>.</returns>
 	/// <remarks>
-	/// This method utilizes FileInfo.FullName to retrieve the file's full name and checks it against a list of invalid characters obtained from FileHelper.InvalidFileNameChars.
+	/// This method utilizes FileInfo.Name to retrieve the file's name and checks it against a list of invalid characters obtained from FileHelper.InvalidFileNameChars.
 	/// </remarks>
-	[Information(nameof(FileHasInvalidChars), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
-	public static bool FileHasInvalidChars([NotNull] FileInfo file) => file.CheckExists() && file.ArgumentNotNull().FullName.IndexOfAny([.. InvalidFileNameChars]) != -1;
+	[Information(nameof(FileHasInvalidChars), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
+	public static bool FileHasInvalidChars([NotNull] FileInfo file)
+	{
+		file = file.ArgumentNotNull();
+		return file.Name.IndexOfAny(Path.GetInvalidFileNameChars()) != -1;
+	}
 
 	/// <summary>
 	/// Moves a file to a new location, optionally replacing the destination file and with retry logic.
@@ -679,7 +682,10 @@ public static class FileHelper
 	/// Gets a read-only collection of characters that are not allowed in file names, excluding directory separator characters.
 	/// </summary>
 	/// <value>A <see cref="ReadOnlyCollection{T}"/> of type <see cref="char"/> that contains the characters not allowed in file names.</value>
+	/// <remarks>
+	/// This property leverages the <see cref="Path.GetInvalidFileNameChars"/> method to retrieve the invalid characters and converts them to a read-only collection.
+	/// </remarks>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public static ReadOnlyCollection<char> InvalidFileNameChars { get; } = Path.GetInvalidFileNameChars().Where(c => c != Path.DirectorySeparatorChar && c != Path.AltDirectorySeparatorChar).ToReadOnlyCollection();
+	public static ReadOnlyCollection<char> InvalidFileNameChars { get; } = Path.GetInvalidFileNameChars().ToReadOnlyCollection();
 
 }

@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 02-06-2025
 // ***********************************************************************
 // <copyright file="CollectionExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -19,7 +19,6 @@ using System.Linq;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
-using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -36,12 +35,12 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void AddIfNotExists()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
-		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
-		Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> nullPerson = null;
+		var people = RandomData.GeneratePersonRefCollection<Address>(Count).ToList();
+		var person = RandomData.GeneratePersonRef<Address>();
+		Person<Address> nullPerson = null;
 		var comparer = new PersonComparer();
 		PersonComparer nullComparer = null;
-		List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>> nullList = null;
+		List<Person<Address>> nullList = null;
 
 		// TEST
 		Assert.IsFalse(people.AddIfNotExists(nullPerson));
@@ -54,7 +53,7 @@ public class CollectionExtensionsTests
 
 		Assert.IsFalse(people.AddIfNotExists(nullPerson));
 
-		Assert.IsTrue(people.AddIfNotExists(RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>(), comparer));
+		Assert.IsTrue(people.AddIfNotExists(RandomData.GeneratePersonRef<Address>(), comparer));
 
 		Assert.IsFalse(people.AddIfNotExists(nullPerson, comparer));
 
@@ -63,13 +62,13 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void AddIfNotExistsSingleItemTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
-		Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address> nullPerson = null;
+		var people = RandomData.GeneratePersonRefCollection<Address>(Count).ToList();
+		Person<Address> nullPerson = null;
 
 		// TEST
 		Assert.IsFalse(people.AddIfNotExists(nullPerson));
 
-		var testPerson = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+		var testPerson = RandomData.GeneratePersonRef<Address>();
 
 		Assert.IsTrue(people.AddIfNotExists(testPerson));
 
@@ -79,8 +78,8 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void AddIfTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
-		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+		var people = RandomData.GeneratePersonRefCollection<Address>(Count).ToList();
+		var person = RandomData.GeneratePersonRef<Address>();
 
 		// TEST
 		people.AddIf(person, people.FastCount() == Count);
@@ -91,8 +90,8 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void AddRangeTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(500).ToList();
-		var peopleToAdd = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(5000).ToList();
+		var people = RandomData.GeneratePersonRefCollection<Address>(500).ToList();
+		var peopleToAdd = RandomData.GeneratePersonRefCollection<Address>(5000).ToList();
 
 		people.AddRange(peopleToAdd);
 
@@ -104,7 +103,7 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void AsReadOnlySpanTest()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.RefTypes.Coordinate>(Count).ToCollection().AsReadOnlySpan();
+		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.ValueTypes.Coordinate>(Count).ToCollection().AsReadOnlySpan();
 
 		Assert.IsTrue(collection.Length == Count);
 	}
@@ -112,7 +111,7 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void AsSpanTest()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.RefTypes.Coordinate>(Count).ToCollection().AsSpan();
+		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.ValueTypes.Coordinate>(Count).ToCollection().AsSpan();
 
 		Assert.IsTrue(collection.Length == Count);
 	}
@@ -120,8 +119,8 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void DoesNotHaveItemsTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
-		var emptyPeople = new List<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>();
+		var people = RandomData.GeneratePersonRefCollection<Address>(Count).ToList();
+		var emptyPeople = new List<Person<Address>>();
 
 		Assert.IsFalse(people.DoesNotHaveItems());
 
@@ -131,8 +130,8 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void HasItemsTest()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.RefTypes.Coordinate>(Count).ToCollection();
-		Collection<Tester.Models.RefTypes.Coordinate> nullCollection = null;
+		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.ValueTypes.Coordinate>(Count).ToCollection();
+		Collection<Coordinate> nullCollection = null;
 
 		Assert.IsTrue(collection.HasItems());
 
@@ -142,8 +141,8 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void HasItemsTestWithCount()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.RefTypes.Coordinate>(Count).ToCollection();
-		Collection<Tester.Models.RefTypes.Coordinate> nullCollection = null;
+		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.ValueTypes.Coordinate>(Count).ToCollection();
+		Collection<Coordinate> nullCollection = null;
 
 		Assert.IsFalse(collection.HasItems(5));
 
@@ -153,7 +152,7 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void ToFrozenTest()
 	{
-		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.RefTypes.Coordinate>(Count).ToCollection().ToFrozenSet();
+		var collection = RandomData.GenerateCoordinateCollection<Tester.Models.ValueTypes.Coordinate>(Count).ToCollection().ToFrozenSet();
 
 		Assert.IsTrue(collection.Count == Count);
 	}
@@ -204,10 +203,10 @@ public class CollectionExtensionsTests
 	[TestMethod]
 	public void UpsertTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).ToList();
+		var people = RandomData.GeneratePersonRefCollection<Address>(Count).ToList();
 		people.Shuffle();
 		var personFromCollection = people.First();
-		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+		var person = RandomData.GeneratePersonRef<Address>();
 		var personRecords = RandomData.GeneratePersonRecordCollection(Count).ToList();
 		var personRecord = RandomData.GeneratePersonRecord();
 
@@ -216,7 +215,7 @@ public class CollectionExtensionsTests
 
 		Assert.IsTrue(people.FastCount() == 11);
 
-		people.Upsert<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>, string>(personFromCollection);
+		people.Upsert<Person<Address>, string>(personFromCollection);
 
 		Assert.IsTrue(people.FastCount() == 11);
 

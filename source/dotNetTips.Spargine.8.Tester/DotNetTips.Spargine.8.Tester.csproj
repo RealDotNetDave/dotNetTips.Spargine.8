@@ -51,6 +51,7 @@
 	<RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
 	<SelfContained>true</SelfContained>
 	<SignAssembly>true</SignAssembly>
+	<ServerGarbageCollection>true</ServerGarbageCollection>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 	<Title>DotNetTips.Spargine.8.Tester</Title>

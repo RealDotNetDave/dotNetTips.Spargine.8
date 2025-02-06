@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 02-05-2025
 // ***********************************************************************
 // <copyright file="FileHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -60,6 +60,70 @@ public class FileHelperTests
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
+	[ExpectedException(typeof(FileNotFoundException))]
+	public void CopyFile_FileNotFound_Test()
+	{
+		var sourceFile = new FileInfo(Path.Combine(App.ExecutingFolder(), "NonExistentFile.txt"));
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), "CopyFile_FileNotFound_Test"));
+
+		FileHelper.CopyFile(sourceFile, destinationDir);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void CopyFile_NullDestination_Test()
+	{
+		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
+
+		FileHelper.CopyFile(sourceFile, null);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void CopyFile_NullFile_Test()
+	{
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), "CopyFile_NullFile_Test"));
+
+		FileHelper.CopyFile(null, destinationDir);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void CopyFile_Success_Test()
+	{
+		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), "CopyFile_Success_Test"));
+
+		var fileLength = FileHelper.CopyFile(sourceFile, destinationDir);
+
+		Assert.AreEqual(sourceFile.Length, fileLength);
+		Assert.IsTrue(File.Exists(Path.Combine(destinationDir.FullName, sourceFile.Name)));
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void CopyFileWithProgress_Success_Test()
+	{
+		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), "CopyFileWithProgress_Success_Test"));
+
+		if (!destinationDir.Exists)
+		{
+			destinationDir.Create();
+		}
+
+		CopyProgressRoutine callback = new CopyProgressRoutine(CopyProgressCallback);
+
+		var result = FileHelper.CopyFile(sourceFile, destinationDir, callback);
+
+		Assert.IsTrue(result);
+		Assert.IsTrue(File.Exists(Path.Combine(destinationDir.FullName, sourceFile.Name)));
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
 	public void CopyFileWithStatus_Test()
 	{
 		var file = new FileInfo(RandomData.GenerateTempFile(FileLength));
@@ -72,6 +136,7 @@ public class FileHelperTests
 		Assert.IsTrue(result);
 
 	}
+
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
@@ -153,6 +218,104 @@ public class FileHelperTests
 		}
 
 		_ = FileHelper.DeleteFiles(files.Files);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void FileHasInvalidChars_InvalidFile_Test()
+	{
+		var invalidFileName = Path.Combine(App.ExecutingFolder(), "Invalid:FileName.txt");
+		var fileInfo = new FileInfo(invalidFileName);
+
+		var result = FileHelper.FileHasInvalidChars(fileInfo);
+
+		Assert.IsTrue(result);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void FileHasInvalidChars_NullFile_Test()
+	{
+		FileHelper.FileHasInvalidChars(null);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void FileHasInvalidChars_ValidFile_Test()
+	{
+		var validFileName = Path.Combine(App.ExecutingFolder(), "ValidFileName.txt");
+		var fileInfo = new FileInfo(validFileName);
+
+		File.WriteAllText(validFileName, "Test content");
+
+		var result = FileHelper.FileHasInvalidChars(fileInfo);
+
+		Assert.IsFalse(result);
+
+		File.Delete(validFileName);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(FileNotFoundException))]
+	public void MoveFile_FileNotFound_Test()
+	{
+		var sourceFile = new FileInfo(Path.Combine(App.ExecutingFolder(), "NonExistentFile.txt"));
+		var destinationFile = new FileInfo(Path.Combine(App.ExecutingFolder(), "MoveFile_FileNotFound_Test.txt"));
+
+		FileHelper.MoveFile(sourceFile, destinationFile);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void MoveFile_NullDestinationFile_Test()
+	{
+		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
+
+		FileHelper.MoveFile(sourceFile, null);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void MoveFile_NullSourceFile_Test()
+	{
+		var destinationFile = new FileInfo(Path.Combine(App.ExecutingFolder(), "MoveFile_NullSourceFile_Test.txt"));
+
+		FileHelper.MoveFile(null, destinationFile);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void MoveFile_ReplaceExisting_Test()
+	{
+		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
+		var destinationFile = new FileInfo(Path.Combine(App.ExecutingFolder(), "MoveFile_ReplaceExisting_Test.txt"));
+
+		RandomData.GenerateFile(destinationFile.FullName, FileLength);
+
+		var result = FileHelper.MoveFile(sourceFile, destinationFile, FileMoveOptions.ReplaceExisting);
+
+		Assert.IsTrue(result);
+		Assert.IsFalse(File.Exists(sourceFile.FullName));
+		Assert.IsTrue(File.Exists(destinationFile.FullName));
+		Assert.AreEqual(sourceFile.Length, new FileInfo(destinationFile.FullName).Length);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void MoveFile_Success_Test()
+	{
+		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
+		var destinationFile = new FileInfo(Path.Combine(App.ExecutingFolder(), "MoveFile_Success_Test.txt"));
+
+		var result = FileHelper.MoveFile(sourceFile, destinationFile);
+
+		Assert.IsTrue(result);
+		Assert.IsFalse(File.Exists(sourceFile.FullName));
+		Assert.IsTrue(File.Exists(destinationFile.FullName));
 	}
 
 }

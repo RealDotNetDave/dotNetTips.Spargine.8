@@ -4,7 +4,7 @@
 // Created          : 01-05-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 02-06-2025
 // ***********************************************************************
 // <copyright file="RandomDataTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -288,7 +288,7 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateCoordinateCollectionTest()
 	{
-		var coordinates = RandomData.GenerateCoordinateCollection<Models.RefTypes.Coordinate>(Count);
+		var coordinates = RandomData.GenerateCoordinateCollection<Models.ValueTypes.Coordinate>(Count);
 
 		Assert.IsNotNull(coordinates);
 
@@ -298,7 +298,7 @@ public class RandomDataTests
 	[TestMethod]
 	public void GenerateCoordinateTest()
 	{
-		var coordinate = RandomData.GenerateCoordinate<Models.RefTypes.Coordinate>();
+		var coordinate = RandomData.GenerateCoordinate<Models.ValueTypes.Coordinate>();
 
 		Assert.IsNotNull(coordinate);
 
@@ -359,7 +359,7 @@ public class RandomDataTests
 		Assert.IsTrue(result.Files.Count == 1);
 
 		// Clean up
-		DeleteFiles(result.Files);
+		this.DeleteFiles(result.Files);
 	}
 
 	[TestMethod]
@@ -379,7 +379,7 @@ public class RandomDataTests
 		Assert.IsTrue(result.Files.Count == count);
 
 		// Clean up
-		DeleteFiles(result.Files);
+		this.DeleteFiles(result.Files);
 	}
 
 	[TestMethod]
@@ -398,7 +398,7 @@ public class RandomDataTests
 		Assert.IsTrue(result.Count == count);
 
 		// Clean up
-		DeleteFiles(result);
+		this.DeleteFiles(result);
 	}
 
 	[TestMethod]

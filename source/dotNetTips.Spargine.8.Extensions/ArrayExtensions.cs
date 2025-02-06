@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 02-06-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -422,7 +422,7 @@ public static class ArrayExtensions
 
 		action = action.ArgumentNotNull();
 
-		if (typeof(T).IsValueType || values[0].GetTypeOfType() != TypeExtensions.TypeOfType.Record)
+		if (typeof(T).IsValueType || values[0].GetTypeOfType() != TypeOfType.Record)
 		{
 			foreach (var value in values)
 			{

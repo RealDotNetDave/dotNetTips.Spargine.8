@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 02-06-2025
 // ***********************************************************************
 // <copyright file="TypeExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -27,7 +27,6 @@ using DotNetTips.Spargine.Core.Logging;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
-using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -57,7 +56,7 @@ public class TypeExtensionsTests
 	[TestMethod]
 	public void GetAllDeclaredFieldsTest()
 	{
-		var result = typeof(Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>).GetAllDeclaredFields();
+		var result = typeof(Person<Address>).GetAllDeclaredFields();
 
 		Assert.IsTrue(result.FastCount() > 0);
 	}
@@ -65,7 +64,7 @@ public class TypeExtensionsTests
 	[TestMethod]
 	public void GetAllDeclaredMethodsTest()
 	{
-		var result = typeof(Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>).GetAllDeclaredMethods();
+		var result = typeof(Person<Address>).GetAllDeclaredMethods();
 
 		Assert.IsTrue(result.FastCount() > 0);
 	}
@@ -80,7 +79,7 @@ public class TypeExtensionsTests
 
 		Assert.IsTrue(result1.FastCount() == 1);
 
-		var result2 = typeof(Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>).GetAllFields();
+		var result2 = typeof(Person<Address>).GetAllFields();
 
 		Assert.IsTrue(result2.FastCount() >= 8);
 	}
@@ -95,7 +94,7 @@ public class TypeExtensionsTests
 
 		Assert.IsTrue(result.FastCount() == 13);
 
-		result = typeof(Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>).GetAllMethods();
+		result = typeof(Person<Address>).GetAllMethods();
 
 		Assert.IsTrue(result.FastCount() >= 44);
 	}
@@ -193,8 +192,8 @@ public class TypeExtensionsTests
 	[TestMethod]
 	public void GetMaxTest()
 	{
-		var cord1 = RandomData.GenerateCoordinate<Tester.Models.RefTypes.Coordinate>();
-		var cord2 = RandomData.GenerateCoordinate<Tester.Models.RefTypes.Coordinate>();
+		var cord1 = RandomData.GenerateCoordinate<Tester.Models.ValueTypes.Coordinate>();
+		var cord2 = RandomData.GenerateCoordinate<Tester.Models.ValueTypes.Coordinate>();
 
 		var result = cord1.Max(cord2);
 
@@ -207,7 +206,7 @@ public class TypeExtensionsTests
 	[TestMethod]
 	public void GetPropertiesTest()
 	{
-		var result = typeof(Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>).GetAllProperties();
+		var result = typeof(Person<Address>).GetAllProperties();
 
 		Assert.IsTrue(result.FastCount() >= 10);
 	}
@@ -218,7 +217,7 @@ public class TypeExtensionsTests
 	[TestMethod]
 	public void GetPublicMethodsTest()
 	{
-		var result = typeof(Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>).GetAllPublicMethods();
+		var result = typeof(Person<Address>).GetAllPublicMethods();
 
 		Assert.IsTrue(result.FastCount() >= 30);
 	}
@@ -256,23 +255,23 @@ public class TypeExtensionsTests
 	[TestMethod]
 	public void GetTypeOfTypeTest()
 	{
-		var refPerson = new Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>();
+		var refPerson = new Person<Address>();
 
 		var result = refPerson.GetTypeOfType();
 
-		Assert.IsTrue(result == TypeExtensions.TypeOfType.Reference);
+		Assert.IsTrue(result == TypeOfType.Reference);
 
 		var valPerson = new Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>();
 
 		result = valPerson.GetTypeOfType();
 
-		Assert.IsTrue(result == TypeExtensions.TypeOfType.Value);
+		Assert.IsTrue(result == TypeOfType.Value);
 
 		var recordPerson = new PersonRecord("dotnetdave@live.com", "100");
 
 		result = recordPerson.GetTypeOfType();
 
-		Assert.IsTrue(result == TypeExtensions.TypeOfType.Record);
+		Assert.IsTrue(result == TypeOfType.Record);
 	}
 
 	[TestMethod]
@@ -290,7 +289,7 @@ public class TypeExtensionsTests
 	[TestMethod]
 	public void HasParameterlessConstructorTest()
 	{
-		var result = typeof(Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>).HasParameterlessConstructor();
+		var result = typeof(Person<Address>).HasParameterlessConstructor();
 
 		Assert.IsTrue(result);
 	}
@@ -314,7 +313,7 @@ public class TypeExtensionsTests
 
 		Assert.IsTrue(result1);
 
-		var result2 = typeof(Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>).GetProperty("FirstName").PropertyType.IsNullable();
+		var result2 = typeof(Person<Address>).GetProperty("FirstName").PropertyType.IsNullable();
 
 		Assert.IsFalse(result2);
 	}
@@ -325,8 +324,8 @@ public class TypeExtensionsTests
 	[TestMethod]
 	public void IsNumericTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(10).AsEnumerable();
-		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+		var people = RandomData.GeneratePersonRefCollection<Address>(10).AsEnumerable();
+		var person = RandomData.GeneratePersonRef<Address>();
 
 		Assert.IsTrue(people.GetType().IsEnumerable());
 		Assert.IsFalse(person.GetType().IsEnumerable());
@@ -338,7 +337,7 @@ public class TypeExtensionsTests
 		var result1 = typeof(InMemoryCache).GetProperty("Instance").IsStatic();
 		Assert.IsTrue(result1);
 
-		var result2 = typeof(Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>).GetProperty("FirstName").IsStatic();
+		var result2 = typeof(Person<Address>).GetProperty("FirstName").IsStatic();
 		Assert.IsFalse(result2);
 	}
 

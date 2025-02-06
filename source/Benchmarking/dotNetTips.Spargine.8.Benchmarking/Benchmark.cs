@@ -290,8 +290,10 @@ public abstract class Benchmark
 		ConsoleLogger.Default.WriteLine(LogKind.Info, $"Setup(): {nameof(Benchmark)}.");
 
 		this.Base64String = this.LongTestString.Substring(1, 50).ToBase64();
-		this.Coordinate01 = RandomData.GenerateCoordinate<Coordinate>();
-		this.Coordinate02 = RandomData.GenerateCoordinate<Coordinate>();
+		this.CoordinateVal01 = RandomData.GenerateCoordinate<Tester.Models.ValueTypes.Coordinate>();
+		this.CoordinateVal02 = RandomData.GenerateCoordinate<Tester.Models.ValueTypes.Coordinate>();
+		this.CoordinateRef01 = RandomData.GenerateCoordinate<Coordinate>();
+		this.CoordinateRef02 = RandomData.GenerateCoordinate<Coordinate>();
 		this.PersonRecord01 = RandomData.GeneratePersonRecord();
 		this.PersonRecord02 = RandomData.GeneratePersonRecord();
 		this.PersonRef01 = RandomData.GeneratePersonRef<Address>();
@@ -353,18 +355,20 @@ public abstract class Benchmark
 	/// </summary>
 	/// <value>The Base64 encoded string.</value>
 	public string Base64String { get; internal set; }
+	public Coordinate CoordinateRef01 { get; private set; }
+	public Coordinate CoordinateRef02 { get; private set; }
 
 	/// <summary>
 	/// Retrieves a random coordinate generated during startup for use in testing.
 	/// </summary>
 	/// <value>The first coordinate object.</value>
-	public Coordinate Coordinate01 { get; private set; }
+	public Tester.Models.ValueTypes.Coordinate CoordinateVal01 { get; private set; }
 
 	/// <summary>
 	/// Retrieves a random coordinate generated during startup.
 	/// </summary>
 	/// <value>The second coordinate object.</value>
-	public Coordinate Coordinate02 { get; private set; }
+	public Tester.Models.ValueTypes.Coordinate CoordinateVal02 { get; private set; }
 
 	/// <summary>
 	/// Retrieve JSON from resources for a <see cref="IPerson{TAddress}" /> object.
