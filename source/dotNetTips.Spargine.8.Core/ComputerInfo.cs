@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 02-07-2025
 // ***********************************************************************
 // <copyright file="ComputerInfo.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -32,6 +32,7 @@ namespace DotNetTips.Spargine.Core;
 [Serializable]
 public sealed class ComputerInfo
 {
+	//TODO: ADD Environment.CpuUsage * Environment.ProcessCpuUsage FROM .NET 9
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ComputerInfo"/> class.
@@ -48,11 +49,23 @@ public sealed class ComputerInfo
 	/// This method checks all network interfaces to determine if any are operational and not virtual or loopback interfaces.
 	/// </remarks>
 	[Information(nameof(IsNetworkAvailable), OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public static bool IsNetworkAvailable() => NetworkInterface.GetAllNetworkInterfaces()
-			.Where(i => i.OperationalStatus == OperationalStatus.Up)
-			.Select(i => i.Description.ToUpperInvariant())
-			.Where(n => !n.Contains("VIRTUALBOX", StringComparison.OrdinalIgnoreCase))
-			.Any(n => !n.Contains("LOOPBACK", StringComparison.OrdinalIgnoreCase));
+	public static bool IsNetworkAvailable()
+	{
+		foreach (var networkInterface in NetworkInterface.GetAllNetworkInterfaces())
+		{
+			if (networkInterface.OperationalStatus == OperationalStatus.Up)
+			{
+				var description = networkInterface.Description.ToUpperInvariant();
+				if (!description.Contains("VIRTUALBOX", StringComparison.OrdinalIgnoreCase) &&
+					!description.Contains("LOOPBACK", StringComparison.OrdinalIgnoreCase))
+				{
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 
 	/// <summary>
 	/// Gets the computer culture in three-letter ISO language name format.
