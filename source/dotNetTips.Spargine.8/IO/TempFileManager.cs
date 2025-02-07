@@ -27,8 +27,12 @@ namespace DotNetTips.Spargine.IO;
 /// TempFileManager creates and maintains a list of temporary files. Implements the <see cref="IDisposable" />.
 /// </summary>
 /// <seealso cref="IDisposable" />
+/// <remarks>
+/// Initializes a new instance of the <see cref="TempFileManager" /> class.
+/// </remarks>
 [Information(nameof(TempFileManager), "David McCarter", "8/4/2024", Status = Status.NeedsDocumentation)]
-public class TempFileManager : IDisposable, IAsyncDisposable
+[method: ExcludeFromCodeCoverage]
+public class TempFileManager() : IDisposable, IAsyncDisposable
 {
 
 	/// <summary>
@@ -40,14 +44,6 @@ public class TempFileManager : IDisposable, IAsyncDisposable
 	/// The list of temporary files managed by this instance.
 	/// </summary>
 	private readonly ConcurrentBag<string> _files = [];
-
-	/// <summary>
-	/// Initializes a new instance of the <see cref="TempFileManager" /> class.
-	/// </summary>
-	[ExcludeFromCodeCoverage]
-	public TempFileManager()
-	{
-	}
 
 	/// <summary>
 	/// Finalizes an instance of the <see cref="TempFileManager"/> class.

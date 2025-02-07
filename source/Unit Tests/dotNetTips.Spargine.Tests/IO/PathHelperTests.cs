@@ -33,31 +33,31 @@ public class PathHelperTests
 	[TestCleanup]
 	public void Cleanup()
 	{
-		if (Directory.Exists(_testDirectory))
+		if (Directory.Exists(this._testDirectory))
 		{
-			Directory.Delete(_testDirectory, true);
+			Directory.Delete(this._testDirectory, true);
 		}
 	}
 
 	[TestMethod]
 	public void CombinePaths_FourStrings_CreateIfNotExistsTrue_DirectoryCreated()
 	{
-		var result = PathHelper.CombinePaths(true, _testDirectory, "SubDirectory", "SubSubDirectory", "SubSubSubDirectory");
+		var result = PathHelper.CombinePaths(true, this._testDirectory, "SubDirectory", "SubSubDirectory", "SubSubSubDirectory");
 		Assert.IsTrue(result.Exists);
 	}
 
 	[TestMethod]
 	public void CombinePaths_ParamsStringArray_CreateIfNotExistsFalse_DirectoryNotCreated()
 	{
-		var combinedPath = Path.Combine(_testDirectory, "SubDirectory1", "SubDirectory2");
-		var result = PathHelper.CombinePaths(false, _testDirectory, "SubDirectory1", "SubDirectory2");
-		Assert.IsFalse(Directory.Exists(combinedPath));
+		var combinedPath = Path.Combine(this._testDirectory, "SubDirectory1", "SubDirectory2");
+		var result = PathHelper.CombinePaths(false, this._testDirectory, "SubDirectory1", "SubDirectory2");
+		Assert.IsFalse(result.Exists);
 	}
 
 	[TestMethod]
 	public void CombinePaths_ParamsStringArray_CreateIfNotExistsTrue_DirectoryCreated()
 	{
-		var result = PathHelper.CombinePaths(true, _testDirectory, "SubDirectory1", "SubDirectory2");
+		var result = PathHelper.CombinePaths(true, this._testDirectory, "SubDirectory1", "SubDirectory2");
 		Assert.IsTrue(result.Exists);
 	}
 
@@ -71,14 +71,14 @@ public class PathHelperTests
 	[TestMethod]
 	public void CombinePaths_ThreeStrings_CreateIfNotExistsTrue_DirectoryCreated()
 	{
-		var result = PathHelper.CombinePaths(true, _testDirectory, "SubDirectory", "SubSubDirectory");
+		var result = PathHelper.CombinePaths(true, this._testDirectory, "SubDirectory", "SubSubDirectory");
 		Assert.IsTrue(result.Exists);
 	}
 
 	[TestMethod]
 	public void CombinePaths_TwoStrings_CreateIfNotExistsTrue_DirectoryCreated()
 	{
-		var result = PathHelper.CombinePaths(true, _testDirectory, "SubDirectory");
+		var result = PathHelper.CombinePaths(true, this._testDirectory, "SubDirectory");
 		Assert.IsTrue(result.Exists);
 	}
 
@@ -174,9 +174,9 @@ public class PathHelperTests
 	[TestInitialize]
 	public void Initialize()
 	{
-		if (Directory.Exists(_testDirectory))
+		if (Directory.Exists(this._testDirectory))
 		{
-			Directory.Delete(_testDirectory, true);
+			Directory.Delete(this._testDirectory, true);
 		}
 	}
 

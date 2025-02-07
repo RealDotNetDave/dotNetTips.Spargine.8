@@ -231,7 +231,7 @@ public class DictionaryExtensionsTests
 			dic.Add(item, item);
 		}
 
-		Assert.IsNotNull((dic as IDictionary<string, string>).ToDelimitedString(','));
+		Assert.IsNotNull(((IDictionary<string, string>)dic).ToDelimitedString(','));
 	}
 
 	[TestMethod]
@@ -584,7 +584,7 @@ public class MockDisposable : IDisposable
 
 	public void Dispose()
 	{
-		IsDisposed = true;
+		this.IsDisposed = true;
 	}
 
 	public bool IsDisposed { get; private set; }

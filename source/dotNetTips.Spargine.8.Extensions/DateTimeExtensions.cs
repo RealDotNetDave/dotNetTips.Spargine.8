@@ -287,10 +287,7 @@ public static class DateTimeExtensions
 	/// Output: Today @ 10:27:43 am
 	/// </example>
 	[Information(nameof(ToFriendlyDateString), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static string ToFriendlyDateString(this in DateTime input)
-	{
-		return FormatFriendlyDateString(input);
-	}
+	public static string ToFriendlyDateString(this in DateTime input) => FormatFriendlyDateString(input);
 
 	private static string FormatFriendlyDateString(DateTime input)
 	{

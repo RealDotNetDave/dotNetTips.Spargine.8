@@ -11,7 +11,6 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using DotNetTips.Spargine.Core.Devices;
@@ -65,7 +64,7 @@ public class PerformanceStopwatchTests
 	[TestMethod]
 	public void StopResetLogTest()
 	{
-		var psw = PerformanceStopwatch.StartNew(nameof(StopResetLogTest));
+		var psw = PerformanceStopwatch.StartNew(nameof(this.StopResetLogTest));
 		var currentTime = Clock.UtcTime;
 
 		Thread.Sleep(1000);
@@ -91,7 +90,7 @@ public class PerformanceStopwatchTests
 	[TestMethod]
 	public void StopRestartLogTest()
 	{
-		var psw = PerformanceStopwatch.StartNew(nameof(StopRestartLogTest));
+		var psw = PerformanceStopwatch.StartNew(nameof(this.StopRestartLogTest));
 		var currentTime = Clock.UtcTime;
 
 		Thread.Sleep(1000);

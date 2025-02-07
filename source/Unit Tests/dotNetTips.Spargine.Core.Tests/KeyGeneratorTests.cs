@@ -44,8 +44,8 @@ public class KeyGeneratorTests
 		// Assert
 		Assert.IsFalse(string.IsNullOrWhiteSpace(key), "Generated key should not be null or whitespace.");
 		Assert.AreEqual(32, key.Length, "Generated key should have a length of 32 characters (GUID without dashes).");
-		Guid parsedGuid;
-		var isValidGuid = Guid.TryParseExact(key, "N", out parsedGuid);
+
+		var isValidGuid = Guid.TryParseExact(key, "N", out var parsedGuid);
 		Assert.IsTrue(isValidGuid, "Generated key should be a valid GUID without dashes.");
 	}
 

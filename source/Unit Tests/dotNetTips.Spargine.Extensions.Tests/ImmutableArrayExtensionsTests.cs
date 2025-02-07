@@ -12,10 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

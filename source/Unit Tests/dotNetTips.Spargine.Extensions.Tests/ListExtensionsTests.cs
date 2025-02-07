@@ -22,7 +22,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.ValueTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -926,7 +925,7 @@ public class ListExtensionsTests
 	public async Task ToListAsync_WithValidInput_ShouldReturnList()
 	{
 		// Arrange
-		var data = GetAsyncEnumerable(new[] { 1, 2, 3, 4, 5 });
+		var data = this.GetAsyncEnumerable(new[] { 1, 2, 3, 4, 5 });
 		var cancellationToken = CancellationToken.None;
 
 		// Act

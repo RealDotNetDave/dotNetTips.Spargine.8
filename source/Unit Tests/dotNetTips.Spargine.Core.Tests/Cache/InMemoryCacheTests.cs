@@ -274,7 +274,6 @@ public class InMemoryCacheTests
 	public void AddCacheItem_WithCustomTimeout_ValidIDataModelItem_ItemAdded()
 	{
 		var cache = InMemoryCache.Instance;
-		var timeout = TimeSpan.FromMinutes(30);
 		var item = RandomData.GeneratePersonRef<Address>();
 
 		cache.AddCacheItem<Person<Address>, string>(item);

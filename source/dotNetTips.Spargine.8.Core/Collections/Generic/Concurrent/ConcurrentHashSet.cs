@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-17-2025
+// Last Modified On : 02-01-2025
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -559,7 +559,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private void InitializeFromCollection([NotNull] IEnumerable<T> collection)
 	{
-		collection.ArgumentNotNull().ToList().ForEach(item => _ = this.AddInternal(item, this._comparer.GetHashCode(item), false));
+		collection.ArgumentNotNull().ToList().ForEach(item => this.AddInternal(item, this._comparer.GetHashCode(item), false));
 
 		if (this._budget == 0)
 		{

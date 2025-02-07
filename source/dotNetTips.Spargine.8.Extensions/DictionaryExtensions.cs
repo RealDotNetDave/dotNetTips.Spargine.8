@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-31-2025
+// Last Modified On : 02-07-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -150,10 +150,7 @@ public static class DictionaryExtensions
 	[Information(nameof(DisposeCollection), "David McCarter", "11/21/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> collection)
 		where TKey : notnull
-		where TValue : notnull
-	{
-		ProcessCollectionToDispose(collection.Select(p => p.Value));
-	}
+		where TValue : notnull => ProcessCollectionToDispose(collection.Select(p => p.Value));
 
 	/// <summary>
 	/// Gets the valueFunction associated with the specified keyFunction or adds it if the keyFunction does not exist.

@@ -295,7 +295,6 @@ public class DirectoryHelperTests
 		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
 		var parentDirectory = Directory.CreateDirectory(tempDirectoryPath);
 		var childDirectoryPath = Path.Combine(tempDirectoryPath, "ChildDirectory");
-		var childDirectory = Directory.CreateDirectory(childDirectoryPath);
 
 		// Create a file in both directories and set their attributes to ReadOnly
 		var parentTestFilePath = Path.Combine(tempDirectoryPath, "parentTestFile.txt");

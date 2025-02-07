@@ -12,11 +12,11 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Devices;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;

@@ -4,7 +4,7 @@
 // Created          : 01-13-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 02-07-2025
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -128,14 +128,11 @@ public sealed class InMemoryCache
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(AddCacheItem), "David McCarter", "1/16/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item)
-	{
-		_ = this.Cache.Set(
+	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item) => this.Cache.Set(
 			key.ArgumentNotNullOrEmpty(),
 			item.ArgumentNotNull(),
 			new MemoryCacheEntryOptions().SetAbsoluteExpiration(this._timeoutInMinutes)
 		);
-	}
 
 	/// <summary>
 	/// Adds an item to the cache with a custom expiration time.
@@ -220,14 +217,11 @@ public sealed class InMemoryCache
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, TimeSpan timeout)
-	{
-		_ = this.Cache.Set(
+	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, TimeSpan timeout) => this.Cache.Set(
 			key.ArgumentNotNullOrEmpty(),
 			item.ArgumentNotNull(),
 			new MemoryCacheEntryOptions().SetAbsoluteExpiration(timeout)
 		);
-	}
 
 	/// <summary>
 	/// Adds an item to the cache with a custom expiration time.
@@ -240,14 +234,11 @@ public sealed class InMemoryCache
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(AddCacheItem), "David McCarter", "6/12/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, DateTimeOffset timeout)
-	{
-		_ = this.Cache.Set(
+	public void AddCacheItem<T>([NotNull] string key, [NotNull] T item, DateTimeOffset timeout) => this.Cache.Set(
 			key.ArgumentNotNullOrEmpty(),
 			item.ArgumentNotNull(),
 			new MemoryCacheEntryOptions().SetAbsoluteExpiration(timeout)
 		);
-	}
 
 	/// <summary>
 	/// Asynchronously adds an item to the cache with a timeout of 20 minutes.

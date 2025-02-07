@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 02-01-2025
 // ***********************************************************************
 // <copyright file="DistinctBlockingCollection.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.

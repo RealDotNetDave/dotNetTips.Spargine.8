@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System;
 using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
