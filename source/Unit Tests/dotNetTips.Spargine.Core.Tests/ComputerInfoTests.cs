@@ -35,7 +35,7 @@ public class ComputerInfoTests
 	public void IsNetworkAvailable_NetworkIsAvailable_ReturnsTrue()
 	{
 		// Act
-		var result = ComputerInfo.IsNetworkAvailable();
+		var result = new ComputerInfo().IsNetworkAvailable;
 
 		// Assert
 		Assert.IsTrue(result);

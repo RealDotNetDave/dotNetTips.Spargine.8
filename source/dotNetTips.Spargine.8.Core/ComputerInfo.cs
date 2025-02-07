@@ -33,38 +33,13 @@ namespace DotNetTips.Spargine.Core;
 public sealed class ComputerInfo
 {
 	//TODO: ADD Environment.CpuUsage * Environment.ProcessCpuUsage FROM .NET 9
+	//TODO: CHANGE TO STATIC METHODS IN V10? MAKE SURE IT SERIALIZES!
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ComputerInfo"/> class.
 	/// </summary>
 	public ComputerInfo()
 	{
-	}
-
-	/// <summary>
-	/// Determines whether the network is available.
-	/// </summary>
-	/// <returns><c>true</c> if the network is available; otherwise, <c>false</c>.</returns>
-	/// <remarks>
-	/// This method checks all network interfaces to determine if any are operational and not virtual or loopback interfaces.
-	/// </remarks>
-	[Information(nameof(IsNetworkAvailable), OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public static bool IsNetworkAvailable()
-	{
-		foreach (var networkInterface in NetworkInterface.GetAllNetworkInterfaces())
-		{
-			if (networkInterface.OperationalStatus == OperationalStatus.Up)
-			{
-				var description = networkInterface.Description.ToUpperInvariant();
-				if (!description.Contains("VIRTUALBOX", StringComparison.OrdinalIgnoreCase) &&
-					!description.Contains("LOOPBACK", StringComparison.OrdinalIgnoreCase))
-				{
-					return true;
-				}
-			}
-		}
-
-		return false;
 	}
 
 	/// <summary>
@@ -150,6 +125,35 @@ public sealed class ComputerInfo
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public bool Is64BitProcess { get; private set; } = Environment.Is64BitProcess;
+
+	/// <summary>
+	/// Determines whether the network is available.
+	/// </summary>
+	/// <returns><c>true</c> if the network is available; otherwise, <c>false</c>.</returns>
+	/// <remarks>
+	/// This method checks all network interfaces to determine if any are operational and not virtual or loopback interfaces.
+	/// </remarks>
+	[Information(nameof(IsNetworkAvailable), OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public bool IsNetworkAvailable
+	{
+		get
+		{
+			foreach (var networkInterface in NetworkInterface.GetAllNetworkInterfaces())
+			{
+				if (networkInterface.OperationalStatus == OperationalStatus.Up)
+				{
+					var description = networkInterface.Description.ToUpperInvariant();
+					if (!description.Contains("VIRTUALBOX", StringComparison.OrdinalIgnoreCase) &&
+						!description.Contains("LOOPBACK", StringComparison.OrdinalIgnoreCase))
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+	}
 
 	/// <summary>
 	/// Gets a value indicating whether the user interface is interactive.
@@ -241,6 +245,13 @@ public sealed class ComputerInfo
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public long TickCount64 { get; private set; } = Clock.TickCount64;
+
+	/// <summary>
+	/// Gets the uptime of the system.
+	/// </summary>
+	[DataMember]
+	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public TimeSpan Uptime => TimeSpan.FromMilliseconds(Environment.TickCount64);
 
 	/// <summary>
 	/// Gets the domain name associated with the current user.
