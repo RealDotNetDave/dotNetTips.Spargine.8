@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 02-08-2025
 // ***********************************************************************
 // <copyright file="DriveHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -52,8 +52,6 @@ public static class DriveHelper
 	{
 		drive = drive.ArgumentNotNullOrEmpty();
 
-		var driveSerial = string.Empty;
-
 		// No matter what is sent in, get just the drive letter
 		var driveFixed = Path.GetPathRoot(drive).Replace(@"\", string.Empty, StringComparison.Ordinal);
 
@@ -65,14 +63,14 @@ public static class DriveHelper
 			{
 				foreach (var driveInfo in queryCollection)
 				{
-					driveSerial = Convert.ToString(
+					return Convert.ToString(
 						driveInfo.GetPropertyValue(propertyName: "VolumeSerialNumber"),
 						CultureInfo.CurrentCulture);
 				}
 			}
 		}
 
-		return driveSerial;
+		return string.Empty;
 	}
 
 	/// <summary>

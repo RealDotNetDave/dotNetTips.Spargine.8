@@ -34,6 +34,7 @@ public class DriveHelperTests
 		// Act
 		DriveHelper.GetDriveSerialNumber(null);
 	}
+
 	[TestMethod]
 	[SupportedOSPlatform("windows")]
 	public void GetDriveSerialNumber_ValidDrive_ReturnsSerialNumber()
