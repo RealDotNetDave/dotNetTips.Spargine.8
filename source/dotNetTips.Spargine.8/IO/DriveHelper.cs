@@ -37,6 +37,57 @@ public static class DriveHelper
 {
 
 	/// <summary>
+	/// Gets the file system format of the specified drive.
+	/// </summary>
+	/// <param name="drive">The drive letter (e.g., "C:"). Must not be null or empty.</param>
+	/// <returns>The file system format of the drive as a string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="drive"/> is null or empty.</exception>
+	[SupportedOSPlatform("windows")]
+	[Information(nameof(GetDriveFormat), OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static string GetDriveFormat([NotNull][DisallowNull] string drive)
+	{
+		drive = drive.ArgumentNotNullOrEmpty();
+
+		var driveInfo = new DriveInfo(drive);
+
+		return driveInfo.DriveFormat;
+	}
+
+	/// <summary>
+	/// Gets the free space available on the specified drive.
+	/// </summary>
+	/// <param name="drive">The drive letter (e.g., "C:"). Must not be null or empty.</param>
+	/// <returns>The free space available on the drive in bytes.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="drive"/> is null or empty.</exception>
+	[SupportedOSPlatform("windows")]
+	[Information(nameof(GetDriveFreeSpace), OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static long GetDriveFreeSpace([NotNull][DisallowNull] string drive)
+	{
+		drive = drive.ArgumentNotNullOrEmpty();
+
+		var driveInfo = new DriveInfo(drive);
+
+		return driveInfo.AvailableFreeSpace;
+	}
+
+	/// <summary>
+	/// Gets the volume label of the specified drive.
+	/// </summary>
+	/// <param name="drive">The drive letter (e.g., "C:"). Must not be null or empty.</param>
+	/// <returns>The volume label of the drive as a string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="drive"/> is null or empty.</exception>
+	[SupportedOSPlatform("windows")]
+	[Information(nameof(GetDriveLabel), OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static string GetDriveLabel([NotNull][DisallowNull] string drive)
+	{
+		drive = drive.ArgumentNotNullOrEmpty();
+
+		var driveInfo = new DriveInfo(drive);
+
+		return driveInfo.VolumeLabel;
+	}
+
+	/// <summary>
 	/// Gets the serial number of the specified drive.
 	/// </summary>
 	/// <param name="drive">The drive letter (e.g., "C:"). Must not be null or empty.</param>
@@ -71,6 +122,23 @@ public static class DriveHelper
 		}
 
 		return string.Empty;
+	}
+
+	/// <summary>
+	/// Gets the total size of the specified drive.
+	/// </summary>
+	/// <param name="drive">The drive letter (e.g., "C:"). Must not be null or empty.</param>
+	/// <returns>The total size of the drive in bytes.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="drive"/> is null or empty.</exception>
+	[SupportedOSPlatform("windows")]
+	[Information(nameof(GetDriveTotalSize), author: "David McCarter", createdOn: "10/10/2023", OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static long GetDriveTotalSize([NotNull][DisallowNull] string drive)
+	{
+		drive = drive.ArgumentNotNullOrEmpty();
+
+		var driveInfo = new DriveInfo(drive);
+
+		return driveInfo.TotalSize;
 	}
 
 	/// <summary>
