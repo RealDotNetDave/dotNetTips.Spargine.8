@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-09-2024
+// Last Modified On : 02-08-2025
 // ***********************************************************************
 // <copyright file="PathHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.IO;
 /// This class offers a variety of static methods to assist with common path manipulation tasks such as combining paths, ensuring paths end with a directory separator,
 /// and validating paths for invalid characters. It is designed to simplify file system operations by abstracting complex checks and operations into straightforward method calls.
 /// </remarks>
-[Information(nameof(PathHelper), Status = Status.NeedsDocumentation)]
+[Information(nameof(PathHelper), Documentation = "https://bit.ly/SparginePathHelper", Status = Status.Available)]
 public static class PathHelper
 {
 
@@ -65,7 +65,7 @@ public static class PathHelper
 	/// Console.WriteLine(combinedPathInfo.FullName);
 	/// </code>
 	/// </example>
-	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] params string[] paths)
 	{
 		paths = paths.ArgumentItemsExists(nameof(paths));
@@ -102,7 +102,7 @@ public static class PathHelper
 	/// Console.WriteLine(combinedPathInfo.FullName);
 	/// </code>
 	/// </example>
-	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] string path1, [NotNull] string path2)
 	{
 		path1 = path1.ArgumentNotNullOrEmpty();
@@ -126,7 +126,7 @@ public static class PathHelper
 	/// Console.WriteLine(combinedPathInfo.FullName);
 	/// </code>
 	/// </example>
-	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] string path1, [NotNull] string path2, [NotNull] string path3)
 	{
 		path1 = path1.ArgumentNotNullOrEmpty();
@@ -152,7 +152,7 @@ public static class PathHelper
 	/// Console.WriteLine(combinedPathInfo.FullName);
 	/// </code>
 	/// </example>
-	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	[Information(nameof(CombinePaths), author: "David McCarter", createdOn: "8/10/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static DirectoryInfo CombinePaths(bool createIfNotExists, [NotNull] string path1, [NotNull] string path2, [NotNull] string path3, [NotNull] string path4)
 	{
 		path1 = path1.ArgumentNotNullOrEmpty();
@@ -178,7 +178,7 @@ public static class PathHelper
 	/// Console.WriteLine(result); // Output: C:\MyDirectory\
 	/// </code>
 	/// </example>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string EnsureTrailingSlash([NotNull] string path)
 	{
 		path = path.ArgumentNotNullOrEmpty();
@@ -205,7 +205,7 @@ public static class PathHelper
 	/// </code>
 	/// </example>
 	[SupportedOSPlatform("windows")]
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool HasInvalidFilterChars([NotNull] string filter)
 	{
 		filter = filter.ArgumentNotNullOrEmpty();
@@ -261,7 +261,7 @@ public static class PathHelper
 	/// Console.WriteLine(containsWildcard); // Output: True
 	/// </code>
 	/// </example>
-	[Information(nameof(PathContainsWildcard), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	[Information(nameof(PathContainsWildcard), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool PathContainsWildcard([NotNull] string path)
 	{
 		path = path.ArgumentNotNullOrEmpty();
@@ -278,7 +278,7 @@ public static class PathHelper
 	/// This method checks the path against a set of characters that are not allowed in file and directory paths, as defined by the operating system.
 	/// The invalid characters are obtained from <see cref="InvalidPathNameChars"/>, which excludes directory separator characters.
 	/// </remarks>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SparginePathHelper")]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static bool PathHasInvalidChars([NotNull] string path)
 	{
 		path = path.ArgumentNotNullOrEmpty();
