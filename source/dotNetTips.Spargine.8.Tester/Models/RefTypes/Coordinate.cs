@@ -16,6 +16,7 @@
 // </summary>
 // ***********************************************************************
 
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
@@ -29,9 +30,6 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// <summary>
 /// Represents a 3D coordinate with X, Y, and Z integer values.
 /// </summary>
-/// <param name="x">The X coordinate.</param>
-/// <param name="y">The Y coordinate.</param>
-/// <param name="z">The Z coordinate. Default is 0.</param>
 /// <remarks>
 /// This class is designed for testing and benchmarking scenarios.
 /// It implements <see cref="ICoordinate"/>, <see cref="IEquatable{Coordinate}"/>,
@@ -41,8 +39,25 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [Serializable]
 [XmlRoot(ElementName = "Coordinate", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
-public class Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coordinate>, IComparable, IComparable<Coordinate>
+public class Coordinate : ICoordinate, IEquatable<Coordinate>, IComparable, IComparable<Coordinate>
 {
+	/// <summary>
+	/// Initializes a new instance of the <see cref="Coordinate"/> class.
+	/// </summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public Coordinate()
+	{
+	}
+
+	/// <param name="x">The X coordinate.</param>
+	/// <param name="y">The Y coordinate.</param>
+	/// <param name="z">The Z coordinate. Default is 0.</param>
+	public Coordinate(int x, int y, int z = 0)
+	{
+		this.X = x;
+		this.Y = y;
+		this.Z = z;
+	}
 
 	/// <summary>
 	/// Determines whether two <see cref="Coordinate"/> instances are not equal.
@@ -184,7 +199,7 @@ public class Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coord
 	[JsonPropertyName("x")]
 	[XmlElement("X")]
 	[Information(nameof(X), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int X { get; set; } = x;
+	public int X { get; set; }
 
 	/// <summary>
 	/// Gets or sets the y coordinate.
@@ -194,7 +209,7 @@ public class Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coord
 	[JsonPropertyName("y")]
 	[XmlElement("Y")]
 	[Information(nameof(Y), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int Y { get; set; } = y;
+	public int Y { get; set; }
 
 	/// <summary>
 	/// Gets or sets the z coordinate.
@@ -204,5 +219,5 @@ public class Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coord
 	[JsonPropertyName("z")]
 	[XmlElement("Z")]
 	[Information(nameof(Z), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int Z { get; set; } = z;
+	public int Z { get; set; }
 }
