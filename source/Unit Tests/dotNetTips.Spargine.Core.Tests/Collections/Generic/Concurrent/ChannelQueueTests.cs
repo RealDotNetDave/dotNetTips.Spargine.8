@@ -4,7 +4,7 @@
 // Created          : 07-26-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-24-2025
+// Last Modified On : 02-10-2025
 // ***********************************************************************
 // <copyright file="ChannelQueueTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Channels;
 using System.Threading.Tasks;
@@ -71,6 +72,21 @@ public class ChannelQueueTests
 		_ = new ChannelQueue<int>(-1);
 	}
 
+
+	[TestMethod]
+	public void Constructor_Timeout_SetsPropertiesCorrectly()
+	{
+		// Arrange
+		int capacity = 10;
+		TimeSpan timeout = TimeSpan.FromMinutes(1);
+
+		// Act
+		var channelQueue = new ChannelQueue<int>(capacity, timeout);
+
+		// Assert
+		Assert.AreEqual(timeout, channelQueue.GetType().GetField("_cancellationTimeout", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(channelQueue), "The cancellation timeout should be set correctly.");
+	}
+
 	[TestMethod]
 	public void Constructor_WithCapacity_IsBounded()
 	{
@@ -81,6 +97,51 @@ public class ChannelQueueTests
 			channel.WriteAsync(i).Wait();
 		}
 		Assert.AreEqual(capacity, channel.Count, $"Channel should not allow adding more than {capacity} items.");
+	}
+
+	[TestMethod]
+	public void Constructor_WithNegativeCapacity_ThrowsArgumentOutOfRangeException()
+	{
+		// Arrange
+		int negativeCapacity = -1;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentOutOfRangeException>(() => new ChannelQueue<int>(negativeCapacity), "A negative capacity should throw an ArgumentOutOfRangeException.");
+	}
+
+	[TestMethod]
+	public void Constructor_WithNullTimeout_SetsDefaultTimeout()
+	{
+		// Arrange
+		int capacity = 10;
+		TimeSpan defaultTimeout = TimeSpan.FromMinutes(5);
+
+		// Act
+		var channelQueue = new ChannelQueue<int>(capacity, null);
+
+		// Assert
+		Assert.AreEqual(defaultTimeout, channelQueue.GetType().GetField("_cancellationTimeout", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(channelQueue), "The default cancellation timeout should be set correctly.");
+	}
+
+	[TestMethod]
+	public void Constructor_WithPositiveCapacity_DoesNotThrow()
+	{
+		// Arrange
+		int positiveCapacity = 10;
+
+		// Act & Assert
+		var channelQueue = new ChannelQueue<int>(positiveCapacity);
+		Assert.IsNotNull(channelQueue, "A positive capacity should not throw an exception.");
+	}
+
+	[TestMethod]
+	public void Constructor_WithZeroCapacity_ThrowsArgumentOutOfRangeException()
+	{
+		// Arrange
+		int zeroCapacity = 0;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentOutOfRangeException>(() => new ChannelQueue<int>(zeroCapacity), "A zero capacity should throw an ArgumentOutOfRangeException.");
 	}
 
 	[TestMethod]
@@ -285,5 +346,7 @@ public class ChannelQueueTests
 
 		await Assert.ThrowsExceptionAsync<InvalidOperationException>(async () => await channel.WriteAsync(6), "WriteAsync should throw a ChannelClosedException when attempting to write to a locked channel.");
 	}
+
+
 
 }
