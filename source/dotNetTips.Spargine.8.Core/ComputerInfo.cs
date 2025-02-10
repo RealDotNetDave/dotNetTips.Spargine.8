@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-07-2025
+// Last Modified On : 02-10-2025
 // ***********************************************************************
 // <copyright file="ComputerInfo.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -250,7 +250,7 @@ public sealed class ComputerInfo
 	/// Gets the uptime of the system.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public TimeSpan Uptime => TimeSpan.FromMilliseconds(Environment.TickCount64);
 
 	/// <summary>
