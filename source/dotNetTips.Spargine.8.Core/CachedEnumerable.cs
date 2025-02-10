@@ -93,7 +93,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// Returns an enumerator that iterates through the collection.
 	/// </summary>
 	/// <returns>An enumerator that can be used to iterate through the collection.</returns>
-	[Information(nameof(IEnumerable.GetEnumerator), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(IEnumerable.GetEnumerator), UnitTestStatus = UnitTestStatus.NotRequired, Status = Status.Available)]
 	IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
 	/// <summary>
@@ -206,7 +206,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// Returns an enumerator that iterates through the collection.
 	/// </summary>
 	/// <returns>An enumerator that can be used to iterate through the collection.</returns>
-	[Information(nameof(IEnumerable<T>.GetEnumerator), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(IEnumerable<T>.GetEnumerator), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public IEnumerator<T> GetEnumerator()
 	{
 		this.CheckEnumerable();
@@ -220,7 +220,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// <summary>
 	/// Resets the cache and re-enumerates the underlying enumerable.
 	/// </summary>
-	[Information(nameof(Reset), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(Reset), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public void Reset()
 	{
 		lock (this._cache)

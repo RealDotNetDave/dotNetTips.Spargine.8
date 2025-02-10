@@ -103,6 +103,106 @@ public class CachedEnumerableTests
 	}
 
 	[TestMethod]
+	public void CachedEnumerable_GetEnumerator_ShouldCacheItems()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Range(1, 5);
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		var firstIteration = cachedEnumerable.ToList();
+		var secondIteration = cachedEnumerable.ToList();
+
+		// Assert
+		CollectionAssert.AreEqual(firstIteration, secondIteration, "The items in both iterations should be the same, indicating they were cached.");
+	}
+
+	[TestMethod]
+	public void CachedEnumerable_GetEnumerator_ShouldEnumerateAfterReset()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Range(1, 5);
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		var firstIteration = cachedEnumerable.ToList();
+		cachedEnumerable.Reset();
+		var secondIteration = cachedEnumerable.ToList();
+
+		// Assert
+		CollectionAssert.AreEqual(firstIteration, secondIteration, "The items in both iterations should be the same after reset.");
+	}
+
+	[TestMethod]
+	public void CachedEnumerable_GetEnumerator_ShouldEnumerateAllItems()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Range(1, 5);
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		var enumeratedItems = new List<int>();
+		foreach (var item in cachedEnumerable)
+		{
+			enumeratedItems.Add(item);
+		}
+
+		// Assert
+		CollectionAssert.AreEqual(numbers.ToList(), enumeratedItems, "The enumerated items should match the original enumerable.");
+	}
+
+	[TestMethod]
+	public void CachedEnumerable_GetEnumerator_ShouldHandleEmptyEnumerable()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Empty<int>();
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		var enumeratedItems = new List<int>();
+		foreach (var item in cachedEnumerable)
+		{
+			enumeratedItems.Add(item);
+		}
+
+		// Assert
+		Assert.AreEqual(0, enumeratedItems.Count, "Enumerating an empty enumerable should return an empty list.");
+	}
+
+	[TestMethod]
+	public void CachedEnumerable_GetEnumerator_ShouldReturnSameEnumerator()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Range(1, 5);
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+
+		// Act
+		var firstEnumerator = cachedEnumerable.GetEnumerator();
+		var secondEnumerator = cachedEnumerable.GetEnumerator();
+
+		// Assert
+		Assert.AreNotSame(firstEnumerator, secondEnumerator, "Each call to GetEnumerator should return a new enumerator instance.");
+	}
+
+	[TestMethod]
+	public void CachedEnumerable_GetEnumerator_ShouldThrowObjectDisposedException_WhenDisposed()
+	{
+		// Arrange
+		IEnumerable<int> numbers = Enumerable.Range(1, 5);
+		var cachedEnumerable = CachedEnumerable.Create(numbers);
+		cachedEnumerable.Dispose();
+
+		// Act & Assert
+		Assert.ThrowsException<ObjectDisposedException>(() =>
+		{
+			foreach (var item in cachedEnumerable)
+			{
+				// This line should not be executed
+			}
+		}, "Accessing the cached enumerable after disposal should throw an ObjectDisposedException.");
+	}
+
+	[TestMethod]
 	public void CachedEnumerable_Reset_ShouldClearCache()
 	{
 		// Arrange
