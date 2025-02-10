@@ -17,10 +17,11 @@
 
 
 
+
 namespace DotNetTips.Spargine.IO;
 
 /// <summary>
-/// Defines options for the <see cref="FileHelper.MoveFile(FileInfo, FileInfo, FileMoveOptions, int)"/> method.
+/// Defines options for the method.
 /// </summary>
 [Flags]
 public enum FileMoveOptions

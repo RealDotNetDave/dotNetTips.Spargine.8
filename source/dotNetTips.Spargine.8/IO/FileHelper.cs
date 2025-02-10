@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-05-2025
+// Last Modified On : 02-10-2025
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -239,13 +239,11 @@ public static class FileHelper
 	{
 		ValidateCreateDestinationDirectory(file, destination);
 
-		var fileName = file.FullName;
-
 		if (destination.CheckExists(createDirectory: true))
 		{
 			var destinationName = destination.FullName;
 
-			var newFileName = Path.Combine(destinationName, fileName);
+			var newFileName = Path.Combine(destinationName, file.Name);
 
 			using (var sourceStream = file.Open(FileMode.Open))
 			{
@@ -329,7 +327,7 @@ public static class FileHelper
 	/// Console.WriteLine($"Copied file length: {fileLength}");
 	/// </code>
 	/// </example>
-	[Information(nameof(CopyFileAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Documentation = "https://dotnettips.wordpress.com/2020/11/17/coding-faster-with-the-dotnettips-utility-november-2020-update", Status = Status.Available)]
+	[Information(nameof(CopyFileAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://dotnettips.wordpress.com/2020/11/17/coding-faster-with-the-dotnettips-utility-november-2020-update", Status = Status.Available)]
 	public static async Task<long> CopyFileAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
 		ValidateCreateDestinationDirectory(file, destination);
@@ -338,7 +336,7 @@ public static class FileHelper
 
 		var destinationName = destination.FullName;
 
-		var newFileName = Path.Combine(destinationName, fileName);
+		var newFileName = Path.Combine(destinationName, file.Name);
 
 		using (var sourceStream = File.Open(fileName, FileMode.Open))
 		{
@@ -503,35 +501,40 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="file">The file <see cref="FileInfo"/> object representing the file to move. Must not be null.</param>
 	/// <param name="destinationFile">The destination <see cref="FileInfo"/> object representing the target file location. Must not be null.</param>
-	/// <param name="fileMoveOptions">Specifies the behavior for moving the file, such as whether to overwrite an existing file at the destination. See <see cref="FileMoveOptions"/> for options.</param>
+	/// <param name="replaceExisting">Specifies whether to replace the destination file if it already exists.</param>
 	/// <param name="retryCount">The number of times to retry the move operation in case of failure. Must be a non-negative number.</param>
 	/// <returns><c>true</c> if the file was successfully moved; otherwise, <c>false</c>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destinationFile"/> is null.</exception>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destinationFile"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the file file does not exist.</exception>
-	/// <exception cref="IOException">Thrown if the destination file already exists and <paramref name="fileMoveOptions"/> is set to <see cref="FileMoveOptions.None"/>.</exception>
 	/// <example>
 	/// Here is how you can use the <see cref="MoveFile"/> method:
 	/// <code>
 	/// var sourceFile = new FileInfo("path/to/file/file.txt");
 	/// var destinationFile = new FileInfo("path/to/destination/file.txt");
-	/// bool result = FileHelper.MoveFile(sourceFile, destinationFile, FileMoveOptions.ReplaceExisting, 3);
+	/// bool result = FileHelper.MoveFile(sourceFile, destinationFile, true, 3);
 	/// Console.WriteLine($"Move result: {result}");
 	/// </code>
 	/// </example>
-	[Information(nameof(MoveFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Documentation = "https://bit.ly/SpargineMay2024", Status = Status.Available)]
-	public static bool MoveFile([NotNull] FileInfo file, [NotNull] FileInfo destinationFile, FileMoveOptions fileMoveOptions = FileMoveOptions.ReplaceExisting, int retryCount = 1)
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destinationFile"/> is null.</exception>
+	/// <exception cref="IOException">Thrown if an I/O error occurs during the move operation.</exception>
+	/// <exception cref="UnauthorizedAccessException">Thrown if the caller does not have the required permission.</exception>
+	[Information(nameof(MoveFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineMay2024", Status = Status.Available)]
+	public static bool MoveFile([NotNull] FileInfo file, [NotNull] FileInfo destinationFile, bool replaceExisting = true, int retryCount = 1)
 	{
-		var fileName = file.ArgumentExists().FullName;
-		var destinationFileName = destinationFile.ArgumentExists().FullName;
-
+		file = file.ArgumentNotNull();
+		destinationFile = destinationFile.ArgumentNotNull();
 		retryCount = retryCount.EnsureMinimum(1);
+
+		ValidateCreateDestinationDirectory(file, destinationFile.Directory);
 
 		for (var retryIndex = 0; retryIndex < Retries; retryIndex++)
 		{
 			try
 			{
-				return LibraryImport.MoveFileExW(fileName, destinationFileName, (int)fileMoveOptions);
+				File.Move(file.FullName, destinationFile.FullName, replaceExisting);
+
+				if (destinationFile.Exists)
+				{
+					return true;
+				}
 			}
 			catch (IOException) when (retryIndex < retryCount - 1)
 			{
