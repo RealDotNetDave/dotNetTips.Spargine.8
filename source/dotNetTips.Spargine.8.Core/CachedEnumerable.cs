@@ -123,12 +123,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 		{
 			if (disposing && this._enumerator is not null)
 			{
-				this._enumerator.Dispose();
-				this._enumerator = null;
-
-				this._cache.Clear();
-
-				this._enumerable = null;
+				this.Reset();
 			}
 
 			this._disposed = true;
@@ -143,7 +138,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// <param name="result">When this method returns, contains the item at the specified index, if the item is found;
 	/// otherwise, the default value for the type of the item parameter. This parameter is passed uninitialized.</param>
 	/// <returns><c>true</c> if the item at the specified index is successfully retrieved; otherwise, <c>false</c>.</returns>
-	[Information(nameof(TryGetItem), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(TryGetItem), UnitTestStatus = UnitTestStatus.NotRequired, Status = Status.Available)]
 	private bool TryGetItem(in int index, out T result)
 	{
 		this.CheckEnumerable();

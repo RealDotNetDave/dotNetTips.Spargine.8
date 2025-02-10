@@ -326,6 +326,33 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
+### String GetDriveFormat(String drive)
+
+* **Status:** New
+* **Optimization Status:** NotRequired
+* **BenchMarkStatus:** NotRequired
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** GetDriveFormat
+
+### Int64 GetDriveFreeSpace(String drive)
+
+* **Status:** New
+* **Optimization Status:** NotRequired
+* **BenchMarkStatus:** NotRequired
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** GetDriveFreeSpace
+
+### String GetDriveLabel(String drive)
+
+* **Status:** New
+* **Optimization Status:** NotRequired
+* **BenchMarkStatus:** NotRequired
+* **Unit Test Status:** Completed
+* **Author:** UNKNOWN
+* **Description:** GetDriveLabel
+
 ### String GetDriveSerialNumber(String drive)
 
 * **Status:** Available
@@ -336,6 +363,17 @@
 * **CreatedOn:** 9/6/2020
 * **Description:** GetDriveSerialNumber
 * **Documentation:** https://dotnettips.wordpress.com/2007/12/14/finding-a-drives-serial-number/
+* **Modified By:** David McCarter
+
+### Int64 GetDriveTotalSize(String drive)
+
+* **Status:** New
+* **Optimization Status:** NotRequired
+* **BenchMarkStatus:** NotRequired
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/10/2023
+* **Description:** GetDriveTotalSize
 * **Modified By:** David McCarter
 
 ### ReadOnlyCollection<DriveInfo> GetFixedDrives()
@@ -410,7 +448,7 @@
 * **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** CopyFileAsync
 * **Documentation:** https://dotnettips.wordpress.com/2020/11/17/coding-faster-with-the-dotnettips-utility-november-2020-update
@@ -468,12 +506,12 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### Boolean MoveFile(FileInfo file, FileInfo destinationFile, FileMoveOptions fileMoveOptions, Int32 retryCount)
+### Boolean MoveFile(FileInfo file, FileInfo destinationFile, Boolean replaceExisting, Int32 retryCount)
 
 * **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** None
+* **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** MoveFile
 * **Documentation:** https://bit.ly/SpargineMay2024
@@ -571,12 +609,13 @@
 *****
 ## PathHelper
 
-* **Status:** NeedsDocumentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 * **Author:** UNKNOWN
 * **Description:** PathHelper
+* **Documentation:** https://bit.ly/SparginePathHelper
 
 ### DirectoryInfo CombinePaths(Boolean createIfNotExists, String[] paths)
 
@@ -587,7 +626,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 8/10/2020
 * **Description:** CombinePaths
-* **Documentation:** https://bit.ly/SparginePathHelper
 * **Modified By:** David McCarter
 
 ### DirectoryInfo CombinePaths(Boolean createIfNotExists, String path1, String path2)
@@ -599,7 +637,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 8/10/2020
 * **Description:** CombinePaths
-* **Documentation:** https://bit.ly/SparginePathHelper
 * **Modified By:** David McCarter
 
 ### DirectoryInfo CombinePaths(Boolean createIfNotExists, String path1, String path2, String path3)
@@ -611,7 +648,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 8/10/2020
 * **Description:** CombinePaths
-* **Documentation:** https://bit.ly/SparginePathHelper
 * **Modified By:** David McCarter
 
 ### DirectoryInfo CombinePaths(Boolean createIfNotExists, String path1, String path2, String path3, String path4)
@@ -623,7 +659,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 8/10/2020
 * **Description:** CombinePaths
-* **Documentation:** https://bit.ly/SparginePathHelper
 * **Modified By:** David McCarter
 
 ### String EnsureTrailingSlash(String path)
@@ -635,7 +670,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
 * **Description:** From .NET Core source.
-* **Documentation:** https://bit.ly/SparginePathHelper
 * **Modified By:** David McCarter
 
 ### Boolean HasInvalidFilterChars(String filter)
@@ -647,7 +681,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
 * **Description:** From .NET Core source.
-* **Documentation:** https://bit.ly/SparginePathHelper
 * **Modified By:** David McCarter
 
 ### ReadOnlyCollection<Char> InvalidFilterChars()
@@ -681,7 +714,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
 * **Description:** PathContainsWildcard
-* **Documentation:** https://bit.ly/SparginePathHelper
 * **Modified By:** David McCarter
 
 ### Boolean PathHasInvalidChars(String path)
@@ -693,7 +725,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
 * **Description:** From .NET Core source.
-* **Documentation:** https://bit.ly/SparginePathHelper
 * **Modified By:** David McCarter
 
 ### ReadOnlyCollection<Char> PathSeparators { get; set; }
@@ -804,4 +835,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 2/6/2025 10:12:41 PM UTC**
+**Generated by Spargine - dotNetTips.com on 2/10/2025 8:41:41 PM UTC**
