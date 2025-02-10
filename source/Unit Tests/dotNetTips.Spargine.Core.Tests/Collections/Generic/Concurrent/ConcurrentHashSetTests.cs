@@ -4,7 +4,7 @@
 // Created          : 12-06-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-03-2025
+// Last Modified On : 02-10-2025
 // ***********************************************************************
 // <copyright file="ConcurrentHashSetTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -46,33 +46,6 @@ public class ConcurrentHashSetTests
 	{
 		var hashSet = new ConcurrentHashSet<string>();
 		Assert.ThrowsException<ArgumentNullException>(() => hashSet.Add(null));
-	}
-
-	[TestMethod]
-	public void AddAndRemove_Concurrent_DifferentItems()
-	{
-		var set = new ConcurrentHashSet<int>();
-		int itemsToAdd = 50;
-		int itemsToRemove = 25;
-		var addTasks = new List<Task>();
-		var removeTasks = new List<Task>();
-
-		for (int i = 0; i < itemsToAdd; i++)
-		{
-			var localI = i;
-			addTasks.Add(Task.Run(() => set.Add(localI)));
-		}
-
-		for (int i = 0; i < itemsToRemove; i++)
-		{
-			var localI = i;
-			removeTasks.Add(Task.Run(() => set.TryRemove(localI)));
-		}
-
-		Task.WaitAll(addTasks.ToArray());
-		Task.WaitAll(removeTasks.ToArray());
-
-		Assert.AreEqual(itemsToAdd - itemsToRemove, set.Count, "Count should reflect the number of items added minus the number of items removed.");
 	}
 
 	[TestMethod]

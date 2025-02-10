@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 02-10-2025
 // ***********************************************************************
 // <copyright file="JsonSerializationTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using DotNetTips.Spargine.Core.Serialization;
-using DotNetTips.Spargine.Core.Tests.Properties;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -111,7 +110,7 @@ public class JsonSerializationTests
 		Assert.IsTrue(string.IsNullOrEmpty(json) is false);
 
 		//Deserialize
-		var serializedPerson = JsonSerialization.Deserialize<Person<Address>>(Resources.JsonPersonProper);
+		var serializedPerson = JsonSerialization.Deserialize<Person<Address>>(json);
 
 		Assert.IsNotNull(serializedPerson);
 	}

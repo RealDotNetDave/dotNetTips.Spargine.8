@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 02-10-2025
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -114,7 +114,10 @@ public static class UlidGenerator
 	{
 		var ulids = new List<string>(count.ArgumentInRange(1, defaultValue: 1));
 
-		_ = Parallel.For(0, count, index => ulids[index] = GenerateUlid());
+		for (var index = 0; index < count; index++)
+		{
+			ulids.Add(GenerateUlid());
+		}
 
 		return ulids.AsReadOnly();
 	}

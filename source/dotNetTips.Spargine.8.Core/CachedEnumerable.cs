@@ -4,7 +4,7 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 02-10-2025
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -101,7 +101,17 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// </summary>
 	/// <exception cref="InvalidOperationException">Thrown if the enumerable is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private void CheckEnumerable() => this._enumerable.CheckIsNotNull(true);
+	private void CheckEnumerable()
+	{
+		if (this._disposed)
+		{
+			throw new ObjectDisposedException("The cached enumerable has been disposed.");
+		}
+		else
+		{
+			_ = this._enumerable.CheckIsNotNull(true);
+		}
+	}
 
 	/// <summary>
 	/// Releases unmanaged and - optionally - managed resources.
@@ -115,6 +125,10 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 			{
 				this._enumerator.Dispose();
 				this._enumerator = null;
+
+				this._cache.Clear();
+
+				this._enumerable = null;
 			}
 
 			this._disposed = true;
@@ -232,5 +246,5 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// <summary>
 	/// The underlying enumerable sequence that is being cached.
 	/// </summary>
-	private readonly IEnumerable<T> _enumerable = enumerable;
+	private IEnumerable<T> _enumerable = enumerable;
 }

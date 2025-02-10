@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 02-10-2025
 // ***********************************************************************
 // <copyright file="LibraryImport.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -43,17 +43,4 @@ internal static partial class LibraryImport
 	[DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
 	[return: MarshalAs(UnmanagedType.Bool)]
 	internal static partial bool CopyFileEx(string lpExistingFileName, string lpNewFileName, CopyProgressRoutine lpProgressRoutine, IntPtr lpData, ref int pbCancel, CopyFileMode dwCopyFlags);
-
-	/// <summary>
-	/// Moves an existing file to a new file location, with options for overwrite behavior and other flags.
-	/// </summary>
-	/// <param name="lpExistingFileName">The name of the existing file to move.</param>
-	/// <param name="lpNewFileName">The name of the new file location.</param>
-	/// <param name="dwFlags">Flags that specify how the file is to be moved. This parameter can be one or more of the values defined in the MoveFileFlags enumeration.</param>
-	/// <returns><c>true</c> if the file was successfully moved; otherwise, <c>false</c>. To get extended error information, call <see cref="Marshal.GetLastWin32Error"/>.</returns>
-	[LibraryImport("kernel32.dll", EntryPoint = "MoveFileExW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
-	[DefaultDllImportSearchPaths(DllImportSearchPath.SafeDirectories)]
-	[return: MarshalAs(UnmanagedType.Bool)]
-	internal static partial bool MoveFileExW(string lpExistingFileName, string lpNewFileName, int dwFlags);
-
 }

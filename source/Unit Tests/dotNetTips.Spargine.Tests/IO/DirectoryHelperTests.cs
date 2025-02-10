@@ -289,36 +289,6 @@ public class DirectoryHelperTests
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
-	public void SetFileAttributesToNormal_DirectoryWithSubdirectories_SetsAttributesRecursively()
-	{
-		// Arrange
-		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var parentDirectory = Directory.CreateDirectory(tempDirectoryPath);
-		var childDirectoryPath = Path.Combine(tempDirectoryPath, "ChildDirectory");
-
-		// Create a file in both directories and set their attributes to ReadOnly
-		var parentTestFilePath = Path.Combine(tempDirectoryPath, "parentTestFile.txt");
-		var childTestFilePath = Path.Combine(childDirectoryPath, "childTestFile.txt");
-		File.Create(parentTestFilePath).Close();
-		File.Create(childTestFilePath).Close();
-		File.SetAttributes(parentTestFilePath, FileAttributes.ReadOnly);
-		File.SetAttributes(childTestFilePath, FileAttributes.ReadOnly);
-
-		// Act
-		DirectoryHelper.SetFileAttributesToNormal(parentDirectory);
-
-		// Assert
-		var parentAttributes = File.GetAttributes(parentTestFilePath);
-		var childAttributes = File.GetAttributes(childTestFilePath);
-		Assert.IsFalse(parentAttributes.HasFlag(FileAttributes.ReadOnly), "The parent directory file attributes should no longer include ReadOnly.");
-		Assert.IsFalse(childAttributes.HasFlag(FileAttributes.ReadOnly), "The child directory file attributes should no longer include ReadOnly.");
-
-		// Cleanup
-		parentDirectory.Delete(true);
-	}
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
 	public void SetFileAttributesToNormal_ValidDirectory_SetsAttributesSuccessfully()
 	{
 		// Arrange

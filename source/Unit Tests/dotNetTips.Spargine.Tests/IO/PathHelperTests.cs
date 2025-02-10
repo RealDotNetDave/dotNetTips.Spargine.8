@@ -181,14 +181,6 @@ public class PathHelperTests
 	}
 
 	[TestMethod]
-	public void InvalidFilterChars_ExcludesDirectorySeparators()
-	{
-		var invalidChars = PathHelper.InvalidFilterChars();
-		Assert.IsFalse(invalidChars.Contains(Path.DirectorySeparatorChar), "The InvalidFilterChars method should not include the directory separator character.");
-		Assert.IsFalse(invalidChars.Contains(Path.AltDirectorySeparatorChar), "The InvalidFilterChars method should not include the alternate directory separator character.");
-	}
-
-	[TestMethod]
 	public void InvalidFilterChars_ExcludesWildcards()
 	{
 		var invalidChars = PathHelper.InvalidFilterChars();

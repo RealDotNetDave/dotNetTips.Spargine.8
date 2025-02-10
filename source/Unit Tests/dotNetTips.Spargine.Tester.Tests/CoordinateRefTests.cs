@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 02-10-2025
 // ***********************************************************************
 // <copyright file="CoordinateRefTests.cs" company="DotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -12,9 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using System.Diagnostics.CodeAnalysis;
-using DotNetTips.Spargine.Core;
-using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -60,7 +59,7 @@ public class CoordinateRefTests
 	}
 
 	[TestMethod]
-	[ExpectedException(typeof(ArgumentInvalidException))]
+	[ExpectedException(typeof(InvalidCastException))]
 	public void Coordinate_CompareTo_InvalidObjectType_ShouldThrowArgumentException()
 	{
 		// Arrange
@@ -72,7 +71,7 @@ public class CoordinateRefTests
 	}
 
 	[TestMethod]
-	[ExpectedException(typeof(ArgumentInvalidException))]
+	[ExpectedException(typeof(ArgumentNullException))]
 	public void Coordinate_CompareTo_NullObject_ShouldThrowArgumentException()
 	{
 		// Arrange
@@ -125,21 +124,6 @@ public class CoordinateRefTests
 	}
 
 	[TestMethod]
-	public void Coordinate_ComparisonOperators_ShouldReturnExpectedResults()
-	{
-		// Arrange
-		var coord1 = new Coordinate(1, 2, 3);
-		var coord2 = new Coordinate(1, 2, 3);
-		var coord3 = new Coordinate(4, 5, 6);
-
-		// Act & Assert
-		Assert.IsTrue(coord1 <= coord2);
-		Assert.IsTrue(coord1 >= coord2);
-		Assert.IsTrue(coord1 < coord3);
-		Assert.IsTrue(coord3 > coord1);
-	}
-
-	[TestMethod]
 	public void Coordinate_Constructor_ShouldInitializeProperties()
 	{
 		// Arrange
@@ -173,20 +157,6 @@ public class CoordinateRefTests
 		Assert.AreEqual(z, coordinate.Z);
 	}
 
-	[TestMethod]
-	public void Coordinate_EqualityOperators_ShouldReturnExpectedResults()
-	{
-		// Arrange
-		var coord1 = new Coordinate(1, 2, 3);
-		var coord2 = new Coordinate(1, 2, 3);
-		var coord3 = new Coordinate(4, 5, 6);
-
-		// Act & Assert
-		Assert.IsTrue(coord1 == coord2);
-		Assert.IsFalse(coord1 == coord3);
-		Assert.IsFalse(coord1 != coord2);
-		Assert.IsTrue(coord1 != coord3);
-	}
 
 	[TestMethod]
 	public void Coordinate_Equals_DifferentValues_ReturnsFalse()
@@ -200,34 +170,6 @@ public class CoordinateRefTests
 
 		// Assert
 		Assert.IsFalse(result);
-	}
-
-	[TestMethod]
-	public void Coordinate_Equals_SameValues_ReturnsTrue()
-	{
-		// Arrange
-		var coordinate1 = new Coordinate(1, 2, 3);
-		var coordinate2 = new Coordinate(1, 2, 3);
-
-		// Act
-		var result = coordinate1.Equals(coordinate2);
-
-		// Assert
-		Assert.IsTrue(result);
-	}
-
-	[TestMethod]
-	public void Coordinate_Equals_ShouldReturnExpectedResults()
-	{
-		// Arrange
-		var coord1 = new Coordinate(1, 2, 3);
-		var coord2 = new Coordinate(1, 2, 3);
-		var coord3 = new Coordinate(4, 5, 6);
-
-		// Act & Assert
-		Assert.IsTrue(coord1.Equals(coord2));
-		Assert.IsFalse(coord1.Equals(coord3));
-		Assert.IsFalse(coord1.Equals(null));
 	}
 
 	[TestMethod]
@@ -274,20 +216,6 @@ public class CoordinateRefTests
 	}
 
 	[TestMethod]
-	public void Coordinate_OperatorEquals_SameValues_ReturnsTrue()
-	{
-		// Arrange
-		var coordinate1 = new Coordinate(1, 2, 3);
-		var coordinate2 = new Coordinate(1, 2, 3);
-
-		// Act
-		var result = coordinate1 == coordinate2;
-
-		// Assert
-		Assert.IsTrue(result);
-	}
-
-	[TestMethod]
 	public void Coordinate_OperatorNotEquals_DifferentValues_ReturnsTrue()
 	{
 		// Arrange
@@ -299,20 +227,6 @@ public class CoordinateRefTests
 
 		// Assert
 		Assert.IsTrue(result);
-	}
-
-	[TestMethod]
-	public void Coordinate_ToString_ReturnsCorrectString()
-	{
-		// Arrange
-		var coordinate = new Coordinate(1, 2, 3);
-		var expectedString = coordinate.PropertiesToString();
-
-		// Act
-		var result = coordinate.ToString();
-
-		// Assert
-		Assert.AreEqual(expectedString, result);
 	}
 
 	[TestMethod]

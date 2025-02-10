@@ -4,7 +4,7 @@
 // Created          : 06-04-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-06-2025
+// Last Modified On : 02-10-2025
 // ***********************************************************************
 // <copyright file="Coordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -43,68 +43,54 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
 public class Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coordinate>, IComparable, IComparable<Coordinate>
 {
-	/// <summary>
-	/// Implements the inequality operator. Checks if two <see cref="Coordinate"/> instances are not equal.
-	/// </summary>
-	/// <param name="cord1">The first <see cref="Coordinate"/> instance.</param>
-	/// <param name="cord2">The second <see cref="Coordinate"/> instance.</param>
-	/// <returns><c>true</c> if the instances are not equal; otherwise, <c>false</c>.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool operator !=(Coordinate cord1, Coordinate cord2) => !(cord1 == cord2);
 
 	/// <summary>
-	/// Implements the less than operator. Checks if the first <see cref="Coordinate"/> instance is less than the second.
+	/// Determines whether two <see cref="Coordinate"/> instances are not equal.
 	/// </summary>
-	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
-	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
-	/// <returns><c>true</c> if the first instance is less than the second; otherwise, <c>false</c>.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool operator <(Coordinate left, Coordinate right) => left is null
-		? right is not null
-		: left.CompareTo(right) < 0;
+	/// <param name="left">The left coordinate.</param>
+	/// <param name="right">The right coordinate.</param>
+	/// <returns><c>true</c> if the two coordinates are not equal; otherwise, <c>false</c>.</returns>
+	public static bool operator !=(Coordinate left, Coordinate right) => !left.ArgumentNotNull().Equals(right);
 
 	/// <summary>
-	/// Implements the less than or equal to operator. Checks if the first <see cref="Coordinate"/> instance is less than or equal to the second.
+	/// Determines whether one <see cref="Coordinate"/> is less than another.
 	/// </summary>
-	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
-	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
-	/// <returns><c>true</c> if the first instance is less than or equal to the second; otherwise, <c>false</c>.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool operator <=(Coordinate left, Coordinate right) => left is null
-		? right is not null
-		: left.CompareTo(right) < 0;
+	/// <param name="left">The left coordinate.</param>
+	/// <param name="right">The right coordinate.</param>
+	/// <returns><c>true</c> if the left coordinate is less than the right coordinate; otherwise, <c>false</c>.</returns>
+	public static bool operator <(Coordinate left, Coordinate right) => left.ArgumentNotNull().CompareTo(right) < 0;
 
 	/// <summary>
-	/// Implements the equality operator. Checks if two <see cref="Coordinate"/> instances are equal.
+	/// Determines whether one <see cref="Coordinate"/> is less than or equal to another.
 	/// </summary>
-	/// <param name="cord1">The first <see cref="Coordinate"/> instance.</param>
-	/// <param name="cord2">The second <see cref="Coordinate"/> instance.</param>
-	/// <returns><c>true</c> if the instances are equal; otherwise, <c>false</c>.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool operator ==(Coordinate cord1, Coordinate cord2) => cord1 is null
-		? cord2 is null
-		: cord1.Equals(cord2);
+	/// <param name="left">The left coordinate.</param>
+	/// <param name="right">The right coordinate.</param>
+	/// <returns><c>true</c> if the left coordinate is less than or equal to the right coordinate; otherwise, <c>false</c>.</returns>
+	public static bool operator <=(Coordinate left, Coordinate right) => left.ArgumentNotNull().CompareTo(right) <= 0;
 
 	/// <summary>
-	/// Implements the greater than operator. Checks if the first <see cref="Coordinate"/> instance is greater than the second.
+	/// Determines whether two <see cref="Coordinate"/> instances are equal.
 	/// </summary>
-	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
-	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
-	/// <returns><c>true</c> if the first instance is greater than the second; otherwise, <c>false</c>.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool operator >(Coordinate left, Coordinate right) => left is not null &&
-		left.CompareTo(right) > 0;
+	/// <param name="left">The left coordinate.</param>
+	/// <param name="right">The right coordinate.</param>
+	/// <returns><c>true</c> if the two coordinates are equal; otherwise, <c>false</c>.</returns>
+	public static bool operator ==(Coordinate left, Coordinate right) => left.ArgumentNotNull().Equals(right);
 
 	/// <summary>
-	/// Implements the greater than or equal to operator. Checks if the first <see cref="Coordinate"/> instance is greater than or equal to the second.
+	/// Determines whether one <see cref="Coordinate"/> is greater than another.
 	/// </summary>
-	/// <param name="left">The first <see cref="Coordinate"/> instance.</param>
-	/// <param name="right">The second <see cref="Coordinate"/> instance.</param>
-	/// <returns><c>true</c> if the first instance is greater than or equal to the second; otherwise, <c>false</c>.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool operator >=(Coordinate left, Coordinate right) => left is null
-		? right is null
-		: left.CompareTo(right) >= 0;
+	/// <param name="left">The left coordinate.</param>
+	/// <param name="right">The right coordinate.</param>
+	/// <returns><c>true</c> if the left coordinate is greater than the right coordinate; otherwise, <c>false</c>.</returns>
+	public static bool operator >(Coordinate left, Coordinate right) => left.ArgumentNotNull().CompareTo(right) > 0;
+
+	/// <summary>
+	/// Determines whether one <see cref="Coordinate"/> is greater than or equal to another.
+	/// </summary>
+	/// <param name="left">The left coordinate.</param>
+	/// <param name="right">The right coordinate.</param>
+	/// <returns><c>true</c> if the left coordinate is greater than or equal to the right coordinate; otherwise, <c>false</c>.</returns>
+	public static bool operator >=(Coordinate left, Coordinate right) => left.ArgumentNotNull().CompareTo(right) >= 0;
 
 	/// <summary>
 	/// Compares this instance with a specified <see cref="object"/> and indicates whether this instance precedes, follows, or appears in the same position in the sort order as the specified <see cref="object"/>.
@@ -137,10 +123,7 @@ public class Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coord
 	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int CompareTo(Coordinate other)
 	{
-		if (other is null)
-		{
-			return 1;
-		}
+		other = other.ArgumentNotNull();
 
 		var result = this.X.CompareTo(other.X);
 		if (result != 0)
