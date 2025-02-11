@@ -57,7 +57,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// Asynchronously performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 	/// </summary>
 	/// <returns>A task that represents the asynchronous dispose operation.</returns>
-	[Information(nameof(IAsyncDisposable.DisposeAsync), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(IAsyncDisposable.DisposeAsync), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	async ValueTask IAsyncDisposable.DisposeAsync()
 	{
 		await Task.Run(() => this.Dispose(true)).ConfigureAwait(false);

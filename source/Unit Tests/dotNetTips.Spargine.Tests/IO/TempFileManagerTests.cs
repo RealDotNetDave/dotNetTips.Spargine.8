@@ -4,7 +4,7 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-04-2024
+// Last Modified On : 02-11-2025
 // ***********************************************************************
 // <copyright file="TempFileManagerTests.cs" company="DotNetTips.Spargine.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -15,6 +15,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using DotNetTips.Spargine.IO;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -95,6 +96,80 @@ public class TempFileManagerTests
 	}
 
 	[TestMethod]
+	public async Task DisposeAsync_ShouldDeleteAllFiles()
+	{
+		// Arrange
+		var manager = new TempFileManager();
+		var files = manager.CreateFiles(50);
+
+		// Act
+		await (manager as IAsyncDisposable).DisposeAsync();
+
+		// Assert
+		foreach (var file in files)
+		{
+			Assert.IsFalse(File.Exists(file), $"File {file} should be deleted.");
+		}
+	}
+
+	[TestMethod]
+	public async Task DisposeAsync_ShouldHandleEmptyFileList()
+	{
+		// Arrange
+		var manager = new TempFileManager();
+
+		// Act
+		await (manager as IAsyncDisposable).DisposeAsync();
+
+		// Assert
+		Assert.AreEqual(0, manager.GetManagedFiles().Count);
+	}
+
+	[TestMethod]
+	public async Task DisposeAsync_ShouldNotThrowException_WhenCalledMultipleTimes()
+	{
+		// Arrange
+		var manager = new TempFileManager();
+		manager.CreateFiles(50);
+
+		// Act & Assert
+		await (manager as IAsyncDisposable).DisposeAsync();
+		await (manager as IAsyncDisposable).DisposeAsync();
+	}
+
+	[TestMethod]
+	public async Task DisposeAsync_ShouldReleaseResources()
+	{
+		// Arrange
+		var manager = new TempFileManager();
+		manager.CreateFiles(50);
+
+		// Act
+		await (manager as IAsyncDisposable).DisposeAsync();
+
+		// Assert
+		Assert.AreEqual(0, manager.GetManagedFiles().Count);
+	}
+
+	[TestMethod]
+	public async Task DisposeAsync_ShouldSuppressFinalize()
+	{
+		// Arrange
+		var manager = new TempFileManager();
+		bool finalizeCalled = false;
+
+		// Act
+		await (manager as IAsyncDisposable).DisposeAsync();
+
+		// Assert
+		GC.ReRegisterForFinalize(manager);
+		GC.Collect();
+		GC.WaitForPendingFinalizers();
+
+		Assert.IsFalse(finalizeCalled, "Finalize should not be called after DisposeAsync.");
+	}
+
+	[TestMethod]
 	public void GetManagedFiles_ShouldReturnListOfManagedFiles()
 	{
 		// Arrange
@@ -109,4 +184,5 @@ public class TempFileManagerTests
 			CollectionAssert.AreEquivalent(files, managedFiles.ToList());
 		}
 	}
+
 }
