@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 02-11-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -184,7 +184,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="left">The left instance of <see cref="Person{TAddress}"/>.</param>
 	/// <param name="right">The right instance of <see cref="Person{TAddress}"/>.</param>
 	/// <returns>true if the left instance is greater than or equal to the right instance; otherwise, false.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator >=(Person<TAddress> left, Person<TAddress> right) => left is null
 		? right is null
 		: left.CompareTo(right) >= 0;
@@ -542,7 +542,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
-	[Information(nameof(FullName), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(FullName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string FullName => $"{this.FirstName} {this.LastName}";
 
 	/// <summary>
