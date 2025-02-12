@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Provides detailed information about the computer system.
 /// </summary>
-[Information(nameof(ComputerInfo), author: "David McCarter", createdOn: "10/15/2018", Status = Status.Available, Documentation = "https://bit.ly/SpargineComputerInfo")]
+[Information(nameof(ComputerInfo), author: "David McCarter", createdOn: "10/15/2018", Status = Status.UpdateDocumentation, Documentation = "https://bit.ly/SpargineComputerInfo")]
 [DataContract(Namespace = "dotNetTips.com/Info")]
 [Serializable]
 public sealed class ComputerInfo

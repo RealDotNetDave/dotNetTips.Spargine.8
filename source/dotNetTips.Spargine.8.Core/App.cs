@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-08-2025
+// Last Modified On : 02-12-2025
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -116,7 +116,7 @@ public static class App
 	/// </code>
 	/// This will change the current culture to English (United States).
 	/// </example>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ChangeCulture(string cultureName) => CultureInfo.CurrentCulture = new CultureInfo(cultureName.ArgumentNotNullOrEmpty());
 
 	/// <summary>
@@ -130,7 +130,7 @@ public static class App
 	/// </code>
 	/// This will change the current culture and UI culture to English (United States).
 	/// </example>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ChangeCulture(CultureInfo culture)
 	{
 		CultureInfo.CurrentCulture = culture.ArgumentNotNull();
@@ -148,7 +148,7 @@ public static class App
 	/// </code>
 	/// This will change the current UI culture to French (France).
 	/// </example>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ChangeUICulture(string cultureName) => CultureInfo.CurrentUICulture = new CultureInfo(cultureName.ArgumentNotNullOrEmpty());
 
 	/// <summary>
@@ -161,7 +161,7 @@ public static class App
 	/// var folderPath = App.ExecutingFolder();
 	/// Console.WriteLine(folderPath);
 	/// </code></example>
-	[Information(nameof(ExecutingFolder), author: "David McCarter", createdOn: "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(ExecutingFolder), author: "David McCarter", createdOn: "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string ExecutingFolder() => Path.GetDirectoryName(_computerInfo.Value.CurrentWorkingDirectory);
 
 	/// <summary>
@@ -180,14 +180,14 @@ public static class App
 	/// </code>
 	/// This will print the names of all specific cultures.
 	/// </example>
-	[Information(nameof(AppInfo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(GetCultureNames), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> GetCultureNames(CultureTypes cultureType = CultureTypes.AllCultures) => _cultureNames ??= CultureInfo.GetCultures(cultureType).OrderBy(p => p.Name).Select(c => c.Name).ToList().AsReadOnly();
 
 	/// <summary>
 	/// Fetches the environment variables for the current process.
 	/// </summary>
 	/// <returns>An immutable dictionary containing all environment variables where the key is the variable name and the value is its value.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static IImmutableDictionary<string, string> GetEnvironmentVariables() => Environment.GetEnvironmentVariables().Cast<DictionaryEntry>().ToImmutableDictionary(de => de.Key.ToString(), de => de.Value.ToString());
 
 	/// <summary>
@@ -207,7 +207,7 @@ public static class App
 	/// ProcessorRevision: 42243
 	/// </example>
 	/// <remarks>This method utilizes system-specific calls to gather comprehensive details about the processor. It's designed to work across different platforms, providing a unified interface for accessing processor information.</remarks>
-	[Information(nameof(GetProcessorInformation), "David McCarter", "3/20/2023", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineMay2023")]
+	[Information(nameof(GetProcessorInformation), "David McCarter", "3/20/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ProcessorInformation GetProcessorInformation()
 	{
 		var info = new SystemInfo();
@@ -234,7 +234,7 @@ public static class App
 	/// </summary>
 	/// <returns><c>true</c> if the application is already running; otherwise, <c>false</c>.</returns>
 	/// <remarks>This method checks if there are any processes with the same name as the current process. If more than one is found, it indicates that the application is already running.</remarks>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsRunning() => Process.GetProcessesByName(ProcessName).Count() > 0;
 
 	/// <summary>
@@ -242,7 +242,7 @@ public static class App
 	/// </summary>
 	/// <returns><c>true</c> if the application is running from an ASP.NET context; otherwise, <c>false</c>.</returns>
 	/// <remarks>This method determines if the application is running within an ASP.NET context by checking the presence of ASP.NET temporary files in the application's dynamic directory.</remarks>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsRunningFromAspNet() => (!string.IsNullOrEmpty(AppDomain.CurrentDomain.DynamicDirectory)) && AppDomain.CurrentDomain.DynamicDirectory.Contains(TempAspFiles, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
@@ -250,7 +250,7 @@ public static class App
 	/// </summary>
 	/// <returns><c>true</c> if the current user is an administrator; otherwise, <c>false</c>.</returns>
 	/// <exception cref="PlatformNotSupportedException">Thrown when the operating system is not Windows, as administrator status can only be checked on Windows.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsUserAdministrator()
 	{
 		if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -267,7 +267,7 @@ public static class App
 	/// <remarks>This method retrieves the name of the process that started the currently executing application,
 	/// removes the file extension to get the process name, and then calls <see cref="KillProcess" />
 	/// with that name to terminate the process.</remarks>
-	[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(Status = Status.Available)]
 	public static void Kill() => KillProcess(Path.GetFileNameWithoutExtension(AppContext.BaseDirectory));
 
 	/// <summary>
@@ -312,7 +312,7 @@ public static class App
 	/// Console.WriteLine(assembly);
 	/// }
 	/// </code></example>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> ReferencedAssemblies() => Assembly.GetEntryAssembly().GetReferencedAssemblies().Select(a => a.ToString()).ToList().AsReadOnly();
 
 	/// <summary>
@@ -321,7 +321,7 @@ public static class App
 	/// <remarks>If the current user is not an administrator, this method will attempt to restart the application with administrator privileges.
 	/// It prompts the user for permission to run as an administrator. If granted, the application restarts; otherwise, it exits.
 	/// This method should be used cautiously, as it terminates the current process and starts a new one.</remarks>
-	[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(Status = Status.Available)]
 	public static void RunAsAdministrator()
 	{
 		if (IsUserAdministrator())
@@ -353,7 +353,7 @@ public static class App
 	/// </code>
 	/// This will output the company name from the application's assembly information.
 	/// </example>
-	[Information(nameof(AppInfo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(AppInfo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static AppInfo AppInfo => _appInfo.Value;
 
 	/// <summary>
@@ -361,7 +361,7 @@ public static class App
 	/// </summary>
 	/// <value>The current culture.</value>
 	/// <remarks>This property provides access to the current culture used by the application. It is a wrapper around <see cref="CultureInfo.CurrentCulture" />.</remarks>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static CultureInfo CurrentCulture => CultureInfo.CurrentCulture;
 
 	/// <summary>
@@ -369,7 +369,7 @@ public static class App
 	/// </summary>
 	/// <value>The current thread identifier.</value>
 	/// <remarks>This property provides the unique identifier of the currently executing thread. It is useful for logging, debugging, or tracking thread-specific operations.</remarks>
-	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(CurrentThreadId), "David McCarter", "1/20/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static int CurrentThreadId => _computerInfo.Value.CurrentManagedTreadId;
 
 	/// <summary>
@@ -378,7 +378,7 @@ public static class App
 	/// <value>The current UI culture.</value>
 	/// <remarks>This property provides access to the current UI culture used by the application. It is a wrapper around <see cref="CultureInfo.CurrentUICulture" />.
 	/// The UI culture is used for string localization, date and number formatting, and other culture-specific operations in the UI.</remarks>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static CultureInfo CurrentUICulture => CultureInfo.CurrentUICulture;
 
 	/// <summary>
@@ -386,35 +386,35 @@ public static class App
 	/// </summary>
 	/// <value>The framework description.</value>
 	/// <example>Example output: ".NET 5.0.6"</example>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string FrameworkDescription => RuntimeInformation.FrameworkDescription;
 
 	/// <summary>
 	/// Returns the default UI culture installed on the system.
 	/// </summary>
 	/// <value>The installed UI culture.</value>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static CultureInfo InstalledUICulture => CultureInfo.InstalledUICulture;
 
 	/// <summary>
 	/// Describes the architecture (e.g., x86, x64) of the operating system hosting the application.
 	/// </summary>
 	/// <value>The operating system platform.</value>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static Architecture OSArchitecture => RuntimeInformation.OSArchitecture;
 
 	/// <summary>
 	/// Gets a string that describes the operating system on which the app is running.
 	/// </summary>
 	/// <value>The operating system description.</value>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string OSDescription => RuntimeInformation.OSDescription;
 
 	/// <summary>
 	/// Gets the process architecture of the currently running app.
 	/// </summary>
 	/// <value>The process architecture.</value>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static Architecture ProcessArchitecture => RuntimeInformation.ProcessArchitecture;
 
 	/// <summary>
@@ -428,6 +428,7 @@ public static class App
 	/// </code>
 	/// This will output the unique identifier of the current process.
 	/// </example>
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static int ProcessId => Environment.ProcessId;
 
 	/// <summary>
@@ -448,7 +449,7 @@ public static class App
 	/// Returns the path of the executable that started the currently executing process. Returns null when the path is not available.
 	/// </summary>
 	/// <value>The process path.</value>
-	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "https://bit.ly/Spargine8")]
+	[Information(nameof(GetProcessorInformation), "David McCarter", "1/20/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static string ProcessPath => _computerInfo.Value.CurrentWorkingDirectory;
 
 	/// <summary>
@@ -459,6 +460,7 @@ public static class App
 	/// This property provides a string representation of the stack trace, which can be useful for debugging purposes.
 	/// It includes the sequence of method calls that led to the current point of execution.
 	/// </remarks>
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string StackTrace => Environment.StackTrace;
 
 	/// <summary>
@@ -469,6 +471,7 @@ public static class App
 	/// This property provides the size of the working set, which is the set of memory pages currently visible to the process in physical RAM.
 	/// It includes both shared and private data, such as the pages containing all the instructions that the process executes, as well as the pages containing the process's data.
 	/// </remarks>
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static long WorkingSet => Environment.WorkingSet;
 
 }
