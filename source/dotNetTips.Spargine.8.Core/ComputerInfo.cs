@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-10-2025
+// Last Modified On : 02-12-2025
 // ***********************************************************************
 // <copyright file="ComputerInfo.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -133,27 +133,12 @@ public sealed class ComputerInfo
 	/// <remarks>
 	/// This method checks all network interfaces to determine if any are operational and not virtual or loopback interfaces.
 	/// </remarks>
-	[Information(nameof(IsNetworkAvailable), OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public bool IsNetworkAvailable
-	{
-		get
-		{
-			foreach (var networkInterface in NetworkInterface.GetAllNetworkInterfaces())
-			{
-				if (networkInterface.OperationalStatus == OperationalStatus.Up)
-				{
-					var description = networkInterface.Description.ToUpperInvariant();
-					if (!description.Contains("VIRTUALBOX", StringComparison.OrdinalIgnoreCase) &&
-						!description.Contains("LOOPBACK", StringComparison.OrdinalIgnoreCase))
-					{
-						return true;
-					}
-				}
-			}
-
-			return false;
-		}
-	}
+	[Information(nameof(IsNetworkAvailable), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public bool IsNetworkAvailable => NetworkInterface.GetAllNetworkInterfaces()
+				.Any(networkInterface =>
+					networkInterface.OperationalStatus == OperationalStatus.Up &&
+					!networkInterface.Description.Contains("VIRTUALBOX", StringComparison.OrdinalIgnoreCase) &&
+					!networkInterface.Description.Contains("LOOPBACK", StringComparison.OrdinalIgnoreCase));
 
 	/// <summary>
 	/// Gets a value indicating whether the user interface is interactive.
