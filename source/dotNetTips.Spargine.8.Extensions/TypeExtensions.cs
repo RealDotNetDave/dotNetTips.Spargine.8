@@ -36,7 +36,7 @@ public static partial class TypeExtensions
 	/// <returns>A read-only collection of abstract methods.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information(nameof(GetAllAbstractMethods), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<MethodInfo> GetAllAbstractMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsAbstract).ToList().AsReadOnly();
+	public static ReadOnlyCollection<MethodInfo> GetAllAbstractMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsAbstract).ToReadOnlyCollection();
 
 	/// <summary>
 	/// Gets all declared fields of the specified type.
@@ -121,7 +121,7 @@ public static partial class TypeExtensions
 	/// <returns>A read-only collection of generic methods.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<MethodInfo> GetAllGenericMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsGenericMethod).ToList().AsReadOnly();
+	public static ReadOnlyCollection<MethodInfo> GetAllGenericMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsGenericMethod).ToReadOnlyCollection();
 
 	/// <summary>
 	/// Gets all methods of the specified type, including inherited methods.
@@ -175,7 +175,7 @@ public static partial class TypeExtensions
 	/// <returns>A read-only collection of public methods.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<MethodInfo> GetAllPublicMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsPublic).ToList().AsReadOnly();
+	public static ReadOnlyCollection<MethodInfo> GetAllPublicMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsPublic).ToReadOnlyCollection();
 
 	/// <summary>
 	/// Gets all static methods of the specified type.
@@ -184,7 +184,7 @@ public static partial class TypeExtensions
 	/// <returns>A read-only collection of static methods.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<MethodInfo> GetAllStaticMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsStatic).ToList().AsReadOnly();
+	public static ReadOnlyCollection<MethodInfo> GetAllStaticMethods([NotNull] this Type type) => type.ArgumentNotNull().GetRuntimeMethods().Where(m => m.IsStatic).ToReadOnlyCollection();
 
 	/// <summary>
 	/// Gets a custom attribute of the specified type from the given type.
@@ -250,7 +250,7 @@ public static partial class TypeExtensions
 		var interfaces = input.GetType().GetInterfaces().Select(p => p.Name);
 		var foundInterfaces = new List<string>(interfaces.Intersect(interfaceNames));
 
-		return foundInterfaces.AsReadOnly();
+		return foundInterfaces.ToReadOnlyCollection();
 	}
 
 	/// <summary>

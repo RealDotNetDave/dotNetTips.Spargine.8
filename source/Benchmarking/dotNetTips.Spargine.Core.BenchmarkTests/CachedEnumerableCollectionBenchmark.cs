@@ -14,9 +14,9 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
-using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -29,30 +29,16 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests;
 /// </summary>
 /// <seealso cref="CounterBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class CachedEnumerableCollectionBenchmark : SmallCollectionBenchmark
+public class CachedEnumerableCollectionBenchmark : LargeCollectionBenchmark
 {
-	private IEnumerable<Person<Address>> _peopleRef;
-	private CachedEnumerable<Person<Address>> _peopleRefCached;
+	private CachedEnumerable<Person<Address>> _personRefCached;
+	private IEnumerable<Person<Address>> _personRefEnumerable;
 
-	[Benchmark(Description = "Looping with for: CachedEnumerable")]
-	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
-	public void LoopingForCachedEnumerableRef()
-	{
-		var people = this._peopleRefCached;
-
-		for (var index = 0; index < people.Count; index++)
-		{
-			this.SimulateWork(people.ElementAt(index));
-		}
-
-		this.Consume(people);
-	}
-
-	[Benchmark(Description = "Looping with foreach: CachedEnumerable")]
-	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
+	[Benchmark(Description = "Looping with foreach(): CachedEnumerable")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
 	public void LoopingForEachCachedEnumerableRef()
 	{
-		var people = this._peopleRefCached;
+		var people = this._personRefCached;
 
 		foreach (var person in people)
 		{
@@ -62,11 +48,32 @@ public class CachedEnumerableCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(people);
 	}
 
-	[Benchmark(Description = "Looping with foreach: IEnumerable")]
+	[Benchmark(Description = "Looping with foreach(): CachedEnumerable X2")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void LoopingForEachCachedEnumerableRefX2()
+	{
+		var people = this._personRefCached;
+
+		// First iteration
+		foreach (var person in people)
+		{
+			this.SimulateWork(person);
+		}
+
+		// Second iteration
+		foreach (var person in people)
+		{
+			this.SimulateWork(person);
+		}
+
+		this.Consume(people);
+	}
+
+	[Benchmark(Description = "Looping with foreach(): IEnumerable")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
 	public void LoopingForEachIEnumerableRef()
 	{
-		var people = this._peopleRef;
+		var people = this._personRefEnumerable;
 
 		foreach (var person in people)
 		{
@@ -76,16 +83,76 @@ public class CachedEnumerableCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(people);
 	}
 
-	[Benchmark(Description = "Looping with for: IEnumerable")]
+	[Benchmark(Description = "Looping with foreach(): IEnumerable X2")]
 	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
-	public void LoopingForIEnumerableRef()
+	public void LoopingForEachIEnumerableRefX2()
 	{
-		var people = this._peopleRef;
+		var people = this._personRefEnumerable;
 
-		for (var index = 0; index < people.Count(); index++)
+		// First iteration
+		foreach (var person in people)
 		{
-			this.SimulateWork(people.ElementAt(index));
+			this.SimulateWork(person);
 		}
+
+		// Second iteration
+		foreach (var person in people)
+		{
+			this.SimulateWork(person);
+		}
+
+		this.Consume(people);
+	}
+
+	[Benchmark(Description = "Looping with Parallel.ForEach(): CachedEnumerable")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void LoopingParallelForEachCachedEnumerableRef()
+	{
+		var people = this._personRefCached;
+
+		_ = Parallel.ForEach(people, this.SimulateWork);
+
+		this.Consume(people);
+	}
+
+
+	[Benchmark(Description = "Looping with Parallel.ForEach(): CachedEnumerable X2")]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void LoopingParallelForEachCachedEnumerableRefX2()
+	{
+		var people = this._personRefCached;
+
+		// First iteration
+		_ = Parallel.ForEach(people, this.SimulateWork);
+
+		// Second iteration
+		_ = Parallel.ForEach(people, this.SimulateWork);
+
+		this.Consume(people);
+	}
+
+	[Benchmark(Description = "Looping with Parallel.ForEach(): IEnumerable")]
+	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
+	public void LoopingParallelForEachIEnumerableRef()
+	{
+		var people = this._personRefEnumerable;
+
+		_ = Parallel.ForEach(people, this.SimulateWork);
+
+		this.Consume(people);
+	}
+
+	[Benchmark(Description = "Looping with Parallel.ForEach(): IEnumerable X2")]
+	[BenchmarkCategory(Categories.Collections, Categories.ForComparison, Categories.New)]
+	public void LoopingParallelForEachIEnumerableRefX2()
+	{
+		var people = this._personRefEnumerable;
+
+		// First iteration
+		_ = Parallel.ForEach(people, this.SimulateWork);
+
+		// Second iteration
+		_ = Parallel.ForEach(people, this.SimulateWork);
 
 		this.Consume(people);
 	}
@@ -94,7 +161,9 @@ public class CachedEnumerableCollectionBenchmark : SmallCollectionBenchmark
 	{
 		base.Setup();
 
-		this._peopleRef = this.GetPersonRefArray().AsEnumerable();
-		this._peopleRefCached = CachedEnumerable.Create(this._peopleRef);
+		this._personRefEnumerable = this.GetPersonRefArray().AsEnumerable();
+		this._personRefCached = CachedEnumerable.Create(this.GetPersonRefArray().AsEnumerable());
 	}
+
+
 }

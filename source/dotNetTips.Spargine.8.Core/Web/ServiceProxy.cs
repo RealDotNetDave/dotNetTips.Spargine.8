@@ -150,7 +150,7 @@ public abstract class ServiceProxy<T>([NotNull] ServiceEndpoint serviceEndpoint)
 	/// It then calls GC.SuppressFinalize to take this object off the finalization queue and prevent finalization code for this object
 	/// from executing a second time.
 	/// </remarks>
-	[Preserve("Part of IDisposable", "4/16/2023", "David McCarter")]
+	[Preserve(PreserveReason.MethodPartOfIDisposable, "4/16/2023", "David McCarter")]
 	public void Dispose()
 	{
 		this.Dispose(true);

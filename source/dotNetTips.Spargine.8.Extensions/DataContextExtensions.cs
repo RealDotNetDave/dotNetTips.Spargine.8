@@ -66,7 +66,7 @@ public static class DataContextExtensions
 			}
 		}
 
-		return result.AsReadOnly();
+		return result.ToReadOnlyCollection();
 	}
 
 }

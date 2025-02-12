@@ -109,7 +109,7 @@ public static class ExceptionExtensions
 			result.Add((ex.Message, ex.StackTrace ?? "NONE"));
 		}
 
-		return result.AsReadOnly();
+		return result.ToReadOnlyCollection();
 	}
 
 	/// <summary>

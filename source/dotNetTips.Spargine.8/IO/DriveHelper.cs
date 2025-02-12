@@ -17,6 +17,7 @@ using System.Globalization;
 using System.Management;
 using System.Runtime.Versioning;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Extensions;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -154,8 +155,7 @@ public static class DriveHelper
 	[Information(nameof(GetFixedDrives), author: "David McCarter", createdOn: "9/6/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
 	public static ReadOnlyCollection<DriveInfo> GetFixedDrives() => DriveInfo.GetDrives()
 					.Where(p => p.DriveType == DriveType.Fixed && p.IsReady)
-					.Distinct()
-					.ToList().AsReadOnly();
+					.Distinct().ToReadOnlyCollection();
 
 	/// <summary>
 	/// Gets the removable drives that are ready for a computer.
@@ -169,7 +169,6 @@ public static class DriveHelper
 	[Information(nameof(GetRemovableDrives), author: "David McCarter", createdOn: "9/6/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
 	public static ReadOnlyCollection<DriveInfo> GetRemovableDrives() => DriveInfo.GetDrives()
 					.Where(p => p.DriveType == DriveType.Removable && p.IsReady)
-					.Distinct()
-					.ToList().AsReadOnly();
+					.Distinct().ToReadOnlyCollection();
 
 }

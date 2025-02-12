@@ -136,7 +136,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 			this._files.Add(file);
 		});
 
-		return files.ToList().AsReadOnly();
+		return files.ToReadOnlyCollection();
 	}
 
 	/// <summary>
@@ -152,6 +152,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// <summary>
 	/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 	/// </summary>
+	[Preserve(PreserveReason.MethodPartOfIDisposable, "2/12/2025", "David McCarter")]
 	[Information("Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.", UnitTestStatus = UnitTestStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void Dispose()
 	{
@@ -164,5 +165,5 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// </summary>
 	/// <returns>A read-only collection of the paths of the managed temporary files.</returns>
 	[Information("Gets the list of files currently being managed.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public IReadOnlyCollection<string> GetManagedFiles() => this._files.ToList().AsReadOnly();
+	public IReadOnlyCollection<string> GetManagedFiles() => this._files.ToReadOnlyCollection();
 }

@@ -33,7 +33,7 @@ public class ExecutionHelperTests
 			var result = ExecutionHelper.ProgressiveRetry(() =>
 			  {
 				  var drives = DriveHelper.GetRemovableDrives();
-			  }, 3, 10);
+			  }, retryCount: 3, retryWaitMilliseconds: 10);
 
 			Assert.IsTrue(result.Value > 0);
 		}

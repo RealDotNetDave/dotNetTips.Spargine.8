@@ -56,7 +56,7 @@ public static class AssemblyExtensions
 			interfaces.AddRange(arrayItem.GetInterfaces());
 		}
 
-		return interfaces.AsReadOnly();
+		return interfaces.ToReadOnlyCollection();
 	}
 
 	/// <summary>

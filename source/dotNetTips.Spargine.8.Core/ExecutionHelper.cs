@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-25-2025
+// Last Modified On : 02-12-2025
 // ***********************************************************************
 // <copyright file="ExecutionHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -37,6 +37,14 @@ namespace DotNetTips.Spargine.Core;
 [Information(Status = Status.NeedsDocumentation)]
 public static class ExecutionHelper
 {
+	/// <summary>
+	/// Calculates the delay time before the next retry attempt.
+	/// </summary>
+	/// <param name="retryWaitMilliseconds">The initial wait time in milliseconds before the first retry.</param>
+	/// <param name="attempts">The current number of attempts made.</param>
+	/// <returns>The calculated delay time in milliseconds.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	private static int CalculateDelay(int retryWaitMilliseconds, in int attempts) => retryWaitMilliseconds * attempts;
 
 	/// <summary>
 	/// Provides utility methods for executing operations with retry logic, allowing for progressive delays between retries.
@@ -88,7 +96,7 @@ public static class ExecutionHelper
 					return result;
 				}
 
-				Task.Delay(retryWaitMilliseconds * attempts).Wait();
+				Task.Delay(CalculateDelay(retryWaitMilliseconds, attempts)).Wait();
 			}
 		}
 	}
@@ -126,6 +134,8 @@ public static class ExecutionHelper
 		{
 			try
 			{
+				cancellationToken.ThrowIfCancellationRequested();
+
 				attempts++;
 				result.SetValue(attempts);
 
@@ -143,7 +153,7 @@ public static class ExecutionHelper
 					return result;
 				}
 
-				await Task.Delay(retryWaitMilliseconds * attempts, cancellationToken).ConfigureAwait(false);
+				await Task.Delay(CalculateDelay(retryWaitMilliseconds, attempts), cancellationToken).ConfigureAwait(false);
 			}
 		}
 	}

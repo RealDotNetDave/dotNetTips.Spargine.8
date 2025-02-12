@@ -16,8 +16,6 @@
 
 
 
-
-
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
@@ -45,6 +43,11 @@ public enum PreserveReason
 	/// Indicates the method is preserved because it overrides a method from a base class.
 	/// </summary>
 	MethodOverride = 8,
+
+	/// <summary>
+	/// Indicates the method is preserved because it is part of the IDisposable pattern.
+	/// </summary>
+	MethodPartOfIDisposable = 16,
 
 	/// <summary>
 	/// Indicates the member is preserved for a reason not covered by other values.

@@ -135,6 +135,6 @@ public static class DataReaderExtensions
 			}
 		}
 
-		return convertedRows.AsReadOnly();
+		return convertedRows.ToReadOnlyCollection();
 	}
 }

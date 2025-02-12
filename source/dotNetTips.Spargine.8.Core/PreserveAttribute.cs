@@ -19,9 +19,6 @@
 
 
 
-
-
-
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
@@ -31,7 +28,6 @@ namespace DotNetTips.Spargine.Core;
 [Information(nameof(PreserveAttribute), "David McCarter", "2/7/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 public sealed class PreserveAttribute : Attribute
 {
-
 	/// <summary>
 	/// Initializes a new instance of the <see cref="PreserveAttribute"/> class with a specified reason for preservation.
 	/// </summary>
@@ -51,6 +47,24 @@ public sealed class PreserveAttribute : Attribute
 	public PreserveAttribute(string reason, string createdOn, string createdBy)
 		: this(PreserveReason.None, reason, createdOn, createdBy)
 	{
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="PreserveAttribute"/> class with specified preservation details.
+	/// </summary>
+	/// <param name="preserveReason">The reason for preservation, as defined in <see cref="PreserveReason"/>.</param>
+	/// <param name="createdOn">The date when the reason was created, in a format that can be parsed by <see cref="DateTimeOffset.TryParse(string, out DateTimeOffset)"/>.</param>
+	/// <param name="createdBy">The name of the developer who created the reason.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="createdBy"/> is null.</exception>
+	public PreserveAttribute(PreserveReason preserveReason, string createdOn, string createdBy)
+	{
+		this.CreatedBy = createdBy ?? throw new ArgumentNullException(nameof(createdBy));
+		this.PreserveReason = preserveReason;
+
+		if (string.IsNullOrEmpty(createdOn) is false && DateTimeOffset.TryParse(createdOn, out var createdDate))
+		{
+			this.CreatedOn = createdDate;
+		}
 	}
 
 	/// <summary>

@@ -412,7 +412,7 @@ public static class RandomData
 			coordinates.Add(GenerateCoordinate<T>());
 		}
 
-		return coordinates.AsReadOnly();
+		return coordinates.ToReadOnlyCollection();
 	}
 
 	/// <summary>
@@ -528,7 +528,7 @@ public static class RandomData
 			files.Add(GenerateFile(GenerateRandomFileName(fileNameLength: 25, extension: fileExtension), fileLength));
 		}
 
-		return (Path.GetTempPath(), files.AsReadOnly());
+		return (Path.GetTempPath(), files.ToReadOnlyCollection());
 	}
 
 	/// <summary>
@@ -561,7 +561,7 @@ public static class RandomData
 			files.Add(fileName);
 		}
 
-		return files.AsReadOnly();
+		return files.ToReadOnlyCollection();
 	}
 
 	/// <summary>
@@ -714,7 +714,7 @@ public static class RandomData
 			records.Add(GeneratePersonRecord());
 		}
 
-		return records.AsReadOnly();
+		return records.ToReadOnlyCollection();
 	}
 
 	/// <summary>
@@ -769,7 +769,7 @@ public static class RandomData
 			people.Add(GeneratePersonRef<TAddress>());
 		}
 
-		return people.AsReadOnly();
+		return people.ToReadOnlyCollection();
 	}
 
 	/// <summary>
@@ -824,7 +824,7 @@ public static class RandomData
 			people.Add(GeneratePersonVal<TAddress>());
 		}
 
-		return people.AsReadOnly();
+		return people.ToReadOnlyCollection();
 	}
 
 	/// <summary>
@@ -1193,7 +1193,7 @@ public static class RandomData
 			strings.Add(GenerateWord(minLength, maxLength));
 		}
 
-		return strings.AsReadOnly();
+		return strings.ToReadOnlyCollection();
 	}
 
 	/// <summary>

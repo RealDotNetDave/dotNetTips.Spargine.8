@@ -42,6 +42,8 @@ public static class InformationAttributeDocGenerator
 	{
 		type = type.ArgumentNotNull();
 
+		//TODO: ADD INFO FROM PreserveAttribute
+
 		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"## {GetTypeName(type)}");
 		_ = sb.AppendLine();
 

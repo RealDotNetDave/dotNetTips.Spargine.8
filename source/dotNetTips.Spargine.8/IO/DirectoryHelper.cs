@@ -306,7 +306,7 @@ public static class DirectoryHelper
 			}
 		}
 
-		return folders.AsReadOnly();
+		return folders.ToReadOnlyCollection();
 	}
 
 	/// <summary>

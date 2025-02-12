@@ -180,7 +180,7 @@ public static class ListExtensions
 		// CODE SUGGESTED BY COPILOT FAILS WITH PERSONRECORD
 		var hash = new HashCode();
 
-		foreach (var item in CollectionsMarshal.AsSpan(collection))
+		foreach (var item in collection.AsReadOnlySpan())
 		{
 			hash.Add(item);
 		}
@@ -644,7 +644,7 @@ public static class ListExtensions
 	/// <returns>IReadOnlyList&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToReadOnlyList), "David McCarter", "4/10/2022", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static IReadOnlyList<T> ToReadOnlyList<T>([NotNull] this List<T> collection) => collection.ArgumentNotNull().AsReadOnly();
+	public static IReadOnlyList<T> ToReadOnlyList<T>([NotNull] this List<T> collection) => collection.ArgumentNotNull().ToReadOnlyCollection();
 
 	/// <summary>
 	/// Converts to <see cref="ReadOnlyObservableCollection{T}" />.

@@ -1003,7 +1003,7 @@ public static class StringExtensions
 	{
 		input = input.ArgumentNotNullOrEmpty();
 
-		return input.Trim().Split([ControlChars.Comma], options: StringSplitOptions.RemoveEmptyEntries).AsReadOnly();
+		return input.Trim().Split([ControlChars.Comma], options: StringSplitOptions.RemoveEmptyEntries).ToReadOnlyCollection();
 	}
 
 	/// <summary>

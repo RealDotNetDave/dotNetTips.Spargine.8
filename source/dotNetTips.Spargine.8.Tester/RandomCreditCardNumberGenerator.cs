@@ -18,6 +18,7 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Extensions;
 using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -114,6 +115,16 @@ public static partial class RandomCreditCardNumberGenerator
 	/// This list is used to generate valid-looking Voyager credit card numbers for testing purposes.
 	/// </remarks>
 	private static readonly string[] VoyagerPrefixList = ["8699"];
+
+	/// <summary>
+	/// The prefixes used for generating credit card numbers.
+	/// </summary>
+	/// <remarks>
+	/// This array is built using the <see cref="BuildPrefixAndLengths"/> method, which combines various credit card prefix lists with their corresponding lengths to generate valid credit card numbers.
+	/// The array contains <see cref="PrefixAndLength"/> objects, each representing a combination of a prefix and its corresponding length for credit card numbers.
+	/// These objects are utilized throughout the credit card number generation process to ensure that generated numbers have appropriate prefixes and lengths according to credit card type.
+	/// </remarks>
+	private static readonly PrefixAndLength[] _prefixes = BuildPrefixAndLengths();
 
 	/// <summary>
 	/// Builds a collection of <see cref="PrefixAndLength"/> objects from a given list of prefixes and a specified length.
@@ -252,17 +263,7 @@ public static partial class RandomCreditCardNumberGenerator
 			result.Push(CreateFakeCreditCardNumber(prefixAndLength.Prefix, prefixAndLength.Length));
 		}
 
-		return result.ToList().AsReadOnly();
+		return result.ToList().ToReadOnlyCollection();
 	}
-
-	/// <summary>
-	/// The prefixes used for generating credit card numbers.
-	/// </summary>
-	/// <remarks>
-	/// This array is built using the <see cref="BuildPrefixAndLengths"/> method, which combines various credit card prefix lists with their corresponding lengths to generate valid credit card numbers.
-	/// The array contains <see cref="PrefixAndLength"/> objects, each representing a combination of a prefix and its corresponding length for credit card numbers.
-	/// These objects are utilized throughout the credit card number generation process to ensure that generated numbers have appropriate prefixes and lengths according to credit card type.
-	/// </remarks>
-	private static readonly PrefixAndLength[] _prefixes = BuildPrefixAndLengths();
 
 }
