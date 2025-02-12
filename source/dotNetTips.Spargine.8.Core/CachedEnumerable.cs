@@ -4,7 +4,7 @@
 // Created          : 12-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-10-2025
+// Last Modified On : 02-12-2025
 // ***********************************************************************
 // <copyright file="CachedEnumerable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -75,6 +75,11 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	private bool _disposed;
 
 	/// <summary>
+	/// The underlying enumerable sequence that is being cached.
+	/// </summary>
+	private readonly IEnumerable<T> _enumerable = enumerable;
+
+	/// <summary>
 	/// Indicates whether the entire enumerable has been enumerated and cached.
 	/// </summary>
 	private bool _enumerated;
@@ -138,13 +143,13 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 	/// <param name="result">When this method returns, contains the item at the specified index, if the item is found;
 	/// otherwise, the default value for the type of the item parameter. This parameter is passed uninitialized.</param>
 	/// <returns><c>true</c> if the item at the specified index is successfully retrieved; otherwise, <c>false</c>.</returns>
-	[Information(nameof(TryGetItem), UnitTestStatus = UnitTestStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(TryGetItem), UnitTestStatus = UnitTestStatus.NotRequired)]
 	private bool TryGetItem(in int index, out T result)
 	{
 		this.CheckEnumerable();
 
 		// if the item is in the cache, use it
-		if (index < this._cache.FastCount())
+		if (index < this._cache.Count)
 		{
 			result = this._cache[index];
 			return true;
@@ -158,7 +163,7 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 			}
 
 			// Another thread may have get the item while we were acquiring the lock
-			if (index < this._cache.FastCount())
+			if (index < this._cache.Count)
 			{
 				result = this._cache[index];
 				return true;
@@ -231,15 +236,4 @@ public sealed class CachedEnumerable<T>(IEnumerable<T> enumerable) : IEnumerable
 			this._enumerator = null;
 		}
 	}
-
-	/// <summary>
-	/// Gets the count of cached items.
-	/// </summary>
-	[Information(nameof(Count), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int Count => this._cache.Count;
-
-	/// <summary>
-	/// The underlying enumerable sequence that is being cached.
-	/// </summary>
-	private IEnumerable<T> _enumerable = enumerable;
 }

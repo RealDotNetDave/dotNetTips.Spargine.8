@@ -39,21 +39,21 @@ public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where
 	/// to avoid null reference exceptions.
 	/// </summary>
 	/// <value>The collection of addresses.</value>
-	Collection<TAddress> Addresses { get; set; }
+	public Collection<TAddress> Addresses { get; set; }
 
 	/// <summary>
 	/// Gets or sets the date and time when the person was born.
 	/// </summary>
 	/// <value>The date and time representing the person's birth date.</value>
 	[DataType(DataType.Date)]
-	DateTimeOffset BornOn { get; set; }
+	public DateTimeOffset BornOn { get; set; }
 
 	/// <summary>
 	/// Gets or sets the cell phone number.
 	/// </summary>
 	/// <value>The cell phone number.</value>
 	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
-	string CellPhone { get; set; }
+	public string CellPhone { get; set; }
 
 	/// <summary>
 	/// Gets or sets the email address. Implementing classes should ensure the email address is in a valid format
@@ -61,14 +61,14 @@ public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where
 	/// </summary>
 	/// <value>The email address.</value>
 	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
-	string Email { get; set; }
+	public string Email { get; set; }
 
 	/// <summary>
 	/// Gets or sets the person's first name. This property is constrained by a maximum length of 50 characters.
 	/// </summary>
 	/// <value>The first name of the person.</value>
 	[StringLength(50, ErrorMessage = "The first name must not exceed 50 characters.")]
-	string FirstName { get; set; }
+	public string FirstName { get; set; }
 
 	/// <summary>
 	/// Gets or sets the person's last name. This property is constrained by a maximum length of 50 characters,
@@ -76,7 +76,7 @@ public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where
 	/// </summary>
 	/// <value>The last name of the person.</value>
 	[StringLength(50, ErrorMessage = "The last name must not exceed 50 characters.")]
-	string LastName { get; set; }
+	public string LastName { get; set; }
 
 	/// <summary>
 	/// Gets or sets the phone number. Implementing classes should ensure the phone number is in a valid format
@@ -84,5 +84,5 @@ public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where
 	/// </summary>
 	/// <value>The phone number.</value>
 	[Phone(ErrorMessage = "The phone number is not in a valid format.")]
-	string Phone { get; set; }
+	public string Phone { get; set; }
 }

@@ -32,24 +32,24 @@ public interface ICoordinate
 	/// Converts to string representation of the coordinate.
 	/// </summary>
 	/// <returns>A <see cref="string" /> that represents the current object.</returns>
-	string ToString();
+	public string ToString();
 
 	/// <summary>
 	/// Gets or sets the x coordinate.
 	/// </summary>
 	/// <value>The x value.</value>
-	int X { get; set; }
+	public int X { get; set; }
 
 	/// <summary>
 	/// Gets or sets the y coordinate.
 	/// </summary>
 	/// <value>The y value.</value>
-	int Y { get; set; }
+	public int Y { get; set; }
 
 	/// <summary>
 	/// Gets or sets the z coordinate.
 	/// </summary>
 	/// <value>The z.</value>
-	int Z { get; set; }
+	public int Z { get; set; }
 
 }

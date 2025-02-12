@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-22-2024
+// Last Modified On : 02-12-2025
 // ***********************************************************************
 // <copyright file="ICloneable.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -16,6 +16,8 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
+
+
 
 
 
@@ -34,6 +36,6 @@ public interface ICloneable<out T>
 	/// Creates a new object that is a copy of the current instance.
 	/// </summary>
 	/// <returns>A new object that is a copy of this instance.</returns>
-	T Clone();
+	public T Clone();
 
 }

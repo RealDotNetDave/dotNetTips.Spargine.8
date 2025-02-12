@@ -492,7 +492,7 @@ public static class ArrayExtensions
 	/// <exception cref="ArgumentNullException">array cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToDistinct), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static T[] ToDistinct<T>([NotNull] this T[] array) => array.ArgumentNotNull().Distinct().ToArray();
+	public static T[] ToDistinct<T>([NotNull] this T[] array) => [.. array.ArgumentNotNull().Distinct()];
 
 	/// <summary>
 	/// Converts a array to <see cref="FrozenSet{T}" /> that could improve performance.

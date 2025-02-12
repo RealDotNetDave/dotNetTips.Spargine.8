@@ -35,55 +35,55 @@ public interface IAddress : IDataModel<IAddress, string>
 	/// </summary>
 	/// <value>The first line of the address.</value>
 	[StringLength(100, ErrorMessage = "The first line of the address must not exceed 100 characters.")]
-	string Address1 { get; set; }
+	public string Address1 { get; set; }
 
 	/// <summary>
 	/// Gets or sets the second line of the address.
 	/// </summary>
 	/// <value>The second line of the address. This field is optional.</value>
 	[StringLength(100, ErrorMessage = "The second line of the address must not exceed 100 characters.")]
-	string Address2 { get; set; }
+	public string Address2 { get; set; }
 
 	/// <summary>
 	/// Gets or sets the city where the address is located.
 	/// </summary>
 	/// <value>The city of the address.</value>
 	[StringLength(50, ErrorMessage = "The city must not exceed 50 characters.")]
-	string City { get; set; }
+	public string City { get; set; }
 
 	/// <summary>
 	/// Gets or sets the country part of the address.
 	/// </summary>
 	/// <value>The country where the address is located.</value>
 	[StringLength(50, ErrorMessage = "The country must not exceed 50 characters.")]
-	string Country { get; set; }
+	public string Country { get; set; }
 
 	/// <summary>
 	/// Gets or sets the county or province part of the address.
 	/// </summary>
 	/// <value>The county or province where the address is located. This field is optional.</value>
 	[StringLength(50, ErrorMessage = "The county or province must not exceed 50 characters.")]
-	string CountyProvince { get; set; }
+	public string CountyProvince { get; set; }
 
 	/// <summary>
 	/// Gets or sets the phone number associated with the address.
 	/// </summary>
 	/// <value>The phone number.</value>
 	[Phone(ErrorMessage = "The phone number is not in a valid format.")]
-	string Phone { get; set; }
+	public string Phone { get; set; }
 
 	/// <summary>
 	/// Gets or sets the postal code for the address.
 	/// </summary>
 	/// <value>The postal code where the address is located.</value>
 	[StringLength(20, ErrorMessage = "The postal code must not exceed 20 characters.")]
-	string PostalCode { get; set; }
+	public string PostalCode { get; set; }
 
 	/// <summary>
 	/// Gets or sets the state or region part of the address.
 	/// </summary>
 	/// <value>The state or region where the address is located.</value>
 	[StringLength(50, ErrorMessage = "The state or region must not exceed 50 characters.")]
-	string State { get; set; }
+	public string State { get; set; }
 
 }

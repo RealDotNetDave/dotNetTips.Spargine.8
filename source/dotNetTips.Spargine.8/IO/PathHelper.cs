@@ -40,7 +40,7 @@ public static class PathHelper
 	/// It is used to validate file names by checking against characters that are not allowed in file names according to the file system.
 	/// </remarks>
 	[SupportedOSPlatform("windows")]
-	private static readonly char[] InvalidFileNameChars = FileHelper.InvalidFileNameChars.Where(c => c is not '*' and not '|' and not '?').ToArray();
+	private static readonly char[] InvalidFileNameChars = [.. FileHelper.InvalidFileNameChars.Where(c => c is not '*' and not '|' and not '?')];
 
 	/// <summary>
 	/// The invalid path characters, excluding directory separator characters.
@@ -50,7 +50,7 @@ public static class PathHelper
 	/// <see cref="Path.DirectorySeparatorChar"/> and <see cref="Path.AltDirectorySeparatorChar"/>.
 	/// It is used to validate paths by checking against characters that are not allowed in paths according to the file system.
 	/// </remarks>
-	private static readonly char[] InvalidPathChars = Path.GetInvalidPathChars().Where(c => c != Path.DirectorySeparatorChar && c != Path.AltDirectorySeparatorChar).ToArray();
+	private static readonly char[] InvalidPathChars = [.. Path.GetInvalidPathChars().Where(c => c != Path.DirectorySeparatorChar && c != Path.AltDirectorySeparatorChar)];
 
 	/// <summary>
 	/// Combines the paths into a single path. If <paramref name="createIfNotExists"/> is true, the combined path will be created if it does not exist.

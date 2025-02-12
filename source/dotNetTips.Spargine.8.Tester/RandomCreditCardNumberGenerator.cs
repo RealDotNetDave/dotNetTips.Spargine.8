@@ -134,15 +134,18 @@ public static partial class RandomCreditCardNumberGenerator
 	/// This method consolidates the prefix lists for different credit card types with their respective lengths into a single array of <see cref="PrefixAndLength"/> objects.
 	/// These objects are then used throughout the credit card number generation process to ensure that generated numbers have appropriate prefixes and lengths according to credit card type.
 	/// </remarks>
-	private static PrefixAndLength[] BuildPrefixAndLengths() => BuildPrefixAndLengthList(VisaPrefixList, 16)
-			.Concat(BuildPrefixAndLengthList(MasterCardPrefixList, 16))
-			.Concat(BuildPrefixAndLengthList(AmexPrefixList, 15))
-			.Concat(BuildPrefixAndLengthList(DinersPrefixList, 16))
-			.Concat(BuildPrefixAndLengthList(DiscoverPrefixList, 16))
-			.Concat(BuildPrefixAndLengthList(VoyagerPrefixList, 16))
-			.Concat(BuildPrefixAndLengthList(JCBPrefixList, 16))
-			.Concat(BuildPrefixAndLengthList(EnroutePrefixList, 15))
-			.ToArray();
+	private static PrefixAndLength[] BuildPrefixAndLengths() =>
+	[
+		.. BuildPrefixAndLengthList(VisaPrefixList, 16)
+,
+		.. BuildPrefixAndLengthList(MasterCardPrefixList, 16),
+		.. BuildPrefixAndLengthList(AmexPrefixList, 15),
+		.. BuildPrefixAndLengthList(DinersPrefixList, 16),
+		.. BuildPrefixAndLengthList(DiscoverPrefixList, 16),
+		.. BuildPrefixAndLengthList(VoyagerPrefixList, 16),
+		.. BuildPrefixAndLengthList(JCBPrefixList, 16),
+		.. BuildPrefixAndLengthList(EnroutePrefixList, 15),
+	];
 
 	/// <summary>
 	/// Creates a fake credit card number using a specified prefix and length.

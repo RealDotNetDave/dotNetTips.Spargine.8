@@ -93,11 +93,6 @@ public static partial class RegexProcessor
 	private const string OneTo7AlphaPattern = @"^[a-zA-Z]{1,7}$";
 
 	/// <summary>
-	/// The pattern to validate postal codes.
-	/// </summary>
-	private const string PostalCodePattern = @"^\d{5}(-\d{4})?$";
-
-	/// <summary>
 	/// The pattern to remove carriage return and line feed characters.
 	/// </summary>
 	private const string RemoveCrLfPattern = @"[\r\n]+";
@@ -231,13 +226,6 @@ public static partial class RegexProcessor
 	/// <returns>A <see cref="Regex"/> instance configured to validate strings with 1 to 7 alphabetic characters.</returns>
 	[GeneratedRegex(OneTo7AlphaPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
 	private static partial Regex OneTo7AlphaRegexSingleLine();
-
-	/// <summary>
-	/// Gets a regex instance for validating postal codes.
-	/// </summary>
-	/// <returns>A <see cref="Regex"/> instance configured to validate postal codes.</returns>
-	[GeneratedRegex(PostalCodePattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
-	private static partial Regex PostalCodeRegex();
 
 	/// <summary>
 	/// Removes the cr/lf regex.

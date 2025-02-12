@@ -52,11 +52,6 @@ public partial class CollectionBenchmark
 	private Dictionary<string, Person<Address>> _personRefDictionary;
 
 	/// <summary>
-	/// The person reference list.
-	/// </summary>
-	private List<Person<Address>> _personRefList;
-
-	/// <summary>
 	/// The person value array.
 	/// </summary>
 	private Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] _personValArray;
@@ -91,7 +86,6 @@ public partial class CollectionBenchmark
 		}
 
 		this._personRecordList = [.. this._personRecordArray];
-		this._personRefList = [.. this._personRefArray];
 		this._personValList = [.. this._personValArray];
 		this._personRecordDictionary = this._personRecordArray.ToDictionary(p => p.Id);
 		this._personRefDictionary = this._personRefArray.ToDictionary(p => p.Id);

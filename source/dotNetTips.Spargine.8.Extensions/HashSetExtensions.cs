@@ -56,7 +56,7 @@ public static class HashSetExtensions
 	/// <returns>A new instance of <see cref="ConcurrentHashSet{T}" /> containing all elements from the original hash set.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
 	[Information(nameof(ToConcurrentHashSet), "David McCarter", "12/3/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
-	public static ConcurrentHashSet<T> ToConcurrentHashSet<T>(this HashSet<T> collection) => new(collection.ArgumentNotNull());
+	public static ConcurrentHashSet<T> ToConcurrentHashSet<T>(this HashSet<T> collection) => [.. collection.ArgumentNotNull()];
 
 	/// <summary>
 	/// Converts a <see cref="HashSet{T}" /> to an <see cref="ImmutableHashSet{T}" />.
@@ -68,7 +68,7 @@ public static class HashSetExtensions
 	/// <returns>An <see cref="ImmutableHashSet{T}" /> containing all elements from the original hash set.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection" /> is null.</exception>
 	[Information(nameof(ToImmutableHashSet), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static ImmutableHashSet<T> ToImmutableHashSet<T>(this HashSet<T> collection) => ImmutableHashSet.CreateRange(collection.ArgumentNotNull());
+	public static ImmutableHashSet<T> ToImmutableHashSet<T>(this HashSet<T> collection) => [.. collection.ArgumentNotNull()];
 
 	/// <summary>
 	/// Upserts (updates or inserts) an item into the <see cref="HashSet{T}" />.

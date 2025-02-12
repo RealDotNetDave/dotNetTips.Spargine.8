@@ -274,7 +274,7 @@ public static class EnumerableExtensions
 		items = items.ArgumentNotNull();
 
 		//RECOMENDATION FROM COPILOT SLOWER.
-		IList<T> list = ensureUnique ? new HashSet<T>(items).ToList() : new List<T>(items);
+		IList<T> list = ensureUnique ? new HashSet<T>(items).ToList() : [.. items];
 
 		return new Collection<T>(list);
 	}
@@ -931,7 +931,7 @@ public static class EnumerableExtensions
 
 			for (var pageIndex = 0; pageIndex < pagesCount; pageIndex++)
 			{
-				yield return collection.Skip(pageCount * pageIndex).Take(pageCount);
+				yield return [.. collection.Skip(pageCount * pageIndex)];
 			}
 		}
 	}
@@ -1079,7 +1079,7 @@ public static class EnumerableExtensions
 		size = size.EnsureMinimum(1);
 
 		var start = 0;
-		var items = collection as T[] ?? collection.ToArray();
+		var items = collection as T[] ?? [.. collection];
 
 		while (start < items.Length)
 		{
@@ -1206,7 +1206,7 @@ public static class EnumerableExtensions
 	{
 		collection = collection.ArgumentItemsExists();
 
-		return new Collection<T>(collection.ToList());
+		return new Collection<T>([.. collection]);
 	}
 
 	/// <summary>
@@ -1276,7 +1276,7 @@ public static class EnumerableExtensions
 	{
 		collection = collection.ArgumentNotNull();
 
-		return ImmutableList.CreateRange(collection);
+		return [.. collection];
 	}
 
 	/// <summary>
@@ -1294,7 +1294,7 @@ public static class EnumerableExtensions
 			return [];
 		}
 
-		return ImmutableArray.CreateRange(collection);
+		return [.. collection];
 	}
 
 	/// <summary>
@@ -1344,7 +1344,7 @@ public static class EnumerableExtensions
 	[Pure]
 	[Information(nameof(ToReadOnlyCollection), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IEnumerable<T> collection) => new(
-		collection.ArgumentNotNull().ToList());
+		[.. collection.ArgumentNotNull()]);
 
 	/// <summary>
 	/// Converts a <see cref="ConcurrentBag{T}"/> to a <see cref="ReadOnlyCollection{T}"/>.

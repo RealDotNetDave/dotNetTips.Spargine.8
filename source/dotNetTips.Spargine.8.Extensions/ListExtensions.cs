@@ -526,7 +526,7 @@ public static class ListExtensions
 	/// <returns>DistinctConcurrentBag&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToDistinctConcurrentBag), "David McCarter", "10/21/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static DistinctConcurrentBag<T> ToDistinctConcurrentBag<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
+	public static DistinctConcurrentBag<T> ToDistinctConcurrentBag<T>([NotNull] this List<T> collection) => [.. collection.ArgumentNotNull()];
 
 	/// <summary>
 	/// Converts a <see cref="List{T}" /> to the Spargine <see cref="FastSortedList{T}" />.
@@ -537,7 +537,7 @@ public static class ListExtensions
 	/// <returns>FastSortedList&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToFastSortedList), "David McCarter", "10/21/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static FastSortedList<T> ToFastSortedList<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
+	public static FastSortedList<T> ToFastSortedList<T>([NotNull] this List<T> collection) => [.. collection.ArgumentNotNull()];
 
 	/// <summary>
 	/// Converts the <see cref="List{T}"/> to a <see cref="FastSortedList{T}"/> using the specified comparer.
@@ -574,7 +574,7 @@ public static class ListExtensions
 	{
 		collection = collection.ArgumentNotNull();
 
-		return ImmutableArray.CreateRange(collection);
+		return [.. collection];
 	}
 
 	/// <summary>
@@ -622,7 +622,7 @@ public static class ListExtensions
 	/// <returns>ObservableList&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToObservableList), "David McCarter", "10/21/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static ObservableList<T> ToObservableList<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
+	public static ObservableList<T> ToObservableList<T>([NotNull] this List<T> collection) => [.. collection.ArgumentNotNull()];
 
 	/// <summary>
 	/// Converts the <see cref="List{T}" /> to a <see cref="ReadOnlyCollection{T}" />

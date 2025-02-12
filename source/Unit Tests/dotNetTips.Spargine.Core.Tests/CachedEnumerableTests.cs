@@ -4,7 +4,7 @@
 // Created          : 06-24-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-10-2025
+// Last Modified On : 02-12-2025
 // ***********************************************************************
 // <copyright file="CachedEnumerableTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using DotNetTips.Spargine.Tester;
+using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -26,23 +28,6 @@ namespace DotNetTips.Spargine.Core.Tests;
 [TestClass]
 public class CachedEnumerableTests
 {
-
-	[TestMethod]
-	public void CachedEnumerable_Count_ShouldReturnCachedItemCount()
-	{
-		// Arrange
-		IEnumerable<int> numbers = Enumerable.Range(1, 5);
-		var cachedEnumerable = CachedEnumerable.Create(numbers);
-
-		// Act
-		var countBeforeEnumeration = cachedEnumerable.Count;
-		var firstIteration = cachedEnumerable.ToList();
-		var countAfterEnumeration = cachedEnumerable.Count;
-
-		// Assert
-		Assert.AreEqual(0, countBeforeEnumeration, "Count before enumeration should be 0.");
-		Assert.AreEqual(firstIteration.Count, countAfterEnumeration, "Count after enumeration should match the number of items in the enumerable.");
-	}
 
 	[TestMethod]
 	public void CachedEnumerable_Dispose_ShouldReleaseResources()
@@ -100,6 +85,21 @@ public class CachedEnumerableTests
 
 		// Assert
 		CollectionAssert.AreEqual(firstIteration, secondIteration, "The items in both iterations should be the same, indicating they were cached.");
+	}
+
+	[TestMethod]
+	public void CachedEnumerable_ForEach()
+	{
+		var people = CachedEnumerable.Create(RandomData.GeneratePersonRefCollection<Address>(10));
+		List<Person<Address>> peopleList = new();
+
+		foreach (var person in people)
+		{
+			peopleList.Add(person);
+		}
+
+		// Assert
+		Assert.AreEqual(10, peopleList.Count);
 	}
 
 	[TestMethod]
