@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-12-2025
+// Last Modified On : 02-13-2025
 // ***********************************************************************
 // <copyright file="ExecutionHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -34,7 +34,7 @@ namespace DotNetTips.Spargine.Core;
 /// attempts the provided function multiple times with increasing delay intervals, improving the robustness of applications
 /// in unstable network conditions.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public static class ExecutionHelper
 {
 	/// <summary>
