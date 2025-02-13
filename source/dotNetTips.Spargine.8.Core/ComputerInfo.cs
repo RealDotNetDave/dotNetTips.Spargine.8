@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-12-2025
+// Last Modified On : 02-13-2025
 // ***********************************************************************
 // <copyright file="ComputerInfo.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -19,6 +19,7 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using DotNetTips.Spargine.Core.Devices;
+using DotNetTips.Spargine.Core.Internal;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -41,6 +42,12 @@ public sealed class ComputerInfo
 	public ComputerInfo()
 	{
 	}
+
+	/// <summary>
+	/// Returns a string that represents the current object.
+	/// </summary>
+	/// <returns>A string that represents the current object.</returns>
+	public override string ToString() => this.PropertiesToString();
 
 	/// <summary>
 	/// Gets the computer culture in three-letter ISO language name format.
@@ -164,9 +171,9 @@ public sealed class ComputerInfo
 	/// <summary>
 	/// Gets the architecture (e.g., 64-bit or 32-bit) of the operating system.
 	/// </summary>
-	[DataMember]
+	[DataMember()]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public Architecture OSArchitecture { get; private set; } = RuntimeInformation.OSArchitecture;
+	public string OSArchitecture { get; private set; } = RuntimeInformation.OSArchitecture.ToString();
 
 	/// <summary>
 	/// Gets the description of the operating system.
@@ -180,7 +187,7 @@ public sealed class ComputerInfo
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int OsMemoryPageSize { get; private set; } = Environment.SystemPageSize;
+	public int OSMemoryPageSize { get; private set; } = Environment.SystemPageSize;
 
 	/// <summary>
 	/// Gets the amount of physical memory in use.

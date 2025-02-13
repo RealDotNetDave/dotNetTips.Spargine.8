@@ -4,7 +4,7 @@
 // Created          : 11-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-10-2025
+// Last Modified On : 02-13-2025
 // ***********************************************************************
 // <copyright file="ComputerInfoTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -42,6 +42,7 @@ public class ComputerInfoTests
 		// Assert
 		Assert.AreEqual(expectedCulture, actualCulture, "The ComputerCulture property should return the correct culture.");
 	}
+
 
 	[TestMethod]
 	public void ComputerInfoTest()
@@ -266,7 +267,7 @@ public class ComputerInfoTests
 	{
 		// Arrange
 		var computerInfo = new ComputerInfo();
-		var expectedArchitecture = RuntimeInformation.OSArchitecture;
+		var expectedArchitecture = RuntimeInformation.OSArchitecture.ToString();
 
 		// Act
 		var actualArchitecture = computerInfo.OSArchitecture;
@@ -297,7 +298,7 @@ public class ComputerInfoTests
 		var expectedPageSize = Environment.SystemPageSize;
 
 		// Act
-		var actualPageSize = computerInfo.OsMemoryPageSize;
+		var actualPageSize = computerInfo.OSMemoryPageSize;
 
 		// Assert
 		Assert.AreEqual(expectedPageSize, actualPageSize, "The OsMemoryPageSize property should return the correct page size.");
@@ -399,6 +400,58 @@ public class ComputerInfoTests
 
 		// Assert
 		Assert.AreEqual(expectedTickCount64, actualTickCount64, "The TickCount64 property should return the correct tick count.");
+	}
+
+	[TestMethod]
+	public void ToString_ShouldContainPropertyValues()
+	{
+		// Arrange
+		var computerInfo = new ComputerInfo();
+
+		// Act
+		var result = computerInfo.ToString();
+
+		// Assert
+		Assert.IsTrue(result.Contains(computerInfo.ComputerCulture), "The ToString method should contain the ComputerCulture property value.");
+		Assert.IsTrue(result.Contains(computerInfo.ComputerUICulture), "The ToString method should contain the ComputerUICulture property value.");
+		Assert.IsTrue(result.Contains(computerInfo.CurrentManagedTreadId.ToString()), "The ToString method should contain the CurrentManagedTreadId property value.");
+		Assert.IsTrue(result.Contains(computerInfo.CurrentStackTrace), "The ToString method should contain the CurrentStackTrace property value.");
+		Assert.IsTrue(result.Contains(computerInfo.CurrentSystemTickCount.ToString()), "The ToString method should contain the CurrentSystemTickCount property value.");
+		Assert.IsTrue(result.Contains(computerInfo.CurrentWorkingDirectory), "The ToString method should contain the CurrentWorkingDirectory property value.");
+		Assert.IsTrue(result.Contains(computerInfo.FrameworkDescription), "The ToString method should contain the FrameworkDescription property value.");
+		Assert.IsTrue(result.Contains(computerInfo.FrameworkVersion.ToString()), "The ToString method should contain the FrameworkVersion property value.");
+		Assert.IsTrue(result.Contains(computerInfo.HasShutdownStarted.ToString()), "The ToString method should contain the HasShutdownStarted property value.");
+		Assert.IsTrue(result.Contains(computerInfo.IPAddress), "The ToString method should contain the IPAddress property value.");
+		Assert.IsTrue(result.Contains(computerInfo.Is64BitOperatingSystem.ToString()), "The ToString method should contain the Is64BitOperatingSystem property value.");
+		Assert.IsTrue(result.Contains(computerInfo.Is64BitProcess.ToString()), "The ToString method should contain the Is64BitProcess property value.");
+		Assert.IsTrue(result.Contains(computerInfo.IsNetworkAvailable.ToString()), "The ToString method should contain the IsNetworkAvailable property value.");
+		Assert.IsTrue(result.Contains(computerInfo.IsUserInteractive.ToString()), "The ToString method should contain the IsUserInteractive property value.");
+		Assert.IsTrue(result.Contains(computerInfo.MachineName), "The ToString method should contain the MachineName property value.");
+		Assert.IsTrue(result.Contains(computerInfo.OSArchitecture.ToString()), "The ToString method should contain the OSArchitecture property value.");
+		Assert.IsTrue(result.Contains(computerInfo.OSDescription), "The ToString method should contain the OSDescription property value.");
+		Assert.IsTrue(result.Contains(computerInfo.OSMemoryPageSize.ToString()), "The ToString method should contain the OsMemoryPageSize property value.");
+		Assert.IsTrue(result.Contains(computerInfo.PhysicalMemoryInUse.ToString()), "The ToString method should contain the PhysicalMemoryInUse property value.");
+		Assert.IsTrue(result.Contains(computerInfo.ProcessArchitecture.ToString()), "The ToString method should contain the ProcessArchitecture property value.");
+		Assert.IsTrue(result.Contains(computerInfo.ProcessorCount.ToString()), "The ToString method should contain the ProcessorCount property value.");
+		Assert.IsTrue(result.Contains(computerInfo.SystemDirectory), "The ToString method should contain the SystemDirectory property value.");
+		Assert.IsTrue(result.Contains(computerInfo.SystemPageSize.ToString()), "The ToString method should contain the SystemPageSize property value.");
+		Assert.IsTrue(result.Contains(computerInfo.TickCount.ToString()), "The ToString method should contain the TickCount property value.");
+		Assert.IsTrue(result.Contains(computerInfo.TickCount64.ToString()), "The ToString method should contain the TickCount64 property value.");
+		Assert.IsTrue(result.Contains(computerInfo.UserDomainName), "The ToString method should contain the UserDomainName property value.");
+		Assert.IsTrue(result.Contains(computerInfo.UserName), "The ToString method should contain the UserName property value.");
+	}
+
+	[TestMethod]
+	public void ToString_ShouldReturnNonEmptyString()
+	{
+		// Arrange
+		var computerInfo = new ComputerInfo();
+
+		// Act
+		var result = computerInfo.ToString();
+
+		// Assert
+		Assert.IsFalse(string.IsNullOrEmpty(result), "The ToString method should return a non-empty string.");
 	}
 
 	[TestMethod]

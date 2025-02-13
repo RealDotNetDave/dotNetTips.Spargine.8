@@ -1,7 +1,7 @@
 ####################################################################################################
 # dotNetDave's (David McCarter) Editor Config - dotNetTips.com
 # Updates to this file are posted quarterly at: https://bit.ly/EditorConfig5
-# Updated February 1, 2025
+# Updated February 13, 2025
 # NEW code performance book is available at: https://bit.ly/DotNetCodePerf4
 # NEW coding standards book is available at: https://bit.ly/CodingStandards8
 # Rockin' the Code World with dotNetDave: https://bit.ly/RockinCodeWorldShows
@@ -616,7 +616,7 @@ dotnet_diagnostic.CA1805.severity = error
 # Do not ignore method results
 dotnet_diagnostic.CA1806.severity = error
 
-# Initialize reference type static fields inline ****!
+# Initialize reference type static fields inline
 dotnet_diagnostic.CA1810.severity = suggestion
 
 # Avoid uninstantiated internal classes
@@ -631,14 +631,14 @@ dotnet_diagnostic.CA1814.severity = warning
 # Override equals and operator equals on value types
 dotnet_diagnostic.CA1815.severity = warning
 
-# Properties should not return arrays ****!
+# Properties should not return arrays
 dotnet_diagnostic.CA1819.severity = suggestion
 dotnet_code_quality.CA1819.api_surface = public, protected
 
 # Test for empty strings using string length
 dotnet_diagnostic.CA1820.severity = warning
 
-# Remove empty finalizers ****
+# Remove empty finalizers
 dotnet_diagnostic.CA1821.severity = error
 
 # Mark members as static
@@ -647,13 +647,13 @@ dotnet_diagnostic.CA1822.severity = warning
 # Avoid unused private fields
 dotnet_diagnostic.CA1823.severity = error
 
-# Mark assemblies with NeutralResourcesLanguageAttribute ****
+# Mark assemblies with NeutralResourcesLanguageAttribute
 dotnet_diagnostic.CA1824.severity = suggestion
 
 # Avoid zero-length array allocations!
 dotnet_diagnostic.CA1825.severity = warning
 
-# Use property instead of Linq Enumerable method ****!
+# Use property instead of Linq Enumerable method
 dotnet_diagnostic.CA1826.severity = error
 
 # Do not use Count/LongCount when Any can be used!
@@ -692,7 +692,7 @@ dotnet_diagnostic.CA1837.severity = error
 # Avoid StringBuilder parameters for P/Invokes ****
 dotnet_diagnostic.CA1838.severity = warning
 
-# Use Environment.ProcessPath instead of Process.GetCurrentProcess().MainModule.FileName ****!
+# Use Environment.ProcessPath instead of Process.GetCurrentProcess().MainModule.FileName
 dotnet_diagnostic.CA1839.severity = error
 
 # Use Environment.CurrentManagedThreadId instead of Thread.CurrentThread.ManagedThreadId!
@@ -701,10 +701,10 @@ dotnet_diagnostic.CA1840.severity = suggestion
 # Prefer Dictionary Contains methods
 dotnet_diagnostic.CA1841.severity = suggestion
 
-# Do not use 'WhenAll' with a single task ****
+# Do not use 'WhenAll' with a single task
 dotnet_diagnostic.CA1842.severity = error
 
-# Do not use 'WaitAll' with a single task ****
+# Do not use 'WaitAll' with a single task
 dotnet_diagnostic.CA1843.severity = error
 
 # Provide memory-based overrides of async methods when subclassing 'Stream' ****
@@ -728,46 +728,46 @@ dotnet_diagnostic.CA1849.severity = error
 # Prefer static HashData method over ComputeHash.
 dotnet_diagnostic.CA1850.severity = error
 
-# Possible multiple enumerations of IEnumerable collection ****
+# Possible multiple enumerations of IEnumerable collection
 dotnet_diagnostic.CA1851.severity = warning
 
 # Seal internal types.
 dotnet_diagnostic.CA1852.severity = error
 
-# Unnecessary call to 'Dictionary.ContainsKey(key)' ****!
+# Unnecessary call to 'Dictionary.ContainsKey(key)'
 dotnet_diagnostic.CA1853.severity = error
 
 # Prefer the IDictionary.TryGetValue(TKey, out TValue) method!
 dotnet_diagnostic.CA1854.severity = error
 
-# Use Span<T>.Clear() instead of Span<T>.Fill()  ****!
+# Use Span<T>.Clear() instead of Span<T>.Fill()
 dotnet_diagnostic.CA1855.severity = suggestion
 
-# Incorrect usage of ConstantExpected attribute ****!
+# Incorrect usage of ConstantExpected attribute
 dotnet_diagnostic.CA1856.severity = warning
 
 # A constant is expected for the parameter ****!
 dotnet_diagnostic.CA1857.severity = warning
 
-# Use StartsWith instead of IndexOf ****!
+# Use StartsWith instead of IndexOf
 dotnet_diagnostic.CA1858.severity = error
 
 # Use concrete types when possible for improved performance
 dotnet_diagnostic.CA1859.severity = warning
 
-# Avoid using 'Enumerable.Any()' extension method ****!
+# Avoid using 'Enumerable.Any()' extension method
 dotnet_diagnostic.CA1860.severity = error
 
 # Avoid constant arrays as arguments
 dotnet_diagnostic.CA1861.severity = warning
 
-# Prefer the 'StringComparison' method overloads to perform case-insensitive string comparisons ****!
+# Prefer the 'StringComparison' method overloads to perform case-insensitive string comparisons
 dotnet_diagnostic.CA1862.severity = warning
 
 # Use 'CompositeFormat'!
 dotnet_diagnostic.CA1863.severity = warning
 
-# Prefer the 'IDictionary.TryAdd(TKey, TValue)' method ****!
+# Prefer the 'IDictionary.TryAdd(TKey, TValue)' method
 dotnet_diagnostic.CA1864.severity = suggestion
 
 # Use 'string.Method(char)' instead of 'string.Method(string)' for string with single char ***!
@@ -778,7 +778,7 @@ dotnet_diagnostic.CA1867.severity = warning
 # Unnecessary call to 'Contains' for sets ****
 dotnet_diagnostic.CA1868.severity = error
 
-# Use a cached 'SearchValues' instance ****
+# Use a cached 'SearchValues' instance
 dotnet_diagnostic.CA1869.severity = warning
 
 # Cache and reuse 'JsonSerializerOptions' instances
