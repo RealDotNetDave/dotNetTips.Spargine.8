@@ -266,7 +266,7 @@ public class FileProcessor
 	/// </code>
 	/// </example>
 	[Information(nameof(DeleteFolders), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public int DeleteFolders([NotNull] IEnumerable<DirectoryInfo> folders)
+	public int DeleteFolders([NotNull] in IEnumerable<DirectoryInfo> folders)
 	{
 		if (folders.HasItems() is false)
 		{
@@ -277,7 +277,7 @@ public class FileProcessor
 
 		foreach (var listItem in folders)
 		{
-			if (listItem.Exists)
+			if (Path.Exists(listItem.FullName))
 			{
 				try
 				{

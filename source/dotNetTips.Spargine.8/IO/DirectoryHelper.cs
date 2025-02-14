@@ -154,7 +154,7 @@ public static class DirectoryHelper
 	/// Deletes the directory with retry.
 	/// </summary>
 	/// <param name="path">The directory to delete.</param>
-	/// <param name="retries">Number of retries in case of failure. Default is 10.</param>
+	/// <param name="retries">Number of retries in case of failure. Default is 5.</param>
 	/// <example>
 	/// This example shows how to call the <see cref="DeleteDirectory" /> method.
 	/// <code>
@@ -167,11 +167,13 @@ public static class DirectoryHelper
 	/// <exception cref="UnauthorizedAccessException">Thrown when the directory could not be deleted due to unauthorized access after the specified number of retries.</exception>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void DeleteDirectory([NotNull] DirectoryInfo path, byte retries = 10)
+	public static void DeleteDirectory([NotNull] DirectoryInfo path, byte retries = 5)
 	{
 		//TODO: FOR VERSION 10, RETURN SIMPLERESULT.
 
-		if (path.Exists is false)
+		path = path.ArgumentNotNull();
+
+		if (Path.Exists(path.FullName) is false)
 		{
 			return;
 		}
