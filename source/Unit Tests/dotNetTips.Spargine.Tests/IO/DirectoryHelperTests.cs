@@ -125,10 +125,29 @@ public class DirectoryHelperTests
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
+	public void DeleteDirectory_DeletedDirectory_DeletesSuccessfully()
+	{
+		// Arrange
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), nameof(this.DeleteDirectory_DeletedDirectory_DeletesSuccessfully));
+
+		var directory = new DirectoryInfo(tempDirectoryPath);
+		directory.Create();
+
+		new DirectoryInfo(tempDirectoryPath).Delete();
+
+		// Act
+		DirectoryHelper.DeleteDirectory(directory);
+
+		// Assert
+		Assert.IsFalse(Directory.Exists(tempDirectoryPath), "The directory should have been deleted.");
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
 	public void DeleteDirectory_NonExistentDirectory_NoExceptionThrown()
 	{
 		// Arrange
-		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), "TEST");
 
 		// Act & Assert
 		DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath), 1);
@@ -140,22 +159,28 @@ public class DirectoryHelperTests
 	public void DeleteDirectory_ValidDirectory_DeletesSuccessfully()
 	{
 		// Arrange
-		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), nameof(this.DeleteDirectory_ValidDirectory_DeletesSuccessfully));
+
+		var directory = new DirectoryInfo(tempDirectoryPath);
+		directory.Create();
 
 		// Act
-		DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath));
+		DirectoryHelper.DeleteDirectory(directory);
 
 		// Assert
 		Assert.IsFalse(Directory.Exists(tempDirectoryPath), "The directory should have been deleted.");
 	}
-
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
 	public void DeleteDirectory_WithRetries_DeletesSuccessfullyAfterRetries()
 	{
 		// Arrange
-		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), nameof(this.DeleteDirectory_WithRetries_DeletesSuccessfullyAfterRetries));
+
+		var directory = new DirectoryInfo(tempDirectoryPath);
+		directory.Create();
+
 		_ = RandomData.GenerateFiles(tempDirectoryPath, 100);
 
 		// Simulate a condition that would initially prevent deletion, such as a temporary lock by another process
@@ -163,7 +188,7 @@ public class DirectoryHelperTests
 
 		Task.Delay(100).ContinueWith(_ =>
 		{
-			DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath), 5);
+			DirectoryHelper.DeleteDirectory(directory, 5);
 		});
 
 		// Act

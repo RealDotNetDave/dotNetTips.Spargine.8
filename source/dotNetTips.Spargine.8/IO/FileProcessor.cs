@@ -277,7 +277,7 @@ public class FileProcessor
 
 		foreach (var listItem in folders)
 		{
-			if (Path.Exists(listItem.FullName))
+			if (listItem.Exists)
 			{
 				try
 				{

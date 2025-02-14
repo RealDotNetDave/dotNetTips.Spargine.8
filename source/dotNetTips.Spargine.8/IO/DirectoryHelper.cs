@@ -37,7 +37,7 @@ namespace DotNetTips.Spargine.IO;
 /// loading files asynchronously, managing OneDrive folders, and conducting safe directory and file searches. These methods
 /// are designed to extend the capabilities of the <see cref="DirectoryInfo"/> class and simplify common file system operations.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(Status = Status.UpdateDocumentation, Documentation = "ADD URL")]
 public static class DirectoryHelper
 {
 
@@ -155,6 +155,7 @@ public static class DirectoryHelper
 	/// </summary>
 	/// <param name="path">The directory to delete.</param>
 	/// <param name="retries">Number of retries in case of failure. Default is 5.</param>
+	/// <param name="recursive">Specifies whether to delete directories, subdirectories, and files in <paramref name="path"/>.</param>
 	/// <example>
 	/// This example shows how to call the <see cref="DeleteDirectory" /> method.
 	/// <code>
@@ -166,14 +167,14 @@ public static class DirectoryHelper
 	/// <exception cref="IOException">Thrown when the directory could not be deleted after the specified number of retries.</exception>
 	/// <exception cref="UnauthorizedAccessException">Thrown when the directory could not be deleted due to unauthorized access after the specified number of retries.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void DeleteDirectory([NotNull] DirectoryInfo path, byte retries = 5)
+	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Updated)]
+	public static void DeleteDirectory([NotNull] DirectoryInfo path, byte retries = 5, bool recursive = true)
 	{
 		//TODO: FOR VERSION 10, RETURN SIMPLERESULT.
 
 		path = path.ArgumentNotNull();
 
-		if (Path.Exists(path.FullName) is false)
+		if (path.Exists is false)
 		{
 			return;
 		}
@@ -184,7 +185,7 @@ public static class DirectoryHelper
 		// that prevent them from being deleted. Set those attributes to be normal
 		SetFileAttributesToNormal(path);
 
-		_ = ExecutionHelper.ProgressiveRetry(() => path.Delete(true), retryCount: retries, retryWaitMilliseconds: 2);
+		_ = ExecutionHelper.ProgressiveRetry(() => path.Delete(recursive), retryCount: retries, retryWaitMilliseconds: 2);
 	}
 
 	/// <summary>
