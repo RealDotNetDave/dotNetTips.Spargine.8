@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 02-14-2025
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -248,6 +248,7 @@ public class FileProcessor
 	/// Deletes the specified folders and all their contents.
 	/// </summary>
 	/// <param name="folders">The folders to delete.</param>
+	/// <param name="recursive">Specifies whether to delete directories, subdirectories, and files in <paramref name="folders"/>.</param>
 	/// <returns>The number of folders successfully deleted.</returns>
 	/// <remarks>
 	/// Use the <see cref="Processed"/> event to find out if folder deletion succeeded or failed.
@@ -266,7 +267,7 @@ public class FileProcessor
 	/// </code>
 	/// </example>
 	[Information(nameof(DeleteFolders), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public int DeleteFolders([NotNull] in IEnumerable<DirectoryInfo> folders)
+	public int DeleteFolders([NotNull] in IEnumerable<DirectoryInfo> folders, in bool recursive = true)
 	{
 		if (folders.HasItems() is false)
 		{
@@ -281,7 +282,7 @@ public class FileProcessor
 			{
 				try
 				{
-					DirectoryHelper.DeleteDirectory(listItem, 5);
+					DirectoryHelper.DeleteDirectory(listItem, 5, recursive);
 
 					successCount++;
 

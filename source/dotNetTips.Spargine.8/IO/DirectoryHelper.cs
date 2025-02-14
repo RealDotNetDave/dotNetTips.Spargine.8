@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 02-14-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -178,8 +178,7 @@ public static class DirectoryHelper
 		{
 			return;
 		}
-
-		retries = retries.ArgumentInRange(1, upper: 250);
+		retries = retries.ArgumentInRange(1, upper: byte.MaxValue, Resources.RetriesAreLimitedTo255);
 
 		// On some systems, directories/files created are created with attributes
 		// that prevent them from being deleted. Set those attributes to be normal
@@ -334,10 +333,10 @@ public static class DirectoryHelper
 	/// <exception cref="IOException">Thrown when the directory could not be moved after the specified number of retries.</exception>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void MoveDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, int retries = 10)
+	public static void MoveDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, byte retries = 5)
 	{
 		source = source.ArgumentExists();
-		retries = retries.ArgumentInRange(1, upper: 100, defaultValue: 10, errorMessage: Resources.RetriesAreLimitedTo0100);
+		retries = retries.ArgumentInRange(1, upper: byte.MaxValue, errorMessage: Resources.RetriesAreLimitedTo255);
 
 		if (destination.ArgumentNotNull().CheckExists(throwException: true))
 		{

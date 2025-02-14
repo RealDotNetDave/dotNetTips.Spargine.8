@@ -106,11 +106,11 @@ namespace DotNetTips.Spargine.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retries are limited to 0 - 100..
+        ///   Looks up a localized string similar to Retries are limited to 1 - 255..
         /// </summary>
-        internal static string RetriesAreLimitedTo0100 {
+        internal static string RetriesAreLimitedTo255 {
             get {
-                return ResourceManager.GetString("RetriesAreLimitedTo0100", resourceCulture);
+                return ResourceManager.GetString("RetriesAreLimitedTo255", resourceCulture);
             }
         }
         

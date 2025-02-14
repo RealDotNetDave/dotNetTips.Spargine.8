@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8.Core - 2025.8.2.10
+# DotNetTips.Spargine.8.Core - 2025.8.2.12
 
 ## ApiLibraries
 
@@ -28,7 +28,6 @@
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** AppInfo
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Void ChangeCulture(String cultureName)
 
@@ -36,7 +35,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Void ChangeCulture(CultureInfo culture)
 
@@ -44,7 +42,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Void ChangeUICulture(String cultureName)
 
@@ -52,7 +49,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### CultureInfo CurrentCulture { get; set; }
 
@@ -60,7 +56,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Int32 CurrentThreadId { get; set; }
 
@@ -70,8 +65,7 @@
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/20/2024
-* **Description:** GetProcessorInformation
-* **Documentation:** https://bit.ly/Spargine8
+* **Description:** CurrentThreadId
 * **Modified By:** David McCarter
 
 ### CultureInfo CurrentUICulture { get; set; }
@@ -80,7 +74,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### String ExecutingFolder()
 
@@ -91,7 +84,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 6/26/2017
 * **Description:** ExecutingFolder
-* **Documentation:** https://bit.ly/SpargineJun2021
 * **Modified By:** David McCarter
 
 ### String FrameworkDescription { get; set; }
@@ -100,7 +92,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### ReadOnlyCollection<String> GetCultureNames(CultureTypes cultureType)
 
@@ -109,8 +100,7 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
-* **Description:** AppInfo
-* **Documentation:** https://bit.ly/SpargineJun2021
+* **Description:** GetCultureNames
 
 ### IImmutableDictionary<String, String> GetEnvironmentVariables()
 
@@ -118,7 +108,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### ProcessorInformation GetProcessorInformation()
 
@@ -129,7 +118,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 3/20/2023
 * **Description:** GetProcessorInformation
-* **Documentation:** https://bit.ly/SpargineMay2023
 * **Modified By:** David McCarter
 
 ### CultureInfo InstalledUICulture { get; set; }
@@ -138,7 +126,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Boolean IsRunning()
 
@@ -146,7 +133,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Boolean IsRunningFromAspNet()
 
@@ -154,7 +140,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Boolean IsUserAdministrator()
 
@@ -162,7 +147,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Void Kill()
 
@@ -170,7 +154,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Int32 MaxDegreeOfParallelism()
 
@@ -187,7 +170,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### String OSDescription { get; set; }
 
@@ -195,7 +177,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Architecture ProcessArchitecture { get; set; }
 
@@ -203,7 +184,13 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
+
+### Int32 ProcessId { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
 
 ### String ProcessName { get; set; }
 
@@ -225,7 +212,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 1/20/2024
 * **Description:** GetProcessorInformation
-* **Documentation:** https://bit.ly/Spargine8
 * **Modified By:** David McCarter
 
 ### Void RebootComputer()
@@ -241,7 +227,6 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineJun2021
 
 ### Void RunAsAdministrator()
 
@@ -249,7 +234,20 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineJun2021
+
+### String StackTrace { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### Int64 WorkingSet { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
 
 *****
 ## AppInfo
@@ -293,81 +291,9 @@
 * **Modified By:** David McCarter
 
 *****
-## CachedEnumerable
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** CachedEnumerable
-
-### CachedEnumerable<T> Create(IEnumerable<T> enumerable)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-
-*****
-## CachedEnumerable<T>
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** CachedEnumerable
-
-### Int32 Count { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Count
-
-### IEnumerator<T> GetEnumerator()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetEnumerator
-
-### Void Reset()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Reset
-
-### IEnumerator System.Collections.IEnumerable.GetEnumerator()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** NotRequired
-* **Author:** UNKNOWN
-* **Description:** GetEnumerator
-
-### Boolean TryGetItem(Int32& index, T& result)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** NotRequired
-* **Author:** UNKNOWN
-* **Description:** TryGetItem
-
-*****
 ## ComputerInfo
 
-* **Status:** Available
+* **Status:** UpdateDocumentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -464,8 +390,8 @@
 ### Boolean IsNetworkAvailable { get; set; }
 
 * **Status:** New
-* **Optimization Status:** Optimize
-* **BenchMarkStatus:** Benchmark
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** NotRequired
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** IsNetworkAvailable
@@ -4904,4 +4830,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 2/10/2025 10:22:17 PM UTC**
+**Generated by Spargine - dotNetTips.com on 2/12/2025 9:00:02 PM UTC**
