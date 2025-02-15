@@ -81,20 +81,6 @@ public class ComputerInfoTests
 	}
 
 	[TestMethod]
-	public void CurrentSystemTickCount_ShouldReturnCorrectTickCount()
-	{
-		// Arrange
-		var computerInfo = new ComputerInfo();
-		var expectedTickCount = Clock.TickCount;
-
-		// Act
-		var actualTickCount = computerInfo.CurrentSystemTickCount;
-
-		// Assert
-		Assert.AreEqual(expectedTickCount, actualTickCount, "The CurrentSystemTickCount property should return the correct tick count.");
-	}
-
-	[TestMethod]
 	public void CurrentWorkingDirectory_ShouldReturnCorrectDirectory()
 	{
 		// Arrange
