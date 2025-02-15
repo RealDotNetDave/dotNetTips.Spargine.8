@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-09-2024
+// Last Modified On : 02-15-2025
 // ***********************************************************************
 // <copyright file="EncryptionHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -36,28 +36,28 @@ public class EncryptionHelperTests
 	public void AesDecrypt_NullCipherText_ThrowsArgumentNullException()
 	{
 		// Act and Assert
-		Assert.ThrowsException<ArgumentNullException>(() => EncryptionHelper.AesDecrypt(null, _key, _iv));
+		Assert.ThrowsException<ArgumentNullException>(() => EncryptionHelper.AesDecrypt(null, this._key, this._iv));
 	}
 
 	[TestMethod]
 	public void AesDecrypt_NullIv_ThrowsArgumentNullException()
 	{
 		// Act and Assert
-		_ = Assert.ThrowsException<ArgumentNullException>(() => EncryptionHelper.AesDecrypt(_cipherText, _key, null));
+		_ = Assert.ThrowsException<ArgumentNullException>(() => EncryptionHelper.AesDecrypt(this._cipherText, this._key, null));
 	}
 
 	[TestMethod]
 	public void AesDecrypt_NullKey_ThrowsArgumentNullException()
 	{
 		// Act and Assert
-		Assert.ThrowsException<ArgumentNullException>(() => EncryptionHelper.AesDecrypt(_cipherText, null, _iv));
+		Assert.ThrowsException<ArgumentNullException>(() => EncryptionHelper.AesDecrypt(this._cipherText, null, this._iv));
 	}
 
 	[TestMethod]
 	public void AesDecrypt_ValidInputs_ReturnsDecryptedString()
 	{
 		// Act
-		var result = EncryptionHelper.AesDecrypt(_cipherText, _key, _iv);
+		var result = EncryptionHelper.AesDecrypt(this._cipherText, this._key, this._iv);
 
 		// Assert
 		Assert.AreEqual("Test", result);
@@ -112,11 +112,11 @@ public class EncryptionHelperTests
 	{
 		var aes = Aes.Create();
 
-		_key = aes.Key;
-		_iv = aes.IV;
+		this._key = aes.Key;
+		this._iv = aes.IV;
 
 
-		_cipherText = EncryptionHelper.AesEncrypt("Test", _key, _iv);
+		this._cipherText = EncryptionHelper.AesEncrypt("Test", this._key, this._iv);
 	}
 
 	[TestMethod]

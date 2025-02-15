@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 02-15-2025
 // ***********************************************************************
 // <copyright file="SHA256PasswordHasher.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -130,7 +130,7 @@ public static class SHA256PasswordHasher
 	/// var result = SHA256PasswordHasher.VerifyHashedPassword(hashedPassword, password);
 	/// Console.WriteLine(result == PasswordVerificationResult.Success ? "Password verified" : "Password verification failed");
 	/// </code></example>
-	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static PasswordVerificationResult VerifyHashedPassword(in string hashedPassword, [NotNull] in string password)
 	{
 		if (string.IsNullOrEmpty(hashedPassword))
@@ -138,23 +138,27 @@ public static class SHA256PasswordHasher
 			return PasswordVerificationResult.Failed;
 		}
 
-		if (Convert.FromBase64String(hashedPassword).LongLength < 1 + SaltSize)
+		var passwordBytes = new byte[hashedPassword.CalculateByteArraySize()];
+		if (!Convert.TryFromBase64String(hashedPassword, passwordBytes, out var bytesWritten))
 		{
 			return PasswordVerificationResult.Failed;
 		}
 
-		if (Convert.FromBase64String(hashedPassword)[0] > Version)
+		if (bytesWritten < 1 + SaltSize)
+		{
+			return PasswordVerificationResult.Failed;
+		}
+
+		if (passwordBytes[0] > Version)
 		{
 			return PasswordVerificationResult.Failed;
 		}
 
 		var salt = new byte[SaltSize];
+		Buffer.BlockCopy(passwordBytes, 1, salt, 0, SaltSize);
 
-		Buffer.BlockCopy(Convert.FromBase64String(hashedPassword), 1, salt, 0, SaltSize);
-
-		var expectedHash = new byte[Convert.FromBase64String(hashedPassword).Length - 1 - SaltSize];
-
-		Buffer.BlockCopy(Convert.FromBase64String(hashedPassword), 1 + SaltSize, expectedHash, 0, expectedHash.Length);
+		var expectedHash = new byte[bytesWritten - 1 - SaltSize];
+		Buffer.BlockCopy(passwordBytes, 1 + SaltSize, expectedHash, 0, expectedHash.Length);
 
 		var actualHash = HashPasswordWithSalt(password, salt);
 

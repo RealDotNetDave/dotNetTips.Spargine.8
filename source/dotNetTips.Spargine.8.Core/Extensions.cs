@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-10-2025
+// Last Modified On : 02-15-2025
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -22,7 +22,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using DotNetTips.Spargine.Core.Properties;
 using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -451,6 +450,23 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
+	/// Calculates the size of a byte array needed to store the Base64 encoded version of the input string.
+	/// </summary>
+	/// <param name="input">The input string to be encoded.</param>
+	/// <returns>The size of the byte array needed to store the Base64 encoded string, or 0 if the input is null or empty.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static int CalculateByteArraySize([NotNull] this string input)
+	{
+		if (string.IsNullOrEmpty(input))
+		{
+			return 0;
+		}
+
+		return input.Length * 3 / 4;
+	}
+
+	/// <summary>
 	/// Calculates the total character count from a string array.
 	/// </summary>
 	/// <param name="args">The array of strings to calculate the character count from.</param>
@@ -476,6 +492,30 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 		}
 
 		return totalLength;
+	}
+
+	/// <summary>
+	/// Converts a Base64 encoded string to a byte array.
+	/// </summary>
+	/// <param name="base64String">The Base64 encoded string.</param>
+	/// <returns>The byte array representation of the Base64 encoded string.</returns>
+	/// <exception cref="FormatException">Thrown when the input string is not a valid Base64 string.</exception>
+	public static byte[] ToByteArrayFromBase64(this string base64String)
+	{
+		if (string.IsNullOrEmpty(base64String))
+		{
+			throw new ArgumentNullException(nameof(base64String));
+		}
+
+		var buffer = new byte[base64String.Length];
+		if (!Convert.TryFromBase64String(base64String, buffer, out int bytesWritten))
+		{
+			throw new FormatException("The input string is not a valid Base64 string.");
+		}
+
+		var result = new byte[bytesWritten];
+		Array.Copy(buffer, result, bytesWritten);
+		return result;
 	}
 
 }
