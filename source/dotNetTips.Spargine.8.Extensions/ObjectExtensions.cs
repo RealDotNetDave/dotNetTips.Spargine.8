@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 02-15-2025
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -361,8 +361,8 @@ public static class ObjectExtensions
 	/// PersonRecord.Addresses[1].PostalCode:33385672
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PropertiesToString), author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static string PropertiesToString([NotNull] this object obj, [AllowNull] string header = ControlChars.EmptyString, char keyValueSeparator = ControlChars.Colon, [NotNull] string sequenceSeparator = ControlChars.DefaultSeparator, bool ignoreNulls = true, bool includeMemberName = true)
+	[Information(nameof(PropertiesToString), author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
+	public static string PropertiesToString([NotNull] this object obj, [AllowNull] string header = ControlChars.EmptyString, [ConstantExpected] char keyValueSeparator = ControlChars.Colon, [NotNull][ConstantExpected] string sequenceSeparator = ControlChars.DefaultSeparator, bool ignoreNulls = true, bool includeMemberName = true)
 	{
 		obj = obj.ArgumentNotNull();
 		sequenceSeparator = sequenceSeparator.ArgumentNotNull();

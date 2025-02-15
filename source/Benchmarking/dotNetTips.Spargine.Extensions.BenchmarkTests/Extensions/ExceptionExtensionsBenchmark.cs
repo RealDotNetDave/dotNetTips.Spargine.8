@@ -14,6 +14,7 @@
 using System.Security;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
+using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -28,6 +29,13 @@ public class ExceptionExtensionsBenchmark : Benchmark
 	public void GetAllMessages()
 	{
 		this.Consume(this._testException.GetAllMessages());
+	}
+
+	[Benchmark(Description = nameof(ExceptionExtensions.GetAllMessages) + ": Separator")]
+	[BenchmarkCategory(Categories.New)]
+	public void GetAllMessagesSeparator()
+	{
+		this.Consume(this._testException.GetAllMessages(ControlChars.Colon));
 	}
 
 	[Benchmark(Description = nameof(ExceptionExtensions.GetAllMessagesWithStackTrace))]

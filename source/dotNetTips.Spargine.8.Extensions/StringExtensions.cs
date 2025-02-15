@@ -183,8 +183,8 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses the String.Join(string, string[]) method internally to perform the concatenation.
 	/// </remarks>
-	[Information(nameof(Concat), "David McCarter", "9/15/2017", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string Concat([NotNull] this string input, [NotNull] string delimiter, bool addLineFeed, [NotNull] params string[] args)
+	[Information(nameof(Concat), "David McCarter", "9/15/2017", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static string Concat([NotNull] this string input, [NotNull][ConstantExpected] string delimiter, bool addLineFeed, [NotNull] params string[] args)
 	{
 		if (input.IsNullOrEmpty())
 		{
@@ -291,8 +291,8 @@ public static class StringExtensions
 	/// <param name="input">The input string to split.</param>
 	/// <param name="delimiter">The character delimiter to split the string by. Default is a comma.</param>
 	/// <returns>An array of strings that were delimited by the specified character.</returns>
-	[Information(nameof(DelimitedStringToArray), "David McCarter", "8/13/2020", "8/13/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string[] DelimitedStringToArray([NotNull] this string input, in char delimiter = ControlChars.Comma)
+	[Information(nameof(DelimitedStringToArray), "David McCarter", "8/13/2020", "8/13/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static string[] DelimitedStringToArray([NotNull] this string input, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
 		if (string.IsNullOrEmpty(input))
 		{
@@ -642,8 +642,8 @@ public static class StringExtensions
 	/// <param name="indentationCharacter">The character to use for indentation.</param>
 	/// <returns>The indented string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
-	[Information(nameof(Indent), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string Indent([NotNull] this string input, in int length, in char indentationCharacter)
+	[Information(nameof(Indent), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static string Indent([NotNull] this string input, in int length, [ConstantExpected] in char indentationCharacter)
 	{
 		if (input.CheckIsNotNull() is false || length <= 0)
 		{
@@ -931,8 +931,8 @@ public static class StringExtensions
 	/// <param name="options">Options for controlling the splitting operation.</param>
 	/// <param name="separator">The character to use as a separator. <see cref="ControlChars.Comma"/> is the default.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, in char separator = ControlChars.Comma)
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, [ConstantExpected] in char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
@@ -951,8 +951,8 @@ public static class StringExtensions
 	/// <param name="count">The maximum number of substrings to return.</param>
 	/// <param name="separator">The character to use as a separator. Defaults to <see cref="ControlChars.Comma"/>.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{String}"/> of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, in char separator = ControlChars.Comma)
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [ConstantExpected] in char separator = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
@@ -972,8 +972,8 @@ public static class StringExtensions
 	/// <param name="count">The maximum number of substrings to return.</param>
 	/// <param name="separator">The string to use as a separator. Defaults to <see cref="ControlChars.DefaultSeparator"/>.</param>
 	/// <returns>A ReadOnlyCollection{string} of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull] string separator = ControlChars.DefaultSeparator)
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull][ConstantExpected] string separator = ControlChars.DefaultSeparator)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
@@ -1063,7 +1063,7 @@ public static class StringExtensions
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="startIndex"/> or <paramref name="length"/> is less than zero, or <paramref name="startIndex"/> + <paramref name="length"/> is greater than the length of <paramref name="input"/>.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
-	[Information(nameof(SubstringTrim), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(SubstringTrim), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
 	public static string SubstringTrim(this string input, in int startIndex, in int length)
 	{
 		if (input.IsNullOrEmpty())
@@ -1077,7 +1077,7 @@ public static class StringExtensions
 		}
 
 		// SUGGESTION FROM COPILOT SLOWER.
-		return input.Substring(startIndex, length).Trim();
+		return input.AsSpan(startIndex, length).ToString().Trim();
 	}
 
 	/// <summary>
