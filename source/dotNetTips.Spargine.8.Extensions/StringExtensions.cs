@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2025
+// Last Modified On : 02-16-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -419,14 +419,10 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses <see cref="DeflateStream"/> for decompression.
 	/// </remarks>
-	[Information(nameof(FromDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information(nameof(FromDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static async Task<string> FromDeflateStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
-		value = value.ArgumentNotNullOrEmpty();
-
-		var bytes = new byte[value.CalculateByteArraySize()];
-		_ = Convert.TryFromBase64String(value, bytes, out _);
-
+		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
 		var input = new MemoryStream(bytes);
 
 		await using (input.ConfigureAwait(false))
@@ -500,14 +496,10 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses <see cref="DeflateStream"/> for decompression, as ZLib compression is closely related to the Deflate compression algorithm.
 	/// </remarks>
-	[Information(nameof(FromZLibStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information(nameof(FromZLibStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static async Task<string> FromZLibStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
-		value = value.ArgumentNotNullOrEmpty();
-
-		var bytes = new byte[value.CalculateByteArraySize()];
-		_ = Convert.TryFromBase64String(value, bytes, out _);
-
+		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
 		var input = new MemoryStream(bytes);
 
 		await using (input.ConfigureAwait(false))

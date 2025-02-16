@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2025
+// Last Modified On : 02-16-2025
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -75,7 +75,7 @@ public static class EncryptionHelper
 	/// </example>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="cipherText"/>, <paramref name="key"/>, or <paramref name="iv"/> is null.</exception>
 	/// <exception cref="InvalidOperationException">Thrown when decryption fails.</exception>
-	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string AesDecrypt(string cipherText, byte[] key, byte[] iv)
 	{
 		cipherText = cipherText.ArgumentNotNull();
@@ -90,14 +90,8 @@ public static class EncryptionHelper
 				// Create a decryptor.
 				using (var decryptor = aes.CreateDecryptor(key, iv))
 				{
-					var cipherTextBytes = new byte[cipherText.Length];
-					if (!Convert.TryFromBase64String(cipherText, cipherTextBytes, out var bytesWritten))
-					{
-						throw new InvalidOperationException(Resources.AESDecryptionFailed);
-					}
-
 					// Create the streams used for decryption.
-					using (var ms = new MemoryStream(cipherTextBytes, 0, bytesWritten))
+					using (var ms = new MemoryStream(Convert.FromBase64String(cipherText)))
 					{
 						// Create crypto stream.
 						using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
@@ -140,7 +134,7 @@ public static class EncryptionHelper
 	[Information(nameof(AesEncrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string AesEncrypt([NotNull] string plainText, [NotNull] byte[] key, [NotNull] byte[] iv)
 	{
-		plainText = plainText.ArgumentNotNullOrEmpty(true);
+		plainText = plainText.ArgumentNotNull();
 		key = key.ArgumentNotNull();
 		iv = iv.ArgumentNotNull();
 
@@ -161,7 +155,10 @@ public static class EncryptionHelper
 						using (var sw = new StreamWriter(cs))
 						{
 							sw.Write(plainText);
+							sw.Flush();
 						}
+
+						cs.FlushFinalBlock();
 					}
 
 					return Convert.ToBase64String(ms.ToArray());
