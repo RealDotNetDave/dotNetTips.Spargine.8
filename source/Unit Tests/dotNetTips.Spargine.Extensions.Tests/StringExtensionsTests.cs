@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 02-16-2025
 // ***********************************************************************
 // <copyright file="StringExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -242,6 +242,66 @@ public class StringExtensionsTests
 	}
 
 	[TestMethod]
+	public void FastCompare_DifferentStrings_ReturnsFalse()
+	{
+		// Arrange
+		var value = "Hello";
+		var valueToCompare = "World";
+		var comparison = StringComparison.Ordinal;
+
+		// Act
+		var result = value.FastCompare(valueToCompare, comparison);
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for different strings.");
+	}
+
+	[TestMethod]
+	public void FastCompare_DifferentStringsIgnoreCase_ReturnsFalse()
+	{
+		// Arrange
+		var value = "Hello";
+		var valueToCompare = "world";
+		var comparison = StringComparison.OrdinalIgnoreCase;
+
+		// Act
+		var result = value.FastCompare(valueToCompare, comparison);
+
+		// Assert
+		Assert.IsFalse(result, "Expected to return false for different strings ignoring case.");
+	}
+
+	[TestMethod]
+	public void FastCompare_SameStrings_ReturnsTrue()
+	{
+		// Arrange
+		var value = "Hello";
+		var valueToCompare = "Hello";
+		var comparison = StringComparison.Ordinal;
+
+		// Act
+		var result = value.FastCompare(valueToCompare, comparison);
+
+		// Assert
+		Assert.IsTrue(result, "Expected to return true for the same strings.");
+	}
+
+	[TestMethod]
+	public void FastCompare_SameStringsIgnoreCase_ReturnsTrue()
+	{
+		// Arrange
+		var value = "Hello";
+		var valueToCompare = "hello";
+		var comparison = StringComparison.OrdinalIgnoreCase;
+
+		// Act
+		var result = value.FastCompare(valueToCompare, comparison);
+
+		// Assert
+		Assert.IsTrue(result, "Expected to return true for the same strings ignoring case.");
+	}
+
+	[TestMethod]
 	public void FromBase64Test()
 	{
 		var testValue = RandomData.GenerateWord(25);
@@ -250,6 +310,7 @@ public class StringExtensionsTests
 
 		Assert.IsTrue(string.Empty.ToBase64().FromBase64().IsEmpty());
 	}
+
 
 	[TestMethod]
 	public async Task GzipStringCompressionAsyncTest()

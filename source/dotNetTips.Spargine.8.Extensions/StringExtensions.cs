@@ -284,7 +284,6 @@ public static class StringExtensions
 		return string.IsNullOrEmpty(value) ? defaultValue : value;
 	}
 
-
 	/// <summary>
 	/// Splits a delimited string into an array of strings, removing empty entries.
 	/// </summary>
@@ -354,6 +353,20 @@ public static class StringExtensions
 		var endIndex = input.IndexOf(end, StringComparison.Ordinal);
 
 		return input[startIndex..endIndex];
+	}
+
+	/// <summary>
+	/// Compares two strings using the specified string comparison option.
+	/// </summary>
+	/// <param name="value">The first string to compare. Must not be null.</param>
+	/// <param name="valueToCompare">The second string to compare. Must not be null.</param>
+	/// <param name="comparison">The string comparison option to use. Must not be null.</param>
+	/// <returns><c>true</c> if the strings are equal according to the specified comparison option; otherwise, <c>false</c>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="value"/>, <paramref name="valueToCompare"/>, or <paramref name="comparison"/> is null.</exception>
+	[Information(nameof(FastCompare), "David McCarter", "2/16/2025", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public static bool FastCompare([NotNull] this string value, [NotNull] string valueToCompare, [NotNull] in StringComparison comparison)
+	{
+		return string.Equals(value, valueToCompare, comparison);
 	}
 
 	/// <summary>
