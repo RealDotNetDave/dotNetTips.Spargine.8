@@ -662,8 +662,9 @@ dotnet_diagnostic.CA1827.severity = suggestion
 # Do not use CountAsync/LongCountAsync when AnyAsync can be used!
 dotnet_diagnostic.CA1828.severity = silent
 
-# Use Length/Count property instead of Enumerable.Count method!
-dotnet_diagnostic.CA1829.severity = error
+# Use Length/Count property instead of Enumerable.Count() method!
+# Article: 
+dotnet_diagnostic.CA1829.severity = warning
 
 # Prefer strongly-typed Append and Insert method overloads on StringBuilder.
 dotnet_diagnostic.CA1830.severity = warning
