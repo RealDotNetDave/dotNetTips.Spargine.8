@@ -32,6 +32,7 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 [BenchmarkCategory(Categories.Strings)]
 public class StringExtensionsBenchmark : Benchmark
 {
+	private const string COMMA = ",";
 
 	public const string MacAddress = "00:1A:C2:7B:00:47";
 
@@ -87,7 +88,7 @@ public class StringExtensionsBenchmark : Benchmark
 	{
 		var testString = this.LongTestString;
 
-		var result = testString.Concat(",", true, this.GetStringArray(10, 15, 15));
+		var result = StringExtensions.Concat(testString, COMMA, true, this.GetStringArray(10, 15, 15));
 
 		this.Consume(result);
 	}
