@@ -528,7 +528,7 @@ public class StringExtensionsBenchmark : Benchmark
 	}
 
 	[Benchmark(Description = nameof(StringExtensions.ToBase64))]
-	[BenchmarkCategory(Categories.Strings)]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void ToBase64()
 	{
 		var result = this.LongTestString.ToBase64();
@@ -537,7 +537,7 @@ public class StringExtensionsBenchmark : Benchmark
 	}
 
 	[Benchmark(Description = nameof(StringExtensions.ToBase64ByteSpan))]
-	[BenchmarkCategory(Categories.Strings)]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void ToBase64ToBase64ByteSpan()
 	{
 		var result = this.LongTestString.ToBase64ByteSpan();

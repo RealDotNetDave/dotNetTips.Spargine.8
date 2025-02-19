@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-22-2024
+// Last Modified On : 02-18-2025
 // ***********************************************************************
 // <copyright file="StringExtensionsCounterBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -34,6 +34,7 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 {
 	private string _base64String;
 	private string _brotilString;
+	private string _crlfCompareString;
 	private string _crlfString;
 	private string _gzipString;
 
@@ -87,6 +88,15 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 	public void EqualsOrBothNullOrEmpty()
 	{
 		var result = this._crlfString.EqualsOrBothNullOrEmpty(this._crlfString);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.FastCompare))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void FastCompare()
+	{
+		var result = this._crlfString.FastCompare(this._crlfCompareString, StringComparison.Ordinal);
 
 		this.Consume(result);
 	}
@@ -149,6 +159,7 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 		}
 
 		this._crlfString = sb.ToString().Trim();
+		this._crlfCompareString = this._crlfString;
 		this._brotilString = this._crlfString.ToBrotliStringAsync().Result;
 		this._gzipString = this._crlfString.ToGZipStringAsync().GetAwaiter().GetResult();
 		this._base64String = this._crlfString.ToBase64();
@@ -212,6 +223,22 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 		{
 			this.Consume(line);
 		}
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.ToBase64))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void ToBase64()
+	{
+		var result = this._crlfString.ToBase64();
+		this.Consume(result.Length);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.ToBase64ByteSpan))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void ToBase64ByteSpan()
+	{
+		var result = this._crlfString.ToBase64ByteSpan();
+		this.Consume(result.Length);
 	}
 
 	//TODO: CAUSES BENCHMARK TESTS TO CRASH
