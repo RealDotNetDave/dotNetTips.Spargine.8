@@ -109,7 +109,7 @@ public static class UlidGenerator
 	/// <param name="count">The number of ULIDs to generate.</param>
 	/// <returns>A read-only collection of generated ULIDs.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than or equal to zero.</exception>
-	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> GenerateMultipleUlids(int count)
 	{
 		var ulids = new List<string>(count.ArgumentInRange(1, defaultValue: 1));
