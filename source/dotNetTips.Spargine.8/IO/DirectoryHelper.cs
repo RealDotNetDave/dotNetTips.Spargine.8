@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-14-2025
+// Last Modified On : 02-20-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -178,6 +178,7 @@ public static class DirectoryHelper
 		{
 			return;
 		}
+
 		retries = retries.ArgumentInRange(1, upper: byte.MaxValue, Resources.RetriesAreLimitedTo255);
 
 		// On some systems, directories/files created are created with attributes
@@ -523,7 +524,10 @@ public static class DirectoryHelper
 
 		foreach (var file in path.GetFiles("*.*", options))
 		{
-			file.Attributes = FileAttributes.Normal;
+			if (file is not null && file.Exists)
+			{
+				file.Attributes = FileAttributes.Normal;
+			}
 		}
 	}
 }

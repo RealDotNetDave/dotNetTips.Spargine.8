@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-14-2025
+// Last Modified On : 02-20-2025
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -278,7 +278,7 @@ public class FileProcessor
 
 		foreach (var listItem in folders)
 		{
-			if (listItem.Exists)
+			if (listItem is not null && listItem.Exists)
 			{
 				try
 				{

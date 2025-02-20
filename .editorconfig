@@ -438,7 +438,7 @@ dotnet_diagnostic.SA1119.severity = suggestion
 dotnet_diagnostic.SA1400.severity = warning
 
 # FieldsMustBePrivate
-dotnet_diagnostic.SA1401.severity = warning
+dotnet_diagnostic.SA1401.severity = error
 
 # FileMayOnlyContainASingleNamespace
 dotnet_diagnostic.SA1403.severity = error
@@ -1113,7 +1113,7 @@ dotnet_diagnostic.SYSLIB1043.severity = error
 dotnet_diagnostic.SYSLIB1044.severity = error
 
 # Use GeneratedRegexAttribute to generate the regular expression implementation at compile time.
-dotnet_diagnostic.SYSLIB1045.severity = suggestion #CHANGE TO WARNING
+dotnet_diagnostic.SYSLIB1045.severity = warning
 
 # Invalid LibraryImportAttribute usage.
 dotnet_diagnostic.SYSLIB1050.severity = error
@@ -1128,7 +1128,7 @@ dotnet_diagnostic.SYSLIB1052.severity = error
 dotnet_diagnostic.SYSLIB1053.severity = error
 
 # Use LibraryImportAttribute instead of DllImportAttribute to generate p/invoke marshalling code at compile time.
-dotnet_diagnostic.SYSLIB1054.severity = suggestion #SHOULD BE ERROR
+dotnet_diagnostic.SYSLIB1054.severity = error 
 
 # Invalid CustomMarshallerAttribute usage.
 dotnet_diagnostic.SYSLIB1055.severity = error
