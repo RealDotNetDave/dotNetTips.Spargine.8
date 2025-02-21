@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-18-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -96,15 +96,7 @@ public static class StringExtensions
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(CalculateByteArraySize), "David McCarter", "11/6/2024", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	public static int CalculateByteArraySize([NotNull] this string input)
-	{
-		if (input.IsNullOrEmpty())
-		{
-			return 0;
-		}
-
-		return input.Length * 3 / 4;
-	}
+	public static int CalculateByteArraySize([NotNull] this string input) => input.IsNullOrEmpty() ? 0 : input.Length * 3 / 4;
 
 	/// <summary>
 	/// Combines an array of strings into a single string using the <see cref="FastStringBuilder.CombineStrings"/> method.
@@ -291,15 +283,7 @@ public static class StringExtensions
 	/// <param name="delimiter">The character delimiter to split the string by. Default is a comma.</param>
 	/// <returns>An array of strings that were delimited by the specified character.</returns>
 	[Information(nameof(DelimitedStringToArray), "David McCarter", "8/13/2020", "8/13/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static string[] DelimitedStringToArray([NotNull] this string input, [ConstantExpected] in char delimiter = ControlChars.Comma)
-	{
-		if (string.IsNullOrEmpty(input))
-		{
-			return [];
-		}
-
-		return input.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
-	}
+	public static string[] DelimitedStringToArray([NotNull] this string input, [ConstantExpected] in char delimiter = ControlChars.Comma) => string.IsNullOrEmpty(input) ? [] : input.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
 
 	/// <summary>
 	/// Determines whether the end of this string instance matches the specified string when compared using the specified comparison option.
@@ -311,15 +295,7 @@ public static class StringExtensions
 	/// This method uses <see cref="string.Equals(string, string, StringComparison)"/> for comparison.
 	/// </remarks>
 	[Information(nameof(EqualsIgnoreCase), "David McCarter", "7/15/2020", "7/29/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool EqualsIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare)
-	{
-		if (input is null || inputToCompare is null)
-		{
-			return false;
-		}
-
-		return string.Equals(input, inputToCompare, StringComparison.OrdinalIgnoreCase);
-	}
+	public static bool EqualsIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare) => input is null || inputToCompare is null ? false : string.Equals(input, inputToCompare, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Determines whether the specified string is equal to the current string, ignoring case, or if both are null or empty.
@@ -364,10 +340,7 @@ public static class StringExtensions
 	/// <returns><c>true</c> if the strings are equal according to the specified comparison option; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="value"/>, <paramref name="valueToCompare"/>, or <paramref name="comparison"/> is null.</exception>
 	[Information(nameof(FastCompare), "David McCarter", "2/16/2025", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
-	public static bool FastCompare([NotNull] this string value, [NotNull] string valueToCompare, [NotNull] in StringComparison comparison)
-	{
-		return string.Equals(value, valueToCompare, comparison);
-	}
+	public static bool FastCompare([NotNull] this string value, [NotNull] string valueToCompare, [NotNull] in StringComparison comparison) => string.Equals(value, valueToCompare, comparison);
 
 	/// <summary>
 	/// Decodes a string from Base64 encoding.
@@ -378,15 +351,7 @@ public static class StringExtensions
 	/// This method decodes the string using <see cref="Convert.FromBase64String(string)"/> and then converts the byte array to a string using <see cref="Encoding.UTF8"/>.
 	/// </remarks>
 	[Information(nameof(FromBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string FromBase64([NotNull] this string input)
-	{
-		if (input.IsNullOrEmpty())
-		{
-			return ControlChars.EmptyString;
-		}
-
-		return _encoding.GetString(Convert.FromBase64String(input));
-	}
+	public static string FromBase64([NotNull] this string input) => input.IsNullOrEmpty() ? ControlChars.EmptyString : _encoding.GetString(Convert.FromBase64String(input));
 
 	/// <summary>
 	/// Decompresses a Brotli compressed string asynchronously.
@@ -1047,16 +1012,9 @@ public static class StringExtensions
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static bool StartsWithOrdinalIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare)
-	{
-		if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(inputToCompare))
-		{
-			return false;
-		}
-
-		return input.StartsWith(inputToCompare, StringComparison.OrdinalIgnoreCase);
-
-	}
+	public static bool StartsWithOrdinalIgnoreCase([NotNull] this string input, [NotNull] string inputToCompare) => string.IsNullOrEmpty(input) || string.IsNullOrEmpty(inputToCompare)
+			? false
+			: input.StartsWith(inputToCompare, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Trims whitespace from the start and end of the substring extracted from the specified range of the input string.
@@ -1092,15 +1050,7 @@ public static class StringExtensions
 	/// <returns>A Base64 encoded string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
 	[Information(nameof(ToBase64), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string ToBase64([NotNull] this string input)
-	{
-		if (input.IsNullOrEmpty())
-		{
-			return ControlChars.EmptyString;
-		}
-
-		return Convert.ToBase64String(_encoding.GetBytes(input));
-	}
+	public static string ToBase64([NotNull] this string input) => input.IsNullOrEmpty() ? ControlChars.EmptyString : Convert.ToBase64String(_encoding.GetBytes(input));
 
 	/// <summary>
 	/// Converts a Base64 encoded string to a byte span.
@@ -1116,14 +1066,7 @@ public static class StringExtensions
 
 		var span = new Span<byte>(new byte[input.Length * 3 / 4]);
 
-		if (Convert.TryFromBase64String(input, span, out var bytesWritten))
-		{
-			return span[..bytesWritten];
-		}
-		else
-		{
-			return [];
-		}
+		return Convert.TryFromBase64String(input, span, out var bytesWritten) ? span[..bytesWritten] : [];
 	}
 
 	/// <summary>
@@ -1247,15 +1190,7 @@ public static class StringExtensions
 	/// <param name="input">The string to convert to title case. This string cannot be null.</param>
 	/// <returns>A string converted to title case using <see cref="CultureInfo.CurrentCulture"/> rules.</returns>
 	[Information(nameof(ToTitleCase), "David McCarter", "10/8/2020", "10/8/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string ToTitleCase([NotNull] this string input)
-	{
-		if (input.IsNullOrEmpty())
-		{
-			return input;
-		}
-
-		return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
-	}
+	public static string ToTitleCase([NotNull] this string input) => input.IsNullOrEmpty() ? input : CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
 
 	/// <summary>
 	/// Trims the specified string, removing all leading and trailing white-space characters. If the input is null, an empty string is returned.
@@ -1263,15 +1198,7 @@ public static class StringExtensions
 	/// <param name="input">The string to trim. If this string is null, an empty string is returned.</param>
 	/// <returns>A trimmed string, or an empty string if the input is null.</returns>
 	[Information(nameof(ToTrimmed), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string ToTrimmed([AllowNull] this string input)
-	{
-		if (input.IsNullOrEmpty())
-		{
-			return input;
-		}
-
-		return input.Trim();
-	}
+	public static string ToTrimmed([AllowNull] this string input) => input.IsNullOrEmpty() ? input : input.Trim();
 
 	/// <summary>
 	/// Compresses the specified string using the ZLib algorithm and returns the compressed string in an asynchronous operation.

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-06-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -127,20 +127,9 @@ public static class ArrayExtensions
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 	[Information(nameof(AreEqual), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool AreEqual<T>([NotNull] this T[] array, [NotNull] in T[] arrayToCheck)
-	{
-		if (array is null || arrayToCheck is null)
-		{
-			return false;
-		}
-
-		if (array.LongLength != arrayToCheck.LongLength)
-		{
-			return false;
-		}
-
-		return array.AsSpan().SequenceEqual(arrayToCheck);
-	}
+	public static bool AreEqual<T>([NotNull] this T[] array, [NotNull] in T[] arrayToCheck) => array is null || arrayToCheck is null
+			? false
+			: array.LongLength != arrayToCheck.LongLength ? false : array.AsSpan().SequenceEqual(arrayToCheck);
 
 	/// <summary>
 	/// Converts a array to <see cref="ReadOnlySpan{T}"/>.
@@ -300,15 +289,7 @@ public static class ArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="data"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(FastHashData), author: "David McCarter", createdOn: "3/11/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static byte[] FastHashData([NotNull] this byte[] data)
-	{
-		if (data.DoesNotHaveItems())
-		{
-			return [];
-		}
-
-		return SHA256.HashData(data);
-	}
+	public static byte[] FastHashData([NotNull] this byte[] data) => data.DoesNotHaveItems() ? [] : SHA256.HashData(data);
 
 	/// <summary>
 	/// Processes each element in the array with the specified actionFunction.
@@ -352,17 +333,7 @@ public static class ArrayExtensions
 	/// <returns><c>true</c> if the specified array has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this T[] array)
-	{
-		if (array is null)
-		{
-			return false;
-		}
-		else
-		{
-			return array.LongLength > 0;
-		}
-	}
+	public static bool HasItems<T>([NotNull] this T[] array) => array is null ? false : array.LongLength > 0;
 	/// <summary>
 	/// Determines whether the specified values has items.
 	/// </summary>
@@ -372,17 +343,8 @@ public static class ArrayExtensions
 	/// <returns><c>true</c> if the specified values has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this T[] array, [NotNull] in Func<T, bool> actionFunction)
-	{
-		if (array is null || actionFunction is null)
-		{
-			return false;
-		}
-		else
-		{
-			return array.Any(actionFunction);
-		}
-	}
+	public static bool HasItems<T>([NotNull] this T[] array, [NotNull] in Func<T, bool> actionFunction) => array is null || actionFunction is null ? false : array.Any(actionFunction);
+
 	/// <summary>
 	/// Determines whether the specified count has items.
 	/// </summary>
@@ -392,17 +354,7 @@ public static class ArrayExtensions
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this T[] array, int count)
-	{
-		if (array is null)
-		{
-			return false;
-		}
-		else
-		{
-			return array.LongLength == count;
-		}
-	}
+	public static bool HasItems<T>([NotNull] this T[] array, int count) => array is null ? false : array.LongLength == count;
 
 	/// <summary>
 	/// Performs the specified actionFunction on each element of the array.

@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="ExceptionExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -121,20 +121,14 @@ public static class ExceptionExtensions
 	/// <returns><c>true</c> if the exception is critical; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsCritical(this Exception exception)
-	{
-		if (exception.IsNull())
-		{
-			return false;
-		}
-
-		return exception is NullReferenceException or
+	public static bool IsCritical(this Exception exception) => exception.IsNull()
+			? false
+			: exception is NullReferenceException or
 		StackOverflowException or
 		OutOfMemoryException or
 		ThreadAbortException or
 		IndexOutOfRangeException or
 		AccessViolationException;
-	}
 
 	/// <summary>
 	/// Determines whether the specified <see cref="Exception"/> is fatal. A fatal exception is one that is severe enough to justify terminating the application, such as <see cref="OutOfMemoryException"/>.
@@ -143,15 +137,7 @@ public static class ExceptionExtensions
 	/// <returns><c>true</c> if the exception is fatal; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsFatal(this Exception exception)
-	{
-		if (exception.IsNull())
-		{
-			return false;
-		}
-
-		return exception is OutOfMemoryException;
-	}
+	public static bool IsFatal(this Exception exception) => exception.IsNull() ? false : exception is OutOfMemoryException;
 
 	/// <summary>
 	/// Determines whether the specified <see cref="Exception"/> is either a <see cref="SecurityException"/> or considered critical.
@@ -161,15 +147,7 @@ public static class ExceptionExtensions
 	/// <returns><c>true</c> if the exception is a <see cref="SecurityException"/> or critical; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsSecurityOrCritical(this Exception exception)
-	{
-		if (exception.IsNull())
-		{
-			return false;
-		}
-
-		return (exception is SecurityException) || exception.IsCritical();
-	}
+	public static bool IsSecurityOrCritical(this Exception exception) => exception.IsNull() ? false : (exception is SecurityException) || exception.IsCritical();
 
 	/// <summary>
 	/// Traverses the exception hierarchy starting from the specified exception to find an exception of type <typeparamref name="T"/>.

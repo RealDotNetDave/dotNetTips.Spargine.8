@@ -394,15 +394,7 @@ public sealed class InMemoryCache
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(GetCacheItem), "David McCarter", "1/16/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public T GetCacheItem<T>([NotNull] string key)
-	{
-		if (this.Cache.TryGetValue(key.ArgumentNotNullOrEmpty(), out T item))
-		{
-			return item;
-		}
-
-		return default!;
-	}
+	public T GetCacheItem<T>([NotNull] string key) => this.Cache.TryGetValue(key.ArgumentNotNullOrEmpty(), out T item) ? item : default!;
 
 	/// <summary>
 	/// Asynchronously gets the cache item associated with the specified key.

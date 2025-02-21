@@ -4,7 +4,7 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-13-2024
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="InternalMethods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -200,7 +200,7 @@ internal static class InternalMethods
 
 		var result = properties.Aggregate(header, (acc, pair) => string.Format(CultureInfo.CurrentCulture, "{0}{1}{2}{3}{4}", acc, sequenceSeparator, pair.Key, keyValueSeparator, pair.Value));
 
-		return result.StartsWith(sequenceSeparator, StringComparison.CurrentCulture) ? result.Remove(0, sequenceSeparator.Length) : result;
+		return result.StartsWith(sequenceSeparator, StringComparison.CurrentCulture) ? result[sequenceSeparator.Length..] : result;
 	}
 
 	/// <summary>

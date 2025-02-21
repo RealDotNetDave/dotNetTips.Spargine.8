@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="WebHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -101,16 +101,11 @@ public static class WebHelper
 		path = path.ArgumentNotNullOrEmpty(true);
 		request = request.ArgumentNotNull();
 
-		if (Uri.TryCreate(path, UriKind.Absolute, out var absoluteUri))
-		{
-			return string.Equals(request.Host.ToUriComponent(), absoluteUri.Host, StringComparison.OrdinalIgnoreCase);
-		}
-		else
-		{
-			return !path.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+		return Uri.TryCreate(path, UriKind.Absolute, out var absoluteUri)
+			? string.Equals(request.Host.ToUriComponent(), absoluteUri.Host, StringComparison.OrdinalIgnoreCase)
+			: !path.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
 				!path.StartsWith("https://", StringComparison.OrdinalIgnoreCase) &&
 				Uri.IsWellFormedUriString(path, UriKind.Relative);
-		}
 	}
 
 }

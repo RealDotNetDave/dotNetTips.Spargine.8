@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-11-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -207,15 +207,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
 	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
 	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int CompareTo([NotNull] Person<TAddress> other)
-	{
-		if (other is null)
-		{
-			return 1;
-		}
-
-		return string.Compare(this._id, other._id, StringComparison.OrdinalIgnoreCase);
-	}
+	public int CompareTo([NotNull] Person<TAddress> other) => other is null ? 1 : string.Compare(this._id, other._id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Compares this instance with a specified <see cref="IPerson{TAddress}"/> object and indicates whether this instance
@@ -228,15 +220,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
 	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
 	[Information(nameof(CalculateAge), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public int CompareTo([DisallowNull] IPerson<TAddress> other)
-	{
-		if (other is null)
-		{
-			return 1;
-		}
-
-		return string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
-	}
+	public int CompareTo([DisallowNull] IPerson<TAddress> other) => other is null ? 1 : string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Determines whether the specified object is equal to the current instance.

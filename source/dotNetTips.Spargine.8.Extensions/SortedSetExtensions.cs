@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-25-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="SortedSetExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -39,17 +39,7 @@ public static class SortedSetExtensions
 	/// <param name="collection">The <see cref="SortedSet{T}"/> to check.</param>
 	/// <returns><c>true</c> if the <paramref name="collection"/> is null or has no items; otherwise, <c>false</c>.</returns>
 	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool DoesNotHaveItems<T>([NotNull] this SortedSet<T> collection)
-	{
-		if (collection is null)
-		{
-			return true;
-		}
-		else
-		{
-			return collection.Count <= 0;
-		}
-	}
+	public static bool DoesNotHaveItems<T>([NotNull] this SortedSet<T> collection) => collection is null ? true : collection.Count <= 0;
 
 	/// <summary>
 	/// Determines whether the specified <see cref="SortedSet{T}"/> has items.
@@ -59,17 +49,7 @@ public static class SortedSetExtensions
 	/// <returns><c>true</c> if the specified collection has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this SortedSet<T> collection)
-	{
-		if (collection is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Count > 0;
-		}
-	}
+	public static bool HasItems<T>([NotNull] this SortedSet<T> collection) => collection is null ? false : collection.Count > 0;
 
 	/// <summary>
 	/// Determines whether the specified <see cref="SortedSet{T}"/> has items that match the condition defined by the specified predicate.
@@ -80,17 +60,7 @@ public static class SortedSetExtensions
 	/// <returns><c>true</c> if any elements in the specified collection match the condition defined by the specified predicate; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this SortedSet<T> collection, [NotNull] Func<T, bool> actionPredicate)
-	{
-		if (collection is null || actionPredicate is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Any(actionPredicate);
-		}
-	}
+	public static bool HasItems<T>([NotNull] this SortedSet<T> collection, [NotNull] Func<T, bool> actionPredicate) => collection is null || actionPredicate is null ? false : collection.Any(actionPredicate);
 
 	/// <summary>
 	/// Converts the specified <see cref="SortedSet{T}"/> to an <see cref="ImmutableSortedSet{T}"/>.

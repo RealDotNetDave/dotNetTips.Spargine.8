@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -382,7 +382,7 @@ public static class ObjectExtensions
 
 		var result = properties.Aggregate(header, (acc, pair) => string.Format(CultureInfo.CurrentCulture, "{0}{1}{2}{3}{4}", acc, sequenceSeparator, pair.Key, keyValueSeparator, pair.Value));
 
-		return result.StartsWith(sequenceSeparator, StringComparison.CurrentCulture) ? result.Remove(0, sequenceSeparator.Length) : result;
+		return result.StartsWith(sequenceSeparator, StringComparison.CurrentCulture) ? result[sequenceSeparator.Length..] : result;
 	}
 
 	/// <summary>

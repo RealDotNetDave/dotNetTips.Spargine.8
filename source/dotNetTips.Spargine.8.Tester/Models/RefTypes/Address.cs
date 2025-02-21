@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="Address.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -188,15 +188,7 @@ public sealed class Address : IAddress
 	/// <param name="left">The first instance of <see cref="Address"/>.</param>
 	/// <param name="right">The second instance of <see cref="Address"/>.</param>
 	/// <returns><c>true</c> if both instances are equal; otherwise, <c>false</c>.</returns>
-	public static bool operator ==(Address left, Address right)
-	{
-		if (left is null)
-		{
-			return right is null;
-		}
-
-		return left.Equals(right);
-	}
+	public static bool operator ==(Address left, Address right) => left is null ? right is null : left.Equals(right);
 
 	/// <summary>
 	/// Implements the greater than operator. Determines whether the left instance follows the right instance in the sort order.
@@ -222,15 +214,7 @@ public sealed class Address : IAddress
 	/// <param name="other">An object to compare with this instance.</param>
 	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
 	/// <list type="table"><listheader><term>Value</term><description>Meaning</description></listheader><item><term>Less than zero</term><description>This instance precedes <paramref name="other"/> in the sort order.</description></item><item><term>Zero</term><description>This instance occurs in the same position in the sort order as <paramref name="other"/>.</description></item><item><term>Greater than zero</term><description>This instance follows <paramref name="other"/> in the sort order.</description></item></list></returns>
-	int IComparable<IAddress>.CompareTo(IAddress other)
-	{
-		if (other is null)
-		{
-			return 1;
-		}
-
-		return string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
-	}
+	int IComparable<IAddress>.CompareTo(IAddress other) => other is null ? 1 : string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Compares this instance with a specified <see cref="Address"/> object and indicates whether this instance precedes, follows, or appears in the same position in the sort order as the specified <see cref="Address"/>.
@@ -253,15 +237,7 @@ public sealed class Address : IAddress
 	/// </list>
 	/// </returns>
 	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int CompareTo(Address address)
-	{
-		if (address is null)
-		{
-			return 1;
-		}
-
-		return string.Compare(this.Id, address.Id, StringComparison.OrdinalIgnoreCase);
-	}
+	public int CompareTo(Address address) => address is null ? 1 : string.Compare(this.Id, address.Id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Determines whether the specified <see cref="IAddress"/> is equal to the current <see cref="Address"/>.

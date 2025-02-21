@@ -4,7 +4,7 @@
 // Created          : 01-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-25-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="ImmutableArrayExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -38,17 +38,7 @@ public static class ImmutableArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.NoInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>(this ImmutableArray<T> collection)
-	{
-		if (collection.ArgumentNotNull().IsEmpty)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Length > 0;
-		}
-	}
+	public static bool HasItems<T>(this ImmutableArray<T> collection) => collection.ArgumentNotNull().IsEmpty ? false : collection.Length > 0;
 
 	/// <summary>
 	/// Determines whether the <see cref="ImmutableArray{T}"/> contains any elements that match the condition defined by the specified predicate.
@@ -60,17 +50,7 @@ public static class ImmutableArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> or <paramref name="actionPredicate"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>(this ImmutableArray<T> list, Func<T, bool> actionPredicate)
-	{
-		if (list.ArgumentNotNull().IsEmpty || actionPredicate is null)
-		{
-			return false;
-		}
-		else
-		{
-			return list.Any(actionPredicate);
-		}
-	}
+	public static bool HasItems<T>(this ImmutableArray<T> list, Func<T, bool> actionPredicate) => list.ArgumentNotNull().IsEmpty || actionPredicate is null ? false : list.Any(actionPredicate);
 
 	/// <summary>
 	/// Determines whether the <see cref="ImmutableArray{T}"/> has exactly the specified number of items.
@@ -82,17 +62,7 @@ public static class ImmutableArrayExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="list"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>(this ImmutableArray<T> list, int count)
-	{
-		if (list.ArgumentNotNull().IsEmpty)
-		{
-			return false;
-		}
-		else
-		{
-			return list.Length == count;
-		}
-	}
+	public static bool HasItems<T>(this ImmutableArray<T> list, int count) => list.ArgumentNotNull().IsEmpty ? false : list.Length == count;
 
 	/// <summary>
 	/// Shuffles the elements of the specified <see cref="ImmutableArray{T}"/>.

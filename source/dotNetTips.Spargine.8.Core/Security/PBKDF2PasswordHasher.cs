@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-16-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="PBKDF2PasswordHasher.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -41,12 +41,7 @@ public static class PBKDF2PasswordHasher
 
 		// NoOptimization because we want this method to be exactly as non-short-circuiting as written.
 		// NoInlining because the NoOptimization would get lost if the method got inlined.
-		if (left.Length != right.Length)
-		{
-			return false;
-		}
-
-		return CryptographicOperations.FixedTimeEquals(left, right);
+		return left.Length != right.Length ? false : CryptographicOperations.FixedTimeEquals(left, right);
 	}
 
 	/// <summary>

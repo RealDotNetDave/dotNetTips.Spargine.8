@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -209,15 +209,7 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <returns>A value that indicates the relative order of the objects being compared. The return value has these meanings:
 	/// <list type="table"><listheader><term>Value</term><description>Meaning</description></listheader><item><term>Less than zero</term><description>This instance precedes <paramref name="other"/> in the sort order.</description></item><item><term>Zero</term><description>This instance occurs in the same position in the sort order as <paramref name="other"/>.</description></item><item><term>Greater than zero</term><description>This instance follows <paramref name="other"/> in the sort order.</description></item></list></returns>
 	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	readonly int IComparable<IAddress>.CompareTo(IAddress other)
-	{
-		if (other is null)
-		{
-			return 1;
-		}
-
-		return string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
-	}
+	readonly int IComparable<IAddress>.CompareTo(IAddress other) => other is null ? 1 : string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Compares current object.

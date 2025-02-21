@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-17-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="ObservableList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -261,15 +261,7 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// <param name="item">The element to locate in the <see cref="ObservableList{T}"/>.</param>
 	/// <returns><see langword="true"/> if the <see cref="ObservableList{T}"/> contains the specified element; otherwise, <see langword="false"/>.</returns>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public virtual bool Contains([NotNullWhen(true)] T item)
-	{
-		if (item is null)
-		{
-			return false;
-		}
-
-		return this._set.Contains(item);
-	}
+	public virtual bool Contains([NotNullWhen(true)] T item) => item is null ? false : this._set.Contains(item);
 
 	/// <summary>
 	/// Copies the elements of the <see cref="ObservableList{T}"/> to an array.

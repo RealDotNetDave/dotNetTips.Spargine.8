@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 02-11-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -201,15 +201,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
 	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
 	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public readonly int CompareTo([NotNull] IPerson<TAddress> other)
-	{
-		if (other is null)
-		{
-			return 1;
-		}
-
-		return string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
-	}
+	public readonly int CompareTo([NotNull] IPerson<TAddress> other) => other is null ? 1 : string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Indicates whether the current object is equal to another object of the same type.

@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-12-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="App.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -251,15 +251,9 @@ public static class App
 	/// <returns><c>true</c> if the current user is an administrator; otherwise, <c>false</c>.</returns>
 	/// <exception cref="PlatformNotSupportedException">Thrown when the operating system is not Windows, as administrator status can only be checked on Windows.</exception>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsUserAdministrator()
-	{
-		if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-		{
-			throw new PlatformNotSupportedException();
-		}
-
-		return new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
-	}
+	public static bool IsUserAdministrator() => !RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+			? throw new PlatformNotSupportedException()
+			: new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
 
 	/// <summary>
 	/// Terminates the current process instantly, useful in critical failure scenarios.

@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -92,15 +92,7 @@ public class Enumeration : IComparable
 	/// <param name="left">The first <see cref="Enumeration"/> to compare.</param>
 	/// <param name="right">The second <see cref="Enumeration"/> to compare.</param>
 	/// <returns><c>true</c> if the instances are equal; otherwise, <c>false</c>.</returns>
-	public static bool operator ==(Enumeration left, Enumeration right)
-	{
-		if (left is null)
-		{
-			return right is null;
-		}
-
-		return left.Equals(right);
-	}
+	public static bool operator ==(Enumeration left, Enumeration right) => left is null ? right is null : left.Equals(right);
 
 	/// <summary>
 	/// Determines whether the first specified instance of <see cref="Enumeration"/> is greater than the second specified instance.
@@ -169,12 +161,9 @@ public class Enumeration : IComparable
 	{
 		ArgumentNullException.ThrowIfNull(obj);
 
-		if (obj is not Enumeration other)
-		{
-			throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ErrorObjectMustBeOfTypeFormat, nameof(Enumeration)), nameof(obj));
-		}
-
-		return this.Value.CompareTo(other.Value);
+		return obj is not Enumeration other
+			? throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ErrorObjectMustBeOfTypeFormat, nameof(Enumeration)), nameof(obj))
+			: this.Value.CompareTo(other.Value);
 	}
 
 	/// <summary>

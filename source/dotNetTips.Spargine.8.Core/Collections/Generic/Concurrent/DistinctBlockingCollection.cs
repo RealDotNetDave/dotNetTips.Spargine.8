@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="DistinctBlockingCollection.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -146,15 +146,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// </summary>
 	/// <param name="item">The item to be added to the collection. The value cannot be null.</param>
 	/// <returns><see langword="true" /> if <paramref name="item" /> could be added; otherwise, <see langword="false" />. If the item is a duplicate, and the underlying collection does not accept duplicate items, then <see langword="false" /> is returned.</returns>
-	public new bool TryAdd(T item)
-	{
-		if (item is null)
-		{
-			return false;
-		}
-
-		return base.TryAdd(item);
-	}
+	public new bool TryAdd(T item) => item is null ? false : base.TryAdd(item);
 
 	/// <summary>
 	/// Tries to add the specified item to the <see cref="DistinctBlockingCollection{T}" />
@@ -163,15 +155,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// <param name="item">The item to be added to the collection. The value cannot be null.</param>
 	/// <param name="millisecondsTimeout">The number of milliseconds to wait, or <see cref="Timeout.Infinite"/> (-1) to wait indefinitely.</param>
 	/// <returns><see langword="true" /> if the <paramref name="item" /> could be added to the collection within the specified time; otherwise, <see langword="false" />. If the item is a duplicate, and the underlying collection does not accept duplicate items, then <see langword="false" /> is returned.</returns>
-	public new bool TryAdd([AllowNull] T item, int millisecondsTimeout)
-	{
-		if (item is null)
-		{
-			return false;
-		}
-
-		return this.IsNotInCollection(item) && base.TryAdd(item, millisecondsTimeout);
-	}
+	public new bool TryAdd([AllowNull] T item, int millisecondsTimeout) => item is null ? false : this.IsNotInCollection(item) && base.TryAdd(item, millisecondsTimeout);
 
 	/// <summary>
 	/// Tries to add the specified item to the <see cref="DistinctBlockingCollection{T}" />.
@@ -179,15 +163,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// <param name="item">The item to be added to the collection. The value cannot be null.</param>
 	/// <param name="timeout">A <see cref="TimeSpan" /> that represents the number of milliseconds to wait, or a <see cref="TimeSpan" /> that represents -1 milliseconds to wait indefinitely.</param>
 	/// <returns><see langword="true" /> if the <paramref name="item" /> could be added to the collection within the specified time span; otherwise, <see langword="false" />. If the item is a duplicate, and the underlying collection does not accept duplicate items, then <see langword="false" /> is returned.</returns>
-	public new bool TryAdd(T item, TimeSpan timeout)
-	{
-		if (item is null)
-		{
-			return false;
-		}
-
-		return this.IsNotInCollection(item) && base.TryAdd(item, timeout);
-	}
+	public new bool TryAdd(T item, TimeSpan timeout) => item is null ? false : this.IsNotInCollection(item) && base.TryAdd(item, timeout);
 
 	/// <summary>
 	/// Tries to add the specified item to the <see cref="DistinctBlockingCollection{T}" />
@@ -199,15 +175,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// <param name="cancellationToken">A cancellation token to observe while waiting for the operation to complete.</param>
 	/// <returns>true if the <paramref name="item" /> could be added to the collection within the specified time; otherwise,
 	/// false. If the item is a duplicate, and the underlying collection does not accept duplicate items, then false is returned.</returns>
-	public new bool TryAdd(T item, int millisecondsTimeout, CancellationToken cancellationToken = default)
-	{
-		if (item is null)
-		{
-			return false;
-		}
-
-		return this.IsNotInCollection(item) && base.TryAdd(item, millisecondsTimeout, cancellationToken);
-	}
+	public new bool TryAdd(T item, int millisecondsTimeout, CancellationToken cancellationToken = default) => item is null ? false : this.IsNotInCollection(item) && base.TryAdd(item, millisecondsTimeout, cancellationToken);
 
 	/// <summary>
 	/// Gets a value indicating whether the collection is read-only.

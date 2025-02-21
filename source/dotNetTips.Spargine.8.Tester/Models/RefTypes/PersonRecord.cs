@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -182,18 +182,10 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>. 
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
 	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int CompareTo([NotNull] PersonRecord other)
-	{
-		if (other is null)
-		{
-			return 1;
-		}
-
-		return string.Compare(this._id, other._id, StringComparison.OrdinalIgnoreCase);
-	}
+	public int CompareTo([NotNull] PersonRecord other) => other is null ? 1 : string.Compare(this._id, other._id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
-	/// Converts a erson{ValueTypes.Address} instance to a <see cref="PersonRecord"/>.
+	/// Converts a Person{ValueTypes.Address} instance to a <see cref="PersonRecord"/>.
 	/// </summary>
 	/// <param name="person">The ValueTypes.Person{ValueTypes.Address} to convert.</param>
 	/// <returns>A <see cref="PersonRecord"/> that represents the converted person.</returns>

@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -22,6 +22,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
+using DotNetTips.Spargine.Core.Properties;
 using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -456,15 +457,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <returns>The size of the byte array needed to store the Base64 encoded string, or 0 if the input is null or empty.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static int CalculateByteArraySize([NotNull] this string input)
-	{
-		if (string.IsNullOrEmpty(input))
-		{
-			return 0;
-		}
-
-		return input.Length * 3 / 4;
-	}
+	public static int CalculateByteArraySize([NotNull] this string input) => string.IsNullOrEmpty(input) ? 0 : input.Length * 3 / 4;
 
 	/// <summary>
 	/// Calculates the total character count from a string array.
@@ -508,9 +501,9 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 		}
 
 		var buffer = new byte[base64String.Length];
-		if (!Convert.TryFromBase64String(base64String, buffer, out int bytesWritten))
+		if (!Convert.TryFromBase64String(base64String, buffer, out var bytesWritten))
 		{
-			throw new FormatException("The input string is not a valid Base64 string.");
+			throw new FormatException(Resources.TheInputStringIsNotAValidBase64String);
 		}
 
 		var result = new byte[bytesWritten];

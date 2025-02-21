@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -30,6 +30,31 @@ namespace DotNetTips.Spargine.Extensions;
 [Information(Documentation = "https://bit.ly/SpargineDateTimeExtensions", Status = Status.Available)]
 public static class DateTimeExtensions
 {
+
+	private static string FormatFriendlyDateString(DateTime input)
+	{
+		string formattedDate;
+
+		if (input.Date == DateTime.Today)
+		{
+			formattedDate = nameof(DateTime.Today);
+		}
+		else
+		{
+			var condition = input.Date > DateTime.Today.AddDays(-6)
+				? input.ToString("dddd", CultureInfo.CurrentCulture)
+				: input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern,
+												  CultureInfo.CurrentCulture);
+
+			formattedDate = input.Date == DateTime.Today.AddDays(-1)
+				? Resources.Yesterday
+				: condition;
+		}
+
+		formattedDate += $" @ {input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern, CultureInfo.CurrentCulture).ToLower(CultureInfo.CurrentCulture)}";
+
+		return formattedDate;
+	}
 
 	/// <summary>
 	/// Converts a <see cref="long" /> value representing the time in milliseconds since
@@ -289,38 +314,6 @@ public static class DateTimeExtensions
 	[Information(nameof(ToFriendlyDateString), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string ToFriendlyDateString(this in DateTime input) => FormatFriendlyDateString(input);
 
-	private static string FormatFriendlyDateString(DateTime input)
-	{
-		string formattedDate;
-
-		if (input.Date == DateTime.Today)
-		{
-			formattedDate = nameof(DateTime.Today);
-		}
-		else
-		{
-			string condition;
-
-			if (input.Date > DateTime.Today.AddDays(-6))
-			{
-				condition = input.ToString("dddd", CultureInfo.CurrentCulture);
-			}
-			else
-			{
-				condition = input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern,
-												  CultureInfo.CurrentCulture);
-			}
-
-			formattedDate = input.Date == DateTime.Today.AddDays(-1)
-				? Resources.Yesterday
-				: condition;
-		}
-
-		formattedDate += $" @ {input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern, CultureInfo.CurrentCulture).ToLower(CultureInfo.CurrentCulture)}";
-
-		return formattedDate;
-	}
-
 	/// <summary>
 	/// Converts to friendly date string.
 	/// </summary>
@@ -340,17 +333,10 @@ public static class DateTimeExtensions
 		}
 		else
 		{
-			string condition;
-
-			if (input.Date > DateTime.Today.AddDays(-6))
-			{
-				condition = input.ToString("dddd", CultureInfo.CurrentCulture);
-			}
-			else
-			{
-				condition = input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern,
+			var condition = input.Date > DateTime.Today.AddDays(-6)
+				? input.ToString("dddd", CultureInfo.CurrentCulture)
+				: input.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern,
 												  CultureInfo.CurrentCulture);
-			}
 
 			formattedDate = input.Date == DateTime.Today.AddDays(-1)
 				? Resources.Yesterday

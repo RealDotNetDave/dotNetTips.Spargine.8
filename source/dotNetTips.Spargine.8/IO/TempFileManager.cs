@@ -14,6 +14,7 @@
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Security;
 using DotNetTips.Spargine.Extensions;
@@ -142,6 +143,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// <summary>
 	/// Deletes all temporary files.
 	/// </summary>
+	[SupportedOSPlatform("windows")]
 	[Information("Deletes all temporary files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void DeleteAllFiles()
 	{

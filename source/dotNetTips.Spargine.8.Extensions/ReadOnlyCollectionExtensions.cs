@@ -4,7 +4,7 @@
 // Created          : 04-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-25-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="ReadOnlyCollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -35,17 +35,7 @@ public static class ReadOnlyCollectionExtensions
 	/// <param name="collection">The list.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	[Information(nameof(DoesNotHaveItems), author: "David McCarter", createdOn: "6/17/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool DoesNotHaveItems<T>([NotNull] this ReadOnlyCollection<T> collection)
-	{
-		if (collection is null)
-		{
-			return true;
-		}
-		else
-		{
-			return collection.Count <= 0;
-		}
-	}
+	public static bool DoesNotHaveItems<T>([NotNull] this ReadOnlyCollection<T> collection) => collection is null ? true : collection.Count <= 0;
 
 	/// <summary>
 	/// Generates a hash code for the <see cref="ReadOnlyCollection{T}"/>.
@@ -86,16 +76,6 @@ public static class ReadOnlyCollectionExtensions
 	/// <returns>bool.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([AllowNull] this ReadOnlyCollection<T> collection, [NotNull] Func<T, bool> actionPredicate)
-	{
-		if (collection is null || actionPredicate is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Any(actionPredicate);
-		}
-	}
+	public static bool HasItems<T>([AllowNull] this ReadOnlyCollection<T> collection, [NotNull] Func<T, bool> actionPredicate) => collection is null || actionPredicate is null ? false : collection.Any(actionPredicate);
 
 }

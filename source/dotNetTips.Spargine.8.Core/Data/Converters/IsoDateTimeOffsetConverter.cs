@@ -35,6 +35,12 @@ internal sealed class IsoDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
 	private const string DefaultDateTimeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.FFFFFFFK";
 
 	/// <summary>
+	/// Provides a singleton instance of the <see cref="IsoDateTimeOffsetConverter"/> for reuse across the application.
+	/// This ensures that only one instance of the converter is created and used, which can improve performance and memory usage.
+	/// </summary>
+	public static readonly IsoDateTimeOffsetConverter Singleton = new();
+
+	/// <summary>
 	/// The culture
 	/// </summary>
 	private CultureInfo? _culture;
@@ -67,14 +73,9 @@ internal sealed class IsoDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
 		{
 			try
 			{
-				if (!string.IsNullOrEmpty(this._dateTimeFormat))
-				{
-					return DateTimeOffset.ParseExact(dateText, this._dateTimeFormat, this.Culture, this.DateTimeStyles);
-				}
-				else
-				{
-					return DateTimeOffset.Parse(dateText, this.Culture, this.DateTimeStyles);
-				}
+				return !string.IsNullOrEmpty(this._dateTimeFormat)
+					? DateTimeOffset.ParseExact(dateText, this._dateTimeFormat, this.Culture, this.DateTimeStyles)
+					: DateTimeOffset.Parse(dateText, this.Culture, this.DateTimeStyles);
 			}
 			catch (FormatException e)
 			{
@@ -138,11 +139,5 @@ internal sealed class IsoDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
 	/// </summary>
 	/// <value>The <see cref="DateTimeStyles"/> options that define the formatting options. The default is <see cref="DateTimeStyles.RoundtripKind"/>.</value>
 	public DateTimeStyles DateTimeStyles { get; set; } = DateTimeStyles.RoundtripKind;
-
-	/// <summary>
-	/// Provides a singleton instance of the <see cref="IsoDateTimeOffsetConverter"/> for reuse across the application.
-	/// This ensures that only one instance of the converter is created and used, which can improve performance and memory usage.
-	/// </summary>
-	public static readonly IsoDateTimeOffsetConverter Singleton = new();
 
 }

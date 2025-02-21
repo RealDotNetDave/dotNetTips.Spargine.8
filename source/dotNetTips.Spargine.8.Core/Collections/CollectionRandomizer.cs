@@ -4,7 +4,7 @@
 // Created          : 11-06-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 12-30-2024
+// Last Modified On : 02-01-2025
 // ***********************************************************************
 // <copyright file="CollectionRandomizer.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -39,7 +39,7 @@ public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection,
 	/// <summary>
 	/// The collection to be randomized. This collection is converted to an <see cref="ImmutableArray{T}"/> to ensure thread-safety and immutability.
 	/// </summary>
-	private ImmutableArray<T> _collection = collection.ToImmutableArray();
+	private ImmutableArray<T> _collection = [.. collection];
 
 	/// <summary>
 	/// The enumerator for the randomized collection. This enumerator is used internally to iterate through the <see cref="ImmutableArray{T}"/> of randomized items.
@@ -81,7 +81,7 @@ public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection,
 		}
 
 		//Shuffle Collection
-		this._collection = this._collection.Shuffle().ToImmutableArray();
+		this._collection = [.. this._collection.Shuffle()];
 
 		//Setup enumerator
 		this._collectionEnumerator = this._collection.GetEnumerator();

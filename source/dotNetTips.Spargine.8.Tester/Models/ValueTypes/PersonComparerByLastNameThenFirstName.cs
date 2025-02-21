@@ -4,7 +4,7 @@
 // Created          : 01-14-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-25-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="PersonComparerByLastNameThenFirstName.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -47,11 +47,8 @@ public sealed class PersonComparerByLastNameThenFirstName : IComparer<Person<Add
 	{
 		var lastNameComparison = string.Compare(x.LastName ?? string.Empty, y.LastName ?? string.Empty, StringComparison.Ordinal);
 
-		if (lastNameComparison != 0)
-		{
-			return lastNameComparison;
-		}
-
-		return string.Compare(x.FirstName ?? string.Empty, y.FirstName ?? string.Empty, StringComparison.Ordinal);
+		return lastNameComparison != 0
+			? lastNameComparison
+			: string.Compare(x.FirstName ?? string.Empty, y.FirstName ?? string.Empty, StringComparison.Ordinal);
 	}
 }

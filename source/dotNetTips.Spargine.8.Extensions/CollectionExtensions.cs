@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-24-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -238,17 +238,7 @@ public static class CollectionExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool HasItems([NotNull] this ICollection collection)
-	{
-		if (collection is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Count > 0;
-		}
-	}
+	public static bool HasItems([NotNull] this ICollection collection) => collection is null ? false : collection.Count > 0;
 
 	/// <summary>
 	/// Determines whether the specified <see cref="ICollection"/> has exactly the specified number of items.
@@ -259,17 +249,7 @@ public static class CollectionExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool HasItems([NotNull] this ICollection collection, in int count)
-	{
-		if (collection is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Count == count;
-		}
-	}
+	public static bool HasItems([NotNull] this ICollection collection, in int count) => collection is null ? false : collection.Count == count;
 
 	/// <summary>
 	/// Converts a <see cref="Collection{T}" /> to a <see cref="FrozenSet{T}" />.
@@ -312,7 +292,7 @@ public static class CollectionExtensions
 	}
 
 	/// <summary>
-	/// Upserts (updates or inserts) the specified item into the <see cref="ICollection{T}"/>.
+	/// Upsert (updates or inserts) the specified item into the <see cref="ICollection{T}"/>.
 	/// If an item with the same ID already exists in the collection, it is replaced with the new item.
 	/// Otherwise, the new item is added to the collection.
 	/// </summary>

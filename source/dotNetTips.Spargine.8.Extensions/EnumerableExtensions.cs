@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-12-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -188,20 +188,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(ContainsAny), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool ContainsAny<T>(this IEnumerable<T> collection, params T[] items)
-	{
-		if (collection is null || items is null)
-		{
-			return false;
-		}
-
-		if (items.DoesNotHaveItems())
-		{
-			return false;
-		}
-
-		return collection.FastAny(p => items.Contains(p));
-	}
+	public static bool ContainsAny<T>(this IEnumerable<T> collection, params T[] items) => collection is null || items is null ? false : items.DoesNotHaveItems() ? false : collection.FastAny(p => items.Contains(p));
 
 	/// <summary>
 	/// Counts the number of elements in the specified collection.
@@ -276,7 +263,7 @@ public static class EnumerableExtensions
 		//RECOMENDATION FROM COPILOT SLOWER.
 		IList<T> list = ensureUnique ? new HashSet<T>(items).ToList() : [.. items];
 
-		return new Collection<T>(list);
+		return [.. list];
 	}
 
 	/// <summary>
@@ -627,17 +614,7 @@ public static class EnumerableExtensions
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static bool HasItems(this IEnumerable collection)
-	{
-		if (collection is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Count() > 0;
-		}
-	}
+	public static bool HasItems(this IEnumerable collection) => collection is null ? false : collection.Count() > 0;
 
 	/// <summary>
 	/// Determines whether the <see cref="IEnumerable"/> has a specified count.
@@ -648,17 +625,7 @@ public static class EnumerableExtensions
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static bool HasItems(this IEnumerable collection, in int count)
-	{
-		if (collection is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Count() == count;
-		}
-	}
+	public static bool HasItems(this IEnumerable collection, in int count) => collection is null ? false : collection.Count() == count;
 
 	/// <summary>
 	/// Finds the index of the first occurrence of an item in the collection.
@@ -777,12 +744,9 @@ public static class EnumerableExtensions
 		separator = separator.ArgumentNotNull();
 
 		//RECOMENDATION FROM COPILOT IS SLOWER
-		if (collection.CheckItemsExists() is false)
-		{
-			return string.Empty;
-		}
-
-		return string.Join(separator.ArgumentNotNullOrEmpty(defaultValue: ControlChars.DefaultSeparator), collection);
+		return collection.CheckItemsExists() is false
+			? string.Empty
+			: string.Join(separator.ArgumentNotNullOrEmpty(defaultValue: ControlChars.DefaultSeparator), collection);
 	}
 
 	/// <summary>
@@ -954,12 +918,7 @@ public static class EnumerableExtensions
 	{
 		collection = collection.ArgumentNotNull();
 
-		if (collection.HasItems())
-		{
-			return collection.Shuffle(1).FirstOrDefault();
-		}
-
-		return default;
+		return collection.HasItems() ? collection.Shuffle(1).FirstOrDefault() : default;
 	}
 
 	/// <summary>
@@ -1189,7 +1148,7 @@ public static class EnumerableExtensions
 		collection = collection.ArgumentNotNull();
 
 		//RECOMMENDATION FROM COPILOT IS SLOWER.
-		return new BlockingCollection<T>(new ConcurrentQueue<T>(collection));
+		return [.. new ConcurrentQueue<T>(collection)];
 	}
 
 	/// <summary>
@@ -1287,15 +1246,7 @@ public static class EnumerableExtensions
 	/// <param name="collection">The values.</param>
 	/// <returns>System.Collections.Immutable.ImmutableArray&lt;T&gt;.</returns>
 	[Information(nameof(ToImmutable), "David McCarter", "6/7/2024", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this IEnumerable<T> collection)
-	{
-		if (collection.DoesNotHaveItems())
-		{
-			return [];
-		}
-
-		return [.. collection];
-	}
+	public static ImmutableArray<T> ToImmutableArray<T>([NotNull] this IEnumerable<T> collection) => collection.DoesNotHaveItems() ? [] : [.. collection];
 
 	/// <summary>
 	/// Converts an <see cref="IEnumerable{T}"/> to a <see cref="LinkedList{T}"/>.

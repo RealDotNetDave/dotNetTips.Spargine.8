@@ -4,7 +4,7 @@
 // Created          : 01-16-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-06-2024
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="TestClass.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -33,16 +33,9 @@ public abstract class TestClass
 	/// <param name="methodName">Name of the method.</param>
 	protected static void PrintResult<T>(T input, string methodName)
 	{
-		string message;
-
-		if (input is string || input.GetType().IsValueType)
-		{
-			message = $"{methodName}: {input:C}";
-		}
-		else
-		{
-			message = $"{methodName}: {input.PropertiesToString(includeMemberName: false)}";
-		}
+		var message = input is string || input.GetType().IsValueType
+			? $"{methodName}: {input:C}"
+			: $"{methodName}: {input.PropertiesToString(includeMemberName: false)}";
 
 		Debug.WriteLine(message);
 	}

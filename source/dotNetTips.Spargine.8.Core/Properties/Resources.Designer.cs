@@ -538,6 +538,15 @@ namespace DotNetTips.Spargine.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The input string is not a valid Base64 string..
+        /// </summary>
+        internal static string TheInputStringIsNotAValidBase64String {
+            get {
+                return ResourceManager.GetString("TheInputStringIsNotAValidBase64String", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The JSON value is null or not a valid TimeOnly representation..
         /// </summary>
         internal static string TheJSONValueIsNullOrNotAValidTimeOnlyRepre {

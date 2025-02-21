@@ -4,7 +4,7 @@
 // Created          : 06-04-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-10-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="Coordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -117,15 +117,7 @@ public class Coordinate : ICoordinate, IEquatable<Coordinate>, IComparable, ICom
 	/// Greater than zero: This instance follows <paramref name="obj"/> in the sort order.</returns>
 	/// <exception cref="ArgumentException">Thrown when <paramref name="obj"/> is not of type <see cref="Coordinate"/>.</exception>
 	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public int CompareTo(object obj)
-	{
-		if (obj is null)
-		{
-			return 1;
-		}
-
-		return this.CompareTo((Coordinate)obj);
-	}
+	public int CompareTo(object obj) => obj is null ? 1 : this.CompareTo((Coordinate)obj);
 
 	/// <summary>
 	/// Compares this instance with another instance of <see cref="Coordinate"/> and returns an integer indicating whether this instance precedes, follows, or is in the same position in the sort order as the other instance.
@@ -153,12 +145,8 @@ public class Coordinate : ICoordinate, IEquatable<Coordinate>, IComparable, ICom
 		}
 
 		result = this.Z.CompareTo(other.Z);
-		if (result != 0)
-		{
-			return result;
-		}
 
-		return result;
+		return result != 0 ? result : 0;
 	}
 
 	/// <summary>

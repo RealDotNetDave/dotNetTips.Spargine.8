@@ -292,4 +292,7 @@
   <data name="AnErrorOccurredWhileLoggingTheMessage1" xml:space="preserve">
     <value>An error occurred while logging the message.</value>
   </data>
+  <data name="TheInputStringIsNotAValidBase64String" xml:space="preserve">
+    <value>The input string is not a valid Base64 string.</value>
+  </data>
 </root>

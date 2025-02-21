@@ -240,6 +240,6 @@ public class FastSortedList<T> : List<T>
 	{
 		this.SortCollection();
 
-		return new List<T>(base.ToArray());
+		return [.. base.ToArray()];
 	}
 }

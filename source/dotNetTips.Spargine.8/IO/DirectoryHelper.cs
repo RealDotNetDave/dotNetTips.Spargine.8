@@ -37,7 +37,7 @@ namespace DotNetTips.Spargine.IO;
 /// loading files asynchronously, managing OneDrive folders, and conducting safe directory and file searches. These methods
 /// are designed to extend the capabilities of the <see cref="DirectoryInfo"/> class and simplify common file system operations.
 /// </remarks>
-[Information(Status = Status.UpdateDocumentation, Documentation = https://bit.ly/SpargineDirectoryHelper")]
+[Information(Status = Status.UpdateDocumentation, Documentation = "https://bit.ly/SpargineDirectoryHelper")]
 public static class DirectoryHelper
 {
 

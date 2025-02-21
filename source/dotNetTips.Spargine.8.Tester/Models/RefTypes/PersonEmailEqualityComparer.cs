@@ -4,7 +4,7 @@
 // Created          : 01-23-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="PersonEmailEqualityComparer.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -30,20 +30,9 @@ public sealed class PersonEmailEqualityComparer : IEqualityComparer<Person<Addre
 	/// <param name="x">The first <see cref="Person{Address}"/> to compare.</param>
 	/// <param name="y">The second <see cref="Person{Address}"/> to compare.</param>
 	/// <returns><c>true</c> if the specified <see cref="Person{Address}"/> objects are equal; otherwise, <c>false</c>.</returns>
-	public bool Equals(Person<Address> x, Person<Address> y)
-	{
-		if (x == null && y == null)
-		{
-			return true;
-		}
-
-		if (x == null || y == null)
-		{
-			return false;
-		}
-
-		return string.Equals(x.Email, y.Email, StringComparison.OrdinalIgnoreCase);
-	}
+	public bool Equals(Person<Address> x, Person<Address> y) => x == null && y == null
+			? true
+			: x == null || y == null ? false : string.Equals(x.Email, y.Email, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Returns a hash code for the specified <see cref="Person{Address}"/> based on their email address.

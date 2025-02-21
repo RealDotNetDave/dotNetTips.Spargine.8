@@ -4,7 +4,7 @@
 // Created          : 01-10-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-11-2025
+// Last Modified On : 02-01-2025
 // ***********************************************************************
 // <copyright file="CountryRepository.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -37,6 +37,11 @@ public static class CountryRepository
 	/// Holds a read-only collection of all countries, lazily initialized upon first access.
 	/// </summary>
 	private static ReadOnlyCollection<Country> _countries;
+
+	/// <summary>
+	/// The serializer options configured for JSON operations within the CountryRepository class.
+	/// </summary>
+	private static readonly JsonSerializerOptions _options = ConfigureSerializerOptions();
 
 	/// <summary>
 	/// Configures and returns the serializer options for JSON serialization.
@@ -196,16 +201,8 @@ public static class CountryRepository
 	{
 		var country = GetCountry(countryName.ArgumentNotNull());
 
-		if (string.IsNullOrEmpty(country.PostalRegex))
-		{
-			return PostalCodeState.Unknown;
-		}
-
-		return Regex.IsMatch(postalCode?.Trim() ?? string.Empty, country.PostalRegex) ? PostalCodeState.Valid : PostalCodeState.Invalid;
+		return string.IsNullOrEmpty(country.PostalRegex)
+			? PostalCodeState.Unknown
+			: Regex.IsMatch(postalCode?.Trim() ?? string.Empty, country.PostalRegex) ? PostalCodeState.Valid : PostalCodeState.Invalid;
 	}
-
-	/// <summary>
-	/// The serializer options configured for JSON operations within the CountryRepository class.
-	/// </summary>
-	private static readonly JsonSerializerOptions _options = ConfigureSerializerOptions();
 }

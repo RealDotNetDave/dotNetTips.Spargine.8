@@ -4,7 +4,7 @@
 // Created          : 07-30-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="GuidExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -32,16 +32,6 @@ public static class GuidExtensions
 	/// <param name="input">The <see cref="Guid"/> to convert.</param>
 	/// <returns>A string representation of the <see cref="Guid"/> without dashes if the <paramref name="input"/> is not empty; otherwise, an empty string.</returns>
 	[Information(nameof(ToDigits), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static string ToDigits([NotNull] this Guid input)
-	{
-		if (input.CheckIsNotEmpty())
-		{
-			return input.ToString("N", CultureInfo.InvariantCulture);
-		}
-		else
-		{
-			return string.Empty;
-		}
-	}
+	public static string ToDigits([NotNull] this Guid input) => input.CheckIsNotEmpty() ? input.ToString("N", CultureInfo.InvariantCulture) : string.Empty;
 
 }

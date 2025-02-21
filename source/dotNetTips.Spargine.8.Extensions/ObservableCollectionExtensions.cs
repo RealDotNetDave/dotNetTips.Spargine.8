@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-25-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="ObservableCollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -46,17 +46,7 @@ public static class ObservableCollectionExtensions
 	/// <returns><c>true</c> if the specified collection has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection)
-	{
-		if (collection is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.FastCount() > 0;
-		}
-	}
+	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection) => collection is null ? false : collection.FastCount() > 0;
 
 	/// <summary>
 	/// Determines whether the specified collection has items.
@@ -67,17 +57,7 @@ public static class ObservableCollectionExtensions
 	/// <returns>bool.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), author: "David McCarter", createdOn: "6/15/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection, [NotNull] Func<T, bool> actionPredicate)
-	{
-		if (collection is null || actionPredicate is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Any(actionPredicate);
-		}
-	}
+	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection, [NotNull] Func<T, bool> actionPredicate) => collection is null || actionPredicate is null ? false : collection.Any(actionPredicate);
 
 	/// <summary>
 	/// Determines whether the specified count has items.
@@ -88,16 +68,6 @@ public static class ObservableCollectionExtensions
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection, in int count)
-	{
-		if (collection is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.FastCount() == count;
-		}
-	}
+	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection, in int count) => collection is null ? false : collection.FastCount() == count;
 
 }

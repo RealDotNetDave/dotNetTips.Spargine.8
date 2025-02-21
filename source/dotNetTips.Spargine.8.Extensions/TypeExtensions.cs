@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-03-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="TypeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -290,12 +290,8 @@ public static partial class TypeExtensions
 		if (objType.IsClass)
 		{
 			var member = objType.GetMethod("GetHashCode");
-			if (member != null && member.GetCustomAttribute<CompilerGeneratedAttribute>() != null)
-			{
-				return TypeOfType.Record;
-			}
 
-			return TypeOfType.Reference;
+			return member != null && member.GetCustomAttribute<CompilerGeneratedAttribute>() != null ? TypeOfType.Record : TypeOfType.Reference;
 		}
 
 		return TypeOfType.Unknown;

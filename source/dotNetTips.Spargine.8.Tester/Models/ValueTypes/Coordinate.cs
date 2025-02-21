@@ -4,7 +4,7 @@
 // Created          : 06-04-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="Coordinate.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -133,6 +133,7 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 	public readonly int CompareTo(Coordinate other)
 	{
 		var result = this.X.CompareTo(other.X);
+
 		if (result != 0)
 		{
 			return result;
@@ -145,12 +146,8 @@ public struct Coordinate(int x, int y, int z = 0) : ICoordinate, IEquatable<Coor
 		}
 
 		result = this.Z.CompareTo(other.Z);
-		if (result != 0)
-		{
-			return result;
-		}
 
-		return result;
+		return result != 0 ? result : 0;
 	}
 
 	/// <summary>

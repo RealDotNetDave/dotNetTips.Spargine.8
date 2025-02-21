@@ -4,7 +4,7 @@
 // Created          : 01-29-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="SimpleResult.Generic.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -184,18 +184,9 @@ public class SimpleResult<T>
 	/// otherwise, <see cref="ResultStatus.Failed"/>.
 	/// </value>>
 	[Information(nameof(Status), UnitTestStatus = UnitTestStatus.WIP, Status = Core.Status.Available)]
-	public ResultStatus Status
-	{
-		get
-		{
-			if (this._valueSet && this._exceptions.IsEmpty)
-			{
-				return ResultStatus.Succeeded;
-			}
-
-			return this._valueSet ? ResultStatus.PartialSuccess : ResultStatus.Failed;
-		}
-	}
+	public ResultStatus Status => this._valueSet && this._exceptions.IsEmpty
+				? ResultStatus.Succeeded
+				: this._valueSet ? ResultStatus.PartialSuccess : ResultStatus.Failed;
 
 	/// <summary>
 	/// Gets the value associated with this result.
