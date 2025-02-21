@@ -16,6 +16,7 @@
 // </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 using System.Security;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Diagnostics;
@@ -50,6 +51,7 @@ namespace DotNetTips.Spargine.IO;
 /// fileProcessor.CopyFiles(filesToCopy, destinationDir);
 /// </code>
 /// </remarks>
+[SupportedOSPlatform("windows")]
 [Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public class FileProcessor
 {
