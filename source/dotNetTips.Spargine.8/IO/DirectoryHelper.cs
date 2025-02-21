@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-20-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -37,7 +37,7 @@ namespace DotNetTips.Spargine.IO;
 /// loading files asynchronously, managing OneDrive folders, and conducting safe directory and file searches. These methods
 /// are designed to extend the capabilities of the <see cref="DirectoryInfo"/> class and simplify common file system operations.
 /// </remarks>
-[Information(Status = Status.UpdateDocumentation, Documentation = "ADD URL")]
+[Information(Status = Status.UpdateDocumentation, Documentation = https://bit.ly/SpargineDirectoryHelper")]
 public static class DirectoryHelper
 {
 

@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-20-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -103,20 +103,13 @@ public class FileProcessor
 
 		var successCount = 0;
 
-		for (var fileCount = 0; fileCount < list.LongLength; fileCount++)
+		foreach (var tempFile in list)
 		{
-			var tempFile = list[fileCount];
-
 			if (tempFile.Exists)
 			{
 				try
 				{
 					var newFileName = new FileInfo(fileName: tempFile.FullName.Replace(tempFile.Directory.Root.FullName, destinationPath, StringComparison.InvariantCulture));
-
-					if (newFileName.Directory.Exists is false)
-					{
-						newFileName.Directory.Create();
-					}
 
 					var psw = PerformanceStopwatch.StartNew();
 
@@ -143,7 +136,16 @@ public class FileProcessor
 						Name = tempFile.FullName,
 						ProgressState = FileProgressState.Error,
 						Size = tempFile.Length,
-						Message = ex.Message,
+						Message = ex.GetAllMessages(),
+					});
+				}
+				catch (Exception ex)
+				{
+					this.OnProcessed(new FileProgressEventArgs
+					{
+						Name = tempFile.FullName,
+						ProgressState = FileProgressState.Error,
+						Message = string.Concat("Unknown error!: ", ex.GetAllMessages())
 					});
 				}
 			}
@@ -193,9 +195,9 @@ public class FileProcessor
 
 		var successCount = 0;
 
-		foreach (var listItem in files)
+		foreach (var file in files)
 		{
-			if (listItem.Exists)
+			if (file.Exists)
 			{
 				long fileLength = 0;
 
@@ -203,8 +205,8 @@ public class FileProcessor
 				{
 					var psw = PerformanceStopwatch.StartNew();
 
-					fileLength = listItem.Length;
-					listItem.Delete();
+					fileLength = file.Length;
+					file.Delete();
 
 					var perf = psw.StopReset();
 
@@ -212,8 +214,8 @@ public class FileProcessor
 
 					this.OnProcessed(e: new FileProgressEventArgs
 					{
-						Name = listItem.FullName,
-						Message = listItem.Name,
+						Name = file.FullName,
+						Message = file.Name,
 						ProgressState = FileProgressState.Deleted,
 						Size = fileLength,
 						SpeedInMilliseconds = perf.TotalMilliseconds,
@@ -223,10 +225,19 @@ public class FileProcessor
 				{
 					this.OnProcessed(new FileProgressEventArgs
 					{
-						Name = listItem.FullName,
+						Name = file.FullName,
 						ProgressState = FileProgressState.Error,
 						Size = fileLength,
-						Message = ex.Message,
+						Message = ex.GetAllMessages(),
+					});
+				}
+				catch (Exception ex)
+				{
+					this.OnProcessed(new FileProgressEventArgs
+					{
+						Name = file.FullName,
+						ProgressState = FileProgressState.Error,
+						Message = string.Concat("Unknown error!: ", ex.GetAllMessages())
 					});
 				}
 			}
@@ -234,7 +245,7 @@ public class FileProcessor
 			{
 				this.OnProcessed(new FileProgressEventArgs
 				{
-					Name = listItem.FullName,
+					Name = file.FullName,
 					ProgressState = FileProgressState.Error,
 					Message = Resources.FileNotFound,
 				});
@@ -276,19 +287,19 @@ public class FileProcessor
 
 		var successCount = 0;
 
-		foreach (var listItem in folders)
+		foreach (var folder in folders)
 		{
-			if (listItem is not null && listItem.Exists)
+			if (folder is not null && folder.Exists)
 			{
 				try
 				{
-					DirectoryHelper.DeleteDirectory(listItem, 5, recursive);
+					DirectoryHelper.DeleteDirectory(folder, 5, recursive);
 
 					successCount++;
 
 					this.OnProcessed(new FileProgressEventArgs
 					{
-						Name = listItem.FullName,
+						Name = folder.FullName,
 						ProgressState = FileProgressState.Deleted,
 					});
 				}
@@ -296,9 +307,18 @@ public class FileProcessor
 				{
 					this.OnProcessed(new FileProgressEventArgs
 					{
-						Name = listItem.FullName,
+						Name = folder.FullName,
 						ProgressState = FileProgressState.Error,
-						Message = ex.Message,
+						Message = ex.GetAllMessages(),
+					});
+				}
+				catch (Exception ex)
+				{
+					this.OnProcessed(new FileProgressEventArgs
+					{
+						Name = folder.FullName,
+						ProgressState = FileProgressState.Error,
+						Message = string.Concat("Unknown error!: ", ex.GetAllMessages())
 					});
 				}
 			}
@@ -306,7 +326,7 @@ public class FileProcessor
 			{
 				this.OnProcessed(new FileProgressEventArgs
 				{
-					Name = listItem.FullName,
+					Name = folder.FullName,
 					ProgressState = FileProgressState.Error,
 					Message = Resources.FolderNotFound,
 				});

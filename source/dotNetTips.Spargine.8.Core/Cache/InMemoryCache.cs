@@ -4,7 +4,7 @@
 // Created          : 01-13-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-07-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="InMemoryCache.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -49,7 +49,7 @@ namespace DotNetTips.Spargine.Core.Cache;
 /// <seealso cref="GetCacheItem{T}(string)"/>
 /// <seealso cref="Clear"/>
 [SupportedOSPlatform("windows")]
-[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineInMemoryCache")]
 public sealed class InMemoryCache
 {
 	/// <summary>  

@@ -16,7 +16,7 @@
 	<Configurations>Debug;Release</Configurations>
 	<Copyright>McCarter Consulting (David McCarter)</Copyright>
 	<DebugSymbols>true</DebugSymbols>
-	<DebugType>embedded</DebugType>
+	<DebugType>portable</DebugType>
 	<Description>Extensions methods for Spargine.</Description>
 	<EmbedUntrackedSources>true</EmbedUntrackedSources>
 	<EnableNETAnalyzers>true</EnableNETAnalyzers>

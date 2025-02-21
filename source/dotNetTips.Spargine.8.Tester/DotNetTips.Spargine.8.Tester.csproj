@@ -15,7 +15,7 @@
 	<Company>David McCarter - dotNetTips.com</Company>
 	<Copyright>McCarter Consulting (David McCarter)</Copyright>
 	<DebugSymbols>true</DebugSymbols>
-	<DebugType>embedded</DebugType>
+	<DebugType>portable</DebugType>
 	<Description>Common code to help with unit tests by generating random data.</Description>
 	<EmbedUntrackedSources>true</EmbedUntrackedSources>
 	<EnableNETAnalyzers>true</EnableNETAnalyzers>
@@ -73,7 +73,7 @@
 	<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	<WarningsAsErrors />
-	<DebugType>embedded</DebugType>
+	<DebugType>portable</DebugType>
   </PropertyGroup>
 
 
@@ -83,7 +83,7 @@
 	<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	<WarningsAsErrors />
-	<DebugType>embedded</DebugType>
+	<DebugType>portable</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
