@@ -185,7 +185,7 @@ public static class DirectoryHelper
 		// that prevent them from being deleted. Set those attributes to be normal
 		SetFileAttributesToNormal(path);
 
-		_ = ExecutionHelper.ProgressiveRetry(() => path.Delete(recursive), retryCount: retries, retryWaitMilliseconds: 2);
+		_ = ExecutionHelper.ProgressiveRetry(() => path.Delete(recursive), retryCount: retries, retryWaitMilliseconds: 5);
 	}
 
 	/// <summary>
@@ -341,7 +341,7 @@ public static class DirectoryHelper
 
 		if (destination.ArgumentNotNull().CheckExists(throwException: true))
 		{
-			_ = ExecutionHelper.ProgressiveRetry(() => Directory.Move(source.FullName, destination.FullName), retryCount: 3, retryWaitMilliseconds: 10);
+			_ = ExecutionHelper.ProgressiveRetry(() => Directory.Move(source.FullName, destination.FullName), retryCount: 3, retryWaitMilliseconds: 5);
 		}
 	}
 

@@ -50,7 +50,7 @@ namespace DotNetTips.Spargine.IO;
 /// fileProcessor.CopyFiles(filesToCopy, destinationDir);
 /// </code>
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(Status = Status.UpdateDocumentation, Documentation = "ADD URL")]
 public class FileProcessor
 {
 
@@ -70,7 +70,7 @@ public class FileProcessor
 	protected virtual void OnProcessed(FileProgressEventArgs e) => this.Processed?.Invoke(this, e);
 
 	/// <summary>
-	/// Copies files to a new location. This method will not throw exceptions.
+	/// Copies files to a new location using the path (excluding root) of the original file in the destination path.
 	/// </summary>
 	/// <param name="files">The files to copy.</param>
 	/// <param name="destination">The destination folder where files will be copied.</param>
@@ -99,7 +99,7 @@ public class FileProcessor
 
 		_ = destination.ArgumentNotNull().CheckExists();
 
-		var destinationPath = destination.FullName;
+		var destinationPath = PathHelper.EnsureTrailingSlash(destination.FullName);
 
 		var successCount = 0;
 
@@ -278,7 +278,7 @@ public class FileProcessor
 
 		foreach (var listItem in folders)
 		{
-			if (listItem is not null && listItem.Exists)
+			if (listItem.Exists)
 			{
 				try
 				{
@@ -292,13 +292,13 @@ public class FileProcessor
 						ProgressState = FileProgressState.Deleted,
 					});
 				}
-				catch (Exception ex) when (ex is IOException or SecurityException or UnauthorizedAccessException or System.IO.DirectoryNotFoundException)
+				catch (Exception ex) // Report all errors
 				{
 					this.OnProcessed(new FileProgressEventArgs
 					{
 						Name = listItem.FullName,
 						ProgressState = FileProgressState.Error,
-						Message = ex.Message,
+						Message = ex.GetAllMessages()
 					});
 				}
 			}

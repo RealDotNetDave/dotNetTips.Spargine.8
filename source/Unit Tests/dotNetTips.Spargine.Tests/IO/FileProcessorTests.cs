@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.IO;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -26,9 +27,33 @@ namespace DotNetTips.Spargine.Tests.IO;
 [TestClass]
 public class FileProcessorTests
 {
+	const int Count = 1000;
 
 #nullable enable
-	private void Processor_Processed(object? sender, FileProgressEventArgs e) => Trace.WriteLine(e.Message);
+	private void Processor_Processed(object? sender, FileProgressEventArgs e) => Trace.WriteLine(e.Name + ":" + e.Message + ":" + e.ProgressState);
+
+	[TestMethod]
+	public void CopyFilesTest()
+	{
+		var processor = new FileProcessor();
+		processor.Processed += this.Processor_Processed;
+
+		var generateFiles = RandomData.GenerateFiles(Count, fileExtension: "processor.test");
+		var path = generateFiles.Path;
+		var files = new List<FileInfo>(generateFiles.Files.Count);
+
+		foreach (var file in generateFiles.Files)
+		{
+			files.Add(new FileInfo(file));
+		}
+
+		var destination = new DirectoryInfo(Path.Combine(App.ProcessPath, "Copy"));
+
+		Assert.IsTrue(processor.CopyFiles(files, destination) == Count);
+
+		destination.Delete(true);
+
+	}
 
 #nullable disable
 
@@ -38,7 +63,7 @@ public class FileProcessorTests
 		var processor = new FileProcessor();
 		processor.Processed += this.Processor_Processed;
 
-		var generateFiles = RandomData.GenerateFiles(1000, fileExtension: "processor.test");
+		var generateFiles = RandomData.GenerateFiles(Count, fileExtension: "processor.test");
 		var path = generateFiles.Path;
 		var files = new List<FileInfo>(generateFiles.Files.Count);
 
@@ -47,7 +72,7 @@ public class FileProcessorTests
 			files.Add(new FileInfo(file));
 		}
 
-		Assert.IsTrue(processor.DeleteFiles(files) == 1000);
+		Assert.IsTrue(processor.DeleteFiles(files) == Count);
 
 	}
 
