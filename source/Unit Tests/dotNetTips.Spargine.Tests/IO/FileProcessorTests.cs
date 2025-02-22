@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-28-2024
+// Last Modified On : 02-22-2025
 // ***********************************************************************
 // <copyright file="FileProcessorTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -27,10 +27,11 @@ namespace DotNetTips.Spargine.Tests.IO;
 [TestClass]
 public class FileProcessorTests
 {
-	const int Count = 1000;
+	const int DirectoryCount = 10;
+	const int FileCount = 1000;
 
 #nullable enable
-	private void Processor_Processed(object? sender, FileProgressEventArgs e) => Trace.WriteLine(e.Name + ":" + e.Message + ":" + e.ProgressState);
+	private void Processor_Processed(object? sender, FileProgressEventArgs e) => Trace.WriteLine(e.Name + ":" + e.Message + ":" + e.ProgressState + ":" + e.Size);
 
 	[TestMethod]
 	public void CopyFilesTest()
@@ -38,7 +39,7 @@ public class FileProcessorTests
 		var processor = new FileProcessor();
 		processor.Processed += this.Processor_Processed;
 
-		var generateFiles = RandomData.GenerateFiles(Count, fileExtension: "processor.test");
+		var generateFiles = RandomData.GenerateFiles(FileCount, fileExtension: "processor.test");
 		var path = generateFiles.Path;
 		var files = new List<FileInfo>(generateFiles.Files.Count);
 
@@ -49,7 +50,7 @@ public class FileProcessorTests
 
 		var destination = new DirectoryInfo(Path.Combine(App.ProcessPath, "Copy"));
 
-		Assert.IsTrue(processor.CopyFiles(files, destination) == Count);
+		Assert.IsTrue(processor.CopyFiles(files, destination) == FileCount);
 
 		destination.Delete(true);
 
@@ -63,7 +64,7 @@ public class FileProcessorTests
 		var processor = new FileProcessor();
 		processor.Processed += this.Processor_Processed;
 
-		var generateFiles = RandomData.GenerateFiles(Count, fileExtension: "processor.test");
+		var generateFiles = RandomData.GenerateFiles(FileCount, fileExtension: "processor.test");
 		var path = generateFiles.Path;
 		var files = new List<FileInfo>(generateFiles.Files.Count);
 
@@ -72,7 +73,32 @@ public class FileProcessorTests
 			files.Add(new FileInfo(file));
 		}
 
-		Assert.IsTrue(processor.DeleteFiles(files) == Count);
+		Assert.IsTrue(processor.DeleteFiles(files) == FileCount);
+
+	}
+
+	[TestMethod]
+	public void DeleteFoldersTest()
+	{
+		var processor = new FileProcessor();
+		processor.Processed += this.Processor_Processed;
+
+		var folders = new List<DirectoryInfo>(DirectoryCount);
+
+		for (int index = 0; index < DirectoryCount; index++)
+		{
+			var newPath = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), RandomData.GenerateWord(15)));
+			newPath.Create();
+			folders.Add(newPath);
+			var testFiles = RandomData.GenerateFiles(newPath.FullName, FileCount);
+
+			foreach (var file in testFiles)
+			{
+				File.SetAttributes(file, FileAttributes.ReadOnly);
+			}
+		}
+
+		Assert.IsTrue(processor.DeleteFolders(folders, true) == DirectoryCount);
 
 	}
 

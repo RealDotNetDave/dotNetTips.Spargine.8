@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-10-2025
+// Last Modified On : 02-22-2025
 // ***********************************************************************
 // <copyright file="FileHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -68,9 +68,11 @@ public class FileHelperTests
 	public void CopyFile_FileNotFound_Test()
 	{
 		var sourceFile = new FileInfo(Path.Combine(App.ExecutingFolder(), "NonExistentFile.txt"));
-		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), "CopyFile_FileNotFound_Test"));
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFile_FileNotFound_Test)));
 
 		FileHelper.CopyFile(sourceFile, destinationDir);
+
+		destinationDir.Delete(true);
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -81,6 +83,8 @@ public class FileHelperTests
 		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
 
 		FileHelper.CopyFile(sourceFile, null);
+
+		sourceFile.Delete();
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -88,9 +92,11 @@ public class FileHelperTests
 	[ExpectedException(typeof(ArgumentNullException))]
 	public void CopyFile_NullFile_Test()
 	{
-		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), "CopyFile_NullFile_Test"));
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFile_NullFile_Test)));
 
 		FileHelper.CopyFile(null, destinationDir);
+
+		destinationDir.Delete(true);
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -98,12 +104,14 @@ public class FileHelperTests
 	public void CopyFile_Success_Test()
 	{
 		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
-		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), "CopyFile_Success_Test"));
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFile_Success_Test)));
 
 		var fileLength = FileHelper.CopyFile(sourceFile, destinationDir);
 
 		Assert.AreEqual(sourceFile.Length, fileLength);
 		Assert.IsTrue(File.Exists(Path.Combine(destinationDir.FullName, sourceFile.Name)));
+
+		destinationDir.Delete(true);
 	}
 
 	[TestMethod]
@@ -111,7 +119,7 @@ public class FileHelperTests
 	{
 		// Arrange
 		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
-		var destinationDir = new DirectoryInfo("testDestinationDir");
+		var destinationDir = new DirectoryInfo(nameof(this.CopyFileAsync_ShouldCopyFileSuccessfully));
 		var destinationFile = Path.Combine(destinationDir.FullName, sourceFile.Name);
 
 		// Act
@@ -124,6 +132,7 @@ public class FileHelperTests
 		// Cleanup
 		File.Delete(sourceFile.FullName);
 		File.Delete(destinationFile);
+		destinationDir.Delete(true);
 	}
 
 	[TestMethod]
@@ -131,7 +140,7 @@ public class FileHelperTests
 	{
 		// Arrange
 		var sourceFile = new FileInfo("testSourceFile.txt");
-		var destinationDir = new DirectoryInfo("testDestinationDir");
+		var destinationDir = new DirectoryInfo(nameof(this.CopyFileAsync_ShouldRespectCancellationToken));
 		var cts = new CancellationTokenSource();
 		cts.Cancel();
 
@@ -150,6 +159,8 @@ public class FileHelperTests
 
 		// Cleanup
 		File.Delete(sourceFile.FullName);
+
+		destinationDir.Delete(true);
 	}
 
 	[TestMethod]
@@ -176,10 +187,13 @@ public class FileHelperTests
 	{
 		// Arrange
 		FileInfo sourceFile = null;
-		var destinationDir = new DirectoryInfo("testDestinationDir");
+		var destinationDir = new DirectoryInfo(nameof(this.CopyFileAsync_ShouldThrowArgumentNullException_WhenSourceFileIsNull));
+		destinationDir.Create();
 
 		// Act & Assert
 		await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => FileHelper.CopyFileAsync(sourceFile, destinationDir));
+
+		destinationDir.Delete(true);
 	}
 
 	[TestMethod]
@@ -187,10 +201,12 @@ public class FileHelperTests
 	{
 		// Arrange
 		var sourceFile = new FileInfo("nonExistentFile.txt");
-		var destinationDir = new DirectoryInfo("testDestinationDir");
+		var destinationDir = new DirectoryInfo(nameof(this.CopyFileAsync_ShouldThrowFileNotFoundException_WhenSourceFileDoesNotExist));
 
 		// Act & Assert
 		await Assert.ThrowsExceptionAsync<FileNotFoundException>(() => FileHelper.CopyFileAsync(sourceFile, destinationDir));
+
+		destinationDir.Delete(true);
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -198,7 +214,7 @@ public class FileHelperTests
 	public void CopyFileWithProgress_Success_Test()
 	{
 		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
-		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), "CopyFileWithProgress_Success_Test"));
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFileWithProgress_Success_Test)));
 
 		if (!destinationDir.Exists)
 		{
@@ -211,6 +227,8 @@ public class FileHelperTests
 
 		Assert.IsTrue(result);
 		Assert.IsTrue(File.Exists(Path.Combine(destinationDir.FullName, sourceFile.Name)));
+
+		destinationDir.Delete(true);
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -225,6 +243,8 @@ public class FileHelperTests
 		var result = FileHelper.CopyFile(file: file, destination: directory, progressCallback: callback);
 
 		Assert.IsTrue(result);
+
+		file.Delete();
 
 	}
 
@@ -372,6 +392,8 @@ public class FileHelperTests
 		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
 
 		FileHelper.MoveFile(sourceFile, null);
+
+		sourceFile.Delete();
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -398,6 +420,8 @@ public class FileHelperTests
 		Assert.IsFalse(File.Exists(sourceFile.FullName));
 		Assert.IsTrue(destinationFile.Exists);
 		Assert.AreEqual(sourceFileLength, destinationFile.Length);
+
+		destinationFile.Delete();
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -413,6 +437,8 @@ public class FileHelperTests
 		Assert.IsTrue(result);
 		Assert.IsFalse(File.Exists(sourceFile.FullName));
 		Assert.IsTrue(destinationFile.Exists);
+
+		destinationFile.Delete();
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -427,6 +453,8 @@ public class FileHelperTests
 		{
 			FileHelper.MoveFile(sourceFile, destinationFile);
 		}
+
+		destinationFile.Delete();
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -449,6 +477,11 @@ public class FileHelperTests
 			// Cleanup
 			sourceFile.Attributes = FileAttributes.Normal;
 			sourceFile.Delete();
+
+			if (destinationFile.Exists)
+			{
+				destinationFile.Delete();
+			}
 		}
 	}
 
@@ -464,6 +497,8 @@ public class FileHelperTests
 		Assert.IsTrue(result);
 		Assert.IsFalse(File.Exists(sourceFile.FullName));
 		Assert.IsTrue(File.Exists(destinationFile.FullName));
+
+		destinationFile.Delete();
 	}
 
 }

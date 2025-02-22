@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-20-2025
+// Last Modified On : 02-21-2025
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -53,7 +53,6 @@ namespace DotNetTips.Spargine.IO;
 [Information(Status = Status.UpdateDocumentation, Documentation = "ADD URL")]
 public class FileProcessor
 {
-
 	/// <summary>
 	/// Occurs when a file or folder has been processed.
 	/// </summary>
@@ -95,6 +94,8 @@ public class FileProcessor
 	[Information(nameof(CopyFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public int CopyFiles([NotNull] IEnumerable<FileInfo> files, [NotNull] DirectoryInfo destination)
 	{
+		//TODO: RENAME TO "CopyFilesWithOriginalPath" IN V10
+
 		var list = files.ArgumentNotNull().ToArray();
 
 		_ = destination.ArgumentNotNull().CheckExists();
@@ -276,27 +277,30 @@ public class FileProcessor
 
 		var successCount = 0;
 
-		foreach (var listItem in folders)
+		foreach (var folder in folders)
 		{
-			if (listItem.Exists)
+			if (folder.Exists)
 			{
 				try
 				{
-					DirectoryHelper.DeleteDirectory(listItem, 5, recursive);
+					var folderSize = folder.GetSize(searchOption: SearchOption.AllDirectories);
+
+					DirectoryHelper.DeleteDirectory(folder, 5, recursive);
 
 					successCount++;
 
 					this.OnProcessed(new FileProgressEventArgs
 					{
-						Name = listItem.FullName,
+						Name = folder.FullName,
 						ProgressState = FileProgressState.Deleted,
+						Size = folderSize,
 					});
 				}
 				catch (Exception ex) // Report all errors
 				{
 					this.OnProcessed(new FileProgressEventArgs
 					{
-						Name = listItem.FullName,
+						Name = folder.FullName,
 						ProgressState = FileProgressState.Error,
 						Message = ex.GetAllMessages()
 					});
@@ -306,7 +310,7 @@ public class FileProcessor
 			{
 				this.OnProcessed(new FileProgressEventArgs
 				{
-					Name = listItem.FullName,
+					Name = folder.FullName,
 					ProgressState = FileProgressState.Error,
 					Message = Resources.FolderNotFound,
 				});
