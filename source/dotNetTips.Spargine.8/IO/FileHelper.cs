@@ -39,7 +39,7 @@ namespace DotNetTips.Spargine.IO;
 /// intended for use on Windows platforms only.
 /// </remarks>
 [SupportedOSPlatform("windows")]
-[Information(nameof(FileHelper), Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(nameof(FileHelper), Status = Status.UpdateDocumentation, Documentation = "ADD URL")]
 public static class FileHelper
 {
 
@@ -151,6 +151,31 @@ public static class FileHelper
 		}
 
 		_ = destination.CheckExists(createDirectory: true);
+	}
+
+	/// <summary>
+	/// Adds the specified <see cref="FileAttributes"/> to a file.
+	/// </summary>
+	/// <param name="file">The file to which the attributes will be added.</param>
+	/// <param name="attributesToAdd">The attributes to add.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
+	[Information(nameof(AddAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static void AddAttributes([NotNull] FileInfo file, in FileAttributes attributesToAdd)
+	{
+		file = file.ArgumentNotNull();
+		file.Attributes |= attributesToAdd;
+	}
+
+	/// <summary>
+	/// Adds the read-only attribute to a file.
+	/// </summary>
+	/// <param name="file">The file to which the read-only attribute will be added.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
+	[Information(nameof(AddReadOnlyAttribute), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static void AddReadOnlyAttribute([NotNull] FileInfo file)
+	{
+		file = file.ArgumentNotNull();
+		file.Attributes |= FileAttributes.ReadOnly;
 	}
 
 	/// <summary>
@@ -550,6 +575,33 @@ public static class FileHelper
 		}
 
 		return false;
+	}
+
+	/// <summary>
+	/// Removes the specified <see cref="FileAttributes"/> from a file.
+	/// </summary>
+	/// <param name="file">The file from which to remove the attributes.</param>
+	/// <param name="attributesToRemove">The attributes to remove.</param>
+	/// <returns>System.IO.FileAttributes.</returns>
+	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static void RemoveAttributes([NotNull] FileInfo file, in FileAttributes attributesToRemove)
+	{
+		file = file.ArgumentNotNull();
+
+		file.Attributes &= ~attributesToRemove;
+	}
+
+	/// <summary>
+	/// Removes the read-only attribute from a file.
+	/// </summary>
+	/// <param name="file">The file from which to remove the read-only attribute.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
+	[Information(nameof(RemoveReadOnlyAttribute), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static void RemoveReadOnlyAttribute([NotNull] FileInfo file)
+	{
+		file = file.ArgumentNotNull();
+
+		file.Attributes &= ~FileAttributes.ReadOnly;
 	}
 
 	/// <summary>
