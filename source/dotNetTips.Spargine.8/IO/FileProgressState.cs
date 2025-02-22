@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-20-2024
+// Last Modified On : 02-22-2025
 // ***********************************************************************
 // <copyright file="FileProgressState.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -13,8 +13,6 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
-
-
 
 
 namespace DotNetTips.Spargine.IO;
@@ -27,6 +25,8 @@ namespace DotNetTips.Spargine.IO;
 /// </remarks>
 public enum FileProgressState
 {
+	//TODO: CHANGE ENUM TO IN V10 - DeletedFile, DeletedFolder, MovedFile, MovedFolder, CopiedFile, CopiedFolder
+
 	/// <summary>
 	/// Indicates an error occurred during the file operation.
 	/// </summary>
