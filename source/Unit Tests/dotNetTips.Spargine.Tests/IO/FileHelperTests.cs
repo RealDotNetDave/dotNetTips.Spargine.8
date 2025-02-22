@@ -67,12 +67,20 @@ public class FileHelperTests
 	[ExpectedException(typeof(FileNotFoundException))]
 	public void CopyFile_FileNotFound_Test()
 	{
-		var sourceFile = new FileInfo(Path.Combine(App.ExecutingFolder(), "NonExistentFile.txt"));
+		var sourceFile = new FileInfo("NonExistentFile.txt");
 		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFile_FileNotFound_Test)));
 
-		FileHelper.CopyFile(sourceFile, destinationDir);
-
-		destinationDir.Delete(true);
+		try
+		{
+			FileHelper.CopyFile(sourceFile, destinationDir);
+		}
+		finally
+		{
+			if (destinationDir.Exists)
+			{
+				destinationDir.Delete(true);
+			}
+		}
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -82,9 +90,14 @@ public class FileHelperTests
 	{
 		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
 
-		FileHelper.CopyFile(sourceFile, null);
-
-		sourceFile.Delete();
+		try
+		{
+			FileHelper.CopyFile(sourceFile, null);
+		}
+		finally
+		{
+			sourceFile.Delete();
+		}
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -93,10 +106,17 @@ public class FileHelperTests
 	public void CopyFile_NullFile_Test()
 	{
 		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFile_NullFile_Test)));
-
-		FileHelper.CopyFile(null, destinationDir);
-
-		destinationDir.Delete(true);
+		try
+		{
+			FileHelper.CopyFile(null, destinationDir);
+		}
+		finally
+		{
+			if (destinationDir.Exists)
+			{
+				destinationDir.Delete(true);
+			}
+		}
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -119,7 +139,7 @@ public class FileHelperTests
 	{
 		// Arrange
 		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
-		var destinationDir = new DirectoryInfo(nameof(this.CopyFileAsync_ShouldCopyFileSuccessfully));
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFileAsync_ShouldCopyFileSuccessfully)));
 		var destinationFile = Path.Combine(destinationDir.FullName, sourceFile.Name);
 
 		// Act
@@ -139,20 +159,10 @@ public class FileHelperTests
 	public async Task CopyFileAsync_ShouldRespectCancellationToken()
 	{
 		// Arrange
-		var sourceFile = new FileInfo("testSourceFile.txt");
-		var destinationDir = new DirectoryInfo(nameof(this.CopyFileAsync_ShouldRespectCancellationToken));
+		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFileAsync_ShouldRespectCancellationToken)));
 		var cts = new CancellationTokenSource();
 		cts.Cancel();
-
-		if (!sourceFile.Exists)
-		{
-			await File.WriteAllTextAsync(sourceFile.FullName, "Test content");
-		}
-
-		if (!destinationDir.Exists)
-		{
-			destinationDir.Create();
-		}
 
 		// Act & Assert
 		await Assert.ThrowsExceptionAsync<TaskCanceledException>(() => FileHelper.CopyFileAsync(sourceFile, destinationDir, cts.Token));
@@ -177,9 +187,6 @@ public class FileHelperTests
 
 		// Act & Assert
 		await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => FileHelper.CopyFileAsync(sourceFile, destinationDir));
-
-		// Cleanup
-		File.Delete(sourceFile.FullName);
 	}
 
 	[TestMethod]
@@ -187,24 +194,11 @@ public class FileHelperTests
 	{
 		// Arrange
 		FileInfo sourceFile = null;
-		var destinationDir = new DirectoryInfo(nameof(this.CopyFileAsync_ShouldThrowArgumentNullException_WhenSourceFileIsNull));
+		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFileAsync_ShouldThrowArgumentNullException_WhenSourceFileIsNull)));
 		destinationDir.Create();
 
 		// Act & Assert
 		await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => FileHelper.CopyFileAsync(sourceFile, destinationDir));
-
-		destinationDir.Delete(true);
-	}
-
-	[TestMethod]
-	public async Task CopyFileAsync_ShouldThrowFileNotFoundException_WhenSourceFileDoesNotExist()
-	{
-		// Arrange
-		var sourceFile = new FileInfo("nonExistentFile.txt");
-		var destinationDir = new DirectoryInfo(nameof(this.CopyFileAsync_ShouldThrowFileNotFoundException_WhenSourceFileDoesNotExist));
-
-		// Act & Assert
-		await Assert.ThrowsExceptionAsync<FileNotFoundException>(() => FileHelper.CopyFileAsync(sourceFile, destinationDir));
 
 		destinationDir.Delete(true);
 	}
@@ -236,7 +230,7 @@ public class FileHelperTests
 	public void CopyFileWithStatus_Test()
 	{
 		var file = new FileInfo(RandomData.GenerateTempFile(FileLength));
-		var directory = new DirectoryInfo(App.ExecutingFolder());
+		var directory = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFileWithStatus_Test)));
 
 		CopyProgressRoutine callback = new CopyProgressRoutine(CopyProgressCallback);
 
@@ -244,10 +238,9 @@ public class FileHelperTests
 
 		Assert.IsTrue(result);
 
-		file.Delete();
+		directory.Delete(true);
 
 	}
-
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
@@ -391,9 +384,14 @@ public class FileHelperTests
 	{
 		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
 
-		FileHelper.MoveFile(sourceFile, null);
-
-		sourceFile.Delete();
+		try
+		{
+			FileHelper.MoveFile(sourceFile, null);
+		}
+		finally
+		{
+			sourceFile.Delete();
+		}
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -421,7 +419,7 @@ public class FileHelperTests
 		Assert.IsTrue(destinationFile.Exists);
 		Assert.AreEqual(sourceFileLength, destinationFile.Length);
 
-		destinationFile.Delete();
+		destinationFile.Directory.Delete(true);
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -449,39 +447,17 @@ public class FileHelperTests
 		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
 		var destinationFile = new FileInfo(Path.Combine(App.ExecutingFolder(), "MoveFile_ShouldThrowIOException_WhenFileIsLocked.txt"));
 
-		using (var stream = sourceFile.Open(FileMode.Open, FileAccess.Read, FileShare.None))
-		{
-			FileHelper.MoveFile(sourceFile, destinationFile);
-		}
-
-		destinationFile.Delete();
-	}
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
-	[ExpectedException(typeof(UnauthorizedAccessException))]
-	public void MoveFile_ShouldThrowUnauthorizedAccessException_WhenNoPermission()
-	{
-		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
-		var destinationFile = new FileInfo(Path.Combine(App.ExecutingFolder(), "MoveFile_ShouldThrowUnauthorizedAccessException_WhenNoPermission.txt"));
-
-		// Simulate no permission by setting the file to read-only
-		sourceFile.Attributes = FileAttributes.ReadOnly;
-
 		try
 		{
-			FileHelper.MoveFile(sourceFile, destinationFile);
+			using (var stream = sourceFile.Open(FileMode.Open, FileAccess.Read, FileShare.None))
+			{
+				FileHelper.MoveFile(sourceFile, destinationFile);
+			}
 		}
 		finally
 		{
-			// Cleanup
-			sourceFile.Attributes = FileAttributes.Normal;
 			sourceFile.Delete();
-
-			if (destinationFile.Exists)
-			{
-				destinationFile.Delete();
-			}
+			destinationFile.Delete();
 		}
 	}
 

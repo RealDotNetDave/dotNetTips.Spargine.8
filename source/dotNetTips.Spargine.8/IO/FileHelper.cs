@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-10-2025
+// Last Modified On : 02-22-2025
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -139,9 +139,9 @@ public static class FileHelper
 	/// <param name="file">The file file to be copied. Must not be null.</param>
 	/// <param name="destination">The destination directory where the file will be copied. Must not be null.</param>
 	/// <exception cref="ArgumentNullException">Thrown when the file or destination is null.</exception>
-	private static void ValidateCreateDestinationDirectory([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
+	private static void ValidateFileCreateDestinationDirectory([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
-		file = file.ArgumentNotNull();
+		file = file.ArgumentExists();
 		destination = destination.ArgumentNotNull();
 
 		//Ensure the file directory and destination are not the same.
@@ -237,9 +237,9 @@ public static class FileHelper
 	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
 	public static long CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
-		ValidateCreateDestinationDirectory(file, destination);
+		ValidateFileCreateDestinationDirectory(file, destination);
 
-		if (destination.CheckExists(createDirectory: true))
+		if (destination.CheckExists())
 		{
 			var destinationName = destination.FullName;
 
@@ -293,7 +293,7 @@ public static class FileHelper
 	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
 	public static bool CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, [NotNull] CopyProgressRoutine progressCallback)
 	{
-		ValidateCreateDestinationDirectory(file, destination);
+		ValidateFileCreateDestinationDirectory(file, destination);
 		progressCallback = progressCallback.ArgumentNotNull();
 
 		if (destination.ArgumentNotNull().CheckExists(throwException: true))
@@ -330,7 +330,7 @@ public static class FileHelper
 	[Information(nameof(CopyFileAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://dotnettips.wordpress.com/2020/11/17/coding-faster-with-the-dotnettips-utility-november-2020-update", Status = Status.Available)]
 	public static async Task<long> CopyFileAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
-		ValidateCreateDestinationDirectory(file, destination);
+		ValidateFileCreateDestinationDirectory(file, destination);
 
 		var fileName = file.FullName;
 
@@ -523,7 +523,7 @@ public static class FileHelper
 		destinationFile = destinationFile.ArgumentNotNull();
 		retryCount = retryCount.EnsureMinimum(1);
 
-		ValidateCreateDestinationDirectory(file, destinationFile.Directory);
+		ValidateFileCreateDestinationDirectory(file, destinationFile.Directory);
 
 		for (var retryIndex = 0; retryIndex < Retries; retryIndex++)
 		{
@@ -573,7 +573,7 @@ public static class FileHelper
 	[Information(nameof(UnGZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task UnGZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
-		ValidateCreateDestinationDirectory(file, destination);
+		ValidateFileCreateDestinationDirectory(file, destination);
 
 		var destinationPath = destination.FullName;
 
@@ -611,7 +611,7 @@ public static class FileHelper
 	[Information(nameof(UnGZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task UnGZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, bool deleteGZipFile, CancellationToken cancellationToken = default)
 	{
-		ValidateCreateDestinationDirectory(file, destination);
+		ValidateFileCreateDestinationDirectory(file, destination);
 
 		await UnGZipAsync(file, destination, cancellationToken).ConfigureAwait(false);
 
@@ -643,7 +643,7 @@ public static class FileHelper
 	[Information(nameof(UnZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task UnZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
-		ValidateCreateDestinationDirectory(file, destination);
+		ValidateFileCreateDestinationDirectory(file, destination);
 
 		var fileName = file.FullName;
 
@@ -671,7 +671,7 @@ public static class FileHelper
 	[Information(nameof(UnZipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task UnZipAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, bool deleteZipFile, CancellationToken cancellationToken = default)
 	{
-		ValidateCreateDestinationDirectory(file, destination);
+		ValidateFileCreateDestinationDirectory(file, destination);
 
 		await UnZipAsync(file, destination, cancellationToken).ConfigureAwait(false);
 

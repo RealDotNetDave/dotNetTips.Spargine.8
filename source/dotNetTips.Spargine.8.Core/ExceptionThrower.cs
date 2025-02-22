@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-03-2025
+// Last Modified On : 02-22-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -226,7 +226,7 @@ public static class ExceptionThrower
 	[Information(nameof(ThrowFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowFileNotFoundException([AllowNull] string message, [NotNull] string fileName)
 	{
-		throw new FileNotFoundException(message ?? Resources.ErrorFileNotFound, fileName.ArgumentNotNullOrEmpty(true));
+		throw new FileNotFoundException(message ?? Resources.ErrorFileNotFound, fileName);
 	}
 
 	/// <summary>
