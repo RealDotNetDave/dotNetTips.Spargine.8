@@ -25,7 +25,6 @@ using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Order;
 using DotNetTips.Spargine.Benchmarking.Properties;
-using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -333,21 +332,22 @@ public abstract class Benchmark
 	/// </summary>
 	/// <param name="person">The item record whose Email property will be updated.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public virtual void Update(PersonRecord person) => _ = person with { Email = TestEmailLowerCase };
+	public virtual void Update(PersonRecord person)
+	{
+		person = person with { Email = TestEmailLowerCase };
+	}
 
 	/// <summary>
 	/// Updates the coordinates of an <see cref="ICoordinate"/> object to predefined values.
 	/// This method demonstrates how to modify properties of objects implementing the ICoordinate interface.
 	/// </summary>
-	/// <param name="coord">The coordinate object to update.</param>
+	/// <param name="coordinate">The coordinate object to update.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public virtual void Update(ICoordinate coord)
+	public virtual void Update(ICoordinate coordinate)
 	{
-		coord = coord.ArgumentNotNull();
-
-		coord.X = 100;
-		coord.Y = 200;
-		coord.Z = 300;
+		coordinate.X = 100;
+		coordinate.Y = 200;
+		coordinate.Z = 300;
 	}
 
 	/// <summary>
@@ -355,7 +355,17 @@ public abstract class Benchmark
 	/// </summary>
 	/// <value>The Base64 encoded string.</value>
 	public string Base64String { get; internal set; }
+
+	/// <summary>
+	/// Gets the first coordinate object generated during startup for use in testing.
+	/// </summary>
+	/// <value>The first coordinate object.</value>
 	public Coordinate CoordinateRef01 { get; private set; }
+
+	/// <summary>
+	/// Gets the second coordinate object generated during startup for use in testing.
+	/// </summary>
+	/// <value>The second coordinate object.</value>
 	public Coordinate CoordinateRef02 { get; private set; }
 
 	/// <summary>
