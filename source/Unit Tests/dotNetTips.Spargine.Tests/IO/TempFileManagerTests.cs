@@ -4,7 +4,7 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-11-2025
+// Last Modified On : 02-23-2025
 // ***********************************************************************
 // <copyright file="TempFileManagerTests.cs" company="DotNetTips.Spargine.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -76,6 +76,53 @@ public class TempFileManagerTests
 
 			// Assert
 			Assert.AreEqual(0, manager.GetManagedFiles().Count);
+		}
+	}
+
+	[TestMethod]
+	public void DeleteFile_ShouldNotRemoveNonExistentFile()
+	{
+		// Arrange
+		using (var manager = new TempFileManager())
+		{
+			var filePath = manager.CreateFile();
+			var nonExistentFilePath = filePath + "_nonexistent";
+
+			// Act
+			manager.DeleteFile(nonExistentFilePath);
+
+			// Assert
+			Assert.IsTrue(File.Exists(filePath));
+			Assert.IsTrue(manager.GetManagedFiles().Contains(filePath));
+		}
+	}
+
+	[TestMethod]
+	public void DeleteFile_ShouldNotThrow_WhenFileNameIsNullOrEmpty()
+	{
+		// Arrange
+		using (var manager = new TempFileManager())
+		{
+			// Act & Assert
+			manager.DeleteFile(null);
+			manager.DeleteFile(string.Empty);
+		}
+	}
+
+	[TestMethod]
+	public void DeleteFile_ShouldRemoveFileFromList()
+	{
+		// Arrange
+		using (var manager = new TempFileManager())
+		{
+			var filePath = manager.CreateFile();
+
+			// Act
+			manager.DeleteFile(filePath);
+
+			// Assert
+			Assert.IsFalse(File.Exists(filePath));
+			Assert.IsFalse(manager.GetManagedFiles().Contains(filePath));
 		}
 	}
 

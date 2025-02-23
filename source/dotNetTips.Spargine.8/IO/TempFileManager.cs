@@ -13,7 +13,6 @@
 // ***********************************************************************
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Versioning;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Security;
@@ -32,8 +31,7 @@ namespace DotNetTips.Spargine.IO;
 /// Initializes a new instance of the <see cref="TempFileManager" /> class.
 /// </remarks>
 [SupportedOSPlatform("windows")]
-[Information(nameof(TempFileManager), "David McCarter", "8/4/2024", Status = Status.NeedsDocumentation)]
-[method: ExcludeFromCodeCoverage]
+[Information(nameof(TempFileManager), "David McCarter", "8/4/2024", Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public class TempFileManager() : IDisposable, IAsyncDisposable
 {
 
@@ -45,7 +43,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// <summary>
 	/// The list of temporary files managed by this instance.
 	/// </summary>
-	private readonly ConcurrentBag<string> _files = [];
+	private ConcurrentBag<string> _files = [];
 
 	/// <summary>
 	/// Finalizes an instance of the <see cref="TempFileManager"/> class.
@@ -64,6 +62,25 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	{
 		await Task.Run(() => this.Dispose(true)).ConfigureAwait(false);
 		GC.SuppressFinalize(this);
+	}
+
+	/// <summary>
+	/// Removes the specified files from the cache.
+	/// </summary>
+	/// <param name="files">A read-only collection of file paths to remove from the cache.</param>
+	private void DeleteFilesFromCache(ReadOnlyCollection<string> files)
+	{
+		var tempBag = new ConcurrentBag<string>();
+
+		_ = Parallel.ForEach(this._files, file =>
+		{
+			if (!files.Contains(file))
+			{
+				tempBag.Add(file);
+			}
+		});
+
+		this._files = tempBag;
 	}
 
 	/// <summary>
@@ -151,8 +168,42 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	[Information(nameof(DeleteAllFiles), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void DeleteAllFiles()
 	{
-		_ = FileHelper.DeleteFiles(this._files.ToReadOnlyCollection());
-		this._files.Clear();
+		var filesDeletedResult = FileHelper.DeleteFiles(this._files.ToReadOnlyCollection());
+
+		if (filesDeletedResult.Value.Count == this._files.Count)
+		{
+			this._files.Clear();
+			return;
+		}
+
+		this.DeleteFilesFromCache(filesDeletedResult.Value);
+	}
+
+	/// <summary>
+	/// Deletes the specified file.
+	/// </summary>
+	/// <param name="fileName">The name of the file to delete. Must not be null or empty.</param>
+	/// <remarks>
+	/// This method deletes the specified file and removes it from the cache of managed files.
+	/// If the file name is null or empty, the method returns without performing any action.
+	/// </remarks>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="fileName"/> is null.</exception>
+	/// <exception cref="ArgumentException">Thrown if <paramref name="fileName"/> is empty.</exception>
+	[SupportedOSPlatform("windows")]
+	[Information(nameof(DeleteFile), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public void DeleteFile(string fileName)
+	{
+		if (fileName.IsNullOrEmpty())
+		{
+			return;
+		}
+
+		var filesDeletedResult = FileHelper.DeleteFiles(new ReadOnlyCollection<string>(new List<string> { fileName }));
+
+		if (filesDeletedResult.Value.Count > 0)
+		{
+			this.DeleteFilesFromCache(filesDeletedResult.Value);
+		}
 	}
 
 	/// <summary>
