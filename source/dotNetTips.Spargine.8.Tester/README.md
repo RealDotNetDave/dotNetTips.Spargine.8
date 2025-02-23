@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.Tester
+# DotNetTips.Spargine.Tester for Microsoft .NET 8: v2025.8.2.23 
 
 ![dotNetTips.com](https://dotnettips.files.wordpress.com/2018/03/cropped-rtw-dotnettips-com-logo05x1.png)
 This repository is for the DotNetTips.Spargine.Tester code for .NET 6+.
