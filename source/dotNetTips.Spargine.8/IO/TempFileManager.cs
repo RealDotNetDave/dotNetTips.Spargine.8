@@ -4,7 +4,7 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 02-23-2025
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -111,11 +111,14 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// Creates a new temporary file.
 	/// </summary>
 	/// <returns>The path of the created temporary file.</returns>
-	[Information("Creates a new temporary file.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(CreateFile), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public string CreateFile()
 	{
 		var file = GenerateRandomFile();
 		this._files.Add(file);
+
+		// Set to temporary file
+		FileHelper.AddAttributes(new FileInfo(file), FileAttributes.Temporary);
 
 		return file;
 	}
@@ -125,7 +128,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// </summary>
 	/// <param name="count">The number of temporary files to create.</param>
 	/// <returns>A read-only collection of the paths of the created temporary files.</returns>
-	[Information("Creates multiple temp files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(CreateFiles), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public ReadOnlyCollection<string> CreateFiles(int count)
 	{
 		count = count.ArgumentInRange(1);
@@ -145,7 +148,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// Deletes all temporary files.
 	/// </summary>
 	[SupportedOSPlatform("windows")]
-	[Information("Deletes all temporary files.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(DeleteAllFiles), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void DeleteAllFiles()
 	{
 		_ = FileHelper.DeleteFiles(this._files.ToReadOnlyCollection());
@@ -156,7 +159,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 	/// </summary>
 	[Preserve(PreserveReason.MethodPartOfIDisposable, "2/12/2025", "David McCarter")]
-	[Information("Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.", UnitTestStatus = UnitTestStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(Dispose), UnitTestStatus = UnitTestStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void Dispose()
 	{
 		this.Dispose(true);
@@ -167,6 +170,6 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// Gets the list of files currently being managed.
 	/// </summary>
 	/// <returns>A read-only collection of the paths of the managed temporary files.</returns>
-	[Information("Gets the list of files currently being managed.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(GetManagedFiles), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public IReadOnlyCollection<string> GetManagedFiles() => this._files.ToReadOnlyCollection();
 }
