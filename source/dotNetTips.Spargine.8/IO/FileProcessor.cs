@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 02-23-2025
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -16,7 +16,6 @@
 // </summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
-using System.Security;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Diagnostics;
 using DotNetTips.Spargine.Extensions;
@@ -91,23 +90,21 @@ public class FileProcessor
 	/// fileProcessor.CopyFiles(filesToCopy, destinationDir);
 	/// </code>
 	/// </example>
-	[Information(nameof(CopyFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(CopyFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public int CopyFiles([NotNull] IEnumerable<FileInfo> files, [NotNull] DirectoryInfo destination)
 	{
 		//TODO: RENAME TO "CopyFilesWithOriginalPath" IN V10
 
 		var list = files.ArgumentNotNull().ToArray();
 
-		_ = destination.ArgumentNotNull().CheckExists();
+		_ = destination.ArgumentNotNull().CheckExists(createDirectory: true);
 
 		var destinationPath = PathHelper.EnsureTrailingSlash(destination.FullName);
 
 		var successCount = 0;
 
-		for (var fileCount = 0; fileCount < list.LongLength; fileCount++)
+		foreach (var tempFile in list)
 		{
-			var tempFile = list[fileCount];
-
 			if (tempFile.Exists)
 			{
 				try
@@ -136,7 +133,7 @@ public class FileProcessor
 						SpeedInMilliseconds = perf.TotalMilliseconds,
 					});
 				}
-				catch (Exception ex) when (ex is IOException or SecurityException or UnauthorizedAccessException)
+				catch (Exception ex) // Report all errors
 				{
 					// Send error.
 					this.OnProcessed(new FileProgressEventArgs
@@ -202,9 +199,11 @@ public class FileProcessor
 
 				try
 				{
+					fileLength = listItem.Length;
+					FileHelper.RemoveReadOnlyAttribute(listItem);
+
 					var psw = PerformanceStopwatch.StartNew();
 
-					fileLength = listItem.Length;
 					listItem.Delete();
 
 					var perf = psw.StopReset();
@@ -220,7 +219,7 @@ public class FileProcessor
 						SpeedInMilliseconds = perf.TotalMilliseconds,
 					});
 				}
-				catch (Exception ex) when (ex is IOException or SecurityException or UnauthorizedAccessException)
+				catch (Exception ex)  // Report all errors
 				{
 					this.OnProcessed(new FileProgressEventArgs
 					{

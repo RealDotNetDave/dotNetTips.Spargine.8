@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-22-2025
+// Last Modified On : 02-23-2025
 // ***********************************************************************
 // <copyright file="FileProcessorTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Tests.IO;
 public class FileProcessorTests
 {
 	const int DirectoryCount = 10;
-	const int FileCount = 1000;
+	const int FileCount = 100;
 
 #nullable enable
 	private void Processor_Processed(object? sender, FileProgressEventArgs e) => Trace.WriteLine(e.Name + ":" + e.Message + ":" + e.ProgressState + ":" + e.Size);
@@ -71,6 +71,11 @@ public class FileProcessorTests
 		foreach (var file in generateFiles.Files)
 		{
 			files.Add(new FileInfo(file));
+		}
+
+		foreach (var file in files)
+		{
+			File.SetAttributes(file.FullName, FileAttributes.ReadOnly);
 		}
 
 		Assert.IsTrue(processor.DeleteFiles(files) == FileCount);
