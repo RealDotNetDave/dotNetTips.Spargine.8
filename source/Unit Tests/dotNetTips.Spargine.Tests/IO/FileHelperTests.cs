@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-22-2025
+// Last Modified On : 02-23-2025
 // ***********************************************************************
 // <copyright file="FileHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -49,7 +49,57 @@ public class FileHelperTests
 		return CopyProgressResult.Continue;
 	}
 
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void AddAttributes_NullFile_Test()
+	{
+		FileHelper.AddAttributes(null, FileAttributes.ReadOnly);
+	}
 
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void AddAttributes_Success_Test()
+	{
+		var filePath = RandomData.GenerateTempFile(FileLength);
+		var file = new FileInfo(filePath);
+
+		// Add the read-only attribute
+		FileHelper.AddAttributes(file, FileAttributes.ReadOnly);
+
+		// Assert that the read-only attribute has been added
+		Assert.IsTrue(file.Attributes.HasFlag(FileAttributes.ReadOnly));
+
+		// Clean up
+		file.Attributes &= ~FileAttributes.ReadOnly;
+		file.Delete();
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void AddReadOnlyAttribute_NullFile_Test()
+	{
+		FileHelper.AddReadOnlyAttribute(null);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void AddReadOnlyAttribute_Success_Test()
+	{
+		var filePath = RandomData.GenerateTempFile(FileLength);
+		var file = new FileInfo(filePath);
+
+		// Add the read-only attribute
+		FileHelper.AddReadOnlyAttribute(file);
+
+		// Assert that the read-only attribute has been added
+		Assert.IsTrue(file.Attributes.HasFlag(FileAttributes.ReadOnly));
+
+		// Clean up
+		file.Attributes &= ~FileAttributes.ReadOnly;
+		file.Delete();
+	}
 
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
@@ -394,6 +444,7 @@ public class FileHelperTests
 		}
 	}
 
+
 	[SupportedOSPlatform("windows")]
 	[TestMethod]
 	[ExpectedException(typeof(ArgumentNullException))]
@@ -475,6 +526,60 @@ public class FileHelperTests
 		Assert.IsTrue(File.Exists(destinationFile.FullName));
 
 		destinationFile.Delete();
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void RemoveAttributes_NullFile_Test()
+	{
+		FileHelper.RemoveAttributes(null, FileAttributes.ReadOnly);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void RemoveAttributes_Success_Test()
+	{
+		var filePath = RandomData.GenerateTempFile(FileLength);
+		var file = new FileInfo(filePath);
+
+		// Set the file to read-only
+		file.Attributes |= FileAttributes.ReadOnly;
+
+		// Remove the read-only attribute
+		FileHelper.RemoveAttributes(file, FileAttributes.ReadOnly);
+
+		// Assert that the read-only attribute has been removed
+		Assert.IsFalse(file.Attributes.HasFlag(FileAttributes.ReadOnly));
+
+		file.Delete();
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void RemoveReadOnlyAttribute_NullFile_Test()
+	{
+		FileHelper.RemoveReadOnlyAttribute(null);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void RemoveReadOnlyAttribute_Success_Test()
+	{
+		var filePath = RandomData.GenerateTempFile(FileLength);
+		var file = new FileInfo(filePath);
+
+		// Set the file to read-only
+		file.Attributes |= FileAttributes.ReadOnly;
+
+		// Remove the read-only attribute
+		FileHelper.RemoveReadOnlyAttribute(file);
+
+		// Assert that the read-only attribute has been removed
+		Assert.IsFalse(file.Attributes.HasFlag(FileAttributes.ReadOnly));
+
+		file.Delete();
 	}
 
 }

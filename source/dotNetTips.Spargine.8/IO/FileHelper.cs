@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-22-2025
+// Last Modified On : 02-23-2025
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -159,7 +159,7 @@ public static class FileHelper
 	/// <param name="file">The file to which the attributes will be added.</param>
 	/// <param name="attributesToAdd">The attributes to add.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
-	[Information(nameof(AddAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(AddAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static void AddAttributes([NotNull] FileInfo file, in FileAttributes attributesToAdd)
 	{
 		file = file.ArgumentNotNull();
@@ -171,7 +171,7 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="file">The file to which the read-only attribute will be added.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
-	[Information(nameof(AddReadOnlyAttribute), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(AddReadOnlyAttribute), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static void AddReadOnlyAttribute([NotNull] FileInfo file)
 	{
 		file = file.ArgumentNotNull();
@@ -583,7 +583,7 @@ public static class FileHelper
 	/// <param name="file">The file from which to remove the attributes.</param>
 	/// <param name="attributesToRemove">The attributes to remove.</param>
 	/// <returns>System.IO.FileAttributes.</returns>
-	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static void RemoveAttributes([NotNull] FileInfo file, in FileAttributes attributesToRemove)
 	{
 		file = file.ArgumentNotNull();
@@ -596,7 +596,7 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="file">The file from which to remove the read-only attribute.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
-	[Information(nameof(RemoveReadOnlyAttribute), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(RemoveReadOnlyAttribute), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static void RemoveReadOnlyAttribute([NotNull] FileInfo file)
 	{
 		file = file.ArgumentNotNull();
@@ -740,7 +740,7 @@ public static class FileHelper
 	/// <remarks>
 	/// This property leverages the <see cref="Path.GetInvalidFileNameChars"/> method to retrieve the invalid characters and converts them to a read-only collection.
 	/// </remarks>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<char> InvalidFileNameChars { get; } = Path.GetInvalidFileNameChars().ToReadOnlyCollection();
 
 }

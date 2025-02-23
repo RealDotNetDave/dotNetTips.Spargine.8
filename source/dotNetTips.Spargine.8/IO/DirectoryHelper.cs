@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 02-23-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -367,6 +367,8 @@ public static class DirectoryHelper
 	[Information(nameof(SafeDirectorySearch), "David McCarter", "6/14/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2022", Status = Status.Available)]
 	public static bool SafeDirectorySearch([NotNull] DirectoryInfo path, SearchOption searchOption = SearchOption.TopDirectoryOnly, [NotNull] params string[] searchPatterns)
 	{
+		//TODO: CHANGE TO SafeHasFoldersOrFiles IN V10
+
 		path = path.ArgumentExists();
 		searchOption = searchOption.ArgumentDefined();
 		searchPatterns = searchPatterns.ArgumentNotNull();
