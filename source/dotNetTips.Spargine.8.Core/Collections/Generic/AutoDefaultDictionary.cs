@@ -9,7 +9,13 @@
 // <copyright file="AutoDefaultDictionary.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>
+// The AutoDefaultDictionary class simplifies handling of missing keys
+// in dictionaries by providing a default value or a custom function to
+// generate values dynamically. This can be particularly useful in
+// applications where missing data should be handled gracefully without
+// throwing exceptions.
+// </summary>
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
