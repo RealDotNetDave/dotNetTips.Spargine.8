@@ -4,13 +4,14 @@
 // Created          : 01-04-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-04-2025
+// Last Modified On : 02-25-2025
 // ***********************************************************************
 // <copyright file="AutoDefaultDictionaryTests.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace DotNetTips.Spargine.Core.Tests.Collections.Generic;
 [TestClass]
 public class AutoDefaultDictionaryTests
 {
+
 
 	[TestMethod]
 	public void ConstructorWithComparer_ShouldInitializeWithDefaultValue()
@@ -72,6 +74,23 @@ public class AutoDefaultDictionaryTests
 	}
 
 	[TestMethod]
+	public void ConstructorWithDictionaryAndOnMissingKey_ShouldInitializeWithFunction()
+	{
+		// Arrange
+		var initialDictionary = new Dictionary<int, string> { { 1, "one" } };
+		Func<int, string> onMissingKey = key => $"Missing: {key}";
+		var dictionary = new AutoDefaultDictionary<int, string>(initialDictionary, onMissingKey);
+
+		// Act
+		var value1 = dictionary[1];
+		var value2 = dictionary[2];
+
+		// Assert
+		Assert.AreEqual("one", value1);
+		Assert.AreEqual("Missing: 2", value2);
+	}
+
+	[TestMethod]
 	public void ConstructorWithKeyValuePairs_ShouldInitializeWithSpecifiedDefaultValue()
 	{
 		// Arrange
@@ -94,6 +113,57 @@ public class AutoDefaultDictionaryTests
 		Assert.AreEqual(defaultValue, value3);
 	}
 
+	[TestMethod]
+	public void ConstructorWithKeyValuePairsAndOnMissingKey_ShouldInitializeWithFunction()
+	{
+		// Arrange
+		var keyValuePairs = new List<KeyValuePair<int, string>>
+	{
+		new KeyValuePair<int, string>(1, "one"),
+		new KeyValuePair<int, string>(2, "two")
+	};
+		Func<int, string> onMissingKey = key => $"Missing: {key}";
+		var dictionary = new AutoDefaultDictionary<int, string>(keyValuePairs, onMissingKey);
+
+		// Act
+		var value1 = dictionary[1];
+		var value2 = dictionary[2];
+		var value3 = dictionary[3];
+
+		// Assert
+		Assert.AreEqual("one", value1);
+		Assert.AreEqual("two", value2);
+		Assert.AreEqual("Missing: 3", value3);
+	}
+	[TestMethod]
+	public void ConstructorWithOnMissingKey_ShouldInitializeWithFunction()
+	{
+		// Arrange
+		Func<int, string> onMissingKey = key => $"Missing: {key}";
+		var dictionary = new AutoDefaultDictionary<int, string>(onMissingKey);
+
+		// Act
+		var value = dictionary[1];
+
+		// Assert
+		Assert.AreEqual("Missing: 1", value);
+	}
+
+	[TestMethod]
+	public void ConstructorWithOnMissingKeyAndComparer_ShouldInitializeWithFunction()
+	{
+		// Arrange
+		Func<int, string> onMissingKey = key => $"Missing: {key}";
+		var comparer = EqualityComparer<int>.Default;
+		var dictionary = new AutoDefaultDictionary<int, string>(onMissingKey, comparer);
+
+		// Act
+		var value = dictionary[1];
+
+		// Assert
+		Assert.AreEqual("Missing: 1", value);
+	}
+
 
 
 	[TestMethod]
@@ -112,8 +182,7 @@ public class AutoDefaultDictionaryTests
 	[TestMethod]
 	public void GetDefaultCoordinate()
 	{
-		var coordinates = RandomData.GenerateCoordinateCollection<Coordinate>(256)
-									.ToDictionary(coord => RandomData.GenerateKey(), coord => coord);
+		var coordinates = RandomData.GenerateCoordinateCollection<Coordinate>(256).ToDictionary(coord => RandomData.GenerateKey(), coord => coord);
 
 		var defaultCoordinate = RandomData.GenerateCoordinate<Coordinate>();
 
