@@ -4,14 +4,13 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-13-2025
+// Last Modified On : 02-27-2025
 // ***********************************************************************
 // <copyright file="ComputerInfo.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
 // <summary>Used to retrieve common computer information.</summary>
 // ***********************************************************************
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -117,7 +116,7 @@ public sealed class ComputerInfo
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public string IPAddress { get; private set; } = Dns.GetHostAddresses(Dns.GetHostName()).Where(p => p.AddressFamily == AddressFamily.InterNetwork).ToDelimitedString(char.Parse(","));
+	public string IPAddress { get; private set; } = Dns.GetHostAddresses(Dns.GetHostName()).Where(p => p.AddressFamily == AddressFamily.InterNetwork).ToDelimitedString();
 
 	/// <summary>
 	/// Gets a value indicating whether the operating system is 64-bit.
@@ -159,7 +158,7 @@ public sealed class ComputerInfo
 	/// </summary>
 	[DataMember]
 	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public ReadOnlyCollection<string> LogicalDrives { get; private set; } = Environment.GetLogicalDrives().AsReadOnly();
+	public string LogicalDrives { get; private set; } = Environment.GetLogicalDrives().ToDelimitedString();
 
 	/// <summary>
 	/// Gets the computer’s machine name.

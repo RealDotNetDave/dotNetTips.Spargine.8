@@ -4,7 +4,7 @@
 // Created          : 11-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-15-2025
+// Last Modified On : 02-27-2025
 // ***********************************************************************
 // <copyright file="ComputerInfoTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -17,7 +17,9 @@ using System.Globalization;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Devices;
+using DotNetTips.Spargine.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -225,13 +227,13 @@ public class ComputerInfoTests
 	{
 		// Arrange
 		var computerInfo = new ComputerInfo();
-		var expectedDrives = Environment.GetLogicalDrives();
+		var expectedDrives = Environment.GetLogicalDrives().ToDelimitedString();
 
 		// Act
 		var actualDrives = computerInfo.LogicalDrives;
 
 		// Assert
-		CollectionAssert.AreEqual(expectedDrives, actualDrives, "The LogicalDrives property should return the correct drives.");
+		Assert.AreEqual(expectedDrives, actualDrives, "The LogicalDrives property should return the correct drives.");
 	}
 
 	[TestMethod]
