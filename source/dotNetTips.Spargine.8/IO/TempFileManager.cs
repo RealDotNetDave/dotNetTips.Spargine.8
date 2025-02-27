@@ -4,7 +4,7 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2025
+// Last Modified On : 02-27-2025
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -190,7 +190,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="fileName"/> is null.</exception>
 	/// <exception cref="ArgumentException">Thrown if <paramref name="fileName"/> is empty.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(DeleteFile), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(DeleteFile), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	public void DeleteFile(string fileName)
 	{
 		if (fileName.IsNullOrEmpty())
