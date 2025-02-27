@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2025
+// Last Modified On : 02-27-2025
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -12,7 +12,7 @@
 // <summary>
 // Utility methods designed for logging purposes. Includes functionality
 // to log computer information and application details. Additionally,
-// it can capture and log all domain exceptions, even if the loggableException
+// it can capture and log all domain exceptions, even if the LoggableException
 // originates from a different assembly, covering exceptions from the
 // .NET framework.
 // </summary>
@@ -30,7 +30,7 @@ namespace DotNetTips.Spargine.Core.Logging;
 /// <summary>
 /// Provides utility methods for logging, including functionality to log computer information, application details, and capture all domain exceptions and events.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public static class LoggingHelper
 {
 
@@ -44,7 +44,7 @@ public static class LoggingHelper
 	private static ILogger _appDomainEventsLogger;
 
 	/// <summary>
-	/// The application domain loggableException logger.
+	/// The application domain LoggableException logger.
 	/// </summary>
 	/// <remarks>
 	/// This logger is used specifically for capturing and logging exceptions that occur within the application domain.
@@ -343,14 +343,13 @@ public static class LoggingHelper
 	{
 		logger = logger.ArgumentNotNull();
 
-		var appInfo = App.AppInfo;
-
-		var values = TypeHelper.GetPropertyValues(input: appInfo);
+		var values = TypeHelper.GetPropertyValues(input: App.AppInfo);
 
 		if (values?.Count > 0)
 		{
 			//FrozenSet is slower.
-			var items = values.OrderBy(p => p.Key);
+			var items = values.OrderBy(p => p.Key).ToArray();
+
 			foreach (var item in items)
 			{
 				FastLogger.LogInformation(logger, $"{nameof(AppInfo)}:{item.Key} - {item.Value}");
@@ -359,7 +358,7 @@ public static class LoggingHelper
 	}
 
 	/// <summary>
-	/// Logs detailed computer information, such as OS, architecture, and memory usage, to the specified logger.
+	/// Logs detailed computer information, such as OS, architecture, and memory usage, and more, to the specified logger.
 	/// </summary>
 	/// <param name="logger">The logger to use for logging computer information. Must not be null.</param>
 	/// <loggableException cref="ArgumentNullException">Thrown if <paramref name="logger"/> is null.</loggableException>
@@ -394,16 +393,14 @@ public static class LoggingHelper
 	{
 		logger = logger.ArgumentNotNull();
 
-		var computerInfo = new ComputerInfo();
-
-		var values = TypeHelper.GetPropertyValues(computerInfo);
+		var values = TypeHelper.GetPropertyValues(new ComputerInfo());
 
 		if (values?.Count > 0)
 		{
 			//FrozenSet is slower.
-			foreach (var item in values.OrderBy(p => p.Key))
+			foreach (var item in values.OrderBy(p => p.Key).ToArray())
 			{
-				logger.LogDebugMessage($"{nameof(ComputerInfo)}:{item.Key} - {item.Value}");
+				FastLogger.LogInformation(logger, $"{nameof(ComputerInfo)}:{item.Key} - {item.Value}");
 			}
 		}
 	}

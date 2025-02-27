@@ -38,7 +38,7 @@ public static class DriveHelper
 {
 
 	/// <summary>
-	/// Gets the file system format of the specified drive.
+	/// Gets the file system format of the specified drive such as NTFS or FAT32.
 	/// </summary>
 	/// <param name="drive">The drive letter (e.g., "C:"). Must not be null or empty.</param>
 	/// <returns>The file system format of the drive as a string.</returns>
