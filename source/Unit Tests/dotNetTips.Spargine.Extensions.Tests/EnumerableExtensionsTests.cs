@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-29-2025
+// Last Modified On : 02-28-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -233,7 +233,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastModifyCollectionTestVal()
 	{
-		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count);
+		var people = RandomData.GeneratePersonValCollection<Address>(Count);
 
 		var updatedCollection = people.FastModifyCollection(person => { person.Email = TestData; return person; });
 
@@ -264,7 +264,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void FastProcessorTestVal()
 	{
-		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count);
+		var people = RandomData.GeneratePersonValCollection<Address>(Count);
 
 		people.FastProcessor(person => person.GetHashCode());
 
@@ -564,7 +564,7 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void ProcessCollectionAsParallelValListComparison()
 	{
-		var people = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(Count);
+		var people = RandomData.GeneratePersonValCollection<Address>(Count);
 
 		people.AsParallel().WithMergeOptions(ParallelMergeOptions.Default).ForAll(person =>
 		{
@@ -589,6 +589,52 @@ public class EnumerableExtensionsTests
 		var result = people.RemoveDuplicates();
 		Assert.IsTrue(result.Status == ResultStatus.Succeeded);
 		Assert.IsTrue(result.Value.Count() == Count);
+	}
+
+	[TestMethod]
+	public void RemoveNulls_AllNullItems()
+	{
+		var collection = new List<string> { null, null, null };
+		var result = collection.RemoveNulls().ToList();
+
+		Assert.AreEqual(0, result.Count);
+	}
+
+	[TestMethod]
+	public void RemoveNulls_EmptyCollection()
+	{
+		var collection = new List<string>();
+		var result = collection.RemoveNulls().ToList();
+
+		Assert.AreEqual(0, result.Count);
+	}
+
+	[TestMethod]
+	public void RemoveNulls_NoNullItems()
+	{
+		var collection = new List<string> { "apple", "banana", "cherry" };
+		var result = collection.RemoveNulls().ToList();
+
+		Assert.AreEqual(3, result.Count);
+		CollectionAssert.AreEqual(new List<string> { "apple", "banana", "cherry" }, result);
+	}
+
+	[TestMethod]
+	public void RemoveNulls_NullCollection_ThrowsArgumentNullException()
+	{
+		List<string> nullCollection = null;
+
+		Assert.ThrowsException<ArgumentNullException>(() => nullCollection.RemoveNulls().ToList());
+	}
+
+	[TestMethod]
+	public void RemoveNulls_RemovesNullItems()
+	{
+		var collection = new List<string> { "apple", null, "banana", null, "cherry" };
+		var result = collection.RemoveNulls().ToList();
+
+		Assert.AreEqual(3, result.Count);
+		CollectionAssert.AreEqual(new List<string> { "apple", "banana", "cherry" }, result);
 	}
 
 	[TestMethod]

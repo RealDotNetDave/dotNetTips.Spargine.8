@@ -72,7 +72,6 @@ Below is the list of current projects in this repository
     * **App**: Application Information and Utility Methods.
     * **ArgumentInvalidException**: Custom exception type for invalid argument value.
     * **ArgumentReadOnlyException**: Custom exception type for read-only argument values, such as collections.
-    * **CachedEnumerable**: Custom collection type for enhanced performance during iteration.
     * **ComputerInfo**: Used to retrieve common computer information.
     * **Config**: Adaptable type designed to simplify the creation of custom configuration objects, with a focus on easy disk saving in applications.
     * **ControlChars**: Contains frequently used strings and characters, including backslash, comma, dash, double quote, empty string, forward slash, quote, space, tab, underscore, and more.

@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2025
+// Last Modified On : 02-28-2025
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -95,7 +95,7 @@ public class FileProcessor
 	{
 		//TODO: RENAME TO "CopyFilesWithOriginalPath" IN V10
 
-		var list = files.ArgumentNotNull().ToArray();
+		var list = files.ArgumentNotNull();
 
 		_ = destination.ArgumentNotNull().CheckExists(createDirectory: true);
 
@@ -103,7 +103,7 @@ public class FileProcessor
 
 		var successCount = 0;
 
-		foreach (var tempFile in list)
+		foreach (var tempFile in list.RemoveNulls())
 		{
 			if (tempFile.Exists)
 			{
@@ -141,7 +141,7 @@ public class FileProcessor
 						Name = tempFile.FullName,
 						ProgressState = FileProgressState.Error,
 						Size = tempFile.Length,
-						Message = ex.Message,
+						Message = ex.GetAllMessages(),
 					});
 				}
 			}
@@ -191,7 +191,7 @@ public class FileProcessor
 
 		var successCount = 0;
 
-		foreach (var listItem in files)
+		foreach (var listItem in files.RemoveNulls())
 		{
 			if (listItem.Exists)
 			{
@@ -226,7 +226,7 @@ public class FileProcessor
 						Name = listItem.FullName,
 						ProgressState = FileProgressState.Error,
 						Size = fileLength,
-						Message = ex.Message,
+						Message = ex.GetAllMessages(),
 					});
 				}
 			}
@@ -276,7 +276,7 @@ public class FileProcessor
 
 		var successCount = 0;
 
-		foreach (var folder in folders)
+		foreach (var folder in folders.RemoveNulls())
 		{
 			if (folder.Exists)
 			{

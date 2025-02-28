@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 02-28-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -936,6 +936,29 @@ public static class EnumerableExtensions
 		items = items.ArgumentNotNull();
 
 		return new SimpleResult<IEnumerable<T>>(new HashSet<T>(items).AsEnumerable());
+	}
+
+	/// <summary>
+	/// Removes any null items from the specified collection.
+	/// </summary>
+	/// <typeparam name="T">The type of elements in the collection.</typeparam>
+	/// <param name="collection">The collection to remove null items from.</param>
+	/// <returns>An <see cref="IEnumerable{T}"/> that contains only non-null elements from the original collection.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Pure]
+	[Information(nameof(RemoveNulls), "David McCarter", "2/28/2025", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static IEnumerable<T> RemoveNulls<T>(this IEnumerable<T> collection) where T : class
+	{
+		collection = collection.ArgumentNotNull();
+
+		foreach (var item in collection)
+		{
+			if (item != null)
+			{
+				yield return item;
+			}
+		}
 	}
 
 	/// <summary>
