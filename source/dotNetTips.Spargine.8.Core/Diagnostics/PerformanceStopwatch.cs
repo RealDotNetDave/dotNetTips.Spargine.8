@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-21-2025
+// Last Modified On : 02-28-2025
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -15,6 +15,7 @@
 // retrieved when the Stopwatch stops.
 // </summary>
 // ***********************************************************************
+using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -37,7 +38,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// The diagnostics messages logged during the stopwatch's lifetime. These messages can be retrieved for analysis or logging purposes.
 	/// </summary>
-	private readonly List<string> _diagnostics = [];
+	private ImmutableList<string> _diagnostics = [];
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="PerformanceStopwatch"/> class with the specified title.
@@ -53,14 +54,46 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <returns>A formatted string combining the title, message, and elapsed time.</returns>
 	private string CreateMessage(string message, TimeSpan result)
 	{
-		var formattedMessage = string.Concat(this.Title, message, $" Time: {result.TotalMilliseconds} ms");
+		var formattedMessage = $"{this.Title} {message} Time: {result.TotalMilliseconds} ms";
 
-		lock (this._diagnostics)
-		{
-			this._diagnostics.Add(formattedMessage);
-		}
+		this._diagnostics = this._diagnostics.Add(formattedMessage);
 
 		return formattedMessage;
+	}
+
+	/// <summary>
+	/// Clears all logged diagnostic messages.
+	/// </summary>
+	[Information(nameof(ClearDiagnostics), "David McCarter", "2/28/2025", Status = Status.New)]
+	public void ClearDiagnostics() => this._diagnostics = [];
+
+	/// <summary>
+	/// Gets the current elapsed time as a formatted string.
+	/// </summary>
+	/// <returns>A formatted string representing the current elapsed time.</returns>
+	[Information(nameof(GetElapsedTimeString), "David McCarter", "2/28/2025", Status = Status.New)]
+	public string GetElapsedTimeString() => $"Elapsed Time: {this.Elapsed.TotalMilliseconds} ms";
+
+	/// <summary>
+	/// Logs a custom message without stopping the stopwatch.
+	/// </summary>
+	/// <param name="logger">The logger used for logging the message. Must not be null.</param>
+	/// <param name="message">The message to log. Must not be null.</param>
+	[Information(nameof(LogMessage), "David McCarter", "2/28/2025", Status = Status.New)]
+	public void LogMessage(ILogger logger, string message)
+	{
+		logger = logger.ArgumentNotNull();
+		message = message.ArgumentNotNullOrEmpty();
+
+		try
+		{
+			logger.WriteInformationMessage(this.CreateMessage(message, this.Elapsed));
+		}
+		catch (Exception ex)
+		{
+			// Handle or log the exception as needed
+			throw new InvalidOperationException(Resources.AnErrorOccurredWhileLoggingTheMessage, ex);
+		}
 	}
 
 	/// <summary>
@@ -75,6 +108,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 		{
 			title = $"{title}{ControlChars.Colon}";
 		}
+
 		var sw = new PerformanceStopwatch(title);
 
 		sw.Start();
@@ -187,10 +221,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	{
 		get
 		{
-			lock (this._diagnostics)
-			{
-				return this._diagnostics.AsReadOnly();
-			}
+			return this._diagnostics.AsReadOnly();
 		}
 	}
 
@@ -198,6 +229,6 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// Gets the title of the <see cref="PerformanceStopwatch"/>.
 	/// </summary>
 	/// <value>The title associated with the stopwatch instance.</value>
-	public string Title { get; private set; }
+	public string Title { get; }
 
 }

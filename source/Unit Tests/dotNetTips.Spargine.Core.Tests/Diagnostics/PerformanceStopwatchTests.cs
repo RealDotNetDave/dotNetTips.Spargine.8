@@ -4,7 +4,7 @@
 // Created          : 01-18-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-14-2024
+// Last Modified On : 02-28-2025
 // ***********************************************************************
 // <copyright file="PerformanceStopwatchTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -31,9 +31,27 @@ public class PerformanceStopwatchTests
 	private readonly ILogger _logger = new NullLogger<PerformanceStopwatchTests>();
 
 	[TestMethod]
+	public void ClearDiagnosticsTest()
+	{
+		var psw = PerformanceStopwatch.StartNew(nameof(this.ClearDiagnosticsTest));
+
+		Thread.Sleep(500);
+
+		psw.StopReset(this._logger, "Test message 1");
+		psw.StopReset(this._logger, "Test message 2");
+
+		Assert.IsTrue(psw.Diagnostics.Count > 0);
+
+		psw.ClearDiagnostics();
+
+		Assert.AreEqual(0, psw.Diagnostics.Count);
+	}
+
+
+	[TestMethod]
 	public void DiagnosticsLogTest()
 	{
-		var psw = PerformanceStopwatch.StartNew(title: "GetUsers()");
+		var psw = PerformanceStopwatch.StartNew(title: nameof(this.DiagnosticsLogTest));
 		var currentTime = Clock.UtcTime;
 
 		Thread.Sleep(1000);
@@ -51,6 +69,31 @@ public class PerformanceStopwatchTests
 		Assert.IsNotNull(psw.Diagnostics);
 
 		Assert.IsNotNull(psw.ToString());
+	}
+
+	[TestMethod]
+	public void GetElapsedTimeStringTest()
+	{
+		var psw = PerformanceStopwatch.StartNew(nameof(this.GetElapsedTimeStringTest));
+
+		Thread.Sleep(500);
+
+		var elapsedTimeString = psw.GetElapsedTimeString();
+
+		Assert.IsTrue(elapsedTimeString.StartsWith("Elapsed Time:"));
+	}
+
+	[TestMethod]
+	public void LogMessageTest()
+	{
+		var psw = PerformanceStopwatch.StartNew(nameof(this.LogMessageTest));
+
+		Thread.Sleep(500);
+
+		psw.LogMessage(this._logger, "Intermediate log message");
+
+		Assert.IsTrue(psw.Diagnostics.Count > 0);
+		Assert.IsTrue(psw.Diagnostics[0].Contains("Intermediate log message"));
 	}
 
 	[TestMethod]
