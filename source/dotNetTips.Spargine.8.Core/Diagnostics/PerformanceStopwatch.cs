@@ -18,7 +18,6 @@
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using DotNetTips.Spargine.Core.Internal;
 using DotNetTips.Spargine.Core.Properties;
 using Microsoft.Extensions.Logging;
@@ -30,11 +29,9 @@ namespace DotNetTips.Spargine.Core.Diagnostics;
 /// <see cref="Stopwatch"/> with added features for enhanced diagnostics and performance measurement.
 /// </summary>
 /// <seealso cref="Stopwatch"/>
-[ExcludeFromCodeCoverage(Justification = "Primarily used for diagnostics and performance measurement, not business logic.")]
-[Information(nameof(PerformanceStopwatch), "David McCarter", "11/11/2020", Status = Status.NeedsDocumentation, Documentation = "https://bit.ly/SpargineFeb2023")]
+[Information(nameof(PerformanceStopwatch), "David McCarter", "11/11/2020", Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public sealed class PerformanceStopwatch : Stopwatch
 {
-
 	/// <summary>
 	/// The diagnostics messages logged during the stopwatch's lifetime. These messages can be retrieved for analysis or logging purposes.
 	/// </summary>
