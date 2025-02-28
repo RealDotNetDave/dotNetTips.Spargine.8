@@ -11,7 +11,9 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using System.Threading;
 using DotNetTips.Spargine.Core.Devices;
 using DotNetTips.Spargine.Core.Diagnostics;
@@ -30,6 +32,7 @@ public class PerformanceStopwatchTests
 
 	private readonly ILogger _logger = new NullLogger<PerformanceStopwatchTests>();
 
+
 	[TestMethod]
 	public void ClearDiagnosticsTest()
 	{
@@ -45,6 +48,38 @@ public class PerformanceStopwatchTests
 		psw.ClearDiagnostics();
 
 		Assert.AreEqual(0, psw.Diagnostics.Count);
+	}
+
+	[TestMethod]
+	public void ConstructorWithoutTitleTest()
+	{
+		var psw = new PerformanceStopwatch();
+
+		Assert.AreEqual(string.Empty, psw.Title);
+	}
+
+	[TestMethod]
+	public void ConstructorWithTitleTest()
+	{
+		var title = "TestTitle";
+		var psw = new PerformanceStopwatch(title);
+
+		Assert.AreEqual(title, psw.Title);
+	}
+
+	[TestMethod]
+	public void CreateMessageTest()
+	{
+		var psw = new PerformanceStopwatch("TestTitle");
+		var message = "TestMessage";
+		var elapsed = new TimeSpan(0, 0, 1); // 1 second
+
+		var result = psw.GetType().GetMethod("CreateMessage", BindingFlags.NonPublic | BindingFlags.Instance)
+			.Invoke(psw, new object[] { message, elapsed }) as string;
+
+		Assert.IsTrue(result.Contains("TestTitle"));
+		Assert.IsTrue(result.Contains("TestMessage"));
+		Assert.IsTrue(result.Contains("Time: 1000 ms"));
 	}
 
 
@@ -69,6 +104,21 @@ public class PerformanceStopwatchTests
 		Assert.IsNotNull(psw.Diagnostics);
 
 		Assert.IsNotNull(psw.ToString());
+	}
+
+	[TestMethod]
+	public void DiagnosticsTest()
+	{
+		var psw = PerformanceStopwatch.StartNew(nameof(this.DiagnosticsTest));
+
+		Thread.Sleep(500);
+
+		psw.StopReset(this._logger, "Test message");
+
+		var diagnostics = psw.Diagnostics;
+
+		Assert.IsTrue(diagnostics.Count > 0);
+		Assert.IsTrue(diagnostics[0].Contains("Test message"));
 	}
 
 	[TestMethod]
@@ -154,6 +204,20 @@ public class PerformanceStopwatchTests
 		var result = psw.StopRestart();
 
 		Assert.IsNotNull(currentTime.Subtract(result) > currentTime.AddMilliseconds(1000));
+	}
+
+	[TestMethod]
+	public void ToStringTest()
+	{
+		var psw = PerformanceStopwatch.StartNew(nameof(this.ToStringTest));
+
+		Thread.Sleep(500);
+
+		psw.StopReset(this._logger, "Test message");
+
+		var result = psw.ToString();
+
+		Assert.IsTrue(result.Contains("Test message"));
 	}
 
 }

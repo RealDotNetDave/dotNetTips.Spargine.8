@@ -38,10 +38,17 @@ public sealed class PerformanceStopwatch : Stopwatch
 	private ImmutableList<string> _diagnostics = [];
 
 	/// <summary>
+	/// Initializes a new instance of the <see cref="PerformanceStopwatch"/> class with an empty title.
+	/// </summary>
+	[Information(nameof(PerformanceStopwatch), UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public PerformanceStopwatch() => this.Title = string.Empty;
+
+	/// <summary>
 	/// Initializes a new instance of the <see cref="PerformanceStopwatch"/> class with the specified title.
 	/// </summary>
 	/// <param name="title">The title message associated with the stopwatch instance.</param>
-	private PerformanceStopwatch(string title) => this.Title = title;
+	[Information(nameof(PerformanceStopwatch), UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public PerformanceStopwatch(string title) => this.Title = title;
 
 	/// <summary>
 	/// Creates a diagnostic message combining the specified message and the elapsed time, then logs it.
@@ -61,14 +68,14 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// Clears all logged diagnostic messages.
 	/// </summary>
-	[Information(nameof(ClearDiagnostics), "David McCarter", "2/28/2025", Status = Status.New)]
+	[Information(nameof(ClearDiagnostics), "David McCarter", "2/28/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public void ClearDiagnostics() => this._diagnostics = [];
 
 	/// <summary>
 	/// Gets the current elapsed time as a formatted string.
 	/// </summary>
 	/// <returns>A formatted string representing the current elapsed time.</returns>
-	[Information(nameof(GetElapsedTimeString), "David McCarter", "2/28/2025", Status = Status.New)]
+	[Information(nameof(GetElapsedTimeString), "David McCarter", "2/28/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public string GetElapsedTimeString() => $"Elapsed Time: {this.Elapsed.TotalMilliseconds} ms";
 
 	/// <summary>
@@ -76,7 +83,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// </summary>
 	/// <param name="logger">The logger used for logging the message. Must not be null.</param>
 	/// <param name="message">The message to log. Must not be null.</param>
-	[Information(nameof(LogMessage), "David McCarter", "2/28/2025", Status = Status.New)]
+	[Information(nameof(LogMessage), "David McCarter", "2/28/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public void LogMessage(ILogger logger, string message)
 	{
 		logger = logger.ArgumentNotNull();
@@ -98,7 +105,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// </summary>
 	/// <param name="title">The title associated with the stopwatch instance for logging purposes. If not provided, an empty string is used.</param>
 	/// <returns>A started <see cref="PerformanceStopwatch"/> instance.</returns>
-	[Information(nameof(StartNew), "David McCarter", "11/11/2020", Status = Status.Available)]
+	[Information(nameof(StartNew), "David McCarter", "11/11/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static PerformanceStopwatch StartNew(string title = ControlChars.EmptyString)
 	{
 		if (title.HasValue())
@@ -117,7 +124,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// Stops the <see cref="PerformanceStopwatch"/>, resets it to zero, and returns the elapsed time.
 	/// </summary>
 	/// <returns>The elapsed time as a <see cref="TimeSpan"/> before the stopwatch was stopped and reset.</returns>
-	[Information(nameof(StopReset), "David McCarter", "11/11/2020", Status = Status.Available)]
+	[Information(nameof(StopReset), "David McCarter", "11/11/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public TimeSpan StopReset()
 	{
 		this.Stop();
@@ -136,7 +143,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <example>
 	/// Output: LoadUsers():Call to Database. Time: 1006.3728 ms
 	/// </example>
-	[Information(nameof(StopReset), "David McCarter", "1/18/2023", Status = Status.Available)]
+	[Information(nameof(StopReset), "David McCarter", "1/18/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public TimeSpan StopReset(ILogger logger, string message)
 	{
 		logger = logger.ArgumentNotNull();
@@ -161,7 +168,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// Stops the <see cref="PerformanceStopwatch"/>, restarts it, and returns the elapsed time before the restart.
 	/// </summary>
 	/// <returns>The elapsed time as a <see cref="TimeSpan"/> before the stopwatch was stopped and restarted.</returns>
-	[Information(nameof(StopRestart), "David McCarter", "11/11/2020", Status = Status.Available)]
+	[Information(nameof(StopRestart), "David McCarter", "11/11/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public TimeSpan StopRestart()
 	{
 		var result = this.Elapsed;
@@ -181,7 +188,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <example>
 	/// Output: LoadUsers():Call to Database. Time: 1006.3728 ms
 	/// </example>
-	[Information(nameof(StopRestart), "David McCarter", "1/18/2023", Status = Status.Available)]
+	[Information(nameof(StopRestart), "David McCarter", "1/18/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public TimeSpan StopRestart(ILogger logger, string message)
 	{
 		var result = this.StopRestart();
@@ -203,6 +210,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// Returns a <see cref="string"/> that represents all the logged messages.
 	/// </summary>
 	/// <returns>A <see cref="string"/> that concatenates all the logged diagnostic messages.</returns>
+	[Information(nameof(ToString), "David McCarter", "1/18/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public override string ToString() => FastStringBuilder.CombineStrings(true, [.. this._diagnostics]);
 
 	/// <summary>
@@ -214,6 +222,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// GetUsers():Load users from database. Time: 1013.02 ms
 	/// GetUsers():Save users to database.Time: 1013.7925 ms
 	/// </example>
+	[Information(nameof(StopRestart), "David McCarter", "1/18/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ReadOnlyCollection<string> Diagnostics
 	{
 		get

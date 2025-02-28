@@ -103,6 +103,8 @@ public class FileProcessor
 
 		var successCount = 0;
 
+		var psw = new PerformanceStopwatch(nameof(this.CopyFiles));
+
 		foreach (var tempFile in list.RemoveNulls())
 		{
 			if (tempFile.Exists)
@@ -116,7 +118,7 @@ public class FileProcessor
 						newFileName.Directory.Create();
 					}
 
-					var psw = PerformanceStopwatch.StartNew();
+					psw.Start();
 
 					_ = tempFile.CopyTo(newFileName.FullName, overwrite: true);
 
@@ -190,6 +192,7 @@ public class FileProcessor
 		}
 
 		var successCount = 0;
+		var psw = new PerformanceStopwatch(nameof(this.DeleteFiles));
 
 		foreach (var listItem in files.RemoveNulls())
 		{
@@ -202,7 +205,7 @@ public class FileProcessor
 					fileLength = listItem.Length;
 					FileHelper.RemoveReadOnlyAttribute(listItem);
 
-					var psw = PerformanceStopwatch.StartNew();
+					psw.Start();
 
 					listItem.Delete();
 
