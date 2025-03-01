@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-28-2025
+// Last Modified On : 03-01-2025
 // ***********************************************************************
 // <copyright file="XmlSerialization.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -40,11 +40,9 @@ public static class XmlSerialization
 	/// <returns>An instance of the specified type containing the deserialized data.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if the xml parameter is null or empty.</exception>
 	[Information(nameof(Deserialize), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static TResult Deserialize<TResult>([NotNull] string xml)
+	public static TResult Deserialize<TResult>([NotNull][StringSyntax(StringSyntaxAttribute.Xml)] string xml)
 		where TResult : new()
 	{
-		//[StringSyntax(StringSyntaxAttribute.Xml)]
-
 		xml = xml.ArgumentNotNullOrEmpty();
 
 		using (var sr = new StringReader(xml))
