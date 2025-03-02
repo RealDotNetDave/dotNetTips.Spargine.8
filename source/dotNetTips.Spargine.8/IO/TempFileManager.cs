@@ -4,7 +4,7 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2025
+// Last Modified On : 03-02-2025
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -198,7 +198,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 			return;
 		}
 
-		var filesDeletedResult = FileHelper.DeleteFiles(new ReadOnlyCollection<string>(new List<string> { fileName }));
+		var filesDeletedResult = FileHelper.DeleteFiles(new ReadOnlyCollection<string>([fileName]));
 
 		if (filesDeletedResult.Value.Count > 0)
 		{

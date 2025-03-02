@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-22-2025
+// Last Modified On : 03-02-2025
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -144,15 +144,7 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ClearNulls), author: "David McCarter", createdOn: "8/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool ClearNulls<T>([NotNull] this List<T> collection)
-	{
-		if (collection is null)
-		{
-			return false;
-		}
-
-		return collection.RemoveAll(p => p is null) > 0;
-	}
+	public static bool ClearNulls<T>([NotNull] this List<T> collection) => collection is null ? false : collection.RemoveAll(p => p is null) > 0;
 
 	/// <summary>
 	/// Determines whether the specified <see cref="List{T}"/> does not contain any items.
@@ -209,15 +201,7 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">action</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this List<T> collection, [NotNull] Predicate<T> action)
-	{
-		if (collection.CheckIsNotNull() is false || action.CheckIsNotNull() is false)
-		{
-			return false;
-		}
-
-		return collection.Exists(action);
-	}
+	public static bool HasItems<T>([NotNull] this List<T> collection, [NotNull] Predicate<T> action) => collection.CheckIsNotNull() is false || action.CheckIsNotNull() is false ? false : collection.Exists(action);
 
 	/// <summary>
 	/// Determines whether the <see cref="List{T}" /> has a specified count.
@@ -229,17 +213,7 @@ public static class ListExtensions
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "8/27/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	public static bool HasItems<T>([NotNull] this List<T> collection, int count)
-	{
-		if (collection is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Count == count;
-		}
-	}
+	public static bool HasItems<T>([NotNull] this List<T> collection, int count) => collection is null ? false : collection.Count == count;
 
 	/// <summary>
 	/// Finds an index that avoids multiple enumerations.
@@ -490,7 +464,7 @@ public static class ListExtensions
 	/// <returns>Core.Collections.Generic.Collection&lt;T&gt;.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToCollection), "David McCarter", "10/21/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static Collection<T> ToCollection<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
+	public static Collection<T> ToCollection<T>([NotNull] this List<T> collection) => [.. collection.ArgumentNotNull()];
 
 	/// <summary>
 	/// Converts <see cref="List{T}" /> to a <see cref=" DistinctBlockingCollection{T}" />.
@@ -611,7 +585,7 @@ public static class ListExtensions
 	/// <returns>ObservableCollection.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToObservableCollection), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static ObservableCollection<T> ToObservableCollection<T>([NotNull] this List<T> collection) => new(collection.ArgumentNotNull());
+	public static ObservableCollection<T> ToObservableCollection<T>([NotNull] this List<T> collection) => [.. collection.ArgumentNotNull()];
 
 	/// <summary>
 	/// Converts the <see cref="List{T}" /> to a <see cref="ObservableList{T}" />.

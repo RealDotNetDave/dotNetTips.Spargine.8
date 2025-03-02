@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-28-2025
+// Last Modified On : 03-02-2025
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -223,13 +223,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// GetUsers():Save users to database.Time: 1013.7925 ms
 	/// </example>
 	[Information(nameof(StopRestart), "David McCarter", "1/18/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public ReadOnlyCollection<string> Diagnostics
-	{
-		get
-		{
-			return this._diagnostics.AsReadOnly();
-		}
-	}
+	public ReadOnlyCollection<string> Diagnostics => this._diagnostics.AsReadOnly();
 
 	/// <summary>
 	/// Gets the title of the <see cref="PerformanceStopwatch"/>.
