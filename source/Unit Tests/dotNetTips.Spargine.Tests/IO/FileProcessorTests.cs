@@ -27,8 +27,8 @@ namespace DotNetTips.Spargine.Tests.IO;
 [TestClass]
 public class FileProcessorTests
 {
-	const int DirectoryCount = 10;
-	const int FileCount = 100;
+	private const int DirectoryCount = 10;
+	private const int FileCount = 100;
 
 #nullable enable
 	private void Processor_Processed(object? sender, FileProgressEventArgs e) => Trace.WriteLine(e.Name + ":" + e.Message + ":" + e.ProgressState + ":" + e.Size);

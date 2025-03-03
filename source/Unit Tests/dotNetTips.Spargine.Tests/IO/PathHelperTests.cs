@@ -49,7 +49,6 @@ public class PathHelperTests
 	[TestMethod]
 	public void CombinePaths_ParamsStringArray_CreateIfNotExistsFalse_DirectoryNotCreated()
 	{
-		var combinedPath = Path.Combine(this._testDirectory, "SubDirectory1", "SubDirectory2");
 		var result = PathHelper.CombinePaths(false, this._testDirectory, "SubDirectory1", "SubDirectory2");
 		Assert.IsFalse(result.Exists);
 	}
