@@ -281,9 +281,9 @@ public class DirectoryHelperTests
 	[TestMethod]
 	public void SafeDirectorySearchTest()
 	{
-		var folder = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+		var folder = new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Temp"));
 
-		var result = DirectoryHelper.SafeDirectorySearch(folder, "*Microsoft*", SearchOption.AllDirectories);
+		var result = DirectoryHelper.SafeDirectorySearch(folder, "*.*", SearchOption.AllDirectories);
 
 		Assert.IsTrue(result.HasItems());
 	}
@@ -294,7 +294,9 @@ public class DirectoryHelperTests
 	{
 		var folders = new List<DirectoryInfo>();
 
-		folders.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)));
+		var folder = new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Temp"));
+
+		folders.Add(folder);
 
 		var result = DirectoryHelper.SafeFileSearch(folders, "*.png", SearchOption.AllDirectories);
 
@@ -305,7 +307,7 @@ public class DirectoryHelperTests
 	[TestMethod]
 	public void SafeFileSearchTest()
 	{
-		var folder = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+		var folder = new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Temp"));
 
 		var result = DirectoryHelper.SafeFileSearch(folder, "*.png", SearchOption.AllDirectories);
 

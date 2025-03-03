@@ -4,12 +4,12 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-28-2025
+// Last Modified On : 03-03-2025
 // ***********************************************************************
-// <copyright file="DirectoryHelper.cs" company="McCarter Consulting">
+// <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Common methods for working with file directories.</summary>
+// <summary>Common methods for working with path directories.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
@@ -34,8 +34,8 @@ namespace DotNetTips.Spargine.IO;
 /// </summary>
 /// <remarks>
 /// This class includes methods for performing operations such as copying, moving, deleting directories, checking permissions,
-/// loading files asynchronously, managing OneDrive folders, and conducting safe directory and file searches. These methods
-/// are designed to extend the capabilities of the <see cref="DirectoryInfo"/> class and simplify common file system operations.
+/// loading files asynchronously, managing OneDrive folders, and conducting safe directory and path searches. These methods
+/// are designed to extend the capabilities of the <see cref="DirectoryInfo"/> class and simplify common path system operations.
 /// </remarks>
 [Information(Status = Status.UpdateDocumentation, Documentation = "https://bit.ly/SpargineDirectoryHelper")]
 public static class DirectoryHelper
@@ -346,6 +346,20 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
+	/// Removes the specified attributes from the directory.
+	/// </summary>
+	/// <param name="path">The directory from which the attributes will be removed. Must not be null.</param>
+	/// <param name="attributesToRemove">The attributes to remove from the directory.</param>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> is null.</exception>
+	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static void RemoveAttributes([NotNull] DirectoryInfo path, in FileAttributes attributesToRemove)
+	{
+		path = path.ArgumentNotNull();
+
+		path.Attributes &= ~attributesToRemove;
+	}
+
+	/// <summary>
 	/// Performs a safe directory search by matching specified search patterns and search option, ignoring errors accessing directories.
 	/// </summary>
 	/// <param name="path">The directory to search.</param>
@@ -404,14 +418,14 @@ public static class DirectoryHelper
 		searchPattern = searchPattern.ArgumentNotNullOrEmpty();
 		searchOption = searchOption.ArgumentDefined();
 
-		var options = new EnumerationOptions { IgnoreInaccessible = true, ReturnSpecialDirectories = true, RecurseSubdirectories = false };
+		var options = new EnumerationOptions { IgnoreInaccessible = true, ReturnSpecialDirectories = true, RecurseSubdirectories = false, AttributesToSkip = FileAttributes.Hidden };
 
 		if (searchOption == SearchOption.AllDirectories)
 		{
 			options.RecurseSubdirectories = true;
 		}
 
-		var directories = path.GetDirectories(searchPattern, options);
+		var directories = path.GetDirectories(searchPattern, searchOption);
 		var itemCount = directories.LongLength;
 
 		for (var index = 0; index < itemCount; index++)
@@ -421,7 +435,7 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Performs a safe file search in the specified directory using the given search pattern and search option.
+	/// Performs a safe path search in the specified directory using the given search pattern and search option.
 	/// Ignores errors accessing directories.
 	/// </summary>
 	/// <param name="path">The directory to search. Must not be null.</param>
@@ -435,9 +449,9 @@ public static class DirectoryHelper
 	/// <code>
 	/// var directoryInfo = new DirectoryInfo(@"C:\MyDirectory");
 	/// var files = DirectoryHelper.SafeFileSearch(directoryInfo, "*.txt", SearchOption.AllDirectories);
-	/// foreach(var file in files)
+	/// foreach(var path in files)
 	/// {
-	/// Console.WriteLine(file.FullName);
+	/// Console.WriteLine(path.FullName);
 	/// }
 	/// </code></example>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> is null.</exception>
@@ -454,7 +468,7 @@ public static class DirectoryHelper
 	}
 
 	/// <summary>
-	/// Performs a safe file search in the specified directories using the given search pattern and search option.
+	/// Performs a safe path search in the specified directories using the given search pattern and search option.
 	/// Ignores errors accessing directories.
 	/// </summary>
 	/// <param name="directories">The directories to search. Must not be null.</param>
@@ -471,12 +485,7 @@ public static class DirectoryHelper
 		searchPattern = searchPattern.ArgumentNotNullOrEmpty();
 		searchOption = searchOption.ArgumentDefined();
 
-		var options = new EnumerationOptions
-		{
-			IgnoreInaccessible = true,
-			ReturnSpecialDirectories = false,
-			RecurseSubdirectories = false
-		};
+		var options = new EnumerationOptions { IgnoreInaccessible = true, ReturnSpecialDirectories = true, RecurseSubdirectories = false, AttributesToSkip = FileAttributes.Hidden };
 
 		if (searchOption == SearchOption.AllDirectories)
 		{
@@ -487,7 +496,7 @@ public static class DirectoryHelper
 		{
 			if (directory.Exists)
 			{
-				var directoryFiles = directory.EnumerateFiles(searchPattern, options).ToArray();
+				var directoryFiles = directory.GetFiles(searchPattern, options);
 
 				if (directoryFiles.HasItems())
 				{
@@ -503,7 +512,7 @@ public static class DirectoryHelper
 	/// <summary>
 	/// Sets the attributes of all files in the specified directory, and its subdirectories, to normal.
 	/// </summary>
-	/// <param name="path">The directory whose file attributes will be set to normal. Must not be null.</param>
+	/// <param name="path">The directory whose path attributes will be set to normal. Must not be null.</param>
 	/// <remarks>
 	/// This method recursively traverses all files in the given directory and its subdirectories, setting their attributes to <see cref="FileAttributes.Normal"/>.
 	/// It's useful for preparing files for deletion that might otherwise be read-only or have other attributes set.
@@ -522,11 +531,22 @@ public static class DirectoryHelper
 	{
 		path = path.ArgumentExists();
 
-		var options = new EnumerationOptions { IgnoreInaccessible = true, ReturnSpecialDirectories = false, RecurseSubdirectories = true };
+		// Set the directory attributes to normal
+		RemoveAttributes(path, FileAttributes.ReadOnly);
 
-		foreach (var file in path.GetFiles("*.*", options))
+		var dirs = SafeDirectorySearch(path, "*.*", SearchOption.AllDirectories);
+
+		foreach (var dir in dirs)
 		{
-			if (file is not null && file.Exists)
+			RemoveAttributes(dir, FileAttributes.ReadOnly);
+		}
+
+		var files = SafeFileSearch(path, "*.*", SearchOption.AllDirectories);
+
+		// Set the path attributes to normal
+		foreach (var file in files)
+		{
+			if (file.Exists)
 			{
 				file.Attributes = FileAttributes.Normal;
 			}

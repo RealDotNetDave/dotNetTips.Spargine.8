@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-23-2025
+// Last Modified On : 03-03-2025
 // ***********************************************************************
 // <copyright file="FileProcessorTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -95,6 +95,7 @@ public class FileProcessorTests
 			var newPath = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), RandomData.GenerateWord(15)));
 			newPath.Create();
 			folders.Add(newPath);
+
 			var testFiles = RandomData.GenerateFiles(newPath.FullName, FileCount);
 
 			foreach (var file in testFiles)
@@ -106,5 +107,21 @@ public class FileProcessorTests
 		Assert.IsTrue(processor.DeleteFolders(folders, true) == DirectoryCount);
 
 	}
+
+	//[TestMethod]
+	//public void TEMPDeleteFoldersTest()
+	//{
+	//	var processor = new FileProcessor();
+	//	processor.Processed += this.Processor_Processed;
+
+	//	var folders = new List<DirectoryInfo>(DirectoryCount);
+
+	//	var folder = new DirectoryInfo("C:\\Users\\david\\OneDrive - dotNetTips.com\\Backup\\DESKTOP-TU9NREL\\DAVID\\TURBO\\2025-02-22T15.21.58");
+
+	//	folders.Add(folder);
+
+	//	Assert.IsTrue(processor.DeleteFolders(folders, true) == folders.Count);
+
+	//}
 
 }

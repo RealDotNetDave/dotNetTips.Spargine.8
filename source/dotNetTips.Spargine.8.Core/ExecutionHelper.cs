@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-13-2025
+// Last Modified On : 03-03-2025
 // ***********************************************************************
 // <copyright file="ExecutionHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -89,7 +89,11 @@ public static class ExecutionHelper
 			catch (Exception ex) // Catching Exception since the type of Exception is unknown.
 			{
 				result.AddException(ex);
-				FastLogger.LogException(logger, $"Attempt {attempts} failed.", ex);
+
+				if (logger is not null)
+				{
+					FastLogger.LogException(logger, $"Attempt {attempts} failed.", ex);
+				}
 
 				if (attempts == retryCount)
 				{
@@ -146,7 +150,11 @@ public static class ExecutionHelper
 			catch (Exception ex) // Catching Exception since the type of Exception is unknown.
 			{
 				result.AddException(ex);
-				FastLogger.LogException(logger, $"Attempt {attempts} failed.", ex);
+
+				if (logger is not null)
+				{
+					FastLogger.LogException(logger, $"Attempt {attempts} failed.", ex);
+				}
 
 				if (attempts == retryCount || cancellationToken.IsCancellationRequested)
 				{
