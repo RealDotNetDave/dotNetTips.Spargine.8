@@ -20,6 +20,7 @@ using System.Runtime.Versioning;
 using System.Security.AccessControl;
 using System.Threading;
 using System.Threading.Tasks;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
 using DotNetTips.Spargine.Tester;
@@ -80,22 +81,6 @@ public class DirectoryHelperTests
 		Assert.IsTrue(DirectoryHelper.CheckPermission(new DirectoryInfo(path)));
 
 		Assert.IsTrue(DirectoryHelper.CheckPermission(new DirectoryInfo(path), FileSystemRights.Write));
-	}
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
-	[ExpectedException(typeof(DirectoryNotFoundException))]
-	public void CopyDirectory_InvalidSource_ThrowsDirectoryNotFoundException()
-	{
-		// Arrange
-		var invalidSourceDirectory = new DirectoryInfo(Path.Combine(Path.GetTempPath(), Path.GetRandomFileName()));
-		var destinationDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-		var destinationDirectory = new DirectoryInfo(destinationDirectoryPath);
-
-		// Act
-		DirectoryHelper.CopyDirectory(invalidSourceDirectory, destinationDirectory, true);
-
-		// No need for Assert, as an exception is expected
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -283,7 +268,7 @@ public class DirectoryHelperTests
 	{
 		var folder = new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Temp"));
 
-		var result = DirectoryHelper.SafeDirectorySearch(folder, "*.*", SearchOption.AllDirectories);
+		var result = DirectoryHelper.SafeDirectorySearch(folder, ControlChars.WildcardAllFiles, SearchOption.AllDirectories);
 
 		Assert.IsTrue(result.HasItems());
 	}

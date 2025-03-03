@@ -82,7 +82,7 @@ public static class DirectoryHelper
 	public static bool CheckPermission([NotNull] DirectoryInfo directory, FileSystemRights permission = FileSystemRights.Read)
 	{
 		//OPTIMIZATION FROM COPILOT BREAKS THIS CODE
-		directory = directory.ArgumentNotNull();
+		directory = directory.ArgumentExists();
 
 		var accessControl = directory.GetAccessControl();
 		var rules = accessControl.GetAccessRules(true, true, typeof(SecurityIdentifier));
@@ -131,7 +131,11 @@ public static class DirectoryHelper
 	[Information(nameof(CopyDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void CopyDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, bool overwrite = true)
 	{
-		source = source.ArgumentNotNull();
+		if (source.CheckExists(createDirectory: false) == false)
+		{
+			return;
+		}
+
 		_ = destination.ArgumentNotNull().CheckExists();
 
 		var files = source.GetFiles();
@@ -172,7 +176,10 @@ public static class DirectoryHelper
 	{
 		//TODO: FOR VERSION 10, RETURN SIMPLERESULT.
 
-		path = path.ArgumentNotNull();
+		if (path.CheckExists(createDirectory: false) == false)
+		{
+			return;
+		}
 
 		if (path.Exists is false)
 		{
@@ -336,7 +343,11 @@ public static class DirectoryHelper
 	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void MoveDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, byte retries = 5)
 	{
-		source = source.ArgumentExists();
+		if (source.CheckExists(createDirectory: false) == false)
+		{
+			return;
+		}
+
 		retries = retries.ArgumentInRange(1, upper: byte.MaxValue, errorMessage: Resources.RetriesAreLimitedTo255);
 
 		if (destination.ArgumentNotNull().CheckExists(throwException: true))
@@ -354,7 +365,10 @@ public static class DirectoryHelper
 	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static void RemoveAttributes([NotNull] DirectoryInfo path, in FileAttributes attributesToRemove)
 	{
-		path = path.ArgumentNotNull();
+		if (path.CheckExists(createDirectory: false) == false)
+		{
+			return;
+		}
 
 		path.Attributes &= ~attributesToRemove;
 	}
@@ -383,7 +397,11 @@ public static class DirectoryHelper
 	{
 		//TODO: CHANGE TO SafeHasFoldersOrFiles IN V10
 
-		path = path.ArgumentExists();
+		if (path.CheckExists(createDirectory: false) == false)
+		{
+			return false;
+		}
+
 		searchOption = searchOption.ArgumentDefined();
 		searchPatterns = searchPatterns.ArgumentNotNull();
 
@@ -529,19 +547,22 @@ public static class DirectoryHelper
 	[Information(nameof(SetFileAttributesToNormal), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void SetFileAttributesToNormal([NotNull] DirectoryInfo path)
 	{
-		path = path.ArgumentExists();
+		if (path.CheckExists() == false)
+		{
+			return;
+		}
 
 		// Set the directory attributes to normal
 		RemoveAttributes(path, FileAttributes.ReadOnly);
 
-		var dirs = SafeDirectorySearch(path, "*.*", SearchOption.AllDirectories);
+		var dirs = SafeDirectorySearch(path, ControlChars.WildcardAllFiles, SearchOption.AllDirectories);
 
 		foreach (var dir in dirs)
 		{
 			RemoveAttributes(dir, FileAttributes.ReadOnly);
 		}
 
-		var files = SafeFileSearch(path, "*.*", SearchOption.AllDirectories);
+		var files = SafeFileSearch(path, ControlChars.WildcardAllFiles, SearchOption.AllDirectories);
 
 		// Set the path attributes to normal
 		foreach (var file in files)

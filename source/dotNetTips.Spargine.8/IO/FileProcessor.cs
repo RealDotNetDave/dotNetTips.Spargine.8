@@ -95,6 +95,11 @@ public class FileProcessor
 	{
 		//TODO: RENAME TO "CopyFilesWithOriginalPath" IN V10
 
+		if (files.HasItems() is false)
+		{
+			return 0;
+		}
+
 		var list = files.ArgumentNotNull();
 
 		_ = destination.ArgumentNotNull().CheckExists(createDirectory: true);

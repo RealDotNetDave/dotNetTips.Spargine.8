@@ -14,6 +14,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using DotNetTips.Spargine.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -42,7 +43,7 @@ public class DirectoryInfoExtensionsTests
 	{
 		var directory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
 
-		var result = directory.GetSize("*.*");
+		var result = directory.GetSize(ControlChars.WildcardAllFiles);
 
 		Assert.IsTrue(result > 0);
 
@@ -54,7 +55,7 @@ public class DirectoryInfoExtensionsTests
 	{
 		var directory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
 
-		var result = directory.GetSize(searchPattern: "*.*", searchOption: SearchOption.AllDirectories);
+		var result = directory.GetSize(searchPattern: ControlChars.WildcardAllFiles, searchOption: SearchOption.AllDirectories);
 
 		Assert.IsTrue(result > 0);
 
