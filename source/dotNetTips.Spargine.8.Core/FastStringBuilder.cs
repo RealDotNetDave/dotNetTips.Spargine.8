@@ -206,6 +206,42 @@ public static class FastStringBuilder
 	/// <returns>A single string with the values joined by the delimiter.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static string JoinStrings([NotNull] IEnumerable<string> values, [ConstantExpected] in char delimiter = ControlChars.Comma)
+	{
+		if (values == null || values.CheckItemsExists() == false)
+		{
+			return ControlChars.EmptyString;
+		}
+
+		var sb = _stringBuilderPool.Get().Clear();
+
+		try
+		{
+			foreach (var value in values)
+			{
+				if (sb.Length > 0)
+				{
+					_ = sb.Append(delimiter);
+				}
+				_ = sb.Append(value);
+			}
+
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
+	}
+
+	/// <summary>
+	/// Joins an enumerable collection of strings with a specified delimiter.
+	/// </summary>
+	/// <param name="delimiter">The delimiter to use between each string.</param>
+	/// <param name="values">The collection of strings to join.</param>
+	/// <returns>A single string with the values joined by the delimiter.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static string JoinStrings([NotNull] IEnumerable<string> values, string delimiter = ControlChars.CommaSpace)
 	{
 		if (values == null || values.CheckItemsExists() == false)

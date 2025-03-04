@@ -4,7 +4,7 @@
 // Created          : 01-29-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 03-04-2025
 // ***********************************************************************
 // <copyright file="SimpleResult.Generic.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -76,7 +76,7 @@ public class SimpleResult<T>
 	/// </summary>
 	/// <returns>A string containing all exception messages.</returns>
 	[return: NotNull]
-	private string GenerateExceptionMessages() => string.Join(Environment.NewLine, this._exceptions.Select(e => e.GetAllMessages()));
+	private string GenerateExceptionMessages() => FastStringBuilder.JoinStrings(this._exceptions.Select(e => e.GetAllMessages()), Environment.NewLine);
 
 
 	/// <summary>

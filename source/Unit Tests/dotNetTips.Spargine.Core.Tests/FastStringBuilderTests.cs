@@ -142,7 +142,7 @@ public class FastStringBuilderTests
 		var result = FastStringBuilder.JoinStrings(strings, ControlChars.CommaSpace);
 		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
 
-		result = FastStringBuilder.JoinStrings(null, ControlChars.CommaSpace);
+		result = FastStringBuilder.JoinStrings(null, ControlChars.Comma.ToString());
 		Assert.AreEqual(ControlChars.EmptyString, result);
 	}
 

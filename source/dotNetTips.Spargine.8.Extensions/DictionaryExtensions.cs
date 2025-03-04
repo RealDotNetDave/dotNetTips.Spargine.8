@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-07-2025
+// Last Modified On : 03-04-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -17,9 +17,8 @@ using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Globalization;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using System.Text;
 using DotNetTips.Spargine.Core;
 using Microsoft.Extensions.ObjectPool;
 
@@ -35,12 +34,6 @@ namespace DotNetTips.Spargine.Extensions;
 [Information(Documentation = "https://bit.ly/SpargineDictionaryExtensions", Status = Status.Available)]
 public static class DictionaryExtensions
 {
-	/// <summary>
-	/// The string builder pool
-	/// </summary>
-	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
-		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
-
 	/// <summary>
 	/// Processes the specified collection to dispose its items.
 	/// </summary>
@@ -214,36 +207,10 @@ public static class DictionaryExtensions
 	/// pfCfZQFGPWYXBlUvVHNb]ZjBO_LTbQBSCYb: pfCfZQFGPWYXBlUvVHNb]ZjBO_LTbQBSCYb,
 	/// Dnadh[d`FP^SjNeChCvVuBXuEl^yVFUbKXsaacsCpJuxAscU: Dnadh[d`FP^SjNeChCvVuBXuEl^yVFUbKXsaacsCpJuxAscU.
 	/// </example>
-	[Information(nameof(ToDelimitedString), "David McCarter", "11/03/2020", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public static string ToDelimitedString<TKey, TValue>(this IDictionary<TKey, TValue> collection, in char delimiter = ControlChars.Comma)
+	[Information(nameof(ToDelimitedString), "David McCarter", "11/03/2020", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public static string ToDelimitedString<TKey, TValue>(this IDictionary<TKey, TValue> collection, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
-		if (collection.DoesNotHaveItems())
-		{
-			return string.Empty;
-		}
-
-		var sb = _stringBuilderPool.Value.Get().Clear();
-
-		try
-		{
-			var items = collection.ToFrozenDictionary();
-
-			foreach (var item in items)
-			{
-				if (sb.Length > 0)
-				{
-					_ = sb.Append(delimiter.ToString(CultureInfo.CurrentCulture));
-				}
-
-				_ = sb.Append($"{item.Key}: {item.Value}".ToString(CultureInfo.CurrentCulture));
-			}
-
-			return sb.ToString().Trim();
-		}
-		finally
-		{
-			_stringBuilderPool.Value.Return(sb);
-		}
+		return FastStringBuilder.ToDelimitedString((Dictionary<TKey, TValue>)collection, delimiter);
 	}
 
 	/// <summary>
