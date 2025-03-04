@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 03-04-2025
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -246,6 +246,54 @@ public static class DateTimeExtensions
 	/// <returns>DateTime.</returns>
 	[Information(nameof(Subtract), author: "David McCarter", createdOn: "10/9/2023", UnitTestStatus = UnitTestStatus.NotRequired, Status = Status.Available)]
 	public static DateTime Subtract(this in DateTime input, in TimeSpan time) => input.ToUniversalTime().Add(time);
+
+	/// <summary>
+	/// Determines how long until the next hour starts.
+	/// </summary>
+	/// <param name="dateTime">The DateTime to check.</param>
+	/// <returns>A TimeSpan representing the time until the next hour starts.</returns>
+	[Information(nameof(TimeUntilNextHour), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static TimeSpan TimeUntilNextHour(this in DateTime dateTime)
+	{
+		var nextHour = dateTime.AddHours(1).AddMinutes(-dateTime.Minute).AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
+		return nextHour - dateTime;
+	}
+
+	/// <summary>
+	/// Determines how long until the next hour starts.
+	/// </summary>
+	/// <param name="dateTime">The DateTimeOffset to check.</param>
+	/// <returns>A TimeSpan representing the time until the next hour starts.</returns>
+	[Information(nameof(TimeUntilNextHour), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static TimeSpan TimeUntilNextHour(this in DateTimeOffset dateTime)
+	{
+		var nextHour = dateTime.AddHours(1).AddMinutes(-dateTime.Minute).AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
+		return nextHour - dateTime;
+	}
+
+	/// <summary>
+	/// Determines how long until the next minute starts.
+	/// </summary>
+	/// <param name="dateTime">The DateTime to check.</param>
+	/// <returns>A TimeSpan representing the time until the next minute starts.</returns>
+	[Information(nameof(TimeUntilNextMinute), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static TimeSpan TimeUntilNextMinute(this in DateTime dateTime)
+	{
+		var nextMinute = dateTime.AddMinutes(1).AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
+		return nextMinute - dateTime;
+	}
+
+	/// <summary>
+	/// Determines how long until the next minute starts.
+	/// </summary>
+	/// <param name="dateTime">The DateTimeOffset to check.</param>
+	/// <returns>A TimeSpan representing the time until the next minute starts.</returns>
+	[Information(nameof(TimeUntilNextMinute), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static TimeSpan TimeUntilNextMinute(this in DateTimeOffset dateTime)
+	{
+		var nextMinute = dateTime.AddMinutes(1).AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
+		return nextMinute - dateTime;
+	}
 
 	/// <summary>
 	/// Converts <see cref="DateTime" /> to a formatted string.

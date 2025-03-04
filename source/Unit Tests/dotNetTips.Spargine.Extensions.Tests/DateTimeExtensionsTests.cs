@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 03-04-2025
 // ***********************************************************************
 // <copyright file="DateTimeExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -173,6 +173,32 @@ public class DateTimeExtensionsTests : TestClass
 	}
 
 	/// <summary>
+	/// Defines the test method DateTimeOffsetTimeUntilNextHourTest.
+	/// </summary>
+	[TestMethod]
+	public void DateTimeOffsetTimeUntilNextHourTest()
+	{
+		var now = DateTimeOffset.Now;
+
+		var result = now.TimeUntilNextHour();
+
+		Assert.IsTrue(result.TotalMinutes <= 60);
+	}
+
+	/// <summary>
+	/// Defines the test method DateTimeOffsetTimeUntilNextMinuteTest.
+	/// </summary>
+	[TestMethod]
+	public void DateTimeOffsetTimeUntilNextMinuteTest()
+	{
+		var now = DateTimeOffset.Now;
+
+		var result = now.TimeUntilNextMinute();
+
+		Assert.IsTrue(result.TotalSeconds <= 60);
+	}
+
+	/// <summary>
 	/// Defines the test method DateTimeOffsetToFriendlyStringTest.
 	/// </summary>
 	[TestMethod]
@@ -183,6 +209,46 @@ public class DateTimeExtensionsTests : TestClass
 		//PrintResult(result, nameof(this.DateTimeOffsetToFriendlyStringTest));
 
 		Assert.IsTrue(string.IsNullOrEmpty(result) is false);
+	}
+
+	/// <summary>
+	/// Defines the test method DateTimeSubtractTest.
+	/// </summary>
+	[TestMethod]
+	public void DateTimeSubtractTest()
+	{
+		var now = Clock.LocalTime;
+		var timeSpan = new TimeSpan(1, 0, 0, 0);
+
+		var result = now.Subtract(timeSpan);
+
+		Assert.AreEqual(now.Add(-timeSpan), result);
+	}
+
+	/// <summary>
+	/// Defines the test method DateTimeTimeUntilNextHourTest.
+	/// </summary>
+	[TestMethod]
+	public void DateTimeTimeUntilNextHourTest()
+	{
+		var now = Clock.LocalTime;
+
+		var result = now.TimeUntilNextHour();
+
+		Assert.IsTrue(result.TotalMinutes <= 60);
+	}
+
+	/// <summary>
+	/// Defines the test method DateTimeTimeUntilNextMinuteTest.
+	/// </summary>
+	[TestMethod]
+	public void DateTimeTimeUntilNextMinuteTest()
+	{
+		var now = Clock.LocalTime;
+
+		var result = now.TimeUntilNextMinute();
+
+		Assert.IsTrue(result.TotalSeconds <= 60);
 	}
 
 	/// <summary>
