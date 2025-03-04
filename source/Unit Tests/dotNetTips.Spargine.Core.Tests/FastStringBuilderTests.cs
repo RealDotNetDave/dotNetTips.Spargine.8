@@ -4,7 +4,7 @@
 // Created          : 01-03-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-27-2025
+// Last Modified On : 03-04-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilderTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -43,6 +43,41 @@ public class FastStringBuilderTests
 	/// The word minimum length
 	/// </summary>
 	private const int WordMinLength = 5;
+
+	/// <summary>
+	/// Defines the test method AppendFormatTest.
+	/// </summary>
+	[TestMethod]
+	public void AppendFormatTest()
+	{
+		var result = FastStringBuilder.AppendFormat("Hello, {0}!", "world");
+		Assert.AreEqual("Hello, world!", result);
+
+		result = FastStringBuilder.AppendFormat("Number: {0}, String: {1}", "123", "test");
+		Assert.AreEqual("Number: 123, String: test", result);
+
+		result = FastStringBuilder.AppendFormat("Empty: {0}", null);
+		Assert.AreEqual(string.Empty, result);
+
+		result = FastStringBuilder.AppendFormat(null, "test");
+		Assert.AreEqual(string.Empty, result);
+	}
+
+	/// <summary>
+	/// Defines the test method BytesToStringTest.
+	/// </summary>
+	[TestMethod]
+	public void BytesToStringTest()
+	{
+		var bytes = new byte[] { 0x1, 0x2, 0x3, 0x4, 0x5 };
+		var result = FastStringBuilder.BytesToString(ref bytes);
+		Assert.AreEqual("'0x0102030405'", result);
+
+		bytes = null;
+		result = FastStringBuilder.BytesToString(ref bytes);
+		Assert.AreEqual(ControlChars.EmptyString, result);
+	}
+
 
 	/// <summary>
 	/// Defines the test method CombineToStringTest.
@@ -98,6 +133,20 @@ public class FastStringBuilderTests
 	}
 
 	/// <summary>
+	/// Defines the test method JoinStringsTest.
+	/// </summary>
+	[TestMethod]
+	public void JoinStringsTest()
+	{
+		var strings = RandomData.GenerateWords(WordCount, WordMinLength, WordMaxLength).ToArray();
+		var result = FastStringBuilder.JoinStrings(strings, ControlChars.CommaSpace);
+		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
+
+		result = FastStringBuilder.JoinStrings(null, ControlChars.CommaSpace);
+		Assert.AreEqual(ControlChars.EmptyString, result);
+	}
+
+	/// <summary>
 	/// Defines the test method PerformActionTest.
 	/// </summary>
 	[TestMethod]
@@ -116,6 +165,41 @@ public class FastStringBuilderTests
 		var result = FastStringBuilder.PerformAction(action);
 
 		Assert.IsNotNull(result);
+	}
+
+	/// <summary>
+	/// Defines the test method ReplaceTest.
+	/// </summary>
+	[TestMethod]
+	public void ReplaceTest()
+	{
+		var result = FastStringBuilder.Replace("world", "universe", "Hello, world!");
+		Assert.AreEqual("Hello, universe!", result);
+
+		result = FastStringBuilder.Replace("test", "exam", "This is a test.");
+		Assert.AreEqual("This is a exam.", result);
+
+		result = FastStringBuilder.Replace("notfound", "found", "This string does not contain the word.");
+		Assert.AreEqual("This string does not contain the word.", result);
+
+		result = FastStringBuilder.Replace("test", "exam", null);
+		Assert.AreEqual(ControlChars.EmptyString, result);
+	}
+
+	/// <summary>
+	/// Defines the test method SubstringTest.
+	/// </summary>
+	[TestMethod]
+	public void SubstringTest()
+	{
+		var result = FastStringBuilder.Substring("Hello, world!", 7, 5);
+		Assert.AreEqual("world", result);
+
+		result = FastStringBuilder.Substring("This is a test.", 10, 4);
+		Assert.AreEqual("test", result);
+
+		result = FastStringBuilder.Substring(null, 0, 4);
+		Assert.AreEqual(ControlChars.EmptyString, result);
 	}
 
 	/// <summary>

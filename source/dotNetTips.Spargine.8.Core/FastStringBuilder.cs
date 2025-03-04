@@ -49,10 +49,10 @@ public static class FastStringBuilder
 	/// <param name="args">An array of objects to format.</param>
 	/// <returns>A formatted string.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AppendFormat), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(AppendFormat), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static string AppendFormat(string format, params string[] args)
 	{
-		if (args.CheckItemsExists() == false)
+		if (args.CheckItemsExists() == false || format.CheckIsNotNull() == false)
 		{
 			return ControlChars.EmptyString;
 		}
@@ -205,7 +205,7 @@ public static class FastStringBuilder
 	/// <param name="values">The collection of strings to join.</param>
 	/// <returns>A single string with the values joined by the delimiter.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static string JoinStrings([NotNull] IEnumerable<string> values, string delimiter = ControlChars.CommaSpace)
 	{
 		if (values == null || values.CheckItemsExists() == false)
@@ -283,7 +283,7 @@ public static class FastStringBuilder
 	/// <param name="input">The input string to perform the replacement on.</param>
 	/// <returns>A new string with all occurrences of the original string replaced by the replacement string.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Replace), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Replace), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static string Replace(string original, string replacement, string input)
 	{
 		if (input == null)
@@ -312,7 +312,7 @@ public static class FastStringBuilder
 	/// <param name="length">The number of characters in the substring.</param>
 	/// <returns>A substring of the specified length starting at the specified position.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Substring), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Substring), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static string Substring(string input, in int startIndex, in int length)
 	{
 		if (input == null)
