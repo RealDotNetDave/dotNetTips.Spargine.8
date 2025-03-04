@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-24-2025
+// Last Modified On : 03-04-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -32,7 +32,7 @@ namespace DotNetTips.Spargine.Core;
 /// This class leverages an ObjectPool of StringBuilder instances to minimize the overhead of creating and disposing StringBuilder objects,
 /// which can lead to significant performance improvements in scenarios where string manipulation is frequent.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public static class FastStringBuilder
 {
 
@@ -40,6 +40,35 @@ public static class FastStringBuilder
 	/// The ObjectPool of StringBuilder instances.
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
+
+
+	/// <summary>
+	/// Appends a formatted string using the specified format and arguments.
+	/// </summary>
+	/// <param name="format">A composite format string.</param>
+	/// <param name="args">An array of objects to format.</param>
+	/// <returns>A formatted string.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(AppendFormat), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static string AppendFormat(string format, params string[] args)
+	{
+		if (args.CheckItemsExists() == false)
+		{
+			return ControlChars.EmptyString;
+		}
+
+		var sb = _stringBuilderPool.Get().Clear();
+
+		try
+		{
+			_ = sb.AppendFormat(CultureInfo.InvariantCulture, format, args);
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
+	}
 
 	/// <summary>
 	/// Converts an array of bytes to a hexadecimal string representation.
@@ -49,7 +78,7 @@ public static class FastStringBuilder
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bytes"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string BytesToString([NotNull] ref readonly byte[] bytes)
 	{
 		if (bytes == null)
@@ -59,7 +88,7 @@ public static class FastStringBuilder
 
 		var sb = _stringBuilderPool.Get().Clear();
 
-		//Set capacity to increace performance
+		//Set capacity to increase performance
 		_ = sb.EnsureCapacity((bytes.Length * 2) + 3);
 
 		try
@@ -91,12 +120,12 @@ public static class FastStringBuilder
 	/// <returns>A combined string with or without line feeds after each element based on <paramref name="addLineFeed"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
-	public static string CombineStrings(bool addLineFeed = false, [NotNull] params string[] args)
+	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
+	public static string CombineStrings(in bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (args == null || args.LongLength == 0)
 		{
-			return string.Empty;
+			return ControlChars.EmptyString;
 		}
 
 		var sb = _stringBuilderPool.Get().Clear();
@@ -126,8 +155,8 @@ public static class FastStringBuilder
 	/// <param name="args">The array of strings to concatenate.</param>
 	/// <returns>A concatenated string with elements separated by <paramref name="delimiter"/> or line feeds based on <paramref name="addLineFeed"/>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "12/28/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineFeb2023")]
-	public static string ConcatStrings(char delimiter = ControlChars.Comma, bool addLineFeed = false, [NotNull] params string[] args) => ConcatStrings(delimiter.ToString(), addLineFeed, args);
+	[Information(nameof(ConcatStrings), "David McCarter", "12/28/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	public static string ConcatStrings([ConstantExpected] in char delimiter = ControlChars.Comma, in bool addLineFeed = false, [NotNull] params string[] args) => ConcatStrings(delimiter.ToString(), addLineFeed, args);
 
 	/// <summary>
 	/// Concats the strings.
@@ -137,8 +166,8 @@ public static class FastStringBuilder
 	/// <param name="args">The arguments.</param>
 	/// <returns>System.String.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineStringConcatenation")]
-	public static string ConcatStrings(string delimiter = ",", bool addLineFeed = false, [NotNull] params string[] args)
+	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	public static string ConcatStrings(string delimiter = ControlChars.CommaSpace, in bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (delimiter == null)
 		{
@@ -170,6 +199,42 @@ public static class FastStringBuilder
 	}
 
 	/// <summary>
+	/// Joins an enumerable collection of strings with a specified delimiter.
+	/// </summary>
+	/// <param name="delimiter">The delimiter to use between each string.</param>
+	/// <param name="values">The collection of strings to join.</param>
+	/// <returns>A single string with the values joined by the delimiter.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static string JoinStrings([NotNull] IEnumerable<string> values, string delimiter = ControlChars.CommaSpace)
+	{
+		if (values == null || values.CheckItemsExists() == false)
+		{
+			return ControlChars.EmptyString;
+		}
+
+		var sb = _stringBuilderPool.Get().Clear();
+
+		try
+		{
+			foreach (var value in values)
+			{
+				if (sb.Length > 0)
+				{
+					_ = sb.Append(delimiter);
+				}
+				_ = sb.Append(value);
+			}
+
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
+	}
+
+	/// <summary>
 	/// Performs the specified action on a <see cref="StringBuilder"/> instance obtained from an object pool.
 	/// This approach improves performance by reducing memory allocations.
 	/// </summary>
@@ -188,7 +253,7 @@ public static class FastStringBuilder
 	/// </code>
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(PerformAction), "David McCarter", "12/23/2022", Status = Status.Available, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(PerformAction), "David McCarter", "12/23/2022", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string PerformAction([NotNull] in Action<StringBuilder> action)
 	{
 		if (action is null)
@@ -211,6 +276,64 @@ public static class FastStringBuilder
 	}
 
 	/// <summary>
+	/// Replaces all occurrences of a specified string in the built string with another specified string.
+	/// </summary>
+	/// <param name="original">The string to be replaced.</param>
+	/// <param name="replacement">The string to replace all occurrences of the original string.</param>
+	/// <param name="input">The input string to perform the replacement on.</param>
+	/// <returns>A new string with all occurrences of the original string replaced by the replacement string.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(Replace), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static string Replace(string original, string replacement, string input)
+	{
+		if (input == null)
+		{
+			return ControlChars.EmptyString;
+		}
+
+		var sb = _stringBuilderPool.Get().Clear();
+
+		try
+		{
+			_ = sb.Append(input.Replace(original, replacement, StringComparison.Ordinal));
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
+	}
+
+	/// <summary>
+	/// Extracts a substring from the built string.
+	/// </summary>
+	/// <param name="input">The input string to extract the substring from.</param>
+	/// <param name="startIndex">The zero-based starting character position of the substring.</param>
+	/// <param name="length">The number of characters in the substring.</param>
+	/// <returns>A substring of the specified length starting at the specified position.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(Substring), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static string Substring(string input, in int startIndex, in int length)
+	{
+		if (input == null)
+		{
+			return ControlChars.EmptyString;
+		}
+
+		var sb = _stringBuilderPool.Get().Clear();
+
+		try
+		{
+			_ = sb.Append(input.AsSpan(startIndex, length));
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
+	}
+
+	/// <summary>
 	/// Converts a dictionary to a delimited string using an ObjectPool to improve performance.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
@@ -224,7 +347,7 @@ public static class FastStringBuilder
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ToDelimitedString), "David McCarter", "1/1/2021", Status = Status.Available, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
-	public static string ToDelimitedString<TKey, TValue>([NotNull] in Dictionary<TKey, TValue> collection, char delimiter = ControlChars.Comma)
+	public static string ToDelimitedString<TKey, TValue>([NotNull] in Dictionary<TKey, TValue> collection, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
 		if (collection.CheckItemsExists() is false)
 		{
@@ -253,5 +376,4 @@ public static class FastStringBuilder
 			_stringBuilderPool.Return(sb);
 		}
 	}
-
 }
