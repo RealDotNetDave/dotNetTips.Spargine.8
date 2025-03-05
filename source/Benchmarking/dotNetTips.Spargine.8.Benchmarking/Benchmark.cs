@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-31-2025
+// Last Modified On : 03-05-2025
 // ***********************************************************************
 // <copyright file="Benchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -25,6 +25,7 @@ using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Order;
 using DotNetTips.Spargine.Benchmarking.Properties;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -62,7 +63,7 @@ namespace DotNetTips.Spargine.Benchmarking;
 [GcServer(true)]
 [GitHub]
 [HtmlExporter]
-[InliningDiagnoser(true, true)]
+[InliningDiagnoser(logFailuresOnly: true, filterByNamespace: true)]
 [IterationsColumn]
 [JsonExporter(indentJson: true)]
 [KurtosisColumn]
@@ -78,6 +79,7 @@ namespace DotNetTips.Spargine.Benchmarking;
 [StatisticalTestColumn]
 [StopOnFirstError(true)]
 [ThreadingDiagnoser]
+[Information(Documentation = "https://bit.ly/BenchmarkLikeDotNetDave", Status = Status.Available)]
 public abstract class Benchmark
 {
 
@@ -401,7 +403,7 @@ public abstract class Benchmark
 	public bool LaunchDebugger { get; set; }
 
 	/// <summary>
-	/// Retrieves a long test string used for benchmarking parsing and formatting operations.
+	/// Retrieves a long test string (969 characters) used for benchmarking parsing and formatting operations.
 	/// This string is designed to simulate real-world text processing tasks, including parsing,
 	/// manipulation, and output formatting. It reflects the performance improvements achieved
 	/// through the transition of native code to managed code in .NET Core 2.1 and beyond.

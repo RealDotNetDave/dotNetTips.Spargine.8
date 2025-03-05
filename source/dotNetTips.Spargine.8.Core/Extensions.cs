@@ -236,7 +236,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 		var messages = exception.FromHierarchy(ex => ex.InnerException).Select(ex => ex.Message);
 
-		return FastStringBuilder.JoinStrings(messages, separator);
+		return FastStringBuilder.Join(messages, separator);
 	}
 
 	/// <summary>

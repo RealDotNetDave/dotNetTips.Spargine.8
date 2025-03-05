@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-11-2025
+// Last Modified On : 03-05-2025
 // ***********************************************************************
 // <copyright file="ChannelQueueCollectionBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -27,9 +27,7 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Collections.Threading;
 
 /// <summary>
 /// Collection type PerfTestRunner.
-/// Implements the <see cref="CounterBenchmark" />
 /// </summary>
-/// <seealso cref="CounterBenchmark" />
 [BenchmarkCategory(Categories.Async)]
 public class ChannelQueueCollectionBenchmark : SmallCollectionBenchmark
 {

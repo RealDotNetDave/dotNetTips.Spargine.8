@@ -211,7 +211,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// </summary>
 	/// <returns>A <see cref="string"/> that concatenates all the logged diagnostic messages.</returns>
 	[Information(nameof(ToString), "David McCarter", "1/18/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public override string ToString() => FastStringBuilder.CombineStrings(true, [.. this._diagnostics]);
+	public override string ToString() => FastStringBuilder.Combine(true, [.. this._diagnostics]);
 
 	/// <summary>
 	/// Gets the logged messages as a read-only collection.

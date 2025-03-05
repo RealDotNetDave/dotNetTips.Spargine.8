@@ -15,11 +15,14 @@
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
 
+using DotNetTips.Spargine.Core;
+
 namespace DotNetTips.Spargine.Benchmarking;
 
 /// <summary>
 /// Provides a list of categories used to classify benchmarks. These categories help in organizing and filtering benchmarks based on their functionality or the features they demonstrate.
 /// </summary>
+[Information(Documentation = "https://bit.ly/BenchmarkLikeDotNetDave", Status = Status.Available)]
 public static class Categories
 {
 

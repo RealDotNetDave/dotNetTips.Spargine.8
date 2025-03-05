@@ -16,6 +16,7 @@
 // ***********************************************************************
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Loggers;
+using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -26,6 +27,7 @@ namespace DotNetTips.Spargine.Benchmarking;
 /// This class is designed to measure the performance of operations on collections of varying large sizes,
 /// helping to identify the most efficient data structures and algorithms for use cases involving large datasets.
 /// </summary>
+[Information(Documentation = "https://bit.ly/BenchmarkLikeDotNetDave", Status = Status.Available)]
 public class LargeCollectionBenchmark : CollectionBenchmark
 {
 

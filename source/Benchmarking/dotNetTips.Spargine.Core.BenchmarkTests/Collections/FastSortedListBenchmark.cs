@@ -4,7 +4,7 @@
 // Created          : 03-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-16-2025
+// Last Modified On : 03-05-2025
 // ***********************************************************************
 // <copyright file="FastSortedListBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -22,11 +22,7 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 namespace DotNetTips.Spargine.Core.BenchmarkTests.Collections;
 
-/// <summary>
-/// Collection type PerfTestRunner.
-/// Implements the <see cref="CounterBenchmark" />
-/// </summary>
-/// <seealso cref="CounterBenchmark" />
+
 [BenchmarkCategory(Categories.Collections)]
 public class FastSortedListBenchmark : SmallCollectionBenchmark
 {

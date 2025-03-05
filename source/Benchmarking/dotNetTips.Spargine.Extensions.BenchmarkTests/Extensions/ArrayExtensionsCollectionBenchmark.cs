@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-05-2024
+// Last Modified On : 03-05-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -38,7 +38,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	private Spargine.Tester.Models.ValueTypes.Person<Spargine.Tester.Models.ValueTypes.Address>[] _personValArray;
 
 	[Benchmark(Description = nameof(ArrayExtensions.AddFirst) + " : Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void AddFirst_Ref()
 	{
 		var people = this._personRefArray;
@@ -49,7 +49,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.AddLast) + " : Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void AddLast_Ref()
 	{
 		var people = this._personRefArray;
@@ -60,7 +60,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.AreEqual) + ": as Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void AreEqual_Ref()
 	{
 		var people1 = this._personRefArray;
@@ -72,7 +72,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.AreEqual) + ": as Value")]
-	[BenchmarkCategory(Categories.ValueType)]
+	[BenchmarkCategory(Categories.Array, Categories.ValueType)]
 	public void AreEqual_Val()
 	{
 		var people1 = this._personValArray;
@@ -84,7 +84,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(GetHashCode))]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void ArrayHashCode_Ref()
 	{
 		var result = this._personRefArray;
@@ -93,7 +93,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.AsReadOnlySpan) + " : Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Span, Categories.ReferenceType)]
 	public void AsReadOnlySpan_Ref()
 	{
 		var result = this._personRefArray.AsReadOnlySpan();
@@ -102,7 +102,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.AsSpan) + " : Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Span, Categories.ReferenceType)]
 	public void AsSpan_Ref()
 	{
 		var result = this._personRefArray.AsSpan();
@@ -120,7 +120,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	//}
 
 	[Benchmark(Description = nameof(ArrayExtensions.BytesToString))]
-	[BenchmarkCategory(Categories.Strings)]
+	[BenchmarkCategory(Categories.Array, Categories.Strings)]
 	public void BytesToString_Val()
 	{
 		var result = this.GetByteArray(1).BytesToString();
@@ -129,7 +129,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.BytesToString) + ": ReadOnlySpan<>")]
-	[BenchmarkCategory(Categories.Strings)]
+	[BenchmarkCategory(Categories.Span, Categories.Strings)]
 	public void BytesToStringReadOnlySpan_Val()
 	{
 		var readOnlySpan = new ReadOnlySpan<byte>(this.GetByteArray(1));
@@ -139,7 +139,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.Clone) + ": Array as Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void ClonePerson_Ref()
 	{
 		var result = this._personRefArray.Clone<Person<Address>[]>();
@@ -148,7 +148,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.Clone) + ": Array as Value")]
-	[BenchmarkCategory(Categories.ValueType)]
+	[BenchmarkCategory(Categories.Array, Categories.ValueType)]
 	public void ClonePerson_Val()
 	{
 		var result = this._personValArray.Clone<Spargine.Tester.Models.ValueTypes.Person<Spargine.Tester.Models.ValueTypes.Address>>();
@@ -157,7 +157,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.Clone) + ": Array as Record")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.RecordType)]
 	public void ClonePersonRecord_Record()
 	{
 		var result = this._personRecordArray.Clone<PersonRecord[]>();
@@ -166,7 +166,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.ContainsAny) + ": as Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void ContainsAny_Ref()
 	{
 		var result = this._personRefArray.ContainsAny(this.GetPersonRefArray());
@@ -175,7 +175,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.ContainsAny) + ": as Value")]
-	[BenchmarkCategory(Categories.ValueType)]
+	[BenchmarkCategory(Categories.Array, Categories.ValueType)]
 	public void ContainsAny_Val()
 	{
 		var result = this._personValArray.ContainsAny(this.GetPersonValArray());
@@ -184,7 +184,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.DoesNotHaveItems) + ": as Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void DoesNotHaveItems_Ref()
 	{
 		var result = this._personRefArray.DoesNotHaveItems();
@@ -193,7 +193,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.DoesNotHaveItems) + ": as Value")]
-	[BenchmarkCategory(Categories.ValueType)]
+	[BenchmarkCategory(Categories.Array, Categories.ValueType)]
 	public void DoesNotHaveItems_Val()
 	{
 		var result = this._personValArray.DoesNotHaveItems();
@@ -202,7 +202,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = "Process Collection: foreach()")]
-	[BenchmarkCategory(Categories.ReferenceType, Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType, Categories.ForComparison)]
 	public void FastProcessor_Normal_Ref()
 	{
 		var people = this._personRefArray;
@@ -217,7 +217,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = "Process Collection: FastProcessor()")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void FastProcessor_Ref()
 	{
 		var people = this._personRefArray;
@@ -229,7 +229,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.GenerateHashCode) + " : Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void GenerateHashCode_Ref()
 	{
 		var people = this._personRefArray;
@@ -239,7 +239,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.HasItems) + ": as Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void HasItems_Ref()
 	{
 		var people = this._personRefArray;
@@ -249,7 +249,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.HasItems) + ": as Value")]
-	[BenchmarkCategory(Categories.ValueType)]
+	[BenchmarkCategory(Categories.Array, Categories.ValueType)]
 	public void HasItems_Val()
 	{
 		var people = this._personValArray;
@@ -259,7 +259,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.HasItems) + ": With Count as Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void HasItemsWithCount_Ref()
 	{
 		var people = this._personRefArray;
@@ -269,7 +269,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.HasItems) + ": With Count as Value")]
-	[BenchmarkCategory(Categories.ValueType)]
+	[BenchmarkCategory(Categories.Array, Categories.ValueType)]
 	public void HasItemsWithCount_Val()
 	{
 		var people = this._personValArray;
@@ -279,7 +279,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.HasItems) + ": With Predicate as Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void HasItemsWithPredicate_Ref()
 	{
 		var people = this._personRefArray;
@@ -289,7 +289,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.HasItems) + ": With Predicate as Value")]
-	[BenchmarkCategory(Categories.ValueType)]
+	[BenchmarkCategory(Categories.Array, Categories.ValueType)]
 	public void HasItemsWithPredicate_Val()
 	{
 		var people = this._personValArray;
@@ -315,7 +315,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	//}
 
 	[Benchmark(Description = nameof(ArrayExtensions.PerformAction) + " :Record (Comparison)")]
-	[BenchmarkCategory(Categories.ReferenceType, Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Array, Categories.RecordType, Categories.ForComparison)]
 	public void PerformAction_Record_Comparison()
 	{
 		var people = this._personRecordArray;
@@ -330,7 +330,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.PerformAction) + " :Ref")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void PerformAction_Ref()
 	{
 		var people = this._personRefArray;
@@ -345,7 +345,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.PerformAction) + " :Ref (Comparison)")]
-	[BenchmarkCategory(Categories.ReferenceType, Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType, Categories.ForComparison)]
 	public void PerformAction_Ref_Comparison()
 	{
 		var people = this._personRefArray;
@@ -360,7 +360,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.PerformAction) + " :Val")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void PerformAction_Val()
 	{
 		var people = this._personValArray;
@@ -375,7 +375,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.PerformAction) + " :Val (Comparison)")]
-	[BenchmarkCategory(Categories.ReferenceType, Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Array, Categories.ValueType, Categories.ForComparison)]
 	public void PerformAction_Val_Comparison()
 	{
 		var people = this._personValArray;
@@ -390,7 +390,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.RemoveFirst) + " : Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void RemoveFirst_Ref()
 	{
 		var people = this._personRefArray;
@@ -401,7 +401,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.RemoveLast) + " : Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void RemoveLast_Ref()
 	{
 		var people = this._personRefArray;
@@ -421,7 +421,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.ToDistinct) + " : Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void ToDistinct_Ref()
 	{
 		var result = this._personRefArray.ToDistinct();
@@ -430,7 +430,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.ToFrozenSet) + " : Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void ToFrozenSet_Ref()
 	{
 		var result = this._personRefArray.ToFrozenSet();
@@ -439,7 +439,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.Upsert) + " : Reference")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]
 	public void Upsert_Ref()
 	{
 		var people = this._personRefArray;
@@ -450,7 +450,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.Upsert) + ": Record")]
-	[BenchmarkCategory(Categories.ReferenceType)]
+	[BenchmarkCategory(Categories.Array, Categories.RecordType)]
 	public void UpsertRecord_Record()
 	{
 		var people = this._personRecordArray;

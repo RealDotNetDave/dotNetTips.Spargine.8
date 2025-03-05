@@ -27,9 +27,7 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests;
 
 /// <summary>
 /// StringBuilderHelper PerfTestRunner.
-/// Implements the <see cref="CounterBenchmark" />
 /// </summary>
-/// <seealso cref="CounterBenchmark" />
 [BenchmarkCategory(Categories.Strings)]
 public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 {
@@ -40,7 +38,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	private string[] _words;
 
 	[Benchmark(Description = nameof(FastStringBuilder.AppendFormat))]
-	[BenchmarkCategory(Categories.New)]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void AppendFormat()
 	{
 		var result = FastStringBuilder.AppendFormat("Word1 {0}, Word2 {1}, Word3 {1}", [.. this._words.Take(3)]);
@@ -49,7 +47,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = "AppendFormat: SB.AppendFormat() for Comparison")]
-	[BenchmarkCategory(Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void AppendFormatComparison()
 	{
 		var sb = new StringBuilder();
@@ -60,7 +58,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.BytesToString))]
-	[BenchmarkCategory(Categories.Collections)]
+	[BenchmarkCategory(Categories.Array, Categories.Strings)]
 	public void BytesToString()
 	{
 		var result = FastStringBuilder.BytesToString(ref this._byteArray);
@@ -69,7 +67,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = "BytesToString: SB.Append() for Comparison")]
-	[BenchmarkCategory(Categories.Collections, Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Array, Categories.Strings, Categories.ForComparison)]
 	public void BytesToStringComparison()
 	{
 		var sb = new StringBuilder();
@@ -86,6 +84,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.CombineStrings))]
+	[BenchmarkCategory(Categories.Strings)]
 	public void CombineStrings()
 	{
 		var result = FastStringBuilder.CombineStrings(false, this._words);
@@ -94,7 +93,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = "Combine Strings: SB.Append() for Comparison")]
-	[BenchmarkCategory(Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void CombineStringsComparison()
 	{
 		var sb = new StringBuilder();
@@ -108,7 +107,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.ConcatStrings))]
-	[BenchmarkCategory(Categories.New)]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void ConcatStrings()
 	{
 		var result = FastStringBuilder.ConcatStrings(delimiter: ControlChars.Comma, addLineFeed: true, args: this._words);
@@ -117,7 +116,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = "Combine Strings: SB.Append() for Comparison")]
-	[BenchmarkCategory(Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void ConcatStringsComparison()
 	{
 		var sb = new StringBuilder();
@@ -133,7 +132,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.JoinStrings))]
-	[BenchmarkCategory(Categories.New)]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void JoinStrings()
 	{
 		var result = FastStringBuilder.JoinStrings(this._words);
@@ -142,7 +141,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = "Join String: SB.AppendJoin() for Comparison")]
-	[BenchmarkCategory(Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void JoinStringsComparison()
 	{
 		var sb = new StringBuilder();
@@ -153,6 +152,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.PerformAction))]
+	[BenchmarkCategory(Categories.Strings)]
 	public void PerformAction()
 	{
 		void action(StringBuilder sb)
@@ -170,7 +170,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = "PerformAction: SB.Append() for Comparison")]
-	[BenchmarkCategory(Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void PerformActionComparison()
 	{
 		var sb = new StringBuilder();
@@ -184,7 +184,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = "PerformAction: Using Object Pool for Comparison")]
-	[BenchmarkCategory(Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void PerformActionStringBuilderPool()
 	{
 		var sb = _stringBuilderPool.Get();
@@ -206,7 +206,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.Replace))]
-	[BenchmarkCategory(Categories.New)]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void Replace()
 	{
 		var result = FastStringBuilder.Replace("and", "PLUS", this.LongTestString);
@@ -215,7 +215,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = "Replace: SB.Replace() for Comparison")]
-	[BenchmarkCategory(Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void ReplaceComparison()
 	{
 		var sb = new StringBuilder(this.LongTestString);
@@ -237,7 +237,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.Substring))]
-	[BenchmarkCategory(Categories.New)]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void Substring()
 	{
 		var result = FastStringBuilder.Substring(this.LongTestString, 5, 50);
@@ -246,7 +246,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = "Substring: String.Substring for Comparison ")]
-	[BenchmarkCategory(Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void SubstringComparison()
 	{
 		var result = this.LongTestString.Substring(5, 50);
@@ -255,7 +255,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString))]
-	[BenchmarkCategory(Categories.New)]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void ToDelimitedString()
 	{
 		var result = FastStringBuilder.ToDelimitedString(this._wordDictionary, ControlChars.Colon);
@@ -264,7 +264,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	}
 
 	[Benchmark(Description = "ToDelimitedString: SB.Append() for Comparison")]
-	[BenchmarkCategory(Categories.ForComparison)]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void ToDelimitedStringComparison()
 	{
 		var sb = new StringBuilder();

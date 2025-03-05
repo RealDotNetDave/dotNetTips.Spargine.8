@@ -117,8 +117,8 @@ public static class FastStringBuilder
 	/// <returns>A combined string with or without line feeds after each element based on <paramref name="addLineFeed"/>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	public static string CombineStrings(in bool addLineFeed = false, [NotNull] params string[] args)
+	[Information(nameof(Combine), "David McCarter", "12/23/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
+	public static string Combine(in bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (args == null || args.Length == 0)
 		{
@@ -152,19 +152,19 @@ public static class FastStringBuilder
 	/// <param name="args">The array of strings to concatenate.</param>
 	/// <returns>A concatenated string with elements separated by <paramref name="delimiter"/> or line feeds based on <paramref name="addLineFeed"/>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "12/28/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string ConcatStrings([ConstantExpected] in char delimiter = ControlChars.Comma, in bool addLineFeed = false, [NotNull] params string[] args) => ConcatStrings(delimiter.ToString(), addLineFeed, args);
+	[Information(nameof(Concat), "David McCarter", "12/28/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	public static string Concat([ConstantExpected] in char delimiter = ControlChars.Comma, in bool addLineFeed = false, [NotNull] params string[] args) => Concat(delimiter.ToString(), addLineFeed, args);
 
 	/// <summary>
-	/// Concats the strings.
+	/// Concatenates the strings.
 	/// </summary>
 	/// <param name="delimiter">The delimiter.</param>
 	/// <param name="addLineFeed">if set to <c>true</c> [add line feed].</param>
 	/// <param name="args">The arguments.</param>
 	/// <returns>System.String.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string ConcatStrings(string delimiter = ControlChars.CommaSpace, in bool addLineFeed = false, [NotNull] params string[] args)
+	[Information(nameof(Concat), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	public static string Concat(string delimiter = ControlChars.CommaSpace, in bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (args == null || args.Length == 0)
 		{
@@ -207,8 +207,8 @@ public static class FastStringBuilder
 	/// <param name="values">The collection of strings to join.</param>
 	/// <returns>A single string with the values joined by the delimiter.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
-	public static string JoinStrings([NotNull] IEnumerable<string> values, [ConstantExpected] in char delimiter = ControlChars.Comma)
+	[Information(nameof(Join), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static string Join([NotNull] IEnumerable<string> values, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
 		if (values?.Any() == false)
 		{
@@ -246,8 +246,8 @@ public static class FastStringBuilder
 	/// <param name="values">The collection of strings to join.</param>
 	/// <returns>A single string with the values joined by the delimiter.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
-	public static string JoinStrings([NotNull] IEnumerable<string> values, string delimiter = ControlChars.CommaSpace)
+	[Information(nameof(Join), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static string Join([NotNull] IEnumerable<string> values, string delimiter = ControlChars.CommaSpace)
 	{
 		if (values?.Any() != true)
 		{
@@ -317,6 +317,47 @@ public static class FastStringBuilder
 			_stringBuilderPool.Return(sb);
 		}
 
+	}
+
+	/// <summary>
+	/// Removes all occurrences of a specified string from the input string using a StringBuilder from an ObjectPool.
+	/// </summary>
+	/// <param name="input">The input string to remove the specified string from.</param>
+	/// <param name="toRemove">The string to remove from the input string.</param>
+	/// <returns>A new string with all occurrences of the specified string removed.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(Remove), "David McCarter", "03/05/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static string Remove(string input, string toRemove)
+	{
+		if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(toRemove))
+		{
+			return input ?? ControlChars.EmptyString;
+		}
+
+		var sb = _stringBuilderPool.Get().Clear();
+
+		try
+		{
+			var startIndex = 0;
+			int index;
+
+			while ((index = input.IndexOf(toRemove, startIndex, StringComparison.Ordinal)) != -1)
+			{
+				_ = sb.Append(input, startIndex, index - startIndex);
+				startIndex = index + toRemove.Length;
+			}
+
+			if (startIndex < input.Length)
+			{
+				_ = sb.Append(input, startIndex, input.Length - startIndex);
+			}
+
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
 	}
 
 	/// <summary>

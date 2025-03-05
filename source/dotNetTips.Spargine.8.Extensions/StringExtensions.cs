@@ -99,13 +99,13 @@ public static class StringExtensions
 	public static int CalculateByteArraySize([NotNull] this string input) => input.IsNullOrEmpty() ? 0 : input.Length * 3 / 4;
 
 	/// <summary>
-	/// Combines an array of strings into a single string using the <see cref="FastStringBuilder.CombineStrings"/> method.
+	/// Combines an array of strings into a single string using the <see cref="FastStringBuilder.Combine"/> method.
 	/// </summary>
 	/// <param name="input">The initial string to start the combination. Must not be null.</param>
 	/// <param name="args">An array of strings to combine with the initial string. Must not be null.</param>
 	/// <returns>A combined string.</returns>
 	[Information(nameof(Concat), "David McCarter", "1/3/2023", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static string CombineToString([NotNull] this string input, [NotNull] params string[] args) => FastStringBuilder.CombineStrings(false, args.ArgumentNotNull().AddFirst(input.ArgumentNotNull()));
+	public static string CombineToString([NotNull] this string input, [NotNull] params string[] args) => FastStringBuilder.Combine(false, args.ArgumentNotNull().AddFirst(input.ArgumentNotNull()));
 
 	/// <summary>
 	/// Computes the hash of the given input string using the specified hash algorithm.

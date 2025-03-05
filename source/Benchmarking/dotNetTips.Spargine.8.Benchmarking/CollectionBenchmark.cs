@@ -17,6 +17,7 @@
 // ***********************************************************************
 
 using DotNetTips.Spargine.Benchmarking.Properties;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Serialization;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
@@ -29,6 +30,7 @@ namespace DotNetTips.Spargine.Benchmarking;
 /// Represents the base class for benchmarks that involve collections, specifically optimized for handling PersonRecord objects.
 /// This class provides methods to preload PersonRecord collections to improve benchmark test speed and efficiency.
 /// </summary>
+[Information(Documentation = "https://bit.ly/BenchmarkLikeDotNetDave", Status = Status.Available)]
 public partial class CollectionBenchmark : Benchmark
 {
 	/// <summary>

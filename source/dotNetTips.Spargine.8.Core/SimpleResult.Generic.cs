@@ -76,7 +76,7 @@ public class SimpleResult<T>
 	/// </summary>
 	/// <returns>A string containing all exception messages.</returns>
 	[return: NotNull]
-	private string GenerateExceptionMessages() => FastStringBuilder.JoinStrings(this._exceptions.Select(e => e.GetAllMessages()), Environment.NewLine);
+	private string GenerateExceptionMessages() => FastStringBuilder.Join(this._exceptions.Select(e => e.GetAllMessages()), Environment.NewLine);
 
 
 	/// <summary>

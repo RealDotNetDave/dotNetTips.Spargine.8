@@ -68,15 +68,15 @@ public class FastStringBuilderTests
 	{
 		var strings = RandomData.GenerateWords(WordCount, WordMinLength, WordMaxLength).ToArray();
 
-		var result = FastStringBuilder.CombineStrings(false, strings);
+		var result = FastStringBuilder.Combine(false, strings);
 
 		Assert.IsTrue(string.IsNullOrEmpty(result) is false);
 
-		result = FastStringBuilder.CombineStrings(true, strings);
+		result = FastStringBuilder.Combine(true, strings);
 
 		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
 
-		Assert.IsTrue(FastStringBuilder.CombineStrings(false, null) == ControlChars.EmptyString);
+		Assert.IsTrue(FastStringBuilder.Combine(false, null) == ControlChars.EmptyString);
 	}
 
 	[TestMethod]
@@ -84,11 +84,11 @@ public class FastStringBuilderTests
 	{
 		var strings = RandomData.GenerateWords(WordCount, WordMinLength, WordMaxLength).ToArray();
 
-		var result = FastStringBuilder.ConcatStrings(delimiter: ControlChars.Plus, addLineFeed: false, args: strings);
+		var result = FastStringBuilder.Concat(delimiter: ControlChars.Plus, addLineFeed: false, args: strings);
 
 		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
 
-		Assert.IsTrue(FastStringBuilder.ConcatStrings(null) == ControlChars.EmptyString);
+		Assert.IsTrue(FastStringBuilder.Concat(null) == ControlChars.EmptyString);
 	}
 
 	[TestMethod]
@@ -96,25 +96,25 @@ public class FastStringBuilderTests
 	{
 		var strings = RandomData.GenerateWords(WordCount, WordMinLength, WordMaxLength).ToArray();
 
-		var result = FastStringBuilder.ConcatStrings(ControlChars.CommaSpace.ToString(), false, strings);
+		var result = FastStringBuilder.Concat(ControlChars.CommaSpace.ToString(), false, strings);
 
 		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
 
-		result = FastStringBuilder.ConcatStrings(ControlChars.CommaSpace.ToString(), true, strings);
+		result = FastStringBuilder.Concat(ControlChars.CommaSpace.ToString(), true, strings);
 
 		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
 
-		Assert.IsTrue(FastStringBuilder.ConcatStrings(null) == ControlChars.EmptyString);
+		Assert.IsTrue(FastStringBuilder.Concat(null) == ControlChars.EmptyString);
 	}
 
 	[TestMethod]
 	public void JoinStringsTest()
 	{
 		var strings = RandomData.GenerateWords(WordCount, WordMinLength, WordMaxLength).ToArray();
-		var result = FastStringBuilder.JoinStrings(strings, ControlChars.CommaSpace);
+		var result = FastStringBuilder.Join(strings, ControlChars.CommaSpace);
 		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
 
-		result = FastStringBuilder.JoinStrings(null, ControlChars.Comma.ToString());
+		result = FastStringBuilder.Join(null, ControlChars.Comma.ToString());
 		Assert.AreEqual(ControlChars.EmptyString, result);
 	}
 
@@ -134,6 +134,34 @@ public class FastStringBuilderTests
 		var result = FastStringBuilder.PerformAction(action);
 
 		Assert.IsNotNull(result);
+	}
+
+	/// <summary>
+	/// Defines the test method RemoveStringTest.
+	/// </summary>
+	[TestMethod]
+	public void RemoveStringTest()
+	{
+		var result = FastStringBuilder.Remove("Hello, world!", "world");
+		Assert.AreEqual("Hello, !", result);
+
+		result = FastStringBuilder.Remove("This is a test. This is only a test.", "test");
+		Assert.AreEqual("This is a . This is only a .", result);
+
+		result = FastStringBuilder.Remove("No occurrences here.", "notfound");
+		Assert.AreEqual("No occurrences here.", result);
+
+		result = FastStringBuilder.Remove(null, "test");
+		Assert.AreEqual(ControlChars.EmptyString, result);
+
+		result = FastStringBuilder.Remove("This is a test.", null);
+		Assert.AreEqual("This is a test.", result);
+
+		result = FastStringBuilder.Remove("This is a test.", string.Empty);
+		Assert.AreEqual("This is a test.", result);
+
+		result = FastStringBuilder.Remove(string.Empty, "test");
+		Assert.AreEqual(ControlChars.EmptyString, result);
 	}
 
 	[TestMethod]

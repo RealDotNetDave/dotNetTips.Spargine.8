@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-18-2025
+// Last Modified On : 03-05-2025
 // ***********************************************************************
 // <copyright file="StringExtensionsCounterBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -26,9 +26,7 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 /// <summary>
 /// StringExtensions CounterPerfTestRunner.
-/// Implements the <see cref="CounterBenchmark" />
 /// </summary>
-/// <seealso cref="CounterBenchmark" />
 [BenchmarkCategory(Categories.Strings)]
 public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 {
