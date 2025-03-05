@@ -83,18 +83,18 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this.Consume(sb.ToString());
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.CombineStrings))]
+	[Benchmark(Description = nameof(FastStringBuilder.Combine))]
 	[BenchmarkCategory(Categories.Strings)]
-	public void CombineStrings()
+	public void Combine()
 	{
-		var result = FastStringBuilder.CombineStrings(false, this._words);
+		var result = FastStringBuilder.Combine(false, this._words);
 
 		base.Consume(result);
 	}
 
 	[Benchmark(Description = "Combine Strings: SB.Append() for Comparison")]
 	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
-	public void CombineStringsComparison()
+	public void CombineComparison()
 	{
 		var sb = new StringBuilder();
 
@@ -106,18 +106,18 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		base.Consume(sb.ToString());
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.ConcatStrings))]
+	[Benchmark(Description = nameof(FastStringBuilder.Concat) + ": with Char delimiter")]
 	[BenchmarkCategory(Categories.Strings, Categories.New)]
-	public void ConcatStrings()
+	public void ConcatChar()
 	{
-		var result = FastStringBuilder.ConcatStrings(delimiter: ControlChars.Comma, addLineFeed: true, args: this._words);
+		var result = FastStringBuilder.Concat(delimiter: ControlChars.Comma, addLineFeed: true, args: this._words);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Combine Strings: SB.Append() for Comparison")]
+	[Benchmark(Description = "Combine Strings: SB.Append() with Char delimiter for Comparison")]
 	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
-	public void ConcatStringsComparison()
+	public void ConcatCharComparison()
 	{
 		var sb = new StringBuilder();
 
@@ -131,22 +131,67 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this.Consume(sb.ToString());
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.JoinStrings))]
+	[Benchmark(Description = nameof(FastStringBuilder.Concat) + ": with String delimiter")]
 	[BenchmarkCategory(Categories.Strings, Categories.New)]
-	public void JoinStrings()
+	public void ConcatString()
 	{
-		var result = FastStringBuilder.JoinStrings(this._words);
+		var result = FastStringBuilder.Concat(delimiter: ControlChars.CommaSpace, addLineFeed: true, args: this._words);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Join String: SB.AppendJoin() for Comparison")]
+	[Benchmark(Description = "Combine Strings: SB.Append() with String delimiter for Comparison")]
 	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
-	public void JoinStringsComparison()
+	public void ConcatStringComparison()
+	{
+		var sb = new StringBuilder();
+
+		for (var argumentIndex = 0; argumentIndex < this._words.Length; argumentIndex++)
+		{
+			var line = this._words[argumentIndex];
+
+			_ = sb.Append(string.Format(CultureInfo.InvariantCulture, "{0}{1}", line, ControlChars.CommaSpace));
+		}
+
+		this.Consume(sb.ToString());
+	}
+
+	[Benchmark(Description = nameof(FastStringBuilder.Join) + ": with Char delimiter")]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void JoinChar()
+	{
+		var result = FastStringBuilder.Join(this._words, ControlChars.Comma);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = "Join String: SB.AppendJoin()  with Char delimiter for Comparison")]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
+	public void JoinComparisonChar()
 	{
 		var sb = new StringBuilder();
 
 		var result = sb.AppendJoin(ControlChars.Comma, this._words);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = "Join String: SB.AppendJoin() with String delimiter for Comparison")]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
+	public void JoinComparisonString()
+	{
+		var sb = new StringBuilder();
+
+		var result = sb.AppendJoin(ControlChars.CommaSpace, this._words);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(FastStringBuilder.Join) + ": with String delimiter")]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void JoinString()
+	{
+		var result = FastStringBuilder.Join(this._words, ControlChars.CommaSpace);
 
 		this.Consume(result);
 	}
