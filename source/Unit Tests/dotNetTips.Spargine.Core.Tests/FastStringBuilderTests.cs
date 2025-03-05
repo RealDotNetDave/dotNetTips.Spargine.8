@@ -4,7 +4,7 @@
 // Created          : 01-03-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-04-2025
+// Last Modified On : 03-05-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilderTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -31,22 +31,10 @@ namespace DotNetTips.Spargine.Core.Tests;
 public class FastStringBuilderTests
 {
 
-	/// <summary>
-	/// The word count
-	/// </summary>
 	private const int WordCount = 256;
-	/// <summary>
-	/// The word maximum length
-	/// </summary>
 	private const int WordMaxLength = 10;
-	/// <summary>
-	/// The word minimum length
-	/// </summary>
 	private const int WordMinLength = 5;
 
-	/// <summary>
-	/// Defines the test method AppendFormatTest.
-	/// </summary>
 	[TestMethod]
 	public void AppendFormatTest()
 	{
@@ -63,25 +51,18 @@ public class FastStringBuilderTests
 		Assert.AreEqual(string.Empty, result);
 	}
 
-	/// <summary>
-	/// Defines the test method BytesToStringTest.
-	/// </summary>
 	[TestMethod]
 	public void BytesToStringTest()
 	{
 		var bytes = new byte[] { 0x1, 0x2, 0x3, 0x4, 0x5 };
 		var result = FastStringBuilder.BytesToString(ref bytes);
-		Assert.AreEqual("'0x0102030405'", result);
+		Assert.AreEqual("0x0102030405", result);
 
 		bytes = null;
 		result = FastStringBuilder.BytesToString(ref bytes);
 		Assert.AreEqual(ControlChars.EmptyString, result);
 	}
 
-
-	/// <summary>
-	/// Defines the test method CombineToStringTest.
-	/// </summary>
 	[TestMethod]
 	public void CombineToStringTest()
 	{
@@ -98,9 +79,6 @@ public class FastStringBuilderTests
 		Assert.IsTrue(FastStringBuilder.CombineStrings(false, null) == ControlChars.EmptyString);
 	}
 
-	/// <summary>
-	/// Defines the test method ConcatToStringCharTest.
-	/// </summary>
 	[TestMethod]
 	public void ConcatToStringCharTest()
 	{
@@ -113,9 +91,6 @@ public class FastStringBuilderTests
 		Assert.IsTrue(FastStringBuilder.ConcatStrings(null) == ControlChars.EmptyString);
 	}
 
-	/// <summary>
-	/// Defines the test method ConcatToStringTest.
-	/// </summary>
 	[TestMethod]
 	public void ConcatToStringTest()
 	{
@@ -132,9 +107,6 @@ public class FastStringBuilderTests
 		Assert.IsTrue(FastStringBuilder.ConcatStrings(null) == ControlChars.EmptyString);
 	}
 
-	/// <summary>
-	/// Defines the test method JoinStringsTest.
-	/// </summary>
 	[TestMethod]
 	public void JoinStringsTest()
 	{
@@ -146,9 +118,6 @@ public class FastStringBuilderTests
 		Assert.AreEqual(ControlChars.EmptyString, result);
 	}
 
-	/// <summary>
-	/// Defines the test method PerformActionTest.
-	/// </summary>
 	[TestMethod]
 	public void PerformActionTest()
 	{
@@ -167,9 +136,6 @@ public class FastStringBuilderTests
 		Assert.IsNotNull(result);
 	}
 
-	/// <summary>
-	/// Defines the test method ReplaceTest.
-	/// </summary>
 	[TestMethod]
 	public void ReplaceTest()
 	{
@@ -186,9 +152,6 @@ public class FastStringBuilderTests
 		Assert.AreEqual(ControlChars.EmptyString, result);
 	}
 
-	/// <summary>
-	/// Defines the test method SubstringTest.
-	/// </summary>
 	[TestMethod]
 	public void SubstringTest()
 	{
@@ -202,9 +165,6 @@ public class FastStringBuilderTests
 		Assert.AreEqual(ControlChars.EmptyString, result);
 	}
 
-	/// <summary>
-	/// Defines the test method ToDelimitedStringTest.
-	/// </summary>
 	[TestMethod]
 	public void ToDelimitedStringTest()
 	{

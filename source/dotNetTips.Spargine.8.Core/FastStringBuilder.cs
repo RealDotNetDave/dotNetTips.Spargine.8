@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-04-2025
+// Last Modified On : 03-05-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -49,7 +49,7 @@ public static class FastStringBuilder
 	/// <param name="args">An array of objects to format.</param>
 	/// <returns>A formatted string.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AppendFormat), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(AppendFormat), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static string AppendFormat(string format, params string[] args)
 	{
 		if (args.CheckItemsExists() == false || format.CheckIsNotNull() == false)
@@ -61,8 +61,7 @@ public static class FastStringBuilder
 
 		try
 		{
-			_ = sb.AppendFormat(CultureInfo.InvariantCulture, format, args);
-			return sb.ToString();
+			return sb.AppendFormat(CultureInfo.InvariantCulture, format, args).ToString();
 		}
 		finally
 		{
@@ -81,7 +80,7 @@ public static class FastStringBuilder
 	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string BytesToString([NotNull] ref readonly byte[] bytes)
 	{
-		if (bytes == null)
+		if (bytes is null || bytes.LongLength == 0)
 		{
 			return ControlChars.EmptyString;
 		}
@@ -89,11 +88,11 @@ public static class FastStringBuilder
 		var sb = _stringBuilderPool.Get().Clear();
 
 		//Set capacity to increase performance
-		_ = sb.EnsureCapacity((bytes.Length * 2) + 3);
+		_ = sb.EnsureCapacity((bytes.Length * 2) + 2);
 
 		try
 		{
-			_ = sb.Append("'0x");
+			_ = sb.Append("0x");
 
 			//FrozenSet, ImmutableArray and Span is slower.
 			foreach (var @byte in bytes)
@@ -101,9 +100,7 @@ public static class FastStringBuilder
 				_ = sb.Append(@byte.ToString("X2", CultureInfo.InvariantCulture));
 			}
 
-			_ = sb.Append('\'');
-
-			return sb.ToString().Trim();
+			return sb.ToString();
 		}
 		finally
 		{
@@ -123,7 +120,7 @@ public static class FastStringBuilder
 	[Information(nameof(CombineStrings), "David McCarter", "12/23/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string CombineStrings(in bool addLineFeed = false, [NotNull] params string[] args)
 	{
-		if (args == null || args.LongLength == 0)
+		if (args == null || args.Length == 0)
 		{
 			return ControlChars.EmptyString;
 		}
@@ -166,19 +163,24 @@ public static class FastStringBuilder
 	/// <param name="args">The arguments.</param>
 	/// <returns>System.String.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(ConcatStrings), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string ConcatStrings(string delimiter = ControlChars.CommaSpace, in bool addLineFeed = false, [NotNull] params string[] args)
 	{
+		if (args == null || args.Length == 0)
+		{
+			return ControlChars.EmptyString;
+		}
+
 		if (delimiter == null)
 		{
-			delimiter = ControlChars.Comma.ToString();
+			delimiter = ControlChars.CommaSpace;
 		}
 
 		var sb = _stringBuilderPool.Get().Clear();
 
 		try
 		{
-			var itemCount = args.LongLength;
+			var itemCount = args.Length;
 
 			for (var index = 0; index < itemCount; index++)
 			{
@@ -205,10 +207,10 @@ public static class FastStringBuilder
 	/// <param name="values">The collection of strings to join.</param>
 	/// <returns>A single string with the values joined by the delimiter.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static string JoinStrings([NotNull] IEnumerable<string> values, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
-		if (values == null || values.CheckItemsExists() == false)
+		if (values?.Any() == false)
 		{
 			return ControlChars.EmptyString;
 		}
@@ -217,13 +219,16 @@ public static class FastStringBuilder
 
 		try
 		{
-			foreach (var value in values)
+			using var enumerator = values.GetEnumerator();
+
+			if (enumerator.MoveNext())
 			{
-				if (sb.Length > 0)
-				{
-					_ = sb.Append(delimiter);
-				}
-				_ = sb.Append(value);
+				_ = sb.Append(enumerator.Current);
+			}
+
+			while (enumerator.MoveNext())
+			{
+				_ = sb.Append(delimiter).Append(enumerator.Current);
 			}
 
 			return sb.ToString();
@@ -241,10 +246,10 @@ public static class FastStringBuilder
 	/// <param name="values">The collection of strings to join.</param>
 	/// <returns>A single string with the values joined by the delimiter.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(JoinStrings), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static string JoinStrings([NotNull] IEnumerable<string> values, string delimiter = ControlChars.CommaSpace)
 	{
-		if (values == null || values.CheckItemsExists() == false)
+		if (values?.Any() != true)
 		{
 			return ControlChars.EmptyString;
 		}
@@ -253,13 +258,16 @@ public static class FastStringBuilder
 
 		try
 		{
-			foreach (var value in values)
+			using var enumerator = values.GetEnumerator();
+
+			if (enumerator.MoveNext())
 			{
-				if (sb.Length > 0)
-				{
-					_ = sb.Append(delimiter);
-				}
-				_ = sb.Append(value);
+				_ = sb.Append(enumerator.Current);
+			}
+
+			while (enumerator.MoveNext())
+			{
+				_ = sb.Append(delimiter).Append(enumerator.Current);
 			}
 
 			return sb.ToString();
@@ -319,20 +327,19 @@ public static class FastStringBuilder
 	/// <param name="input">The input string to perform the replacement on.</param>
 	/// <returns>A new string with all occurrences of the original string replaced by the replacement string.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Replace), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Replace), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static string Replace(string original, string replacement, string input)
 	{
-		if (input == null)
+		if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(original))
 		{
-			return ControlChars.EmptyString;
+			return input ?? ControlChars.EmptyString;
 		}
 
-		var sb = _stringBuilderPool.Get().Clear();
+		var sb = _stringBuilderPool.Get().Clear().Append(input);
 
 		try
 		{
-			_ = sb.Append(input.Replace(original, replacement, StringComparison.Ordinal));
-			return sb.ToString();
+			return sb.Replace(original, replacement).ToString();
 		}
 		finally
 		{
@@ -351,7 +358,7 @@ public static class FastStringBuilder
 	[Information(nameof(Substring), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static string Substring(string input, in int startIndex, in int length)
 	{
-		if (input == null)
+		if (string.IsNullOrEmpty(input) || startIndex < 0 || length < 0 || startIndex + length > input.Length)
 		{
 			return ControlChars.EmptyString;
 		}
@@ -360,8 +367,7 @@ public static class FastStringBuilder
 
 		try
 		{
-			_ = sb.Append(input.AsSpan(startIndex, length));
-			return sb.ToString();
+			return sb.Append(input, startIndex, length).ToString();
 		}
 		finally
 		{
@@ -385,7 +391,7 @@ public static class FastStringBuilder
 	[Information(nameof(ToDelimitedString), "David McCarter", "1/1/2021", Status = Status.Available, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string ToDelimitedString<TKey, TValue>([NotNull] in Dictionary<TKey, TValue> collection, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
-		if (collection.CheckItemsExists() is false)
+		if (collection == null || collection.Count == 0)
 		{
 			return ControlChars.EmptyString;
 		}
@@ -402,7 +408,7 @@ public static class FastStringBuilder
 					_ = sb.Append(delimiter);
 				}
 
-				_ = sb.Append($"{item.Key}:{item.Value}");
+				_ = sb.Append(item.Key).Append(':').Append(item.Value);
 			}
 
 			return sb.ToString();
