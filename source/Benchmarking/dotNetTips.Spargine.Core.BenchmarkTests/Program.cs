@@ -45,7 +45,7 @@ public class Program
 			//_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
 			_ = BenchmarkRunner.Run<FastStringBuilderCounterBenchmark>(config);
-			//_ = BenchmarkRunner.Run<FastSortedListAddRemoveBenchmark>(config);
+			_ = BenchmarkRunner.Run<FastStringBuilderBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine("COMPLETE!");
 			Console.Beep();

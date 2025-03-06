@@ -37,26 +37,6 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	private Dictionary<string, string> _wordDictionary;
 	private string[] _words;
 
-	[Benchmark(Description = nameof(FastStringBuilder.AppendFormat))]
-	[BenchmarkCategory(Categories.Strings, Categories.New)]
-	public void AppendFormat()
-	{
-		var result = FastStringBuilder.AppendFormat("Word1 {0}, Word2 {1}, Word3 {1}", [.. this._words.Take(3)]);
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = "AppendFormat: SB.AppendFormat() for Comparison")]
-	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
-	public void AppendFormatComparison()
-	{
-		var sb = new StringBuilder();
-
-		var result = sb.AppendFormat("Word1 {0}, Word2 {1}, Word3 {1}", [.. this._words.Take(3)]);
-
-		this.Consume(result);
-	}
-
 	[Benchmark(Description = nameof(FastStringBuilder.BytesToString))]
 	[BenchmarkCategory(Categories.Array, Categories.Strings)]
 	public void BytesToString()
@@ -271,26 +251,6 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 
 
 		base.Consume(result);
-	}
-
-	[Benchmark(Description = nameof(FastStringBuilder.Remove))]
-	[BenchmarkCategory(Categories.Strings, Categories.New)]
-	public void Remove()
-	{
-		var result = FastStringBuilder.Remove(this.LongTestString, "and");
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = "Remove: SB.Replace() with string.Empty for Comparison")]
-	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
-	public void RemoveComparison()
-	{
-		var sb = new StringBuilder(this.LongTestString);
-
-		var result = sb.Replace("and", string.Empty);
-
-		this.Consume(result.ToString());
 	}
 
 	public override void Setup()
