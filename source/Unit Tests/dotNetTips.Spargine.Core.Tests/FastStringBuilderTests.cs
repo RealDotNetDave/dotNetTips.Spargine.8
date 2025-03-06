@@ -68,16 +68,36 @@ public class FastStringBuilderTests
 	{
 		var strings = RandomData.GenerateWords(WordCount, WordMinLength, WordMaxLength).ToArray();
 
-		var result = FastStringBuilder.Combine(false, strings);
+		var result = FastStringBuilder.Combine(addLineFeed: false, args: strings);
 
 		Assert.IsTrue(string.IsNullOrEmpty(result) is false);
 
-		result = FastStringBuilder.Combine(true, strings);
+		result = FastStringBuilder.Combine(true, args: strings);
 
 		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
 
-		Assert.IsTrue(FastStringBuilder.Combine(false, null) == ControlChars.EmptyString);
+		Assert.IsTrue(FastStringBuilder.Combine(false, args: null) == ControlChars.EmptyString);
 	}
+
+	[TestMethod]
+	public void CombineWithSpaceTest()
+	{
+		var result = FastStringBuilder.CombineWithSpace("Hello", "world");
+		Assert.AreEqual("Hello world", result);
+
+		result = FastStringBuilder.CombineWithSpace("This", "is", "a", "test");
+		Assert.AreEqual("This is a test", result);
+
+		result = FastStringBuilder.CombineWithSpace("SingleWord");
+		Assert.AreEqual("SingleWord", result);
+
+		result = FastStringBuilder.CombineWithSpace(null);
+		Assert.AreEqual(ControlChars.EmptyString, result);
+
+		result = FastStringBuilder.CombineWithSpace();
+		Assert.AreEqual(ControlChars.EmptyString, result);
+	}
+
 
 	[TestMethod]
 	public void ConcatToStringCharTest()
@@ -161,35 +181,6 @@ public class FastStringBuilderTests
 		Assert.AreEqual("This is a test.", result);
 
 		result = FastStringBuilder.Remove(string.Empty, "test");
-		Assert.AreEqual(ControlChars.EmptyString, result);
-	}
-
-	[TestMethod]
-	public void ReplaceTest()
-	{
-		var result = FastStringBuilder.Replace("world", "universe", "Hello, world!");
-		Assert.AreEqual("Hello, universe!", result);
-
-		result = FastStringBuilder.Replace("test", "exam", "This is a test.");
-		Assert.AreEqual("This is a exam.", result);
-
-		result = FastStringBuilder.Replace("notfound", "found", "This string does not contain the word.");
-		Assert.AreEqual("This string does not contain the word.", result);
-
-		result = FastStringBuilder.Replace("test", "exam", null);
-		Assert.AreEqual(ControlChars.EmptyString, result);
-	}
-
-	[TestMethod]
-	public void SubstringTest()
-	{
-		var result = FastStringBuilder.Substring("Hello, world!", 7, 5);
-		Assert.AreEqual("world", result);
-
-		result = FastStringBuilder.Substring("This is a test.", 10, 4);
-		Assert.AreEqual("test", result);
-
-		result = FastStringBuilder.Substring(null, 0, 4);
 		Assert.AreEqual(ControlChars.EmptyString, result);
 	}
 

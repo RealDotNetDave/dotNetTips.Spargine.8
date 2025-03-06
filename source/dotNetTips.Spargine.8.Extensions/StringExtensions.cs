@@ -105,7 +105,7 @@ public static class StringExtensions
 	/// <param name="args">An array of strings to combine with the initial string. Must not be null.</param>
 	/// <returns>A combined string.</returns>
 	[Information(nameof(Concat), "David McCarter", "1/3/2023", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static string CombineToString([NotNull] this string input, [NotNull] params string[] args) => FastStringBuilder.Combine(false, args.ArgumentNotNull().AddFirst(input.ArgumentNotNull()));
+	public static string CombineToString([NotNull] this string input, [NotNull] params string[] args) => FastStringBuilder.Combine(false, args: args.ArgumentNotNull().AddFirst(input.ArgumentNotNull()));
 
 	/// <summary>
 	/// Computes the hash of the given input string using the specified hash algorithm.

@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-05-2025
+// Last Modified On : 03-06-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -125,7 +125,11 @@ public static class FastStringBuilder
 			return ControlChars.EmptyString;
 		}
 
+		// Calculate the total length of the combined string 
+		var totalLength = args.Sum(static arg => arg.Length) + (addLineFeed ? args.Length - 1 : 0);
+
 		var sb = _stringBuilderPool.Get().Clear();
+		_ = sb.EnsureCapacity(totalLength);
 
 		try
 		{
@@ -133,6 +137,49 @@ public static class FastStringBuilder
 			foreach (var arg in args)
 			{
 				_ = addLineFeed ? sb.AppendLine(arg) : sb.Append(arg);
+			}
+
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
+	}
+
+	/// <summary>
+	/// Combines an array of strings into a single string, adding a space between each word.
+	/// This method uses an object pool for <see cref="StringBuilder"/> to improve performance and reduce memory allocations.
+	/// </summary>
+	/// <param name="args">The array of strings to combine.</param>
+	/// <returns>A combined string with spaces between each word.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null or empty.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(Combine), "David McCarter", "3/6/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	public static string CombineWithSpace([NotNull] params string[] args)
+	{
+		if (args == null || args.Length == 0)
+		{
+			return ControlChars.EmptyString;
+		}
+
+		// Calculate the total length of the combined string including spaces
+		var totalLength = args.Sum(static arg => arg.Length) + (args.Length - 1);
+
+		var sb = _stringBuilderPool.Get().Clear();
+		_ = sb.EnsureCapacity(totalLength);
+
+		try
+		{
+			//ASSPAN, IMMUTABLEARRAY IS Slower!
+			for (var index = 0; index < args.Length; index++)
+			{
+				_ = sb.Append(args[index]);
+
+				if (index < args.Length - 1)
+				{
+					_ = sb.Append(ControlChars.Space);
+				}
 			}
 
 			return sb.ToString();
@@ -152,8 +199,41 @@ public static class FastStringBuilder
 	/// <param name="args">The array of strings to concatenate.</param>
 	/// <returns>A concatenated string with elements separated by <paramref name="delimiter"/> or line feeds based on <paramref name="addLineFeed"/>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Concat), "David McCarter", "12/28/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string Concat([ConstantExpected] in char delimiter = ControlChars.Comma, in bool addLineFeed = false, [NotNull] params string[] args) => Concat(delimiter.ToString(), addLineFeed, args);
+	[Information(nameof(Concat), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	public static string Concat(char delimiter = ControlChars.Comma, in bool addLineFeed = false, [NotNull] params string[] args)
+	{
+		if (args == null || args.Length == 0)
+		{
+			return ControlChars.EmptyString;
+		}
+
+		// Calculate the total length of the combined string including spaces
+		var totalLength = args.Sum(static arg => arg.Length) + 1;
+
+		var sb = _stringBuilderPool.Get().Clear();
+		_ = sb.EnsureCapacity(totalLength);
+
+		try
+		{
+			var itemCount = args.Length;
+
+			for (var index = 0; index < itemCount; index++)
+			{
+				_ = sb.Append(args[index]);
+
+				if (index < itemCount - 1)
+				{
+					_ = addLineFeed ? sb.AppendLine() : sb.Append(delimiter);
+				}
+			}
+
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
+	}
 
 	/// <summary>
 	/// Concatenates the strings.
@@ -176,7 +256,11 @@ public static class FastStringBuilder
 			delimiter = ControlChars.CommaSpace;
 		}
 
+		// Calculate the total length of the combined string including spaces
+		var totalLength = args.Sum(static arg => arg.Length) + delimiter.Length;
+
 		var sb = _stringBuilderPool.Get().Clear();
+		_ = sb.EnsureCapacity(totalLength);
 
 		try
 		{
@@ -353,62 +437,6 @@ public static class FastStringBuilder
 			}
 
 			return sb.ToString();
-		}
-		finally
-		{
-			_stringBuilderPool.Return(sb);
-		}
-	}
-
-	/// <summary>
-	/// Replaces all occurrences of a specified string in the built string with another specified string.
-	/// </summary>
-	/// <param name="original">The string to be replaced.</param>
-	/// <param name="replacement">The string to replace all occurrences of the original string.</param>
-	/// <param name="input">The input string to perform the replacement on.</param>
-	/// <returns>A new string with all occurrences of the original string replaced by the replacement string.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Replace), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
-	public static string Replace(string original, string replacement, string input)
-	{
-		if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(original))
-		{
-			return input ?? ControlChars.EmptyString;
-		}
-
-		var sb = _stringBuilderPool.Get().Clear().Append(input);
-
-		try
-		{
-			return sb.Replace(original, replacement).ToString();
-		}
-		finally
-		{
-			_stringBuilderPool.Return(sb);
-		}
-	}
-
-	/// <summary>
-	/// Extracts a substring from the built string.
-	/// </summary>
-	/// <param name="input">The input string to extract the substring from.</param>
-	/// <param name="startIndex">The zero-based starting character position of the substring.</param>
-	/// <param name="length">The number of characters in the substring.</param>
-	/// <returns>A substring of the specified length starting at the specified position.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Substring), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
-	public static string Substring(string input, in int startIndex, in int length)
-	{
-		if (string.IsNullOrEmpty(input) || startIndex < 0 || length < 0 || startIndex + length > input.Length)
-		{
-			return ControlChars.EmptyString;
-		}
-
-		var sb = _stringBuilderPool.Get().Clear();
-
-		try
-		{
-			return sb.Append(input, startIndex, length).ToString();
 		}
 		finally
 		{

@@ -100,7 +100,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 
 		foreach (var arg in this._words)
 		{
-			_ = sb.Append(string.Format(CultureInfo.InvariantCulture, "{0}{1}", arg, ControlChars.EmptyString));
+			_ = sb.Append(string.Format(CultureInfo.InvariantCulture, "{0}", arg));
 		}
 
 		base.Consume(sb.ToString());
@@ -115,7 +115,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Combine Strings: SB.Append() with Char delimiter for Comparison")]
+	[Benchmark(Description = "Concat Strings: SB.Append() with Char delimiter for Comparison")]
 	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void ConcatCharComparison()
 	{
@@ -140,7 +140,7 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Combine Strings: SB.Append() with String delimiter for Comparison")]
+	[Benchmark(Description = "Concat Strings: SB.Append() with String delimiter for Comparison")]
 	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void ConcatStringComparison()
 	{
@@ -250,24 +250,24 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		base.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.Replace))]
+	[Benchmark(Description = nameof(FastStringBuilder.Remove))]
 	[BenchmarkCategory(Categories.Strings, Categories.New)]
-	public void Replace()
+	public void Remove()
 	{
-		var result = FastStringBuilder.Replace("and", "PLUS", this.LongTestString);
+		var result = FastStringBuilder.Remove(this.LongTestString, "and");
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "Replace: SB.Replace() for Comparison")]
+	[Benchmark(Description = "Remove: SB.Replace() with string.Empty for Comparison")]
 	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
-	public void ReplaceComparison()
+	public void RemoveComparison()
 	{
 		var sb = new StringBuilder(this.LongTestString);
 
-		var result = sb.Replace("and", "PLUS");
+		var result = sb.Replace("and", string.Empty);
 
-		this.Consume(result);
+		this.Consume(result.ToString());
 	}
 
 	public override void Setup()
@@ -279,24 +279,6 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		this._wordDictionary = RandomData.GenerateWords(this.Count, 10, 10).ToDictionary(x => RandomData.GenerateKey(), y => y);
 
 		LogInfo($"ByteArray: {this._byteArray.Length}.");
-	}
-
-	[Benchmark(Description = nameof(FastStringBuilder.Substring))]
-	[BenchmarkCategory(Categories.Strings, Categories.New)]
-	public void Substring()
-	{
-		var result = FastStringBuilder.Substring(this.LongTestString, 5, 50);
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = "Substring: String.Substring for Comparison ")]
-	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
-	public void SubstringComparison()
-	{
-		var result = this.LongTestString.Substring(5, 50);
-
-		this.Consume(result);
 	}
 
 	[Benchmark(Description = nameof(FastStringBuilder.ToDelimitedString))]
