@@ -106,6 +106,29 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 		base.Consume(sb.ToString());
 	}
 
+	[Benchmark(Description = nameof(FastStringBuilder.CombineWithSpace))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void CombineWithSpace()
+	{
+		var result = FastStringBuilder.CombineWithSpace(this._words);
+
+		base.Consume(result);
+	}
+
+	[Benchmark(Description = "Combine Strings with Space: SB.Append() for Comparison")]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
+	public void CombineWithSpaceComparison()
+	{
+		var sb = new StringBuilder();
+
+		foreach (var arg in this._words)
+		{
+			_ = sb.Append(string.Format(CultureInfo.InvariantCulture, "{0} ", arg));
+		}
+
+		base.Consume(sb.ToString().Trim());
+	}
+
 	[Benchmark(Description = nameof(FastStringBuilder.Concat) + ": with Char delimiter")]
 	[BenchmarkCategory(Categories.Strings, Categories.New)]
 	public void ConcatChar()
@@ -167,22 +190,11 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 
 	[Benchmark(Description = "Join String: SB.AppendJoin()  with Char delimiter for Comparison")]
 	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
-	public void JoinComparisonChar()
+	public void JoinCharComparison()
 	{
 		var sb = new StringBuilder();
 
 		var result = sb.AppendJoin(ControlChars.Comma, this._words);
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = "Join String: SB.AppendJoin() with String delimiter for Comparison")]
-	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
-	public void JoinComparisonString()
-	{
-		var sb = new StringBuilder();
-
-		var result = sb.AppendJoin(ControlChars.CommaSpace, this._words);
 
 		this.Consume(result);
 	}
@@ -192,6 +204,17 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	public void JoinString()
 	{
 		var result = FastStringBuilder.Join(this._words, ControlChars.CommaSpace);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = "Join String: SB.AppendJoin() with String delimiter for Comparison")]
+	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
+	public void JoinStringComparison()
+	{
+		var sb = new StringBuilder();
+
+		var result = sb.AppendJoin(ControlChars.CommaSpace, this._words);
 
 		this.Consume(result);
 	}

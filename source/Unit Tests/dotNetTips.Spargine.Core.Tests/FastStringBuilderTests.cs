@@ -38,16 +38,16 @@ public class FastStringBuilderTests
 	[TestMethod]
 	public void AppendFormatTest()
 	{
-		var result = FastStringBuilder.AppendFormat("Hello, {0}!", "world");
+		var result = FastStringBuilder.Format("Hello, {0}!", "world");
 		Assert.AreEqual("Hello, world!", result);
 
-		result = FastStringBuilder.AppendFormat("Number: {0}, String: {1}", "123", "test");
+		result = FastStringBuilder.Format("Number: {0}, String: {1}", "123", "test");
 		Assert.AreEqual("Number: 123, String: test", result);
 
-		result = FastStringBuilder.AppendFormat("Empty: {0}", null);
+		result = FastStringBuilder.Format("Empty: {0}", null);
 		Assert.AreEqual(string.Empty, result);
 
-		result = FastStringBuilder.AppendFormat(null, "test");
+		result = FastStringBuilder.Format(null, "test");
 		Assert.AreEqual(string.Empty, result);
 	}
 

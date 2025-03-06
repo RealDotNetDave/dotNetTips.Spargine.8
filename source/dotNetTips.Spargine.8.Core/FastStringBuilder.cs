@@ -41,36 +41,8 @@ public static class FastStringBuilder
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
-
 	/// <summary>
-	/// Appends a formatted string using the specified format and arguments.
-	/// </summary>
-	/// <param name="format">A composite format string.</param>
-	/// <param name="args">An array of objects to format.</param>
-	/// <returns>A formatted string.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AppendFormat), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
-	public static string AppendFormat(string format, params string[] args)
-	{
-		if (args.CheckItemsExists() == false || format.CheckIsNotNull() == false)
-		{
-			return ControlChars.EmptyString;
-		}
-
-		var sb = _stringBuilderPool.Get().Clear();
-
-		try
-		{
-			return sb.AppendFormat(CultureInfo.InvariantCulture, format, args).ToString();
-		}
-		finally
-		{
-			_stringBuilderPool.Return(sb);
-		}
-	}
-
-	/// <summary>
-	/// Converts an array of bytes to a hexadecimal string representation.
+	/// Converts an array of bytes into a hexadecimal string representation, making it easy to inspect raw byte data in string form.
 	/// This method uses an object pool for <see cref="StringBuilder"/> to improve performance and reduce memory allocations.
 	/// </summary>
 	/// <param name="bytes">The byte array to convert.</param>
@@ -125,11 +97,7 @@ public static class FastStringBuilder
 			return ControlChars.EmptyString;
 		}
 
-		// Calculate the total length of the combined string 
-		var totalLength = args.Sum(static arg => arg.Length) + (addLineFeed ? args.Length - 1 : 0);
-
 		var sb = _stringBuilderPool.Get().Clear();
-		_ = sb.EnsureCapacity(totalLength);
 
 		try
 		{
@@ -163,11 +131,7 @@ public static class FastStringBuilder
 			return ControlChars.EmptyString;
 		}
 
-		// Calculate the total length of the combined string including spaces
-		var totalLength = args.Sum(static arg => arg.Length) + (args.Length - 1);
-
 		var sb = _stringBuilderPool.Get().Clear();
-		_ = sb.EnsureCapacity(totalLength);
 
 		try
 		{
@@ -207,11 +171,7 @@ public static class FastStringBuilder
 			return ControlChars.EmptyString;
 		}
 
-		// Calculate the total length of the combined string including spaces
-		var totalLength = args.Sum(static arg => arg.Length) + 1;
-
 		var sb = _stringBuilderPool.Get().Clear();
-		_ = sb.EnsureCapacity(totalLength);
 
 		try
 		{
@@ -256,11 +216,7 @@ public static class FastStringBuilder
 			delimiter = ControlChars.CommaSpace;
 		}
 
-		// Calculate the total length of the combined string including spaces
-		var totalLength = args.Sum(static arg => arg.Length) + delimiter.Length;
-
 		var sb = _stringBuilderPool.Get().Clear();
-		_ = sb.EnsureCapacity(totalLength);
 
 		try
 		{
@@ -277,6 +233,34 @@ public static class FastStringBuilder
 			}
 
 			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
+	}
+
+
+	/// <summary>
+	/// Formats a string using the specified format and arguments.
+	/// </summary>
+	/// <param name="format">A composite format string.</param>
+	/// <param name="args">An array of objects to format.</param>
+	/// <returns>A formatted string.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(Format), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static string Format(string format, params string[] args)
+	{
+		if (args.CheckItemsExists() == false || format.CheckIsNotNull() == false)
+		{
+			return ControlChars.EmptyString;
+		}
+
+		var sb = _stringBuilderPool.Get().Clear();
+
+		try
+		{
+			return sb.AppendFormat(CultureInfo.CurrentCulture, format, args).ToString();
 		}
 		finally
 		{
@@ -445,7 +429,7 @@ public static class FastStringBuilder
 	}
 
 	/// <summary>
-	/// Converts a dictionary to a delimited string using an ObjectPool to improve performance.
+	/// Converts a dictionary to a delimited string, useful for serialization or creating CSV-like outputs. This method efficiently builds a string representation of key-value pairs, with a specified delimiter.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
 	/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>

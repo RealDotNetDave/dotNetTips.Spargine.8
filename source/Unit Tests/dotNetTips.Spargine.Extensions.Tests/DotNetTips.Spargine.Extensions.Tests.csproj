@@ -30,7 +30,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="System.Resources.Extensions" Version="9.0.2" />
-		<PackageReference Include="System.ServiceModel.Primitives" Version="8.1.1" />
+		<PackageReference Include="System.ServiceModel.Primitives" Version="8.1.2" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\dotNetTips.Spargine.8.Core\DotNetTips.Spargine.8.Core.csproj" />
