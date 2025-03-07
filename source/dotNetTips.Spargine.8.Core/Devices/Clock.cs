@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="Clock.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -39,7 +39,7 @@ public static class Clock
 	/// <param name="year">The year to check.</param>
 	/// <returns><c>true</c> if the specified year is a leap year; otherwise, <c>false</c>.</returns>
 	[Information(nameof(IsLeapYear), "David McCarter", "11/14/2024", Status = Status.Available)]
-	public static bool IsLeapYear(int year) => DateTime.IsLeapYear(year);
+	public static bool IsLeapYear([ConstantExpected(Min = 0, Max = int.MaxValue)] int year) => DateTime.IsLeapYear(year);
 
 	/// <summary>
 	/// Gets the days in the current month (local time) by utilizing <see cref="DateTime.DaysInMonth(int, int)"/>.

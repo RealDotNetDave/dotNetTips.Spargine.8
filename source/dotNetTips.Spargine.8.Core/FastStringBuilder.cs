@@ -47,7 +47,6 @@ public static class FastStringBuilder
 	/// </summary>
 	/// <param name="bytes">The byte array to convert.</param>
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bytes"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string BytesToString([NotNull] ref readonly byte[] bytes)
@@ -87,7 +86,6 @@ public static class FastStringBuilder
 	/// <param name="addLineFeed">If set to <c>true</c>, adds a line feed after each element.</param>
 	/// <param name="args">The array of strings to combine.</param>
 	/// <returns>A combined string with or without line feeds after each element based on <paramref name="addLineFeed"/>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Combine), "David McCarter", "12/23/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string Combine(in bool addLineFeed = false, [NotNull] params string[] args)
@@ -121,7 +119,6 @@ public static class FastStringBuilder
 	/// </summary>
 	/// <param name="args">The array of strings to combine.</param>
 	/// <returns>A combined string with spaces between each word.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="args"/> is null or empty.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Combine), "David McCarter", "3/6/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static string CombineWithSpace([NotNull] params string[] args)
@@ -352,7 +349,6 @@ public static class FastStringBuilder
 	/// </summary>
 	/// <param name="action">The action to perform on the <see cref="StringBuilder"/>. Must not be null.</param>
 	/// <returns>A string resulting from the action performed on the <see cref="StringBuilder"/>.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="action"/> is null.</exception>
 	/// <example>
 	/// Here is an example of using PerformAction method:
 	/// <code>

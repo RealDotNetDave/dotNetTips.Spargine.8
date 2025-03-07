@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-10-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -17,6 +17,7 @@
 // ***********************************************************************
 
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -110,7 +111,7 @@ public static class UlidGenerator
 	/// <returns>A read-only collection of generated ULIDs.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the count is less than or equal to zero.</exception>
 	[Information("Generates multiple ULIDs based on the specified count.", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static ReadOnlyCollection<string> GenerateMultipleUlids(int count)
+	public static ReadOnlyCollection<string> GenerateMultipleUlids([ConstantExpected(Min = 1, Max = int.MaxValue)] int count)
 	{
 		var ulids = new List<string>(count.ArgumentInRange(1, defaultValue: 1));
 

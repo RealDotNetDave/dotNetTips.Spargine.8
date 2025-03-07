@@ -4,7 +4,7 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-22-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -589,7 +589,7 @@ public static partial class Validator
 	/// <remarks>This also checks the input for null.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentItemsExists), "David McCarter", "4/4/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static IEnumerable<T> ArgumentItemsExists<T>([NotNull] this IEnumerable<T> input, in long count, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
+	public static IEnumerable<T> ArgumentItemsExists<T>([NotNull] this IEnumerable<T> input, [ConstantExpected(Min = 0, Max = long.MaxValue)] in long count, string errorMessage = "", [CallerArgumentExpression(nameof(input))] string paramName = "")
 	{
 		input = input.ArgumentNotNull();
 

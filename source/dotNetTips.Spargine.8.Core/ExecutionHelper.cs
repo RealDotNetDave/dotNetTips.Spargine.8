@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="ExecutionHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -44,7 +44,7 @@ public static class ExecutionHelper
 	/// <param name="attempts">The current number of attempts made.</param>
 	/// <returns>The calculated delay time in milliseconds.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private static int CalculateDelay(int retryWaitMilliseconds, in int attempts) => retryWaitMilliseconds * attempts;
+	private static int CalculateDelay([ConstantExpected(Min = 1, Max = int.MaxValue)] int retryWaitMilliseconds, [ConstantExpected(Min = 1, Max = int.MaxValue)] in int attempts) => retryWaitMilliseconds * attempts;
 
 	/// <summary>
 	/// Provides utility methods for executing operations with retry logic, allowing for progressive delays between retries.
@@ -66,7 +66,7 @@ public static class ExecutionHelper
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ProgressiveRetry), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineProgressiveRetry")]
-	public static SimpleResult<int> ProgressiveRetry([NotNull] Action operation, byte retryCount = 3, int retryWaitMilliseconds = 100, ILogger logger = null)
+	public static SimpleResult<int> ProgressiveRetry([NotNull] Action operation, [ConstantExpected(Min = 1, Max = byte.MaxValue)] byte retryCount = 3, int retryWaitMilliseconds = 100, ILogger logger = null)
 	{
 		operation = operation.ArgumentNotNull();
 		retryCount = retryCount.ArgumentInRange(lower: 1, upper: byte.MaxValue);
@@ -125,7 +125,7 @@ public static class ExecutionHelper
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ProgressiveRetryAsync), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static async Task<SimpleResult<int>> ProgressiveRetryAsync([NotNull] Func<Task> function, byte retryCount = 3, int retryWaitMilliseconds = 100, ILogger logger = null, CancellationToken cancellationToken = default)
+	public static async Task<SimpleResult<int>> ProgressiveRetryAsync([NotNull] Func<Task> function, [ConstantExpected(Min = 1, Max = byte.MaxValue)] byte retryCount = 3, [ConstantExpected(Min = 1, Max = int.MaxValue)] int retryWaitMilliseconds = 100, ILogger logger = null, CancellationToken cancellationToken = default)
 	{
 		function = function.ArgumentNotNull();
 		retryCount = retryCount.ArgumentInRange(lower: 1, upper: byte.MaxValue);

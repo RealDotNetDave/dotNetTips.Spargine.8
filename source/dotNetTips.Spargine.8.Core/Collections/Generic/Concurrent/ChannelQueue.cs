@@ -4,7 +4,7 @@
 // Created          : 11-12-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="ChannelQueue.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -75,7 +75,7 @@ public sealed class ChannelQueue<T>
 	/// <param name="capacity">The capacity of the <see cref="Channel{T}"/>.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public ChannelQueue(int capacity)
+	public ChannelQueue([ConstantExpected(Min = 1, Max = int.MaxValue)] int capacity)
 	{
 		this._channel = Channel.CreateBounded<T>(capacity);
 		this._cancellationTimeout = TimeSpan.FromMinutes(5);
@@ -88,7 +88,7 @@ public sealed class ChannelQueue<T>
 	/// <param name="cancellationTimeout">The timeout for the cancellation token.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ChannelQueue<T>), "David McCarter", "7/26/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public ChannelQueue(int capacity, TimeSpan? cancellationTimeout = null)
+	public ChannelQueue([ConstantExpected(Min = 1, Max = int.MaxValue)] int capacity, TimeSpan? cancellationTimeout = null)
 	{
 		this._channel = Channel.CreateBounded<T>(capacity);
 		this._cancellationTimeout = cancellationTimeout ?? TimeSpan.FromMinutes(5);

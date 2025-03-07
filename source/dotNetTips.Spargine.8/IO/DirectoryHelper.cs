@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -172,7 +172,7 @@ public static class DirectoryHelper
 	/// <exception cref="UnauthorizedAccessException">Thrown when the directory could not be deleted due to unauthorized access after the specified number of retries.</exception>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Updated)]
-	public static void DeleteDirectory([NotNull] DirectoryInfo path, byte retries = 5, bool recursive = true)
+	public static void DeleteDirectory([NotNull] DirectoryInfo path, [ConstantExpected(Min = 1, Max = byte.MaxValue)] byte retries = 5, bool recursive = true)
 	{
 		//TODO: FOR VERSION 10, RETURN SIMPLERESULT.
 
@@ -341,7 +341,7 @@ public static class DirectoryHelper
 	/// <exception cref="IOException">Thrown when the directory could not be moved after the specified number of retries.</exception>
 	[SupportedOSPlatform("windows")]
 	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void MoveDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, byte retries = 5)
+	public static void MoveDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, [ConstantExpected(Min = 1, Max = byte.MaxValue)] byte retries = 5)
 	{
 		if (source.CheckExists(createDirectory: false) == false)
 		{

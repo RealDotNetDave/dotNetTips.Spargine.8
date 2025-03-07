@@ -74,7 +74,8 @@ public static class StringBuilderExtensions
 
 		sb = sb.ArgumentNotNull().Append("'0x");
 
-		foreach (var byteItem in bytes) //FrozenSet and Span is slower.
+		//FrozenSet and Span is slower.
+		foreach (var byteItem in bytes)
 		{
 			_ = sb.Append(byteItem.ToString("X2", CultureInfo.InvariantCulture));
 		}
