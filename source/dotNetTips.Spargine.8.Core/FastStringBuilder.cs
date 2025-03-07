@@ -49,7 +49,7 @@ public static class FastStringBuilder
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bytes"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string BytesToString([NotNull] ref readonly byte[] bytes)
 	{
 		if (bytes is null || bytes.LongLength == 0)
@@ -67,7 +67,7 @@ public static class FastStringBuilder
 	/// <param name="bytes">The ReadOnlySpan of bytes to convert.</param>
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static string BytesToString(ReadOnlySpan<byte> bytes)
 	{
 		if (bytes.IsEmpty)
@@ -136,7 +136,7 @@ public static class FastStringBuilder
 	/// <param name="args">The array of strings to combine.</param>
 	/// <returns>A combined string with spaces between each word.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Combine), "David McCarter", "3/6/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(Combine), "David McCarter", "3/6/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static string CombineWithSpace([NotNull] params string[] args)
 	{
 		if (args == null || args.Length == 0)
@@ -406,7 +406,7 @@ public static class FastStringBuilder
 	/// <param name="toRemove">The string to remove from the input string.</param>
 	/// <returns>A new string with all occurrences of the specified string removed.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Remove), "David McCarter", "03/05/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(Remove), "David McCarter", "03/05/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static string Remove(string input, string toRemove)
 	{
 		if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(toRemove))
