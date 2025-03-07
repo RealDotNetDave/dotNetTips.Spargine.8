@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-06-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilderCounterBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -18,6 +18,7 @@ using System.Linq;
 using System.Text;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
+using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using Microsoft.Extensions.ObjectPool;
 
@@ -37,23 +38,22 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 	private Dictionary<string, string> _wordDictionary;
 	private string[] _words;
 
-	[Benchmark(Description = nameof(FastStringBuilder.BytesToString))]
+	[Benchmark(Description = nameof(FastStringBuilder.BytesToString) + ": Array")]
 	[BenchmarkCategory(Categories.Array, Categories.Strings)]
-	public void BytesToString()
+	public void ArrayBytesToString()
 	{
 		var result = FastStringBuilder.BytesToString(ref this._byteArray);
 
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "BytesToString: SB.Append() for Comparison")]
+	[Benchmark(Description = "BytesToString: Array SB.Append() for Comparison")]
 	[BenchmarkCategory(Categories.Array, Categories.Strings, Categories.ForComparison)]
-	public void BytesToStringComparison()
+	public void ArrayBytesToStringComparison()
 	{
 		var sb = new StringBuilder();
 
 		_ = sb.Capacity = this._byteArray.Length * 2;
-		_ = sb.Append("0x");
 
 		for (var byteCount = 0; byteCount < this._byteArray.LongLength; byteCount++)
 		{
@@ -251,6 +251,34 @@ public class FastStringBuilderCounterBenchmark : TinyCollectionBenchmark
 
 
 		base.Consume(result);
+	}
+	[Benchmark(Description = nameof(FastStringBuilder.BytesToString) + ": ReadOnlySpan")]
+	[BenchmarkCategory(Categories.Array, Categories.Strings)]
+	public void ReadOnlySpanBytesToString()
+	{
+		var readOnlySpan = this._byteArray.AsReadOnlySpan();
+
+		var result = FastStringBuilder.BytesToString(readOnlySpan);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = "BytesToString: ReadOnlySpan SB.Append() for Comparison")]
+	[BenchmarkCategory(Categories.Array, Categories.Strings, Categories.ForComparison)]
+	public void ReadOnlySpanBytesToStringComparison()
+	{
+		var sb = new StringBuilder();
+
+		var readOnlySpanBytes = this._byteArray.AsReadOnlySpan();
+
+		_ = sb.Capacity = readOnlySpanBytes.Length * 2;
+
+		for (var byteCount = 0; byteCount < this._byteArray.LongLength; byteCount++)
+		{
+			_ = sb.Append(readOnlySpanBytes[byteCount].ToString("X2", CultureInfo.InvariantCulture));
+		}
+
+		this.Consume(sb.ToString());
 	}
 
 	public override void Setup()
