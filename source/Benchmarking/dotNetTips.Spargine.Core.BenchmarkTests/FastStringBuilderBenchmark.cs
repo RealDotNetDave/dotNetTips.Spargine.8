@@ -21,7 +21,7 @@ using DotNetTips.Spargine.Tester;
 namespace DotNetTips.Spargine.Core.BenchmarkTests;
 
 [BenchmarkCategory(Categories.Strings)]
-public class FastStringBuilderBenchmark : TinyCollectionBenchmark
+public class FastStringBuilderBenchmark : Benchmark
 {
 
 	private string[] _words;
@@ -35,7 +35,7 @@ public class FastStringBuilderBenchmark : TinyCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = "AppendFormat: SB.AppendFormat() for Comparison")]
+	[Benchmark(Description = "Format: SB.AppendFormat() for Comparison")]
 	[BenchmarkCategory(Categories.Strings, Categories.ForComparison)]
 	public void FormatComparison()
 	{

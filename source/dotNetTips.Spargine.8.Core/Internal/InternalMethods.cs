@@ -16,10 +16,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
-using System.Text;
 using DotNetTips.Spargine.Core.Logging;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.ObjectPool;
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Core.Internal;
@@ -35,37 +33,6 @@ internal static class InternalMethods
 	/// </summary>
 	private const string NullString = "[null]";
 
-	/// <summary>
-	/// The string builder pool
-	/// </summary>
-	private static readonly ObjectPool<StringBuilder> _stringBuilderPool =
-	new DefaultObjectPoolProvider().CreateStringBuilderPool();
-
-	/// <summary>
-	/// Converts a byte array to a string using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
-	/// </summary>
-	/// <param name="array">The array.</param>
-	/// <returns>System.String.</returns>
-	internal static string BytesToString([NotNull] this byte[] array)
-	{
-		var sb = _stringBuilderPool.Get().Clear();
-
-		try
-		{
-			var itemCount = array.LongLength;
-
-			for (var byteIndex = 0; byteIndex < itemCount; byteIndex++)
-			{
-				_ = sb.Append(array[byteIndex].ToString("x2", CultureInfo.InvariantCulture));
-			}
-
-			return sb.ToString();
-		}
-		finally
-		{
-			_stringBuilderPool.Return(sb);
-		}
-	}
 
 	/// <summary>
 	/// Ensures the minimum.

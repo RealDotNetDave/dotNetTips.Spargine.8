@@ -164,7 +164,7 @@ public static class FastStringBuilder
 	/// <returns>A concatenated string with elements separated by <paramref name="delimiter"/> or line feeds based on <paramref name="addLineFeed"/>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Concat), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string Concat(char delimiter = ControlChars.Comma, in bool addLineFeed = false, [NotNull] params string[] args)
+	public static string Concat([ConstantExpected] char delimiter = ControlChars.Comma, in bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (args == null || args.Length == 0)
 		{

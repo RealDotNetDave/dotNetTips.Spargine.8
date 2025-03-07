@@ -159,29 +159,10 @@ public static class ArrayExtensions
 	/// <returns>A <see cref="string" /> that represents this instance.</returns>
 	/// <exception cref="ArgumentNullException">Array cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
+	[Information(nameof(BytesToString), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string BytesToString([NotNull] this byte[] array)
 	{
-		if (array.DoesNotHaveItems())
-		{
-			return string.Empty;
-		}
-
-		var sb = _stringBuilderPool.Value.Get().Clear();
-
-		try
-		{
-			foreach (var arrayItem in array)
-			{
-				_ = sb.Append(arrayItem.ToString("x2", CultureInfo.InvariantCulture));
-			}
-
-			return sb.ToString();
-		}
-		finally
-		{
-			_stringBuilderPool.Value.Return(sb);
-		}
+		return FastStringBuilder.BytesToString(ref array);
 	}
 
 	/// <summary>

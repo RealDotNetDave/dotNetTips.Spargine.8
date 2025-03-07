@@ -259,7 +259,7 @@ public static class ObjectExtensions
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
-	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
+	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
 	public static IDictionary<string, string> PropertiesToDictionary([NotNull] this object obj, [NotNull] string memberName = ControlChars.EmptyString, bool ignoreNulls = true)
 	{
 		var result = new Dictionary<string, string>();
@@ -285,7 +285,7 @@ public static class ObjectExtensions
 			{
 				var itemId = itemCount++;
 
-				var itemInnerMember = string.Format(CultureInfo.CurrentCulture, $"{{0}}[{{1}}]", memberName, itemId);
+				var itemInnerMember = FastStringBuilder.Format($"{{0}}[{{1}}]", memberName, itemId.ToString(CultureInfo.CurrentCulture));
 
 				result = result.Concat(item.PropertiesToDictionary(itemInnerMember)).ToDictionary(e => e.Key, e => e.Value);
 			}
@@ -320,7 +320,7 @@ public static class ObjectExtensions
 					continue;
 				}
 
-				var innerMember = string.Format(CultureInfo.CurrentCulture, "{0}{1}", newMemberName, property.Name);
+				var innerMember = FastStringBuilder.Format("{0}{1}", newMemberName, property.Name);
 
 				result = result.Concat(innerObject.PropertiesToDictionary(innerMember)).ToDictionary(e => e.Key, e => e.Value);
 			}
@@ -380,7 +380,7 @@ public static class ObjectExtensions
 
 		var properties = obj.PropertiesToDictionary(memberName: typeName, ignoreNulls: ignoreNulls);
 
-		var result = properties.Aggregate(header, (acc, pair) => string.Format(CultureInfo.CurrentCulture, "{0}{1}{2}{3}{4}", acc, sequenceSeparator, pair.Key, keyValueSeparator, pair.Value));
+		var result = properties.Aggregate(header, (acc, pair) => FastStringBuilder.Format("{0}{1}{2}{3}{4}", acc, sequenceSeparator, pair.Key, keyValueSeparator.ToString(), pair.Value));
 
 		return result.StartsWith(sequenceSeparator, StringComparison.CurrentCulture) ? result[sequenceSeparator.Length..] : result;
 	}
