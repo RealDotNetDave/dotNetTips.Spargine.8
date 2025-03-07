@@ -4,7 +4,7 @@
 // Created          : 07-11-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-19-2024
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="ReadOnlySpanExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -25,6 +25,16 @@ namespace DotNetTips.Spargine.Core.Tests;
 [TestClass]
 public class ReadOnlySpanExtensionsTests
 {
+	[TestMethod]
+	public void BytesToStringTest()
+	{
+		var bytes = RandomData.GenerateByteArray(100);
+
+		var readOnlySpan = new ReadOnlySpan<byte>(bytes);
+		var result = readOnlySpan.BytesToString();
+
+		Assert.IsTrue(result.Length > 100);
+	}
 
 	public int[] CreateArray()
 	{
@@ -47,7 +57,7 @@ public class ReadOnlySpanExtensionsTests
 	[TestMethod]
 	public void PickRandom_MultipleCalls_ReturnsDifferentElements()
 	{
-		ReadOnlySpan<int> span = new ReadOnlySpan<int>(CreateArray());
+		ReadOnlySpan<int> span = new ReadOnlySpan<int>(this.CreateArray());
 		var result1 = span.PickRandom();
 		var result2 = span.PickRandom();
 		// Note: This test might occasionally fail due to the random nature of the method, but it's unlikely.
@@ -57,7 +67,7 @@ public class ReadOnlySpanExtensionsTests
 	[TestMethod]
 	public void PickRandom_NonEmptySpan_ReturnsElementFromSpan()
 	{
-		ReadOnlySpan<int> span = new ReadOnlySpan<int>(CreateArray());
+		ReadOnlySpan<int> span = new ReadOnlySpan<int>(this.CreateArray());
 		var result = span.PickRandom();
 		Assert.IsTrue(span.Contains(result));
 	}

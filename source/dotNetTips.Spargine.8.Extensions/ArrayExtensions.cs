@@ -14,10 +14,8 @@
 using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
-using System.Text;
 using DotNetTips.Spargine.Core;
 using Microsoft.Extensions.ObjectPool;
 
@@ -36,12 +34,6 @@ namespace DotNetTips.Spargine.Extensions;
 [Information(Documentation = "https://bit.ly/SpargineArrayExtensions", Status = Status.Available)]
 public static class ArrayExtensions
 {
-
-	/// <summary>
-	/// Provides a pool of reusable <see cref="StringBuilder"/> instances.
-	/// </summary>
-	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
-		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
 
 	/// <summary>
 	/// Adds an item to the beginning of the specified array.
@@ -163,37 +155,6 @@ public static class ArrayExtensions
 	public static string BytesToString([NotNull] this byte[] array)
 	{
 		return FastStringBuilder.BytesToString(ref array);
-	}
-
-	/// <summary>
-	/// Converts byte array to a string using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
-	/// Validates that <paramref name="array" /> is not null.
-	/// </summary>
-	/// <param name="array">The array.</param>
-	/// <returns>System.String.</returns>
-	/// <exception cref="ArgumentNullException">array cannot be empty.</exception>
-	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	public static string BytesToString([NotNull] this ReadOnlySpan<byte> array)
-	{
-		array = array.ArgumentNotEmpty();
-
-		var sb = _stringBuilderPool.Value.Get().Clear();
-
-		try
-		{
-			_ = sb.EnsureCapacity(array.Length * 2); // Pre-allocate capacity to avoid multiple allocations
-
-			for (var byteCount = 0; byteCount < array.Length; byteCount++)
-			{
-				_ = sb.Append(array[byteCount].ToString("x2", CultureInfo.InvariantCulture));
-			}
-
-			return sb.ToString();
-		}
-		finally
-		{
-			_stringBuilderPool.Value.Return(sb);
-		}
 	}
 
 	/// <summary>

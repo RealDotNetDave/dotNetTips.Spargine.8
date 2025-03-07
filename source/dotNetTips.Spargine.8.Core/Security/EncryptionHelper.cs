@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-16-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -155,7 +155,6 @@ public static class EncryptionHelper
 						using (var sw = new StreamWriter(cs))
 						{
 							sw.Write(plainText);
-							sw.Flush();
 						}
 
 						cs.FlushFinalBlock();

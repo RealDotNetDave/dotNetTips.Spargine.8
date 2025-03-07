@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-06-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -161,7 +161,7 @@ public static class StringExtensions
 		var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(input));
 
 		// Convert byte array to a string
-		return bytes.BytesToString();
+		return FastStringBuilder.BytesToString(ref bytes);
 	}
 
 	/// <summary>

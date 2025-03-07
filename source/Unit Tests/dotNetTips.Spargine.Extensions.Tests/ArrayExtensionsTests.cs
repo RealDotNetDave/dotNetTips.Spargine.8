@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -226,7 +226,7 @@ public class ArrayExtensionsTests
 		var result = byteArray.BytesToString();
 
 		// Assert
-		Assert.AreEqual("0fa0b1c2", result);
+		Assert.AreEqual("0FA0B1C2", result);
 	}
 
 	/// <summary>
@@ -238,20 +238,6 @@ public class ArrayExtensionsTests
 		var bytes = RandomData.GenerateByteArray(100);
 
 		var result = bytes.BytesToString();
-
-		Assert.IsTrue(result.Length > 100);
-	}
-
-	/// <summary>
-	/// Defines the test method BytesToStringUsingSpanTest.
-	/// </summary>
-	[TestMethod]
-	public void BytesToStringUsingSpanTest()
-	{
-		var bytes = RandomData.GenerateByteArray(100);
-
-		var readOnlySpan = new ReadOnlySpan<byte>(bytes);
-		var result = readOnlySpan.BytesToString();
 
 		Assert.IsTrue(result.Length > 100);
 	}
@@ -809,7 +795,7 @@ public class ArrayExtensionsTests
 
 		public string AllPropertiesToString()
 		{
-			return $"Id: {Id}, Name: {Name}";
+			return $"Id: {this.Id}, Name: {this.Name}";
 		}
 
 		public string Id { get; init; }

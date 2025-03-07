@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-06-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -47,8 +47,9 @@ public static class FastStringBuilder
 	/// </summary>
 	/// <param name="bytes">The byte array to convert.</param>
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bytes"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string BytesToString([NotNull] ref readonly byte[] bytes)
 	{
 		if (bytes is null || bytes.LongLength == 0)
@@ -56,16 +57,31 @@ public static class FastStringBuilder
 			return ControlChars.EmptyString;
 		}
 
+		return BytesToString(bytes.AsSpan());
+	}
+
+	/// <summary>
+	/// Converts a ReadOnlySpan of bytes into a hexadecimal string representation, making it easy to inspect raw byte data in string form.
+	/// This method uses an object pool for <see cref="StringBuilder"/> to improve performance and reduce memory allocations.
+	/// </summary>
+	/// <param name="bytes">The ReadOnlySpan of bytes to convert.</param>
+	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	public static string BytesToString(ReadOnlySpan<byte> bytes)
+	{
+		if (bytes.IsEmpty)
+		{
+			return ControlChars.EmptyString;
+		}
+
 		var sb = _stringBuilderPool.Get().Clear();
 
-		//Set capacity to increase performance
+		// Set capacity to increase performance
 		_ = sb.EnsureCapacity((bytes.Length * 2) + 2);
 
 		try
 		{
-			_ = sb.Append("0x");
-
-			//FrozenSet, ImmutableArray and Span is slower.
 			foreach (var @byte in bytes)
 			{
 				_ = sb.Append(@byte.ToString("X2", CultureInfo.InvariantCulture));

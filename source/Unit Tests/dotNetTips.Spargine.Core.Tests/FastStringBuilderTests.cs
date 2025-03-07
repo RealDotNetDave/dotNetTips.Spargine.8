@@ -4,7 +4,7 @@
 // Created          : 01-03-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-05-2025
+// Last Modified On : 03-07-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilderTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
+using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -52,11 +53,34 @@ public class FastStringBuilderTests
 	}
 
 	[TestMethod]
+	public void BytesToString_ArrayTest()
+	{
+		var bytes = new byte[] { 0x1, 0x2, 0x3, 0x4, 0x5 };
+		var result = FastStringBuilder.BytesToString(ref bytes);
+		Assert.AreEqual("0102030405", result);
+
+		bytes = null;
+		result = FastStringBuilder.BytesToString(ref bytes);
+		Assert.AreEqual(ControlChars.EmptyString, result);
+	}
+
+	[TestMethod]
+	public void BytesToString_ReadOnlySpanTest()
+	{
+		var bytes = new byte[] { 0x1, 0x2, 0x3, 0x4, 0x5 };
+		var result = FastStringBuilder.BytesToString(bytes.AsReadOnlySpan());
+		Assert.AreEqual("0102030405", result);
+
+		result = FastStringBuilder.BytesToString(ReadOnlySpan<byte>.Empty);
+		Assert.AreEqual(ControlChars.EmptyString, result);
+	}
+
+	[TestMethod]
 	public void BytesToStringTest()
 	{
 		var bytes = new byte[] { 0x1, 0x2, 0x3, 0x4, 0x5 };
 		var result = FastStringBuilder.BytesToString(ref bytes);
-		Assert.AreEqual("0x0102030405", result);
+		Assert.AreEqual("0102030405", result);
 
 		bytes = null;
 		result = FastStringBuilder.BytesToString(ref bytes);
