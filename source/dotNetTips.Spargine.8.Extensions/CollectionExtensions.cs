@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="CollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -249,7 +249,7 @@ public static class CollectionExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool HasItems([NotNull] this ICollection collection, [ConstantExpected(Min = 1, Max = int.MaxValue)] in int count) => collection is null ? false : collection.Count == count;
+	public static bool HasItems([NotNull] this ICollection collection, in int count) => collection is null ? false : collection.Count == count;
 
 	/// <summary>
 	/// Converts a <see cref="Collection{T}" /> to a <see cref="FrozenSet{T}" />.

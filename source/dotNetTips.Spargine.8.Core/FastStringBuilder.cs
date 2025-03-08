@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -473,7 +473,7 @@ public static class FastStringBuilder
 					_ = sb.Append(delimiter);
 				}
 
-				_ = sb.Append(item.Key).Append(':').Append(item.Value);
+				_ = sb.Append(item.Key).Append(ControlChars.Colon).Append(item.Value);
 			}
 
 			return sb.ToString();

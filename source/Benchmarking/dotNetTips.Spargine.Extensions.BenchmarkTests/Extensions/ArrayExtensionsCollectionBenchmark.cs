@@ -323,7 +323,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		for (var index = 0; index < people.LongLength; index++)
 		{
-			_ = sb.Append(CultureInfo.CurrentCulture, $"{people[index].PropertiesToString()}|");
+			_ = sb.Append(CultureInfo.CurrentCulture, $"{people[index].GetHashCode()}|");
 		}
 
 		this.Consume(sb.ToString());
@@ -338,7 +338,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		people.PerformAction((person) =>
 		{
-			_ = sb.Append(CultureInfo.CurrentCulture, $"{person.ToString()}|");
+			_ = sb.Append(CultureInfo.CurrentCulture, $"{person.GetHashCode()}|");
 		});
 
 		this.Consume(sb.ToString());
@@ -353,7 +353,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		for (var index = 0; index < people.LongLength; index++)
 		{
-			_ = sb.Append(CultureInfo.CurrentCulture, $"{people[index].ToString()}|");
+			_ = sb.Append(CultureInfo.CurrentCulture, $"{people[index].GetHashCode()}|");
 		}
 
 		this.Consume(sb.ToString());
@@ -368,7 +368,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		people.PerformAction((person) =>
 		{
-			_ = sb.Append(CultureInfo.CurrentCulture, $"{person.ToString()}|");
+			_ = sb.Append(CultureInfo.CurrentCulture, $"{person.GetHashCode()}|");
 		});
 
 		this.Consume(sb.ToString());
@@ -383,7 +383,7 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 
 		for (var index = 0; index < people.LongLength; index++)
 		{
-			_ = sb.Append(CultureInfo.CurrentCulture, $"{people[index].ToString()}|");
+			_ = sb.Append(CultureInfo.CurrentCulture, $"{people[index].GetHashCode()}|");
 		}
 
 		this.Consume(sb.ToString());
@@ -418,6 +418,10 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this._personRecordArray = this.GetPersonRecordArray();
 		this._personRefArray = this.GetPersonRefArray();
 		this._personValArray = this.GetPersonValArray();
+
+		LogInfo($"PersonRecordArray: {this._personRecordArray.Length}");
+		LogInfo($"PersonRefArray: {this._personRefArray.Length}");
+		LogInfo($"PersonValArray: {this._personValArray.Length}");
 	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.ToDistinct) + " : Reference")]

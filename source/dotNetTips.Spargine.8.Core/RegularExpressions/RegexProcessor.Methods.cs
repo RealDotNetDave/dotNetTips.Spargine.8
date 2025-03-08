@@ -4,7 +4,7 @@
 // Created          : 03-16-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="RegexProcessor.Methods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -190,7 +190,7 @@ public static partial class RegexProcessor
 	/// <param name="replacement">The string to replace HTML tags with. Defaults to an empty string.</param>
 	/// <returns>The modified string with HTML tags replaced by the specified replacement string.</returns>
 	[Information(nameof(RemoveHtml), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string RemoveHtml(in string input, in string replacement = "") => input is null ? input : RemoveHtmlRegex().Replace(input, replacement);
+	public static string RemoveHtml(in string input, in string replacement = ControlChars.EmptyString) => input is null ? input : RemoveHtmlRegex().Replace(input, replacement);
 
 	/// <summary>
 	/// Removes special characters from the input string, replacing them with the specified replacement text.
@@ -199,7 +199,7 @@ public static partial class RegexProcessor
 	/// <param name="replacement">The string to replace special characters with. Defaults to an empty string.</param>
 	/// <returns>The modified string with special characters replaced by the specified replacement string.</returns>
 	[Information(nameof(RemoveSpecialChar), "David McCarter", "8/1/2024", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string RemoveSpecialChar(in string input, in string replacement = "") => input is null ? input : RemoveSpecialCharRegex().Replace(input, replacement);
+	public static string RemoveSpecialChar(in string input, in string replacement = ControlChars.EmptyString) => input is null ? input : RemoveSpecialCharRegex().Replace(input, replacement);
 
 	/// <summary>
 	/// Replaces carriage return (CR) and line feed (LF) characters in the input string.
@@ -208,7 +208,7 @@ public static partial class RegexProcessor
 	/// <param name="replacement">The replacement string (defaults to "").</param>
 	/// <returns>The modified string.</returns>
 	[Information(nameof(ReplaceCrLf), "David McCarter", "9/28/2023", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string ReplaceCrLf(in string input, in string replacement = "") => input is null || replacement is null ? input : RemoveCrLfRegex().Replace(input, replacement);
+	public static string ReplaceCrLf(in string input, in string replacement = ControlChars.EmptyString) => input is null || replacement is null ? input : RemoveCrLfRegex().Replace(input, replacement);
 
 	/// <summary>
 	/// Replaces spaces in the input string with the specified replacement character.

@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-12-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="ExecutionHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -25,6 +25,9 @@ namespace DotNetTips.Spargine.Core.Tests;
 public class ExecutionHelperTests
 {
 
+	const int RetryCount = 3;
+	const int RetryWait = 10;
+
 	[TestMethod]
 	public void ProgressiveRetryTest()
 	{
@@ -33,7 +36,7 @@ public class ExecutionHelperTests
 			var result = ExecutionHelper.ProgressiveRetry(() =>
 			  {
 				  var drives = DriveHelper.GetRemovableDrives();
-			  }, retryCount: 3, retryWaitMilliseconds: 10);
+			  }, retryCount: RetryCount, retryWaitMilliseconds: RetryWait);
 
 			Assert.IsTrue(result.Value > 0);
 		}

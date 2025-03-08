@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -33,6 +33,8 @@ namespace DotNetTips.Spargine.Tests.IO;
 [TestClass]
 public class DirectoryHelperTests
 {
+	const int RetryCount = 5;
+
 	[TestMethod]
 	public void AppDataFolder_ReturnsCorrectPathOnMacOS()
 	{
@@ -135,7 +137,7 @@ public class DirectoryHelperTests
 		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), "TEST");
 
 		// Act & Assert
-		DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath), 1);
+		DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath), RetryCount);
 		// No exception is expected, even though the directory does not exist
 	}
 
@@ -173,7 +175,7 @@ public class DirectoryHelperTests
 
 		Task.Delay(100).ContinueWith(_ =>
 		{
-			DirectoryHelper.DeleteDirectory(directory, 5);
+			DirectoryHelper.DeleteDirectory(directory, RetryCount);
 		});
 
 		// Act

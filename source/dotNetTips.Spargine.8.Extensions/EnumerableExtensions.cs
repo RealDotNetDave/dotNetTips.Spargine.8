@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -625,7 +625,7 @@ public static class EnumerableExtensions
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static bool HasItems(this IEnumerable collection, [ConstantExpected(Min = 1, Max = int.MaxValue)] in int count) => collection is null ? false : collection.Count() == count;
+	public static bool HasItems(this IEnumerable collection, in int count) => collection is null ? false : collection.Count() == count;
 
 	/// <summary>
 	/// Finds the index of the first occurrence of an item in the collection.
@@ -828,7 +828,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Page), "David McCarter", "11/21/2010", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> collection, [ConstantExpected(Min = 1, Max = int.MaxValue)] int pageSize)
+	public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> collection, int pageSize)
 	{
 		collection = collection.ArgumentNotNull();
 		pageSize = pageSize.EnsureMinimum(1);
@@ -877,7 +877,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Partition), "David McCarter", "3/2/2023", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> collection, [ConstantExpected(Min = 1, Max = int.MaxValue)] int pageCount)
+	public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> collection, int pageCount)
 	{
 		collection = collection.ArgumentNotNull();
 		pageCount = pageCount.EnsureMinimum(1);
@@ -1032,7 +1032,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Shuffle), "David McCarter", "8/26/2020", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed)]
-	public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection, [ConstantExpected(Min = 1, Max = int.MaxValue)] int count)
+	public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection, int count)
 	{
 		collection = collection.ArgumentNotNull();
 		count = count.EnsureMinimum(1);
@@ -1055,7 +1055,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(Split), "David McCarter", "3/2/2023", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static IEnumerable<IEnumerable<T>> Split<T>(this IEnumerable<T> collection, [ConstantExpected(Min = 1, Max = int.MaxValue)] int size)
+	public static IEnumerable<IEnumerable<T>> Split<T>(this IEnumerable<T> collection, int size)
 	{
 		collection = collection.ArgumentNotNull();
 		size = size.EnsureMinimum(1);

@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-22-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -390,7 +390,7 @@ public static class ExceptionThrower
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
 	[Information(nameof(ThrowLoggableException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void ThrowLoggableException(string message, [AllowNull] Exception innerException = null, [AllowNull] string userMessage = "") => throw new LoggableException(message.ArgumentNotNull(), innerException, userMessage);
+	public static void ThrowLoggableException(string message, [AllowNull] Exception innerException = null, [AllowNull] string userMessage = ControlChars.EmptyString) => throw new LoggableException(message.ArgumentNotNull(), innerException, userMessage);
 
 	/// <summary>
 	/// Throws a <see cref="MessageNotQueuedException"/> with a specified error message.

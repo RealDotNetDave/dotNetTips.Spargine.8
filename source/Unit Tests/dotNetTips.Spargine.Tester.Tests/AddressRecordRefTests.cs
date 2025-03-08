@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="AddressRecordRefTests.cs" company="DotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -240,6 +240,19 @@ public class AddressRecordRefTests
 		Assert.AreEqual(address.Country, addressRecord.Country);
 		Assert.AreEqual(address.PostalCode, addressRecord.PostalCode);
 		Assert.AreEqual(address.Phone, addressRecord.Phone);
+	}
+
+	[TestMethod]
+	public void ToString_Test()
+	{
+		// Arrange
+		var addressRecord = new AddressRecord("123", "123 Main St", "Apt 4B", "Anytown", "CA", "AnyCounty", "USA", "12345", "555-1234");
+
+		// Act
+		var result = addressRecord.ToString();
+
+		// Assert
+		Assert.IsNotNull(result);
 	}
 
 }

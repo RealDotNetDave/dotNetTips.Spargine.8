@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="PersonRecordRefTests.cs" company="DotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -268,5 +268,16 @@ public class PersonRecordRefTests
 
 		// Assert
 		Assert.AreEqual(expectedString, result);
+	}
+
+	[TestMethod]
+	public void ToString_Test()
+	{
+		// Arrange
+		var personRecord = RandomData.GeneratePersonRecord();
+
+		var result = personRecord.ToString();
+
+		Assert.IsNotNull(result);
 	}
 }

@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-04-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -200,7 +200,7 @@ public static class DateTimeExtensions
 	/// <param name="paramName">Name of the parameter.</param>
 	/// <returns><c>true</c> if [is in range throws exception] [the specified beginning time]; otherwise, <c>false</c>.</returns>
 	[Information(nameof(IsInRangeThrowsException), author: "David McCarter", createdOn: "10/5/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool IsInRangeThrowsException(this in DateTimeOffset value, in DateTimeOffset beginningTime, in DateTimeOffset endTime, string paramName = "")
+	public static bool IsInRangeThrowsException(this in DateTimeOffset value, in DateTimeOffset beginningTime, in DateTimeOffset endTime, string paramName = ControlChars.EmptyString)
 	{
 		if (value.IsInRange(beginningTime, endTime) is false)
 		{

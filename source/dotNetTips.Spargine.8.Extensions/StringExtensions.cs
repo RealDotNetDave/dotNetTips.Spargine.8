@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -869,7 +869,7 @@ public static class StringExtensions
 	/// This method uses a regular expression to identify and replace carriage return and line feed characters.
 	/// </remarks>
 	[Information(nameof(RemoveCRLF), "Kristine Tran", "2/1/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string RemoveCRLF([NotNull] this string input, [NotNull] string replacement = "") => RegexProcessor.ReplaceCrLf(input, replacement);
+	public static string RemoveCRLF([NotNull] this string input, [NotNull] string replacement = ControlChars.EmptyString) => RegexProcessor.ReplaceCrLf(input, replacement);
 
 	/// <summary>
 	/// Replaces all occurrences of an ellipsis (...) in the specified string with a period (.).

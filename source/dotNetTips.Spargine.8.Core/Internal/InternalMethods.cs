@@ -4,7 +4,7 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="InternalMethods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -64,7 +64,7 @@ internal static class InternalMethods
 	/// <param name="message">The message.</param>
 	/// <param name="ex">The ex.</param>
 	/// <param name="method">The method.</param>
-	internal static void LogCriticalMessage(this ILogger logger, string message, Exception ex, [CallerMemberName] string method = "") => FastLogger.LogCritical(logger, $"{method}: {message}", ex);
+	internal static void LogCriticalMessage(this ILogger logger, string message, Exception ex, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogCritical(logger, $"{method}: {message}", ex);
 
 	/// <summary>
 	/// Converts object properties to a <see cref="IDictionary" />.
@@ -184,7 +184,7 @@ internal static class InternalMethods
 	/// <param name="logger">The logger.</param>
 	/// <param name="message">The message.</param>
 	/// <param name="method">The method.</param>
-	internal static void WriteDebugMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => FastLogger.LogDebug(logger, $"{method}: {message}");
+	internal static void WriteDebugMessage(this ILogger logger, string message, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogDebug(logger, $"{method}: {message}");
 
 	/// <summary>
 	/// Logs error message. Adds method name to message.
@@ -192,7 +192,7 @@ internal static class InternalMethods
 	/// <param name="logger">The logger.</param>
 	/// <param name="message">The message.</param>
 	/// <param name="method">The method.</param>
-	internal static void WriteErrorMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => FastLogger.LogError(logger, $"{method}: {message}");
+	internal static void WriteErrorMessage(this ILogger logger, string message, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogError(logger, $"{method}: {message}");
 
 	/// <summary>
 	/// Logs the information. Adds method name to message.
@@ -200,7 +200,7 @@ internal static class InternalMethods
 	/// <param name="logger">The logger.</param>
 	/// <param name="message">The message.</param>
 	/// <param name="method">The method.</param>
-	internal static void WriteInformationMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => FastLogger.LogInformation(logger, $"{method}: {message}");
+	internal static void WriteInformationMessage(this ILogger logger, string message, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogInformation(logger, $"{method}: {message}");
 
 	/// <summary>
 	/// Logs trace message. Adds method name to message.
@@ -208,7 +208,7 @@ internal static class InternalMethods
 	/// <param name="logger">The logger.</param>
 	/// <param name="message">The message.</param>
 	/// <param name="method">The method.</param>
-	internal static void WriteTraceMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => FastLogger.LogTrace(logger, $"{method}: {message}");
+	internal static void WriteTraceMessage(this ILogger logger, string message, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogTrace(logger, $"{method}: {message}");
 
 	/// <summary>
 	/// Logs a warning message. Adds method name to message.
@@ -216,6 +216,6 @@ internal static class InternalMethods
 	/// <param name="logger">The logger.</param>
 	/// <param name="message">The message.</param>
 	/// <param name="method">The method.</param>
-	internal static void WriteWarningMessage(this ILogger logger, string message, [CallerMemberName] string method = "") => FastLogger.LogWarning(logger, $"{method}: {message}");
+	internal static void WriteWarningMessage(this ILogger logger, string message, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogWarning(logger, $"{method}: {message}");
 
 }

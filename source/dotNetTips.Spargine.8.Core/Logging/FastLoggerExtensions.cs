@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 03-08-2025
 // ***********************************************************************
 // <copyright file="FastLoggerExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -37,7 +37,7 @@ public static partial class FastLoggerExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(LogCriticalMessage), "David McCarter", "2/27/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 912, Level = LogLevel.Critical, EventName = "CRITICAL", Message = "{methodName}: {message}.")]
-	public static partial void LogCriticalMessage(this ILogger logger, string message, Exception exception, [CallerMemberName] string methodName = "");
+	public static partial void LogCriticalMessage(this ILogger logger, string message, Exception exception, [CallerMemberName] string methodName = ControlChars.EmptyString);
 
 	/// <summary>
 	/// Logs a debug level message using the specified <see cref="ILogger"/>. This method automatically includes the name of the calling method as part of the logged message.
@@ -48,7 +48,7 @@ public static partial class FastLoggerExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(LogDebugMessage), "David McCarter", "2/27/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 201, Level = LogLevel.Debug, EventName = "DEBUG", Message = "{methodName}: {message}.")]
-	public static partial void LogDebugMessage(this ILogger logger, string message, [CallerMemberName] string methodName = "");
+	public static partial void LogDebugMessage(this ILogger logger, string message, [CallerMemberName] string methodName = ControlChars.EmptyString);
 
 	/// <summary>
 	/// Logs an error message using the specified <see cref="ILogger"/>. This method automatically includes the name of the calling method as part of the logged message.
@@ -59,7 +59,7 @@ public static partial class FastLoggerExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(LogErrorMessage), "David McCarter", "2/27/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 301, Level = LogLevel.Error, EventName = "ERROR", Message = "{methodName}: {message}.")]
-	public static partial void LogErrorMessage(this ILogger logger, string message, [CallerMemberName] string methodName = "");
+	public static partial void LogErrorMessage(this ILogger logger, string message, [CallerMemberName] string methodName = ControlChars.EmptyString);
 
 	/// <summary>
 	/// Logs an exception message using the specified <see cref="ILogger"/>. This method automatically includes the name of the calling method as part of the logged message.
@@ -71,7 +71,7 @@ public static partial class FastLoggerExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(LogExceptionMessage), "David McCarter", "2/27/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 501, Level = LogLevel.Error, EventName = "EXCEPTION", Message = "{methodName}: {message}.")]
-	public static partial void LogExceptionMessage(this ILogger logger, string message, Exception exception, [CallerMemberName] string methodName = "");
+	public static partial void LogExceptionMessage(this ILogger logger, string message, Exception exception, [CallerMemberName] string methodName = ControlChars.EmptyString);
 
 	/// <summary>
 	/// Logs an information level message using the specified <see cref="ILogger"/>. This method automatically includes the name of the calling method as part of the logged message.
@@ -82,7 +82,7 @@ public static partial class FastLoggerExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(LogInformationMessage), "David McCarter", "2/27/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 401, Level = LogLevel.Information, EventName = "INFORMATION", Message = "{methodName}: {message}.")]
-	public static partial void LogInformationMessage(this ILogger logger, string message, [CallerMemberName] string methodName = "");
+	public static partial void LogInformationMessage(this ILogger logger, string message, [CallerMemberName] string methodName = ControlChars.EmptyString);
 
 	/// <summary>
 	/// Logs a stored procedure error using the specified <see cref="ILogger"/>. This method automatically includes the name of the calling method as part of the logged message.
@@ -94,7 +94,7 @@ public static partial class FastLoggerExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(LogStoredProcedureError), "David McCarter", "2/27/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 502, Level = LogLevel.Error, EventName = "SP ERROR", Message = "{methodName}: Stored procedure error for {storedProcedure}.")]
-	public static partial void LogStoredProcedureError(this ILogger logger, string storedProcedure, Exception exception, [CallerMemberName] string methodName = "");
+	public static partial void LogStoredProcedureError(this ILogger logger, string storedProcedure, Exception exception, [CallerMemberName] string methodName = ControlChars.EmptyString);
 
 	/// <summary>
 	/// Logs the stored procedure no records found using the specified <see cref="ILogger"/>. This method automatically includes the name of the calling method as part of the logged message.
@@ -105,7 +105,7 @@ public static partial class FastLoggerExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(LogStoredProcedureNoRecordsFound), "David McCarter", "2/27/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 602, Level = LogLevel.Error, EventName = "SP NO RECORDS ERROR", Message = "{methodName}: No records found from stored procedure {storedProcedure}.")]
-	public static partial void LogStoredProcedureNoRecordsFound(this ILogger logger, string storedProcedure, [CallerMemberName] string methodName = "");
+	public static partial void LogStoredProcedureNoRecordsFound(this ILogger logger, string storedProcedure, [CallerMemberName] string methodName = ControlChars.EmptyString);
 
 	/// <summary>
 	/// Logs a trace level message using the specified <see cref="ILogger"/>. This method automatically includes the name of the calling method as part of the logged message.
@@ -117,7 +117,7 @@ public static partial class FastLoggerExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(LogTraceMessage), "David McCarter", "2/27/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 101, Level = LogLevel.Trace, EventName = "TRACE", Message = "{methodName}: {message}.")]
-	public static partial void LogTraceMessage(this ILogger logger, string message, [CallerMemberName] string methodName = "");
+	public static partial void LogTraceMessage(this ILogger logger, string message, [CallerMemberName] string methodName = ControlChars.EmptyString);
 
 	/// <summary>
 	/// Logs a warning message using the specified <see cref="ILogger"/>. This method automatically includes the name of the calling method as part of the logged message.
@@ -129,6 +129,6 @@ public static partial class FastLoggerExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(LogWarningMessage), "David McCarter", "2/27/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2023")]
 	[LoggerMessage(EventId = 601, Level = LogLevel.Warning, EventName = "WARNING", Message = "{methodName}: {message}.")]
-	public static partial void LogWarningMessage(this ILogger logger, string message, [CallerMemberName] string methodName = "");
+	public static partial void LogWarningMessage(this ILogger logger, string message, [CallerMemberName] string methodName = ControlChars.EmptyString);
 
 }

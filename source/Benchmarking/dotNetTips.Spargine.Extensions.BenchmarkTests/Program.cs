@@ -54,7 +54,6 @@ public static class Program
 			//_ = BenchmarkRunner.Run<DictionaryExtensionsCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<EnumerableExtensionsCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<EnumExtensionsBenchmark>(config);
-
 			//_ = BenchmarkRunner.Run<ExceptionExtensionsBenchmark>(config);
 			//_ = BenchmarkRunner.Run<GeneralBenchmark>(config);
 			//_ = BenchmarkRunner.Run<HashSetExtensionsCollectionBenchmark>(config);
