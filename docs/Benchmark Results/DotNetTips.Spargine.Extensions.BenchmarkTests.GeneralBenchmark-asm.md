@@ -1,9 +1,9 @@
-## .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+## .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark.GuidEqualsTest()
        vzeroupper
-       vmovups   xmm0,[rcx+118]
-       vpcmpeqb  xmm0,xmm0,[rcx+128]
+       vmovups   xmm0,[rcx+128]
+       vpcmpeqb  xmm0,xmm0,[rcx+138]
        vpmovmskb eax,xmm0
        cmp       eax,0FFFF
        sete      al

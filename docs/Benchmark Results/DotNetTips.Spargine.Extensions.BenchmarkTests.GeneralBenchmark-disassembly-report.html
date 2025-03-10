@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-20250130-223937</title>
+<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-20250309-232833</title>
 
 <style type="text/css">
     table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -14,9 +14,9 @@
 <body>
 <table>
 <thead>
-<tr><th colspan="1">DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-20250130-223937</th></tr>
+<tr><th colspan="1">DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-20250309-232833</th></tr>
 <tr>
-<th>GuidEqualsTest .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2</th>
+<th>GuidEqualsTest .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2</th>
 </tr>
 </thead>
 <tbody>
@@ -24,8 +24,8 @@
 <td style="vertical-align:top;"><pre><code>
 DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark.GuidEqualsTest()
 vzeroupper
-vmovups   xmm0,[rcx+118]
-vpcmpeqb  xmm0,xmm0,[rcx+128]
+vmovups   xmm0,[rcx+128]
+vpcmpeqb  xmm0,xmm0,[rcx+138]
 vpmovmskb eax,xmm0
 cmp       eax,0FFFF
 sete      al

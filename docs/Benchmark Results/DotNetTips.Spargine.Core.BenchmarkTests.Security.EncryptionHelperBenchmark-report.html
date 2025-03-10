@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark-20250131-162602</title>
+<title>DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark-20250308-145326</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,26 +13,20 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5371/22H2/2022Update)
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5487/22H2/2022Update)
 Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
-.NET SDK 9.0.102
-  [Host]     : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
-  Job-FLPXNP : .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2
+.NET SDK 9.0.200
+  [Host]     : .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
+  Job-THQNBF : .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
-Namespace=DotNetTips.Spargine.Core.BenchmarkTests.Security  
+Namespace=DotNetTips.Spargine.Core.BenchmarkTests.Security  Categories=**NEW**,Encryption  
 </code></pre>
 
 <table>
-<thead><tr><th>Method       </th><th>Categories  </th><th>Mean </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min  </th><th>Q1   </th><th>Median</th><th>Q3   </th><th>Max  </th><th>Op/s  </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Exceptions</th><th>Gen0</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Code Size</th><th>Gen1</th><th>Allocated</th>
+<thead><tr><th>Method     </th><th>Mean</th><th>Error</th><th>StdErr</th><th>StdDev</th><th>Min</th><th>Q1</th><th>Median</th><th>Q3</th><th>Max</th><th>Op/s</th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th>
 </tr>
-</thead><tbody><tr><td>AesDecrypt</td><td>Encryption</td><td>4,652.68 ns</td><td>17.900 ns</td><td>15.867 ns</td><td>4.241 ns</td><td>4,632.28 ns</td><td>4,641.55 ns</td><td>4,650.45 ns</td><td>4,656.92 ns</td><td>4,690.56 ns</td><td>214,930.1</td><td>4.880 ns</td><td>14.00</td><td>2.963</td><td>2.000</td><td>0.9059</td><td>6</td><td>*</td><td>No</td><td>-</td><td>0.1526</td><td>-</td><td>-</td><td>3,931 B</td><td>0.0076</td><td>14080 B</td>
-</tr><tr><td>AesEncrypt</td><td>Encryption</td><td>3,875.83 ns</td><td>23.191 ns</td><td>21.692 ns</td><td>5.601 ns</td><td>3,847.37 ns</td><td>3,856.15 ns</td><td>3,875.19 ns</td><td>3,890.66 ns</td><td>3,912.99 ns</td><td>258,009.2</td><td>4.700 ns</td><td>15.00</td><td>1.602</td><td>2.000</td><td>0.2305</td><td>4</td><td>*</td><td>No</td><td>-</td><td>0.1373</td><td>-</td><td>-</td><td>3,918 B</td><td>0.0076</td><td>12656 B</td>
-</tr><tr><td>GenerateAesIV</td><td>Encryption</td><td>275.89 ns</td><td>2.055 ns</td><td>1.922 ns</td><td>0.496 ns</td><td>274.06 ns</td><td>274.28 ns</td><td>275.31 ns</td><td>276.69 ns</td><td>280.28 ns</td><td>3,624,581.2</td><td>7.252 ns</td><td>15.00</td><td>2.620</td><td>2.000</td><td>0.9621</td><td>2</td><td>*</td><td>No</td><td>-</td><td>0.0024</td><td>-</td><td>-</td><td>1,145 B</td><td>-</td><td>256 B</td>
-</tr><tr><td>GenerateAesKey</td><td>Encryption</td><td>395.85 ns</td><td>2.016 ns</td><td>1.886 ns</td><td>0.487 ns</td><td>393.11 ns</td><td>394.18 ns</td><td>396.19 ns</td><td>396.74 ns</td><td>399.90 ns</td><td>2,526,203.5</td><td>7.257 ns</td><td>15.00</td><td>2.247</td><td>2.000</td><td>0.2471</td><td>3</td><td>*</td><td>No</td><td>-</td><td>0.0038</td><td>-</td><td>-</td><td>1,247 B</td><td>-</td><td>368 B</td>
-</tr><tr><td>GenerateRandomKey</td><td>**NEW**,Encryption</td><td>85.46 ns</td><td>1.107 ns</td><td>1.036 ns</td><td>0.267 ns</td><td>84.26 ns</td><td>84.48 ns</td><td>85.73 ns</td><td>85.90 ns</td><td>87.87 ns</td><td>11,701,382.7</td><td>7.366 ns</td><td>15.00</td><td>2.518</td><td>2.000</td><td>0.5359</td><td>1</td><td>*</td><td>No</td><td>-</td><td>0.0010</td><td>-</td><td>-</td><td>123 B</td><td>-</td><td>88 B</td>
-</tr><tr><td>SimpleSHA256Decrypt</td><td>Encryption</td><td>5,098.81 ns</td><td>24.064 ns</td><td>22.510 ns</td><td>5.812 ns</td><td>5,068.84 ns</td><td>5,083.96 ns</td><td>5,089.04 ns</td><td>5,111.55 ns</td><td>5,144.43 ns</td><td>196,124.1</td><td>4.594 ns</td><td>15.00</td><td>2.086</td><td>2.000</td><td>0.6826</td><td>7</td><td>*</td><td>No</td><td>-</td><td>0.1221</td><td>-</td><td>-</td><td>391 B</td><td>-</td><td>11200 B</td>
-</tr><tr><td>SimpleSHA256Encrypt</td><td>Encryption</td><td>4,519.84 ns</td><td>15.334 ns</td><td>13.593 ns</td><td>3.633 ns</td><td>4,496.61 ns</td><td>4,513.26 ns</td><td>4,516.64 ns</td><td>4,525.41 ns</td><td>4,548.93 ns</td><td>221,246.8</td><td>5.184 ns</td><td>14.00</td><td>2.533</td><td>2.000</td><td>0.4528</td><td>5</td><td>*</td><td>No</td><td>-</td><td>0.1373</td><td>-</td><td>-</td><td>388 B</td><td>0.0076</td><td>12848 B</td>
+</thead><tbody><tr><td>GenerateRandomKey</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>?</td><td>*</td><td>No</td>
 </tr></tbody></table>
 </body>
 </html>

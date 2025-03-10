@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark-20250131-132740</title>
+
+<style type="text/css">
+    table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+    td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: left; }
+    tr { background-color: #fff; border-top: 1px solid #ccc; }
+    tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<table>
+<thead>
+<tr><th colspan="2">DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark-20250131-132740</th></tr>
+<tr>
+<th>GenerateKeyPrefix .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2</th>
+<th>GenerateKey .NET 8.0.12 (8.0.1224.60305), X64 RyuJIT AVX2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark.GenerateKeyPrefix()
+push      rbx
+sub       rsp,30
+xor       eax,eax
+mov       [rsp+20],rax
+mov       rbx,rcx
+mov       rcx,261C2DC4380
+mov       [rsp+28],rcx
+lea       rcx,[rsp+28]
+call      qword ptr [7FFE5CCA63A0]
+mov       [rsp+20],rax
+mov       rbx,[rbx+18]
+mov       rdx,[rsp+20]
+lea       rcx,[rbx+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       eax,eax
+mov       [rbx+8],rax
+add       rsp,30
+pop       rbx
+ret
+
+DotNetTips.Spargine.Core.KeyGenerator.GenerateKey(System.String ByRef)
+push      rsi
+push      rbx
+sub       rsp,38
+xor       eax,eax
+mov       [rsp+28],rax
+mov       [rsp+30],rax
+mov       rbx,[rcx]
+test      rbx,rbx
+je        short 00007FFE5CCD2A9B
+lea       rcx,[rsp+28]
+call      qword ptr [7FFE5C5A7360]
+mov       r8,22131000428
+mov       r8,[r8]
+lea       rcx,[rsp+28]
+mov       rdx,261C2DC3C48
+call      qword ptr [7FFE5C5A7180]
+mov       rdx,rax
+mov       rcx,rbx
+call      qword ptr [7FFE5C4F6B08]
+nop
+add       rsp,38
+pop       rbx
+pop       rsi
+ret
+call      qword ptr [7FFE5C99FB58]
+mov       ecx,177C
+mov       rdx,7FFE5C80B530
+call      CORINFO_HELP_STRCNS
+mov       rbx,rax
+mov       ecx,146C
+mov       rdx,7FFE5C80B530
+call      CORINFO_HELP_STRCNS
+mov       rdx,rax
+mov       rcx,rbx
+call      qword ptr [7FFE5C4F6B08]
+mov       rbx,rax
+mov       ecx,0CEC
+mov       rdx,7FFE5C80B530
+call      CORINFO_HELP_STRCNS
+mov       rdx,rax
+mov       rcx,rbx
+call      qword ptr [7FFE5C4F6B08]
+mov       rbx,rax
+mov       rcx,offset MT_System.ArgumentNullException
+call      CORINFO_HELP_NEWSFAST
+mov       rsi,rax
+call      qword ptr [7FFE5C99F948]
+mov       r8,rax
+mov       rdx,rbx
+mov       rcx,rsi
+call      qword ptr [7FFE5C716670]
+mov       rcx,rsi
+call      CORINFO_HELP_THROW
+int       3
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark.GenerateKey()
+push      rbx
+sub       rsp,30
+xor       eax,eax
+mov       [rsp+28],rax
+mov       rbx,rcx
+call      qword ptr [7FFE5CC96388]
+mov       [rsp+28],rax
+mov       rbx,[rbx+18]
+mov       rdx,[rsp+28]
+lea       rcx,[rbx+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       eax,eax
+mov       [rbx+8],rax
+add       rsp,30
+pop       rbx
+ret
+
+DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()
+sub       rsp,38
+xor       eax,eax
+mov       [rsp+28],rax
+mov       [rsp+30],rax
+lea       rcx,[rsp+28]
+call      qword ptr [7FFE5C597360]
+mov       r8,20F41400428
+mov       r8,[r8]
+lea       rcx,[rsp+28]
+mov       rdx,24FCF0D3C48
+call      qword ptr [7FFE5C597180]
+nop
+add       rsp,38
+ret
+
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
