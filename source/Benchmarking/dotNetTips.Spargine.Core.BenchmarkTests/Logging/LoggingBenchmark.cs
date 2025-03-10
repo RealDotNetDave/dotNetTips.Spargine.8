@@ -77,7 +77,7 @@ public class LoggingBenchmark : Benchmark
 		this._logger.LogDebug(100, DebugMessage);
 	}
 
-	[Benchmark(Description = nameof(FastLogger.LogError) + ":Error Message")]
+	[Benchmark(Description = nameof(FastLogger.LogError) + ": Error Message")]
 	[BenchmarkCategory(Categories.Logging)]
 	public void LogErrorFastLoggerBenchmark()
 	{

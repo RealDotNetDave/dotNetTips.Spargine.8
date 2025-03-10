@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Core.BenchmarkTests.Serialization.SerializationBenchmark-20250310-153235</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5487/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 9.0.200
+  [Host]     : .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
+  Job-BBCXZD : .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Core.BenchmarkTests.Serialization  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                                                 </th><th>Categories                         </th><th>Mean  </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min   </th><th>Q1    </th><th>Median</th><th>Q3    </th><th>Max   </th><th>Op/s</th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Exceptions</th><th>Gen0</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Code Size</th><th>Gen1</th><th>Gen2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;Deserialize JSON: JsonSerializer + Generator - List&lt;Person&gt;&#39;</td><td>JSON,**NEW**,JsonSerializer,Serialization</td><td>685,895.0 ns</td><td>2,610.37 ns</td><td>2,179.78 ns</td><td>604.56 ns</td><td>680,579.2 ns</td><td>685,263.5 ns</td><td>686,092.3 ns</td><td>686,801.2 ns</td><td>689,945.7 ns</td><td>1,457.9</td><td>-295.781 ns</td><td>13.00</td><td>3.769</td><td>2.000</td><td>-0.6491</td><td>11</td><td>*</td><td>No</td><td>-</td><td>1.9531</td><td>-</td><td>-</td><td>3,569 B</td><td>-</td><td>-</td><td>208210 B</td>
+</tr><tr><td>&#39;Deserialize JSON: JsonSerializer + Generator - Person&#39;</td><td>JSON,**NEW**,JsonSerializer,Serialization</td><td>6,660.0 ns</td><td>20.97 ns</td><td>17.51 ns</td><td>4.86 ns</td><td>6,629.6 ns</td><td>6,648.6 ns</td><td>6,660.5 ns</td><td>6,674.3 ns</td><td>6,685.8 ns</td><td>150,150.2</td><td>4.072 ns</td><td>13.00</td><td>1.710</td><td>2.000</td><td>-0.2160</td><td>6</td><td>*</td><td>No</td><td>-</td><td>0.0229</td><td>-</td><td>-</td><td>3,524 B</td><td>-</td><td>-</td><td>2472 B</td>
+</tr><tr><td>&#39;Deserialize: JSON-PersonRecord&#39;</td><td>JSON,Serialization</td><td>6,467.0 ns</td><td>26.08 ns</td><td>23.12 ns</td><td>6.18 ns</td><td>6,430.5 ns</td><td>6,452.4 ns</td><td>6,465.8 ns</td><td>6,477.5 ns</td><td>6,515.1 ns</td><td>154,631.0</td><td>3.910 ns</td><td>14.00</td><td>2.207</td><td>2.000</td><td>0.3153</td><td>5</td><td>*</td><td>No</td><td>-</td><td>0.0229</td><td>-</td><td>-</td><td>624 B</td><td>-</td><td>-</td><td>2736 B</td>
+</tr><tr><td>&#39;Deserialize: List&lt;Person&gt;&#39;</td><td>JSON,Serialization</td><td>665,792.1 ns</td><td>1,787.03 ns</td><td>1,671.59 ns</td><td>431.60 ns</td><td>663,281.6 ns</td><td>664,577.6 ns</td><td>665,466.1 ns</td><td>667,121.3 ns</td><td>668,786.5 ns</td><td>1,502.0</td><td>-208.301 ns</td><td>15.00</td><td>1.795</td><td>2.000</td><td>0.2138</td><td>10</td><td>*</td><td>No</td><td>-</td><td>1.9531</td><td>-</td><td>-</td><td>624 B</td><td>-</td><td>-</td><td>222065 B</td>
+</tr><tr><td>&#39;Deserialize: XML=Person&#39;</td><td>XML,Serialization</td><td>21,374.7 ns</td><td>104.08 ns</td><td>81.26 ns</td><td>23.46 ns</td><td>21,203.8 ns</td><td>21,342.5 ns</td><td>21,391.2 ns</td><td>21,441.1 ns</td><td>21,475.6 ns</td><td>46,784.2</td><td>-5.729 ns</td><td>12.00</td><td>2.239</td><td>2.000</td><td>-0.6738</td><td>8</td><td>*</td><td>No</td><td>-</td><td>0.1831</td><td>-</td><td>-</td><td>NA</td><td>-</td><td>-</td><td>20883 B</td>
+</tr><tr><td>&#39;Deserialize: XML=PersonRecord&#39;</td><td>XML,Serialization</td><td>21,733.1 ns</td><td>189.36 ns</td><td>177.12 ns</td><td>45.73 ns</td><td>21,510.4 ns</td><td>21,588.7 ns</td><td>21,686.1 ns</td><td>21,874.8 ns</td><td>22,118.9 ns</td><td>46,012.8</td><td>-15.367 ns</td><td>15.00</td><td>2.173</td><td>2.000</td><td>0.6368</td><td>8</td><td>*</td><td>No</td><td>-</td><td>0.1831</td><td>-</td><td>-</td><td>NA</td><td>-</td><td>-</td><td>20164 B</td>
+</tr><tr><td>&#39;LoadCollectionFromJson: JSON=People, SerializerContext&#39;</td><td>JSON,**NEW**,Serialization</td><td>831,668.1 ns</td><td>1,844.58 ns</td><td>1,725.42 ns</td><td>445.50 ns</td><td>827,894.4 ns</td><td>830,933.6 ns</td><td>831,942.2 ns</td><td>833,056.2 ns</td><td>834,061.3 ns</td><td>1,202.4</td><td>-215.251 ns</td><td>15.00</td><td>2.299</td><td>2.000</td><td>-0.4209</td><td>12</td><td>*</td><td>No</td><td>-</td><td>1.9531</td><td>-</td><td>-</td><td>NA</td><td>-</td><td>-</td><td>254090 B</td>
+</tr><tr><td>&#39;LoadCollectionFromJson: JSON=People&#39;</td><td>JSON,**NEW**,Serialization</td><td>825,731.9 ns</td><td>2,374.90 ns</td><td>2,105.29 ns</td><td>562.66 ns</td><td>822,288.1 ns</td><td>824,666.9 ns</td><td>825,425.5 ns</td><td>826,884.8 ns</td><td>829,762.7 ns</td><td>1,211.0</td><td>-274.331 ns</td><td>14.00</td><td>2.134</td><td>2.000</td><td>0.3397</td><td>12</td><td>*</td><td>No</td><td>-</td><td>2.9297</td><td>-</td><td>-</td><td>NA</td><td>-</td><td>-</td><td>267993 B</td>
+</tr><tr><td>&#39;Serialize JSON: JsonSerializer + Generator - List&lt;Person&gt;&#39;</td><td>JSON,**NEW**,JsonSerializer,Serialization</td><td>276,811.8 ns</td><td>5,419.42 ns</td><td>7,046.77 ns</td><td>1,438.42 ns</td><td>262,649.8 ns</td><td>272,979.1 ns</td><td>275,948.3 ns</td><td>281,968.0 ns</td><td>290,768.4 ns</td><td>3,612.6</td><td>-707.208 ns</td><td>24.00</td><td>2.464</td><td>2.000</td><td>-0.0590</td><td>9</td><td>*</td><td>No</td><td>-</td><td>5.8594</td><td>-</td><td>-</td><td>3,374 B</td><td>5.8594</td><td>5.8594</td><td>152443 B</td>
+</tr><tr><td>&#39;Serialize JSON: JsonSerializer + Generator - Person&#39;</td><td>JSON,**NEW**,JsonSerializer,Serialization</td><td>1,267.2 ns</td><td>10.38 ns</td><td>9.71 ns</td><td>2.51 ns</td><td>1,253.2 ns</td><td>1,258.1 ns</td><td>1,272.3 ns</td><td>1,274.6 ns</td><td>1,283.7 ns</td><td>789,153.4</td><td>6.247 ns</td><td>15.00</td><td>1.409</td><td>2.000</td><td>-0.0884</td><td>1</td><td>*</td><td>No</td><td>-</td><td>0.0153</td><td>-</td><td>-</td><td>3,405 B</td><td>-</td><td>-</td><td>1424 B</td>
+</tr><tr><td>&#39;Serialize: JSON=Person&#39;</td><td>JSON,Serialization</td><td>1,798.7 ns</td><td>6.95 ns</td><td>6.16 ns</td><td>1.65 ns</td><td>1,789.1 ns</td><td>1,795.4 ns</td><td>1,797.5 ns</td><td>1,803.9 ns</td><td>1,809.6 ns</td><td>555,949.3</td><td>6.177 ns</td><td>14.00</td><td>1.724</td><td>2.000</td><td>0.1129</td><td>4</td><td>*</td><td>No</td><td>-</td><td>0.0191</td><td>-</td><td>-</td><td>2,438 B</td><td>-</td><td>-</td><td>1848 B</td>
+</tr><tr><td>&#39;Serialize: JSON=PersonRecord&#39;</td><td>JSON,Serialization</td><td>1,717.8 ns</td><td>7.47 ns</td><td>6.99 ns</td><td>1.80 ns</td><td>1,702.6 ns</td><td>1,714.1 ns</td><td>1,717.1 ns</td><td>1,724.4 ns</td><td>1,728.7 ns</td><td>582,130.1</td><td>6.598 ns</td><td>15.00</td><td>2.344</td><td>2.000</td><td>-0.2577</td><td>3</td><td>*</td><td>No</td><td>-</td><td>0.0191</td><td>-</td><td>-</td><td>2,438 B</td><td>-</td><td>-</td><td>1880 B</td>
+</tr><tr><td>&#39;Serialize: List&lt;Person&gt;&#39;</td><td>JSON,Serialization</td><td>285,288.6 ns</td><td>5,655.80 ns</td><td>6,051.65 ns</td><td>1,426.39 ns</td><td>276,230.4 ns</td><td>279,956.2 ns</td><td>285,618.9 ns</td><td>289,817.6 ns</td><td>294,940.1 ns</td><td>3,505.2</td><td>-704.194 ns</td><td>18.00</td><td>1.588</td><td>2.000</td><td>0.0870</td><td>9</td><td>*</td><td>No</td><td>-</td><td>5.8594</td><td>-</td><td>-</td><td>334 B</td><td>5.8594</td><td>5.8594</td><td>157398 B</td>
+</tr><tr><td>&#39;Serialize: XML=Person&#39;</td><td>XML,Serialization</td><td>17,406.1 ns</td><td>103.30 ns</td><td>91.57 ns</td><td>24.47 ns</td><td>17,242.9 ns</td><td>17,372.2 ns</td><td>17,422.0 ns</td><td>17,458.2 ns</td><td>17,528.4 ns</td><td>57,451.2</td><td>-5.236 ns</td><td>14.00</td><td>1.914</td><td>2.000</td><td>-0.4393</td><td>7</td><td>*</td><td>No</td><td>-</td><td>0.2441</td><td>-</td><td>-</td><td>NA</td><td>-</td><td>-</td><td>23826 B</td>
+</tr><tr><td>JsonEqual</td><td>JSON,**NEW**,Serialization</td><td>1,340.0 ns</td><td>3.25 ns</td><td>3.04 ns</td><td>0.78 ns</td><td>1,334.3 ns</td><td>1,337.8 ns</td><td>1,339.9 ns</td><td>1,342.4 ns</td><td>1,345.0 ns</td><td>746,275.1</td><td>7.108 ns</td><td>15.00</td><td>1.877</td><td>2.000</td><td>0.0570</td><td>2</td><td>*</td><td>No</td><td>-</td><td>0.0057</td><td>-</td><td>-</td><td>NA</td><td>-</td><td>-</td><td>560 B</td>
+</tr></tbody></table>
+</body>
+</html>
