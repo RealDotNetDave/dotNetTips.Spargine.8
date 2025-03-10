@@ -4,7 +4,7 @@
 // Created          : 07-11-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="HttpHandlerDiagnosticListener.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -46,6 +46,18 @@ public sealed class HttpHandlerDiagnosticListener(ILogger logger) : IObserver<Ke
 {
 
 	/// <summary>
+	/// A delegate that extracts the <see cref="HttpRequestMessage"/> from the diagnostic event's payload using reflection.
+	/// This delegate is initialized by the <see cref="CreateGetRequest"/> method, which uses reflection to access the private "ActivityStartData" type within the System.Net.Http assembly.
+	/// </summary>
+	private static readonly Func<object, HttpRequestMessage> _requestAccessor = CreateGetRequest();
+
+	/// <summary>
+	/// A delegate that extracts the <see cref="HttpResponseMessage"/> from the diagnostic event's payload using reflection.
+	/// This delegate is initialized by the <see cref="CreateGetResponse"/> method, which uses reflection to access the private "ActivityStopData" type within the System.Net.Http assembly.
+	/// </summary>
+	private static readonly Func<object, HttpResponseMessage> _responseAccessor = CreateGetResponse();
+
+	/// <summary>
 	/// Creates a delegate that extracts the <see cref="HttpRequestMessage"/> from the diagnostic event's payload.
 	/// This method uses reflection to access the private "ActivityStartData" type within the System.Net.Http assembly,
 	/// which contains the HttpRequestMessage. This approach is necessary due to the internal visibility of the relevant types.
@@ -81,7 +93,7 @@ public sealed class HttpHandlerDiagnosticListener(ILogger logger) : IObserver<Ke
 	{
 		if (logger is not null)
 		{
-			FastLogger.LogInformation(logger, message);
+			logger.LogInformationMessage(message);
 		}
 
 		Trace.WriteLine(message);
@@ -127,17 +139,5 @@ public sealed class HttpHandlerDiagnosticListener(ILogger logger) : IObserver<Ke
 			this.LogMessage($"HTTP Diagnostic: {response.StatusCode} {response.RequestMessage.RequestUri}");
 		}
 	}
-
-	/// <summary>
-	/// A delegate that extracts the <see cref="HttpRequestMessage"/> from the diagnostic event's payload using reflection.
-	/// This delegate is initialized by the <see cref="CreateGetRequest"/> method, which uses reflection to access the private "ActivityStartData" type within the System.Net.Http assembly.
-	/// </summary>
-	private static readonly Func<object, HttpRequestMessage> _requestAccessor = CreateGetRequest();
-
-	/// <summary>
-	/// A delegate that extracts the <see cref="HttpResponseMessage"/> from the diagnostic event's payload using reflection.
-	/// This delegate is initialized by the <see cref="CreateGetResponse"/> method, which uses reflection to access the private "ActivityStopData" type within the System.Net.Http assembly.
-	/// </summary>
-	private static readonly Func<object, HttpResponseMessage> _responseAccessor = CreateGetResponse();
 
 }

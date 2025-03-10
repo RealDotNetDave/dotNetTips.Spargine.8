@@ -4,7 +4,7 @@
 // Created          : 05-01-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-03-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="FastLogger.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -25,6 +25,7 @@ namespace DotNetTips.Spargine.Core.Logging;
 /// <summary>
 /// Provides a set of static methods for logging different levels of information to an <see cref="ILogger"/>. This includes methods for critical, debug, error, exception, information, trace, and warning messages.
 /// </summary>
+[Obsolete("This class is obsolete and will be removed at the end of 2025. Use the new FastLoggerExtensions class instead.")]
 [Information(Documentation = "https://bit.ly/SpargineFastLogger", Status = Status.Available)]
 public static partial class FastLogger
 {

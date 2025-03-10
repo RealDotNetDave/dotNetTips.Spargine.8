@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-05-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -118,25 +117,6 @@ public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	//	var result = people1.As<List<IPerson>>();
 	//	base.Consume(result);
 	//}
-
-	[Benchmark(Description = nameof(ArrayExtensions.BytesToString))]
-	[BenchmarkCategory(Categories.Array, Categories.Strings)]
-	public void BytesToString_Val()
-	{
-		var result = this.GetByteArray(1).BytesToString();
-
-		this.Consume(result);
-	}
-
-	[Benchmark(Description = nameof(ArrayExtensions.BytesToString) + ": ReadOnlySpan<>")]
-	[BenchmarkCategory(Categories.Span, Categories.Strings)]
-	public void BytesToStringReadOnlySpan_Val()
-	{
-		var readOnlySpan = new ReadOnlySpan<byte>(this.GetByteArray(1));
-		var result = readOnlySpan.BytesToString();
-
-		this.Consume(result);
-	}
 
 	[Benchmark(Description = nameof(ArrayExtensions.Clone) + ": Array as Reference")]
 	[BenchmarkCategory(Categories.Array, Categories.ReferenceType)]

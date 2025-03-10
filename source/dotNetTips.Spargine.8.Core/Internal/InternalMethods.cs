@@ -4,7 +4,7 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="InternalMethods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -16,8 +16,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
-using DotNetTips.Spargine.Core.Logging;
-using Microsoft.Extensions.Logging;
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Core.Internal;
@@ -57,14 +55,6 @@ internal static class InternalMethods
 	/// <returns><c>true</c> if the specified type is enumerable; otherwise, <c>false</c>.</returns>
 	internal static bool IsEnumerable(Type type) => type.GetInterfaces().Any(t => t == typeof(IEnumerable));
 
-	/// <summary>
-	/// Logs critical exception. Adds method name to message.
-	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The message.</param>
-	/// <param name="ex">The ex.</param>
-	/// <param name="method">The method.</param>
-	internal static void LogCriticalMessage(this ILogger logger, string message, Exception ex, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogCritical(logger, $"{method}: {message}", ex);
 
 	/// <summary>
 	/// Converts object properties to a <see cref="IDictionary" />.
@@ -177,45 +167,5 @@ internal static class InternalMethods
 	/// <param name="collection">The collection.</param>
 	/// <returns>IEnumerable&lt;T&gt;.</returns>
 	internal static IEnumerable<T> Shuffle<T>([NotNull] this IEnumerable<T> collection) => collection.ArgumentItemsExists().OrderBy(_ => GenerateRandomNumber());
-
-	/// <summary>
-	/// Logs debug message. Adds method name to message.
-	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The message.</param>
-	/// <param name="method">The method.</param>
-	internal static void WriteDebugMessage(this ILogger logger, string message, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogDebug(logger, $"{method}: {message}");
-
-	/// <summary>
-	/// Logs error message. Adds method name to message.
-	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The message.</param>
-	/// <param name="method">The method.</param>
-	internal static void WriteErrorMessage(this ILogger logger, string message, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogError(logger, $"{method}: {message}");
-
-	/// <summary>
-	/// Logs the information. Adds method name to message.
-	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The message.</param>
-	/// <param name="method">The method.</param>
-	internal static void WriteInformationMessage(this ILogger logger, string message, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogInformation(logger, $"{method}: {message}");
-
-	/// <summary>
-	/// Logs trace message. Adds method name to message.
-	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The message.</param>
-	/// <param name="method">The method.</param>
-	internal static void WriteTraceMessage(this ILogger logger, string message, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogTrace(logger, $"{method}: {message}");
-
-	/// <summary>
-	/// Logs a warning message. Adds method name to message.
-	/// </summary>
-	/// <param name="logger">The logger.</param>
-	/// <param name="message">The message.</param>
-	/// <param name="method">The method.</param>
-	internal static void WriteWarningMessage(this ILogger logger, string message, [CallerMemberName] string method = ControlChars.EmptyString) => FastLogger.LogWarning(logger, $"{method}: {message}");
 
 }

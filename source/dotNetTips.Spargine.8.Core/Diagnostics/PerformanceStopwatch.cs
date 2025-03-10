@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-02-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -18,7 +18,7 @@
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using DotNetTips.Spargine.Core.Internal;
+using DotNetTips.Spargine.Core.Logging;
 using DotNetTips.Spargine.Core.Properties;
 using Microsoft.Extensions.Logging;
 
@@ -91,7 +91,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 
 		try
 		{
-			logger.WriteInformationMessage(this.CreateMessage(message, this.Elapsed));
+			logger.LogInformationMessage(this.CreateMessage(message, this.Elapsed));
 		}
 		catch (Exception ex)
 		{
@@ -153,7 +153,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 
 		try
 		{
-			logger.WriteInformationMessage(this.CreateMessage(message, result));
+			logger.LogInformationMessage(this.CreateMessage(message, result));
 		}
 		catch (Exception ex)
 		{
@@ -195,7 +195,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 
 		try
 		{
-			logger.WriteInformationMessage(this.CreateMessage(message, result));
+			logger.LogInformationMessage(this.CreateMessage(message, result));
 		}
 		catch (Exception ex)
 		{

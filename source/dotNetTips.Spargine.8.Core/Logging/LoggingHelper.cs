@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-27-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -74,7 +74,7 @@ public static class LoggingHelper
 	{
 		if (_appDomainEventsLogger is not null)
 		{
-			FastLogger.LogDebug(_appDomainEventsLogger, $"Assembly loading: {args.LoadedAssembly.FullName}.");
+			_appDomainEventsLogger.LogDebugMessage($"Assembly loading: {args.LoadedAssembly.FullName}.");
 		}
 	}
 
@@ -92,7 +92,7 @@ public static class LoggingHelper
 	{
 		if (_appDomainEventsLogger is not null)
 		{
-			FastLogger.LogDebug(_appDomainEventsLogger, $"Resolution of an assembly failed: {args.Name}.");
+			_appDomainEventsLogger.LogDebugMessage($"Resolution of an assembly failed: {args.Name}.");
 		}
 
 		return null;
@@ -110,7 +110,7 @@ public static class LoggingHelper
 	{
 		if (_appDomainEventsLogger is not null)
 		{
-			FastLogger.LogDebug(_appDomainEventsLogger, $"{AppDomain.CurrentDomain.FriendlyName} domain is unloading.");
+			_appDomainEventsLogger.LogDebugMessage($"{AppDomain.CurrentDomain.FriendlyName} domain is unloading.");
 		}
 	}
 
@@ -128,7 +128,7 @@ public static class LoggingHelper
 	{
 		if (_appDomainExceptionLogger is not null)
 		{
-			FastLogger.LogException(_appDomainExceptionLogger, $"FirstChanceException in {AppDomain.CurrentDomain.FriendlyName}:  {e.Exception.Message}", e.Exception);
+			_appDomainExceptionLogger.LogExceptionMessage($"FirstChanceException in {AppDomain.CurrentDomain.FriendlyName}:  {e.Exception.Message}", e.Exception);
 
 			if (e.Exception is LoggableException { HasBeenLogged: false } loggableException)
 			{
@@ -149,7 +149,7 @@ public static class LoggingHelper
 	{
 		if (_appDomainEventsLogger is not null)
 		{
-			FastLogger.LogDebug(_appDomainEventsLogger, $"{App.ProcessName} exit.");
+			_appDomainEventsLogger.LogDebugMessage($"{App.ProcessName} exit.");
 		}
 	}
 
@@ -167,7 +167,7 @@ public static class LoggingHelper
 	{
 		if (_appDomainEventsLogger is not null)
 		{
-			FastLogger.LogDebug(_appDomainEventsLogger, $"Resolution of a reflection-only assembly failed {args.Name}.");
+			_appDomainEventsLogger.LogDebugMessage($"Resolution of a reflection-only assembly failed {args.Name}.");
 		}
 
 		return null;
@@ -187,7 +187,7 @@ public static class LoggingHelper
 	{
 		if (_appDomainEventsLogger is not null)
 		{
-			FastLogger.LogDebug(_appDomainEventsLogger, $"Resolution of a resource failed {args.Name}.");
+			_appDomainEventsLogger.LogDebugMessage($"Resolution of a resource failed {args.Name}.");
 		}
 
 		return null;
@@ -207,7 +207,7 @@ public static class LoggingHelper
 	{
 		if (_appDomainEventsLogger is not null)
 		{
-			FastLogger.LogDebug(_appDomainEventsLogger, $"Resolution of a type failed {args.Name}.");
+			_appDomainEventsLogger.LogDebugMessage($"Resolution of a type failed {args.Name}.");
 		}
 
 		return null;
@@ -229,7 +229,7 @@ public static class LoggingHelper
 		{
 			if (e.ExceptionObject is Exception ex)
 			{
-				FastLogger.LogCritical(_appDomainUnhandledExceptionLogger, $"UnhandledException in {AppDomain.CurrentDomain.FriendlyName}:  {ex.Message}", ex);
+				_appDomainUnhandledExceptionLogger.LogCriticalMessage($"UnhandledException in {AppDomain.CurrentDomain.FriendlyName}:  {ex.Message}", ex);
 
 				if (ex is LoggableException { HasBeenLogged: false } loggableException)
 				{
@@ -266,7 +266,7 @@ public static class LoggingHelper
 				AppDomain.CurrentDomain.ResourceResolve += CurrentDomain_ResourceResolve;
 				AppDomain.CurrentDomain.TypeResolve += CurrentDomain_TypeResolve;
 
-				FastLogger.LogInformation(logger, $"Starting to capture all domain events on {Clock.UtcTime} UTC");
+				logger.LogInformationMessage($"Starting to capture all domain events on {Clock.UtcTime} UTC");
 			}
 		}
 	}
@@ -293,7 +293,7 @@ public static class LoggingHelper
 				_appDomainExceptionLogger = logger;
 				AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
 
-				FastLogger.LogInformation(logger, $"Starting to capture all exceptions on {Clock.UtcTime} UTC");
+				logger.LogInformationMessage($"Starting to capture all exceptions on {Clock.UtcTime} UTC");
 			}
 		}
 	}
@@ -319,7 +319,7 @@ public static class LoggingHelper
 				_appDomainUnhandledExceptionLogger = logger;
 				AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-				FastLogger.LogInformation(logger, $"Starting to capture unhandled exceptions on {Clock.UtcTime} UTC");
+				logger.LogInformationMessage($"Starting to capture unhandled exceptions on {Clock.UtcTime} UTC");
 			}
 		}
 	}
@@ -352,7 +352,7 @@ public static class LoggingHelper
 
 			foreach (var item in items)
 			{
-				FastLogger.LogInformation(logger, $"{nameof(AppInfo)}:{item.Key} - {item.Value}");
+				logger.LogInformationMessage($"{nameof(AppInfo)}:{item.Key} - {item.Value}");
 			}
 		}
 	}
@@ -400,7 +400,7 @@ public static class LoggingHelper
 			//FrozenSet is slower.
 			foreach (var item in values.OrderBy(p => p.Key).ToArray())
 			{
-				FastLogger.LogInformation(logger, $"{nameof(ComputerInfo)}:{item.Key} - {item.Value}");
+				logger.LogInformationMessage($"{nameof(ComputerInfo)}:{item.Key} - {item.Value}");
 			}
 		}
 	}

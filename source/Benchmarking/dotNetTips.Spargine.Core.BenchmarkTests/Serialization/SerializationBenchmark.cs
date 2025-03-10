@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-14-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="SerializationBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -33,12 +33,10 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Serialization;
 [BenchmarkCategory(Categories.Serialization)]
 public class SerializationBenchmark : Benchmark
 {
-
 	private const int Count = 100;
 
 	private string _jsonPersonRecord;
 	private string _jsonPersonRef;
-
 	private string _jsonPersonRefList;
 	private List<Person<Address>> _personRefList;
 	private string _xmlPersonRecord;

@@ -18,6 +18,8 @@ using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
+using DotNetTips.Spargine.Core.BenchmarkTests.Logging;
+using DotNetTips.Spargine.Core.BenchmarkTests.Serialization;
 using Perfolizer.Horology;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -42,10 +44,10 @@ public class Program
 
 			config = config.WithOption(ConfigOptions.DisableOptimizationsValidator, true);
 
-			_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
+			//_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
-			//_ = BenchmarkRunner.Run<FastStringBuilderCounterBenchmark>(config);
-			//_ = BenchmarkRunner.Run<FastStringBuilderBenchmark>(config);
+			_ = BenchmarkRunner.Run<SerializationBenchmark>(config);
+			_ = BenchmarkRunner.Run<LoggingBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine("COMPLETE!");
 			Console.Beep();

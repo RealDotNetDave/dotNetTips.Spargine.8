@@ -4,7 +4,7 @@
 // Created          : 07-11-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="HttpEventListenerAsyncLocal.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -63,7 +63,7 @@ public sealed class HttpEventListenerAsyncLocal(ILogger logger) : EventListener
 	{
 		if (logger is not null)
 		{
-			FastLogger.LogInformation(logger, message);
+			logger.LogInformationMessage(message);
 		}
 
 		Trace.WriteLine(message);
