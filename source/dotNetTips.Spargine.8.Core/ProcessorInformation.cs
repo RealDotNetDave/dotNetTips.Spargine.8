@@ -4,7 +4,7 @@
 // Created          : 03-20-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-21-2024
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="ProcessorInformation.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -29,7 +29,7 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// <param name="left">The first instance to compare.</param>
 	/// <param name="right">The second instance to compare.</param>
 	/// <returns><c>true</c> if the instances are not equal; otherwise, <c>false</c>.</returns>
-	[Information("!=", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information("!=", Status = Status.Available)]
 	public static bool operator !=(ProcessorInformation left, ProcessorInformation right) => !(left == right);
 
 	/// <summary>
@@ -38,7 +38,7 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// <param name="left">The first instance to compare.</param>
 	/// <param name="right">The second instance to compare.</param>
 	/// <returns><c>true</c> if the instances are equal; otherwise, <c>false</c>.</returns>
-	[Information("==", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information("==", Status = Status.Available)]
 	public static bool operator ==(ProcessorInformation left, ProcessorInformation right) => left.Equals(right);
 
 	/// <summary>
@@ -46,7 +46,7 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
 	/// <returns><c>true</c> if the specified object is equal to the current instance; otherwise, <c>false</c>.</returns>
-	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(Equals), Status = Status.Available)]
 	public override readonly bool Equals(object obj) => obj is ProcessorInformation information && this.Equals(information);
 
 	/// <summary>

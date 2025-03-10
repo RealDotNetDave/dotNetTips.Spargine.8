@@ -4,7 +4,7 @@
 // Created          : 06-18-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-28-2024
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="NetworkHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -58,7 +58,7 @@ public static class NetworkHelper
 	{
 		var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
 
-		foreach (var networkInterface in networkInterfaces.AsSpan())
+		foreach (var networkInterface in networkInterfaces)
 		{
 			if (networkInterface.OperationalStatus == OperationalStatus.Up &&
 				networkInterface.Description.Contains("Bluetooth", StringComparison.OrdinalIgnoreCase))

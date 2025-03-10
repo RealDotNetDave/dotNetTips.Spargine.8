@@ -4,7 +4,7 @@
 // Created          : 07-05-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="LineSplitEntry.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -16,6 +16,8 @@
 // ***********************************************************************
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
+
+
 
 
 
@@ -39,7 +41,7 @@ public readonly ref struct LineSplitEntry(ReadOnlySpan<char> line, ReadOnlySpan<
 	/// </summary>
 	/// <param name="entry">The line split entry.</param>
 	/// <returns>The line content as a ReadOnlySpan&lt;char&gt;.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(Status = Status.Available)]
 	public static implicit operator ReadOnlySpan<char>(LineSplitEntry entry) => entry.Line;
 
 	/// <summary>

@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="AddressValTests.cs" company="DotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -333,14 +333,14 @@ public class AddressValTests
 	public void CompareTo_DifferentId_ReturnsNonZero()
 	{
 		// Arrange
-		var address1 = new Address("123", "123 Main St", "Apt 4B", "Anytown", "CA", "AnyCounty", "USA", "12345", "555-1234");
-		var address2 = new Address("124", "124 Main St", "Apt 5B", "Othertown", "NY", "OtherCounty", "CAN", "54321", "555-4321");
+		var address1 = new Address("123");
+		var address2 = new Address("124");
 
 		// Act
 		var result = address1.CompareTo(address2);
 
 		// Assert
-		Assert.AreNotEqual(0, result, "Expected CompareTo to return a non-zero value for addresses with different Ids.");
+		Assert.AreNotEqual(0, result);
 	}
 
 	[TestMethod]
@@ -358,17 +358,58 @@ public class AddressValTests
 	}
 
 	[TestMethod]
+	public void CompareTo_IAddress_DifferentId_ReturnsNonZero()
+	{
+		// Arrange
+		var address1 = new Address("123");
+		Models.RefTypes.IAddress address2 = new Address("124");
+
+		// Act
+		var result = ((IComparable<Models.RefTypes.IAddress>)address1).CompareTo(address2);
+
+		// Assert
+		Assert.AreNotEqual(0, result);
+	}
+
+	[TestMethod]
+	public void CompareTo_IAddress_SameId_ReturnsZero()
+	{
+		// Arrange
+		var address1 = new Address("123");
+		Models.RefTypes.IAddress address2 = new Address("123");
+
+		// Act
+		var result = ((IComparable<Models.RefTypes.IAddress>)address1).CompareTo(address2);
+
+		// Assert
+		Assert.AreEqual(0, result);
+	}
+
+	[TestMethod]
+	public void CompareTo_NullOther_ReturnsOne()
+	{
+		// Arrange
+		var address1 = new Address("123");
+		Models.RefTypes.IAddress address2 = null;
+
+		// Act
+		var result = ((IComparable<Models.RefTypes.IAddress>)address1).CompareTo(address2);
+
+		// Assert
+		Assert.AreEqual(1, result);
+	}
+	[TestMethod]
 	public void CompareTo_SameId_ReturnsZero()
 	{
 		// Arrange
-		var address1 = new Address("123", "123 Main St", "Apt 4B", "Anytown", "CA", "AnyCounty", "USA", "12345", "555-1234");
-		var address2 = new Address("123", "124 Main St", "Apt 5B", "Othertown", "NY", "OtherCounty", "CAN", "54321", "555-4321");
+		var address1 = new Address("123");
+		var address2 = new Address("123");
 
 		// Act
 		var result = address1.CompareTo(address2);
 
 		// Assert
-		Assert.AreEqual(0, result, "Expected CompareTo to return 0 for addresses with the same Id.");
+		Assert.AreEqual(0, result);
 	}
 
 	[TestMethod]

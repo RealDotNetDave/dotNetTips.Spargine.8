@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -245,7 +245,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <param name="other">The <see cref="IPerson{TAddress}"/> to compare with the current <see cref="Person{TAddress}"/>.</param>
 	/// <returns><c>true</c> if the specified <see cref="IPerson{TAddress}"/> is equal to the current <see cref="Person{TAddress}"/>; otherwise, <c>false</c>.</returns>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(Equals), Status = Status.Available)]
 	public bool Equals([NotNull] IPerson<TAddress> other) => ReferenceEquals(this, other);
 
 	/// <summary>

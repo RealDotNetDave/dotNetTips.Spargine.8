@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="PersonRecordRefTests.cs" company="DotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -27,6 +27,49 @@ namespace DotNetTips.Spargine.Tester.Tests;
 [TestClass]
 public class PersonRecordRefTests
 {
+	[TestMethod]
+	public void Age_CalculateAge_ReturnsCorrectAge()
+	{
+		// Arrange
+		var bornOn = new DateTimeOffset(2000, 1, 1, 0, 0, 0, TimeSpan.Zero);
+		var person = new PersonRecord("test@example.com", "123")
+		{
+			BornOn = bornOn
+		};
+
+		// Act
+		var age = person.Age;
+
+		// Assert
+		var expectedAge = DateTimeOffset.UtcNow.Subtract(bornOn);
+		Assert.AreEqual(expectedAge.Days, age.Days);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentOutOfRangeException))]
+	public void BornOn_SetFutureDate_ThrowsArgumentOutOfRangeException()
+	{
+		// Arrange
+		var futureDate = DateTimeOffset.UtcNow.AddDays(1);
+		var person = new PersonRecord("test@example.com", "123");
+
+		// Act
+		person = person with { BornOn = futureDate };
+	}
+
+	[TestMethod]
+	public void BornOn_SetPastDate_SetsCorrectly()
+	{
+		// Arrange
+		var pastDate = new DateTimeOffset(2000, 1, 1, 0, 0, 0, TimeSpan.Zero);
+		var person = new PersonRecord("test@example.com", "123");
+
+		// Act
+		person = person with { BornOn = pastDate };
+
+		// Assert
+		Assert.AreEqual(pastDate, person.BornOn);
+	}
 
 	[TestMethod]
 	public void PersonRecord_CalculateAge_ShouldReturnExpectedResults()

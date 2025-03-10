@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -319,7 +319,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	[IgnoreDataMember]
 	[JsonIgnore]
 	[XmlIgnore]
-	[Information(nameof(Age), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(Age), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public TimeSpan Age => this.CalculateAge();
 
 	/// <summary>

@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -49,7 +49,7 @@ public static class FastStringBuilder
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bytes"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string BytesToString([NotNull] ref readonly byte[] bytes)
 	{
 		if (bytes is null || bytes.LongLength == 0)
@@ -261,7 +261,7 @@ public static class FastStringBuilder
 	/// <param name="args">An array of objects to format.</param>
 	/// <returns>A formatted string.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Format), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Format), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static string Format(string format, params string[] args)
 	{
 		if (args.CheckItemsExists() == false || format.CheckIsNotNull() == false)
@@ -288,10 +288,10 @@ public static class FastStringBuilder
 	/// <param name="values">The collection of strings to join.</param>
 	/// <returns>A single string with the values joined by the delimiter.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Join), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Join), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static string Join([NotNull] IEnumerable<string> values, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
-		if (values?.Any() == false)
+		if (values is null || values.Any() == false)
 		{
 			return ControlChars.EmptyString;
 		}
@@ -327,7 +327,7 @@ public static class FastStringBuilder
 	/// <param name="values">The collection of strings to join.</param>
 	/// <returns>A single string with the values joined by the delimiter.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Join), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Join), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static string Join([NotNull] IEnumerable<string> values, string delimiter = ControlChars.CommaSpace)
 	{
 		if (values?.Any() != true)

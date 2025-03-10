@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : david
-// Last Modified On : 02-21-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -200,7 +200,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
 	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
-	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(CompareTo), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public readonly int CompareTo([NotNull] IPerson<TAddress> other) => other is null ? 1 : string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>
@@ -208,7 +208,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><see langword="true"/> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <see langword="false"/>.</returns>
-	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Equals), Status = Status.Available)]
 	public readonly bool Equals([NotNull] Person<TAddress> other) => Equals(this, other);
 
 	/// <summary>
@@ -216,7 +216,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// </summary>
 	/// <param name="obj">The object to compare with the current instance.</param>
 	/// <returns><c>true</c> if the specified <see cref="object"/> is equal to this instance; otherwise, <c>false</c>.</returns>
-	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(Equals), Status = Status.Available)]
 	public override readonly bool Equals([NotNull] object obj) => base.Equals(obj);
 
 	/// <summary>
@@ -297,7 +297,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <value>The age.</value>
 	[JsonIgnore]
 	[XmlIgnore]
-	[Information(nameof(Age), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(Age), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public readonly TimeSpan Age => this.CalculateAge();
 
 	/// <summary>

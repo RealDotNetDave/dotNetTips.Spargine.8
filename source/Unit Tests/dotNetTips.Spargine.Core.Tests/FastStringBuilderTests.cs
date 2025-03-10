@@ -4,7 +4,7 @@
 // Created          : 01-03-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilderTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -149,6 +149,54 @@ public class FastStringBuilderTests
 		Assert.IsTrue(string.IsNullOrEmpty(result) == false);
 
 		Assert.IsTrue(FastStringBuilder.Concat(null) == ControlChars.EmptyString);
+	}
+
+	[TestMethod]
+	public void Join_CharDelimiter_Test()
+	{
+		var values = new List<string> { "one", "two", "three" };
+		var result = FastStringBuilder.Join(values, ControlChars.Comma);
+		Assert.AreEqual("one,two,three", result);
+
+		values = new List<string> { "apple", "banana", "cherry" };
+		result = FastStringBuilder.Join(values, ControlChars.Space);
+		Assert.AreEqual("apple banana cherry", result);
+
+		values = new List<string> { "a", "b", "c" };
+		result = FastStringBuilder.Join(values, ControlChars.Semicolon);
+		Assert.AreEqual("a;b;c", result);
+
+		values = null;
+		result = FastStringBuilder.Join(null, ControlChars.Comma);
+		Assert.AreEqual(ControlChars.EmptyString, result);
+
+		values = new List<string>();
+		result = FastStringBuilder.Join(values, ControlChars.Comma);
+		Assert.AreEqual(ControlChars.EmptyString, result);
+	}
+
+	[TestMethod]
+	public void Join_StringDelimiter_Test()
+	{
+		var values = new List<string> { "one", "two", "three" };
+		var result = FastStringBuilder.Join(values, ControlChars.CommaSpace);
+		Assert.AreEqual("one, two, three", result);
+
+		values = new List<string> { "apple", "banana", "cherry" };
+		result = FastStringBuilder.Join(values, ControlChars.Space.ToString());
+		Assert.AreEqual("apple banana cherry", result);
+
+		values = new List<string> { "a", "b", "c" };
+		result = FastStringBuilder.Join(values, ControlChars.Semicolon.ToString());
+		Assert.AreEqual("a;b;c", result);
+
+		values = null;
+		result = FastStringBuilder.Join(values, ControlChars.CommaSpace);
+		Assert.AreEqual(ControlChars.EmptyString, result);
+
+		values = new List<string>();
+		result = FastStringBuilder.Join(values, ControlChars.CommaSpace);
+		Assert.AreEqual(ControlChars.EmptyString, result);
 	}
 
 	[TestMethod]

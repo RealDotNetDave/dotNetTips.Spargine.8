@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-04-2025
+// Last Modified On : 03-10-2025
 // ***********************************************************************
 // <copyright file="PersonRefTests.cs" company="DotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -27,6 +27,76 @@ namespace DotNetTips.Spargine.Tester.Tests;
 [TestClass]
 public class PersonRefTests
 {
+
+	[TestMethod]
+	public void CompareTo_DifferentId_ReturnsNonZero()
+	{
+		// Arrange
+		var person1 = new Person<Address>("test1@example.com", "123");
+		var person2 = new Person<Address>("test2@example.com", "124");
+
+		// Act
+		var result = person1.CompareTo(person2);
+
+		// Assert
+		Assert.AreNotEqual(0, result);
+	}
+
+	[TestMethod]
+	public void CompareTo_IPerson_DifferentId_ReturnsNonZero()
+	{
+		// Arrange
+		var person1 = new Person<Address>("test1@example.com", "123");
+		IPerson<Address> person2 = new Person<Address>("test2@example.com", "124");
+
+		// Act
+		var result = person1.CompareTo(person2);
+
+		// Assert
+		Assert.AreNotEqual(0, result);
+	}
+
+	[TestMethod]
+	public void CompareTo_IPerson_SameId_ReturnsZero()
+	{
+		// Arrange
+		var person1 = new Person<Address>("test1@example.com", "123");
+		IPerson<Address> person2 = new Person<Address>("test2@example.com", "123");
+
+		// Act
+		var result = person1.CompareTo(person2);
+
+		// Assert
+		Assert.AreEqual(0, result);
+	}
+
+	[TestMethod]
+	public void CompareTo_NullOther_ReturnsOne()
+	{
+		// Arrange
+		var person1 = new Person<Address>("test1@example.com", "123");
+		IPerson<Address> person2 = null;
+
+		// Act
+		var result = person1.CompareTo(person2);
+
+		// Assert
+		Assert.AreEqual(1, result);
+	}
+
+	[TestMethod]
+	public void CompareTo_SameId_ReturnsZero()
+	{
+		// Arrange
+		var person1 = new Person<Address>("test1@example.com", "123");
+		var person2 = new Person<Address>("test2@example.com", "123");
+
+		// Act
+		var result = person1.CompareTo(person2);
+
+		// Assert
+		Assert.AreEqual(0, result);
+	}
 
 	[TestMethod]
 	public void Person_CalculateAge_ReturnsCorrectAge()
