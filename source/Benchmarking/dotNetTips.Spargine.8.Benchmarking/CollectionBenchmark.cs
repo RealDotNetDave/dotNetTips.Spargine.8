@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-31-2025
+// Last Modified On : 03-11-2025
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -73,28 +73,79 @@ public partial class CollectionBenchmark : Benchmark
 	protected virtual Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] GetPersonValCollectionToInsert() => this._peopleValToInsert;
 
 	/// <summary>
-	/// Loads a specified number of <see cref="PersonRecord"/> objects from embedded resources.
+	/// Loads a specified number of <see cref="PersonRecord"/> objects from embedded resources. 
+	/// If count is greater than 10,000, the remainder of the objects are generated randomly.
 	/// </summary>
 	/// <param name="count">The number of <see cref="PersonRecord"/> objects to load. The value must be in the range of 1 to 10000.</param>
 	/// <returns>An array of <see cref="PersonRecord"/> objects.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
-	internal static PersonRecord[] LoadPeopleRecordFromResources(int count) => JsonSerialization.LoadCollectionFromJson<PersonRecord>(Resources.PeopleJson, count, PersonJsonSerializerContext.Default.PersonRecord);
+	internal static PersonRecord[] LoadPeopleRecord(int count)
+	{
+		if (count <= MaxPeopleDataCount)
+		{
+			return JsonSerialization.LoadCollectionFromJson<PersonRecord>(Resources.PeopleJson, count, PersonJsonSerializerContext.Default.PersonRecord);
+		}
+		else
+		{
+			var people = JsonSerialization.LoadCollectionFromJson<PersonRecord>(Resources.PeopleJson, count, PersonJsonSerializerContext.Default.PersonRecord).ToList();
+
+			var newPeople = RandomData.GeneratePersonRecordCollection(count - MaxPeopleDataCount);
+
+			people.AddRange(newPeople);
+
+			return [.. people];
+		}
+	}
 
 	/// <summary>
-	/// Loads a specified number of <see cref="Person{TAddress}"/> reference objects from embedded resources.
+	/// Loads a specified number of <see cref="Person{TAddress}"/> reference objects from embedded resources. 
+	/// If count is greater than 10,000, the remainder of the objects are generated randomly.
 	/// </summary>
 	/// <param name="count">The number of <see cref="Person{TAddress}"/> reference objects to load. The value must be in the range of 1 to 10000.</param>
 	/// <returns>An array of <see cref="Person{TAddress}"/> reference objects.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
-	internal static Person<Address>[] LoadPeopleRefFromResources(int count) => JsonSerialization.LoadCollectionFromJson<Person<Address>>(Resources.PeopleJson, count, PersonJsonSerializerContext.Default.Person);
+	internal static Person<Address>[] LoadPeopleRef(int count)
+	{
+		if (count <= MaxPeopleDataCount)
+		{
+			return JsonSerialization.LoadCollectionFromJson<Person<Address>>(Resources.PeopleJson, count, PersonJsonSerializerContext.Default.Person);
+		}
+		else
+		{
+			var people = JsonSerialization.LoadCollectionFromJson<Person<Address>>(Resources.PeopleJson, count, PersonJsonSerializerContext.Default.Person).ToList();
+
+			var newPeople = RandomData.GeneratePersonRefCollection<Address>(count - MaxPeopleDataCount);
+
+			people.AddRange(newPeople);
+
+			return [.. people];
+		}
+	}
 
 	/// <summary>
-	/// Loads a specified number of Tester.Models.ValueTypes.Person{Tester.Models.ValueTypes.Address} value objects from embedded resources.
+	/// Loads a specified number of Tester.Models.ValueTypes.Person{Tester.Models.ValueTypes.Address} value objects from embedded resources. 
+	/// If count is greater than 10,000, the remainder of the objects are generated randomly.
 	/// </summary>
 	/// <param name="count">The number of Tester.Models.ValueTypes.Person{Tester.Models.ValueTypes.Address} value objects to load. The value must be in the range of 1 to 10000.</param>
 	/// <returns>An array of Tester.Models.ValueTypes.Person{Tester.Models.ValueTypes.Address} value objects.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the count is not within the valid range.</exception>
-	internal static Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] LoadPeopleValFromResources(int count) => JsonSerialization.LoadCollectionFromJson<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(Resources.PeopleJson, count, Tester.Models.ValueTypes.PersonJsonValSerializerContext.Default.Person);
+	internal static Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>[] LoadPeopleVal(int count)
+	{
+		if (count <= MaxPeopleDataCount)
+		{
+			return JsonSerialization.LoadCollectionFromJson<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(Resources.PeopleJson, count, Tester.Models.ValueTypes.PersonJsonValSerializerContext.Default.Person);
+		}
+		else
+		{
+			var people = JsonSerialization.LoadCollectionFromJson<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(Resources.PeopleJson, count, Tester.Models.ValueTypes.PersonJsonValSerializerContext.Default.Person).ToList();
+
+			var newPeople = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(count - MaxPeopleDataCount);
+
+			people.AddRange(newPeople);
+
+			return [.. people];
+		}
+	}
 
 	/// <summary>
 	/// Setups the benchmark instance. This method is called before the benchmark runs and is responsible for initializing the collections and loading the data.
@@ -127,9 +178,9 @@ public partial class CollectionBenchmark : Benchmark
 		this.PersonValLookupLast = this.GetPersonValArray().Last();
 
 		// Load people objects
-		this._peopleRefToInsert = [.. RandomData.GeneratePersonRefCollection<Address>(halfCount)];
-		this._peopleValToInsert = [.. RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(halfCount)];
-		this._peopleRecordToInsert = [.. RandomData.GeneratePersonRecordCollection(halfCount)];
+		this._peopleRefToInsert = [.. LoadPeopleRef(halfCount)];
+		this._peopleValToInsert = [.. LoadPeopleVal(halfCount)];
+		this._peopleRecordToInsert = [.. LoadPeopleRecord(halfCount)];
 	}
 
 	/// <summary>

@@ -18,7 +18,6 @@
 
 using System.Collections.ObjectModel;
 using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -32,9 +31,9 @@ namespace DotNetTips.Spargine.Benchmarking;
 public partial class CollectionBenchmark
 {
 	/// <summary>
-	/// The maximum number of people data that can be loaded.
+	/// The maximum number of people data that can be loaded from resources.
 	/// </summary>
-	private const int _maxPeopleDataCount = 10000;
+	private const int MaxPeopleDataCount = 10000;
 
 	/// <summary>
 	/// The person record dictionary.
@@ -71,19 +70,9 @@ public partial class CollectionBenchmark
 	/// </summary>
 	protected void LoadPersonCollections()
 	{
-
-		if (this.MaxCount > _maxPeopleDataCount)
-		{
-			this._personRecordArray = [.. RandomData.GeneratePersonRecordCollection(this.MaxCount)];
-			this._personRefArray = [.. RandomData.GeneratePersonRefCollection<Address>(this.MaxCount)];
-			this._personValArray = [.. RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(this.MaxCount)];
-		}
-		else
-		{
-			this._personRecordArray = LoadPeopleRecordFromResources(this.MaxCount);
-			this._personRefArray = LoadPeopleRefFromResources(this.MaxCount);
-			this._personValArray = LoadPeopleValFromResources(this.MaxCount);
-		}
+		this._personRecordArray = LoadPeopleRecord(this.MaxCount);
+		this._personRefArray = LoadPeopleRef(this.MaxCount);
+		this._personValArray = LoadPeopleVal(this.MaxCount);
 
 		this._personRecordList = [.. this._personRecordArray];
 		this._personValList = [.. this._personValArray];

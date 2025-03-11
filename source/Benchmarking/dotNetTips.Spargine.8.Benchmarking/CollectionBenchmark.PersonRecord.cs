@@ -18,7 +18,6 @@
 
 using System.Collections.ObjectModel;
 using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -48,7 +47,8 @@ public partial class CollectionBenchmark
 	/// </summary>
 	protected void LoadPersonRecordCollections()
 	{
-		this._personRecordList = [.. RandomData.GeneratePersonRecordCollection(this.MaxCount)];
+		this._personRecordList = [.. LoadPeopleRecord(this.MaxCount)];
+		;
 		this._personRecordArray = [.. this._personRecordList];
 
 		LogInfo($"Record List Count = {this._personRecordList.Count}: {nameof(CollectionBenchmark)}.");

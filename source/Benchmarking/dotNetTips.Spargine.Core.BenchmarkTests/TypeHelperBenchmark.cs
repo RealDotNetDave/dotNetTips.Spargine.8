@@ -20,7 +20,6 @@ using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
-using static DotNetTips.Spargine.Core.TypeHelper;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
 
@@ -37,11 +36,11 @@ public class TypeHelperBenchmark : Benchmark
 	private readonly int _collectionCount = 50;
 	private List<Person<Address>> _people;
 
-	[Benchmark(Description = nameof(TypeHelper.BuiltinTypes))]
+	[Benchmark(Description = nameof(TypeHelper.BuiltInTypes))]
 	[BenchmarkCategory(Categories.Reflection)]
-	public void BuiltinTypes()
+	public void BuiltInTypes()
 	{
-		var result = TypeHelper.BuiltinTypes;
+		var result = TypeHelper.BuiltInTypes;
 
 		this.Consume(result);
 	}
