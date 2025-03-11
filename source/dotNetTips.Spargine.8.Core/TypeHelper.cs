@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-11-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -21,7 +21,6 @@
 
 using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -50,14 +49,14 @@ namespace DotNetTips.Spargine.Core;
 /// converting objects to and from JSON. It also provides methods to get default values, hash codes, property values,
 /// and display names for types, as well as determining if a type is a built-in .NET type or if an assembly is a .NET assembly.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
-public static class TypeHelper
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+public static partial class TypeHelper
 {
 
 	/// <summary>
 	/// A read-only collection of built-in .NET types. This collection is used internally to check if a type is a built-in .NET type.
 	/// </summary>
-	private static HashSet<Type> _builtinTypes;
+	private static HashSet<Type> _builtInTypes;
 
 	/// <summary>
 	/// A static field to cache the built-in .NET types.
@@ -72,21 +71,29 @@ public static class TypeHelper
 
 	/// <summary>
 	/// Computes and initializes the list of built-in .NET types that are considered primitive for the purposes of this utility class.
-	/// This method populates the <see cref="_builtinTypes"/> collection with types that are commonly used and recognized as fundamental types within .NET applications.
+	/// This method populates the <see cref="_builtInTypes"/> collection with types that are commonly used and recognized as fundamental types within .NET applications.
 	/// </summary>
-	private static void ComputeBuiltinTypes()
+	private static void ComputeBuiltInTypes()
 	{
+		// Use a HashSet to store the built-in types for faster lookups
+		var builtInTypes = new HashSet<Type>();
+
 		// Get all the assemblies loaded in the current app domain
-		var assemblies = AppDomain.CurrentDomain.GetAssemblies().ToFrozenSet();
+		var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
-		// Create a list to store the built-in types
-		var builtinTypes = new List<Type>();
-
-		// Loop through each assemblyCollection. No improvement using FrozenSet.
+		// Loop through each assembly
 		foreach (var assembly in assemblies)
 		{
-			// Get the types defined in the assemblyCollection
-			var types = assembly.GetTypes();
+			// Get the types defined in the assembly
+			Type[] types;
+			try
+			{
+				types = assembly.GetTypes();
+			}
+			catch (ReflectionTypeLoadException ex)
+			{
+				types = [.. ex.Types.Where(t => t != null)];
+			}
 
 			// Loop through each type
 			foreach (var type in types)
@@ -94,14 +101,16 @@ public static class TypeHelper
 				// Check if the type is a built-in type
 				if (IsBuiltinType(type))
 				{
-					// Add the type to the list
-					builtinTypes.Add(type);
+					// Add the type to the HashSet
+					_ = builtInTypes.Add(type);
 				}
 			}
 		}
 
-		_builtinTypes = [.. builtinTypes];
+		// Convert the HashSet to a read-only collection
+		_builtInTypes = builtInTypes;
 	}
+
 
 	/// <summary>
 	/// Determines whether the provided stream represents a .NET assembly.
@@ -601,7 +610,7 @@ public static class TypeHelper
 	}
 
 	/// <summary>
-	/// Gets the display name of the type of the specified object.
+	/// Gets the display name of the type of the specified object, even if it's a generic type.
 	/// </summary>
 	/// <param name="item">The object to get the type display name for.</param>
 	/// <param name="fullName">If true, the full name of the type is returned; otherwise, the short name is returned.</param>
@@ -698,7 +707,7 @@ public static class TypeHelper
 	/// <param name="length">The number of generic arguments to consider.</param>
 	/// <param name="options">Display name options to customize the output.</param>
 	[Information(nameof(ProcessGenericType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments,  in int length, DisplayNameOptions options)
+	public static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, in int length, DisplayNameOptions options)
 	{
 		builder = builder.ArgumentNotNull();
 		type = type.ArgumentNotNull();
@@ -761,94 +770,18 @@ public static class TypeHelper
 	/// <summary>
 	/// Gets a read-only collection of built-in .NET types.
 	/// </summary>
-	[Information(nameof(BuiltinTypes), "David McCarter", "11/6/2023", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/Spargine8", Status = Status.Available)]
-	public static ReadOnlyCollection<Type> BuiltinTypes
+	[Information(nameof(BuiltInTypes), "David McCarter", "11/6/2023", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/Spargine8", Status = Status.Available)]
+	public static ReadOnlyCollection<Type> BuiltInTypes
 	{
 		get
 		{
-			if (_builtinTypes == null)
+			if (_builtInTypes == null)
 			{
-				ComputeBuiltinTypes();
+				ComputeBuiltInTypes();
 			}
 
-			return _builtinTypes.ToList().AsReadOnly();
+			return _builtInTypes.ToList().AsReadOnly();
 		}
-	}
-
-	/// <summary>
-	/// Represents options for displaying type names.
-	/// </summary>
-	/// <param name=
-	/// "fullName">If true, the full name of the type is used; otherwise, the short name is used.</param>
-	/// <param name="includeGenericParameterNames">If true, includes the names of generic parameters.</param>
-	/// <param name="includeGenericParameters">If true, includes generic parameters in the display name.</param>
-	/// <param name="nestedTypeDelimiter">The delimiter to use for nested types.</param>
-	public readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter = ControlChars.Plus) : IEquatable<DisplayNameOptions>
-	{
-
-		/// <summary>
-		/// Determines whether two <see cref="DisplayNameOptions"/> instances are not equal.
-		/// </summary>
-		/// <param name="left">The first <see cref="DisplayNameOptions"/> instance to compare.</param>
-		/// <param name="right">The second <see cref="DisplayNameOptions"/> instance to compare.</param>
-		/// <returns><c>true</c> if the specified <see cref="DisplayNameOptions"/> instances are not equal; otherwise, <c>false</c>.</returns>
-		public static bool operator !=(DisplayNameOptions left, DisplayNameOptions right) => !(left == right);
-
-		/// <summary>
-		/// Determines whether two <see cref="DisplayNameOptions"/> instances are equal.
-		/// </summary>
-		/// <param name="left">The first <see cref="DisplayNameOptions"/> instance to compare.</param>
-		/// <param name="right">The second <see cref="DisplayNameOptions"/> instance to compare.</param>
-		/// <returns><c>true</c> if the specified <see cref="DisplayNameOptions"/> instances are equal; otherwise, <c>false</c>.</returns>
-		public static bool operator ==(DisplayNameOptions left, DisplayNameOptions right) => left.Equals(right);
-
-		/// <summary>
-		/// Determines whether the specified object is equal to the current object.
-		/// </summary>
-		/// <param name="obj">The object to compare with the current object.</param>
-		/// <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
-		public override bool Equals([NotNullWhen(true)] object obj) => base.Equals(obj);
-
-		/// <summary>
-		/// Determines whether the specified <see cref="DisplayNameOptions"/> instance is equal to the current instance.
-		/// </summary>
-		/// <param name="other">The <see cref="DisplayNameOptions"/> instance to compare with the current instance.</param>
-		/// <returns><c>true</c> if the specified <see cref="DisplayNameOptions"/> instance is equal to the current instance; otherwise, <c>false</c>.</returns>
-		public bool Equals(DisplayNameOptions other) => this.FullName == other.FullName &&
-				   this.IncludeGenericParameterNames == other.IncludeGenericParameterNames &&
-				   this.IncludeGenericParameters == other.IncludeGenericParameters &&
-				   this.NestedTypeDelimiter == other.NestedTypeDelimiter;
-
-		/// <summary>
-		/// Returns the hash code for the current object.
-		/// </summary>
-		/// <returns>A hash code for the current object.</returns>
-		public override int GetHashCode() => base.GetHashCode();
-		/// <summary>
-		/// Returns a string that represents the current object.
-		/// </summary>
-		/// <returns>A string that represents the current object.</returns>
-		public override string ToString() => base.ToString();
-
-		/// <summary>
-		/// Gets a value indicating whether the full name of the type is used.
-		/// </summary>
-		public bool FullName { get; } = fullName;
-
-		/// <summary>
-		/// Gets a value indicating whether the names of generic parameters are included in the type's display name.
-		/// </summary>
-		public bool IncludeGenericParameterNames { get; } = includeGenericParameterNames;
-
-		/// <summary>
-		/// Gets a value indicating whether generic parameters are included in the type's display name.
-		/// </summary>
-		public bool IncludeGenericParameters { get; } = includeGenericParameters;
-
-		/// <summary>
-		/// Gets the delimiter used for nested types in the type's display name.
-		/// </summary>
-		public char NestedTypeDelimiter { get; } = nestedTypeDelimiter;
 	}
 
 }

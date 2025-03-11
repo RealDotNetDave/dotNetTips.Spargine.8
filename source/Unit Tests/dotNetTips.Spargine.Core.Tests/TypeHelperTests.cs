@@ -50,7 +50,7 @@ public class TypeHelperTests : TestClass
 	[TestMethod]
 	public void BuiltinTypesTest()
 	{
-		var result = TypeHelper.BuiltinTypes;
+		var result = TypeHelper.BuiltInTypes;
 
 		Assert.IsNotNull(result);
 
