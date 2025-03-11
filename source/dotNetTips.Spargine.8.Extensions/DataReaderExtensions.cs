@@ -29,6 +29,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// This class includes methods for converting data readers to other formats, such as CSV, with performance optimizations
 /// such as using a <see cref="ObjectPool{T}"/> for <see cref="StringBuilder"/> instances to reduce memory allocations.
 /// </remarks>
+[Information(Status = Status.Available)]
 public static class DataReaderExtensions
 {
 

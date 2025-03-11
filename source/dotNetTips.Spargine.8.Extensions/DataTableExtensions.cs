@@ -27,6 +27,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// such as determining if the table contains any rows or if a particular value is equivalent to a database null. These utilities can help
 /// streamline data handling and validation processes in applications that interact with databases.
 /// </remarks>
+[Information(Status = Status.Available)]
 public static class DataTableExtensions
 {
 

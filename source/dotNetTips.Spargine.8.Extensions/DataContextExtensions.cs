@@ -30,6 +30,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// For example, it allows retrieving tracked objects within a DataContext, which can be useful for debugging or auditing changes.
 /// Note: The use of reflection to access internal properties of DataContext may be subject to change in future versions of the framework.
 /// </remarks>
+[Information(Status = Status.Available)]
 public static class DataContextExtensions
 {
 	/// <summary>

@@ -28,6 +28,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// making it easier to retrieve information such as the client's IP address. This can be particularly useful in web applications
 /// for tracking user activity or implementing security measures based on IP addresses.
 /// </remarks>
+[Information(Status = Status.Available)]
 public static class HttpContextExtensions
 {
 

@@ -26,6 +26,7 @@ namespace DotNetTips.Spargine.Core;
 /// This includes authorship, creation and modification dates, documentation links, and more.
 /// </summary>
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Delegate, Inherited = false)]
+[Information(Status = Status.NeedsDocumentation)]
 public sealed class InformationAttribute : Attribute
 {
 	/// <summary>

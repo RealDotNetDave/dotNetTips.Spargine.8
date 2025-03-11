@@ -23,6 +23,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// <remarks>This class includes methods for calculating the total size of files within a directory,
 /// and potentially more functionalities that extend <see cref="DirectoryInfo" />.
 /// These methods aim to provide more convenient ways to interact with directories in .NET applications.</remarks>
+[Information(Status = Status.Available)]
 public static class DirectoryInfoExtensions
 {
 

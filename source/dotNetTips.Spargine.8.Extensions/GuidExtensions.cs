@@ -23,6 +23,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for the <see cref="Guid"/> type.
 /// These methods include converting a Guid to a string representation without dashes and checking if a Guid is not empty.
 /// </summary>
+[Information(Status = Status.Available)]
 public static class GuidExtensions
 {
 

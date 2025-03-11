@@ -23,6 +23,7 @@
 
 
 
+
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
@@ -33,6 +34,7 @@ namespace DotNetTips.Spargine.Core;
 /// such as new line characters, space, tab, and special punctuation marks. It simplifies the use of these characters
 /// by providing them as ready-to-use constants, avoiding the need for magic strings or characters throughout the code.
 /// </remarks>
+[Information(Status = Status.Available)]
 public static class ControlChars
 {
 	/// <summary>

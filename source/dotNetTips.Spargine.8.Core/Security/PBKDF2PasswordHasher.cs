@@ -22,6 +22,7 @@ namespace DotNetTips.Spargine.Core.Security;
 /// <summary>
 /// Provides methods for hashing and verifying passwords using PBKDF2.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public static class PBKDF2PasswordHasher
 {
 	// In .NET Core 2.1, you can use CryptographicOperations.FixedTimeEquals

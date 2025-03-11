@@ -25,6 +25,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for <see cref="WebClient"/> to enhance its functionality,
 /// including methods for converting JSON data to objects.
 /// </summary>
+[Information(Status = Status.Available)]
 public static class WebClientExtensions
 {
 
