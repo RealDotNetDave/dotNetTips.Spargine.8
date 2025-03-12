@@ -4,7 +4,7 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -164,7 +164,7 @@ public static partial class Validator
 		}
 		else if (isValid is false)
 		{
-			ExceptionThrower.ThrowFileNotFoundException(CreateParamExceptionMessage(errorMessage, paramName, Resources.ErrorFileNotFound), input.FullName);
+			throw ExceptionThrower.CreateFileNotFoundException(CreateParamExceptionMessage(errorMessage, paramName, Resources.ErrorFileNotFound), input.FullName);
 		}
 
 		return input;

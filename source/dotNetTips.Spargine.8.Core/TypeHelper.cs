@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-11-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -32,7 +32,6 @@ using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
-using DotNetTips.Spargine.Core.Properties;
 using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -495,7 +494,7 @@ public static partial class TypeHelper
 
 		if (file.Exists is false)
 		{
-			ExceptionThrower.ThrowFileNotFoundException(Resources.ErrorFileNotFound, file.FullName);
+			throw ExceptionThrower.CreateFileNotFoundException(file.FullName);
 		}
 
 		var json = File.ReadAllText(file.FullName, Encoding.UTF8);

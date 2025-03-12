@@ -68,7 +68,7 @@ public static class XmlSerialization
 
 		if (file.Exists is false)
 		{
-			throw new FileNotFoundException(Resources.FileNotFoundCannotDeserializeFromXML, file.FullName);
+			throw ExceptionThrower.CreateFileNotFoundException(Resources.FileNotFoundCannotDeserializeFromXML, file.FullName);
 		}
 		else
 		{

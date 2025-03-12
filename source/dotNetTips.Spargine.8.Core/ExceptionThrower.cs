@@ -37,6 +37,32 @@ namespace DotNetTips.Spargine.Core;
 [Information(Status = Status.UpdateDocumentation, Documentation = "https://bit.ly/SpargineExThrow")]
 public static class ExceptionThrower
 {
+	/// <summary>
+	/// Creates a <see cref="FileNotFoundException"/> with a specified file name.
+	/// </summary>
+	/// <param name="fileName">The name of the file that was not found.</param>
+	/// <returns>A <see cref="FileNotFoundException"/> instance.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
+	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public static FileNotFoundException CreateFileNotFoundException([NotNull] string fileName)
+	{
+		return new FileNotFoundException(Resources.ErrorFileNotFound, fileName);
+	}
+
+	/// <summary>
+	/// Creates a <see cref="FileNotFoundException"/> with a specified message and file name.
+	/// </summary>
+	/// <param name="message">The error message that explains the reason for the exception. If null, a default error message is used.</param>
+	/// <param name="fileName">The name of the file that was not found.</param>
+	/// <returns>A <see cref="FileNotFoundException"/> instance.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
+	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public static FileNotFoundException CreateFileNotFoundException([AllowNull] string message, [NotNull] string fileName)
+	{
+		return new FileNotFoundException(message ?? Resources.ErrorFileNotFound, fileName);
+	}
 
 	/// <summary>
 	/// Returns the default value if the provided string is null; otherwise, returns the string itself.
@@ -54,9 +80,6 @@ public static class ExceptionThrower
 	/// <param name="message">The error message that explains the reason for the exception. If null, a default error message is used.</param>
 	/// <param name="paramName">The name of the parameter that caused the current exception.</param>
 	[DoesNotReturn]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information("Optimized ThrowArgumentException method for better performance and clarity.", author: "David McCarter", createdOn: "10/10/2023", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentException([AllowNull] string message, [NotNull] string paramName) => throw new ArgumentException(message ?? Resources.ErrorInvalidArgument, paramName);
 
 	/// <summary>
