@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="AddressRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -209,11 +209,15 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			this._address1 = value.HasValue(0, 100) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.Address1),
-					Resources.AddressLengthIsLimitedTo100Characters)
-				: value;
+			if (value.HasValue(0, 100) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.AddressLengthIsLimitedTo100Characters, nameof(this.Address1));
+			}
+			else
+			{
+				this._address1 = value;
+			}
 		}
 	}
 
@@ -240,11 +244,15 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			this._address2 = value.HasValue(0, 100) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.Address2),
-					Resources.AddressLengthIsLimitedTo100Characters)
-				: value;
+			if (value.HasValue(0, 100) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.AddressLengthIsLimitedTo100Characters, nameof(this.Address2));
+			}
+			else
+			{
+				this._address2 = value;
+			}
 		}
 	}
 
@@ -271,9 +279,14 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			this._city = value.HasValue(0, 150) is false
-				? throw new ArgumentOutOfRangeException(nameof(this.City), Resources.CityLengthIsLimitedToCharacters)
-				: value;
+			if (value.HasValue(0, 150) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(Resources.CityLengthIsLimitedToCharacters, nameof(this.City));
+			}
+			else
+			{
+				this._city = value;
+			}
 		}
 	}
 
@@ -300,11 +313,15 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			this._country = value.HasValue(0, 50) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.Country),
-					Resources.CountryLengthIsLimitedTo50Characters)
-				: value;
+			if (value.HasValue(0, 50) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.CountryLengthIsLimitedTo50Characters, nameof(this.Country));
+			}
+			else
+			{
+				this._country = value;
+			}
 		}
 	}
 
@@ -330,11 +347,15 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			this._countyProvince = value?.Length > 50
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.CountyProvince),
-					Resources.CountyProvinceLengthIsLimitedTo50Character)
-				: value;
+			if (value?.Length > 50)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.CountyProvinceLengthIsLimitedTo50Character, nameof(this.CountyProvince));
+			}
+			else
+			{
+				this._countyProvince = value;
+			}
 		}
 	}
 
@@ -363,9 +384,14 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			this._id = value.HasValue(1, 50) is false
-				? throw new ArgumentOutOfRangeException(nameof(this.Id), Resources.IdLengthIsLimitedTo50Characters)
-				: value;
+			if (value.HasValue(1, 50) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(Resources.IdLengthIsLimitedTo50Characters, nameof(this.Id));
+			}
+			else
+			{
+				this._id = value;
+			}
 		}
 	}
 
@@ -392,11 +418,15 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			this._phone = value.HasValue(0, 50) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.Phone),
-					Resources.PhoneNumberIsLimitedTo50Characters)
-				: value;
+			if (value.HasValue(0, 50) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.PhoneNumberIsLimitedTo50Characters, nameof(this.Phone));
+			}
+			else
+			{
+				this._phone = value;
+			}
 		}
 	}
 
@@ -423,11 +453,15 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			this._postalCode = value.HasValue(0, 40) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.PostalCode),
-					Resources.PostalCodeLengthIsLimitedTo40Characters)
-				: value;
+			if (value.HasValue(0, 40) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.PostalCodeLengthIsLimitedTo40Characters, nameof(this.PostalCode));
+			}
+			else
+			{
+				this._postalCode = value;
+			}
 		}
 	}
 
@@ -454,11 +488,15 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			this._state = value.HasValue(0, 60) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.State),
-					Resources.StateLengthIsLimitedTo60Characters)
-				: value;
+			if (value.HasValue(0, 60) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.StateLengthIsLimitedTo60Characters, nameof(this.State));
+			}
+			else
+			{
+				this._state = value;
+			}
 		}
 	}
 }

@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -497,7 +497,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	{
 		if (string.IsNullOrEmpty(base64String))
 		{
-			throw new ArgumentNullException(nameof(base64String));
+			ExceptionThrower.ThrowArgumentNullException(nameof(base64String));
 		}
 
 		var buffer = new byte[base64String.Length];

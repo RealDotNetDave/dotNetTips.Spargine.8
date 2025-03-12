@@ -4,7 +4,7 @@
 // Created          : 11-12-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="ChannelQueue.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -175,7 +175,7 @@ public sealed class ChannelQueue<T>
 		}
 		catch (Exception ex)
 		{
-			throw new InvalidOperationException(Resources.AnErrorOccurredWhileWritingToTheChannel, ex);
+			ExceptionThrower.ThrowInvalidOperationException(Resources.AnErrorOccurredWhileWritingToTheChannel, ex);
 		}
 	}
 
@@ -215,7 +215,7 @@ public sealed class ChannelQueue<T>
 		catch (Exception ex)
 		{
 			// Log or handle the exception as needed
-			throw new InvalidOperationException(Resources.AnErrorOccurredWhileWritingToTheChannel, ex);
+			ExceptionThrower.ThrowInvalidOperationException(Resources.AnErrorOccurredWhileWritingToTheChannel, ex);
 		}
 	}
 

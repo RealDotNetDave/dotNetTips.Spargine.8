@@ -160,10 +160,14 @@ public class Enumeration : IComparable
 	public int CompareTo(object obj)
 	{
 		ArgumentNullException.ThrowIfNull(obj);
-
-		return obj is not Enumeration other
-			? throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ErrorObjectMustBeOfTypeFormat, nameof(Enumeration)), nameof(obj))
-			: this.Value.CompareTo(other.Value);
+		if (obj is not Enumeration other)
+		{
+			throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ErrorObjectMustBeOfTypeFormat, nameof(Enumeration)), nameof(obj));
+		}
+		else
+		{
+			return this.Value.CompareTo(other.Value);
+		}
 	}
 
 	/// <summary>

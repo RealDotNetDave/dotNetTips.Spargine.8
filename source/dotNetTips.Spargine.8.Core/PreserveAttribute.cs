@@ -19,6 +19,7 @@
 
 
 
+
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>

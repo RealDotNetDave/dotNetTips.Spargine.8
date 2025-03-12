@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -16,6 +16,7 @@
 // custom messages can also be provided.
 // </summary>
 // ***********************************************************************
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
@@ -32,6 +33,7 @@ namespace DotNetTips.Spargine.Core;
 /// with a specific message, parameter name, or inner exception. This approach helps maintain consistency and readability in error handling
 /// across a project.
 /// </summary>
+[StackTraceHidden]
 [Information(Status = Status.UpdateDocumentation, Documentation = "https://bit.ly/SpargineExThrow")]
 public static class ExceptionThrower
 {

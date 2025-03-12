@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-10-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -341,9 +341,14 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 				return;
 			}
 
-			this._bornOn = value.ToUniversalTime() > DateTimeOffset.UtcNow
-				? throw new ArgumentOutOfRangeException(nameof(this.BornOn), Resources.PersonBornOnCannotBeInTheFuture)
-				: value;
+			if (value.ToUniversalTime() > DateTimeOffset.UtcNow)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(Resources.PersonBornOnCannotBeInTheFuture, nameof(this.BornOn));
+			}
+			else
+			{
+				this._bornOn = value;
+			}
 		}
 	}
 
@@ -372,11 +377,15 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 				return;
 			}
 
-			this._cellPhone = value.HasValue(0, 50) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.CellPhone),
-					Resources.PhoneNumberIsLimitedTo50Characters)
-				: value;
+			if (value.HasValue(0, 50) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.PhoneNumberIsLimitedTo50Characters, nameof(this.CellPhone));
+			}
+			else
+			{
+				this._cellPhone = value;
+			}
 		}
 	}
 
@@ -407,11 +416,15 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 				return;
 			}
 
-			this._email = value.HasValue(0, 75) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.Email),
-					Resources.EmailLengthIsLimitedTo75Characters)
-				: value;
+			if (value.HasValue(0, 75) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.EmailLengthIsLimitedTo75Characters, nameof(this.Email));
+			}
+			else
+			{
+				this._email = value;
+			}
 		}
 	}
 
@@ -439,11 +452,15 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 				return;
 			}
 
-			this._firstName = value.HasValue(0, 50) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.FirstName),
-					Resources.FirstNameLengthIsLimitedTo50Characters)
-				: value;
+			if (value.HasValue(0, 50) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.FirstNameLengthIsLimitedTo50Characters, nameof(this.FirstName));
+			}
+			else
+			{
+				this._firstName = value;
+			}
 		}
 	}
 
@@ -483,9 +500,14 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 				return;
 			}
 
-			this._id = value.HasValue(1, 50) is false
-				? throw new ArgumentOutOfRangeException(nameof(this.Id), Resources.IdLengthIsLimitedTo50Characters)
-				: value;
+			if (value.HasValue(1, 50) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(Resources.IdLengthIsLimitedTo50Characters, nameof(this.Id));
+			}
+			else
+			{
+				this._id = value;
+			}
 		}
 	}
 
@@ -514,11 +536,15 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 				return;
 			}
 
-			this._lastName = value.HasValue(0, 50) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.LastName),
-					Resources.LastNameLengthIsLimitedTo50Characters)
-				: value;
+			if (value.HasValue(0, 50) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.LastNameLengthIsLimitedTo50Characters, nameof(this.LastName));
+			}
+			else
+			{
+				this._lastName = value;
+			}
 		}
 	}
 
@@ -545,11 +571,15 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 				return;
 			}
 
-			this._phone = value.HasValue(0, 50) is false
-				? throw new ArgumentOutOfRangeException(
-					nameof(this.Phone),
-					Resources.PhoneNumberIsLimitedTo50Characters)
-				: value;
+			if (value.HasValue(0, 50) is false)
+			{
+				ExceptionThrower.ThrowArgumentOutOfRangeException(
+					Resources.PhoneNumberIsLimitedTo50Characters, nameof(this.Phone));
+			}
+			else
+			{
+				this._phone = value;
+			}
 		}
 	}
 }
