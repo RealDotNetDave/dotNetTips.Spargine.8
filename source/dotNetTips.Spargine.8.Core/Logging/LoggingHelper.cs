@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-10-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -72,10 +72,7 @@ public static class LoggingHelper
 	/// </remarks>
 	private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
 	{
-		if (_appDomainEventsLogger is not null)
-		{
-			_appDomainEventsLogger.LogDebugMessage($"Assembly loading: {args.LoadedAssembly.FullName}.");
-		}
+		_appDomainEventsLogger?.LogDebugMessage($"Assembly loading: {args.LoadedAssembly.FullName}.");
 	}
 
 	/// <summary>
@@ -90,10 +87,7 @@ public static class LoggingHelper
 	/// </remarks>
 	private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
 	{
-		if (_appDomainEventsLogger is not null)
-		{
-			_appDomainEventsLogger.LogDebugMessage($"Resolution of an assembly failed: {args.Name}.");
-		}
+		_appDomainEventsLogger?.LogDebugMessage($"Resolution of an assembly failed: {args.Name}.");
 
 		return null;
 	}
@@ -108,10 +102,7 @@ public static class LoggingHelper
 	/// </remarks>
 	private static void CurrentDomain_DomainUnload(object sender, EventArgs e)
 	{
-		if (_appDomainEventsLogger is not null)
-		{
-			_appDomainEventsLogger.LogDebugMessage($"{AppDomain.CurrentDomain.FriendlyName} domain is unloading.");
-		}
+		_appDomainEventsLogger?.LogDebugMessage($"{AppDomain.CurrentDomain.FriendlyName} domain is unloading.");
 	}
 
 	/// <summary>
@@ -147,10 +138,7 @@ public static class LoggingHelper
 	/// </remarks>
 	private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
 	{
-		if (_appDomainEventsLogger is not null)
-		{
-			_appDomainEventsLogger.LogDebugMessage($"{App.ProcessName} exit.");
-		}
+		_appDomainEventsLogger?.LogDebugMessage($"{App.ProcessName} exit.");
 	}
 
 	/// <summary>
@@ -165,10 +153,7 @@ public static class LoggingHelper
 	/// </remarks>
 	private static Assembly CurrentDomain_ReflectionOnlyAssemblyResolve(object sender, ResolveEventArgs args)
 	{
-		if (_appDomainEventsLogger is not null)
-		{
-			_appDomainEventsLogger.LogDebugMessage($"Resolution of a reflection-only assembly failed {args.Name}.");
-		}
+		_appDomainEventsLogger?.LogDebugMessage($"Resolution of a reflection-only assembly failed {args.Name}.");
 
 		return null;
 	}
@@ -185,10 +170,7 @@ public static class LoggingHelper
 	/// </remarks>
 	private static Assembly CurrentDomain_ResourceResolve(object sender, ResolveEventArgs args)
 	{
-		if (_appDomainEventsLogger is not null)
-		{
-			_appDomainEventsLogger.LogDebugMessage($"Resolution of a resource failed {args.Name}.");
-		}
+		_appDomainEventsLogger?.LogDebugMessage($"Resolution of a resource failed {args.Name}.");
 
 		return null;
 	}
@@ -205,10 +187,7 @@ public static class LoggingHelper
 	/// </remarks>
 	private static Assembly CurrentDomain_TypeResolve(object sender, ResolveEventArgs args)
 	{
-		if (_appDomainEventsLogger is not null)
-		{
-			_appDomainEventsLogger.LogDebugMessage($"Resolution of a type failed {args.Name}.");
-		}
+		_appDomainEventsLogger?.LogDebugMessage($"Resolution of a type failed {args.Name}.");
 
 		return null;
 	}

@@ -4,7 +4,7 @@
 // Created          : 04-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="ReadOnlySpanExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -36,10 +36,7 @@ public static class ReadOnlySpanExtensions
 	/// <returns>System.String.</returns>
 	/// <exception cref="ArgumentNullException">array cannot be empty.</exception>
 	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	public static string BytesToString([NotNull] this ReadOnlySpan<byte> array)
-	{
-		return FastStringBuilder.BytesToString(array);
-	}
+	public static string BytesToString([NotNull] this ReadOnlySpan<byte> array) => FastStringBuilder.BytesToString(array);
 
 	/// <summary>
 	/// Picks a random item from the specified <see cref="ReadOnlySpan{T}"/>.

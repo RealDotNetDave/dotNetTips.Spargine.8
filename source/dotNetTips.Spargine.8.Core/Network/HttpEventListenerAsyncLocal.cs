@@ -4,7 +4,7 @@
 // Created          : 07-11-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-10-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="HttpEventListenerAsyncLocal.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -61,10 +61,7 @@ public sealed class HttpEventListenerAsyncLocal(ILogger logger) : EventListener
 	/// <param name="message">The message to be logged. It should contain information about the HTTP event being processed.</param>
 	private void LogMessage(string message)
 	{
-		if (logger is not null)
-		{
-			logger.LogInformationMessage(message);
-		}
+		logger?.LogInformationMessage(message);
 
 		Trace.WriteLine(message);
 	}

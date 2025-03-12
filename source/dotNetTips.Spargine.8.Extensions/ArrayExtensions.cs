@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-10-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="ArrayExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -152,10 +152,7 @@ public static class ArrayExtensions
 	/// <exception cref="ArgumentNullException">Array cannot be null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(BytesToString), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NotRequired, Status = Status.Available)]
-	public static string BytesToString([NotNull] this byte[] array)
-	{
-		return FastStringBuilder.BytesToString(ref array);
-	}
+	public static string BytesToString([NotNull] this byte[] array) => FastStringBuilder.BytesToString(ref array);
 
 	/// <summary>
 	/// Clones the specified array.

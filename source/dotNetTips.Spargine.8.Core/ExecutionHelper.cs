@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-10-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="ExecutionHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -90,10 +90,7 @@ public static class ExecutionHelper
 			{
 				result.AddException(ex);
 
-				if (logger is not null)
-				{
-					logger.LogExceptionMessage($"Attempt {attempts} failed.", ex);
-				}
+				logger?.LogExceptionMessage($"Attempt {attempts} failed.", ex);
 
 				if (attempts == retryCount)
 				{
@@ -151,10 +148,7 @@ public static class ExecutionHelper
 			{
 				result.AddException(ex);
 
-				if (logger is not null)
-				{
-					logger.LogExceptionMessage($"Attempt {attempts} failed.", ex);
-				}
+				logger?.LogExceptionMessage($"Attempt {attempts} failed.", ex);
 
 				if (attempts == retryCount || cancellationToken.IsCancellationRequested)
 				{

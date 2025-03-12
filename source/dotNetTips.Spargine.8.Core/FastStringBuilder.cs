@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-10-2025
+// Last Modified On : 03-12-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -50,15 +50,7 @@ public static class FastStringBuilder
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bytes"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	public static string BytesToString([NotNull] ref readonly byte[] bytes)
-	{
-		if (bytes is null || bytes.LongLength == 0)
-		{
-			return ControlChars.EmptyString;
-		}
-
-		return BytesToString(bytes.AsSpan());
-	}
+	public static string BytesToString([NotNull] ref readonly byte[] bytes) => bytes is null || bytes.LongLength == 0 ? ControlChars.EmptyString : BytesToString(bytes.AsSpan());
 
 	/// <summary>
 	/// Converts a ReadOnlySpan of bytes into a hexadecimal string representation, making it easy to inspect raw byte data in string form.
@@ -224,10 +216,7 @@ public static class FastStringBuilder
 			return ControlChars.EmptyString;
 		}
 
-		if (delimiter == null)
-		{
-			delimiter = ControlChars.CommaSpace;
-		}
+		delimiter ??= ControlChars.CommaSpace;
 
 		var sb = _stringBuilderPool.Get().Clear();
 
