@@ -230,7 +230,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="delimiter">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
 	/// <returns>A string containing all exception messages, separated by the specified delimiter.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	internal static string GetAllMessages(this Exception exception, [ConstantExpected] in char delimiter = ControlChars.Comma)
+	internal static string GetAllMessages(this Exception exception, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		exception = exception.ArgumentNotNull();
 
@@ -352,7 +352,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="list">The list.</param>
 	/// <param name="delimiter">The delimiter.</param>
 	/// <returns>System.String.</returns>
-	internal static string ToDelimitedString([NotNull] this IDictionary list, [ConstantExpected] in char delimiter = ControlChars.Comma)
+	internal static string ToDelimitedString([NotNull] this IDictionary list, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		if (string.IsNullOrEmpty(delimiter.ToString()))
 		{
@@ -393,7 +393,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="list">The list.</param>
 	/// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
 	/// <returns>System.String.</returns>
-	internal static string ToDelimitedString<T>([NotNull] this IEnumerable<T> list, [ConstantExpected] in char delimiter = ControlChars.Comma)
+	internal static string ToDelimitedString<T>([NotNull] this IEnumerable<T> list, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		if (list.FastCount() == 0)
 		{

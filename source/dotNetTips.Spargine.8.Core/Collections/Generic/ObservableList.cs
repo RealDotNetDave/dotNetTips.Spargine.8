@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="ObservableList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -63,7 +63,7 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// </summary>
 	/// <param name="collection">The collection whose elements are copied to the new set.</param>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public ObservableList(IEnumerable<T> collection) : this(collection, EqualityComparer<T>.Default)
+	public ObservableList(in IEnumerable<T> collection) : this(collection, EqualityComparer<T>.Default)
 	{
 	}
 
@@ -78,7 +78,7 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// comparing values in the set, or null to use the default <see cref="IEqualityComparer{T}"/>
 	/// implementation for the set type.</param>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public ObservableList(IEnumerable<T> collection, IEqualityComparer<T> comparer) => this._set =
+	public ObservableList(in IEnumerable<T> collection, IEqualityComparer<T> comparer) => this._set =
 		new HashSet<T>(collection, comparer);
 
 	/// <summary>

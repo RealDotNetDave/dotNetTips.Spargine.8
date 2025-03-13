@@ -283,7 +283,7 @@ public static class StringExtensions
 	/// <param name="delimiter">The character delimiter to split the string by. Default is a comma.</param>
 	/// <returns>An array of strings that were delimited by the specified character.</returns>
 	[Information(nameof(DelimitedStringToArray), "David McCarter", "8/13/2020", "8/13/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static string[] DelimitedStringToArray([NotNull] this string input, [ConstantExpected] in char delimiter = ControlChars.Comma) => string.IsNullOrEmpty(input) ? [] : input.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
+	public static string[] DelimitedStringToArray([NotNull] this string input, [ConstantExpected] char delimiter = ControlChars.Comma) => string.IsNullOrEmpty(input) ? [] : input.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
 
 	/// <summary>
 	/// Determines whether the end of this string instance matches the specified string when compared using the specified comparison option.
@@ -613,7 +613,7 @@ public static class StringExtensions
 	/// <returns>The indented string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
 	[Information(nameof(Indent), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static string Indent([NotNull] this string input, in int length, [ConstantExpected] in char indentationCharacter)
+	public static string Indent([NotNull] this string input, in int length, [ConstantExpected] char indentationCharacter)
 	{
 		if (input.CheckIsNotNull() is false || length <= 0)
 		{
@@ -902,7 +902,7 @@ public static class StringExtensions
 	/// <param name="delimiter">The character to use as a delimiter. <see cref="ControlChars.Comma"/> is the default.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> of strings that has been split from the input string.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, [ConstantExpected] in char delimiter = ControlChars.Comma)
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
@@ -922,7 +922,7 @@ public static class StringExtensions
 	/// <param name="delimiter">The character to use as a delimiter. Defaults to <see cref="ControlChars.Comma"/>.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{String}"/> of strings that has been split from the input string.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [ConstantExpected] in char delimiter = ControlChars.Comma)
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();

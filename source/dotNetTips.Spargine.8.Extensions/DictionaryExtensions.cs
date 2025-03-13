@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -208,7 +208,7 @@ public static class DictionaryExtensions
 	/// Dnadh[d`FP^SjNeChCvVuBXuEl^yVFUbKXsaacsCpJuxAscU: Dnadh[d`FP^SjNeChCvVuBXuEl^yVFUbKXsaacsCpJuxAscU.
 	/// </example>
 	[Information(nameof(ToDelimitedString), "David McCarter", "11/03/2020", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static string ToDelimitedString<TKey, TValue>(this IDictionary<TKey, TValue> collection, [ConstantExpected] in char delimiter = ControlChars.Comma) => FastStringBuilder.ToDelimitedString((Dictionary<TKey, TValue>)collection, delimiter);
+	public static string ToDelimitedString<TKey, TValue>(this IDictionary<TKey, TValue> collection, [ConstantExpected] char delimiter = ControlChars.Comma) => FastStringBuilder.ToDelimitedString((Dictionary<TKey, TValue>)collection, delimiter);
 
 	/// <summary>
 	/// Converts a <see cref="IDictionary{TKey, TValue}" /> to <see cref="FrozenDictionary{TKey, TValue}" />.

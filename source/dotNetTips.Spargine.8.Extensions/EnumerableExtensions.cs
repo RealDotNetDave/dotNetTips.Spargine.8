@@ -1122,8 +1122,8 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="first"/> or <paramref name="second"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(StructuralSequenceEqual), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool StructuralSequenceEqual<T>(this IEnumerable<T> first, IEnumerable<T> second)
+	[Information(nameof(StructuralSequenceEqual), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public static bool StructuralSequenceEqual<T>(this IEnumerable<T> first, in IEnumerable<T> second)
 	{
 		if (first is null || second is null)
 		{
@@ -1202,7 +1202,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(ToDelimitedString), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static string ToDelimitedString<T>(this IEnumerable<T> collection, [ConstantExpected] in char delimiter = ControlChars.Comma)
+	public static string ToDelimitedString<T>(this IEnumerable<T> collection, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		if (collection is null || collection.FastCount() == 0)
 		{

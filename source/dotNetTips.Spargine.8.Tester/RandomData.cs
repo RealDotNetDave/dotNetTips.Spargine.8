@@ -380,7 +380,7 @@ public static class RandomData
 	/// <example>Output: 65 'A'</example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(GenerateCharacter), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static char GenerateCharacter(in char minValue, in char maxValue) => (char)GenerateInteger(minValue, maxValue);
+	public static char GenerateCharacter(char minValue, char maxValue) => (char)GenerateInteger(minValue, maxValue);
 
 	/// <summary>
 	/// Generates a coordinate with random values for X, Y, and Z using the specified <typeparamref name="T"/> which must implement <see cref="ICoordinate"/>.
@@ -1119,7 +1119,7 @@ public static class RandomData
 	/// <example>Output: LBEEUMHHHK</example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(GenerateWord), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string GenerateWord(int length = 1, in char minCharacter = 'a', in char maxCharacter = 'Z')
+	public static string GenerateWord(int length = 1, char minCharacter = 'a', char maxCharacter = 'Z')
 	{
 		length = length.ArgumentInRange(lower: 1, defaultValue: 1);
 
@@ -1154,7 +1154,7 @@ public static class RandomData
 	/// <example>Output: ACRNFTPAE</example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(GenerateWord), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string GenerateWord(int minLength = 1, int maxLength = 1, in char minCharacter = 'a', in char maxCharacter = 'Z')
+	public static string GenerateWord(int minLength = 1, int maxLength = 1, char minCharacter = 'a', char maxCharacter = 'Z')
 	{
 		minLength = minLength.ArgumentInRange(1, defaultValue: 1);
 		maxLength = maxLength.ArgumentInRange(1, defaultValue: 1);

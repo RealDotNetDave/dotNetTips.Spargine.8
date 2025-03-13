@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-27-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -57,7 +57,7 @@ public sealed class DistinctConcurrentBag<T> : ConcurrentBag<T>, ICollection<T>
 	/// </summary>
 	/// <param name="collection">The collection whose elements are copied to the <see cref="DistinctConcurrentBag{T}" />.</param>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public DistinctConcurrentBag([NotNull] IEnumerable<T> collection) => collection?.ToList().ForEach(this.Add);
+	public DistinctConcurrentBag([NotNull] in IEnumerable<T> collection) => collection?.ToList().ForEach(this.Add);
 
 	/// <summary>
 	/// Adds an object to the <see cref="DistinctConcurrentBag{T}"/>.

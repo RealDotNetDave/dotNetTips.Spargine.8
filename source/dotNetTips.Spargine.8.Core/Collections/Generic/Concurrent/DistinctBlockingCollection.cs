@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="DistinctBlockingCollection.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -53,7 +53,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// Initializes a new instance of the <see cref="DistinctBlockingCollection{T}" /> class.
 	/// </summary>
 	/// <param name="collection">The collection.</param>
-	public DistinctBlockingCollection([NotNull] IEnumerable<T> collection)
+	public DistinctBlockingCollection([NotNull] in IEnumerable<T> collection)
 	{
 		if (collection?.FastCount() > 0)
 		{

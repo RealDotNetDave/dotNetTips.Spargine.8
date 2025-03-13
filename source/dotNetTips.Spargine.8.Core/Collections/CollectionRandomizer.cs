@@ -4,7 +4,7 @@
 // Created          : 11-06-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-01-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="CollectionRandomizer.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Core.Collections;
 /// The <see cref="CollectionRandomizer{T}"/> is designed to shuffle a collection and allow retrieving items sequentially with the option to repeat and reshuffle.
 /// </remarks>
 [Information(nameof(CollectionRandomizer<T>), author: "David McCarter and Kristine Tran", createdOn: "8/26/2020", Status = Status.NeedsDocumentation)]
-public sealed class CollectionRandomizer<T>([NotNull] IEnumerable<T> collection, bool repeat = false)
+public sealed class CollectionRandomizer<T>([NotNull] in IEnumerable<T> collection, bool repeat = false)
 {
 
 	/// <summary>
