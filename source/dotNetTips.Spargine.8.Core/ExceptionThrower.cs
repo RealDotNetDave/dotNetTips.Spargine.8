@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -35,35 +35,8 @@ namespace DotNetTips.Spargine.Core;
 /// </summary>
 [StackTraceHidden]
 [Information(Status = Status.UpdateDocumentation, Documentation = "https://bit.ly/SpargineExThrow")]
-public static class ExceptionThrower
+public static partial class ExceptionThrower
 {
-	/// <summary>
-	/// Creates a <see cref="FileNotFoundException"/> with a specified file name.
-	/// </summary>
-	/// <param name="fileName">The name of the file that was not found.</param>
-	/// <returns>A <see cref="FileNotFoundException"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static FileNotFoundException CreateFileNotFoundException([NotNull] string fileName)
-	{
-		return new FileNotFoundException(Resources.ErrorFileNotFound, fileName);
-	}
-
-	/// <summary>
-	/// Creates a <see cref="FileNotFoundException"/> with a specified message and file name.
-	/// </summary>
-	/// <param name="message">The error message that explains the reason for the exception. If null, a default error message is used.</param>
-	/// <param name="fileName">The name of the file that was not found.</param>
-	/// <returns>A <see cref="FileNotFoundException"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static FileNotFoundException CreateFileNotFoundException([AllowNull] string message, [NotNull] string fileName)
-	{
-		return new FileNotFoundException(message ?? Resources.ErrorFileNotFound, fileName);
-	}
-
 	/// <summary>
 	/// Returns the default value if the provided string is null; otherwise, returns the string itself.
 	/// </summary>
@@ -80,6 +53,9 @@ public static class ExceptionThrower
 	/// <param name="message">The error message that explains the reason for the exception. If null, a default error message is used.</param>
 	/// <param name="paramName">The name of the parameter that caused the current exception.</param>
 	[DoesNotReturn]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
+	[Information("Optimized ThrowArgumentException method for better performance and clarity.", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentException([AllowNull] string message, [NotNull] string paramName) => throw new ArgumentException(message ?? Resources.ErrorInvalidArgument, paramName);
 
 	/// <summary>
@@ -237,7 +213,10 @@ public static class ExceptionThrower
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
 	[Information(nameof(ThrowFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void ThrowFileNotFoundException([AllowNull] string message, [AllowNull] Exception innerException) => throw new FileNotFoundException(message ?? Resources.ErrorFileNotFound, innerException);
+	public static void ThrowFileNotFoundException([AllowNull] string message, [AllowNull] Exception innerException)
+	{
+		throw CreateFileNotFoundException(message, string.Empty, innerException);
+	}
 
 	/// <summary>
 	/// Throws a FileNotFoundException with a specified message and file name.
@@ -251,7 +230,7 @@ public static class ExceptionThrower
 	[Information(nameof(ThrowFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowFileNotFoundException([AllowNull] string message, [NotNull] string fileName)
 	{
-		throw new FileNotFoundException(message ?? Resources.ErrorFileNotFound, fileName);
+		throw CreateFileNotFoundException(message, fileName);
 	}
 
 	/// <summary>
@@ -267,7 +246,7 @@ public static class ExceptionThrower
 	[Information(nameof(ThrowFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowFileNotFoundException([AllowNull] string message, [NotNull] string fileName, [AllowNull] Exception innerException)
 	{
-		throw new FileNotFoundException(message ?? Resources.ErrorFileNotFound, fileName.ArgumentNotNullOrEmpty(true), innerException);
+		throw CreateFileNotFoundException(message, fileName, innerException);
 	}
 
 	/// <summary>
