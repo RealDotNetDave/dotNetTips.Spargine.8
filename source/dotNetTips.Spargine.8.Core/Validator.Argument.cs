@@ -4,7 +4,7 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -31,7 +31,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Class to validate method parameters.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public static partial class Validator
 {
 
@@ -98,6 +98,8 @@ public static partial class Validator
 	[Information(nameof(ArgumentEquals), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
 	public static Type ArgumentEquals([NotNull] this Type input, [NotNull] Type expectedType, string errorMessage = ControlChars.EmptyString, [CallerArgumentExpression(nameof(input))] string paramName = ControlChars.EmptyString)
 	{
+		//TODO: CHANGE TO ARGUMENTTYPEEQUALS IN V10
+
 		input = input.ArgumentNotNull();
 		expectedType = expectedType.ArgumentNotNull();
 
@@ -711,7 +713,7 @@ public static partial class Validator
 	}
 
 	/// <summary>
-	/// Validates the <see cref="Collection{T}" /> is not read only.
+	/// Validates the <see cref="Collection{T}" /> is not null.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="input">The <see cref="Collection{T}" /> to validate.</param>

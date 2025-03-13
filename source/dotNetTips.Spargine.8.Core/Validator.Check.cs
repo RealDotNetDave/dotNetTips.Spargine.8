@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="Validator.Check.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -54,6 +54,8 @@ public static partial class Validator
 	[Information(nameof(CheckEquals), "David McCarter", "1/31/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
 	public static bool CheckEquals(this Type input, Type expectedType, in bool throwException = false, string errorMessage = ControlChars.EmptyString)
 	{
+		//TODO: CHANGE TO CHECKTYPEEQUALS IN V10
+
 		var isValid = input == expectedType;
 
 		if (isValid is false && throwException)
