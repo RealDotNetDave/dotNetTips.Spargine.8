@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -894,41 +894,41 @@ public static class StringExtensions
 
 	/// <summary>
 	/// Splits the input string into a <see cref="ReadOnlyCollection{T}"/> of strings,
-	/// separated by the specified <paramref name="separator"/>.
+	/// separated by the specified <paramref name="delimiter"/>.
 	/// The <paramref name="options"/> parameter specifies whether to include empty array elements in the array returned.
 	/// </summary>
 	/// <param name="input">The string to split.</param>
 	/// <param name="options">Options for controlling the splitting operation.</param>
-	/// <param name="separator">The character to use as a separator. <see cref="ControlChars.Comma"/> is the default.</param>
+	/// <param name="delimiter">The character to use as a delimiter. <see cref="ControlChars.Comma"/> is the default.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> of strings that has been split from the input string.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, [ConstantExpected] in char separator = ControlChars.Comma)
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
 
-		return input.Split([separator], options).AsReadOnly();
+		return input.Split([delimiter], options).AsReadOnly();
 	}
 
 	/// <summary>
 	/// Splits the input string into a <see cref="ReadOnlyCollection{String}"/> of strings,
-	/// separated by the specified <paramref name="separator"/>.
+	/// separated by the specified <paramref name="delimiter"/>.
 	/// The <paramref name="options"/> parameter specifies whether to include empty array elements in the array returned.
 	/// The <paramref name="count"/> parameter specifies the maximum number of substrings to return.
 	/// </summary>
 	/// <param name="input">The string to split.</param>
 	/// <param name="options">Options for controlling the splitting operation, such as removing empty entries.</param>
 	/// <param name="count">The maximum number of substrings to return.</param>
-	/// <param name="separator">The character to use as a separator. Defaults to <see cref="ControlChars.Comma"/>.</param>
+	/// <param name="delimiter">The character to use as a delimiter. Defaults to <see cref="ControlChars.Comma"/>.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{String}"/> of strings that has been split from the input string.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [ConstantExpected] in char separator = ControlChars.Comma)
+	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
 		options = options.ArgumentDefined();
 		count = count.ArgumentInRange(lower: 1);
 
-		return Array.AsReadOnly(input.Split([separator], count, options));
+		return Array.AsReadOnly(input.Split([delimiter], count, options));
 	}
 
 	/// <summary>
@@ -940,7 +940,7 @@ public static class StringExtensions
 	/// <param name="input">The string to split.</param>
 	/// <param name="options">Options for controlling the splitting operation, such as removing empty entries.</param>
 	/// <param name="count">The maximum number of substrings to return.</param>
-	/// <param name="separator">The string to use as a separator. Defaults to <see cref="ControlChars.DefaultSeparator"/>.</param>
+	/// <param name="separator">The string to use as a delimiter. Defaults to <see cref="ControlChars.DefaultSeparator"/>.</param>
 	/// <returns>A ReadOnlyCollection{string} of strings that has been split from the input string.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull][ConstantExpected] string separator = ControlChars.DefaultSeparator)

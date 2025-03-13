@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-04-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="ExceptionExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -76,17 +76,17 @@ public static class ExceptionExtensions
 	/// Gets all messages from an <see cref="Exception"/> and its inner exceptions, concatenated into a single string.
 	/// </summary>
 	/// <param name="exception">The exception to extract messages from.</param>
-	/// <param name="separator">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
-	/// <returns>A string containing all exception messages, separated by the specified separator.</returns>
+	/// <param name="delimiter">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
+	/// <returns>A string containing all exception messages, separated by the specified delimiter.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
 	[Information(nameof(GetAllMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static string GetAllMessages(this Exception exception, [ConstantExpected] in char separator = ControlChars.Comma)
+	public static string GetAllMessages(this Exception exception, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
 		exception = exception.ArgumentNotNull();
 
 		var messages = exception.FromHierarchy(ex => ex.InnerException).Select(ex => ex.Message);
 
-		return FastStringBuilder.Join(messages, separator);
+		return FastStringBuilder.Join(messages, delimiter);
 	}
 
 	/// <summary>

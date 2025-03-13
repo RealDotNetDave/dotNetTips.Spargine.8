@@ -4,7 +4,7 @@
 // Created          : 10-08-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-01-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="DataReaderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -44,9 +44,9 @@ public static class DataReaderExtensions
 	/// </summary>
 	/// <param name="dataReader">The data reader.</param>
 	/// <param name="includeHeaderAsFirstRow">if set to <c>true</c> [include header as first row].</param>
-	/// <param name="separator">The separator.</param>
+	/// <param name="delimiter">The delimiter.</param>
 	/// <param name="convertedRows">The list of converted rows.</param>
-	private static void AddHeaderRowToCsv(IDataReader dataReader, bool includeHeaderAsFirstRow, char separator, List<string> convertedRows)
+	private static void AddHeaderRowToCsv(IDataReader dataReader, bool includeHeaderAsFirstRow, [ConstantExpected] in char delimiter, List<string> convertedRows)
 	{
 		if (includeHeaderAsFirstRow)
 		{
@@ -63,7 +63,7 @@ public static class DataReaderExtensions
 
 					if (fieldIndex < dataReader.FieldCount - 1)
 					{
-						_ = sb.Append(separator);
+						_ = sb.Append(delimiter);
 					}
 				}
 
@@ -82,16 +82,16 @@ public static class DataReaderExtensions
 	/// </summary>
 	/// <param name="dataReader">The data reader.</param>
 	/// <param name="includeHeaderAsFirstRow">if set to <c>true</c> [include header as first row].</param>
-	/// <param name="separator">The separator.</param>
+	/// <param name="delimiter">The delimiter.</param>
 	/// <returns>ReadOnlyCollection&lt;System.String&gt;.</returns>
 	[Information(nameof(ToCsv), author: "David McCarter", createdOn: "10/8/2020", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
-	public static ReadOnlyCollection<string> ToCsv([NotNull] this IDataReader dataReader, bool includeHeaderAsFirstRow, char separator = ControlChars.Comma)
+	public static ReadOnlyCollection<string> ToCsv([NotNull] this IDataReader dataReader, bool includeHeaderAsFirstRow, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
 		dataReader = dataReader.ArgumentNotNull();
 
 		var convertedRows = new List<string>();
 
-		AddHeaderRowToCsv(dataReader, includeHeaderAsFirstRow, separator, convertedRows);
+		AddHeaderRowToCsv(dataReader, includeHeaderAsFirstRow, delimiter, convertedRows);
 
 		while (dataReader.Read())
 		{
@@ -112,8 +112,8 @@ public static class DataReaderExtensions
 								value = value.Replace("\"", "\"\"", StringComparison.Ordinal);
 							}
 
-							// If separator is in value, ensure it is put in double quotes.
-							if (value.Contains(separator, StringComparison.CurrentCulture))
+							// If delimiter is in value, ensure it is put in double quotes.
+							if (value.Contains(delimiter, StringComparison.CurrentCulture))
 							{
 								value = $"\"{value}\"";
 							}
@@ -124,7 +124,7 @@ public static class DataReaderExtensions
 
 					if (fieldIndex < dataReader.FieldCount - 1)
 					{
-						_ = sb.Append(separator);
+						_ = sb.Append(delimiter);
 					}
 				}
 

@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -47,7 +47,6 @@ public static class FastStringBuilder
 	/// </summary>
 	/// <param name="bytes">The byte array to convert.</param>
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bytes"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string BytesToString([NotNull] ref readonly byte[] bytes) => bytes is null || bytes.LongLength == 0 ? ControlChars.EmptyString : BytesToString(bytes.AsSpan());
@@ -59,7 +58,7 @@ public static class FastStringBuilder
 	/// <param name="bytes">The ReadOnlySpan of bytes to convert.</param>
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static string BytesToString(ReadOnlySpan<byte> bytes)
 	{
 		if (bytes.IsEmpty)
@@ -76,7 +75,7 @@ public static class FastStringBuilder
 		{
 			foreach (var @byte in bytes)
 			{
-				_ = sb.Append(@byte.ToString("X2", CultureInfo.InvariantCulture));
+				_ = sb.AppendFormat(CultureInfo.InvariantCulture, "{0:X2}", @byte);
 			}
 
 			return sb.ToString();
@@ -169,7 +168,7 @@ public static class FastStringBuilder
 	/// <returns>A concatenated string with elements separated by <paramref name="delimiter"/> or line feeds based on <paramref name="addLineFeed"/>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Concat), "David McCarter", "2/19/2021", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string Concat([ConstantExpected] char delimiter = ControlChars.Comma, in bool addLineFeed = false, [NotNull] params string[] args)
+	public static string Concat([ConstantExpected] in char delimiter = ControlChars.Comma, in bool addLineFeed = false, [NotNull] params string[] args)
 	{
 		if (args == null || args.Length == 0)
 		{

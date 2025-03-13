@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-13-2025
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -227,16 +227,16 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// Gets all messages from an <see cref="Exception"/> and its inner exceptions, concatenated into a single string.
 	/// </summary>
 	/// <param name="exception">The exception to extract messages from.</param>
-	/// <param name="separator">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
-	/// <returns>A string containing all exception messages, separated by the specified separator.</returns>
+	/// <param name="delimiter">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
+	/// <returns>A string containing all exception messages, separated by the specified delimiter.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	internal static string GetAllMessages(this Exception exception, char separator = ControlChars.Comma)
+	internal static string GetAllMessages(this Exception exception, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
 		exception = exception.ArgumentNotNull();
 
 		var messages = exception.FromHierarchy(ex => ex.InnerException).Select(ex => ex.Message);
 
-		return FastStringBuilder.Join(messages, separator);
+		return FastStringBuilder.Join(messages, delimiter);
 	}
 
 	/// <summary>
@@ -352,7 +352,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="list">The list.</param>
 	/// <param name="delimiter">The delimiter.</param>
 	/// <returns>System.String.</returns>
-	internal static string ToDelimitedString([NotNull] this IDictionary list, char delimiter = ',')
+	internal static string ToDelimitedString([NotNull] this IDictionary list, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
 		if (string.IsNullOrEmpty(delimiter.ToString()))
 		{
@@ -393,7 +393,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="list">The list.</param>
 	/// <param name="delimiter">The delimiter (default is comma if not supplied).</param>
 	/// <returns>System.String.</returns>
-	internal static string ToDelimitedString<T>([NotNull] this IEnumerable<T> list, char delimiter = ControlChars.Comma)
+	internal static string ToDelimitedString<T>([NotNull] this IEnumerable<T> list, [ConstantExpected] in char delimiter = ControlChars.Comma)
 	{
 		if (list.FastCount() == 0)
 		{
