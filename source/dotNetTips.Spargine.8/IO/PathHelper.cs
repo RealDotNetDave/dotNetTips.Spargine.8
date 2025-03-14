@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-08-2025
+// Last Modified On : 03-14-2025
 // ***********************************************************************
 // <copyright file="PathHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -80,7 +80,7 @@ public static class PathHelper
 
 		var di = new DirectoryInfo(combinedPath);
 
-		if (createIfNotExists && di.Exists is false)
+		if (createIfNotExists && di.CheckExists() is false)
 		{
 			di.Create();
 		}

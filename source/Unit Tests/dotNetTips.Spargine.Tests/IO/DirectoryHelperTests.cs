@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-14-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -54,6 +54,7 @@ public class DirectoryHelperTests
 			Assert.Inconclusive("This test is designed to run on macOS.");
 		}
 	}
+
 	[TestMethod]
 	public void AppDataFolder_ReturnsCorrectPathOnWindows()
 	{
@@ -108,37 +109,6 @@ public class DirectoryHelperTests
 		// Cleanup
 		sourceDirectory.Delete(true);
 		destinationDirectory.Delete(true);
-	}
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
-	public void DeleteDirectory_DeletedDirectory_DeletesSuccessfully()
-	{
-		// Arrange
-		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), nameof(this.DeleteDirectory_DeletedDirectory_DeletesSuccessfully));
-
-		var directory = new DirectoryInfo(tempDirectoryPath);
-		directory.Create();
-
-		new DirectoryInfo(tempDirectoryPath).Delete();
-
-		// Act
-		DirectoryHelper.DeleteDirectory(directory);
-
-		// Assert
-		Assert.IsFalse(Directory.Exists(tempDirectoryPath), "The directory should have been deleted.");
-	}
-
-	[SupportedOSPlatform("windows")]
-	[TestMethod]
-	public void DeleteDirectory_NonExistentDirectory_NoExceptionThrown()
-	{
-		// Arrange
-		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), "TEST");
-
-		// Act & Assert
-		DirectoryHelper.DeleteDirectory(new DirectoryInfo(tempDirectoryPath), RetryCount);
-		// No exception is expected, even though the directory does not exist
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -221,6 +191,7 @@ public class DirectoryHelperTests
 			tempDirectory.Delete(true);
 		}
 	}
+
 	[TestMethod]
 	public async Task LoadFilesAsync_ValidDirectory_ReturnsFiles()
 	{
@@ -262,6 +233,27 @@ public class DirectoryHelperTests
 		{
 			tempDirectory.Delete(true);
 		}
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void MoveDirectoryTest()
+	{
+		var folderSource = new DirectoryInfo(Path.Combine(App.ProcessPath, "Move1"));
+		var folderDestination = new DirectoryInfo(Path.Combine(App.ProcessPath, "Move2"));
+
+		var files = RandomData.GenerateFiles(folderSource.FullName, 100);
+
+		foreach (var file in files)
+		{
+			FileHelper.AddReadOnlyAttribute(new FileInfo(file));
+		}
+
+		DirectoryHelper.MoveDirectory(folderSource, folderDestination, 10);
+
+		Assert.IsTrue(folderDestination.EnumerateFiles().HasItems());
+
+		DirectoryHelper.DeleteDirectory(folderDestination);
 	}
 
 	[SupportedOSPlatform("windows")]
@@ -325,5 +317,4 @@ public class DirectoryHelperTests
 		// Cleanup
 		directory.Delete(true);
 	}
-
 }

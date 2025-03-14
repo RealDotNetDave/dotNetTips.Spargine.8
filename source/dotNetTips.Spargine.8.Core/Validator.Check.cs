@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 03-14-2025
 // ***********************************************************************
 // <copyright file="Validator.Check.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -101,11 +101,11 @@ public static partial class Validator
 	/// <exception cref="DirectoryNotFoundException">Thrown if <paramref name="throwException" /> is true, <paramref name="createDirectory" /> is false, and the directory does not exist.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(CheckExists), "David McCarter", "1/31/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
-	public static bool CheckExists(this DirectoryInfo input, in bool createDirectory = true, in bool throwException = false, string errorMessage = ControlChars.EmptyString)
+	public static bool CheckExists(this DirectoryInfo input, in bool createDirectory = false, in bool throwException = false, string errorMessage = ControlChars.EmptyString)
 	{
 		input = input.ArgumentNotNull();
 
-		var isValid = input.Exists;
+		var isValid = Directory.Exists(input.FullName);
 
 		if (isValid is false && throwException)
 		{
@@ -114,8 +114,7 @@ public static partial class Validator
 		else if (isValid is false && createDirectory)
 		{
 			input.Create();
-
-			isValid = input.Exists;
+			isValid = Directory.Exists(input.FullName);
 		}
 
 		return isValid;

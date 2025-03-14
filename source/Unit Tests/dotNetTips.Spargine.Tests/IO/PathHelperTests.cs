@@ -4,7 +4,7 @@
 // Created          : 06-24-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-24-2024
+// Last Modified On : 03-14-2025
 // ***********************************************************************
 // <copyright file="PathHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -16,6 +16,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.IO;
 using DotNetTips.Spargine.Tester;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -43,21 +44,21 @@ public class PathHelperTests
 	public void CombinePaths_FourStrings_CreateIfNotExistsTrue_DirectoryCreated()
 	{
 		var result = PathHelper.CombinePaths(true, this._testDirectory, "SubDirectory", "SubSubDirectory", "SubSubSubDirectory");
-		Assert.IsTrue(result.Exists);
+		Assert.IsTrue(result.CheckExists());
 	}
 
 	[TestMethod]
 	public void CombinePaths_ParamsStringArray_CreateIfNotExistsFalse_DirectoryNotCreated()
 	{
 		var result = PathHelper.CombinePaths(false, this._testDirectory, "SubDirectory1", "SubDirectory2");
-		Assert.IsFalse(result.Exists);
+		Assert.IsFalse(result.CheckExists());
 	}
 
 	[TestMethod]
 	public void CombinePaths_ParamsStringArray_CreateIfNotExistsTrue_DirectoryCreated()
 	{
 		var result = PathHelper.CombinePaths(true, this._testDirectory, "SubDirectory1", "SubDirectory2");
-		Assert.IsTrue(result.Exists);
+		Assert.IsTrue(result.CheckExists());
 	}
 
 	[TestMethod]
@@ -71,14 +72,14 @@ public class PathHelperTests
 	public void CombinePaths_ThreeStrings_CreateIfNotExistsTrue_DirectoryCreated()
 	{
 		var result = PathHelper.CombinePaths(true, this._testDirectory, "SubDirectory", "SubSubDirectory");
-		Assert.IsTrue(result.Exists);
+		Assert.IsTrue(result.CheckExists());
 	}
 
 	[TestMethod]
 	public void CombinePaths_TwoStrings_CreateIfNotExistsTrue_DirectoryCreated()
 	{
 		var result = PathHelper.CombinePaths(true, this._testDirectory, "SubDirectory");
-		Assert.IsTrue(result.Exists);
+		Assert.IsTrue(result.CheckExists());
 	}
 
 	[TestMethod]

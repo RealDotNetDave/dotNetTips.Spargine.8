@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-14-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -131,12 +131,13 @@ public static class DirectoryHelper
 	[Information(nameof(CopyDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void CopyDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, bool overwrite = true)
 	{
-		if (source.CheckExists(createDirectory: false) == false)
-		{
-			return;
-		}
+		source = source.ArgumentExists();
+		destination = destination.ArgumentNotNull();
 
-		_ = destination.ArgumentNotNull().CheckExists();
+		if (destination.CheckExists(createDirectory: true) == false)
+		{
+			ExceptionThrower.ThrowDirectoryNotFoundException(Resources.CouldNotCreateDirectory, destination);
+		}
 
 		var files = source.GetFiles();
 		var subdirs = source.GetDirectories();
@@ -175,13 +176,7 @@ public static class DirectoryHelper
 	public static void DeleteDirectory([NotNull] DirectoryInfo path, [ConstantExpected(Min = 1, Max = byte.MaxValue)] byte retries = 5, bool recursive = true)
 	{
 		//TODO: FOR VERSION 10, RETURN SIMPLERESULT.
-
-		if (path.CheckExists(createDirectory: false) == false)
-		{
-			return;
-		}
-
-		if (path.Exists is false)
+		if (path.CheckExists() == false)
 		{
 			return;
 		}
@@ -192,7 +187,12 @@ public static class DirectoryHelper
 		// that prevent them from being deleted. Set those attributes to be normal
 		SetFileAttributesToNormal(path);
 
-		_ = ExecutionHelper.ProgressiveRetry(() => path.Delete(recursive), retryCount: retries, retryWaitMilliseconds: 5);
+		var result = ExecutionHelper.ProgressiveRetry(() => path.Delete(recursive), retryCount: retries, retryWaitMilliseconds: 5);
+
+		if (result.Status != ResultStatus.Succeeded)
+		{
+			ExceptionThrower.ThrowIOException($"Directory could not be deleted after {retries} retries.");
+		}
 	}
 
 	/// <summary>
@@ -220,7 +220,7 @@ public static class DirectoryHelper
 
 		var options = new EnumerationOptions() { IgnoreInaccessible = true, RecurseSubdirectories = searchOption == SearchOption.AllDirectories };
 
-		var tasks = directories.Where(directory => directory.Exists)
+		var tasks = directories.Where(directory => directory.CheckExists())
 			.Select(directory => Task.Run(() => directory.GetFiles(searchPattern, options), cancellationToken))
 			.ToList();
 
@@ -343,16 +343,16 @@ public static class DirectoryHelper
 	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static void MoveDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, [ConstantExpected(Min = 1, Max = byte.MaxValue)] byte retries = 5)
 	{
-		if (source.CheckExists(createDirectory: false) == false)
-		{
-			return;
-		}
+		source = source.ArgumentExists();
+		destination = destination.ArgumentNotNull();
 
 		retries = retries.ArgumentInRange(1, upper: byte.MaxValue, errorMessage: Resources.RetriesAreLimitedTo255);
 
-		if (destination.ArgumentNotNull().CheckExists(throwException: true))
+		var result = ExecutionHelper.ProgressiveRetry(() => Directory.Move(source.FullName, destination.FullName), retryCount: 3, retryWaitMilliseconds: 5);
+
+		if (result.Status != ResultStatus.Succeeded)
 		{
-			_ = ExecutionHelper.ProgressiveRetry(() => Directory.Move(source.FullName, destination.FullName), retryCount: 3, retryWaitMilliseconds: 5);
+			ExceptionThrower.ThrowIOException($"Directory could not be moved after {retries} retries.");
 		}
 	}
 
@@ -365,7 +365,7 @@ public static class DirectoryHelper
 	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
 	public static void RemoveAttributes([NotNull] DirectoryInfo path, in FileAttributes attributesToRemove)
 	{
-		if (path.CheckExists(createDirectory: false) == false)
+		if (path.CheckExists() == false)
 		{
 			return;
 		}
@@ -396,11 +396,7 @@ public static class DirectoryHelper
 	public static bool SafeDirectorySearch([NotNull] DirectoryInfo path, SearchOption searchOption = SearchOption.TopDirectoryOnly, [NotNull] params string[] searchPatterns)
 	{
 		//TODO: CHANGE TO SafeHasFoldersOrFiles IN V10
-
-		if (path.CheckExists(createDirectory: false) == false)
-		{
-			return false;
-		}
+		path = path.ArgumentExists();
 
 		searchOption = searchOption.ArgumentDefined();
 		searchPatterns = searchPatterns.ArgumentNotNull();
@@ -512,7 +508,7 @@ public static class DirectoryHelper
 
 		foreach (var directory in directories)
 		{
-			if (directory.Exists)
+			if (directory.CheckExists())
 			{
 				var directoryFiles = directory.GetFiles(searchPattern, options);
 

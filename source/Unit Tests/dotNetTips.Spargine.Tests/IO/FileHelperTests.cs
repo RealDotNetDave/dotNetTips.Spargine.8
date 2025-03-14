@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-14-2025
 // ***********************************************************************
 // <copyright file="FileHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -126,7 +126,7 @@ public class FileHelperTests
 		}
 		finally
 		{
-			if (destinationDir.Exists)
+			if (destinationDir.CheckExists())
 			{
 				destinationDir.Delete(true);
 			}
@@ -162,7 +162,7 @@ public class FileHelperTests
 		}
 		finally
 		{
-			if (destinationDir.Exists)
+			if (destinationDir.CheckExists())
 			{
 				destinationDir.Delete(true);
 			}
@@ -260,7 +260,7 @@ public class FileHelperTests
 		var sourceFile = new FileInfo(RandomData.GenerateTempFile(FileLength));
 		var destinationDir = new DirectoryInfo(Path.Combine(App.ExecutingFolder(), nameof(this.CopyFileWithProgress_Success_Test)));
 
-		if (!destinationDir.Exists)
+		if (!destinationDir.CheckExists())
 		{
 			destinationDir.Create();
 		}

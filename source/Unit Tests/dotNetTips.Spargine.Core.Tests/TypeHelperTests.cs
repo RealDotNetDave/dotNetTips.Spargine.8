@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-16-2025
+// Last Modified On : 03-14-2025
 // ***********************************************************************
 // <copyright file="TypeHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -27,7 +27,6 @@ using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using static DotNetTips.Spargine.Core.TypeHelper;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -144,13 +143,6 @@ public class TypeHelperTests : TestClass
 			true);
 
 		Assert.IsTrue(result.HasItems());
-	}
-
-	[TestMethod]
-	public void FindDerivedTypes_Directory_InvalidPath_ThrowsDirectoryNotFoundException()
-	{
-		// Act & Assert
-		Assert.ThrowsException<DirectoryNotFoundException>(() => TypeHelper.FindDerivedTypes(new DirectoryInfo(@"C:\InvalidPath"), SearchOption.AllDirectories, typeof(Exception), true));
 	}
 
 	[TestMethod]

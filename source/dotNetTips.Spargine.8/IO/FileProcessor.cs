@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-03-2025
+// Last Modified On : 03-14-2025
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -118,7 +118,7 @@ public class FileProcessor
 				{
 					var newFileName = new FileInfo(fileName: tempFile.FullName.Replace(tempFile.Directory.Root.FullName, destinationPath, StringComparison.InvariantCulture));
 
-					if (newFileName.Directory.Exists is false)
+					if (newFileName.Directory.CheckExists() is false)
 					{
 						newFileName.Directory.Create();
 					}
@@ -286,7 +286,7 @@ public class FileProcessor
 
 		foreach (var folder in folders.RemoveNulls())
 		{
-			if (folder.Exists)
+			if (folder.CheckExists())
 			{
 				try
 				{

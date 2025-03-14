@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 03-14-2025
 // ***********************************************************************
 // <copyright file="FastSortedList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -65,7 +65,7 @@ public class FastSortedList<T> : List<T>
 	/// This constructor allows the user to specify a custom comparer for sorting the elements in the list.
 	/// </remarks>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public FastSortedList(IComparer<T> comparer) => this._comparer = comparer;
+	public FastSortedList(in IComparer<T> comparer) => this._comparer = comparer;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class.
@@ -90,7 +90,7 @@ public class FastSortedList<T> : List<T>
 	/// </remarks>
 	/// <seealso cref="FastSortedList{T}(int, IComparer{T})"/>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public FastSortedList([ConstantExpected(Min = 1, Max = int.MaxValue)] int capacity) : this(capacity, Comparer<T>.Default)
+	public FastSortedList([ConstantExpected(Min = 1, Max = int.MaxValue)] in int capacity) : this(capacity, Comparer<T>.Default)
 	{
 	}
 
@@ -104,7 +104,7 @@ public class FastSortedList<T> : List<T>
 	/// </remarks>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public FastSortedList([NotNull] in IEnumerable<T> collection, IComparer<T> comparer) : base(collection) => this._comparer = comparer;
+	public FastSortedList([NotNull] in IEnumerable<T> collection, in IComparer<T> comparer) : base(collection) => this._comparer = comparer;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="FastSortedList{T}"/> class that is empty and has the specified initial capacity.
@@ -115,7 +115,7 @@ public class FastSortedList<T> : List<T>
 	/// This constructor initializes the list with the specified initial capacity and uses the specified comparer for sorting.
 	/// </remarks>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public FastSortedList([ConstantExpected(Min = 1, Max = int.MaxValue)] int capacity, IComparer<T> comparer) : base(capacity) => this._comparer = comparer;
+	public FastSortedList([ConstantExpected(Min = 1, Max = int.MaxValue)] in int capacity, in IComparer<T> comparer) : base(capacity) => this._comparer = comparer;
 
 	/// <summary>
 	/// Sorts the items in the collection if they have not been sorted yet.

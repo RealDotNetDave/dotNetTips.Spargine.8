@@ -61,6 +61,15 @@ namespace DotNetTips.Spargine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not create directory..
+        /// </summary>
+        internal static string CouldNotCreateDirectory {
+            get {
+                return ResourceManager.GetString("CouldNotCreateDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid file path in zip archive..
         /// </summary>
         internal static string ErrorInvalidFilePathZipArchive {

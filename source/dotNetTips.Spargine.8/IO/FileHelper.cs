@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-07-2025
+// Last Modified On : 03-14-2025
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -175,7 +175,11 @@ public static class FileHelper
 	public static void AddReadOnlyAttribute([NotNull] FileInfo file)
 	{
 		file = file.ArgumentNotNull();
-		file.Attributes |= FileAttributes.ReadOnly;
+
+		if (file.Exists)
+		{
+			file.Attributes |= FileAttributes.ReadOnly;
+		}
 	}
 
 	/// <summary>
@@ -485,9 +489,11 @@ public static class FileHelper
 	{
 		remoteUri = remoteUri.ArgumentNotNull();
 
-		if (destination.ArgumentNotNull().Exists is false)
+		var result = destination.ArgumentNotNull().CheckExists(createDirectory: true);
+
+		if (result == false)
 		{
-			destination.Create();
+			ExceptionThrower.ThrowDirectoryNotFoundException(Resources.CouldNotCreateDirectory, destination);
 		}
 
 		var pathName = destination.FullName;

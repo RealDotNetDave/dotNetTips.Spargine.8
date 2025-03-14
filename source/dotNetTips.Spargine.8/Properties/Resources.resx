@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -146,5 +146,8 @@
   </data>
   <data name="FailedToCreateTemporaryFile" xml:space="preserve">
     <value>Failed to create temporary file.</value>
+  </data>
+  <data name="CouldNotCreateDirectory" xml:space="preserve">
+    <value>Could not create directory.</value>
   </data>
 </root>
