@@ -6,7 +6,7 @@
 		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 		<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-		<AssemblyVersion>2025.8.2.28</AssemblyVersion>
+		<AssemblyVersion>2025.8.3.14</AssemblyVersion>
 		<Authors>David McCarter</Authors>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
@@ -24,7 +24,7 @@
 		<EnablePackageValidation>false</EnablePackageValidation>
 		<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-		<FileVersion>2025.8.2.28</FileVersion>
+		<FileVersion>2025.8.3.14</FileVersion>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
@@ -51,7 +51,7 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>DotNetTips.Spargine.Benchmarking</Title>
-		<Version>2025.8.2.28</Version>
+		<Version>2025.8.3.14</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -68,8 +68,8 @@
 	<ItemGroup>
 	  <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
 	  <PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.14.0" />
-	  <PackageReference Include="DotNetTips.Spargine.8.Extensions" Version="2025.8.3.11" />
-	  <PackageReference Include="DotNetTips.Spargine.8.Tester" Version="2025.8.3.11" />
+	  <PackageReference Include="DotNetTips.Spargine.8.Extensions" Version="2025.8.3.14" />
+	  <PackageReference Include="DotNetTips.Spargine.8.Tester" Version="2025.8.3.14" />
 	</ItemGroup>
 
 	<ItemGroup>
