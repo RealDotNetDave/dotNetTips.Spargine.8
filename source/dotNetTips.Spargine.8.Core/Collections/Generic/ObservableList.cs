@@ -78,8 +78,12 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	/// comparing values in the set, or null to use the default <see cref="IEqualityComparer{T}"/>
 	/// implementation for the set type.</param>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public ObservableList(in IEnumerable<T> collection, IEqualityComparer<T> comparer) => this._set =
-		new HashSet<T>(collection, comparer);
+	public ObservableList(in IEnumerable<T> collection, IEqualityComparer<T> comparer)
+	{
+		this._set =
+				new HashSet<T>(collection, comparer);
+
+	}
 
 	/// <summary>
 	/// Occurs when the contents of the collection changes.
