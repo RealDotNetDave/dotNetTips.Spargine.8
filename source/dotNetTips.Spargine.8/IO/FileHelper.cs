@@ -163,7 +163,11 @@ public static class FileHelper
 	public static void AddAttributes([NotNull] FileInfo file, in FileAttributes attributesToAdd)
 	{
 		file = file.ArgumentNotNull();
-		file.Attributes |= attributesToAdd;
+
+		if (file.Exists)
+		{
+			file.Attributes |= attributesToAdd;
+		}
 	}
 
 	/// <summary>
@@ -594,7 +598,10 @@ public static class FileHelper
 	{
 		file = file.ArgumentNotNull();
 
-		file.Attributes &= ~attributesToRemove;
+		if (file.Exists)
+		{
+			file.Attributes &= ~attributesToRemove;
+		}
 	}
 
 	/// <summary>
@@ -607,7 +614,10 @@ public static class FileHelper
 	{
 		file = file.ArgumentNotNull();
 
-		file.Attributes &= ~FileAttributes.ReadOnly;
+		if (file.Exists)
+		{
+			file.Attributes &= ~FileAttributes.ReadOnly;
+		}
 	}
 
 	/// <summary>
