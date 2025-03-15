@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -103,8 +103,8 @@ public static class DictionaryExtensions
 	/// <returns><c>true</c> if at least one item was added to the dictionary; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/>, <paramref name="items"/>, <paramref name="keyFunction"/>, or <paramref name="valueFunction"/> is null.</exception>
 	[DebuggerStepThrough]
-	[Information(nameof(AddRange), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> collection, IEnumerable<T> items, Func<T, TKey> keyFunction, Func<T, TValue> valueFunction)
+	[Information(nameof(AddRange), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public static bool AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> collection, in IEnumerable<T> items, Func<T, TKey> keyFunction, Func<T, TValue> valueFunction)
 		where TKey : notnull
 		where TValue : notnull
 	{
@@ -113,8 +113,13 @@ public static class DictionaryExtensions
 			return false;
 		}
 
+		if (items.CheckItemsExists() is false)
+		{
+			return false;
+		}
+
+
 		keyFunction = keyFunction.ArgumentNotNull();
-		items = items.ArgumentItemsExists();
 		collection = collection.ArgumentNotNull();
 
 		var added = false;

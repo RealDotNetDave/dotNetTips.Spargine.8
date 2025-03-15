@@ -4,7 +4,7 @@
 // Created          : 02-24-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-24-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="ConcurrentBagExtensions.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -34,10 +34,10 @@ public static class ConcurrentBagExtensions
 	/// <param name="items">The items to add to the bag. Must not be null.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bag"/> or <paramref name="items"/> is null.</exception>
 	[Information(nameof(AddRange), "David McCarter", "2/24/2025", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public static void AddRange<T>(this ConcurrentBag<T> bag, IEnumerable<T> items)
+	public static void AddRange<T>(this ConcurrentBag<T> bag, in IEnumerable<T> items)
 	{
 		bag = bag.ArgumentNotNull();
-		items = items.ArgumentNotNull();
+		_ = items.ArgumentNotNull();
 
 		foreach (var item in items)
 		{

@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -262,9 +262,9 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.Person.</returns>
 	[return: NotNull]
 	[Information(nameof(ToPerson), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static Person<Address> ToPerson([NotNull] ValueTypes.Person<ValueTypes.Address> person)
+	public static Person<Address> ToPerson([NotNull] in ValueTypes.Person<ValueTypes.Address> person)
 	{
-		person = person.ArgumentNotNull();
+		_ = person.ArgumentNotNull();
 
 		Person<Address> newPerson = new()
 		{
@@ -295,9 +295,9 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <returns>A new instance of <see cref="Person{TAddress}"/> based on the provided <see cref="PersonRecord"/>.</returns>
 	[return: NotNull]
 	[Information(nameof(ToPerson), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static Person<Address> ToPerson([NotNull] PersonRecord person)
+	public static Person<Address> ToPerson([NotNull] in PersonRecord person)
 	{
-		person = person.ArgumentNotNull();
+		_ = person.ArgumentNotNull();
 
 		Person<Address> newPerson = new(person.Email, person.Id)
 		{

@@ -4,7 +4,7 @@
 // Created          : 02-14-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-02-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="ListExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -88,13 +88,13 @@ public static class ListExtensions
 	/// <returns>The updated list with the items added if they did not already exist.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static List<T> AddRangeIfNotExists<T>([NotNull] this List<T> collection, [NotNull] IEnumerable<T> items)
+	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static List<T> AddRangeIfNotExists<T>([NotNull] this List<T> collection, [NotNull] in IEnumerable<T> items)
 	{
 		// TODO: CHANGE TO VOID AT THE END OF 2025 TO WORK LIKE ADDRANGE
 
 		collection = collection.ArgumentNotNull();
-		items = items.ArgumentNotNull();
+		_ = items.ArgumentNotNull();
 
 		foreach (var item in items)
 		{

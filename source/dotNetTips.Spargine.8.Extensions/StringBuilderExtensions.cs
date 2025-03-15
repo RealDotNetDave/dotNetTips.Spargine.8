@@ -4,7 +4,7 @@
 // Created          : 05-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="StringBuilderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -166,8 +166,8 @@ public static class StringBuilderExtensions
 	/// sb.AppendValues(",", values);
 	/// </code>
 	/// </example>
-	[Information("Original code from efcore-master on GitHub.", author: "David McCarter", createdOn: "7/1/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static void AppendValues([NotNull] this StringBuilder sb, string separator, [NotNull] IEnumerable<string> values)
+	[Information("Original code from efcore-master on GitHub.", author: "David McCarter", createdOn: "7/1/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static void AppendValues([NotNull] this StringBuilder sb, string separator, [NotNull] in IEnumerable<string> values)
 	{
 		sb = sb.ArgumentNotNull();
 

@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -557,7 +557,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <param name="collection">The collection to initialize from.</param>
 	/// <exception cref="ArgumentNullException">Thrown when the collection is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private void InitializeFromCollection([NotNull] IEnumerable<T> collection)
+	private void InitializeFromCollection([NotNull] in IEnumerable<T> collection)
 	{
 		collection.ArgumentNotNull().ToList().ForEach(item => this.AddInternal(item, this._comparer.GetHashCode(item), false));
 

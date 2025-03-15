@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -226,9 +226,9 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
 	[return: NotNull]
 	[Information(nameof(ToPersonRecord), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static PersonRecord ToPersonRecord([NotNull] Person<Address> person)
+	public static PersonRecord ToPersonRecord([NotNull] in Person<Address> person)
 	{
-		person = person.ArgumentNotNull();
+		_ = person.ArgumentNotNull();
 
 		PersonRecord newPerson = new()
 		{

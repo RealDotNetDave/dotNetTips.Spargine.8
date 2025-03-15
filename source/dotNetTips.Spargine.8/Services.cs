@@ -4,7 +4,7 @@
 // Created          : 03-15-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-26-2024
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="Services.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -198,14 +198,14 @@ public static class Services
 	/// </summary>
 	/// <param name="requests">The collection of service action requests.</param>
 	[Information(nameof(StartServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static void StartServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StartService(request.ServiceName));
+	public static void StartServices([NotNull] in IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StartService(request.ServiceName));
 
 	/// <summary>
 	/// Starts or stops the specified services based on the action requests.
 	/// </summary>
 	/// <param name="requests">The collection of service action requests, indicating whether to start or stop each service.</param>
 	[Information(nameof(StartStopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static void StartStopServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request =>
+	public static void StartStopServices([NotNull] in IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request =>
 		{
 			if (request.ServiceActionRequest == ServiceActionRequest.Start)
 			{
@@ -258,6 +258,6 @@ public static class Services
 	/// </summary>
 	/// <param name="requests">The collection of service action requests.</param>
 	[Information(nameof(StopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public static void StopServices([NotNull] IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StopService(request.ServiceName));
+	public static void StopServices([NotNull] in IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StopService(request.ServiceName));
 
 }

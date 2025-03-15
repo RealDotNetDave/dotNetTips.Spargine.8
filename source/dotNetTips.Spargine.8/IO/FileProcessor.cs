@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-14-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -91,7 +91,7 @@ public class FileProcessor
 	/// </code>
 	/// </example>
 	[Information(nameof(CopyFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public int CopyFiles([NotNull] IEnumerable<FileInfo> files, [NotNull] DirectoryInfo destination)
+	public int CopyFiles([NotNull] in IEnumerable<FileInfo> files, [NotNull] DirectoryInfo destination)
 	{
 		//TODO: RENAME TO "CopyFilesWithOriginalPath" IN V10
 
@@ -189,7 +189,7 @@ public class FileProcessor
 	/// </code>
 	/// </example>
 	[Information(nameof(DeleteFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
-	public int DeleteFiles([NotNull] IEnumerable<FileInfo> files)
+	public int DeleteFiles([NotNull] in IEnumerable<FileInfo> files)
 	{
 		if (files.HasItems() is false)
 		{

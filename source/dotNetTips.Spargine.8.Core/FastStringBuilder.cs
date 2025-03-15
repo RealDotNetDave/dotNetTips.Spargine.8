@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -276,8 +276,8 @@ public static class FastStringBuilder
 	/// <param name="values">The collection of strings to join.</param>
 	/// <returns>A single string with the values joined by the delimiter.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Join), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public static string Join([NotNull] IEnumerable<string> values, [ConstantExpected] char delimiter = ControlChars.Comma)
+	[Information(nameof(Join), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static string Join([NotNull] in IEnumerable<string> values, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		if (values is null || values.Any() == false)
 		{
@@ -315,8 +315,8 @@ public static class FastStringBuilder
 	/// <param name="values">The collection of strings to join.</param>
 	/// <returns>A single string with the values joined by the delimiter.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(Join), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
-	public static string Join([NotNull] IEnumerable<string> values, string delimiter = ControlChars.CommaSpace)
+	[Information(nameof(Join), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	public static string Join([NotNull] in IEnumerable<string> values, string delimiter = ControlChars.CommaSpace)
 	{
 		if (values?.Any() != true)
 		{
