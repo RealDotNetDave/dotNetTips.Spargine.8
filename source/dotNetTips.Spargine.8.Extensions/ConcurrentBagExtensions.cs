@@ -33,7 +33,7 @@ public static class ConcurrentBagExtensions
 	/// <param name="bag">The <see cref="ConcurrentBag{T}"/> to which to add items. Must not be null.</param>
 	/// <param name="items">The items to add to the bag. Must not be null.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bag"/> or <paramref name="items"/> is null.</exception>
-	[Information(nameof(AddRange), "David McCarter", "2/24/2025", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddRange), "David McCarter", "2/24/2025", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static void AddRange<T>(this ConcurrentBag<T> bag, in IEnumerable<T> items)
 	{
 		bag = bag.ArgumentNotNull();
@@ -53,7 +53,7 @@ public static class ConcurrentBagExtensions
 	/// <param name="items">The items to remove from the bag. Must not be null.</param>
 	/// <returns>A new <see cref="ConcurrentBag{T}"/> with the specified items removed.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bag"/> or <paramref name="items"/> is null.</exception>
-	[Information(nameof(RemoveRange), "David McCarter", "2/24/2025", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(RemoveRange), "David McCarter", "2/24/2025", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static ConcurrentBag<T> RemoveRange<T>(this ConcurrentBag<T> bag, IEnumerable<T> items)
 	{
 		bag = bag.ArgumentNotNull();
@@ -79,7 +79,7 @@ public static class ConcurrentBagExtensions
 	/// <param name="bag">The <see cref="ConcurrentBag{T}"/> to convert. Must not be null.</param>
 	/// <returns>A <see cref="List{T}"/> containing the elements of the bag.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="bag"/> is null.</exception>
-	[Information(nameof(ToList), "David McCarter", "2/24/2025", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Benchmark, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(ToList), "David McCarter", "2/24/2025", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static List<T> ToList<T>(this ConcurrentBag<T> bag)
 	{
 		bag = bag.ArgumentNotNull();
