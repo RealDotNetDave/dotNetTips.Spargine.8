@@ -338,11 +338,8 @@ public static partial class TypeHelper
 	/// <returns><c>true</c> if the specified object is the same instance as the provided instance; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="value"/> or <paramref name="instance"/> is null.</exception>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static bool DoesObjectEqualInstance([NotNull] object value, [NotNull] object instance)
+	public static bool DoesObjectEqualInstance([NotNull] in object value, [NotNull] in object instance)
 	{
-		value = value.ArgumentNotNull();
-		instance = instance.ArgumentNotNull();
-
 		return ReferenceEquals(value, instance);
 	}
 
@@ -369,10 +366,10 @@ public static partial class TypeHelper
 	/// <param name="baseType">The base type to find derived types of.</param>
 	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
 	/// <returns>A read-only collection of types that are derived from the specified base type.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineApril2022", Status = Status.Available)]
-	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
+	[Information(UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineApril2022", Status = Status.Available)]
+	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] in AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
-		currentDomain = currentDomain.ArgumentNotNull();
+		_ = currentDomain.ArgumentNotNull();
 		baseType = baseType.ArgumentNotNull();
 
 		//USING SPAN CAUSES ISSUES, FrozenSet is slower.
@@ -475,7 +472,7 @@ public static partial class TypeHelper
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="json"/> is null or empty.</exception>
 	/// <exception cref="JsonException">Thrown if the JSON is invalid or the deserialization fails.</exception>
 	[Information(nameof(FromJson), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static T FromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] in string json)
+	public static T FromJson<T>([NotNull][StringSyntax(StringSyntaxAttribute.Json)] string json)
 		where T : class => JsonSerializer.Deserialize<T>(json);
 
 	/// <summary>
@@ -706,9 +703,9 @@ public static partial class TypeHelper
 	/// <param name="length">The number of generic arguments to consider.</param>
 	/// <param name="options">Display name options to customize the output.</param>
 	[Information(nameof(ProcessGenericType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, in int length, DisplayNameOptions options)
+	public static void ProcessGenericType(in StringBuilder builder, Type type, Type[] genericArguments, int length, DisplayNameOptions options)
 	{
-		builder = builder.ArgumentNotNull();
+		_ = builder.ArgumentNotNull();
 		type = type.ArgumentNotNull();
 		genericArguments = genericArguments.ArgumentNotNull();
 

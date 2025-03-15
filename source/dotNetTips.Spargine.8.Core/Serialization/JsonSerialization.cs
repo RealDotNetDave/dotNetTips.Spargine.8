@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -173,7 +173,7 @@ public static class JsonSerialization
 	/// <param name="expected">The expected.</param>
 	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool JsonEqual([NotNull] string actual, in string expected)
+	public static bool JsonEqual([NotNull] string actual, string expected)
 	{
 		actual = actual.ArgumentNotNullOrEmpty();
 

@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="ExecutionHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -44,7 +44,7 @@ public static class ExecutionHelper
 	/// <param name="attempts">The current number of attempts made.</param>
 	/// <returns>The calculated delay time in milliseconds.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private static int CalculateDelay([ConstantExpected(Min = 1, Max = int.MaxValue)] int retryWaitMilliseconds, [ConstantExpected(Min = 1, Max = int.MaxValue)] in int attempts) => retryWaitMilliseconds * attempts;
+	private static int CalculateDelay([ConstantExpected(Min = 1, Max = int.MaxValue)] int retryWaitMilliseconds, [ConstantExpected(Min = 1, Max = int.MaxValue)] int attempts) => retryWaitMilliseconds * attempts;
 
 	/// <summary>
 	/// Provides utility methods for executing operations with retry logic, allowing for progressive delays between retries.

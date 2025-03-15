@@ -4,7 +4,7 @@
 // Created          : 01-10-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="CountryRepository.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -153,7 +153,7 @@ public static class CountryRepository
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ValidatePhoneNumber), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static bool ValidatePhoneNumber([NotNull] CountryName countryName, in string phoneNumber, bool validateCountryCode = false)
+	public static bool ValidatePhoneNumber([NotNull] CountryName countryName, string phoneNumber, bool validateCountryCode = false)
 	{
 		var country = GetCountry(countryName.ArgumentNotNull());
 
@@ -197,7 +197,7 @@ public static class CountryRepository
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ValidatePostalCode), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static PostalCodeState ValidatePostalCode([NotNull] CountryName countryName, in string postalCode)
+	public static PostalCodeState ValidatePostalCode([NotNull] CountryName countryName, string postalCode)
 	{
 		var country = GetCountry(countryName.ArgumentNotNull());
 

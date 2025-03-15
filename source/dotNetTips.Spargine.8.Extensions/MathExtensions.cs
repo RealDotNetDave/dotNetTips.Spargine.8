@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 10-27-2024
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="MathExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -34,7 +34,7 @@ public static class MathExtensions
 	/// <returns>The sum of the input value and the specified number.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Add), author: "David McCarter", createdOn: "7/19/2022", Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static double Add(this in int input, in int add) => input + add;
+	public static double Add(this int input, int add) => input + add;
 
 	/// <summary>
 	/// Calculates the percentage difference between two <see cref="TimeSpan" /> values.
@@ -54,7 +54,7 @@ public static class MathExtensions
 	/// <returns>The percentage difference between the first and second integer values.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(CalculatePercent), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static double CalculatePercent(this in int first, in int second) => (second - first) / Math.Abs(first) * 100;
+	public static double CalculatePercent(this int first, int second) => (second - first) / Math.Abs(first) * 100;
 
 	/// <summary>
 	/// Calculates the percentage difference between two double values.
@@ -85,7 +85,7 @@ public static class MathExtensions
 	/// This method efficiently checks for primality by eliminating divisible numbers early.</remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(IsPrime), author: "David McCarter", createdOn: "7/15/2022", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool IsPrime(this in int number)
+	public static bool IsPrime(this int number)
 	{
 		if (number < 2)
 		{
@@ -141,7 +141,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified double value, rounded to the specified number of fractional digits.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static int Round(this in double value, in int digits) => Convert.ToInt32(Math.Round(value, digits));
+	public static int Round(this in double value, int digits) => Convert.ToInt32(Math.Round(value, digits));
 
 	/// <summary>
 	/// Rounds the specified double value using the specified rounding convention.
@@ -167,7 +167,7 @@ public static class MathExtensions
 	/// <returns>The integer value that is closest to the specified decimal value, rounded to the specified number of fractional digits.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static int Round(this in decimal value, in int digits) => Convert.ToInt32(Math.Round(value, digits));
+	public static int Round(this in decimal value, int digits) => Convert.ToInt32(Math.Round(value, digits));
 
 	/// <summary>
 	/// Rounds the specified decimal value using the specified rounding convention.
@@ -195,7 +195,7 @@ public static class MathExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static int Round(this in double value, in int digits, MidpointRounding mode)
+	public static int Round(this in double value, int digits, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
 
@@ -212,7 +212,7 @@ public static class MathExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="mode" /> is not a valid <see cref="MidpointRounding" /> value.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Round), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static int Round(this in decimal value, in int digits, MidpointRounding mode)
+	public static int Round(this in decimal value, int digits, MidpointRounding mode)
 	{
 		mode = mode.ArgumentDefined(nameof(mode));
 
@@ -227,6 +227,6 @@ public static class MathExtensions
 	/// <returns>The difference between the input value and the specified number.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(Subtract), author: "David McCarter", createdOn: "7/19/2022", Status = Status.Available, Documentation = "https://bit.ly/SpargineNov2022")]
-	public static double Subtract(this in int input, in int subtract) => input - subtract;
+	public static double Subtract(this int input, int subtract) => input - subtract;
 
 }

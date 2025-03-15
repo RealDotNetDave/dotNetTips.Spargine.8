@@ -4,7 +4,7 @@
 // Created          : 08-03-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="UlidGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -55,7 +55,7 @@ public static class UlidGenerator
 	/// <param name="chars">The character array to store the encoded characters.</param>
 	/// <param name="charIndex">The starting index in the character array.</param>
 	/// <param name="length">The number of bytes to encode.</param>
-	private static void EncodeBase32(in ReadOnlySpan<byte> bytes, Span<char> chars, in int charIndex, in int length)
+	private static void EncodeBase32(in ReadOnlySpan<byte> bytes, Span<char> chars, int charIndex, int length)
 	{
 		var byteIndex = 0;
 		var bitIndex = 0;

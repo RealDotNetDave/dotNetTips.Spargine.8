@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -47,7 +47,7 @@ public static class EncryptionHelper
 	/// a 32-byte AES key and a 16-byte IV. It ensures that the key and IV are derived
 	/// from the input key in a consistent and secure manner.
 	/// </remarks>
-	private static (byte[] key, byte[] iv) GetSHA256HashKeys([NotNull] in string key)
+	private static (byte[] key, byte[] iv) GetSHA256HashKeys([NotNull] string key)
 	{
 		var hash = SHA256.HashData(Encoding.ASCII.GetBytes(key));
 		var aesKey = new byte[32];

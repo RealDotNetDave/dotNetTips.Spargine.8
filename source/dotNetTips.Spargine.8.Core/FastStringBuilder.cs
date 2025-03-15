@@ -59,7 +59,7 @@ public static class FastStringBuilder
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
-	public static string BytesToString(ReadOnlySpan<byte> bytes)
+	public static string BytesToString(in ReadOnlySpan<byte> bytes)
 	{
 		if (bytes.IsEmpty)
 		{
@@ -441,7 +441,7 @@ public static class FastStringBuilder
 	/// Example output: <code>CKpPdnfyf: CKpPdnfyf,T\\\\^wwVx: T\\\\^wwVx,S`ikV: S`ikV,uHTR[yy: uHTR[yy,PNmB_h: PNmB_</code>
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ToDelimitedString), "David McCarter", "1/1/2021", Status = Status.Available, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
+	[Information(nameof(ToDelimitedString), "David McCarter", "1/1/2021", Status = Status.Available, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineFeb2023")]
 	public static string ToDelimitedString<TKey, TValue>([NotNull] in Dictionary<TKey, TValue> collection, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		if (collection == null || collection.Count == 0)

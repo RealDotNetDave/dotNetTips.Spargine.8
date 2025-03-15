@@ -625,7 +625,7 @@ public static class EnumerableExtensions
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static bool HasItems(this IEnumerable collection, in int count) => collection is null ? false : collection.Count() == count;
+	public static bool HasItems(this IEnumerable collection, int count) => collection is null ? false : collection.Count() == count;
 
 	/// <summary>
 	/// Finds the index of the first occurrence of an item in the collection.

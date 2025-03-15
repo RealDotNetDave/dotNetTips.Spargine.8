@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -613,7 +613,7 @@ public static class StringExtensions
 	/// <returns>The indented string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
 	[Information(nameof(Indent), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static string Indent([NotNull] this string input, in int length, [ConstantExpected] char indentationCharacter)
+	public static string Indent([NotNull] this string input, int length, [ConstantExpected] char indentationCharacter)
 	{
 		if (input.CheckIsNotNull() is false || length <= 0)
 		{
@@ -1027,7 +1027,7 @@ public static class StringExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
 	[Information(nameof(SubstringTrim), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static string SubstringTrim(this string input, in int startIndex, in int length)
+	public static string SubstringTrim(this string input, int startIndex, int length)
 	{
 		if (input.IsNullOrEmpty())
 		{

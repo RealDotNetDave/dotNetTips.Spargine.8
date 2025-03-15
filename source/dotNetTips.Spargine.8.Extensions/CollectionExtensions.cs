@@ -249,7 +249,7 @@ public static class CollectionExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool HasItems([NotNull] this ICollection collection, in int count) => collection is null ? false : collection.Count == count;
+	public static bool HasItems([NotNull] this ICollection collection, int count) => collection is null ? false : collection.Count == count;
 
 	/// <summary>
 	/// Converts a <see cref="Collection{T}" /> to a <see cref="FrozenSet{T}" />.

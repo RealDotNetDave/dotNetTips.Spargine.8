@@ -4,7 +4,7 @@
 // Created          : 02-16-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-14-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="Validator.Argument.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -184,7 +184,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation of lower or upper failed.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "1/29/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static byte ArgumentInRange(this in byte input, in byte lower = byte.MinValue, in byte upper = byte.MaxValue, string errorMessage = ControlChars.EmptyString, [CallerArgumentExpression(nameof(input))] string paramName = ControlChars.EmptyString)
+	public static byte ArgumentInRange(this byte input, in byte lower = byte.MinValue, in byte upper = byte.MaxValue, string errorMessage = ControlChars.EmptyString, [CallerArgumentExpression(nameof(input))] string paramName = ControlChars.EmptyString)
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
 
@@ -266,7 +266,7 @@ public static partial class Validator
 	/// <exception cref="ArgumentOutOfRangeException">Validation failed for lower or uppper.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ArgumentInRange), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Args")]
-	public static int ArgumentInRange(this int input, in int lower = 0, [CallerArgumentExpression(nameof(input))] string paramName = ControlChars.EmptyString, in int upper = int.MaxValue, in int? defaultValue = null, string errorMessage = ControlChars.EmptyString)
+	public static int ArgumentInRange(this int input, int lower = 0, [CallerArgumentExpression(nameof(input))] string paramName = ControlChars.EmptyString, int upper = int.MaxValue, in int? defaultValue = null, string errorMessage = ControlChars.EmptyString)
 	{
 		var isValid = input.CheckIsInRange(lower, upper);
 

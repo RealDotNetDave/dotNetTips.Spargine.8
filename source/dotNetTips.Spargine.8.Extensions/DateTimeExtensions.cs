@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-08-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="DateTimeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -217,7 +217,7 @@ public static class DateTimeExtensions
 	/// <param name="timezoneFromUtc">Hours of the timezone from UTC</param>
 	/// <returns>Future date</returns>
 	[Information(nameof(LocalTimeFromUtc), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static DateTime LocalTimeFromUtc(this in DateTime date, in int timezoneFromUtc) => date.ToUniversalTime().AddHours(timezoneFromUtc);
+	public static DateTime LocalTimeFromUtc(this in DateTime date, int timezoneFromUtc) => date.ToUniversalTime().AddHours(timezoneFromUtc);
 
 	/// <summary>
 	/// Determines the maximum of the two <see cref="DateTime" />s.

@@ -4,7 +4,7 @@
 // Created          : 02-10-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-10-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="InternalMethods.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -40,7 +40,7 @@ internal static class InternalMethods
 	/// <returns>System.Int32.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(EnsureMinimum), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	internal static int EnsureMinimum(this in int value, in int minValue) => value < minValue ? minValue : value;
+	internal static int EnsureMinimum(this int value, int minValue) => value < minValue ? minValue : value;
 
 	/// <summary>
 	/// Generates the random number.

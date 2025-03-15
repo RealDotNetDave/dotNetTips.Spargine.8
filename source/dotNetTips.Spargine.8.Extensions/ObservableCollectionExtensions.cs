@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-21-2025
+// Last Modified On : 03-15-2025
 // ***********************************************************************
 // <copyright file="ObservableCollectionExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -68,6 +68,6 @@ public static class ObservableCollectionExtensions
 	/// <returns><c>true</c> if the specified count has items; otherwise, <c>false</c>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2022")]
-	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection, in int count) => collection is null ? false : collection.FastCount() == count;
+	public static bool HasItems<T>([NotNull] this ObservableCollection<T> collection, int count) => collection is null ? false : collection.FastCount() == count;
 
 }
