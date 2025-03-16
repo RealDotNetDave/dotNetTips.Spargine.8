@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Reflection;
 using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.IO;
@@ -26,6 +27,19 @@ namespace DotNetTips.Spargine.Core.Tests;
 [TestClass]
 public class InformationAttributeDocGeneratorTests
 {
+
+	[TestMethod]
+	public void GenerateMarkdownDocumentForAssembly_ValidAssembly_Benchmark_ToFile()
+	{
+		// Arrange
+		var assembly = Assembly.LoadFile(Path.Combine(App.ProcessPath, "DotNetTips.Spargine.8.Benchmarking.dll"));
+
+		// Act
+		var result = InformationAttributeDocGenerator.GenerateMarkdownDocumentForAssembly(assembly, @"C:\dotNetTips.com");
+
+		// Assert
+		Assert.IsFalse(string.IsNullOrEmpty(result));
+	}
 
 	[TestMethod]
 	public void GenerateMarkdownDocumentForAssembly_ValidAssembly_Core_ToFile()

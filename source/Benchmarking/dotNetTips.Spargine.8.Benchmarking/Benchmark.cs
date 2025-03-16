@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-05-2025
+// Last Modified On : 03-16-2025
 // ***********************************************************************
 // <copyright file="Benchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -311,7 +311,7 @@ public abstract class Benchmark
 	/// </summary>
 	/// <param name="item">The object whose hash code will be computed.</param> 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public virtual void SimulateWork([NotNull] object item) => RuntimeHelpers.GetHashCode(item);
+	public virtual void SimulateWork([NotNull] in object item) => RuntimeHelpers.GetHashCode(item);
 
 	/// <summary>
 	/// Updates the Email property of a item object that implements the IPerson interface with a predefined test email address.
