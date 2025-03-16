@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-22-2024
+// Last Modified On : 03-16-2025
 // ***********************************************************************
 // <copyright file="CollectionExtensionsCollectionBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -83,6 +82,8 @@ public class CollectionExtensionsCollectionBenchmark : SmallCollectionBenchmark
 	/// </summary>
 	public override void Setup()
 	{
+		LogInfo($"Calling base.Setup(): {nameof(CollectionExtensionsCollectionBenchmark)}.");
+
 		base.Setup();
 
 		this._peopleRefCollection = this.GetPersonRefArray().ToCollection();
