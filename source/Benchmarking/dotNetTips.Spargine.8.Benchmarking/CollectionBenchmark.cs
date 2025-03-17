@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-11-2025
+// Last Modified On : 03-16-2025
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -87,13 +87,10 @@ public partial class CollectionBenchmark : Benchmark
 		}
 		else
 		{
-			var people = JsonSerialization.LoadCollectionFromJson<PersonRecord>(Resources.PeopleJson, count, PersonJsonSerializerContext.Default.PersonRecord).ToList();
-
+			var people = JsonSerialization.LoadCollectionFromJson<PersonRecord>(Resources.PeopleJson, MaxPeopleDataCount, PersonJsonSerializerContext.Default.PersonRecord);
 			var newPeople = RandomData.GeneratePersonRecordCollection(count - MaxPeopleDataCount);
 
-			people.AddRange(newPeople);
-
-			return [.. people];
+			return [.. people, .. newPeople];
 		}
 	}
 
@@ -112,13 +109,10 @@ public partial class CollectionBenchmark : Benchmark
 		}
 		else
 		{
-			var people = JsonSerialization.LoadCollectionFromJson<Person<Address>>(Resources.PeopleJson, count, PersonJsonSerializerContext.Default.Person).ToList();
-
+			var people = JsonSerialization.LoadCollectionFromJson<Person<Address>>(Resources.PeopleJson, MaxPeopleDataCount, PersonJsonSerializerContext.Default.Person);
 			var newPeople = RandomData.GeneratePersonRefCollection<Address>(count - MaxPeopleDataCount);
 
-			people.AddRange(newPeople);
-
-			return [.. people];
+			return [.. people, .. newPeople];
 		}
 	}
 
@@ -137,13 +131,10 @@ public partial class CollectionBenchmark : Benchmark
 		}
 		else
 		{
-			var people = JsonSerialization.LoadCollectionFromJson<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(Resources.PeopleJson, count, Tester.Models.ValueTypes.PersonJsonValSerializerContext.Default.Person).ToList();
-
+			var people = JsonSerialization.LoadCollectionFromJson<Tester.Models.ValueTypes.Person<Tester.Models.ValueTypes.Address>>(Resources.PeopleJson, MaxPeopleDataCount, Tester.Models.ValueTypes.PersonJsonValSerializerContext.Default.Person);
 			var newPeople = RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(count - MaxPeopleDataCount);
 
-			people.AddRange(newPeople);
-
-			return [.. people];
+			return [.. people, .. newPeople];
 		}
 	}
 

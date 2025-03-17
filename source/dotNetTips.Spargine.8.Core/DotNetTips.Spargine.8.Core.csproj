@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  
   <PropertyGroup>
 	<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
 	<AnalysisLevel>latest-recommended</AnalysisLevel>

@@ -37,7 +37,7 @@ namespace DotNetTips.Spargine.IO;
 /// loading files asynchronously, managing OneDrive folders, and conducting safe directory and path searches. These methods
 /// are designed to extend the capabilities of the <see cref="DirectoryInfo"/> class and simplify common path system operations.
 /// </remarks>
-[Information(Status = Status.UpdateDocumentation, Documentation = "https://bit.ly/SpargineDirectoryHelper")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineDirectoryHelper")]
 public static class DirectoryHelper
 {
 
@@ -207,7 +207,7 @@ public static class DirectoryHelper
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="directories"/> or <paramref name="searchPattern"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(LoadFilesAsync), author: "David McCarter", createdOn: "3/1/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(LoadFilesAsync), author: "David McCarter", createdOn: "3/1/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Updated)]
 	public static async IAsyncEnumerable<IEnumerable<FileInfo>> LoadFilesAsync([NotNull] IEnumerable<DirectoryInfo> directories, [NotNull] string searchPattern, SearchOption searchOption, [EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
 		directories = directories.ArgumentNotNull();
