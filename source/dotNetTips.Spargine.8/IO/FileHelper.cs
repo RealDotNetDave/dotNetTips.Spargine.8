@@ -39,7 +39,7 @@ namespace DotNetTips.Spargine.IO;
 /// intended for use on Windows platforms only.
 /// </remarks>
 [SupportedOSPlatform("windows")]
-[Information(nameof(FileHelper), Status = Status.UpdateDocumentation, Documentation = "https://bit.ly/SpargineFileHelper")]
+[Information(nameof(FileHelper), Status = Status.Available, Documentation = "https://bit.ly/SpargineFileHelper")]
 public static class FileHelper
 {
 
@@ -502,6 +502,7 @@ public static class FileHelper
 
 		var pathName = destination.FullName;
 
+		//TODO: CHANGE TO USE PROGRESSIVERETRY
 		using (var client = GetHttpClient())
 		{
 			using (var localStream = File.Create(pathName))
