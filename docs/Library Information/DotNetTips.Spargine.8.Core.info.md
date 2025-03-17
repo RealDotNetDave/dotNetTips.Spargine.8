@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8.Core - 2025.8.3.11
+# DotNetTips.Spargine.8.Core - 2025.8.3.15
 
 ## ApiLibraries
 
@@ -1150,7 +1150,7 @@
 * **Description:** BytesToString
 * **Modified By:** David McCarter
 
-### String BytesToString(ReadOnlySpan<Byte> bytes)
+### String BytesToString(ReadOnlySpan`1& bytes)
 
 * **Status:** New
 * **Optimization Status:** Completed
@@ -1216,22 +1216,22 @@
 * **Description:** Format
 * **Modified By:** David McCarter
 
-### String Join(IEnumerable<String> values, Char delimiter)
+### String Join(IEnumerable`1& values, Char delimiter)
 
 * **Status:** New
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/4/2025
 * **Description:** Join
 * **Modified By:** David McCarter
 
-### String Join(IEnumerable<String> values, String delimiter)
+### String Join(IEnumerable`1& values, String delimiter)
 
 * **Status:** New
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/4/2025
@@ -1264,7 +1264,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/1/2021
@@ -1391,7 +1391,7 @@
 * **Documentation:** https://bit.ly/SpargineJun2021
 * **Modified By:** David McCarter
 
-### String GenerateKey(String& prefix)
+### String GenerateKey(String prefix)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1867,7 +1867,7 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean DoesObjectEqualInstance(Object value, Object instance)
+### Boolean DoesObjectEqualInstance(Object& value, Object& instance)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -1882,11 +1882,11 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### ReadOnlyCollection<Type> FindDerivedTypes(AppDomain currentDomain, Type baseType, Boolean classOnly)
+### ReadOnlyCollection<Type> FindDerivedTypes(AppDomain& currentDomain, Type baseType, Boolean classOnly)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Documentation:** https://bit.ly/SpargineApril2022
 
@@ -1898,7 +1898,7 @@
 * **Unit Test Status:** Completed
 * **Documentation:** https://bit.ly/SpargineAug2024
 
-### T FromJson(String& json)
+### T FromJson(String json)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -2026,7 +2026,7 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
-### Void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, Int32& length, DisplayNameOptions options)
+### Void ProcessGenericType(StringBuilder& builder, Type type, Type[] genericArguments, Int32 length, DisplayNameOptions options)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -2121,7 +2121,7 @@
 * **Documentation:** https://bit.ly/SpargineMay2022Args
 * **Modified By:** David McCarter
 
-### Byte ArgumentInRange(Byte& input, Byte& lower, Byte& upper, String errorMessage, String paramName)
+### Byte ArgumentInRange(Byte input, Byte& lower, Byte& upper, String errorMessage, String paramName)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2157,7 +2157,7 @@
 * **Documentation:** https://bit.ly/SpargineMay2022Args
 * **Modified By:** David McCarter
 
-### Int32 ArgumentInRange(Int32 input, Int32& lower, String paramName, Int32& upper, Nullable`1& defaultValue, String errorMessage)
+### Int32 ArgumentInRange(Int32 input, Int32 lower, String paramName, Int32 upper, Nullable`1& defaultValue, String errorMessage)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2539,7 +2539,7 @@
 * **Documentation:** https://bit.ly/SpargineMay2022Data
 * **Modified By:** David McCarter
 
-### Boolean CheckIsInRange(Int32& input, Int32& lower, Int32& upper, Boolean& throwException, String errorMessage)
+### Boolean CheckIsInRange(Int32 input, Int32 lower, Int32 upper, Boolean& throwException, String errorMessage)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2717,7 +2717,7 @@
 * **Author:** UNKNOWN
 * **Description:** DeserializeFromFile
 
-### Boolean JsonEqual(String actual, String& expected)
+### Boolean JsonEqual(String actual, String expected)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -2979,7 +2979,7 @@
 * **Documentation:** https://bit.ly/SpargineJan2022
 * **Modified By:** David McCarter
 
-### PasswordVerificationResult VerifyHashedPassword(String& hashedPassword, String& password)
+### PasswordVerificationResult VerifyHashedPassword(String hashedPassword, String& password)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3022,7 +3022,7 @@
 * **Description:** HashPassword
 * **Modified By:** David McCarter
 
-### PasswordVerificationResult VerifyHashedPassword(String& hashedPassword, String& password)
+### PasswordVerificationResult VerifyHashedPassword(String hashedPassword, String& password)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -3071,7 +3071,7 @@
 * **Description:** RegexProcessor.Methods
 * **Documentation:** https://bit.ly/SpargineRegexProcessor
 
-### Boolean ContainsFirstLastName(String& input)
+### Boolean ContainsFirstLastName(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3082,7 +3082,7 @@
 * **Description:** ContainsFirstLastName
 * **Modified By:** David McCarter
 
-### Boolean ContainsWord(String& input)
+### Boolean ContainsWord(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3093,7 +3093,7 @@
 * **Description:** ContainsWord
 * **Modified By:** David McCarter
 
-### String GetNumbers(String& input)
+### String GetNumbers(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3102,7 +3102,7 @@
 * **Author:** UNKNOWN
 * **Description:** GetNumbers
 
-### Boolean IsCreditCardNumber(String& input)
+### Boolean IsCreditCardNumber(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3113,7 +3113,7 @@
 * **Description:** IsCreditCardNumber
 * **Modified By:** David McCarter
 
-### Boolean IsCurrencyCode(String& input)
+### Boolean IsCurrencyCode(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3124,7 +3124,7 @@
 * **Description:** IsCurrencyCode
 * **Modified By:** David McCarter
 
-### Boolean IsEmailAddress(String& input)
+### Boolean IsEmailAddress(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3135,7 +3135,7 @@
 * **Description:** IsEmailAddress
 * **Modified By:** David McCarter
 
-### Boolean IsGuid(String& input)
+### Boolean IsGuid(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3146,7 +3146,7 @@
 * **Description:** IsGuid
 * **Modified By:** David McCarter
 
-### Boolean IsIPv4Address(String& input)
+### Boolean IsIPv4Address(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3157,7 +3157,7 @@
 * **Description:** IsIPv4Address
 * **Modified By:** David McCarter
 
-### Boolean IsIPv6Address(String& input)
+### Boolean IsIPv6Address(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3168,7 +3168,7 @@
 * **Description:** IsIPv6Address
 * **Modified By:** David McCarter
 
-### Boolean IsISBN(String& input)
+### Boolean IsISBN(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3179,7 +3179,7 @@
 * **Description:** IsISBN
 * **Modified By:** David McCarter
 
-### Boolean IsMACAddress(String& input)
+### Boolean IsMACAddress(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3190,7 +3190,7 @@
 * **Description:** IsMACAddress
 * **Modified By:** David McCarter
 
-### Boolean IsOneToSevenAlpha(String& input)
+### Boolean IsOneToSevenAlpha(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3199,7 +3199,7 @@
 * **Author:** UNKNOWN
 * **Description:** IsOneToSevenAlpha
 
-### Boolean IsScientific(String& input)
+### Boolean IsScientific(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3208,7 +3208,7 @@
 * **Author:** UNKNOWN
 * **Description:** IsScientific
 
-### Boolean IsSHA1Hash(String& input)
+### Boolean IsSHA1Hash(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3219,7 +3219,7 @@
 * **Description:** IsSHA1Hash
 * **Modified By:** David McCarter
 
-### Boolean IsUrl(String& input)
+### Boolean IsUrl(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3230,7 +3230,7 @@
 * **Description:** IsUrl
 * **Modified By:** David McCarter
 
-### Boolean IsUrlDomainAddress(String& input)
+### Boolean IsUrlDomainAddress(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3241,7 +3241,7 @@
 * **Description:** IsUrlDomainAddress
 * **Modified By:** David McCarter
 
-### Boolean IsValidString(String& input)
+### Boolean IsValidString(String input)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3252,7 +3252,7 @@
 * **Description:** IsValidString
 * **Modified By:** David McCarter
 
-### String RemoveHtml(String& input, String& replacement)
+### String RemoveHtml(String input, String replacement)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3263,7 +3263,7 @@
 * **Description:** RemoveHtml
 * **Modified By:** David McCarter
 
-### String RemoveSpecialChar(String& input, String& replacement)
+### String RemoveSpecialChar(String input, String& replacement)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3274,7 +3274,7 @@
 * **Description:** RemoveSpecialChar
 * **Modified By:** David McCarter
 
-### String ReplaceCrLf(String& input, String& replacement)
+### String ReplaceCrLf(String input, String& replacement)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3285,7 +3285,7 @@
 * **Description:** ReplaceCrLf
 * **Modified By:** David McCarter
 
-### String ReplaceSpaces(String& input, String& replacement)
+### String ReplaceSpaces(String input, String& replacement)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3915,7 +3915,7 @@
 * **Description:** GetCountry
 * **Modified By:** David McCarter
 
-### Boolean ValidatePhoneNumber(CountryName countryName, String& phoneNumber, Boolean validateCountryCode)
+### Boolean ValidatePhoneNumber(CountryName countryName, String phoneNumber, Boolean validateCountryCode)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -3924,7 +3924,7 @@
 * **Author:** UNKNOWN
 * **Description:** ValidatePhoneNumber
 
-### PostalCodeState ValidatePostalCode(CountryName countryName, String& postalCode)
+### PostalCodeState ValidatePostalCode(CountryName countryName, String postalCode)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -3992,56 +3992,56 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (IEqualityComparer<TKey> comparer)
+### AutoDefaultDictionary<TKey, TValue> (IEqualityComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (Func<TKey, TValue> onMissingKey)
+### AutoDefaultDictionary<TKey, TValue> (Func`2& onMissingKey)
 
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (IDictionary<TKey, TValue> dictionary, TValue defaultValue)
+### AutoDefaultDictionary<TKey, TValue> (IDictionary`2& dictionary, TValue& defaultValue)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (IDictionary<TKey, TValue> dictionary, Func<TKey, TValue> onMissingKey)
+### AutoDefaultDictionary<TKey, TValue> (IDictionary`2& dictionary, Func`2& onMissingKey)
 
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (IEnumerable<KeyValuePair<TKey, TValue>> keyValuePairs, TValue defaultValue)
+### AutoDefaultDictionary<TKey, TValue> (IEnumerable`1& keyValuePairs, TValue& defaultValue)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (IEnumerable<KeyValuePair<TKey, TValue>> keyValuePairs, Func<TKey, TValue> onMissingKey)
+### AutoDefaultDictionary<TKey, TValue> (IEnumerable`1& keyValuePairs, Func`2& onMissingKey)
 
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (TValue defaultValue, IEqualityComparer<TKey> comparer)
+### AutoDefaultDictionary<TKey, TValue> (TValue& defaultValue, IEqualityComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (Func<TKey, TValue> onMissingKey, IEqualityComparer<TKey> comparer)
+### AutoDefaultDictionary<TKey, TValue> (Func`2& onMissingKey, IEqualityComparer`1& comparer)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4070,7 +4070,7 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### FastSortedList<T> (IComparer<T> comparer)
+### FastSortedList<T> (IComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -4091,14 +4091,14 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### FastSortedList<T> (IEnumerable`1& collection, IComparer<T> comparer)
+### FastSortedList<T> (IEnumerable`1& collection, IComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### FastSortedList<T> (Int32 capacity, IComparer<T> comparer)
+### FastSortedList<T> (Int32 capacity, IComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -4208,7 +4208,7 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### ObservableList<T> (IEnumerable`1& collection, IEqualityComparer<T> comparer)
+### ObservableList<T> (IEnumerable`1& collection, IEqualityComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -5066,4 +5066,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 3/14/2025 1:58:49 PM UTC**
+**Generated by Spargine - dotNetTips.com on 3/17/2025 2:44:04 PM UTC**

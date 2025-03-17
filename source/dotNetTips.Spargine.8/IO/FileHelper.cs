@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-14-2025
+// Last Modified On : 03-17-2025
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -204,7 +204,7 @@ public static class FileHelper
 	/// Console.WriteLine($"Has read permission: {hasReadPermission}");
 	/// </code>
 	/// </example>
-	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
+	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static bool CheckPermission([NotNull] FileInfo file, FileSystemRights permission = FileSystemRights.Read)
 	{
 		file = file.ArgumentNotNull();
@@ -267,7 +267,7 @@ public static class FileHelper
 	/// Console.WriteLine($"Copied file length: {fileLength}");
 	/// </code>
 	/// </example>
-	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
+	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static long CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination)
 	{
 		ValidateFileCreateDestinationDirectory(file, destination);
@@ -323,7 +323,7 @@ public static class FileHelper
 	/// Console.WriteLine($"Copy result: {result}");
 	/// </code>
 	/// </example>
-	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2024")]
+	[Information(nameof(CopyFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool CopyFile([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, [NotNull] CopyProgressRoutine progressCallback)
 	{
 		ValidateFileCreateDestinationDirectory(file, destination);
@@ -360,7 +360,7 @@ public static class FileHelper
 	/// Console.WriteLine($"Copied file length: {fileLength}");
 	/// </code>
 	/// </example>
-	[Information(nameof(CopyFileAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://dotnettips.wordpress.com/2020/11/17/coding-faster-with-the-dotnettips-utility-november-2020-update", Status = Status.Available)]
+	[Information(nameof(CopyFileAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static async Task<long> CopyFileAsync([NotNull] FileInfo file, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
 		ValidateFileCreateDestinationDirectory(file, destination);
@@ -399,7 +399,7 @@ public static class FileHelper
 	/// it will continue to attempt to delete the remaining files even if an error occurs. The result will contain the list of files that were
 	/// successfully deleted and any error information.
 	/// </remarks>
-	[Information(nameof(DeleteFiles), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineMay2024", Status = Status.Available)]
+	[Information(nameof(DeleteFiles), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static SimpleResult<ReadOnlyCollection<string>> DeleteFiles([NotNull] this ReadOnlyCollection<string> files, bool stopOnFirstError = false)
 	{
 		files = files.ArgumentNotNull();
@@ -458,14 +458,14 @@ public static class FileHelper
 	/// await FileHelper.DownloadFileFromWebAndUnzipAsync(remoteFileUrl, destinationDir);
 	/// </code>
 	/// </example>
-	[Information(nameof(DownloadFileFromWebAndUnzipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(DownloadFileFromWebAndUnzipAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task DownloadFileFromWebAndUnzipAsync([NotNull] Uri remoteUri, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
 		_ = destination.ArgumentNotNull().CheckExists();
 
 		var tempDownloadPath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}{Path.GetExtension(remoteUri.ToString())}");
 
-		await DownloadFileFromWebAsync(remoteUri, destination, cancellationToken).ConfigureAwait(false);
+		_ = await DownloadFileFromWebAsync(remoteUri, destination, cancellationToken).ConfigureAwait(false);
 
 		await UnZipAsync(new FileInfo(tempDownloadPath), destination, true, cancellationToken).ConfigureAwait(false);
 	}
@@ -476,7 +476,7 @@ public static class FileHelper
 	/// <param name="remoteUri">The <see cref="Uri"/> of the remote file to download. Must not be null.</param>
 	/// <param name="destination">The <see cref="DirectoryInfo"/> representing the destination directory where the downloaded file will be saved. Must not be null.</param>
 	/// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
-	/// <returns>A <see cref="Task"/> representing the asynchronous download operation.</returns>
+	/// <returns>A SimpleResult{int} representing the asynchronous download operation.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="remoteUri"/> or <paramref name="destination"/> is null.</exception>
 	/// <exception cref="WebException">Thrown if an error occurs during the download.</exception>
 	/// <exception cref="IOException">Thrown if an error occurs while saving the file.</exception>
@@ -488,8 +488,8 @@ public static class FileHelper
 	/// await FileHelper.DownloadFileFromWebAsync(remoteFileUrl, destinationDir);
 	/// </code>
 	/// </example>
-	[Information(nameof(DownloadFileFromWebAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Documentation = "https://bit.ly/SpargineJun2021", Status = Status.Available)]
-	public static async Task DownloadFileFromWebAsync([NotNull] Uri remoteUri, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
+	[Information(nameof(DownloadFileFromWebAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Updated)]
+	public static async Task<SimpleResult<int>> DownloadFileFromWebAsync([NotNull] Uri remoteUri, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
 		remoteUri = remoteUri.ArgumentNotNull();
 
@@ -502,19 +502,21 @@ public static class FileHelper
 
 		var pathName = destination.FullName;
 
-		//TODO: CHANGE TO USE PROGRESSIVERETRY
-		using (var client = GetHttpClient())
+		return await ExecutionHelper.ProgressiveRetryAsync(async () =>
 		{
-			using (var localStream = File.Create(pathName))
+			using (var client = GetHttpClient())
 			{
-				using (var stream = await client.GetStreamAsync(remoteUri, cancellationToken).ConfigureAwait(false))
+				using (var localStream = File.Create(pathName))
 				{
-					await stream.CopyToAsync(localStream, cancellationToken).ConfigureAwait(false);
-				}
+					using (var stream = await client.GetStreamAsync(remoteUri, cancellationToken).ConfigureAwait(false))
+					{
+						await stream.CopyToAsync(localStream, cancellationToken).ConfigureAwait(false);
+					}
 
-				await localStream.FlushAsync(cancellationToken).ConfigureAwait(false);
+					await localStream.FlushAsync(cancellationToken).ConfigureAwait(false);
+				}
 			}
-		}
+		}, retryCount: 5, retryWaitMilliseconds: 50, cancellationToken: cancellationToken).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -525,7 +527,7 @@ public static class FileHelper
 	/// <remarks>
 	/// This method utilizes FileInfo.Name to retrieve the file's name and checks it against a list of invalid characters obtained from FileHelper.InvalidFileNameChars.
 	/// </remarks>
-	[Information(nameof(FileHasInvalidChars), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineMay2022Data")]
+	[Information(nameof(FileHasInvalidChars), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static bool FileHasInvalidChars([NotNull] FileInfo file)
 	{
 		file = file.ArgumentNotNull();
@@ -552,7 +554,7 @@ public static class FileHelper
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="destinationFile"/> is null.</exception>
 	/// <exception cref="IOException">Thrown if an I/O error occurs during the move operation.</exception>
 	/// <exception cref="UnauthorizedAccessException">Thrown if the caller does not have the required permission.</exception>
-	[Information(nameof(MoveFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineMay2024", Status = Status.Available)]
+	[Information(nameof(MoveFile), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool MoveFile([NotNull] FileInfo file, [NotNull] FileInfo destinationFile, bool replaceExisting = true, int retryCount = 1)
 	{
 		file = file.ArgumentNotNull();

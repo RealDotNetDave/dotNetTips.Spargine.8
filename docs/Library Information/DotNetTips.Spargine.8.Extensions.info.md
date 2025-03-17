@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8.Extensions - 2025.8.3.11
+# DotNetTips.Spargine.8.Extensions - 2025.8.3.15
 
 ## ArrayExtensions
 
@@ -184,7 +184,7 @@
 * **Description:** HasItems
 * **Modified By:** David McCarter
 
-### Boolean HasItems(T[] array, Int32& count)
+### Boolean HasItems(T[] array, Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -388,7 +388,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### Boolean AddRange(ICollection<T> collection, IEnumerable<T> items, Boolean ensureUnique)
+### Boolean AddRange(ICollection<T> collection, IEnumerable`1& items, Boolean ensureUnique)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -443,7 +443,7 @@
 * **Description:** HasItems
 * **Modified By:** David McCarter
 
-### Boolean HasItems(ICollection collection, Int32& count)
+### Boolean HasItems(ICollection collection, Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -525,11 +525,11 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
-### Void AddRange(ConcurrentBag<T> bag, IEnumerable<T> items)
+### Void AddRange(ConcurrentBag<T> bag, IEnumerable`1& items)
 
 * **Status:** New
 * **Optimization Status:** None
-* **BenchMarkStatus:** Benchmark
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 2/24/2025
@@ -540,7 +540,7 @@
 
 * **Status:** New
 * **Optimization Status:** None
-* **BenchMarkStatus:** Benchmark
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 2/24/2025
@@ -551,7 +551,7 @@
 
 * **Status:** New
 * **Optimization Status:** None
-* **BenchMarkStatus:** Benchmark
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 2/24/2025
@@ -754,7 +754,7 @@
 * **Description:** IsInRangeThrowsException
 * **Modified By:** David McCarter
 
-### DateTime LocalTimeFromUtc(DateTime& date, Int32& timezoneFromUtc)
+### DateTime LocalTimeFromUtc(DateTime& date, Int32 timezoneFromUtc)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -945,11 +945,11 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### Boolean AddRange(IDictionary<TKey, TValue> collection, IEnumerable<T> items, Func<T, TKey> keyFunction, Func<T, TValue> valueFunction)
+### Boolean AddRange(IDictionary<TKey, TValue> collection, IEnumerable`1& items, Func<T, TKey> keyFunction, Func<T, TValue> valueFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/21/2020
@@ -1389,7 +1389,7 @@
 * **Description:** HasItems
 * **Modified By:** David McCarter
 
-### Boolean HasItems(IEnumerable collection, Int32& count)
+### Boolean HasItems(IEnumerable collection, Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -1581,11 +1581,11 @@
 * **Description:** Split
 * **Modified By:** David McCarter
 
-### Boolean StartsWith(IEnumerable<T> first, IEnumerable<T> second)
+### Boolean StartsWith(IEnumerable<T> first, IEnumerable`1& second)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/21/2020
@@ -1790,7 +1790,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Benchmark
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** UNKNOWN
 * **Description:** GetAllMessages
@@ -2155,11 +2155,11 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### List<T> AddRangeIfNotExists(List<T> collection, IEnumerable<T> items)
+### List<T> AddRangeIfNotExists(List<T> collection, IEnumerable`1& items)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 12/30/2024
@@ -2491,7 +2491,7 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
-### Double Add(Int32& input, Int32& add)
+### Double Add(Int32 input, Int32 add)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2512,7 +2512,7 @@
 * **Author:** UNKNOWN
 * **Description:** CalculatePercent
 
-### Double CalculatePercent(Int32& first, Int32& second)
+### Double CalculatePercent(Int32 first, Int32 second)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2539,7 +2539,7 @@
 * **Author:** UNKNOWN
 * **Description:** CalculatePercent
 
-### Boolean IsPrime(Int32& number)
+### Boolean IsPrime(Int32 number)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2569,7 +2569,7 @@
 * **Author:** UNKNOWN
 * **Description:** Round
 
-### Int32 Round(Double& value, Int32& digits)
+### Int32 Round(Double& value, Int32 digits)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2587,7 +2587,7 @@
 * **Author:** UNKNOWN
 * **Description:** Round
 
-### Int32 Round(Decimal& value, Int32& digits)
+### Int32 Round(Decimal& value, Int32 digits)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2605,7 +2605,7 @@
 * **Author:** UNKNOWN
 * **Description:** Round
 
-### Int32 Round(Double& value, Int32& digits, MidpointRounding mode)
+### Int32 Round(Double& value, Int32 digits, MidpointRounding mode)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2614,7 +2614,7 @@
 * **Author:** UNKNOWN
 * **Description:** Round
 
-### Int32 Round(Decimal& value, Int32& digits, MidpointRounding mode)
+### Int32 Round(Decimal& value, Int32 digits, MidpointRounding mode)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2623,7 +2623,7 @@
 * **Author:** UNKNOWN
 * **Description:** Round
 
-### Double Subtract(Int32& input, Int32& subtract)
+### Double Subtract(Int32 input, Int32 subtract)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2666,7 +2666,7 @@
 * **Description:** Average
 * **Modified By:** David McCarter
 
-### Int32 Average(Int32& a, Int32& b)
+### Int32 Average(Int32 a, Int32 b)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2699,7 +2699,7 @@
 * **Description:** BytesToMegabytes
 * **Modified By:** David McCarter
 
-### Int32 Decrement(Int32& value, Int32& lowerBound, Int32 step)
+### Int32 Decrement(Int32 value, Int32 lowerBound, Int32 step)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2708,7 +2708,7 @@
 * **Author:** UNKNOWN
 * **Description:** Decrement
 
-### Int32 EnsureMinimum(Int32& value, Int32& minValue)
+### Int32 EnsureMinimum(Int32 value, Int32 minValue)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2735,7 +2735,7 @@
 * **Author:** UNKNOWN
 * **Description:** FormatSize
 
-### Int32 Increment(Int32& value, Int32& upperBound, Int32 step)
+### Int32 Increment(Int32 value, Int32 upperBound, Int32 step)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2771,7 +2771,7 @@
 * **Author:** UNKNOWN
 * **Description:** IsEven
 
-### Boolean IsEven(Int32& value)
+### Boolean IsEven(Int32 value)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2807,7 +2807,7 @@
 * **Author:** UNKNOWN
 * **Description:** IsEven
 
-### Boolean IsInRange(Int32& value, Int32& lower, Int32& upper)
+### Boolean IsInRange(Int32 value, Int32 lower, Int32 upper)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2865,7 +2865,7 @@
 * **Description:** IsInRangeThrowsException
 * **Modified By:** David McCarter
 
-### Boolean IsInRangeThrowsException(Int32& value, Int32& lower, Int32& upper)
+### Boolean IsInRangeThrowsException(Int32 value, Int32 lower, Int32 upper)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2887,7 +2887,7 @@
 * **Description:** IsInRangeThrowsException
 * **Modified By:** David McCarter
 
-### Boolean IsInterval(Int32& value, Int32& interval)
+### Boolean IsInterval(Int32 value, Int32 interval)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2896,7 +2896,7 @@
 * **Author:** UNKNOWN
 * **Description:** IsInterval
 
-### Boolean IsIntervalThrowsException(Int32& value, Int32& interval, String paramName)
+### Boolean IsIntervalThrowsException(Int32 value, Int32 interval, String paramName)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2918,7 +2918,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### Boolean IsNegative(Int32& value)
+### Boolean IsNegative(Int32 value)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3026,7 +3026,7 @@
 * **Author:** UNKNOWN
 * **Description:** RoundToPowerOf2
 
-### String ToFormattedString(Int32& input, NumericFormat format)
+### String ToFormattedString(Int32 input, NumericFormat format)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3103,7 +3103,7 @@
 * **Description:** ToFormattedString
 * **Modified By:** David McCarter
 
-### Int32 ToPositiveValue(Int32& value)
+### Int32 ToPositiveValue(Int32 value)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3139,7 +3139,7 @@
 * **Author:** UNKNOWN
 * **Description:** ToRomanNumeral
 
-### String ToStringOrEmpty(Int32& value, Int32& lowerLimit, Int32& upperLimit, String defaultText)
+### String ToStringOrEmpty(Int32 value, Int32 lowerLimit, Int32 upperLimit, String defaultText)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3243,7 +3243,7 @@
 * **Description:** FromJson
 * **Modified By:** David McCarter
 
-### Boolean HasProperty(Object obj, String& propertyName)
+### Boolean HasProperty(Object obj, String propertyName)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -3399,7 +3399,7 @@
 * **Documentation:** https://bit.ly/SpargineAug2022
 * **Modified By:** David McCarter
 
-### Boolean HasItems(ObservableCollection<T> collection, Int32& count)
+### Boolean HasItems(ObservableCollection<T> collection, Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -3636,7 +3636,7 @@
 * **Documentation:** https://bit.ly/SpargineAug2022
 * **Modified By:** David McCarter
 
-### Boolean HasItems(SortedDictionary<TKey, TValue> collection, Int32& count)
+### Boolean HasItems(SortedDictionary<TKey, TValue> collection, Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -3784,11 +3784,11 @@
 * **Description:** FROM .NET CORE SOURCE
 * **Modified By:** David McCarter
 
-### Void AppendValues(StringBuilder sb, String separator, IEnumerable<String> values)
+### Void AppendValues(StringBuilder sb, String separator, IEnumerable`1& values)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** CheckPerformance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 7/1/2020
@@ -3839,7 +3839,7 @@
 * **Description:** Original code from efcore-master on GitHub
 * **Modified By:** David McCarter
 
-### StringBuilder ClearSetCapacity(StringBuilder sb, Int32& capacity)
+### StringBuilder ClearSetCapacity(StringBuilder sb, Int32 capacity)
 
 * **Status:** Available
 * **Optimization Status:** NotRequired
@@ -4124,7 +4124,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### String Indent(String input, Int32& length, Char indentationCharacter)
+### String Indent(String input, Int32 length, Char indentationCharacter)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -4417,7 +4417,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### String SubstringTrim(String input, Int32& startIndex, Int32& length)
+### String SubstringTrim(String input, Int32 startIndex, Int32 length)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -4861,4 +4861,4 @@
 * **Description:** ConvertFrom
 
 *****
-**Generated by Spargine - dotNetTips.com on 3/14/2025 1:58:49 PM UTC**
+**Generated by Spargine - dotNetTips.com on 3/17/2025 2:44:04 PM UTC**
