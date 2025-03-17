@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-16-2025
+// Last Modified On : 03-17-2025
 // ***********************************************************************
 // <copyright file="CollectionBenchmark.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -53,6 +53,25 @@ public partial class CollectionBenchmark : Benchmark
 	/// </summary>
 	/// <param name="maxCount">The maximum count for the collections used in the benchmark.</param>
 	protected CollectionBenchmark(int maxCount) => this.MaxCount = Math.Max(2, maxCount);
+
+	/// <summary>
+	/// Loads collections of people objects for insertion into benchmarks.
+	/// This method generates collections of reference type, value type, and record type people objects
+	/// using the specified count and assigns them to the corresponding fields.
+	/// </summary>
+	private void LoadInsertCollections()
+	{
+		var count = this.MaxCount / 2;
+
+		LogInfo($"Loading Insert Collections. Count={count}: {nameof(CollectionBenchmark)}.");
+
+		// Load people objects
+		this._peopleRefToInsert = [.. RandomData.GeneratePersonRefCollection<Address>(count)];
+
+		this._peopleValToInsert = [.. RandomData.GeneratePersonValCollection<Tester.Models.ValueTypes.Address>(count)];
+
+		this._peopleRecordToInsert = [.. RandomData.GeneratePersonRecordCollection(count)];
+	}
 
 	/// <summary>
 	/// Gets a collection of <see cref="PersonRecord"/> objects for insertion into collections.
@@ -168,10 +187,8 @@ public partial class CollectionBenchmark : Benchmark
 		this.PersonValLookupHalf = this.GetPersonValArray()[halfCount];
 		this.PersonValLookupLast = this.GetPersonValArray().Last();
 
-		// Load people objects
-		this._peopleRefToInsert = [.. LoadPeopleRef(halfCount)];
-		this._peopleValToInsert = [.. LoadPeopleVal(halfCount)];
-		this._peopleRecordToInsert = [.. LoadPeopleRecord(halfCount)];
+		// Load insert collections
+		this.LoadInsertCollections();
 	}
 
 	/// <summary>
