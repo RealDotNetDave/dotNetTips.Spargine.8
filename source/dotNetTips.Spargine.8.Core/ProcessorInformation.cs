@@ -20,7 +20,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Represents information about the computer's processor, including details such as the number of processors, processor architecture, and page size.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public struct ProcessorInformation : IEquatable<ProcessorInformation>
 {
 
