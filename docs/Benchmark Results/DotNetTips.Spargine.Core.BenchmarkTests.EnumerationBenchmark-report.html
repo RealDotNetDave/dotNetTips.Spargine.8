@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DotNetTips.Spargine.Core.BenchmarkTests.EnumerationBenchmark-20250308-104606</title>
+<title>DotNetTips.Spargine.Core.BenchmarkTests.EnumerationBenchmark-20250316-114918</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,22 +13,22 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5487/22H2/2022Update)
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5608/22H2/2022Update)
 Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
-.NET SDK 9.0.200
-  [Host]     : .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
-  Job-THQNBF : .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
+.NET SDK 9.0.201
+  [Host]     : .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+  Job-HFQNPD : .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
 Namespace=DotNetTips.Spargine.Core.BenchmarkTests  
 </code></pre>
 
 <table>
-<thead><tr><th>Method   </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min</th><th>Q1</th><th>Median</th><th>Q3</th><th>Max</th><th>Op/s </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Gen0</th><th>Exceptions</th><th>Code Size</th><th>Allocated</th>
+<thead><tr><th>Method   </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min</th><th>Q1</th><th>Median</th><th>Q3</th><th>Max</th><th>Op/s </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Exceptions</th><th>Code Size</th><th>Gen0</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>FromDisplayName</td><td>167.4 ns</td><td>0.74 ns</td><td>0.70 ns</td><td>0.18 ns</td><td>166.3 ns</td><td>166.8 ns</td><td>167.4 ns</td><td>167.8 ns</td><td>168.3 ns</td><td>5,974,944.9</td><td>7.410 ns</td><td>15.00</td><td>1.497</td><td>2.000</td><td>-0.1681</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>0.0024</td><td>-</td><td>NA</td><td>232 B</td>
-</tr><tr><td>FromValue</td><td>196.2 ns</td><td>0.71 ns</td><td>0.67 ns</td><td>0.17 ns</td><td>195.1 ns</td><td>195.7 ns</td><td>196.3 ns</td><td>196.7 ns</td><td>197.1 ns</td><td>5,097,436.1</td><td>7.414 ns</td><td>15.00</td><td>1.673</td><td>2.000</td><td>-0.4183</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>0.0024</td><td>-</td><td>NA</td><td>232 B</td>
-</tr><tr><td>GetAll</td><td>550.2 ns</td><td>3.63 ns</td><td>3.40 ns</td><td>0.88 ns</td><td>546.5 ns</td><td>547.7 ns</td><td>549.3 ns</td><td>551.8 ns</td><td>557.3 ns</td><td>1,817,529.6</td><td>7.062 ns</td><td>15.00</td><td>2.486</td><td>2.000</td><td>0.7674</td><td>3</td><td>*</td><td>No</td><td>-</td><td>-</td><td>0.0048</td><td>-</td><td>3,379 B</td><td>472 B</td>
+</thead><tbody><tr><td>FromDisplayName</td><td>165.0 ns</td><td>1.46 ns</td><td>1.29 ns</td><td>0.35 ns</td><td>163.2 ns</td><td>164.0 ns</td><td>164.9 ns</td><td>165.7 ns</td><td>167.9 ns</td><td>6,061,224.7</td><td>6.827 ns</td><td>14.00</td><td>2.427</td><td>2.000</td><td>0.5187</td><td>1</td><td>*</td><td>No</td><td>-</td><td>432 B</td><td>0.0024</td><td>-</td><td>-</td><td>232 B</td>
+</tr><tr><td>FromValue</td><td>192.9 ns</td><td>0.85 ns</td><td>0.79 ns</td><td>0.20 ns</td><td>191.7 ns</td><td>192.3 ns</td><td>192.9 ns</td><td>193.5 ns</td><td>194.3 ns</td><td>5,183,730.4</td><td>7.398 ns</td><td>15.00</td><td>1.566</td><td>2.000</td><td>0.0397</td><td>2</td><td>*</td><td>No</td><td>-</td><td>363 B</td><td>0.0024</td><td>-</td><td>-</td><td>232 B</td>
+</tr><tr><td>GetAll</td><td>537.4 ns</td><td>2.69 ns</td><td>2.51 ns</td><td>0.65 ns</td><td>533.2 ns</td><td>535.8 ns</td><td>536.8 ns</td><td>539.1 ns</td><td>541.6 ns</td><td>1,860,643.4</td><td>7.175 ns</td><td>15.00</td><td>1.751</td><td>2.000</td><td>0.1258</td><td>3</td><td>*</td><td>No</td><td>-</td><td>3,432 B</td><td>0.0048</td><td>-</td><td>-</td><td>472 B</td>
 </tr></tbody></table>
 </body>
 </html>
