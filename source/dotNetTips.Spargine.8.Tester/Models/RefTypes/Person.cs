@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-18-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -219,7 +219,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// Zero: This instance occurs in the same position in the sort order as <paramref name="other"/>.
 	/// Greater than zero: This instance follows <paramref name="other"/> in the sort order.</returns>
 	/// <exception cref="ArgumentNullException"><paramref name="other"/> is null.</exception>
-	[Information(nameof(CalculateAge), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(CalculateAge), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public int CompareTo([DisallowNull] IPerson<TAddress> other) => other is null ? 1 : string.Compare(this.Id, other.Id, StringComparison.OrdinalIgnoreCase);
 
 	/// <summary>

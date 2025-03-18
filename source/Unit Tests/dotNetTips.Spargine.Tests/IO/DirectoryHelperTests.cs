@@ -4,7 +4,7 @@
 // Created          : 06-28-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-14-2025
+// Last Modified On : 03-18-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.
@@ -254,6 +254,52 @@ public class DirectoryHelperTests
 		Assert.IsTrue(folderDestination.EnumerateFiles().HasItems());
 
 		DirectoryHelper.DeleteDirectory(folderDestination);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void RemoveAttributes_DirectoryDoesNotExist_DoesNothing()
+	{
+		// Arrange
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+		var directory = new DirectoryInfo(tempDirectoryPath);
+
+		// Act
+		DirectoryHelper.RemoveAttributes(directory, FileAttributes.ReadOnly);
+
+		// Assert
+		Assert.IsFalse(directory.Exists, "The directory should not exist.");
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	public void RemoveAttributes_DirectoryWithAttributes_RemovesSpecifiedAttributes()
+	{
+		// Arrange
+		var tempDirectoryPath = Path.Combine(Path.GetTempPath(), nameof(this.RemoveAttributes_DirectoryWithAttributes_RemovesSpecifiedAttributes));
+		var directory = Directory.CreateDirectory(tempDirectoryPath);
+
+		// Create a file in the directory and set its attributes to ReadOnly and Hidden
+		File.SetAttributes(tempDirectoryPath, FileAttributes.ReadOnly);
+
+		// Act
+		DirectoryHelper.RemoveAttributes(directory, FileAttributes.ReadOnly);
+
+		// Assert
+		var attributes = File.GetAttributes(tempDirectoryPath);
+		Assert.IsFalse(attributes.HasFlag(FileAttributes.ReadOnly), "The file attributes should no longer include ReadOnly.");
+
+		// Cleanup
+		directory.Delete(true);
+	}
+
+	[SupportedOSPlatform("windows")]
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void RemoveAttributes_NullDirectory_ThrowsArgumentNullException()
+	{
+		// Act
+		DirectoryHelper.RemoveAttributes(null, FileAttributes.ReadOnly);
 	}
 
 	[SupportedOSPlatform("windows")]

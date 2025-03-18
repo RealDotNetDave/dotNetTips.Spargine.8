@@ -4,7 +4,7 @@
 // Created          : 03-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-18-2025
 // ***********************************************************************
 // <copyright file="FileProcessor.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -274,10 +274,10 @@ public class FileProcessor
 	/// fileProcessor.DeleteFolders(foldersToDelete);
 	/// </code>
 	/// </example>
-	[Information(nameof(DeleteFolders), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(DeleteFolders), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public int DeleteFolders([NotNull] in IEnumerable<DirectoryInfo> folders, in bool recursive = true)
 	{
-		if (folders.HasItems() is false)
+		if (folders is null || folders.HasItems() is false)
 		{
 			return 0;
 		}

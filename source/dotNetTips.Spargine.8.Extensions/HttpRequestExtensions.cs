@@ -4,7 +4,7 @@
 // Created          : 06-01-2018
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-30-2025
+// Last Modified On : 03-18-2025
 // ***********************************************************************
 // <copyright file="HttpRequestExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -12,9 +12,11 @@
 // <summary>Extension methods designed for HttpRequest.</summary>
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Core.Security;
 using DotNetTips.Spargine.Extensions.Properties;
 using Microsoft.AspNetCore.Http;
 
@@ -33,6 +35,23 @@ namespace DotNetTips.Spargine.Extensions;
 [Information(Status = Status.NeedsDocumentation)]
 public static class HttpRequestExtensions
 {
+	/// <summary>
+	/// Adds a unique request identifier to the HTTP headers.
+	/// </summary>
+	/// <param name="headers">The HTTP headers to which the request identifier will be added.</param>
+	/// <returns>The generated unique request identifier.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="headers"/> is null.</exception>
+	[Information(nameof(AddRequestId), author: "David McCarter", createdOn: "3/18/2024", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static string AddRequestId([NotNull] this HttpRequestHeaders headers)
+	{
+		headers = headers.ArgumentNotNull();
+
+		var id = UlidGenerator.GenerateUlid();
+
+		headers.Add("X-Request-UUID", id);
+
+		return id;
+	}
 
 	/// <summary>
 	/// Retrieves the raw body as a byte array from the <see cref="HttpRequest" /> body stream.

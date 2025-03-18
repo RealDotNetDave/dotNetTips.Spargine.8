@@ -4,7 +4,7 @@
 // Created          : 04-16-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-17-2024
+// Last Modified On : 03-18-2025
 // ***********************************************************************
 // <copyright file="PersonComparer.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.

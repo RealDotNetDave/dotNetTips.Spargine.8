@@ -4,7 +4,7 @@
 // Created          : 03-20-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-10-2025
+// Last Modified On : 03-18-2025
 // ***********************************************************************
 // <copyright file="ProcessorInformation.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -55,7 +55,7 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// </summary>
 	/// <param name="other">An object to compare with this object.</param>
 	/// <returns><c>true</c> if the current object is equal to the <paramref name="other"/> parameter; otherwise, <c>false</c>.</returns>
-	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(Equals), UnitTestStatus = UnitTestStatus.NotRequired, Status = Status.Available)]
 	public readonly bool Equals(ProcessorInformation other)
 	{
 		return this.PageSize == other.PageSize && this.MinimumApplicationAddress.Equals(other.MinimumApplicationAddress) && this.MaximumApplicationAddress.Equals(other.MaximumApplicationAddress) && this.ActiveProcessorMask.Equals(other.ActiveProcessorMask) && this.NumberOfProcessors == other.NumberOfProcessors && this.ProcessorArchitecture == other.ProcessorArchitecture && this.AllocationGranularity == other.AllocationGranularity && this.ProcessorLevel == other.ProcessorLevel && this.ProcessorRevision == other.ProcessorRevision;
@@ -65,7 +65,7 @@ public struct ProcessorInformation : IEquatable<ProcessorInformation>
 	/// Returns a hash code for this instance.
 	/// </summary>
 	/// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
-	[Information(nameof(GetHashCode), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(GetHashCode), UnitTestStatus = UnitTestStatus.NotRequired, Status = Status.Available)]
 	public override readonly int GetHashCode()
 	{
 		var hash = new HashCode();

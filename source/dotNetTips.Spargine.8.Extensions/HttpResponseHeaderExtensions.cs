@@ -4,7 +4,7 @@
 // Created          : 07-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-18-2024
+// Last Modified On : 03-18-2025
 // ***********************************************************************
 // <copyright file="HttpResponseHeaderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
+using System.Net.Http.Headers;
 using DotNetTips.Spargine.Core;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -77,6 +78,25 @@ public static class HttpResponseHeaderExtensions
 		header = header.ArgumentDefined(nameof(header));
 
 		return _headerNames[(int)header];
+	}
+
+	/// <summary>
+	/// Retrieves the request identifier from the HTTP headers.
+	/// </summary>
+	/// <param name="headers">The HTTP headers from which the request identifier will be retrieved.</param>
+	/// <returns>The request identifier if found; otherwise, an empty string.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="headers"/> is null.</exception>
+	[Information(nameof(GetRequestId), author: "David McCarter", createdOn: "3/18/2024", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	public static string GetRequestId([NotNull] this HttpResponseHeaders headers)
+	{
+		headers = headers.ArgumentNotNull();
+
+		if (headers.TryGetValues("X-Request-UUID", out var values))
+		{
+			return values.FirstOrDefault() ?? string.Empty;
+		}
+
+		return string.Empty;
 	}
 
 }

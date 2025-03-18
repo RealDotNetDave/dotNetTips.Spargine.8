@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-14-2025
+// Last Modified On : 03-18-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -340,7 +340,7 @@ public static class DirectoryHelper
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> or <paramref name="destination"/> is null.</exception>
 	/// <exception cref="IOException">Thrown when the directory could not be moved after the specified number of retries.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+	[Information(nameof(MoveDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void MoveDirectory([NotNull] DirectoryInfo source, [NotNull] DirectoryInfo destination, [ConstantExpected(Min = 1, Max = byte.MaxValue)] byte retries = 5)
 	{
 		source = source.ArgumentExists();
@@ -362,7 +362,7 @@ public static class DirectoryHelper
 	/// <param name="path">The directory from which the attributes will be removed. Must not be null.</param>
 	/// <param name="attributesToRemove">The attributes to remove from the directory.</param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> is null.</exception>
-	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static void RemoveAttributes([NotNull] DirectoryInfo path, in FileAttributes attributesToRemove)
 	{
 		if (path.CheckExists() == false)
