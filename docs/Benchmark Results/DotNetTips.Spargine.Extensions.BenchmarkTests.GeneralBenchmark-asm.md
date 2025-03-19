@@ -1,4 +1,4 @@
-## .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
+## .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark.GuidEqualsTest()
        vzeroupper

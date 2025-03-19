@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-19-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -367,9 +367,9 @@ public static partial class TypeHelper
 	/// <param name="classOnly">If true, only class types are considered; otherwise, interfaces are also considered.</param>
 	/// <returns>A read-only collection of types that are derived from the specified base type.</returns>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Completed, Documentation = "https://bit.ly/SpargineApril2022", Status = Status.Available)]
-	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] in AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
+	public static ReadOnlyCollection<Type> FindDerivedTypes([NotNull] AppDomain currentDomain, [NotNull] Type baseType, bool classOnly)
 	{
-		_ = currentDomain.ArgumentNotNull();
+		currentDomain = currentDomain.ArgumentNotNull();
 		baseType = baseType.ArgumentNotNull();
 
 		//USING SPAN CAUSES ISSUES, FrozenSet is slower.
@@ -703,9 +703,9 @@ public static partial class TypeHelper
 	/// <param name="length">The number of generic arguments to consider.</param>
 	/// <param name="options">Display name options to customize the output.</param>
 	[Information(nameof(ProcessGenericType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static void ProcessGenericType(in StringBuilder builder, Type type, Type[] genericArguments, int length, DisplayNameOptions options)
+	public static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, int length, DisplayNameOptions options)
 	{
-		_ = builder.ArgumentNotNull();
+		builder = builder.ArgumentNotNull();
 		type = type.ArgumentNotNull();
 		genericArguments = genericArguments.ArgumentNotNull();
 

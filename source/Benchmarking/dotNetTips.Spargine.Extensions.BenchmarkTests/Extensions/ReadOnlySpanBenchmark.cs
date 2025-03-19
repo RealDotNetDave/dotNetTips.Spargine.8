@@ -24,9 +24,20 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 [BenchmarkCategory(Categories.Collections)]
 public class ReadOnlySpanBenchmark : SmallCollectionBenchmark
 {
+	private byte[] _bytes;
 	private PersonRecord[] _peopleRecordArray;
 	private Spargine.Tester.Models.ValueTypes.Person<Spargine.Tester.Models.ValueTypes.Address>[] _peopleValArray;
 	private Person<Address>[] _personRefArray;
+
+	[Benchmark(Description = nameof(ReadOnlySpanExtensions.BytesToString))]
+	public void BytesToString()
+	{
+		var collection = this._bytes.AsReadOnlySpan();
+
+		var result = collection.BytesToString();
+
+		this.Consume(result);
+	}
 
 	[Benchmark(Description = nameof(ReadOnlySpanExtensions.PickRandom) + ": record")]
 	public void PickRandomRecord()
@@ -62,6 +73,7 @@ public class ReadOnlySpanBenchmark : SmallCollectionBenchmark
 	{
 		base.Setup();
 
+		this._bytes = this.GetByteArray();
 		this._personRefArray = this.GetPersonRefArray();
 		this._peopleRecordArray = this.GetPersonRecordArray();
 		this._peopleValArray = this.GetPersonValArray();

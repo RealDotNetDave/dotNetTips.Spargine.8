@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-19-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -20,7 +20,6 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using DotNetTips.Spargine.Core;
-using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -104,7 +103,7 @@ public static class DictionaryExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/>, <paramref name="items"/>, <paramref name="keyFunction"/>, or <paramref name="valueFunction"/> is null.</exception>
 	[DebuggerStepThrough]
 	[Information(nameof(AddRange), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> collection, in IEnumerable<T> items, Func<T, TKey> keyFunction, Func<T, TValue> valueFunction)
+	public static bool AddRange<T, TKey, TValue>(this IDictionary<TKey, TValue> collection, IEnumerable<T> items, Func<T, TKey> keyFunction, Func<T, TValue> valueFunction)
 		where TKey : notnull
 		where TValue : notnull
 	{
@@ -128,6 +127,7 @@ public static class DictionaryExtensions
 		{
 			var itemKey = keyFunction(item);
 			var itemValue = valueFunction(item);
+
 			if (!collection.ContainsKey(itemKey))
 			{
 				collection.Add(itemKey, itemValue);
@@ -201,7 +201,7 @@ public static class DictionaryExtensions
 	public static ConcurrentDictionary<TKey, TValue> ToConcurrentDictionary<TKey, TValue>(this IDictionary<TKey, TValue> collection) => new(collection.ArgumentNotNull());
 
 	/// <summary>
-	/// Converts <see cref="IDictionary" /> to delimited string using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
+	/// Converts <see cref="IDictionary" /> to delimited string using ObjectPool to improve performance.
 	/// </summary>
 	/// <typeparam name="TKey">The type of the t keyFunction.</typeparam>
 	/// <typeparam name="TValue">The type of the t valueFunction.</typeparam>

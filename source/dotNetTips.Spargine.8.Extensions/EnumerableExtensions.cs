@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-19-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -418,7 +418,7 @@ public static class EnumerableExtensions
 
 		if (collection is List<T> list)
 		{
-			var span = list.AsReadOnlySpan();
+			var span = CollectionsMarshal.AsSpan(list);
 			var processedCollection = new ReadOnlyCollectionBuilder<T>(span.Length);
 			var itemCount = span.Length;
 
@@ -625,7 +625,17 @@ public static class EnumerableExtensions
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static bool HasItems(this IEnumerable collection, int count) => collection is null ? false : collection.Count() == count;
+	public static bool HasItems(this IEnumerable collection, int count)
+	{
+		if (collection is null)
+		{
+			return false;
+		}
+		else
+		{
+			return collection.Count() == count;
+		}
+	}
 
 	/// <summary>
 	/// Finds the index of the first occurrence of an item in the collection.
@@ -827,7 +837,7 @@ public static class EnumerableExtensions
 	/// </remarks>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(Page), "David McCarter", "11/21/2010", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
+	[Information(nameof(Page), "David McCarter", "11/21/2010", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
 	public static IEnumerable<IEnumerable<T>> Page<T>(this IEnumerable<T> collection, int pageSize)
 	{
 		collection = collection.ArgumentNotNull();
@@ -1123,7 +1133,7 @@ public static class EnumerableExtensions
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
 	[Information(nameof(StructuralSequenceEqual), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static bool StructuralSequenceEqual<T>(this IEnumerable<T> first, in IEnumerable<T> second)
+	public static bool StructuralSequenceEqual<T>(this IEnumerable<T> first, IEnumerable<T> second)
 	{
 		if (first is null || second is null)
 		{

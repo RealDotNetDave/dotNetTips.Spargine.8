@@ -1,1 +1,1 @@
-## DotNetTips.Spargine.Extensions.BenchmarkTests.ExceptionExtensionsBenchmark-20250309-232719
+## DotNetTips.Spargine.Extensions.BenchmarkTests.ExceptionExtensionsBenchmark-20250318-223008

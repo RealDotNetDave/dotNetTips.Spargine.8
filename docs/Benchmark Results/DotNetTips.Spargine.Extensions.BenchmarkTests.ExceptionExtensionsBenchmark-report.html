@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DotNetTips.Spargine.Extensions.BenchmarkTests.ExceptionExtensionsBenchmark-20250309-232719</title>
+<title>DotNetTips.Spargine.Extensions.BenchmarkTests.ExceptionExtensionsBenchmark-20250318-223008</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,22 +13,22 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5487/22H2/2022Update)
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5608/22H2/2022Update)
 Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
-.NET SDK 9.0.200
-  [Host]     : .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
-  Job-JHXHAM : .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
+.NET SDK 9.0.201
+  [Host]     : .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+  Job-FRJBZZ : .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
 Namespace=DotNetTips.Spargine.Extensions.BenchmarkTests  
 </code></pre>
 
 <table>
-<thead><tr><th>Method                </th><th>Categories</th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min</th><th>Q1 </th><th>Median</th><th>Q3 </th><th>Max</th><th>Op/s  </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Gen0</th><th>Code Size</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Exceptions</th><th>Allocated</th>
+<thead><tr><th>Method                </th><th>Categories</th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min</th><th>Q1 </th><th>Median</th><th>Q3 </th><th>Max</th><th>Op/s  </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Exceptions</th><th>Code Size</th><th>Gen0</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>&#39;GetAllMessages: Separator&#39;</td><td>**NEW**</td><td>159.39 ns</td><td>1.195 ns</td><td>1.059 ns</td><td>0.283 ns</td><td>157.95 ns</td><td>158.74 ns</td><td>159.43 ns</td><td>160.07 ns</td><td>161.41 ns</td><td>6,273,925.7</td><td>6.858 ns</td><td>14.00</td><td>1.943</td><td>2.000</td><td>0.2232</td><td>2</td><td>*</td><td>No</td><td>0.0029</td><td>804 B</td><td>-</td><td>-</td><td>-</td><td>280 B</td>
-</tr><tr><td>GetAllMessages</td><td></td><td>159.57 ns</td><td>0.906 ns</td><td>0.847 ns</td><td>0.219 ns</td><td>158.20 ns</td><td>159.04 ns</td><td>159.50 ns</td><td>160.14 ns</td><td>161.38 ns</td><td>6,266,724.9</td><td>7.391 ns</td><td>15.00</td><td>2.325</td><td>2.000</td><td>0.3076</td><td>2</td><td>*</td><td>No</td><td>0.0029</td><td>804 B</td><td>-</td><td>-</td><td>-</td><td>280 B</td>
-</tr><tr><td>GetAllMessagesWithStackTrace</td><td></td><td>69.30 ns</td><td>0.465 ns</td><td>0.435 ns</td><td>0.112 ns</td><td>68.71 ns</td><td>68.95 ns</td><td>69.26 ns</td><td>69.52 ns</td><td>70.15 ns</td><td>14,429,902.4</td><td>7.444 ns</td><td>15.00</td><td>1.992</td><td>2.000</td><td>0.5115</td><td>1</td><td>*</td><td>No</td><td>0.0024</td><td>NA</td><td>-</td><td>-</td><td>-</td><td>224 B</td>
+</thead><tbody><tr><td>&#39;GetAllMessages: Separator&#39;</td><td>**NEW**</td><td>156.73 ns</td><td>1.009 ns</td><td>0.895 ns</td><td>0.239 ns</td><td>155.68 ns</td><td>156.13 ns</td><td>156.39 ns</td><td>157.27 ns</td><td>158.59 ns</td><td>6,380,290.9</td><td>6.880 ns</td><td>14.00</td><td>2.225</td><td>2.000</td><td>0.7372</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>809 B</td><td>0.0029</td><td>280 B</td>
+</tr><tr><td>GetAllMessages</td><td></td><td>163.57 ns</td><td>0.850 ns</td><td>0.795 ns</td><td>0.205 ns</td><td>162.39 ns</td><td>163.09 ns</td><td>163.40 ns</td><td>164.09 ns</td><td>165.24 ns</td><td>6,113,637.1</td><td>7.397 ns</td><td>15.00</td><td>2.234</td><td>2.000</td><td>0.4175</td><td>3</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>809 B</td><td>0.0029</td><td>280 B</td>
+</tr><tr><td>GetAllMessagesWithStackTrace</td><td></td><td>67.92 ns</td><td>0.463 ns</td><td>0.433 ns</td><td>0.112 ns</td><td>67.45 ns</td><td>67.56 ns</td><td>67.80 ns</td><td>68.17 ns</td><td>68.93 ns</td><td>14,723,829.0</td><td>7.444 ns</td><td>15.00</td><td>2.612</td><td>2.000</td><td>0.7633</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>2,134 B</td><td>0.0024</td><td>224 B</td>
 </tr></tbody></table>
 </body>
 </html>

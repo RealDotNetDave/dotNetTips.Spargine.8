@@ -17,7 +17,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using DotNetTips.Spargine.Core;
-using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 namespace DotNetTips.Spargine.Extensions;
@@ -144,7 +143,7 @@ public static class ArrayExtensions
 	public static Span<T> AsSpan<T>([NotNull] this T[] list) => new(list.ArgumentNotNull());
 
 	/// <summary>
-	/// Returns a <see cref="string" /> that represents this instance. Uses <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
+	/// Returns a <see cref="string" /> that represents this instance. Uses ObjectPool to improve performance.
 	/// Validates that <paramref name="array" /> is not null.
 	/// </summary>
 	/// <param name="array">The bytes.</param>

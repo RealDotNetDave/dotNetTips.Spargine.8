@@ -262,9 +262,10 @@ public static class ObjectExtensions
 	[Information("Original code by: Diego De Vita", author: "David McCarter", createdOn: "11/19/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
 	public static IDictionary<string, string> PropertiesToDictionary([NotNull] this object obj, [NotNull] string memberName = ControlChars.EmptyString, bool ignoreNulls = true)
 	{
-		var result = new Dictionary<string, string>();
 		memberName = memberName.ArgumentNotNull();
 		var objectType = obj.ArgumentNotNull().GetType();
+
+		var result = new Dictionary<string, string>();
 
 		// Reserve a special treatment for specific types by design (like string -that's a list of chars and you don't want to iterate on its items)
 		if (TypeHelper.BuiltInTypeNames().ContainsKey(objectType))

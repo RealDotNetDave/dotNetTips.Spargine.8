@@ -15,7 +15,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using DotNetTips.Spargine.Core;
-using Microsoft.Extensions.ObjectPool;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -29,7 +28,7 @@ namespace DotNetTips.Spargine.Extensions;
 public static class ReadOnlySpanExtensions
 {
 	/// <summary>
-	/// Converts byte array to a string using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
+	/// Converts byte array to a string using ObjectPool to improve performance.
 	/// Validates that <paramref name="array" /> is not null.
 	/// </summary>
 	/// <param name="array">The array.</param>

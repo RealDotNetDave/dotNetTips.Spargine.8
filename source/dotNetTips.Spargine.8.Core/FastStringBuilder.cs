@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-19-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -48,8 +48,34 @@ public static class FastStringBuilder
 	/// <param name="bytes">The byte array to convert.</param>
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	public static string BytesToString([NotNull] ref readonly byte[] bytes) => bytes is null || bytes.LongLength == 0 ? ControlChars.EmptyString : BytesToString(bytes.AsSpan());
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
+	public static string BytesToString([NotNull] ref readonly byte[] bytes)
+	{
+		if (bytes == null)
+		{
+			return ControlChars.EmptyString;
+		}
+
+		var sb = _stringBuilderPool.Get().Clear();
+
+		//Set capacity to increase performance
+		_ = sb.EnsureCapacity((bytes.Length * 2) + 3);
+
+		try
+		{
+			//FrozenSet, ImmutableArray and Span is slower.
+			foreach (var @byte in bytes)
+			{
+				_ = sb.Append(@byte.ToString("X2", CultureInfo.InvariantCulture));
+			}
+
+			return sb.ToString();
+		}
+		finally
+		{
+			_stringBuilderPool.Return(sb);
+		}
+	}
 
 	/// <summary>
 	/// Converts a ReadOnlySpan of bytes into a hexadecimal string representation, making it easy to inspect raw byte data in string form.
@@ -75,7 +101,7 @@ public static class FastStringBuilder
 		{
 			foreach (var @byte in bytes)
 			{
-				_ = sb.AppendFormat(CultureInfo.InvariantCulture, "{0:X2}", @byte);
+				_ = sb.Append(@byte.ToString("X2", CultureInfo.InvariantCulture));
 			}
 
 			return sb.ToString();
@@ -160,7 +186,7 @@ public static class FastStringBuilder
 
 	/// <summary>
 	/// Concatenates an array of strings using a specified delimiter, optionally adding a line feed after each element.
-	/// This method is a wrapper over <see cref="ConcatStrings(string, bool, string[])"/> for convenience when using a char delimiter.
+	/// This method is a wrapper over ConcatStrings() for convenience when using a char delimiter.
 	/// </summary>
 	/// <param name="delimiter">The character used to separate each string in the output.</param>
 	/// <param name="addLineFeed">If set to <c>true</c>, adds a line feed after each element instead of using the delimiter.</param>

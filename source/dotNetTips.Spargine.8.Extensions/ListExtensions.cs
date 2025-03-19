@@ -89,7 +89,7 @@ public static class ListExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> or <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(AddRangeIfNotExists), author: "David McCarter", createdOn: "12/30/2024", OptimizationStatus = OptimizationStatus.None, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static List<T> AddRangeIfNotExists<T>([NotNull] this List<T> collection, [NotNull] in IEnumerable<T> items)
+	public static List<T> AddRangeIfNotExists<T>([NotNull] this List<T> collection, [NotNull] IEnumerable<T> items)
 	{
 		// TODO: CHANGE TO VOID AT THE END OF 2025 TO WORK LIKE ADDRANGE
 

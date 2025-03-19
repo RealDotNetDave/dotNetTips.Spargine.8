@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DotNetTips.Spargine.Extensions.BenchmarkTests.Tester.RandomDataBenchmark-20250310-043132</title>
+<title>DotNetTips.Spargine.Extensions.BenchmarkTests.Tester.RandomDataBenchmark-20250319-033949</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,24 +13,24 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5487/22H2/2022Update)
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5608/22H2/2022Update)
 Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
-.NET SDK 9.0.200
-  [Host]     : .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
-  Job-JHXHAM : .NET 8.0.13 (8.0.1325.6609), X64 RyuJIT AVX2
+.NET SDK 9.0.201
+  [Host]     : .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+  Job-FRJBZZ : .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
 Namespace=DotNetTips.Spargine.Extensions.BenchmarkTests.Tester  
 </code></pre>
 
 <table>
-<thead><tr><th>Method                        </th><th>Mean  </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min   </th><th>Q1    </th><th>Median</th><th>Q3    </th><th>Max   </th><th>Op/s</th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Exceptions</th><th>Gen0</th><th>Allocated</th>
+<thead><tr><th>Method                        </th><th>Mean  </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min   </th><th>Q1    </th><th>Median</th><th>Q3    </th><th>Max   </th><th>Op/s</th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Code Size</th><th>Exceptions</th><th>Gen0</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>&#39;Creating: Person&#39;</td><td>340,627.6 ns</td><td>1,856.7 ns</td><td>1,645.9 ns</td><td>439.9 ns</td><td>338,555.3 ns</td><td>339,433.8 ns</td><td>340,253.4 ns</td><td>341,337.8 ns</td><td>343,658.6 ns</td><td>2,935.8</td><td>-212.9 ns</td><td>14.00</td><td>1.889</td><td>2.000</td><td>0.5987</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>4.38 KB</td>
-</tr><tr><td>&#39;Creating: Person&#39;</td><td>339,658.4 ns</td><td>2,285.2 ns</td><td>2,137.6 ns</td><td>551.9 ns</td><td>336,186.9 ns</td><td>338,347.2 ns</td><td>339,617.1 ns</td><td>341,396.9 ns</td><td>343,344.4 ns</td><td>2,944.1</td><td>-268.5 ns</td><td>15.00</td><td>1.835</td><td>2.000</td><td>0.0399</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>4.37 KB</td>
-</tr><tr><td>&#39;Creating: PersonRecord&#39;</td><td>339,690.4 ns</td><td>1,841.6 ns</td><td>1,722.6 ns</td><td>444.8 ns</td><td>337,004.0 ns</td><td>338,410.4 ns</td><td>339,798.8 ns</td><td>340,795.8 ns</td><td>342,286.2 ns</td><td>2,943.9</td><td>-214.9 ns</td><td>15.00</td><td>1.519</td><td>2.000</td><td>-0.1440</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>4.79 KB</td>
-</tr><tr><td>&#39;PropertiesToString(): Person&#39;</td><td>440,820.8 ns</td><td>4,427.7 ns</td><td>4,141.7 ns</td><td>1,069.4 ns</td><td>433,026.3 ns</td><td>438,510.7 ns</td><td>440,194.9 ns</td><td>443,182.3 ns</td><td>447,982.4 ns</td><td>2,268.5</td><td>-527.2 ns</td><td>15.00</td><td>2.144</td><td>2.000</td><td>0.1183</td><td>3</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>86.77 KB</td>
-</tr><tr><td>&#39;PropertiesToString(): PersonRecord&#39;</td><td>416,974.2 ns</td><td>6,451.7 ns</td><td>6,034.9 ns</td><td>1,558.2 ns</td><td>408,518.5 ns</td><td>412,327.2 ns</td><td>416,150.9 ns</td><td>420,233.8 ns</td><td>428,526.2 ns</td><td>2,398.2</td><td>-771.6 ns</td><td>15.00</td><td>1.953</td><td>2.000</td><td>0.3167</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>0.9766</td><td>90.81 KB</td>
+</thead><tbody><tr><td>&#39;Creating: Person&#39;</td><td>349,753.3 ns</td><td>6,055.4 ns</td><td>5,664.2 ns</td><td>1,462.5 ns</td><td>340,959.4 ns</td><td>343,830.7 ns</td><td>353,041.8 ns</td><td>353,888.4 ns</td><td>354,537.8 ns</td><td>2,859.2</td><td>-723.7 ns</td><td>15.00</td><td>1.459</td><td>2.000</td><td>-0.6662</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>23,237 B</td><td>-</td><td>-</td><td>4.39 KB</td>
+</tr><tr><td>&#39;Creating: Person&#39;</td><td>346,907.7 ns</td><td>6,924.8 ns</td><td>7,409.5 ns</td><td>1,746.4 ns</td><td>336,724.0 ns</td><td>339,248.3 ns</td><td>350,894.5 ns</td><td>353,766.8 ns</td><td>355,352.8 ns</td><td>2,882.6</td><td>-864.2 ns</td><td>18.00</td><td>1.103</td><td>2.000</td><td>-0.2084</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>23,219 B</td><td>-</td><td>-</td><td>4.38 KB</td>
+</tr><tr><td>&#39;Creating: PersonRecord&#39;</td><td>340,607.9 ns</td><td>2,466.8 ns</td><td>2,307.4 ns</td><td>595.8 ns</td><td>336,531.1 ns</td><td>339,401.7 ns</td><td>340,477.7 ns</td><td>341,871.6 ns</td><td>344,187.4 ns</td><td>2,935.9</td><td>-290.4 ns</td><td>15.00</td><td>1.904</td><td>2.000</td><td>-0.1493</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>27,570 B</td><td>-</td><td>-</td><td>4.8 KB</td>
+</tr><tr><td>&#39;PropertiesToString(): Person&#39;</td><td>447,701.6 ns</td><td>6,478.4 ns</td><td>6,059.9 ns</td><td>1,564.7 ns</td><td>438,777.4 ns</td><td>443,559.2 ns</td><td>448,427.4 ns</td><td>451,844.0 ns</td><td>458,427.1 ns</td><td>2,233.6</td><td>-774.8 ns</td><td>15.00</td><td>1.712</td><td>2.000</td><td>0.1258</td><td>3</td><td>*</td><td>No</td><td>-</td><td>-</td><td>28,511 B</td><td>-</td><td>-</td><td>86.8 KB</td>
+</tr><tr><td>&#39;PropertiesToString(): PersonRecord&#39;</td><td>417,414.3 ns</td><td>3,117.8 ns</td><td>2,916.4 ns</td><td>753.0 ns</td><td>413,161.6 ns</td><td>415,337.1 ns</td><td>417,322.1 ns</td><td>419,240.2 ns</td><td>423,503.1 ns</td><td>2,395.7</td><td>-369.0 ns</td><td>15.00</td><td>2.147</td><td>2.000</td><td>0.3391</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>32,790 B</td><td>-</td><td>0.9766</td><td>90.88 KB</td>
 </tr></tbody></table>
 </body>
 </html>

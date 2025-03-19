@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-19-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -283,7 +283,15 @@ public static class StringExtensions
 	/// <param name="delimiter">The character delimiter to split the string by. Default is a comma.</param>
 	/// <returns>An array of strings that were delimited by the specified character.</returns>
 	[Information(nameof(DelimitedStringToArray), "David McCarter", "8/13/2020", "8/13/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static string[] DelimitedStringToArray([NotNull] this string input, [ConstantExpected] char delimiter = ControlChars.Comma) => string.IsNullOrEmpty(input) ? [] : input.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
+	public static string[] DelimitedStringToArray([NotNull] this string input, [ConstantExpected] char delimiter = ControlChars.Comma)
+	{
+		if (string.IsNullOrEmpty(input))
+		{
+			return [];
+		}
+
+		return input.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
+	}
 
 	/// <summary>
 	/// Determines whether the end of this string instance matches the specified string when compared using the specified comparison option.
