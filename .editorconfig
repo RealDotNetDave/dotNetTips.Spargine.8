@@ -770,7 +770,7 @@ dotnet_diagnostic.CA1855.severity = suggestion
 # Incorrect usage of ConstantExpected attribute
 dotnet_diagnostic.CA1856.severity = warning
 
-# A constant is expected for the parameter ****!
+# A constant is expected for the parameter
 dotnet_diagnostic.CA1857.severity = warning
 
 # Use StartsWith instead of IndexOf
@@ -782,7 +782,7 @@ dotnet_diagnostic.CA1859.severity = warning
 # Avoid using 'Enumerable.Any()' extension method
 dotnet_diagnostic.CA1860.severity = error
 
-# Avoid constant arrays as arguments ****
+# Avoid constant arrays as arguments
 dotnet_diagnostic.CA1861.severity = warning
 
 # Prefer the 'StringComparison' method overloads to perform case-insensitive string comparisons
@@ -803,7 +803,7 @@ dotnet_diagnostic.CA1867.severity = warning
 # Unnecessary call to 'Contains' for sets ****
 dotnet_diagnostic.CA1868.severity = error
 
-# Use a cached 'SearchValues' instance ****
+# Use a cached 'SearchValues' instance
 dotnet_diagnostic.CA1869.severity = warning
 
 # Cache and reuse 'JsonSerializerOptions' instances ****
@@ -815,7 +815,7 @@ dotnet_diagnostic.CA1871.severity = warning
 # Prefer 'Convert.ToHexString'and 'Convert.ToHexStringLower' overcall chains based on'BitConverter.ToString'
 dotnet_diagnostic.CA1872.severity = warning
 
-# Use Span<T>.Clear() instead of Span<T>.Fill()  ****
+# Use Span<T>.Clear() instead of Span<T>.Fill()
 dotnet_analyzer_diagnostic.category-Performance.severity = error
 
 # The UTF-7 encoding is insecure
