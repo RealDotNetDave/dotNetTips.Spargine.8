@@ -105,7 +105,6 @@ public static class RandomData
 	private static readonly object _lock = new();
 #pragma warning restore IDE0330 //TODO: REMOVE AFTER MOVING TO DOTNET 10
 
-
 	/// <summary>
 	/// A cache for postal formats, keyed by country.
 	/// </summary>

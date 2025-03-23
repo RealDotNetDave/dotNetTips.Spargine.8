@@ -45,7 +45,7 @@ public class InformationAttributeDocGeneratorTests
 	public void GenerateMarkdownDocumentForAssembly_ValidAssembly_Core_ToFile()
 	{
 		// Arrange
-		var assembly = Assembly.GetAssembly(typeof(InformationAttribute));
+		var assembly = Assembly.GetAssembly(typeof(App));
 
 		// Act
 		var result = InformationAttributeDocGenerator.GenerateMarkdownDocumentForAssembly(assembly, @"C:\dotNetTips.com");

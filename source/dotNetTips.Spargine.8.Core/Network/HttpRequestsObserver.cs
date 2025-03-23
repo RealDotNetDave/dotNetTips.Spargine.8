@@ -39,6 +39,7 @@ namespace DotNetTips.Spargine.Core.Network;
 /// </code>
 /// </example>
 /// <param name="logger">The logger used for logging information about the HTTP requests and responses.</param>
+[Information(nameof(HttpRequestsObserver), Status = Status.Available)]
 public sealed class HttpRequestsObserver(ILogger logger) : IDisposable, IObserver<DiagnosticListener>
 {
 

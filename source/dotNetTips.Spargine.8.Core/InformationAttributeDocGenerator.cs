@@ -4,7 +4,7 @@
 // Created          : 11-16-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-06-2025
+// Last Modified On : 03-23-2025
 // ***********************************************************************
 // <copyright file="InformationAttributeDocGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -42,8 +42,6 @@ public static class InformationAttributeDocGenerator
 	{
 		type = type.ArgumentNotNull();
 
-		//TODO: ADD INFO FROM PreserveAttribute
-
 		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"## {GetTypeName(type)}");
 		_ = sb.AppendLine();
 
@@ -73,7 +71,7 @@ public static class InformationAttributeDocGenerator
 	/// <param name="memberInfo">The member information to document.</param>
 	private static void GenerateMemberInfo(StringBuilder sb, MemberInfo memberInfo)
 	{
-		//Get InfomationAttribute data
+		//Get InformationAttribute data
 		var info = memberInfo.GetCustomAttribute<InformationAttribute>();
 
 		if (memberInfo.MemberType != MemberTypes.TypeInfo)
@@ -83,10 +81,10 @@ public static class InformationAttributeDocGenerator
 		}
 
 		//Display main statuses first
-		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Status:** {info.Status}");
-		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Optimization Status:** {info.OptimizationStatus}");
-		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **BenchMarkStatus:** {info.BenchmarkStatus}");
-		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Unit Test Status:** {info.UnitTestStatus}");
+		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Status:** {info.Status.GetDescription()}");
+		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Optimization Status:** {info.OptimizationStatus.GetDescription()}");
+		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **BenchMarkStatus:** {info.BenchmarkStatus.GetDescription()}");
+		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Unit Test Status:** {info.UnitTestStatus.GetDescription()}");
 
 		if (info.Author.HasValue())
 		{
@@ -166,22 +164,7 @@ public static class InformationAttributeDocGenerator
 
 	private static string GetTypeName(Type type)
 	{
-		if (type.IsGenericType && type.Name.Contains('`', StringComparison.Ordinal))
-		{
-			// Handle generic types
-			var typeName = _stringBuilderPool.Value.Get().Clear();
-			var baseName = type.Name[..type.Name.IndexOf('`', StringComparison.Ordinal)];
-			_ = typeName.Append(baseName);
-			_ = typeName.Append('<');
-
-			var genericArguments = type.GetGenericArguments();
-			_ = typeName.Append(string.Join(", ", Array.ConvertAll(genericArguments, GetTypeName)));
-			_ = typeName.Append('>');
-
-			return typeName.ToString();
-		}
-
-		return type.Name;
+		return TypeHelper.GetTypeDisplayName(type, includeGenericParameterNames: true);
 	}
 
 	/// <summary>
@@ -218,7 +201,7 @@ public static class InformationAttributeDocGenerator
 			_ = sb.AppendLine(CultureInfo.CurrentCulture, $"# {assembly.GetName().Name} - {assembly.GetName().Version}");
 			_ = sb.AppendLine();
 
-			var types = assembly.GetTypes().Where(type => type != null && HasInformationAttribute(type)).ToArray();
+			var types = assembly.GetTypes().Where(type => type != null && HasInformationAttribute(type)).OrderBy(p => p.FullName).ToArray();
 
 			foreach (var type in types)
 			{

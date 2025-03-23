@@ -147,8 +147,7 @@ public static partial class RandomCreditCardNumberGenerator
 	/// </remarks>
 	private static PrefixAndLength[] BuildPrefixAndLengths() =>
 	[
-		.. BuildPrefixAndLengthList(VisaPrefixList, 16)
-,
+		.. BuildPrefixAndLengthList(VisaPrefixList, 16),
 		.. BuildPrefixAndLengthList(MasterCardPrefixList, 16),
 		.. BuildPrefixAndLengthList(AmexPrefixList, 15),
 		.. BuildPrefixAndLengthList(DinersPrefixList, 16),
