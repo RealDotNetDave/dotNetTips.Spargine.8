@@ -86,7 +86,7 @@ public static class InformationAttributeDocGenerator
 		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **BenchMarkStatus:** {info.BenchmarkStatus.GetDescription()}");
 		_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Unit Test Status:** {info.UnitTestStatus.GetDescription()}");
 
-		if (info.Author.HasValue())
+		if (info.Author.HasValue() && !string.Equals(info.Author, "UNKNOWN", StringComparison.Ordinal))
 		{
 			_ = sb.AppendLine(CultureInfo.CurrentCulture, $"* **Author:** {info.Author}");
 		}
