@@ -79,7 +79,7 @@ public static class ExceptionExtensions
 	/// <param name="delimiter">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
 	/// <returns>A string containing all exception messages, separated by the specified delimiter.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(GetAllMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(GetAllMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static string GetAllMessages(this Exception exception, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		exception = exception.ArgumentNotNull();

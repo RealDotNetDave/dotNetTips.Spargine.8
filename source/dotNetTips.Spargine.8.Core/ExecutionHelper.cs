@@ -44,7 +44,7 @@ public static class ExecutionHelper
 	/// <param name="attempts">The current number of attempts made.</param>
 	/// <returns>The calculated delay time in milliseconds.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private static int CalculateDelay([ConstantExpected(Min = 1, Max = int.MaxValue)] int retryWaitMilliseconds, [ConstantExpected(Min = 1, Max = int.MaxValue)] int attempts) => retryWaitMilliseconds * attempts;
+	private static int CalculateDelay(int retryWaitMilliseconds, int attempts) => retryWaitMilliseconds * attempts;
 
 	/// <summary>
 	/// Provides utility methods for executing operations with retry logic, allowing for progressive delays between retries.
