@@ -4,7 +4,7 @@
 // Created          : 12-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="Enumeration.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -160,14 +160,10 @@ public class Enumeration : IComparable
 	public int CompareTo(object obj)
 	{
 		ArgumentNullException.ThrowIfNull(obj);
-		if (obj is not Enumeration other)
-		{
-			throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ErrorObjectMustBeOfTypeFormat, nameof(Enumeration)), nameof(obj));
-		}
-		else
-		{
-			return this.Value.CompareTo(other.Value);
-		}
+
+		return obj is not Enumeration other
+			? throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ErrorObjectMustBeOfTypeFormat, nameof(Enumeration)), nameof(obj))
+			: this.Value.CompareTo(other.Value);
 	}
 
 	/// <summary>

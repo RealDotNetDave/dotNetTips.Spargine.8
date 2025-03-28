@@ -68,3 +68,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~P:DotNetTips.Spargine.Core.ComputerInfo.Uptime")]
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~P:DotNetTips.Spargine.Core.ComputerInfo.IsNetworkAvailable")]
 [assembly: SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "<Pending>", Scope = "member", Target = "~M:DotNetTips.Spargine.Core.TypeHelper.ProcessGenericType(System.Text.StringBuilder@,System.Type,System.Type[],System.Int32,DotNetTips.Spargine.Core.DisplayNameOptions)")]
+[assembly: SuppressMessage("Design", "CA1024:Use properties where appropriate", Justification = "<Pending>", Scope = "member", Target = "~M:DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch.GetElapsedTimeString~System.String")]

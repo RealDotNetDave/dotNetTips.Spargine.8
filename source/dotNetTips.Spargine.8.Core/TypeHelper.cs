@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-19-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="TypeHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -338,10 +338,7 @@ public static partial class TypeHelper
 	/// <returns><c>true</c> if the specified object is the same instance as the provided instance; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="value"/> or <paramref name="instance"/> is null.</exception>
 	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
-	public static bool DoesObjectEqualInstance([NotNull] in object value, [NotNull] in object instance)
-	{
-		return ReferenceEquals(value, instance);
-	}
+	public static bool DoesObjectEqualInstance([NotNull] in object value, [NotNull] in object instance) => ReferenceEquals(value, instance);
 
 	/// <summary>
 	/// Finds all types derived from a specified base type within the currently loaded assemblies.

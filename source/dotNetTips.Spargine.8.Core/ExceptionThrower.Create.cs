@@ -4,7 +4,7 @@
 // Created          : 03-13-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrower.Create.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -31,10 +31,7 @@ public static partial class ExceptionThrower
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
 	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
-	public static FileNotFoundException CreateFileNotFoundException([NotNull] string fileName)
-	{
-		return new FileNotFoundException(Resources.ErrorFileNotFound, fileName);
-	}
+	public static FileNotFoundException CreateFileNotFoundException([NotNull] string fileName) => new(Resources.ErrorFileNotFound, fileName);
 
 	/// <summary>
 	/// Creates a <see cref="FileNotFoundException"/> with a specified message and file name.
@@ -45,10 +42,7 @@ public static partial class ExceptionThrower
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
 	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
-	public static FileNotFoundException CreateFileNotFoundException([AllowNull] string message, [NotNull] string fileName)
-	{
-		return new FileNotFoundException(message ?? Resources.ErrorFileNotFound, fileName);
-	}
+	public static FileNotFoundException CreateFileNotFoundException([AllowNull] string message, [NotNull] string fileName) => new(message ?? Resources.ErrorFileNotFound, fileName);
 
 	/// <summary>
 	/// Creates a <see cref="FileNotFoundException"/> with a specified message, file name, and inner exception.
@@ -60,8 +54,5 @@ public static partial class ExceptionThrower
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
 	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
-	public static FileNotFoundException CreateFileNotFoundException([AllowNull] string message, [NotNull] string fileName, Exception ex)
-	{
-		return new FileNotFoundException(message ?? Resources.ErrorFileNotFound, fileName, ex);
-	}
+	public static FileNotFoundException CreateFileNotFoundException([AllowNull] string message, [NotNull] string fileName, Exception ex) => new(message ?? Resources.ErrorFileNotFound, fileName, ex);
 }

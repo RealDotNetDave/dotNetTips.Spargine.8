@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrower.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -213,10 +213,7 @@ public static partial class ExceptionThrower
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
 	[Information(nameof(ThrowFileNotFoundException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static void ThrowFileNotFoundException([AllowNull] string message, [AllowNull] Exception innerException)
-	{
-		throw CreateFileNotFoundException(message, string.Empty, innerException);
-	}
+	public static void ThrowFileNotFoundException([AllowNull] string message, [AllowNull] Exception innerException) => throw CreateFileNotFoundException(message, string.Empty, innerException);
 
 	/// <summary>
 	/// Throws a FileNotFoundException with a specified message and file name.

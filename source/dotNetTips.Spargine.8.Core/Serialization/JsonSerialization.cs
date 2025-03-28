@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -158,12 +158,9 @@ public static class JsonSerialization
 	{
 		file = file.ArgumentNotNull();
 
-		if (file.Exists is false)
-		{
-			throw ExceptionThrower.CreateFileNotFoundException(Resources.FileNotFoundCannotDeserializeFromJSON, file.FullName);
-		}
-
-		return Deserialize<TResult>(File.ReadAllText(file.FullName));
+		return file.Exists is false
+			? throw ExceptionThrower.CreateFileNotFoundException(Resources.FileNotFoundCannotDeserializeFromJSON, file.FullName)
+			: Deserialize<TResult>(File.ReadAllText(file.FullName));
 	}
 
 	/// <summary>

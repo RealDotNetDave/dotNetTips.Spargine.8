@@ -4,7 +4,7 @@
 // Created          : 09-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="LoggingHelper.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -70,10 +70,7 @@ public static class LoggingHelper
 	/// <remarks>
 	/// This method is automatically invoked whenever an assembly is loaded into the application domain. It uses the <see cref="_appDomainEventsLogger"/> to log the name of the loaded assembly.
 	/// </remarks>
-	private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
-	{
-		_appDomainEventsLogger?.LogDebugMessage($"Assembly loading: {args.LoadedAssembly.FullName}.");
-	}
+	private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args) => _appDomainEventsLogger?.LogDebugMessage($"Assembly loading: {args.LoadedAssembly.FullName}.");
 
 	/// <summary>
 	/// Handles the <see cref="AppDomain.AssemblyResolve"/> event. Attempts to resolve the assembly that failed to load.
@@ -100,10 +97,7 @@ public static class LoggingHelper
 	/// <remarks>
 	/// This method is automatically invoked when the application domain is being unloaded. It uses the <see cref="_appDomainEventsLogger"/> to log the unloading event of the <see cref="AppDomain"/>.
 	/// </remarks>
-	private static void CurrentDomain_DomainUnload(object sender, EventArgs e)
-	{
-		_appDomainEventsLogger?.LogDebugMessage($"{AppDomain.CurrentDomain.FriendlyName} domain is unloading.");
-	}
+	private static void CurrentDomain_DomainUnload(object sender, EventArgs e) => _appDomainEventsLogger?.LogDebugMessage($"{AppDomain.CurrentDomain.FriendlyName} domain is unloading.");
 
 	/// <summary>
 	/// Handles the <see cref="AppDomain.FirstChanceException"/> event. Logs the exception using the application domain exception logger.
@@ -136,10 +130,7 @@ public static class LoggingHelper
 	/// <remarks>
 	/// This method is automatically invoked when the process hosting the application domain is exiting. It uses the <see cref="_appDomainEventsLogger"/> to log the exit event of the process.
 	/// </remarks>
-	private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
-	{
-		_appDomainEventsLogger?.LogDebugMessage($"{App.ProcessName} exit.");
-	}
+	private static void CurrentDomain_ProcessExit(object sender, EventArgs e) => _appDomainEventsLogger?.LogDebugMessage($"{App.ProcessName} exit.");
 
 	/// <summary>
 	/// Handles the <see cref="AppDomain.ReflectionOnlyAssemblyResolve"/> event. Attempts to resolve the assembly that failed to load in a reflection-only context.

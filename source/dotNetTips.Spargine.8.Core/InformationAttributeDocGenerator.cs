@@ -4,7 +4,7 @@
 // Created          : 11-16-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-23-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="InformationAttributeDocGenerator.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -162,10 +162,12 @@ public static class InformationAttributeDocGenerator
 		}
 	}
 
-	private static string GetTypeName(Type type)
-	{
-		return TypeHelper.GetTypeDisplayName(type, includeGenericParameterNames: true);
-	}
+	/// <summary>
+	/// Gets the display name of the specified type, including generic parameter names if applicable.
+	/// </summary>
+	/// <param name="type">The type for which to get the display name.</param>
+	/// <returns>A string representing the display name of the type.</returns>
+	private static string GetTypeName(Type type) => TypeHelper.GetTypeDisplayName(type, includeGenericParameterNames: true);
 
 	/// <summary>
 	/// Checks if the specified type or any of its members have the InformationAttribute.
