@@ -56,10 +56,7 @@ public static class FastStringBuilder
 			return ControlChars.EmptyString;
 		}
 
-		var sb = _stringBuilderPool.Get().Clear();
-
-		//Set capacity to increase performance
-		_ = sb.EnsureCapacity((bytes.Length * 2) + 3);
+		var sb = _stringBuilderPool.Get().ClearSetCapacity((bytes.Length * 2) + 3);
 
 		try
 		{
