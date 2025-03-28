@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="PBKDF2PasswordHasher.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -107,7 +107,7 @@ public static class PBKDF2PasswordHasher
 		Buffer.BlockCopy(passwordBytes, 1 + SaltSize, subKey, 0, Pbkdf2SubkeyLength);
 
 		byte[] bytes;
-		using (var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, salt, Pbkdf2IterCount, HashAlgorithmName))
+		using (var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, salt, Pbkdf2IterCount, HashAlgorithmName.SHA256))
 		{
 			bytes = rfc2898DeriveBytes.GetBytes(Pbkdf2SubkeyLength);
 		}
