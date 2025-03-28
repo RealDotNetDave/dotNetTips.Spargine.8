@@ -1,95 +1,1356 @@
-# DotNetTips.Spargine.8.Tester - 2025.8.3.15
+# DotNetTips.Spargine.8.Tester - 2025.8.3.19
 
-## PersonData
+## DotNetTips.Spargine.Tester.Models.RefTypes.Address
 
-### PersonData (DateTimeOffset bornOn, String cellPhone, Country country, String email, String firstName, String lastName, String phone)
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+### System.Int32 CompareTo(DotNetTips.Spargine.Tester.Models.RefTypes.Address address)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
+* **Description:** CompareTo
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+### DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord (System.String id)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** AddressRecord
+
+### DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord (System.String id, System.String address1, System.String address2, System.String city, System.String state, System.String countyProvince, System.String country, System.String postalCode, System.String phone)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** AddressRecord
+
+### System.String Address1 { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Address1
+
+### System.String Address2 { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Address2
+
+### System.String City { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** City
+
+### System.String Country { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Country
+
+### System.String CountyProvince { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CountyProvince
+
+### System.String Id { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Id
+
+### System.String Phone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Phone
+
+### System.String PostalCode { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** PostalCode
+
+### System.String State { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** State
+
+### DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord ToAddress(DotNetTips.Spargine.Tester.Models.RefTypes.Address address)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToAddress
+
+### DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord ToAddress(DotNetTips.Spargine.Tester.Models.ValueTypes.Address address)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToAddress
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.Coordinate
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+### System.Int32 CompareTo(System.Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CompareTo
+
+### System.Int32 CompareTo(DotNetTips.Spargine.Tester.Models.RefTypes.Coordinate other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CompareTo
+
+### System.Boolean Equals(System.Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Equals
+
+### System.Boolean Equals(DotNetTips.Spargine.Tester.Models.RefTypes.Coordinate other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Equals
+
+### System.Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** GetHashCode
+
+### System.String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToString
+
+### System.Int32 X { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** X
+
+### System.Int32 Y { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Y
+
+### System.Int32 Z { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Z
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.ICoordinate
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.IPerson<TAddress>
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress>
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+### DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> (System.String email, System.String id)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Person
+
+### System.Collections.ObjectModel.Collection<TAddress> Addresses { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Addresses
+
+### System.Collections.ObjectModel.Collection<TAddress> AddressesSerilization { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** AddressesSerilization
+
+### System.TimeSpan Age { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CalculateAge
+
+### System.DateTimeOffset BornOn { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** BornOn
+
+### System.TimeSpan CalculateAge()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CalculateAge
+
+### System.String CellPhone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CellPhone
+
+### System.Int32 CompareTo(DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CompareTo
+
+### System.Int32 CompareTo(DotNetTips.Spargine.Tester.Models.RefTypes.IPerson<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CalculateAge
+
+### System.String Email { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Email
+
+### System.Boolean Equals(System.Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Equals
+
+### System.Boolean Equals(DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Equals
+
+### System.Boolean Equals(DotNetTips.Spargine.Tester.Models.RefTypes.IPerson<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** Equals
+
+### System.String FirstName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** FirstName
+
+### System.String FullName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** FullName
+
+### System.Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** GetHashCode
+
+### System.String Id { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Id
+
+### System.String LastName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** LastName
+
+### System.Boolean op_Equality(DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_GreaterThan(DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_GreaterThanOrEqual(DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_Inequality(DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_LessThan(DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_LessThanOrEqual(DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String Phone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Phone
+
+### DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address> ToPerson(DotNetTips.Spargine.Tester.Models.ValueTypes.Person`1[[DotNetTips.Spargine.Tester.Models.ValueTypes.Address, DotNetTips.Spargine.8.Tester, Version=2025.8.3.19, Culture=neutral, PublicKeyToken=null]]& person)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToPerson
+
+### DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address> ToPerson(DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord& person)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToPerson
+
+### System.String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToString
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.PersonAddressComparerByLastName
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.PersonComparerByLastName
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.PersonComparerByLastNameThenFirstName
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.PersonEmailEqualityComparer
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.PersonJsonSerializerContext
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** PersonJsonSerializerContext
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+### DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord (System.String email, System.String id)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** PersonRecord
+
+### System.Collections.ObjectModel.Collection<DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord> Addresses { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Addresses
+
+### System.Collections.ObjectModel.Collection<DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord> AddressesSerilization { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** AddressesSerilization
+
+### System.TimeSpan Age { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Age
+
+### System.DateTimeOffset BornOn { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** BornOn
+
+### System.TimeSpan CalculateAge()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CalculateAge
+
+### System.String CellPhone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CellPhone
+
+### System.Int32 CompareTo(DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CompareTo
+
+### System.String Email { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Email
+
+### System.String FirstName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** FirstName
+
+### System.String FullName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** FullName
+
+### System.String Id { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Id
+
+### System.String LastName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** LastName
+
+### System.Boolean op_GreaterThan(DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord left, DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_GreaterThanOrEqual(DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord left, DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_LessThan(DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord left, DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_LessThanOrEqual(DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord left, DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String Phone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Phone
+
+### DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord ToPersonRecord(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<DotNetTips.Spargine.Tester.Models.ValueTypes.Address> person)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToPersonRecord
+
+### DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord ToPersonRecord(DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester, Version=2025.8.3.19, Culture=neutral, PublicKeyToken=null]]& person)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToPersonRecord
+
+### System.String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToString
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecordComparerByLastName
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecordEmailEqualityComparer
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Tester.Models.ValueTypes.Address
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+### DotNetTips.Spargine.Tester.Models.ValueTypes.Address (System.String id)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Address
+
+### DotNetTips.Spargine.Tester.Models.ValueTypes.Address (System.String id, System.String address1, System.String address2, System.String city, System.String state, System.String countyProvince, System.String country, System.String postalCode, System.String phone)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Address
+
+### System.String Address1 { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Address1
+
+### System.String Address2 { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Address2
+
+### System.String City { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** City
+
+### System.Int32 CompareTo(DotNetTips.Spargine.Tester.Models.ValueTypes.Address address)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CompareTo
+
+### System.String Country { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Country
+
+### System.String CountyProvince { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CountyProvince
+
+### System.Boolean Equals(System.Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** Equals
+
+### System.Boolean Equals(DotNetTips.Spargine.Tester.Models.RefTypes.IAddress other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Equals
+
+### System.Boolean Equals(DotNetTips.Spargine.Tester.Models.ValueTypes.Address other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Equals
+
+### System.Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** GetHashCode
+
+### System.String Id { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Id
+
+### System.Boolean op_Equality(DotNetTips.Spargine.Tester.Models.ValueTypes.Address left, DotNetTips.Spargine.Tester.Models.ValueTypes.Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ==
+
+### System.Boolean op_GreaterThan(DotNetTips.Spargine.Tester.Models.ValueTypes.Address left, DotNetTips.Spargine.Tester.Models.ValueTypes.Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** >
+
+### System.Boolean op_GreaterThanOrEqual(DotNetTips.Spargine.Tester.Models.ValueTypes.Address left, DotNetTips.Spargine.Tester.Models.ValueTypes.Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** >=
+
+### System.Boolean op_Inequality(DotNetTips.Spargine.Tester.Models.ValueTypes.Address left, DotNetTips.Spargine.Tester.Models.ValueTypes.Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** !=
+
+### System.Boolean op_LessThan(DotNetTips.Spargine.Tester.Models.ValueTypes.Address left, DotNetTips.Spargine.Tester.Models.ValueTypes.Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** <
+
+### System.Boolean op_LessThanOrEqual(DotNetTips.Spargine.Tester.Models.ValueTypes.Address left, DotNetTips.Spargine.Tester.Models.ValueTypes.Address right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** <=
+
+### System.String Phone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Phone
+
+### System.String PostalCode { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** PostalCode
+
+### System.String State { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** State
+
+### System.Int32 System.IComparable<DotNetTips.Spargine.Tester.Models.RefTypes.IAddress>.CompareTo(DotNetTips.Spargine.Tester.Models.RefTypes.IAddress other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** CompareTo
+
+### DotNetTips.Spargine.Tester.Models.ValueTypes.Address ToAddress(DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord address)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToAddress
+
+### System.String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToString
+
+*****
+## DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Documentation:** https://bit.ly/SpargineTester
+
+### System.Int32 CompareTo(System.Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CompareTo
+
+### System.Int32 CompareTo(DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CompareTo
+
+### System.Boolean Equals(System.Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Equals
+
+### System.Boolean Equals(DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Equals
+
+### System.Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** GetHashCode
+
+### System.Boolean op_Equality(DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate cord1, DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate cord2)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_GreaterThan(DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate left, DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_GreaterThanOrEqual(DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate left, DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_Inequality(DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate cord1, DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate cord2)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_LessThan(DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate left, DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_LessThanOrEqual(DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate left, DotNetTips.Spargine.Tester.Models.ValueTypes.Coordinate right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToString
+
+### System.Int32 X { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** X
+
+### System.Int32 Y { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Y
+
+### System.Int32 Z { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Z
+
+*****
+## DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress>
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineTester
+
+### DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> (System.String email, System.String id)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Person
+
+### System.Collections.ObjectModel.Collection<TAddress> Addresses { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Addresses
+
+### System.Collections.ObjectModel.Collection<TAddress> AddressesSerilization { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** AddressesSerilization
+
+### System.TimeSpan Age { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Age
+
+### System.DateTimeOffset BornOn { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** BornOn
+
+### System.TimeSpan CalculateAge()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CalculateAge
+
+### System.String CellPhone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CellPhone
+
+### System.Int32 CompareTo(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CompareTo
+
+### System.Int32 CompareTo(DotNetTips.Spargine.Tester.Models.RefTypes.IPerson<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** CompareTo
+
+### System.String Email { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Email
+
+### System.Boolean Equals(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** Equals
+
+### System.Boolean Equals(System.Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** Equals
+
+### System.Boolean Equals(DotNetTips.Spargine.Tester.Models.RefTypes.IPerson<TAddress> other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Equals
+
+### System.String FirstName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** FirstName
+
+### System.String FullName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** FullName
+
+### System.Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** GetHashCode
+
+### System.String Id { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Id
+
+### System.String LastName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** LastName
+
+### System.Boolean op_Equality(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_GreaterThan(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_GreaterThanOrEqual(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_Inequality(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_LessThan(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean op_LessThanOrEqual(DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> left, DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String Phone { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Phone
+
+### System.String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToString
+
+*****
+## DotNetTips.Spargine.Tester.Models.ValueTypes.PersonAddressComparerByLastName
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Tester.Models.ValueTypes.PersonComparerByLastName
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Tester.Models.ValueTypes.PersonComparerByLastNameThenFirstName
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Tester.Models.ValueTypes.PersonEmailEqualityComparer
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Tester.Models.ValueTypes.PersonJsonValSerializerContext
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** PersonJsonValSerializerContext
+
+*****
+## DotNetTips.Spargine.Tester.PersonData
+
+### DotNetTips.Spargine.Tester.PersonData (System.DateTimeOffset bornOn, System.String cellPhone, DotNetTips.Spargine.Core.Data.Models.Country country, System.String email, System.String firstName, System.String lastName, System.String phone)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
 * **Description:** PersonData
 
 *****
-## PersonName
+## DotNetTips.Spargine.Tester.PersonName
 
-### PersonName ()
+### DotNetTips.Spargine.Tester.PersonName ()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** PersonName
 
-### PersonName (String firstName, String lastName)
+### DotNetTips.Spargine.Tester.PersonName (System.String firstName, System.String lastName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** PersonName
 
-### String FirstName { get; set; }
+### System.String FirstName { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** FirstName
 
-### String FullName { get; set; }
+### System.String FullName { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** FullName
 
-### String LastName { get; set; }
+### System.String LastName { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** LastName
 
 *****
-## RandomCreditCardNumberGenerator
+## DotNetTips.Spargine.Tester.RandomCreditCardNumberGenerator
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** UNKNOWN
 * **Description:** RandomCreditCardNumberGenerator
 * **Documentation:** https://bit.ly/SpargineTester
 
-### String GetCreditCardNumber()
+### System.String GetCreditCardNumber()
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** GetCreditCardNumber
 
-### ReadOnlyCollection<String> GetCreditCardNumbers(Int32 count)
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> GetCreditCardNumbers(System.Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** GetCreditCardNumbers
 
 *****
-## RandomData
+## DotNetTips.Spargine.Tester.RandomData
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -97,7 +1358,7 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineTester
 
-### Collection<T> GenerateAddressCollection(Country country, Int32 count, Int32 addressLength, Int32 countyProvinceLength)
+### System.Collections.ObjectModel.Collection<T> GenerateAddressCollection(DotNetTips.Spargine.Core.Data.Models.Country country, System.Int32 count, System.Int32 addressLength, System.Int32 countyProvinceLength)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -108,7 +1369,7 @@
 * **Description:** GenerateAddressCollection
 * **Modified By:** David McCarter
 
-### Collection<AddressRecord> GenerateAddressRecordCollection(CountryName country, Int32 count, Int32 addressLength, Int32 countyProvinceLength)
+### System.Collections.ObjectModel.Collection<DotNetTips.Spargine.Tester.Models.RefTypes.AddressRecord> GenerateAddressRecordCollection(DotNetTips.Spargine.Core.Data.CountryName country, System.Int32 count, System.Int32 addressLength, System.Int32 countyProvinceLength)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -119,7 +1380,7 @@
 * **Description:** GenerateAddressRecordCollection
 * **Modified By:** David McCarter
 
-### Byte[] GenerateByteArray(Double sizeInKb)
+### System.Byte[] GenerateByteArray(System.Double sizeInKb)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -130,7 +1391,7 @@
 * **Description:** GenerateByteArray
 * **Modified By:** David McCarter
 
-### Char GenerateCharacter()
+### System.Char GenerateCharacter()
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -141,7 +1402,7 @@
 * **Description:** GenerateCharacter
 * **Modified By:** David McCarter
 
-### Char GenerateCharacter(Char minValue, Char maxValue)
+### System.Char GenerateCharacter(System.Char minValue, System.Char maxValue)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -163,7 +1424,7 @@
 * **Description:** GenerateCoordinate
 * **Modified By:** David McCarter
 
-### ReadOnlyCollection<T> GenerateCoordinateCollection(Int32 count)
+### System.Collections.ObjectModel.ReadOnlyCollection<T> GenerateCoordinateCollection(System.Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -174,18 +1435,18 @@
 * **Description:** GenerateCoordinateCollection
 * **Modified By:** David McCarter
 
-### String GenerateCreditCard()
+### System.String GenerateCreditCard()
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/13/2023
 * **Description:** GenerateCreditCard
 * **Modified By:** David McCarter
 
-### ReadOnlyCollection<String> GenerateCreditCards(Int32 count)
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> GenerateCreditCards(System.Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -196,7 +1457,7 @@
 * **Description:** GenerateCreditCard
 * **Modified By:** David McCarter
 
-### Decimal GenerateDecimal(Decimal& minValue, Decimal& maxValue, Int32 decimalPlaces)
+### System.Decimal GenerateDecimal(System.Decimal& minValue, System.Decimal& maxValue, System.Int32 decimalPlaces)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -207,18 +1468,18 @@
 * **Description:** GenerateDecimal
 * **Modified By:** David McCarter
 
-### String GenerateDomainExtension()
+### System.String GenerateDomainExtension()
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/19/2019
 * **Description:** GenerateDomainExtension
 * **Modified By:** David McCarter
 
-### String GenerateEmailAddress()
+### System.String GenerateEmailAddress()
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -229,51 +1490,51 @@
 * **Description:** GenerateEmailAddress
 * **Modified By:** David McCarter
 
-### String GenerateFile(String fileName, Int32 fileLength)
+### System.String GenerateFile(System.String fileName, System.Int32 fileLength)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/19/2019
 * **Description:** GenerateFile
 * **Modified By:** David McCarter
 
-### ValueTuple<String, ReadOnlyCollection<String>> GenerateFiles(Int32 count, Int32 fileLength, String fileExtension)
+### System.ValueTuple<System.String, System.Collections.ObjectModel.ReadOnlyCollection<System.String>> GenerateFiles(System.Int32 count, System.Int32 fileLength, System.String fileExtension)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/19/2019
 * **Description:** GenerateFiles
 * **Modified By:** David McCarter
 
-### ReadOnlyCollection<String> GenerateFiles(String path, Int32 count, Int32 fileLength)
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> GenerateFiles(System.String path, System.Int32 count, System.Int32 fileLength)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/19/2019
 * **Description:** GenerateFiles
 * **Modified By:** David McCarter
 
-### String GenerateFirstName()
+### System.String GenerateFirstName()
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/11/2023
 * **Description:** GenerateFirstName
 * **Modified By:** David McCarter
 
-### Int32 GenerateInteger(Int32 min, Int32 max)
+### System.Int32 GenerateInteger(System.Int32 min, System.Int32 max)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -284,29 +1545,29 @@
 * **Description:** GenerateInteger
 * **Modified By:** David McCarter
 
-### String GenerateKey()
+### System.String GenerateKey()
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** None
 * **Author:** David McCarter
 * **CreatedOn:** 1/19/2019
 * **Description:** GenerateKey
 * **Modified By:** David McCarter
 
-### String GenerateLastName()
+### System.String GenerateLastName()
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/11/2023
 * **Description:** GenerateLastName
 * **Modified By:** David McCarter
 
-### String GenerateNumber(Int32 length)
+### System.String GenerateNumber(System.Int32 length)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -317,7 +1578,7 @@
 * **Description:** GenerateNumber
 * **Modified By:** David McCarter
 
-### ReadOnlyCollection<PersonName> GeneratePersonNames(Int32 count)
+### System.Collections.ObjectModel.ReadOnlyCollection<DotNetTips.Spargine.Tester.PersonName> GeneratePersonNames(System.Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -328,16 +1589,15 @@
 * **Description:** GeneratePersonNames
 * **Modified By:** David McCarter
 
-### PersonRecord GeneratePersonRecord(Int32 addressCount, Int32 addressLength, Int32 countyProvinceLength)
+### DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord GeneratePersonRecord(System.Int32 addressCount, System.Int32 addressLength, System.Int32 countyProvinceLength)
 
 * **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** GeneratePersonRecord
 
-### ReadOnlyCollection<PersonRecord> GeneratePersonRecordCollection(Int32 count)
+### System.Collections.ObjectModel.ReadOnlyCollection<DotNetTips.Spargine.Tester.Models.RefTypes.PersonRecord> GeneratePersonRecordCollection(System.Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -348,7 +1608,7 @@
 * **Description:** GeneratePersonRecordCollection
 * **Modified By:** David McCarter
 
-### Person<TAddress> GeneratePersonRef(Int32 addressCount, Int32 addressLength, Int32 countyProvinceLength)
+### DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress> GeneratePersonRef(System.Int32 addressCount, System.Int32 addressLength, System.Int32 countyProvinceLength)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -359,7 +1619,7 @@
 * **Description:** GeneratePersonRef
 * **Modified By:** David McCarter
 
-### ReadOnlyCollection<Person<TAddress>> GeneratePersonRefCollection(Int32 count)
+### System.Collections.ObjectModel.ReadOnlyCollection<DotNetTips.Spargine.Tester.Models.RefTypes.Person<TAddress>> GeneratePersonRefCollection(System.Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -370,7 +1630,7 @@
 * **Description:** GeneratePersonRefCollection
 * **Modified By:** David McCarter
 
-### Person<TAddress> GeneratePersonVal(Int32 addressCount, Int32 addressLength, Int32 countyProvinceLength)
+### DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress> GeneratePersonVal(System.Int32 addressCount, System.Int32 addressLength, System.Int32 countyProvinceLength)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -381,7 +1641,7 @@
 * **Description:** GeneratePersonVal
 * **Modified By:** David McCarter
 
-### ReadOnlyCollection<Person<TAddress>> GeneratePersonValCollection(Int32 count)
+### System.Collections.ObjectModel.ReadOnlyCollection<DotNetTips.Spargine.Tester.Models.ValueTypes.Person<TAddress>> GeneratePersonValCollection(System.Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -392,7 +1652,7 @@
 * **Description:** GeneratePersonValCollection
 * **Modified By:** David McCarter
 
-### String GeneratePhoneNumber(Country country, Boolean includeCountryCode)
+### System.String GeneratePhoneNumber(DotNetTips.Spargine.Core.Data.Models.Country country, System.Boolean includeCountryCode)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -403,7 +1663,7 @@
 * **Description:** GeneratePhoneNumber
 * **Modified By:** David McCarter
 
-### String GeneratePhoneNumber(CountryName countryName, Boolean includeCountryCode)
+### System.String GeneratePhoneNumber(DotNetTips.Spargine.Core.Data.CountryName countryName, System.Boolean includeCountryCode)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -414,7 +1674,7 @@
 * **Description:** GeneratePhoneNumber
 * **Modified By:** David McCarter
 
-### String GenerateRandomFileName(Int32 fileNameLength, String extension)
+### System.String GenerateRandomFileName(System.Int32 fileNameLength, System.String extension)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -425,7 +1685,7 @@
 * **Description:** GenerateRandomFileName
 * **Modified By:** David McCarter
 
-### String GenerateRandomFileName(String path, Int32 fileNameLength, String extension)
+### System.String GenerateRandomFileName(System.String path, System.Int32 fileNameLength, System.String extension)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -436,34 +1696,31 @@
 * **Description:** GenerateRandomFileName
 * **Modified By:** David McCarter
 
-### ValueTuple<Country, State, City> GenerateRandomLocationData()
+### System.ValueTuple<DotNetTips.Spargine.Core.Data.Models.Country, DotNetTips.Spargine.Core.Data.Models.State, DotNetTips.Spargine.Core.Data.Models.City> GenerateRandomLocationData()
 
 * **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** GenerateRandomLocationData
 
-### PersonData GenerateRandomPersonData()
+### DotNetTips.Spargine.Tester.PersonData GenerateRandomPersonData()
 
 * **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** GenerateRandomPersonData
 
-### ValueTuple<String, String> GenerateRandomPersonName()
+### System.ValueTuple<System.String, System.String> GenerateRandomPersonName()
 
 * **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** GenerateRandomLocationData
 
-### String GenerateRelativeUrl()
+### System.String GenerateRelativeUrl()
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -474,18 +1731,18 @@
 * **Description:** GenerateRelativeUrl
 * **Modified By:** David McCarter
 
-### String GenerateTempFile(Int32 fileLength)
+### System.String GenerateTempFile(System.Int32 fileLength)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/19/2019
 * **Description:** GenerateTempFile
 * **Modified By:** David McCarter
 
-### String GenerateUrl()
+### System.String GenerateUrl()
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -496,7 +1753,7 @@
 * **Description:** GenerateUrl
 * **Modified By:** David McCarter
 
-### String GenerateUrlFragment()
+### System.String GenerateUrlFragment()
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -507,7 +1764,7 @@
 * **Description:** GenerateUrlFragment
 * **Modified By:** David McCarter
 
-### String GenerateUrlHostName()
+### System.String GenerateUrlHostName()
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -518,7 +1775,7 @@
 * **Description:** GenerateUrlHostName
 * **Modified By:** David McCarter
 
-### String GenerateUrlHostNameNoProtocol()
+### System.String GenerateUrlHostNameNoProtocol()
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -529,7 +1786,7 @@
 * **Description:** GenerateUrlHostNameNoProtocol
 * **Modified By:** David McCarter
 
-### String GenerateUrlHostNameNoSubDomain()
+### System.String GenerateUrlHostNameNoSubDomain()
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -540,7 +1797,7 @@
 * **Description:** GenerateUrlHostNameNoSubDomain
 * **Modified By:** David McCarter
 
-### String GenerateWord(Int32 length)
+### System.String GenerateWord(System.Int32 length)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -551,7 +1808,7 @@
 * **Description:** GenerateWord
 * **Modified By:** David McCarter
 
-### String GenerateWord(Int32 minLength, Int32 maxLength)
+### System.String GenerateWord(System.Int32 minLength, System.Int32 maxLength)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -562,7 +1819,7 @@
 * **Description:** GenerateWord
 * **Modified By:** David McCarter
 
-### String GenerateWord(Int32 length, Char minCharacter, Char maxCharacter)
+### System.String GenerateWord(System.Int32 length, System.Char minCharacter, System.Char maxCharacter)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -573,7 +1830,7 @@
 * **Description:** GenerateWord
 * **Modified By:** David McCarter
 
-### String GenerateWord(Int32 minLength, Int32 maxLength, Char minCharacter, Char maxCharacter)
+### System.String GenerateWord(System.Int32 minLength, System.Int32 maxLength, System.Char minCharacter, System.Char maxCharacter)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -584,7 +1841,7 @@
 * **Description:** GenerateWord
 * **Modified By:** David McCarter
 
-### ReadOnlyCollection<String> GenerateWords(Int32 count, Int32 minLength, Int32 maxLength)
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> GenerateWords(System.Int32 count, System.Int32 minLength, System.Int32 maxLength)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -595,7 +1852,7 @@
 * **Description:** GenerateWords
 * **Modified By:** David McCarter
 
-### String LongTestString { get; set; }
+### System.String LongTestString { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -607,1392 +1864,4 @@
 * **Modified By:** David McCarter
 
 *****
-## Address
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineTester
-
-### Address (String id)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Address
-
-### Address (String id, String address1, String address2, String city, String state, String countyProvince, String country, String postalCode, String phone)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Address
-
-### String Address1 { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Address1
-
-### String Address2 { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Address2
-
-### String City { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** City
-
-### Int32 CompareTo(Address address)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-### String Country { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Country
-
-### String CountyProvince { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CountyProvince
-
-### Boolean Equals(Object obj)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Boolean Equals(IAddress other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Boolean Equals(Address other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Int32 GetHashCode()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetHashCode
-
-### String Id { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Id
-
-### Boolean op_Equality(Address left, Address right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ==
-
-### Boolean op_GreaterThan(Address left, Address right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** >
-
-### Boolean op_GreaterThanOrEqual(Address left, Address right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** >=
-
-### Boolean op_Inequality(Address left, Address right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** !=
-
-### Boolean op_LessThan(Address left, Address right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** <
-
-### Boolean op_LessThanOrEqual(Address left, Address right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** <=
-
-### String Phone { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Phone
-
-### String PostalCode { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** PostalCode
-
-### String State { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** State
-
-### Int32 System.IComparable<DotNetTips.Spargine.Tester.Models.RefTypes.IAddress>.CompareTo(IAddress other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-### Address ToAddress(AddressRecord address)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToAddress
-
-### String ToString()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToString
-
-*****
-## Coordinate
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineTester
-
-### Int32 CompareTo(Object obj)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-### Int32 CompareTo(Coordinate other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-### Boolean Equals(Object obj)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Boolean Equals(Coordinate other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Int32 GetHashCode()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetHashCode
-
-### Boolean op_Equality(Coordinate cord1, Coordinate cord2)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_GreaterThan(Coordinate left, Coordinate right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_GreaterThanOrEqual(Coordinate left, Coordinate right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_Inequality(Coordinate cord1, Coordinate cord2)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_LessThan(Coordinate left, Coordinate right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_LessThanOrEqual(Coordinate left, Coordinate right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String ToString()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToString
-
-### Int32 X { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** X
-
-### Int32 Y { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Y
-
-### Int32 Z { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Z
-
-*****
-## Person<TAddress>
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineTester
-
-### Person<TAddress> (String email, String id)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Person
-
-### Collection<TAddress> Addresses { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Addresses
-
-### Collection<TAddress> AddressesSerilization { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** AddressesSerilization
-
-### TimeSpan Age { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Age
-
-### DateTimeOffset BornOn { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** BornOn
-
-### TimeSpan CalculateAge()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CalculateAge
-
-### String CellPhone { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CellPhone
-
-### Int32 CompareTo(Person<TAddress> other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-### Int32 CompareTo(IPerson<TAddress> other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-### String Email { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Email
-
-### Boolean Equals(Person<TAddress> other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Boolean Equals(Object obj)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Boolean Equals(IPerson<TAddress> other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### String FirstName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FirstName
-
-### String FullName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FullName
-
-### Int32 GetHashCode()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetHashCode
-
-### String Id { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Id
-
-### String LastName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** LastName
-
-### Boolean op_Equality(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_GreaterThan(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_GreaterThanOrEqual(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_Inequality(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_LessThan(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_LessThanOrEqual(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String Phone { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Phone
-
-### String ToString()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToString
-
-*****
-## PersonAddressComparerByLastName
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## PersonComparerByLastName
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## PersonComparerByLastNameThenFirstName
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## PersonEmailEqualityComparer
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## PersonJsonValSerializerContext
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** PersonJsonValSerializerContext
-
-*****
-## Address
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineTester
-
-### Int32 CompareTo(Address address)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-*****
-## AddressRecord
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineTester
-
-### AddressRecord (String id)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** AddressRecord
-
-### AddressRecord (String id, String address1, String address2, String city, String state, String countyProvince, String country, String postalCode, String phone)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** AddressRecord
-
-### String Address1 { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Address1
-
-### String Address2 { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Address2
-
-### String City { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** City
-
-### String Country { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Country
-
-### String CountyProvince { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CountyProvince
-
-### String Id { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Id
-
-### String Phone { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Phone
-
-### String PostalCode { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** PostalCode
-
-### String State { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** State
-
-### AddressRecord ToAddress(Address address)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToAddress
-
-### AddressRecord ToAddress(Address address)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToAddress
-
-*****
-## Coordinate
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineTester
-
-### Int32 CompareTo(Object obj)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-### Int32 CompareTo(Coordinate other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-### Boolean Equals(Object obj)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Boolean Equals(Coordinate other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Int32 GetHashCode()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetHashCode
-
-### String ToString()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToString
-
-### Int32 X { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** X
-
-### Int32 Y { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Y
-
-### Int32 Z { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Z
-
-*****
-## ICoordinate
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineTester
-
-*****
-## IPerson<TAddress>
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineTester
-
-*****
-## Person<TAddress>
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineTester
-
-### Person<TAddress> (String email, String id)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Person
-
-### Collection<TAddress> Addresses { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Addresses
-
-### Collection<TAddress> AddressesSerilization { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** AddressesSerilization
-
-### TimeSpan Age { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CalculateAge
-
-### DateTimeOffset BornOn { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** BornOn
-
-### TimeSpan CalculateAge()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CalculateAge
-
-### String CellPhone { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CellPhone
-
-### Int32 CompareTo(Person<TAddress> other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-### Int32 CompareTo(IPerson<TAddress> other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** CalculateAge
-
-### String Email { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Email
-
-### Boolean Equals(Object obj)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Boolean Equals(Person<TAddress> other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Boolean Equals(IPerson<TAddress> other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### String FirstName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FirstName
-
-### String FullName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FullName
-
-### Int32 GetHashCode()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetHashCode
-
-### String Id { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Id
-
-### String LastName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** LastName
-
-### Boolean op_Equality(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_GreaterThan(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_GreaterThanOrEqual(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_Inequality(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_LessThan(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_LessThanOrEqual(Person<TAddress> left, Person<TAddress> right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String Phone { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Phone
-
-### Person<Address> ToPerson(Person`1& person)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToPerson
-
-### Person<Address> ToPerson(PersonRecord& person)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToPerson
-
-### String ToString()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToString
-
-*****
-## PersonAddressComparerByLastName
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## PersonComparerByLastName
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## PersonComparerByLastNameThenFirstName
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## PersonEmailEqualityComparer
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## PersonJsonSerializerContext
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** PersonJsonSerializerContext
-
-*****
-## PersonRecord
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineTester
-
-### PersonRecord (String email, String id)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** PersonRecord
-
-### Collection<AddressRecord> Addresses { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Addresses
-
-### Collection<AddressRecord> AddressesSerilization { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** AddressesSerilization
-
-### TimeSpan Age { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Age
-
-### DateTimeOffset BornOn { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** BornOn
-
-### TimeSpan CalculateAge()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CalculateAge
-
-### String CellPhone { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CellPhone
-
-### Int32 CompareTo(PersonRecord other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** CompareTo
-
-### String Email { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Email
-
-### String FirstName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FirstName
-
-### String FullName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FullName
-
-### String Id { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Id
-
-### String LastName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** LastName
-
-### Boolean op_GreaterThan(PersonRecord left, PersonRecord right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_GreaterThanOrEqual(PersonRecord left, PersonRecord right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_LessThan(PersonRecord left, PersonRecord right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean op_LessThanOrEqual(PersonRecord left, PersonRecord right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String Phone { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Phone
-
-### PersonRecord ToPersonRecord(Person<Address> person)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToPersonRecord
-
-### PersonRecord ToPersonRecord(Person`1& person)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToPersonRecord
-
-### String ToString()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToString
-
-*****
-## PersonRecordComparerByLastName
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## PersonRecordEmailEqualityComparer
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-**Generated by Spargine - dotNetTips.com on 3/17/2025 7:17:33 PM UTC**
+**Generated by Spargine - dotNetTips.com on 3/28/2025 4:17:33 PM UTC**

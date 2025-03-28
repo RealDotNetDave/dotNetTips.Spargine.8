@@ -1,6 +1,6 @@
-# DotNetTips.Spargine.8.Core - 2025.8.3.15
+# DotNetTips.Spargine.8.Core - 2025.8.3.19
 
-## ApiLibraries
+## DotNetTips.Spargine.Core.ApiLibraries
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -12,7 +12,7 @@
 * **Modified By:** David McCarter
 
 *****
-## App
+## DotNetTips.Spargine.Core.App
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -20,62 +20,61 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineApp
 
-### AppInfo AppInfo { get; set; }
+### DotNetTips.Spargine.Core.AppInfo AppInfo { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** AppInfo
 
-### Void ChangeCulture(String cultureName)
+### System.Void ChangeCulture(System.String cultureName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void ChangeCulture(CultureInfo culture)
+### System.Void ChangeCulture(System.Globalization.CultureInfo culture)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void ChangeUICulture(String cultureName)
+### System.Void ChangeUICulture(System.String cultureName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### CultureInfo CurrentCulture { get; set; }
+### System.Globalization.CultureInfo CurrentCulture { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Int32 CurrentThreadId { get; set; }
+### System.Int32 CurrentThreadId { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/20/2024
 * **Description:** CurrentThreadId
 * **Modified By:** David McCarter
 
-### CultureInfo CurrentUICulture { get; set; }
+### System.Globalization.CultureInfo CurrentUICulture { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### String ExecutingFolder()
+### System.String ExecutingFolder()
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -86,113 +85,111 @@
 * **Description:** ExecutingFolder
 * **Modified By:** David McCarter
 
-### String FrameworkDescription { get; set; }
+### System.String FrameworkDescription { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### ReadOnlyCollection<String> GetCultureNames(CultureTypes cultureType)
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> GetCultureNames(System.Globalization.CultureTypes cultureType)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** GetCultureNames
 
-### IImmutableDictionary<String, String> GetEnvironmentVariables()
+### System.Collections.Immutable.IImmutableDictionary<System.String, System.String> GetEnvironmentVariables()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### ProcessorInformation GetProcessorInformation()
+### DotNetTips.Spargine.Core.ProcessorInformation GetProcessorInformation()
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/20/2023
 * **Description:** GetProcessorInformation
 * **Modified By:** David McCarter
 
-### CultureInfo InstalledUICulture { get; set; }
+### System.Globalization.CultureInfo InstalledUICulture { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean IsRunning()
+### System.Boolean IsRunning()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean IsRunningFromAspNet()
+### System.Boolean IsRunningFromAspNet()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean IsUserAdministrator()
+### System.Boolean IsUserAdministrator()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void Kill()
+### System.Void Kill()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
-### Int32 MaxDegreeOfParallelism()
+### System.Int32 MaxDegreeOfParallelism()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** UNKNOWN
 * **Description:** MaxDegreeOfParallelism
 
-### Architecture OSArchitecture { get; set; }
+### System.Runtime.InteropServices.Architecture OSArchitecture { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### String OSDescription { get; set; }
+### System.String OSDescription { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Architecture ProcessArchitecture { get; set; }
+### System.Runtime.InteropServices.Architecture ProcessArchitecture { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Int32 ProcessId { get; set; }
+### System.Int32 ProcessId { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### String ProcessName { get; set; }
+### System.String ProcessName { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -203,46 +200,46 @@
 * **Description:** ProcessName
 * **Modified By:** David McCarter
 
-### String ProcessPath { get; set; }
+### System.String ProcessPath { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/20/2024
 * **Description:** GetProcessorInformation
 * **Modified By:** David McCarter
 
-### Void RebootComputer()
+### System.Void RebootComputer()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
-### ReadOnlyCollection<String> ReferencedAssemblies()
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> ReferencedAssemblies()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void RunAsAdministrator()
+### System.Void RunAsAdministrator()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
-### String StackTrace { get; set; }
+### System.String StackTrace { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Int64 WorkingSet { get; set; }
+### System.Int64 WorkingSet { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -250,7 +247,7 @@
 * **Unit Test Status:** Completed
 
 *****
-## AppInfo
+## DotNetTips.Spargine.Core.AppInfo
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -259,31 +256,29 @@
 * **Documentation:** https://bit.ly/SpargineApp
 
 *****
-## ArgumentInvalidException
+## DotNetTips.Spargine.Core.ArgumentInvalidException
 
 * **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** UNKNOWN
 * **Description:** ArgumentInvalidException
 
 *****
-## ArgumentReadOnlyException
+## DotNetTips.Spargine.Core.ArgumentReadOnlyException
 
 * **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** UNKNOWN
 * **Description:** ArgumentReadOnlyException
 
 *****
-## BenchmarkStatus
+## DotNetTips.Spargine.Core.BenchmarkStatus
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** None
 * **Author:** David McCarter
 * **CreatedOn:** 7/29/2020
@@ -291,3652 +286,315 @@
 * **Modified By:** David McCarter
 
 *****
-## ComputerInfo
-
-* **Status:** UpdateDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 10/15/2018
-* **Description:** ComputerInfo
-* **Documentation:** https://bit.ly/SpargineComputerInfo
-* **Modified By:** David McCarter
-
-### String ComputerCulture { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String ComputerUICulture { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Int32 CurrentManagedTreadId { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String CurrentStackTrace { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Int32 CurrentSystemTickCount { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String CurrentWorkingDirectory { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String FrameworkDescription { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Version FrameworkVersion { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean HasShutdownStarted { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String IPAddress { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean Is64BitOperatingSystem { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean Is64BitProcess { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean IsNetworkAvailable { get; set; }
-
-* **Status:** New
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** IsNetworkAvailable
-
-### Boolean IsUserInteractive { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String LogicalDrives { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String MachineName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String OSArchitecture { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String OSDescription { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Int32 OSMemoryPageSize { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Int64 PhysicalMemoryInUse { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Architecture ProcessArchitecture { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Int32 ProcessorCount { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String SystemDirectory { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Int32 SystemPageSize { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Int32 TickCount { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Int64 TickCount64 { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### TimeSpan Uptime { get; set; }
-
-* **Status:** New
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String UserDomainName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### String UserName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-*****
-## Config<T>
+## DotNetTips.Spargine.Core.Cache.InMemoryCache
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineConfig
+* **Documentation:** https://bit.ly/SpargineInMemoryCache
 
-*****
-## ControlChars
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## DisplayNameOptions
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## Enumeration
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** Enumeration
-* **Documentation:** http://bit.ly/SpargineFeb2021
-
-### Enumeration (Int32 value, String displayName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Enumeration
-
-### Int32 AbsoluteDifference(Enumeration firstValue, Enumeration secondValue)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** AbsoluteDifference
-
-### String DisplayName { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** DisplayName
-
-### T FromDisplayName(String displayName)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FromDisplayName
-
-### T FromValue(Int32 value)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FromValue
-
-### IEnumerable<T> GetAll()
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetAll
-
-### Int32 Value { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Value
-
-*****
-## EnumHelper
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### ReadOnlyCollection<EnumValue> GetValues(Boolean fixNames, Boolean useXmlNames)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/1/2020
-* **Description:** GetValues
-* **Documentation:** https://bit.ly/SpargineEnumerationHandling
-* **Modified By:** David McCarter
-
-*****
-## EnvironmentKey
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## ExceptionThrower
-
-* **Status:** UpdateDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineExThrow
-
-### FileNotFoundException CreateFileNotFoundException(String fileName)
-
-* **Status:** New
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** CreateFileNotFoundException
-
-### FileNotFoundException CreateFileNotFoundException(String message, String fileName)
-
-* **Status:** New
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** CreateFileNotFoundException
-
-### FileNotFoundException CreateFileNotFoundException(String message, String fileName, Exception ex)
-
-* **Status:** New
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** CreateFileNotFoundException
-
-### String DefaultIfNull(String value, String defaultValue)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** DefaultIfNull
-
-### Void ThrowArgumentException(String message, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Optimized ThrowArgumentException method for better performance and clarity.
-
-### Void ThrowArgumentException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Optimized ThrowArgumentException method for better performance and clarity.
-
-### Void ThrowArgumentInvalidException(String message, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowArgumentInvalidException
-
-### Void ThrowArgumentInvalidException(String message, String paramName, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowArgumentInvalidException
-* **Documentation:** https://bit.ly/SpargineExThrow
-
-### Void ThrowArgumentNullException(String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowArgumentNullException
-* **Documentation:** https://bit.ly/SpargineExThrow
-
-### Void ThrowArgumentNullException(String message, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowArgumentNullException
-
-### Void ThrowArgumentNullException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowArgumentNullException
-
-### Void ThrowArgumentOutOfRangeException(String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowArgumentOutOfRangeException
-
-### Void ThrowArgumentOutOfRangeException(String message, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowArgumentOutOfRangeException
-
-### Void ThrowArgumentOutOfRangeException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowArgumentOutOfRangeException
-
-### Void ThrowArgumentReadOnlyException(String message, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowArgumentReadOnlyException
-
-### Void ThrowDirectoryNotFoundException(String message, DirectoryInfo directory)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowDirectoryNotFoundException
-
-### Void ThrowDirectoryNotFoundException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowDirectoryNotFoundException
-
-### Void ThrowFileNotFoundException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowFileNotFoundException
-
-### Void ThrowFileNotFoundException(String message, String fileName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowFileNotFoundException
-
-### Void ThrowFileNotFoundException(String message, String fileName, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowFileNotFoundException
-
-### Void ThrowInvalidCastException(String message, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowInvalidCastException
-
-### Void ThrowInvalidCastException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowInvalidCastException
-
-### Void ThrowInvalidEnumTypeException(String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowInvalidEnumTypeException
-
-### Void ThrowInvalidEnumTypeException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowInvalidEnumTypeException
-
-### Void ThrowInvalidOperationException(String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** From .NET Core source.
-
-### Void ThrowInvalidOperationException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** From .NET Core source.
-
-### Void ThrowInvalidValueException(String message, TValue value)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowInvalidValueException
-
-### Void ThrowInvalidValueException(String message, TValue value, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowInvalidValueException
-
-### Void ThrowIOException(String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowIOException
-
-### Void ThrowIOException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowIOException
-
-### Void ThrowJsonException(String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowJsonException
-
-### Void ThrowJsonException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowJsonException
-
-### Void ThrowLoggableException(String message, Exception innerException, String userMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowLoggableException
-
-### Void ThrowMessageNotQueuedException(String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowMessageNotQueuedException
-
-### Void ThrowMessageNotQueuedException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowMessageNotQueuedException
-
-### Void ThrowMessageNotQueuedException(String message, String messageId)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowMessageNotQueuedException
-
-### Void ThrowMessageNotQueuedException(String message, Exception ex, String userMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowMessageNotQueuedException
-
-### Void ThrowMessageNotQueuedException(String message, String messageId, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowMessageNotQueuedException
-
-### Void ThrowNetworkConnectionException(String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowNetworkConnectionException
-
-### Void ThrowNetworkConnectionException(String message, Exception innerException)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowNetworkConnectionException
-
-### Void ThrowNetworkConnectionException(String message, NetworkInterface connection)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ThrowNetworkConnectionException
-
-*****
-## ExecutionHelper
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** ADD URL
-
-### SimpleResult<Int32> ProgressiveRetry(Action operation, Byte retryCount, Int32 retryWaitMilliseconds, ILogger logger)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ProgressiveRetry
-* **Documentation:** https://bit.ly/SpargineProgressiveRetry
-
-### Task<SimpleResult<Int32>> ProgressiveRetryAsync(Func<Task> function, Byte retryCount, Int32 retryWaitMilliseconds, ILogger logger, CancellationToken cancellationToken)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** ProgressiveRetryAsync
-
-*****
-## Extensions
-
-### Boolean AddIfNotExists(ICollection<T> collection, T item)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/21/2020
-* **Description:** AddIfNotExists
-* **Modified By:** David McCarter
-
-### Int32 CalculateStringCount(String[] args)
-
-* **Status:** NotSet
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/14/2024
-* **Description:** CalculateStringCount
-* **Modified By:** David McCarter
-
-### StringBuilder ClearSetCapacity(StringBuilder sb, Int32 capacity)
-
-* **Status:** Available
-* **Optimization Status:** NotRequired
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** NotRequired
-* **Author:** David McCarter
-* **CreatedOn:** 11/13/2024
-* **Description:** ClearSetCapacity
-* **Modified By:** David McCarter
-
-### Int32 Count(IEnumerable collection)
+### System.Void AddCacheItem(DotNetTips.Spargine.Core.IDataModel<T, TKey> item)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 11/21/2020
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### System.Void AddCacheItem(DotNetTips.Spargine.Core.IDataRecord item)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### System.Void AddCacheItem(System.String key, T item)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/16/2021
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### System.Void AddCacheItem(DotNetTips.Spargine.Core.IDataModel<T, TKey> item, System.DateTimeOffset timeout)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### System.Void AddCacheItem(DotNetTips.Spargine.Core.IDataRecord item, System.DateTimeOffset timeout)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### System.Void AddCacheItem(DotNetTips.Spargine.Core.IDataModel<T, TKey> item, System.TimeSpan timeout)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### System.Void AddCacheItem(DotNetTips.Spargine.Core.IDataRecord item, System.TimeSpan timeout)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### System.Void AddCacheItem(System.String key, T item, System.TimeSpan timeout)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/12/2024
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### System.Void AddCacheItem(System.String key, T item, System.DateTimeOffset timeout)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/12/2024
+* **Description:** AddCacheItem
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task AddCacheItemAsync(DotNetTips.Spargine.Core.IDataRecord item, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task AddCacheItemAsync(DotNetTips.Spargine.Core.IDataModel<T, TKey> item, System.Threading.CancellationToken cancelationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task AddCacheItemAsync(DotNetTips.Spargine.Core.IDataRecord item, System.DateTimeOffset timeout, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task AddCacheItemAsync(System.String key, T item, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task AddCacheItemAsync(DotNetTips.Spargine.Core.IDataModel<T, TKey> item, System.TimeSpan timeout, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task AddCacheItemAsync(DotNetTips.Spargine.Core.IDataRecord item, System.TimeSpan timeout, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task AddCacheItemAsync(DotNetTips.Spargine.Core.IDataModel<T, TKey> item, System.DateTimeOffset timeout, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task AddCacheItemAsync(System.String key, T item, System.TimeSpan timeout, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task AddCacheItemAsync(System.String key, T item, System.DateTimeOffset timeout, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** AddCacheItemAsync
+* **Modified By:** David McCarter
+
+### Microsoft.Extensions.Caching.Memory.MemoryCache Cache { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/16/2021
+* **Description:** Cache
+* **Modified By:** David McCarter
+
+### System.Void Clear()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/12/2024
+* **Description:** Clear
+* **Modified By:** David McCarter
+
+### System.Boolean ContainsKey(System.String key)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** ContainsKey
+* **Modified By:** David McCarter
+
+### System.Int32 Count { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/16/2021
 * **Description:** Count
 * **Modified By:** David McCarter
 
-### Int64 FastCount(IEnumerable<T> collection)
+### System.Collections.Generic.IEnumerable<System.String> GetAllKeys()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** GetAllKeys
+* **Modified By:** David McCarter
+
+### T GetCacheItem(System.String key)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/16/2021
+* **Description:** GetCacheItem
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task<T> GetCacheItemAsync(System.String key, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/20/2025
+* **Description:** GetCacheItemAsync
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Cache.InMemoryCache Instance { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 5/21/2022
-* **Description:** FastCount
-* **Modified By:** David McCarter
-
-### IEnumerable<TSource> FromHierarchy(TSource source, Func<TSource, TSource> nextItemFunction)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FromHierarchy
-
-### Boolean HasValue(String input, Int32 minLength, Int32 maxLength)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** HasValue
-
-### ReadOnlyCollection<KeyValuePair<TKey, TValue>> ToReadOnlyCollection(IDictionary<TKey, TValue> dictionary)
-
-* **Status:** NotSet
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/6/2023
-* **Description:** ToReadOnlyCollection
-* **Modified By:** David McCarter
-
-*****
-## FastStringBuilder
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** ADD URL
-
-### String BytesToString(Byte[]& bytes)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 3/7/2025
-* **Description:** BytesToString
+* **CreatedOn:** 1/16/2021
+* **Description:** Instance
 * **Modified By:** David McCarter
 
-### String BytesToString(ReadOnlySpan`1& bytes)
-
-* **Status:** New
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/18/2021
-* **Description:** BytesToString
-* **Modified By:** David McCarter
-
-### String Combine(Boolean& addLineFeed, String[] args)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 12/23/2022
-* **Description:** Combine
-* **Modified By:** David McCarter
-
-### String CombineWithSpace(String[] args)
-
-* **Status:** New
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/6/2025
-* **Description:** Combine
-* **Modified By:** David McCarter
-
-### String Concat(Char delimiter, Boolean& addLineFeed, String[] args)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/19/2021
-* **Description:** Concat
-* **Modified By:** David McCarter
-
-### String Concat(String delimiter, Boolean& addLineFeed, String[] args)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/19/2021
-* **Description:** Concat
-* **Modified By:** David McCarter
-
-### String Format(String format, String[] args)
-
-* **Status:** New
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/4/2025
-* **Description:** Format
-* **Modified By:** David McCarter
-
-### String Join(IEnumerable`1& values, Char delimiter)
-
-* **Status:** New
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/4/2025
-* **Description:** Join
-* **Modified By:** David McCarter
-
-### String Join(IEnumerable`1& values, String delimiter)
-
-* **Status:** New
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/4/2025
-* **Description:** Join
-* **Modified By:** David McCarter
-
-### String PerformAction(Action`1& action)
+### System.Boolean RemoveCacheItem(System.String key)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 12/23/2022
-* **Description:** PerformAction
-* **Modified By:** David McCarter
-
-### String Remove(String input, String toRemove)
-
-* **Status:** New
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/5/2025
-* **Description:** Remove
-* **Modified By:** David McCarter
-
-### String ToDelimitedString(Dictionary`2& collection, Char delimiter)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/1/2021
-* **Description:** ToDelimitedString
-* **Documentation:** https://bit.ly/SpargineFeb2023
+* **CreatedOn:** 1/20/2025
+* **Description:** RemoveCacheItem
 * **Modified By:** David McCarter
 
 *****
-## HtmlElement
+## DotNetTips.Spargine.Core.Collections.CollectionRandomizer<T>
 
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 1/3/2023
-* **Description:** HtmlElement
-* **Modified By:** David McCarter
-
-*****
-## IDataModel<T, TKey>
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## IDataRecord
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 3/4/2021
-* **Description:** IDataRecord
-* **Modified By:** David McCarter
-
-### String AllPropertiesToString()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** AllPropertiesToString
-
-*****
-## InformationAttribute
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## InformationAttributeDocGenerator
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### String GenerateMarkdownDocumentForAssembly(Assembly assembly)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/18/2024
-* **Description:** GenerateMarkdownDocumentForAssembly
-* **Modified By:** David McCarter
-
-### String GenerateMarkdownDocumentForAssembly(Assembly assembly, String path)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/18/2024
-* **Description:** GenerateMarkdownDocumentForAssembly
-* **Modified By:** David McCarter
-
-*****
-## InvalidEnumTypeException
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** InvalidEnumTypeException
-
-*****
-## InvalidValueException<TValue>
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** InvalidValueException
-
-*****
-## KeyGenerator
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### String GenerateKey()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 5/30/2021
-* **Description:** GenerateKey
-* **Documentation:** https://bit.ly/SpargineJun2021
-* **Modified By:** David McCarter
-
-### String GenerateKey(String prefix)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 5/30/2021
-* **Description:** GenerateKey
-* **Documentation:** https://bit.ly/SpargineJun2021
-* **Modified By:** David McCarter
-
-*****
-## LineSplitEntry
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 6/9/2022
-* **Description:** LineSplitEntry
-* **Documentation:** https://www.meziantou.net/split-a-string-into-lines-without-allocation.htm
-* **Modified By:** David McCarter
-
-### Void Deconstruct(ReadOnlySpan`1& line, ReadOnlySpan`1& separator)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Deconstruct
-
-### ReadOnlySpan<Char> Line { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Line
-
-### ReadOnlySpan<Char> op_Implicit(LineSplitEntry entry)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### ReadOnlySpan<Char> Separator { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Separator
-
-### ReadOnlySpan<Char> ToReadOnlySpan(LineSplitEntry entry)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToReadOnlySpan
-
-*****
-## LineSplitEnumerator
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 6/9/2022
-* **Description:** LineSplitEnumerator
-* **Documentation:** https://www.meziantou.net/split-a-string-into-lines-without-allocation.htm
-* **Modified By:** David McCarter
-
-*****
-## LoggableException
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** LoggableException
-
-*****
-## MessageNotQueuedException
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** MessageNotQueuedException
-
-*****
-## NetworkConnectionException
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** NetworkConnectionException
-
-*****
-## OptimizationStatus
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/1/2024
-* **Description:** For use in InformationAttribute.
-* **Modified By:** David McCarter
-
-*****
-## PreserveAttribute
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 2/7/2023
-* **Description:** PreserveAttribute
-* **Documentation:** https://bit.ly/SpargineMay2023
-* **Modified By:** David McCarter
-
-*****
-## ProcessorInformation
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### Boolean Equals(Object obj)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Boolean Equals(ProcessorInformation other)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** Equals
-
-### Int32 GetHashCode()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** GetHashCode
-
-### Boolean op_Equality(ProcessorInformation left, ProcessorInformation right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** ==
-
-### Boolean op_Inequality(ProcessorInformation left, ProcessorInformation right)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** !=
-
-*****
-## SimpleResult
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 6/20/2023
-* **Description:** SimpleResult
-* **Modified By:** David McCarter
-
-### SimpleResult<T> FromException(Exception e)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** SimpleResult
-
-### SimpleResult<T> FromValue(T value)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** SimpleResult
-
-*****
-## SimpleResult<T>
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 6/20/2023
-* **Description:** SimpleResult
-* **Modified By:** David McCarter
-
-### SimpleResult<T> (T value)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** SimpleResult
-
-### SimpleResult<T> (Exception error)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** SimpleResult
-
-### Void AddException(Exception error)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** AddException
-
-### ReadOnlyCollection<Exception> Errors()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Errors
-
-### T FromResult(SimpleResult`1& result)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FromResult
-
-### String GetErrorMessages()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetErrorMessages
-
-### T Or(T defaultValue)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Or
-
-### T OrDefault()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** OrDefault
-
-### Void SetValue(T value)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** SetValue
-
-### ResultStatus Status { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** WIP
-* **Author:** UNKNOWN
-* **Description:** Status
-
-### String ToString()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ToString
-
-### Boolean TryGet(T& value)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** TryGet
-
-### T Value { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Value
-
-*****
-## Singleton<T>
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/12/2021
-* **Description:** Singleton
-* **Documentation:** https://bit.ly/SpargineSep2022
-* **Modified By:** David McCarter
-
-*****
-## Status
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/29/2020
-* **Description:** For use in InformationAttribute.
-* **Modified By:** David McCarter
-
-*****
-## TaskHelper
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### Void RunSync(Func<Task> taskFunction)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/13/2021
-* **Description:** Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App
-* **Documentation:** https://bit.ly/SpargineSep2022
-* **Modified By:** David McCarter
-
-### TResult RunSync(Func<Task<TResult>> taskFunction)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/13/2021
-* **Description:** Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App
-* **Documentation:** https://bit.ly/SpargineSep2022
-* **Modified By:** David McCarter
-
-### TResult RunSync(Func<Task<TResult>> taskFunction, CancellationToken cancellationToken, TaskCreationOptions taskCreation, TaskContinuationOptions taskContinuation, TaskScheduler taskScheduler)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/13/2021
-* **Description:** Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App
-* **Documentation:** https://bit.ly/SpargineSep2022
-* **Modified By:** David McCarter
-
-### Void RunSync(Func<Task> taskFunction, CancellationToken cancellationToken, TaskCreationOptions taskCreation, TaskContinuationOptions taskContinuation, TaskScheduler taskScheduler)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/13/2021
-* **Description:** Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App
-* **Documentation:** https://bit.ly/SpargineSep2022
-* **Modified By:** David McCarter
-
-*****
-## TypeHelper
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** ADD URL
-
-### Dictionary<Type, String> BuiltInTypeNames()
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/6/2023
-* **Description:** BuiltInTypeNames
-* **Documentation:** https://bit.ly/Spargine8
-* **Modified By:** David McCarter
-
-### ReadOnlyCollection<Type> BuiltInTypes { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** CheckPerformance
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/6/2023
-* **Description:** BuiltInTypes
-* **Documentation:** https://bit.ly/Spargine8
-* **Modified By:** David McCarter
-
-### T Create()
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### T Create(Object[] paramArray)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean DoesObjectEqualInstance(Object& value, Object& instance)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineAug2024
-
-### ReadOnlyCollection<Type> FindDerivedTypes(Type baseType, Boolean classOnly)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### ReadOnlyCollection<Type> FindDerivedTypes(AppDomain& currentDomain, Type baseType, Boolean classOnly)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
-* **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineApril2022
-
-### ReadOnlyCollection<Type> FindDerivedTypes(DirectoryInfo path, SearchOption fileSearchType, Type baseType, Boolean classOnly)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineAug2024
-
-### T FromJson(String json)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FromJson
-* **Documentation:** https://bit.ly/SpargineAug2024
-
-### T FromJsonFile(FileInfo file)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** FromJsonFile
-* **Documentation:** https://bit.ly/SpargineAug2024
-
-### T GetDefault()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Int32 GetInstanceHashCode(Object instance)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Documentation:** https://bit.ly/SpargineAug2024
-
-### IEnumerable<MemberInfo> GetMembersWithAttribute(Type type)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetMembersWithAttribute
-
-### ReadOnlyCollection<KeyValuePair<String, String>> GetPropertyValues(T& input)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/3/2020
-* **Description:** GetPropertyValues
-* **Documentation:** http://bit.ly/SpargineMarch2021
-* **Modified By:** David McCarter
-
-### String GetTypeDisplayName(Object& item, Boolean fullName)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/31/2020
-* **Description:** From .NET Core source.
-* **Documentation:** https://bit.ly/SpargineAug2024
-* **Modified By:** David McCarter
-
-### String GetTypeDisplayName(Type type, DisplayNameOptions options)
-
-* **Status:** Available
-* **Optimization Status:** Optimize
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-
-### String GetTypeDisplayName(Type type, Boolean fullName, Boolean includeGenericParameterNames, Boolean includeGenericParameters, Char nestedTypeDelimiter)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/31/2020
-* **Description:** From .NET Core source.
-* **Modified By:** David McCarter
-
-### Boolean IsBuiltinType(Type& type)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/6/2023
-* **Description:** IsBuiltinType
-* **Documentation:** https://bit.ly/Spargine8
-* **Modified By:** David McCarter
-
-### Boolean IsDotNetAssembly(Stream& stream)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 5/20/2024
-* **Description:** IsDotNetAssembly
-* **Modified By:** David McCarter
-
-### Boolean IsDotNetAssembly(FileInfo file)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 5/20/2024
-* **Description:** Orginal code by GÉRALD BARRÉ
-* **Documentation:** https://bit.ly/SpargineAug2024
-* **Modified By:** David McCarter
-
-### IEnumerable<Type> LoadDerivedTypes(IEnumerable<TypeInfo> types, Type baseType, Boolean classOnly)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### Void ProcessGenericType(StringBuilder& builder, Type type, Type[] genericArguments, Int32 length, DisplayNameOptions options)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** CheckPerformance
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ProcessGenericType
-
-### Void ProcessType(StringBuilder& builder, Type& type, DisplayNameOptions& options)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-*****
-## UnhandledExceptionEventInformation
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** UnhandledExceptionEventInformation
-
-*****
-## UnitTestStatus
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/1/2024
-* **Description:** For use in InformationAttribute.
-* **Modified By:** David McCarter
-
-*****
-## Validator
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** ADD URL
-
-### T ArgumentDefined(T input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentDefined
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Type ArgumentEquals(Type input, Type expectedType, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentEquals
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### DirectoryInfo ArgumentExists(DirectoryInfo input, DirectoryInfo defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentExists
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### FileInfo ArgumentExists(FileInfo input, FileInfo defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentExists
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Byte ArgumentInRange(Byte input, Byte& lower, Byte& upper, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/29/2022
-* **Description:** ArgumentInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### DateTime ArgumentInRange(DateTime input, DateTime& lower, DateTime& upper, Nullable`1& defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/21/2022
-* **Description:** ArgumentInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### DateTimeOffset ArgumentInRange(DateTimeOffset input, DateTimeOffset& lower, DateTimeOffset& upper, Nullable`1& defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/21/2022
-* **Description:** ArgumentInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Int32 ArgumentInRange(Int32 input, Int32 lower, String paramName, Int32 upper, Nullable`1& defaultValue, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Double ArgumentInRange(Double input, Double& lower, Double& upper, Nullable`1& defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Int64 ArgumentInRange(Int64 input, Int64& lower, Int64& upper, Nullable`1& defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Decimal ArgumentInRange(Decimal input, Decimal& lower, Decimal& upper, Nullable`1& defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### DateOnly ArgumentInRange(DateOnly input, DateOnly& lower, DateOnly& upper, Nullable`1& defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/15/2022
-* **Description:** ArgumentInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### TimeOnly ArgumentInRange(TimeOnly input, TimeOnly& lower, TimeOnly& upper, Nullable`1& defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/15/2022
-* **Description:** ArgumentInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### String ArgumentInRange(String input, Int32 lower, Int32 upper, Boolean trim, String defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### IEnumerable<T> ArgumentItemsExists(IEnumerable<T> input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentItemsExists
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### IReadOnlyList<T> ArgumentItemsExists(IReadOnlyList<T> input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 5/25/2022
-* **Description:** ArgumentItemsExists
-* **Modified By:** David McCarter
-
-### IReadOnlyCollection<T> ArgumentItemsExists(IReadOnlyCollection<T> input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 5/27/2022
-* **Description:** ArgumentItemsExists
-* **Modified By:** David McCarter
-
-### List<T> ArgumentItemsExists(List<T> input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/17/2022
-* **Description:** ArgumentItemsExists
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### T[] ArgumentItemsExists(T[] input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/4/2022
-* **Description:** ArgumentItemsExists
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### IEnumerable<T> ArgumentItemsExists(IEnumerable<T> input, Int64& count, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 4/4/2022
-* **Description:** ArgumentItemsExists
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### String ArgumentMatched(String input, Regex match, Boolean trim, String defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentMatched
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### T ArgumentMeetsCondition(T input, Boolean& condition, T defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 4/4/2022
-* **Description:** ArgumentMeetsCondition
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### ReadOnlySpan<T> ArgumentNotEmpty(ReadOnlySpan<T> input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentNotEmpty
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Span<T> ArgumentNotEmpty(Span<T> input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentNotEmpty
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Collection<T> ArgumentNotNull(Collection<T> input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 10/24/2023
-* **Description:** ArgumentNotNull
-* **Documentation:** https://bit.ly/SpargineAug23
-* **Modified By:** David McCarter
-
-### T ArgumentNotNull(T input, T defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/10/2021
-* **Description:** ArgumentNotNull
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Uri ArgumentNotNull(Uri input, Uri defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentNotNull
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Guid ArgumentNotNullOrEmpty(Guid input, String errorMessage, Nullable<Guid> defaultValue, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentNotNullOrEmpty
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### String ArgumentNotNullOrEmpty(String input, Boolean trim, String defaultValue, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** ArgumentNotNullOrEmpty
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### IList<T> ArgumentNotReadOnly(IList<T> input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/29/2022
-* **Description:** ArgumentNotReadOnly
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### ICollection<T> ArgumentNotReadOnly(ICollection<T> input, String errorMessage, String paramName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/28/2022
-* **Description:** ArgumentNotReadOnly
-* **Documentation:** https://bit.ly/SpargineMay2022Args
-* **Modified By:** David McCarter
-
-### Boolean CheckEquals(Type input, Type expectedType, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/31/2022
-* **Description:** CheckEquals
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckExists(FileInfo input, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/31/2022
-* **Description:** CheckExists
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckExists(DirectoryInfo input, Boolean& createDirectory, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/31/2022
-* **Description:** CheckExists
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsCondition(T input, Boolean& condition, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/10/2021
-* **Description:** CheckIsCondition
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsDefined(Enum input, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/31/2022
-* **Description:** CheckIsDefined
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsInRange(DateTime& input, DateTime& lower, DateTime& upper, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/31/2022
-* **Description:** CheckIsInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsInRange(TimeOnly& input, TimeOnly& lower, TimeOnly& upper, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/14/2022
-* **Description:** CheckIsInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsInRange(DateOnly& input, DateOnly& lower, DateOnly& upper, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/14/2022
-* **Description:** CheckIsInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsInRange(Int32 input, Int32 lower, Int32 upper, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/3/2022
-* **Description:** CheckIsInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsInRange(Int64& input, Int64& lower, Int64& upper, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/14/2022
-* **Description:** CheckIsInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsInRange(Double& input, Double& lower, Double& upper, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/14/2022
-* **Description:** CheckIsInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsInRange(Decimal& input, Decimal& lower, Decimal& upper, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/14/2022
-* **Description:** CheckIsInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsInRange(DateTimeOffset& input, DateTimeOffset& lower, DateTimeOffset& upper, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/31/2022
-* **Description:** CheckIsInRange
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsNotEmpty(ReadOnlySpan<T> input, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/26/2017
-* **Description:** CheckIsNotEmpty
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsNotEmpty(Guid input, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/2/2022
-* **Description:** CheckIsNotEmpty
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckIsNotNull(T input, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/10/2021
-* **Description:** CheckIsNotNull
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-### Boolean CheckItemsExists(IEnumerable<T> input, Boolean& throwException, String errorMessage)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 4/14/2022
-* **Description:** CheckItemsExists
-* **Documentation:** https://bit.ly/SpargineMay2022Data
-* **Modified By:** David McCarter
-
-*****
-## WebHelper
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** From dotNetTips.Utility
-
-### Task<String> DownloadStringAsync(Uri address, String clientId, CancellationToken cancellationToken)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** DownloadStringAsync
-
-### ReadOnlyCollection<String> HttpHeaderNames()
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 9/2/2020
-* **Description:** HttpHeaderNames
-* **Modified By:** David McCarter
-
-### Boolean IsLocalUri(String path, HttpRequest request)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 9/12/2020
-* **Description:** IsLocalUri
-* **Modified By:** David McCarter
-
-*****
-## JsonSerialization
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineJsonSerialization
-
-### TResult Deserialize(String json)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/15/2020
-* **Description:** Deserialize
-* **Modified By:** David McCarter
-
-### TResult DeserializeFromFile(FileInfo file)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** DeserializeFromFile
-
-### Boolean JsonEqual(String actual, String expected)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/15/2020
-* **Description:** From .NET Core source.
-* **Modified By:** David McCarter
-
-### T[] LoadCollectionFromJson(String json, Int32 count)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** LoadCollectionFromJson
-
-### T[] LoadCollectionFromJson(String json, Int32 count, JsonTypeInfo info)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** LoadCollectionFromJson
-
-### String Serialize(Object obj)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/15/2020
-* **Description:** Serialize
-* **Modified By:** David McCarter
-
-### Void SerializeToFile(Object obj, FileInfo file)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** SerializeToFile
-
-*****
-## XmlSerialization
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### TResult Deserialize(String xml)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Deserialize
-
-### TResult DeserializeFromFile(FileInfo file)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** DeserializeFromFile
-
-### String Serialize(Object obj)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Serialize
-
-### Void SerializeToFile(Object obj, FileInfo file)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** SerializeToFile
-
-### XDocument StringToXDocument(String input)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 9/9/2020
-* **Description:** StringToXDocument
-* **Modified By:** David McCarter
-
-### XDocument StringToXDocument(String input, XmlResolver resolver)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 9/9/2020
-* **Description:** StringToXDocument
-* **Modified By:** David McCarter
-
-*****
-## EncryptionHelper
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineEncryptionHelper
-
-### String AesDecrypt(String cipherText, Byte[] key, Byte[] iv)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/19/2021
-* **Description:** AesDecrypt
-* **Modified By:** David McCarter
-
-### String AesEncrypt(String plainText, Byte[] key, Byte[] iv)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/19/2021
-* **Description:** AesEncrypt
-* **Modified By:** David McCarter
-
-### Byte[] GenerateAesIV()
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/19/2021
-* **Description:** GenerateAesIV
-* **Modified By:** David McCarter
-
-### Byte[] GenerateAesKey()
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/19/2021
-* **Description:** GenerateAesKey
-* **Modified By:** David McCarter
-
-### String GenerateRandomKey()
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 5/30/2021
-* **Description:** GenerateRandomKey
-* **Modified By:** David McCarter
-
-### String SimpleSHA256Decrypt(String cipherText, String key)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/19/2021
-* **Description:** SimpleSHA256Decrypt
-* **Modified By:** David McCarter
-
-### String SimpleSHA256Encrypt(String plainText, String key)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/19/2021
-* **Description:** SimpleSHA256Encrypt
-* **Modified By:** David McCarter
-
-### PasswordVerificationResult VerifySHA256HashedPassword(String hashedPassword, String password)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 10/13/2021
-* **Description:** VerifySHA256HashedPassword
-* **Modified By:** David McCarter
-
-*****
-## PasswordGenerator
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### String GeneratePassword(Int32 length)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/12/2024
-* **Description:** GeneratePassword
-* **Modified By:** David McCarter
-
-*****
-## PBKDF2PasswordHasher
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### Boolean FixedTimeEquals(Byte[] left, Byte[] right)
-
-* **Status:** Available
-* **Optimization Status:** NeedsUpdate
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 10/12/2021
-* **Description:** FixedTimeEquals
-* **Modified By:** David McCarter
-
-### String HashPassword(String password)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 10/12/2021
-* **Description:** HashPassword
-* **Documentation:** https://bit.ly/SpargineJan2022
-* **Modified By:** David McCarter
-
-### PasswordVerificationResult VerifyHashedPassword(String hashedPassword, String& password)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 10/12/2021
-* **Description:** VerifyHashedPassword
-* **Documentation:** https://bit.ly/SpargineJan2022
-* **Modified By:** David McCarter
-
-*****
-## SHA256PasswordHasher
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineSHA256PasswordHasher
-
-### Boolean FixedTimeEquals(Byte[] left, Byte[] right)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 10/12/2021
-* **Description:** FixedTimeEquals
-* **Modified By:** David McCarter
-
-### String HashPassword(String password)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 10/12/2021
-* **Description:** HashPassword
-* **Modified By:** David McCarter
-
-### PasswordVerificationResult VerifyHashedPassword(String hashedPassword, String& password)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 10/12/2021
-* **Description:** VerifyHashedPassword
-* **Modified By:** David McCarter
-
-*****
-## UlidGenerator
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineUlidGenerator
-
-### ReadOnlyCollection<String> GenerateMultipleUlids(Int32 count)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Generates multiple ULIDs based on the specified count.
-
-### String GenerateUlid()
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** Generates a new ULID.
-
-*****
-## RegexProcessor
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** UNKNOWN
-* **Description:** RegexProcessor.Methods
-* **Documentation:** https://bit.ly/SpargineRegexProcessor
-
-### Boolean ContainsFirstLastName(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/16/2023
-* **Description:** ContainsFirstLastName
-* **Modified By:** David McCarter
-
-### Boolean ContainsWord(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/16/2023
-* **Description:** ContainsWord
-* **Modified By:** David McCarter
-
-### String GetNumbers(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetNumbers
-
-### Boolean IsCreditCardNumber(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/16/2023
-* **Description:** IsCreditCardNumber
-* **Modified By:** David McCarter
-
-### Boolean IsCurrencyCode(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/16/2023
-* **Description:** IsCurrencyCode
-* **Modified By:** David McCarter
-
-### Boolean IsEmailAddress(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/16/2023
-* **Description:** IsEmailAddress
-* **Modified By:** David McCarter
-
-### Boolean IsGuid(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/16/2023
-* **Description:** IsGuid
-* **Modified By:** David McCarter
-
-### Boolean IsIPv4Address(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 10/10/2023
-* **Description:** IsIPv4Address
-* **Modified By:** David McCarter
-
-### Boolean IsIPv6Address(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 10/10/2023
-* **Description:** IsIPv6Address
-* **Modified By:** David McCarter
-
-### Boolean IsISBN(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/16/2023
-* **Description:** IsISBN
-* **Modified By:** David McCarter
-
-### Boolean IsMACAddress(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 9/28/2023
-* **Description:** IsMACAddress
-* **Modified By:** David McCarter
-
-### Boolean IsOneToSevenAlpha(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** IsOneToSevenAlpha
-
-### Boolean IsScientific(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** IsScientific
-
-### Boolean IsSHA1Hash(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 9/28/2023
-* **Description:** IsSHA1Hash
-* **Modified By:** David McCarter
-
-### Boolean IsUrl(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/16/2023
-* **Description:** IsUrl
-* **Modified By:** David McCarter
-
-### Boolean IsUrlDomainAddress(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 9/28/2023
-* **Description:** IsUrlDomainAddress
-* **Modified By:** David McCarter
-
-### Boolean IsValidString(String input)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 9/28/2023
-* **Description:** IsValidString
-* **Modified By:** David McCarter
-
-### String RemoveHtml(String input, String replacement)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 8/1/2024
-* **Description:** RemoveHtml
-* **Modified By:** David McCarter
-
-### String RemoveSpecialChar(String input, String& replacement)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 8/1/2024
-* **Description:** RemoveSpecialChar
-* **Modified By:** David McCarter
-
-### String ReplaceCrLf(String input, String& replacement)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 9/28/2023
-* **Description:** ReplaceCrLf
-* **Modified By:** David McCarter
-
-### String ReplaceSpaces(String input, String& replacement)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/16/2023
-* **Description:** ReplaceSpaces
-* **Modified By:** David McCarter
-
-*****
-## HttpEventListener
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** HttpEventListener
-
-*****
-## HttpEventListenerAsyncLocal
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** HttpEventListenerAsyncLocal
-
-*****
-## HttpHandlerDiagnosticListener
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** HttpHandlerDiagnosticListener
-
-*****
-## NetworkHelper
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-
-### ReadOnlyCollection<NetworkInterface> GetNetworkConnections()
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetNetworkConnections
-
-### Boolean IsConnectedToBluetooth()
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** GetNetworkConnections
-
-*****
-## FastLogger
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineFastLogger
-
-### Void LogCritical(ILogger logger, String message, Exception exception)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/1/2022
-* **Description:** LogCritical
-* **Modified By:** David McCarter
-
-### Void LogDebug(ILogger logger, String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/1/2022
-* **Description:** LogDebug
-* **Modified By:** David McCarter
-
-### Void LogError(ILogger logger, String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/1/2022
-* **Description:** LogError
-* **Modified By:** David McCarter
-
-### Void LogException(ILogger logger, String message, Exception exception)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/1/2022
-* **Description:** LogException
-* **Modified By:** David McCarter
-
-### Void LogInformation(ILogger logger, String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/1/2022
-* **Description:** LogInformation
-* **Modified By:** David McCarter
-
-### Void LogTrace(ILogger logger, String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/1/2022
-* **Description:** LogTrace
-* **Modified By:** David McCarter
-
-### Void LogWarning(ILogger logger, String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/1/2022
-* **Description:** LogWarning
-* **Modified By:** David McCarter
-
-*****
-## FastLoggerExtensions
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** ADD URL
-
-### Void LogCriticalMessage(ILogger logger, String message, Exception exception, String methodName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/27/2023
-* **Description:** LogCriticalMessage
-* **Documentation:** https://bit.ly/SpargineMay2023
-* **Modified By:** David McCarter
-
-### Void LogDebugMessage(ILogger logger, String message, String methodName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/27/2023
-* **Description:** LogDebugMessage
-* **Documentation:** https://bit.ly/SpargineMay2023
-* **Modified By:** David McCarter
-
-### Void LogErrorMessage(ILogger logger, String message, String methodName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/27/2023
-* **Description:** LogErrorMessage
-* **Documentation:** https://bit.ly/SpargineMay2023
-* **Modified By:** David McCarter
-
-### Void LogExceptionMessage(ILogger logger, String message, Exception exception, String methodName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/27/2023
-* **Description:** LogExceptionMessage
-* **Documentation:** https://bit.ly/SpargineMay2023
-* **Modified By:** David McCarter
-
-### Void LogInformationMessage(ILogger logger, String message, String methodName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/27/2023
-* **Description:** LogInformationMessage
-* **Documentation:** https://bit.ly/SpargineMay2023
-* **Modified By:** David McCarter
-
-### Void LogStoredProcedureError(ILogger logger, String storedProcedure, Exception exception, String methodName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/27/2023
-* **Description:** LogStoredProcedureError
-* **Documentation:** https://bit.ly/SpargineMay2023
-* **Modified By:** David McCarter
-
-### Void LogStoredProcedureNoRecordsFound(ILogger logger, String storedProcedure, String methodName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/27/2023
-* **Description:** LogStoredProcedureNoRecordsFound
-* **Documentation:** https://bit.ly/SpargineMay2023
-* **Modified By:** David McCarter
-
-### Void LogTraceMessage(ILogger logger, String message, String methodName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/27/2023
-* **Description:** LogTraceMessage
-* **Documentation:** https://bit.ly/SpargineMay2023
-* **Modified By:** David McCarter
-
-### Void LogWarningMessage(ILogger logger, String message, String methodName)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/27/2023
-* **Description:** LogWarningMessage
-* **Documentation:** https://bit.ly/SpargineMay2023
-* **Modified By:** David McCarter
-
-*****
-## LoggingHelper
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** ADD URL
-
-### Void LogAppDomainEvents(ILogger logger)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** NotRequired
-* **Author:** David McCarter
-* **CreatedOn:** 7/13/2024
-* **Description:** LogAppDomainEvents
-* **Modified By:** David McCarter
-
-### Void LogAppDomainFirstChanceException(ILogger logger)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** NotRequired
-* **Author:** David McCarter
-* **CreatedOn:** 10/19/2021
-* **Description:** LogAppDomainFirstChanceException
-* **Documentation:** https://bit.ly/SpargineJan2022
-* **Modified By:** David McCarter
-
-### Void LogAppDomainUnhandledException(ILogger logger)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** NotRequired
-* **Author:** David McCarter
-* **CreatedOn:** 7/13/2024
-* **Description:** LogAppDomainUnhandledException
-* **Documentation:** ADD URL
-* **Modified By:** David McCarter
-
-### Void LogApplicationInformation(ILogger logger)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/3/2020
-* **Description:** LogApplicationInformation
-* **Documentation:** http://bit.ly/SpargineFeb2021
-* **Modified By:** David McCarter
-
-### Void LogComputerInformation(ILogger logger)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/4/2020
-* **Description:** LogComputerInformation
-* **Documentation:** http://bit.ly/SpargineFeb2021
-* **Modified By:** David McCarter
-
-### ReadOnlyCollection<String> RetrieveAllExceptionMessages(Exception exception)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** RetrieveAllExceptionMessages
-* **Documentation:** https://bit.ly/SpargineAug2024
-
-### ReadOnlyCollection<Exception> RetrieveAllExceptions(Exception exception)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** RetrieveAllExceptions
-* **Documentation:** https://bit.ly/SpargineAug2024
-
-*****
-## PerformanceStopwatch
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
-* **Description:** PerformanceStopwatch
-* **Documentation:** ADD URL
-* **Modified By:** David McCarter
-
-### PerformanceStopwatch ()
-
-* **Status:** New
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** PerformanceStopwatch
-
-### PerformanceStopwatch (String title)
-
-* **Status:** New
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** PerformanceStopwatch
-
-### Void ClearDiagnostics()
-
-* **Status:** New
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/28/2025
-* **Description:** ClearDiagnostics
-* **Modified By:** David McCarter
-
-### ReadOnlyCollection<String> Diagnostics { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/18/2023
-* **Description:** StopRestart
-* **Modified By:** David McCarter
-
-### String GetElapsedTimeString()
-
-* **Status:** New
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/28/2025
-* **Description:** GetElapsedTimeString
-* **Modified By:** David McCarter
-
-### Void LogMessage(ILogger logger, String message)
-
-* **Status:** New
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 2/28/2025
-* **Description:** LogMessage
-* **Modified By:** David McCarter
-
-### PerformanceStopwatch StartNew(String title)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
-* **Description:** StartNew
-* **Modified By:** David McCarter
-
-### TimeSpan StopReset()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
-* **Description:** StopReset
-* **Modified By:** David McCarter
-
-### TimeSpan StopReset(ILogger logger, String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/18/2023
-* **Description:** StopReset
-* **Modified By:** David McCarter
-
-### TimeSpan StopRestart()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
-* **Description:** StopRestart
-* **Modified By:** David McCarter
-
-### TimeSpan StopRestart(ILogger logger, String message)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/18/2023
-* **Description:** StopRestart
-* **Modified By:** David McCarter
-
-### String ToString()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/18/2023
-* **Description:** ToString
-* **Modified By:** David McCarter
-
-*****
-## Clock
-
-* **Status:** NeedsDocumentation
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
-* **Description:** Clock
-* **Modified By:** David McCarter
-
-### Int32 DaysInCurrentMonth { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
-* **Description:** DaysInCurrentMonth
-* **Modified By:** David McCarter
-
-### Int32 DaysInCurrentUtcMonth { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
-* **Description:** DaysInCurrentUtcMonth
-* **Modified By:** David McCarter
-
-### Boolean IsLeapYear(Int32 year)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/14/2024
-* **Description:** IsLeapYear
-* **Modified By:** David McCarter
-
-### DateTime LocalTime { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
-* **Description:** LocalTime
-* **Modified By:** David McCarter
-
-### Int32 TickCount { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
-* **Description:** TickCount
-* **Modified By:** David McCarter
-
-### Int64 TickCount64 { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/14/2024
-* **Description:** TickCount64
-* **Modified By:** David McCarter
-
-### DateTime UtcTime { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 11/11/2020
-* **Description:** UtcTime
-* **Modified By:** David McCarter
-
-*****
-## CountryRepository
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineCountryRepository
-
-### ReadOnlyCollection<Country> GetCountries()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 3/24/2023
-* **Description:** GetCountries
-* **Modified By:** David McCarter
-
-### Country GetCountry(CountryName countryName)
-
-* **Status:** Available
-* **Optimization Status:** Optimize
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 12/14/2023
-* **Description:** GetCountry
-* **Modified By:** David McCarter
-
-### Country GetCountry(Int64 countryId)
-
-* **Status:** Available
-* **Optimization Status:** Optimize
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 12/14/2023
-* **Description:** GetCountry
-* **Modified By:** David McCarter
-
-### Boolean ValidatePhoneNumber(CountryName countryName, String phoneNumber, Boolean validateCountryCode)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ValidatePhoneNumber
-
-### PostalCodeState ValidatePostalCode(CountryName countryName, String postalCode)
-
-* **Status:** Available
-* **Optimization Status:** Completed
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** UNKNOWN
-* **Description:** ValidatePostalCode
-
-*****
-## CollectionRandomizer<T>
-
-* **Status:** NeedsDocumentation
+* **Status:** Needs Documentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -3956,92 +614,91 @@
 * **Description:** GetNext
 * **Modified By:** David McCarter
 
-### Boolean HasRemainingItems { get; set; }
+### System.Boolean HasRemainingItems { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** NotRequired
+* **Unit Test Status:** Not Required
 * **Author:** David McCarter
 * **CreatedOn:** 4/21/2021
 * **Description:** HasRemainingItems
 * **Modified By:** David McCarter
 
 *****
-## AutoDefaultDictionary<TKey, TValue>
+## DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue>
 
-* **Status:** NeedsDocumentation
+* **Status:** Needs Documentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Author:** UNKNOWN
 * **Description:** Original Code by: Simon Painter. Improvement suggested by: James Curran.
 * **Documentation:** ADD URL
 
-### AutoDefaultDictionary<TKey, TValue> ()
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (TValue defaultValue)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (TValue defaultValue)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (IEqualityComparer`1& comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (Func`2& onMissingKey)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( onMissingKey)
 
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (IDictionary`2& dictionary, TValue& defaultValue)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( dictionary,  defaultValue)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (IDictionary`2& dictionary, Func`2& onMissingKey)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( dictionary,  onMissingKey)
 
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (IEnumerable`1& keyValuePairs, TValue& defaultValue)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( keyValuePairs,  defaultValue)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (IEnumerable`1& keyValuePairs, Func`2& onMissingKey)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( keyValuePairs,  onMissingKey)
 
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (TValue& defaultValue, IEqualityComparer`1& comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( defaultValue,  comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### AutoDefaultDictionary<TKey, TValue> (Func`2& onMissingKey, IEqualityComparer`1& comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( onMissingKey,  comparer)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -4056,98 +713,480 @@
 * **Unit Test Status:** Completed
 
 *****
-## FastSortedList<T>
+## DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ChannelQueue<T>
 
-* **Status:** NeedsDocumentation
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** Queue using Channel<T>.
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ChannelQueue<T> ()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** ChannelQueue
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ChannelQueue<T> (System.Nullable<System.TimeSpan> cancellationTimeout)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** ChannelQueue
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ChannelQueue<T> (System.Int32 capacity)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** ChannelQueue
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ChannelQueue<T> (System.Int32 capacity, System.Nullable<System.TimeSpan> cancellationTimeout)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** ChannelQueue
+* **Modified By:** David McCarter
+
+### System.Int32 Count { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** Count
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.IAsyncEnumerable<T> ListenAsync(System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** ListenAsync
+* **Modified By:** David McCarter
+
+### System.Boolean Lock()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** Lock
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task<T> ReadAsync(System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** ReadAsync
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task WriteAsync(T item, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** WriteAsync
+* **Modified By:** David McCarter
+
+### System.Threading.Tasks.Task WriteAsync(System.Collections.Generic.IEnumerable<T> items, System.Boolean lockQueue, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/26/2021
+* **Description:** WriteAsync
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T>
+
+* **Status:** Needs Documentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
-### FastSortedList<T> ()
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> ()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** ConcurrentHashSet
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> ( collection)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** ConcurrentHashSet
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> (System.Collections.Generic.IEqualityComparer<T> comparer)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** ConcurrentHashSet
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> (System.Int32 concurrencyLevel, System.Int32 capacity)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** ConcurrentHashSet
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> ( collection, System.Collections.Generic.IEqualityComparer<T> comparer)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** ConcurrentHashSet
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> (System.Int32 concurrencyLevel,  collection, System.Collections.Generic.IEqualityComparer<T> comparer)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** ConcurrentHashSet
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> (System.Int32 concurrencyLevel, System.Int32 capacity, System.Collections.Generic.IEqualityComparer<T> comparer)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** ConcurrentHashSet
+* **Modified By:** David McCarter
+
+### System.Void Add(T item)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** Add
+* **Modified By:** David McCarter
+
+### System.Void Clear()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** Clear
+* **Modified By:** David McCarter
+
+### System.Boolean Contains(T item)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** Contains
+* **Modified By:** David McCarter
+
+### System.Void CopyTo(T[] array, System.Int32 arrayIndex)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** Add
+* **Modified By:** David McCarter
+
+### System.Int32 Count { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** Count
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.IEnumerator<T> GetEnumerator()
+
+* **Status:** Available
+* **Optimization Status:** Optimize
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** GetEnumerator
+* **Modified By:** David McCarter
+
+### System.Boolean IsEmpty { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** IsEmpty
+* **Modified By:** David McCarter
+
+### System.Boolean Remove(T item)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** Add
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.IEnumerator<T> System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** Add
+* **Modified By:** David McCarter
+
+### System.Boolean TryRemove(T item)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/28/2021
+* **Description:** TryRemove
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Collections.Generic.Concurrent.DistinctBlockingCollection<T>
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Core.Collections.Generic.Concurrent.DistinctConcurrentBag<T>
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.DistinctConcurrentBag<T> ()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### FastSortedList<T> (IComparer`1& comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.DistinctConcurrentBag<T> ( collection)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### FastSortedList<T> (IEnumerable`1& collection)
+### System.Void Add(T item)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### FastSortedList<T> (Int32 capacity)
+### System.Boolean Contains(T item)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### FastSortedList<T> (IEnumerable`1& collection, IComparer`1& comparer)
+### System.Boolean IsReadOnly { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.Boolean Remove(T item)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### FastSortedList<T> (Int32 capacity, IComparer`1& comparer)
+### System.Boolean TryTake( result)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void Add(T item)
+*****
+## DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T>
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> ()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void AddRange(IEnumerable<T> items)
+### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> ( comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void Clear()
+### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> ( collection)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Enumerator GetEnumerator()
+### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> (System.Int32 capacity)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean Remove(T item)
+### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> ( collection,  comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void RemoveAt(Int32 index)
+### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> (System.Int32 capacity,  comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void SortCollection()
+### System.Void Add(T item)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Void AddRange(System.Collections.Generic.IEnumerable<T> items)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Void Clear()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Collections.Generic.List<T>+Enumerator GetEnumerator()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean Remove(T item)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Void RemoveAt(System.Int32 index)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Void SortCollection()
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -4161,14 +1200,14 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### IImmutableList<T> ToImmutableList()
+### System.Collections.Immutable.IImmutableList<T> ToImmutableList()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### IList<T> ToList()
+### System.Collections.Generic.IList<T> ToList()
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -4176,9 +1215,9 @@
 * **Unit Test Status:** Completed
 
 *****
-## ObservableList<T>
+## DotNetTips.Spargine.Core.Collections.Generic.ObservableList<T>
 
-* **Status:** NeedsDocumentation
+* **Status:** Needs Documentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -4187,182 +1226,182 @@
 * **Description:** From .NET EF Core source.
 * **Modified By:** David McCarter
 
-### ObservableList<T> ()
+### DotNetTips.Spargine.Core.Collections.Generic.ObservableList<T> ()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### ObservableList<T> (IEqualityComparer<T> comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.ObservableList<T> (System.Collections.Generic.IEqualityComparer<T> comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### ObservableList<T> (IEnumerable`1& collection)
+### DotNetTips.Spargine.Core.Collections.Generic.ObservableList<T> ( collection)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### ObservableList<T> (IEnumerable`1& collection, IEqualityComparer`1& comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.ObservableList<T> ( collection,  comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean Add(T item)
+### System.Boolean Add(T item)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void Clear()
+### System.Void Clear()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### IEqualityComparer<T> Comparer { get; set; }
+### System.Collections.Generic.IEqualityComparer<T> Comparer { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean Contains(T item)
+### System.Boolean Contains(T item)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void CopyTo(T[] array)
+### System.Void CopyTo(T[] array)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void CopyTo(T[] array, Int32 arrayIndex)
+### System.Void CopyTo(T[] array, System.Int32 arrayIndex)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void CopyTo(T[] array, Int32 arrayIndex, Int32 count)
+### System.Void CopyTo(T[] array, System.Int32 arrayIndex, System.Int32 count)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Int32 Count { get; set; }
+### System.Int32 Count { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void ExceptWith(IEnumerable<T> other)
+### System.Void ExceptWith(System.Collections.Generic.IEnumerable<T> other)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void IntersectWith(IEnumerable<T> other)
+### System.Void IntersectWith(System.Collections.Generic.IEnumerable<T> other)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean IsProperSubsetOf(IEnumerable<T> other)
+### System.Boolean IsProperSubsetOf(System.Collections.Generic.IEnumerable<T> other)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean IsProperSupersetOf(IEnumerable<T> other)
+### System.Boolean IsProperSupersetOf(System.Collections.Generic.IEnumerable<T> other)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean IsReadOnly { get; set; }
+### System.Boolean IsReadOnly { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean IsSubsetOf(IEnumerable<T> other)
+### System.Boolean IsSubsetOf(System.Collections.Generic.IEnumerable<T> other)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean IsSupersetOf(IEnumerable<T> other)
+### System.Boolean IsSupersetOf(System.Collections.Generic.IEnumerable<T> other)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean Overlaps(IEnumerable<T> other)
+### System.Boolean Overlaps(System.Collections.Generic.IEnumerable<T> other)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean Remove(T item)
+### System.Boolean Remove(T item)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Int32 RemoveWhere(Predicate<T> match)
+### System.Int32 RemoveWhere(System.Predicate<T> match)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Boolean SetEquals(IEnumerable<T> other)
+### System.Boolean SetEquals(System.Collections.Generic.IEnumerable<T> other)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void SymmetricExceptWith(IEnumerable<T> other)
+### System.Void SymmetricExceptWith(System.Collections.Generic.IEnumerable<T> other)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void TrimExcess()
+### System.Void TrimExcess()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### Void UnionWith(IEnumerable<T> other)
+### System.Void UnionWith(System.Collections.Generic.IEnumerable<T> other)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -4370,7 +1409,7 @@
 * **Unit Test Status:** Completed
 
 *****
-## OrdinalStringComparer
+## DotNetTips.Spargine.Core.Collections.Generic.OrdinalStringComparer
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -4378,692 +1417,3540 @@
 * **Unit Test Status:** None
 
 *****
-## ChannelQueue<T>
+## DotNetTips.Spargine.Core.ComputerInfo
 
-* **Status:** NeedsDocumentation
+* **Status:** Update Documentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 * **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** Queue using Channel<T>.
+* **CreatedOn:** 10/15/2018
+* **Description:** ComputerInfo
+* **Documentation:** https://bit.ly/SpargineComputerInfo
 * **Modified By:** David McCarter
 
-### ChannelQueue<T> ()
+### System.String ComputerCulture { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** ChannelQueue
-* **Modified By:** David McCarter
 
-### ChannelQueue<T> (Nullable<TimeSpan> cancellationTimeout)
+### System.String ComputerUICulture { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** ChannelQueue
-* **Modified By:** David McCarter
 
-### ChannelQueue<T> (Int32 capacity)
+### System.Int32 CurrentManagedTreadId { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** ChannelQueue
-* **Modified By:** David McCarter
 
-### ChannelQueue<T> (Int32 capacity, Nullable<TimeSpan> cancellationTimeout)
+### System.String CurrentStackTrace { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** ChannelQueue
-* **Modified By:** David McCarter
 
-### Int32 Count { get; set; }
+### System.Int32 CurrentSystemTickCount { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** Count
-* **Modified By:** David McCarter
 
-### IAsyncEnumerable<T> ListenAsync(CancellationToken cancellationToken)
+### System.String CurrentWorkingDirectory { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** ListenAsync
-* **Modified By:** David McCarter
 
-### Boolean Lock()
+### System.String FrameworkDescription { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** Lock
-* **Modified By:** David McCarter
 
-### Task<T> ReadAsync(CancellationToken cancellationToken)
+### System.Version FrameworkVersion { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** ReadAsync
-* **Modified By:** David McCarter
 
-### Task WriteAsync(T item, CancellationToken cancellationToken)
+### System.Boolean HasShutdownStarted { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** WriteAsync
-* **Modified By:** David McCarter
 
-### Task WriteAsync(IEnumerable<T> items, Boolean lockQueue, CancellationToken cancellationToken)
+### System.String IPAddress { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/26/2021
-* **Description:** WriteAsync
-* **Modified By:** David McCarter
+
+### System.Boolean Is64BitOperatingSystem { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean Is64BitProcess { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean IsNetworkAvailable { get; set; }
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** IsNetworkAvailable
+
+### System.Boolean IsUserInteractive { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String LogicalDrives { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String MachineName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String OSArchitecture { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String OSDescription { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Int32 OSMemoryPageSize { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Int64 PhysicalMemoryInUse { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Runtime.InteropServices.Architecture ProcessArchitecture { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Int32 ProcessorCount { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String SystemDirectory { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Int32 SystemPageSize { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Int32 TickCount { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Int64 TickCount64 { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.TimeSpan Uptime { get; set; }
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String UserDomainName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.String UserName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
 
 *****
-## ConcurrentHashSet<T>
+## DotNetTips.Spargine.Core.Config<T>
 
-* **Status:** NeedsDocumentation
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineConfig
+
+*****
+## DotNetTips.Spargine.Core.ControlChars
+
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
-### ConcurrentHashSet<T> ()
+*****
+## DotNetTips.Spargine.Core.Data.CountryRepository
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** ConcurrentHashSet
-* **Modified By:** David McCarter
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineCountryRepository
 
-### ConcurrentHashSet<T> (IEnumerable`1& collection)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** ConcurrentHashSet
-* **Modified By:** David McCarter
-
-### ConcurrentHashSet<T> (IEqualityComparer<T> comparer)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** ConcurrentHashSet
-* **Modified By:** David McCarter
-
-### ConcurrentHashSet<T> (Int32 concurrencyLevel, Int32 capacity)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** ConcurrentHashSet
-* **Modified By:** David McCarter
-
-### ConcurrentHashSet<T> (IEnumerable`1& collection, IEqualityComparer<T> comparer)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** ConcurrentHashSet
-* **Modified By:** David McCarter
-
-### ConcurrentHashSet<T> (Int32 concurrencyLevel, IEnumerable`1& collection, IEqualityComparer<T> comparer)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** ConcurrentHashSet
-* **Modified By:** David McCarter
-
-### ConcurrentHashSet<T> (Int32 concurrencyLevel, Int32 capacity, IEqualityComparer<T> comparer)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** ConcurrentHashSet
-* **Modified By:** David McCarter
-
-### Void Add(T item)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** Add
-* **Modified By:** David McCarter
-
-### Void Clear()
+### System.Collections.ObjectModel.ReadOnlyCollection<DotNetTips.Spargine.Core.Data.Models.Country> GetCountries()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** Clear
+* **CreatedOn:** 3/24/2023
+* **Description:** GetCountries
 * **Modified By:** David McCarter
 
-### Boolean Contains(T item)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** Contains
-* **Modified By:** David McCarter
-
-### Void CopyTo(T[] array, Int32 arrayIndex)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** Add
-* **Modified By:** David McCarter
-
-### Int32 Count { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** Count
-* **Modified By:** David McCarter
-
-### IEnumerator<T> GetEnumerator()
+### DotNetTips.Spargine.Core.Data.Models.Country GetCountry(DotNetTips.Spargine.Core.Data.CountryName countryName)
 
 * **Status:** Available
 * **Optimization Status:** Optimize
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** GetEnumerator
-* **Modified By:** David McCarter
-
-### Boolean IsEmpty { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** IsEmpty
+* **CreatedOn:** 12/14/2023
+* **Description:** GetCountry
 * **Modified By:** David McCarter
 
-### Boolean Remove(T item)
+### DotNetTips.Spargine.Core.Data.Models.Country GetCountry(System.Int64 countryId)
+
+* **Status:** Available
+* **Optimization Status:** Optimize
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 12/14/2023
+* **Description:** GetCountry
+* **Modified By:** David McCarter
+
+### System.Boolean ValidatePhoneNumber(DotNetTips.Spargine.Core.Data.CountryName countryName, System.String phoneNumber, System.Boolean validateCountryCode)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** ValidatePhoneNumber
+
+### DotNetTips.Spargine.Core.Data.PostalCodeState ValidatePostalCode(DotNetTips.Spargine.Core.Data.CountryName countryName, System.String postalCode)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** ValidatePostalCode
+
+*****
+## DotNetTips.Spargine.Core.Devices.Clock
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** Clock
+* **Modified By:** David McCarter
+
+### System.Int32 DaysInCurrentMonth { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** DaysInCurrentMonth
+* **Modified By:** David McCarter
+
+### System.Int32 DaysInCurrentUtcMonth { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** DaysInCurrentUtcMonth
+* **Modified By:** David McCarter
+
+### System.Boolean IsLeapYear(System.Int32 year)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/14/2024
+* **Description:** IsLeapYear
+* **Modified By:** David McCarter
+
+### System.DateTime LocalTime { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** LocalTime
+* **Modified By:** David McCarter
+
+### System.Int32 TickCount { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** TickCount
+* **Modified By:** David McCarter
+
+### System.Int64 TickCount64 { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/14/2024
+* **Description:** TickCount64
+* **Modified By:** David McCarter
+
+### System.DateTime UtcTime { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** UtcTime
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** PerformanceStopwatch
+* **Documentation:** ADD URL
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch ()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** PerformanceStopwatch
+
+### DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch (System.String title)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** PerformanceStopwatch
+
+### System.Void ClearDiagnostics()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/28/2025
+* **Description:** ClearDiagnostics
+* **Modified By:** David McCarter
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> Diagnostics { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/18/2023
+* **Description:** StopRestart
+* **Modified By:** David McCarter
+
+### System.String GetElapsedTimeString()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/28/2025
+* **Description:** GetElapsedTimeString
+* **Modified By:** David McCarter
+
+### System.Void LogMessage(Microsoft.Extensions.Logging.ILogger logger, System.String message)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/28/2025
+* **Description:** LogMessage
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch StartNew(System.String title)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** StartNew
+* **Modified By:** David McCarter
+
+### System.TimeSpan StopReset()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** StopReset
+* **Modified By:** David McCarter
+
+### System.TimeSpan StopReset(Microsoft.Extensions.Logging.ILogger logger, System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/18/2023
+* **Description:** StopReset
+* **Modified By:** David McCarter
+
+### System.TimeSpan StopRestart()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** StopRestart
+* **Modified By:** David McCarter
+
+### System.TimeSpan StopRestart(Microsoft.Extensions.Logging.ILogger logger, System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/18/2023
+* **Description:** StopRestart
+* **Modified By:** David McCarter
+
+### System.String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/18/2023
+* **Description:** ToString
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.DisplayNameOptions
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Core.Enumeration
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** Enumeration
+* **Documentation:** http://bit.ly/SpargineFeb2021
+
+### DotNetTips.Spargine.Core.Enumeration (System.Int32 value, System.String displayName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Enumeration
+
+### System.Int32 AbsoluteDifference(DotNetTips.Spargine.Core.Enumeration firstValue, DotNetTips.Spargine.Core.Enumeration secondValue)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** AbsoluteDifference
+
+### System.String DisplayName { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** DisplayName
+
+### T FromDisplayName(System.String displayName)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** FromDisplayName
+
+### T FromValue(System.Int32 value)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** FromValue
+
+### System.Collections.Generic.IEnumerable<T> GetAll()
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** GetAll
+
+### System.Int32 Value { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Value
+
+*****
+## DotNetTips.Spargine.Core.EnumHelper
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.Collections.ObjectModel.ReadOnlyCollection<DotNetTips.Spargine.Core.EnumValue> GetValues(System.Boolean fixNames, System.Boolean useXmlNames)
 
 * **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** Add
-* **Modified By:** David McCarter
-
-### IEnumerator<T> System.Collections.Generic.IEnumerable<T>.GetEnumerator()
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** NotRequired
-* **Unit Test Status:** None
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** Add
-* **Modified By:** David McCarter
-
-### Boolean TryRemove(T item)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 7/28/2021
-* **Description:** TryRemove
+* **CreatedOn:** 1/1/2020
+* **Description:** GetValues
+* **Documentation:** https://bit.ly/SpargineEnumerationHandling
 * **Modified By:** David McCarter
 
 *****
-## DistinctBlockingCollection<T>
+## DotNetTips.Spargine.Core.EnvironmentKey
 
-* **Status:** NeedsDocumentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
 *****
-## DistinctConcurrentBag<T>
+## DotNetTips.Spargine.Core.ExceptionThrower
 
-* **Status:** NeedsDocumentation
+* **Status:** Update Documentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineExThrow
 
-### DistinctConcurrentBag<T> ()
+### System.IO.FileNotFoundException CreateFileNotFoundException(System.String fileName)
 
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### DistinctConcurrentBag<T> (IEnumerable`1& collection)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Void Add(T item)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean Contains(T item)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-
-### Boolean IsReadOnly { get; set; }
-
-* **Status:** Available
+* **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
+* **Description:** CreateFileNotFoundException
 
-### Boolean Remove(T item)
+### System.IO.FileNotFoundException CreateFileNotFoundException(System.String message, System.String fileName)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** CreateFileNotFoundException
+
+### System.IO.FileNotFoundException CreateFileNotFoundException(System.String message, System.String fileName, System.Exception ex)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** CreateFileNotFoundException
+
+### System.String DefaultIfNull(System.String value, System.String defaultValue)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
+* **Description:** DefaultIfNull
 
-### Boolean TryTake(T& result)
+### System.Void ThrowArgumentException(System.String message, System.String paramName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
+* **Description:** Optimized ThrowArgumentException method for better performance and clarity.
+
+### System.Void ThrowArgumentException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Optimized ThrowArgumentException method for better performance and clarity.
+
+### System.Void ThrowArgumentInvalidException(System.String message, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowArgumentInvalidException
+
+### System.Void ThrowArgumentInvalidException(System.String message, System.String paramName, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowArgumentInvalidException
+* **Documentation:** https://bit.ly/SpargineExThrow
+
+### System.Void ThrowArgumentNullException(System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowArgumentNullException
+* **Documentation:** https://bit.ly/SpargineExThrow
+
+### System.Void ThrowArgumentNullException(System.String message, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowArgumentNullException
+
+### System.Void ThrowArgumentNullException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowArgumentNullException
+
+### System.Void ThrowArgumentOutOfRangeException(System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowArgumentOutOfRangeException
+
+### System.Void ThrowArgumentOutOfRangeException(System.String message, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowArgumentOutOfRangeException
+
+### System.Void ThrowArgumentOutOfRangeException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowArgumentOutOfRangeException
+
+### System.Void ThrowArgumentReadOnlyException(System.String message, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowArgumentReadOnlyException
+
+### System.Void ThrowDirectoryNotFoundException(System.String message, System.IO.DirectoryInfo directory)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowDirectoryNotFoundException
+
+### System.Void ThrowDirectoryNotFoundException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowDirectoryNotFoundException
+
+### System.Void ThrowFileNotFoundException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowFileNotFoundException
+
+### System.Void ThrowFileNotFoundException(System.String message, System.String fileName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowFileNotFoundException
+
+### System.Void ThrowFileNotFoundException(System.String message, System.String fileName, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowFileNotFoundException
+
+### System.Void ThrowInvalidCastException(System.String message, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowInvalidCastException
+
+### System.Void ThrowInvalidCastException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowInvalidCastException
+
+### System.Void ThrowInvalidEnumTypeException(System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowInvalidEnumTypeException
+
+### System.Void ThrowInvalidEnumTypeException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowInvalidEnumTypeException
+
+### System.Void ThrowInvalidOperationException(System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** From .NET Core source.
+
+### System.Void ThrowInvalidOperationException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** From .NET Core source.
+
+### System.Void ThrowInvalidValueException(System.String message, TValue value)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowInvalidValueException
+
+### System.Void ThrowInvalidValueException(System.String message, TValue value, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowInvalidValueException
+
+### System.Void ThrowIOException(System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowIOException
+
+### System.Void ThrowIOException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowIOException
+
+### System.Void ThrowJsonException(System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowJsonException
+
+### System.Void ThrowJsonException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowJsonException
+
+### System.Void ThrowLoggableException(System.String message, System.Exception innerException, System.String userMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowLoggableException
+
+### System.Void ThrowMessageNotQueuedException(System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowMessageNotQueuedException
+
+### System.Void ThrowMessageNotQueuedException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowMessageNotQueuedException
+
+### System.Void ThrowMessageNotQueuedException(System.String message, System.String messageId)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowMessageNotQueuedException
+
+### System.Void ThrowMessageNotQueuedException(System.String message, System.Exception ex, System.String userMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowMessageNotQueuedException
+
+### System.Void ThrowMessageNotQueuedException(System.String message, System.String messageId, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowMessageNotQueuedException
+
+### System.Void ThrowNetworkConnectionException(System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowNetworkConnectionException
+
+### System.Void ThrowNetworkConnectionException(System.String message, System.Exception innerException)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowNetworkConnectionException
+
+### System.Void ThrowNetworkConnectionException(System.String message, System.Net.NetworkInformation.NetworkInterface connection)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ThrowNetworkConnectionException
 
 *****
-## InMemoryCache
+## DotNetTips.Spargine.Core.ExecutionHelper
 
-* **Status:** Available
+* **Status:** Needs Documentation
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Documentation:** https://bit.ly/SpargineInMemoryCache
+* **Documentation:** ADD URL
 
-### Void AddCacheItem(IDataModel<T, TKey> item)
+### DotNetTips.Spargine.Core.SimpleResult<System.Int32> ProgressiveRetry(System.Action operation, System.Byte retryCount, System.Int32 retryWaitMilliseconds, Microsoft.Extensions.Logging.ILogger logger)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** ProgressiveRetry
+* **Documentation:** https://bit.ly/SpargineProgressiveRetry
+
+### System.Threading.Tasks.Task<DotNetTips.Spargine.Core.SimpleResult<System.Int32>> ProgressiveRetryAsync(System.Func<System.Threading.Tasks.Task> function, System.Byte retryCount, System.Int32 retryWaitMilliseconds, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** None
+* **Description:** ProgressiveRetryAsync
+
+*****
+## DotNetTips.Spargine.Core.Extensions
+
+### System.Boolean AddIfNotExists(System.Collections.Generic.ICollection<T> collection, T item)
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Completed
+* **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItem
+* **CreatedOn:** 11/21/2020
+* **Description:** AddIfNotExists
 * **Modified By:** David McCarter
 
-### Void AddCacheItem(IDataRecord item)
+### System.Int32 CalculateStringCount(System.String[] args)
 
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItem
-* **Modified By:** David McCarter
-
-### Void AddCacheItem(String key, T item)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/16/2021
-* **Description:** AddCacheItem
-* **Modified By:** David McCarter
-
-### Void AddCacheItem(IDataModel<T, TKey> item, DateTimeOffset timeout)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItem
-* **Modified By:** David McCarter
-
-### Void AddCacheItem(IDataRecord item, DateTimeOffset timeout)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItem
-* **Modified By:** David McCarter
-
-### Void AddCacheItem(IDataModel<T, TKey> item, TimeSpan timeout)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItem
-* **Modified By:** David McCarter
-
-### Void AddCacheItem(IDataRecord item, TimeSpan timeout)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItem
-* **Modified By:** David McCarter
-
-### Void AddCacheItem(String key, T item, TimeSpan timeout)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/12/2024
-* **Description:** AddCacheItem
-* **Modified By:** David McCarter
-
-### Void AddCacheItem(String key, T item, DateTimeOffset timeout)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 6/12/2024
-* **Description:** AddCacheItem
-* **Modified By:** David McCarter
-
-### Task AddCacheItemAsync(IDataRecord item, CancellationToken cancellationToken)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItemAsync
-* **Modified By:** David McCarter
-
-### Task AddCacheItemAsync(IDataModel<T, TKey> item, CancellationToken cancelationToken)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItemAsync
-* **Modified By:** David McCarter
-
-### Task AddCacheItemAsync(IDataRecord item, DateTimeOffset timeout, CancellationToken cancellationToken)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItemAsync
-* **Modified By:** David McCarter
-
-### Task AddCacheItemAsync(String key, T item, CancellationToken cancellationToken)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItemAsync
-* **Modified By:** David McCarter
-
-### Task AddCacheItemAsync(IDataModel<T, TKey> item, TimeSpan timeout, CancellationToken cancellationToken)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItemAsync
-* **Modified By:** David McCarter
-
-### Task AddCacheItemAsync(IDataRecord item, TimeSpan timeout, CancellationToken cancellationToken)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItemAsync
-* **Modified By:** David McCarter
-
-### Task AddCacheItemAsync(IDataModel<T, TKey> item, DateTimeOffset timeout, CancellationToken cancellationToken)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItemAsync
-* **Modified By:** David McCarter
-
-### Task AddCacheItemAsync(String key, T item, TimeSpan timeout, CancellationToken cancellationToken)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItemAsync
-* **Modified By:** David McCarter
-
-### Task AddCacheItemAsync(String key, T item, DateTimeOffset timeout, CancellationToken cancellationToken)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** AddCacheItemAsync
-* **Modified By:** David McCarter
-
-### MemoryCache Cache { get; set; }
-
-* **Status:** Available
+* **Status:** Not Set
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
 * **Author:** David McCarter
-* **CreatedOn:** 1/16/2021
-* **Description:** Cache
+* **CreatedOn:** 11/14/2024
+* **Description:** CalculateStringCount
 * **Modified By:** David McCarter
 
-### Void Clear()
+### System.Text.StringBuilder ClearSetCapacity(System.Text.StringBuilder sb, System.Int32 capacity)
+
+* **Status:** Available
+* **Optimization Status:** Not Required
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Not Required
+* **Author:** David McCarter
+* **CreatedOn:** 11/13/2024
+* **Description:** ClearSetCapacity
+* **Modified By:** David McCarter
+
+### System.Int32 Count(System.Collections.IEnumerable collection)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 6/12/2024
-* **Description:** Clear
-* **Modified By:** David McCarter
-
-### Boolean ContainsKey(String key)
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** Completed
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** ContainsKey
-* **Modified By:** David McCarter
-
-### Int32 Count { get; set; }
-
-* **Status:** Available
-* **Optimization Status:** None
-* **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
-* **Author:** David McCarter
-* **CreatedOn:** 1/16/2021
+* **CreatedOn:** 11/21/2020
 * **Description:** Count
 * **Modified By:** David McCarter
 
-### IEnumerable<String> GetAllKeys()
+### System.Int64 FastCount(System.Collections.Generic.IEnumerable<T> collection)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/21/2022
+* **Description:** FastCount
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.IEnumerable<TSource> FromHierarchy(TSource source, System.Func<TSource, TSource> nextItemFunction)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** FromHierarchy
+
+### System.Boolean HasValue(System.String input, System.Int32 minLength, System.Int32 maxLength)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** HasValue
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Collections.Generic.KeyValuePair<TKey, TValue>> ToReadOnlyCollection(System.Collections.Generic.IDictionary<TKey, TValue> dictionary)
+
+* **Status:** Not Set
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/6/2023
+* **Description:** ToReadOnlyCollection
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.FastStringBuilder
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** ADD URL
+
+### System.String BytesToString(System.Byte[]& bytes)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Check Performance
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/7/2025
+* **Description:** BytesToString
+* **Modified By:** David McCarter
+
+### System.String BytesToString(System.ReadOnlySpan`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& bytes)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Check Performance
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/18/2021
+* **Description:** BytesToString
+* **Modified By:** David McCarter
+
+### System.String Combine(System.Boolean& addLineFeed, System.String[] args)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 12/23/2022
+* **Description:** Combine
+* **Modified By:** David McCarter
+
+### System.String CombineWithSpace(System.String[] args)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/6/2025
+* **Description:** Combine
+* **Modified By:** David McCarter
+
+### System.String Concat(System.Char delimiter, System.Boolean& addLineFeed, System.String[] args)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Check Performance
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/19/2021
+* **Description:** Concat
+* **Modified By:** David McCarter
+
+### System.String Concat(System.String delimiter, System.Boolean& addLineFeed, System.String[] args)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/19/2021
+* **Description:** Concat
+* **Modified By:** David McCarter
+
+### System.String Format(System.String format, System.String[] args)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/4/2025
+* **Description:** Format
+* **Modified By:** David McCarter
+
+### System.String Join(System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& values, System.Char delimiter)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Check Performance
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/4/2025
+* **Description:** Join
+* **Modified By:** David McCarter
+
+### System.String Join(System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& values, System.String delimiter)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Check Performance
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/4/2025
+* **Description:** Join
+* **Modified By:** David McCarter
+
+### System.String PerformAction(System.Action`1[[System.Text.StringBuilder, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& action)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** GetAllKeys
+* **CreatedOn:** 12/23/2022
+* **Description:** PerformAction
 * **Modified By:** David McCarter
 
-### T GetCacheItem(String key)
+### System.String Remove(System.String input, System.String toRemove)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/5/2025
+* **Description:** Remove
+* **Modified By:** David McCarter
+
+### System.String ToDelimitedString( collection, System.Char delimiter)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Check Performance
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/1/2021
+* **Description:** ToDelimitedString
+* **Documentation:** https://bit.ly/SpargineFeb2023
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.HtmlElement
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 1/3/2023
+* **Description:** HtmlElement
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.IDataModel<T, TKey>
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Core.IDataRecord
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 3/4/2021
+* **Description:** IDataRecord
+* **Modified By:** David McCarter
+
+### System.String AllPropertiesToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** AllPropertiesToString
+
+*****
+## DotNetTips.Spargine.Core.InformationAttribute
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Core.InformationAttributeDocGenerator
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.String GenerateMarkdownDocumentForAssembly(System.Reflection.Assembly assembly)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/18/2024
+* **Description:** GenerateMarkdownDocumentForAssembly
+* **Modified By:** David McCarter
+
+### System.String GenerateMarkdownDocumentForAssembly(System.Reflection.Assembly assembly, System.String path)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/18/2024
+* **Description:** GenerateMarkdownDocumentForAssembly
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.InvalidEnumTypeException
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** InvalidEnumTypeException
+
+*****
+## DotNetTips.Spargine.Core.InvalidValueException<TValue>
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** InvalidValueException
+
+*****
+## DotNetTips.Spargine.Core.KeyGenerator
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.String GenerateKey()
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 1/16/2021
-* **Description:** GetCacheItem
+* **CreatedOn:** 5/30/2021
+* **Description:** GenerateKey
+* **Documentation:** https://bit.ly/SpargineJun2021
 * **Modified By:** David McCarter
 
-### Task<T> GetCacheItemAsync(String key, CancellationToken cancellationToken)
+### System.String GenerateKey(System.String prefix)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** GetCacheItemAsync
+* **CreatedOn:** 5/30/2021
+* **Description:** GenerateKey
+* **Documentation:** https://bit.ly/SpargineJun2021
 * **Modified By:** David McCarter
 
-### InMemoryCache Instance { get; set; }
+*****
+## DotNetTips.Spargine.Core.LineSplitEntry
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 6/9/2022
+* **Description:** LineSplitEntry
+* **Documentation:** https://www.meziantou.net/split-a-string-into-lines-without-allocation.htm
+* **Modified By:** David McCarter
+
+### System.Void Deconstruct(System.ReadOnlySpan`1[[System.Char, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& line, System.ReadOnlySpan`1[[System.Char, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& separator)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Deconstruct
+
+### System.ReadOnlySpan<System.Char> Line { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Line
+
+### System.ReadOnlySpan<System.Char> op_Implicit(DotNetTips.Spargine.Core.LineSplitEntry entry)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.ReadOnlySpan<System.Char> Separator { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Separator
+
+### System.ReadOnlySpan<System.Char> ToReadOnlySpan(DotNetTips.Spargine.Core.LineSplitEntry entry)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToReadOnlySpan
+
+*****
+## DotNetTips.Spargine.Core.LineSplitEnumerator
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 6/9/2022
+* **Description:** LineSplitEnumerator
+* **Documentation:** https://www.meziantou.net/split-a-string-into-lines-without-allocation.htm
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.LoggableException
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** LoggableException
+
+*****
+## DotNetTips.Spargine.Core.Logging.FastLogger
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineFastLogger
+
+### System.Void LogCritical(Microsoft.Extensions.Logging.ILogger logger, System.String message, System.Exception exception)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/1/2022
+* **Description:** LogCritical
+* **Modified By:** David McCarter
+
+### System.Void LogDebug(Microsoft.Extensions.Logging.ILogger logger, System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/1/2022
+* **Description:** LogDebug
+* **Modified By:** David McCarter
+
+### System.Void LogError(Microsoft.Extensions.Logging.ILogger logger, System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/1/2022
+* **Description:** LogError
+* **Modified By:** David McCarter
+
+### System.Void LogException(Microsoft.Extensions.Logging.ILogger logger, System.String message, System.Exception exception)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/1/2022
+* **Description:** LogException
+* **Modified By:** David McCarter
+
+### System.Void LogInformation(Microsoft.Extensions.Logging.ILogger logger, System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/1/2022
+* **Description:** LogInformation
+* **Modified By:** David McCarter
+
+### System.Void LogTrace(Microsoft.Extensions.Logging.ILogger logger, System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/1/2022
+* **Description:** LogTrace
+* **Modified By:** David McCarter
+
+### System.Void LogWarning(Microsoft.Extensions.Logging.ILogger logger, System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/1/2022
+* **Description:** LogWarning
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Logging.FastLoggerExtensions
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** ADD URL
+
+### System.Void LogCriticalMessage(Microsoft.Extensions.Logging.ILogger logger, System.String message, System.Exception exception, System.String methodName)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 1/16/2021
-* **Description:** Instance
+* **CreatedOn:** 2/27/2023
+* **Description:** LogCriticalMessage
+* **Documentation:** https://bit.ly/SpargineMay2023
 * **Modified By:** David McCarter
 
-### Boolean RemoveCacheItem(String key)
+### System.Void LogDebugMessage(Microsoft.Extensions.Logging.ILogger logger, System.String message, System.String methodName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/27/2023
+* **Description:** LogDebugMessage
+* **Documentation:** https://bit.ly/SpargineMay2023
+* **Modified By:** David McCarter
+
+### System.Void LogErrorMessage(Microsoft.Extensions.Logging.ILogger logger, System.String message, System.String methodName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/27/2023
+* **Description:** LogErrorMessage
+* **Documentation:** https://bit.ly/SpargineMay2023
+* **Modified By:** David McCarter
+
+### System.Void LogExceptionMessage(Microsoft.Extensions.Logging.ILogger logger, System.String message, System.Exception exception, System.String methodName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/27/2023
+* **Description:** LogExceptionMessage
+* **Documentation:** https://bit.ly/SpargineMay2023
+* **Modified By:** David McCarter
+
+### System.Void LogInformationMessage(Microsoft.Extensions.Logging.ILogger logger, System.String message, System.String methodName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/27/2023
+* **Description:** LogInformationMessage
+* **Documentation:** https://bit.ly/SpargineMay2023
+* **Modified By:** David McCarter
+
+### System.Void LogStoredProcedureError(Microsoft.Extensions.Logging.ILogger logger, System.String storedProcedure, System.Exception exception, System.String methodName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/27/2023
+* **Description:** LogStoredProcedureError
+* **Documentation:** https://bit.ly/SpargineMay2023
+* **Modified By:** David McCarter
+
+### System.Void LogStoredProcedureNoRecordsFound(Microsoft.Extensions.Logging.ILogger logger, System.String storedProcedure, System.String methodName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/27/2023
+* **Description:** LogStoredProcedureNoRecordsFound
+* **Documentation:** https://bit.ly/SpargineMay2023
+* **Modified By:** David McCarter
+
+### System.Void LogTraceMessage(Microsoft.Extensions.Logging.ILogger logger, System.String message, System.String methodName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/27/2023
+* **Description:** LogTraceMessage
+* **Documentation:** https://bit.ly/SpargineMay2023
+* **Modified By:** David McCarter
+
+### System.Void LogWarningMessage(Microsoft.Extensions.Logging.ILogger logger, System.String message, System.String methodName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/27/2023
+* **Description:** LogWarningMessage
+* **Documentation:** https://bit.ly/SpargineMay2023
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Logging.LoggingHelper
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** ADD URL
+
+### System.Void LogAppDomainEvents(Microsoft.Extensions.Logging.ILogger logger)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Not Required
+* **Author:** David McCarter
+* **CreatedOn:** 7/13/2024
+* **Description:** LogAppDomainEvents
+* **Modified By:** David McCarter
+
+### System.Void LogAppDomainFirstChanceException(Microsoft.Extensions.Logging.ILogger logger)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Not Required
+* **Author:** David McCarter
+* **CreatedOn:** 10/19/2021
+* **Description:** LogAppDomainFirstChanceException
+* **Documentation:** https://bit.ly/SpargineJan2022
+* **Modified By:** David McCarter
+
+### System.Void LogAppDomainUnhandledException(Microsoft.Extensions.Logging.ILogger logger)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Not Required
+* **Author:** David McCarter
+* **CreatedOn:** 7/13/2024
+* **Description:** LogAppDomainUnhandledException
+* **Documentation:** ADD URL
+* **Modified By:** David McCarter
+
+### System.Void LogApplicationInformation(Microsoft.Extensions.Logging.ILogger logger)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/3/2020
+* **Description:** LogApplicationInformation
+* **Documentation:** http://bit.ly/SpargineFeb2021
+* **Modified By:** David McCarter
+
+### System.Void LogComputerInformation(Microsoft.Extensions.Logging.ILogger logger)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/4/2020
+* **Description:** LogComputerInformation
+* **Documentation:** http://bit.ly/SpargineFeb2021
+* **Modified By:** David McCarter
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> RetrieveAllExceptionMessages(System.Exception exception)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** RetrieveAllExceptionMessages
+* **Documentation:** https://bit.ly/SpargineAug2024
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Exception> RetrieveAllExceptions(System.Exception exception)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** RetrieveAllExceptions
+* **Documentation:** https://bit.ly/SpargineAug2024
+
+*****
+## DotNetTips.Spargine.Core.MessageNotQueuedException
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** MessageNotQueuedException
+
+*****
+## DotNetTips.Spargine.Core.Network.HttpEventListener
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** HttpEventListener
+
+*****
+## DotNetTips.Spargine.Core.Network.HttpEventListenerAsyncLocal
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** HttpEventListenerAsyncLocal
+
+*****
+## DotNetTips.Spargine.Core.Network.HttpHandlerDiagnosticListener
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** HttpHandlerDiagnosticListener
+
+*****
+## DotNetTips.Spargine.Core.Network.HttpRequestsObserver
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** HttpRequestsObserver
+
+*****
+## DotNetTips.Spargine.Core.Network.NetworkHelper
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Net.NetworkInformation.NetworkInterface> GetNetworkConnections()
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** GetNetworkConnections
+
+### System.Boolean IsConnectedToBluetooth()
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** GetNetworkConnections
+
+*****
+## DotNetTips.Spargine.Core.NetworkConnectionException
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** NetworkConnectionException
+
+*****
+## DotNetTips.Spargine.Core.OptimizationStatus
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 7/1/2024
+* **Description:** For use in InformationAttribute.
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.PreserveAttribute
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 2/7/2023
+* **Description:** PreserveAttribute
+* **Documentation:** https://bit.ly/SpargineMay2023
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.ProcessorInformation
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.Boolean Equals(System.Object obj)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** Equals
+
+### System.Boolean Equals(DotNetTips.Spargine.Core.ProcessorInformation other)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Not Required
+* **Description:** Equals
+
+### System.Int32 GetHashCode()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Not Required
+* **Description:** GetHashCode
+
+### System.Boolean op_Equality(DotNetTips.Spargine.Core.ProcessorInformation left, DotNetTips.Spargine.Core.ProcessorInformation right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** ==
+
+### System.Boolean op_Inequality(DotNetTips.Spargine.Core.ProcessorInformation left, DotNetTips.Spargine.Core.ProcessorInformation right)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** !=
+
+*****
+## DotNetTips.Spargine.Core.RegularExpressions.RegexProcessor
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** RegexProcessor.Methods
+* **Documentation:** https://bit.ly/SpargineRegexProcessor
+
+### System.Boolean ContainsFirstLastName(System.String input)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 1/20/2025
-* **Description:** RemoveCacheItem
+* **CreatedOn:** 3/16/2023
+* **Description:** ContainsFirstLastName
+* **Modified By:** David McCarter
+
+### System.Boolean ContainsWord(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/16/2023
+* **Description:** ContainsWord
+* **Modified By:** David McCarter
+
+### System.String GetNumbers(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** GetNumbers
+
+### System.Boolean IsCreditCardNumber(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/16/2023
+* **Description:** IsCreditCardNumber
+* **Modified By:** David McCarter
+
+### System.Boolean IsCurrencyCode(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/16/2023
+* **Description:** IsCurrencyCode
+* **Modified By:** David McCarter
+
+### System.Boolean IsEmailAddress(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/16/2023
+* **Description:** IsEmailAddress
+* **Modified By:** David McCarter
+
+### System.Boolean IsGuid(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/16/2023
+* **Description:** IsGuid
+* **Modified By:** David McCarter
+
+### System.Boolean IsIPv4Address(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/10/2023
+* **Description:** IsIPv4Address
+* **Modified By:** David McCarter
+
+### System.Boolean IsIPv6Address(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/10/2023
+* **Description:** IsIPv6Address
+* **Modified By:** David McCarter
+
+### System.Boolean IsISBN(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/16/2023
+* **Description:** IsISBN
+* **Modified By:** David McCarter
+
+### System.Boolean IsMACAddress(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 9/28/2023
+* **Description:** IsMACAddress
+* **Modified By:** David McCarter
+
+### System.Boolean IsOneToSevenAlpha(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** IsOneToSevenAlpha
+
+### System.Boolean IsScientific(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** IsScientific
+
+### System.Boolean IsSHA1Hash(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 9/28/2023
+* **Description:** IsSHA1Hash
+* **Modified By:** David McCarter
+
+### System.Boolean IsUrl(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/16/2023
+* **Description:** IsUrl
+* **Modified By:** David McCarter
+
+### System.Boolean IsUrlDomainAddress(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 9/28/2023
+* **Description:** IsUrlDomainAddress
+* **Modified By:** David McCarter
+
+### System.Boolean IsValidString(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 9/28/2023
+* **Description:** IsValidString
+* **Modified By:** David McCarter
+
+### System.String RemoveHtml(System.String input, System.String replacement)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 8/1/2024
+* **Description:** RemoveHtml
+* **Modified By:** David McCarter
+
+### System.String RemoveSpecialChar(System.String input, System.String& replacement)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 8/1/2024
+* **Description:** RemoveSpecialChar
+* **Modified By:** David McCarter
+
+### System.String ReplaceCrLf(System.String input, System.String& replacement)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 9/28/2023
+* **Description:** ReplaceCrLf
+* **Modified By:** David McCarter
+
+### System.String ReplaceSpaces(System.String input, System.String& replacement)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 3/16/2023
+* **Description:** ReplaceSpaces
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 3/17/2025 7:17:33 PM UTC**
+## DotNetTips.Spargine.Core.Security.EncryptionHelper
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineEncryptionHelper
+
+### System.String AesDecrypt(System.String cipherText, System.Byte[] key, System.Byte[] iv)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/19/2021
+* **Description:** AesDecrypt
+* **Modified By:** David McCarter
+
+### System.String AesEncrypt(System.String plainText, System.Byte[] key, System.Byte[] iv)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/19/2021
+* **Description:** AesEncrypt
+* **Modified By:** David McCarter
+
+### System.Byte[] GenerateAesIV()
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/19/2021
+* **Description:** GenerateAesIV
+* **Modified By:** David McCarter
+
+### System.Byte[] GenerateAesKey()
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/19/2021
+* **Description:** GenerateAesKey
+* **Modified By:** David McCarter
+
+### System.String GenerateRandomKey()
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 5/30/2021
+* **Description:** GenerateRandomKey
+* **Modified By:** David McCarter
+
+### System.String SimpleSHA256Decrypt(System.String cipherText, System.String key)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/19/2021
+* **Description:** SimpleSHA256Decrypt
+* **Modified By:** David McCarter
+
+### System.String SimpleSHA256Encrypt(System.String plainText, System.String key)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/19/2021
+* **Description:** SimpleSHA256Encrypt
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Security.PasswordVerificationResult VerifySHA256HashedPassword(System.String hashedPassword, System.String password)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/13/2021
+* **Description:** VerifySHA256HashedPassword
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Security.PasswordGenerator
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.String GeneratePassword(System.Int32 length)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/12/2024
+* **Description:** GeneratePassword
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Security.PBKDF2PasswordHasher
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.Boolean FixedTimeEquals(System.Byte[] left, System.Byte[] right)
+
+* **Status:** Available
+* **Optimization Status:** Needs Update
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/12/2021
+* **Description:** FixedTimeEquals
+* **Modified By:** David McCarter
+
+### System.String HashPassword(System.String password)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/12/2021
+* **Description:** HashPassword
+* **Documentation:** https://bit.ly/SpargineJan2022
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Security.PasswordVerificationResult VerifyHashedPassword(System.String hashedPassword, System.String& password)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/12/2021
+* **Description:** VerifyHashedPassword
+* **Documentation:** https://bit.ly/SpargineJan2022
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Security.SHA256PasswordHasher
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineSHA256PasswordHasher
+
+### System.Boolean FixedTimeEquals(System.Byte[] left, System.Byte[] right)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/12/2021
+* **Description:** FixedTimeEquals
+* **Modified By:** David McCarter
+
+### System.String HashPassword(System.String password)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/12/2021
+* **Description:** HashPassword
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Security.PasswordVerificationResult VerifyHashedPassword(System.String hashedPassword, System.String& password)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/12/2021
+* **Description:** VerifyHashedPassword
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Security.UlidGenerator
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineUlidGenerator
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> GenerateMultipleUlids(System.Int32 count)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** Generates multiple ULIDs based on the specified count.
+
+### System.String GenerateUlid()
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** Generates a new ULID.
+
+*****
+## DotNetTips.Spargine.Core.Serialization.JsonSerialization
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** https://bit.ly/SpargineJsonSerialization
+
+### TResult Deserialize(System.String json)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/15/2020
+* **Description:** Deserialize
+* **Modified By:** David McCarter
+
+### TResult DeserializeFromFile(System.IO.FileInfo file)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** DeserializeFromFile
+
+### System.Boolean JsonEqual(System.String actual, System.String expected)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/15/2020
+* **Description:** From .NET Core source.
+* **Modified By:** David McCarter
+
+### T[] LoadCollectionFromJson(System.String json, System.Int32 count)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** LoadCollectionFromJson
+
+### T[] LoadCollectionFromJson(System.String json, System.Int32 count, System.Text.Json.Serialization.Metadata.JsonTypeInfo info)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** LoadCollectionFromJson
+
+### System.String Serialize(System.Object obj)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/15/2020
+* **Description:** Serialize
+* **Modified By:** David McCarter
+
+### System.Void SerializeToFile(System.Object obj, System.IO.FileInfo file)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** SerializeToFile
+
+*****
+## DotNetTips.Spargine.Core.Serialization.XmlSerialization
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### TResult Deserialize(System.String xml)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** Deserialize
+
+### TResult DeserializeFromFile(System.IO.FileInfo file)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** DeserializeFromFile
+
+### System.String Serialize(System.Object obj)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** Serialize
+
+### System.Void SerializeToFile(System.Object obj, System.IO.FileInfo file)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** SerializeToFile
+
+### System.Xml.Linq.XDocument StringToXDocument(System.String input)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 9/9/2020
+* **Description:** StringToXDocument
+* **Modified By:** David McCarter
+
+### System.Xml.Linq.XDocument StringToXDocument(System.String input, System.Xml.XmlResolver resolver)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 9/9/2020
+* **Description:** StringToXDocument
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.SimpleResult
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 6/20/2023
+* **Description:** SimpleResult
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.SimpleResult<T> FromException(System.Exception e)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** SimpleResult
+
+### DotNetTips.Spargine.Core.SimpleResult<T> FromValue(T value)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** SimpleResult
+
+*****
+## DotNetTips.Spargine.Core.SimpleResult<T>
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 6/20/2023
+* **Description:** SimpleResult
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.SimpleResult<T> (T value)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** SimpleResult
+
+### DotNetTips.Spargine.Core.SimpleResult<T> (System.Exception error)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** SimpleResult
+
+### System.Void AddException(System.Exception error)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** AddException
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Exception> Errors()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Errors
+
+### T FromResult(DotNetTips.Spargine.Core.SimpleResult`1& result)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** FromResult
+
+### System.String GetErrorMessages()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** GetErrorMessages
+
+### T Or(T defaultValue)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Or
+
+### T OrDefault()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** OrDefault
+
+### System.Void SetValue(T value)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** SetValue
+
+### DotNetTips.Spargine.Core.ResultStatus Status { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Work In Progress
+* **Description:** Status
+
+### System.String ToString()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** ToString
+
+### System.Boolean TryGet( value)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** TryGet
+
+### T Value { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** Value
+
+*****
+## DotNetTips.Spargine.Core.Singleton<T>
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 7/12/2021
+* **Description:** Singleton
+* **Documentation:** https://bit.ly/SpargineSep2022
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Status
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 7/29/2020
+* **Description:** For use in InformationAttribute.
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.TaskHelper
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.Void RunSync(System.Func<System.Threading.Tasks.Task> taskFunction)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/13/2021
+* **Description:** Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App
+* **Documentation:** https://bit.ly/SpargineSep2022
+* **Modified By:** David McCarter
+
+### TResult RunSync(System.Func<System.Threading.Tasks.Task<TResult>> taskFunction)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/13/2021
+* **Description:** Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App
+* **Documentation:** https://bit.ly/SpargineSep2022
+* **Modified By:** David McCarter
+
+### TResult RunSync(System.Func<System.Threading.Tasks.Task<TResult>> taskFunction, System.Threading.CancellationToken cancellationToken, System.Threading.Tasks.TaskCreationOptions taskCreation, System.Threading.Tasks.TaskContinuationOptions taskContinuation, System.Threading.Tasks.TaskScheduler taskScheduler)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/13/2021
+* **Description:** Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App
+* **Documentation:** https://bit.ly/SpargineSep2022
+* **Modified By:** David McCarter
+
+### System.Void RunSync(System.Func<System.Threading.Tasks.Task> taskFunction, System.Threading.CancellationToken cancellationToken, System.Threading.Tasks.TaskCreationOptions taskCreation, System.Threading.Tasks.TaskContinuationOptions taskContinuation, System.Threading.Tasks.TaskScheduler taskScheduler)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/13/2021
+* **Description:** Original code from: https://weblog.west-wind.com/posts/2021/Jul/07/Thoughts-on-AsyncAwait-Conversion-in-a-Desktop-App
+* **Documentation:** https://bit.ly/SpargineSep2022
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.TypeHelper
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** ADD URL
+
+### System.Collections.Generic.Dictionary<System.Type, System.String> BuiltInTypeNames()
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/6/2023
+* **Description:** BuiltInTypeNames
+* **Documentation:** https://bit.ly/Spargine8
+* **Modified By:** David McCarter
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Type> BuiltInTypes { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Check Performance
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/6/2023
+* **Description:** BuiltInTypes
+* **Documentation:** https://bit.ly/Spargine8
+* **Modified By:** David McCarter
+
+### T Create()
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### T Create(System.Object[] paramArray)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Boolean DoesObjectEqualInstance(System.Object& value, System.Object& instance)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Documentation:** https://bit.ly/SpargineAug2024
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Type> FindDerivedTypes(System.Type baseType, System.Boolean classOnly)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Type> FindDerivedTypes(System.AppDomain currentDomain, System.Type baseType, System.Boolean classOnly)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Check Performance
+* **Unit Test Status:** Completed
+* **Documentation:** https://bit.ly/SpargineApril2022
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Type> FindDerivedTypes(System.IO.DirectoryInfo path, System.IO.SearchOption fileSearchType, System.Type baseType, System.Boolean classOnly)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Documentation:** https://bit.ly/SpargineAug2024
+
+### T FromJson(System.String json)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** FromJson
+* **Documentation:** https://bit.ly/SpargineAug2024
+
+### T FromJsonFile(System.IO.FileInfo file)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Description:** FromJsonFile
+* **Documentation:** https://bit.ly/SpargineAug2024
+
+### T GetDefault()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+
+### System.Int32 GetInstanceHashCode(System.Object instance)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Documentation:** https://bit.ly/SpargineAug2024
+
+### System.Collections.Generic.IEnumerable<System.Reflection.MemberInfo> GetMembersWithAttribute(System.Type type)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+* **Description:** GetMembersWithAttribute
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Collections.Generic.KeyValuePair<System.String, System.String>> GetPropertyValues( input)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Check Performance
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/3/2020
+* **Description:** GetPropertyValues
+* **Documentation:** http://bit.ly/SpargineMarch2021
+* **Modified By:** David McCarter
+
+### System.String GetTypeDisplayName(System.Object& item, System.Boolean fullName)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/31/2020
+* **Description:** From .NET Core source.
+* **Documentation:** https://bit.ly/SpargineAug2024
+* **Modified By:** David McCarter
+
+### System.String GetTypeDisplayName(System.Type type, DotNetTips.Spargine.Core.DisplayNameOptions options)
+
+* **Status:** Available
+* **Optimization Status:** Optimize
+* **BenchMarkStatus:** Completed
+* **Unit Test Status:** Completed
+
+### System.String GetTypeDisplayName(System.Type type, System.Boolean fullName, System.Boolean includeGenericParameterNames, System.Boolean includeGenericParameters, System.Char nestedTypeDelimiter)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 7/31/2020
+* **Description:** From .NET Core source.
+* **Modified By:** David McCarter
+
+### System.Boolean IsBuiltinType(System.Type& type)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 11/6/2023
+* **Description:** IsBuiltinType
+* **Documentation:** https://bit.ly/Spargine8
+* **Modified By:** David McCarter
+
+### System.Boolean IsDotNetAssembly(System.IO.Stream& stream)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/20/2024
+* **Description:** IsDotNetAssembly
+* **Modified By:** David McCarter
+
+### System.Boolean IsDotNetAssembly(System.IO.FileInfo file)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 5/20/2024
+* **Description:** Orginal code by GÉRALD BARRÉ
+* **Documentation:** https://bit.ly/SpargineAug2024
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.IEnumerable<System.Type> LoadDerivedTypes(System.Collections.Generic.IEnumerable<System.Reflection.TypeInfo> types, System.Type baseType, System.Boolean classOnly)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+### System.Void ProcessGenericType(System.Text.StringBuilder builder, System.Type type, System.Type[] genericArguments, System.Int32 length, DotNetTips.Spargine.Core.DisplayNameOptions options)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Check Performance
+* **Unit Test Status:** Completed
+* **Description:** ProcessGenericType
+
+### System.Void ProcessType(System.Text.StringBuilder& builder, System.Type& type, DotNetTips.Spargine.Core.DisplayNameOptions& options)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+
+*****
+## DotNetTips.Spargine.Core.UnhandledExceptionEventInformation
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** UnhandledExceptionEventInformation
+
+*****
+## DotNetTips.Spargine.Core.UnitTestStatus
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 7/1/2024
+* **Description:** For use in InformationAttribute.
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Validator
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** ADD URL
+
+### T ArgumentDefined(T input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentDefined
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Type ArgumentEquals(System.Type input, System.Type expectedType, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentEquals
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.IO.DirectoryInfo ArgumentExists(System.IO.DirectoryInfo input, System.IO.DirectoryInfo defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentExists
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.IO.FileInfo ArgumentExists(System.IO.FileInfo input, System.IO.FileInfo defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentExists
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Byte ArgumentInRange(System.Byte input, System.Byte& lower, System.Byte& upper, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/29/2022
+* **Description:** ArgumentInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.DateTime ArgumentInRange(System.DateTime input, System.DateTime& lower, System.DateTime& upper, System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/21/2022
+* **Description:** ArgumentInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.DateTimeOffset ArgumentInRange(System.DateTimeOffset input, System.DateTimeOffset& lower, System.DateTimeOffset& upper, System.Nullable`1[[System.DateTimeOffset, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/21/2022
+* **Description:** ArgumentInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Int32 ArgumentInRange(System.Int32 input, System.Int32 lower, System.String paramName, System.Int32 upper, System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& defaultValue, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Double ArgumentInRange(System.Double input, System.Double& lower, System.Double& upper, System.Nullable`1[[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Int64 ArgumentInRange(System.Int64 input, System.Int64& lower, System.Int64& upper, System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Decimal ArgumentInRange(System.Decimal input, System.Decimal& lower, System.Decimal& upper, System.Nullable`1[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.DateOnly ArgumentInRange(System.DateOnly input, System.DateOnly& lower, System.DateOnly& upper, System.Nullable`1[[System.DateOnly, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/15/2022
+* **Description:** ArgumentInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.TimeOnly ArgumentInRange(System.TimeOnly input, System.TimeOnly& lower, System.TimeOnly& upper, System.Nullable`1[[System.TimeOnly, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/15/2022
+* **Description:** ArgumentInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.String ArgumentInRange(System.String input, System.Int32 lower, System.Int32 upper, System.Boolean trim, System.String defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.IEnumerable<T> ArgumentItemsExists(System.Collections.Generic.IEnumerable<T> input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentItemsExists
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.IReadOnlyList<T> ArgumentItemsExists(System.Collections.Generic.IReadOnlyList<T> input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 5/25/2022
+* **Description:** ArgumentItemsExists
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.IReadOnlyCollection<T> ArgumentItemsExists(System.Collections.Generic.IReadOnlyCollection<T> input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 5/27/2022
+* **Description:** ArgumentItemsExists
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.List<T> ArgumentItemsExists(System.Collections.Generic.List<T> input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/17/2022
+* **Description:** ArgumentItemsExists
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### T[] ArgumentItemsExists(T[] input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/4/2022
+* **Description:** ArgumentItemsExists
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.IEnumerable<T> ArgumentItemsExists(System.Collections.Generic.IEnumerable<T> input, System.Int64& count, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 4/4/2022
+* **Description:** ArgumentItemsExists
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.String ArgumentMatched(System.String input, System.Text.RegularExpressions.Regex match, System.Boolean trim, System.String defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentMatched
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### T ArgumentMeetsCondition(T input, System.Boolean& condition, T defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 4/4/2022
+* **Description:** ArgumentMeetsCondition
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.ReadOnlySpan<T> ArgumentNotEmpty(System.ReadOnlySpan<T> input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentNotEmpty
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Span<T> ArgumentNotEmpty(System.Span<T> input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentNotEmpty
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Collections.ObjectModel.Collection<T> ArgumentNotNull(System.Collections.ObjectModel.Collection<T> input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 10/24/2023
+* **Description:** ArgumentNotNull
+* **Documentation:** https://bit.ly/SpargineAug23
+* **Modified By:** David McCarter
+
+### T ArgumentNotNull(T input, T defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/10/2021
+* **Description:** ArgumentNotNull
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Uri ArgumentNotNull(System.Uri input, System.Uri defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentNotNull
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Guid ArgumentNotNullOrEmpty(System.Guid input, System.String errorMessage, System.Nullable<System.Guid> defaultValue, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentNotNullOrEmpty
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.String ArgumentNotNullOrEmpty(System.String input, System.Boolean trim, System.String defaultValue, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** ArgumentNotNullOrEmpty
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.IList<T> ArgumentNotReadOnly(System.Collections.Generic.IList<T> input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/29/2022
+* **Description:** ArgumentNotReadOnly
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Collections.Generic.ICollection<T> ArgumentNotReadOnly(System.Collections.Generic.ICollection<T> input, System.String errorMessage, System.String paramName)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/28/2022
+* **Description:** ArgumentNotReadOnly
+* **Documentation:** https://bit.ly/SpargineMay2022Args
+* **Modified By:** David McCarter
+
+### System.Boolean CheckEquals(System.Type input, System.Type expectedType, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/31/2022
+* **Description:** CheckEquals
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckExists(System.IO.FileInfo input, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/31/2022
+* **Description:** CheckExists
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckExists(System.IO.DirectoryInfo input, System.Boolean& createDirectory, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/31/2022
+* **Description:** CheckExists
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsCondition(T input, System.Boolean& condition, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/10/2021
+* **Description:** CheckIsCondition
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsDefined(System.Enum input, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/31/2022
+* **Description:** CheckIsDefined
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsInRange(System.DateTime& input, System.DateTime& lower, System.DateTime& upper, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/31/2022
+* **Description:** CheckIsInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsInRange(System.TimeOnly& input, System.TimeOnly& lower, System.TimeOnly& upper, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/14/2022
+* **Description:** CheckIsInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsInRange(System.DateOnly& input, System.DateOnly& lower, System.DateOnly& upper, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/14/2022
+* **Description:** CheckIsInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsInRange(System.Int32 input, System.Int32 lower, System.Int32 upper, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/3/2022
+* **Description:** CheckIsInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsInRange(System.Int64& input, System.Int64& lower, System.Int64& upper, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/14/2022
+* **Description:** CheckIsInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsInRange(System.Double& input, System.Double& lower, System.Double& upper, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/14/2022
+* **Description:** CheckIsInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsInRange(System.Decimal& input, System.Decimal& lower, System.Decimal& upper, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/14/2022
+* **Description:** CheckIsInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsInRange(System.DateTimeOffset& input, System.DateTimeOffset& lower, System.DateTimeOffset& upper, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 1/31/2022
+* **Description:** CheckIsInRange
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsNotEmpty(System.ReadOnlySpan<T> input, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 6/26/2017
+* **Description:** CheckIsNotEmpty
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsNotEmpty(System.Guid input, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/2/2022
+* **Description:** CheckIsNotEmpty
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckIsNotNull(T input, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 2/10/2021
+* **Description:** CheckIsNotNull
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+### System.Boolean CheckItemsExists(System.Collections.Generic.IEnumerable<T> input, System.Boolean& throwException, System.String errorMessage)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 4/14/2022
+* **Description:** CheckItemsExists
+* **Documentation:** https://bit.ly/SpargineMay2022Data
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Web.WebHelper
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Description:** From dotNetTips.Utility
+
+### System.Threading.Tasks.Task<System.String> DownloadStringAsync(System.Uri address, System.String clientId, System.Threading.CancellationToken cancellationToken)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** DownloadStringAsync
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> HttpHeaderNames()
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 9/2/2020
+* **Description:** HttpHeaderNames
+* **Modified By:** David McCarter
+
+### System.Boolean IsLocalUri(System.String path, Microsoft.AspNetCore.Http.HttpRequest request)
+
+* **Status:** Available
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 9/12/2020
+* **Description:** IsLocalUri
+* **Modified By:** David McCarter
+
+*****
+**Generated by Spargine - dotNetTips.com on 3/28/2025 4:17:33 PM UTC**
