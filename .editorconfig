@@ -1,7 +1,7 @@
 ####################################################################################################
 # dotNetDave's (David McCarter) Editor Config - dotNetTips.com
 # Updates to this file are posted quarterly at: https://bit.ly/EditorConfig5
-# Updated March 1, 2025
+# Updated March 28, 2025
 # NEW code performance book is available at: https://bit.ly/DotNetCodePerf4
 # NEW coding standards book is available at: https://bit.ly/CodingStandards8
 # Rockin' the Code World with dotNetDave: https://bit.ly/RockinCodeWorldShows
@@ -677,8 +677,8 @@ dotnet_diagnostic.CA1828.severity = silent
 # Examples in Rock Your Code: Code Performance in Microsoft .NET 
 dotnet_diagnostic.CA1829.severity = error
 
-# Prefer strongly-typed Append and Insert method overloads on StringBuilder. ***
-dotnet_diagnostic.CA1830.severity = warning
+# Prefer strongly-typed Append and Insert method overloads on StringBuilder.
+dotnet_diagnostic.CA1830.severity = suggestion
 
 # Use AsSpan instead of Range-based indexers for string when appropriate.
 # Examples in Rock Your Code: Code Performance in Microsoft .NET
@@ -762,7 +762,7 @@ dotnet_diagnostic.CA1851.severity = error
 # Examples in Rock Your Code: Code Performance in Microsoft .NET
 dotnet_diagnostic.CA1852.severity = error
 
-# Unnecessary call to 'Dictionary.ContainsKey(key)' ****!
+# Unnecessary call to 'Dictionary.ContainsKey(key)'
 dotnet_diagnostic.CA1853.severity = error
 
 # Prefer the IDictionary.TryGetValue(TKey, out TValue) method!
@@ -781,7 +781,7 @@ dotnet_diagnostic.CA1856.severity = warning
 # Examples in Rock Your Code: Code Performance in Microsoft .NET
 dotnet_diagnostic.CA1857.severity = suggestion
 
-# Use StartsWith instead of IndexOf ****!
+# Use StartsWith instead of IndexOf
 dotnet_diagnostic.CA1858.severity = error
 
 # Use concrete types when possible for improved performance
@@ -816,11 +816,11 @@ dotnet_diagnostic.CA1867.severity = warning
 # Unnecessary call to 'Contains' for sets ****!
 dotnet_diagnostic.CA1868.severity = error
 
-# Use a cached 'SearchValues' instance
-# Examples in Rock Your Code: Code Performance in Microsoft .NET
+# Cache and reuse 'JsonSerializerOptions' instances ****!
 dotnet_diagnostic.CA1869.severity = warning
 
-# Cache and reuse 'JsonSerializerOptions' instances ****!
+# Use a cached 'SearchValues' instance
+# Examples in Rock Your Code: Code Performance in Microsoft .NET
 dotnet_diagnostic.CA1870.severity = warning
 
 # Do not pass a nullable struct to'ArgumentNullException.ThrowIfNull ****!
@@ -829,9 +829,6 @@ dotnet_diagnostic.CA1871.severity = warning
 # Prefer 'Convert.ToHexString'and 'Convert.ToHexStringLower' overcall chains based on'BitConverter.ToString'
 # Examples in Rock Your Code: Code Performance in Microsoft .NET
 dotnet_diagnostic.CA1872.severity = warning
-
-# Use Span<T>.Clear() instead of Span<T>.Fill() ****!
-dotnet_diagnostic.CA1872.severity = suggestion
 
 #### Obsolete ####
 
