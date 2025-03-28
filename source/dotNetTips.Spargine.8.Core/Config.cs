@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 11-19-2024
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="Config.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -61,8 +61,10 @@ public class Config<T> where T : class, new()
 		if (File.Exists(this.ConfigFileName))
 		{
 			_instance = XmlSerialization.DeserializeFromFile<T>(new FileInfo(this.ConfigFileName));
+
 			return true;
 		}
+
 		return false;
 	}
 
@@ -76,7 +78,9 @@ public class Config<T> where T : class, new()
 		{
 			File.Delete(this.ConfigFileName);
 		}
+
 		XmlSerialization.SerializeToFile(this.Instance, new FileInfo(this.ConfigFileName));
+
 		return true;
 	}
 
