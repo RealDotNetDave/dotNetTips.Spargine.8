@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="FastSortedList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -51,7 +51,6 @@ public class FastSortedList<T> : List<T>
 	/// <remarks>
 	/// This constructor initializes the list with the default comparer for the type <typeparamref name="T"/>.
 	/// </remarks>
-	/// <seealso cref="FastSortedList{T}(IComparer{T})"/>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public FastSortedList() : this(Comparer<T>.Default)
 	{
@@ -75,7 +74,6 @@ public class FastSortedList<T> : List<T>
 	/// This constructor initializes the list with the elements from the specified collection and uses the default comparer for the type <typeparamref name="T"/>.
 	/// </remarks>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	/// <seealso cref="FastSortedList{T}(IEnumerable{T}, IComparer{T})"/>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public FastSortedList([NotNull] in IEnumerable<T> collection) : this(collection, Comparer<T>.Default)
 	{
@@ -88,7 +86,6 @@ public class FastSortedList<T> : List<T>
 	/// <remarks>
 	/// This constructor initializes the list with the specified initial capacity and uses the default comparer for the type <typeparamref name="T"/>.
 	/// </remarks>
-	/// <seealso cref="FastSortedList{T}(int, IComparer{T})"/>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public FastSortedList([ConstantExpected(Min = 1, Max = int.MaxValue)] int capacity) : this(capacity, Comparer<T>.Default)
 	{

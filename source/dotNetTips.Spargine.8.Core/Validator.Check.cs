@@ -4,7 +4,7 @@
 // Created          : 06-26-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="Validator.Check.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -82,12 +82,9 @@ public static partial class Validator
 
 		var isValid = input.Exists;
 
-		if (isValid is false && throwException)
-		{
-			throw ExceptionThrower.CreateFileNotFoundException(CreateExceptionMessage(errorMessage, Resources.ErrorFileNotFound), input.FullName);
-		}
-
-		return isValid;
+		return isValid is false && throwException
+			? throw ExceptionThrower.CreateFileNotFoundException(CreateExceptionMessage(errorMessage, Resources.ErrorFileNotFound), input.FullName)
+			: isValid;
 	}
 
 	/// <summary>

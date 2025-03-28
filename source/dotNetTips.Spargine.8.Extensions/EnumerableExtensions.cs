@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-19-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -625,17 +625,7 @@ public static class EnumerableExtensions
 	[Pure]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(HasItems), "David McCarter", "11/21/2020", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, OptimizationStatus = OptimizationStatus.Completed)]
-	public static bool HasItems(this IEnumerable collection, int count)
-	{
-		if (collection is null)
-		{
-			return false;
-		}
-		else
-		{
-			return collection.Count() == count;
-		}
-	}
+	public static bool HasItems(this IEnumerable collection, int count) => collection is null ? false : collection.Count() == count;
 
 	/// <summary>
 	/// Finds the index of the first occurrence of an item in the collection.

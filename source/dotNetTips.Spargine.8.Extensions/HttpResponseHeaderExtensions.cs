@@ -4,7 +4,7 @@
 // Created          : 07-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-18-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="HttpResponseHeaderExtensions.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -91,12 +91,7 @@ public static class HttpResponseHeaderExtensions
 	{
 		headers = headers.ArgumentNotNull();
 
-		if (headers.TryGetValues("X-Request-UUID", out var values))
-		{
-			return values.FirstOrDefault() ?? string.Empty;
-		}
-
-		return string.Empty;
+		return headers.TryGetValues("X-Request-UUID", out var values) ? values.FirstOrDefault() ?? string.Empty : string.Empty;
 	}
 
 }

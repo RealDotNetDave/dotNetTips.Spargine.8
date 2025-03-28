@@ -4,7 +4,7 @@
 // Created          : 12-27-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-19-2025
+// Last Modified On : 03-28-2025
 // ***********************************************************************
 // <copyright file="FastStringBuilder.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -278,7 +278,7 @@ public static class FastStringBuilder
 	[Information(nameof(Format), "David McCarter", "03/04/2025", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
 	public static string Format(string format, params string[] args)
 	{
-		if (args.CheckItemsExists() == false || format.CheckIsNotNull() == false)
+		if (args.CheckItemsExists() is false || format.CheckIsNotNull() is false)
 		{
 			return ControlChars.EmptyString;
 		}
