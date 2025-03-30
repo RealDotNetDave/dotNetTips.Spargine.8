@@ -49,7 +49,7 @@ namespace DotNetTips.Spargine.IO;
 /// fileProcessor.CopyFiles(filesToCopy, destinationDir);
 /// </code>
 /// </remarks>
-[Information(Status = Status.UpdateDocumentation, Documentation = "ADD URL")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineFileProcessor")]
 public class FileProcessor
 {
 	/// <summary>

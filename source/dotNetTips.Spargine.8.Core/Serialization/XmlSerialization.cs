@@ -4,7 +4,7 @@
 // Created          : 02-07-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 03-30-2025
 // ***********************************************************************
 // <copyright file="XmlSerialization.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -66,14 +66,9 @@ public static class XmlSerialization
 	{
 		file = file.ArgumentNotNull();
 
-		if (file.Exists is false)
-		{
-			throw ExceptionThrower.CreateFileNotFoundException(Resources.FileNotFoundCannotDeserializeFromXML, file.FullName);
-		}
-		else
-		{
-			return Deserialize<TResult>(File.ReadAllText(file.FullName));
-		}
+		return file.Exists is false
+			? throw ExceptionThrower.CreateFileNotFoundException(Resources.FileNotFoundCannotDeserializeFromXML, file.FullName)
+			: Deserialize<TResult>(File.ReadAllText(file.FullName));
 	}
 
 	/// <summary>

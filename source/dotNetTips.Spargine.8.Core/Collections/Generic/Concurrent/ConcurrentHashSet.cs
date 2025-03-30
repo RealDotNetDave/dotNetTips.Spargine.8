@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-28-2025
+// Last Modified On : 03-30-2025
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -83,7 +83,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="concurrencyLevel"/> or <paramref name="capacity"/> is less than 1.</exception>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="comparer"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private ConcurrentHashSet([ConstantExpected(Min = 1, Max = int.MaxValue)] int concurrencyLevel, [ConstantExpected(Min = 0, Max = int.MaxValue)] int capacity, bool growLockArray, [NotNull] IEqualityComparer<T> comparer)
+	private ConcurrentHashSet(int concurrencyLevel, int capacity, bool growLockArray, [NotNull] IEqualityComparer<T> comparer)
 	{
 		if (concurrencyLevel < 1)
 		{
@@ -160,7 +160,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="concurrencyLevel"/> or <paramref name="capacity"/> is less than 1.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public ConcurrentHashSet([ConstantExpected(Min = 1, Max = int.MaxValue)] int concurrencyLevel, [ConstantExpected(Min = 0, Max = int.MaxValue)] int capacity)
+	public ConcurrentHashSet(int concurrencyLevel, [ConstantExpected(Min = 0, Max = int.MaxValue)] int capacity)
 		: this(concurrencyLevel, capacity, false, null)
 	{
 	}
@@ -197,7 +197,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="comparer"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(ConcurrentHashSet<T>), author: "David McCarter", createdOn: "7/28/2021", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public ConcurrentHashSet(int concurrencyLevel, [ConstantExpected(Min = 0, Max = int.MaxValue)] int capacity, [NotNull] IEqualityComparer<T> comparer)
+	public ConcurrentHashSet(int concurrencyLevel, int capacity, [NotNull] IEqualityComparer<T> comparer)
 		: this(concurrencyLevel, capacity, false, comparer)
 	{
 	}

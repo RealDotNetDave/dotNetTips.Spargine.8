@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-28-2025
+// Last Modified On : 03-30-2025
 // ***********************************************************************
 // <copyright file="FastSortedList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -87,7 +87,7 @@ public class FastSortedList<T> : List<T>
 	/// This constructor initializes the list with the specified initial capacity and uses the default comparer for the type <typeparamref name="T"/>.
 	/// </remarks>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public FastSortedList([ConstantExpected(Min = 1, Max = int.MaxValue)] int capacity) : this(capacity, Comparer<T>.Default)
+	public FastSortedList(int capacity) : this(capacity, Comparer<T>.Default)
 	{
 	}
 
@@ -112,7 +112,7 @@ public class FastSortedList<T> : List<T>
 	/// This constructor initializes the list with the specified initial capacity and uses the specified comparer for sorting.
 	/// </remarks>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
-	public FastSortedList([ConstantExpected(Min = 1, Max = int.MaxValue)] int capacity, in IComparer<T> comparer) : base(capacity) => this._comparer = comparer;
+	public FastSortedList(int capacity, in IComparer<T> comparer) : base(capacity) => this._comparer = comparer;
 
 	/// <summary>
 	/// Sorts the items in the collection if they have not been sorted yet.

@@ -26,7 +26,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// <remarks>
 /// This class includes methods for appending key-value pairs, bytes, and collections with various formatting options.
 /// </remarks>
-[Information(nameof(StringBuilderExtensions), "David McCarter", "5/26/2020", "7/29/2020", Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(nameof(StringBuilderExtensions), "David McCarter", "5/26/2020", "7/29/2020", Status = Status.Available, Documentation = "https://bit.ly/SpargineStringBuilderExtensions")]
 public static class StringBuilderExtensions
 {
 
