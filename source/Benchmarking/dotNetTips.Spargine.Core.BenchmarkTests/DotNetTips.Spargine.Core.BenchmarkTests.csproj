@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<AnalysisLevel>latest</AnalysisLevel>
-		<AssemblyVersion>2025.8.3.31</AssemblyVersion>
+		<AssemblyVersion>2025.8.4.1</AssemblyVersion>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<BaseOutputPath>..\..\..\AppBin\</BaseOutputPath>
 		<Company>dotNetTips.com - McCarter Consulting</Company>
@@ -14,7 +14,7 @@
 		<DebugType>none</DebugType>
 		<Description>DotNetTips.Spargine.Core.BenchmarkTests</Description>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-		<FileVersion>2025.8.3.31</FileVersion>
+		<FileVersion>2025.8.4.1</FileVersion>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 		<IsPublishable>False</IsPublishable>
 		<NeutralLanguage>en</NeutralLanguage>
@@ -27,7 +27,7 @@
 		<ServerGarbageCollection>true</ServerGarbageCollection>
 		<SignAssembly>False</SignAssembly>
 		<TargetFramework>net8.0</TargetFramework>
-		<Version>2025.8.3.31</Version>
+		<Version>2025.8.4.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
