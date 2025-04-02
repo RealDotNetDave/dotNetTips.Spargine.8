@@ -378,18 +378,11 @@ public static partial class TypeHelper
 		{
 			try
 			{
-				var tempTypes = LoadDerivedTypes(assembly.DefinedTypes, baseType, classOnly).ToList();
+				var tempTypes = LoadDerivedTypes(assembly.DefinedTypes, baseType, classOnly);
 
-				if (tempTypes?.FastCount() > 0)
+				if (tempTypes?.Count() > 0)
 				{
-					if (types is null)
-					{
-						types = tempTypes;
-					}
-					else
-					{
-						types.AddRange(tempTypes);
-					}
+					types.AddRange(tempTypes);
 				}
 			}
 			catch (ReflectionTypeLoadException reflectionEx)
@@ -454,6 +447,10 @@ public static partial class TypeHelper
 			catch (FileNotFoundException fileNotFoundEx)
 			{
 				Trace.WriteLine(fileNotFoundEx.GetAllMessages());
+			}
+			catch (TypeLoadException typeLoadEx)
+			{
+				Trace.WriteLine(typeLoadEx.GetAllMessages());
 			}
 		}
 
@@ -646,7 +643,7 @@ public static partial class TypeHelper
 	/// <param name="nestedTypeDelimiter">The delimiter to use for nested types.</param>
 	/// <returns>The display name of the type.</returns>
 	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/31/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
-	public static string GetTypeDisplayName([NotNull] Type type, bool fullName = true, bool includeGenericParameterNames = false, bool includeGenericParameters = true, char nestedTypeDelimiter = ControlChars.Plus)
+	public static string GetTypeDisplayName([NotNull] Type type, bool fullName = true, bool includeGenericParameterNames = false, bool includeGenericParameters = true, char nestedTypeDelimiter = ControlChars.Dot)
 	{
 		type = type.ArgumentNotNull();
 

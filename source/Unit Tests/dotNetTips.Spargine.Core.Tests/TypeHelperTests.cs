@@ -24,6 +24,7 @@ using System.Security.AccessControl;
 using System.Text;
 using System.Text.Json;
 using DotNetTips.Spargine.Extensions;
+using DotNetTips.Spargine.IO;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -91,6 +92,35 @@ public class TypeHelperTests : TestClass
 	}
 
 	[TestMethod]
+	public void FindDerivedTypes_AppDomain_IDisposable()
+	{
+		// Act
+		var result = TypeHelper.FindDerivedTypes(AppDomain.CurrentDomain, typeof(IDisposable), false);
+
+		// Assert
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count > 500);
+
+		//Export to file
+		var query = result.Where(p => p.FullName.StartsWith("DotNetTips") == false && p.DeclaringType == null).OrderBy(p => p.Assembly.FullName).ThenBy(p => p.Name).ToArray();
+
+		var sb = new StringBuilder();
+
+		foreach (var item in query)
+		{
+			sb.AppendLine(TypeHelper.GetTypeDisplayName(item, fullName: true, includeGenericParameterNames: true, includeGenericParameters: true));
+		}
+
+		File.WriteAllText(@"C:\dotNetTips.com\IDisposableTypes.txt", sb.ToString());
+
+		var dir = new DirectoryInfo("C:\\Windows\\assembly\\NativeImages_v4.0.30319_64");
+
+		var files = DirectoryHelper.SafeFileSearch(dir, "*.dll", SearchOption.AllDirectories).Where(p => TypeHelper.IsDotNetAssembly(p)).ToArray();
+
+		//		var assembly = Assembly.LoadFile(Path.Combine(App.ProcessPath, "DotNetTips.Spargine.8.Benchmarking.dll"));
+	}
+
+	[TestMethod]
 	public void FindDerivedTypes_AppDomain_NullBaseType_ThrowsArgumentNullException()
 	{
 		// Act & Assert
@@ -114,6 +144,30 @@ public class TypeHelperTests : TestClass
 		Assert.IsNotNull(result);
 		Assert.IsTrue(result.Count > 0);
 	}
+
+	//[TestMethod]
+	//public void FindDerivedTypes_Assemblies_IDisposable()
+	//{
+	//	var sb = new StringBuilder();
+	//	var dir = new DirectoryInfo("C:\\Users\\david\\.nuget\\packages\\");
+
+	//	var files = DirectoryHelper.SafeFileSearch(dir, "*.dll", SearchOption.AllDirectories).Where(p => TypeHelper.IsDotNetAssembly(p)).ToArray();
+
+
+	//	foreach (var file in files)
+	//	{
+	//		var result = TypeHelper.FindDerivedTypes(file.Directory, SearchOption.AllDirectories, typeof(IDisposable), false);
+
+	//		foreach (var item in result)
+	//		{
+	//			sb.AppendLine(TypeHelper.GetTypeDisplayName(item, fullName: true, includeGenericParameterNames: true, includeGenericParameters: true));
+	//		}
+
+	//		//		var assembly = Assembly.LoadFile(Path.Combine(App.ProcessPath, "DotNetTips.Spargine.8.Benchmarking.dll"));
+	//	}
+
+	//	File.WriteAllText(@"C:\dotNetTips.com\IDisposableTypesFiles.txt", sb.ToString());
+	//}
 
 	[TestMethod]
 	public void FindDerivedTypes_CurrentlyLoadedAssemblies_NullBaseType_ThrowsArgumentNullException()
