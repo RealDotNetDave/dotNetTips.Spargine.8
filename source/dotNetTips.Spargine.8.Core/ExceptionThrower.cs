@@ -93,7 +93,7 @@ public static partial class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentInvalidException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentInvalidException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentInvalidException([AllowNull] string message, [NotNull] string paramName, [AllowNull] Exception innerException) => throw new ArgumentInvalidException(message ?? Resources.ErrorInvalidArgument, paramName, innerException);
 
 	/// <summary>
@@ -104,7 +104,7 @@ public static partial class ExceptionThrower
 	[DoesNotReturn]
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(ThrowArgumentNullException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineExThrow")]
+	[Information(nameof(ThrowArgumentNullException), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void ThrowArgumentNullException([NotNull] string paramName) => throw new ArgumentNullException(paramName, Resources.ErrorArgumentNull);
 
 	/// <summary>

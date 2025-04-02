@@ -78,7 +78,7 @@ public static class DirectoryHelper
 	/// </code></example>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="directory"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineAug2022", Status = Status.Available)]
+	[Information(nameof(CheckPermission), author: "David McCarter", createdOn: "6/17/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static bool CheckPermission([NotNull] DirectoryInfo directory, FileSystemRights permission = FileSystemRights.Read)
 	{
 		//OPTIMIZATION FROM COPILOT BREAKS THIS CODE
@@ -392,7 +392,7 @@ public static class DirectoryHelper
 	/// </code></example>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="searchPatterns"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeDirectorySearch), "David McCarter", "6/14/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/SpargineSep2022", Status = Status.Available)]
+	[Information(nameof(SafeDirectorySearch), "David McCarter", "6/14/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool SafeDirectorySearch([NotNull] DirectoryInfo path, SearchOption searchOption = SearchOption.TopDirectoryOnly, [NotNull] params string[] searchPatterns)
 	{
 		//TODO: CHANGE TO SafeHasFoldersOrFiles IN V10
@@ -470,7 +470,7 @@ public static class DirectoryHelper
 	/// </code></example>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> or <paramref name="searchPattern"/> is null.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "http://bit.ly/SpargineMarch2021", Status = Status.Available)]
+	[Information(nameof(SafeFileSearch), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<FileInfo> SafeFileSearch([NotNull] DirectoryInfo path, [NotNull] string searchPattern, SearchOption searchOption)
 	{
 		var directories = new List<DirectoryInfo>(1)

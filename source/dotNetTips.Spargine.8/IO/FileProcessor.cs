@@ -188,7 +188,7 @@ public class FileProcessor
 	/// fileProcessor.DeleteFiles(filesToDelete);
 	/// </code>
 	/// </example>
-	[Information(nameof(DeleteFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(DeleteFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public int DeleteFiles([NotNull] in IEnumerable<FileInfo> files)
 	{
 		if (files.HasItems() is false)
@@ -274,7 +274,7 @@ public class FileProcessor
 	/// fileProcessor.DeleteFolders(foldersToDelete);
 	/// </code>
 	/// </example>
-	[Information(nameof(DeleteFolders), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
+	[Information(nameof(DeleteFolders), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public int DeleteFolders([NotNull] in IEnumerable<DirectoryInfo> folders, in bool recursive = true)
 	{
 		if (folders is null || folders.HasItems() is false)
