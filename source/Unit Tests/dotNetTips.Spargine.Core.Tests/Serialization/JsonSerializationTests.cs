@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using DotNetTips.Spargine.Core.Serialization;
+using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -122,6 +123,8 @@ public class JsonSerializationTests
 
 		//Serialize
 		var json = JsonSerialization.Serialize(people);
+
+		people.ToJsonFile(new FileInfo("C:\\dotNetTips.com\\DebugOutput\\PersonCollection.json"));
 
 		Assert.IsTrue(string.IsNullOrEmpty(json) is false);
 
