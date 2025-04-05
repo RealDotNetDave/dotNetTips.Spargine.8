@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8 - 2025.8.3.31
+# DotNetTips.Spargine.8 - 2025.8.4.5
 
 ## DotNetTips.Spargine.Extensions.RegistryExtensions
 
@@ -58,7 +58,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 6/17/2020
 * **Description:** CheckPermission
-* **Documentation:** https://bit.ly/SpargineAug2022
 * **Modified By:** David McCarter
 
 ### System.Void CopyDirectory(System.IO.DirectoryInfo source, System.IO.DirectoryInfo destination, System.Boolean overwrite)
@@ -133,7 +132,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 6/14/2021
 * **Description:** SafeDirectorySearch
-* **Documentation:** https://bit.ly/SpargineSep2022
 * **Modified By:** David McCarter
 
 ### System.Collections.Generic.IEnumerable<System.IO.DirectoryInfo> SafeDirectorySearch(System.IO.DirectoryInfo path, System.String searchPattern, System.IO.SearchOption searchOption)
@@ -156,7 +154,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 2/14/2018
 * **Description:** SafeFileSearch
-* **Documentation:** http://bit.ly/SpargineMarch2021
 * **Modified By:** David McCarter
 
 ### System.Collections.Generic.IEnumerable<System.IO.FileInfo> SafeFileSearch(System.Collections.Generic.IEnumerable<System.IO.DirectoryInfo> directories, System.String searchPattern, System.IO.SearchOption searchOption)
@@ -305,7 +302,7 @@
 * **Unit Test Status:** Completed
 * **Description:** CopyFile
 
-### System.Boolean CopyFile(System.IO.FileInfo file, System.IO.DirectoryInfo destination, DotNetTips.Spargine.IO.FileHelper+CopyProgressRoutine progressCallback)
+### System.Boolean CopyFile(System.IO.FileInfo file, System.IO.DirectoryInfo destination, DotNetTips.Spargine.IO.FileHelper.CopyProgressRoutine progressCallback)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -440,7 +437,7 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineFileProcessor
 
-### System.Int32 CopyFiles(System.Collections.Generic.IEnumerable`1[[System.IO.FileInfo, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& files, System.IO.DirectoryInfo destination)
+### System.Int32 CopyFiles(System.Collections.Generic.IEnumerable`1[[System.IO.FileInfo, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& files, System.IO.DirectoryInfo destination)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -451,7 +448,7 @@
 * **Description:** CopyFiles
 * **Modified By:** David McCarter
 
-### System.Int32 DeleteFiles(System.Collections.Generic.IEnumerable`1[[System.IO.FileInfo, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& files)
+### System.Int32 DeleteFiles(System.Collections.Generic.IEnumerable`1[[System.IO.FileInfo, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& files)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -460,10 +457,9 @@
 * **Author:** David McCarter
 * **CreatedOn:** 8/6/2017
 * **Description:** DeleteFiles
-* **Documentation:** https://bit.ly/SpargineJun2021
 * **Modified By:** David McCarter
 
-### System.Int32 DeleteFolders(System.Collections.Generic.IEnumerable`1[[System.IO.DirectoryInfo, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& folders, System.Boolean& recursive)
+### System.Int32 DeleteFolders(System.Collections.Generic.IEnumerable`1[[System.IO.DirectoryInfo, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& folders, System.Boolean& recursive)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -472,7 +468,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 8/6/2017
 * **Description:** DeleteFolders
-* **Documentation:** https://bit.ly/SpargineJun2021
 * **Modified By:** David McCarter
 
 *****
@@ -789,7 +784,7 @@
 * **Documentation:** https://bit.ly/SpargineJun2021
 * **Modified By:** David McCarter
 
-### System.Void StartServices(System.Collections.Generic.IEnumerable`1[[DotNetTips.Spargine.ServiceAction, DotNetTips.Spargine.8, Version=2025.8.3.31, Culture=neutral, PublicKeyToken=null]]& requests)
+### System.Void StartServices(System.Collections.Generic.IEnumerable`1[[DotNetTips.Spargine.ServiceAction, DotNetTips.Spargine.8, Version=2025.8.4.5, Culture=neutral, PublicKeyToken=null]]& requests)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -801,7 +796,7 @@
 * **Documentation:** https://bit.ly/SpargineJun2021
 * **Modified By:** David McCarter
 
-### System.Void StartStopServices(System.Collections.Generic.IEnumerable`1[[DotNetTips.Spargine.ServiceAction, DotNetTips.Spargine.8, Version=2025.8.3.31, Culture=neutral, PublicKeyToken=null]]& requests)
+### System.Void StartStopServices(System.Collections.Generic.IEnumerable`1[[DotNetTips.Spargine.ServiceAction, DotNetTips.Spargine.8, Version=2025.8.4.5, Culture=neutral, PublicKeyToken=null]]& requests)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -825,7 +820,7 @@
 * **Documentation:** https://bit.ly/SpargineJun2021
 * **Modified By:** David McCarter
 
-### System.Void StopServices(System.Collections.Generic.IEnumerable`1[[DotNetTips.Spargine.ServiceAction, DotNetTips.Spargine.8, Version=2025.8.3.31, Culture=neutral, PublicKeyToken=null]]& requests)
+### System.Void StopServices(System.Collections.Generic.IEnumerable`1[[DotNetTips.Spargine.ServiceAction, DotNetTips.Spargine.8, Version=2025.8.4.5, Culture=neutral, PublicKeyToken=null]]& requests)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -857,4 +852,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 4/1/2025 1:16:03 PM UTC**
+**Generated by Spargine - dotNetTips.com on 4/5/2025 2:40:38 PM UTC**

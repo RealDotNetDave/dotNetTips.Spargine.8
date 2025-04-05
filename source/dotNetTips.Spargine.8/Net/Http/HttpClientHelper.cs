@@ -4,7 +4,7 @@
 // Created          : 01-11-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-14-2025
+// Last Modified On : 04-04-2025
 // ***********************************************************************
 // <copyright file="HttpClientHelper.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
