@@ -704,7 +704,7 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	/// </summary>
 	/// <returns>An <see cref="IEnumerator{T}"/> for the <see cref="ConcurrentHashSet{T}"/>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetEnumerator), author: "David McCarter", createdOn: "7/28/2021", OptimizationStatus = OptimizationStatus.Optimize, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	[Information(nameof(GetEnumerator), author: "David McCarter", createdOn: "7/28/2021", OptimizationStatus = OptimizationStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public IEnumerator<T> GetEnumerator()
 	{
 		var buckets = this._tables._buckets;

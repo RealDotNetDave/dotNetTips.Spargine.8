@@ -370,7 +370,7 @@ public static partial class TypeHelper
 		baseType = baseType.ArgumentNotNull();
 
 		//USING SPAN CAUSES ISSUES, FrozenSet is slower.
-		var assemblyCollection = currentDomain.ArgumentNotNull().GetAssemblies().ToImmutableArray();
+		var assemblyCollection = currentDomain.ArgumentNotNull().GetAssemblies();
 
 		List<Type> types = [];
 
@@ -378,12 +378,7 @@ public static partial class TypeHelper
 		{
 			try
 			{
-				var tempTypes = LoadDerivedTypes(assembly.DefinedTypes, baseType, classOnly);
-
-				if (tempTypes?.Count() > 0)
-				{
-					types.AddRange(tempTypes);
-				}
+				types.AddRange(LoadDerivedTypes(assembly.DefinedTypes, baseType, classOnly));
 			}
 			catch (ReflectionTypeLoadException reflectionEx)
 			{
@@ -391,7 +386,7 @@ public static partial class TypeHelper
 			}
 		}
 
-		return types is not null ? types.AsReadOnly() : default;
+		return types.AsReadOnly();
 	}
 
 	/// <summary>
@@ -573,7 +568,7 @@ public static partial class TypeHelper
 	/// [PostalCode, 86560656].
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetPropertyValues), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Completed, Documentation = "http://bit.ly/SpargineMarch2021", Status = Status.Available)]
+	[Information(nameof(GetPropertyValues), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Documentation = "http://bit.ly/SpargineMarch2021", Status = Status.Available)]
 	public static ReadOnlyCollection<KeyValuePair<string, string>> GetPropertyValues<T>([NotNull] in T input)
 	{
 		_ = input.ArgumentNotNull();
@@ -614,8 +609,8 @@ public static partial class TypeHelper
 	/// <param name="type">The type to get the display name for.</param>
 	/// <param name="options">The display options to use for formatting the display name.</param>
 	/// <returns>The display name of the type.</returns>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
-	public static string GetTypeDisplayName([NotNull] Type type, DisplayNameOptions options)
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	public static string GetTypeDisplayName([NotNull] Type type, in DisplayNameOptions options)
 	{
 		type = type.ArgumentNotNull();
 
@@ -696,7 +691,7 @@ public static partial class TypeHelper
 	/// <param name="genericArguments">The array of generic arguments for the type.</param>
 	/// <param name="length">The number of generic arguments to consider.</param>
 	/// <param name="options">Display name options to customize the output.</param>
-	[Information(nameof(ProcessGenericType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information(nameof(ProcessGenericType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, int length, DisplayNameOptions options)
 	{
 		builder = builder.ArgumentNotNull();
@@ -760,7 +755,7 @@ public static partial class TypeHelper
 	/// <summary>
 	/// Gets a read-only collection of built-in .NET types.
 	/// </summary>
-	[Information(nameof(BuiltInTypes), "David McCarter", "11/6/2023", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/Spargine8", Status = Status.Available)]
+	[Information(nameof(BuiltInTypes), "David McCarter", "11/6/2023", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Documentation = "https://bit.ly/Spargine8", Status = Status.Available)]
 	public static ReadOnlyCollection<Type> BuiltInTypes
 	{
 		get

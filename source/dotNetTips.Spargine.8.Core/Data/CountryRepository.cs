@@ -113,12 +113,13 @@ public static class CountryRepository
 	/// <returns>The <see cref="Country"/> object if codeFound; otherwise, null.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="countryName"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
 	public static Country GetCountry([NotNull] CountryName countryName)
 	{
 		countryName = countryName.ArgumentNotNull();
+		var countryNameDescription = countryName.GetDescription();
 
-		return GetCountries().FirstOrDefault(p => string.Equals(p.Name, countryName.GetDescription(), StringComparison.Ordinal));
+		return GetCountries().FirstOrDefault(p => string.Equals(p.Name, countryNameDescription, StringComparison.Ordinal));
 	}
 
 	/// <summary>
@@ -127,20 +128,10 @@ public static class CountryRepository
 	/// <param name="countryId">The unique identifier for the country.</param>
 	/// <returns>A <see cref="Country"/> object if codeFound; otherwise, null.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
 	public static Country GetCountry(long countryId)
 	{
-		var countries = GetCountries();
-
-		foreach (var country in countries)
-		{
-			if (country.Id == countryId)
-			{
-				return country;
-			}
-		}
-
-		return null;
+		return GetCountries().FirstOrDefault(country => country.Id == countryId);
 	}
 
 	/// <summary>
