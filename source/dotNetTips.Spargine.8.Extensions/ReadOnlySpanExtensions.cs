@@ -34,7 +34,7 @@ public static class ReadOnlySpanExtensions
 	/// <param name="array">The array.</param>
 	/// <returns>System.String.</returns>
 	/// <exception cref="ArgumentNullException">array cannot be empty.</exception>
-	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
+	[Information(nameof(BytesToString), "David McCarter", "6/24/2021", BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string BytesToString([NotNull] this ReadOnlySpan<byte> array) => FastStringBuilder.BytesToString(array);
 
 	/// <summary>

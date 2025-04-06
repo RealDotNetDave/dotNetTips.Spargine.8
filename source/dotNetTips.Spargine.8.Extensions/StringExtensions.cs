@@ -175,7 +175,7 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses the String.Join(string, string[]) method internally to perform the concatenation.
 	/// </remarks>
-	[Information(nameof(Concat), "David McCarter", "9/15/2017", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information(nameof(Concat), "David McCarter", "9/15/2017", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string Concat([NotNull] this string input, [NotNull][ConstantExpected] string delimiter, bool addLineFeed, [NotNull] params string[] args)
 	{
 		if (input.IsNullOrEmpty())
@@ -282,7 +282,7 @@ public static class StringExtensions
 	/// <param name="input">The input string to split.</param>
 	/// <param name="delimiter">The character delimiter to split the string by. Default is a comma.</param>
 	/// <returns>An array of strings that were delimited by the specified character.</returns>
-	[Information(nameof(DelimitedStringToArray), "David McCarter", "8/13/2020", "8/13/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information(nameof(DelimitedStringToArray), "David McCarter", "8/13/2020", "8/13/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string[] DelimitedStringToArray([NotNull] this string input, [ConstantExpected] char delimiter = ControlChars.Comma) => string.IsNullOrEmpty(input) ? [] : input.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
 
 	/// <summary>
@@ -340,7 +340,7 @@ public static class StringExtensions
 	/// <returns><c>true</c> if the strings are equal according to the specified comparison option; otherwise, <c>false</c>.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="value"/>, <paramref name="valueToCompare"/>, or <paramref name="comparison"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(FastCompare), "David McCarter", "2/16/2025", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.New)]
+	[Information(nameof(FastCompare), "David McCarter", "2/16/2025", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static bool FastCompare([NotNull] this string value, [NotNull] string valueToCompare, [NotNull] in StringComparison comparison) => string.Equals(value, valueToCompare, comparison);
 
 	/// <summary>
@@ -640,7 +640,7 @@ public static class StringExtensions
 				_ = sb.Append(input);
 			}
 
-			return sb.ToString().TrimEnd();
+			return sb.ToString();
 		}
 		finally
 		{
@@ -902,7 +902,7 @@ public static class StringExtensions
 	/// <param name="options">Options for controlling the splitting operation.</param>
 	/// <param name="delimiter">The character to use as a delimiter. <see cref="ControlChars.Comma"/> is the default.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -922,7 +922,7 @@ public static class StringExtensions
 	/// <param name="count">The maximum number of substrings to return.</param>
 	/// <param name="delimiter">The character to use as a delimiter. Defaults to <see cref="ControlChars.Comma"/>.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{String}"/> of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.None, Status = Status.Available)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -943,7 +943,7 @@ public static class StringExtensions
 	/// <param name="count">The maximum number of substrings to return.</param>
 	/// <param name="separator">The string to use as a delimiter. Defaults to <see cref="ControlChars.DefaultSeparator"/>.</param>
 	/// <returns>A ReadOnlyCollection{string} of strings that has been split from the input string.</returns>
-	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information("From .NET Core source.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static ReadOnlyCollection<string> Split([NotNull] this string input, StringSplitOptions options, int count, [NotNull][ConstantExpected] string separator = ControlChars.DefaultSeparator)
 	{
 		input = input.ArgumentNotNullOrEmpty();
@@ -1027,7 +1027,7 @@ public static class StringExtensions
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="startIndex"/> or <paramref name="length"/> is less than zero, or <paramref name="startIndex"/> + <paramref name="length"/> is greater than the length of <paramref name="input"/>.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNull]
-	[Information(nameof(SubstringTrim), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information(nameof(SubstringTrim), author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string SubstringTrim(this string input, int startIndex, int length)
 	{
 		if (input.IsNullOrEmpty())

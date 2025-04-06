@@ -48,7 +48,7 @@ public static class FastStringBuilder
 	/// <param name="bytes">The byte array to convert.</param>
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "3/7/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static string BytesToString([NotNull] ref readonly byte[] bytes)
 	{
 		if (bytes == null)
@@ -81,7 +81,7 @@ public static class FastStringBuilder
 	/// <param name="bytes">The ReadOnlySpan of bytes to convert.</param>
 	/// <returns>A hexadecimal string representation of the byte array, prefixed with '0x'.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(BytesToString), author: "David McCarter", createdOn: "2/18/2021", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static string BytesToString(in ReadOnlySpan<byte> bytes)
 	{
 		if (bytes.IsEmpty)

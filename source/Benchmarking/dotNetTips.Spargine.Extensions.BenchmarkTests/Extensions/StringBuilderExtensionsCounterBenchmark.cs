@@ -44,7 +44,7 @@ public class StringBuilderExtensionsCounterBenchmark : TinyCollectionBenchmark
 		this.Consume(sb.ToString());
 	}
 
-	[Benchmark(Description = nameof(FastStringBuilder.BytesToString) + ": 01**")]
+	[Benchmark(Description = "FastStringBuilder.BytesToString: 01**")]
 	public void AppendBytes03()
 	{
 		var result = FastStringBuilder.BytesToString(ref this._byteArray);
