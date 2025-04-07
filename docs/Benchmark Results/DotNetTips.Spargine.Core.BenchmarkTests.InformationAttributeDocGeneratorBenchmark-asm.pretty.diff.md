@@ -1,1 +1,1 @@
-## DotNetTips.Spargine.Core.BenchmarkTests.InformationAttributeDocGeneratorBenchmark-20250316-130559
+## DotNetTips.Spargine.Core.BenchmarkTests.InformationAttributeDocGeneratorBenchmark-20250406-143129

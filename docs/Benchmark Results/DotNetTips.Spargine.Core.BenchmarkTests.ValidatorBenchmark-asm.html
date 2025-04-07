@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang='en'><head><meta charset='utf-8' /><head>
-<title>Pretty Output of DisassemblyDiagnoser for DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250316-131139</title>
+<title>Pretty Output of DisassemblyDiagnoser for DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250406-143702</title>
 
 <style type="text/css">
     pre { margin: 0px; }
@@ -103,7 +103,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF98351CD38]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC0481C690]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)</pre></code></td>
 </tr><tr class="evenMap">
 <td id="2_M00_L00" class="label" data-label="2_M00_L00"><pre><code>M00_L00</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -132,6 +132,39 @@
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)</th><th></th></tr>
 <tr class="">
+<td></td><td><pre><code>		if (collection is null)
+		^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>			return 0;
+			^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		if (collection is ICollection col)
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>			return col.Count;
+			^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		else if (collection is ICollection<object> colT)
+		     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>			return colT.Count;
+			^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		var count = 0;
+		^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		var enumerator = collection.GetEnumerator();
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>			count++;
+			^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		while (enumerator.MoveNext())
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		return count;
+		^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
 <td></td><td><pre><code>push      rsi</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>push      rbx</pre></code></td>
@@ -148,7 +181,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,offset MT_System.Collections.ICollection</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982E64348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04154348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rax</pre></code></td>
 </tr><tr class="">
@@ -179,7 +212,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,offset MT_System.Collections.Generic.ICollection`1[[System.Object, System.Private.CoreLib]]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF982E64348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04154348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>test      rax,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -187,7 +220,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FF982D20A98</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFC04010A98</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>add       rsp,28</pre></code></td>
 </tr><tr class="evenMap">
@@ -204,7 +237,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FF982D20A88</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFC04010A88</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -224,7 +257,7 @@
 <tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FF982D20A90</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFC04010A90</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -263,7 +296,7 @@
 <td id="3_M01_L06" class="label" data-label="3_M01_L06"><pre><code>M01_L06</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FF982D20AA0</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFC04010AA0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>add       rsp,28</pre></code></td>
 </tr><tr class="evenMap">
@@ -298,7 +331,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF9834ECD38]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC0483C690]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)</pre></code></td>
 </tr><tr class="evenMap">
 <td id="4_M00_L00" class="label" data-label="4_M00_L00"><pre><code>M00_L00</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -327,6 +360,39 @@
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)</th><th></th></tr>
 <tr class="">
+<td></td><td><pre><code>		if (collection is null)
+		^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>			return 0;
+			^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		if (collection is ICollection col)
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>			return col.Count;
+			^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		else if (collection is ICollection<object> colT)
+		     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>			return colT.Count;
+			^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		var count = 0;
+		^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		var enumerator = collection.GetEnumerator();
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>			count++;
+			^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		while (enumerator.MoveNext())
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		return count;
+		^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
 <td></td><td><pre><code>push      rsi</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>push      rbx</pre></code></td>
@@ -343,7 +409,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,offset MT_System.Collections.ICollection</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982E34348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04174348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rax</pre></code></td>
 </tr><tr class="">
@@ -374,7 +440,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,offset MT_System.Collections.Generic.ICollection`1[[System.Object, System.Private.CoreLib]]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF982E34348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04174348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>test      rax,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -382,7 +448,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FF982CF0A98</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFC04030A98</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>add       rsp,28</pre></code></td>
 </tr><tr class="evenMap">
@@ -399,7 +465,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FF982CF0A88</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFC04030A88</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -419,7 +485,7 @@
 <tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r11,7FF982CF0A90</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFC04030A90</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      qword ptr [r11]</pre></code></td>
 </tr><tr class="">
@@ -458,7 +524,7 @@
 <td id="5_M01_L06" class="label" data-label="5_M01_L06"><pre><code>M01_L06</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>mov       r11,7FF982CF0AA0</pre></code></td>
+<td></td><td><pre><code>mov       r11,7FFC04030AA0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>add       rsp,28</pre></code></td>
 </tr><tr class="evenMap">
@@ -477,7 +543,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>sub       rsp,10</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,24DB37345A8</pre></code></td>
+<td></td><td><pre><code>mov       rdx,1E43EB045A8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+8],rdx</pre></code></td>
 </tr><tr class="">
@@ -516,13 +582,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rsi,1ECC7DF45A8</pre></code></td>
+<td></td><td><pre><code>mov       rsi,26A2B6A45A8</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,1ECC7DF45A8</pre></code></td>
+<td></td><td><pre><code>mov       rcx,26A2B6A45A8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>cmp       [rcx],ecx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982E67318]; System.String.Trim()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04167318]; System.String.Trim()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+20],rsi</pre></code></td>
 </tr><tr class="">
@@ -568,7 +634,7 @@
 </tr><tr class="">
 <td></td><td id="8" class="reference" data-reference="8_M01_L00"><a href="#8_M01_L00"><pre><code>jae       short M01_L00</pre></code></a></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rax,7FF9E1DA2E50</pre></code></td>
+<td></td><td><pre><code>mov       rax,7FFC5E5B2E50</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>test      byte ptr [rcx+rax],80</pre></code></td>
 </tr><tr class="">
@@ -579,7 +645,7 @@
 <td id="8_M01_L00" class="label" data-label="8_M01_L00"><pre><code>M01_L00</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF98372F720]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04A3F2E8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>test      eax,eax</pre></code></td>
 </tr><tr class="evenMap">
@@ -598,7 +664,7 @@
 </tr><tr class="">
 <td></td><td id="8" class="reference" data-reference="8_M01_L02"><a href="#8_M01_L02"><pre><code>jae       short M01_L02</pre></code></a></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rax,7FF9E1DA2E50</pre></code></td>
+<td></td><td><pre><code>mov       rax,7FFC5E5B2E50</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>test      byte ptr [rcx+rax],80</pre></code></td>
 </tr><tr class="">
@@ -609,7 +675,7 @@
 <td id="8_M01_L02" class="label" data-label="8_M01_L02"><pre><code>M01_L02</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF98372F720]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04A3F2E8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>test      eax,eax</pre></code></td>
 </tr><tr class="evenMap">
@@ -635,7 +701,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,3</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF982E673F0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC041673F0]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="evenMap">
@@ -664,13 +730,13 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rsi,238D3AE45A8</pre></code></td>
+<td></td><td><pre><code>mov       rsi,15DC82D45A8</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,238D3AE45A8</pre></code></td>
+<td></td><td><pre><code>mov       rcx,15DC82D45A8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>cmp       [rcx],ecx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982E77318]; System.String.Trim()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04177318]; System.String.Trim()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+20],rsi</pre></code></td>
 </tr><tr class="">
@@ -716,7 +782,7 @@
 </tr><tr class="">
 <td></td><td id="10" class="reference" data-reference="10_M01_L00"><a href="#10_M01_L00"><pre><code>jae       short M01_L00</pre></code></a></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rax,7FF9E1DA2E50</pre></code></td>
+<td></td><td><pre><code>mov       rax,7FFC5E5B2E50</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>test      byte ptr [rcx+rax],80</pre></code></td>
 </tr><tr class="">
@@ -727,7 +793,7 @@
 <td id="10_M01_L00" class="label" data-label="10_M01_L00"><pre><code>M01_L00</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF98373F720]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04A4F2E8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>test      eax,eax</pre></code></td>
 </tr><tr class="evenMap">
@@ -746,7 +812,7 @@
 </tr><tr class="">
 <td></td><td id="10" class="reference" data-reference="10_M01_L02"><a href="#10_M01_L02"><pre><code>jae       short M01_L02</pre></code></a></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rax,7FF9E1DA2E50</pre></code></td>
+<td></td><td><pre><code>mov       rax,7FFC5E5B2E50</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>test      byte ptr [rcx+rax],80</pre></code></td>
 </tr><tr class="">
@@ -757,7 +823,7 @@
 <td id="10_M01_L02" class="label" data-label="10_M01_L02"><pre><code>M01_L02</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF98373F720]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04A4F2E8]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>test      eax,eax</pre></code></td>
 </tr><tr class="evenMap">
@@ -783,7 +849,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,3</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF982E773F0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC041773F0]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="evenMap">

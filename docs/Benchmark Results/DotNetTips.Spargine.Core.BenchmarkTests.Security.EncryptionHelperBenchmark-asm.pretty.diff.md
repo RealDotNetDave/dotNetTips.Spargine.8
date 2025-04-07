@@ -1,1 +1,1 @@
-## DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark-20250316-160935
+## DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark-20250406-173204

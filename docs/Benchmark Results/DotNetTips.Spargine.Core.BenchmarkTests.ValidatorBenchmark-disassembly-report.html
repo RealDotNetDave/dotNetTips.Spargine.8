@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250316-131139</title>
+<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250406-143702</title>
 
 <style type="text/css">
     table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -14,7 +14,7 @@
 <body>
 <table>
 <thead>
-<tr><th colspan="6">DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250316-131139</th></tr>
+<tr><th colspan="6">DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250406-143702</th></tr>
 <tr>
 <th>CheckItemsExists_NoValidation .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2</th>
 <th>CheckItemsExists_Validation_Inlining .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2</th>
@@ -53,9 +53,9 @@ mov       [rsp+20],rax
 mov       rbx,rcx
 mov       rsi,[rbx+128]
 test      rsi,rsi
-je        short 00007FF98361BDE5
+je        short 00007FFC0491B8A5
 mov       rcx,rsi
-call      qword ptr [7FF98351CD38]
+call      qword ptr [7FFC0481C690]
 mov       [rsp+20],rsi
 mov       rbx,[rbx+18]
 mov       rdx,[rsp+20]
@@ -69,21 +69,43 @@ pop       rsi
 ret
 
 DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
+		if (collection is null)
+		^^^^^^^^^^^^^^^^^^^^^^^
+			return 0;
+			^^^^^^^^^
+		if (collection is ICollection col)
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+			return col.Count;
+			^^^^^^^^^^^^^^^^^
+		else if (collection is ICollection<object> colT)
+		     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+			return colT.Count;
+			^^^^^^^^^^^^^^^^^^
+		var count = 0;
+		^^^^^^^^^^^^^^
+		var enumerator = collection.GetEnumerator();
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+			count++;
+			^^^^^^^^
+		while (enumerator.MoveNext())
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+		return count;
+		^^^^^^^^^^^^^
 push      rsi
 push      rbx
 sub       rsp,28
 mov       rbx,rcx
 test      rbx,rbx
-je        near ptr 00007FF98361BFB6
+je        near ptr 00007FFC0491BA76
 mov       rdx,rbx
 mov       rcx,offset MT_System.Collections.ICollection
-call      qword ptr [7FF982E64348]
+call      qword ptr [7FFC04154348]
 mov       rcx,rax
 test      rcx,rcx
-je        short 00007FF98361BF4A
+je        short 00007FFC0491BA0A
 mov       rax,offset MT_System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
 cmp       [rcx],rax
-jne       near ptr 00007FF98361BFBF
+jne       near ptr 00007FFC0491BA7F
 mov       eax,[rcx+10]
 add       rsp,28
 pop       rbx
@@ -91,28 +113,28 @@ pop       rsi
 ret
 mov       rdx,rbx
 mov       rcx,offset MT_System.Collections.Generic.ICollection`1[[System.Object, System.Private.CoreLib]]
-call      qword ptr [7FF982E64348]
+call      qword ptr [7FFC04154348]
 test      rax,rax
-je        short 00007FF98361BF78
+je        short 00007FFC0491BA38
 mov       rcx,rax
-mov       r11,7FF982D20A98
+mov       r11,7FFC04010A98
 add       rsp,28
 pop       rbx
 pop       rsi
 jmp       qword ptr [r11]
 xor       esi,esi
 mov       rcx,rbx
-mov       r11,7FF982D20A88
+mov       r11,7FFC04010A88
 call      qword ptr [r11]
 mov       rbx,rax
-jmp       short 00007FF98361BF94
+jmp       short 00007FFC0491BA54
 add       esi,1
-jo        short 00007FF98361BFB1
+jo        short 00007FFC0491BA71
 mov       rcx,rbx
-mov       r11,7FF982D20A90
+mov       r11,7FFC04010A90
 call      qword ptr [r11]
 test      eax,eax
-jne       short 00007FF98361BF8F
+jne       short 00007FFC0491BA4F
 mov       eax,esi
 add       rsp,28
 pop       rbx
@@ -124,7 +146,7 @@ add       rsp,28
 pop       rbx
 pop       rsi
 ret
-mov       r11,7FF982D20AA0
+mov       r11,7FFC04010AA0
 add       rsp,28
 pop       rbx
 pop       rsi
@@ -141,9 +163,9 @@ mov       [rsp+20],rax
 mov       rbx,rcx
 mov       rsi,[rbx+128]
 test      rsi,rsi
-je        short 00007FF9835EBF05
+je        short 00007FFC0493BA05
 mov       rcx,rsi
-call      qword ptr [7FF9834ECD38]
+call      qword ptr [7FFC0483C690]
 mov       [rsp+20],rsi
 mov       rbx,[rbx+18]
 mov       rdx,[rsp+20]
@@ -157,21 +179,43 @@ pop       rsi
 ret
 
 DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
+		if (collection is null)
+		^^^^^^^^^^^^^^^^^^^^^^^
+			return 0;
+			^^^^^^^^^
+		if (collection is ICollection col)
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+			return col.Count;
+			^^^^^^^^^^^^^^^^^
+		else if (collection is ICollection<object> colT)
+		     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+			return colT.Count;
+			^^^^^^^^^^^^^^^^^^
+		var count = 0;
+		^^^^^^^^^^^^^^
+		var enumerator = collection.GetEnumerator();
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+			count++;
+			^^^^^^^^
+		while (enumerator.MoveNext())
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+		return count;
+		^^^^^^^^^^^^^
 push      rsi
 push      rbx
 sub       rsp,28
 mov       rbx,rcx
 test      rbx,rbx
-je        near ptr 00007FF9835EC196
+je        near ptr 00007FFC0493BC96
 mov       rdx,rbx
 mov       rcx,offset MT_System.Collections.ICollection
-call      qword ptr [7FF982E34348]
+call      qword ptr [7FFC04174348]
 mov       rcx,rax
 test      rcx,rcx
-je        short 00007FF9835EC12A
+je        short 00007FFC0493BC2A
 mov       rax,offset MT_System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
 cmp       [rcx],rax
-jne       near ptr 00007FF9835EC19F
+jne       near ptr 00007FFC0493BC9F
 mov       eax,[rcx+10]
 add       rsp,28
 pop       rbx
@@ -179,28 +223,28 @@ pop       rsi
 ret
 mov       rdx,rbx
 mov       rcx,offset MT_System.Collections.Generic.ICollection`1[[System.Object, System.Private.CoreLib]]
-call      qword ptr [7FF982E34348]
+call      qword ptr [7FFC04174348]
 test      rax,rax
-je        short 00007FF9835EC158
+je        short 00007FFC0493BC58
 mov       rcx,rax
-mov       r11,7FF982CF0A98
+mov       r11,7FFC04030A98
 add       rsp,28
 pop       rbx
 pop       rsi
 jmp       qword ptr [r11]
 xor       esi,esi
 mov       rcx,rbx
-mov       r11,7FF982CF0A88
+mov       r11,7FFC04030A88
 call      qword ptr [r11]
 mov       rbx,rax
-jmp       short 00007FF9835EC174
+jmp       short 00007FFC0493BC74
 add       esi,1
-jo        short 00007FF9835EC191
+jo        short 00007FFC0493BC91
 mov       rcx,rbx
-mov       r11,7FF982CF0A90
+mov       r11,7FFC04030A90
 call      qword ptr [r11]
 test      eax,eax
-jne       short 00007FF9835EC16F
+jne       short 00007FFC0493BC6F
 mov       eax,esi
 add       rsp,28
 pop       rbx
@@ -212,7 +256,7 @@ add       rsp,28
 pop       rbx
 pop       rsi
 ret
-mov       r11,7FF982CF0AA0
+mov       r11,7FFC04030AA0
 add       rsp,28
 pop       rbx
 pop       rsi
@@ -223,7 +267,7 @@ jmp       qword ptr [r11]
 DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark.ArgumentNotNullOrEmpty_NoValidation()
 push      rbx
 sub       rsp,10
-mov       rdx,24DB37345A8
+mov       rdx,1E43EB045A8
 mov       [rsp+8],rdx
 mov       rbx,[rcx+18]
 mov       rdx,[rsp+8]
@@ -244,10 +288,10 @@ sub       rsp,28
 xor       eax,eax
 mov       [rsp+20],rax
 mov       rbx,rcx
-mov       rsi,1ECC7DF45A8
-mov       rcx,1ECC7DF45A8
+mov       rsi,26A2B6A45A8
+mov       rcx,26A2B6A45A8
 cmp       [rcx],ecx
-call      qword ptr [7FF982E67318]
+call      qword ptr [7FFC04167318]
 mov       [rsp+20],rsi
 mov       rbx,[rbx+18]
 mov       rdx,[rsp+20]
@@ -267,29 +311,29 @@ sub       rsp,28
 mov       rbx,rcx
 mov       esi,[rbx+8]
 test      esi,esi
-je        short 00007FF98361B845
+je        short 00007FFC0492B345
 movzx     ecx,word ptr [rbx+0C]
 cmp       ecx,100
-jae       short 00007FF98361B80E
-mov       rax,7FF9E1DA2E50
+jae       short 00007FFC0492B30E
+mov       rax,7FFC5E5B2E50
 test      byte ptr [rcx+rax],80
-jne       short 00007FF98361B84F
-jmp       short 00007FF98361B818
-call      qword ptr [7FF98372F720]
+jne       short 00007FFC0492B34F
+jmp       short 00007FFC0492B318
+call      qword ptr [7FFC04A3F2E8]
 test      eax,eax
-jne       short 00007FF98361B84F
+jne       short 00007FFC0492B34F
 dec       esi
 mov       ecx,esi
 movzx     ecx,word ptr [rbx+rcx*2+0C]
 cmp       ecx,100
-jae       short 00007FF98361B83B
-mov       rax,7FF9E1DA2E50
+jae       short 00007FFC0492B33B
+mov       rax,7FFC5E5B2E50
 test      byte ptr [rcx+rax],80
-jne       short 00007FF98361B84F
-jmp       short 00007FF98361B845
-call      qword ptr [7FF98372F720]
+jne       short 00007FFC0492B34F
+jmp       short 00007FFC0492B345
+call      qword ptr [7FFC04A3F2E8]
 test      eax,eax
-jne       short 00007FF98361B84F
+jne       short 00007FFC0492B34F
 mov       rax,rbx
 add       rsp,28
 pop       rbx
@@ -297,7 +341,7 @@ pop       rsi
 ret
 mov       rcx,rbx
 mov       edx,3
-call      qword ptr [7FF982E673F0]
+call      qword ptr [7FFC041673F0]
 nop
 add       rsp,28
 pop       rbx
@@ -313,10 +357,10 @@ sub       rsp,28
 xor       eax,eax
 mov       [rsp+20],rax
 mov       rbx,rcx
-mov       rsi,238D3AE45A8
-mov       rcx,238D3AE45A8
+mov       rsi,15DC82D45A8
+mov       rcx,15DC82D45A8
 cmp       [rcx],ecx
-call      qword ptr [7FF982E77318]
+call      qword ptr [7FFC04177318]
 mov       [rsp+20],rsi
 mov       rbx,[rbx+18]
 mov       rdx,[rsp+20]
@@ -336,29 +380,29 @@ sub       rsp,28
 mov       rbx,rcx
 mov       esi,[rbx+8]
 test      esi,esi
-je        short 00007FF98362C0F5
+je        short 00007FFC0493BBB5
 movzx     ecx,word ptr [rbx+0C]
 cmp       ecx,100
-jae       short 00007FF98362C0BE
-mov       rax,7FF9E1DA2E50
+jae       short 00007FFC0493BB7E
+mov       rax,7FFC5E5B2E50
 test      byte ptr [rcx+rax],80
-jne       short 00007FF98362C0FF
-jmp       short 00007FF98362C0C8
-call      qword ptr [7FF98373F720]
+jne       short 00007FFC0493BBBF
+jmp       short 00007FFC0493BB88
+call      qword ptr [7FFC04A4F2E8]
 test      eax,eax
-jne       short 00007FF98362C0FF
+jne       short 00007FFC0493BBBF
 dec       esi
 mov       ecx,esi
 movzx     ecx,word ptr [rbx+rcx*2+0C]
 cmp       ecx,100
-jae       short 00007FF98362C0EB
-mov       rax,7FF9E1DA2E50
+jae       short 00007FFC0493BBAB
+mov       rax,7FFC5E5B2E50
 test      byte ptr [rcx+rax],80
-jne       short 00007FF98362C0FF
-jmp       short 00007FF98362C0F5
-call      qword ptr [7FF98373F720]
+jne       short 00007FFC0493BBBF
+jmp       short 00007FFC0493BBB5
+call      qword ptr [7FFC04A4F2E8]
 test      eax,eax
-jne       short 00007FF98362C0FF
+jne       short 00007FFC0493BBBF
 mov       rax,rbx
 add       rsp,28
 pop       rbx
@@ -366,7 +410,7 @@ pop       rsi
 ret
 mov       rcx,rbx
 mov       edx,3
-call      qword ptr [7FF982E773F0]
+call      qword ptr [7FFC041773F0]
 nop
 add       rsp,28
 pop       rbx

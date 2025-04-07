@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang='en'><head><meta charset='utf-8' /><head>
-<title>Pretty Output of DisassemblyDiagnoser for DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark-20250316-130615</title>
+<title>Pretty Output of DisassemblyDiagnoser for DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark-20250406-143143</title>
 
 <style type="text/css">
     pre { margin: 0px; }
@@ -62,9 +62,9 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,2907C2845A8</pre></code></td>
+<td></td><td><pre><code>mov       rcx,1F0DB064558</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF98360C1F8]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey(System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04916568]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey(System.String)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
 </tr><tr class="">
@@ -88,6 +88,9 @@
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.KeyGenerator.GenerateKey(System.String)</th><th></th></tr>
 <tr class="">
+<td></td><td><pre><code>	public static string GenerateKey([NotNull] string prefix) => $"{prefix.ArgumentNotNull()}{Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture)}";
+	                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
 <td></td><td><pre><code>push      rsi</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>push      rbx</pre></code></td>
@@ -108,23 +111,23 @@
 </tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982F17360]; System.Guid.NewGuid()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04207360]; System.Guid.NewGuid()</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r8,24FEA400428</pre></code></td>
+<td></td><td><pre><code>mov       r8,1B049000428</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,[r8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,2907C283C70</pre></code></td>
+<td></td><td><pre><code>mov       rdx,1F0DB063C70</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982F17180]; System.Guid.ToString(System.String, System.IFormatProvider)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04207180]; System.Guid.ToString(System.String, System.IFormatProvider)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982E66B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04156B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="">
@@ -139,11 +142,11 @@
 <td id="2_M01_L00" class="label" data-label="2_M01_L00"><pre><code>M01_L00</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF9833744C8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC0460FB58]</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       ecx,1766</pre></code></td>
+<td></td><td><pre><code>mov       ecx,176E</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,7FF98317BB70</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFC0447B8C8</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="evenMap">
@@ -151,7 +154,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       ecx,1446</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,7FF98317BB70</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFC0447B8C8</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="evenMap">
@@ -159,13 +162,13 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF982E66B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04156B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       ecx,0CCA</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>mov       rdx,7FF98317BB70</pre></code></td>
+<td></td><td><pre><code>mov       rdx,7FFC0447B8C8</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>call      CORINFO_HELP_STRCNS</pre></code></td>
 </tr><tr class="evenMap">
@@ -173,7 +176,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF982E66B08]; System.String.Concat(System.String, System.String)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04156B08]; System.String.Concat(System.String, System.String)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rbx,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -183,7 +186,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rsi,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF9833742B8]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC0460F948]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       r8,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -191,7 +194,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF983086670]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC042D6718]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
@@ -214,7 +217,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF9835EC1E0]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC049263A0]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
 </tr><tr class="">
@@ -238,6 +241,9 @@
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()</th><th></th></tr>
 <tr class="">
+<td></td><td><pre><code>	public static string GenerateKey() => Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture);
+	                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
 <td></td><td><pre><code>sub       rsp,38</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>xor       eax,eax</pre></code></td>
@@ -248,17 +254,17 @@
 </tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982EF7360]; System.Guid.NewGuid()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04217360]; System.Guid.NewGuid()</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r8,1F5CC800428</pre></code></td>
+<td></td><td><pre><code>mov       r8,29B3A400428</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,[r8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,2365E783C70</pre></code></td>
+<td></td><td><pre><code>mov       rdx,2DBCA223C70</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982EF7180]; System.Guid.ToString(System.String, System.IFormatProvider)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFC04217180]; System.Guid.ToString(System.String, System.IFormatProvider)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="">
