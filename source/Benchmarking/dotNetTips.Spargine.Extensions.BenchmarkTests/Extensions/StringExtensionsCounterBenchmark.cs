@@ -163,9 +163,29 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 		this._base64String = this._crlfString.ToBase64();
 	}
 
+	[Benchmark(Description = nameof(StringExtensions.Split) + ": Char Separator + Count")]
+	[BenchmarkCategory(Categories.ForComparison)]
+	public void SplitCharSeparator()
+	{
+		foreach (var line in this._crlfString.Split(StringSplitOptions.RemoveEmptyEntries, 2, ControlChars.Dot))
+		{
+			this.Consume(line);
+		}
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.Split) + ": Char Separator ")]
+	[BenchmarkCategory(Categories.ForComparison)]
+	public void SplitCharSeparatorNoCount()
+	{
+		foreach (var line in this._crlfString.Split(StringSplitOptions.RemoveEmptyEntries, ControlChars.Dot))
+		{
+			this.Consume(line);
+		}
+	}
+
 	[Benchmark(Description = "Split")]
 	[BenchmarkCategory(Categories.ForComparison)]
-	public void Split()
+	public void SplitComparison()
 	{
 		foreach (var line in this._crlfString.Split(ControlChars.CRLF))
 		{
@@ -188,6 +208,16 @@ public class StringExtensionsCounterBenchmark : TinyCollectionBenchmark
 	public void SplitRemoveEmpty()
 	{
 		foreach (var line in this._crlfString.SplitRemoveEmpty())
+		{
+			this.Consume(line);
+		}
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.Split) + ": String Separator + Count")]
+	[BenchmarkCategory(Categories.ForComparison)]
+	public void SplitStringSeparator()
+	{
+		foreach (var line in this._crlfString.Split(StringSplitOptions.RemoveEmptyEntries, 2, ControlChars.CRLF))
 		{
 			this.Consume(line);
 		}

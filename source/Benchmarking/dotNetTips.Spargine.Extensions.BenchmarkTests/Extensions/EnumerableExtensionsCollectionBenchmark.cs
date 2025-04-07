@@ -403,6 +403,21 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result.Value);
 	}
 
+	[Benchmark(Description = nameof(EnumerableExtensions.RemoveNulls))]
+	[BenchmarkCategory(Categories.Collections, Categories.New)]
+	public void RemoveNulls()
+	{
+		var collection = this._personRefEnumerable.ToList();
+
+		// Add a null to the collection
+		collection.AddFirst(null);
+		collection.AddLast(null);
+
+		var result = collection.RemoveDuplicates();
+
+		this.Consume(result.Value);
+	}
+
 	[Benchmark(Description = nameof(EnumerableExtensions.ReplaceIf))]
 	[BenchmarkCategory(Categories.New)]
 	public void ReplaceIf()
