@@ -394,7 +394,7 @@ dotnet_diagnostic.CA1421.severity = warning
 # Validate platform compatibility - obsoleted APIs
 dotnet_diagnostic.CA1422.severity = warning
 
-#### Diagnostic ####
+#### Maintainability ####
 
 # Avoid excessive inheritance
 dotnet_diagnostic.CA1501.severity = warning
@@ -428,6 +428,14 @@ dotnet_diagnostic.CA1512.severity = warning
 
 # Use ObjectDisposedException throw helper
 dotnet_diagnostic.CA1513.severity = warning
+
+# Avoid redundant length argument
+dotnet_diagnostic.CA1514.severity = warning
+
+# Consider making public types internal
+dotnet_diagnostic.CA1515.severity = warning
+
+#### Diagnostic ####
 
 # StatementMustNotUseUnnecessaryParenthesis
 dotnet_diagnostic.SA1119.severity = suggestion
@@ -608,6 +616,7 @@ dotnet_diagnostic.CA1802.severity = suggestion
 
 # Do not initialize unnecessarily.
 # Examples in Rock Your Code: Code Performance in Microsoft .NET
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.CA1805.severity = error
 
 # Do not ignore method results
@@ -1291,7 +1300,7 @@ dotnet_diagnostic.CA2021.severity = warning
 dotnet_diagnostic.CA2022.severity = warning
 
 # Do not useStreamReader.EndOfStream in asyncmethods
-dotnet_diagnostic.CA2022.severity = warning
+dotnet_diagnostic.CA2024.severity = warning
 
 #### Security Rules ####
 
