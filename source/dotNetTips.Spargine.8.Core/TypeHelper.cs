@@ -49,7 +49,7 @@ namespace DotNetTips.Spargine.Core;
 /// and display names for types, as well as determining if a type is a built-in .NET type or if an assembly is a .NET assembly.
 /// </remarks>
 [Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
-public static partial class TypeHelper
+public static class TypeHelper
 {
 
 	/// <summary>

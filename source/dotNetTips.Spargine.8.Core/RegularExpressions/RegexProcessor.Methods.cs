@@ -44,6 +44,28 @@ public static partial class RegexProcessor
 	public static bool ContainsWord(string input) => input is null ? false : ContainsWordRegex().IsMatch(input);
 
 	/// <summary>
+	/// Extracts a version number from the input string using a regular expression.
+	/// </summary>
+	/// <param name="input">The input string to check for a version number.</param>
+	/// <returns>
+	/// <c>true</c> if the input contains a valid version number; otherwise, <c>false</c>.
+	/// </returns>
+	/// <remarks>
+	/// This method uses the <see cref="ExtractVersionRegex"/> to match version numbers in the input string.
+	/// A version number typically follows the format "major.minor[.build[.revision]]".
+	/// </remarks>
+	/// <example>
+	/// Example usage:
+	/// <code>
+	/// bool hasVersion = RegexProcessor.ExtractVersion("Version 1.2.3");
+	/// Console.WriteLine(hasVersion); // Output: true
+	/// </code>
+	/// </example>
+	/// <exception cref="ArgumentNullException">Thrown if the input string is null.</exception>
+	[Information(nameof(ExtractVersion), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public static string ExtractVersion(string input) => ExtractVersionRegex().Match(input).Value;
+
+	/// <summary>
 	/// Extracts all numeric characters from the input string.
 	/// </summary>
 	/// <param name="input">The input string to extract numbers from.</param>

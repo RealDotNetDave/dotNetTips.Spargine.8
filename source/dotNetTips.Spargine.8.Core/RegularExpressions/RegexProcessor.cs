@@ -138,6 +138,15 @@ public static partial class RegexProcessor
 	private const string UrlPattern = @"(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?";
 
 	/// <summary>
+	/// The pattern to match version numbers in the format of major.minor[.build[.revision]].
+	/// </summary>
+	/// <remarks>
+	/// This pattern is used to extract or validate version numbers that follow the semantic versioning format.
+	/// Examples of valid matches: "1.0", "2.1.3", "4.5.6.7".
+	/// </remarks>
+	private const string VersionPattern = @"\d+(\.\d+){1,3}";
+
+	/// <summary>
 	/// The string builder pool
 	/// </summary>
 	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
@@ -177,6 +186,9 @@ public static partial class RegexProcessor
 	/// <returns>A <see cref="Regex"/> instance configured to extract numbers.</returns>
 	[GeneratedRegex(ExtractNumbersPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline)]
 	private static partial Regex ExtractNumbersRegexSingleLine();
+
+	[GeneratedRegex(VersionPattern, RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.IgnoreCase)]
+	private static partial Regex ExtractVersionRegex();
 
 	/// <summary>
 	/// Determins if the string contains a first and last name.
@@ -266,7 +278,7 @@ public static partial class RegexProcessor
 	private static partial Regex SpacesRegex();
 
 	/// <summary>
-	/// Determins if the text is a valid string.
+	/// Determine if the text is a valid string.
 	/// </summary>
 	/// <returns>System.Text.RegularExpressions.Regex.</returns>
 	[GeneratedRegex(StringPattern, RegexOptions.CultureInvariant | RegexOptions.Multiline | RegexOptions.IgnoreCase)]
