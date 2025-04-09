@@ -31,7 +31,7 @@ public static class AssemblyHelper
 	/// <param name="input">The version string to parse.</param>
 	/// <returns>A <see cref="Version"/> object representing the parsed version, or <c>Version(0,0)</c> if parsing fails.</returns>
 	/// <remarks>
-	/// This method attempts to parse the file string as a version. If the parsing fails, it tries to extract a version-like pattern
+	/// This method attempts to parse the input string as a version. If the parsing fails, it tries to extract a version-like pattern
 	/// using a regular expression and parses that. If all attempts fail, it returns <c>Version(0,0)</c>.
 	/// </remarks>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="input"/> is null.</exception>
@@ -98,7 +98,7 @@ public static class AssemblyHelper
 	/// </remarks>
 	/// <exception cref="DirectoryNotFoundException">Thrown if the .NET packs directory does not exist.</exception>
 	[Information(nameof(GetNetSdkDllFiles), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
-	public static ReadOnlyCollection<FileInfo> GetNetSdkDllFiles(string? version)
+	public static ReadOnlyCollection<FileInfo> GetNetSdkDllFiles(string? version = null)
 	{
 		var root = Environment.GetEnvironmentVariable("DOTNET_ROOT");
 
@@ -152,7 +152,10 @@ public static class AssemblyHelper
 						// Get all DLL files in the "ref" folder of the selected version and target framework
 						var dllPaths = selectedTf.GetFiles("*.dll", SearchOption.AllDirectories);
 
-						dllFiles.AddRange(dllPaths);
+						foreach (var dllPath in dllPaths.Where(TypeHelper.IsDotNetAssembly))
+						{
+							dllFiles.Add(dllPath);
+						}
 					}
 				}
 			}
@@ -161,15 +164,13 @@ public static class AssemblyHelper
 		return new ReadOnlyCollection<FileInfo>(dllFiles);
 	}
 
+
 	/// <summary>
 	/// Loads the assembly from the specified file and extracts all types within it.
 	/// </summary>
 	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file to load.</param>
 	/// <returns>A collection of <see cref="Type"/> objects representing all types in the assembly.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
-	/// <exception cref="BadImageFormatException">Thrown if the file is not a valid .NET assembly.</exception>
-	/// <exception cref="ReflectionTypeLoadException">Thrown if some types in the assembly cannot be loaded.</exception>
 	[Information(nameof(LoadAssemblyTypes), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	public static ReadOnlyCollection<Type> LoadAssemblyTypes(FileInfo assemblyFile)
 	{
@@ -184,12 +185,29 @@ public static class AssemblyHelper
 		{
 			// Return the types that were successfully loaded and log the loader exceptions if needed.
 			Trace.WriteLine($"Failed to load some types from assembly: {assemblyFile.FullName}");
+
 			foreach (var loaderException in ex.LoaderExceptions)
 			{
 				Trace.WriteLine(loaderException?.Message);
 			}
 
 			return ex.Types.Where(type => type != null).Select(type => type!).ToList().AsReadOnly();
+		}
+		catch (BadImageFormatException ex)
+		{
+			// Log the exception and rethrow it
+			Trace.WriteLine($"BadImageFormatException: The file is not a valid .NET assembly: {assemblyFile.FullName}");
+			Trace.WriteLine(ex.Message);
+
+			return Array.Empty<Type>().ToList().AsReadOnly();
+		}
+		catch (FileLoadException ex)
+		{
+			// Log the exception and return an empty collection
+			Trace.WriteLine($"FileLoadException: The assembly file could not be loaded: {assemblyFile.FullName}");
+			Trace.WriteLine(ex.Message);
+
+			return Array.Empty<Type>().ToList().AsReadOnly();
 		}
 	}
 

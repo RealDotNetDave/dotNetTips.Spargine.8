@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -54,6 +55,28 @@ public class AssemblyHelperTests
 		// Assert
 		Assert.IsNotNull(result);
 		Assert.IsTrue(result.Count > 0, "Expected to find .NET SDK files for version 8.0.15, but none were found.");
+	}
+
+	[TestMethod]
+	public void FindSDKTypesImplementing_IDisposable()
+	{
+		// Arrange
+		var assemblyFiles = AssemblyHelper.GetNetSdkDllFiles();
+		var foundTypes = new List<Type>();
+
+		// Act
+		foreach (var assemblyFile in assemblyFiles)
+		{
+			var types = AssemblyHelper.FindTypesImplementing(assemblyFile, typeof(IDisposable));
+
+			if (types.Count > 0)
+			{
+				foundTypes.AddRange(types);
+			}
+		}
+
+		// Assert
+		Assert.IsTrue(foundTypes.Count > 100, "Expected to find types implementing IDisposable, but none were found.");
 	}
 
 	[TestMethod]
