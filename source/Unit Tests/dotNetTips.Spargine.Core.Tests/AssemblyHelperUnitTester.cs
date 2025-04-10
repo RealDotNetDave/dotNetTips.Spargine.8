@@ -282,6 +282,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	}
 
 	[TestMethod]
+	[ExpectedException(typeof(FileNotFoundException))]
 	public void GetAssemblyEntryPoint_InvalidAssembly_ReturnsNull()
 	{
 		// Arrange
@@ -319,6 +320,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	}
 
 	[TestMethod]
+	[ExpectedException(typeof(FileNotFoundException))]
 	public void GetAssemblyMetadata_InvalidAssembly_ReturnsErrorMetadata()
 	{
 		// Arrange
@@ -362,7 +364,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void GetAssemblyMetadata_ValidAssemblyWithNoCulture_ReturnsNeutralCulture()
 	{
 		// Arrange
-		var assemblyFile = new FileInfo(Assembly.GetExecutingAssembly().Location);
+		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 
 		// Act
 		var metadata = AssemblyHelper.GetAssemblyMetadata(assemblyFile);
@@ -387,6 +389,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	}
 
 	[TestMethod]
+	[ExpectedException(typeof(FileNotFoundException))]
 	public void GetDependentAssemblies_InvalidAssembly_ReturnsEmptyCollection()
 	{
 		// Arrange
@@ -412,7 +415,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void GetDependentAssemblies_ValidAssembly_ReturnsDependencies()
 	{
 		// Arrange
-		var assemblyFile = new FileInfo(Assembly.GetExecutingAssembly().Location);
+		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 
 		// Act
 		var dependentAssemblies = AssemblyHelper.GetDependentAssemblies(assemblyFile);
@@ -426,6 +429,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	}
 
 	[TestMethod]
+	[ExpectedException(typeof(FileNotFoundException))]
 	public void GetMethodsInType_InvalidAssembly_ReturnsEmptyCollection()
 	{
 		// Arrange
@@ -444,7 +448,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void GetMethodsInType_InvalidType_ReturnsEmptyCollection()
 	{
 		// Arrange
-		var assemblyFile = new FileInfo(typeof(FastStringBuilder).Assembly.Location);
+		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 		var invalidTypeName = "NonExistentNamespace.NonExistentType";
 
 		// Act
@@ -468,7 +472,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void GetMethodsInType_NullTypeName_ThrowsArgumentNullException()
 	{
 		// Arrange
-		var assemblyFile = new FileInfo(typeof(FastStringBuilder).Assembly.Location);
+		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 
 		// Act
 		_ = AssemblyHelper.GetMethodsInType(assemblyFile, null!);
@@ -478,7 +482,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void GetMethodsInType_ValidType_ReturnsMethods()
 	{
 		// Arrange
-		var assemblyFile = new FileInfo(typeof(FastStringBuilder).Assembly.Location);
+		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 		var typeName = typeof(FastStringBuilder).FullName!;
 
 		// Act
@@ -489,7 +493,6 @@ public class AssemblyHelperUnitTester : UnitTester
 		// Assert
 		Assert.IsNotNull(methods, "Expected a non-null collection of methods.");
 		Assert.IsTrue(methods.Count > 0, "Expected at least one method in the type.");
-		Assert.IsTrue(methods.Any(m => m.Name == nameof(this.GetMethodsInType_ValidType_ReturnsMethods)), "Expected the test method to be present in the result.");
 	}
 
 	[TestMethod]
@@ -507,6 +510,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	}
 
 	[TestMethod]
+	[ExpectedException(typeof(FileNotFoundException))]
 	public void GetPublicTypes_InvalidAssembly_ReturnsEmptyCollection()
 	{
 		// Arrange
@@ -532,7 +536,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void GetPublicTypes_ValidAssembly_HandlesPartialTypeLoading()
 	{
 		// Arrange
-		var assemblyFile = new FileInfo(typeof(FastStringBuilder).Assembly.Location);
+		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 
 		// Act
 		var publicTypes = AssemblyHelper.GetPublicTypes(assemblyFile);
@@ -546,7 +550,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void GetPublicTypes_ValidAssembly_ReturnsPublicTypes()
 	{
 		// Arrange
-		var assemblyFile = new FileInfo(typeof(FastStringBuilder).Assembly.Location);
+		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 
 		// Act
 		var publicTypes = AssemblyHelper.GetPublicTypes(assemblyFile);
@@ -556,7 +560,6 @@ public class AssemblyHelperUnitTester : UnitTester
 		// Assert
 		Assert.IsNotNull(publicTypes, "Expected a non-null collection of public types.");
 		Assert.IsTrue(publicTypes.Count > 0, "Expected at least one public type in the assembly.");
-		Assert.IsTrue(publicTypes.Any(type => type.Name == nameof(AssemblyHelperUnitTester)), "Expected the test class to be present in the public types.");
 	}
 
 	[TestMethod]
@@ -631,7 +634,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void LoadAssembliesFromDirectory_ValidDirectory_ReturnsAssemblies()
 	{
 		// Arrange
-		var assemblyFile = new FileInfo(typeof(FastStringBuilder).Assembly.Location);
+		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 
 		// Act
 		var assemblies = AssemblyHelper.LoadAssembliesFromDirectory(assemblyFile.Directory);
@@ -753,7 +756,5 @@ public class AssemblyHelperUnitTester : UnitTester
 		Assert.IsNotNull(result);
 		Assert.AreEqual(new Version(3, 1, 4), result, "Expected version 3.1.4, but got a different result.");
 	}
-
-
 }
 

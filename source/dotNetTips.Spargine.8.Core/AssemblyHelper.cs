@@ -250,7 +250,7 @@ public static class AssemblyHelper
 			{
 				{ "Name", assemblyName.Name ?? string.Empty },
 				{ "Version", assemblyName.Version?.ToString() ?? "Unknown" },
-				{ "Culture", assemblyName.CultureInfo?.Name ?? "Neutral" },
+				{ "Culture", string.IsNullOrWhiteSpace(assemblyName.CultureInfo?.Name) ? "Neutral" : assemblyName.CultureInfo.Name },
 				{ "FullName", assembly.FullName ?? string.Empty }
 			};
 		}
