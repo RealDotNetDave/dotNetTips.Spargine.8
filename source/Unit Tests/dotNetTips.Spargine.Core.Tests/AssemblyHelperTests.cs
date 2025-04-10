@@ -233,6 +233,45 @@ public class AssemblyHelperTests : TestClass
 	}
 
 	[TestMethod]
+	public void GetAssemblyCustomAttributes_InvalidAssembly_ReturnsEmptyCollection()
+	{
+		// Arrange
+		var invalidAssemblyFile = new FileInfo("NonExistentAssembly.dll");
+
+		// Act
+		var result = AssemblyHelper.GetAssemblyCustomAttributes(invalidAssemblyFile);
+
+		// Assert
+		Assert.IsNotNull(result, "Expected a non-null result, but got null.");
+		Assert.AreEqual(0, result.Count, "Expected no custom attributes for an invalid assembly, but some were found.");
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void GetAssemblyCustomAttributes_NullAssemblyFile_ThrowsArgumentNullException()
+	{
+		// Act
+		_ = AssemblyHelper.GetAssemblyCustomAttributes(null!);
+	}
+
+	[TestMethod]
+	public void GetAssemblyCustomAttributes_ValidAssembly_ReturnsAttributes()
+	{
+		// Arrange
+		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
+
+		// Act
+		var result = AssemblyHelper.GetAssemblyCustomAttributes(assemblyFile);
+
+		var info = CollectionPropertiesToString(result, prop => prop.Name == nameof(Attribute.TypeId));
+		Debug.WriteLine(info);
+
+		// Assert
+		Assert.IsNotNull(result, "Expected a non-null result, but got null.");
+		Assert.IsTrue(result.Count > 0, "Expected to find custom attributes, but none were found.");
+	}
+
+	[TestMethod]
 	public void GetPublicTypes_ValidAssembly_ReturnsPublicTypes()
 	{
 		// Arrange
@@ -355,6 +394,7 @@ public class AssemblyHelperTests : TestClass
 		Assert.IsNotNull(result);
 		Assert.AreEqual(new Version(3, 1, 4), result, "Expected version 3.1.4, but got a different result.");
 	}
+
 
 }
 

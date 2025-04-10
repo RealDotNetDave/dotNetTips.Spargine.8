@@ -84,7 +84,7 @@ public abstract class TestClass
 			throw new ArgumentNullException(nameof(propertySelector), "Property selector function cannot be null.");
 		}
 
-		var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance)
+		var properties = input.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance)
 								  .Where(propertySelector);
 
 		var propertyStrings = properties.Select(prop =>
