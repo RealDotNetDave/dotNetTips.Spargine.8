@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Provides static helper methods for working with assemblies.
 /// </summary>
-[Information(Status = Status.New)]
+[Information(Status = Status.NeedsDocumentation)]
 #nullable enable
 public static class AssemblyHelper
 {
@@ -257,10 +257,7 @@ public static class AssemblyHelper
 		catch (Exception ex)
 		{
 			Trace.WriteLine($"Error retrieving metadata from assembly '{assemblyFile.FullName}': {ex.Message}");
-			return new Dictionary<string, string>
-			{
-				{ "Error", ex.Message }
-			};
+			return new Dictionary<string, string>();
 		}
 	}
 
@@ -525,16 +522,9 @@ public static class AssemblyHelper
 			return;
 		}
 
-		try
-		{
-			var context = new AssemblyLoadContext(null, isCollectible: true);
-			_ = context.LoadFromAssemblyPath(assemblyFile.FullName);
+		var context = new AssemblyLoadContext(null, isCollectible: true);
+		_ = context.LoadFromAssemblyPath(assemblyFile.FullName);
 
-			context.Unload();
-		}
-		catch (Exception ex)
-		{
-			Trace.WriteLine($"Error unloading assembly '{assemblyFile.FullName}': {ex.Message}");
-		}
+		context.Unload();
 	}
 }

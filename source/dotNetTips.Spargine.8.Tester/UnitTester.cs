@@ -23,6 +23,7 @@ namespace DotNetTips.Spargine.Tester;
 /// <summary>
 /// Abstract base class providing common methods for debugging and saving object properties.
 /// </summary>
+[Information(Status = Status.NeedsDocumentation)]
 public abstract class UnitTester
 {
 	/// <summary>
