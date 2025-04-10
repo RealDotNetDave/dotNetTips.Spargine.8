@@ -219,8 +219,10 @@ public static partial class TypeExtensions
 	/// <exception cref="ArgumentNullException">Thrown when the propertyInfo is null.</exception>
 	[return: MaybeNull]
 	[Information("Original Code from: https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static TAttribute GetAttribute<TAttribute>([NotNull] this PropertyInfo propertyInfo)
-		where TAttribute : Attribute => propertyInfo.ArgumentNotNull().GetCustomAttributes(typeof(TAttribute), false).FirstOrDefault() as TAttribute;
+	public static TAttribute GetAttribute<TAttribute>([NotNull] this PropertyInfo propertyInfo) where TAttribute : Attribute
+	{
+		return propertyInfo.ArgumentNotNull().GetCustomAttributes(typeof(TAttribute), false).FirstOrDefault() as TAttribute;
+	}
 
 	/// <summary>
 	/// Gets a custom attribute of the specified type from the given field.

@@ -1,11 +1,10 @@
-
 // ***********************************************************************
 // Assembly         : DotNetTips.Spargine.8.Core
 // Author           : David McCarter
 // Created          : 04-09-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-09-2025
+// Last Modified On : 04-10-2025
 // ***********************************************************************
 // <copyright file="AssemblyHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -17,14 +16,23 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using System.Runtime.Loader;
 using DotNetTips.Spargine.Core.RegularExpressions;
+using Microsoft.Extensions.Caching.Memory;
+
+//`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
 namespace DotNetTips.Spargine.Core;
 
+/// <summary>
+/// Provides static helper methods for working with assemblies.
+/// </summary>
 [Information(Status = Status.New)]
 #nullable enable
 public static class AssemblyHelper
 {
+	private static readonly MemoryCache _assemblyTypeCache = new(new MemoryCacheOptions());
+
 	/// <summary>
 	/// Safely parses a version string, falling back to <c>Version(0,0)</c> if parsing fails.
 	/// </summary>
@@ -54,6 +62,77 @@ public static class AssemblyHelper
 	}
 
 	/// <summary>
+	/// Checks if the specified assembly references another assembly by name.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="referencedAssemblyName">The name of the referenced assembly.</param>
+	/// <returns><c>true</c> if the assembly references the specified assembly; otherwise, <c>false</c>.</returns>
+	[Information(nameof(DoesAssemblyReference), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static bool DoesAssemblyReference(FileInfo assemblyFile, string referencedAssemblyName)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+		referencedAssemblyName = referencedAssemblyName.ArgumentNotNull();
+
+		// Ensure the file is a valid .NET assembly before loading
+		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
+		{
+			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
+			return false;
+		}
+
+		try
+		{
+			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+			return assembly.GetReferencedAssemblies()
+				.Any(reference => string.Equals(reference.Name, referencedAssemblyName, StringComparison.OrdinalIgnoreCase));
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error checking assembly references: {ex.Message}");
+			return false;
+		}
+	}
+
+	/// <summary>
+	/// Checks if the specified type exists in the assembly.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="typeName">The fully qualified name of the type to check.</param>
+	/// <returns><c>true</c> if the type exists; otherwise, <c>false</c>.</returns>
+	[Information(nameof(DoesTypeExistInAssembly), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static bool DoesTypeExistInAssembly(FileInfo assemblyFile, string typeName)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+		typeName = typeName.ArgumentNotNull();
+
+		// Ensure the file is a valid .NET assembly before loading
+		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
+		{
+			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
+			return false;
+		}
+
+		try
+		{
+			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+			return assembly.GetTypes().Any(type => string.Equals(type.FullName, typeName, StringComparison.Ordinal));
+		}
+		catch (ReflectionTypeLoadException ex)
+		{
+			// Handle partial type loading and check loaded types
+			Trace.WriteLine($"Error loading types from assembly '{assemblyFile.FullName}': {ex.Message}");
+			return ex.Types
+				.Where(type => type != null)
+				.Any(type => string.Equals(type!.FullName, typeName, StringComparison.Ordinal));
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error checking type existence in assembly '{assemblyFile.FullName}': {ex.Message}");
+			return false;
+		}
+	}
+
+	/// <summary>
 	/// Finds all types in the specified assembly file that implement or inherit from any of the specified types.
 	/// </summary>
 	/// <param name="file">The <see cref="FileInfo"/> representing the assembly file to search.</param>
@@ -61,30 +140,206 @@ public static class AssemblyHelper
 	/// <returns>A read-only collection of <see cref="Type"/> objects that implement or inherit from the specified types.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="typeNames"/> is null.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
-	[Information(nameof(FindTypesImplementing), UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(FindTypesImplementing), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	public static ReadOnlyCollection<Type> FindTypesImplementing([NotNull] this FileInfo file, params Type[] typeNames)
 	{
 		file = file.ArgumentNotNull();
 		typeNames = typeNames.ArgumentNotNull();
-		var matchingTypes = new List<Type>();
 
 		//Load all types
 		var types = LoadAssemblyTypes(file);
 
-		foreach (var type in types)
-		{
-			foreach (var targetType in typeNames)
-			{
-				// Check if the type implements or inherits from the target type
-				if (targetType.IsAssignableFrom(type) && type != targetType)
-				{
-					matchingTypes.Add(type);
-					break; // No need to check further once a match is found
-				}
-			}
-		}
+		var matchingTypes = types
+			  .Where(type => typeNames.Any(targetType => targetType.IsAssignableFrom(type) && type != targetType))
+			  .ToList();
 
 		return new ReadOnlyCollection<Type>(matchingTypes);
+	}
+
+	/// <summary>
+	/// Retrieves custom attributes applied to the specified assembly.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <returns>A read-only collection of custom attributes.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
+	/// <exception cref="FileLoadException">Thrown if an assembly cannot be loaded.</exception>
+	[Information(nameof(GetAssemblyCustomAttributes), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static ReadOnlyCollection<Attribute> GetAssemblyCustomAttributes(FileInfo assemblyFile)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+
+		// Ensure the file is a valid .NET assembly before loading
+		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
+		{
+			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
+			return new ReadOnlyCollection<Attribute>(Array.Empty<Attribute>());
+		}
+
+		try
+		{
+			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+			var attributes = assembly.GetCustomAttributes().ToList();
+
+			return new ReadOnlyCollection<Attribute>(attributes);
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error retrieving custom attributes from assembly '{assemblyFile.FullName}': {ex.Message}");
+			return new ReadOnlyCollection<Attribute>(Array.Empty<Attribute>());
+		}
+	}
+
+	/// <summary>
+	/// Gets the entry point method of the specified assembly.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <returns>The entry point <see cref="MethodInfo"/>, or <c>null</c> if none exists.</returns>
+	[Information(nameof(GetAssemblyEntryPoint), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static MethodInfo? GetAssemblyEntryPoint(FileInfo assemblyFile)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+
+		// Ensure the file is a valid .NET assembly before loading
+		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
+		{
+			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
+			return null;
+		}
+
+		try
+		{
+			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+
+			return assembly.EntryPoint;
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error retrieving entry point from assembly '{assemblyFile.FullName}': {ex.Message}");
+
+			return null;
+		}
+	}
+
+	/// <summary>
+	/// Retrieves metadata information from the specified assembly.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <returns>A dictionary containing metadata key-value pairs.</returns>
+	[Information(nameof(GetAssemblyMetadata), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static Dictionary<string, string> GetAssemblyMetadata(FileInfo assemblyFile)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+
+		// Ensure the file is a valid .NET assembly before loading
+		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
+		{
+			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
+			return new Dictionary<string, string>
+			{
+				{ "Error", "Invalid .NET assembly" }
+			};
+		}
+
+		try
+		{
+			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+			var assemblyName = assembly.GetName();
+
+			return new Dictionary<string, string>
+			{
+				{ "Name", assemblyName.Name ?? string.Empty },
+				{ "Version", assemblyName.Version?.ToString() ?? "Unknown" },
+				{ "Culture", assemblyName.CultureInfo?.Name ?? "Neutral" },
+				{ "FullName", assembly.FullName ?? string.Empty }
+			};
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error retrieving metadata from assembly '{assemblyFile.FullName}': {ex.Message}");
+			return new Dictionary<string, string>
+			{
+				{ "Error", ex.Message }
+			};
+		}
+	}
+
+	/// <summary>
+	/// Retrieves all assemblies that the specified assembly depends on.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <returns>A read-only collection of dependent assemblies.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
+	/// <exception cref="FileLoadException">Thrown if an assembly cannot be loaded.</exception>
+	[Information(nameof(GetDependentAssemblies), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static ReadOnlyCollection<AssemblyName> GetDependentAssemblies(FileInfo assemblyFile)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+
+		// Ensure the file is a valid .NET assembly before loading
+		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
+		{
+			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
+			return new ReadOnlyCollection<AssemblyName>(Array.Empty<AssemblyName>());
+		}
+
+		try
+		{
+			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+			var dependentAssemblies = assembly.GetReferencedAssemblies().ToList();
+
+			return new ReadOnlyCollection<AssemblyName>(dependentAssemblies);
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error retrieving dependent assemblies from '{assemblyFile.FullName}': {ex.Message}");
+			return new ReadOnlyCollection<AssemblyName>(Array.Empty<AssemblyName>());
+		}
+	}
+
+	/// <summary>
+	/// Retrieves all methods in the specified type within an assembly.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="typeName">The fully qualified name of the type.</param>
+	/// <returns>A read-only collection of <see cref="MethodInfo"/> objects.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> or <paramref name="typeName"/> is null.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
+	/// <exception cref="TypeLoadException">Thrown if the specified type cannot be loaded from the assembly.</exception>
+	[Information(nameof(GetMethodsInType), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static ReadOnlyCollection<MethodInfo> GetMethodsInType(FileInfo assemblyFile, string typeName)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+		typeName = typeName.ArgumentNotNull();
+
+		// Ensure the file is a valid .NET assembly before loading
+		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
+		{
+			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
+			return new ReadOnlyCollection<MethodInfo>(Array.Empty<MethodInfo>());
+		}
+
+		try
+		{
+			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+			var type = assembly.GetType(typeName);
+
+			if (type == null)
+			{
+				Trace.WriteLine($"Type '{typeName}' not found in assembly '{assemblyFile.FullName}'.");
+				return new ReadOnlyCollection<MethodInfo>(Array.Empty<MethodInfo>());
+			}
+
+			var methods = type.GetMethods().ToList();
+
+			return new ReadOnlyCollection<MethodInfo>(methods);
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error retrieving methods from type '{typeName}' in assembly '{assemblyFile.FullName}': {ex.Message}");
+			return new ReadOnlyCollection<MethodInfo>(Array.Empty<MethodInfo>());
+		}
 	}
 
 	/// <summary>
@@ -97,7 +352,7 @@ public static class AssemblyHelper
 	/// It retrieves DLL files from the "ref" folder of the selected version and target framework.
 	/// </remarks>
 	/// <exception cref="DirectoryNotFoundException">Thrown if the .NET packs directory does not exist.</exception>
-	[Information(nameof(GetNetSdkDllFiles), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(GetNetSdkDllFiles), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static ReadOnlyCollection<FileInfo> GetNetSdkDllFiles(string? version = null)
 	{
 		var root = Environment.GetEnvironmentVariable("DOTNET_ROOT");
@@ -109,61 +364,116 @@ public static class AssemblyHelper
 
 		var dotnetPacksPath = new DirectoryInfo(Path.Combine(root, "packs"));
 
-		var dllFiles = new List<FileInfo>();
-
 		if (!dotnetPacksPath.Exists)
 		{
 			Trace.WriteLine("The .NET packs path does not exist.");
-			return new ReadOnlyCollection<FileInfo>(dllFiles);
+			return new ReadOnlyCollection<FileInfo>(new List<FileInfo>());
 		}
 
-		var packDirectories = dotnetPacksPath.GetDirectories();
-
-		foreach (var packDir in packDirectories)
-		{
-			var versionDirs = packDir.GetDirectories()
-									 .Select(dir => dir.Name)
-									 .Where(name => !string.IsNullOrWhiteSpace(name))
-									 .OrderByDescending(VersionParseSafe)
-									 .ToList();
-
-			var versionToUse = version;
-
-			// If no specific version is provided, use the highest one
-			if (string.IsNullOrWhiteSpace(versionToUse))
+		var dllFiles = dotnetPacksPath.GetDirectories()
+			.AsParallel()
+			.SelectMany(packDir =>
 			{
-				versionToUse = versionDirs.FirstOrDefault();
-			}
+				var versionDirs = packDir.GetDirectories()
+					.Select(dir => dir.Name)
+					.Where(name => !string.IsNullOrWhiteSpace(name))
+					.OrderByDescending(VersionParseSafe)
+					.ToList();
 
-			if (!string.IsNullOrWhiteSpace(versionToUse))
-			{
-				var refPath = new DirectoryInfo(Path.Combine(packDir.FullName, versionToUse, "ref"));
-				if (refPath.Exists)
+				var versionToUse = string.IsNullOrWhiteSpace(version) ? versionDirs.FirstOrDefault() : version;
+
+				if (!string.IsNullOrWhiteSpace(versionToUse))
 				{
-					var targetFrameworks = refPath.GetDirectories();
-
-					// Use highest versioned target framework (e.g., net8.0 over net7.0)
-					var selectedTf = targetFrameworks
-						.OrderByDescending(dir => dir.Name)
-						.FirstOrDefault();
-
-					if (selectedTf != null)
+					var refPath = new DirectoryInfo(Path.Combine(packDir.FullName, versionToUse, "ref"));
+					if (refPath.Exists)
 					{
-						// Get all DLL files in the "ref" folder of the selected version and target framework
-						var dllPaths = selectedTf.GetFiles("*.dll", SearchOption.AllDirectories);
+						var targetFrameworks = refPath.GetDirectories()
+							.OrderByDescending(dir => dir.Name)
+							.FirstOrDefault();
 
-						foreach (var dllPath in dllPaths.Where(TypeHelper.IsDotNetAssembly))
-						{
-							dllFiles.Add(dllPath);
-						}
+						return targetFrameworks?.GetFiles("*.dll", SearchOption.AllDirectories)
+							.Where(TypeHelper.IsDotNetAssembly) ?? [];
 					}
 				}
-			}
-		}
+
+				return [];
+			})
+			.ToList();
 
 		return new ReadOnlyCollection<FileInfo>(dllFiles);
 	}
 
+	/// <summary>
+	/// Retrieves all public types from the specified assembly.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <returns>A read-only collection of public <see cref="Type"/> objects.</returns>
+	[Information(nameof(GetPublicTypes), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static ReadOnlyCollection<Type> GetPublicTypes(FileInfo assemblyFile)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+
+		// Ensure the file is a valid .NET assembly before loading
+		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
+		{
+			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
+			return new ReadOnlyCollection<Type>(Array.Empty<Type>());
+		}
+
+		try
+		{
+			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+			var publicTypes = assembly.GetTypes().Where(type => type.IsPublic).ToList();
+
+			return new ReadOnlyCollection<Type>(publicTypes);
+		}
+		catch (ReflectionTypeLoadException ex)
+		{
+			// Handle partial type loading and return only successfully loaded public types
+			Trace.WriteLine($"Error loading types from assembly '{assemblyFile.FullName}': {ex.Message}");
+			var publicTypes = ex.Types
+				.Where(type => type != null && type.IsPublic)
+				.Select(type => type!)
+				.ToList();
+
+			return new ReadOnlyCollection<Type>(publicTypes);
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error retrieving public types from assembly '{assemblyFile.FullName}': {ex.Message}");
+			return new ReadOnlyCollection<Type>(Array.Empty<Type>());
+		}
+	}
+
+	/// <summary>
+	/// Finds and loads all assemblies in the specified directory.
+	/// </summary>
+	/// <param name="directory">The directory to search for assemblies.</param>
+	/// <returns>A read-only collection of loaded assemblies.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="directory"/> is null.</exception>
+	/// <exception cref="DirectoryNotFoundException">Thrown if the specified directory does not exist.</exception>
+	/// <exception cref="FileLoadException">Thrown if an assembly cannot be loaded.</exception>
+	[Information(nameof(LoadAssembliesFromDirectory), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static ReadOnlyCollection<Assembly> LoadAssembliesFromDirectory(DirectoryInfo directory)
+	{
+		directory = directory.ArgumentExists(directory);
+
+		try
+		{
+			var assemblies = directory.GetFiles("*.dll")
+				.Concat(directory.GetFiles("*.exe"))
+				.Where(TypeHelper.IsDotNetAssembly) // Ensure the file is a valid .NET assembly
+				.Select(file => Assembly.LoadFrom(file.FullName))
+				.ToList(); // Materialize the result to avoid deferred execution issues
+
+			return new ReadOnlyCollection<Assembly>(assemblies);
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error loading assemblies from directory '{directory.FullName}': {ex.Message}");
+			return new ReadOnlyCollection<Assembly>(Array.Empty<Assembly>());
+		}
+	}
 
 	/// <summary>
 	/// Loads the assembly from the specified file and extracts all types within it.
@@ -171,44 +481,62 @@ public static class AssemblyHelper
 	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file to load.</param>
 	/// <returns>A collection of <see cref="Type"/> objects representing all types in the assembly.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
-	[Information(nameof(LoadAssemblyTypes), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(LoadAssemblyTypes), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
 	public static ReadOnlyCollection<Type> LoadAssemblyTypes(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
 
-		try
+		if (!_assemblyTypeCache.TryGetValue(assemblyFile.FullName, out ReadOnlyCollection<Type>? cachedTypes))
 		{
-			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
-			return assembly.GetTypes().AsReadOnly();
-		}
-		catch (ReflectionTypeLoadException ex)
-		{
-			// Return the types that were successfully loaded and log the loader exceptions if needed.
-			Trace.WriteLine($"Failed to load some types from assembly: {assemblyFile.FullName}");
-
-			foreach (var loaderException in ex.LoaderExceptions)
+			try
 			{
-				Trace.WriteLine(loaderException?.Message);
+				var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+				var types = assembly.GetTypes().ToList().AsReadOnly();
+
+				// Add to cache with a sliding expiration of 30 minutes
+				_ = _assemblyTypeCache.Set(assemblyFile.FullName, types, new MemoryCacheEntryOptions
+				{
+					SlidingExpiration = TimeSpan.FromMinutes(30)
+				});
+
+				return types;
 			}
-
-			return ex.Types.Where(type => type != null).Select(type => type!).ToList().AsReadOnly();
+			catch (Exception ex)
+			{
+				Trace.WriteLine($"Error loading assembly types: {ex.Message}");
+				return new ReadOnlyCollection<Type>(Array.Empty<Type>());
+			}
 		}
-		catch (BadImageFormatException ex)
-		{
-			// Log the exception and rethrow it
-			Trace.WriteLine($"BadImageFormatException: The file is not a valid .NET assembly: {assemblyFile.FullName}");
-			Trace.WriteLine(ex.Message);
 
-			return Array.Empty<Type>().ToList().AsReadOnly();
-		}
-		catch (FileLoadException ex)
-		{
-			// Log the exception and return an empty collection
-			Trace.WriteLine($"FileLoadException: The assembly file could not be loaded: {assemblyFile.FullName}");
-			Trace.WriteLine(ex.Message);
-
-			return Array.Empty<Type>().ToList().AsReadOnly();
-		}
+		return cachedTypes!;
 	}
 
+	/// <summary>
+	/// Unloads the specified assembly.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	[Information(nameof(UnloadAssembly), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static void UnloadAssembly(FileInfo assemblyFile)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+
+		// Ensure the file is a valid .NET assembly before attempting to unload
+		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
+		{
+			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
+			return;
+		}
+
+		try
+		{
+			var context = new AssemblyLoadContext(null, isCollectible: true);
+			_ = context.LoadFromAssemblyPath(assemblyFile.FullName);
+
+			context.Unload();
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error unloading assembly '{assemblyFile.FullName}': {ex.Message}");
+		}
+	}
 }
