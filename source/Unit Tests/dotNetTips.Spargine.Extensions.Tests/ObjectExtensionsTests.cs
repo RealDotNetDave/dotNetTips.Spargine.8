@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 
 [ExcludeFromCodeCoverage]
 [TestClass]
-public class ObjectExtensionsTests : TestClass
+public class ObjectExtensionsTests : UnitTester
 {
 	[TestMethod]
 	public void CloneTest()

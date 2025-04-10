@@ -23,7 +23,7 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 
 [ExcludeFromCodeCoverage]
 [TestClass]
-public class DateTimeExtensionsTests : TestClass
+public class DateTimeExtensionsTests : UnitTester
 {
 
 	/// <summary>

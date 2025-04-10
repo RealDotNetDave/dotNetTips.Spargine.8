@@ -22,7 +22,7 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 
 [ExcludeFromCodeCoverage]
 [TestClass]
-public class NumericExtensionsTests : TestClass
+public class NumericExtensionsTests : UnitTester
 {
 
 	private const string OutOfRange = "OUT OF RANGE";
