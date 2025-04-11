@@ -502,10 +502,25 @@ public static class TypeHelper
 	/// <param name="instance">The instance to compute the hash code for.</param>
 	/// <returns>The computed hash code.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="instance"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static int GetInstanceHashCode([NotNull] object instance)
 	{
-		var hash = instance.ArgumentNotNull().GetType().GetRuntimeProperties().Where(p => p is not null).Select(prop => prop.GetValue(instance)).Where(value => value is not null).Aggregate(-1, (accumulator, value) => accumulator ^ value.GetHashCode());
+		instance = instance.ArgumentNotNull();
+
+		var hash = 0;
+
+		foreach (var property in instance.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
+		{
+			if (property.CanRead)
+			{
+				var value = property.GetValue(instance);
+
+				if (value != null)
+				{
+					hash = HashCode.Combine(hash, value.GetHashCode());
+				}
+			}
+		}
 
 		return hash;
 	}

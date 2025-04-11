@@ -94,6 +94,17 @@ public class TypeHelperBenchmark : Benchmark
 		this.Consume(result);
 	}
 
+	[Benchmark(Description = nameof(TypeHelper.GetInstanceHashCode))]
+	[BenchmarkCategory(Categories.Reflection)]
+	public void GetInstanceHashCode()
+	{
+		var person = RandomData.GeneratePersonRef<Address>();
+
+		var result = TypeHelper.GetInstanceHashCode(person);
+
+		this.Consume(result);
+	}
+
 	[Benchmark(Description = nameof(TypeHelper.GetMembersWithAttribute))]
 	[BenchmarkCategory(Categories.Strings)]
 	public void GetMembersWithAttribute()
