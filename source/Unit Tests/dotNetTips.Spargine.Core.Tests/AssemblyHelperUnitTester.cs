@@ -576,7 +576,7 @@ public class AssemblyHelperUnitTester : UnitTester
 		File.WriteAllText(testFile.FullName, "This is a test file.");
 
 		// Act
-		var assemblies = AssemblyHelper.LoadAssembliesFromDirectory(testDirectory);
+		var assemblies = AssemblyHelper.FindAssembliesFromDirectory(testDirectory);
 
 		// Assert
 		Assert.IsNotNull(assemblies, "Expected a non-null collection of assemblies.");
@@ -598,7 +598,7 @@ public class AssemblyHelperUnitTester : UnitTester
 		}
 
 		// Act
-		var assemblies = AssemblyHelper.LoadAssembliesFromDirectory(emptyDirectory);
+		var assemblies = AssemblyHelper.FindAssembliesFromDirectory(emptyDirectory);
 
 		// Assert
 		Assert.IsNotNull(assemblies, "Expected a non-null collection of assemblies.");
@@ -615,7 +615,7 @@ public class AssemblyHelperUnitTester : UnitTester
 		var invalidDirectory = new DirectoryInfo("NonExistentDirectory");
 
 		// Act
-		var assemblies = AssemblyHelper.LoadAssembliesFromDirectory(invalidDirectory);
+		var assemblies = AssemblyHelper.FindAssembliesFromDirectory(invalidDirectory);
 
 		// Assert
 		Assert.IsNotNull(assemblies, "Expected a non-null collection of assemblies.");
@@ -627,7 +627,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void LoadAssembliesFromDirectory_NullDirectory_ThrowsArgumentNullException()
 	{
 		// Act
-		_ = AssemblyHelper.LoadAssembliesFromDirectory(null!);
+		_ = AssemblyHelper.FindAssembliesFromDirectory(null!);
 	}
 
 	[TestMethod]
@@ -637,7 +637,7 @@ public class AssemblyHelperUnitTester : UnitTester
 		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 
 		// Act
-		var assemblies = AssemblyHelper.LoadAssembliesFromDirectory(assemblyFile.Directory);
+		var assemblies = AssemblyHelper.FindAssembliesFromDirectory(assemblyFile.Directory);
 
 		this.PrintToDebug<FileInfo>(assemblies, prop => prop.Name == "Name");
 

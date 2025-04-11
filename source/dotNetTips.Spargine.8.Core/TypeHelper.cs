@@ -673,9 +673,11 @@ public static class TypeHelper
 	/// <exception cref="FileNotFoundException">Thrown when the file does not exist.</exception>
 	/// <exception cref="IOException">Thrown when an I/O error occurs.</exception>
 	/// <exception cref="UnauthorizedAccessException">Thrown when access to the file is unauthorized.</exception>
-	[Information("Orginal code by GÉRALD BARRÉ", author: "David McCarter", createdOn: "5/20/2024", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information("Original code by GÉRALD BARRÉ", author: "David McCarter", createdOn: "5/20/2024", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
 	public static bool IsDotNetAssembly(FileInfo file)
 	{
+		//TODO: MOVE TO ASSEMBLYHELPER IN V10.
+
 		file = file.ArgumentExists();
 
 		using var stream = File.OpenRead(file.FullName);

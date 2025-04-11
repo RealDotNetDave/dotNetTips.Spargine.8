@@ -4,7 +4,7 @@
 // Created          : 04-09-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-10-2025
+// Last Modified On : 04-11-2025
 // ***********************************************************************
 // <copyright file="AssemblyHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Provides static helper methods for working with assemblies.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 #nullable enable
 public static class AssemblyHelper
 {
@@ -129,6 +129,34 @@ public static class AssemblyHelper
 		{
 			Trace.WriteLine($"Error checking type existence in assembly '{assemblyFile.FullName}': {ex.Message}");
 			return false;
+		}
+	}
+
+	/// <summary>
+	/// Finds all assembly files in the specified directory.
+	/// </summary>
+	/// <param name="directory">The directory to search for assemblies.</param>
+	/// <returns>A read-only collection of <see cref="FileInfo"/> objects representing the assembly files found.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="directory"/> is null.</exception>
+	/// <exception cref="DirectoryNotFoundException">Thrown if the specified directory does not exist.</exception>
+	[Information(nameof(FindAssembliesFromDirectory), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static ReadOnlyCollection<FileInfo> FindAssembliesFromDirectory(DirectoryInfo directory)
+	{
+		directory = directory.ArgumentExists(directory);
+
+		try
+		{
+			var assemblyFiles = directory.GetFiles("*.dll")
+				.Concat(directory.GetFiles("*.exe"))
+				.Where(TypeHelper.IsDotNetAssembly) // Ensure the file is a valid .NET assembly
+				.ToList(); // Materialize the result to avoid deferred execution issues
+
+			return new ReadOnlyCollection<FileInfo>(assemblyFiles);
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error finding assemblies in directory '{directory.FullName}': {ex.Message}");
+			return new ReadOnlyCollection<FileInfo>(Array.Empty<FileInfo>());
 		}
 	}
 
@@ -439,34 +467,6 @@ public static class AssemblyHelper
 		{
 			Trace.WriteLine($"Error retrieving public types from assembly '{assemblyFile.FullName}': {ex.Message}");
 			return new ReadOnlyCollection<Type>(Array.Empty<Type>());
-		}
-	}
-
-	/// <summary>
-	/// Finds all assembly files in the specified directory.
-	/// </summary>
-	/// <param name="directory">The directory to search for assemblies.</param>
-	/// <returns>A read-only collection of <see cref="FileInfo"/> objects representing the assembly files found.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="directory"/> is null.</exception>
-	/// <exception cref="DirectoryNotFoundException">Thrown if the specified directory does not exist.</exception>
-	[Information(nameof(LoadAssembliesFromDirectory), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
-	public static ReadOnlyCollection<FileInfo> LoadAssembliesFromDirectory(DirectoryInfo directory)
-	{
-		directory = directory.ArgumentExists(directory);
-
-		try
-		{
-			var assemblyFiles = directory.GetFiles("*.dll")
-				.Concat(directory.GetFiles("*.exe"))
-				.Where(TypeHelper.IsDotNetAssembly) // Ensure the file is a valid .NET assembly
-				.ToList(); // Materialize the result to avoid deferred execution issues
-
-			return new ReadOnlyCollection<FileInfo>(assemblyFiles);
-		}
-		catch (Exception ex)
-		{
-			Trace.WriteLine($"Error finding assemblies in directory '{directory.FullName}': {ex.Message}");
-			return new ReadOnlyCollection<FileInfo>(Array.Empty<FileInfo>());
 		}
 	}
 
