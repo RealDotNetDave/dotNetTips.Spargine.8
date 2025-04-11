@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-10-2025
+// Last Modified On : 04-11-2025
 // ***********************************************************************
 // <copyright file="UnitTester.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -23,7 +23,7 @@ namespace DotNetTips.Spargine.Tester;
 /// <summary>
 /// Abstract base class providing common methods for debugging and saving object properties.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public abstract class UnitTester
 {
 	/// <summary>
