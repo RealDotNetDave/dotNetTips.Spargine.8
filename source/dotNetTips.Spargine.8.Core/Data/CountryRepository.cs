@@ -4,7 +4,7 @@
 // Created          : 01-10-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-11-2025
+// Last Modified On : 04-12-2025
 // ***********************************************************************
 // <copyright file="CountryRepository.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -131,17 +131,7 @@ public static class CountryRepository
 	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
 	public static Country GetCountry(long countryId)
 	{
-		var countries = GetCountries();
-
-		for (var countryIndex = 0; countryIndex < countries.Count; countryIndex++)
-		{
-			if (countries[countryIndex].Id == countryId)
-			{
-				return countries[countryIndex];
-			}
-		}
-
-		return null;
+		return GetCountries().FirstOrDefault(country => country.Id == countryId);
 	}
 
 	/// <summary>
