@@ -4,7 +4,7 @@
 // Created          : 04-09-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-10-2025
+// Last Modified On : 04-12-2025
 // ***********************************************************************
 // <copyright file="AssemblyHelperUnitTester.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -27,6 +27,18 @@ namespace DotNetTips.Spargine.Core.Tests;
 [TestClass]
 public class AssemblyHelperUnitTester : UnitTester
 {
+	private string _testOutputDirectory;
+
+	private TestUnitTester _unitTester;
+
+	[TestCleanup]
+	public void Cleanup()
+	{
+		if (Directory.Exists(this._testOutputDirectory))
+		{
+			Directory.Delete(this._testOutputDirectory, true);
+		}
+	}
 
 	[TestMethod]
 	public void DoesAssemblyReference_InvalidReference_ReturnsFalse()
@@ -673,6 +685,36 @@ public class AssemblyHelperUnitTester : UnitTester
 	}
 
 	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void PrintToDebug_NullPropertySelector_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var collection = new List<object> { new { Name = "Test" } };
+
+		// Act
+		this._unitTester.PrintToDebug(collection, null);
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void SaveToFile_NullPropertySelector_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var collection = new List<object> { new { Name = "Test" } };
+
+		// Act
+		this._unitTester.SaveToFile(collection, null);
+	}
+
+	[TestInitialize]
+	public void Setup()
+	{
+		this._testOutputDirectory = Path.Combine(Path.GetTempPath(), "UnitTesterTests");
+		Directory.CreateDirectory(this._testOutputDirectory);
+		this._unitTester = new TestUnitTester(this._testOutputDirectory);
+	}
+
+	[TestMethod]
 	public void UnloadAssembly_ValidAssembly_DoesNotThrow()
 	{
 		// Arrange
@@ -755,6 +797,11 @@ public class AssemblyHelperUnitTester : UnitTester
 		// Assert
 		Assert.IsNotNull(result);
 		Assert.AreEqual(new Version(3, 1, 4), result, "Expected version 3.1.4, but got a different result.");
+	}
+
+	private class TestUnitTester : UnitTester
+	{
+		public TestUnitTester(string outputDirectory = null) : base(outputDirectory) { }
 	}
 }
 
