@@ -206,7 +206,7 @@ public static class TypeHelper
 		}
 		else
 		{
-			var name = options.FullName ? type.FullName : type.Name;
+			var name = options.FullName && type.FullName is not null ? type.FullName : type.Name;
 			_ = builder.Append(name);
 
 			if (options.NestedTypeDelimiter != ControlChars.Plus)

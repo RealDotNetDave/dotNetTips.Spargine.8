@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8.Extensions - 2025.8.3.31
+# DotNetTips.Spargine.8.Extensions - 2025.8.4.10
 
 ## DotNetTips.Spargine.Extensions.ArrayExtensions
 
@@ -8,7 +8,7 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineArrayExtensions
 
-### T[] AddFirst(T[] array,  item)
+### T[] AddFirst(T[] array, T& item)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -19,7 +19,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### T[] AddIf(T[] array,  item, System.Boolean condition)
+### T[] AddIf(T[] array, T& item, System.Boolean condition)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -30,7 +30,7 @@
 * **Description:** AddIf
 * **Modified By:** David McCarter
 
-### T[] AddLast(T[] array,  item)
+### T[] AddLast(T[] array, T& item)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -41,7 +41,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### System.Boolean AreEqual(T[] array,  arrayToCheck)
+### System.Boolean AreEqual(T[] array, T[]& arrayToCheck)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -173,7 +173,7 @@
 * **Description:** HasItems
 * **Modified By:** David McCarter
 
-### System.Boolean HasItems(T[] array,  actionFunction)
+### System.Boolean HasItems(T[] array, Func`2& actionFunction)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -188,7 +188,7 @@
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 6/15/2022
@@ -354,7 +354,7 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineCollectionExtensions
 
-### System.Void AddIf(System.Collections.Generic.ICollection<T> collection,  item, System.Boolean condition)
+### System.Void AddIf(System.Collections.Generic.ICollection<T> collection, T& item, System.Boolean condition)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -365,7 +365,7 @@
 * **Description:** AddIf
 * **Modified By:** David McCarter
 
-### System.Boolean AddIfNotExists(System.Collections.Generic.ICollection<T> collection,  item)
+### System.Boolean AddIfNotExists(System.Collections.Generic.ICollection<T> collection, T& item)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -376,7 +376,7 @@
 * **Description:** AddIfNotExists
 * **Modified By:** David McCarter
 
-### System.Boolean AddIfNotExists(System.Collections.Generic.ICollection<T> collection,  item,  comparer)
+### System.Boolean AddIfNotExists(System.Collections.Generic.ICollection<T> collection, T& item, IEqualityComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -387,7 +387,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### System.Boolean AddRange(System.Collections.Generic.ICollection<T> collection,  items, System.Boolean ensureUnique)
+### System.Boolean AddRange(System.Collections.Generic.ICollection<T> collection, IEnumerable`1& items, System.Boolean ensureUnique)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -446,7 +446,7 @@
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/21/2020
@@ -464,7 +464,7 @@
 * **Description:** ToFrozenSet
 * **Modified By:** David McCarter
 
-### System.Void Upsert(System.Collections.Generic.ICollection<T> collection,  item)
+### System.Void Upsert(System.Collections.Generic.ICollection<T> collection, T& item)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -524,7 +524,7 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 
-### System.Void AddRange(System.Collections.Concurrent.ConcurrentBag<T> bag,  items)
+### System.Void AddRange(System.Collections.Concurrent.ConcurrentBag<T> bag, IEnumerable`1& items)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -929,7 +929,7 @@
 * **Unit Test Status:** None
 * **Documentation:** https://bit.ly/SpargineDictionaryExtensions
 
-### System.Boolean AddIfNotExists(System.Collections.Generic.IDictionary<TKey, TValue> collection, TKey key,  value)
+### System.Boolean AddIfNotExists(System.Collections.Generic.IDictionary<TKey, TValue> collection, TKey key, TValue& value)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -944,7 +944,7 @@
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/21/2020
@@ -999,7 +999,7 @@
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/3/2020
@@ -1102,7 +1102,7 @@
 * **Description:** Original code by Simon Painter.
 * **Modified By:** David McCarter
 
-### System.Void Upsert(System.Collections.Generic.IDictionary<TKey, TValue> collection,  item)
+### System.Void Upsert(System.Collections.Generic.IDictionary<TKey, TValue> collection, TValue& item)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1113,7 +1113,7 @@
 * **Description:** Upsert
 * **Modified By:** David McCarter
 
-### System.Void Upsert(System.Collections.Generic.IDictionary<TKey, TValue> collection, TKey key,  item)
+### System.Void Upsert(System.Collections.Generic.IDictionary<TKey, TValue> collection, TKey key, TValue& item)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1310,7 +1310,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 8/7/2024
@@ -1387,7 +1387,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/21/2020
@@ -1483,7 +1483,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/2/2023
@@ -1516,7 +1516,7 @@
 
 * **Status:** New
 * **Optimization Status:** None
-* **BenchMarkStatus:** Benchmark
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 2/28/2025
@@ -1554,7 +1554,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 8/26/2020
@@ -1565,18 +1565,18 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/2/2023
 * **Description:** Split
 * **Modified By:** David McCarter
 
-### System.Boolean StartsWith(System.Collections.Generic.IEnumerable<T> first,  second)
+### System.Boolean StartsWith(System.Collections.Generic.IEnumerable<T> first, IEnumerable`1& second)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/21/2020
@@ -1587,7 +1587,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/21/2020
@@ -1620,7 +1620,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/21/2020
@@ -1776,7 +1776,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Description:** GetAllMessages
 * **Documentation:** https://bit.ly/SpargineAug2024
@@ -1984,7 +1984,7 @@
 * **Description:** GetRawBodyStringAsync
 * **Modified By:** David McCarter
 
-### System.Boolean TryGetBody(Microsoft.AspNetCore.Http.HttpRequest request,  value)
+### System.Boolean TryGetBody(Microsoft.AspNetCore.Http.HttpRequest request, T& value)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -2164,7 +2164,7 @@
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 12/30/2024
@@ -3240,7 +3240,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/19/2020
@@ -3251,7 +3251,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/19/2020
@@ -3480,7 +3480,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 6/24/2021
@@ -3739,7 +3739,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 7/1/2020
@@ -3761,7 +3761,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 5/26/2020
@@ -3772,7 +3772,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 5/26/2020
@@ -3783,7 +3783,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 5/26/2020
@@ -3858,7 +3858,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 9/15/2017
@@ -3913,7 +3913,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 8/13/2020
@@ -3956,7 +3956,7 @@
 ### System.Boolean FastCompare(System.String value, System.String valueToCompare, System.StringComparison& comparison)
 
 * **Status:** New
-* **Optimization Status:** Optimize
+* **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
@@ -4070,7 +4070,7 @@
 * **Description:** From .NET Core source.
 * **Modified By:** David McCarter
 
-### System.String Indent(System.String input, System.Int32 length, System.Char indentationCharacter)
+### System.String Indent(System.String input, System.Int32& length, System.Char& indentationCharacter)
 
 * **Status:** Available
 * **Optimization Status:** Completed
@@ -4280,7 +4280,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
@@ -4291,7 +4291,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
@@ -4302,7 +4302,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
@@ -4354,7 +4354,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 7/15/2020
@@ -4783,4 +4783,4 @@
 * **Description:** ConvertFrom
 
 *****
-**Generated by Spargine - dotNetTips.com on 4/1/2025 1:16:03 PM UTC**
+**Generated by Spargine - dotNetTips.com on 4/13/2025 3:03:20 PM UTC**

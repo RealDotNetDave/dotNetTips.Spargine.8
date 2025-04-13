@@ -142,7 +142,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(EnumerableExtensions.Count))]
+	[Benchmark(Description = "EnumerableExtensions.Count()")]
 	public void Count_EnumerableExtensions_Count()
 	{
 		var result = this._personRefEnumerable.Count();
@@ -150,7 +150,7 @@ public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
 		this.Consume(result);
 	}
 
-	[Benchmark(Description = nameof(EnumerableExtensions.FastCount) + ":IList ")]
+	[Benchmark(Description = "EnumerableExtensions.Count()" + ": IList ")]
 	public void Count_FastCount_IList()
 	{
 		var result = this._personRefList.FastCount();

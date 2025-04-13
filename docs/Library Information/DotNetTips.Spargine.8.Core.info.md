@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8.Core - 2025.8.3.31
+# DotNetTips.Spargine.8.Core - 2025.8.4.10
 
 ## DotNetTips.Spargine.Core.ApiLibraries
 
@@ -272,6 +272,125 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 * **Description:** ArgumentReadOnlyException
+
+*****
+## DotNetTips.Spargine.Core.AssemblyHelper
+
+* **Status:** Needs Documentation
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Documentation:** ADD URL
+
+### System.Boolean DoesAssemblyReference(System.IO.FileInfo assemblyFile, System.String referencedAssemblyName)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** DoesAssemblyReference
+
+### System.Boolean DoesTypeExistInAssembly(System.IO.FileInfo assemblyFile, System.String typeName)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** DoesTypeExistInAssembly
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.IO.FileInfo> FindAssembliesFromDirectory(System.IO.DirectoryInfo directory)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** FindAssembliesFromDirectory
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Type> FindTypesImplementing(System.IO.FileInfo file, System.Type[] typeNames)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** FindTypesImplementing
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Attribute> GetAssemblyCustomAttributes(System.IO.FileInfo assemblyFile)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** GetAssemblyCustomAttributes
+
+### System.Reflection.MethodInfo GetAssemblyEntryPoint(System.IO.FileInfo assemblyFile)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** GetAssemblyEntryPoint
+
+### System.Collections.Generic.Dictionary<System.String, System.String> GetAssemblyMetadata(System.IO.FileInfo assemblyFile)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** GetAssemblyMetadata
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Reflection.AssemblyName> GetDependentAssemblies(System.IO.FileInfo assemblyFile)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** GetDependentAssemblies
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Reflection.MethodInfo> GetMethodsInType(System.IO.FileInfo assemblyFile, System.String typeName)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** GetMethodsInType
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.IO.FileInfo> GetNetSdkDllFiles(System.String version)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 4/9/2025
+* **Description:** GetNetSdkDllFiles
+* **Modified By:** David McCarter
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Type> GetPublicTypes(System.IO.FileInfo assemblyFile)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** GetPublicTypes
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Type> LoadAssemblyTypes(System.IO.FileInfo assemblyFile)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Author:** David McCarter
+* **CreatedOn:** 4/9/2025
+* **Description:** LoadAssemblyTypes
+* **Modified By:** David McCarter
+
+### System.Void UnloadAssembly(System.IO.FileInfo assemblyFile)
+
+* **Status:** New
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Not Required
+* **Unit Test Status:** Completed
+* **Description:** UnloadAssembly
 
 *****
 ## DotNetTips.Spargine.Core.BenchmarkStatus
@@ -649,56 +768,56 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (IEqualityComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( onMissingKey)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (Func`2& onMissingKey)
 
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( dictionary,  defaultValue)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (IDictionary`2& dictionary, TValue& defaultValue)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( dictionary,  onMissingKey)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (IDictionary`2& dictionary, Func`2& onMissingKey)
 
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( keyValuePairs,  defaultValue)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (IEnumerable`1& keyValuePairs, TValue& defaultValue)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( keyValuePairs,  onMissingKey)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (IEnumerable`1& keyValuePairs, Func`2& onMissingKey)
 
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( defaultValue,  comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (TValue& defaultValue, IEqualityComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ( onMissingKey,  comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (Func`2& onMissingKey, IEqualityComparer`1& comparer)
 
 * **Status:** New
 * **Optimization Status:** None
@@ -853,7 +972,7 @@
 * **Description:** ConcurrentHashSet
 * **Modified By:** David McCarter
 
-### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> ( collection)
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> (IEnumerable`1& collection)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -886,7 +1005,7 @@
 * **Description:** ConcurrentHashSet
 * **Modified By:** David McCarter
 
-### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> ( collection, System.Collections.Generic.IEqualityComparer<T> comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> (IEnumerable`1& collection, System.Collections.Generic.IEqualityComparer<T> comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -897,7 +1016,7 @@
 * **Description:** ConcurrentHashSet
 * **Modified By:** David McCarter
 
-### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> (System.Int32 concurrencyLevel,  collection, System.Collections.Generic.IEqualityComparer<T> comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.ConcurrentHashSet<T> (System.Int32 concurrencyLevel, IEnumerable`1& collection, System.Collections.Generic.IEqualityComparer<T> comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -977,7 +1096,7 @@
 ### System.Collections.Generic.IEnumerator<T> GetEnumerator()
 
 * **Status:** Available
-* **Optimization Status:** Optimize
+* **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
@@ -1052,7 +1171,7 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.DistinctConcurrentBag<T> ( collection)
+### DotNetTips.Spargine.Core.Collections.Generic.Concurrent.DistinctConcurrentBag<T> (IEnumerable`1& collection)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1087,7 +1206,7 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### System.Boolean TryTake( result)
+### System.Boolean TryTake(T& result)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1109,14 +1228,14 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> ( comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> (IComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> ( collection)
+### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> (IEnumerable`1& collection)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1130,14 +1249,14 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> ( collection,  comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> (IEnumerable`1& collection, IComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> (System.Int32 capacity,  comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.FastSortedList<T> (System.Int32 capacity, IComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1165,7 +1284,7 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### System.Collections.Generic.List<T>+Enumerator GetEnumerator()
+### System.Collections.Generic.List<T>.Enumerator GetEnumerator()
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1240,14 +1359,14 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.ObservableList<T> ( collection)
+### DotNetTips.Spargine.Core.Collections.Generic.ObservableList<T> (IEnumerable`1& collection)
 
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 
-### DotNetTips.Spargine.Core.Collections.Generic.ObservableList<T> ( collection,  comparer)
+### DotNetTips.Spargine.Core.Collections.Generic.ObservableList<T> (IEnumerable`1& collection, IEqualityComparer`1& comparer)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1673,7 +1792,7 @@
 ### DotNetTips.Spargine.Core.Data.Models.Country GetCountry(DotNetTips.Spargine.Core.Data.CountryName countryName)
 
 * **Status:** Available
-* **Optimization Status:** Optimize
+* **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
@@ -1684,8 +1803,8 @@
 ### DotNetTips.Spargine.Core.Data.Models.Country GetCountry(System.Int64 countryId)
 
 * **Status:** Available
-* **Optimization Status:** Optimize
-* **BenchMarkStatus:** Completed
+* **Optimization Status:** Completed
+* **BenchMarkStatus:** Check Performance
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 12/14/2023
@@ -2110,7 +2229,6 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 * **Description:** ThrowArgumentInvalidException
-* **Documentation:** https://bit.ly/SpargineExThrow
 
 ### System.Void ThrowArgumentNullException(System.String paramName)
 
@@ -2119,7 +2237,6 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 * **Description:** ThrowArgumentNullException
-* **Documentation:** https://bit.ly/SpargineExThrow
 
 ### System.Void ThrowArgumentNullException(System.String message, System.String paramName)
 
@@ -2384,7 +2501,7 @@
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Documentation:** ADD URL
+* **Documentation:** https://bit.ly/SpargineExecutionHelper
 
 ### DotNetTips.Spargine.Core.SimpleResult<System.Int32> ProgressiveRetry(System.Action operation, System.Byte retryCount, System.Int32 retryWaitMilliseconds, Microsoft.Extensions.Logging.ILogger logger)
 
@@ -2393,7 +2510,6 @@
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
 * **Description:** ProgressiveRetry
-* **Documentation:** https://bit.ly/SpargineProgressiveRetry
 
 ### System.Threading.Tasks.Task<DotNetTips.Spargine.Core.SimpleResult<System.Int32>> ProgressiveRetryAsync(System.Func<System.Threading.Tasks.Task> function, System.Byte retryCount, System.Int32 retryWaitMilliseconds, Microsoft.Extensions.Logging.ILogger logger, System.Threading.CancellationToken cancellationToken)
 
@@ -2501,7 +2617,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/7/2025
@@ -2512,7 +2628,7 @@
 
 * **Status:** New
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 2/18/2021
@@ -2545,7 +2661,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 2/19/2021
@@ -2578,7 +2694,7 @@
 
 * **Status:** New
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/4/2025
@@ -2589,7 +2705,7 @@
 
 * **Status:** New
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 3/4/2025
@@ -2618,11 +2734,11 @@
 * **Description:** Remove
 * **Modified By:** David McCarter
 
-### System.String ToDelimitedString( collection, System.Char delimiter)
+### System.String ToDelimitedString(Dictionary`2& collection, System.Char delimiter)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 1/1/2021
@@ -3302,6 +3418,17 @@
 * **Author:** David McCarter
 * **CreatedOn:** 3/16/2023
 * **Description:** ContainsWord
+* **Modified By:** David McCarter
+
+### System.String ExtractVersion(System.String input)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** Benchmark
+* **Unit Test Status:** Not Required
+* **Author:** David McCarter
+* **CreatedOn:** 4/9/2025
+* **Description:** ExtractVersion
 * **Modified By:** David McCarter
 
 ### System.String GetNumbers(System.String input)
@@ -3994,7 +4121,7 @@
 * **Unit Test Status:** Completed
 * **Description:** ToString
 
-### System.Boolean TryGet( value)
+### System.Boolean TryGet(T& value)
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -4116,7 +4243,7 @@
 
 * **Status:** Available
 * **Optimization Status:** None
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/6/2023
@@ -4157,7 +4284,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Documentation:** https://bit.ly/SpargineApril2022
 
@@ -4198,7 +4325,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** None
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Documentation:** https://bit.ly/SpargineAug2024
 
@@ -4210,11 +4337,11 @@
 * **Unit Test Status:** Completed
 * **Description:** GetMembersWithAttribute
 
-### System.Collections.ObjectModel.ReadOnlyCollection<System.Collections.Generic.KeyValuePair<System.String, System.String>> GetPropertyValues( input)
+### System.Collections.ObjectModel.ReadOnlyCollection<System.Collections.Generic.KeyValuePair<System.String, System.String>> GetPropertyValues(T& input)
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 11/3/2020
@@ -4234,10 +4361,10 @@
 * **Documentation:** https://bit.ly/SpargineAug2024
 * **Modified By:** David McCarter
 
-### System.String GetTypeDisplayName(System.Type type, DotNetTips.Spargine.Core.DisplayNameOptions options)
+### System.String GetTypeDisplayName(System.Type type, DotNetTips.Spargine.Core.DisplayNameOptions& options)
 
 * **Status:** Available
-* **Optimization Status:** Optimize
+* **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 
@@ -4283,7 +4410,7 @@
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
 * **CreatedOn:** 5/20/2024
-* **Description:** Orginal code by GÉRALD BARRÉ
+* **Description:** Original code by GÉRALD BARRÉ
 * **Documentation:** https://bit.ly/SpargineAug2024
 * **Modified By:** David McCarter
 
@@ -4298,7 +4425,7 @@
 
 * **Status:** Available
 * **Optimization Status:** Completed
-* **BenchMarkStatus:** Check Performance
+* **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Description:** ProcessGenericType
 
@@ -4953,4 +5080,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 4/1/2025 1:16:03 PM UTC**
+**Generated by Spargine - dotNetTips.com on 4/13/2025 3:03:20 PM UTC**
