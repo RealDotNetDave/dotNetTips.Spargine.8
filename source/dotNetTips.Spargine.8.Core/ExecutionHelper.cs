@@ -34,7 +34,7 @@ namespace DotNetTips.Spargine.Core;
 /// attempts the provided function multiple times with increasing delay intervals, improving the robustness of applications
 /// in unstable network conditions.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(Status = Status.NeedsDocumentation, Documentation = "https://bit.ly/SpargineExecutionHelper")]
 public static class ExecutionHelper
 {
 	/// <summary>
@@ -65,7 +65,7 @@ public static class ExecutionHelper
 	/// </code>
 	/// </example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ProgressiveRetry), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available, Documentation = "https://bit.ly/SpargineProgressiveRetry")]
+	[Information(nameof(ProgressiveRetry), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static SimpleResult<int> ProgressiveRetry([NotNull] Action operation, [ConstantExpected(Min = 1, Max = byte.MaxValue)] byte retryCount = 3, int retryWaitMilliseconds = 100, ILogger logger = null)
 	{
 		operation = operation.ArgumentNotNull();
