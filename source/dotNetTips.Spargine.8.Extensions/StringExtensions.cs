@@ -613,7 +613,7 @@ public static class StringExtensions
 	/// <param name="indentationCharacter">The character to use for indentation.</param>
 	/// <returns>The indented string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the input string is null.</exception>
-	[Information(nameof(Indent), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
+	[Information(nameof(Indent), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string Indent([NotNull] this string input, in int length, [ConstantExpected] in char indentationCharacter)
 	{
 		if (input.CheckIsNotNull() is false || length <= 0)
