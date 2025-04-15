@@ -129,10 +129,7 @@ public static class CountryRepository
 	/// <returns>A <see cref="Country"/> object if codeFound; otherwise, null.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Information(nameof(GetCountry), "David McCarter", "12/14/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, Status = Status.Available)]
-	public static Country GetCountry(long countryId)
-	{
-		return GetCountries().FirstOrDefault(country => country.Id == countryId);
-	}
+	public static Country GetCountry(long countryId) => GetCountries().FirstOrDefault(country => country.Id == countryId);
 
 	/// <summary>
 	/// Validates the phone number for a given country.

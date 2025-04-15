@@ -53,12 +53,7 @@ public static class AssemblyHelper
 		// Try to extract version from things like "1.2.3-preview" or similar
 		var extractedVersion = RegexProcessor.ExtractVersion(input);
 
-		if (string.IsNullOrEmpty(extractedVersion) is false)
-		{
-			return Version.Parse(extractedVersion);
-		}
-
-		return new Version(0, 0);
+		return string.IsNullOrEmpty(extractedVersion) is false ? Version.Parse(extractedVersion) : new Version(0, 0);
 	}
 
 	/// <summary>
@@ -285,7 +280,7 @@ public static class AssemblyHelper
 		catch (Exception ex)
 		{
 			Trace.WriteLine($"Error retrieving metadata from assembly '{assemblyFile.FullName}': {ex.Message}");
-			return new Dictionary<string, string>();
+			return [];
 		}
 	}
 
@@ -392,7 +387,7 @@ public static class AssemblyHelper
 		if (!dotnetPacksPath.Exists)
 		{
 			Trace.WriteLine("The .NET packs path does not exist.");
-			return new ReadOnlyCollection<FileInfo>(new List<FileInfo>());
+			return new ReadOnlyCollection<FileInfo>([]);
 		}
 
 		var dllFiles = dotnetPacksPath.GetDirectories()
