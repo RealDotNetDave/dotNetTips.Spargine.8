@@ -1,4 +1,4 @@
-## .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.ReadOnlyCollectionBenchmark.DoesNotHaveItems()
        push      rbx
@@ -8,7 +8,7 @@
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFA34DE1088
+       mov       r11,7FFE3F101088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -25,7 +25,7 @@ M00_L01:
 ; Total bytes of code 65
 ```
 
-## .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.ReadOnlyCollectionBenchmark.DoesNotHaveItems()
        push      rbx
@@ -35,7 +35,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFA34DD1088
+       mov       r11,7FFE3F131088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -52,7 +52,7 @@ M00_L01:
 ; Total bytes of code 65
 ```
 
-## .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.ReadOnlyCollectionBenchmark.DoesNotHaveItems()
        push      rbx
@@ -62,7 +62,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFA34DE1088
+       mov       r11,7FFE3F131088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -79,7 +79,7 @@ M00_L01:
 ; Total bytes of code 65
 ```
 
-## .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.ReadOnlyCollectionBenchmark.DoesNotHaveItems()
        push      rbx
@@ -89,7 +89,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFA34DB1088
+       mov       r11,7FFE3F101088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -106,7 +106,7 @@ M00_L01:
 ; Total bytes of code 65
 ```
 
-## .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.ReadOnlyCollectionBenchmark.DoesNotHaveItems()
        push      rbx
@@ -116,7 +116,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFA34DC1088
+       mov       r11,7FFE3F111088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -133,7 +133,7 @@ M00_L01:
 ; Total bytes of code 65
 ```
 
-## .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.ReadOnlyCollectionBenchmark.DoesNotHaveItems()
        push      rbx
@@ -143,7 +143,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFA34DB11E8
+       mov       r11,7FFE3F111098
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -160,7 +160,7 @@ M00_L01:
 ; Total bytes of code 65
 ```
 
-## .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.ReadOnlyCollectionBenchmark.DoesNotHaveItems()
        push      rbx
@@ -170,7 +170,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFA34DB1258
+       mov       r11,7FFE3F131258
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -187,7 +187,7 @@ M00_L01:
 ; Total bytes of code 65
 ```
 
-## .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2
+## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.ReadOnlyCollectionBenchmark.DoesNotHaveItems()
        push      rbx
@@ -197,7 +197,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFA34DD1A18
+       mov       r11,7FFE3F121B20
        call      qword ptr [r11]
        test      eax,eax
        setle     al

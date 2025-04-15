@@ -12,7 +12,6 @@ root = true
 # All Files
 [*]
 charset = utf-8
-csharp_indent_labels = one_less_than_current
 csharp_style_prefer_method_group_conversion = true:silent
 csharp_style_prefer_primary_constructors = true:suggestion
 csharp_style_prefer_top_level_statements = true:silent
@@ -74,16 +73,6 @@ insert_final_newline = true
 # Makefiles
 [Makefile]
 indent_style = tab
-
-##########################################
-# Default .NET Code Style Severities
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/configuration-options#scope
-##########################################
-
-##########################################
-# Language Rules
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules
-##########################################
 
 # .NET Style Rules
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules#net-style-rules
@@ -152,6 +141,7 @@ dotnet_diagnostic.IDE2000.severity = silent
 
 # All public/protected/protected_internal constant fields must be PascalCase
 # https://docs.microsoft.com/dotnet/standard/design-guidelines/field
+
 dotnet_naming_rule.public_protected_constant_fields_must_be_pascal_case_rule.severity = warning
 dotnet_naming_rule.public_protected_constant_fields_must_be_pascal_case_rule.style = non_private_static_field_style
 dotnet_naming_rule.public_protected_constant_fields_must_be_pascal_case_rule.symbols = public_protected_constant_fields_group
@@ -179,8 +169,13 @@ dotnet_naming_symbols.other_public_protected_fields_group.applicable_kinds = fie
 ##########################################
 # StyleCop Field Naming Rules
 # Naming rules for fields follow the StyleCop analyzers
-# This does not override any rules using disallowed_style above
+# This does not override any rules using disallowed_style above @@@@
 # https://github.com/DotNetAnalyzers/StyleCopAnalyzers
+##########################################
+
+##########################################
+# Package/assembly validation error codes @@@@
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/apicompat/diagnostic-ids#list-of-error-codes
 ##########################################
 
 ##########################################
@@ -319,7 +314,6 @@ dotnet_naming_symbols.private_internal_fields.applicable_accessibilities = priva
 dotnet_naming_symbols.private_internal_fields.applicable_kinds = field
 
 # Local functions are PascalCase
-dotnet_diagnostic.CS8618.severity = warning
 dotnet_naming_rule.local_functions_should_be_pascal_case.severity = warning
 dotnet_naming_rule.local_functions_should_be_pascal_case.style = non_private_static_field_style
 dotnet_naming_rule.local_functions_should_be_pascal_case.symbols = all_members
@@ -984,29 +978,29 @@ dotnet_diagnostic.SYSLIB0046.severity = error
 # XmlSecureResolver is obsolete
 dotnet_diagnostic.SYSLIB0047.severity = error
 
-# RSA.EncryptValue and DecryptValue are obsolete
+# RSA.EncryptValue(Byte[]) and RSA.DecryptValue(Byte[]) are obsolete. Use RSA.Encrypt and RSA.Decrypt instead.
 dotnet_diagnostic.SYSLIB0048.severity = error
 
-#  JsonSerializerOptions.AddContext is obsolete
-dotnet_diagnostic.SYSLIB0048.severity = error
+# JsonSerializerOptions.AddContext is obsolete. To register a JsonSerializerContext, use either the TypeInfoResolver or TypeInfoResolverChain property.
+dotnet_diagnostic.SYSLIB0049.severity = error
 
 # Formatter-based serialization is obsolete
 dotnet_diagnostic.SYSLIB0050.severity = error
 
-# Legacy serialization support APIs are obsolete
+# APIs that support obsolete formatter-based serialization are obsolete. They should not be called or extended by application code.
 dotnet_diagnostic.SYSLIB0051.severity = error
 
 # APIs that support obsolete mechanisms for Regex extensibility are obsolete
 dotnet_diagnostic.SYSLIB0052.severity = error
 
-# AesGcm should indicate the required tag size
+# AesGcm should indicate the required tag size for encryption and decryption. Use a constructor that accepts the tag size.
 dotnet_diagnostic.SYSLIB0053.severity = warning
 
 # Thread.VolatileRead and Thread.VolatileWrite are obsolete
 dotnet_diagnostic.SYSLIB0054.severity = warning
 
 # AdvSimd.ShiftRightLogicalRoundedNarrowingSaturate* methods with signed parameters are obsolete
-dotnet_diagnostic.SYSLIB0056.severity = warning
+dotnet_diagnostic.SYSLIB0055.severity = warning
 
 # Assembly.LoadFrom that takes an AssemblyHashAlgorithm is obsolete.
 dotnet_diagnostic.SYSLIB0056.severity = warning
@@ -1014,11 +1008,17 @@ dotnet_diagnostic.SYSLIB0056.severity = warning
 # SYSLIB0057: X509Certificate2 and X509Certificate constructors for binary and file content are obsolete
 dotnet_diagnostic.SYSLIB0057.severity = warning
 
-#  The KeyExchangeAlgorithm, KeyExchangeStrength, CipherAlgorithm, CipherAlgorithmStrength, HashAlgorithm, and HashStrength properties of SslStream are obsolete. 
+# The KeyExchangeAlgorithm, KeyExchangeStrength, CipherAlgorithm, CipherAlgorithmStrength, HashAlgorithm, and HashStrength properties of SslStream are obsolete. 
 dotnet_diagnostic.SYSLIB0058.severity = warning
 
-#  SystemEvents.EventsThreadShutdown callbacks aren't run before the process exits
+# SystemEvents.EventsThreadShutdown callbacks aren't run before the process exits
 dotnet_diagnostic.SYSLIB0059.severity = warning
+
+# Rfc2898DeriveBytes constructors are obsolete
+dotnet_diagnostic.SYSLIB0060.severity = error
+
+# System.Linq.Queryable.MaxBy and System.Linq.Queryable.MinBy taking an IComparer<TSource> are obsolete.
+dotnet_diagnostic.SYSLIB0061.severity = error
 
 # Logging method names can't start with an underscore
 dotnet_diagnostic.SYSLIB1001.severity = error
@@ -1099,7 +1099,7 @@ dotnet_diagnostic.SYSLIB1032.severity = error
 dotnet_diagnostic.SYSLIB1033.severity = warning
 
 # JsonSourceGenerator encountered a [JsonStringEnumConverter] annotation
-dotnet_diagnostic.SYSLIB1033.severity = warning
+dotnet_diagnostic.SYSLIB1034.severity = warning
 
 # System.Text.Json source generator encountered a type with multiple [JsonExtensionData] annotations
 dotnet_diagnostic.SYSLIB1035.severity = error
@@ -1239,12 +1239,15 @@ dotnet_diagnostic.SYSLIB1101.severity = error
 # Project's language version must be at least C# 11.
 dotnet_diagnostic.SYSLIB1102.severity = error
 
-#  Value types are invalid inputs to configuration 'Bind' methods.
+# Value types are invalid inputs to configuration 'Bind' methods.
 dotnet_diagnostic.SYSLIB1103.severity = error
 
 # Generator cannot determine the target configuration type.
 dotnet_diagnostic.RemoveUnnecessaryImportsFixable.severity = warning
 dotnet_diagnostic.SYSLIB1104.severity = error
+
+# SVE is a preview feature can be used by enabling EnablePreviewFeatures flag
+dotnet_diagnostic.SYSLIB5003.severity = error
 
 #### Reliability ####
 
