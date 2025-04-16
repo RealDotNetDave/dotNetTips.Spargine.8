@@ -2391,44 +2391,53 @@ dotnet_diagnostic.SA1300.severity = error
 # Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.SA1302.severity = error
 
-# ConstFieldNamesMustBeginWithUpperCaseLetter @@@@@
+# ConstFieldNamesMustBeginWithUpperCaseLetter
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.SA1303.severity = error
 
 # FieldNamesMustNotUseHungarianNotation
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.SA1305.severity = warning
 
 # VariableNamesMustNotBePrefixed
 dotnet_diagnostic.SA1308.severity = error
 
 # A field name in C# begins with an underscore. 
-dotnet_diagnostic.SA1309.severity = warning
+dotnet_diagnostic.SA1309.severity = silent
 
 # VariableNamesMustBeginWithLowerCaseLetter
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.SA1312.severity = warning
 
 # ParameterNamesMustBeginWithLowerCaseLetter
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.SA1313.severity = error
 
 # TupleElementNamesShouldUseCorrectCasing
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.SA1316.severity = warning
 
 # A Code Analysis SuppressMessage attribute does not include a justification.
 dotnet_diagnostic.SA1404.severity = error
 
 # BracesForMultiLineStatementsMustNotShareLine
-dotnet_diagnostic.SA1500.severity = warning
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
+dotnet_diagnostic.SA1500.severity = error
 
 # ElementMustNotBeOnSingleLine
-dotnet_diagnostic.SA1502.severity = warning
+dotnet_diagnostic.SA1502.severity = error
 
 # BracesMustNotBeOmitted
-dotnet_diagnostic.SA1503.severity = warning
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
+dotnet_diagnostic.SA1503.severity = error
 
 # ClosingBraceMustBeFollowedByBlankLine
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.SA1513.severity = warning
 
 # UseBracesConsistently
-dotnet_diagnostic.SA1520.severity = warning
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
+dotnet_diagnostic.SA1520.severity = error
 
 # File header copyright text should match
 dotnet_diagnostic.SA1636.severity = none
@@ -2442,21 +2451,25 @@ dotnet_diagnostic.RETURN0001.severity = warning
 #### Async Rules ####
 
 # Asynchronous method names should end with Async
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.ASYNC0001.severity = error
 
-# Non asynchronous method names should end with Async
+# Non asynchronous method names should not end with Async
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.ASYNC0002.severity = error
 
 # Avoid void returning asynchronous method
 dotnet_diagnostic.ASYNC0003.severity = warning
 
 # Use ConfigureAwait(false) on await expression
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.ASYNC0004.severity = error
 
 # Do not use blocking call (make method async)
 dotnet_diagnostic.MA0045.severity = none
 
 # Call 'ConfigureAwait(false)'.
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.RCS1090.severity = error
 
 # Return completed task instead of returning null
@@ -2523,6 +2536,7 @@ dotnet_diagnostic.VSTHRD109.severity = error
 dotnet_diagnostic.VSTHRD110.severity = error
 
 # Use .ConfigureAwait(bool)
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.VSTHRD111.severity = error
 
 # Implement System.IAsyncDisposable
@@ -2535,6 +2549,7 @@ dotnet_diagnostic.VSTHRD113.severity = error
 dotnet_diagnostic.VSTHRD114.severity = error
 
 # Use "Async" suffix for async methods
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.VSTHRD200.severity = error
 
 # Asynchronous method name should end with 'Async'.
@@ -2546,17 +2561,20 @@ dotnet_diagnostic.RCS1047.severity = error
 #### Class Rules ####
 
 # Seal Class
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.CLASS0001.severity = warning
 
 #### Enum Rules ####
 
 # Default switch label
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.ENUM0001.severity = error
 
 # Merge switch sections
 dotnet_diagnostic.ENUM0002.severity = warning
 
 # Populate switch
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.ENUM0003.severity = warning
 dotnet_style_allow_multiple_blank_lines_experimental = false:suggestion
 dotnet_style_allow_statement_immediately_after_block_experimental = true:suggestion
@@ -2653,6 +2671,7 @@ dotnet_diagnostic.IDE0105.severity = warning
 dotnet_diagnostic.IDE0110.severity = warning
 
 # Simplify object creation
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.IDE0140.severity = suggestion
 
 # Prefer 'null' check over type check 
