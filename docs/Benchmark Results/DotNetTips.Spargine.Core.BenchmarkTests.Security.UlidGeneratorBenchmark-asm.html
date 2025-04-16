@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang='en'><head><meta charset='utf-8' /><head>
-<title>Pretty Output of DisassemblyDiagnoser for DotNetTips.Spargine.Core.BenchmarkTests.Security.UlidGeneratorBenchmark-20250316-161544</title>
+<title>Pretty Output of DisassemblyDiagnoser for DotNetTips.Spargine.Core.BenchmarkTests.Security.UlidGeneratorBenchmark-20250415-202242</title>
 
 <style type="text/css">
     pre { margin: 0px; }
@@ -48,7 +48,7 @@
         }
     });
 });</script>
-<h2>.NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2</h2>
+<h2>.NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2</h2>
 <table><tbody>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.UlidGeneratorBenchmark.GenerateKey()</th><th></th></tr>
 <tr class="">
@@ -62,7 +62,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF98360C1E0]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD32556550]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
 </tr><tr class="">
@@ -86,6 +86,9 @@
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()</th><th></th></tr>
 <tr class="">
+<td></td><td><pre><code>	public static string GenerateKey() => Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture);
+	                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
 <td></td><td><pre><code>sub       rsp,38</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>xor       eax,eax</pre></code></td>
@@ -96,17 +99,17 @@
 </tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982F17360]; System.Guid.NewGuid()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD31E47360]; System.Guid.NewGuid()</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r8,232A4400428</pre></code></td>
+<td></td><td><pre><code>mov       r8,1F895000428</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,[r8]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rsp+28]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,273363B3C70</pre></code></td>
+<td></td><td><pre><code>mov       rdx,23923043C70</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982F17180]; System.Guid.ToString(System.String, System.IFormatProvider)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD31E47180]; System.Guid.ToString(System.String, System.IFormatProvider)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="">
@@ -115,7 +118,7 @@
 <td></td><td><pre><code>ret</pre></code></td>
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 </tbody></table>
-<h2>.NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2</h2>
+<h2>.NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2</h2>
 <table><tbody>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.UlidGeneratorBenchmark.GenerateMultipleUlids()</th><th></th></tr>
 <tr class="">
@@ -131,7 +134,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       ecx,100</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF98371D968]; DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateMultipleUlids(Int32)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD32657AE0]; DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateMultipleUlids(Int32)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rsp+28],rax</pre></code></td>
 </tr><tr class="">
@@ -155,6 +158,18 @@
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateMultipleUlids(Int32)</th><th></th></tr>
 <tr class="">
+<td></td><td><pre><code>		var ulids = new List<string>(count.ArgumentInRange(1, defaultValue: 1));
+		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		for (var index = 0; index < count; index++)
+		     ^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>			ulids.Add(GenerateUlid());
+			^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
+<td></td><td><pre><code>		return ulids.AsReadOnly();
+		^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></code></td>
+</tr><tr class="">
 <td></td><td><pre><code>push      rdi</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>push      rsi</pre></code></td>
@@ -237,7 +252,7 @@
 <td id="4_M01_L03" class="label" data-label="4_M01_L03"><pre><code>M01_L03</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF98371D980]; DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateUlid()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD32657AF8]; DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateUlid()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>inc       dword ptr [rdi+14]</pre></code></td>
 </tr><tr class="">
@@ -317,7 +332,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rsp+20]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982F247B0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD31E547B0]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       esi,eax</pre></code></td>
 </tr><tr class="">
@@ -326,7 +341,7 @@
 <td id="4_M01_L08" class="label" data-label="4_M01_L08"><pre><code>M01_L08</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF9833844B0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD3225FB40]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -334,7 +349,7 @@
 </tr><tr class="evenMap">
 <td></td><td id="4" class="reference" data-reference="4_M01_L09"><a href="#4_M01_L09"><pre><code>jne       short M01_L09</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF9833842D0]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD3225F960]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdi,rax</pre></code></td>
 </tr><tr class="">
@@ -349,11 +364,11 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rdx,212C62A4368</pre></code></td>
+<td></td><td><pre><code>mov       rdx,2642A3F3760</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,rdi</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982F2D470]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD31E5D470]</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rcx,rbx</pre></code></td>
 </tr><tr class="">
@@ -366,14 +381,14 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       edx,0D</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF98306ED48]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD320A5B60]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>int       3</pre></code></td>
 </tr><tr class="">
 <td id="4_M01_L11" class="label" data-label="4_M01_L11"><pre><code>M01_L11</pre></code></td>
 <td>&nbsp;</td></tr>
 <tr class="">
-<td></td><td><pre><code>mov       rcx,1D234405C90</pre></code></td>
+<td></td><td><pre><code>mov       rcx,2239C401D88</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,[rcx]</pre></code></td>
 </tr><tr class="">
@@ -390,12 +405,12 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rdx,rax</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF982F2E130]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]].AddWithResize(System.__Canon)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD31E5E130]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]].AddWithResize(System.__Canon)</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="4" class="reference" data-reference="4_M01_L04"><a href="#4_M01_L04"><pre><code>jmp       near ptr M01_L04</pre></code></a></td>
 </tr><tr><td colspan="{2}">&nbsp;</td></tr>
 </tbody></table>
-<h2>.NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2</h2>
+<h2>.NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2</h2>
 <table><tbody>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.UlidGeneratorBenchmark.GenerateUlid()</th><th></th></tr>
 <tr class="">
@@ -411,7 +426,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rbx,rcx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,28D574061E0</pre></code></td>
+<td></td><td><pre><code>mov       rcx,26374C081D8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rax,[rcx]</pre></code></td>
 </tr><tr class="">
@@ -459,11 +474,11 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       r8,offset DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateUlid()</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       r9,7FF982D1D370</pre></code></td>
+<td></td><td><pre><code>mov       r9,7FFD31C5D370</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982E64258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD31DA4258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rcx,28D574061E0</pre></code></td>
+<td></td><td><pre><code>mov       rcx,26374C081D8</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rsi</pre></code></td>
 </tr><tr class="">
@@ -491,7 +506,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       rdx,rbx</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF9E27F3D30]; CORINFO_HELP_ASSIGN_REF</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD8B523D30]; CORINFO_HELP_ASSIGN_REF</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>mov       [rbx+18],rdi</pre></code></td>
 </tr><tr class="">
@@ -509,7 +524,7 @@
 <tr><td colspan="2">DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateUlid()</td></tr>
 <tr><td colspan="{2}"></td></tr>
 </tbody></table>
-<h2>.NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX2</h2>
+<h2>.NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2</h2>
 <table><tbody>
 <tr><th colspan="2" style="text-align: left;">DotNetTips.Spargine.Core.BenchmarkTests.Security.UlidGeneratorBenchmark.GuidNewGuid()</th><th></th></tr>
 <tr class="">
@@ -527,7 +542,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rsp+30]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF982F07360]; System.Guid.NewGuid()</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD31E47360]; System.Guid.NewGuid()</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>vmovups   xmm0,[rsp+30]</pre></code></td>
 </tr><tr class="">
@@ -539,7 +554,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>lea       rcx,[rsp+20]</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>call      qword ptr [7FF9836FDBD8]; BenchmarkDotNet.Engines.DeadCodeEliminationHelper.KeepAliveWithoutBoxingReadonly[[System.Guid, System.Private.CoreLib]](System.Guid ByRef)</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD32647DE0]; BenchmarkDotNet.Engines.DeadCodeEliminationHelper.KeepAliveWithoutBoxingReadonly[[System.Guid, System.Private.CoreLib]](System.Guid ByRef)</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>nop</pre></code></td>
 </tr><tr class="">
@@ -607,7 +622,7 @@
 </tr><tr class="">
 <td></td><td><pre><code>mov       byte ptr [rsi+0C],0</pre></code></td>
 </tr><tr class="">
-<td></td><td><pre><code>mov       rax,7FFA6D56EF80</pre></code></td>
+<td></td><td><pre><code>mov       rax,7FFE0869EF80</pre></code></td>
 </tr><tr class="">
 <td></td><td><pre><code>call      rax</pre></code></td>
 </tr><tr class="evenMap">
@@ -616,11 +631,11 @@
 <tr class="evenMap">
 <td></td><td><pre><code>mov       byte ptr [rsi+0C],1</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>cmp       dword ptr [7FF9E2D0A0DC],0</pre></code></td>
+<td></td><td><pre><code>cmp       dword ptr [7FFD91C4A0DC],0</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td id="8" class="reference" data-reference="8_M01_L01"><a href="#8_M01_L01"><pre><code>je        short M01_L01</pre></code></a></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF9E2CFA3A8]; CORINFO_HELP_STOP_FOR_GC</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD91C3A3A8]; CORINFO_HELP_STOP_FOR_GC</pre></code></td>
 </tr><tr class="">
 <td id="8_M01_L01" class="label" data-label="8_M01_L01"><pre><code>M01_L01</pre></code></td>
 <td>&nbsp;</td></tr>
@@ -674,7 +689,7 @@
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       rcx,rsi</pre></code></td>
 </tr><tr class="evenMap">
-<td></td><td><pre><code>call      qword ptr [7FF982E5CC30]</pre></code></td>
+<td></td><td><pre><code>call      qword ptr [7FFD31D9CC30]</pre></code></td>
 </tr><tr class="evenMap">
 <td></td><td><pre><code>mov       [rsi+74],ebx</pre></code></td>
 </tr><tr class="evenMap">
