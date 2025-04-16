@@ -2779,11 +2779,6 @@ visual_basic_style_prefer_simplified_object_creation = all : suggestion
 
 # Visual Basic Rules
 [*.{vb}]
-# Remove ByVal
-dotnet_diagnostic.IDE0081.severity = warning
-
-# Use pattern matching (IsNot operator)
-dotnet_diagnostic.IDE0084.severity = warning
 
 # JSON Rules
 [*.{cs,vb}]
