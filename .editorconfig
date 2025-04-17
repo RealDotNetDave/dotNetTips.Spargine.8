@@ -448,6 +448,7 @@ dotnet_diagnostic.SA1400.severity = warning
 dotnet_diagnostic.SA1401.severity = error
 
 # FileMayOnlyContainASingleNamespace
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.SA1403.severity = error
 
 # DebugAssertMustProvideMessageText
@@ -565,6 +566,7 @@ dotnet_diagnostic.IDISP026.severity = error
 #### Naming ####
 
 # Namespace does not match folder structure
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.IDE0130.severity = warning
 
 # Do not name enum values 'Reserved'
@@ -573,6 +575,7 @@ dotnet_code_quality.CA1700.api_surface = public, protected
 dotnet_diagnostic.CA1700.severity = error
 
 # Identifiers should not contain underscores
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_code_quality.CA1707.api_surface = public, protected
 dotnet_diagnostic.CA1707.severity = error
 
@@ -619,6 +622,7 @@ dotnet_diagnostic.CA1720.severity = warning
 dotnet_diagnostic.CA1721.severity = error
 
 # Type names should not match namespaces
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.CA1724.severity = warning
 
 # Parameter names should match base declaration
@@ -681,6 +685,7 @@ dotnet_diagnostic.CA1815.severity = warning
 
 # Properties should not return arrays
 # Examples in Rock Your Code: Code Performance in Microsoft .NET
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.CA1819.severity = suggestion
 dotnet_code_quality.CA1819.api_surface = public, protected
 
@@ -1311,6 +1316,7 @@ dotnet_diagnostic.CA2008.severity = suggestion
 dotnet_diagnostic.CA2009.severity = error
 
 # Do not assign property within its setter
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.CA2011.severity = error
 
 # Use ValueTasks correctly
@@ -1642,6 +1648,7 @@ dotnet_diagnostic.SEC001.severity = error
 #### Usage Rules ####
 
 # Review unused parameters
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.CA1801.severity = warning
 
 # Call GC.SuppressFinalize correctly
@@ -2235,6 +2242,7 @@ dotnet_diagnostic.CA1046.severity = warning
 dotnet_diagnostic.CA1047.severity = error
 
 # Declare types in namespaces
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.CA1050.severity = error
 
 # Do not declare visible instance fields
@@ -2402,7 +2410,8 @@ dotnet_diagnostic.SA1305.severity = warning
 # VariableNamesMustNotBePrefixed
 dotnet_diagnostic.SA1308.severity = error
 
-# A field name in C# begins with an underscore. 
+# A field name in C# begins with an underscore.
+# Examples in Rock Your Code: Coding Standards for Microsoft .NET
 dotnet_diagnostic.SA1309.severity = silent
 
 # VariableNamesMustBeginWithLowerCaseLetter
