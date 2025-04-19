@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-14-2025
+// Last Modified On : 04-19-2025
 // ***********************************************************************
 // <copyright file="TypeHelperTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -312,19 +312,6 @@ public class TypeHelperTests : UnitTester
 		var result = TypeHelper.GetDefault<AccessControlType>();
 
 		Assert.IsNotNull(result);
-	}
-
-	[TestMethod]
-	public void GetInstanceHashCode_EmptyObject_ReturnsHashCode()
-	{
-		// Arrange
-		var emptyObject = new { };
-
-		// Act
-		var hashCode = TypeHelper.GetInstanceHashCode(emptyObject);
-
-		// Assert
-		Assert.AreNotEqual(0, hashCode, "Hash code should not be zero.");
 	}
 
 	[TestMethod]

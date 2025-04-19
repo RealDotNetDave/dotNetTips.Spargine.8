@@ -439,6 +439,15 @@ namespace DotNetTips.Spargine.Extensions.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The input is not a valid Base64 string..
+        /// </summary>
+        internal static string TheInputIsNotAValidBase64String {
+            get {
+                return ResourceManager.GetString("TheInputIsNotAValidBase64String", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is an issue disposing of the object using DisposeAsync()..
         /// </summary>
         internal static string ThereIsAnIssueDisposingOfTheObjectUsingAsyncDispose {

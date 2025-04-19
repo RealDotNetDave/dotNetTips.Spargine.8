@@ -4,7 +4,7 @@
 // Created          : 07-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 04-19-2025
 // ***********************************************************************
 // <copyright file="EncryptionHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -75,7 +75,7 @@ public static class EncryptionHelper
 	/// </example>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="cipherText"/>, <paramref name="key"/>, or <paramref name="iv"/> is null.</exception>
 	/// <exception cref="InvalidOperationException">Thrown when decryption fails.</exception>
-	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(AesDecrypt), "David McCarter", "7/19/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string AesDecrypt(string cipherText, byte[] key, byte[] iv)
 	{
 		cipherText = cipherText.ArgumentNotNull();
@@ -84,6 +84,14 @@ public static class EncryptionHelper
 
 		try
 		{
+			// Decode Base64 string
+			var buffer = new byte[cipherText.Length];
+
+			if (!Convert.TryFromBase64String(cipherText, buffer, out var bytesWritten))
+			{
+				throw new FormatException("The input is not a valid Base64 string.");
+			}
+
 			// Create AesManaged.
 			using (var aes = Aes.Create())
 			{
@@ -91,7 +99,7 @@ public static class EncryptionHelper
 				using (var decryptor = aes.CreateDecryptor(key, iv))
 				{
 					// Create the streams used for decryption.
-					using (var ms = new MemoryStream(Convert.FromBase64String(cipherText)))
+					using (var ms = new MemoryStream(buffer, 0, bytesWritten))
 					{
 						// Create crypto stream.
 						using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
