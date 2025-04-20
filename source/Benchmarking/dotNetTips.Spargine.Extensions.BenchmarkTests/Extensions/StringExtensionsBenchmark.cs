@@ -4,7 +4,7 @@
 // Created          : 08-03-2022
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-02-2025
+// Last Modified On : 04-20-2025
 // ***********************************************************************
 // <copyright file="StringExtensionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -604,6 +604,15 @@ public class StringExtensionsBenchmark : Benchmark
 	public void ToByteArray_UTF8()
 	{
 		var result = this.LongTestString.ToByteArray(Encoding.UTF8);
+
+		this.Consume(result);
+	}
+
+	[Benchmark(Description = nameof(StringExtensions.ToByteArrayFromBase64))]
+	[BenchmarkCategory(Categories.Strings, Categories.New)]
+	public void ToByteArrayFromBase64()
+	{
+		var result = this.Base64String.ToByteArrayFromBase64();
 
 		this.Consume(result);
 	}
