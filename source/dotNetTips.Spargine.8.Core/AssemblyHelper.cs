@@ -4,7 +4,7 @@
 // Created          : 04-09-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-11-2025
+// Last Modified On : 04-20-2025
 // ***********************************************************************
 // <copyright file="AssemblyHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -81,7 +81,7 @@ public static class AssemblyHelper
 			return assembly.GetReferencedAssemblies()
 				.Any(reference => string.Equals(reference.Name, referencedAssemblyName, StringComparison.OrdinalIgnoreCase));
 		}
-		catch (Exception ex)
+		catch (Exception ex) //Write out all exceptions
 		{
 			Trace.WriteLine($"Error checking assembly references: {ex.Message}");
 			return false;
@@ -120,7 +120,7 @@ public static class AssemblyHelper
 				.Where(type => type != null)
 				.Any(type => string.Equals(type!.FullName, typeName, StringComparison.Ordinal));
 		}
-		catch (Exception ex)
+		catch (Exception ex) //Write out all exceptions
 		{
 			Trace.WriteLine($"Error checking type existence in assembly '{assemblyFile.FullName}': {ex.Message}");
 			return false;
@@ -148,7 +148,7 @@ public static class AssemblyHelper
 
 			return new ReadOnlyCollection<FileInfo>(assemblyFiles);
 		}
-		catch (Exception ex)
+		catch (Exception ex) //Write out all exceptions
 		{
 			Trace.WriteLine($"Error finding assemblies in directory '{directory.FullName}': {ex.Message}");
 			return new ReadOnlyCollection<FileInfo>(Array.Empty<FileInfo>());
@@ -206,7 +206,7 @@ public static class AssemblyHelper
 
 			return new ReadOnlyCollection<Attribute>(attributes);
 		}
-		catch (Exception ex)
+		catch (Exception ex) //Write out all exceptions
 		{
 			Trace.WriteLine($"Error retrieving custom attributes from assembly '{assemblyFile.FullName}': {ex.Message}");
 			return new ReadOnlyCollection<Attribute>(Array.Empty<Attribute>());
@@ -236,7 +236,7 @@ public static class AssemblyHelper
 
 			return assembly.EntryPoint;
 		}
-		catch (Exception ex)
+		catch (Exception ex) //Write out all exceptions
 		{
 			Trace.WriteLine($"Error retrieving entry point from assembly '{assemblyFile.FullName}': {ex.Message}");
 
@@ -277,7 +277,7 @@ public static class AssemblyHelper
 				{ "FullName", assembly.FullName ?? string.Empty }
 			};
 		}
-		catch (Exception ex)
+		catch (Exception ex) //Write out all exceptions
 		{
 			Trace.WriteLine($"Error retrieving metadata from assembly '{assemblyFile.FullName}': {ex.Message}");
 			return [];
@@ -304,6 +304,7 @@ public static class AssemblyHelper
 			return new ReadOnlyCollection<AssemblyName>(Array.Empty<AssemblyName>());
 		}
 
+#pragma warning disable CA1031 // Do not catch general exception types
 		try
 		{
 			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
@@ -311,11 +312,12 @@ public static class AssemblyHelper
 
 			return new ReadOnlyCollection<AssemblyName>(dependentAssemblies);
 		}
-		catch (Exception ex)
+		catch (Exception ex) //Write out all exceptions
 		{
 			Trace.WriteLine($"Error retrieving dependent assemblies from '{assemblyFile.FullName}': {ex.Message}");
 			return new ReadOnlyCollection<AssemblyName>(Array.Empty<AssemblyName>());
 		}
+#pragma warning restore CA1031 // Do not catch general exception types
 	}
 
 	/// <summary>
@@ -355,7 +357,7 @@ public static class AssemblyHelper
 
 			return new ReadOnlyCollection<MethodInfo>(methods);
 		}
-		catch (Exception ex)
+		catch (Exception ex) //Write out all exceptions
 		{
 			Trace.WriteLine($"Error retrieving methods from type '{typeName}' in assembly '{assemblyFile.FullName}': {ex.Message}");
 			return new ReadOnlyCollection<MethodInfo>(Array.Empty<MethodInfo>());
@@ -491,7 +493,7 @@ public static class AssemblyHelper
 
 				return types;
 			}
-			catch (Exception ex)
+			catch (Exception ex) //Write out all exceptions
 			{
 				Trace.WriteLine($"Error loading assembly types: {ex.Message}");
 				return new ReadOnlyCollection<Type>(Array.Empty<Type>());

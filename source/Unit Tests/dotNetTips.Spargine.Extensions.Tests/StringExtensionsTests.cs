@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-16-2025
+// Last Modified On : 04-20-2025
 // ***********************************************************************
 // <copyright file="StringExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -1161,6 +1161,46 @@ public class StringExtensionsTests
 		var testValue = RandomData.GenerateWord(25);
 
 		Assert.IsTrue(testValue.ToBase64().IsNotEmpty());
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(FormatException))]
+	public void ToByteArrayFromBase64_InvalidBase64String_ThrowsFormatException()
+	{
+		// Arrange
+		var base64String = "InvalidBase64String";
+
+		// Act
+		base64String.ToByteArrayFromBase64();
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
+	[ExpectedException(typeof(ArgumentNullException))]
+	public void ToByteArrayFromBase64_NullString_ThrowsArgumentNullException()
+	{
+		// Arrange
+		string base64String = null;
+
+		// Act
+		base64String.ToByteArrayFromBase64();
+
+		// Assert is handled by ExpectedException
+	}
+
+	[TestMethod]
+	public void ToByteArrayFromBase64_ValidBase64String_ReturnsCorrectByteArray()
+	{
+		// Arrange
+		var base64String = "VGhpcyBpcyBhIHRlc3Qgc3RyaW5nLg=="; // "This is a test string."
+		var expectedBytes = Encoding.UTF8.GetBytes("This is a test string.");
+
+		// Act
+		var result = base64String.ToByteArrayFromBase64();
+
+		// Assert
+		CollectionAssert.AreEqual(expectedBytes, result, "The byte array does not match the expected byte array.");
 	}
 
 	[TestMethod]

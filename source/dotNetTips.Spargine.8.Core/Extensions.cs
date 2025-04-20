@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 04-20-2025
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -347,6 +347,28 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	}
 
 	/// <summary>
+	/// Converts a Base64 encoded string to a byte array.
+	/// </summary>
+	/// <param name="base64String">The Base64 encoded string.</param>
+	/// <returns>The byte array representation of the Base64 encoded string.</returns>
+	/// <exception cref="FormatException">Thrown when the input string is not a valid Base64 string.</exception>
+	internal static byte[] ToByteArrayFromBase64(this string base64String)
+	{
+		base64String = base64String.ArgumentNotNull();
+
+		var buffer = new byte[base64String.Length];
+
+		if (!Convert.TryFromBase64String(base64String, buffer, out var bytesWritten))
+		{
+			throw new FormatException(Resources.TheInputStringIsNotAValidBase64String);
+		}
+
+		var result = new byte[bytesWritten];
+		Array.Copy(buffer, result, bytesWritten);
+		return result;
+	}
+
+	/// <summary>
 	/// Converts IDictionary to delimited string using <see cref="ObjectPool&lt;StringBuilder&gt;" /> to improve performance.
 	/// </summary>
 	/// <param name="list">The list.</param>
@@ -485,30 +507,6 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 		}
 
 		return totalLength;
-	}
-
-	/// <summary>
-	/// Converts a Base64 encoded string to a byte array.
-	/// </summary>
-	/// <param name="base64String">The Base64 encoded string.</param>
-	/// <returns>The byte array representation of the Base64 encoded string.</returns>
-	/// <exception cref="FormatException">Thrown when the input string is not a valid Base64 string.</exception>
-	public static byte[] ToByteArrayFromBase64(this string base64String)
-	{
-		if (string.IsNullOrEmpty(base64String))
-		{
-			ExceptionThrower.ThrowArgumentNullException(nameof(base64String));
-		}
-
-		var buffer = new byte[base64String.Length];
-		if (!Convert.TryFromBase64String(base64String, buffer, out var bytesWritten))
-		{
-			throw new FormatException(Resources.TheInputStringIsNotAValidBase64String);
-		}
-
-		var result = new byte[bytesWritten];
-		Array.Copy(buffer, result, bytesWritten);
-		return result;
 	}
 
 }

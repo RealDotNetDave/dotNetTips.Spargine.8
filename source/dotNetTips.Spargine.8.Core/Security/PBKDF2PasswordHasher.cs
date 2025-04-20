@@ -4,7 +4,7 @@
 // Created          : 10-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-28-2025
+// Last Modified On : 04-20-2025
 // ***********************************************************************
 // <copyright file="PBKDF2PasswordHasher.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -78,7 +78,7 @@ public static class PBKDF2PasswordHasher
 	/// <param name="hashedPassword">The hashed password.</param>
 	/// <param name="password">The password.</param>
 	/// <returns>PasswordVerificationResult.</returns>
-	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
+	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.None, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJan2022")]
 	public static PasswordVerificationResult VerifyHashedPassword(string hashedPassword, [NotNull] in string password)
 	{
 		if (string.IsNullOrEmpty(hashedPassword))
@@ -86,12 +86,8 @@ public static class PBKDF2PasswordHasher
 			return PasswordVerificationResult.Failed;
 		}
 
-		var passwordBytes = Convert.FromBase64String(hashedPassword);
+		var passwordBytes = hashedPassword.ToByteArrayFromBase64();
 
-		if (passwordBytes.Length < 1 + SaltSize + Pbkdf2SubkeyLength)
-		{
-			return PasswordVerificationResult.Failed;
-		}
 
 		var version = passwordBytes[0];
 

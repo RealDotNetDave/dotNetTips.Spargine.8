@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-12-2025
+// Last Modified On : 04-20-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -22,6 +22,7 @@ using System.Text.RegularExpressions;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.RegularExpressions;
 using DotNetTips.Spargine.Extensions;
+using DotNetTips.Spargine.Extensions.Properties;
 using Microsoft.Extensions.ObjectPool;
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -398,10 +399,11 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses <see cref="DeflateStream"/> for decompression.
 	/// </remarks>
-	[Information(nameof(FromDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
+	[Information(nameof(FromDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static async Task<string> FromDeflateStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
-		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
+		var bytes = value.ArgumentNotNull().ToByteArrayFromBase64();
+
 		var input = new MemoryStream(bytes);
 
 		await using (input.ConfigureAwait(false))
@@ -440,8 +442,7 @@ public static class StringExtensions
 	{
 		value = value.ArgumentNotNullOrEmpty();
 
-		var bytes = new byte[value.CalculateByteArraySize()];
-		_ = Convert.TryFromBase64String(value, bytes, out _);
+		var bytes = value.ToByteArrayFromBase64();
 
 		var input = new MemoryStream(bytes);
 
@@ -475,10 +476,11 @@ public static class StringExtensions
 	/// <remarks>
 	/// This method uses <see cref="DeflateStream"/> for decompression, as ZLib compression is closely related to the Deflate compression algorithm.
 	/// </remarks>
-	[Information(nameof(FromZLibStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
+	[Information(nameof(FromZLibStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static async Task<string> FromZLibStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
-		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
+		var bytes = value.ArgumentNotNull().ToByteArrayFromBase64();
+
 		var input = new MemoryStream(bytes);
 
 		await using (input.ConfigureAwait(false))
@@ -1122,6 +1124,29 @@ public static class StringExtensions
 		encoding = encoding.ArgumentNotNull();
 
 		return encoding.GetBytes(input);
+	}
+
+	/// <summary>
+	/// Converts a Base64 encoded string to a byte array.
+	/// </summary>
+	/// <param name="base64String">The Base64 encoded string.</param>
+	/// <returns>The byte array representation of the Base64 encoded string.</returns>
+	/// <exception cref="FormatException">Thrown when the input string is not a valid Base64 string.</exception>
+	[Information(nameof(ToByteArrayFromBase64), "David McCarter", "4/20/2025", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	public static byte[] ToByteArrayFromBase64(this string base64String)
+	{
+		base64String = base64String.ArgumentNotNull();
+
+		var buffer = new byte[base64String.Length];
+
+		if (!Convert.TryFromBase64String(base64String, buffer, out var bytesWritten))
+		{
+			throw new FormatException(Resources.TheInputStringIsNotAValidBase64String);
+		}
+
+		var result = new byte[bytesWritten];
+		Array.Copy(buffer, result, bytesWritten);
+		return result;
 	}
 
 	/// <summary>

@@ -283,4 +283,10 @@
   <data name="Zero" xml:space="preserve">
     <value>Zero</value>
   </data>
+  <data name="TheInputIsNotAValidBase64String" xml:space="preserve">
+    <value>The input is not a valid Base64 string.</value>
+  </data>
+  <data name="TheInputStringIsNotAValidBase64String" xml:space="preserve">
+    <value>The input string is not a valid Base64 string.</value>
+  </data>
 </root>
