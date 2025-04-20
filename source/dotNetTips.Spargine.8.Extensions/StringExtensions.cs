@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-19-2025
+// Last Modified On : 04-12-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -22,7 +22,6 @@ using System.Text.RegularExpressions;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.RegularExpressions;
 using DotNetTips.Spargine.Extensions;
-using DotNetTips.Spargine.Extensions.Properties;
 using Microsoft.Extensions.ObjectPool;
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
 
@@ -368,17 +367,7 @@ public static class StringExtensions
 	[Information(nameof(FromBrotliStringAsync), "David McCarter", "10/24/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static async Task<string> FromBrotliStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
-		value = value.ArgumentNotNull();
-
-		// Use TryFromBase64String instead of FromBase64String
-		var buffer = new byte[value.Length];
-
-		if (!Convert.TryFromBase64String(value, buffer, out var bytesWritten))
-		{
-			throw new FormatException(Resources.TheInputIsNotAValidBase64String);
-		}
-
-		var input = new MemoryStream(buffer, 0, bytesWritten);
+		var input = new MemoryStream(Convert.FromBase64String(value.ArgumentNotNull()));
 
 		await using (input.ConfigureAwait(false))
 		{
@@ -412,17 +401,8 @@ public static class StringExtensions
 	[Information(nameof(FromDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static async Task<string> FromDeflateStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
-		value = value.ArgumentNotNull();
-
-		// Use TryFromBase64String instead of FromBase64String
-		var buffer = new byte[value.Length];
-
-		if (!Convert.TryFromBase64String(value, buffer, out var bytesWritten))
-		{
-			throw new FormatException(Resources.TheInputIsNotAValidBase64String);
-		}
-
-		var input = new MemoryStream(buffer, 0, bytesWritten);
+		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
+		var input = new MemoryStream(bytes);
 
 		await using (input.ConfigureAwait(false))
 		{
@@ -498,17 +478,8 @@ public static class StringExtensions
 	[Information(nameof(FromZLibStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static async Task<string> FromZLibStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
-		value = value.ArgumentNotNull();
-
-		// Use TryFromBase64String instead of FromBase64String
-		var buffer = new byte[value.Length];
-
-		if (!Convert.TryFromBase64String(value, buffer, out var bytesWritten))
-		{
-			throw new FormatException(Resources.TheInputIsNotAValidBase64String);
-		}
-
-		var input = new MemoryStream(buffer, 0, bytesWritten);
+		var bytes = Convert.FromBase64String(value.ArgumentNotNull());
+		var input = new MemoryStream(bytes);
 
 		await using (input.ConfigureAwait(false))
 		{
@@ -530,7 +501,6 @@ public static class StringExtensions
 			}
 		}
 	}
-
 
 	/// <summary>
 	/// Checks if the string has a value (is not null or whitespace).

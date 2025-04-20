@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -282,8 +282,5 @@
   </data>
   <data name="Zero" xml:space="preserve">
     <value>Zero</value>
-  </data>
-  <data name="TheInputIsNotAValidBase64String" xml:space="preserve">
-    <value>The input is not a valid Base64 string.</value>
   </data>
 </root>
