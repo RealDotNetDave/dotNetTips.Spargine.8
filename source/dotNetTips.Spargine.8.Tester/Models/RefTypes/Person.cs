@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-03-2025
+// Last Modified On : 04-21-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -190,6 +190,29 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 		: left.CompareTo(right) >= 0;
 
 	/// <summary>
+	/// Converts a <see cref="PersonRecord"/> to a <see cref="Person{TAddress}"/> instance.
+	/// </summary>
+	/// <param name="person">The <see cref="PersonRecord"/> to convert.</param>
+	/// <returns>A new instance of <see cref="Person{TAddress}"/> initialized with the values from the provided <see cref="PersonRecord"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
+	/// <remarks>
+	/// This operator allows explicit conversion from a <see cref="PersonRecord"/> to a <see cref="Person{TAddress}"/>.
+	/// </remarks>
+	[return: NotNull]
+	public static explicit operator Person<TAddress>(PersonRecord person)
+		=> ToPerson(person);
+
+	/// <summary>
+	/// Represents a person with various personal details and a collection of addresses.
+	/// This class is sealed to prevent inheritance, ensuring a consistent representation of a person across the application.
+	/// It implements IDataModel{Person{TAddress}, string} and <see cref="IPerson{TAddress}"/>,
+	/// indicating it can serve as a data model with a string identifier and has person-specific properties.
+	/// </summary>
+	[return: NotNull]
+	public static explicit operator Person<TAddress>(ValueTypes.Person<ValueTypes.Address> person)
+	=> ToPerson(person);
+
+	/// <summary>
 	/// Calculates the age of the person based on their birth date and the current UTC date.
 	/// </summary>
 	/// <returns>The age of the person as a <see cref="TimeSpan"/>.</returns>
@@ -262,11 +285,11 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <returns>DotNetTips.Spargine.Tester.Models.RefTypes.Person.</returns>
 	[return: NotNull]
 	[Information(nameof(ToPerson), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static Person<Address> ToPerson([NotNull] in ValueTypes.Person<ValueTypes.Address> person)
+	public static Person<TAddress> ToPerson([NotNull] in ValueTypes.Person<ValueTypes.Address> person)
 	{
 		_ = person.ArgumentNotNull();
 
-		Person<Address> newPerson = new()
+		Person<TAddress> newPerson = new()
 		{
 			Id = person.Id,
 			Email = person.Email,
@@ -281,7 +304,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 		{
 			foreach (var address in person.Addresses)
 			{
-				newPerson.Addresses.Add(Address.ToAddress(address));
+				newPerson.Addresses.Add((TAddress)(object)Address.ToAddress(address));
 			}
 		}
 
@@ -295,11 +318,11 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <returns>A new instance of <see cref="Person{TAddress}"/> based on the provided <see cref="PersonRecord"/>.</returns>
 	[return: NotNull]
 	[Information(nameof(ToPerson), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static Person<Address> ToPerson([NotNull] in PersonRecord person)
+	public static Person<TAddress> ToPerson([NotNull] in PersonRecord person)
 	{
 		_ = person.ArgumentNotNull();
 
-		Person<Address> newPerson = new(person.Email, person.Id)
+		Person<TAddress> newPerson = new(person.Email, person.Id)
 		{
 			FirstName = person.FirstName,
 			LastName = person.LastName,
@@ -312,7 +335,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 		{
 			foreach (var address in person.Addresses)
 			{
-				newPerson.Addresses.Add(Address.ToAddress(address));
+				newPerson.Addresses.Add((TAddress)(object)Address.ToAddress(address));
 			}
 		}
 

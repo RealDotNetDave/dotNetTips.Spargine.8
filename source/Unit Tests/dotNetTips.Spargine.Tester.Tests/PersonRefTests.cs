@@ -375,6 +375,12 @@ public class PersonRefTests
 	{
 		// Arrange
 		var person = new Person<Address>("test@example.com", "123");
+		person.BornOn = new DateTimeOffset(new DateTime(1990, 1, 1));
+		person.FirstName = "John";
+		person.LastName = "Doe";
+		person.CellPhone = "555-1234";
+		person.Phone = "555-5678";
+
 		var expectedString = person.PropertiesToString(includeMemberName: false);
 
 		// Act

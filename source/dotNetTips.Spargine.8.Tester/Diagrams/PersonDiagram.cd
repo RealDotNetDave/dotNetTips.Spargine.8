@@ -1,23 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="DotNetTips.Spargine.Tester.Models.RefTypes.Person&lt;TAddress&gt;">
-    <Position X="3.25" Y="1" Width="3.25" />
-    <Members>
-      <Property Name="AddressesSerilization" Hidden="true" />
-    </Members>
+    <Position X="3.25" Y="1.25" Width="4.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>CANCAEAAACAAAsQEgFHAAgAgAAgAgIAAAAAAIAQAByk=</HashCode>
+      <HashCode>AAPCAEAAACAAAsQEgFHAAgAgAAgAgIAAAAAAIAQABzk=</HashCode>
       <FileName>Models\RefTypes\Person.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DotNetTips.Spargine.Tester.Models.RefTypes.Address">
-    <Position X="7" Y="1" Width="3.25" />
+    <Position X="9.25" Y="1" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>ACACAAAAAAAAAAAMoEBECAABCAIAAIgQAAAApEACABA=</HashCode>
+      <HashCode>ACACAAAAAAAAAAQMoEDECgABCAIAAIgQAAAApEACBzA=</HashCode>
       <FileName>Models\RefTypes\Address.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
