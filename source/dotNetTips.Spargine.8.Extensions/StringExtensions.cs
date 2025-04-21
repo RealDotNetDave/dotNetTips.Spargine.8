@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-20-2025
+// Last Modified On : 04-21-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -1132,7 +1132,8 @@ public static class StringExtensions
 	/// <param name="base64String">The Base64 encoded string.</param>
 	/// <returns>The byte array representation of the Base64 encoded string.</returns>
 	/// <exception cref="FormatException">Thrown when the input string is not a valid Base64 string.</exception>
-	[Information(nameof(ToByteArrayFromBase64), "David McCarter", "4/20/2025", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.New)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ToByteArrayFromBase64), "David McCarter", "4/20/2025", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static byte[] ToByteArrayFromBase64(this string base64String)
 	{
 		base64String = base64String.ArgumentNotNull();
@@ -1146,6 +1147,7 @@ public static class StringExtensions
 
 		var result = new byte[bytesWritten];
 		Array.Copy(buffer, result, bytesWritten);
+
 		return result;
 	}
 

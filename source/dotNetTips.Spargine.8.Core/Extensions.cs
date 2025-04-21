@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-20-2025
+// Last Modified On : 04-21-2025
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -352,6 +352,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	/// <param name="base64String">The Base64 encoded string.</param>
 	/// <returns>The byte array representation of the Base64 encoded string.</returns>
 	/// <exception cref="FormatException">Thrown when the input string is not a valid Base64 string.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static byte[] ToByteArrayFromBase64(this string base64String)
 	{
 		base64String = base64String.ArgumentNotNull();
