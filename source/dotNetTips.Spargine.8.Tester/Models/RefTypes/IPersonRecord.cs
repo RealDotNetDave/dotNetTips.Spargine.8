@@ -19,6 +19,7 @@
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using DotNetTips.Spargine.Core;
 
 namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// <summary>
@@ -28,7 +29,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 /// This interface is designed to define the structure of a person record, including properties for addresses, phone numbers, email, and personal identifiers.
 /// It is intended to be implemented by classes or records that represent a person in various contexts, such as testing or benchmarking.
 /// </remarks>
-public interface IPersonRecord
+public interface IPersonRecord : IDataRecord
 {
 	/// <summary>
 	/// Gets or sets the collection of addresses for the person. This collection encapsulates all the addresses associated with the person,
