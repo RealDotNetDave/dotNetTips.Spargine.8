@@ -249,7 +249,7 @@ public static partial class RandomCreditCardNumberGenerator
 	/// However, these numbers are not valid for real transactions but can be used for testing validation and formatting routines.
 	/// </remarks>
 	[Information(nameof(GetCreditCardNumbers), UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static ReadOnlyCollection<string> GetCreditCardNumbers([Range(1, int.MaxValue)] int count)
+	public static ReadOnlyCollection<string> GetCreditCardNumbers([Range(1, int.MaxValue, ErrorMessage = "Range must be between 1 and 2,147,483,647")] int count)
 	{
 		count = count.ArgumentInRange(1);
 

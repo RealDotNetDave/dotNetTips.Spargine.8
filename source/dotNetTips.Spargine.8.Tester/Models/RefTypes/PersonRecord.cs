@@ -44,7 +44,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [Serializable]
 [XmlRoot(ElementName = "PersonRecord", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
-public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
+public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>, IPersonRecord
 {
 	/// <summary>
 	/// The addresses
@@ -271,7 +271,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	{
 		get => this._addresses;
 
-		set
+		init
 		{
 			var addressCollection = value;
 
@@ -297,7 +297,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	{
 		get => this._addresses;
 
-		set
+		init
 		{
 			var addressCollection = value;
 
@@ -564,7 +564,7 @@ public sealed record PersonRecord : IDataRecord, IComparable<PersonRecord>
 	public string Phone
 	{
 		get => this._phone;
-		set
+		init
 		{
 			if (string.Equals(this._phone, value, StringComparison.Ordinal))
 			{
