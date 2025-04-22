@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-21-2025
+// Last Modified On : 04-22-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -402,7 +402,7 @@ public static class StringExtensions
 	[Information(nameof(FromDeflateStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static async Task<string> FromDeflateStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
-		var bytes = value.ArgumentNotNull().ToByteArrayFromBase64();
+		var bytes = value.ToByteArrayFromBase64();
 
 		var input = new MemoryStream(bytes);
 
@@ -440,8 +440,6 @@ public static class StringExtensions
 	[Information(nameof(FromGZipStringAsync), "David McCarter", "10/24/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static async Task<string> FromGZipStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
-		value = value.ArgumentNotNullOrEmpty();
-
 		var bytes = value.ToByteArrayFromBase64();
 
 		var input = new MemoryStream(bytes);
@@ -479,7 +477,7 @@ public static class StringExtensions
 	[Information(nameof(FromZLibStringAsync), "David McCarter", "9/12/2022", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Benchmark, Status = Status.Available)]
 	public static async Task<string> FromZLibStringAsync(this string value, CancellationToken cancellationToken = default)
 	{
-		var bytes = value.ArgumentNotNull().ToByteArrayFromBase64();
+		var bytes = value.ToByteArrayFromBase64();
 
 		var input = new MemoryStream(bytes);
 
@@ -1136,19 +1134,19 @@ public static class StringExtensions
 	[Information(nameof(ToByteArrayFromBase64), "David McCarter", "4/20/2025", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
 	public static byte[] ToByteArrayFromBase64(this string base64String)
 	{
-		base64String = base64String.ArgumentNotNull();
+		if (string.IsNullOrEmpty(base64String))
+		{
+			return [];
+		}
 
-		var buffer = new byte[base64String.Length];
+		var buffer = new Span<byte>(new byte[base64String.CalculateByteArraySize()]);
 
 		if (!Convert.TryFromBase64String(base64String, buffer, out var bytesWritten))
 		{
 			throw new FormatException(Resources.TheInputStringIsNotAValidBase64String);
 		}
 
-		var result = new byte[bytesWritten];
-		Array.Copy(buffer, result, bytesWritten);
-
-		return result;
+		return buffer.Slice(0, bytesWritten).ToArray();
 	}
 
 	/// <summary>

@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-21-2025
+// Last Modified On : 04-22-2025
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -355,18 +355,19 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static byte[] ToByteArrayFromBase64(this string base64String)
 	{
-		base64String = base64String.ArgumentNotNull();
+		if (string.IsNullOrEmpty(base64String))
+		{
+			return [];
+		}
 
-		var buffer = new byte[base64String.Length];
+		var buffer = new Span<byte>(new byte[base64String.CalculateByteArraySize()]);
 
 		if (!Convert.TryFromBase64String(base64String, buffer, out var bytesWritten))
 		{
 			throw new FormatException(Resources.TheInputStringIsNotAValidBase64String);
 		}
 
-		var result = new byte[bytesWritten];
-		Array.Copy(buffer, result, bytesWritten);
-		return result;
+		return buffer.Slice(0, bytesWritten).ToArray();
 	}
 
 	/// <summary>
