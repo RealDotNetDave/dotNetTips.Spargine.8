@@ -201,6 +201,15 @@ public struct Address : IAddress, IEquatable<Address>
 	/// <returns>The result of the operator.</returns>
 	[Information(">=", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool operator >=(Address left, Address right) => left.CompareTo(right) >= 0;
+	/// <summary>
+	/// Explicitly converts an <see cref="AddressRecord"/> to a <see cref="Address"/>.
+	/// </summary>
+	/// <param name="address">The <see cref="AddressRecord"/> instance to convert.</param>
+	/// <returns>A <see cref="Address"/> instance corresponding to the provided <see cref="AddressRecord"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
+	[return: NotNull]
+	public static explicit operator Address(AddressRecord address)
+		=> ToAddress(address);
 
 	/// <summary>
 	/// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.

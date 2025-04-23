@@ -150,6 +150,26 @@ public sealed record AddressRecord : IDataRecord
 	}
 
 	/// <summary>
+	/// Explicitly converts an <see cref="Address"/> to an <see cref="AddressRecord"/>.
+	/// </summary>
+	/// <param name="address">The <see cref="Address"/> instance to convert.</param>
+	/// <returns>An <see cref="AddressRecord"/> instance corresponding to the provided <see cref="Address"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
+	[return: NotNull]
+	public static explicit operator AddressRecord(Address address)
+		=> ToAddress(address);
+
+	/// <summary>
+	/// Explicitly converts a <see cref="ValueTypes.Address"/> to an <see cref="AddressRecord"/>.
+	/// </summary>
+	/// <param name="address">The <see cref="ValueTypes.Address"/> instance to convert.</param>
+	/// <returns>An <see cref="AddressRecord"/> instance corresponding to the provided <see cref="ValueTypes.Address"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
+	[return: NotNull]
+	public static explicit operator AddressRecord(ValueTypes.Address address)
+		=> ToAddress(address);
+
+	/// <summary>
 	/// Converts an <see cref="Address"/> object to an <see cref="AddressRecord"/> object.
 	/// </summary>
 	/// <param name="address">The address object to convert.</param>

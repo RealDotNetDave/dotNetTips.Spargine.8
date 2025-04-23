@@ -207,6 +207,25 @@ public sealed class Address : IAddress
 	public static bool operator >=(Address left, Address right) => left is null
 		? right is null
 		: left.CompareTo(right) >= 0;
+	/// <summary>
+	/// Explicitly converts an <see cref="AddressRecord"/> to an <see cref="Address"/>.
+	/// </summary>
+	/// <param name="address">The <see cref="AddressRecord"/> instance to convert.</param>
+	/// <returns>An <see cref="Address"/> instance corresponding to the provided <see cref="AddressRecord"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
+	[return: NotNull]
+	public static explicit operator Address(AddressRecord address)
+		=> ToAddress(address);
+
+	/// <summary>
+	/// Explicitly converts a <see cref="ValueTypes.Address"/> to an <see cref="Address"/>.
+	/// </summary>
+	/// <param name="address">The <see cref="ValueTypes.Address"/> instance to convert.</param>
+	/// <returns>An <see cref="Address"/> instance corresponding to the provided <see cref="ValueTypes.Address"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
+	[return: NotNull]
+	public static explicit operator Address(ValueTypes.Address address)
+		=> ToAddress(address);
 
 	/// <summary>
 	/// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.

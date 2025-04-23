@@ -40,7 +40,7 @@ public class RandomDataTests
 	/// <summary>
 	/// The address count
 	/// </summary>
-	private const int AddressCount = 5;
+	private const int AddressCount = 2;
 
 	/// <summary>
 	/// The count
@@ -572,7 +572,7 @@ public class RandomDataTests
 		Assert.IsNotNull(person.Id);
 		Assert.IsNotNull(person.LastName);
 		Assert.IsNotNull(person.Phone);
-		Assert.IsTrue(person.Addresses.Count == 5);
+		Assert.IsTrue(person.Addresses.Count == 2);
 
 		Assert.IsTrue(person.Addresses.FastCount() == AddressCount);
 

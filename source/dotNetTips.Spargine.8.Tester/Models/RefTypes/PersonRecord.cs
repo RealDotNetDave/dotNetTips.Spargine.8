@@ -167,6 +167,26 @@ public sealed record PersonRecord : IComparable<PersonRecord>, IPersonRecord
 		: left.CompareTo(right) >= 0;
 
 	/// <summary>
+	/// Explicitly converts a <see cref="ValueTypes.Person{TAddress}"/> to a <see cref="PersonRecord"/>.
+	/// </summary>
+	/// <param name="person">The <see cref="ValueTypes.Person{TAddress}"/> instance to convert.</param>
+	/// <returns>A new <see cref="PersonRecord"/> instance representing the converted person.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
+	[return: NotNull]
+	public static explicit operator PersonRecord(ValueTypes.Person<ValueTypes.Address> person)
+		=> ToPersonRecord(person);
+
+	/// <summary>
+	/// Explicitly converts a <see cref="Person{Address}"/> to a <see cref="PersonRecord"/>.
+	/// </summary>
+	/// <param name="person">The <see cref="Person{Address}"/> instance to convert.</param>
+	/// <returns>A new <see cref="PersonRecord"/> instance representing the converted person.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
+	[return: NotNull]
+	public static explicit operator PersonRecord(Person<Address> person)
+		=> ToPersonRecord(person);
+
+	/// <summary>
 	/// Calculates the age of the person based on their birth date and the current UTC date.
 	/// </summary>
 	/// <returns>The age of the person as a <see cref="TimeSpan"/>.</returns>

@@ -189,28 +189,26 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 		? right is null
 		: left.CompareTo(right) >= 0;
 
+
 	/// <summary>
-	/// Converts a <see cref="PersonRecord"/> to a <see cref="Person{TAddress}"/> instance.
+	/// Explicitly converts a <see cref="PersonRecord"/> to a <see cref="Person{TAddress}"/>.
 	/// </summary>
-	/// <param name="person">The <see cref="PersonRecord"/> to convert.</param>
-	/// <returns>A new instance of <see cref="Person{TAddress}"/> initialized with the values from the provided <see cref="PersonRecord"/>.</returns>
+	/// <param name="person">The <see cref="PersonRecord"/> instance to convert.</param>
+	/// <returns>A new <see cref="Person{TAddress}"/> instance representing the converted person.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
-	/// <remarks>
-	/// This operator allows explicit conversion from a <see cref="PersonRecord"/> to a <see cref="Person{TAddress}"/>.
-	/// </remarks>
 	[return: NotNull]
 	public static explicit operator Person<TAddress>(PersonRecord person)
 		=> ToPerson(person);
 
-	/// <summary>
-	/// Represents a person with various personal details and a collection of addresses.
-	/// This class is sealed to prevent inheritance, ensuring a consistent representation of a person across the application.
-	/// It implements IDataModel{Person{TAddress}, string} and <see cref="IPerson{TAddress}"/>,
-	/// indicating it can serve as a data model with a string identifier and has person-specific properties.
+	///<summary>
+	/// Explicitly converts a <see cref="ValueTypes.Person{TAddress}"/> to a <see cref="Person{TAddress}"/>.
 	/// </summary>
+	/// <param name="person">The <see cref="ValueTypes.Person{TAddress}"/> instance to convert.</param>
+	/// <returns>A new <see cref="Person{TAddress}"/> instance representing the converted person.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
 	[return: NotNull]
 	public static explicit operator Person<TAddress>(ValueTypes.Person<ValueTypes.Address> person)
-	=> ToPerson(person);
+		=> ToPerson(person);
 
 	/// <summary>
 	/// Calculates the age of the person based on their birth date and the current UTC date.
