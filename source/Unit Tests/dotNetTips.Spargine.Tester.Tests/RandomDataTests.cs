@@ -40,7 +40,7 @@ public class RandomDataTests
 	/// <summary>
 	/// The address count
 	/// </summary>
-	private const int AddressCount = 2;
+	private const int AddressCount = 5;
 
 	/// <summary>
 	/// The count
@@ -144,18 +144,7 @@ public class RandomDataTests
 	}
 
 	[TestMethod]
-	public void Deserialize_JsonSerilizerContext_Person_Collection_Test()
-	{
-		var json = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToJson();
-
-		var result = JsonSerializer.Deserialize(json, PersonJsonSerializerContext.Default.PersonList);
-
-		Assert.IsNotNull(result);
-		Assert.IsTrue(result.Count == Count);
-	}
-
-	[TestMethod]
-	public void Deserialize_JsonSerilizerContext_PersonProper_Ref_Test()
+	public void Deserialize_JsonJsonSerializerContext_PersonProper_Ref_Test()
 	{
 		var json = RandomData.GeneratePersonRef<Models.RefTypes.Address>().ToJson();
 
@@ -169,9 +158,20 @@ public class RandomDataTests
 	}
 
 	[TestMethod]
-	public void Deserialize_JsonSerilizerContext_PersonRecord_Collection_Test()
+	public void Deserialize_JsonSerializerContext_Person_Collection_Test()
 	{
 		var json = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToJson();
+
+		var result = JsonSerializer.Deserialize(json, PersonJsonSerializerContext.Default.PersonList);
+
+		Assert.IsNotNull(result);
+		Assert.IsTrue(result.Count == Count);
+	}
+
+	[TestMethod]
+	public void Deserialize_JsonSerializerContext_PersonRecord_Collection_Test()
+	{
+		var json = RandomData.GeneratePersonRecordCollection(Count).ToJson();
 
 		var result = JsonSerializer.Deserialize(json, PersonJsonSerializerContext.Default.PersonRecordList);
 
@@ -180,7 +180,7 @@ public class RandomDataTests
 	}
 
 	[TestMethod]
-	public void Deserialize_JsonSerilizerContext_PersonVal_Collection_Test()
+	public void Deserialize_JsonSerializerContext_PersonVal_Collection_Test()
 	{
 		var json = RandomData.GeneratePersonRefCollection<Models.RefTypes.Address>(Count).ToJson();
 
@@ -563,7 +563,7 @@ public class RandomDataTests
 
 		Assert.IsNotNull(person);
 		Assert.IsNotNull(person.Addresses);
-		Assert.IsNotNull(person.AddressesSerilization);
+		Assert.IsNotNull(person.AddressesSerialization);
 		Assert.IsNotNull(person.BornOn);
 		Assert.IsNotNull(person.CellPhone);
 		Assert.IsNotNull(person.Email);
@@ -572,7 +572,6 @@ public class RandomDataTests
 		Assert.IsNotNull(person.Id);
 		Assert.IsNotNull(person.LastName);
 		Assert.IsNotNull(person.Phone);
-		Assert.IsTrue(person.Addresses.Count == 2);
 
 		Assert.IsTrue(person.Addresses.FastCount() == AddressCount);
 

@@ -130,7 +130,7 @@ public static class SHA256PasswordHasher
 	/// var result = SHA256PasswordHasher.VerifyHashedPassword(hashedPassword, password);
 	/// Console.WriteLine(result == PasswordVerificationResult.Success ? "Password verified" : "Password verification failed");
 	/// </code></example>
-	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.CheckPerformance, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(VerifyHashedPassword), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static PasswordVerificationResult VerifyHashedPassword(string hashedPassword, [NotNull] in string password)
 	{
 		if (string.IsNullOrEmpty(hashedPassword))

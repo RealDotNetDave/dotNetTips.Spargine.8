@@ -44,7 +44,7 @@ namespace DotNetTips.Spargine.Tester.Models.RefTypes;
 [Serializable]
 [XmlRoot(ElementName = "PersonRecord", Namespace = "http://DotNetTips.Spargine.Tester.Models.Ref")]
 [Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineTester")]
-public sealed record PersonRecord : IComparable<PersonRecord>, IPersonRecord
+public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 {
 	/// <summary>
 	/// The addresses
@@ -312,12 +312,12 @@ public sealed record PersonRecord : IComparable<PersonRecord>, IPersonRecord
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[JsonIgnore]
 	[XmlArray("Addresses")]
-	[Information(nameof(AddressesSerilization), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public Collection<AddressRecord> AddressesSerilization
+	[Information(nameof(AddressesSerialization), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public Collection<AddressRecord> AddressesSerialization
 	{
 		get => this._addresses;
 
-		init
+		set
 		{
 			var addressCollection = value;
 

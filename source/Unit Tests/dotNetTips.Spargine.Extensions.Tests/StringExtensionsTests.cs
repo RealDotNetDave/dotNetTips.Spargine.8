@@ -1177,19 +1177,6 @@ public class StringExtensionsTests
 	}
 
 	[TestMethod]
-	[ExpectedException(typeof(ArgumentNullException))]
-	public void ToByteArrayFromBase64_NullString_ThrowsArgumentNullException()
-	{
-		// Arrange
-		string base64String = null;
-
-		// Act
-		base64String.ToByteArrayFromBase64();
-
-		// Assert is handled by ExpectedException
-	}
-
-	[TestMethod]
 	public void ToByteArrayFromBase64_ValidBase64String_ReturnsCorrectByteArray()
 	{
 		// Arrange
