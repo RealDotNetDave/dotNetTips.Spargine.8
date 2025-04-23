@@ -172,6 +172,24 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	public static bool operator >=(Person<TAddress> left, Person<TAddress> right) => left.CompareTo(right) >= 0;
 
 	/// <summary>
+	/// Explicitly converts a <see cref="PersonRecord"/> to a <see cref="Person{TAddress}"/>.
+	/// </summary>
+	/// <param name="personRecord">The <see cref="PersonRecord"/> to convert.</param>
+	/// <returns>A <see cref="Person{TAddress}"/> instance corresponding to the provided <see cref="PersonRecord"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="personRecord"/> is null.</exception>
+	public static explicit operator Person<TAddress>(PersonRecord personRecord)
+		=> ToPerson(personRecord);
+
+	/// <summary>
+	/// Explicitly converts a <see cref="RefTypes.Person{Address}"/> to a <see cref="Person{TAddress}"/>.
+	/// </summary>
+	/// <param name="refPerson">The <see cref="RefTypes.Person{Address}"/> to convert.</param>
+	/// <returns>A <see cref="Person{TAddress}"/> instance corresponding to the provided <see cref="RefTypes.Person{Address}"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="refPerson"/> is null.</exception>
+	public static explicit operator Person<TAddress>(RefTypes.Person<RefTypes.Address> refPerson)
+		=> ToPerson(refPerson);
+
+	/// <summary>
 	/// Calculates the age of the person based on their birth date and the current UTC date.
 	/// </summary>
 	/// <returns>The age of the person as a <see cref="TimeSpan"/>.</returns>
@@ -233,6 +251,69 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
 	[Information(nameof(GetHashCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public override readonly int GetHashCode() => HashCode.Combine(this.Id, this.Email, this.FirstName, this.LastName);
+
+	/// <summary>
+	/// Converts a <see cref="PersonRecord"/> to a <see cref="Person{TAddress}"/>.
+	/// </summary>
+	/// <param name="person">The <see cref="PersonRecord"/> to convert.</param>
+	/// <returns>A new instance of <see cref="Person{TAddress}"/> based on the provided <see cref="PersonRecord"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
+	[return: NotNull]
+	public static Person<TAddress> ToPerson([NotNull] in PersonRecord person)
+	{
+		_ = person.ArgumentNotNull();
+
+		Person<TAddress> newPerson = new(person.Email, person.Id)
+		{
+			FirstName = person.FirstName,
+			LastName = person.LastName,
+			BornOn = person.BornOn,
+			CellPhone = person.CellPhone,
+			Phone = person.Phone,
+		};
+
+		if (person.Addresses.HasItems())
+		{
+			foreach (var address in person.Addresses)
+			{
+				newPerson.Addresses.Add((TAddress)(object)Address.ToAddress(address));
+			}
+		}
+
+		return newPerson;
+	}
+
+	/// <summary>
+	/// Converts a <see cref="RefTypes.Person{Address}"/> to a <see cref="Person{TAddress}"/>.
+	/// </summary>
+	/// <param name="person">The <see cref="RefTypes.Person{Address}"/> to convert.</param>
+	/// <returns>A new instance of <see cref="Person{TAddress}"/> based on the provided <see cref="RefTypes.Person{Address}"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="person"/> is null.</exception>
+	[return: NotNull]
+	public static Person<TAddress> ToPerson([NotNull] in RefTypes.Person<RefTypes.Address> person)
+	{
+		// Fix: Renamed the local variable to avoid conflict with the parameter name.
+		_ = person.ArgumentNotNull();
+
+		var newPerson = new Person<TAddress>(person.Email, person.Id)
+		{
+			FirstName = person.FirstName,
+			LastName = person.LastName,
+			BornOn = person.BornOn,
+			CellPhone = person.CellPhone,
+			Phone = person.Phone
+		};
+
+		if (person.Addresses.HasItems())
+		{
+			foreach (var address in person.Addresses)
+			{
+				newPerson.Addresses.Add((TAddress)(object)Address.ToAddress(address));
+			}
+		}
+
+		return newPerson;
+	}
 
 	/// <summary>
 	/// Returns a <see cref="string"/> that represents this instance.

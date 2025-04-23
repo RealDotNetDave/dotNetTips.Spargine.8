@@ -4,7 +4,7 @@
 // Created          : 12-04-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 04-23-2025
 // ***********************************************************************
 // <copyright file="Address.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -212,6 +212,15 @@ public struct Address : IAddress, IEquatable<Address>
 		=> ToAddress(address);
 
 	/// <summary>
+	/// Explicitly converts a <see cref="RefTypes.Address"/> to a <see cref="Address"/>.
+	/// </summary>
+	/// <param name="address">The <see cref="RefTypes.Address"/> instance to convert.</param>
+	/// <returns>A <see cref="Address"/> instance corresponding to the provided <see cref="RefTypes.Address"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
+	public static explicit operator Address(RefTypes.Address address)
+		=> ToAddress(address);
+
+	/// <summary>
 	/// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
 	/// </summary>
 	/// <param name="other">An object to compare with this instance.</param>
@@ -291,6 +300,29 @@ public struct Address : IAddress, IEquatable<Address>
 			Phone = address.Phone,
 			PostalCode = address.PostalCode,
 			State = address.State,
+		};
+	}
+
+	/// <summary>
+	/// Converts a <see cref="RefTypes.Address"/> to a <see cref="Address"/>.
+	/// </summary>
+	/// <param name="address">The <see cref="RefTypes.Address"/> instance to convert.</param>
+	/// <returns>A <see cref="Address"/> instance corresponding to the provided <see cref="RefTypes.Address"/>.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="address"/> is null.</exception>
+	public static Address ToAddress([NotNull] RefTypes.Address address)
+	{
+		_ = address.ArgumentNotNull();
+
+		return new Address(address.Id)
+		{
+			Address1 = address.Address1,
+			Address2 = address.Address2,
+			City = address.City,
+			State = address.State,
+			CountyProvince = address.CountyProvince,
+			Country = address.Country,
+			PostalCode = address.PostalCode,
+			Phone = address.Phone
 		};
 	}
 
