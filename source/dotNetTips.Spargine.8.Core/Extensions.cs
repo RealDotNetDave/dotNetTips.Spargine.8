@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-22-2025
+// Last Modified On : 04-24-2025
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -367,7 +367,7 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 			throw new FormatException(Resources.TheInputStringIsNotAValidBase64String);
 		}
 
-		return buffer.Slice(0, bytesWritten).ToArray();
+		return buffer[..bytesWritten].ToArray();
 	}
 
 	/// <summary>

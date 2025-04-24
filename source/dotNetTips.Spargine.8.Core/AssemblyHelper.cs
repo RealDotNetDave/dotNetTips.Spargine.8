@@ -4,7 +4,7 @@
 // Created          : 04-09-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-20-2025
+// Last Modified On : 04-24-2025
 // ***********************************************************************
 // <copyright file="AssemblyHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -114,7 +114,7 @@ public static class AssemblyHelper
 		}
 		catch (ReflectionTypeLoadException ex)
 		{
-			// Handle partial type loading and check loaded types
+			// Handle partial type loading and check loaded assemblyTypes
 			Trace.WriteLine($"Error loading types from assembly '{assemblyFile.FullName}': {ex.Message}");
 			return ex.Types
 				.Where(type => type != null)
@@ -156,24 +156,24 @@ public static class AssemblyHelper
 	}
 
 	/// <summary>
-	/// Finds all types in the specified assembly file that implement or inherit from any of the specified types.
+	/// Finds all assemblyTypes in the specified assembly file that implement or inherit from any of the specified assemblyTypes.
 	/// </summary>
 	/// <param name="file">The <see cref="FileInfo"/> representing the assembly file to search.</param>
-	/// <param name="typeNames">An array of <see cref="Type"/> objects to check for implementation or inheritance.</param>
-	/// <returns>A read-only collection of <see cref="Type"/> objects that implement or inherit from the specified types.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="typeNames"/> is null.</exception>
+	/// <param name="types">An array of <see cref="Type"/> objects to check for implementation or inheritance.</param>
+	/// <returns>A read-only collection of <see cref="Type"/> objects that implement or inherit from the specified assemblyTypes.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="types"/> is null.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
 	[Information(nameof(FindTypesImplementing), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
-	public static ReadOnlyCollection<Type> FindTypesImplementing([NotNull] this FileInfo file, params Type[] typeNames)
+	public static ReadOnlyCollection<Type> FindTypesImplementing([NotNull] this FileInfo file, params Type[] types)
 	{
 		file = file.ArgumentNotNull();
-		typeNames = typeNames.ArgumentNotNull();
+		types = types.ArgumentNotNull();
 
-		//Load all types
-		var types = LoadAssemblyTypes(file);
+		//Load all assemblyTypes
+		var assemblyTypes = GetAssemblyTypes(file);
 
-		var matchingTypes = types
-			  .Where(type => typeNames.Any(targetType => targetType.IsAssignableFrom(type) && type != targetType))
+		var matchingTypes = assemblyTypes
+			  .Where(type => types.Any(targetType => targetType.IsAssignableFrom(type) && type != targetType))
 			  .ToList();
 
 		return new ReadOnlyCollection<Type>(matchingTypes);
@@ -285,6 +285,84 @@ public static class AssemblyHelper
 	}
 
 	/// <summary>
+	/// Retrieves all public assemblyTypes from the specified assembly.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <returns>A read-only collection of public <see cref="Type"/> objects.</returns>
+	[Information(nameof(GetAssemblyPublicTypes), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static ReadOnlyCollection<Type> GetAssemblyPublicTypes(FileInfo assemblyFile)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+
+		// Ensure the file is a valid .NET assembly before loading
+		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
+		{
+			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
+			return new ReadOnlyCollection<Type>(Array.Empty<Type>());
+		}
+
+		try
+		{
+			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+			var publicTypes = assembly.GetTypes().Where(type => type.IsPublic).ToList();
+
+			return new ReadOnlyCollection<Type>(publicTypes);
+		}
+		catch (ReflectionTypeLoadException ex)
+		{
+			// Handle partial type loading and return only successfully loaded public assemblyTypes
+			Trace.WriteLine($"Error loading types from assembly '{assemblyFile.FullName}': {ex.Message}");
+			var publicTypes = ex.Types
+				.Where(type => type != null && type.IsPublic)
+				.Select(type => type!)
+				.ToList();
+
+			return new ReadOnlyCollection<Type>(publicTypes);
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error retrieving public types from assembly '{assemblyFile.FullName}': {ex.Message}");
+			return new ReadOnlyCollection<Type>(Array.Empty<Type>());
+		}
+	}
+
+	/// <summary>
+	/// Loads the assembly from the specified file and extracts all assemblyTypes within it.
+	/// </summary>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file to load.</param>
+	/// <returns>A collection of <see cref="Type"/> objects representing all assemblyTypes in the assembly.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
+	[Information(nameof(GetAssemblyTypes), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	public static ReadOnlyCollection<Type> GetAssemblyTypes(FileInfo assemblyFile)
+	{
+		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
+
+		if (!_assemblyTypeCache.TryGetValue(assemblyFile.FullName, out ReadOnlyCollection<Type>? cachedTypes))
+		{
+			try
+			{
+				var assembly = Assembly.LoadFrom(assemblyFile.FullName);
+				var types = assembly.GetTypes().ToList().AsReadOnly();
+
+				// Add to cache with a sliding expiration of 30 minutes
+				_ = _assemblyTypeCache.Set(assemblyFile.FullName, types, new MemoryCacheEntryOptions
+				{
+					SlidingExpiration = TimeSpan.FromMinutes(30)
+				});
+
+				return types;
+			}
+			catch (Exception ex) //Write out all exceptions
+			{
+				Trace.WriteLine($"Error loading assembly types: {ex.Message}");
+				return new ReadOnlyCollection<Type>(Array.Empty<Type>());
+			}
+		}
+
+		return cachedTypes!;
+	}
+
+	/// <summary>
 	/// Retrieves all assemblies that the specified assembly depends on.
 	/// </summary>
 	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
@@ -304,7 +382,7 @@ public static class AssemblyHelper
 			return new ReadOnlyCollection<AssemblyName>(Array.Empty<AssemblyName>());
 		}
 
-#pragma warning disable CA1031 // Do not catch general exception types
+#pragma warning disable CA1031 // Do not catch general exception assemblyTypes
 		try
 		{
 			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
@@ -317,7 +395,7 @@ public static class AssemblyHelper
 			Trace.WriteLine($"Error retrieving dependent assemblies from '{assemblyFile.FullName}': {ex.Message}");
 			return new ReadOnlyCollection<AssemblyName>(Array.Empty<AssemblyName>());
 		}
-#pragma warning restore CA1031 // Do not catch general exception types
+#pragma warning restore CA1031 // Do not catch general exception assemblyTypes
 	}
 
 	/// <summary>
@@ -423,84 +501,6 @@ public static class AssemblyHelper
 			.ToList();
 
 		return new ReadOnlyCollection<FileInfo>(dllFiles);
-	}
-
-	/// <summary>
-	/// Retrieves all public types from the specified assembly.
-	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
-	/// <returns>A read-only collection of public <see cref="Type"/> objects.</returns>
-	[Information(nameof(GetPublicTypes), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
-	public static ReadOnlyCollection<Type> GetPublicTypes(FileInfo assemblyFile)
-	{
-		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
-
-		// Ensure the file is a valid .NET assembly before loading
-		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
-		{
-			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
-			return new ReadOnlyCollection<Type>(Array.Empty<Type>());
-		}
-
-		try
-		{
-			var assembly = Assembly.LoadFrom(assemblyFile.FullName);
-			var publicTypes = assembly.GetTypes().Where(type => type.IsPublic).ToList();
-
-			return new ReadOnlyCollection<Type>(publicTypes);
-		}
-		catch (ReflectionTypeLoadException ex)
-		{
-			// Handle partial type loading and return only successfully loaded public types
-			Trace.WriteLine($"Error loading types from assembly '{assemblyFile.FullName}': {ex.Message}");
-			var publicTypes = ex.Types
-				.Where(type => type != null && type.IsPublic)
-				.Select(type => type!)
-				.ToList();
-
-			return new ReadOnlyCollection<Type>(publicTypes);
-		}
-		catch (Exception ex)
-		{
-			Trace.WriteLine($"Error retrieving public types from assembly '{assemblyFile.FullName}': {ex.Message}");
-			return new ReadOnlyCollection<Type>(Array.Empty<Type>());
-		}
-	}
-
-	/// <summary>
-	/// Loads the assembly from the specified file and extracts all types within it.
-	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file to load.</param>
-	/// <returns>A collection of <see cref="Type"/> objects representing all types in the assembly.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
-	[Information(nameof(LoadAssemblyTypes), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
-	public static ReadOnlyCollection<Type> LoadAssemblyTypes(FileInfo assemblyFile)
-	{
-		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
-
-		if (!_assemblyTypeCache.TryGetValue(assemblyFile.FullName, out ReadOnlyCollection<Type>? cachedTypes))
-		{
-			try
-			{
-				var assembly = Assembly.LoadFrom(assemblyFile.FullName);
-				var types = assembly.GetTypes().ToList().AsReadOnly();
-
-				// Add to cache with a sliding expiration of 30 minutes
-				_ = _assemblyTypeCache.Set(assemblyFile.FullName, types, new MemoryCacheEntryOptions
-				{
-					SlidingExpiration = TimeSpan.FromMinutes(30)
-				});
-
-				return types;
-			}
-			catch (Exception ex) //Write out all exceptions
-			{
-				Trace.WriteLine($"Error loading assembly types: {ex.Message}");
-				return new ReadOnlyCollection<Type>(Array.Empty<Type>());
-			}
-		}
-
-		return cachedTypes!;
 	}
 
 	/// <summary>

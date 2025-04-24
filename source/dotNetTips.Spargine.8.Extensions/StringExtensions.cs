@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-22-2025
+// Last Modified On : 04-24-2025
 // ***********************************************************************
 // <copyright file="StringExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -1146,7 +1146,7 @@ public static class StringExtensions
 			throw new FormatException(Resources.TheInputStringIsNotAValidBase64String);
 		}
 
-		return buffer.Slice(0, bytesWritten).ToArray();
+		return buffer[..bytesWritten].ToArray();
 	}
 
 	/// <summary>

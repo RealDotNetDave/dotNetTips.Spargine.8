@@ -4,7 +4,7 @@
 // Created          : 04-09-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-12-2025
+// Last Modified On : 04-24-2025
 // ***********************************************************************
 // <copyright file="AssemblyHelperUnitTester.cs" company="DotNetTips.Spargine.Core.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -514,7 +514,7 @@ public class AssemblyHelperUnitTester : UnitTester
 		var assemblyFile = new FileInfo(typeof(object).Assembly.Location); // mscorlib or System.Private.CoreLib
 
 		// Act
-		var publicTypes = AssemblyHelper.GetPublicTypes(assemblyFile);
+		var publicTypes = AssemblyHelper.GetAssemblyPublicTypes(assemblyFile);
 
 		// Assert
 		Assert.IsNotNull(publicTypes, "Expected a non-null collection of public types.");
@@ -529,7 +529,7 @@ public class AssemblyHelperUnitTester : UnitTester
 		var invalidAssemblyFile = new FileInfo("NonExistentAssembly.dll");
 
 		// Act
-		var publicTypes = AssemblyHelper.GetPublicTypes(invalidAssemblyFile);
+		var publicTypes = AssemblyHelper.GetAssemblyPublicTypes(invalidAssemblyFile);
 
 		// Assert
 		Assert.IsNotNull(publicTypes, "Expected a non-null collection of public types.");
@@ -541,7 +541,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void GetPublicTypes_NullAssemblyFile_ThrowsArgumentNullException()
 	{
 		// Act
-		_ = AssemblyHelper.GetPublicTypes(null!);
+		_ = AssemblyHelper.GetAssemblyPublicTypes(null!);
 	}
 
 	[TestMethod]
@@ -551,7 +551,7 @@ public class AssemblyHelperUnitTester : UnitTester
 		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 
 		// Act
-		var publicTypes = AssemblyHelper.GetPublicTypes(assemblyFile);
+		var publicTypes = AssemblyHelper.GetAssemblyPublicTypes(assemblyFile);
 
 		// Assert
 		Assert.IsNotNull(publicTypes, "Expected a non-null collection of public types.");
@@ -565,7 +565,7 @@ public class AssemblyHelperUnitTester : UnitTester
 		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 
 		// Act
-		var publicTypes = AssemblyHelper.GetPublicTypes(assemblyFile);
+		var publicTypes = AssemblyHelper.GetAssemblyPublicTypes(assemblyFile);
 
 		this.PrintToDebug<Type>(publicTypes, prop => prop.Name == "Name");
 
@@ -665,7 +665,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void LoadAssemblyTypes_NullFile_ThrowsArgumentNullException()
 	{
 		// Act
-		_ = AssemblyHelper.LoadAssemblyTypes(null!);
+		_ = AssemblyHelper.GetAssemblyTypes(null!);
 	}
 
 	[TestMethod]
@@ -675,9 +675,9 @@ public class AssemblyHelperUnitTester : UnitTester
 		var assemblyFile = new FileInfo(typeof(AssemblyHelper).Assembly.Location);
 
 		// Act
-		var result = AssemblyHelper.LoadAssemblyTypes(assemblyFile);
+		var result = AssemblyHelper.GetAssemblyTypes(assemblyFile);
 
-		this.SaveToFile<Type>(result, prop => prop.Name == "Name", nameof(AssemblyHelper.LoadAssemblyTypes));
+		this.SaveToFile<Type>(result, prop => prop.Name == "Name", nameof(AssemblyHelper.GetAssemblyTypes));
 
 		// Assert
 		Assert.IsNotNull(result);

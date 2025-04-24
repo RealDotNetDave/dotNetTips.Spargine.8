@@ -4,12 +4,16 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-12-2025
+// Last Modified On : 04-24-2025
 // ***********************************************************************
 // <copyright file="UnitTester.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary></summary>
+// <summary>
+// The UnitTester class is an abstract base class designed to
+// facilitate unit testing by providing utility methods for debugging
+// and saving object properties.
+// </summary>
 // ***********************************************************************
 using System.Diagnostics;
 using System.Reflection;
