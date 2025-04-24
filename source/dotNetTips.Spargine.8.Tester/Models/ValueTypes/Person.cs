@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-23-2025
+// Last Modified On : 04-24-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -348,14 +348,15 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	}
 
 	/// <summary>
-	/// Gets or sets the addresses for XML serilization only.
+	/// Gets or sets the addresses for XML serialization only.
 	/// </summary>
-	/// <value>The addresses serilization.</value>
+	/// <value>The addresses serialization.</value>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	[XmlArray("Addresses")]
 	[JsonIgnore]
-	[Information(nameof(AddressesSerilization), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public Collection<TAddress> AddressesSerilization
+	[XmlArray("Addresses")]
+	[Preserve(PreserveReason.Other, "Preserve for XML serialization.", "4/24/2005", "David McCarter")]
+	[Information(nameof(AddressesSerialization), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public Collection<TAddress> AddressesSerialization
 	{
 		readonly get => this._addresses;
 

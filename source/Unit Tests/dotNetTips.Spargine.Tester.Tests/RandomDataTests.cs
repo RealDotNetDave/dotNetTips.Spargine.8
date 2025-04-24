@@ -599,7 +599,7 @@ public class RandomDataTests
 
 		Assert.IsNotNull(person);
 		Assert.IsNotNull(person.Addresses);
-		Assert.IsNotNull(person.AddressesSerilization);
+		Assert.IsNotNull(person.AddressesSerialization);
 		Assert.IsNotNull(person.BornOn);
 		Assert.IsNotNull(person.CellPhone);
 		Assert.IsNotNull(person.Email);
@@ -632,7 +632,7 @@ public class RandomDataTests
 
 		Assert.IsNotNull(person);
 		Assert.IsNotNull(person.Addresses);
-		Assert.IsNotNull(person.AddressesSerilization);
+		Assert.IsNotNull(person.AddressesSerialization);
 		Assert.IsNotNull(person.BornOn);
 		Assert.IsNotNull(person.CellPhone);
 		Assert.IsNotNull(person.Email);

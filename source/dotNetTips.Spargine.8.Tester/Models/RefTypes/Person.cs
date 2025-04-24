@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-21-2025
+// Last Modified On : 04-24-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -354,7 +354,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <value>The collection of <typeparamref name="TAddress"/> objects representing the addresses of the person.</value>
 	/// <remarks>
 	/// This property is serialized and deserialized using JSON but is ignored in XML serialization.
-	/// Use <see cref="AddressesSerilization"/> for XML serialization.
+	/// Use <see cref="AddressesSerialization"/> for XML serialization.
 	/// </remarks>
 	[DataMember(Name = "addresses", IsRequired = false)]
 	[JsonPropertyName("addresses")]
@@ -378,14 +378,15 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	}
 
 	/// <summary>
-	/// Gets or sets the addresses for XML serilization only.
+	/// Gets or sets the addresses for XML serialization only.
 	/// </summary>
-	/// <value>The addresses serilization.</value>
+	/// <value>The addresses serialization.</value>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	[JsonIgnore]
 	[XmlArray("Addresses")]
-	[Information(nameof(AddressesSerilization), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public Collection<TAddress> AddressesSerilization
+	[Preserve(PreserveReason.Other, "Preserve for XML serialization.", "4/24/2005", "David McCarter")]
+	[Information(nameof(AddressesSerialization), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	public Collection<TAddress> AddressesSerialization
 	{
 		get => this._addresses;
 
