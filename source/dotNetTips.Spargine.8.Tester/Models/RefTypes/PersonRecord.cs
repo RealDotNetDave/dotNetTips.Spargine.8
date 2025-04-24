@@ -121,8 +121,8 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 	[Information(nameof(PersonRecord), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public PersonRecord([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email, [NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id)
 	{
-		this.Email = email.ArgumentNotNullOrEmpty();
-		this.Id = id.ArgumentNotNullOrEmpty();
+		this.Email = email;
+		this.Id = id;
 	}
 
 	/// <summary>

@@ -113,8 +113,8 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[Information(nameof(Person<TAddress>), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public Person([NotNull, EmailAddress(ErrorMessage = "The email address is not in a valid format."), MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")] string email, [NotNull, MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")] string id) : this()
 	{
-		this.Id = id.ArgumentNotNullOrEmpty();
-		this.Email = email.ArgumentNotNullOrEmpty();
+		this.Id = id;
+		this.Email = email;
 	}
 
 	/// <summary>
