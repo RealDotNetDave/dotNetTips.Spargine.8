@@ -179,7 +179,7 @@ public class AssemblyHelperUnitTester : UnitTester
 		// Act
 		foreach (var assemblyFile in assemblyFiles)
 		{
-			var types = AssemblyHelper.FindTypesImplementing(assemblyFile, typeof(Stream));
+			var types = AssemblyHelper.FindTypesImplementing(assemblyFile, typeof(IDisposable));
 
 			if (types.Count > 0)
 			{
