@@ -34,11 +34,14 @@
 	<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 	<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
---MAY 2024: Added FastCount to EnumerableExtensions, FastHashData to ArrayExtensions. Performance improvements.
---AUG 2024: Major performance and documentation changes. New methods.
---NOV 2024: Performance improvements, refactoring. Added new methods to extentions.
---FEB 2025: Added new methods to DictionaryExtentions, EnumerableExtensions, ListExtentions, StringBuilderExtentions, StringExtentions. Removed obsolete methods.</PackageReleaseNotes>
+	<PackageReleaseNotes>
+	  --MAR 2024: Initial 8.0 release.
+	  --MAY 2024: Added FastCount to EnumerableExtensions, FastHashData to ArrayExtensions. Performance improvements.
+	  --AUG 2024: Major performance and documentation changes. New methods.
+	  --NOV 2024: Performance improvements, refactoring. Added new methods to extentions.
+	  --FEB 2025: Added new methods to DictionaryExtentions, EnumerableExtensions, ListExtentions, StringBuilderExtentions, StringExtentions. Removed obsolete methods.
+	  --MAY 2025: Added new extension methods to: DictionaryExtensions, EnumerableExtensions, ListExtensions, StringBuilderExtensions, StringExtensions. Optimized existing methods in EnumerableExtensions and ArrayExtensions. Improved performance of FastHashData and FastCount methods. Refactored code for better readability and maintainability.
+	</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>

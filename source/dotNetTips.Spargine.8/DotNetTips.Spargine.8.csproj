@@ -39,6 +39,7 @@
 	  --MAY 2024: Added CopyFile to FileHelper.
 	  --AUG 2024: Major performance and documentation changes. New methods.
 	  --NOV 2024: Code perf improvements, refactoring. Added TempFileManager.
+	  --MAY 2025: Added AutoDefaultDictionary and OrdinalStringComparer types. Introduced new methods in Clock, PasswordGenerator, and RegexProcessor. Improved performance for CountryRepository.
 	</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>

@@ -35,11 +35,14 @@
 	<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 	<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
---MAY 2024: Performance improvements.
---AUG 2024: Major performance and documentation changes. New methods.
---NOV 2024: Performance improvements. Added UlidGenerator, improvements to JSON serialization, New methods
---FEB 2025: Moved Country data from the Tester assembly. Added new type AutoDefaultDictionary and OrdinalStringComparer. Added new methods in Clock, PasswordGenerator, RegexProcessor, and type helper. Removed obsolete methods.</PackageReleaseNotes>
+	<PackageReleaseNotes>
+	  --MAR 2024: Initial 8.0 release.
+	  --MAY 2024: Performance improvements.
+	  --AUG 2024: Major performance and documentation changes. New methods.
+	  --NOV 2024: Performance improvements. Added UlidGenerator, improvements to JSON serialization, New methods
+	  --FEB 2025: Moved Country data from the Tester assembly. Added new type AutoDefaultDictionary and OrdinalStringComparer. Added new methods in Clock, PasswordGenerator, RegexProcessor, and type helper. Removed obsolete methods.
+	  --MAY 2025: Added AutoDefaultDictionary and OrdinalStringComparer types. Introduced new methods in Clock, PasswordGenerator, and RegexProcessor. Improved performance for CountryRepository. Code cleanup.
+	</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>

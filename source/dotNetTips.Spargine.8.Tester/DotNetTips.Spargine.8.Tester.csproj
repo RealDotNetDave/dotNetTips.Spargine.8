@@ -34,11 +34,14 @@
 	<PackageLicenseUrl></PackageLicenseUrl>
 	<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
---MAY 2024: Performance improvements.
---AUG 2024: Major performance and documentation changes. New methods.
---NOV 2024: Performance improvements. Creating Person objects now uses consistant data up to 10,000 items.
---FEB 2025: Added comparers for the Person types.</PackageReleaseNotes>
+	<PackageReleaseNotes>
+	  --MAR 2024: Initial 8.0 release.
+	  --MAY 2024: Performance improvements.
+	  --AUG 2024: Major performance and documentation changes. New methods.
+	  --NOV 2024: Performance improvements. Creating Person objects now uses consistant data up to 10,000 items.
+	  --FEB 2025: Added comparers for the Person types.
+	  --MAY 2025: Worked on performance. Code cleanup.
+	</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 	<Product>$(AssemblyName)</Product>
