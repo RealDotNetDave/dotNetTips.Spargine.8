@@ -39,7 +39,7 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// This field is initialized in the constructor and defaults to the current directory
 	/// if no specific directory is provided.
 	/// </remarks>
-	private readonly string _outputDirectory = outputDirectory ?? Directory.GetCurrentDirectory();
+	private readonly string _outputDirectory = outputDirectory ?? App.ExecutingFolder();
 
 	/// <summary>
 	/// Converts the properties of an object to a string representation based on a selection function.

@@ -187,7 +187,7 @@ public class AssemblyHelperUnitTester : UnitTester
 			}
 		}
 
-		SaveToFile<Type>(foundTypes, prop => prop.Name == "Name", nameof(AssemblyHelper.FindTypesImplementing) + ": IDisposable");
+		SaveToFile<Type>(foundTypes, prop => prop.Name == "FullName", nameof(this.FindSDKTypesImplementing_IDisposable));
 
 		// Assert
 		Assert.IsTrue(foundTypes.Count > 100, "Expected to find types implementing IDisposable, but none were found.");
