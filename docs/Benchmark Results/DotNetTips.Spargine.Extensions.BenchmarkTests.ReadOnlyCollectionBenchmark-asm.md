@@ -8,7 +8,7 @@
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFE3F101088
+       mov       r11,7FFBE6011088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -35,7 +35,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFE3F131088
+       mov       r11,7FFBE6001088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -62,7 +62,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFE3F131088
+       mov       r11,7FFBE5FF1088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -89,7 +89,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFE3F101088
+       mov       r11,7FFBE6011088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -116,7 +116,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFE3F111088
+       mov       r11,7FFBE6011088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -143,7 +143,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFE3F111098
+       mov       r11,7FFBE6011088
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -170,7 +170,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFE3F131258
+       mov       r11,7FFBE5FE1268
        call      qword ptr [r11]
        test      eax,eax
        setle     al
@@ -197,7 +197,7 @@ M00_L01:
        test      rcx,rcx
        je        short M00_L01
        mov       rcx,[rcx+8]
-       mov       r11,7FFE3F121B20
+       mov       r11,7FFBE6001B20
        call      qword ptr [r11]
        test      eax,eax
        setle     al

@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DotNetTips.Spargine.Core.BenchmarkTests.Data.CountryRepositoryBenchmark-20250415-195059</title>
+<title>DotNetTips.Spargine.Core.BenchmarkTests.Data.CountryRepositoryBenchmark-20250423-221446</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -17,20 +17,20 @@ BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5737/22H2/2022Update)
 Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
 .NET SDK 9.0.203
   [Host]     : .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
-  Job-JJEKCF : .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+  Job-FORZLD : .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
 Namespace=DotNetTips.Spargine.Core.BenchmarkTests.Data  Categories=**NEW**  
 </code></pre>
 
 <table>
-<thead><tr><th>Method                 </th><th>Mean </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min  </th><th>Q1   </th><th>Median</th><th>Q3   </th><th>Max  </th><th>Op/s  </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Exceptions</th><th>Gen0</th><th>Allocated</th>
+<thead><tr><th>Method                 </th><th>Mean </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min  </th><th>Q1   </th><th>Median</th><th>Q3   </th><th>Max  </th><th>Op/s  </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Exceptions</th><th>Gen0</th><th>Code Size</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>&#39;GetCountry: By Country Id&#39;</td><td>693.06 ns</td><td>5.537 ns</td><td>5.179 ns</td><td>1.337 ns</td><td>685.06 ns</td><td>688.40 ns</td><td>693.50 ns</td><td>697.07 ns</td><td>700.74 ns</td><td>1,442,884.1</td><td>6.831 ns</td><td>15.00</td><td>1.464</td><td>2.000</td><td>0.0133</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>0.0010</td><td>120 B</td>
-</tr><tr><td>&#39;GetCountry: By CountryName&#39;</td><td>1,445.50 ns</td><td>2.865 ns</td><td>2.539 ns</td><td>0.679 ns</td><td>1,441.68 ns</td><td>1,444.27 ns</td><td>1,445.48 ns</td><td>1,447.11 ns</td><td>1,451.08 ns</td><td>691,802.1</td><td>6.661 ns</td><td>14.00</td><td>2.497</td><td>2.000</td><td>0.3107</td><td>3</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>144 B</td>
-</tr><tr><td>&#39;ValidatePhoneNumber: US&#39;</td><td>2,250.22 ns</td><td>8.915 ns</td><td>8.339 ns</td><td>2.153 ns</td><td>2,235.84 ns</td><td>2,243.83 ns</td><td>2,249.85 ns</td><td>2,255.59 ns</td><td>2,264.63 ns</td><td>444,401.3</td><td>6.423 ns</td><td>15.00</td><td>1.810</td><td>2.000</td><td>0.0966</td><td>5</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>0.0191</td><td>1808 B</td>
-</tr><tr><td>&#39;ValidatePostalCode: US-Full&#39;</td><td>1,531.37 ns</td><td>7.867 ns</td><td>7.358 ns</td><td>1.900 ns</td><td>1,519.00 ns</td><td>1,526.37 ns</td><td>1,529.44 ns</td><td>1,534.31 ns</td><td>1,545.25 ns</td><td>653,009.3</td><td>6.550 ns</td><td>15.00</td><td>2.366</td><td>2.000</td><td>0.5081</td><td>4</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>144 B</td>
-</tr><tr><td>GetCountries</td><td>15.44 ns</td><td>0.065 ns</td><td>0.061 ns</td><td>0.016 ns</td><td>15.36 ns</td><td>15.39 ns</td><td>15.43 ns</td><td>15.49 ns</td><td>15.55 ns</td><td>64,770,414.5</td><td>7.492 ns</td><td>15.00</td><td>1.777</td><td>2.000</td><td>0.4417</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</thead><tbody><tr><td>&#39;GetCountry: By Country Id&#39;</td><td>700.64 ns</td><td>6.049 ns</td><td>5.658 ns</td><td>1.461 ns</td><td>690.31 ns</td><td>696.50 ns</td><td>700.59 ns</td><td>705.89 ns</td><td>707.60 ns</td><td>1,427,275.8</td><td>6.770 ns</td><td>15.00</td><td>1.588</td><td>2.000</td><td>-0.2242</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>0.0010</td><td>814 B</td><td>120 B</td>
+</tr><tr><td>&#39;GetCountry: By CountryName&#39;</td><td>1,417.09 ns</td><td>9.823 ns</td><td>9.188 ns</td><td>2.372 ns</td><td>1,401.07 ns</td><td>1,411.82 ns</td><td>1,419.21 ns</td><td>1,424.50 ns</td><td>1,427.32 ns</td><td>705,671.0</td><td>6.314 ns</td><td>15.00</td><td>1.738</td><td>2.000</td><td>-0.5382</td><td>3</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>1,701 B</td><td>144 B</td>
+</tr><tr><td>&#39;ValidatePhoneNumber: US&#39;</td><td>2,272.35 ns</td><td>9.236 ns</td><td>7.713 ns</td><td>2.139 ns</td><td>2,258.28 ns</td><td>2,268.62 ns</td><td>2,272.66 ns</td><td>2,275.24 ns</td><td>2,285.88 ns</td><td>440,073.3</td><td>5.430 ns</td><td>13.00</td><td>2.322</td><td>2.000</td><td>0.1119</td><td>5</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>0.0191</td><td>NA</td><td>1808 B</td>
+</tr><tr><td>&#39;ValidatePostalCode: US-Full&#39;</td><td>1,541.69 ns</td><td>4.271 ns</td><td>3.786 ns</td><td>1.012 ns</td><td>1,536.55 ns</td><td>1,538.88 ns</td><td>1,541.47 ns</td><td>1,543.82 ns</td><td>1,548.25 ns</td><td>648,640.3</td><td>6.494 ns</td><td>14.00</td><td>1.839</td><td>2.000</td><td>0.4006</td><td>4</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>2,548 B</td><td>144 B</td>
+</tr><tr><td>GetCountries</td><td>15.64 ns</td><td>0.067 ns</td><td>0.056 ns</td><td>0.015 ns</td><td>15.58 ns</td><td>15.60 ns</td><td>15.60 ns</td><td>15.67 ns</td><td>15.77 ns</td><td>63,945,484.8</td><td>6.492 ns</td><td>13.00</td><td>2.566</td><td>2.000</td><td>0.8129</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>211 B</td><td>-</td>
 </tr></tbody></table>
 </body>
 </html>

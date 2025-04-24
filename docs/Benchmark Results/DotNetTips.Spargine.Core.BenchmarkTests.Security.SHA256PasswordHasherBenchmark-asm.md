@@ -7,7 +7,7 @@
        mov       [rsp+28],rax
        mov       rbx,rcx
        mov       rcx,[rbx+38]
-       call      qword ptr [7FFD32667CF0]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPassword(System.String)
+       call      qword ptr [7FFBD4E4C048]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPassword(System.String)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -63,14 +63,14 @@ M01_L01:
        test      edx,edx
        je        near ptr M01_L03
        cmp       [rcx],ecx
-       call      qword ptr [7FFD31DB7318]; System.String.Trim()
+       call      qword ptr [7FFBD4587318]; System.String.Trim()
        mov       rbx,rax
        mov       ecx,10
-       call      qword ptr [7FFD32265008]; System.Security.Cryptography.RandomNumberGenerator.GetBytes(Int32)
+       call      qword ptr [7FFBD4A45008]; System.Security.Cryptography.RandomNumberGenerator.GetBytes(Int32)
        mov       rsi,rax
        mov       rcx,rbx
        mov       rdx,rsi
-       call      qword ptr [7FFD32667CC0]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPasswordWithSalt(System.String, Byte[])
+       call      qword ptr [7FFBD4E4C018]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPasswordWithSalt(System.String, Byte[])
        mov       rbx,rax
        mov       edi,[rbx+8]
        mov       edx,edi
@@ -88,37 +88,37 @@ M01_L01:
        mov       r8,rbp
        xor       edx,edx
        mov       r9d,1
-       call      qword ptr [7FFD31E65AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
+       call      qword ptr [7FFBD4635AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
        mov       [rsp+20],edi
        mov       rcx,rbx
        mov       r8,rbp
        xor       edx,edx
        mov       r9d,11
-       call      qword ptr [7FFD31E65AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
+       call      qword ptr [7FFBD4635AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
        mov       rcx,rbp
        add       rsp,28
        pop       rbx
        pop       rbp
        pop       rsi
        pop       rdi
-       jmp       qword ptr [7FFD31FE7B28]; System.Convert.ToBase64String(Byte[])
+       jmp       qword ptr [7FFBD47B7B28]; System.Convert.ToBase64String(Byte[])
 M01_L02:
        call      CORINFO_HELP_OVERFLOW
 M01_L03:
-       call      qword ptr [7FFD3226FC00]
+       call      qword ptr [7FFBD4A4FC00]
        mov       rbx,rax
        test      rbx,rbx
        jne       short M01_L04
-       call      qword ptr [7FFD3226F948]
+       call      qword ptr [7FFBD4A4F948]
        mov       rbx,rax
 M01_L04:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       mov       rdx,1FD501145A8
+       mov       rdx,1D5369845A8
        mov       r8,rbx
-       call      qword ptr [7FFD31F36718]
+       call      qword ptr [7FFBD4706718]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -136,18 +136,18 @@ M01_L05:
        push      rbx
        sub       rsp,20
        mov       rbx,rcx
-       mov       rcx,1FDC38009F0
+       mov       rcx,1E1434009F0
        mov       rsi,[rcx]
        mov       rcx,rsi
-       mov       rdx,23E517645A8
-       call      qword ptr [7FFD31F1FD38]; System.Text.UTF8Encoding+UTF8EncodingSealed.GetBytesForSmallInput(System.String)
+       mov       rdx,221D52645A8
+       call      qword ptr [7FFBD46FFD38]; System.Text.UTF8Encoding+UTF8EncodingSealed.GetBytesForSmallInput(System.String)
        mov       rdi,rax
        mov       rcx,rsi
-       mov       rdx,23E517645A8
-       call      qword ptr [7FFD31F1FD38]; System.Text.UTF8Encoding+UTF8EncodingSealed.GetBytesForSmallInput(System.String)
+       mov       rdx,221D52645A8
+       call      qword ptr [7FFBD46FFD38]; System.Text.UTF8Encoding+UTF8EncodingSealed.GetBytesForSmallInput(System.String)
        mov       rdx,rax
        mov       rcx,rdi
-       call      qword ptr [7FFD3264C030]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.FixedTimeEquals(Byte[], Byte[])
+       call      qword ptr [7FFBD4E37CD8]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.FixedTimeEquals(Byte[], Byte[])
        mov       rcx,[rbx+18]
        mov       [rcx+4C],al
        add       rsp,20
@@ -167,7 +167,7 @@ M01_L05:
        push      rbx
        sub       rsp,68
        lea       rbp,[rsp+40]
-       mov       rax,9549EB7F1CA
+       mov       rax,0E3395243F42D
        mov       [rbp+8],rax
        mov       rbx,rcx
        test      [rsp],esp
@@ -186,7 +186,7 @@ M01_L05:
        mov       edx,edi
        mov       r8,rsi
        mov       r9d,60
-       call      qword ptr [7FFD31F3DAD0]; System.Text.Unicode.Utf8Utility.TranscodeToUtf8(Char*, Int32, Byte*, Int32, Char* ByRef, Byte* ByRef)
+       call      qword ptr [7FFBD471DAD0]; System.Text.Unicode.Utf8Utility.TranscodeToUtf8(Char*, Int32, Byte*, Int32, Char* ByRef, Byte* ByRef)
        mov       rax,[rbp+18]
        sub       rax,r14
        mov       r8,rax
@@ -209,10 +209,10 @@ M01_L00:
        lea       rcx,[rbx+10]
        mov       r8d,r15d
        mov       rdx,rsi
-       call      qword ptr [7FFD31E45B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFBD4625B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,rbx
 M01_L01:
-       mov       rcx,9549EB7F1CA
+       mov       rcx,0E3395243F42D
        cmp       [rbp+8],rcx
        je        short M01_L02
        call      CORINFO_HELP_FAIL_FAST
@@ -227,7 +227,7 @@ M01_L02:
        pop       rbp
        ret
 M01_L03:
-       mov       rax,23E51756758
+       mov       rax,221D5256758
        jmp       short M01_L01
 M01_L04:
        mov       dword ptr [rsp+20],60
@@ -238,7 +238,7 @@ M01_L04:
        mov       rdx,r14
        mov       r8d,edi
        mov       r9,rsi
-       call      qword ptr [7FFD31D9C918]
+       call      qword ptr [7FFBD457C918]
        mov       r15d,eax
        jmp       near ptr M01_L00
 ; Total bytes of code 281
@@ -256,16 +256,16 @@ M01_L04:
 ; 		left = left.ArgumentItemsExists(nameof(left));
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
        mov       rcx,[rbp+10]
-       mov       rdx,23E517645C8
-       mov       r8,23E517645C8
-       call      qword ptr [7FFD3264C0F0]; DotNetTips.Spargine.Core.Validator.ArgumentItemsExists[[System.Byte, System.Private.CoreLib]](Byte[], System.String, System.String)
+       mov       rdx,221D52645C8
+       mov       r8,221D52645C8
+       call      qword ptr [7FFBD4E37D98]; DotNetTips.Spargine.Core.Validator.ArgumentItemsExists[[System.Byte, System.Private.CoreLib]](Byte[], System.String, System.String)
        mov       [rbp+10],rax
 ; 		right = right.ArgumentItemsExists(nameof(right));
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
        mov       rcx,[rbp+18]
-       mov       rdx,23E517645E8
-       mov       r8,23E517645E8
-       call      qword ptr [7FFD3264C0F0]; DotNetTips.Spargine.Core.Validator.ArgumentItemsExists[[System.Byte, System.Private.CoreLib]](Byte[], System.String, System.String)
+       mov       rdx,221D52645E8
+       mov       r8,221D52645E8
+       call      qword ptr [7FFBD4E37D98]; DotNetTips.Spargine.Core.Validator.ArgumentItemsExists[[System.Byte, System.Private.CoreLib]](Byte[], System.String, System.String)
        mov       [rbp+18],rax
 ; 		if (left.Length != right.Length)
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -343,8 +343,8 @@ M02_L04:
        xor       eax,eax
        mov       [rsp+28],rax
        mov       rbx,rcx
-       mov       rcx,1A020BD45A8
-       call      qword ptr [7FFD3265C048]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPassword(System.String)
+       mov       rcx,21F6A9245A8
+       call      qword ptr [7FFBD4E67CF0]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPassword(System.String)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -400,14 +400,14 @@ M01_L01:
        test      edx,edx
        je        near ptr M01_L03
        cmp       [rcx],ecx
-       call      qword ptr [7FFD31DA7318]; System.String.Trim()
+       call      qword ptr [7FFBD45A7318]; System.String.Trim()
        mov       rbx,rax
        mov       ecx,10
-       call      qword ptr [7FFD32255008]; System.Security.Cryptography.RandomNumberGenerator.GetBytes(Int32)
+       call      qword ptr [7FFBD4A65008]; System.Security.Cryptography.RandomNumberGenerator.GetBytes(Int32)
        mov       rsi,rax
        mov       rcx,rbx
        mov       rdx,rsi
-       call      qword ptr [7FFD3265C018]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPasswordWithSalt(System.String, Byte[])
+       call      qword ptr [7FFBD4E67CC0]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPasswordWithSalt(System.String, Byte[])
        mov       rbx,rax
        mov       edi,[rbx+8]
        mov       edx,edi
@@ -425,37 +425,37 @@ M01_L01:
        mov       r8,rbp
        xor       edx,edx
        mov       r9d,1
-       call      qword ptr [7FFD31E55AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
+       call      qword ptr [7FFBD4655AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
        mov       [rsp+20],edi
        mov       rcx,rbx
        mov       r8,rbp
        xor       edx,edx
        mov       r9d,11
-       call      qword ptr [7FFD31E55AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
+       call      qword ptr [7FFBD4655AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
        mov       rcx,rbp
        add       rsp,28
        pop       rbx
        pop       rbp
        pop       rsi
        pop       rdi
-       jmp       qword ptr [7FFD31FD7B28]; System.Convert.ToBase64String(Byte[])
+       jmp       qword ptr [7FFBD47D7B28]; System.Convert.ToBase64String(Byte[])
 M01_L02:
        call      CORINFO_HELP_OVERFLOW
 M01_L03:
-       call      qword ptr [7FFD3225FC00]
+       call      qword ptr [7FFBD4A6FC00]
        mov       rbx,rax
        test      rbx,rbx
        jne       short M01_L04
-       call      qword ptr [7FFD3225F948]
+       call      qword ptr [7FFBD4A6F948]
        mov       rbx,rax
 M01_L04:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       mov       rdx,1A020BD45D8
+       mov       rdx,21F6A9245D8
        mov       r8,rbx
-       call      qword ptr [7FFD31F26718]
+       call      qword ptr [7FFBD4726718]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -471,18 +471,18 @@ M01_L05:
        push      rbx
        sub       rsp,30
        mov       rbx,rcx
-       mov       rcx,196159D45A8
+       mov       rcx,27AA1A845A8
        mov       [rsp+28],rcx
        mov       rcx,[rsp+28]
-       call      qword ptr [7FFD32667CF0]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPassword(System.String)
+       call      qword ptr [7FFBD4E4C048]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPassword(System.String)
        mov       rcx,rax
        lea       rdx,[rsp+28]
-       call      qword ptr [7FFD32667D08]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.VerifyHashedPassword(System.String, System.String ByRef)
+       call      qword ptr [7FFBD4E4C060]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.VerifyHashedPassword(System.String, System.String ByRef)
        mov       [rsp+20],eax
        mov       rcx,[rbx+18]
        cmp       [rcx],cl
        lea       rcx,[rsp+20]
-       call      qword ptr [7FFD3266C7C8]; BenchmarkDotNet.Engines.DeadCodeEliminationHelper.KeepAliveWithoutBoxingReadonly[[DotNetTips.Spargine.Core.Security.PasswordVerificationResult, DotNetTips.Spargine.8.Core]](DotNetTips.Spargine.Core.Security.PasswordVerificationResult ByRef)
+       call      qword ptr [7FFBD4E4C8B8]; BenchmarkDotNet.Engines.DeadCodeEliminationHelper.KeepAliveWithoutBoxingReadonly[[DotNetTips.Spargine.Core.Security.PasswordVerificationResult, DotNetTips.Spargine.8.Core]](DotNetTips.Spargine.Core.Security.PasswordVerificationResult ByRef)
        nop
        add       rsp,30
        pop       rbx
@@ -532,14 +532,14 @@ M01_L01:
        test      edx,edx
        je        near ptr M01_L03
        cmp       [rcx],ecx
-       call      qword ptr [7FFD31DB7318]; System.String.Trim()
+       call      qword ptr [7FFBD4587318]; System.String.Trim()
        mov       rbx,rax
        mov       ecx,10
-       call      qword ptr [7FFD32265008]; System.Security.Cryptography.RandomNumberGenerator.GetBytes(Int32)
+       call      qword ptr [7FFBD4A45008]; System.Security.Cryptography.RandomNumberGenerator.GetBytes(Int32)
        mov       rsi,rax
        mov       rcx,rbx
        mov       rdx,rsi
-       call      qword ptr [7FFD32667CC0]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPasswordWithSalt(System.String, Byte[])
+       call      qword ptr [7FFBD4E4C018]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.HashPasswordWithSalt(System.String, Byte[])
        mov       rbx,rax
        mov       edi,[rbx+8]
        mov       edx,edi
@@ -557,37 +557,37 @@ M01_L01:
        mov       r8,rbp
        xor       edx,edx
        mov       r9d,1
-       call      qword ptr [7FFD31E65AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
+       call      qword ptr [7FFBD4635AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
        mov       [rsp+20],edi
        mov       rcx,rbx
        mov       r8,rbp
        xor       edx,edx
        mov       r9d,11
-       call      qword ptr [7FFD31E65AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
+       call      qword ptr [7FFBD4635AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
        mov       rcx,rbp
        add       rsp,28
        pop       rbx
        pop       rbp
        pop       rsi
        pop       rdi
-       jmp       qword ptr [7FFD31FE7B28]; System.Convert.ToBase64String(Byte[])
+       jmp       qword ptr [7FFBD47B7B28]; System.Convert.ToBase64String(Byte[])
 M01_L02:
        call      CORINFO_HELP_OVERFLOW
 M01_L03:
-       call      qword ptr [7FFD3226FC00]
+       call      qword ptr [7FFBD4A4FC00]
        mov       rbx,rax
        test      rbx,rbx
        jne       short M01_L04
-       call      qword ptr [7FFD3226F948]
+       call      qword ptr [7FFBD4A4F948]
        mov       rbx,rax
 M01_L04:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       mov       rdx,196159D45D8
+       mov       rdx,27AA1A845D8
        mov       r8,rbx
-       call      qword ptr [7FFD31F36718]
+       call      qword ptr [7FFBD4706718]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -600,47 +600,48 @@ M01_L05:
 ; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.VerifyHashedPassword(System.String, System.String ByRef)
 ; 		if (string.IsNullOrEmpty(hashedPassword))
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-; 		var passwordBytes = new byte[hashedPassword.CalculateByteArraySize()];
-; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-; 		if (!Convert.TryFromBase64String(hashedPassword, passwordBytes, out var bytesWritten))
-; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-; 		if (bytesWritten < 1 + SaltSize)
-; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+; 		var passwordBytes = hashedPassword.ToByteArrayFromBase64();
+; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+; 		if (passwordBytes.Length < 1 + SaltSize)
+; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ; 		if (passwordBytes[0] > Version)
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ; 		var salt = new byte[SaltSize];
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ; 		Buffer.BlockCopy(passwordBytes, 1, salt, 0, SaltSize);
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-; 		var expectedHash = new byte[bytesWritten - 1 - SaltSize];
-; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+; 		var expectedHash = new byte[passwordBytes.Length - 1 - SaltSize];
+; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ; 		Buffer.BlockCopy(passwordBytes, 1 + SaltSize, expectedHash, 0, expectedHash.Length);
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ; 		var actualHash = HashPasswordWithSalt(password, salt);
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ; 		return FixedTimeEquals(actualHash, expectedHash) ? PasswordVerificationResult.Success : PasswordVerificationResult.Failed;
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       push      r15
        push      r14
        push      rdi
        push      rsi
        push      rbp
        push      rbx
-       sub       rsp,80
+       sub       rsp,88
+       xor       eax,eax
+       mov       [rsp+38],rax
        vxorps    xmm4,xmm4,xmm4
-       vmovdqa   xmmword ptr [rsp+30],xmm4
        vmovdqa   xmmword ptr [rsp+40],xmm4
        vmovdqa   xmmword ptr [rsp+50],xmm4
        vmovdqa   xmmword ptr [rsp+60],xmm4
        vmovdqa   xmmword ptr [rsp+70],xmm4
+       mov       [rsp+80],rax
        mov       rbx,rcx
        mov       rsi,rdx
        test      rbx,rbx
-       je        near ptr M02_L02
+       je        near ptr M02_L06
        mov       edi,[rbx+8]
        test      edi,edi
-       je        near ptr M02_L02
+       je        near ptr M02_L06
        imul      edx,edi,3
-       jo        near ptr M02_L00
+       jo        near ptr M02_L01
        mov       ecx,edx
        sar       ecx,1F
        and       ecx,3
@@ -650,79 +651,92 @@ M01_L05:
        mov       rbp,offset MT_System.Byte[]
        mov       rcx,rbp
        call      CORINFO_HELP_NEWARR_1_VC
-       mov       r14,rax
-       lea       rcx,[r14+10]
-       mov       edx,[r14+8]
+       lea       r14,[rax+10]
+       mov       r15d,[rax+8]
+       mov       rcx,r14
+       mov       edx,r15d
        add       rbx,0C
-       mov       [rsp+60],rbx
-       mov       [rsp+68],edi
-       mov       [rsp+50],rcx
-       mov       [rsp+58],edx
-       lea       rcx,[rsp+60]
-       lea       rdx,[rsp+50]
-       lea       r8,[rsp+78]
-       call      qword ptr [7FFD31FE7C60]; System.Convert.TryFromBase64Chars(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>, Int32 ByRef)
+       mov       [rsp+68],rbx
+       mov       [rsp+70],edi
+       mov       [rsp+58],rcx
+       mov       [rsp+60],edx
+       lea       rcx,[rsp+68]
+       lea       rdx,[rsp+58]
+       lea       r8,[rsp+80]
+       call      qword ptr [7FFBD47B7C60]; System.Convert.TryFromBase64Chars(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>, Int32 ByRef)
        test      eax,eax
        je        near ptr M02_L02
-       mov       ecx,[rsp+78]
-       cmp       ecx,11
-       jl        near ptr M02_L02
-       cmp       dword ptr [r14+8],0
-       jbe       near ptr M02_L03
-       movzx     ecx,byte ptr [r14+10]
+       mov       ebx,[rsp+80]
+       cmp       ebx,r15d
+       ja        near ptr M02_L03
+       test      ebx,ebx
+       je        near ptr M02_L04
+       movsxd    rdx,ebx
+       mov       rcx,rbp
+       call      CORINFO_HELP_NEWARR_1_VC
+       mov       rdi,rax
+       lea       rcx,[rdi+10]
+       mov       r8d,ebx
+       mov       rdx,r14
+       call      qword ptr [7FFBD4635B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+M02_L00:
+       mov       ebx,[rdi+8]
+       cmp       ebx,11
+       jl        near ptr M02_L06
+       movzx     ecx,byte ptr [rdi+10]
        cmp       ecx,1
-       jg        near ptr M02_L02
+       jg        near ptr M02_L06
+       mov       rbp,offset MT_System.Byte[]
        mov       rcx,rbp
        mov       edx,10
        call      CORINFO_HELP_NEWARR_1_VC
-       mov       rbx,rax
+       mov       r14,rax
        mov       dword ptr [rsp+20],10
-       mov       rcx,r14
-       mov       r8,rbx
+       mov       rcx,rdi
+       mov       r8,r14
        mov       edx,1
        xor       r9d,r9d
-       call      qword ptr [7FFD31E65AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
-       mov       edx,[rsp+78]
-       sub       edx,1
-       jo        near ptr M02_L00
-       sub       edx,10
-       jo        near ptr M02_L00
+       call      qword ptr [7FFBD4635AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
+       sub       ebx,1
+       jo        near ptr M02_L01
+       sub       ebx,10
+       jo        near ptr M02_L01
+       movsxd    rdx,ebx
+       mov       rcx,rbp
+       call      CORINFO_HELP_NEWARR_1_VC
+       mov       rbx,rax
+       mov       ecx,[rbx+8]
+       mov       [rsp+20],ecx
+       mov       rcx,rdi
+       mov       r8,rbx
+       mov       edx,11
+       xor       r9d,r9d
+       call      qword ptr [7FFBD4635AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
+       mov       rsi,[rsi]
+       imul      edx,[rsi+8],2
+       jo        near ptr M02_L01
+       add       edx,10
+       jo        near ptr M02_L01
        movsxd    rdx,edx
        mov       rcx,rbp
        call      CORINFO_HELP_NEWARR_1_VC
        mov       rdi,rax
-       mov       ecx,[rdi+8]
-       mov       [rsp+20],ecx
+       mov       dword ptr [rsp+20],10
        mov       rcx,r14
        mov       r8,rdi
-       mov       edx,11
-       xor       r9d,r9d
-       call      qword ptr [7FFD31E65AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
-       mov       rsi,[rsi]
-       imul      edx,[rsi+8],2
-       jo        near ptr M02_L00
-       add       edx,10
-       jo        near ptr M02_L00
-       movsxd    rdx,edx
-       mov       rcx,rbp
-       call      CORINFO_HELP_NEWARR_1_VC
-       mov       r14,rax
-       mov       dword ptr [rsp+20],10
-       mov       rcx,rbx
-       mov       r8,r14
        xor       edx,edx
        xor       r9d,r9d
-       call      qword ptr [7FFD31E65AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
-       mov       [rsp+20],r14
+       call      qword ptr [7FFBD4635AE8]; System.Buffer.BlockCopy(System.Array, Int32, System.Array, Int32, Int32)
+       mov       [rsp+20],rdi
        mov       dword ptr [rsp+28],10
-       mov       rcx,15587C009F0
+       mov       rcx,23A0FC009F0
        mov       rcx,[rcx]
        mov       r9d,[rsi+8]
        mov       rdx,rsi
        xor       r8d,r8d
-       call      qword ptr [7FFD31F48D10]; System.Text.UTF8Encoding.GetBytes(System.String, Int32, Int32, Byte[], Int32)
-       lea       rbx,[r14+10]
-       mov       esi,[r14+8]
+       call      qword ptr [7FFBD4718D10]; System.Text.UTF8Encoding.GetBytes(System.String, Int32, Int32, Byte[], Int32)
+       lea       rsi,[rdi+10]
+       mov       edi,[rdi+8]
        mov       rcx,rbp
        mov       edx,20
        call      CORINFO_HELP_NEWARR_1_VC
@@ -730,67 +744,82 @@ M01_L05:
        lea       rdx,[rbp+10]
        mov       r8d,20
        cmp       r8d,20
-       jl        short M02_L01
+       jl        near ptr M02_L05
        xor       ecx,ecx
-       mov       [rsp+40],rbx
-       mov       [rsp+48],esi
-       mov       [rsp+30],rcx
+       mov       [rsp+48],rsi
+       mov       [rsp+50],edi
+       mov       [rsp+38],rcx
        xor       ecx,ecx
-       mov       [rsp+38],ecx
-       mov       [rsp+50],rdx
-       mov       [rsp+58],r8d
-       lea       rdx,[rsp+70]
+       mov       [rsp+40],ecx
+       mov       [rsp+58],rdx
+       mov       [rsp+60],r8d
+       lea       rdx,[rsp+78]
        mov       [rsp+28],rdx
-       lea       rdx,[rsp+50]
+       lea       rdx,[rsp+58]
        mov       [rsp+20],rdx
-       lea       rdx,[rsp+40]
-       lea       r8,[rsp+30]
-       mov       rcx,196159C9070
+       lea       rdx,[rsp+48]
+       lea       r8,[rsp+38]
+       mov       rcx,27AA1A79070
        xor       r9d,r9d
-       call      qword ptr [7FFD3266C3F0]; System.Security.Cryptography.HashProviderDispenser+OneShotHashProvider.HashDataUsingPseudoHandle(System.String, System.ReadOnlySpan`1<Byte>, System.ReadOnlySpan`1<Byte>, Boolean, System.Span`1<Byte>, Int32 ByRef)
+       call      qword ptr [7FFBD4E4C4E0]; System.Security.Cryptography.HashProviderDispenser+OneShotHashProvider.HashDataUsingPseudoHandle(System.String, System.ReadOnlySpan`1<Byte>, System.ReadOnlySpan`1<Byte>, Boolean, System.Span`1<Byte>, Int32 ByRef)
        mov       rcx,rbp
-       mov       rdx,rdi
-       call      qword ptr [7FFD32667CD8]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.FixedTimeEquals(Byte[], Byte[])
+       mov       rdx,rbx
+       call      qword ptr [7FFBD4E4C030]; DotNetTips.Spargine.Core.Security.SHA256PasswordHasher.FixedTimeEquals(Byte[], Byte[])
        test      eax,eax
-       je        short M02_L02
+       je        near ptr M02_L06
        mov       eax,1
-       add       rsp,80
+       add       rsp,88
        pop       rbx
        pop       rbp
        pop       rsi
        pop       rdi
        pop       r14
+       pop       r15
        ret
-M02_L00:
-       call      CORINFO_HELP_OVERFLOW
 M02_L01:
+       call      CORINFO_HELP_OVERFLOW
+M02_L02:
+       mov       rcx,offset MT_System.FormatException
+       call      CORINFO_HELP_NEWSFAST
+       mov       rbx,rax
+       call      qword ptr [7FFBD4A4FD80]
+       mov       rdx,rax
+       mov       rcx,rbx
+       call      qword ptr [7FFBD4727030]
+       mov       rcx,rbx
+       call      CORINFO_HELP_THROW
+M02_L03:
+       call      qword ptr [7FFBD48857E8]
+       int       3
+M02_L04:
+       mov       rdi,27AA1A76758
+       jmp       near ptr M02_L00
+M02_L05:
        mov       rcx,offset MT_System.ArgumentException
        call      CORINFO_HELP_NEWSFAST
        mov       rbx,rax
-       call      qword ptr [7FFD3269EBC8]
+       call      qword ptr [7FFBD4E6E4C0]
        mov       rsi,rax
        mov       ecx,4465
-       mov       rdx,7FFD32272858
+       mov       rdx,7FFBD4A331E0
        call      CORINFO_HELP_STRCNS
        mov       r8,rax
        mov       rdx,rsi
        mov       rcx,rbx
-       call      qword ptr [7FFD31DBF750]
+       call      qword ptr [7FFBD458F750]
        mov       rcx,rbx
        call      CORINFO_HELP_THROW
-M02_L02:
+M02_L06:
        xor       eax,eax
-       add       rsp,80
+       add       rsp,88
        pop       rbx
        pop       rbp
        pop       rsi
        pop       rdi
        pop       r14
+       pop       r15
        ret
-M02_L03:
-       call      CORINFO_HELP_RNGCHKFAIL
-       int       3
-; Total bytes of code 679
+; Total bytes of code 814
 ```
 ```assembly
 ; BenchmarkDotNet.Engines.DeadCodeEliminationHelper.KeepAliveWithoutBoxingReadonly[[DotNetTips.Spargine.Core.Security.PasswordVerificationResult, DotNetTips.Spargine.8.Core]](DotNetTips.Spargine.Core.Security.PasswordVerificationResult ByRef)

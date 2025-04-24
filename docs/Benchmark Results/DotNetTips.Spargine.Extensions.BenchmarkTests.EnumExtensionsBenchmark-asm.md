@@ -11,7 +11,7 @@
        mov       ecx,[rbx+128]
        mov       [rax+8],ecx
        mov       rcx,rax
-       call      qword ptr [7FFE3FB77D98]; DotNetTips.Spargine.Extensions.EnumExtensions.GetDescription(System.Enum)
+       call      qword ptr [7FFBE6A5DB90]; DotNetTips.Spargine.Extensions.EnumExtensions.GetDescription(System.Enum)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -67,9 +67,9 @@
        call      qword ptr [rax+20]
        test      eax,eax
        je        near ptr M01_L06
-       mov       rcx,20F1D4112E8
+       mov       rcx,262B880F308
        mov       rsi,[rcx]
-       mov       rcx,20F1D411200
+       mov       rcx,262B880F220
        mov       rdi,[rcx]
        test      rsi,rsi
        je        near ptr M01_L08
@@ -92,7 +92,7 @@ M01_L01:
        mov       r8,rbx
        mov       r9d,r15d
        mov       rcx,offset MT_System.Collections.Concurrent.ConcurrentDictionary`2[[System.Enum, System.Private.CoreLib],[System.String, System.Private.CoreLib]]
-       call      qword ptr [7FFE3F6F4990]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryGetValueInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, Int32, System.__Canon ByRef)
+       call      qword ptr [7FFBE65E4FD8]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryGetValueInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, Int32, System.__Canon ByRef)
        test      eax,eax
        je        near ptr M01_L10
 M01_L02:
@@ -107,84 +107,84 @@ M01_L02:
        ret
 M01_L03:
        mov       rdx,rbx
-       mov       r11,7FFE3F110A38
+       mov       r11,7FFBE6000A30
        call      qword ptr [r11]
        mov       r15d,eax
        jmp       short M01_L01
 M01_L04:
-       call      qword ptr [7FFE3F77FB58]
+       call      qword ptr [7FFBE66C44C8]
        mov       ecx,1A5C
-       mov       rdx,7FFE3F5E6DA0
+       mov       rdx,7FFBE64D5A58
        call      CORINFO_HELP_STRCNS
        mov       rsi,rax
-       mov       ecx,1AC2
-       mov       rdx,7FFE3F5E6DA0
+       mov       ecx,1ADC
+       mov       rdx,7FFBE64D5A58
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rsi
-       call      qword ptr [7FFE3F256B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFBE6146B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,0CEA
-       mov       rdx,7FFE3F5E6DA0
+       mov       rdx,7FFBE64D5A58
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFE3F256B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFBE6146B08]; System.String.Concat(System.String, System.String)
        mov       rdi,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       r15,rax
-       call      qword ptr [7FFE3F77F948]
+       call      qword ptr [7FFBE66C42B8]
        mov       r8,rax
        mov       rdx,rdi
        mov       rcx,r15
-       call      qword ptr [7FFE3F456718]
+       call      qword ptr [7FFBE63D6670]
        mov       rcx,r15
        call      CORINFO_HELP_THROW
 M01_L05:
        mov       ecx,2BD
-       mov       rdx,7FFE3F104000
+       mov       rdx,7FFBE5FF4000
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE3F456790]
+       call      qword ptr [7FFBE63D66E8]
        int       3
 M01_L06:
-       call      qword ptr [7FFE3F77FA08]
+       call      qword ptr [7FFBE66C4378]
        mov       r14,rax
        test      r14,r14
        jne       short M01_L07
-       call      qword ptr [7FFE3F77F960]
+       call      qword ptr [7FFBE66C42D0]
        mov       r14,rax
 M01_L07:
        mov       rcx,offset MT_System.ArgumentOutOfRangeException
        call      CORINFO_HELP_NEWSFAST
        mov       rbx,rax
        mov       rcx,rbx
-       mov       rdx,24FAF3A8180
+       mov       rdx,2A34A658180
        mov       r8,r14
-       call      qword ptr [7FFE3F30D470]
+       call      qword ptr [7FFBE61FD470]
        mov       rcx,rbx
        call      CORINFO_HELP_THROW
 M01_L08:
        mov       rcx,offset MT_System.Func`2[[System.Enum, System.Private.CoreLib],[System.String, System.Private.CoreLib]]
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       mov       rdx,20F1D4112E0
+       mov       rdx,262B880F300
        mov       rdx,[rdx]
        mov       rcx,rsi
-       mov       r8,7FFE3FB73E88
-       call      qword ptr [7FFE3F254210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
-       mov       rcx,20F1D4112E8
+       mov       r8,7FFBE6A59C80
+       call      qword ptr [7FFBE6144210]; System.MulticastDelegate.CtorClosed(System.Object, IntPtr)
+       mov       rcx,262B880F308
        mov       rdx,rsi
        call      CORINFO_HELP_ASSIGN_REF
        test      rsi,rsi
        jne       near ptr M01_L00
 M01_L09:
        mov       ecx,0BB4
-       mov       rdx,7FFE3F6EBE18
+       mov       rdx,7FFBE65DA640
        call      CORINFO_HELP_STRCNS
        mov       rcx,rax
-       call      qword ptr [7FFE3F934AE0]
+       call      qword ptr [7FFBE6826190]
        int       3
 M01_L10:
        mov       byte ptr [rbp-38],1
@@ -202,7 +202,7 @@ M01_L10:
        mov       r8,rbx
        mov       r9,[rbp-38]
        mov       rcx,rdi
-       call      qword ptr [7FFE3F6F4A80]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryAddInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, System.Nullable`1<Int32>, System.__Canon, Boolean, Boolean, System.__Canon ByRef)
+       call      qword ptr [7FFBE65E50C8]; System.Collections.Concurrent.ConcurrentDictionary`2[[System.__Canon, System.Private.CoreLib],[System.__Canon, System.Private.CoreLib]].TryAddInternal(Tables<System.__Canon,System.__Canon>, System.__Canon, System.Nullable`1<Int32>, System.__Canon, Boolean, Boolean, System.__Canon ByRef)
        jmp       near ptr M01_L02
 ; Total bytes of code 667
 ```

@@ -6,8 +6,8 @@
        xor       eax,eax
        mov       [rsp+28],rax
        mov       rbx,rcx
-       mov       rcx,1DDB68145A8
-       call      qword ptr [7FFD32536568]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey(System.String)
+       mov       rcx,1C7A3C845A8
+       call      qword ptr [7FFBD4D66598]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey(System.String)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -34,48 +34,48 @@
        test      rbx,rbx
        je        short M01_L00
        lea       rcx,[rsp+28]
-       call      qword ptr [7FFD31E27360]; System.Guid.NewGuid()
-       mov       r8,19D28800428
+       call      qword ptr [7FFBD4657360]; System.Guid.NewGuid()
+       mov       r8,18715C00428
        mov       r8,[r8]
        lea       rcx,[rsp+28]
-       mov       rdx,1DDB6813C70
-       call      qword ptr [7FFD31E27180]; System.Guid.ToString(System.String, System.IFormatProvider)
+       mov       rdx,1C7A3C83C70
+       call      qword ptr [7FFBD4657180]; System.Guid.ToString(System.String, System.IFormatProvider)
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFD31D76B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFBD45A6B08]; System.String.Concat(System.String, System.String)
        nop
        add       rsp,38
        pop       rbx
        pop       rsi
        ret
 M01_L00:
-       call      qword ptr [7FFD3222FB58]
-       mov       ecx,1DEA
-       mov       rdx,7FFD3209B908
+       call      qword ptr [7FFBD4A5FB58]
+       mov       ecx,1DD0
+       mov       rdx,7FFBD48CB918
        call      CORINFO_HELP_STRCNS
        mov       rbx,rax
        mov       ecx,1AC2
-       mov       rdx,7FFD3209B908
+       mov       rdx,7FFBD48CB918
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFD31D76B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFBD45A6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       ecx,0CEA
-       mov       rdx,7FFD3209B908
+       mov       rdx,7FFBD48CB918
        call      CORINFO_HELP_STRCNS
        mov       rdx,rax
        mov       rcx,rbx
-       call      qword ptr [7FFD31D76B08]; System.String.Concat(System.String, System.String)
+       call      qword ptr [7FFBD45A6B08]; System.String.Concat(System.String, System.String)
        mov       rbx,rax
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
-       call      qword ptr [7FFD3222F948]
+       call      qword ptr [7FFBD4A5F948]
        mov       r8,rax
        mov       rdx,rbx
        mov       rcx,rsi
-       call      qword ptr [7FFD31EF6718]
+       call      qword ptr [7FFBD4726718]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
@@ -90,7 +90,7 @@ M01_L00:
        xor       eax,eax
        mov       [rsp+28],rax
        mov       rbx,rcx
-       call      qword ptr [7FFD325763A0]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()
+       call      qword ptr [7FFBD4D563B8]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -112,12 +112,12 @@ M01_L00:
        mov       [rsp+28],rax
        mov       [rsp+30],rax
        lea       rcx,[rsp+28]
-       call      qword ptr [7FFD31E67360]; System.Guid.NewGuid()
-       mov       r8,2BFA6C00428
+       call      qword ptr [7FFBD4647360]; System.Guid.NewGuid()
+       mov       r8,17518400428
        mov       r8,[r8]
        lea       rcx,[rsp+28]
-       mov       rdx,30030953C70
-       call      qword ptr [7FFD31E67180]; System.Guid.ToString(System.String, System.IFormatProvider)
+       mov       rdx,1B5AA573C70
+       call      qword ptr [7FFBD4647180]; System.Guid.ToString(System.String, System.IFormatProvider)
        nop
        add       rsp,38
        ret
