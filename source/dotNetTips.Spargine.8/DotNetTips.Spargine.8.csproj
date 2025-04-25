@@ -118,8 +118,8 @@
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
-	<PackageReference Include="System.Management" Version="9.0.3" />
-	<PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.3" />
+	<PackageReference Include="System.Management" Version="9.0.4" />
+	<PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
