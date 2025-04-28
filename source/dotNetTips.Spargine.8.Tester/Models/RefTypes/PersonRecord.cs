@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-24-2025
+// Last Modified On : 04-28-2025
 // ***********************************************************************
 // <copyright file="PersonRecord.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -437,6 +437,11 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 				return;
 			}
 
+			if (string.IsNullOrWhiteSpace(value))
+			{
+				ExceptionThrower.ThrowArgumentNullException(nameof(this.Email));
+			}
+
 			if (value.HasValue(0, 75) is false)
 			{
 				ExceptionThrower.ThrowArgumentOutOfRangeException(
@@ -516,6 +521,11 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 
 		init
 		{
+			if (string.IsNullOrWhiteSpace(value))
+			{
+				ExceptionThrower.ThrowArgumentNullException(nameof(this.Id));
+			}
+
 			if (string.Equals(this._id, value, StringComparison.Ordinal))
 			{
 				return;

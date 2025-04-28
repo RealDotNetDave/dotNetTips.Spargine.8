@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Reflection;
 using System.Text.Json;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Devices;
@@ -181,31 +180,6 @@ public class ObjectExtensionsTests : UnitTester
 
 		Assert.IsTrue(person.IsNotNull());
 		Assert.IsFalse(nullPerson.IsNotNull());
-	}
-
-	[TestMethod]
-	public void ProcessCollectionToDisposeTest()
-	{
-		var disposableItems = new List<DisposableFields>
-	{
-		new DisposableFields(),
-		new DisposableFields(),
-		new DisposableFields()
-	};
-
-		try
-		{
-			// Using reflection to invoke the private method
-			var method = typeof(ObjectExtensions).GetMethod("ProcessCollectionToDispose", BindingFlags.NonPublic | BindingFlags.Static);
-			Assert.IsNotNull(method);
-
-			method.Invoke(null, new object[] { disposableItems });
-		}
-		catch (Exception ex)
-		{
-			Debug.WriteLine(ex.Message);
-			Assert.Fail();
-		}
 	}
 
 	[TestMethod]

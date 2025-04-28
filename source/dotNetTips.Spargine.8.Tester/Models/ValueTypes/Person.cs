@@ -4,7 +4,7 @@
 // Created          : 10-25-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-24-2025
+// Last Modified On : 04-28-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -462,6 +462,11 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 
 		set
 		{
+			if (value is null)
+			{
+				ExceptionThrower.ThrowArgumentNullException(nameof(this.Email));
+			}
+
 			if (string.Equals(this._email, value, StringComparison.Ordinal))
 			{
 				return;
@@ -539,6 +544,11 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 
 		init
 		{
+			if (value is null)
+			{
+				ExceptionThrower.ThrowArgumentNullException(nameof(this.Id));
+			}
+
 			if (string.Equals(this._id, value, StringComparison.Ordinal))
 			{
 				return;

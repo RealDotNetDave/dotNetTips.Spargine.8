@@ -4,7 +4,7 @@
 // Created          : 01-28-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-10-2025
+// Last Modified On : 04-28-2025
 // ***********************************************************************
 // <copyright file="PersonRecordRefTests.cs" company="DotNetTips.Spargine.Tester.Tests">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -125,6 +125,7 @@ public class PersonRecordRefTests
 		// Act
 		_ = new PersonRecord(email, null);
 	}
+
 	[TestMethod]
 	public void PersonRecord_Constructor_ShouldInitializeProperties()
 	{

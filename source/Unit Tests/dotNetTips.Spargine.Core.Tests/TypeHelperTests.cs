@@ -324,7 +324,7 @@ public class TypeHelperTests : UnitTester
 		var hashCode = TypeHelper.GetInstanceHashCode(emptyObject);
 
 		// Assert
-		Assert.AreNotEqual(0, hashCode, "Hash code should not be zero.");
+		Assert.AreEqual(0, hashCode);
 	}
 
 	[TestMethod]

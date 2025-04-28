@@ -4,7 +4,7 @@
 // Created          : 07-17-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-24-2025
+// Last Modified On : 04-28-2025
 // ***********************************************************************
 // <copyright file="Person.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -506,6 +506,11 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 
 		set
 		{
+			if (string.IsNullOrEmpty(value))
+			{
+				ExceptionThrower.ThrowArgumentNullException(nameof(this.Email));
+			}
+
 			if (string.Equals(this._email, value, StringComparison.Ordinal))
 			{
 				return;
@@ -589,6 +594,11 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 
 		init
 		{
+			if (string.IsNullOrEmpty(value))
+			{
+				ExceptionThrower.ThrowArgumentNullException(nameof(this.Id));
+			}
+
 			if (string.Equals(this._id, value, StringComparison.Ordinal))
 			{
 				return;
