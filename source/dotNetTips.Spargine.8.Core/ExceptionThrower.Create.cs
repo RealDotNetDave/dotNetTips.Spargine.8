@@ -4,7 +4,7 @@
 // Created          : 03-13-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-28-2025
+// Last Modified On : 04-01-2025
 // ***********************************************************************
 // <copyright file="ExceptionThrower.Create.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)

@@ -4,7 +4,7 @@
 // Created          : 11-21-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-01-2025
+// Last Modified On : 04-28-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -145,8 +145,8 @@ public static class DictionaryExtensions
 	/// <typeparam name="TValue">The type of the values in the dictionary, which must implement <see cref="IDisposable"/> if they are to be disposed.</typeparam>
 	/// <param name="collection">The dictionary containing the items to dispose.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
-	[Information(nameof(DisposeCollection), "David McCarter", "11/21/2020", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static void DisposeCollection<TKey, TValue>(this IDictionary<TKey, TValue> collection)
+	[Information(nameof(DisposeCollection), "David McCarter", "11/21/2020", UnitTestStatus = UnitTestStatus.None, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	public static void DisposeCollection<TKey, TValue>(this IEnumerable<KeyValuePair<object, IDisposable>> collection)
 		where TKey : notnull
 		where TValue : notnull => ProcessCollectionToDispose(collection.Select(p => p.Value));
 

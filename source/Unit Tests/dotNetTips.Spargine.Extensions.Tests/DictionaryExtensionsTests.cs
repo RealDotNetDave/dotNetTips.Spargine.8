@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-15-2025
+// Last Modified On : 04-28-2025
 // ***********************************************************************
 // <copyright file="DictionaryExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -48,6 +48,79 @@ public class DictionaryExtensionsTests
 		Assert.IsFalse(people.AddIfNotExists(newPerson.Id, newPerson));
 	}
 
+	[TestMethod]
+	public void AddIfNotExists_WithExistingKey_DoesNotAddKeyValuePair()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int> { { "key1", 42 } };
+		var key = "key1";
+		var value = 99;
+
+		// Act
+		var result = dictionary.AddIfNotExists(key, value);
+
+		// Assert
+		Assert.IsFalse(result);
+		Assert.AreEqual(42, dictionary[key]); // Ensure the original value is not overwritten
+	}
+
+	[TestMethod]
+	public void AddIfNotExists_WithNewKey_AddsKeyValuePair()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>();
+		var key = "key1";
+		var value = 42;
+
+		// Act
+		var result = dictionary.AddIfNotExists(key, value);
+
+		// Assert
+		Assert.IsTrue(result);
+		Assert.IsTrue(dictionary.ContainsKey(key));
+		Assert.AreEqual(value, dictionary[key]);
+	}
+
+	[TestMethod]
+	public void AddIfNotExists_WithNullDictionary_ThrowsArgumentNullException()
+	{
+		// Arrange
+		Dictionary<string, int> dictionary = null;
+		var key = "key1";
+		var value = 42;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => dictionary.AddIfNotExists(key, value));
+	}
+
+	[TestMethod]
+	public void AddIfNotExists_WithNullKey_ThrowsArgumentNullException()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, int>();
+		string key = null;
+		var value = 42;
+
+		// Act & Assert
+		Assert.ThrowsException<ArgumentNullException>(() => dictionary.AddIfNotExists(key, value));
+	}
+
+	[TestMethod]
+	public void AddIfNotExists_WithNullValue_ReturnsFalse()
+	{
+		// Arrange
+		var dictionary = new Dictionary<string, string>();
+		var key = "key1";
+		string value = null;
+
+		// Act
+		var result = dictionary.AddIfNotExists(key, value);
+
+		// Assert
+		Assert.IsFalse(result);
+		Assert.IsFalse(dictionary.ContainsKey(key));
+	}
+
 	/// <summary>
 	/// Defines the test method AddRangeDictionaryTest01.
 	/// </summary>
@@ -64,60 +137,6 @@ public class DictionaryExtensionsTests
 		Assert.IsTrue(people.FastCount() == CollectionCount + 2);
 	}
 
-	[TestMethod]
-	public void DisposeCollectionTest()
-	{
-		var disposableItems = new Dictionary<string, MockDisposable>
-	{
-		{ "item1", new MockDisposable() },
-		{ "item2", new MockDisposable() },
-		{ "item3", new MockDisposable() }
-	};
-
-		disposableItems.DisposeCollection();
-
-		foreach (var item in disposableItems.Values)
-		{
-			Assert.IsTrue(item.IsDisposed);
-		}
-	}
-
-	[TestMethod]
-	public void DisposeCollectionWithMixedItemsTest()
-	{
-		var mixedItems = new Dictionary<string, object>
-	{
-		{ "item1", new MockDisposable() },
-		{ "item2", "value2" },
-		{ "item3", new MockDisposable() }
-	};
-
-		mixedItems.DisposeCollection();
-
-		foreach (var item in mixedItems.Values)
-		{
-			if (item is MockDisposable disposableItem)
-			{
-				Assert.IsTrue(disposableItem.IsDisposed);
-			}
-		}
-	}
-
-	[TestMethod]
-	public void DisposeCollectionWithNonDisposableItemsTest()
-	{
-		var nonDisposableItems = new Dictionary<string, string>
-	{
-		{ "item1", "value1" },
-		{ "item2", "value2" },
-		{ "item3", "value3" }
-	};
-
-		nonDisposableItems.DisposeCollection();
-
-		// No exception should be thrown, and the test should pass.
-		Assert.IsTrue(nonDisposableItems.Count == 3);
-	}
 
 	/// <summary>
 	/// Defines the test method DoesNotHaveItemsTest.

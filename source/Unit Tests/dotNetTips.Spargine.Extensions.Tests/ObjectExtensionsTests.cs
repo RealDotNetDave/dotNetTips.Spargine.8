@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 04-28-2025
 // ***********************************************************************
 // <copyright file="ObjectExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -12,9 +12,11 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Reflection;
 using System.Text.Json;
 using DotNetTips.Spargine.Core;
 using DotNetTips.Spargine.Core.Devices;
@@ -30,6 +32,26 @@ namespace DotNetTips.Spargine.Extensions.Tests;
 [TestClass]
 public class ObjectExtensionsTests : UnitTester
 {
+
+	[TestMethod]
+	public void AsTest()
+	{
+		var person = RandomData.GeneratePersonRef<Tester.Models.RefTypes.Address>();
+
+		try
+		{
+			var castedPerson = person.As<Tester.Models.RefTypes.Person<Tester.Models.RefTypes.Address>>();
+
+			Assert.IsNotNull(castedPerson);
+			Assert.AreEqual(person, castedPerson);
+		}
+		catch (InvalidCastException ex)
+		{
+			Debug.WriteLine(ex.Message);
+			Assert.Fail();
+		}
+	}
+
 	[TestMethod]
 	public void CloneTest()
 	{
@@ -59,6 +81,27 @@ public class ObjectExtensionsTests : UnitTester
 		//PrintResult(result, nameof(this.ComputeSha256HashTest));
 
 		Assert.IsFalse(string.IsNullOrEmpty(result));
+	}
+
+	[TestMethod]
+	public void DisposeCollectionTest()
+	{
+		var disposableItems = new List<DisposableFields>
+	{
+		new DisposableFields(),
+		new DisposableFields(),
+		new DisposableFields()
+	};
+
+		try
+		{
+			disposableItems.DisposeCollection();
+		}
+		catch (Exception ex)
+		{
+			Debug.WriteLine(ex.Message);
+			Assert.Fail();
+		}
 	}
 
 	[TestMethod]
@@ -138,6 +181,31 @@ public class ObjectExtensionsTests : UnitTester
 
 		Assert.IsTrue(person.IsNotNull());
 		Assert.IsFalse(nullPerson.IsNotNull());
+	}
+
+	[TestMethod]
+	public void ProcessCollectionToDisposeTest()
+	{
+		var disposableItems = new List<DisposableFields>
+	{
+		new DisposableFields(),
+		new DisposableFields(),
+		new DisposableFields()
+	};
+
+		try
+		{
+			// Using reflection to invoke the private method
+			var method = typeof(ObjectExtensions).GetMethod("ProcessCollectionToDispose", BindingFlags.NonPublic | BindingFlags.Static);
+			Assert.IsNotNull(method);
+
+			method.Invoke(null, new object[] { disposableItems });
+		}
+		catch (Exception ex)
+		{
+			Debug.WriteLine(ex.Message);
+			Assert.Fail();
+		}
 	}
 
 	[TestMethod]

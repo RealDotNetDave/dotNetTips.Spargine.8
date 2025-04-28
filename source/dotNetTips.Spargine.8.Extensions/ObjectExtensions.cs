@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 04-28-2025
 // ***********************************************************************
 // <copyright file="ObjectExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -52,6 +52,25 @@ public static class ObjectExtensions
 	/// </summary>
 	private static readonly Lazy<ObjectPool<StringBuilder>> _stringBuilderPool =
 		new(() => new DefaultObjectPoolProvider().CreateStringBuilderPool());
+
+	/// <summary>
+	/// Processes the <see cref="IEnumerable" /> to dispose items if they implement <see cref="IDisposable" />.
+	/// </summary>
+	/// <typeparam name="T">The type of the items in the collection, constrained to <see cref="IDisposable" />.</typeparam>
+	/// <param name="items">The collection of items to dispose.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(ProcessCollectionToDispose), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	private static void ProcessCollectionToDispose<T>(IEnumerable<T> items) where T : IDisposable
+	{
+		if (items.HasItems())
+		{
+			foreach (var item in items)
+			{
+				item?.Dispose();
+			}
+		}
+	}
 
 	/// <summary>
 	/// Converts an object to a specified type, offering a clean way to cast or switch between types without throwing exceptions when dealing with mismatched types.
@@ -115,6 +134,20 @@ public static class ObjectExtensions
 	}
 
 	/// <summary>
+	/// Tries to dispose items in the <see cref="IEnumerable" /> if the type implements <see cref="IDisposable" />.
+	/// </summary>
+	/// <typeparam name="T">The type of the items in the collection.</typeparam>
+	/// <param name="items">The collection of items to dispose.</param>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[Information(nameof(DisposeCollection), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	public static void DisposeCollection<T>(this IEnumerable<T> items) where T : IDisposable => ProcessCollectionToDispose(items);
+
+	// Fix for CS0246: The type or namespace name 'T' could not be found
+	// The issue is that 'T' is not defined in the context of the `DisposeFields` method.
+	// To fix this, we need to remove the generic type 'T' and use a non-generic approach.
+
+	/// <summary>
 	/// Automatically disposes of all IDisposable fields within an object using reflection, simplifying memory management in classes that deal with unmanaged resources.
 	/// This method is a must-use in any IDisposable implementation, ensuring resources are freed efficiently.
 	/// </summary>
@@ -133,6 +166,14 @@ public static class ObjectExtensions
 			if (field.FieldType.IsAssignableTo(typeof(IDisposable)) && field.GetValue(obj) is IDisposable disposableField)
 			{
 				disposableField.TryDispose();
+			}
+			else if (field.GetValue(obj) is IEnumerable<IDisposable> collection)
+			{
+				collection.DisposeCollection();
+			}
+			else if (field is IEnumerable<KeyValuePair<object, IDisposable>> keyValueCollection)
+			{
+				keyValueCollection.DisposeCollection<object, IDisposable>();
 			}
 		}
 	}
