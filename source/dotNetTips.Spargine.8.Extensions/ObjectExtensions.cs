@@ -60,7 +60,7 @@ public static class ObjectExtensions
 	/// <param name="items">The collection of items to dispose.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ProcessCollectionToDispose), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(ProcessCollectionToDispose), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	private static void ProcessCollectionToDispose<T>(IEnumerable<T> items) where T : IDisposable
 	{
 		if (items.HasItems())

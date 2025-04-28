@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-24-2025
+// Last Modified On : 04-28-2025
 // ***********************************************************************
 // <copyright file="UnitTester.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -16,6 +16,7 @@
 // </summary>
 // ***********************************************************************
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using DotNetTips.Spargine.Core;
@@ -32,8 +33,9 @@ namespace DotNetTips.Spargine.Tester;
 /// Initializes a new instance of the <see cref="UnitTester"/> class.
 /// </remarks>
 /// <param name="outputDirectory">The directory where output files will be saved. Defaults to the current directory if not specified.</param>
+[ExcludeFromCodeCoverage]
+[DebuggerStepThrough]
 [Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
-[method: Information(nameof(UnitTester), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 public abstract class UnitTester(string outputDirectory = null)
 {
 	/// <summary>
@@ -55,10 +57,7 @@ public abstract class UnitTester(string outputDirectory = null)
 	[Information(nameof(PropertiesToString), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
 	protected virtual string PropertiesToString<T>(T input, Func<PropertyInfo, bool> propertySelector)
 	{
-		input = input.ArgumentNotNull();
-		propertySelector = propertySelector.ArgumentNotNull();
-
-		return string.Join(", ", input.GetType()
+		return string.Join(ControlChars.CommaSpace, input.GetType()
 			.GetProperties(BindingFlags.Public | BindingFlags.Instance)
 			.Where(propertySelector)
 			.Select(prop =>
@@ -78,8 +77,9 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// The name of the calling method. This is automatically populated by the compiler unless explicitly provided.
 	/// </param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="collection"/> or <paramref name="propertySelector"/> is null.</exception>
+	[DebuggerStepThrough]
 	[Information(nameof(PrintToDebug), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
-	public void PrintToDebug<T>(IEnumerable<T> collection, Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
+	public void PrintToDebug<T>([NotNull] IEnumerable<T> collection, [NotNull] Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
 	{
 		collection = collection.ArgumentNotNull();
 		propertySelector = propertySelector.ArgumentNotNull();
@@ -108,8 +108,9 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// <exception cref="ArgumentNullException">
 	/// Thrown when <paramref name="input"/> or <paramref name="propertySelector"/> is null.
 	/// </exception>
+	[DebuggerStepThrough]
 	[Information(nameof(PrintToDebug), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
-	public void PrintToDebug<T>(T input, Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
+	public void PrintToDebug<T>([NotNull] T input, [NotNull] Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
 	{
 		input = input.ArgumentNotNull();
 		propertySelector = propertySelector.ArgumentNotNull();
@@ -128,14 +129,15 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// The name of the calling method. This is automatically populated by the compiler unless explicitly provided.
 	/// </param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="collection"/> or <paramref name="propertySelector"/> is null.</exception>
+	[DebuggerStepThrough]
 	[Information(nameof(SaveToFile), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
-	public void SaveToFile<T>(IEnumerable<T> collection, Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
+	public void SaveToFile<T>([NotNull] IEnumerable<T> collection, [NotNull] Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
 	{
 		collection = collection.ArgumentNotNull();
 		propertySelector = propertySelector.ArgumentNotNull();
 		methodName = methodName.ArgumentNotNullOrEmpty();
 
-		var filePath = Path.Combine(this._outputDirectory, $"{methodName}.txt");
+		var filePath = Path.Combine(this.OutputDirectory, $"{methodName}.txt");
 
 		var content = collection
 			.Select(item => this.PropertiesToString(item, propertySelector))
@@ -156,14 +158,15 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// <exception cref="ArgumentNullException">
 	/// Thrown when <paramref name="input"/> or <paramref name="propertySelector"/> is null.
 	/// </exception>
+	[DebuggerStepThrough]
 	[Information(nameof(SaveToFile), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
-	public void SaveToFile<T>(T input, Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
+	public void SaveToFile<T>([NotNull] T input, [NotNull] Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
 	{
 		input = input.ArgumentNotNull();
 		propertySelector = propertySelector.ArgumentNotNull();
 		methodName = methodName.ArgumentNotNullOrEmpty();
 
-		var filePath = Path.Combine(this._outputDirectory, $"{methodName}.txt");
+		var filePath = Path.Combine(this.OutputDirectory, $"{methodName}.txt");
 
 		var content = this.PropertiesToString(input, propertySelector);
 		File.WriteAllText(filePath, content);
@@ -185,14 +188,16 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// <exception cref="ArgumentException">
 	/// Thrown when <paramref name="methodName"/> is null or empty.
 	/// </exception>
+	[AsyncStateMachine(typeof(Task))]
+	[DebuggerStepThrough]
 	[Information(nameof(SaveToFileAsync), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
-	public async Task SaveToFileAsync<T>(IEnumerable<T> collection, Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
+	public async Task SaveToFileAsync<T>([NotNull] IEnumerable<T> collection, [NotNull] Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
 	{
 		collection = collection.ArgumentNotNull();
 		propertySelector = propertySelector.ArgumentNotNull();
 		methodName = methodName.ArgumentNotNullOrEmpty();
 
-		var filePath = Path.Combine(Directory.GetCurrentDirectory(), $"{methodName}.txt");
+		var filePath = Path.Combine(this.OutputDirectory, $"{methodName}.txt");
 
 		var content = collection
 			.Select(item => this.PropertiesToString(item, propertySelector))
@@ -200,4 +205,12 @@ public abstract class UnitTester(string outputDirectory = null)
 
 		await File.WriteAllLinesAsync(filePath, content, CancellationToken.None).ConfigureAwait(false);
 	}
+
+	/// <summary>
+	/// Gets the output directory where files will be saved.
+	/// </summary>
+	/// <value>
+	/// A string representing the directory path where output files will be saved.
+	/// </value>
+	public string OutputDirectory => this._outputDirectory;
 }
