@@ -1,4 +1,4 @@
-# DotNetTips.Spargine for Microsoft .NET 8: v2025.8.4.26 
+# DotNetTips.Spargine for Microsoft .NET 8: v2025.8.5.1 
 ![Spargine 8](docs/Graphics/SPARGINE-8-BANNER.png)
 
 Open-source .NET assemblies from dotNetTips.com and **<a href="https://dotnettips.wordpress.com/about/" target="_blank">David (dotNetDave) McCarter</a>**. 
@@ -70,6 +70,7 @@ Below is the list of current projects in this repository
         * **WebHelper**: Utility methods for website calls. These functions streamline website interactions and efficiently manage HTTP-related tasks.
     * **ApiLibraries**: List of common Windows API libraries.
     * **App**: Application Information and Utility Methods.
+    * **AssemblyHelper**: Provides static helper methods for working with assemblies.
     * **ArgumentInvalidException**: Custom exception type for invalid argument value.
     * **ArgumentReadOnlyException**: Custom exception type for read-only argument values, such as collections.
     * **ComputerInfo**: Used to retrieve common computer information.
@@ -101,7 +102,7 @@ Below is the list of current projects in this repository
     * **TypeHelper**: Provides valuable methods for type management, encompassing tasks such as loading derived types, creating new types, discovering derived types, converting JSON to objects, transforming JSON files into objects, generating instance hash codes, and listing built-in types. These functionalities empower developers to handle types effectively in diverse scenarios.
     * **Valdaitor**: Methods facilitating the validation of arguments and values, ensuring both simplicity and accuracy. In the event of encountering invalid data, an Exception will be thrown, accompanied by an appropriate error message, which can be either custom or default.
         
-*   **DotNetTips.Spargine.Extensions:** Library for common extension methods. Supported types are: Array, Assembly, Boolean, Collection, Color, DataContext, DataReader, DataTable, DateTime, Dictionary, Enumerable, Enum, Exception, Guid, HashSet,  HttpClient, HttpContext, HttpRequest, HttpReponseHeader, ImmutableArray, LINQ, List, Math, Numeric, Object, ObservableCollection, Process, ReadOnlyCollection, ReadOnlySpan, Socket, SortedDictionary, SortedSet, Stream, StringBuilder, String, Task, Thread, Type, WebClient
+*   **DotNetTips.Spargine.Extensions:** Library for common extension methods. Supported types are: Array, Assembly, Boolean, Collection, Color, ConcurrentBag, DataContext, DataReader, DataTable, DateTime, Dictionary, Enumerable, Enum, Exception, Guid, HashSet,  HttpClient, HttpContext, HttpRequest, HttpReponseHeader, ImmutableArray, LINQ, List, Math, Numeric, Object, ObservableCollection, Process, ReadOnlyCollection, ReadOnlySpan, Socket, SortedDictionary, SortedSet, Stream, StringBuilder, String, Task, Thread, Type, WebClient
 *   **DotNetTips.Spargine.Tester:** Library for creating dummy data for use in unit & benchmark tests.
     * **Data**:
         * **Countries**: Methods for retrieving comprehensive data encompassing all countries worldwide, including their respective regions, states and cities.
@@ -163,6 +164,7 @@ Below is the list of current projects in this repository
         * **GenerateWord**: Generates a random word within a specified minimum and maximum length. Example: `anvpwufadtxpfysguavguwm`
         * **GenerateWords**: Generates a ReadOnlyCollection of words with lengths falling within a specified minimum and maximum range.
         * **LongTestString** (property): Provides an extensive string for testing purposes, with a length of 969 characters, including spaces.
+    * **UnitTester**: Provides utility methods for debugging and saving object properties. This class is intended to be used as a base class for unit testing scenarios.
 *   **DotNetTips.Spargine.Benchmarking:** Library for benchmarking code using <a href="https://benchmarkdotnet.org/index.html" target="_blank">BenchmarkDotNet</a>. To read more about this project, <a href="source/Benchmarking/README.md" target="_blank">**click here**</a>.
 # Benchmark Tests
 Spargine undergoes performance testing through benchmark tests using **BenchmarkDotNet**. **<a href="https://github.com/RealDotNetDave/dotNetTips.Spargine.8/tree/master/docs/Benchmark%20Results" target="_blank">Click here</a>** to access the latest benchmark results for these projects.
