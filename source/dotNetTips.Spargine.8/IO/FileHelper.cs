@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-17-2025
+// Last Modified On : 04-30-2025
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -488,7 +488,7 @@ public static class FileHelper
 	/// await FileHelper.DownloadFileFromWebAsync(remoteFileUrl, destinationDir);
 	/// </code>
 	/// </example>
-	[Information(nameof(DownloadFileFromWebAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Updated)]
+	[Information(nameof(DownloadFileFromWebAsync), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static async Task<SimpleResult<int>> DownloadFileFromWebAsync([NotNull] Uri remoteUri, [NotNull] DirectoryInfo destination, CancellationToken cancellationToken = default)
 	{
 		remoteUri = remoteUri.ArgumentNotNull();

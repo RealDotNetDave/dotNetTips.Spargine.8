@@ -4,7 +4,7 @@
 // Created          : 03-01-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-12-2025
+// Last Modified On : 04-30-2025
 // ***********************************************************************
 // <copyright file="DirectoryHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -172,7 +172,7 @@ public static class DirectoryHelper
 	/// <exception cref="IOException">Thrown when the directory could not be deleted after the specified number of retries.</exception>
 	/// <exception cref="UnauthorizedAccessException">Thrown when the directory could not be deleted due to unauthorized access after the specified number of retries.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Updated)]
+	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void DeleteDirectory([NotNull] DirectoryInfo path, [ConstantExpected(Min = 1, Max = byte.MaxValue)] byte retries = 5, bool recursive = true)
 	{
 		//TODO: FOR VERSION 10, RETURN SIMPLERESULT.
@@ -207,7 +207,7 @@ public static class DirectoryHelper
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="directories"/> or <paramref name="searchPattern"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(LoadFilesAsync), author: "David McCarter", createdOn: "3/1/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Updated)]
+	[Information(nameof(LoadFilesAsync), author: "David McCarter", createdOn: "3/1/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static async IAsyncEnumerable<IEnumerable<FileInfo>> LoadFilesAsync([NotNull] IEnumerable<DirectoryInfo> directories, [NotNull] string searchPattern, SearchOption searchOption, [EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
 		directories = directories.ArgumentNotNull();

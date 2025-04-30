@@ -4,7 +4,7 @@
 // Created          : 08-04-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-02-2025
+// Last Modified On : 04-30-2025
 // ***********************************************************************
 // <copyright file="TempFileManager.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -31,7 +31,7 @@ namespace DotNetTips.Spargine.IO;
 /// Initializes a new instance of the <see cref="TempFileManager" /> class.
 /// </remarks>
 [SupportedOSPlatform("windows")]
-[Information(nameof(TempFileManager), "David McCarter", "8/4/2024", Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(nameof(TempFileManager), "David McCarter", "8/4/2024", Status = Status.Available, Documentation = "https://bit.ly/SpargineTempFileManager")]
 public class TempFileManager() : IDisposable, IAsyncDisposable
 {
 

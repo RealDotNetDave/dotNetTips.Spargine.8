@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-28-2025
+// Last Modified On : 04-30-2025
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -1049,7 +1049,7 @@ public static class RandomData
 	/// </remarks>
 	/// <example>Output: https://www.ukrsusbrtjijfktfj.shouji</example>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(GenerateUrlHostName), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
+	[Information(nameof(GenerateUrlHostName), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string GenerateUrlHostName() => $"https://{GenerateUrlHostNameNoProtocol()}";
 
 	/// <summary>

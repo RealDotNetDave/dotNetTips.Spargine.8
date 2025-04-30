@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-11-2025
+// Last Modified On : 04-30-2025
 // ***********************************************************************
 // <copyright file="TypeExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -259,7 +259,7 @@ public static partial class TypeExtensions
 	/// <param name="type">The type whose members are to be searched.</param>
 	/// <returns>A read-only collection of members that have the specified attribute.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the <paramref name="type"/> is null.</exception>
-	[Information("https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Updated)]
+	[Information("https://github.com/dotnet/BenchmarkDotNet.", author: "David McCarter", createdOn: "7/15/2020", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<MemberInfo> GetTypeMembersWithAttribute<TAttribute>([NotNull] this Type type)
 		where TAttribute : Attribute
 	{
