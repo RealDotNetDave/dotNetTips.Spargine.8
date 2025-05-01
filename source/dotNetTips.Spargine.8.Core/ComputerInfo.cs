@@ -139,7 +139,7 @@ public sealed class ComputerInfo
 	/// <remarks>
 	/// This method checks all network interfaces to determine if any are operational and not virtual or loopback interfaces.
 	/// </remarks>
-	[Information(nameof(IsNetworkAvailable), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(IsNetworkAvailable), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public bool IsNetworkAvailable => NetworkInterface.GetAllNetworkInterfaces()
 				.Any(networkInterface =>
 					networkInterface.OperationalStatus == OperationalStatus.Up &&
@@ -241,7 +241,7 @@ public sealed class ComputerInfo
 	/// Gets the uptime of the system.
 	/// </summary>
 	[DataMember]
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public TimeSpan Uptime => TimeSpan.FromMilliseconds(Environment.TickCount64);
 
 	/// <summary>

@@ -159,7 +159,7 @@ public static class FileHelper
 	/// <param name="file">The file to which the attributes will be added.</param>
 	/// <param name="attributesToAdd">The attributes to add.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
-	[Information(nameof(AddAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void AddAttributes([NotNull] FileInfo file, in FileAttributes attributesToAdd)
 	{
 		file = file.ArgumentNotNull();
@@ -175,7 +175,7 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="file">The file to which the read-only attribute will be added.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
-	[Information(nameof(AddReadOnlyAttribute), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(AddReadOnlyAttribute), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void AddReadOnlyAttribute([NotNull] FileInfo file)
 	{
 		file = file.ArgumentNotNull();
@@ -596,7 +596,7 @@ public static class FileHelper
 	/// <param name="file">The file from which to remove the attributes.</param>
 	/// <param name="attributesToRemove">The attributes to remove.</param>
 	/// <returns>System.IO.FileAttributes.</returns>
-	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void RemoveAttributes([NotNull] FileInfo file, in FileAttributes attributesToRemove)
 	{
 		file = file.ArgumentNotNull();
@@ -612,7 +612,7 @@ public static class FileHelper
 	/// </summary>
 	/// <param name="file">The file from which to remove the read-only attribute.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> is null.</exception>
-	[Information(nameof(RemoveReadOnlyAttribute), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(RemoveReadOnlyAttribute), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void RemoveReadOnlyAttribute([NotNull] FileInfo file)
 	{
 		file = file.ArgumentNotNull();

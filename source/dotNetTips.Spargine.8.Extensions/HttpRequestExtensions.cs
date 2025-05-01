@@ -41,7 +41,7 @@ public static class HttpRequestExtensions
 	/// <param name="headers">The HTTP headers to which the request identifier will be added.</param>
 	/// <returns>The generated unique request identifier.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="headers"/> is null.</exception>
-	[Information(nameof(AddRequestId), author: "David McCarter", createdOn: "3/18/2024", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(AddRequestId), author: "David McCarter", createdOn: "3/18/2024", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static string AddRequestId([NotNull] this HttpRequestHeaders headers)
 	{
 		headers = headers.ArgumentNotNull();

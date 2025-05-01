@@ -30,7 +30,7 @@ public static partial class ExceptionThrower
 	/// <returns>A <see cref="FileNotFoundException"/> instance.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static FileNotFoundException CreateFileNotFoundException([NotNull] string fileName) => new(Resources.ErrorFileNotFound, fileName);
 
 	/// <summary>
@@ -41,7 +41,7 @@ public static partial class ExceptionThrower
 	/// <returns>A <see cref="FileNotFoundException"/> instance.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static FileNotFoundException CreateFileNotFoundException([AllowNull] string message, [NotNull] string fileName) => new(message ?? Resources.ErrorFileNotFound, fileName);
 
 	/// <summary>
@@ -53,6 +53,6 @@ public static partial class ExceptionThrower
 	/// <returns>A <see cref="FileNotFoundException"/> instance.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[ExcludeFromCodeCoverage(Justification = "Not needed for this pass-through method.")]
-	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(CreateFileNotFoundException), UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static FileNotFoundException CreateFileNotFoundException([AllowNull] string message, [NotNull] string fileName, Exception ex) => new(message ?? Resources.ErrorFileNotFound, fileName, ex);
 }

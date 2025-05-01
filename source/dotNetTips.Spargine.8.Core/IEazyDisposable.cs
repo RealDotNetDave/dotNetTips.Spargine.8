@@ -34,7 +34,7 @@ public interface IEazyDisposable : IDisposable
 	/// This method iterates through all fields of the object and disposes any field that implements <see cref="IDisposable"/>.  
 	/// </remarks>  
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(DisposeFields), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.New)]
+	[Information(nameof(DisposeFields), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	private void DisposeFields([NotNull] IDisposable obj)
 	{
 		if (obj is null)

@@ -190,7 +190,7 @@ public class TempFileManager() : IDisposable, IAsyncDisposable
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="fileName"/> is null.</exception>
 	/// <exception cref="ArgumentException">Thrown if <paramref name="fileName"/> is empty.</exception>
 	[SupportedOSPlatform("windows")]
-	[Information(nameof(DeleteFile), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(DeleteFile), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void DeleteFile(string fileName)
 	{
 		if (fileName.IsNullOrEmpty())

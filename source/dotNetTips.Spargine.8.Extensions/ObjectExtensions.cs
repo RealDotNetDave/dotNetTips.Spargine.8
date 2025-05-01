@@ -60,7 +60,7 @@ public static class ObjectExtensions
 	/// <param name="items">The collection of items to dispose.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(ProcessCollectionToDispose), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(ProcessCollectionToDispose), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	private static void ProcessCollectionToDispose<T>(IEnumerable<T> items) where T : IDisposable
 	{
 		if (items.HasItems())
@@ -140,7 +140,7 @@ public static class ObjectExtensions
 	/// <param name="items">The collection of items to dispose.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	[Information(nameof(DisposeCollection), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(DisposeCollection), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static void DisposeCollection<T>(this IEnumerable<T> items) where T : IDisposable => ProcessCollectionToDispose(items);
 
 	// Fix for CS0246: The type or namespace name 'T' could not be found

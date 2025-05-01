@@ -69,7 +69,7 @@ public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISe
 	/// Initializes a new instance of the <see cref="AutoDefaultDictionary{TKey, TValue}"/> class with the specified function to handle missing keys.
 	/// </summary>
 	/// <param name="onMissingKey">The function to call when a key is not found in the dictionary.</param>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public AutoDefaultDictionary(in Func<TKey, TValue> onMissingKey) => this._onMissingKey = onMissingKey ?? throw new ArgumentNullException(nameof(onMissingKey));
 
 	/// <summary>
@@ -86,7 +86,7 @@ public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISe
 	/// <param name="dictionary">The dictionary to initialize with.</param>
 	/// <param name="onMissingKey">The function to call when a key is not found in the dictionary.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="onMissingKey"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public AutoDefaultDictionary(in IDictionary<TKey, TValue> dictionary, in Func<TKey, TValue> onMissingKey) : base(dictionary) => this._onMissingKey = onMissingKey ?? throw new ArgumentNullException(nameof(onMissingKey));
 
 	/// <summary>
@@ -103,7 +103,7 @@ public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISe
 	/// <param name="keyValuePairs">The key-value pairs to initialize with.</param>
 	/// <param name="onMissingKey">The function to call when a key is not found in the dictionary.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="onMissingKey"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public AutoDefaultDictionary(in IEnumerable<KeyValuePair<TKey, TValue>> keyValuePairs, in Func<TKey, TValue> onMissingKey) : base(keyValuePairs.ToDictionary(kvp => kvp.Key, kvp => kvp.Value)) => this._onMissingKey = onMissingKey ?? throw new ArgumentNullException(nameof(onMissingKey));
 
 	/// <summary>
@@ -120,7 +120,7 @@ public class AutoDefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISe
 	/// <param name="onMissingKey">The function to call when a key is not found in the dictionary.</param>
 	/// <param name="comparer">The comparer to use when comparing keys.</param>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="onMissingKey"/> is null.</exception>
-	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public AutoDefaultDictionary(in Func<TKey, TValue> onMissingKey, in IEqualityComparer<TKey> comparer) : base(comparer) => this._onMissingKey = onMissingKey ?? throw new ArgumentNullException(nameof(onMissingKey));
 
 	/// <summary>

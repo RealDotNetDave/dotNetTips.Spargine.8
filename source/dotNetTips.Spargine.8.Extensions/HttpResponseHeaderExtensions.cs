@@ -86,7 +86,7 @@ public static class HttpResponseHeaderExtensions
 	/// <param name="headers">The HTTP headers from which the request identifier will be retrieved.</param>
 	/// <returns>The request identifier if found; otherwise, an empty string.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="headers"/> is null.</exception>
-	[Information(nameof(GetRequestId), author: "David McCarter", createdOn: "3/18/2024", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(GetRequestId), author: "David McCarter", createdOn: "3/18/2024", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public static string GetRequestId([NotNull] this HttpResponseHeaders headers)
 	{
 		headers = headers.ArgumentNotNull();

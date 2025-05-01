@@ -252,7 +252,7 @@ public static class DateTimeExtensions
 	/// </summary>
 	/// <param name="dateTime">The DateTime to check.</param>
 	/// <returns>A TimeSpan representing the time until the next hour starts.</returns>
-	[Information(nameof(TimeUntilNextHour), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(TimeUntilNextHour), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TimeSpan TimeUntilNextHour(this in DateTime dateTime)
 	{
 		var nextHour = dateTime.AddHours(1).AddMinutes(-dateTime.Minute).AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
@@ -264,7 +264,7 @@ public static class DateTimeExtensions
 	/// </summary>
 	/// <param name="dateTime">The DateTimeOffset to check.</param>
 	/// <returns>A TimeSpan representing the time until the next hour starts.</returns>
-	[Information(nameof(TimeUntilNextHour), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(TimeUntilNextHour), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TimeSpan TimeUntilNextHour(this in DateTimeOffset dateTime)
 	{
 		var nextHour = dateTime.AddHours(1).AddMinutes(-dateTime.Minute).AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
@@ -276,7 +276,7 @@ public static class DateTimeExtensions
 	/// </summary>
 	/// <param name="dateTime">The DateTime to check.</param>
 	/// <returns>A TimeSpan representing the time until the next minute starts.</returns>
-	[Information(nameof(TimeUntilNextMinute), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(TimeUntilNextMinute), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TimeSpan TimeUntilNextMinute(this in DateTime dateTime)
 	{
 		var nextMinute = dateTime.AddMinutes(1).AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);
@@ -288,7 +288,7 @@ public static class DateTimeExtensions
 	/// </summary>
 	/// <param name="dateTime">The DateTimeOffset to check.</param>
 	/// <returns>A TimeSpan representing the time until the next minute starts.</returns>
-	[Information(nameof(TimeUntilNextMinute), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(TimeUntilNextMinute), author: "GitHub Copilot", createdOn: "03/03/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static TimeSpan TimeUntilNextMinute(this in DateTimeOffset dateTime)
 	{
 		var nextMinute = dateTime.AddMinutes(1).AddSeconds(-dateTime.Second).AddMilliseconds(-dateTime.Millisecond);

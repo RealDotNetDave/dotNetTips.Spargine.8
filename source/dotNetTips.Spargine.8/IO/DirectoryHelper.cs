@@ -362,7 +362,7 @@ public static class DirectoryHelper
 	/// <param name="path">The directory from which the attributes will be removed. Must not be null.</param>
 	/// <param name="attributesToRemove">The attributes to remove from the directory.</param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="path"/> is null.</exception>
-	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(RemoveAttributes), OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void RemoveAttributes([NotNull] DirectoryInfo path, in FileAttributes attributesToRemove)
 	{
 		if (path.CheckExists() == false)

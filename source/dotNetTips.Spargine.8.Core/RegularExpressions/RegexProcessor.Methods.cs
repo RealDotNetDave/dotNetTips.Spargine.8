@@ -62,7 +62,7 @@ public static partial class RegexProcessor
 	/// </code>
 	/// </example>
 	/// <exception cref="ArgumentNullException">Thrown if the input string is null.</exception>
-	[Information(nameof(ExtractVersion), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(ExtractVersion), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static string ExtractVersion(string input) => ExtractVersionRegex().Match(input).Value;
 
 	/// <summary>

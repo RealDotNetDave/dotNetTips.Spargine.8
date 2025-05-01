@@ -62,7 +62,7 @@ public static class AssemblyHelper
 	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
 	/// <param name="referencedAssemblyName">The name of the referenced assembly.</param>
 	/// <returns><c>true</c> if the assembly references the specified assembly; otherwise, <c>false</c>.</returns>
-	[Information(nameof(DoesAssemblyReference), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(DoesAssemblyReference), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static bool DoesAssemblyReference(FileInfo assemblyFile, string referencedAssemblyName)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
@@ -94,7 +94,7 @@ public static class AssemblyHelper
 	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
 	/// <param name="typeName">The fully qualified name of the type to check.</param>
 	/// <returns><c>true</c> if the type exists; otherwise, <c>false</c>.</returns>
-	[Information(nameof(DoesTypeExistInAssembly), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(DoesTypeExistInAssembly), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static bool DoesTypeExistInAssembly(FileInfo assemblyFile, string typeName)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
@@ -134,7 +134,7 @@ public static class AssemblyHelper
 	/// <returns>A read-only collection of <see cref="FileInfo"/> objects representing the assembly files found.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="directory"/> is null.</exception>
 	/// <exception cref="DirectoryNotFoundException">Thrown if the specified directory does not exist.</exception>
-	[Information(nameof(FindAssembliesFromDirectory), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(FindAssembliesFromDirectory), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<FileInfo> FindAssembliesFromDirectory(DirectoryInfo directory)
 	{
 		directory = directory.ArgumentExists(directory);
@@ -163,7 +163,7 @@ public static class AssemblyHelper
 	/// <returns>A read-only collection of <see cref="Type"/> objects that implement or inherit from the specified assemblyTypes.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="types"/> is null.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
-	[Information(nameof(FindTypesImplementing), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(FindTypesImplementing), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> FindTypesImplementing([NotNull] this FileInfo file, params Type[] types)
 	{
 		file = file.ArgumentNotNull();
@@ -187,7 +187,7 @@ public static class AssemblyHelper
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
 	/// <exception cref="FileLoadException">Thrown if an assembly cannot be loaded.</exception>
-	[Information(nameof(GetAssemblyCustomAttributes), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(GetAssemblyCustomAttributes), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<Attribute> GetAssemblyCustomAttributes(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
@@ -218,7 +218,7 @@ public static class AssemblyHelper
 	/// </summary>
 	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
 	/// <returns>The entry point <see cref="MethodInfo"/>, or <c>null</c> if none exists.</returns>
-	[Information(nameof(GetAssemblyEntryPoint), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(GetAssemblyEntryPoint), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static MethodInfo? GetAssemblyEntryPoint(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
@@ -249,7 +249,7 @@ public static class AssemblyHelper
 	/// </summary>
 	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
 	/// <returns>A dictionary containing metadata key-value pairs.</returns>
-	[Information(nameof(GetAssemblyMetadata), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(GetAssemblyMetadata), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static Dictionary<string, string> GetAssemblyMetadata(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
@@ -289,7 +289,7 @@ public static class AssemblyHelper
 	/// </summary>
 	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
 	/// <returns>A read-only collection of public <see cref="Type"/> objects.</returns>
-	[Information(nameof(GetAssemblyPublicTypes), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(GetAssemblyPublicTypes), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> GetAssemblyPublicTypes(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
@@ -332,7 +332,7 @@ public static class AssemblyHelper
 	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file to load.</param>
 	/// <returns>A collection of <see cref="Type"/> objects representing all assemblyTypes in the assembly.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
-	[Information(nameof(GetAssemblyTypes), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(GetAssemblyTypes), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> GetAssemblyTypes(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
@@ -370,7 +370,7 @@ public static class AssemblyHelper
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
 	/// <exception cref="FileLoadException">Thrown if an assembly cannot be loaded.</exception>
-	[Information(nameof(GetDependentAssemblies), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(GetDependentAssemblies), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<AssemblyName> GetDependentAssemblies(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
@@ -407,7 +407,7 @@ public static class AssemblyHelper
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> or <paramref name="typeName"/> is null.</exception>
 	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
 	/// <exception cref="TypeLoadException">Thrown if the specified type cannot be loaded from the assembly.</exception>
-	[Information(nameof(GetMethodsInType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(GetMethodsInType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<MethodInfo> GetMethodsInType(FileInfo assemblyFile, string typeName)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
@@ -452,7 +452,7 @@ public static class AssemblyHelper
 	/// It retrieves DLL files from the "ref" folder of the selected version and target framework.
 	/// </remarks>
 	/// <exception cref="DirectoryNotFoundException">Thrown if the .NET packs directory does not exist.</exception>
-	[Information(nameof(GetNetSdkDllFiles), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.New)]
+	[Information(nameof(GetNetSdkDllFiles), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<FileInfo> GetNetSdkDllFiles(string? version = null)
 	{
 		var root = Environment.GetEnvironmentVariable("DOTNET_ROOT");
@@ -507,7 +507,7 @@ public static class AssemblyHelper
 	/// Unloads the specified assembly.
 	/// </summary>
 	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
-	[Information(nameof(UnloadAssembly), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(UnloadAssembly), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static void UnloadAssembly(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);

@@ -54,7 +54,7 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// <param name="input">The object whose properties will be converted to a string.</param>
 	/// <param name="propertySelector">A function that determines which properties to include in the output.</param>
 	/// <returns>A string representation of the selected properties of the object.</returns>
-	[Information(nameof(PropertiesToString), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(PropertiesToString), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	protected virtual string PropertiesToString<T>(T input, Func<PropertyInfo, bool> propertySelector)
 	{
 		return string.Join(ControlChars.CommaSpace, input.GetType()
@@ -78,7 +78,7 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// </param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="collection"/> or <paramref name="propertySelector"/> is null.</exception>
 	[DebuggerStepThrough]
-	[Information(nameof(PrintToDebug), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(PrintToDebug), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void PrintToDebug<T>([NotNull] IEnumerable<T> collection, [NotNull] Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
 	{
 		collection = collection.ArgumentNotNull();
@@ -109,7 +109,7 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// Thrown when <paramref name="input"/> or <paramref name="propertySelector"/> is null.
 	/// </exception>
 	[DebuggerStepThrough]
-	[Information(nameof(PrintToDebug), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(PrintToDebug), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void PrintToDebug<T>([NotNull] T input, [NotNull] Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
 	{
 		input = input.ArgumentNotNull();
@@ -130,7 +130,7 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// </param>
 	/// <exception cref="ArgumentNullException">Thrown when <paramref name="collection"/> or <paramref name="propertySelector"/> is null.</exception>
 	[DebuggerStepThrough]
-	[Information(nameof(SaveToFile), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(SaveToFile), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void SaveToFile<T>([NotNull] IEnumerable<T> collection, [NotNull] Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
 	{
 		collection = collection.ArgumentNotNull();
@@ -159,7 +159,7 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// Thrown when <paramref name="input"/> or <paramref name="propertySelector"/> is null.
 	/// </exception>
 	[DebuggerStepThrough]
-	[Information(nameof(SaveToFile), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(SaveToFile), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public void SaveToFile<T>([NotNull] T input, [NotNull] Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
 	{
 		input = input.ArgumentNotNull();
@@ -190,7 +190,7 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// </exception>
 	[AsyncStateMachine(typeof(Task))]
 	[DebuggerStepThrough]
-	[Information(nameof(SaveToFileAsync), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.New)]
+	[Information(nameof(SaveToFileAsync), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Optimize, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public async Task SaveToFileAsync<T>([NotNull] IEnumerable<T> collection, [NotNull] Func<PropertyInfo, bool> propertySelector, [CallerMemberName] string methodName = ControlChars.EmptyString)
 	{
 		collection = collection.ArgumentNotNull();

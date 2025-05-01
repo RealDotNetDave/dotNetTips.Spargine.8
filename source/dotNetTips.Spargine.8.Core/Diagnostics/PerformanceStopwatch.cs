@@ -40,14 +40,14 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// Initializes a new instance of the <see cref="PerformanceStopwatch"/> class with an empty title.
 	/// </summary>
-	[Information(nameof(PerformanceStopwatch), UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(PerformanceStopwatch), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public PerformanceStopwatch() => this.Title = string.Empty;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="PerformanceStopwatch"/> class with the specified title.
 	/// </summary>
 	/// <param name="title">The title message associated with the stopwatch instance.</param>
-	[Information(nameof(PerformanceStopwatch), UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(PerformanceStopwatch), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public PerformanceStopwatch(string title) => this.Title = title;
 
 	/// <summary>
@@ -68,14 +68,14 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// Clears all logged diagnostic messages.
 	/// </summary>
-	[Information(nameof(ClearDiagnostics), "David McCarter", "2/28/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(ClearDiagnostics), "David McCarter", "2/28/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public void ClearDiagnostics() => this._diagnostics = [];
 
 	/// <summary>
 	/// Gets the current elapsed time as a formatted string.
 	/// </summary>
 	/// <returns>A formatted string representing the current elapsed time.</returns>
-	[Information(nameof(GetElapsedTimeString), "David McCarter", "2/28/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(GetElapsedTimeString), "David McCarter", "2/28/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string GetElapsedTimeString() => $"Elapsed Time: {this.Elapsed.TotalMilliseconds} ms";
 
 	/// <summary>
@@ -83,7 +83,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// </summary>
 	/// <param name="logger">The logger used for logging the message. Must not be null.</param>
 	/// <param name="message">The message to log. Must not be null.</param>
-	[Information(nameof(LogMessage), "David McCarter", "2/28/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(LogMessage), "David McCarter", "2/28/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public void LogMessage(ILogger logger, string message)
 	{
 		logger = logger.ArgumentNotNull();
