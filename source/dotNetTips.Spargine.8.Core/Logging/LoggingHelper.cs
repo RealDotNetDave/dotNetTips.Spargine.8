@@ -30,7 +30,7 @@ namespace DotNetTips.Spargine.Core.Logging;
 /// <summary>
 /// Provides utility methods for logging, including functionality to log computer information, application details, and capture all domain exceptions and events.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineLoggingHelper")]
 public static class LoggingHelper
 {
 
@@ -251,7 +251,7 @@ public static class LoggingHelper
 	/// It is important to call this method early in the application startup process to ensure all first chance exceptions are logged.
 	/// The logger can only be set once. Subsequent calls to this method will be ignored.
 	/// </remarks>
-	[Information(nameof(LogAppDomainFirstChanceException), author: "David McCarter", createdOn: "10/19/2021", UnitTestStatus = UnitTestStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "https://bit.ly/SpargineJan2022", Status = Status.Available)]
+	[Information(nameof(LogAppDomainFirstChanceException), author: "David McCarter", createdOn: "10/19/2021", UnitTestStatus = UnitTestStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static void LogAppDomainFirstChanceException(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
@@ -277,7 +277,7 @@ public static class LoggingHelper
 	/// It is important to call this method early in the application startup process to ensure all unhandled exceptions are logged.
 	/// Logger can only be set once. Subsequent calls to this method will be ignored.
 	/// </remarks>
-	[Information(nameof(LogAppDomainUnhandledException), author: "David McCarter", createdOn: "7/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Documentation = "ADD URL", Status = Status.Available)]
+	[Information(nameof(LogAppDomainUnhandledException), author: "David McCarter", createdOn: "7/13/2024", UnitTestStatus = UnitTestStatus.NotRequired, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static void LogAppDomainUnhandledException(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
@@ -308,7 +308,7 @@ public static class LoggingHelper
 	/// AppInfo:FileVersion - 15.0.0
 	/// AppInfo:Title - dotNetTips.Spargine
 	/// </example>
-	[Information(nameof(LogApplicationInformation), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(LogApplicationInformation), author: "David McCarter", createdOn: "11/03/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available")]
 	public static void LogApplicationInformation(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
@@ -358,7 +358,7 @@ public static class LoggingHelper
 	/// AppInfo:SystemDirectory - C:\\WINDOWS\\system32
 	/// AppInfo:HasShutdownStarted - False
 	/// </example>
-	[Information(nameof(LogComputerInformation), author: "David McCarter", createdOn: "11/04/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "http://bit.ly/SpargineFeb2021")]
+	[Information(nameof(LogComputerInformation), author: "David McCarter", createdOn: "11/04/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static void LogComputerInformation(ILogger logger)
 	{
 		logger = logger.ArgumentNotNull();
@@ -397,7 +397,7 @@ public static class LoggingHelper
 	/// }
 	/// </code>
 	/// </example>
-	[Information(nameof(RetrieveAllExceptionMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(RetrieveAllExceptionMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> RetrieveAllExceptionMessages(Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
@@ -431,7 +431,7 @@ public static class LoggingHelper
 	/// }
 	/// </code>
 	/// </example>
-	[Information(nameof(RetrieveAllExceptions), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(RetrieveAllExceptions), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<Exception> RetrieveAllExceptions(Exception exception)
 	{
 		// SUGGESION FROM COPILOT SLIGHT SLOWER.

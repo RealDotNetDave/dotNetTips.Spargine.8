@@ -19,6 +19,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -1344,21 +1345,25 @@ public static class EnumerableExtensions
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="collection"/> is null.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[Pure]
-	[Information(nameof(Upsert), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
+	[Information(nameof(Upsert), "David McCarter", "11/21/2020", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Updated)]
 	public static IEnumerable<T> Upsert<T>(this IEnumerable<T> collection, T item)
 	{
 		collection = collection.ArgumentItemsExists();
+		item = item.ArgumentNotNull();
 
-		var list = collection.ToList();
+		var list = collection as List<T> ?? [.. collection];
 
-		if (!list.Contains(item))
+		var index = list.IndexOf(item);
+
+		if (index >= 0)
 		{
-			list.Add(item);
+			list[index] = item; // Update the existing item.
+		}
+		else
+		{
+			list.Add(item); // Add the new item.
 		}
 
-		// Assuming 'item' already exists and 'list' contains unique items,
-		// an 'else' block here would handle updating the existing item.
-		// The specifics of source operation would depend on the requirements.
 		return list;
 	}
 }
