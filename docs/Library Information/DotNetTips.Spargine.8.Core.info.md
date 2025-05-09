@@ -1,4 +1,4 @@
-# DotNetTips.Spargine.8.Core - 2025.8.5.1
+# DotNetTips.Spargine.8.Core - 2025.8.5.8
 
 ## DotNetTips.Spargine.Core.ApiLibraries
 
@@ -284,7 +284,7 @@
 
 ### System.Boolean DoesAssemblyReference(System.IO.FileInfo assemblyFile, System.String referencedAssemblyName)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -292,7 +292,7 @@
 
 ### System.Boolean DoesTypeExistInAssembly(System.IO.FileInfo assemblyFile, System.String typeName)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -300,7 +300,7 @@
 
 ### System.Collections.ObjectModel.ReadOnlyCollection<System.IO.FileInfo> FindAssembliesFromDirectory(System.IO.DirectoryInfo directory)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -308,7 +308,7 @@
 
 ### System.Collections.ObjectModel.ReadOnlyCollection<System.Type> FindTypesImplementing(System.IO.FileInfo file, System.Type[] types)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -316,7 +316,7 @@
 
 ### System.Collections.ObjectModel.ReadOnlyCollection<System.Attribute> GetAssemblyCustomAttributes(System.IO.FileInfo assemblyFile)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -324,7 +324,7 @@
 
 ### System.Reflection.MethodInfo GetAssemblyEntryPoint(System.IO.FileInfo assemblyFile)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -332,7 +332,7 @@
 
 ### System.Collections.Generic.Dictionary<System.String, System.String> GetAssemblyMetadata(System.IO.FileInfo assemblyFile)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -340,7 +340,7 @@
 
 ### System.Collections.ObjectModel.ReadOnlyCollection<System.Type> GetAssemblyPublicTypes(System.IO.FileInfo assemblyFile)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -348,7 +348,7 @@
 
 ### System.Collections.ObjectModel.ReadOnlyCollection<System.Type> GetAssemblyTypes(System.IO.FileInfo assemblyFile)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -359,7 +359,7 @@
 
 ### System.Collections.ObjectModel.ReadOnlyCollection<System.Reflection.AssemblyName> GetDependentAssemblies(System.IO.FileInfo assemblyFile)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -367,7 +367,7 @@
 
 ### System.Collections.ObjectModel.ReadOnlyCollection<System.Reflection.MethodInfo> GetMethodsInType(System.IO.FileInfo assemblyFile, System.String typeName)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -375,7 +375,7 @@
 
 ### System.Collections.ObjectModel.ReadOnlyCollection<System.IO.FileInfo> GetNetSdkDllFiles(System.String version)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -386,7 +386,7 @@
 
 ### System.Void UnloadAssembly(System.IO.FileInfo assemblyFile)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -747,12 +747,12 @@
 *****
 ## DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue>
 
-* **Status:** Needs Documentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 * **Description:** Original Code by: Simon Painter. Improvement suggested by: James Curran.
-* **Documentation:** ADD URL
+* **Documentation:** https://bit.ly/SpargineAutoDefaultDictionary
 
 ### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> ()
 
@@ -777,7 +777,7 @@
 
 ### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (Func`2& onMissingKey)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
@@ -791,7 +791,7 @@
 
 ### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (IDictionary`2& dictionary, Func`2& onMissingKey)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
@@ -805,7 +805,7 @@
 
 ### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (IEnumerable`1& keyValuePairs, Func`2& onMissingKey)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
@@ -819,7 +819,7 @@
 
 ### DotNetTips.Spargine.Core.Collections.Generic.AutoDefaultDictionary<TKey, TValue> (Func`2& onMissingKey, IEqualityComparer`1& comparer)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
@@ -1634,7 +1634,7 @@
 
 ### System.Boolean IsNetworkAvailable { get; set; }
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Completed
@@ -1733,7 +1733,7 @@
 
 ### System.TimeSpan Uptime { get; set; }
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
@@ -1917,46 +1917,218 @@
 * **Modified By:** David McCarter
 
 *****
+## DotNetTips.Spargine.Core.Diagnostics.DiagnosticEntry
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** DiagnosticEntry
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Diagnostics.DiagnosticEntry (System.DateTimeOffset timestamp, System.String message, System.TimeSpan elapsed)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** DiagnosticEntry
+* **Modified By:** David McCarter
+
+### System.TimeSpan Elapsed { get; set; }
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** Elapsed
+* **Modified By:** David McCarter
+
+### System.Boolean Equals(System.Object obj)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** Equals
+* **Modified By:** David McCarter
+
+### System.Boolean Equals(DotNetTips.Spargine.Core.Diagnostics.DiagnosticEntry other)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** Equals
+* **Modified By:** David McCarter
+
+### System.Int32 GetHashCode()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** GetHashCode
+* **Modified By:** David McCarter
+
+### System.String Message { get; set; }
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** Message
+* **Modified By:** David McCarter
+
+### System.DateTimeOffset Timestamp { get; set; }
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** Timestamp
+* **Modified By:** David McCarter
+
+### System.String ToString()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** ToString
+* **Modified By:** David McCarter
+
+*****
+## DotNetTips.Spargine.Core.Diagnostics.ElapsedEventArgs
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** ElapsedEventArgs
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Diagnostics.ElapsedEventArgs (System.TimeSpan elapsed)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** ElapsedEventArgs
+* **Modified By:** David McCarter
+
+### System.TimeSpan Elapsed { get; set; }
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** Elapsed
+* **Modified By:** David McCarter
+
+*****
 ## DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch
 
-* **Status:** Needs Documentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
 * **Author:** David McCarter
 * **CreatedOn:** 11/11/2020
 * **Description:** PerformanceStopwatch
-* **Documentation:** ADD URL
 * **Modified By:** David McCarter
 
 ### DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch ()
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
 * **Description:** PerformanceStopwatch
+* **Modified By:** David McCarter
 
 ### DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch (System.String title)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
 * **Description:** PerformanceStopwatch
+* **Modified By:** David McCarter
+
+### System.Void AddDiagnosticEntry(System.String message)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/9/2025
+* **Description:** AddDiagnosticEntry
+* **Modified By:** David McCarter
+
+### System.Nullable<System.TimeSpan> AlertThreshold { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** AlertThreshold
+* **Modified By:** David McCarter
 
 ### System.Void ClearDiagnostics()
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
 * **Author:** David McCarter
-* **CreatedOn:** 2/28/2025
+* **CreatedOn:** 5/8/2025
 * **Description:** ClearDiagnostics
 * **Modified By:** David McCarter
 
-### System.Collections.ObjectModel.ReadOnlyCollection<System.String> Diagnostics { get; set; }
+### System.Void ClearLaps()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** ClearLaps
+* **Modified By:** David McCarter
+
+### System.Collections.ObjectModel.ReadOnlyCollection<DotNetTips.Spargine.Core.Diagnostics.DiagnosticEntry> Diagnostics { get; set; }
 
 * **Status:** Available
 * **Optimization Status:** None
@@ -1967,15 +2139,70 @@
 * **Description:** StopRestart
 * **Modified By:** David McCarter
 
+### System.String ExportToJson()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** ExportToJson
+* **Modified By:** David McCarter
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.String> GetDiagnosticMessages()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** GetDiagnosticMessages
+* **Modified By:** David McCarter
+
 ### System.String GetElapsedTimeString()
 
 * **Status:** New
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
 * **Author:** David McCarter
-* **CreatedOn:** 2/28/2025
+* **CreatedOn:** 5/8/2025
 * **Description:** GetElapsedTimeString
+* **Modified By:** David McCarter
+
+### System.Collections.ObjectModel.ReadOnlyCollection<System.TimeSpan> GetLaps()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** GetLaps
+* **Modified By:** David McCarter
+
+### System.String GetSummaryReport()
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** GetSummaryReport
+* **Modified By:** David McCarter
+
+### System.Boolean IsThresholdExceeded { get; set; }
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** IsThresholdExceeded
 * **Modified By:** David McCarter
 
 ### System.Void LogMessage(Microsoft.Extensions.Logging.ILogger logger, System.String message)
@@ -1985,8 +2212,30 @@
 * **BenchMarkStatus:** None
 * **Unit Test Status:** Completed
 * **Author:** David McCarter
-* **CreatedOn:** 2/28/2025
+* **CreatedOn:** 5/8/2025
 * **Description:** LogMessage
+* **Modified By:** David McCarter
+
+### System.Void RecordLap()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** RecordLap
+* **Modified By:** David McCarter
+
+### event EventHandler`1 ResetCompleted
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** Reset
 * **Modified By:** David McCarter
 
 ### DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch StartNew(System.String title)
@@ -1994,10 +2243,54 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
 * **Author:** David McCarter
 * **CreatedOn:** 11/11/2020
 * **Description:** StartNew
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch StartNewWithAlertThreshold(System.Nullable<System.TimeSpan> alertThreshold, System.String title)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** StartNew
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch StartNewWithTelemetry(Microsoft.ApplicationInsights.TelemetryClient telemetry, System.String operationName, System.Nullable<System.TimeSpan> alertThreshold, System.String message, System.Collections.Generic.IDictionary<System.String, System.String> properties)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** StartNewWithTelemetry
+* **Modified By:** David McCarter
+
+### System.Boolean StopIfThresholdExceeded()
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** StopIfThresholdExceeded
+* **Modified By:** David McCarter
+
+### event EventHandler`1 StoppedCompleted
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** StoppedCompleted
 * **Modified By:** David McCarter
 
 ### System.TimeSpan StopReset()
@@ -2005,7 +2298,7 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
 * **Author:** David McCarter
 * **CreatedOn:** 11/11/2020
 * **Description:** StopReset
@@ -2016,9 +2309,9 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
 * **Author:** David McCarter
-* **CreatedOn:** 1/18/2023
+* **CreatedOn:** 11/11/2020
 * **Description:** StopReset
 * **Modified By:** David McCarter
 
@@ -2027,10 +2320,10 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
 * **Author:** David McCarter
 * **CreatedOn:** 11/11/2020
-* **Description:** StopRestart
+* **Description:** StopReset
 * **Modified By:** David McCarter
 
 ### System.TimeSpan StopRestart(Microsoft.Extensions.Logging.ILogger logger, System.String message)
@@ -2038,10 +2331,32 @@
 * **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
-* **Unit Test Status:** Completed
+* **Unit Test Status:** None
 * **Author:** David McCarter
-* **CreatedOn:** 1/18/2023
-* **Description:** StopRestart
+* **CreatedOn:** 11/11/2020
+* **Description:** StopReset
+* **Modified By:** David McCarter
+
+### event EventHandler`1 ThresholdExceeded
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** ThresholdExceeded
+* **Modified By:** David McCarter
+
+### System.String Title { get; set; }
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 11/11/2020
+* **Description:** Title
 * **Modified By:** David McCarter
 
 ### System.String ToString()
@@ -2053,6 +2368,28 @@
 * **Author:** David McCarter
 * **CreatedOn:** 1/18/2023
 * **Description:** ToString
+* **Modified By:** David McCarter
+
+### System.Void TrackTelemetry(Microsoft.ApplicationInsights.TelemetryClient telemetry, System.String operationName, System.String message, System.Collections.Generic.IDictionary<System.String, System.String> properties)
+
+* **Status:** New
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** TrackTelemetry
+* **Modified By:** David McCarter
+
+### DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch WithTelemetry(Microsoft.ApplicationInsights.TelemetryClient telemetry, System.String operationName, System.String message, System.Collections.Generic.IDictionary<System.String, System.String> properties)
+
+* **Status:** Available
+* **Optimization Status:** None
+* **BenchMarkStatus:** None
+* **Unit Test Status:** None
+* **Author:** David McCarter
+* **CreatedOn:** 5/8/2025
+* **Description:** WithTelemetry
 * **Modified By:** David McCarter
 
 *****
@@ -2168,7 +2505,7 @@
 
 ### System.IO.FileNotFoundException CreateFileNotFoundException(System.String fileName)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -2176,7 +2513,7 @@
 
 ### System.IO.FileNotFoundException CreateFileNotFoundException(System.String message, System.String fileName)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -2184,7 +2521,7 @@
 
 ### System.IO.FileNotFoundException CreateFileNotFoundException(System.String message, System.String fileName, System.Exception ex)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
@@ -2626,7 +2963,7 @@
 
 ### System.String BytesToString(System.ReadOnlySpan`1[[System.Byte, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& bytes)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -2648,7 +2985,7 @@
 
 ### System.String CombineWithSpace(System.String[] args)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -2681,7 +3018,7 @@
 
 ### System.String Format(System.String format, System.String[] args)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -2692,7 +3029,7 @@
 
 ### System.String Join(System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& values, System.Char delimiter)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -2703,7 +3040,7 @@
 
 ### System.String Join(System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]& values, System.String delimiter)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -2725,7 +3062,7 @@
 
 ### System.String Remove(System.String input, System.String toRemove)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -2796,7 +3133,7 @@
 
 ### System.Void DisposeFields(System.IDisposable obj)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** Completed
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
@@ -3178,11 +3515,11 @@
 *****
 ## DotNetTips.Spargine.Core.Logging.LoggingHelper
 
-* **Status:** Needs Documentation
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** None
 * **Unit Test Status:** None
-* **Documentation:** ADD URL
+* **Documentation:** https://bit.ly/SpargineLoggingHelper
 
 ### System.Void LogAppDomainEvents(Microsoft.Extensions.Logging.ILogger logger)
 
@@ -3204,7 +3541,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 10/19/2021
 * **Description:** LogAppDomainFirstChanceException
-* **Documentation:** https://bit.ly/SpargineJan2022
 * **Modified By:** David McCarter
 
 ### System.Void LogAppDomainUnhandledException(Microsoft.Extensions.Logging.ILogger logger)
@@ -3216,7 +3552,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 7/13/2024
 * **Description:** LogAppDomainUnhandledException
-* **Documentation:** ADD URL
 * **Modified By:** David McCarter
 
 ### System.Void LogApplicationInformation(Microsoft.Extensions.Logging.ILogger logger)
@@ -3228,7 +3563,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 11/3/2020
 * **Description:** LogApplicationInformation
-* **Documentation:** http://bit.ly/SpargineFeb2021
 * **Modified By:** David McCarter
 
 ### System.Void LogComputerInformation(Microsoft.Extensions.Logging.ILogger logger)
@@ -3240,7 +3574,6 @@
 * **Author:** David McCarter
 * **CreatedOn:** 11/4/2020
 * **Description:** LogComputerInformation
-* **Documentation:** http://bit.ly/SpargineFeb2021
 * **Modified By:** David McCarter
 
 ### System.Collections.ObjectModel.ReadOnlyCollection<System.String> RetrieveAllExceptionMessages(System.Exception exception)
@@ -3250,7 +3583,6 @@
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Description:** RetrieveAllExceptionMessages
-* **Documentation:** https://bit.ly/SpargineAug2024
 
 ### System.Collections.ObjectModel.ReadOnlyCollection<System.Exception> RetrieveAllExceptions(System.Exception exception)
 
@@ -3259,7 +3591,6 @@
 * **BenchMarkStatus:** Completed
 * **Unit Test Status:** Completed
 * **Description:** RetrieveAllExceptions
-* **Documentation:** https://bit.ly/SpargineAug2024
 
 *****
 ## DotNetTips.Spargine.Core.MessageNotQueuedException
@@ -3446,7 +3777,7 @@
 
 ### System.String ExtractVersion(System.String input)
 
-* **Status:** New
+* **Status:** Available
 * **Optimization Status:** None
 * **BenchMarkStatus:** Not Required
 * **Unit Test Status:** Not Required
@@ -5104,4 +5435,4 @@
 * **Modified By:** David McCarter
 
 *****
-**Generated by Spargine - dotNetTips.com on 4/30/2025 12:06:20 PM UTC**
+**Generated by Spargine - dotNetTips.com on 5/9/2025 6:57:49 PM UTC**
