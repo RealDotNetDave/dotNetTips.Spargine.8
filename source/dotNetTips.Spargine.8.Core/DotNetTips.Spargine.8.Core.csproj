@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
 	<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
 	<AnalysisLevel>latest-recommended</AnalysisLevel>
 	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
 	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-	<AssemblyVersion>2025.8.5.1</AssemblyVersion>
+	<AssemblyVersion>2025.8.5.8</AssemblyVersion>
 	<Authors>David McCarter</Authors>
 	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
@@ -23,7 +23,7 @@
 	<EnablePackageValidation>false</EnablePackageValidation>
 	<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-	<FileVersion>2025.8.5.1</FileVersion>
+	<FileVersion>2025.8.5.8</FileVersion>
 	<GarbageCollectionAdaptationMode>1</GarbageCollectionAdaptationMode>
 	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -55,7 +55,7 @@
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 	<Title>DotNetTips.Spargine.8.Core</Title>
-	<Version>2025.8.5.1</Version>
+	<Version>2025.8.5.8</Version>
 	<SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
@@ -117,6 +117,7 @@
 	  <PrivateAssets>all</PrivateAssets>
 		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
+	<PackageReference Include="Microsoft.ApplicationInsights" Version="2.22.0" />
 	<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
 	<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">
 	  <PrivateAssets>all</PrivateAssets>

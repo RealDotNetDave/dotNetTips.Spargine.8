@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DotNetTips.Spargine.Core.Diagnostics.PerformanceStopwatch">
+    <Position X="1" Y="0.5" Width="3.5" />
+    <Members>
+      <Field Name="_diagnostics" Hidden="true" />
+      <Field Name="_jsonSerializerOptions" Hidden="true" />
+      <Field Name="_laps" Hidden="true" />
+      <Field Name="_operationName" Hidden="true" />
+      <Field Name="_stringBuilderPool" Hidden="true" />
+      <Field Name="_telemetry" Hidden="true" />
+      <Field Name="_telemetryMessage" Hidden="true" />
+      <Field Name="_telemetryProperties" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AChIQQAIAAAARkIUACCAACAFACAAEBAAACAhAAAQEAA=</HashCode>
+      <FileName>Diagnostics\PerformanceStopwatch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
