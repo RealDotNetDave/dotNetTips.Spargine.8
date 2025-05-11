@@ -1,3 +1,16 @@
+// ***********************************************************************
+// Assembly         : DotNetTips.Spargine.8.Core
+// Author           : David McCarter
+// Created          : 05-08-2025
+//
+// Last Modified By : David McCarter
+// Last Modified On : 05-09-2025
+// ***********************************************************************
+// <copyright file="DiagnosticEntry.cs" company="David McCarter - dotNetTips.com">
+//     McCarter Consulting (David McCarter)
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 

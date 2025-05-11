@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-08-2025
+// Last Modified On : 05-11-2025
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -37,7 +37,7 @@ namespace DotNetTips.Spargine.Core.Diagnostics;
 /// A thread-safe, high-precision stopwatch with enhanced diagnostics, lap support, telemetry, and logging capabilities.
 /// </summary>
 [DebuggerDisplay("Elapsed: {ElapsedMilliseconds}ms, Title: {Title}")]
-[Information(nameof(PerformanceStopwatch), "David McCarter", "11/11/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
+[Information(nameof(PerformanceStopwatch), "David McCarter", "11/11/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SparginePerformanceStopwatch")]
 public sealed class PerformanceStopwatch : Stopwatch
 {
 	/// <summary>
