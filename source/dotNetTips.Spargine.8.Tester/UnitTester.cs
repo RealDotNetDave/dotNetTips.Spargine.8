@@ -47,6 +47,22 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// </remarks>
 	private readonly string _outputDirectory = outputDirectory ?? App.ExecutingFolder();
 
+	private static string GenerateFileName(string methodName)
+	{
+		string fileName;
+		//Generate file name based on method name or random key
+		if (methodName.IsNullOrEmpty())
+		{
+			fileName = $"{RandomData.GenerateKey}.txt";
+		}
+		else
+		{
+			fileName = $"{methodName}.txt";
+		}
+
+		return fileName;
+	}
+
 	/// <summary>
 	/// Converts the properties of an object to a string representation based on a selection function.
 	/// </summary>
@@ -65,6 +81,32 @@ public abstract class UnitTester(string outputDirectory = null)
 				var value = prop.GetValue(input);
 				return $"{prop.Name}: {value}";
 			}));
+	}
+
+	/// <summary>
+	/// Writes the specified input string to the debug output.
+	/// </summary>
+	/// <param name="input">The string to write to the debug output. Cannot be null or empty.</param>
+	/// <param name="methodName">
+	/// The name of the calling method. This is automatically populated by the compiler unless explicitly provided.
+	/// </param>
+	/// <remarks>
+	/// If the <paramref name="input"/> is null or empty, the method will return without writing anything to the debug output.
+	/// </remarks>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="input"/> is null or empty.</exception>
+	[DebuggerStepThrough]
+	[Information(nameof(PrintToDebug), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	public void PrintToDebug([NotNull] string input, [CallerMemberName] string methodName = ControlChars.EmptyString)
+	{
+		if (input.IsNullOrEmpty())
+		{
+			return;
+		}
+
+		Debug.WriteLine(new string(ControlChars.Equal, 80));
+		Debug.WriteLineIf(methodName.HasValue(), $"Method: {methodName}");
+		Debug.WriteLine(input);
+		Debug.WriteLine(new string(ControlChars.Equal, 80));
 	}
 
 	/// <summary>
@@ -120,6 +162,31 @@ public abstract class UnitTester(string outputDirectory = null)
 	}
 
 	/// <summary>
+	/// Saves the specified input string to a file in the output directory.
+	/// </summary>
+	/// <param name="input">The string to save to the file. Cannot be null or empty.</param>
+	/// <param name="methodName">
+	/// The name of the calling method. This is automatically populated by the compiler unless explicitly provided.
+	/// </param>
+	/// <remarks>
+	/// If the <paramref name="input"/> is null or empty, the method will return without saving anything to the file.
+	/// </remarks>
+	/// <exception cref="ArgumentNullException">Thrown when <paramref name="input"/> is null or empty.</exception>
+	[DebuggerStepThrough]
+	[Information(nameof(SaveToFile), UnitTestStatus = UnitTestStatus.None, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
+	public void SaveToFile([NotNull] string input, [CallerMemberName] string methodName = ControlChars.EmptyString)
+	{
+		if (input.IsNullOrEmpty())
+		{
+			return;
+		}
+
+		var filePath = Path.Combine(this.OutputDirectory, GenerateFileName(methodName));
+
+		File.WriteAllText(filePath, input);
+	}
+
+	/// <summary>
 	/// Saves the properties of each object in a collection to a file in the current directory.
 	/// </summary>
 	/// <typeparam name="T">The type of the objects in the collection.</typeparam>
@@ -137,7 +204,7 @@ public abstract class UnitTester(string outputDirectory = null)
 		propertySelector = propertySelector.ArgumentNotNull();
 		methodName = methodName.ArgumentNotNullOrEmpty();
 
-		var filePath = Path.Combine(this.OutputDirectory, $"{methodName}.txt");
+		var filePath = Path.Combine(this.OutputDirectory, GenerateFileName(methodName));
 
 		var content = collection
 			.Select(item => this.PropertiesToString(item, propertySelector))
@@ -166,7 +233,7 @@ public abstract class UnitTester(string outputDirectory = null)
 		propertySelector = propertySelector.ArgumentNotNull();
 		methodName = methodName.ArgumentNotNullOrEmpty();
 
-		var filePath = Path.Combine(this.OutputDirectory, $"{methodName}.txt");
+		var filePath = Path.Combine(this.OutputDirectory, GenerateFileName(methodName));
 
 		var content = this.PropertiesToString(input, propertySelector);
 		File.WriteAllText(filePath, content);
@@ -197,7 +264,7 @@ public abstract class UnitTester(string outputDirectory = null)
 		propertySelector = propertySelector.ArgumentNotNull();
 		methodName = methodName.ArgumentNotNullOrEmpty();
 
-		var filePath = Path.Combine(this.OutputDirectory, $"{methodName}.txt");
+		var filePath = Path.Combine(this.OutputDirectory, GenerateFileName(methodName));
 
 		var content = collection
 			.Select(item => this.PropertiesToString(item, propertySelector))

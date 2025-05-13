@@ -761,6 +761,8 @@ public class AssemblyHelperUnitTester : UnitTester
 			.GetMethod("VersionParseSafe", BindingFlags.NonPublic | BindingFlags.Static)!
 			.Invoke(null, new object[] { versionString }) as Version;
 
+		this.PrintToDebug(result.ToString());
+
 		// Assert
 		Assert.IsNotNull(result);
 		Assert.AreEqual(new Version(2, 5, 8), result, "Expected version 2.5.8, but got a different result.");
