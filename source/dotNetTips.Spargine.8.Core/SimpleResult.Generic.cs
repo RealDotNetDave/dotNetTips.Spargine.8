@@ -23,10 +23,11 @@ using System.Runtime.ExceptionServices;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Use for return results from methods. This type is thread-safe.
+/// Represents the result of an operation, encapsulating a value or a collection of exceptions.
+/// This type is thread-safe and can be used to return results from methods, including both success and error information.
 /// </summary>
-/// <typeparam name="T"></typeparam>
-[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Status = Core.Status.NeedsDocumentation)]
+/// <typeparam name="T">The type of the value associated with the result.</typeparam>
+[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Status = Core.Status.NeedsDocumentation, Documentation = "ADD URL")]
 public class SimpleResult<T>
 {
 
@@ -54,9 +55,9 @@ public class SimpleResult<T>
 	}
 
 	/// <summary>
-	/// Initializes a new successful result.
+	/// Initializes a new successful result with the specified value.
 	/// </summary>
-	/// <param name="value">The value to be stored as result.</param>
+	/// <param name="value">The value to be stored as the result. Cannot be <see langword="null"/>.</param>
 	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public SimpleResult(T value)
 	{
@@ -65,25 +66,25 @@ public class SimpleResult<T>
 	}
 
 	/// <summary>
-	/// Initializes a new unsuccessful result.
+	/// Initializes a new unsuccessful result with the specified exception.
 	/// </summary>
-	/// <param name="error">The exception representing error. Cannot be <see langword="null" />.</param>
+	/// <param name="error">The exception representing the error. Cannot be <see langword="null"/>.</param>
 	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public SimpleResult(Exception error) => this.AddException(error);
 
 	/// <summary>
-	/// Generates the exception messages.
+	/// Generates a string containing all exception messages associated with this result.
 	/// </summary>
-	/// <returns>A string containing all exception messages.</returns>
+	/// <returns>A string containing all exception messages, separated by new lines.</returns>
 	[return: NotNull]
 	private string GenerateExceptionMessages() => FastStringBuilder.Join(this._exceptions.Select(e => e.GetAllMessages()), Environment.NewLine);
 
 
 	/// <summary>
-	/// Gets the reference to the value associated with the specified result.
+	/// Gets a read-only reference to the value associated with the specified result.
 	/// </summary>
 	/// <param name="result">The result object containing the value.</param>
-	/// <returns>A reference to the value of type <typeparamref name="T"/>.</returns>
+	/// <returns>A read-only reference to the value of type <typeparamref name="T"/>.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static ref readonly T GetReference([NotNull] in SimpleResult<T> result) => ref result._value;
 
@@ -102,14 +103,14 @@ public class SimpleResult<T>
 	}
 
 	/// <summary>
-	/// Gets exceptions associated with this result.
+	/// Gets a read-only collection of exceptions associated with this result.
 	/// </summary>
-	/// <returns>ReadOnlyCollection&lt;Exception&gt;.</returns>
+	/// <returns>A <see cref="ReadOnlyCollection{T}"/> of <see cref="Exception"/> objects.</returns>
 	[Information(nameof(Errors), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public ReadOnlyCollection<Exception> Errors() => new([.. this._exceptions]);
 
 	/// <summary>
-	/// Extracts the actual result from the specified <see cref="SimpleResult{T}"/>.
+	/// Extracts the actual value from the specified <see cref="SimpleResult{T}"/>.
 	/// </summary>
 	/// <param name="result">The result object containing the value.</param>
 	/// <returns>The value of type <typeparamref name="T"/>.</returns>
@@ -118,7 +119,7 @@ public class SimpleResult<T>
 	public static T FromResult([NotNull] in SimpleResult<T> result) => result.ArgumentNotNull().Value;
 
 	/// <summary>
-	/// Returns the error messages, including the InnerException, if any.
+	/// Returns the error messages, including those from inner exceptions, if any.
 	/// </summary>
 	/// <returns>A string containing all error messages.</returns>
 	[Information(nameof(GetErrorMessages), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
@@ -131,24 +132,24 @@ public class SimpleResult<T>
 	public override int GetHashCode() => base.GetHashCode();
 
 	/// <summary>
-	/// Returns the value if present; otherwise return the default value.
+	/// Returns the value if present; otherwise, returns the specified default value.
 	/// </summary>
 	/// <param name="defaultValue">The value to be returned if this result is unsuccessful.</param>
-	/// <returns>The value, if present, otherwise <paramref name="defaultValue" />.</returns>
+	/// <returns>The value, if present; otherwise, <paramref name="defaultValue"/>.</returns>
 	[Information(nameof(Or), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public T Or(T defaultValue) => this._exceptions.IsEmpty ? this._value : defaultValue;
 
 	/// <summary>
-	/// Returns the value if present; otherwise return default value.
+	/// Returns the value if present; otherwise, returns the default value for <typeparamref name="T"/>.
 	/// </summary>
-	/// <returns>The value, if present, otherwise <c>default</c>.</returns>
+	/// <returns>The value, if present; otherwise, the default value for <typeparamref name="T"/>.</returns>
 	[Information(nameof(OrDefault), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public T OrDefault() => this._value;
 
 	/// <summary>
 	/// Sets the value associated with this result.
 	/// </summary>
-	/// <param name="value">The value to be set.</param>
+	/// <param name="value">The value to be set. Cannot be <see langword="null"/>.</param>
 	[Information(nameof(SetValue), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public void SetValue(T value)
 	{
@@ -157,17 +158,17 @@ public class SimpleResult<T>
 	}
 
 	/// <summary>
-	/// Returns the error message or the string representation of the value.
+	/// Returns the error messages if any exist; otherwise, returns the string representation of the value.
 	/// </summary>
 	/// <returns>The textual representation of this object.</returns>
 	[Information(nameof(ToString), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public override string ToString() => this._exceptions.IsEmpty ? this._value?.ToString() ?? string.Empty : this.GenerateExceptionMessages();
 
 	/// <summary>
-	/// Attempts to extract value if it is present.
+	/// Attempts to extract the value if it is present.
 	/// </summary>
-	/// <param name="value">Extracted value.</param>
-	/// <returns><see langword="true" /> if value is present; otherwise, <see langword="false" />.</returns>
+	/// <param name="value">When this method returns, contains the extracted value if present; otherwise, the default value for <typeparamref name="T"/>.</param>
+	/// <returns><see langword="true"/> if the value is present; otherwise, <see langword="false"/>.</returns>
 	[Information(nameof(TryGet), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public bool TryGet(out T value)
 	{
@@ -175,14 +176,15 @@ public class SimpleResult<T>
 		return this._valueSet;
 	}
 
+
 	/// <summary>
 	/// Indicates the status of the result.
 	/// </summary>
 	/// <value>
-	/// <see cref="ResultStatus.Succeeded"/> if the result is successful; 
+	/// <see cref="ResultStatus.Succeeded"/> if the result is successful;
 	/// <see cref="ResultStatus.PartialSuccess"/> if there are exceptions but a value is present;
 	/// otherwise, <see cref="ResultStatus.Failed"/>.
-	/// </value>>
+	/// </value>
 	[Information(nameof(Status), UnitTestStatus = UnitTestStatus.WIP, Status = Core.Status.Available)]
 	public ResultStatus Status => this._valueSet && this._exceptions.IsEmpty
 				? ResultStatus.Succeeded
@@ -191,7 +193,10 @@ public class SimpleResult<T>
 	/// <summary>
 	/// Gets the value associated with this result.
 	/// </summary>
-	/// <value>The value of type <typeparamref name="T"/>.</value>
+	/// <value>
+	/// The value of type <typeparamref name="T"/> that is associated with this result.
+	/// If the result is unsuccessful (i.e., no value was set or there are errors), this property may return the default value for <typeparamref name="T"/>.
+	/// </value>
 	[Information(nameof(Value), UnitTestStatus = UnitTestStatus.Completed, Status = Core.Status.Available)]
 	public T Value => this._value;
 

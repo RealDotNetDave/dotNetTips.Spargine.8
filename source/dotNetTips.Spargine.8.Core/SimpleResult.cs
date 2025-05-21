@@ -22,27 +22,33 @@ using System.Diagnostics.CodeAnalysis;
 namespace DotNetTips.Spargine.Core;
 
 /// <summary>
-/// Represents extension methods for type <see cref="SimpleResult{T}" />.
+/// Provides factory methods for creating instances of <see cref="SimpleResult{T}" />.
+/// These methods allow encapsulation of either a value or an exception in a result container,
+/// enabling methods to return both success and error information in a consistent way.
 /// </summary>
 [Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Status = Status.NeedsDocumentation)]
 public static class SimpleResult
 {
 
 	/// <summary>
-	/// Creates a new instance of <see cref="SimpleResult{T}" /> from the specified exception.
+	/// Creates a new instance of <see cref="SimpleResult{T}" /> that encapsulates the specified exception.
 	/// </summary>
-	/// <typeparam name="T">The type of the value.</typeparam>
-	/// <param name="e">The exception to be placed to the container.</param>
-	/// <returns>The exception encapsulated by <see cref="SimpleResult{T}" />.</returns>
+	/// <typeparam name="T">The type of the value that would be returned on success.</typeparam>
+	/// <param name="e">The exception to encapsulate. Cannot be <see langword="null"/>.</param>
+	/// <returns>
+	/// A <see cref="SimpleResult{T}"/> representing a failed result containing the specified exception.
+	/// </returns>
 	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static SimpleResult<T> FromException<T>([NotNull] Exception e) => new(e);
 
 	/// <summary>
-	/// Creates a new instance of <see cref="SimpleResult{T}" /> from the specified value.
+	/// Creates a new instance of <see cref="SimpleResult{T}" /> that encapsulates the specified value.
 	/// </summary>
-	/// <typeparam name="T">The type of the value.</typeparam>
-	/// <param name="value">The value to be placed to the container.</param>
-	/// <returns>The value encapsulated by <see cref="SimpleResult{T}" />.</returns>
+	/// <typeparam name="T">The type of the value to encapsulate.</typeparam>
+	/// <param name="value">The value to encapsulate. Cannot be <see langword="null"/>.</param>
+	/// <returns>
+	/// A <see cref="SimpleResult{T}"/> representing a successful result containing the specified value.
+	/// </returns>
 	[Information(nameof(SimpleResult), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static SimpleResult<T> FromValue<T>([NotNull] T value) => new(value);
 }
