@@ -4,7 +4,7 @@
 // Created          : 04-09-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-24-2025
+// Last Modified On : 05-29-2025
 // ***********************************************************************
 // <copyright file="AssemblyHelper.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -59,7 +59,7 @@ public static class AssemblyHelper
 	/// <summary>
 	/// Checks if the specified assembly references another assembly by name.
 	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile.</param>
 	/// <param name="referencedAssemblyName">The name of the referenced assembly.</param>
 	/// <returns><c>true</c> if the assembly references the specified assembly; otherwise, <c>false</c>.</returns>
 	[Information(nameof(DoesAssemblyReference), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
@@ -68,7 +68,7 @@ public static class AssemblyHelper
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
 		referencedAssemblyName = referencedAssemblyName.ArgumentNotNull();
 
-		// Ensure the file is a valid .NET assembly before loading
+		// Ensure the assemblyFile is a valid .NET assembly before loading
 		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
 		{
 			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
@@ -91,7 +91,7 @@ public static class AssemblyHelper
 	/// <summary>
 	/// Checks if the specified type exists in the assembly.
 	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile.</param>
 	/// <param name="typeName">The fully qualified name of the type to check.</param>
 	/// <returns><c>true</c> if the type exists; otherwise, <c>false</c>.</returns>
 	[Information(nameof(DoesTypeExistInAssembly), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
@@ -100,7 +100,7 @@ public static class AssemblyHelper
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
 		typeName = typeName.ArgumentNotNull();
 
-		// Ensure the file is a valid .NET assembly before loading
+		// Ensure the assemblyFile is a valid .NET assembly before loading
 		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
 		{
 			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
@@ -143,7 +143,7 @@ public static class AssemblyHelper
 		{
 			var assemblyFiles = directory.GetFiles("*.dll")
 				.Concat(directory.GetFiles("*.exe"))
-				.Where(TypeHelper.IsDotNetAssembly) // Ensure the file is a valid .NET assembly
+				.Where(TypeHelper.IsDotNetAssembly) // Ensure the assemblyFile is a valid .NET assembly
 				.ToList(); // Materialize the result to avoid deferred execution issues
 
 			return new ReadOnlyCollection<FileInfo>(assemblyFiles);
@@ -156,21 +156,21 @@ public static class AssemblyHelper
 	}
 
 	/// <summary>
-	/// Finds all assemblyTypes in the specified assembly file that implement or inherit from any of the specified assemblyTypes.
+	/// Finds all assemblyTypes in the specified assembly assemblyFile that implement or inherit from any of the specified assemblyTypes.
 	/// </summary>
-	/// <param name="file">The <see cref="FileInfo"/> representing the assembly file to search.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile to search.</param>
 	/// <param name="types">An array of <see cref="Type"/> objects to check for implementation or inheritance.</param>
 	/// <returns>A read-only collection of <see cref="Type"/> objects that implement or inherit from the specified assemblyTypes.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if <paramref name="file"/> or <paramref name="types"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> or <paramref name="types"/> is null.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the specified assembly assemblyFile does not exist.</exception>
 	[Information(nameof(FindTypesImplementing), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
-	public static ReadOnlyCollection<Type> FindTypesImplementing([NotNull] this FileInfo file, params Type[] types)
+	public static ReadOnlyCollection<Type> FindTypesImplementing([NotNull] FileInfo assemblyFile, params Type[] types)
 	{
-		file = file.ArgumentNotNull();
+		assemblyFile = assemblyFile.ArgumentNotNull();
 		types = types.ArgumentNotNull();
 
 		//Load all assemblyTypes
-		var assemblyTypes = GetAssemblyTypes(file);
+		var assemblyTypes = GetAssemblyTypes(assemblyFile);
 
 		var matchingTypes = assemblyTypes
 			  .Where(type => types.Any(targetType => targetType.IsAssignableFrom(type) && type != targetType))
@@ -182,17 +182,17 @@ public static class AssemblyHelper
 	/// <summary>
 	/// Retrieves custom attributes applied to the specified assembly.
 	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile.</param>
 	/// <returns>A read-only collection of custom attributes.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the specified assembly assemblyFile does not exist.</exception>
 	/// <exception cref="FileLoadException">Thrown if an assembly cannot be loaded.</exception>
 	[Information(nameof(GetAssemblyCustomAttributes), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<Attribute> GetAssemblyCustomAttributes(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
 
-		// Ensure the file is a valid .NET assembly before loading
+		// Ensure the assemblyFile is a valid .NET assembly before loading
 		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
 		{
 			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
@@ -216,14 +216,14 @@ public static class AssemblyHelper
 	/// <summary>
 	/// Gets the entry point method of the specified assembly.
 	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile.</param>
 	/// <returns>The entry point <see cref="MethodInfo"/>, or <c>null</c> if none exists.</returns>
 	[Information(nameof(GetAssemblyEntryPoint), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static MethodInfo? GetAssemblyEntryPoint(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
 
-		// Ensure the file is a valid .NET assembly before loading
+		// Ensure the assemblyFile is a valid .NET assembly before loading
 		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
 		{
 			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
@@ -247,14 +247,14 @@ public static class AssemblyHelper
 	/// <summary>
 	/// Retrieves metadata information from the specified assembly.
 	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile.</param>
 	/// <returns>A dictionary containing metadata key-value pairs.</returns>
 	[Information(nameof(GetAssemblyMetadata), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static Dictionary<string, string> GetAssemblyMetadata(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
 
-		// Ensure the file is a valid .NET assembly before loading
+		// Ensure the assemblyFile is a valid .NET assembly before loading
 		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
 		{
 			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
@@ -287,14 +287,14 @@ public static class AssemblyHelper
 	/// <summary>
 	/// Retrieves all public assemblyTypes from the specified assembly.
 	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile.</param>
 	/// <returns>A read-only collection of public <see cref="Type"/> objects.</returns>
 	[Information(nameof(GetAssemblyPublicTypes), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<Type> GetAssemblyPublicTypes(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
 
-		// Ensure the file is a valid .NET assembly before loading
+		// Ensure the assemblyFile is a valid .NET assembly before loading
 		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
 		{
 			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
@@ -327,9 +327,9 @@ public static class AssemblyHelper
 	}
 
 	/// <summary>
-	/// Loads the assembly from the specified file and extracts all assemblyTypes within it.
+	/// Loads the assembly from the specified assemblyFile and extracts all assemblyTypes within it.
 	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file to load.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile to load.</param>
 	/// <returns>A collection of <see cref="Type"/> objects representing all assemblyTypes in the assembly.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
 	[Information(nameof(GetAssemblyTypes), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
@@ -365,17 +365,17 @@ public static class AssemblyHelper
 	/// <summary>
 	/// Retrieves all assemblies that the specified assembly depends on.
 	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile.</param>
 	/// <returns>A read-only collection of dependent assemblies.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the specified assembly assemblyFile does not exist.</exception>
 	/// <exception cref="FileLoadException">Thrown if an assembly cannot be loaded.</exception>
 	[Information(nameof(GetDependentAssemblies), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<AssemblyName> GetDependentAssemblies(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
 
-		// Ensure the file is a valid .NET assembly before loading
+		// Ensure the assemblyFile is a valid .NET assembly before loading
 		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
 		{
 			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
@@ -401,11 +401,11 @@ public static class AssemblyHelper
 	/// <summary>
 	/// Retrieves all methods in the specified type within an assembly.
 	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile.</param>
 	/// <param name="typeName">The fully qualified name of the type.</param>
 	/// <returns>A read-only collection of <see cref="MethodInfo"/> objects.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="assemblyFile"/> or <paramref name="typeName"/> is null.</exception>
-	/// <exception cref="FileNotFoundException">Thrown if the specified assembly file does not exist.</exception>
+	/// <exception cref="FileNotFoundException">Thrown if the specified assembly assemblyFile does not exist.</exception>
 	/// <exception cref="TypeLoadException">Thrown if the specified type cannot be loaded from the assembly.</exception>
 	[Information(nameof(GetMethodsInType), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static ReadOnlyCollection<MethodInfo> GetMethodsInType(FileInfo assemblyFile, string typeName)
@@ -413,7 +413,7 @@ public static class AssemblyHelper
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
 		typeName = typeName.ArgumentNotNull();
 
-		// Ensure the file is a valid .NET assembly before loading
+		// Ensure the assemblyFile is a valid .NET assembly before loading
 		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
 		{
 			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
@@ -446,7 +446,7 @@ public static class AssemblyHelper
 	/// Finds .NET SDK files in the specified version or the highest available version.
 	/// </summary>
 	/// <param name="version">The specific version to search for. If null, the highest version is used.</param>
-	/// <returns>A <see cref="ReadOnlyCollection{FileInfo}"/> containing .NET SDK file information.</returns>
+	/// <returns>A <see cref="ReadOnlyCollection{FileInfo}"/> containing .NET SDK assemblyFile information.</returns>
 	/// <remarks>
 	/// This method searches the .NET SDK packs directory for the specified version or the highest available version.
 	/// It retrieves DLL files from the "ref" folder of the selected version and target framework.
@@ -506,13 +506,13 @@ public static class AssemblyHelper
 	/// <summary>
 	/// Unloads the specified assembly.
 	/// </summary>
-	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly file.</param>
+	/// <param name="assemblyFile">The <see cref="FileInfo"/> representing the assembly assemblyFile.</param>
 	[Information(nameof(UnloadAssembly), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static void UnloadAssembly(FileInfo assemblyFile)
 	{
 		assemblyFile = assemblyFile.ArgumentExists(assemblyFile);
 
-		// Ensure the file is a valid .NET assembly before attempting to unload
+		// Ensure the assemblyFile is a valid .NET assembly before attempting to unload
 		if (!TypeHelper.IsDotNetAssembly(assemblyFile))
 		{
 			Trace.WriteLine($"The file '{assemblyFile.FullName}' is not a valid .NET assembly.");
