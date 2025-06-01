@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Provides static helper methods for working with assemblies.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineAssemblyHelper")]
 #nullable enable
 public static class AssemblyHelper
 {
