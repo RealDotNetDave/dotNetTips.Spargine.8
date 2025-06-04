@@ -56,15 +56,6 @@
 	<Version>2025.8.5.11</Version>
   </PropertyGroup>
 
-  <!--<PropertyGroup>
-	<NuGetAudit>true</NuGetAudit>
-	<NuGetAuditMode>all</NuGetAuditMode>
-	<NuGetAuditLevel>low</NuGetAuditLevel>
-	<WarningsAsErrors Condition="$(ContinuousIntegrationBuild) == 'true' OR '$(Configuration)' == 'Release'">
-	  (WarningsAsErrors);NU1900;NU1901;NU1902;NU1903;NU1904
-	</WarningsAsErrors>
-  </PropertyGroup>-->
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	<OutputPath>..\..\AppBin\</OutputPath>
 	<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.8.xml</DocumentationFile>
