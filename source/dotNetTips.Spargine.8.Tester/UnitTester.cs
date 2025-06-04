@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-28-2025
+// Last Modified On : 06-04-2025
 // ***********************************************************************
 // <copyright file="UnitTester.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -35,7 +35,7 @@ namespace DotNetTips.Spargine.Tester;
 /// <param name="outputDirectory">The directory where output files will be saved. Defaults to the current directory if not specified.</param>
 [ExcludeFromCodeCoverage]
 [DebuggerStepThrough]
-[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineUnitTester")]
 public abstract class UnitTester(string outputDirectory = null)
 {
 	/// <summary>
