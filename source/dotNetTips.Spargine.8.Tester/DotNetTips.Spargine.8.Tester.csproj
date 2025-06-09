@@ -70,7 +70,6 @@
 	<DebugType>portable</DebugType>
   </PropertyGroup>
 
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	<OutputPath>..\..\AppBin\</OutputPath>
 	<DocumentationFile>..\..\AppBin\DotNetTips.Spargine.Tester.xml</DocumentationFile>

@@ -4,7 +4,7 @@
 // Created          : 01-13-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-09-2024
+// Last Modified On : 06-09-2025
 // ***********************************************************************
 // <copyright file="DistinctBlockingCollectionTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -18,6 +18,8 @@ using System.Linq;
 using System.Threading;
 using DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 using DotNetTips.Spargine.Extensions;
+using DotNetTips.Spargine.Tester;
+using DotNetTips.Spargine.Tester.Models.RefTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )
@@ -28,6 +30,17 @@ namespace DotNetTips.Spargine.Core.Tests.Collections.Generic.Concurrent;
 [TestClass]
 public class DistinctBlockingCollectionTests
 {
+
+	[TestMethod]
+	public void AddDuplicatesTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		collection.Add("test1");
+		collection.Add("test1"); // Attempt to add a duplicate
+
+		Assert.AreEqual(1, collection.Count);
+	}
+
 	/// <summary>
 	/// Defines the test method AddNullItemTest.
 	/// </summary>
@@ -228,6 +241,13 @@ public class DistinctBlockingCollectionTests
 		Assert.IsTrue(collection.Contains("test2"));
 	}
 
+	[TestMethod]
+	public void ContainsWithNullReturnsFalseTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		Assert.IsFalse(collection.Contains(null));
+	}
+
 	/// <summary>
 	/// Defines the test method CopyToTest.
 	/// </summary>
@@ -276,6 +296,21 @@ public class DistinctBlockingCollectionTests
 	}
 
 	[TestMethod]
+	public void IsReadOnlyReturnsFalseWhenAddingNotCompletedTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		Assert.IsFalse(collection.IsReadOnly);
+	}
+
+	[TestMethod]
+	public void IsReadOnlyReturnsTrueWhenAddingCompletedTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		collection.CompleteAdding();
+		Assert.IsTrue(collection.IsReadOnly);
+	}
+
+	[TestMethod]
 	public void IsReadOnlyWhenAddingCompletedTest()
 	{
 		var collection = new DistinctBlockingCollection<string>();
@@ -318,6 +353,13 @@ public class DistinctBlockingCollectionTests
 		Assert.IsFalse(result);
 	}
 
+	[TestMethod]
+	public void RemoveNullItemReturnsFalseTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		Assert.IsFalse(collection.Remove(null));
+	}
+
 	/// <summary>
 	/// Defines the test method RemoveTest.
 	/// </summary>
@@ -329,6 +371,16 @@ public class DistinctBlockingCollectionTests
 		_ = collection.AddRange(new List<string>() { "test1", "test2" }, true);
 
 		Assert.IsTrue(collection.Remove("test1"));
+	}
+
+	[TestMethod]
+	public void TryAddDuplicateReturnsFalseTest()
+	{
+		DistinctBlockingCollection<Person<Address>> collection = new();
+		var person = RandomData.GeneratePersonRef<Address>();
+		collection.Add(person);
+
+		Assert.IsFalse(collection.TryAdd(person));
 	}
 
 	[TestMethod]
@@ -383,6 +435,21 @@ public class DistinctBlockingCollectionTests
 		Assert.IsTrue(collection.TryAdd("test", new TimeSpan(0, 0, 10)));
 	}
 
+	[TestMethod]
+	public void TryAddWithMillisecondsTimeoutAndCancellationTokenDuplicateReturnsFalseTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		collection.Add("item1");
+		Assert.IsFalse(collection.TryAdd("item1", 100, CancellationToken.None));
+	}
+
+	[TestMethod]
+	public void TryAddWithMillisecondsTimeoutAndCancellationTokenNullReturnsFalseTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		Assert.IsFalse(collection.TryAdd(null, 100, CancellationToken.None));
+	}
+
 
 	[TestMethod]
 	public void TryAddWithMillisecondsTimeoutAndCancellationTokenTest()
@@ -416,12 +483,27 @@ public class DistinctBlockingCollectionTests
 	}
 
 	[TestMethod]
+	public void TryAddWithMillisecondsTimeoutDuplicateReturnsFalseTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		collection.Add("item1");
+		Assert.IsFalse(collection.TryAdd("item1", 100));
+	}
+
+	[TestMethod]
 	public void TryAddWithMillisecondsTimeoutNullItemTest()
 	{
 		var collection = new DistinctBlockingCollection<string>();
 		var result = collection.TryAdd(null, 1000);
 
 		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void TryAddWithMillisecondsTimeoutNullReturnsFalseTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		Assert.IsFalse(collection.TryAdd(null, 100));
 	}
 
 	[TestMethod]
@@ -463,6 +545,21 @@ public class DistinctBlockingCollectionTests
 		var result = collection.TryAdd("test1", 1000);
 
 		Assert.IsFalse(result);
+	}
+
+	[TestMethod]
+	public void TryAddWithTimeoutDuplicateReturnsFalseTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		collection.Add("item1");
+		Assert.IsFalse(collection.TryAdd("item1", TimeSpan.FromMilliseconds(100)));
+	}
+
+	[TestMethod]
+	public void TryAddWithTimeoutNullReturnsFalseTest()
+	{
+		var collection = new DistinctBlockingCollection<string>();
+		Assert.IsFalse(collection.TryAdd(null, TimeSpan.FromMilliseconds(100)));
 	}
 
 	[TestMethod]

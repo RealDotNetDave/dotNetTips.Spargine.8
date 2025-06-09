@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-30-2025
+// Last Modified On : 06-09-2025
 // ***********************************************************************
 // <copyright file="DistinctBlockingCollection.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// This type implements IDisposable. Make sure to call .Dispose() or use the 'using' statement
 /// to remove from memory.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineDistinctBlockingCollection")]
 public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, ICloneable<T>, ICollection<T>
 {
 	/// <summary>
@@ -55,7 +55,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// <param name="collection">The collection.</param>
 	public DistinctBlockingCollection([NotNull] in IEnumerable<T> collection)
 	{
-		if (collection?.FastCount() > 0)
+		if (collection?.Count() > 0)
 		{
 			foreach (var _ in collection.Where(p => p is not null).Where(item => this.TryAdd(item) is false).Select(_ => new { }))
 			{
@@ -77,7 +77,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// </summary>
 	/// <param name="item">The item to check.</param>
 	/// <returns><c>true</c> if the item is null or not contained in the <see cref="DistinctBlockingCollection{T}"/>; otherwise, <c>false</c>.</returns>
-	private bool IsNotInCollection([NotNullWhen(false)] T item) => this.Contains(item) is false;
+	private bool IsNotInCollection([NotNullWhen(false)] in T item) => this.Contains(item) is false;
 
 	/// <summary>
 	/// Adds the specified item to the <see cref="DistinctBlockingCollection{T}"/>.
@@ -111,10 +111,18 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	}
 
 	/// <summary>
-	/// Removes the first occurrence of a specific object from the <see cref="DistinctBlockingCollection{T}"/>.
+	/// Determines whether the <see cref="DistinctBlockingCollection{T}"/> contains a specific value.
 	/// </summary>
-	/// <param name="item">The object to remove from the <see cref="DistinctBlockingCollection{T}"/>. The value cannot be null.</param>
-	/// <returns><see langword="true" /> if <paramref name="item" /> was successfully removed from the <see cref="DistinctBlockingCollection{T}"/>; otherwise, <see langword="false" />. This method also returns <see langword="false" /> if <paramref name="item" /> is not found in the original collection.</returns>
+	/// <param name="item">
+	/// The object to locate in the <see cref="DistinctBlockingCollection{T}"/>. The value cannot be null.
+	/// </param>
+	/// <returns>
+	/// <see langword="true"/> if <paramref name="item"/> is found in the <see cref="DistinctBlockingCollection{T}"/>; otherwise, <see langword="false"/>.
+	/// </returns>
+	/// <remarks>
+	/// This method performs an equality comparison using <see cref="EqualityComparer{T}.Default"/> to determine if the specified item exists in the collection.
+	/// If <paramref name="item"/> is <c>null</c>, the method returns <c>false</c>.
+	/// </remarks>
 	public bool Contains([NotNull] T item)
 	{
 		//SUGGESTION FROM COPILOT BREAKS THIS METHOD
@@ -135,7 +143,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	}
 
 	/// <summary>
-	/// Removes the first occurrence of a specific object from the <see cref="DistinctBlockingCollection{T}"/>.
+	/// Removes a specific object from the <see cref="DistinctBlockingCollection{T}"/>.
 	/// </summary>
 	/// <param name="item">The object to remove from the <see cref="DistinctBlockingCollection{T}"/>. The value cannot be null.</param>
 	/// <returns><see langword="true" /> if <paramref name="item" /> was successfully removed from the <see cref="DistinctBlockingCollection{T}"/>; otherwise, <see langword="false" />. This method also returns <see langword="false" /> if <paramref name="item" /> is not found in the original collection.</returns>
@@ -146,7 +154,15 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// </summary>
 	/// <param name="item">The item to be added to the collection. The value cannot be null.</param>
 	/// <returns><see langword="true" /> if <paramref name="item" /> could be added; otherwise, <see langword="false" />. If the item is a duplicate, and the underlying collection does not accept duplicate items, then <see langword="false" /> is returned.</returns>
-	public new bool TryAdd(T item) => item is null ? false : base.TryAdd(item);
+	public new bool TryAdd(T item)
+	{
+		if (item is null || this.IsNotInCollection(item) == false)
+		{
+			return false;
+		}
+
+		return base.TryAdd(item);
+	}
 
 	/// <summary>
 	/// Tries to add the specified item to the <see cref="DistinctBlockingCollection{T}" />
@@ -155,7 +171,10 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// <param name="item">The item to be added to the collection. The value cannot be null.</param>
 	/// <param name="millisecondsTimeout">The number of milliseconds to wait, or <see cref="Timeout.Infinite"/> (-1) to wait indefinitely.</param>
 	/// <returns><see langword="true" /> if the <paramref name="item" /> could be added to the collection within the specified time; otherwise, <see langword="false" />. If the item is a duplicate, and the underlying collection does not accept duplicate items, then <see langword="false" /> is returned.</returns>
-	public new bool TryAdd([AllowNull] T item, [ConstantExpected(Min = 1, Max = int.MaxValue)] int millisecondsTimeout) => item is null ? false : this.IsNotInCollection(item) && base.TryAdd(item, millisecondsTimeout);
+	public new bool TryAdd([AllowNull] T item, [ConstantExpected(Min = 1, Max = int.MaxValue)] int millisecondsTimeout)
+	{
+		return item is null ? false : this.IsNotInCollection(item) && base.TryAdd(item, millisecondsTimeout);
+	}
 
 	/// <summary>
 	/// Tries to add the specified item to the <see cref="DistinctBlockingCollection{T}" />.
@@ -163,7 +182,10 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// <param name="item">The item to be added to the collection. The value cannot be null.</param>
 	/// <param name="timeout">A <see cref="TimeSpan" /> that represents the number of milliseconds to wait, or a <see cref="TimeSpan" /> that represents -1 milliseconds to wait indefinitely.</param>
 	/// <returns><see langword="true" /> if the <paramref name="item" /> could be added to the collection within the specified time span; otherwise, <see langword="false" />. If the item is a duplicate, and the underlying collection does not accept duplicate items, then <see langword="false" /> is returned.</returns>
-	public new bool TryAdd(T item, TimeSpan timeout) => item is null ? false : this.IsNotInCollection(item) && base.TryAdd(item, timeout);
+	public new bool TryAdd(T item, TimeSpan timeout)
+	{
+		return item is null ? false : this.IsNotInCollection(item) && base.TryAdd(item, timeout);
+	}
 
 	/// <summary>
 	/// Tries to add the specified item to the <see cref="DistinctBlockingCollection{T}" />
@@ -175,7 +197,10 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// <param name="cancellationToken">A cancellation token to observe while waiting for the operation to complete.</param>
 	/// <returns>true if the <paramref name="item" /> could be added to the collection within the specified time; otherwise,
 	/// false. If the item is a duplicate, and the underlying collection does not accept duplicate items, then false is returned.</returns>
-	public new bool TryAdd(T item, [ConstantExpected(Min = 1, Max = int.MaxValue)] int millisecondsTimeout, CancellationToken cancellationToken = default) => item is null ? false : this.IsNotInCollection(item) && base.TryAdd(item, millisecondsTimeout, cancellationToken);
+	public new bool TryAdd(T item, [ConstantExpected(Min = 1, Max = int.MaxValue)] int millisecondsTimeout, CancellationToken cancellationToken = default)
+	{
+		return item is null ? false : this.IsNotInCollection(item) && base.TryAdd(item, millisecondsTimeout, cancellationToken);
+	}
 
 	/// <summary>
 	/// Gets a value indicating whether the collection is read-only.
