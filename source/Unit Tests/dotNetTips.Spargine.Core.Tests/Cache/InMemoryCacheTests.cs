@@ -50,7 +50,7 @@ public class InMemoryCacheTests
 	public void AddCacheItem_NullIDataRecordItem_ThrowsArgumentNullException()
 	{
 		var cache = InMemoryCache.Instance;
-		cache.AddCacheItem(null as IDataRecord);
+		cache.AddCacheItem(null);
 	}
 
 	[TestMethod]

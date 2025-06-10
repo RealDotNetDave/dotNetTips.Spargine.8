@@ -68,7 +68,7 @@ public sealed class HttpHandlerDiagnosticListener(ILogger logger) : IObserver<Ke
 		var requestDataType = Type.GetType("System.Net.Http.DiagnosticsHandler+ActivityStartData, System.Net.Http", throwOnError: true);
 		var requestProperty = requestDataType.GetProperty("Request");
 
-		return (object o) => (HttpRequestMessage)requestProperty.GetValue(o);
+		return @object => (HttpRequestMessage)requestProperty.GetValue(@object);
 	}
 
 	/// <summary>
@@ -82,7 +82,7 @@ public sealed class HttpHandlerDiagnosticListener(ILogger logger) : IObserver<Ke
 		var requestDataType = Type.GetType("System.Net.Http.DiagnosticsHandler+ActivityStopData, System.Net.Http", throwOnError: true);
 		var requestProperty = requestDataType.GetProperty("Response");
 
-		return (object o) => (HttpResponseMessage)requestProperty.GetValue(o);
+		return @object => (HttpResponseMessage)requestProperty.GetValue(@object);
 	}
 
 	/// <summary>

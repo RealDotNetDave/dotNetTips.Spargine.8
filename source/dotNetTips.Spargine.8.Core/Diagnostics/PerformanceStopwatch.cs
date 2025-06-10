@@ -49,7 +49,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// A collection of diagnostic entries recorded during the stopwatch's operation.
 	/// </summary>
-	private readonly ConcurrentBag<DiagnosticEntry> _diagnostics = new();
+	private readonly ConcurrentBag<DiagnosticEntry> _diagnostics = [];
 
 	/// <summary>
 	/// JSON serializer options for exporting stopwatch data.
@@ -62,7 +62,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// A list of recorded lap times.
 	/// </summary>
-	private readonly ConcurrentBag<TimeSpan> _laps = new();
+	private readonly ConcurrentBag<TimeSpan> _laps = [];
 
 	/// <summary>
 	/// The name of the operation being tracked.

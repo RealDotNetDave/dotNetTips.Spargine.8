@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Tests.IO;
 [TestClass]
 public class DirectoryHelperTests
 {
-	const int RetryCount = 5;
+	private const int RetryCount = 5;
 
 	[TestMethod]
 	public void AppDataFolder_ReturnsCorrectPathOnMacOS()

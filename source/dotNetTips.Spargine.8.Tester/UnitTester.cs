@@ -38,15 +38,6 @@ namespace DotNetTips.Spargine.Tester;
 [Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineUnitTester")]
 public abstract class UnitTester(string outputDirectory = null)
 {
-	/// <summary>
-	/// The directory where output files will be saved.
-	/// </summary>
-	/// <remarks>
-	/// This field is initialized in the constructor and defaults to the current directory
-	/// if no specific directory is provided.
-	/// </remarks>
-	private readonly string _outputDirectory = outputDirectory ?? App.ExecutingFolder();
-
 	private static string GenerateFileName(string methodName)
 	{
 		string fileName;
@@ -279,5 +270,5 @@ public abstract class UnitTester(string outputDirectory = null)
 	/// <value>
 	/// A string representing the directory path where output files will be saved.
 	/// </value>
-	public string OutputDirectory => this._outputDirectory;
+	public string OutputDirectory { get; } = outputDirectory ?? App.ExecutingFolder();
 }
