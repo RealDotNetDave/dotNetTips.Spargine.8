@@ -97,7 +97,7 @@
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
-	<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4">
+	<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="4.14.0">
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
@@ -109,8 +109,8 @@
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
-	<PackageReference Include="System.Management" Version="9.0.4" />
-	<PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.4" />
+	<PackageReference Include="System.Management" Version="9.0.6" />
+	<PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.6" />
   </ItemGroup>
 
   <ItemGroup>

@@ -16,6 +16,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Security;
 using System.ServiceModel.Security;
+using DotNetTips.Spargine.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://bit.ly/Spargine )

@@ -4,7 +4,7 @@
 // Created          : 09-15-2017
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 06-22-2025
 // ***********************************************************************
 // <copyright file="ExceptionExtensions.cs" company="McCarter Consulting">
 //     David McCarter - dotNetTips.com
@@ -24,7 +24,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for enhancing the functionality of the <see cref="Exception"/> class.
 /// These methods include getting all messages, checking if an exception is critical or fatal, and more.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineExceptionExtensions")]
 public static class ExceptionExtensions
 {
 
@@ -79,7 +79,7 @@ public static class ExceptionExtensions
 	/// <param name="delimiter">The character used to separate individual exception messages in the resulting string. Defaults to a comma.</param>
 	/// <returns>A string containing all exception messages, separated by the specified delimiter.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(GetAllMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(GetAllMessages), UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static string GetAllMessages(this Exception exception, [ConstantExpected] char delimiter = ControlChars.Comma)
 	{
 		exception = exception.ArgumentNotNull();
@@ -97,7 +97,7 @@ public static class ExceptionExtensions
 	/// <param name="exception">The exception to extract messages and stack traces from.</param>
 	/// <returns>A <see cref="ReadOnlyCollection{T}"/> where each item is a tuple containing the message and stack trace of an exception.</returns>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="exception"/> is null.</exception>
-	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineAug2024")]
+	[Information(nameof(GetAllMessagesWithStackTrace), author: "David McCarter", createdOn: "10/12/2020", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<(string message, string StackTrace)> GetAllMessagesWithStackTrace([NotNull] this Exception exception)
 	{
 		exception = exception.ArgumentNotNull();
