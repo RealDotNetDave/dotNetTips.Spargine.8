@@ -4,7 +4,7 @@
 // Created          : 01-01-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-05-2025
+// Last Modified On : 06-24-2025
 // ***********************************************************************
 // <copyright file="ConcurrentHashSet.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -31,7 +31,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// This implementation provides atomic operations for adding, removing, and checking for elements, making it suitable for concurrent scenarios.
 /// </remarks>
 [DebuggerDisplay("Count = {Count}")]
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T>
 {
 	/// <summary>
@@ -85,11 +85,6 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private ConcurrentHashSet(int concurrencyLevel, int capacity, bool growLockArray, [NotNull] IEqualityComparer<T> comparer)
 	{
-		if (concurrencyLevel < 1)
-		{
-			concurrencyLevel = 1;
-		}
-
 		concurrencyLevel = concurrencyLevel.EnsureMinimum(1);
 		capacity = capacity.EnsureMinimum(0);
 

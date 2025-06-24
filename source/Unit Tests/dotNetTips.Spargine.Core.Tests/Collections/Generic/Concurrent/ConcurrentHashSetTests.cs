@@ -4,7 +4,7 @@
 // Created          : 12-06-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-10-2025
+// Last Modified On : 06-10-2025
 // ***********************************************************************
 // <copyright file="ConcurrentHashSetTests.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - David McCarter. All rights reserved.

@@ -160,7 +160,7 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void FindNetSDKFiles_SpecificVersion_ReturnsFiles()
 	{
 		// Act
-		var result = AssemblyHelper.GetNetSdkDllFiles("8.0.15");
+		var result = AssemblyHelper.GetNetSdkDllFiles("8.0.17");
 
 		PrintToDebug<FileInfo>(result, prop => prop.Name == "Name");
 
