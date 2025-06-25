@@ -4,7 +4,7 @@
 // Created          : 11-06-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-13-2025
+// Last Modified On : 06-25-2025
 // ***********************************************************************
 // <copyright file="CollectionRandomizer.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -32,7 +32,7 @@ namespace DotNetTips.Spargine.Core.Collections;
 /// <remarks>
 /// The <see cref="CollectionRandomizer{T}"/> is designed to shuffle a collection and allow retrieving items sequentially with the option to repeat and reshuffle.
 /// </remarks>
-[Information(nameof(CollectionRandomizer<T>), author: "David McCarter and Kristine Tran", createdOn: "8/26/2020", Status = Status.NeedsDocumentation)]
+[Information(nameof(CollectionRandomizer<T>), author: "David McCarter and Kristine Tran", createdOn: "8/26/2020", Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public sealed class CollectionRandomizer<T>([NotNull] in IEnumerable<T> collection, bool repeat = false)
 {
 
@@ -45,6 +45,12 @@ public sealed class CollectionRandomizer<T>([NotNull] in IEnumerable<T> collecti
 	/// The enumerator for the randomized collection. This enumerator is used internally to iterate through the <see cref="ImmutableArray{T}"/> of randomized items.
 	/// </summary>
 	private ImmutableArray<T>.Enumerator _collectionEnumerator;
+
+	/// <summary>
+	/// Backing field for the <see cref="HasRemainingItems"/> property.
+	/// Indicates whether there are remaining items to be retrieved from the collection.
+	/// </summary>
+	private bool _hasRemainingItems;
 
 	/// <summary>
 	/// Indicates whether the <see cref="CollectionRandomizer{T}"/> has been initialized. Initialization occurs upon the first call to <see cref="GetNext"/>. 
@@ -127,7 +133,23 @@ public sealed class CollectionRandomizer<T>([NotNull] in IEnumerable<T> collecti
 	/// <c>true</c> if this instance has remaining items; otherwise, <c>false</c>. This value will be <c>false</c>
 	/// until the first time <see cref="GetNext"/> is called and the collection is shuffled.
 	/// </value>
-	[Information(nameof(HasRemainingItems), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.NotRequired)]
-	public bool HasRemainingItems { get; private set; }
+	[Information(nameof(HasRemainingItems), "David McCarter", "4/21/2021", Status = Status.Available, UnitTestStatus = UnitTestStatus.None)]
+	public bool HasRemainingItems
+	{
+		get
+		{
+			lock (this._threadLock)
+			{
+				return this._hasRemainingItems;
+			}
+		}
+		private set
+		{
+			lock (this._threadLock)
+			{
+				this._hasRemainingItems = value;
+			}
+		}
+	}
 
 }
