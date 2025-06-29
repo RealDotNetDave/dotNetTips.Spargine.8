@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Core;
 /// This type is thread-safe and can be used to return results from methods, including both success and error information.
 /// </summary>
 /// <typeparam name="T">The type of the value associated with the result.</typeparam>
-[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Status = Core.Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Status = Core.Status.Available, Documentation = "https://bit.ly/SpargineSimpleResult")]
 public class SimpleResult<T>
 {
 

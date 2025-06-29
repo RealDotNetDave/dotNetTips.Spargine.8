@@ -26,7 +26,7 @@ namespace DotNetTips.Spargine.Core;
 /// These methods allow encapsulation of either a value or an exception in a result container,
 /// enabling methods to return both success and error information in a consistent way.
 /// </summary>
-[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Status = Status.NeedsDocumentation)]
+[Information(nameof(SimpleResult), author: "David McCarter", createdOn: "6/20/2023", Status = Status.Available, Documentation = "https://bit.ly/SpargineSimpleResult")]
 public static class SimpleResult
 {
 
