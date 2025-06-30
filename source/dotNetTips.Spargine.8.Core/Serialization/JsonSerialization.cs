@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-28-2025
+// Last Modified On : 06-30-2025
 // ***********************************************************************
 // <copyright file="JsonSerialization.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -235,6 +235,12 @@ public static class JsonSerialization
 		using (var doc = JsonDocument.Parse(json))
 		{
 			var root = doc.RootElement;
+
+			if (root.GetArrayLength() < count)
+			{
+				throw new ArgumentOutOfRangeException(nameof(count), $"The JSON array contains fewer than {count} elements.");
+			}
+
 			for (var itemCount = 0; itemCount < count; itemCount++)
 			{
 				items[itemCount] = (T)root[itemCount].Deserialize(info);
