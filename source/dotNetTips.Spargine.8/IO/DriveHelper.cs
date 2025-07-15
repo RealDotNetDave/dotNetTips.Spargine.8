@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.IO;
 /// Note: These methods are intended to be used on Windows platforms only.
 /// </remarks>
 [SupportedOSPlatform("windows")]
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public static class DriveHelper
 {
 
@@ -49,9 +49,7 @@ public static class DriveHelper
 	{
 		drive = drive.ArgumentNotNullOrEmpty();
 
-		var driveInfo = new DriveInfo(drive);
-
-		return driveInfo.DriveFormat;
+		return new DriveInfo(drive).DriveFormat;
 	}
 
 	/// <summary>

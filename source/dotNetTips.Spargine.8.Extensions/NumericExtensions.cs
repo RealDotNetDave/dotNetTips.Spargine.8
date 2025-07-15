@@ -138,7 +138,7 @@ public static class NumericExtensions
 	/// <param name="fileSize">The size of the file in bytes.</param>
 	/// <returns>A string representing the formatted size of the file, including the appropriate size unit.</returns>
 	[Information(nameof(FormatSize), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static string FormatSize(this in long fileSize)
+	public static string FormatSize(this long fileSize)
 	{
 		if (fileSize < 0)
 		{
@@ -146,14 +146,13 @@ public static class NumericExtensions
 		}
 
 		var order = 0;
-		double len = fileSize;
-		while (len >= 1024 && order < _fileFormatSizes.LongLength - 1)
+		while (fileSize >= 1024 && order < _fileFormatSizes.LongLength - 1)
 		{
 			order++;
-			len /= 1024;
+			fileSize /= 1024;
 		}
 
-		return $"{len:0.##} {_fileFormatSizes[order]}";
+		return $"{fileSize:0.##} {_fileFormatSizes[order]}";
 	}
 
 	/// <summary>
@@ -165,6 +164,11 @@ public static class NumericExtensions
 	[Information(nameof(FormatSize), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static string FormatSize(this double fileSize)
 	{
+		if (fileSize < 0)
+		{
+			return "Invalid size";
+		}
+
 		var order = 0;
 		while (fileSize >= 1024 && order < _fileFormatSizes.LongLength - 1)
 		{
@@ -172,7 +176,7 @@ public static class NumericExtensions
 			fileSize /= 1024;
 		}
 
-		return $"{Math.Round(fileSize, 2)} {_fileFormatSizes[order]}";
+		return $"{fileSize:0.##} {_fileFormatSizes[order]}";
 	}
 
 	/// <summary>
