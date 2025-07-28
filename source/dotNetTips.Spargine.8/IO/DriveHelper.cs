@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.IO;
 /// Note: These methods are intended to be used on Windows platforms only.
 /// </remarks>
 [SupportedOSPlatform("windows")]
-[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(Status = Status.Available, Documentation = "https://bit.ly/SpargineDriveHelper")]
 public static class DriveHelper
 {
 
