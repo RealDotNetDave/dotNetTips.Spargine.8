@@ -30,7 +30,7 @@ namespace DotNetTips.Spargine.Core;
 /// Provides utility methods for working with enumerations, such as converting between names and values,
 /// adjusting naming conventions, and extracting metadata. This class cannot be inherited.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class EnumHelper
 {
 

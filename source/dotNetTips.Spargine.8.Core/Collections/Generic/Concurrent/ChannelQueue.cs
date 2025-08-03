@@ -24,10 +24,28 @@ using DotNetTips.Spargine.Core.Properties;
 namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 
 /// <summary>
-/// Thread-Safe queue using <see cref="Channel{T}"/>.
+/// Represents a thread-safe queue implementation using <see cref="Channel{T}"/> for concurrent operations.
 /// </summary>
-/// <typeparam name="T">The type of items stored in the queue.</typeparam>
-[Information("Queue using Channel<T>.", "David McCarter", "7/26/2021", Status = Status.NeedsDocumentation)]
+/// <typeparam name="T">
+/// The type of items stored in the queue.
+/// </typeparam>
+/// <remarks>
+/// <para>
+/// <b>ChannelQueue&lt;T&gt;</b> provides asynchronous and thread-safe queuing functionality using .NET channels.
+/// </para>
+/// <para>
+/// It supports bounded and unbounded capacities, cancellation tokens for graceful shutdown, and batch operations.
+/// </para>
+/// <para>
+/// Use <see cref="WriteAsync(T, CancellationToken)"/> or <see cref="WriteAsync(IEnumerable{T}, bool, CancellationToken)"/> to enqueue items.
+/// Use <see cref="ReadAsync(CancellationToken)"/> or <see cref="ListenAsync(CancellationToken)"/> to dequeue items.
+/// Call <see cref="Lock"/> to prevent further writes and complete the channel.
+/// </para>
+/// <para>
+/// <b>Thread Safety:</b> All public members are thread-safe.
+/// </para>
+/// </remarks>
+[Information("Queue using Channel<T>.", "David McCarter", "7/26/2021", Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public sealed class ChannelQueue<T>
 {
 
