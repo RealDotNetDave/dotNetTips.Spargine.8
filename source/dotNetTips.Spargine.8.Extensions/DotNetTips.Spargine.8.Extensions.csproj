@@ -5,7 +5,7 @@
 	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
 	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-	<AssemblyVersion>2025.8.6.10</AssemblyVersion>
+	<AssemblyVersion>2025.8.8.4</AssemblyVersion>
 	<Authors>David McCarter</Authors>
 	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
@@ -23,7 +23,7 @@
 	<EnablePackageValidation>true</EnablePackageValidation>
 	<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-	<FileVersion>2025.8.6.10</FileVersion>
+	<FileVersion>2025.8.8.4</FileVersion>
 	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -34,13 +34,13 @@
 	<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 	<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageReleaseNotes>
-	  --MAR 2024: Initial 8.0 release.
-	  --MAY 2024: Added FastCount to EnumerableExtensions, FastHashData to ArrayExtensions. Performance improvements.
-	  --AUG 2024: Major performance and documentation changes. New methods.
-	  --NOV 2024: Performance improvements, refactoring. Added new methods to extentions.
-	  --FEB 2025: Added new methods to DictionaryExtentions, EnumerableExtensions, ListExtentions, StringBuilderExtentions, StringExtentions. Removed obsolete methods.
-	  --MAY 2025: Added new extension methods to: DictionaryExtensions, EnumerableExtensions, ListExtensions, StringBuilderExtensions, StringExtensions. Optimized existing methods in EnumerableExtensions and ArrayExtensions. Improved performance of FastHashData and FastCount methods. Refactored code for better readability and maintainability.
+	<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
+--MAY 2024: Added FastCount to EnumerableExtensions, FastHashData to ArrayExtensions. Performance improvements.
+--AUG 2024: Major performance and documentation changes. New methods.
+--NOV 2024: Performance improvements, refactoring. Added new methods to extentions.
+--FEB 2025: Added new methods to DictionaryExtentions, EnumerableExtensions, ListExtentions, StringBuilderExtentions, StringExtentions. Removed obsolete methods.
+--MAY 2025: Added new extension methods to: DictionaryExtensions, EnumerableExtensions, ListExtensions, StringBuilderExtensions, StringExtensions. Optimized existing methods in EnumerableExtensions and ArrayExtensions. Improved performance of FastHashData and FastCount methods. Refactored code for better readability and maintainability.
+--AUG 2025: Addition of new extension methods to DictionaryExtensions, EnumerableExtensions, ListExtensions, StringBuilderExtensions, and StringExtensions, as well as significant performance optimizations and code refactoring, particularly for FastHashData and FastCount, with obsolete methods being removed for clarity.
 	</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
@@ -56,7 +56,7 @@
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 	<Title>DotNetTips.Spargine.8.Extensions</Title>
-	<Version>2025.8.6.10</Version>
+	<Version>2025.8.8.4</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

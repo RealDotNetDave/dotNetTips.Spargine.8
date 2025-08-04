@@ -5,7 +5,7 @@
 	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
 	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-	<AssemblyVersion>2025.8.6.10</AssemblyVersion>
+	<AssemblyVersion>2025.8.8.4</AssemblyVersion>
 	<Authors>David McCarter</Authors>
 	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
@@ -23,7 +23,7 @@
 	<EnablePackageValidation>false</EnablePackageValidation>
 	<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-	<FileVersion>2025.8.6.10</FileVersion>
+	<FileVersion>2025.8.8.4</FileVersion>
 	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -34,13 +34,12 @@
 	<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
 	<PackageProjectUrl>https://github.com/RealDotNetDave/DotNetTips.Spargine.8</PackageProjectUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageReleaseNotes>
-	  --MAR 2024: Initial 8.0 release.
-	  --MAY 2024: Added CopyFile to FileHelper.
-	  --AUG 2024: Major performance and documentation changes. New methods.
-	  --NOV 2024: Code perf improvements, refactoring. Added TempFileManager.
-	  --MAY 2025: Added AutoDefaultDictionary and OrdinalStringComparer types. Introduced new methods in Clock, PasswordGenerator, and RegexProcessor. Improved performance for CountryRepository.
-	</PackageReleaseNotes>
+	<PackageReleaseNotes>--MAR 2024: Initial 8.0 release.
+--MAY 2024: Added CopyFile to FileHelper.
+--AUG 2024: Major performance and documentation changes. New methods.
+--NOV 2024: Code perf improvements, refactoring. Added TempFileManager.
+--MAY 2025: Added AutoDefaultDictionary and OrdinalStringComparer types. Introduced new methods in Clock, PasswordGenerator, and RegexProcessor. Improved performance for CountryRepository.
+--AUG 2025: Added features like CopyFile in FileHelper and TempFileManager, while also benefiting from general performance improvements and code cleanup. </PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -53,7 +52,7 @@
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 	<Title>DotNetTips.Spargine.8</Title>
-	<Version>2025.8.6.10</Version>
+	<Version>2025.8.8.4</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
