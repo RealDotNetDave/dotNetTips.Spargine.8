@@ -455,7 +455,7 @@ public static class AssemblyHelper
 	[Information(nameof(GetNetSdkDllFiles), "David McCarter", "4/9/2025", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, OptimizationStatus = OptimizationStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<FileInfo> GetNetSdkDllFiles(string? version = null)
 	{
-		var root = Environment.GetEnvironmentVariable("DOTNET_ROOT");
+		var root = FindDotNetRootFolder();
 
 		if (string.IsNullOrEmpty(root))
 		{
@@ -501,6 +501,33 @@ public static class AssemblyHelper
 			.ToList();
 
 		return new ReadOnlyCollection<FileInfo>(dllFiles);
+	}
+
+	/// <summary>
+	/// Finds the root folder of the .NET installation.
+	/// </summary>
+	/// <remarks>
+	/// This method first checks the <c>DOTNET_ROOT</c> environment variable. If it is not set or is empty,
+	/// it falls back to the default installation path for the current operating system:
+	/// <list type="bullet">
+	/// <item><description>Windows: <c>C:\Program Files\dotnet</c></description></item>
+	/// <item><description>macOS/Linux: <c>/usr/local/share/dotnet</c></description></item>
+	/// </list>
+	/// </remarks>
+	/// <returns>
+	/// The path to the .NET root folder as a <see cref="string"/>.
+	/// </returns>
+	private static string FindDotNetRootFolder()
+	{
+		var root = Environment.GetEnvironmentVariable("DOTNET_ROOT");
+		if (string.IsNullOrEmpty(root))
+		{
+			root = Environment.OSVersion.Platform == PlatformID.Win32NT
+				? @"C:\Program Files\dotnet"
+				: "/usr/local/share/dotnet";
+		}
+
+		return root;
 	}
 
 	/// <summary>

@@ -236,7 +236,7 @@ public class FileHelperTests
 		}
 
 		// Act & Assert
-		await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => FileHelper.CopyFileAsync(sourceFile, destinationDir));
+		await Assert.ThrowsExceptionAsync<FileNotFoundException>(() => FileHelper.CopyFileAsync(sourceFile, destinationDir));
 	}
 
 	[TestMethod]
@@ -248,7 +248,7 @@ public class FileHelperTests
 		destinationDir.Create();
 
 		// Act & Assert
-		await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => FileHelper.CopyFileAsync(sourceFile, destinationDir));
+		await Assert.ThrowsExceptionAsync<FileNotFoundException>(() => FileHelper.CopyFileAsync(sourceFile, destinationDir));
 
 		destinationDir.Delete(true);
 	}

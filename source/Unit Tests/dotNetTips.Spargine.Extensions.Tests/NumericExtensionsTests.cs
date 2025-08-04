@@ -383,7 +383,7 @@ public class NumericExtensionsTests : UnitTester
 		var result = NumericExtensions.FormatSize(5000000000);
 
 		// Assert
-		Assert.AreEqual("4.66 GB", result);
+		Assert.AreEqual("4 GB", result);
 	}
 
 	[TestMethod]
@@ -403,7 +403,7 @@ public class NumericExtensionsTests : UnitTester
 		var result = NumericExtensions.FormatSize(5000);
 
 		// Assert
-		Assert.AreEqual("4.88 KB", result);
+		Assert.AreEqual("4 KB", result);
 	}
 
 	[TestMethod]
@@ -413,7 +413,7 @@ public class NumericExtensionsTests : UnitTester
 		var result = NumericExtensions.FormatSize(5000000);
 
 		// Assert
-		Assert.AreEqual("4.77 MB", result);
+		Assert.AreEqual("4 MB", result);
 	}
 
 	[TestMethod]

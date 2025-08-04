@@ -160,13 +160,13 @@ public class AssemblyHelperUnitTester : UnitTester
 	public void FindNetSDKFiles_SpecificVersion_ReturnsFiles()
 	{
 		// Act
-		var result = AssemblyHelper.GetNetSdkDllFiles("8.0.17");
+		var result = AssemblyHelper.GetNetSdkDllFiles("8.0.18");
 
 		PrintToDebug<FileInfo>(result, prop => prop.Name == "Name");
 
 		// Assert
 		Assert.IsNotNull(result);
-		Assert.IsTrue(result.Count > 0, "Expected to find .NET SDK files for version 8.0.15, but none were found.");
+		Assert.IsTrue(result.Count > 0, "Expected to find .NET SDK files for version 8.0.118, but none were found.");
 	}
 
 	[TestMethod]

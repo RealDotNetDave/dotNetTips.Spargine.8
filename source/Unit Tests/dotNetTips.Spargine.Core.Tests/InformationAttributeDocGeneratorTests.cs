@@ -32,7 +32,7 @@ public class InformationAttributeDocGeneratorTests
 	public void GenerateMarkdownDocumentForAssembly_ValidAssembly_Benchmark_ToFile()
 	{
 		// Arrange
-		var assembly = Assembly.LoadFile(Path.Combine(App.ProcessPath, "DotNetTips.Spargine.8.Benchmarking.dll"));
+		var assembly = Assembly.LoadFile(Path.Combine(App.ProcessPath, "DotNetTips.Spargine.8.Core.dll"));
 
 		// Act
 		var result = InformationAttributeDocGenerator.GenerateMarkdownDocumentForAssembly(assembly, @"C:\dotNetTips.com");

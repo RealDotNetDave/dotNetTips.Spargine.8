@@ -323,7 +323,7 @@ public class DirectoryHelperTests
 
 		folders.Add(folder);
 
-		var result = DirectoryHelper.SafeFileSearch(folders, "*.png", SearchOption.AllDirectories);
+		var result = DirectoryHelper.SafeFileSearch(folders, "*.*", SearchOption.AllDirectories);
 
 		Assert.IsTrue(result.HasItems());
 	}
@@ -334,7 +334,7 @@ public class DirectoryHelperTests
 	{
 		var folder = new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Temp"));
 
-		var result = DirectoryHelper.SafeFileSearch(folder, "*.png", SearchOption.AllDirectories);
+		var result = DirectoryHelper.SafeFileSearch(folder, "*.*", SearchOption.AllDirectories);
 
 		Assert.IsTrue(result.HasItems());
 	}

@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
@@ -95,21 +94,6 @@ public class ChannelQueueCollectionBenchmark : SmallCollectionBenchmark
 		await this.ConsumeAsync(channel.Count).ConfigureAwait(false);
 	}
 
-	[Benchmark(Description = "Enqueue: ConcurrentQueue")]
-	[BenchmarkCategory(Categories.ForComparison)]
-	public void ConcurrentQueueEnqueue()
-	{
-		var queue = new ConcurrentQueue<Person<Address>>();
-		var people = this._personRefArray;
-
-		for (var peopleCount = 0; peopleCount < people.Length; peopleCount++)
-		{
-			queue.Enqueue(people[peopleCount]);
-		}
-
-		this.Consume(queue.Count);
-	}
-
 	[Benchmark(Description = "Write & Listen Async: ChannelQueue")]
 	[BenchmarkCategory(Categories.Async)]
 	public void ChannelQueueWriteListenAsync()
@@ -144,27 +128,6 @@ public class ChannelQueueCollectionBenchmark : SmallCollectionBenchmark
 		while (channel.Count > 0)
 		{
 			await this.ConsumeAsync(await channel.ReadAsync().ConfigureAwait(false)).ConfigureAwait(false);
-		}
-	}
-
-	[Benchmark(Description = "TryDequeue: ConcurrentQueue")]
-	[BenchmarkCategory(Categories.Async)]
-	public void ConcurrentQueueWriteReadAsync()
-	{
-		var queue = new ConcurrentQueue<Person<Address>>();
-		var people = this._personRefArray;
-
-		for (var personCount = 0; personCount < people.Length; personCount++)
-		{
-			queue.Enqueue(people[personCount]);
-		}
-
-		while (queue.IsEmpty == false)
-		{
-			if (queue.TryDequeue(out var person))
-			{
-				this.Consume(person);
-			}
 		}
 	}
 
