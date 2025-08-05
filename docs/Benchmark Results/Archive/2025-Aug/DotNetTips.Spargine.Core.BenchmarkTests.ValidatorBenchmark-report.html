@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark-20250423-194433</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5737/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 9.0.203
+  [Host]     : .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+  Job-FORZLD : .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Core.BenchmarkTests  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                                         </th><th>Categories                     </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min</th><th>Q1</th><th>Median</th><th>Q3</th><th>Max</th><th>Op/s   </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Code Size</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Exceptions</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;Validating Collection: No Validation&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>1.780 ns</td><td>0.0106 ns</td><td>0.0099 ns</td><td>0.0026 ns</td><td>1.762 ns</td><td>1.773 ns</td><td>1.776 ns</td><td>1.786 ns</td><td>1.797 ns</td><td>561,901,119.5</td><td>7.499 ns</td><td>15.00</td><td>2.096</td><td>2.000</td><td>0.2822</td><td>1</td><td>*</td><td>No</td><td>47 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;Validating Collection: Validation + Inlining&#39;</td><td>Validation,**NEW**</td><td>5.291 ns</td><td>0.0231 ns</td><td>0.0205 ns</td><td>0.0055 ns</td><td>5.264 ns</td><td>5.272 ns</td><td>5.288 ns</td><td>5.309 ns</td><td>5.327 ns</td><td>189,008,650.5</td><td>6.997 ns</td><td>14.00</td><td>1.395</td><td>2.000</td><td>0.1671</td><td>4</td><td>*</td><td>No</td><td>283 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;Validating Collection: Validation&#39;</td><td>Validation,**NEW**</td><td>5.434 ns</td><td>0.0364 ns</td><td>0.0323 ns</td><td>0.0086 ns</td><td>5.388 ns</td><td>5.414 ns</td><td>5.423 ns</td><td>5.448 ns</td><td>5.512 ns</td><td>184,037,767.9</td><td>6.996 ns</td><td>14.00</td><td>3.094</td><td>2.000</td><td>0.7986</td><td>4</td><td>*</td><td>No</td><td>283 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;Validating Empty/Null String: No Validation&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>1.770 ns</td><td>0.0074 ns</td><td>0.0070 ns</td><td>0.0018 ns</td><td>1.761 ns</td><td>1.765 ns</td><td>1.768 ns</td><td>1.773 ns</td><td>1.784 ns</td><td>565,109,454.0</td><td>7.499 ns</td><td>15.00</td><td>2.134</td><td>2.000</td><td>0.6732</td><td>1</td><td>*</td><td>No</td><td>50 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;Validating Empty/Null String: Validation + Inlining&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>3.316 ns</td><td>0.0219 ns</td><td>0.0205 ns</td><td>0.0053 ns</td><td>3.290 ns</td><td>3.301 ns</td><td>3.311 ns</td><td>3.333 ns</td><td>3.359 ns</td><td>301,525,626.0</td><td>7.497 ns</td><td>15.00</td><td>2.006</td><td>2.000</td><td>0.5663</td><td>2</td><td>*</td><td>No</td><td>213 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>&#39;Validating Empty/Null String: Validation&#39;</td><td>Validation,**NEW**,**FOR COMPARISON**</td><td>3.655 ns</td><td>0.0214 ns</td><td>0.0200 ns</td><td>0.0052 ns</td><td>3.623 ns</td><td>3.639 ns</td><td>3.656 ns</td><td>3.666 ns</td><td>3.686 ns</td><td>273,594,815.8</td><td>7.497 ns</td><td>15.00</td><td>1.723</td><td>2.000</td><td>-0.1400</td><td>3</td><td>*</td><td>No</td><td>213 B</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>

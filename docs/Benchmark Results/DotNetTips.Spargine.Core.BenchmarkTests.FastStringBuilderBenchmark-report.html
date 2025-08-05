@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>DotNetTips.Spargine.Core.BenchmarkTests.FastStringBuilderBenchmark-20250423-182410</title>
+<title>DotNetTips.Spargine.Core.BenchmarkTests.FastStringBuilderBenchmark-20250804-173042</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,23 +13,23 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet v0.14.0, Windows 10 (10.0.19045.5737/22H2/2022Update)
+BenchmarkDotNet v0.15.2, Windows 10 (10.0.19045.6093/22H2/2022Update)
 Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
-.NET SDK 9.0.203
-  [Host]     : .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
-  Job-FORZLD : .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+.NET SDK 9.0.302
+  [Host]     : .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
+  Job-ZSLFFS : .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 </code></pre>
 <pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
 Namespace=DotNetTips.Spargine.Core.BenchmarkTests  
 </code></pre>
 
 <table>
-<thead><tr><th>Method                                           </th><th>Categories          </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min</th><th>Q1</th><th>Median</th><th>Q3</th><th>Max</th><th>Op/s </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Code Size</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Exceptions</th><th>Gen0</th><th>Allocated</th>
+<thead><tr><th>Method                                           </th><th>Categories          </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min</th><th>Q1</th><th>Median</th><th>Q3</th><th>Max</th><th>Op/s </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Code Size</th><th>Gen0</th><th>Exceptions</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>&#39;Format: SB.AppendFormat() for Comparison&#39;</td><td>Strings,**FOR COMPARISON**</td><td>133.4 ns</td><td>0.60 ns</td><td>0.53 ns</td><td>0.14 ns</td><td>132.0 ns</td><td>133.3 ns</td><td>133.6 ns</td><td>133.7 ns</td><td>134.1 ns</td><td>7,495,253.7</td><td>6.929 ns</td><td>14.00</td><td>3.981</td><td>2.000</td><td>-1.3225</td><td>2</td><td>*</td><td>No</td><td>2,278 B</td><td>-</td><td>-</td><td>-</td><td>0.0036</td><td>344 B</td>
-</tr><tr><td>&#39;Remove: SB.Replace() with string.Empty for Comparison&#39;</td><td>Strings,**FOR COMPARISON**</td><td>652.2 ns</td><td>2.98 ns</td><td>2.79 ns</td><td>0.72 ns</td><td>648.2 ns</td><td>650.2 ns</td><td>651.8 ns</td><td>653.7 ns</td><td>657.5 ns</td><td>1,533,359.9</td><td>7.140 ns</td><td>15.00</td><td>2.180</td><td>2.000</td><td>0.4774</td><td>4</td><td>*</td><td>No</td><td>1,902 B</td><td>-</td><td>-</td><td>-</td><td>0.0429</td><td>3968 B</td>
-</tr><tr><td>Format</td><td>Strings,**NEW**</td><td>113.6 ns</td><td>0.72 ns</td><td>0.67 ns</td><td>0.17 ns</td><td>112.5 ns</td><td>113.1 ns</td><td>113.6 ns</td><td>113.9 ns</td><td>114.9 ns</td><td>8,804,609.5</td><td>7.413 ns</td><td>15.00</td><td>2.180</td><td>2.000</td><td>0.3677</td><td>1</td><td>*</td><td>No</td><td>769 B</td><td>-</td><td>-</td><td>-</td><td>0.0012</td><td>128 B</td>
-</tr><tr><td>Remove</td><td>Strings,**NEW**</td><td>375.8 ns</td><td>1.26 ns</td><td>1.12 ns</td><td>0.30 ns</td><td>374.3 ns</td><td>374.7 ns</td><td>375.8 ns</td><td>376.5 ns</td><td>378.2 ns</td><td>2,661,322.0</td><td>6.851 ns</td><td>14.00</td><td>2.205</td><td>2.000</td><td>0.3977</td><td>3</td><td>*</td><td>No</td><td>1,266 B</td><td>-</td><td>-</td><td>-</td><td>0.0210</td><td>1952 B</td>
+</thead><tbody><tr><td>&#39;Format: SB.AppendFormat() for Comparison&#39;</td><td>Strings,**FOR COMPARISON**</td><td>134.7 ns</td><td>0.66 ns</td><td>0.62 ns</td><td>0.16 ns</td><td>133.8 ns</td><td>134.1 ns</td><td>134.7 ns</td><td>135.2 ns</td><td>135.6 ns</td><td>7,425,100.7</td><td>7.420 ns</td><td>15.00</td><td>1.508</td><td>2.000</td><td>-0.0388</td><td>2</td><td>*</td><td>No</td><td>-</td><td>-</td><td>2,345 B</td><td>0.0036</td><td>-</td><td>344 B</td>
+</tr><tr><td>&#39;Remove: SB.Replace() with string.Empty for Comparison&#39;</td><td>Strings,**FOR COMPARISON**</td><td>658.0 ns</td><td>4.67 ns</td><td>4.14 ns</td><td>1.11 ns</td><td>652.3 ns</td><td>654.9 ns</td><td>657.6 ns</td><td>661.2 ns</td><td>664.4 ns</td><td>1,519,755.4</td><td>6.447 ns</td><td>14.00</td><td>1.511</td><td>2.000</td><td>0.0523</td><td>4</td><td>*</td><td>No</td><td>-</td><td>-</td><td>1,894 B</td><td>0.0429</td><td>-</td><td>3968 B</td>
+</tr><tr><td>Format</td><td>Strings,**NEW**</td><td>124.7 ns</td><td>0.75 ns</td><td>0.70 ns</td><td>0.18 ns</td><td>124.1 ns</td><td>124.1 ns</td><td>124.3 ns</td><td>125.5 ns</td><td>125.8 ns</td><td>8,020,509.9</td><td>7.409 ns</td><td>15.00</td><td>1.350</td><td>2.000</td><td>0.5781</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>769 B</td><td>0.0012</td><td>-</td><td>128 B</td>
+</tr><tr><td>Remove</td><td>Strings,**NEW**</td><td>379.5 ns</td><td>3.19 ns</td><td>2.99 ns</td><td>0.77 ns</td><td>374.2 ns</td><td>377.7 ns</td><td>378.9 ns</td><td>381.2 ns</td><td>385.1 ns</td><td>2,634,922.8</td><td>7.114 ns</td><td>15.00</td><td>2.221</td><td>2.000</td><td>0.3921</td><td>3</td><td>*</td><td>No</td><td>-</td><td>-</td><td>1,266 B</td><td>0.0210</td><td>-</td><td>1952 B</td>
 </tr></tbody></table>
 </body>
 </html>

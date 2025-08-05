@@ -1,4 +1,4 @@
-## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+## .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Extensions.BenchmarkTests.AssemblyExtensionsBenchmark.GetInstances01()
        push      rdi
@@ -8,9 +8,9 @@
        xor       eax,eax
        mov       [rsp+28],rax
        mov       rbx,rcx
-       call      qword ptr [7FFBE633C078]; System.Reflection.Assembly.GetExecutingAssembly()
+       call      qword ptr [7FF9B30574B0]; System.Reflection.Assembly.GetExecutingAssembly()
        mov       rsi,rax
-       mov       rcx,offset MT_DotNetTips.Spargine.Extensions.AssemblyExtensions+<GetInstances>d__2`1[[DotNetTips.Spargine.Extensions.BenchmarkTests.AssemblyExtensionsBenchmark, DotNetTips.Spargine.Extensions.BenchmarkTests]]
+       mov       rcx,offset MT_DotNetTips.Spargine.Extensions.AssemblyExtensions+<GetInstances>d__2<DotNetTips.Spargine.Extensions.BenchmarkTests.AssemblyExtensionsBenchmark>
        call      CORINFO_HELP_NEWSFAST
        mov       rdi,rax
        mov       dword ptr [rdi+30],0FFFFFFFE
@@ -38,7 +38,7 @@
        sub       rsp,28
        mov       dword ptr [rsp+20],1
        lea       rcx,[rsp+20]
-       call      qword ptr [7FFBE633C060]; System.Reflection.Assembly.GetExecutingAssembly(System.Threading.StackCrawlMark ByRef)
+       call      qword ptr [7FF9B3057498]; System.Reflection.Assembly.GetExecutingAssembly(System.Threading.StackCrawlMark ByRef)
        nop
        add       rsp,28
        ret

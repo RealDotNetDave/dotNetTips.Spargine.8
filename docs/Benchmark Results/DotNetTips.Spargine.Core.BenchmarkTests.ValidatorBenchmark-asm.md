@@ -1,4 +1,4 @@
-## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+## .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark.CheckItemsExists_NoValidation()
        push      rbx
@@ -17,7 +17,7 @@
 ; Total bytes of code 47
 ```
 
-## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+## .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark.CheckItemsExists_Validation_Inlining()
        push      rsi
@@ -30,7 +30,7 @@
        test      rsi,rsi
        je        short M00_L00
        mov       rcx,rsi
-       call      qword ptr [7FFBD4C5C690]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
+       call      qword ptr [7FF9B352C690]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
 M00_L00:
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
@@ -77,11 +77,11 @@ M00_L00:
        je        near ptr M01_L05
        mov       rdx,rbx
        mov       rcx,offset MT_System.Collections.ICollection
-       call      qword ptr [7FFBD4594348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
+       call      qword ptr [7FF9B2E64348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
        mov       rcx,rax
        test      rcx,rcx
        je        short M01_L00
-       mov       rax,offset MT_System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       mov       rax,offset MT_System.Collections.Generic.List<DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>
        cmp       [rcx],rax
        jne       near ptr M01_L06
        mov       eax,[rcx+10]
@@ -91,12 +91,12 @@ M00_L00:
        ret
 M01_L00:
        mov       rdx,rbx
-       mov       rcx,offset MT_System.Collections.Generic.ICollection`1[[System.Object, System.Private.CoreLib]]
-       call      qword ptr [7FFBD4594348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
+       mov       rcx,offset MT_System.Collections.Generic.ICollection<System.Object>
+       call      qword ptr [7FF9B2E64348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
        test      rax,rax
        je        short M01_L01
        mov       rcx,rax
-       mov       r11,7FFBD4450A98
+       mov       r11,7FF9B2D20A20
        add       rsp,28
        pop       rbx
        pop       rsi
@@ -104,7 +104,7 @@ M01_L00:
 M01_L01:
        xor       esi,esi
        mov       rcx,rbx
-       mov       r11,7FFBD4450A88
+       mov       r11,7FF9B2D20A10
        call      qword ptr [r11]
        mov       rbx,rax
        jmp       short M01_L03
@@ -113,7 +113,7 @@ M01_L02:
        jo        short M01_L04
 M01_L03:
        mov       rcx,rbx
-       mov       r11,7FFBD4450A90
+       mov       r11,7FF9B2D20A18
        call      qword ptr [r11]
        test      eax,eax
        jne       short M01_L02
@@ -131,7 +131,7 @@ M01_L05:
        pop       rsi
        ret
 M01_L06:
-       mov       r11,7FFBD4450AA0
+       mov       r11,7FF9B2D20A28
        add       rsp,28
        pop       rbx
        pop       rsi
@@ -139,7 +139,7 @@ M01_L06:
 ; Total bytes of code 210
 ```
 
-## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+## .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark.CheckItemsExists_Validation()
        push      rsi
@@ -152,7 +152,7 @@ M01_L06:
        test      rsi,rsi
        je        short M00_L00
        mov       rcx,rsi
-       call      qword ptr [7FFBD4C5C690]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
+       call      qword ptr [7FF9B353C690]; DotNetTips.Spargine.Core.Extensions.Count(System.Collections.IEnumerable)
 M00_L00:
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
@@ -199,11 +199,11 @@ M00_L00:
        je        near ptr M01_L05
        mov       rdx,rbx
        mov       rcx,offset MT_System.Collections.ICollection
-       call      qword ptr [7FFBD4594348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
+       call      qword ptr [7FF9B2E74348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
        mov       rcx,rax
        test      rcx,rcx
        je        short M01_L00
-       mov       rax,offset MT_System.Collections.Generic.List`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Person`1[[DotNetTips.Spargine.Tester.Models.RefTypes.Address, DotNetTips.Spargine.8.Tester]], DotNetTips.Spargine.8.Tester]]
+       mov       rax,offset MT_System.Collections.Generic.List<DotNetTips.Spargine.Tester.Models.RefTypes.Person<DotNetTips.Spargine.Tester.Models.RefTypes.Address>>
        cmp       [rcx],rax
        jne       near ptr M01_L06
        mov       eax,[rcx+10]
@@ -213,12 +213,12 @@ M00_L00:
        ret
 M01_L00:
        mov       rdx,rbx
-       mov       rcx,offset MT_System.Collections.Generic.ICollection`1[[System.Object, System.Private.CoreLib]]
-       call      qword ptr [7FFBD4594348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
+       mov       rcx,offset MT_System.Collections.Generic.ICollection<System.Object>
+       call      qword ptr [7FF9B2E74348]; System.Runtime.CompilerServices.CastHelpers.IsInstanceOfInterface(Void*, System.Object)
        test      rax,rax
        je        short M01_L01
        mov       rcx,rax
-       mov       r11,7FFBD4450A98
+       mov       r11,7FF9B2D30A20
        add       rsp,28
        pop       rbx
        pop       rsi
@@ -226,7 +226,7 @@ M01_L00:
 M01_L01:
        xor       esi,esi
        mov       rcx,rbx
-       mov       r11,7FFBD4450A88
+       mov       r11,7FF9B2D30A10
        call      qword ptr [r11]
        mov       rbx,rax
        jmp       short M01_L03
@@ -235,7 +235,7 @@ M01_L02:
        jo        short M01_L04
 M01_L03:
        mov       rcx,rbx
-       mov       r11,7FFBD4450A90
+       mov       r11,7FF9B2D30A18
        call      qword ptr [r11]
        test      eax,eax
        jne       short M01_L02
@@ -253,7 +253,7 @@ M01_L05:
        pop       rsi
        ret
 M01_L06:
-       mov       r11,7FFBD4450AA0
+       mov       r11,7FF9B2D30A28
        add       rsp,28
        pop       rbx
        pop       rsi
@@ -261,12 +261,12 @@ M01_L06:
 ; Total bytes of code 210
 ```
 
-## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+## .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark.ArgumentNotNullOrEmpty_NoValidation()
        push      rbx
        sub       rsp,10
-       mov       rdx,220F3EE45A8
+       mov       rdx,2989B304768
        mov       [rsp+8],rdx
        mov       rbx,[rcx+18]
        mov       rdx,[rsp+8]
@@ -280,7 +280,7 @@ M01_L06:
 ; Total bytes of code 50
 ```
 
-## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+## .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark.ArgumentNotNullOrEmpty_Validation_Inlining()
        push      rsi
@@ -289,10 +289,10 @@ M01_L06:
        xor       eax,eax
        mov       [rsp+20],rax
        mov       rbx,rcx
-       mov       rsi,203EF0345A8
-       mov       rcx,203EF0345A8
+       mov       rsi,14D904D4768
+       mov       rcx,14D904D4768
        cmp       [rcx],ecx
-       call      qword ptr [7FFBD4577318]; System.String.Trim()
+       call      qword ptr [7FF9B2E77318]; System.String.Trim()
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -318,12 +318,13 @@ M01_L06:
        movzx     ecx,word ptr [rbx+0C]
        cmp       ecx,100
        jae       short M01_L00
-       mov       rax,7FFBFAA92E40
+       mov       ecx,ecx
+       mov       rax,7FF9D5502E50
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L01
 M01_L00:
-       call      qword ptr [7FFBD4E4F2E8]
+       call      qword ptr [7FF9B3775440]
        test      eax,eax
        jne       short M01_L04
 M01_L01:
@@ -332,12 +333,13 @@ M01_L01:
        movzx     ecx,word ptr [rbx+rcx*2+0C]
        cmp       ecx,100
        jae       short M01_L02
-       mov       rax,7FFBFAA92E40
+       mov       ecx,ecx
+       mov       rax,7FF9D5502E50
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L03
 M01_L02:
-       call      qword ptr [7FFBD4E4F2E8]
+       call      qword ptr [7FF9B3775440]
        test      eax,eax
        jne       short M01_L04
 M01_L03:
@@ -349,16 +351,16 @@ M01_L03:
 M01_L04:
        mov       rcx,rbx
        mov       edx,3
-       call      qword ptr [7FFBD45773F0]
+       call      qword ptr [7FF9B2E773F0]
        nop
        add       rsp,28
        pop       rbx
        pop       rsi
        ret
-; Total bytes of code 133
+; Total bytes of code 137
 ```
 
-## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+## .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.ValidatorBenchmark.ArgumentNotNullOrEmpty_Validation()
        push      rsi
@@ -367,10 +369,10 @@ M01_L04:
        xor       eax,eax
        mov       [rsp+20],rax
        mov       rbx,rcx
-       mov       rsi,19E1CD445A8
-       mov       rcx,19E1CD445A8
+       mov       rsi,22AAE8E4768
+       mov       rcx,22AAE8E4768
        cmp       [rcx],ecx
-       call      qword ptr [7FFBD4597318]; System.String.Trim()
+       call      qword ptr [7FF9B2E47318]; System.String.Trim()
        mov       [rsp+20],rsi
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+20]
@@ -396,12 +398,12 @@ M01_L04:
        movzx     ecx,word ptr [rbx+0C]
        cmp       ecx,100
        jae       short M01_L00
-       mov       rax,7FFBFAA92E40
+       mov       rax,7FF9D5502E50
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L01
 M01_L00:
-       call      qword ptr [7FFBD4E6F2E8]
+       call      qword ptr [7FF9B3745440]
        test      eax,eax
        jne       short M01_L04
 M01_L01:
@@ -410,12 +412,12 @@ M01_L01:
        movzx     ecx,word ptr [rbx+rcx*2+0C]
        cmp       ecx,100
        jae       short M01_L02
-       mov       rax,7FFBFAA92E40
+       mov       rax,7FF9D5502E50
        test      byte ptr [rcx+rax],80
        jne       short M01_L04
        jmp       short M01_L03
 M01_L02:
-       call      qword ptr [7FFBD4E6F2E8]
+       call      qword ptr [7FF9B3745440]
        test      eax,eax
        jne       short M01_L04
 M01_L03:
@@ -427,7 +429,7 @@ M01_L03:
 M01_L04:
        mov       rcx,rbx
        mov       edx,3
-       call      qword ptr [7FFBD45973F0]
+       call      qword ptr [7FF9B2E473F0]
        nop
        add       rsp,28
        pop       rbx

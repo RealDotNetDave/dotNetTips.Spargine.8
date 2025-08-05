@@ -1,4 +1,4 @@
-## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+## .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.GenerateRandomKey()
        push      rbx
@@ -6,7 +6,7 @@
        xor       eax,eax
        mov       [rsp+28],rax
        mov       rbx,rcx
-       call      qword ptr [7FFBD4A14810]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GenerateRandomKey()
+       call      qword ptr [7FF9B32BFDB0]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GenerateRandomKey()
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -28,19 +28,19 @@
        mov       [rsp+28],rax
        mov       [rsp+30],rax
        lea       rcx,[rsp+28]
-       call      qword ptr [7FFBD4657360]; System.Guid.NewGuid()
-       mov       r8,21107000428
+       call      qword ptr [7FF9B2F27360]; System.Guid.NewGuid()
+       mov       r8,1EA02400428
        mov       r8,[r8]
        lea       rcx,[rsp+28]
-       mov       rdx,25195063CA0
-       call      qword ptr [7FFBD4657180]; System.Guid.ToString(System.String, System.IFormatProvider)
+       mov       rdx,22A941B3DD8
+       call      qword ptr [7FF9B2F27180]; System.Guid.ToString(System.String, System.IFormatProvider)
        nop
        add       rsp,38
        ret
 ; Total bytes of code 67
 ```
 
-## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+## .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.SimpleSHA256Decrypt()
        push      rbx
@@ -49,8 +49,8 @@
        mov       [rsp+28],rax
        mov       rbx,rcx
        mov       rcx,[rbx+140]
-       mov       rdx,1878ADFAF90
-       call      qword ptr [7FFBD49F4828]; DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Decrypt(System.String, System.String)
+       mov       rdx,2A8C6BDB0C8
+       call      qword ptr [7FF9B328FDC8]; DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Decrypt(System.String, System.String)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -100,7 +100,7 @@ M01_L01:
        test      edx,edx
        je        short M01_L04
        cmp       [rcx],ecx
-       call      qword ptr [7FFBD4587318]; System.String.Trim()
+       call      qword ptr [7FF9B2E47318]; System.String.Trim()
        mov       rbx,rax
        mov       rcx,rsi
        test      rcx,rcx
@@ -121,58 +121,58 @@ M01_L03:
        test      edx,edx
        je        short M01_L06
        cmp       [rcx],ecx
-       call      qword ptr [7FFBD4587318]; System.String.Trim()
+       call      qword ptr [7FF9B2E47318]; System.String.Trim()
        mov       rdx,rax
        lea       rcx,[rsp+28]
-       call      qword ptr [7FFBD49F4798]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GetSHA256HashKeys(System.String)
+       call      qword ptr [7FF9B328FD38]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GetSHA256HashKeys(System.String)
        mov       rcx,rbx
        mov       rdx,[rsp+28]
        mov       r8,[rsp+30]
-       call      qword ptr [7FFBD49F47B0]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesDecrypt(System.String, Byte[], Byte[])
+       call      qword ptr [7FF9B328FD50]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesDecrypt(System.String, Byte[], Byte[])
        nop
        add       rsp,38
        pop       rbx
        pop       rsi
        ret
 M01_L04:
-       call      qword ptr [7FFBD4AA4570]
+       call      qword ptr [7FF9B330FA38]
        mov       rbx,rax
        test      rbx,rbx
        jne       short M01_L05
-       call      qword ptr [7FFBD4AA42B8]
+       call      qword ptr [7FF9B330F780]
        mov       rbx,rax
 M01_L05:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       mov       rdx,1878AE04B88
+       mov       rdx,2A8C6BE4D48
        mov       r8,rbx
-       call      qword ptr [7FFBD4706718]
+       call      qword ptr [7FF9B2FC6718]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
 M01_L06:
-       call      qword ptr [7FFBD4AA4570]
+       call      qword ptr [7FF9B330FA38]
        mov       rbx,rax
        test      rbx,rbx
        jne       short M01_L07
-       call      qword ptr [7FFBD4AA42B8]
+       call      qword ptr [7FF9B330F780]
        mov       rbx,rax
 M01_L07:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       mov       rdx,1878ADF99C8
+       mov       rdx,2A8C6BD9AB0
        mov       r8,rbx
-       call      qword ptr [7FFBD4706718]
+       call      qword ptr [7FF9B2FC6718]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
 ; Total bytes of code 303
 ```
 
-## .NET 8.0.15 (8.0.1525.16413), X64 RyuJIT AVX2
+## .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.Security.EncryptionHelperBenchmark.SimpleSHA256Encrypt()
        push      rbx
@@ -181,8 +181,8 @@ M01_L07:
        mov       [rsp+28],rax
        mov       rbx,rcx
        mov       rcx,[rbx+38]
-       mov       rdx,27A1B3FAF90
-       call      qword ptr [7FFBD49D4840]; DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Encrypt(System.String, System.String)
+       mov       rdx,2E75458B0C8
+       call      qword ptr [7FF9B32AFDE0]; DotNetTips.Spargine.Core.Security.EncryptionHelper.SimpleSHA256Encrypt(System.String, System.String)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -232,7 +232,7 @@ M01_L01:
        test      edx,edx
        je        short M01_L04
        cmp       [rcx],ecx
-       call      qword ptr [7FFBD4567318]; System.String.Trim()
+       call      qword ptr [7FF9B2E67318]; System.String.Trim()
        mov       rbx,rax
        mov       rcx,rsi
        test      rcx,rcx
@@ -253,51 +253,51 @@ M01_L03:
        test      edx,edx
        je        short M01_L06
        cmp       [rcx],ecx
-       call      qword ptr [7FFBD4567318]; System.String.Trim()
+       call      qword ptr [7FF9B2E67318]; System.String.Trim()
        mov       rdx,rax
        lea       rcx,[rsp+28]
-       call      qword ptr [7FFBD49D4798]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GetSHA256HashKeys(System.String)
+       call      qword ptr [7FF9B32AFD38]; DotNetTips.Spargine.Core.Security.EncryptionHelper.GetSHA256HashKeys(System.String)
        mov       rcx,rbx
        mov       rdx,[rsp+28]
        mov       r8,[rsp+30]
-       call      qword ptr [7FFBD49D47C8]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesEncrypt(System.String, Byte[], Byte[])
+       call      qword ptr [7FF9B32AFD68]; DotNetTips.Spargine.Core.Security.EncryptionHelper.AesEncrypt(System.String, Byte[], Byte[])
        nop
        add       rsp,38
        pop       rbx
        pop       rsi
        ret
 M01_L04:
-       call      qword ptr [7FFBD4A84570]
+       call      qword ptr [7FF9B332FA38]
        mov       rbx,rax
        test      rbx,rbx
        jne       short M01_L05
-       call      qword ptr [7FFBD4A842B8]
+       call      qword ptr [7FF9B332F780]
        mov       rbx,rax
 M01_L05:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       mov       rdx,27A1B403FB8
+       mov       rdx,2E7545940F0
        mov       r8,rbx
-       call      qword ptr [7FFBD46E6718]
+       call      qword ptr [7FF9B2FE6718]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
 M01_L06:
-       call      qword ptr [7FFBD4A84570]
+       call      qword ptr [7FF9B332FA38]
        mov       rbx,rax
        test      rbx,rbx
        jne       short M01_L07
-       call      qword ptr [7FFBD4A842B8]
+       call      qword ptr [7FF9B332F780]
        mov       rbx,rax
 M01_L07:
        mov       rcx,offset MT_System.ArgumentNullException
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       mov       rdx,27A1B3F99C8
+       mov       rdx,2E754589AB0
        mov       r8,rbx
-       call      qword ptr [7FFBD46E6718]
+       call      qword ptr [7FF9B2FE6718]
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
        int       3
