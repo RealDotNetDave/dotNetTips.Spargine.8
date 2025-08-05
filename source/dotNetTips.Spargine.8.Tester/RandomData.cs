@@ -4,7 +4,7 @@
 // Created          : 01-19-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-30-2025
+// Last Modified On : 08-05-2025
 // ***********************************************************************
 // <copyright file="RandomData.cs" company="McCarter Consulting">
 //     Copyright (c) dotNetTips.com - McCarter Consulting. All rights reserved.
@@ -99,32 +99,14 @@ public static class RandomData
 	private static readonly Lazy<ReadOnlyCollection<string>> _lastNames = new(Resources.LastNames.Split(Core.ControlChars.Comma, StringSplitOptions.TrimEntries).ToReadOnlyCollection());
 
 	/// <summary>
-	/// An object used for locking to ensure thread safety in certain operations.
-	/// </summary>
-#pragma warning disable IDE0330
-	private static readonly object _lock = new();
-#pragma warning restore IDE0330 //TODO: REMOVE AFTER MOVING TO DOTNET 10
-
-	/// <summary>
 	/// A cache for postal formats, keyed by country.
 	/// </summary>
 	private static readonly Dictionary<Country, string[]> _postalFormatsCache = [];
 
 	/// <summary>
-	/// Provides a thread-static instance of RandomNumberGenerator for generating cryptographically secure random numbers.
-	/// </summary>
-	[ThreadStatic]
-	private static readonly RandomNumberGenerator _randomNumberGenerator;
-
-	/// <summary>
 	/// An object pool for reusing instances of StringBuilder, reducing allocations.
 	/// </summary>
 	private static readonly ObjectPool<StringBuilder> _stringBuilderPool = new DefaultObjectPoolProvider().CreateStringBuilderPool();
-
-	/// <summary>
-	/// Initializes static members of the <see cref="RandomData" /> class.
-	/// </summary>
-	static RandomData() => _randomNumberGenerator = RandomNumberGenerator.Create();
 
 	/// <summary>
 	/// Generates the first line of an address.
@@ -349,12 +331,10 @@ public static class RandomData
 	{
 		sizeInKb = sizeInKb.ArgumentMeetsCondition(sizeInKb >= double.Epsilon, errorMessage: string.Format(CultureInfo.InvariantCulture, Resources.SizeMustBeEpsilon, double.Epsilon));
 
-		var bytes = new byte[Convert.ToInt32(sizeInKb * 1024)];
+		var byteCount = (int)Math.Max(1, Math.Round(sizeInKb * 1024));
+		var bytes = GC.AllocateUninitializedArray<byte>(byteCount);
 
-		lock (_lock)
-		{
-			_randomNumberGenerator.GetBytes(bytes);
-		}
+		RandomNumberGenerator.Fill(bytes);
 
 		return bytes;
 	}
@@ -584,7 +564,6 @@ public static class RandomData
 	[Information(nameof(GenerateInteger), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static int GenerateInteger(int min = int.MinValue, int max = int.MaxValue)
 	{
-		//Ensure maxLength is +1 of minLength so the _randomNumberGenerator does not cause an exception.
 		max = max.EnsureMinimum(min + 1);
 
 		return RandomNumberGenerator.GetInt32(min, max);
