@@ -4,7 +4,7 @@
 // Created          : 05-08-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-09-2025
+// Last Modified On : 08-05-2025
 // ***********************************************************************
 // <copyright file="DiagnosticEntry.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -21,7 +21,7 @@ namespace DotNetTips.Spargine.Core.Diagnostics;
 /// <summary>
 /// Represents a single diagnostic message entry.
 /// </summary>
-[Information("DiagnosticEntry", "David McCarter", "05/08/2025", Status = Status.New)]
+[Information("DiagnosticEntry", "David McCarter", "05/08/2025", Status = Status.Available)]
 [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public readonly struct DiagnosticEntry : IEquatable<DiagnosticEntry>
 {
@@ -65,6 +65,12 @@ public readonly struct DiagnosticEntry : IEquatable<DiagnosticEntry>
 		return left.Equals(right);
 	}
 
+	/// <summary>
+	/// Returns a string representation of the diagnostic entry for debugger display.
+	/// </summary>
+	/// <returns>
+	/// A string representation of the diagnostic entry.
+	/// </returns>
 	private string GetDebuggerDisplay()
 	{
 		return this.ToString();
@@ -77,7 +83,7 @@ public readonly struct DiagnosticEntry : IEquatable<DiagnosticEntry>
 	/// <returns>
 	/// <c>true</c> if the specified object is equal to the current <see cref="DiagnosticEntry"/>; otherwise, <c>false</c>.
 	/// </returns>
-	[Information(nameof(Equals), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Equals), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public override bool Equals(object obj)
 	{
 		return obj is DiagnosticEntry other && this.Equals(other);
@@ -90,7 +96,7 @@ public readonly struct DiagnosticEntry : IEquatable<DiagnosticEntry>
 	/// <returns>
 	/// <c>true</c> if the specified <see cref="DiagnosticEntry"/> is equal to the current instance; otherwise, <c>false</c>.
 	/// </returns>
-	[Information(nameof(Equals), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Equals), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public bool Equals(DiagnosticEntry other)
 	{
 		return this.Timestamp == other.Timestamp && string.Equals(this.Message, other.Message, StringComparison.Ordinal) && this.Elapsed == other.Elapsed;
@@ -102,7 +108,7 @@ public readonly struct DiagnosticEntry : IEquatable<DiagnosticEntry>
 	/// <returns>
 	/// A hash code for the current <see cref="DiagnosticEntry"/>.
 	/// </returns>
-	[Information(nameof(GetHashCode), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(GetHashCode), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public override int GetHashCode()
 	{
 		return HashCode.Combine(this.Timestamp, this.Message, this.Elapsed);
@@ -112,7 +118,7 @@ public readonly struct DiagnosticEntry : IEquatable<DiagnosticEntry>
 	/// Returns a string representation of the diagnostic entry.
 	/// </summary>
 	/// <returns>A string representation of the diagnostic entry.</returns>
-	[Information(nameof(ToString), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(ToString), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public override string ToString()
 	{
 		return $"{this.Timestamp:u} - {this.Message} ({this.Elapsed.TotalMilliseconds} ms)";
@@ -121,18 +127,18 @@ public readonly struct DiagnosticEntry : IEquatable<DiagnosticEntry>
 	/// <summary>
 	/// Gets the elapsed time when the diagnostic entry was recorded.
 	/// </summary>
-	[Information(nameof(Elapsed), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Elapsed), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public TimeSpan Elapsed { get; }
 
 	/// <summary>
 	/// Gets the content of the diagnostic message.
 	/// </summary>
-	[Information(nameof(Message), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Message), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public string Message { get; }
 
 	/// <summary>
 	/// Gets the UTC timestamp of the diagnostic entry.
 	/// </summary>
-	[Information(nameof(Timestamp), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(Timestamp), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public DateTimeOffset Timestamp { get; }
 }

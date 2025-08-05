@@ -1,17 +1,18 @@
 // ***********************************************************************
 // Assembly         : DotNetTips.Spargine.Core.Tests
 // Author           : David McCarter
-// Created          : 05-05-2023
+// Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-07-2025
+// Last Modified On : 08-05-2025
 // ***********************************************************************
-// <copyright file="WIP.cs" company="McCarter Consulting">
-//     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
+// <copyright file="WIP.cs" company="DotNetTips.Spargine.Core.Tests">
+//     Copyright (c) McCarter Consulting. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;

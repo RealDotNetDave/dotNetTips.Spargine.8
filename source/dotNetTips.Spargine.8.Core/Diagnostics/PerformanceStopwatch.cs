@@ -4,7 +4,7 @@
 // Created          : 11-11-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 05-11-2025
+// Last Modified On : 08-05-2025
 // ***********************************************************************
 // <copyright file="PerformanceStopwatch.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -37,7 +37,7 @@ namespace DotNetTips.Spargine.Core.Diagnostics;
 /// A thread-safe, high-precision stopwatch with enhanced diagnostics, lap support, telemetry, and logging capabilities.
 /// </summary>
 [DebuggerDisplay("Elapsed: {ElapsedMilliseconds}ms, Title: {Title}")]
-[Information(nameof(PerformanceStopwatch), "David McCarter", "11/11/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SparginePerformanceStopwatch")]
+[Information(nameof(PerformanceStopwatch), "David McCarter", "11/11/2020", UnitTestStatus = UnitTestStatus.None, Status = Status.UpdateDocumentation, Documentation = "https://bit.ly/SparginePerformanceStopwatch")]
 public sealed class PerformanceStopwatch : Stopwatch
 {
 	/// <summary>
@@ -100,7 +100,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// Event triggered when the stopwatch is reset.
 	/// </summary>
-	[Information(nameof(Reset), "David McCarter", "11/11/2020", Status = Status.New)]
+	[Information(nameof(Reset), "David McCarter", "11/11/2020", Status = Status.Available)]
 	public event EventHandler<ElapsedEventArgs>? ResetCompleted;
 
 	/// <summary>
@@ -112,7 +112,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// Event triggered when elapsed time exceeds the threshold.
 	/// </summary>
-	[Information(nameof(ThresholdExceeded), "David McCarter", "11/11/2020", Status = Status.New)]
+	[Information(nameof(ThresholdExceeded), "David McCarter", "11/11/2020", Status = Status.Available)]
 	public event EventHandler<ElapsedEventArgs>? ThresholdExceeded;
 
 	/// <summary>
@@ -157,14 +157,14 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// Clears all recorded lap times.
 	/// </summary>
-	[Information(nameof(ClearLaps), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(ClearLaps), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public void ClearLaps() => this._laps.Clear();
 
 	/// <summary>
 	/// Serializes stopwatch data to JSON including laps and diagnostics.
 	/// </summary>
 	/// <returns>A JSON string representing stopwatch data.</returns>
-	[Information(nameof(ExportToJson), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(ExportToJson), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string ExportToJson()
 	{
 		return JsonSerializer.Serialize(
@@ -190,7 +190,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <returns>
 	/// A read-only collection of diagnostic messages as strings.
 	/// </returns>
-	[Information(nameof(GetDiagnosticMessages), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(GetDiagnosticMessages), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ReadOnlyCollection<string> GetDiagnosticMessages() =>
 	this.Diagnostics.Select(d => d.ToString()).ToList().AsReadOnly();
 
@@ -198,14 +198,14 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// Gets the current elapsed time formatted as a string.
 	/// </summary>
 	/// <returns>A formatted string showing the elapsed time in milliseconds.</returns>
-	[Information(nameof(GetElapsedTimeString), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(GetElapsedTimeString), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string GetElapsedTimeString() => $"Elapsed Time: {this.Elapsed.TotalMilliseconds} ms";
 
 	/// <summary>
 	/// Gets a read-only list of all recorded lap times.
 	/// </summary>
 	/// <returns>A read-only collection of <see cref="TimeSpan"/> lap durations.</returns>
-	[Information(nameof(GetLaps), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(GetLaps), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public ReadOnlyCollection<TimeSpan> GetLaps() => this._laps.OrderBy(p => p.TotalNanoseconds).ToArray().AsReadOnly();
 
 	/// <summary>
@@ -248,7 +248,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// </summary>
 	/// <param name="logger">Logger used for logging.</param>
 	/// <param name="message">The message to log.</param>
-	[Information(nameof(LogMessage), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.New)]
+	[Information(nameof(LogMessage), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public void LogMessage(ILogger logger, string message)
 	{
 		logger = logger.ArgumentNotNull();
@@ -277,7 +277,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// Records a lap (checkpoint) using the current elapsed time.
 	/// </summary>
-	[Information(nameof(RecordLap), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(RecordLap), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public void RecordLap() => this._laps.Add(this.Elapsed);
 
 	/// <summary>
@@ -304,7 +304,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <param name="alertThreshold">The threshold for performance alerts.</param>
 	/// <param name="title">An optional title for the stopwatch instance.</param>
 	/// <returns>A new instance of <see cref="PerformanceStopwatch"/> configured with the specified alert threshold and title.</returns>
-	[Information(nameof(StartNew), "David McCarter", "5/8/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(StartNew), "David McCarter", "5/8/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static PerformanceStopwatch StartNewWithAlertThreshold(TimeSpan? alertThreshold, string title = ControlChars.EmptyString)
 	{
 		var sw = new PerformanceStopwatch(title) { AlertThreshold = alertThreshold };
@@ -323,7 +323,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <param name="message">An optional custom message to include with telemetry events.</param>
 	/// <param name="properties">Optional key/value properties to attach to telemetry events.</param>
 	/// <returns>A new instance of <see cref="PerformanceStopwatch"/> configured with telemetry tracking.</returns>
-	[Information(nameof(StartNewWithTelemetry), "David McCarter", "5/8/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(StartNewWithTelemetry), "David McCarter", "5/8/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static PerformanceStopwatch StartNewWithTelemetry(TelemetryClient telemetry, string operationName, TimeSpan? alertThreshold = null, string message = ControlChars.EmptyString, IDictionary<string, string>? properties = null)
 	{
 		return StartNewWithAlertThreshold(alertThreshold, message).WithTelemetry(telemetry, operationName, message, properties);
@@ -339,7 +339,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// This method checks if the elapsed time has exceeded the configured <see cref="AlertThreshold"/>. 
 	/// If the threshold is exceeded, the stopwatch is stopped, and the <see cref="ThresholdExceeded"/> event is triggered.
 	/// </remarks>
-	[Information(nameof(StopIfThresholdExceeded), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(StopIfThresholdExceeded), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public bool StopIfThresholdExceeded()
 	{
 		if (this.IsThresholdExceeded)
@@ -495,7 +495,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// This method records an event and a metric for the operation, including the elapsed time and any additional properties provided.
 	/// </remarks>
 	/// <exception cref="ArgumentNullException">Thrown if <paramref name="telemetry"/> is null.</exception>
-	[Information(nameof(TrackTelemetry), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(TrackTelemetry), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public void TrackTelemetry(TelemetryClient telemetry, string operationName, string message = ControlChars.EmptyString, IDictionary<string, string>? properties = null)
 	{
 		telemetry = telemetry.ArgumentNotNull();
@@ -552,7 +552,7 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <summary>
 	/// Gets a value indicating whether the elapsed time has exceeded the configured threshold.
 	/// </summary>
-	[Information(nameof(IsThresholdExceeded), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+	[Information(nameof(IsThresholdExceeded), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
 	public bool IsThresholdExceeded => this.AlertThreshold.HasValue && this.Elapsed > this.AlertThreshold.Value;
 
 	/// <summary>
