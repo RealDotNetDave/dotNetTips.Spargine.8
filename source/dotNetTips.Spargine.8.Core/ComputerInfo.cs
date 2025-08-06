@@ -32,9 +32,6 @@ namespace DotNetTips.Spargine.Core;
 [Serializable]
 public sealed class ComputerInfo
 {
-	//TODO: ADD Environment.CpuUsage * Environment.ProcessCpuUsage FROM .NET 9
-	//TODO: CHANGE TO STATIC METHODS IN V10? MAKE SURE IT SERIALIZES OR IS AVAILBLE VIA TOSTRING!
-
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ComputerInfo"/> class.
 	/// </summary>

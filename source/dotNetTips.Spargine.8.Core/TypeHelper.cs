@@ -691,8 +691,6 @@ public static class TypeHelper
 	[Information("Original code by GÉRALD BARRÉ", author: "David McCarter", createdOn: "5/20/2024", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool IsDotNetAssembly(FileInfo file)
 	{
-		//TODO: MOVE TO ASSEMBLYHELPER IN V10.
-
 		file = file.ArgumentExists();
 
 		using var stream = File.OpenRead(file.FullName);

@@ -93,8 +93,6 @@ public class FileProcessor
 	[Information(nameof(CopyFiles), author: "David McCarter", createdOn: "8/6/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public int CopyFiles([NotNull] in IEnumerable<FileInfo> files, [NotNull] DirectoryInfo destination)
 	{
-		//TODO: RENAME TO "CopyFilesWithOriginalPath" IN V10
-
 		if (files.HasItems() is false)
 		{
 			return 0;

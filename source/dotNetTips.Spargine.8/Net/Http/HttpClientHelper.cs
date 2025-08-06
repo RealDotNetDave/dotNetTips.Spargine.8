@@ -74,7 +74,6 @@ public static class HttpClientHelper
 		try
 		{
 			// Pass in the token.
-			// TODO: USE PROGRESSIVERETRY
 			var response = await Client.GetAsync(url, cancellationToken: cancellationToken).ConfigureAwait(continueOnCapturedContext: false);
 
 			_ = response.EnsureSuccessStatusCode();
@@ -126,7 +125,6 @@ public static class HttpClientHelper
 		try
 		{
 			// Pass in the token.
-			// TODO: USE PROGRESSIVERETRY
 			var response = await Client.GetStreamAsync(url, cancellationToken).ConfigureAwait(continueOnCapturedContext: false);
 
 			return response;

@@ -33,8 +33,6 @@ namespace DotNetTips.Spargine.Core;
 [Information(Status = Status.NeedsDocumentation)]
 public interface IDataModel<T, TKey> : IComparable<T>, IEquatable<T>
 {
-	// TODO: REMOVE TKEY AND USE STRING SINCE IS SEEMS TO BE THE STANDARD AT THE END OF 2025.
-
 	/// <summary>
 	/// Gets or sets the unique identifier for the data model.
 	/// </summary>

@@ -103,7 +103,7 @@ public class PerformanceStopwatchTests : UnitTester
 
 		Assert.IsNotNull(psw.Diagnostics);
 
-		Assert.IsNotNull(psw.ToString());
+			Assert.IsNotNull(psw.ToString());
 	}
 
 	[TestMethod]

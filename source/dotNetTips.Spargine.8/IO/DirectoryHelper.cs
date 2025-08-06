@@ -175,7 +175,6 @@ public static class DirectoryHelper
 	[Information(nameof(DeleteDirectory), "David McCarter", "2/14/2018", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static void DeleteDirectory([NotNull] DirectoryInfo path, [ConstantExpected(Min = 1, Max = byte.MaxValue)] byte retries = 5, bool recursive = true)
 	{
-		//TODO: FOR VERSION 10, RETURN SIMPLERESULT.
 		if (path.CheckExists() == false)
 		{
 			return;
@@ -395,7 +394,6 @@ public static class DirectoryHelper
 	[Information(nameof(SafeDirectorySearch), "David McCarter", "6/14/2021", OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool SafeDirectorySearch([NotNull] DirectoryInfo path, SearchOption searchOption = SearchOption.TopDirectoryOnly, [NotNull] params string[] searchPatterns)
 	{
-		//TODO: CHANGE TO SafeHasFoldersOrFiles IN V10
 		path = path.ArgumentExists();
 
 		searchOption = searchOption.ArgumentDefined();

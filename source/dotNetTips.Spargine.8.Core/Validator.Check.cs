@@ -54,8 +54,6 @@ public static partial class Validator
 	[Information(nameof(CheckEquals), "David McCarter", "1/31/2022", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static bool CheckEquals(this Type input, Type expectedType, in bool throwException = false, string errorMessage = ControlChars.EmptyString)
 	{
-		//TODO: CHANGE TO CHECKTYPEEQUALS IN V10
-
 		var isValid = input == expectedType;
 
 		if (isValid is false && throwException)

@@ -204,8 +204,6 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public virtual bool Add(T item)
 	{
-		// TODO: CHANGE TO VOID AT THE END OF 2025 TO WORK LIKE ADD
-
 		if (item is null)
 		{
 			return false;

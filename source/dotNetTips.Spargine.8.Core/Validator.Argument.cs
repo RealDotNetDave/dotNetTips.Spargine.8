@@ -98,8 +98,6 @@ public static partial class Validator
 	[Information(nameof(ArgumentEquals), "David McCarter", "6/26/2017", UnitTestStatus = UnitTestStatus.Completed, BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 	public static Type ArgumentEquals([NotNull] this Type input, [NotNull] Type expectedType, string errorMessage = ControlChars.EmptyString, [CallerArgumentExpression(nameof(input))] string paramName = ControlChars.EmptyString)
 	{
-		//TODO: CHANGE TO ARGUMENTTYPEEQUALS IN V10
-
 		input = input.ArgumentNotNull();
 		expectedType = expectedType.ArgumentNotNull();
 

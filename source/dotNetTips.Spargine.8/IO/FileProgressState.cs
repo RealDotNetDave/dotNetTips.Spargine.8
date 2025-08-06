@@ -24,8 +24,6 @@ namespace DotNetTips.Spargine.IO;
 /// </remarks>
 public enum FileProgressState
 {
-	//TODO: CHANGE ENUM TO IN V10 - DeletedFile, DeletedFolder, MovedFile, MovedFolder, CopiedFile, CopiedFolder
-
 	/// <summary>
 	/// Indicates an error occurred during the file operation.
 	/// </summary>

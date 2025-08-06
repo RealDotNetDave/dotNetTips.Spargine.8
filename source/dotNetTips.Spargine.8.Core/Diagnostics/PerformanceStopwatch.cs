@@ -320,13 +320,16 @@ public sealed class PerformanceStopwatch : Stopwatch
 	/// <param name="telemetry">The telemetry client used to record events and metrics.</param>
 	/// <param name="operationName">The name of the operation being tracked.</param>
 	/// <param name="alertThreshold">An optional threshold for performance alerts.</param>
+	/// <param name="title">An optional title for the stopwatch instance.</param>
 	/// <param name="message">An optional custom message to include with telemetry events.</param>
 	/// <param name="properties">Optional key/value properties to attach to telemetry events.</param>
-	/// <returns>A new instance of <see cref="PerformanceStopwatch"/> configured with telemetry tracking.</returns>
+	/// <returns>
+	/// A new instance of <see cref="PerformanceStopwatch"/> configured with telemetry tracking, alert threshold, and custom properties.
+	/// </returns>
 	[Information(nameof(StartNewWithTelemetry), "David McCarter", "5/8/2025", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
-	public static PerformanceStopwatch StartNewWithTelemetry(TelemetryClient telemetry, string operationName, TimeSpan? alertThreshold = null, string message = ControlChars.EmptyString, IDictionary<string, string>? properties = null)
+	public static PerformanceStopwatch StartNewWithTelemetry(TelemetryClient telemetry, string operationName, TimeSpan? alertThreshold = null, string title = ControlChars.EmptyString, string message = ControlChars.EmptyString, IDictionary<string, string>? properties = null)
 	{
-		return StartNewWithAlertThreshold(alertThreshold, message).WithTelemetry(telemetry, operationName, message, properties);
+		return StartNewWithAlertThreshold(alertThreshold, title).WithTelemetry(telemetry, operationName, message, properties);
 	}
 
 	/// <summary>
