@@ -24,7 +24,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// <remarks>
 /// This class extends <see cref="Enumeration"/> to offer reusable, self-documenting date and time format patterns.
 /// </remarks>
-[Information(nameof(DateTimeFormat), Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information(nameof(DateTimeFormat), Status = Status.Available, Documentation = "https://bit.ly/SpargineDateTimeFormat")]
 public class DateTimeFormat : Enumeration
 {
 	/// <summary>
