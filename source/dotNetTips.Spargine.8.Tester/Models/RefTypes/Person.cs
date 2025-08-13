@@ -422,6 +422,7 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// It is marked with MemberNotNullAttribute to indicate that the backing field <c>_bornOn</c> will not be null after being set.
 	/// </remarks>
 	[DataMember(Name = "bornOn", IsRequired = false)]
+	[DataType(DataType.Date)]
 	[JsonPropertyName("bornOn")]
 	[XmlElement("BornOn")]
 	[Information(nameof(BornOn), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
@@ -455,7 +456,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// The cell phone number is limited to 50 characters. It can be left empty.
 	/// </remarks>
 	[DataMember(Name = "cellPhone", IsRequired = false)]
-	[DefaultValue("")]
 	[JsonPropertyName("cellPhone")]
 	[MaxLength(50, ErrorMessage = "Cell phone number cannot exceed 50 characters.")]
 	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
@@ -493,8 +493,6 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// This property is read-only and serialized with the name "email".
 	/// </remarks>
 	[DataMember(Name = "email", IsRequired = true)]
-	[DefaultValue("")]
-	[DisallowNull]
 	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
 	[JsonPropertyName("email")]
 	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
@@ -535,10 +533,10 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// <remarks>
 	/// The first name is limited to 50 characters. It is serialized with the name "firstName".
 	/// </remarks>
-	[DataMember(Name = "firstName", IsRequired = true)]
-	[DefaultValue("")]
+	[DataMember(Name = "firstName", IsRequired = false)]
 	[JsonPropertyName("firstName")]
 	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
+	[StringLength(50, ErrorMessage = "The first name must not exceed 50 characters.")]
 	[XmlElement("FirstName")]
 	[Information(nameof(FirstName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string FirstName
@@ -581,11 +579,14 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// The ID is a read-only property that is set at the time of object creation.
 	/// It is serialized with the name "id" and is required for data exchange processes.
 	/// </remarks>
-	[DataMember(Name = "id", IsRequired = true)]
+	[DataMember(Name = "id", IsRequired = true, Order = 0)]
 	[DisallowNull]
+	[Display(Name = "Identifier")]
 	[JsonPropertyName("id")]
-	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
+	[MaxLength(50, ErrorMessage = "Id must be a maximum of 50 characters.")]
+	[MinLength(10, ErrorMessage = "Id must be at least 10 characters.")]
 	[ReadOnly(true)]
+	[Required(ErrorMessage = "Id is required.")]
 	[XmlElement("Id", IsNullable = false)]
 	[Information(nameof(Id), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Id
@@ -623,10 +624,10 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// The last name is limited to 50 characters. It is serialized with the name "lastName".
 	/// </remarks>
 	[DataMember(Name = "lastName", IsRequired = true)]
-	[DefaultValue("")]
 	[JsonPropertyName("lastName")]
 	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
-	[XmlElement("LastName")]
+	[StringLength(50, ErrorMessage = "The last name must not exceed 50 characters.")]
+	[XmlElement("LastName", IsNullable = false)]
 	[Information(nameof(LastName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string LastName
 	{
@@ -658,10 +659,10 @@ public sealed class Person<TAddress> : IDataModel<Person<TAddress>, string>, IPe
 	/// The home phone number is limited to 50 characters. It is serialized with the name "homePhone".
 	/// </remarks>
 	[DataMember(Name = "homePhone", IsRequired = false)]
-	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
-	[XmlElement("Phone")]
+	[Phone(ErrorMessage = "The phone number is not in a valid format.")]
+	[XmlElement("HomePhone")]
 	[Information(nameof(Phone), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Phone
 	{

@@ -388,6 +388,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// <value>The born on.</value>
 	/// <exception cref="ArgumentOutOfRangeException">BornOn</exception>
 	[DataMember(Name = "bornOn", IsRequired = false)]
+	[DataType(DataType.Date)]
 	[JsonPropertyName("bornOn")]
 	[XmlElement("BornOn")]
 	[Information(nameof(BornOn), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
@@ -492,6 +493,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[DataMember(Name = "firstName", IsRequired = false)]
 	[JsonPropertyName("firstName")]
 	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
+	[StringLength(50, ErrorMessage = "The first name must not exceed 50 characters.")]
 	[XmlElement("FirstName")]
 	[Information(nameof(FirstName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string FirstName
@@ -531,9 +533,12 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	/// </summary>
 	/// <value>The identifier.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Id</exception>
-	[DataMember(Name = "id", IsRequired = true)]
+	[DataMember(Name = "id", IsRequired = true, Order = 0)]
+	[DisallowNull]
+	[Display(Name = "Identifier")]
 	[JsonPropertyName("id")]
-	[MaxLength(50, ErrorMessage = "Id cannot exceed 50 characters.")]
+	[MaxLength(50, ErrorMessage = "Id must be a maximum of 50 characters.")]
+	[MinLength(10, ErrorMessage = "Id must be at least 10 characters.")]
 	[ReadOnly(true)]
 	[Required(ErrorMessage = "Id is required.")]
 	[XmlElement("Id", IsNullable = false)]
@@ -573,6 +578,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[DataMember(Name = "lastName", IsRequired = true)]
 	[JsonPropertyName("lastName")]
 	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
+	[StringLength(50, ErrorMessage = "The last name must not exceed 50 characters.")]
 	[XmlElement("LastName", IsNullable = false)]
 	[Information(nameof(LastName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string LastName
@@ -605,6 +611,7 @@ public struct Person<TAddress>() : IDataModel<Person<TAddress>, string>, IPerson
 	[DataMember(Name = "homePhone", IsRequired = false)]
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
+	[Phone(ErrorMessage = "The phone number is not in a valid format.")]
 	[XmlElement("HomePhone")]
 	[Information(nameof(Phone), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Phone

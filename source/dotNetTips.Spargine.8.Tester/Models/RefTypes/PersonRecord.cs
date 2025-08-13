@@ -349,6 +349,7 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 	/// <value>The born on date and time as a <see cref="DateTimeOffset"/>.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if an attempt is made to set a future date.</exception>
 	[DataMember(Name = "bornOn", IsRequired = false)]
+	[DataType(DataType.Date)]
 	[JsonPropertyName("bornOn")]
 	[XmlElement("BornOn")]
 	[Information(nameof(BornOn), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
@@ -382,7 +383,6 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 	/// </remarks>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the cell phone number exceeds 50 characters.</exception>
 	[DataMember(Name = "cellPhone", IsRequired = false)]
-	[DefaultValue("")]
 	[JsonPropertyName("cellPhone")]
 	[MaxLength(50, ErrorMessage = "Cell phone number cannot exceed 50 characters.")]
 	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
@@ -419,8 +419,6 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 	/// The email address is validated to ensure it is in a correct format and does not exceed 75 characters in length.
 	/// </remarks>
 	[DataMember(Name = "email", IsRequired = true)]
-	[DefaultValue("")]
-	[DisallowNull]
 	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
 	[JsonPropertyName("email")]
 	[MaxLength(75, ErrorMessage = "Email length is limited to 75 characters.")]
@@ -462,10 +460,10 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 	/// The first name is limited to 50 characters. It is a required field and cannot be null or empty.
 	/// </remarks>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the first name exceeds 50 characters.</exception>
-	[DataMember(Name = "firstName", IsRequired = true)]
-	[DefaultValue("")]
+	[DataMember(Name = "firstName", IsRequired = false)]
 	[JsonPropertyName("firstName")]
 	[MaxLength(50, ErrorMessage = "First name length is limited to 50 characters.")]
+	[StringLength(50, ErrorMessage = "The first name must not exceed 50 characters.")]
 	[XmlElement("FirstName")]
 	[Information(nameof(FirstName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string FirstName
@@ -508,11 +506,14 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 	/// The identifier is a required field and must not exceed 50 characters in length.
 	/// </remarks>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the identifier exceeds 50 characters.</exception>
-	[DataMember(Name = "id", IsRequired = true)]
+	[DataMember(Name = "id", IsRequired = true, Order = 0)]
 	[DisallowNull]
+	[Display(Name = "Identifier")]
 	[JsonPropertyName("id")]
-	[MaxLength(50, ErrorMessage = "Id length is limited to 50 characters.")]
+	[MaxLength(50, ErrorMessage = "Id must be a maximum of 50 characters.")]
+	[MinLength(10, ErrorMessage = "Id must be at least 10 characters.")]
 	[ReadOnly(true)]
+	[Required(ErrorMessage = "Id is required.")]
 	[XmlElement("Id", IsNullable = false)]
 	[Information(nameof(Id), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Id
@@ -552,10 +553,10 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 	/// </remarks>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the last name exceeds 50 characters.</exception>
 	[DataMember(Name = "lastName", IsRequired = true)]
-	[DefaultValue("")]
 	[JsonPropertyName("lastName")]
 	[MaxLength(50, ErrorMessage = "Last name length is limited to 50 characters.")]
-	[XmlElement("LastName")]
+	[StringLength(50, ErrorMessage = "The last name must not exceed 50 characters.")]
+	[XmlElement("LastName", IsNullable = false)]
 	[Information(nameof(LastName), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string LastName
 	{
@@ -587,10 +588,10 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 	/// The home phone number is limited to 50 characters. It is serialized with the name "homePhone".
 	/// </remarks>
 	[DataMember(Name = "homePhone", IsRequired = false)]
-	[DefaultValue("")]
 	[JsonPropertyName("homePhone")]
 	[MaxLength(50)]
-	[XmlElement("Phone")]
+	[Phone(ErrorMessage = "The phone number is not in a valid format.")]
+	[XmlElement("HomePhone")]
 	[Information(nameof(Phone), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Phone
 	{

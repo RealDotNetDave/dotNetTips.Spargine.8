@@ -4,7 +4,7 @@
 // Created          : 01-03-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-12-2025
+// Last Modified On : 08-13-2025
 // ***********************************************************************
 // <copyright file="Address.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -343,12 +343,13 @@ public sealed class Address : IAddress
 	/// </summary>
 	/// <value>The first line of the address.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 100 characters.</exception>
-	[DataMember(Name = "address1", IsRequired = false, Order = 1)]
-	[DefaultValue("")]
+	[DataMember(Name = "address1", IsRequired = false, Order = 2)]
 	[Display(Name = "Address Line 1")]
 	[JsonPropertyName("address1")]
 	[MaxLength(100, ErrorMessage = "Address1 cannot exceed 100 characters.")]
+	[StringLength(100, ErrorMessage = "The second line of the address must not exceed 100 characters.")]
 	[XmlElement("Address1")]
+	[Information(nameof(Address1), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Address1
 	{
 		get => this._address1;
@@ -378,10 +379,12 @@ public sealed class Address : IAddress
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 100 characters.</exception>
 	/// <remarks>Address2 is optional and is limited to 100 characters.</remarks>
 	[DataMember(Name = "address2", IsRequired = false, Order = 2)]
-	[DefaultValue("")]
 	[Display(Name = "Address Line 2")]
 	[JsonPropertyName("address2")]
+	[MaxLength(100, ErrorMessage = "Address2 cannot exceed 100 characters.")]
+	[StringLength(100, ErrorMessage = "The second line of the address must not exceed 100 characters.")]
 	[XmlElement("Address2")]
+	[Information(nameof(Address2), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Address2
 	{
 		get => this._address2;
@@ -412,10 +415,11 @@ public sealed class Address : IAddress
 	/// <remarks>City name is limited to 150 characters.</remarks>
 	[DataMember(Name = "city", IsRequired = false, Order = 3)]
 	[Display(Name = "City")]
-	[DefaultValue("")]
 	[JsonPropertyName("city")]
 	[MaxLength(150, ErrorMessage = "City cannot exceed 150 characters.")]
+	[StringLength(50, ErrorMessage = "The city must not exceed 50 characters.")]
 	[XmlElement("City")]
+	[Information(nameof(City), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string City
 	{
 		get => this._city;
@@ -444,11 +448,12 @@ public sealed class Address : IAddress
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 50 characters.</exception>
 	/// <remarks>Country is limited to 50 characters.</remarks>
 	[DataMember(Name = "country", IsRequired = false, Order = 4)]
-	[DefaultValue("")]
 	[Display(Name = "Country")]
 	[JsonPropertyName("country")]
 	[MaxLength(50, ErrorMessage = "Country cannot exceed 50 characters.")]
+	[StringLength(50, ErrorMessage = "The country must not exceed 50 characters.")]
 	[XmlElement("Country")]
+	[Information(nameof(Country), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Country
 	{
 		get => this._country;
@@ -479,9 +484,11 @@ public sealed class Address : IAddress
 	/// <remarks>CountyProvince is optional and is limited to 50 characters.</remarks>
 	[DataMember(Name = "countyProvince", IsRequired = false, Order = 5)]
 	[Display(Name = "County/Province")]
-	[JsonPropertyName("countryProvince")]
+	[JsonPropertyName("countyProvince")]
 	[MaxLength(50, ErrorMessage = "CountyProvince cannot exceed 50 characters.")]
+	[StringLength(50, ErrorMessage = "The county or province must not exceed 50 characters.")]
 	[XmlElement("CountyProvince")]
+	[Information(nameof(CountyProvince), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string CountyProvince
 	{
 		get => this._countyProvince;
@@ -514,10 +521,12 @@ public sealed class Address : IAddress
 	[DisallowNull]
 	[Display(Name = "Identifier")]
 	[JsonPropertyName("id")]
-	[MaxLength(50, ErrorMessage = "Id cannot exceed 50 characters.")]
+	[MaxLength(50, ErrorMessage = "Id must be a maximum of 50 characters.")]
+	[MinLength(10, ErrorMessage = "Id must be at least 10 characters.")]
 	[ReadOnly(true)]
 	[Required(ErrorMessage = "Id is required.")]
 	[XmlElement("Id", IsNullable = false)]
+	[Information(nameof(Id), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Id
 	{
 		get => this._id;
@@ -547,10 +556,11 @@ public sealed class Address : IAddress
 	/// <remarks>Phone number is optional and is limited to 50 characters.</remarks>
 	[DataMember(Name = "phone", IsRequired = false, Order = 6)]
 	[Display(Name = "Phone Number")]
-	[DefaultValue("")]
 	[JsonPropertyName("phone")]
 	[MaxLength(50, ErrorMessage = "Phone number cannot exceed 50 characters.")]
+	[Phone(ErrorMessage = "The phone number is not in a valid format.")]
 	[XmlElement("Phone")]
+	[Information(nameof(Phone), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Phone
 	{
 		get => this._phone;
@@ -576,15 +586,16 @@ public sealed class Address : IAddress
 	/// <summary>
 	/// Gets or sets the postal code.
 	/// </summary>
-	/// <value>The postal code of the address.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown when the postal code is longer than 40 characters.</exception>
-	/// <remarks>Postal code is limited to 40 characters.</remarks>
+	/// <value>The postal code.</value>
+	/// <exception cref="ArgumentOutOfRangeException">PostalCode</exception>
+	/// <remarks>Postal code is limited to 20 characters.</remarks>
 	[DataMember(Name = "postalCode", IsRequired = false, Order = 7)]
 	[Display(Name = "Postal Code")]
-	[DefaultValue("")]
 	[JsonPropertyName("postalCode")]
-	[MaxLength(40, ErrorMessage = "Postal code cannot exceed 40 characters.")]
+	[MaxLength(20, ErrorMessage = "Postal code cannot exceed 20 characters.")]
+	[StringLength(20, ErrorMessage = "The postal code must not exceed 20 characters.")]
 	[XmlElement("PostalCode")]
+	[Information(nameof(PostalCode), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string PostalCode
 	{
 		get => this._postalCode;
@@ -595,10 +606,10 @@ public sealed class Address : IAddress
 				return;
 			}
 
-			if (value.HasValue(0, 40) is false)
+			if (value.HasValue(0, 20) is false)
 			{
 				ExceptionThrower.ThrowArgumentOutOfRangeException(
-					Resources.PostalCodeLengthIsLimitedTo40Characters, nameof(this.PostalCode));
+					Resources.PostalCodeLengthIsLimitedToCharacters, nameof(this.PostalCode));
 			}
 			else
 			{
@@ -608,17 +619,18 @@ public sealed class Address : IAddress
 	}
 
 	/// <summary>
-	/// Gets or sets the state or region of the address.
+	/// Gets or sets the state.
 	/// </summary>
-	/// <value>The state or region.</value>
-	/// <exception cref="ArgumentOutOfRangeException">Thrown when the state value is longer than 60 characters.</exception>
-	/// <remarks>State is optional and is limited to 60 characters.</remarks>
+	/// <value>The state.</value>
+	/// <exception cref="ArgumentOutOfRangeException">State</exception>
+	/// <remarks>State is limited to 50 characters.</remarks>
 	[DataMember(Name = "state", IsRequired = false, Order = 8)]
 	[Display(Name = "State")]
-	[DefaultValue("")]
 	[JsonPropertyName("state")]
-	[MaxLength(60, ErrorMessage = "State cannot exceed 60 characters.")]
+	[MaxLength(50, ErrorMessage = "State cannot exceed 60 characters.")]
+	[StringLength(50, ErrorMessage = "The state or region must not exceed 50 characters.")]
 	[XmlElement("State")]
+	[Information(nameof(State), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string State
 	{
 		get => this._state;
@@ -629,10 +641,10 @@ public sealed class Address : IAddress
 				return;
 			}
 
-			if (value.HasValue(0, 60) is false)
+			if (value.HasValue(0, 50) is false)
 			{
 				ExceptionThrower.ThrowArgumentOutOfRangeException(
-					Resources.StateLengthIsLimitedTo60Characters, nameof(this.State));
+					Resources.StateLengthIsLimitedToCharacters, nameof(this.State));
 			}
 			else
 			{

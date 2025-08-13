@@ -4,7 +4,7 @@
 // Created          : 07-10-2019
 //
 // Last Modified By : David McCarter
-// Last Modified On : 07-15-2024
+// Last Modified On : 08-13-2025
 // ***********************************************************************
 // <copyright file="IPerson.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -45,14 +45,12 @@ public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where
 	/// Gets or sets the date and time when the person was born.
 	/// </summary>
 	/// <value>The date and time representing the person's birth date.</value>
-	[DataType(DataType.Date)]
 	public DateTimeOffset BornOn { get; set; }
 
 	/// <summary>
 	/// Gets or sets the cell phone number.
 	/// </summary>
 	/// <value>The cell phone number.</value>
-	[Phone(ErrorMessage = "The cell phone number is not in a valid format.")]
 	public string CellPhone { get; set; }
 
 	/// <summary>
@@ -60,14 +58,12 @@ public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where
 	/// as specified by the <see cref="EmailAddressAttribute"/>.
 	/// </summary>
 	/// <value>The email address.</value>
-	[EmailAddress(ErrorMessage = "The email address is not in a valid format.")]
 	public string Email { get; set; }
 
 	/// <summary>
 	/// Gets or sets the person's first name. This property is constrained by a maximum length of 50 characters.
 	/// </summary>
 	/// <value>The first name of the person.</value>
-	[StringLength(50, ErrorMessage = "The first name must not exceed 50 characters.")]
 	public string FirstName { get; set; }
 
 	/// <summary>
@@ -75,7 +71,6 @@ public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where
 	/// ensuring that the last name adheres to a standardized format suitable for storage and display.
 	/// </summary>
 	/// <value>The last name of the person.</value>
-	[StringLength(50, ErrorMessage = "The last name must not exceed 50 characters.")]
 	public string LastName { get; set; }
 
 	/// <summary>
@@ -83,6 +78,5 @@ public interface IPerson<TAddress> : IDataModel<IPerson<TAddress>, string> where
 	/// as specified by the <see cref="PhoneAttribute"/>.
 	/// </summary>
 	/// <value>The phone number.</value>
-	[Phone(ErrorMessage = "The phone number is not in a valid format.")]
 	public string Phone { get; set; }
 }

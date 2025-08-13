@@ -4,7 +4,7 @@
 // Created          : 02-05-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-12-2025
+// Last Modified On : 08-13-2025
 // ***********************************************************************
 // <copyright file="IDataModel.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -40,10 +40,6 @@ public interface IDataModel<T, TKey> : IComparable<T>, IEquatable<T>
 	/// <remarks>
 	/// The identifier is required and must be between 10 to 50 characters.
 	/// </remarks>
-	[Required(ErrorMessage = "Id is required.")]
-	[MaxLength(50, ErrorMessage = "Id must be a maximum of 50 characters.")]
-	[MinLength(10, ErrorMessage = "Id must be at least 10 characters.")]
-	[DisallowNull]
 	public TKey Id { get; init; }
 
 }

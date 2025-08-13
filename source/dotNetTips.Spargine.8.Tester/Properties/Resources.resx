@@ -163,13 +163,13 @@
   <data name="PhoneNumberIsLimitedTo50Characters" xml:space="preserve">
     <value>Phone number is limited to 50 characters.</value>
   </data>
-  <data name="PostalCodeLengthIsLimitedTo40Characters" xml:space="preserve">
-    <value>Postal code length is limited to 40 characters.</value>
+  <data name="PostalCodeLengthIsLimitedToCharacters" xml:space="preserve">
+    <value>Postal code length is limited to 20 characters.</value>
   </data>
   <data name="SizeMustBeEpsilon" xml:space="preserve">
     <value>Size must be &gt;= {0}.</value>
   </data>
-  <data name="StateLengthIsLimitedTo60Characters" xml:space="preserve">
-    <value>State length is limited to 60 characters.</value>
+  <data name="StateLengthIsLimitedToCharacters" xml:space="preserve">
+    <value>State length is limited to 50 characters.</value>
   </data>
 </root>
