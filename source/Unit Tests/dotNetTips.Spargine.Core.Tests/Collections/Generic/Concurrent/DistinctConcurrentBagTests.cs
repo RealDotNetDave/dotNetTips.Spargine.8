@@ -4,7 +4,7 @@
 // Created          : 06-24-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-28-2025
+// Last Modified On : 08-18-2025
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBagTests.cs" company="McCarter Consulting">
 //     Copyright (c) McCarter Consulting. All rights reserved.
@@ -43,6 +43,18 @@ public class DistinctConcurrentBagTests
 		bag.Add(1);
 		Assert.AreEqual(1, bag.Count);
 	}
+
+	[TestMethod]
+	public void Clear_ShouldRemoveAllItems()
+	{
+		var bag = new DistinctConcurrentBag<int> { 1, 2, 3 };
+		bag.Clear();
+		Assert.AreEqual(0, bag.Count);
+		Assert.IsFalse(bag.Contains(1));
+		Assert.IsFalse(bag.Contains(2));
+		Assert.IsFalse(bag.Contains(3));
+	}
+
 	[TestMethod]
 	public void Constructor_ShouldInitializeEmptyBag()
 	{
@@ -70,6 +82,64 @@ public class DistinctConcurrentBagTests
 	{
 		var bag = new DistinctConcurrentBag<int> { 1 };
 		Assert.IsTrue(bag.Contains(1));
+	}
+
+	[TestMethod]
+	public void CopyTo_ShouldCopyAllItems()
+	{
+		var bag = new DistinctConcurrentBag<int> { 1, 2, 3 };
+		var array = new int[3];
+		bag.CopyTo(array, 0);
+		CollectionAssert.AreEquivalent(new[] { 1, 2, 3 }, array);
+	}
+
+	[TestMethod]
+	public void Enumeration_ShouldReturnAllUniqueItems()
+	{
+		var bag = new DistinctConcurrentBag<int> { 1, 2, 3 };
+		var items = bag.ToList();
+		CollectionAssert.AreEquivalent(new[] { 1, 2, 3 }, items);
+	}
+
+	[TestMethod]
+	public void IsReadOnly_ShouldReturnFalse()
+	{
+		var bag = new DistinctConcurrentBag<int>();
+		Assert.IsFalse(bag.IsReadOnly);
+	}
+
+	[TestMethod]
+	public void Remove_ShouldRemoveItemAndUpdateCount()
+	{
+		var bag = new DistinctConcurrentBag<int> { 1, 2, 3 };
+		Assert.IsTrue(bag.Remove(2));
+		Assert.AreEqual(2, bag.Count);
+		Assert.IsFalse(bag.Contains(2));
+	}
+
+	[TestMethod]
+	public void Remove_ShouldReturnFalseForNonExistingItem()
+	{
+		var bag = new DistinctConcurrentBag<int> { 1, 2, 3 };
+		Assert.IsFalse(bag.Remove(4));
+		Assert.AreEqual(3, bag.Count);
+	}
+
+	[TestMethod]
+	public void TryAdd_ShouldAddUniqueItemAndReturnTrue()
+	{
+		var bag = new DistinctConcurrentBag<int>();
+		Assert.IsTrue(bag.TryAdd(5));
+		Assert.IsTrue(bag.Contains(5));
+	}
+
+	[TestMethod]
+	public void TryAdd_ShouldReturnFalseForDuplicate()
+	{
+		var bag = new DistinctConcurrentBag<int>();
+		Assert.IsTrue(bag.TryAdd(5));
+		Assert.IsFalse(bag.TryAdd(5));
+		Assert.AreEqual(1, bag.Count);
 	}
 
 	[TestMethod]

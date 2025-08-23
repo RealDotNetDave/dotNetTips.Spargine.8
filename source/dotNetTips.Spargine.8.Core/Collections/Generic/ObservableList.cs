@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-28-2025
+// Last Modified On : 08-23-2025
 // ***********************************************************************
 // <copyright file="ObservableList.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic;
 /// This collection also implements the <see cref="ISet{T}"/> interface, providing set operations.
 /// </summary>
 /// <typeparam name="T">The type of elements in the list.</typeparam>
-[Information("From .NET EF Core source.", author: "David McCarter", createdOn: "7/31/2020", Status = Status.NeedsDocumentation)]
+[Information("From .NET EF Core source.", author: "David McCarter", createdOn: "7/31/2020", Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollectionChanged, INotifyPropertyChanged, INotifyPropertyChanging
 {
 	/// <summary>
@@ -236,7 +236,7 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public virtual void Clear()
 	{
-		if (this._set.FastCount() == 0)
+		if (this._set.Count == 0)
 		{
 			return;
 		}
@@ -335,9 +335,18 @@ public class ObservableList<T> : ISet<T>, IReadOnlyCollection<T>, INotifyCollect
 	public virtual HashSet<T>.Enumerator GetEnumerator() => this._set.GetEnumerator();
 
 	/// <summary>
-	/// Returns an enumerator that iterates through the <see cref="ObservableList{T}"/>.
+	/// Modifies the current <see cref="ObservableList{T}"/> to contain only elements that are also present in the specified collection.
 	/// </summary>
-	/// <returns>An enumerator that can be used to iterate through the collection.</returns>
+	/// <param name="other">
+	/// The collection to compare to the current <see cref="ObservableList{T}"/>. Only elements that exist in both collections will remain.
+	/// </param>
+	/// <exception cref="ArgumentNullException">
+	/// Thrown if <paramref name="other"/> is <see langword="null"/>.
+	/// </exception>
+	/// <remarks>
+	/// This method uses the <see cref="HashSet{T}.IntersectWith"/> method of the underlying <see cref="HashSet{T}"/> to perform the intersection operation.
+	/// It raises the <see cref="CollectionChanged"/>, <see cref="PropertyChanging"/>, and <see cref="PropertyChanged"/> events as appropriate.
+	/// </remarks>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public virtual void IntersectWith([NotNull] IEnumerable<T> other)
 	{

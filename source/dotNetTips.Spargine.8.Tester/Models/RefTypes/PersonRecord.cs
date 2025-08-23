@@ -393,11 +393,6 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 		get => this._cellPhone;
 		init
 		{
-			if (string.Equals(this._cellPhone, value, StringComparison.Ordinal))
-			{
-				return;
-			}
-
 			if (value.HasValue(0, 50) is false)
 			{
 				ExceptionThrower.ThrowArgumentOutOfRangeException(
@@ -430,10 +425,6 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 
 		init
 		{
-			if (string.Equals(this._email, value, StringComparison.Ordinal))
-			{
-				return;
-			}
 
 			if (string.IsNullOrWhiteSpace(value))
 			{
@@ -471,11 +462,6 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 		get => this._firstName;
 		init
 		{
-			if (string.Equals(this._firstName, value, StringComparison.Ordinal))
-			{
-				return;
-			}
-
 			if (value.HasValue(0, 50) is false)
 			{
 				ExceptionThrower.ThrowArgumentOutOfRangeException(
@@ -527,11 +513,6 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 				ExceptionThrower.ThrowArgumentNullException(nameof(this.Id));
 			}
 
-			if (string.Equals(this._id, value, StringComparison.Ordinal))
-			{
-				return;
-			}
-
 			if (value.HasValue(1, 50) is false)
 			{
 				ExceptionThrower.ThrowArgumentOutOfRangeException(Resources.IdLengthIsLimitedTo50Characters, nameof(this.Id));
@@ -563,11 +544,6 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 		get => this._lastName;
 		init
 		{
-			if (string.Equals(this._lastName, value, StringComparison.Ordinal))
-			{
-				return;
-			}
-
 			if (value.HasValue(0, 50) is false)
 			{
 				ExceptionThrower.ThrowArgumentOutOfRangeException(
@@ -598,10 +574,6 @@ public sealed record PersonRecord : IPersonRecord, IComparable<PersonRecord>
 		get => this._phone;
 		init
 		{
-			if (string.Equals(this._phone, value, StringComparison.Ordinal))
-			{
-				return;
-			}
 
 			if (value.HasValue(0, 50) is false)
 			{

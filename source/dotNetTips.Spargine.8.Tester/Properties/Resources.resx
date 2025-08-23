@@ -170,6 +170,6 @@
     <value>Size must be &gt;= {0}.</value>
   </data>
   <data name="StateLengthIsLimitedToCharacters" xml:space="preserve">
-    <value>State length is limited to 50 characters.</value>
+    <value>State length is limited to 65 characters.</value>
   </data>
 </root>

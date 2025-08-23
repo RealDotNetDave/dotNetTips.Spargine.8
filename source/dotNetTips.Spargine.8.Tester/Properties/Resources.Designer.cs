@@ -214,7 +214,7 @@ namespace DotNetTips.Spargine.Tester.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to State length is limited to 50 characters..
+        ///   Looks up a localized string similar to State length is limited to 65 characters..
         /// </summary>
         internal static string StateLengthIsLimitedToCharacters {
             get {

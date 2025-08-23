@@ -27,19 +27,6 @@ namespace DotNetTips.Spargine.Extensions;
 [Information(nameof(DateTimeFormat), Status = Status.Available, Documentation = "https://bit.ly/SpargineDateTimeFormat")]
 public class DateTimeFormat : Enumeration
 {
-	/// <summary>
-	/// Prevents direct instantiation of the <see cref="DateTimeFormat"/> class.
-	/// </summary>
-	[ExcludeFromCodeCoverage]
-	private DateTimeFormat()
-	{ }
-
-	/// <summary>
-	/// Initializes a new instance of the <see cref="DateTimeFormat"/> class with a specified value and display name.
-	/// </summary>
-	/// <param name="value">The integer value representing the format.</param>
-	/// <param name="displayName">The display name or format string.</param>
-	private DateTimeFormat(int value, string displayName) : base(value, displayName) { }
 
 	/// <summary>
 	/// Full date/time pattern (long time). Example: Monday, December 21, 2025 3:16:12 PM
@@ -125,5 +112,19 @@ public class DateTimeFormat : Enumeration
 	/// Universal full date/time pattern. Example: Monday, December 21, 2025 11:16:12 PM
 	/// </summary>
 	public static readonly DateTimeFormat UniversalFullDateTime = new(15, "U");
+
+	/// <summary>
+	/// Prevents direct instantiation of the <see cref="DateTimeFormat"/> class.
+	/// </summary>
+	[ExcludeFromCodeCoverage]
+	private DateTimeFormat()
+	{ }
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="DateTimeFormat"/> class with a specified value and display name.
+	/// </summary>
+	/// <param name="value">The integer value representing the format.</param>
+	/// <param name="displayName">The display name or format string.</param>
+	private DateTimeFormat(int value, string displayName) : base(value, displayName) { }
 
 }

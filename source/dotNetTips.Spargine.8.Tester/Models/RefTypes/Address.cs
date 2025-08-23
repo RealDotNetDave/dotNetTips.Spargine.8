@@ -623,12 +623,12 @@ public sealed class Address : IAddress
 	/// </summary>
 	/// <value>The state.</value>
 	/// <exception cref="ArgumentOutOfRangeException">State</exception>
-	/// <remarks>State is limited to 50 characters.</remarks>
+	/// <remarks>State is limited to 55 characters.</remarks>
 	[DataMember(Name = "state", IsRequired = false, Order = 8)]
 	[Display(Name = "State")]
 	[JsonPropertyName("state")]
-	[MaxLength(50, ErrorMessage = "State cannot exceed 60 characters.")]
-	[StringLength(50, ErrorMessage = "The state or region must not exceed 50 characters.")]
+	[MaxLength(65, ErrorMessage = "State cannot exceed 60 characters.")]
+	[StringLength(65, ErrorMessage = "The state or region must not exceed 65 characters.")]
 	[XmlElement("State")]
 	[Information(nameof(State), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string State
@@ -641,7 +641,7 @@ public sealed class Address : IAddress
 				return;
 			}
 
-			if (value.HasValue(0, 50) is false)
+			if (value.HasValue(0, 65) is false)
 			{
 				ExceptionThrower.ThrowArgumentOutOfRangeException(
 					Resources.StateLengthIsLimitedToCharacters, nameof(this.State));
