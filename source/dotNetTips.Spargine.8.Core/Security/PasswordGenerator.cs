@@ -24,7 +24,7 @@ namespace DotNetTips.Spargine.Core.Security;
 /// Class PasswordGenerator.
 /// Provides functionality to generate random passwords with a mix of uppercase letters, lowercase letters, digits, and special characters.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class PasswordGenerator
 {
 	private const string Digits = "0123456789";

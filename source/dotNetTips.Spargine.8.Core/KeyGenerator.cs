@@ -21,7 +21,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Provides functionality to generate unique keys.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public static class KeyGenerator
 {
 

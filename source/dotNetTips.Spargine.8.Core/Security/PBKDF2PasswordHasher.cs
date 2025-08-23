@@ -22,17 +22,21 @@ namespace DotNetTips.Spargine.Core.Security;
 /// <summary>
 /// Provides methods for hashing and verifying passwords using PBKDF2.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public static class PBKDF2PasswordHasher
 {
-	// In .NET Core 2.1, you can use CryptographicOperations.FixedTimeEquals
-	// https://github.com/dotnet/runtime/blob/419e949d258ecee4c40a460fb09c66d974229623/src/libraries/System.Security.Cryptography.Primitives/src/System/Security/Cryptography/CryptographicOperations.cs#L32
 	/// <summary>
-	/// Fixes the time equals.
+	/// Compares two byte arrays for equality in a way that is resistant to timing attacks.
 	/// </summary>
-	/// <param name="left">The left.</param>
-	/// <param name="right">The right.</param>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+	/// <param name="left">The first byte array to compare.</param>
+	/// <param name="right">The second byte array to compare.</param>
+	/// <returns>
+	/// <c>true</c> if the arrays are equal; otherwise, <c>false</c>.
+	/// </returns>
+	/// <remarks>
+	/// This method performs a fixed-time comparison to prevent timing attacks that could reveal information about the contents of the arrays.
+	/// It uses <see cref="CryptographicOperations.FixedTimeEquals"/> for the comparison.
+	/// </remarks>
 	[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
 	[Information(nameof(FixedTimeEquals), "David McCarter", "10/12/2021", OptimizationStatus = OptimizationStatus.NeedsUpdate, BenchmarkStatus = BenchmarkStatus.Completed, UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public static bool FixedTimeEquals([NotNull] byte[] left, [NotNull] byte[] right)
@@ -40,9 +44,7 @@ public static class PBKDF2PasswordHasher
 		left = left.ArgumentItemsExists(nameof(left));
 		right = right.ArgumentItemsExists(nameof(right));
 
-		// NoOptimization because we want this method to be exactly as non-short-circuiting as written.
-		// NoInlining because the NoOptimization would get lost if the method got inlined.
-		return left.Length != right.Length ? false : CryptographicOperations.FixedTimeEquals(left, right);
+		return CryptographicOperations.FixedTimeEquals(left, right);
 	}
 
 	/// <summary>
