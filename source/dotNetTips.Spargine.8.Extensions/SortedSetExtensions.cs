@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// determine if any items match a specified condition, and convert the set to an immutable sorted set. These methods aim to simplify common
 /// operations performed on sorted sets and improve code readability and maintainability.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class SortedSetExtensions
 {
 

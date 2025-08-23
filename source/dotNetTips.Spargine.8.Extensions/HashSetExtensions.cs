@@ -23,7 +23,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for <see cref="HashSet{T}" /> to enhance its functionality.
 /// These methods include adding items conditionally, converting to concurrent or immutable hash sets, and upserting items.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class HashSetExtensions
 {
 

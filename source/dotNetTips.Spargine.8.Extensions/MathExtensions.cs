@@ -22,7 +22,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for mathematical operations, enhancing the built-in Math class with additional functionality and utilities.
 /// These methods include operations such as addition, subtraction, rounding, and calculating percentages, as well as determining if a number is prime.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class MathExtensions
 {
 

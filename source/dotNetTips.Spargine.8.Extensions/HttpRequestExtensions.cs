@@ -32,7 +32,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// The extension methods in this class aim to simplify the process of working with the request body of <see cref="HttpRequest"/>.
 /// They provide convenient ways to access the raw body for various purposes such as logging, validation, or further processing.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class HttpRequestExtensions
 {
 	/// <summary>

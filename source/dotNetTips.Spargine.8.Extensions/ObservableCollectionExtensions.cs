@@ -24,7 +24,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for <see cref="ObservableCollection{T}"/>.
 /// These methods include checks for item presence, item count, and actions on items within the collection.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class ObservableCollectionExtensions
 {
 

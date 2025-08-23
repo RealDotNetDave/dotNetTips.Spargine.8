@@ -29,7 +29,7 @@ namespace DotNetTips.Spargine.Core.Serialization;
 /// This class contains static methods for both serialization to, and deserialization from, XML format.
 /// It supports operations on both strings and files, offering a flexible API for working with XML data in .NET applications.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class XmlSerialization
 {
 	/// <summary>

@@ -43,7 +43,7 @@ namespace DotNetTips.Spargine.Core.Network;
 /// </code>
 /// </example>
 /// <seealso cref="EventListener"/>
-[Information(nameof(HttpEventListener), UnitTestStatus = UnitTestStatus.Completed, Status = Status.NeedsDocumentation)]
+[Information(nameof(HttpEventListener), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 public sealed class HttpEventListener(ILogger logger) : EventListener
 {
 

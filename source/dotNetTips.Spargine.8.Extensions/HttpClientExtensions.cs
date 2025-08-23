@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// For example, the <see cref="GetAndDeserializeAsync{T}"/> method streamlines the process of sending a GET request, checking the response status,
 /// reading the response content as a string, and deserializing it into an instance of a type.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class HttpClientExtensions
 {
 

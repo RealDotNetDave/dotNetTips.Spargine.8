@@ -24,7 +24,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// Provides extension methods for <see cref="ReadOnlySpan{T}"/>.
 /// These methods include operations that are not provided by the framework but are commonly used.
 /// </summary>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class ReadOnlySpanExtensions
 {
 	/// <summary>

@@ -32,7 +32,7 @@ namespace DotNetTips.Spargine.Core.Web;
 /// ensuring best practices like connection reuse are followed. This class is part of the DotNetTips.Spargine.8.Core library,
 /// aimed at enhancing .NET development productivity.
 /// </remarks>
-[Information("From dotNetTips.Utility", Status = Status.NeedsDocumentation)]
+[Information("From dotNetTips.Utility", Status = Status.Available)]
 public static class WebHelper
 {
 

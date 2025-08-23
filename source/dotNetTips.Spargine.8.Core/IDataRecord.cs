@@ -26,7 +26,7 @@ namespace DotNetTips.Spargine.Core;
 /// <summary>
 /// Defines the essential characteristics of a data record, including a unique identifier and the ability to represent its properties as a string.
 /// </summary>
-[Information(nameof(IDataRecord), author: "David McCarter", createdOn: "3/4/2021", BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.NeedsDocumentation)]
+[Information(nameof(IDataRecord), author: "David McCarter", createdOn: "3/4/2021", BenchmarkStatus = BenchmarkStatus.NotRequired, Status = Status.Available)]
 public interface IDataRecord
 {
 
