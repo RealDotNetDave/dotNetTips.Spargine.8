@@ -30,7 +30,7 @@ namespace DotNetTips.Spargine.Net.Sockets;
 /// are accessible with minimal code. It is part of the DotNetTips.Spargine library, which aims to provide a comprehensive
 /// set of utilities for .NET developers.
 /// </remarks>
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class SocketsHelper
 {
 

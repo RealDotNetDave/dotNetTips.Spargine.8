@@ -4,12 +4,12 @@
 // Created          : 03-15-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-15-2025
+// Last Modified On : 08-23-2025
 // ***********************************************************************
 // <copyright file="Services.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
 // </copyright>
-// <summary>Convenient helper methods for seamless management of Windows services, offering key features such as loading a service, checking its running status, starting and stopping services, and more.</summary>
+// <summary>Convenient helper methods for seamless management of Windows requests, offering key features such as loading a service, checking its running status, starting and stopping requests, and more.</summary>
 // ***********************************************************************
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -25,17 +25,17 @@ using DotNetTips.Spargine.Properties;
 namespace DotNetTips.Spargine;
 
 /// <summary>
-/// Provides a collection of methods for managing and interacting with Windows services and processes.
-/// This includes functionality to load, start, stop services, check service existence, and process status.
+/// Provides a collection of methods for managing and interacting with Windows requests and processes.
+/// This includes functionality to load, start, stop requests, check service existence, and process status.
 /// </summary>
 /// <remarks>
 /// This class is designed to be used in Windows environments where service management is required. It offers a simplified interface
-/// for common service operations such as starting, stopping, and checking the status of services. Additionally, it provides methods
+/// for common service operations such as starting, stopping, and checking the status of requests. Additionally, it provides methods
 /// for process management, including checking if a process is running and killing processes. This class is part of the DotNetTips.Spargine
 /// library, which provides a wide range of utilities and helper methods for .NET developers.
 /// </remarks>
 [SupportedOSPlatform("windows")]
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
 public static class Services
 {
 
@@ -63,9 +63,9 @@ public static class Services
 	private static ServiceController LoadService([NotNull] string serviceName) => Array.Find(ServiceController.GetServices(), p => string.Equals(p.ServiceName, serviceName, StringComparison.Ordinal));
 
 	/// <summary>
-	/// Retrieves the names of all services installed on the system.
+	/// Retrieves the names of all requests installed on the system.
 	/// </summary>
-	/// <returns>A read-only collection of strings containing the names of all services.</returns>
+	/// <returns>A read-only collection of strings containing the names of all requests.</returns>
 	[Information(nameof(AllServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static ReadOnlyCollection<string> AllServices() => ServiceController.GetServices().Select(p => p.ServiceName).ToReadOnlyCollection();
 
@@ -194,14 +194,14 @@ public static class Services
 	}
 
 	/// <summary>
-	/// Starts the services specified in the requests collection.
+	/// Starts the requests specified in the requests collection.
 	/// </summary>
 	/// <param name="requests">The collection of service action requests.</param>
 	[Information(nameof(StartServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]
 	public static void StartServices([NotNull] in IEnumerable<ServiceAction> requests) => requests.ToList().ForEach(request => request.ServiceActionResult = StartService(request.ServiceName));
 
 	/// <summary>
-	/// Starts or stops the specified services based on the action requests.
+	/// Starts or stops the specified services based on the <see cref="ServiceAction"/>.
 	/// </summary>
 	/// <param name="requests">The collection of service action requests, indicating whether to start or stop each service.</param>
 	[Information(nameof(StartStopServices), author: "David McCarter", createdOn: "1/1/2016", UnitTestStatus = UnitTestStatus.None, Status = Status.Available, Documentation = "https://bit.ly/SpargineJun2021")]

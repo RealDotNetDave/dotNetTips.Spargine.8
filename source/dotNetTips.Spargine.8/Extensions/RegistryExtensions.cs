@@ -30,7 +30,7 @@ namespace DotNetTips.Spargine.Extensions;
 /// will result in a <see cref="PlatformNotSupportedException"/>.
 /// </remarks>
 [SupportedOSPlatform("windows")]
-[Information(Status = Status.NeedsDocumentation)]
+[Information(Status = Status.Available)]
 public static class RegistryExtensions
 {
 
