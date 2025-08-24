@@ -45,7 +45,7 @@ namespace DotNetTips.Spargine.Core.Collections.Generic.Concurrent;
 /// <b>Thread Safety:</b> All public members are thread-safe.
 /// </para>
 /// </remarks>
-[Information("Queue using Channel<T>.", "David McCarter", "7/26/2021", Status = Status.NeedsDocumentation, Documentation = "ADD URL")]
+[Information("Queue using Channel<T>.", "David McCarter", "7/26/2021", Status = Status.Available, Documentation = "https://bit.ly/SpargineChannelQueue")]
 public sealed class ChannelQueue<T>
 {
 

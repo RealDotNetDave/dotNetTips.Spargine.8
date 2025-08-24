@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark-20250804-183051</title>
+
+<style type="text/css">
+    table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+    td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: left; }
+    tr { background-color: #fff; border-top: 1px solid #ccc; }
+    tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<table>
+<thead>
+<tr><th colspan="2">DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark-20250804-183051</th></tr>
+<tr>
+<th>GenerateKeyPrefix .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2</th>
+<th>GenerateKey .NET 8.0.18 (8.0.1825.31117), X64 RyuJIT AVX2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark.GenerateKeyPrefix()
+push      rbx
+sub       rsp,30
+xor       eax,eax
+mov       [rsp+28],rax
+mov       rbx,rcx
+mov       rcx,2423B5A4768
+call      qword ptr [7FF9B361C228]
+mov       [rsp+28],rax
+mov       rbx,[rbx+18]
+mov       rdx,[rsp+28]
+lea       rcx,[rbx+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       eax,eax
+mov       [rbx+8],rax
+add       rsp,30
+pop       rbx
+ret
+
+DotNetTips.Spargine.Core.KeyGenerator.GenerateKey(System.String)
+	public static string GenerateKey([NotNull] string prefix) => $"{prefix.ArgumentNotNull()}{Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture)}";
+	                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+push      rsi
+push      rbx
+sub       rsp,38
+xor       eax,eax
+mov       [rsp+28],rax
+mov       [rsp+30],rax
+mov       rbx,rcx
+test      rbx,rbx
+je        short 00007FF9B36519EB
+lea       rcx,[rsp+28]
+call      qword ptr [7FF9B2F27360]
+mov       r8,201A9800428
+mov       r8,[r8]
+lea       rcx,[rsp+28]
+mov       rdx,2423B5A3DA8
+call      qword ptr [7FF9B2F27180]
+mov       rdx,rax
+mov       rcx,rbx
+call      qword ptr [7FF9B2E76B08]
+nop
+add       rsp,38
+pop       rbx
+pop       rsi
+ret
+call      qword ptr [7FF9B33844C8]
+mov       ecx,1F17
+mov       rdx,7FF9B318BB50
+call      CORINFO_HELP_STRCNS
+mov       rbx,rax
+mov       ecx,1C09
+mov       rdx,7FF9B318BB50
+call      CORINFO_HELP_STRCNS
+mov       rdx,rax
+mov       rcx,rbx
+call      qword ptr [7FF9B2E76B08]
+mov       rbx,rax
+mov       ecx,0DE3
+mov       rdx,7FF9B318BB50
+call      CORINFO_HELP_STRCNS
+mov       rdx,rax
+mov       rcx,rbx
+call      qword ptr [7FF9B2E76B08]
+mov       rbx,rax
+mov       rcx,offset MT_System.ArgumentNullException
+call      CORINFO_HELP_NEWSFAST
+mov       rsi,rax
+call      qword ptr [7FF9B33842B8]
+mov       r8,rax
+mov       rdx,rbx
+mov       rcx,rsi
+call      qword ptr [7FF9B3096670]
+mov       rcx,rsi
+call      CORINFO_HELP_THROW
+int       3
+
+</code></pre></td>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark.GenerateKey()
+push      rbx
+sub       rsp,30
+xor       eax,eax
+mov       [rsp+28],rax
+mov       rbx,rcx
+call      qword ptr [7FF9B360C210]
+mov       [rsp+28],rax
+mov       rbx,[rbx+18]
+mov       rdx,[rsp+28]
+lea       rcx,[rbx+8]
+call      CORINFO_HELP_ASSIGN_REF
+xor       eax,eax
+mov       [rbx+8],rax
+add       rsp,30
+pop       rbx
+ret
+
+DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()
+	public static string GenerateKey() => Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture);
+	                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sub       rsp,38
+xor       eax,eax
+mov       [rsp+28],rax
+mov       [rsp+30],rax
+lea       rcx,[rsp+28]
+call      qword ptr [7FF9B2F17360]
+mov       r8,16C67800428
+mov       r8,[r8]
+lea       rcx,[rsp+28]
+mov       rdx,1ACF98D3DA8
+call      qword ptr [7FF9B2F17180]
+nop
+add       rsp,38
+ret
+
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
