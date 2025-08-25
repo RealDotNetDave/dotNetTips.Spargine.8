@@ -212,12 +212,12 @@ public sealed record AddressRecord : IDataRecord
 	/// </summary>
 	/// <value>The first line of the address.</value>
 	/// <exception cref="ArgumentOutOfRangeException">Thrown when the value is longer than 100 characters.</exception>
-	[DataMember(Name = "address2", IsRequired = false, Order = 2)]
-	[Display(Name = "Address Line 2")]
-	[JsonPropertyName("address2")]
-	[MaxLength(100, ErrorMessage = "Address2 cannot exceed 100 characters.")]
+	[DataMember(Name = "address1", IsRequired = false, Order = 2)]
+	[Display(Name = "Address Line 1")]
+	[JsonPropertyName("address1")]
+	[MaxLength(100, ErrorMessage = "Address1 cannot exceed 100 characters.")]
 	[StringLength(100, ErrorMessage = "The second line of the address must not exceed 100 characters.")]
-	[XmlElement("Address2")]
+	[XmlElement("Address1")]
 	[Information(nameof(Address1), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string Address1
 	{
@@ -495,8 +495,8 @@ public sealed record AddressRecord : IDataRecord
 	[DataMember(Name = "state", IsRequired = false, Order = 8)]
 	[Display(Name = "State")]
 	[JsonPropertyName("state")]
-	[MaxLength(50, ErrorMessage = "State cannot exceed 60 characters.")]
-	[StringLength(50, ErrorMessage = "The state or region must not exceed 50 characters.")]
+	[MaxLength(65, ErrorMessage = "State cannot exceed 60 characters.")]
+	[StringLength(65, ErrorMessage = "The state or region must not exceed 50 characters.")]
 	[XmlElement("State")]
 	[Information(nameof(State), UnitTestStatus = UnitTestStatus.Completed, Status = Status.Available)]
 	public string State
@@ -509,7 +509,7 @@ public sealed record AddressRecord : IDataRecord
 				return;
 			}
 
-			if (value.HasValue(0, 50) is false)
+			if (value.HasValue(0, 65) is false)
 			{
 				ExceptionThrower.ThrowArgumentOutOfRangeException(
 					Resources.StateLengthIsLimitedToCharacters, nameof(this.State));

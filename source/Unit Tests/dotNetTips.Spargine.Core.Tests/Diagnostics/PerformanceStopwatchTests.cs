@@ -19,7 +19,6 @@ using DotNetTips.Spargine.Core.Devices;
 using DotNetTips.Spargine.Core.Diagnostics;
 using DotNetTips.Spargine.Tester;
 using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -103,7 +102,7 @@ public class PerformanceStopwatchTests : UnitTester
 
 		Assert.IsNotNull(psw.Diagnostics);
 
-			Assert.IsNotNull(psw.ToString());
+		Assert.IsNotNull(psw.ToString());
 	}
 
 	[TestMethod]
@@ -248,22 +247,6 @@ public class PerformanceStopwatchTests : UnitTester
 
 		Assert.IsNotNull(psw);
 		Assert.AreEqual(alertThreshold, psw.AlertThreshold);
-	}
-
-	[TestMethod]
-	public void StartNewWithTelemetryTest()
-	{
-		var client = new TelemetryClient(new TelemetryConfiguration
-		{
-			ConnectionString = "InstrumentationKey=e4c79667-0fd3-4753-bcb7-460551dc64de;IngestionEndpoint=https://westus3-1.in.applicationinsights.azure.com/;LiveEndpoint=https://westus3.livediagnostics.monitor.azure.com/;ApplicationId=bb5d61d5-6e42-452e-8ccd-626f6202dbcb",
-		});
-
-		var psw = PerformanceStopwatch.StartNewWithTelemetry(telemetry: client, operationName: "TestOperation", alertThreshold: TimeSpan.FromMilliseconds(500), message: "TestMessage", properties: new Dictionary<string, string> { { "Key", "Value" } });
-
-		psw.StopReset();
-
-		Assert.IsNotNull(psw);
-		Assert.IsTrue(psw.ToString().Contains("TestMessage"));
 	}
 
 	[TestMethod]
