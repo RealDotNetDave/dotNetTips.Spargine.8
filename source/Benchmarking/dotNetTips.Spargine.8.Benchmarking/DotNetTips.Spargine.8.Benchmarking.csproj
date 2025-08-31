@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -55,6 +55,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="dotNetTips-Spargine-8-Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<EmbeddedResource Include="dotNetTips-Spargine-8-Logo.png">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</EmbeddedResource>
 	<Content Include="dotNetTips-Spargine-Logo.ico" />
   </ItemGroup>
 
@@ -75,13 +83,6 @@
 	<PackageReference Include="DotNetTips.Spargine.8.Extensions" Version="2025.8.8.31" />
 	<PackageReference Include="DotNetTips.Spargine.8.Tester" Version="2025.8.8.31" />
 	<PackageReference Include="Gee.External.Capstone" Version="2.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-	<None Update="dotNetTips-Spargine-8-Logo.png">
-	  <Pack>True</Pack>
-	  <PackagePath>\</PackagePath>
-	</None>
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
