@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Core.BenchmarkTests.TypeHelperBenchmark-20250830-183320</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.15.2, Windows 10 (10.0.19045.6216/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 9.0.304
+  [Host]     : .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+  Job-ZSLFFS : .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Core.BenchmarkTests  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                              </th><th>Categories  </th><th>Mean       </th><th>Error   </th><th>StdDev  </th><th>StdErr </th><th>Median     </th><th>Min        </th><th>Q1         </th><th>Q3         </th><th>Max        </th><th>Op/s       </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Gen0</th><th>Exceptions</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Code Size</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;Create: With Parameters&#39;</td><td>Strings</td><td>332.8399 ns</td><td>1.0738 ns</td><td>0.8967 ns</td><td>0.2487 ns</td><td>332.7291 ns</td><td>331.5142 ns</td><td>332.2363 ns</td><td>333.4380 ns</td><td>334.5618 ns</td><td>3,004,447.1</td><td>6.376 ns</td><td>13.00</td><td>1.994</td><td>2.000</td><td>0.1851</td><td>5</td><td>*</td><td>No</td><td>0.0052</td><td>-</td><td>-</td><td>-</td><td>469 B</td><td>504 B</td>
+</tr><tr><td>&#39;Looping Collection: Normal StringBuilder&#39;</td><td>Strings</td><td>4,104.4623 ns</td><td>26.5695 ns</td><td>24.8532 ns</td><td>6.4171 ns</td><td>4,104.0482 ns</td><td>4,050.6905 ns</td><td>4,090.3603 ns</td><td>4,117.5900 ns</td><td>4,141.3147 ns</td><td>243,637.3</td><td>4.291 ns</td><td>15.00</td><td>2.393</td><td>2.000</td><td>-0.2532</td><td>7</td><td>*</td><td>No</td><td>0.1602</td><td>-</td><td>-</td><td>-</td><td>2,614 B</td><td>15040 B</td>
+</tr><tr><td>BuiltInTypes</td><td>Reflection</td><td>1,340.9905 ns</td><td>16.1157 ns</td><td>15.0747 ns</td><td>3.8923 ns</td><td>1,336.8442 ns</td><td>1,315.4649 ns</td><td>1,331.7001 ns</td><td>1,350.2274 ns</td><td>1,371.9214 ns</td><td>745,717.5</td><td>5.554 ns</td><td>15.00</td><td>2.222</td><td>2.000</td><td>0.4294</td><td>6</td><td>*</td><td>No</td><td>0.0172</td><td>-</td><td>-</td><td>-</td><td>232 B</td><td>1720 B</td>
+</tr><tr><td>Create</td><td>Strings</td><td>48.7007 ns</td><td>0.2942 ns</td><td>0.2608 ns</td><td>0.0697 ns</td><td>48.7537 ns</td><td>48.0822 ns</td><td>48.6181 ns</td><td>48.8202 ns</td><td>49.1138 ns</td><td>20,533,599.0</td><td>6.965 ns</td><td>14.00</td><td>3.134</td><td>2.000</td><td>-0.7458</td><td>2</td><td>*</td><td>No</td><td>0.0015</td><td>-</td><td>-</td><td>-</td><td>141 B</td><td>144 B</td>
+</tr><tr><td>DoesObjectEqualInstance</td><td>Strings</td><td>0.0015 ns</td><td>0.0022 ns</td><td>0.0021 ns</td><td>0.0005 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0000 ns</td><td>0.0032 ns</td><td>0.0065 ns</td><td>663,486,194,026.8</td><td>7.500 ns</td><td>15.00</td><td>2.701</td><td>2.222</td><td>0.9418</td><td>1</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>22 B</td><td>-</td>
+</tr><tr><td>FindDerivedTypes</td><td>Reflection</td><td>1,018,427.9297 ns</td><td>15,233.7391 ns</td><td>14,249.6490 ns</td><td>3,679.2436 ns</td><td>1,013,569.7266 ns</td><td>1,001,883.3984 ns</td><td>1,008,234.6680 ns</td><td>1,029,022.4609 ns</td><td>1,051,785.7422 ns</td><td>981.9</td><td>-1,832.122 ns</td><td>15.00</td><td>2.536</td><td>2.000</td><td>0.7388</td><td>11</td><td>*</td><td>No</td><td>1.9531</td><td>-</td><td>-</td><td>-</td><td>NA</td><td>179824 B</td>
+</tr><tr><td>GetInstanceHashCode</td><td>Reflection</td><td>347,423.9502 ns</td><td>3,267.0447 ns</td><td>2,896.1500 ns</td><td>774.0287 ns</td><td>347,943.3838 ns</td><td>341,691.9678 ns</td><td>345,754.1870 ns</td><td>349,415.5884 ns</td><td>352,237.8662 ns</td><td>2,878.3</td><td>-380.014 ns</td><td>14.00</td><td>2.193</td><td>2.000</td><td>-0.4432</td><td>9</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>NA</td><td>4730 B</td>
+</tr><tr><td>GetMembersWithAttribute</td><td>Strings</td><td>21,903.6471 ns</td><td>148.8153 ns</td><td>124.2675 ns</td><td>34.4656 ns</td><td>21,863.3057 ns</td><td>21,733.4229 ns</td><td>21,834.7046 ns</td><td>21,973.5962 ns</td><td>22,172.1008 ns</td><td>45,654.5</td><td>-10.733 ns</td><td>13.00</td><td>2.342</td><td>2.000</td><td>0.5083</td><td>8</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>NA</td><td>3849 B</td>
+</tr><tr><td>GetPropertyValues</td><td>Reflection</td><td>386,326.0084 ns</td><td>7,430.0814 ns</td><td>9,396.6748 ns</td><td>1,959.3421 ns</td><td>386,981.1035 ns</td><td>370,604.0527 ns</td><td>378,226.5625 ns</td><td>394,622.6562 ns</td><td>404,862.8418 ns</td><td>2,588.5</td><td>-968.171 ns</td><td>23.00</td><td>1.752</td><td>3.111</td><td>0.0350</td><td>10</td><td>*</td><td>No</td><td>-</td><td>-</td><td>-</td><td>-</td><td>NA</td><td>7144 B</td>
+</tr><tr><td>GetTypeDisplayName</td><td>Reflection,**NEW**</td><td>93.6414 ns</td><td>0.5016 ns</td><td>0.4692 ns</td><td>0.1211 ns</td><td>93.7061 ns</td><td>92.3888 ns</td><td>93.3586 ns</td><td>93.8348 ns</td><td>94.4320 ns</td><td>10,679,035.1</td><td>7.439 ns</td><td>15.00</td><td>4.102</td><td>2.000</td><td>-0.8744</td><td>3</td><td>*</td><td>No</td><td>0.0006</td><td>-</td><td>-</td><td>-</td><td>1,424 B</td><td>56 B</td>
+</tr><tr><td>ProcessGenericType</td><td>Reflection,**NEW**</td><td>131.3053 ns</td><td>0.6359 ns</td><td>0.5310 ns</td><td>0.1473 ns</td><td>131.2609 ns</td><td>130.3992 ns</td><td>130.8734 ns</td><td>131.7025 ns</td><td>132.1428 ns</td><td>7,615,841.7</td><td>6.426 ns</td><td>13.00</td><td>1.741</td><td>2.000</td><td>0.0388</td><td>4</td><td>*</td><td>No</td><td>0.0045</td><td>-</td><td>-</td><td>-</td><td>2,532 B</td><td>432 B</td>
+</tr></tbody></table>
+</body>
+</html>

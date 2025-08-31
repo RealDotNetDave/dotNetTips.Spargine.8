@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DisassemblyDiagnoser Output DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-20250831-033919</title>
+
+<style type="text/css">
+    table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+    td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: left; }
+    tr { background-color: #fff; border-top: 1px solid #ccc; }
+    tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<table>
+<thead>
+<tr><th colspan="1">DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark-20250831-033919</th></tr>
+<tr>
+<th>GuidEqualsTest .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="vertical-align:top;"><pre><code>
+DotNetTips.Spargine.Extensions.BenchmarkTests.GeneralBenchmark.GuidEqualsTest()
+vzeroupper
+vmovups   xmm0,[rcx+128]
+vpcmpeqb  xmm0,xmm0,[rcx+138]
+vpmovmskb eax,xmm0
+cmp       eax,0FFFF
+sete      al
+movzx     eax,al
+mov       rcx,[rcx+18]
+mov       [rcx+4C],al
+ret
+
+</code></pre></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

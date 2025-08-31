@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Core.BenchmarkTests.KeyGeneratorBenchmark-20250830-183234</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.15.2, Windows 10 (10.0.19045.6216/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 9.0.304
+  [Host]     : .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+  Job-ZSLFFS : .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Core.BenchmarkTests  Categories=**NEW**  
+</code></pre>
+
+<table>
+<thead><tr><th>Method              </th><th>Mean</th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min</th><th>Q1 </th><th>Median</th><th>Q3 </th><th>Max</th><th>Op/s  </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Gen0</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Code Size</th><th>Exceptions</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;GenerateKey: With Prefix&#39;</td><td>107.92 ns</td><td>0.469 ns</td><td>0.438 ns</td><td>0.113 ns</td><td>106.99 ns</td><td>107.61 ns</td><td>107.93 ns</td><td>108.27 ns</td><td>108.61 ns</td><td>9,266,220.9</td><td>7.443 ns</td><td>15.00</td><td>2.174</td><td>2.000</td><td>-0.3210</td><td>2</td><td>*</td><td>No</td><td>0.0019</td><td>-</td><td>-</td><td>304 B</td><td>-</td><td>184 B</td>
+</tr><tr><td>GenerateKey</td><td>90.66 ns</td><td>0.580 ns</td><td>0.542 ns</td><td>0.140 ns</td><td>89.88 ns</td><td>90.26 ns</td><td>90.71 ns</td><td>91.06 ns</td><td>91.56 ns</td><td>11,030,640.6</td><td>7.430 ns</td><td>15.00</td><td>1.640</td><td>2.000</td><td>-0.0165</td><td>1</td><td>*</td><td>No</td><td>0.0010</td><td>-</td><td>-</td><td>123 B</td><td>-</td><td>88 B</td>
+</tr></tbody></table>
+</body>
+</html>

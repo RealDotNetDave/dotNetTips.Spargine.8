@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>DotNetTips.Spargine.Extensions.BenchmarkTests.EnumExtensionsBenchmark-20250831-033739</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.15.2, Windows 10 (10.0.19045.6216/22H2/2022Update)
+Intel Core i5-10400 CPU 2.90GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 9.0.304
+  [Host]     : .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+  Job-ZSLFFS : .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>EvaluateOverhead=True  Runtime=.NET 8.0  Server=True  
+Namespace=DotNetTips.Spargine.Extensions.BenchmarkTests  Categories=Collections  
+</code></pre>
+
+<table>
+<thead><tr><th>Method  </th><th>Mean </th><th>Error</th><th>StdDev</th><th>StdErr</th><th>Min  </th><th>Q1   </th><th>Median</th><th>Q3   </th><th>Max  </th><th>Op/s  </th><th>CI99.9% Margin</th><th>Iterations</th><th>Kurtosis</th><th>MValue</th><th>Skewness</th><th>Rank</th><th>LogicalGroup</th><th>Baseline</th><th>Code Size</th><th>Exceptions</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Gen0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>GetDescription</td><td>46.25 ns</td><td>0.467 ns</td><td>0.436 ns</td><td>0.113 ns</td><td>45.60 ns</td><td>46.05 ns</td><td>46.21 ns</td><td>46.71 ns</td><td>46.84 ns</td><td>21,619,720.7</td><td>7.444 ns</td><td>15.00</td><td>1.607</td><td>2.000</td><td>-0.1032</td><td>1</td><td>*</td><td>No</td><td>750 B</td><td>-</td><td>-</td><td>-</td><td>0.0002</td><td>24 B</td>
+</tr><tr><td>GetItems</td><td>1,071.62 ns</td><td>8.447 ns</td><td>7.488 ns</td><td>2.001 ns</td><td>1,059.84 ns</td><td>1,067.05 ns</td><td>1,071.07 ns</td><td>1,074.59 ns</td><td>1,087.52 ns</td><td>933,168.3</td><td>5.999 ns</td><td>14.00</td><td>2.493</td><td>2.000</td><td>0.5154</td><td>2</td><td>*</td><td>No</td><td>NA</td><td>-</td><td>-</td><td>-</td><td>0.0095</td><td>896 B</td>
+</tr></tbody></table>
+</body>
+</html>

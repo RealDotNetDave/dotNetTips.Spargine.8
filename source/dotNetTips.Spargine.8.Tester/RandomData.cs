@@ -382,7 +382,7 @@ public static class RandomData
 	[Information(nameof(GenerateCoordinateCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<T> GenerateCoordinateCollection<T>(int count = 1) where T : ICoordinate, new()
 	{
-		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
+		count = count.ArgumentInRange(lower: 1, defaultValue: 2);
 
 		var coordinates = new List<T>(count);
 
@@ -632,7 +632,7 @@ public static class RandomData
 	[Information(nameof(GeneratePersonNames), "David McCarter", "12/15/2023", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<PersonName> GeneratePersonNames(int count = 1)
 	{
-		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
+		count = count.ArgumentInRange(lower: 1, defaultValue: 2);
 
 		var names = new List<PersonName>(count);
 
@@ -683,7 +683,7 @@ public static class RandomData
 	[Information(nameof(GeneratePersonRecordCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<PersonRecord> GeneratePersonRecordCollection(int count = 1)
 	{
-		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
+		count = count.ArgumentInRange(lower: 1, defaultValue: 2);
 
 		var records = new List<PersonRecord>(count);
 
@@ -738,7 +738,7 @@ public static class RandomData
 	[Information(nameof(GeneratePersonRefCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<Person<TAddress>> GeneratePersonRefCollection<TAddress>(int count = 1) where TAddress : IAddress, new()
 	{
-		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
+		count = count.ArgumentInRange(lower: 1, defaultValue: 2);
 
 		var people = new List<Person<TAddress>>(count);
 
@@ -793,7 +793,7 @@ public static class RandomData
 	[Information(nameof(GeneratePersonValCollection), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<Models.ValueTypes.Person<TAddress>> GeneratePersonValCollection<TAddress>(int count = 1) where TAddress : struct, IAddress
 	{
-		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
+		count = count.ArgumentInRange(lower: 1, defaultValue: 2);
 
 		var people = new List<Models.ValueTypes.Person<TAddress>>(count);
 
@@ -1160,7 +1160,7 @@ public static class RandomData
 	[Information(nameof(GenerateWords), "David McCarter", "1/19/2019", UnitTestStatus = UnitTestStatus.Completed, OptimizationStatus = OptimizationStatus.Completed, BenchmarkStatus = BenchmarkStatus.Completed, Status = Status.Available)]
 	public static ReadOnlyCollection<string> GenerateWords(int count = 1, int minLength = 1, int maxLength = 1)
 	{
-		count = count.ArgumentInRange(lower: 1, defaultValue: 1);
+		count = count.ArgumentInRange(lower: 1, defaultValue: 2);
 		minLength = minLength.ArgumentInRange(lower: 1, defaultValue: 1);
 		maxLength = maxLength.ArgumentInRange(lower: 1, defaultValue: 1);
 
