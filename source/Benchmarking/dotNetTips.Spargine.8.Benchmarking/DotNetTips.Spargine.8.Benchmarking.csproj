@@ -1,100 +1,105 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<AnalysisLevel>latest-recommended</AnalysisLevel>
-		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
-		<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
-		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-		<AssemblyVersion>2025.8.8.6</AssemblyVersion>
-		<Authors>David McCarter</Authors>
-		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
-		<BaseOutputPath>..\..\..\AppBin\</BaseOutputPath>
-		<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-		<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
-		<Company>David McCarter - dotNetTips.com</Company>
-		<Configurations>Debug;Release</Configurations>
-		<Copyright>McCarter Consulting (David McCarter)</Copyright>
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>embedded</DebugType>
-		<Description>Common classes from dotNetTips.com that can be used with BenchmarkDotNet.</Description>
-		<DocumentationFile>..\..\..\AppBin\DotNetTips.Spargine.8.Benchmarking.xml</DocumentationFile>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<EnablePackageValidation>false</EnablePackageValidation>
-		<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
-		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-		<FileVersion>2025.8.8.6</FileVersion>
-		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<IncludeSymbols>true</IncludeSymbols>
-		<LangVersion>latest</LangVersion>
-		<NeutralLanguage>en-US</NeutralLanguage>
-		<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
-		<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</PackageProjectUrl>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>
-		  --MAR 2024: Initial 8.0 release.
-		  --AUG 2024: Performance changes.
-		  --NOV 2024: Performance changes, refactoring.
-		  --FEB 2025: Performance changes, refactoring.
-		</PackageReleaseNotes>
-		<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</RepositoryUrl>
-		<RootNamespace>DotNetTips.Spargine.Benchmarking</RootNamespace>
-		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
-		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<TargetFramework>net8.0</TargetFramework>
-		<Title>DotNetTips.Spargine.Benchmarking</Title>
-		<Version>2025.8.8.6</Version>
-	</PropertyGroup>
+  <PropertyGroup>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<AnalysisLevel>latest-recommended</AnalysisLevel>
+	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+	<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
+	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+	<AssemblyVersion>2025.8.8.31</AssemblyVersion>
+	<Authors>David McCarter</Authors>
+	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
+	<BaseOutputPath>..\..\..\AppBin\</BaseOutputPath>
+	<CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+	<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+	<Company>David McCarter - dotNetTips.com</Company>
+	<Configurations>Debug;Release</Configurations>
+	<Copyright>McCarter Consulting (David McCarter)</Copyright>
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>embedded</DebugType>
+	<Description>Common classes from dotNetTips.com that can be used with BenchmarkDotNet.</Description>
+	<DocumentationFile>..\..\..\AppBin\DotNetTips.Spargine.8.Benchmarking.xml</DocumentationFile>
+	<EmbedUntrackedSources>true</EmbedUntrackedSources>
+	<EnablePackageValidation>false</EnablePackageValidation>
+	<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
+	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	<FileVersion>2025.8.8.31</FileVersion>
+	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<IncludeSymbols>true</IncludeSymbols>
+	<LangVersion>latest</LangVersion>
+	<NeutralLanguage>en-US</NeutralLanguage>
+	<PackageIcon>dotNetTips-Spargine-8-Logo.png</PackageIcon>
+	<PackageProjectUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</PackageProjectUrl>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageReleaseNotes>
+	  --MAR 2024: Initial 8.0 release.
+	  --AUG 2024: Performance changes.
+	  --NOV 2024: Performance changes, refactoring.
+	  --FEB 2025: Performance changes, refactoring.
+	</PackageReleaseNotes>
+	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
+	<PublishRepositoryUrl>true</PublishRepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<RepositoryUrl>https://github.com/RealDotNetDave/dotNetTips.Spargine.8</RepositoryUrl>
+	<RootNamespace>DotNetTips.Spargine.Benchmarking</RootNamespace>
+	<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+	<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+	<Title>DotNetTips.Spargine.Benchmarking</Title>
+	<Version>2025.8.8.31</Version>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<Content Include="dotNetTips-Spargine-Logo.ico" />
-	</ItemGroup>
+  <ItemGroup>
+	<Content Include="dotNetTips-Spargine-Logo.ico" />
+  </ItemGroup>
 
-	<ItemGroup>
-	  <None Include="..\README.md">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	</ItemGroup>
+  <ItemGroup>
+	<None Include="..\README.md">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+  </ItemGroup>
 
-	<ItemGroup>
-	  <PackageReference Include="BenchmarkDotNet" Version="0.15.2" />
-	  <PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.15.2" />
-	  <PackageReference Include="DotNetTips.Spargine.8.Extensions" Version="2025.8.8.25" />
-	  <PackageReference Include="DotNetTips.Spargine.8.Tester" Version="2025.8.8.25" />
-	</ItemGroup>
+  <ItemGroup>
+	<PackageReference Include="BenchmarkDotNet" Version="0.15.2" />
+	<PackageReference Include="BenchmarkDotNet.Annotations" Version="0.15.2" />
+	<PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.15.2" />
+	<PackageReference Include="CommandLineParser" Version="2.9.1" />
+	<PackageReference Include="DotNetTips.Spargine.8" Version="2025.8.8.31" />
+	<PackageReference Include="DotNetTips.Spargine.8.Core" Version="2025.8.8.31" />
+	<PackageReference Include="DotNetTips.Spargine.8.Extensions" Version="2025.8.8.31" />
+	<PackageReference Include="DotNetTips.Spargine.8.Tester" Version="2025.8.8.31" />
+	<PackageReference Include="Gee.External.Capstone" Version="2.3.0" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<None Update="dotNetTips-Spargine-8-Logo.png">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-	</ItemGroup>
+  <ItemGroup>
+	<None Update="dotNetTips-Spargine-8-Logo.png">
+	  <Pack>True</Pack>
+	  <PackagePath>\</PackagePath>
+	</None>
+  </ItemGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>..\..\..\AppBin\</OutputPath>
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	<OutputPath>..\..\..\AppBin\</OutputPath>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<Compile Update="Properties\Resources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Resources.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
+  <ItemGroup>
+	<Compile Update="Properties\Resources.Designer.cs">
+	  <DesignTime>True</DesignTime>
+	  <AutoGen>True</AutoGen>
+	  <DependentUpon>Resources.resx</DependentUpon>
+	</Compile>
+  </ItemGroup>
 
-	<ItemGroup>
-		<EmbeddedResource Update="Properties\Resources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-	</ItemGroup>
+  <ItemGroup>
+	<EmbeddedResource Update="Properties\Resources.resx">
+	  <Generator>ResXFileCodeGenerator</Generator>
+	  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	</EmbeddedResource>
+  </ItemGroup>
 </Project>
