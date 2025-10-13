@@ -1,4 +1,6 @@
-﻿dotnet clean D:\src\GitHub\dotNetTips.Spargine.8\dotNetTips.Spargine.8.Benchmarking.sln
+﻿cd D:\src\GitHub\dotNetTips.Spargine.8\
+
+dotnet clean D:\src\GitHub\dotNetTips.Spargine.8\dotNetTips.Spargine.8.Benchmarking.sln
 
 dotnet build D:\src\GitHub\dotNetTips.Spargine.8\dotNetTips.Spargine.8.Benchmarking.sln --configuration Release
 
