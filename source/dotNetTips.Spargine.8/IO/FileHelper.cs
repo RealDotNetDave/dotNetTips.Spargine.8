@@ -113,10 +113,13 @@ public static class FileHelper
 				continue;
 			}
 
-			var extractedFilePath = Path.Combine(expandedDirectoryPath, zipArchiveEntry.FullName);
+			// Combine and fully resolve extracted file path to guard against Zip Slip
+			var extractedFilePath = Path.GetFullPath(Path.Combine(expandedDirectoryPath, zipArchiveEntry.FullName));
 
-			// Sanitize the extracted file path to prevent directory traversal attacks
-			if (!extractedFilePath.StartsWith(Path.GetFullPath(expandedDirectoryPath), StringComparison.OrdinalIgnoreCase))
+			// Fully resolve destination directory and ensure trailing separator for robust validation
+			var fullDestDirPath = Path.GetFullPath(expandedDirectoryPath + Path.DirectorySeparatorChar);
+			// Validate that extracted file path starts with intended output directory
+			if (!extractedFilePath.StartsWith(fullDestDirPath, StringComparison.OrdinalIgnoreCase))
 			{
 				ExceptionThrower.ThrowInvalidOperationException(Resources.ErrorInvalidFilePathZipArchive);
 			}
