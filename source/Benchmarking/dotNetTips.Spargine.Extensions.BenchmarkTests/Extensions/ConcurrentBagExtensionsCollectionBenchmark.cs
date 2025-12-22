@@ -24,7 +24,7 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 [BenchmarkCategory(Categories.Collections)]
-public class ConcurrentBagExtensionsCollectionBenchmark : SmallCollectionBenchmark
+public class ConcurrentBagExtensionsCollectionBenchmark : LargeCollectionBenchmark
 {
 	private ConcurrentBag<Person<Address>> _peopleRefConcurrentBag;
 	private IEnumerable<Person<Address>> _peopleRefEnumerable;

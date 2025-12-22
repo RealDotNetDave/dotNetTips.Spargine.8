@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 /// </summary>
 /// <seealso cref="SmallCollectionBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class CollectionExtensionsCollectionBenchmark : SmallCollectionBenchmark
+public class CollectionExtensionsCollectionBenchmark : LargeCollectionBenchmark
 {
 
 	private Collection<Person<Address>> _peopleRefCollection;

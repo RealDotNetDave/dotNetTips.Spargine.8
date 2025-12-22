@@ -26,7 +26,7 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 /// </summary>
 /// <seealso cref="SmallCollectionBenchmark"/>
 [BenchmarkCategory(Categories.Collections)]
-public class SortedSetCollectionBenchmark : SmallCollectionBenchmark
+public class SortedSetCollectionBenchmark : LargeCollectionBenchmark
 {
 
 	private SortedSet<Person<Address>> _personRefSortedSet;

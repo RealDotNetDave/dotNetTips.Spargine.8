@@ -23,7 +23,7 @@ using Address = DotNetTips.Spargine.Tester.Models.RefTypes.Address;
 
 namespace DotNetTips.Spargine.Core.BenchmarkTests.Cache;
 
-public class InMemoryCacheBenchmark : SmallCollectionBenchmark
+public class InMemoryCacheBenchmark : LargeCollectionBenchmark
 {
 	private InMemoryCache _cache;
 	private string _cacheId;

@@ -29,7 +29,7 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 /// </summary>
 /// <seealso cref="SmallCollectionBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class ArrayExtensionsCollectionBenchmark : SmallCollectionBenchmark
+public class ArrayExtensionsCollectionBenchmark : LargeCollectionBenchmark
 {
 
 	private PersonRecord[] _personRecordArray;

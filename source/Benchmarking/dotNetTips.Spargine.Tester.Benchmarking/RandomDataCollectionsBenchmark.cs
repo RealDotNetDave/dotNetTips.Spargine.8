@@ -148,8 +148,6 @@ public class RandomDataCollectionsBenchmark : LargeCollectionBenchmark
 
 		LogInfo($"PersonRefCollection: {this._personRefCollection.Count}");
 		LogInfo($"PersonRecordCollection: {this._personRecordCollection.Count}");
-		LogInfo($"FIRST PERSON: {this._personRefCollection.First().Email}");
-		LogInfo($"LAST PERSON: {this._personRefCollection.Last().Email}");
 	}
 
 }

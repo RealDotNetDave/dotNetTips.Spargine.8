@@ -23,7 +23,7 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 [BenchmarkCategory(Categories.Collections)]
-public class HashSetExtensionsCollectionBenchmark : SmallCollectionBenchmark
+public class HashSetExtensionsCollectionBenchmark : LargeCollectionBenchmark
 {
 
 	private HashSet<Person<Address>> _peopleRefToAdd;

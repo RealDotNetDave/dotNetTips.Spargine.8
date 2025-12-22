@@ -4,7 +4,7 @@
 // Created          : 03-02-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-30-2025
+// Last Modified On : 11-13-2025
 // ***********************************************************************
 // <copyright file="FileHelper.cs" company="McCarter Consulting">
 //     McCarter Consulting (David McCarter)
@@ -116,10 +116,8 @@ public static class FileHelper
 			// Combine and fully resolve extracted file path to guard against Zip Slip
 			var extractedFilePath = Path.GetFullPath(Path.Combine(expandedDirectoryPath, zipArchiveEntry.FullName));
 
-			// Fully resolve destination directory and ensure trailing separator for robust validation
-			var fullDestDirPath = Path.GetFullPath(expandedDirectoryPath + Path.DirectorySeparatorChar);
 			// Validate that extracted file path starts with intended output directory
-			if (!extractedFilePath.StartsWith(fullDestDirPath, StringComparison.OrdinalIgnoreCase))
+			if (!extractedFilePath.StartsWith(Path.GetFullPath(expandedDirectoryPath + Path.DirectorySeparatorChar), StringComparison.OrdinalIgnoreCase))
 			{
 				ExceptionThrower.ThrowInvalidOperationException(Resources.ErrorInvalidFilePathZipArchive);
 			}

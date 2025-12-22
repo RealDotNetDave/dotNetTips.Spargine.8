@@ -21,6 +21,7 @@ using System.Text;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
 using DotNetTips.Spargine.Core;
+using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
@@ -29,7 +30,7 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 [BenchmarkCategory(Categories.Collections)]
-public class ListExtensionsCollectionBenchmark : SmallCollectionBenchmark
+public class ListExtensionsCollectionBenchmark : LargeCollectionBenchmark
 {
 	private List<PersonRecord> _peopleRecordList;
 	private List<Person<Address>> _peopleRefList;

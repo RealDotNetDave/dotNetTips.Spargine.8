@@ -29,7 +29,7 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Collections.Threading;
 /// Collection type PerfTestRunner.
 /// </summary>
 [BenchmarkCategory(Categories.Async)]
-public class ChannelQueueCollectionBenchmark : SmallCollectionBenchmark
+public class ChannelQueueCollectionBenchmark : LargeCollectionBenchmark
 {
 
 	/// <summary>
@@ -67,16 +67,6 @@ public class ChannelQueueCollectionBenchmark : SmallCollectionBenchmark
 		{
 			Trace.WriteLine(item.Email);
 		}
-	}
-
-	/// <summary>
-	/// Setups this instance.
-	/// </summary>
-	public override void Setup()
-	{
-		base.Setup();
-
-		this._personRefArray = this.GetPersonRefArray();
 	}
 
 	[Benchmark(Description = "WriteAsync: ChannelQueue")]
@@ -129,6 +119,16 @@ public class ChannelQueueCollectionBenchmark : SmallCollectionBenchmark
 		{
 			await this.ConsumeAsync(await channel.ReadAsync().ConfigureAwait(false)).ConfigureAwait(false);
 		}
+	}
+
+	/// <summary>
+	/// Setups this instance.
+	/// </summary>
+	public override void Setup()
+	{
+		base.Setup();
+
+		this._personRefArray = this.GetPersonRefArray();
 	}
 
 }

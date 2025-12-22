@@ -22,7 +22,7 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 [BenchmarkCategory(Categories.Collections)]
-public class ReadOnlySpanBenchmark : SmallCollectionBenchmark
+public class ReadOnlySpanBenchmark : LargeCollectionBenchmark
 {
 	private byte[] _bytes;
 	private PersonRecord[] _peopleRecordArray;

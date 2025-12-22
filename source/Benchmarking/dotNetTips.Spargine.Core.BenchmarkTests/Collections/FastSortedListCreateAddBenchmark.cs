@@ -28,7 +28,7 @@ namespace DotNetTips.Spargine.Core.BenchmarkTests.Collections;
 /// </summary>
 /// <seealso cref="SmallCollectionBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class FastSortedListCreateAddBenchmark : SmallCollectionBenchmark
+public class FastSortedListCreateAddBenchmark : LargeCollectionBenchmark
 {
 	private Person<Address>[] _peopleRefArrayToInsert;
 	private Dictionary<string, Person<Address>> _peopleRefDictionaryToInsert;

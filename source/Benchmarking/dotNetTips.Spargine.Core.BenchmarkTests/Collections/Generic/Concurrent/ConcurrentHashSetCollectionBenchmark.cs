@@ -22,7 +22,7 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 namespace DotNetTips.Spargine.Core.BenchmarkTests.Collections.Generic.Concurrent;
 
 [BenchmarkCategory(Categories.Async)]
-public class ConcurrentHashSetCollectionBenchmark : SmallCollectionBenchmark
+public class ConcurrentHashSetCollectionBenchmark : LargeCollectionBenchmark
 {
 	private ConcurrentHashSet<Person<Address>> _personRefConcurrentHashSet;
 

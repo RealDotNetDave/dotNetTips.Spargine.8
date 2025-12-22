@@ -27,7 +27,7 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 /// </summary>
 /// <seealso cref="SmallCollectionBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class ImmutableArrayExtensionsBenchmark : SmallCollectionBenchmark
+public class ImmutableArrayExtensionsBenchmark : LargeCollectionBenchmark
 {
 
 	private ImmutableArray<Person<Address>> _personRefImmutableArray;

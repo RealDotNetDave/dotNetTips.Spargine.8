@@ -22,7 +22,7 @@ using DotNetTips.Spargine.Tester.Models.RefTypes;
 namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 
 [BenchmarkCategory(Categories.Collections)]
-public class ObservableCollectionExtensionsCollectionBenchmark : SmallCollectionBenchmark
+public class ObservableCollectionExtensionsCollectionBenchmark : LargeCollectionBenchmark
 {
 
 	private ObservableCollection<Person<Address>> _personRefObservableCollection;

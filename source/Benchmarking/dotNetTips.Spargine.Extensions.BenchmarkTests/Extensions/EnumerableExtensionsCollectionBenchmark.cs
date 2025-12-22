@@ -33,7 +33,7 @@ namespace DotNetTips.Spargine.Extensions.BenchmarkTests;
 /// </summary>
 /// <seealso cref="SmallCollectionBenchmark" />
 [BenchmarkCategory(Categories.Collections)]
-public class EnumerableExtensionsCollectionBenchmark : SmallCollectionBenchmark
+public class EnumerableExtensionsCollectionBenchmark : LargeCollectionBenchmark
 {
 
 	private IEnumerable<Spargine.Tester.Models.ValueTypes.Coordinate> _coordinateValEnumerable;
