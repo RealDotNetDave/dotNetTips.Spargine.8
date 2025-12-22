@@ -4,7 +4,7 @@
 // Created          : 05-08-2025
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-05-2025
+// Last Modified On : 12-22-2025
 // ***********************************************************************
 // <copyright file="DiagnosticEntry.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -21,24 +21,17 @@ namespace DotNetTips.Spargine.Core.Diagnostics;
 /// <summary>
 /// Represents a single diagnostic message entry.
 /// </summary>
+/// <remarks>
+/// Initializes a new instance of the <see cref="DiagnosticEntry"/> struct.
+/// </remarks>
+/// <param name="timestamp">The UTC timestamp of the message.</param>
+/// <param name="message">The content of the message.</param>
+/// <param name="elapsed">The elapsed time when recorded.</param>
 [Information("DiagnosticEntry", "David McCarter", "05/08/2025", Status = Status.Available)]
 [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
-public readonly struct DiagnosticEntry : IEquatable<DiagnosticEntry>
+[method: Information(nameof(DiagnosticEntry), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
+public readonly struct DiagnosticEntry([NotNull] DateTimeOffset timestamp, [NotNull] string message, [NotNull] TimeSpan elapsed) : IEquatable<DiagnosticEntry>
 {
-	/// <summary>
-	/// Initializes a new instance of the <see cref="DiagnosticEntry"/> struct.
-	/// </summary>
-	/// <param name="timestamp">The UTC timestamp of the message.</param>
-	/// <param name="message">The content of the message.</param>
-	/// <param name="elapsed">The elapsed time when recorded.</param>
-	[Information(nameof(DiagnosticEntry), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.New)]
-	public DiagnosticEntry([NotNull] DateTimeOffset timestamp, [NotNull] string message, [NotNull] TimeSpan elapsed)
-	{
-		this.Timestamp = timestamp;
-		this.Message = message?.Trim();
-		this.Elapsed = elapsed;
-	}
-
 	/// <summary>
 	/// Determines whether two <see cref="DiagnosticEntry"/> instances are not equal.
 	/// </summary>
@@ -128,17 +121,17 @@ public readonly struct DiagnosticEntry : IEquatable<DiagnosticEntry>
 	/// Gets the elapsed time when the diagnostic entry was recorded.
 	/// </summary>
 	[Information(nameof(Elapsed), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public TimeSpan Elapsed { get; }
+	public TimeSpan Elapsed { get; } = elapsed;
 
 	/// <summary>
 	/// Gets the content of the diagnostic message.
 	/// </summary>
 	[Information(nameof(Message), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public string Message { get; }
+	public string Message { get; } = message?.Trim();
 
 	/// <summary>
 	/// Gets the UTC timestamp of the diagnostic entry.
 	/// </summary>
 	[Information(nameof(Timestamp), "David McCarter", "05/08/2025", UnitTestStatus = UnitTestStatus.None, Status = Status.Available)]
-	public DateTimeOffset Timestamp { get; }
+	public DateTimeOffset Timestamp { get; } = timestamp;
 }

@@ -4,7 +4,7 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-09-2025
+// Last Modified On : 12-22-2025
 // ***********************************************************************
 // <copyright file="DistinctBlockingCollection.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -159,12 +159,7 @@ public sealed class DistinctBlockingCollection<T> : BlockingCollection<T>, IClon
 	/// <returns><see langword="true" /> if <paramref name="item" /> could be added; otherwise, <see langword="false" />. If the item is a duplicate, and the underlying collection does not accept duplicate items, then <see langword="false" /> is returned.</returns>
 	public new bool TryAdd(T item)
 	{
-		if (item is null || this.IsNotInCollection(item) == false)
-		{
-			return false;
-		}
-
-		return base.TryAdd(item);
+		return item is null || this.IsNotInCollection(item) == false ? false : base.TryAdd(item);
 	}
 
 	/// <summary>

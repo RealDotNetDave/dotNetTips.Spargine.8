@@ -4,7 +4,7 @@
 // Created          : 10-22-2023
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-04-2025
+// Last Modified On : 12-22-2025
 // ***********************************************************************
 // <copyright file="UnitTester.cs" company="David McCarter - dotNetTips.com">
 //     McCarter Consulting (David McCarter)
@@ -40,16 +40,7 @@ public abstract class UnitTester(string outputDirectory = null)
 {
 	private static string GenerateFileName(string methodName)
 	{
-		string fileName;
-		//Generate file name based on method name or random key
-		if (methodName.IsNullOrEmpty())
-		{
-			fileName = $"{RandomData.GenerateKey}.txt";
-		}
-		else
-		{
-			fileName = $"{methodName}.txt";
-		}
+		var fileName = methodName.IsNullOrEmpty() ? $"{RandomData.GenerateKey}.txt" : $"{methodName}.txt";
 
 		return fileName;
 	}

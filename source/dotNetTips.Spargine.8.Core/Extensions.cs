@@ -4,7 +4,7 @@
 // Created          : 11-10-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 04-24-2025
+// Last Modified On : 12-22-2025
 // ***********************************************************************
 // <copyright file="Extensions.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -362,12 +362,9 @@ new DefaultObjectPoolProvider().CreateStringBuilderPool();
 
 		var buffer = new Span<byte>(new byte[base64String.CalculateByteArraySize()]);
 
-		if (!Convert.TryFromBase64String(base64String, buffer, out var bytesWritten))
-		{
-			throw new FormatException(Resources.TheInputStringIsNotAValidBase64String);
-		}
-
-		return buffer[..bytesWritten].ToArray();
+		return !Convert.TryFromBase64String(base64String, buffer, out var bytesWritten)
+			? throw new FormatException(Resources.TheInputStringIsNotAValidBase64String)
+			: buffer[..bytesWritten].ToArray();
 	}
 
 	/// <summary>

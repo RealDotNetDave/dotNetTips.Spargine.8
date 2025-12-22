@@ -4,16 +4,12 @@
 // Created          : 01-12-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-18-2025
+// Last Modified On : 12-22-2025
 // ***********************************************************************
 // <copyright file="DistinctConcurrentBag.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
 // </copyright>
-// Provides a thread-safe, unordered collection of unique elements.
-// Internally wraps a ConcurrentBag<T> for storage and a ConcurrentHashSet<T> for uniqueness.
-// Ensures that duplicate elements are never added, and supports atomic add, remove, and enumeration operations.
-// Implements ICollection<T> and supports concurrent scenarios.
-// </summary>
+// <summary></summary>
 // ***********************************************************************
 using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
@@ -37,12 +33,12 @@ public sealed class DistinctConcurrentBag<T> : ICollection<T>
 	/// <summary>
 	/// The underlying thread-safe bag storing the items.
 	/// </summary>
-	private readonly ConcurrentBag<T> _bag = new();
+	private readonly ConcurrentBag<T> _bag = [];
 
 	/// <summary>
 	/// The set of unique items contained in the <see cref="DistinctConcurrentBag{T}"/>.
 	/// </summary>
-	private readonly ConcurrentHashSet<T> _uniqueItems = new();
+	private readonly ConcurrentHashSet<T> _uniqueItems = [];
 
 
 	/// <summary>
@@ -113,12 +109,7 @@ public sealed class DistinctConcurrentBag<T> : ICollection<T>
 	[Information(Status = Status.Available, UnitTestStatus = UnitTestStatus.Completed)]
 	public bool Contains([NotNullWhen(true)] T item)
 	{
-		if (item is null)
-		{
-			return false;
-		}
-
-		return this._uniqueItems.Contains(item);
+		return item is null ? false : this._uniqueItems.Contains(item);
 	}
 
 	/// <summary>
