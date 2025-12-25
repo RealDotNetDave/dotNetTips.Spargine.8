@@ -1,4 +1,4 @@
-## .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+## .NET 8.0.22 (8.0.2225.52707), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.Security.PBKDF2PasswordHasherBenchmark.FixedTimeEquals()
        push      rdi
@@ -6,18 +6,18 @@
        push      rbx
        sub       rsp,20
        mov       rbx,rcx
-       mov       rcx,1E9124009F0
+       mov       rcx,1F8C44009F0
        mov       rsi,[rcx]
        mov       rcx,rsi
-       mov       rdx,229A4424AD0
-       call      qword ptr [7FF90018FD38]; System.Text.UTF8Encoding+UTF8EncodingSealed.GetBytesForSmallInput(System.String)
+       mov       rdx,23952544AD0
+       call      qword ptr [7FFE61DCFD38]; System.Text.UTF8Encoding+UTF8EncodingSealed.GetBytesForSmallInput(System.String)
        mov       rdi,rax
        mov       rcx,rsi
-       mov       rdx,229A4424AD0
-       call      qword ptr [7FF90018FD38]; System.Text.UTF8Encoding+UTF8EncodingSealed.GetBytesForSmallInput(System.String)
+       mov       rdx,23952544AD0
+       call      qword ptr [7FFE61DCFD38]; System.Text.UTF8Encoding+UTF8EncodingSealed.GetBytesForSmallInput(System.String)
        mov       rdx,rax
        mov       rcx,rdi
-       call      qword ptr [7FF9004A4000]; DotNetTips.Spargine.Core.Security.PBKDF2PasswordHasher.FixedTimeEquals(Byte[], Byte[])
+       call      qword ptr [7FFE620E4000]; DotNetTips.Spargine.Core.Security.PBKDF2PasswordHasher.FixedTimeEquals(Byte[], Byte[])
        mov       rcx,[rbx+18]
        mov       [rcx+4C],al
        add       rsp,20
@@ -37,7 +37,7 @@
        push      rbx
        sub       rsp,68
        lea       rbp,[rsp+40]
-       mov       rax,0D29DAE47B741
+       mov       rax,4FDAD258E1B1
        mov       [rbp+8],rax
        mov       rbx,rcx
        test      [rsp],esp
@@ -56,7 +56,7 @@
        mov       edx,edi
        mov       r8,rsi
        mov       r9d,60
-       call      qword ptr [7FF9001ADAD0]; System.Text.Unicode.Utf8Utility.TranscodeToUtf8(Char*, Int32, Byte*, Int32, Char* ByRef, Byte* ByRef)
+       call      qword ptr [7FFE61DEDAD0]; System.Text.Unicode.Utf8Utility.TranscodeToUtf8(Char*, Int32, Byte*, Int32, Char* ByRef, Byte* ByRef)
        mov       rax,[rbp+18]
        sub       rax,r14
        mov       r8,rax
@@ -79,10 +79,10 @@ M01_L00:
        lea       rcx,[rbx+10]
        mov       r8d,r15d
        mov       rdx,rsi
-       call      qword ptr [7FF9000A5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
+       call      qword ptr [7FFE61CE5B78]; System.Buffer.Memmove(Byte ByRef, Byte ByRef, UIntPtr)
        mov       rax,rbx
 M01_L01:
-       mov       rcx,0D29DAE47B741
+       mov       rcx,4FDAD258E1B1
        cmp       [rbp+8],rcx
        je        short M01_L02
        call      CORINFO_HELP_FAIL_FAST
@@ -97,7 +97,7 @@ M01_L02:
        pop       rbp
        ret
 M01_L03:
-       mov       rax,229A4416758
+       mov       rax,23952536758
        jmp       short M01_L01
 M01_L04:
        mov       dword ptr [rsp+20],60
@@ -108,7 +108,7 @@ M01_L04:
        mov       rdx,r14
        mov       r8d,edi
        mov       r9,rsi
-       call      qword ptr [7FF8FFFFC918]
+       call      qword ptr [7FFE61C3C918]
        mov       r15d,eax
        jmp       near ptr M01_L00
 ; Total bytes of code 281
@@ -129,32 +129,32 @@ M01_L04:
 ; 		left = left.ArgumentItemsExists(nameof(left));
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
        mov       rcx,[rbp+10]
-       mov       rdx,229A4424AF0
-       mov       r8,229A4424AF0
-       call      qword ptr [7FF9008D6400]; DotNetTips.Spargine.Core.Validator.ArgumentItemsExists[[System.Byte, System.Private.CoreLib]](Byte[], System.String, System.String)
+       mov       rdx,23952544AF0
+       mov       r8,23952544AF0
+       call      qword ptr [7FFE62516400]; DotNetTips.Spargine.Core.Validator.ArgumentItemsExists[[System.Byte, System.Private.CoreLib]](Byte[], System.String, System.String)
        mov       [rbp+10],rax
 ; 		right = right.ArgumentItemsExists(nameof(right));
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
        mov       rcx,[rbp+18]
-       mov       rdx,229A4424B10
-       mov       r8,229A4424B10
-       call      qword ptr [7FF9008D6400]; DotNetTips.Spargine.Core.Validator.ArgumentItemsExists[[System.Byte, System.Private.CoreLib]](Byte[], System.String, System.String)
+       mov       rdx,23952544B10
+       mov       r8,23952544B10
+       call      qword ptr [7FFE62516400]; DotNetTips.Spargine.Core.Validator.ArgumentItemsExists[[System.Byte, System.Private.CoreLib]](Byte[], System.String, System.String)
        mov       [rbp+18],rax
 ; 		return CryptographicOperations.FixedTimeEquals(left, right);
 ; 		^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
        lea       rcx,[rbp-10]
        mov       rdx,[rbp+10]
-       call      qword ptr [7FF9000AC750]; System.ReadOnlySpan`1[[System.Byte, System.Private.CoreLib]].op_Implicit(Byte[])
+       call      qword ptr [7FFE61CEC750]; System.ReadOnlySpan`1[[System.Byte, System.Private.CoreLib]].op_Implicit(Byte[])
        lea       rcx,[rbp-20]
        mov       rdx,[rbp+18]
-       call      qword ptr [7FF9000AC750]; System.ReadOnlySpan`1[[System.Byte, System.Private.CoreLib]].op_Implicit(Byte[])
+       call      qword ptr [7FFE61CEC750]; System.ReadOnlySpan`1[[System.Byte, System.Private.CoreLib]].op_Implicit(Byte[])
        vmovdqu   xmm0,xmmword ptr [rbp-10]
        vmovdqu   xmmword ptr [rbp-30],xmm0
        vmovdqu   xmm0,xmmword ptr [rbp-20]
        vmovdqu   xmmword ptr [rbp-40],xmm0
        lea       rcx,[rbp-30]
        lea       rdx,[rbp-40]
-       call      qword ptr [7FF9008544E0]; System.Security.Cryptography.CryptographicOperations.FixedTimeEquals(System.ReadOnlySpan`1<Byte>, System.ReadOnlySpan`1<Byte>)
+       call      qword ptr [7FFE624A44E0]; System.Security.Cryptography.CryptographicOperations.FixedTimeEquals(System.ReadOnlySpan`1<Byte>, System.ReadOnlySpan`1<Byte>)
        nop
        add       rsp,60
        pop       rbp

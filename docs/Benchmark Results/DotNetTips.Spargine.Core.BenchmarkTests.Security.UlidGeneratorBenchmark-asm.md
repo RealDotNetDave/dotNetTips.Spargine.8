@@ -1,4 +1,4 @@
-## .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+## .NET 8.0.22 (8.0.2225.52707), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.Security.UlidGeneratorBenchmark.GenerateKey()
        push      rbx
@@ -6,7 +6,7 @@
        xor       eax,eax
        mov       [rsp+28],rax
        mov       rbx,rcx
-       call      qword ptr [7FF9007C6610]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()
+       call      qword ptr [7FFE623F6610]; DotNetTips.Spargine.Core.KeyGenerator.GenerateKey()
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -28,19 +28,19 @@
        mov       [rsp+28],rax
        mov       [rsp+30],rax
        lea       rcx,[rsp+28]
-       call      qword ptr [7FF9000C7360]; System.Guid.NewGuid()
-       mov       r8,24C90400428
+       call      qword ptr [7FFE61CF7360]; System.Guid.NewGuid()
+       mov       r8,1C6C5800428
        mov       r8,[r8]
        lea       rcx,[rsp+28]
-       mov       rdx,28D1A0E3DA8
-       call      qword ptr [7FF9000C7180]; System.Guid.ToString(System.String, System.IFormatProvider)
+       mov       rdx,20753693DA8
+       call      qword ptr [7FFE61CF7180]; System.Guid.ToString(System.String, System.IFormatProvider)
        nop
        add       rsp,38
        ret
 ; Total bytes of code 67
 ```
 
-## .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+## .NET 8.0.22 (8.0.2225.52707), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.Security.UlidGeneratorBenchmark.GenerateMultipleUlids()
        push      rbx
@@ -49,7 +49,7 @@
        mov       [rsp+28],rax
        mov       rbx,rcx
        mov       ecx,100
-       call      qword ptr [7FF9008ADF80]; DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateMultipleUlids(Int32)
+       call      qword ptr [7FFE624EDF80]; DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateMultipleUlids(Int32)
        mov       [rsp+28],rax
        mov       rbx,[rbx+18]
        mov       rdx,[rsp+28]
@@ -111,7 +111,7 @@ M01_L02:
        test      ebx,ebx
        jle       short M01_L05
 M01_L03:
-       call      qword ptr [7FF9008ADF98]; DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateUlid()
+       call      qword ptr [7FFE624EDF98]; DotNetTips.Spargine.Core.Security.UlidGenerator.GenerateUlid()
        inc       dword ptr [rdi+14]
        mov       rcx,[rdi+8]
        mov       edx,[rdi+10]
@@ -149,33 +149,33 @@ M01_L07:
        test      cl,cl
        je        near ptr M01_L00
        lea       rcx,[rsp+20]
-       call      qword ptr [7FF9000A47B0]
+       call      qword ptr [7FFE61CE47B0]
        mov       esi,eax
        jmp       near ptr M01_L01
 M01_L08:
-       call      qword ptr [7FF9004D5788]
+       call      qword ptr [7FFE62115788]
        mov       rdi,rax
        test      rdi,rdi
        jne       short M01_L09
-       call      qword ptr [7FF9004D55A8]
+       call      qword ptr [7FFE621155A8]
        mov       rdi,rax
 M01_L09:
        mov       rcx,offset MT_System.ArgumentOutOfRangeException
        call      CORINFO_HELP_NEWSFAST
        mov       rbx,rax
        mov       rcx,rbx
-       mov       rdx,24D2F873760
+       mov       rdx,208F85D3760
        mov       r8,rdi
-       call      qword ptr [7FF9000AD470]
+       call      qword ptr [7FFE61CED470]
        mov       rcx,rbx
        call      CORINFO_HELP_THROW
 M01_L10:
        mov       ecx,16
        mov       edx,0D
-       call      qword ptr [7FF9002F5B60]
+       call      qword ptr [7FFE61F35B60]
        int       3
 M01_L11:
-       mov       rcx,20C9D801D88
+       mov       rcx,1C866801D88
        mov       rdx,[rcx]
        lea       rcx,[rdi+8]
        call      CORINFO_HELP_ASSIGN_REF
@@ -183,12 +183,12 @@ M01_L11:
 M01_L12:
        mov       rcx,rdi
        mov       rdx,rax
-       call      qword ptr [7FF9000AE130]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]].AddWithResize(System.__Canon)
+       call      qword ptr [7FFE61CEE130]; System.Collections.Generic.List`1[[System.__Canon, System.Private.CoreLib]].AddWithResize(System.__Canon)
        jmp       near ptr M01_L04
 ; Total bytes of code 396
 ```
 
-## .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+## .NET 8.0.22 (8.0.2225.52707), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.Security.UlidGeneratorBenchmark.GenerateUlid()
        push      rsi
@@ -197,7 +197,7 @@ M01_L12:
        xor       eax,eax
        mov       [rsp+20],rax
        mov       rbx,rcx
-       mov       rcx,1AD63408230
+       mov       rcx,1DBDA00A228
        mov       rax,[rcx]
        test      rax,rax
        je        short M00_L01
@@ -219,10 +219,10 @@ M00_L01:
        mov       rsi,rax
        mov       rcx,rsi
        xor       edx,edx
-       mov       r8,7FF9008B9FC8
-       mov       r9,7FF8FFEBD370
-       call      qword ptr [7FF900004258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)
-       mov       rcx,1AD63408230
+       mov       r8,7FFE624DA478
+       mov       r9,7FFE61ADD370
+       call      qword ptr [7FFE61C24258]; System.MulticastDelegate.CtorOpened(System.Object, IntPtr, IntPtr)
+       mov       rcx,1DBDA00A228
        mov       rdx,rsi
        call      CORINFO_HELP_ASSIGN_REF
        mov       rax,rsi
@@ -239,7 +239,7 @@ M00_L01:
        mov       rdi,r9
        lea       rcx,[rbx+8]
        mov       rdx,rbx
-       call      qword ptr [7FF95E4B3D30]; CORINFO_HELP_ASSIGN_REF
+       call      qword ptr [7FFEC15E3D30]; CORINFO_HELP_ASSIGN_REF
        mov       [rbx+18],rdi
        mov       [rbx+20],rsi
        pop       rbx
@@ -249,7 +249,7 @@ M00_L01:
 ; Total bytes of code 37
 ```
 
-## .NET 8.0.19 (8.0.1925.36514), X64 RyuJIT AVX2
+## .NET 8.0.22 (8.0.2225.52707), X64 RyuJIT AVX2
 ```assembly
 ; DotNetTips.Spargine.Core.BenchmarkTests.Security.UlidGeneratorBenchmark.GuidNewGuid()
        push      rbx
@@ -259,13 +259,13 @@ M00_L01:
        mov       [rsp+38],rax
        mov       rbx,rcx
        lea       rcx,[rsp+30]
-       call      qword ptr [7FF9000A7360]; System.Guid.NewGuid()
+       call      qword ptr [7FFE61CD7360]; System.Guid.NewGuid()
        vmovups   xmm0,[rsp+30]
        vmovups   [rsp+20],xmm0
        mov       rcx,[rbx+18]
        cmp       [rcx],cl
        lea       rcx,[rsp+20]
-       call      qword ptr [7FF9008ADF80]; BenchmarkDotNet.Engines.DeadCodeEliminationHelper.KeepAliveWithoutBoxingReadonly[[System.Guid, System.Private.CoreLib]](System.Guid ByRef)
+       call      qword ptr [7FFE624DE430]; BenchmarkDotNet.Engines.DeadCodeEliminationHelper.KeepAliveWithoutBoxingReadonly[[System.Guid, System.Private.CoreLib]](System.Guid ByRef)
        nop
        add       rsp,40
        pop       rbx
@@ -295,20 +295,20 @@ M00_L01:
        mov       rcx,rbp
        mov       [rbp-58],rcx
        lea       rcx,[rbp-48]
-       mov       rax,7FF90079DBA8
+       mov       rax,7FFE623CF6F0
        mov       [rbp-78],rax
        lea       rax,[M01_L00]
        mov       [rbp-60],rax
        lea       rax,[rbp-88]
        mov       [rsi+10],rax
        mov       byte ptr [rsi+0C],0
-       mov       rax,7FF9A1250930
+       mov       rax,7FFF3ADD0930
        call      rax
 M01_L00:
        mov       byte ptr [rsi+0C],1
-       cmp       dword ptr [7FF95FEBE0EC],0
+       cmp       dword ptr [7FFEC1AF917C],0
        je        short M01_L01
-       call      qword ptr [7FF95FEAE3B8]; CORINFO_HELP_STOP_FOR_GC
+       call      qword ptr [7FFEC1AE93B8]; CORINFO_HELP_STOP_FOR_GC
 M01_L01:
        mov       rcx,[rbp-80]
        mov       [rsi+10],rcx
@@ -334,7 +334,7 @@ M01_L02:
        call      CORINFO_HELP_NEWSFAST
        mov       rsi,rax
        mov       rcx,rsi
-       call      qword ptr [7FF8FFFFCC30]
+       call      qword ptr [7FFE61C2CC30]
        mov       [rsi+74],ebx
        mov       rcx,rsi
        call      CORINFO_HELP_THROW
