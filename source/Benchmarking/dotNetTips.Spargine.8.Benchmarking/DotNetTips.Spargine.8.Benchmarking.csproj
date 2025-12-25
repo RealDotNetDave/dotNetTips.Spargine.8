@@ -40,6 +40,7 @@
 	  --AUG 2024: Performance changes.
 	  --NOV 2024: Performance changes, refactoring.
 	  --FEB 2025: Performance changes, refactoring.
+	  --JAN 2026: Minor changes.
 	</PackageReleaseNotes>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
 	<PublishRepositoryUrl>true</PublishRepositoryUrl>

@@ -41,6 +41,7 @@
 	  --NOV 2024: Performance improvements. Creating Person objects now uses consistant data up to 10,000 items.
 	  --FEB 2025: Added comparers for the Person types.
 	  --MAY 2025: Worked on performance. Code cleanup.
+	  --JAN 2026: Minor performance improvements and code optimizations.
 	</PackageReleaseNotes>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<PackageTags>David McCarter, dotNetDave, dotNetTips.com, Spargine</PackageTags>
