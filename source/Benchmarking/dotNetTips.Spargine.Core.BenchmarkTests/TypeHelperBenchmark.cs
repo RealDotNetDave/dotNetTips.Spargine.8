@@ -114,7 +114,10 @@ public class TypeHelperBenchmark : Benchmark
 
 		var result = TypeHelper.GetMembersWithAttribute<InformationAttribute>(type);
 
-		this.Consume(result.ToList());
+		foreach (var item in result)
+		{
+			this.Consume(item);
+		}
 	}
 
 	[Benchmark(Description = nameof(TypeHelper.GetPropertyValues))]
