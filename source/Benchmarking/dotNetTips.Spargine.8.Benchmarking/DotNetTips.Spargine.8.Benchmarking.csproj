@@ -6,7 +6,7 @@
 	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	<ApplicationIcon>dotNetTips-Spargine-Logo.ico</ApplicationIcon>
 	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-	<AssemblyVersion>2025.8.12.25</AssemblyVersion>
+	<AssemblyVersion>2025.8.12.29</AssemblyVersion>
 	<Authors>David McCarter</Authors>
 	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
@@ -24,7 +24,7 @@
 	<EnablePackageValidation>false</EnablePackageValidation>
 	<EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	<FileVersion>2025.8.12.25</FileVersion>
+	<FileVersion>2025.8.12.29</FileVersion>
 	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
@@ -52,7 +52,7 @@
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 	<Title>DotNetTips.Spargine.Benchmarking</Title>
-	<Version>2025.8.12.25</Version>
+	<Version>2025.8.12.29</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -75,14 +75,14 @@
   </ItemGroup>
 
   <ItemGroup>
-	<PackageReference Include="BenchmarkDotNet" Version="0.15.2" />
-	<PackageReference Include="BenchmarkDotNet.Annotations" Version="0.15.2" />
-	<PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.15.2" />
+	<PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
+	<PackageReference Include="BenchmarkDotNet.Annotations" Version="0.15.8" />
+	<PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.15.8" />
 	<PackageReference Include="CommandLineParser" Version="2.9.1" />
-	<PackageReference Include="DotNetTips.Spargine.8" Version="2025.8.8.31" />
-	<PackageReference Include="DotNetTips.Spargine.8.Core" Version="2025.8.8.31" />
-	<PackageReference Include="DotNetTips.Spargine.8.Extensions" Version="2025.8.8.31" />
-	<PackageReference Include="DotNetTips.Spargine.8.Tester" Version="2025.8.8.31" />
+	<PackageReference Include="DotNetTips.Spargine.8" Version="2025.8.12.26" />
+	<PackageReference Include="DotNetTips.Spargine.8.Core" Version="2025.8.12.26" />
+	<PackageReference Include="DotNetTips.Spargine.8.Extensions" Version="2025.8.12.26" />
+	<PackageReference Include="DotNetTips.Spargine.8.Tester" Version="2025.8.12.26" />
 	<PackageReference Include="Gee.External.Capstone" Version="2.3.0" />
   </ItemGroup>
 
