@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 06-07-2024
+// Last Modified On : 12-29-2025
 // ***********************************************************************
 // <copyright file="AssemblyExtensionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System.Linq;
 using System.Reflection;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
@@ -52,7 +53,7 @@ public class AssemblyExtensionsBenchmark : Benchmark
 	{
 		var result = Assembly.GetExecutingAssembly().GetInstances<AssemblyExtensionsBenchmark>();
 
-		this.Consume(result);
+		this.Consume(result.ToList());
 	}
 
 	[Benchmark(Description = nameof(AssemblyExtensions.GetTypes))]

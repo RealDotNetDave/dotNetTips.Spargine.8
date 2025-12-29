@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-05-2025
+// Last Modified On : 12-29-2025
 // ***********************************************************************
 // <copyright file="Program.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -42,9 +42,9 @@ public class Program
 
 			config = config.WithOption(ConfigOptions.DisableOptimizationsValidator, true);
 
-			_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
+			//_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
-			// _ = BenchmarkRunner.Run<FastSortedListCreateAddBenchmark>(config);
+			_ = BenchmarkRunner.Run<TypeHelperBenchmark>(config);
 			//_ = BenchmarkRunner.Run<FastSortedListRemoveBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine("COMPLETE!");

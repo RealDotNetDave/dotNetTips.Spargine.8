@@ -4,7 +4,7 @@
 // Created          : 11-28-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-27-2025
+// Last Modified On : 12-29-2025
 // ***********************************************************************
 // <copyright file="ValidatorTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -711,7 +711,7 @@ public class ValidatorTests
 			var people = RandomData.GeneratePersonRefCollection<Address>(10).AsEnumerable();
 			var result = people.ArgumentItemsExists();
 
-			Assert.AreEqual(people, result);
+			Assert.AreEqual(people.Count(), result.Count());
 		}
 		catch
 		{

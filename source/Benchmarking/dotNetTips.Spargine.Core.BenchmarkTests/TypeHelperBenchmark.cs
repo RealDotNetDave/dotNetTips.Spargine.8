@@ -4,7 +4,7 @@
 // Created          : 02-19-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 01-03-2025
+// Last Modified On : 12-29-2025
 // ***********************************************************************
 // <copyright file="TypeHelperBenchmark.cs" company="DotNetTips.Spargine.Core.BenchmarkTests">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
@@ -113,7 +114,7 @@ public class TypeHelperBenchmark : Benchmark
 
 		var result = TypeHelper.GetMembersWithAttribute<InformationAttribute>(type);
 
-		this.Consume(result);
+		this.Consume(result.ToList());
 	}
 
 	[Benchmark(Description = nameof(TypeHelper.GetPropertyValues))]

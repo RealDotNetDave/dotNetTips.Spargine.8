@@ -4,7 +4,7 @@
 // Created          : 12-17-2020
 //
 // Last Modified By : David McCarter
-// Last Modified On : 02-28-2025
+// Last Modified On : 12-29-2025
 // ***********************************************************************
 // <copyright file="EnumerableExtensionsTests.cs" company="McCarter Consulting">
 //     Copyright (c) David McCarter - dotNetTips.com. All rights reserved.
@@ -533,8 +533,7 @@ public class EnumerableExtensionsTests
 
 		var splitEmptyPeople = emptyPeople.Partition(10);
 
-		Assert.IsNotNull(splitEmptyPeople);
-
+		Assert.IsNotNull(splitEmptyPeople.ToList());
 	}
 
 	[TestMethod]
@@ -577,13 +576,13 @@ public class EnumerableExtensionsTests
 	[TestMethod]
 	public void RemoveDuplicatesTest()
 	{
-		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count);
+		var people = RandomData.GeneratePersonRefCollection<Tester.Models.RefTypes.Address>(Count).AsEnumerable();
 
-		var dups = people.Shuffle().Take(Count / 10).ToList();
+		var dups = people.Shuffle().Take(Count / 10);
 
 		foreach (var person in dups)
 		{
-			_ = people.AddLast(person);
+			people = people.AddLast(person);
 		}
 
 		var result = people.RemoveDuplicates();

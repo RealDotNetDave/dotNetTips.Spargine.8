@@ -84,7 +84,7 @@ public class EnumerableExtensionsCollectionBenchmark : LargeCollectionBenchmark
 
 		var result = people.AddIf(this.PersonRef01, true);
 
-		this.Consume(result);
+		this.Consume(result.ToList());
 	}
 
 	[Benchmark(Description = nameof(EnumerableExtensions.AddLast))]
@@ -404,7 +404,7 @@ public class EnumerableExtensionsCollectionBenchmark : LargeCollectionBenchmark
 
 		var splitPeople = people.Partition(this.Count / 2);
 
-		this.Consume(splitPeople);
+		this.Consume(splitPeople.ToList());
 	}
 
 	[Benchmark(Description = nameof(EnumerableExtensions.PickRandom))]
@@ -437,9 +437,9 @@ public class EnumerableExtensionsCollectionBenchmark : LargeCollectionBenchmark
 		collection = collection.AddFirst(null);
 		collection = collection.AddLast(null);
 
-		var result = collection.RemoveDuplicates();
+		var result = collection.RemoveNulls();
 
-		foreach (var person in result.Value)
+		foreach (var person in result)
 		{
 			this.Consume(person);
 		}
@@ -466,7 +466,7 @@ public class EnumerableExtensionsCollectionBenchmark : LargeCollectionBenchmark
 
 		var result = people.Scan(new Person<Address>(), (acc, p) => p);
 
-		this.Consume(result);
+		this.Consume(result.ToList());
 	}
 
 	public override void Setup()
@@ -523,7 +523,7 @@ public class EnumerableExtensionsCollectionBenchmark : LargeCollectionBenchmark
 
 		var splitPeople = people.Split(10);
 
-		this.Consume(splitPeople);
+		this.Consume(splitPeople.ToList());
 	}
 
 	[Benchmark(Description = nameof(EnumerableExtensions.StartsWith))]

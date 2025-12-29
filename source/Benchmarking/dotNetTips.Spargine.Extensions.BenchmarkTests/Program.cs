@@ -4,7 +4,7 @@
 // Created          : 11-13-2021
 //
 // Last Modified By : David McCarter
-// Last Modified On : 03-16-2025
+// Last Modified On : 12-29-2025
 // ***********************************************************************
 // <copyright file="Program.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -49,7 +49,8 @@ public static class Program
 			//_ = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).RunAll(config);
 
 			//_ = BenchmarkRunner.Run<ExceptionExtensionsBenchmark>(config);
-			//_ = BenchmarkRunner.Run<AssemblyExtensionsBenchmark>(config);
+			_ = BenchmarkRunner.Run<AssemblyExtensionsBenchmark>(config);
+
 			//_ = BenchmarkRunner.Run<CollectionExtensionsCollectionBenchmark>(config);
 			//_ = BenchmarkRunner.Run<DictionaryExtensionsCollectionBenchmark>(config);
 			_ = BenchmarkRunner.Run<EnumerableExtensionsCollectionBenchmark>(config);
@@ -69,7 +70,7 @@ public static class Program
 			//_ = BenchmarkRunner.Run<StringBuilderExtensionsCounterBenchmark>(config);
 			//_ = BenchmarkRunner.Run<StringExtensionsBenchmark>(config);
 			//_ = BenchmarkRunner.Run<StringExtensionsCounterBenchmark>(config);
-			//_ = BenchmarkRunner.Run<TypeExtensionsBenchmark>(config);
+			_ = BenchmarkRunner.Run<TypeExtensionsBenchmark>(config);
 
 			ConsoleLogger.Default.WriteLine(CompleteMessage);
 			Console.Beep();

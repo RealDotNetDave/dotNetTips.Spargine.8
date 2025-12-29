@@ -4,7 +4,7 @@
 // Created          : 06-02-2024
 //
 // Last Modified By : David McCarter
-// Last Modified On : 08-27-2024
+// Last Modified On : 12-29-2025
 // ***********************************************************************
 // <copyright file="TypeExtensionsBenchmark.cs" company="dotNetTips.com - McCarter Consulting">
 //     David McCarter
@@ -12,9 +12,11 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System.Linq;
 using System.Text.Json.Serialization;
 using BenchmarkDotNet.Attributes;
 using DotNetTips.Spargine.Benchmarking;
+using DotNetTips.Spargine.Extensions;
 using DotNetTips.Spargine.Tester.Models.RefTypes;
 
 //`![Spargine 8 -  #RockYourCode](6219C891F6330C65927FA249E739AC1F.png;https://www.spargine.net )
@@ -30,7 +32,7 @@ public class TypeExtensionsBenchmark : Benchmark
 	{
 		var result = typeof(Person<Address>).GetAllDeclaredFields();
 
-		this.Consume(result);
+		this.Consume(result.ToList());
 	}
 
 	[Benchmark(Description = nameof(TypeExtensions.GetAllDeclaredMethods))]
@@ -39,7 +41,7 @@ public class TypeExtensionsBenchmark : Benchmark
 	{
 		var result = typeof(Person<Address>).GetAllDeclaredMethods();
 
-		this.Consume(result);
+		this.Consume(result.ToList());
 	}
 
 	[Benchmark(Description = nameof(TypeExtensions.GetAllFields))]
@@ -48,7 +50,7 @@ public class TypeExtensionsBenchmark : Benchmark
 	{
 		var result = typeof(Person<Address>).GetAllFields();
 
-		this.Consume(result);
+		this.Consume(result.ToList());
 	}
 
 	[Benchmark(Description = nameof(TypeExtensions.GetAllMethods))]
@@ -57,7 +59,7 @@ public class TypeExtensionsBenchmark : Benchmark
 	{
 		var result = typeof(Person<Address>).GetAllMethods();
 
-		this.Consume(result);
+		this.Consume(result.ToList());
 	}
 
 	[Benchmark(Description = nameof(TypeExtensions.GetAllProperties))]
@@ -66,7 +68,7 @@ public class TypeExtensionsBenchmark : Benchmark
 	{
 		var result = typeof(Person<Address>).GetAllProperties();
 
-		this.Consume(result);
+		this.Consume(result.ToList());
 	}
 
 	[Benchmark(Description = nameof(TypeExtensions.GetTypeMembersWithAttribute))]
